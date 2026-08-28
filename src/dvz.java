@@ -1,23 +1,38 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dvz extends drs {
-   public static final MapCodec<dvz> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayw.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, dvz::new)
-   );
+public class dvz extends dmq implements dqq {
+   public static final MapCodec<dvz> a = b(dvz::new);
 
-   public dvz(float $$0, ebd.d $$1) {
-      super($$0, $$1);
+   public dvz(ebf.d $$0) {
+      super($$0);
+   }
+
+   @Nullable
+   @Override
+   public dye a(iw $$0, ebg $$1) {
+      return new dzz($$0, $$1);
    }
 
    @Override
-   protected void a(djx $$0, iv $$1, azx $$2) {
-      lr $$3 = lr.a(ly.J, $$0.s($$1));
-      azs.a($$0, $$1, $$2, $$3);
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      if ($$1.c_($$2) instanceof dzz $$6) {
+         if (!$$3.gG()) {
+            return but.e;
+         } else {
+            if ($$3.cU().C) {
+               $$3.a($$6);
+            }
+
+            return but.a;
+         }
+      } else {
+         return but.e;
+      }
    }
 
    @Override
-   public MapCodec<? extends dvz> a() {
-      return g;
+   protected MapCodec<dvz> a() {
+      return a;
    }
 }

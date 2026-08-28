@@ -1,4 +1,7 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.Consumer;
 
-public record fay(MapCodec<? extends fax> a) {
+public interface fay {
+   int a(float var1);
+
+   void a(Consumer<daa> var1, faj var2);
 }

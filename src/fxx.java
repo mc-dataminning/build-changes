@@ -1,111 +1,20 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
 
-public class fxx extends fxu {
-   private final List<fxx.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final fyc f = fyc.i().a(0.5F, 0.5F);
+public class fxx {
+   private static final int a = 4;
 
-   public fxx() {
-      this(0, 0, 0, 0);
+   private fxx() {
    }
 
-   public fxx(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   public static fyc a(ftx $$0, fyd $$1, xc $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public fxx(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public fxx a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public fxx a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fxx b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public fyc b() {
-      return this.f.g();
-   }
-
-   public fyc c() {
-      return this.f;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
-
-      for (fxx.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
-      }
-
-      for (fxx.a $$3 : this.c) {
-         $$3.a(this.F(), $$0);
-         $$3.b(this.G(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends fyb> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fyb> T a(T $$0, fyc $$1) {
-      this.c.add(new fxx.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fyb> T a(T $$0, Consumer<fyc> $$1) {
-      return this.a($$0, ag.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fyb> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(fyb $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(fyb $$0, fys $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(fyb $$0, fys $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(fyb $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.A(), $$0::j, $$5);
-      a($$2, $$4, $$0.y(), $$0::k, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)azo.h($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends fxu.a {
-      protected a(fyb $$0, fyc $$1) {
-         super($$0, $$1);
-      }
+   public static fyc a(ftx $$0, fyd $$1, xc $$2, Consumer<fye> $$3) {
+      fyf $$4 = fyf.d().a(4);
+      $$4.a(new fvu($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

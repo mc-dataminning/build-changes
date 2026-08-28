@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface efi {
-   void onChunkStatusChange(djc var1, arg var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface efi {
 }

@@ -1,62 +1,73 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
 
-public class dpo extends dpi {
-   private static final Logger f = LogUtils.getLogger();
-   public static final MapCodec<dpo> e = b(dpo::new);
-   private static final lh g = new lg();
+public class dpo extends dqc {
+   public static final MapCodec<dpo> a = b(dpo::new);
+   private static final fgm b = dne.b(14.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dpo> a() {
-      return e;
+      return a;
    }
 
-   public dpo(ebd.d $$0) {
+   public dpo(ebf.d $$0) {
       super($$0);
    }
 
    @Override
-   protected lh a(djx $$0, czy $$1) {
-      return g;
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return b;
    }
 
    @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dyy($$0, $$1);
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      this.d($$0, $$1, $$2);
+      return but.a;
    }
 
    @Override
-   protected void a(ars $$0, ebe $$1, iv $$2) {
-      dyx $$3 = $$0.a($$2, dye.g).orElse(null);
-      if ($$3 == null) {
-         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         le $$4 = new le($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            czy $$6 = $$3.a($$5);
-            if (!$$6.f()) {
-               jb $$7 = $$0.a_($$2).c(b);
-               buk $$8 = dzf.a($$0, $$2.a($$7));
-               czy $$9;
-               if ($$8 == null) {
-                  $$9 = g.dispense($$4, $$6);
-               } else {
-                  $$9 = dzf.a($$3, $$8, $$6.c(1), $$7.g());
-                  if ($$9.f()) {
-                     $$9 = $$6.v();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.v();
-                  }
+   protected void a_(ebg $$0, djz $$1, iw $$2, crz $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(ebg $$0, djz $$1, iw $$2) {
+      ecy $$3 = $$1.E_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         iw $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.C) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.A.j();
+                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
+                  double $$11 = azq.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
+                  double $$12 = azq.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
+                  double $$13 = azq.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
+                  $$1.a(lz.af, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
                }
-
-               $$3.a($$5, $$9);
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
             }
+
+            return;
          }
       }
+   }
+
+   @Override
+   protected int b() {
+      return 5;
+   }
+
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
+   }
+
+   @Override
+   public int b(ebg $$0, djd $$1, iw $$2) {
+      return -16777216;
    }
 }

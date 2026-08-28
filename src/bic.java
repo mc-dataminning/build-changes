@@ -1,32 +1,26 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
 
-public class bic extends bgx {
-   public bic(Schema $$0) {
-      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update(
-         "display",
-         $$0x -> $$0x.update(
-               "Name",
-               $$0xx -> {
-                  Optional<String> $$1 = $$0xx.asString().result();
-                  return $$1.isPresent()
-                     ? $$0xx.createString(
-                        $$1.get().replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
-                     )
-                     : $$0xx;
-               }
-            )
-      );
+public class bic extends bhx {
+   public bic(Schema $$0, boolean $$1) {
+      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bjd.s, "minecraft:banner");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return ag.a($$0, $$0.getType(), this::a);
+      OpticFinder<?> $$1 = $$0.getType().findField("CustomName");
+      OpticFinder<Pair<String, String>> $$2 = DSL.typeFinder(this.getInputSchema().getType(bjd.z));
+      return $$0.updateTyped(
+         $$1,
+         $$1x -> $$1x.update(
+               $$2,
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
+                  )
+            )
+      );
    }
 }

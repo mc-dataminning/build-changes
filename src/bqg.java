@@ -1,27 +1,50 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
-public final class bqg implements bqa<StringReader, String> {
-   private final Pattern a;
-   private final bpu<CommandSyntaxException> b;
+public interface bqg<T> {
+   T a(StringReader var1) throws CommandSyntaxException;
 
-   public bqg(Pattern $$0, bpu<CommandSyntaxException> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   CompletableFuture<Suggestions> a(SuggestionsBuilder var1);
+
+   default <S> bqg<S> a(final Function<T, S> $$0) {
+      return new bqg<S>() {
+         @Override
+         public S a(StringReader $$0x) throws CommandSyntaxException {
+            return $$0.apply((T)bqg.this.a($$0));
+         }
+
+         @Override
+         public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0x) {
+            return bqg.this.a($$0);
+         }
+      };
    }
 
-   public String b(bpz<StringReader> $$0) {
-      StringReader $$1 = $$0.f();
-      String $$2 = $$1.getString();
-      Matcher $$3 = this.a.matcher($$2).region($$1.getCursor(), $$2.length());
-      if (!$$3.lookingAt()) {
-         $$0.b().a($$0.g(), this.b);
-         return null;
-      } else {
-         $$1.setCursor($$3.end());
-         return $$3.group(0);
-      }
+   default <T, O> bqg<T> a(final DynamicOps<O> $$0, final bqg<O> $$1, final Codec<T> $$2, final DynamicCommandExceptionType $$3) {
+      return new bqg<T>() {
+         @Override
+         public T a(StringReader $$0x) throws CommandSyntaxException {
+            int $$1 = $$0.getCursor();
+            O $$2 = $$1.a($$0);
+            DataResult<T> $$3 = $$2.parse($$0, $$2);
+            return (T)$$3.getOrThrow($$3xxx -> {
+               $$0.setCursor($$1);
+               return $$3.createWithContext($$0, $$3xxx);
+            });
+         }
+
+         @Override
+         public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0x) {
+            return bqg.this.a($$0);
+         }
+      };
    }
 }

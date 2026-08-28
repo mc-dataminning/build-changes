@@ -1,57 +1,88 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dqn extends dlx {
-   public static final MapCodec<dqn> c = b(dqn::new);
+public class dqn extends drh {
+   public static final MapCodec<dqn> a = b(dqn::new);
+   public static final int b = 3;
+   public static final ecg c = ebw.av;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<dqn> a() {
-      return c;
+      return a;
    }
 
-   protected dqn(ebd.d $$0) {
+   public dqn(ebf.d $$0) {
       super($$0);
+      this.l(this.C.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dzc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
-      return a($$0, $$2, dye.a);
+   public void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
+      $$1.a($$2, this, azq.a($$1.G_(), 60, 120));
    }
 
    @Override
-   protected void a(djx $$0, iv $$1, crx $$2) {
-      dyc $$3 = $$0.c_($$1);
-      if ($$3 instanceof dzc) {
-         $$2.a((but)$$3);
-         $$2.a(awz.am);
-      }
-   }
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.B($$2) > 11 - $$0.c(c) - $$0.g() && this.e($$0, $$1, $$2)) {
+         iw.a $$4 = new iw.a();
 
-   @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awp.kC, awq.e, 1.0F, 1.0F, false);
+         for (jc $$5 : jc.values()) {
+            $$4.a($$2, $$5);
+            ebg $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, azq.a($$3, 20, 40));
+            }
          }
-
-         jb $$7 = $$0.c(a);
-         jb.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jb.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == jb.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ly.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(ly.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      } else {
+         $$1.a($$2, this, azq.a($$3, 20, 40));
       }
+   }
+
+   private boolean e(ebg $$0, djz $$1, iw $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
+   }
+
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3, @Nullable eyy $$4, boolean $$5) {
+      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(djd $$0, iw $$1, int $$2) {
+      int $$3 = 0;
+      iw.a $$4 = new iw.a();
+
+      for (jc $$5 : jc.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected daa a(dkc $$0, iw $$1, ebg $$2, boolean $$3) {
+      return daa.k;
    }
 }

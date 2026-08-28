@@ -1,54 +1,133 @@
-import com.mojang.blaze3d.platform.GlConst;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fjb implements AutoCloseable {
-   private static final int b = -1;
-   public static final fjb a = new fjb(-1, ali.b("invalid"), fkw.a);
-   private final ali c;
-   private int d;
-   private final fkw e;
+public class fjb implements fld {
+   protected static final int a = 1;
+   public static final boolean b = ac.aU;
+   private final fiw l;
+   private final boolean m;
+   private boolean n;
+   @Nullable
+   protected fjc c;
+   protected final fii[] d = new fii[1];
+   @Nullable
+   protected fii e;
+   protected flu.b f = flu.b.b;
+   protected final fle g = new fle();
+   protected final HashMap<String, Object> h = new HashMap<>();
+   protected final HashMap<String, flj> i = new HashMap<>();
+   protected final Set<String> j = new HashSet<>();
+   protected final Set<String> k = new HashSet<>();
 
-   public fjb(int $$0, ali $$1, fkw $$2) {
-      this.c = $$1;
-      this.d = $$0;
-      this.e = $$2;
+   public fjb(fiw $$0, boolean $$1) {
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   public static fjb a(ali $$0, fkw $$1, String $$2) throws gss.b {
-      RenderSystem.assertOnRenderThread();
-      int $$3 = GlStateManager.glCreateShader(GlConst.toGl($$1));
-      GlStateManager.glShaderSource($$3, $$2);
-      GlStateManager.glCompileShader($$3);
-      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
-         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
-         throw new gss.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
+   public boolean a() {
+      return this.m;
+   }
+
+   @Override
+   public void a(fjr $$0) {
+      if (this.c == null || this.c.b() != $$0) {
+         this.j.addAll(this.h.keySet());
+         this.k.addAll(this.i.keySet());
+      }
+
+      this.c = this.l.b().a($$0);
+   }
+
+   @Override
+   public void a(String $$0, flj $$1) {
+      this.i.put($$0, $$1);
+      this.k.add($$0);
+   }
+
+   @Override
+   public void a(String $$0, int... $$1) {
+      this.h.put($$0, $$1);
+      this.j.add($$0);
+   }
+
+   @Override
+   public void a(String $$0, float... $$1) {
+      this.h.put($$0, $$1);
+      this.j.add($$0);
+   }
+
+   @Override
+   public void a(String $$0, Matrix4f $$1) {
+      this.h.put($$0, $$1.get(new float[16]));
+      this.j.add($$0);
+   }
+
+   @Override
+   public void a(fle $$0) {
+      this.g.a($$0);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.g.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void b() {
+      this.g.a();
+   }
+
+   @Override
+   public void a(int $$0, fii $$1) {
+      if ($$0 >= 0 && $$0 < 1) {
+         this.d[$$0] = $$1;
       } else {
-         return new fjb($$3, $$0, $$1);
+         throw new IllegalArgumentException("Vertex buffer slot is out of range: " + $$0);
+      }
+   }
+
+   @Override
+   public void a(fii $$0, flu.b $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      if (this.n) {
+         throw new IllegalStateException("Can't use a closed render pass");
+      } else {
+         this.l.a(this, $$0, $$1, this.f);
+      }
+   }
+
+   @Override
+   public void a(Collection<fld.a> $$0) {
+      if (this.n) {
+         throw new IllegalStateException("Can't use a closed render pass");
+      } else {
+         this.l.a(this, $$0);
+      }
+   }
+
+   @Override
+   public void b(int $$0, int $$1) {
+      if (this.n) {
+         throw new IllegalStateException("Can't use a closed render pass");
+      } else {
+         this.l.a(this, $$0, $$1, null);
       }
    }
 
    @Override
    public void close() {
-      if (this.d == -1) {
-         throw new IllegalStateException("Already closed");
-      } else {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
+      if (!this.n) {
+         this.n = true;
+         this.l.a();
       }
-   }
-
-   public ali a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public String c() {
-      return this.e.b().a(this.c).toString();
    }
 }

@@ -1,16 +1,19 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 @FunctionalInterface
-public interface auz {
-   CompletableFuture<Void> reload(auz.a var1, avf var2, Executor var3, Executor var4);
-
-   default String getName() {
-      return this.getClass().getSimpleName();
+public interface auz<T> {
+   static auz<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   @FunctionalInterface
-   public interface a {
-      <T> CompletableFuture<T> wait(T var1);
+   static auz<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
+
+   T get() throws IOException;
 }

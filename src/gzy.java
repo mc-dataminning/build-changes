@@ -1,30 +1,33 @@
-public class gzy extends gyz<cql, hga, gjd> {
-   private static final ali j = ali.b("textures/entity/piglin/piglin.png");
-   private static final ali k = ali.b("textures/entity/piglin/piglin_brute.png");
-   public static final hcb.a a = new hcb.a(0.0F, 0.0F, 1.0019531F);
+public class gzy extends gzq<cpd, hga, gjc> {
+   private static final alk a = alk.b("textures/entity/phantom.png");
 
-   public gzy(gyi.a $$0, glc $$1, glc $$2, glc $$3, glc $$4, glc $$5, glc $$6) {
-      super($$0, new gjd($$0.a($$1)), new gjd($$0.a($$2)), 0.5F, a);
-      this.a(new hcl<>(this, new gin($$0.a($$3)), new gin($$0.a($$4)), new gin($$0.a($$5)), new gin($$0.a($$6)), $$0.h()));
+   public gzy(gyk.a $$0) {
+      super($$0, new gjc($$0.a(glf.cc)), 0.75F);
+      this.a(new hcw(this));
    }
 
-   public ali a(hga $$0) {
-      return $$0.a ? k : j;
+   public alk a(hga $$0) {
+      return a;
    }
 
    public hga b() {
       return new hga();
    }
 
-   public void a(cql $$0, hga $$1, float $$2) {
+   public void a(cpd $$0, hga $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.an() == bxc.aT;
-      $$1.d = $$0.x();
-      $$1.c = (float)cyr.b($$0.fB(), $$0);
-      $$1.b = $$0.q();
+      $$1.a = (float)$$0.m() + $$1.u;
+      $$1.b = $$0.j();
    }
 
-   protected boolean b(hga $$0) {
-      return super.a($$0) || $$0.b;
+   protected void a(hga $$0, flq $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(hga $$0, flq $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.ab));
    }
 }

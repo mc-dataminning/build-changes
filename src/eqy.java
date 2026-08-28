@@ -1,66 +1,78 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class eqy extends eri {
-   private final jb c;
-   private final eik d;
-   private final eik e;
-   private final int f;
-   public static final MapCodec<eqy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jb.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               eik.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               eik.b.optionalFieldOf("allowed_search_condition", eik.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eqy::new)
-   );
+@Deprecated
+public class eqy extends erk {
+   public static final MapCodec<eqy> a = bty.b(0, 256).fieldOf("count").xmap(eqy::new, $$0 -> $$0.c);
+   private final bty c;
 
-   private eqy(jb $$0, eik $$1, eik $$2, int $$3) {
+   private eqy(bty $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public static eqy a(jb $$0, eik $$1, eik $$2, int $$3) {
-      return new eqy($$0, $$1, $$2, $$3);
+   public static eqy a(bty $$0) {
+      return new eqy($$0);
    }
 
-   public static eqy a(jb $$0, eik $$1, int $$2) {
-      return a($$0, $$1, eik.e(), $$2);
+   public static eqy a(int $$0) {
+      return a(btv.a($$0));
    }
 
    @Override
-   public Stream<iv> a_(erg $$0, azx $$1, iv $$2) {
-      iv.a $$3 = $$2.k();
-      dkw $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
+   public Stream<iw> a_(eri $$0, azz $$1, iw $$2) {
+      Builder<iw> $$3 = Stream.builder();
+      int $$4 = 0;
 
-            $$3.c(this.c);
-            if ($$4.e($$3.v())) {
-               return Stream.of();
-            }
+      boolean $$5;
+      do {
+         $$5 = false;
 
-            if (!this.e.test($$4, $$3)) {
-               break;
+         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
+            int $$7 = $$1.a(16) + $$2.u();
+            int $$8 = $$1.a(16) + $$2.w();
+            int $$9 = $$0.a(ehf.a.e, $$7, $$8);
+            int $$10 = a($$0, $$7, $$9, $$8, $$4);
+            if ($$10 != Integer.MAX_VALUE) {
+               $$3.add(new iw($$7, $$10, $$8));
+               $$5 = true;
             }
          }
 
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
-      }
+         $$4++;
+      } while ($$5);
+
+      return $$3.build();
    }
 
    @Override
-   public erj<?> b() {
-      return erj.j;
+   public erl<?> b() {
+      return erl.i;
+   }
+
+   private static int a(eri $$0, int $$1, int $$2, int $$3, int $$4) {
+      iw.a $$5 = new iw.a($$1, $$2, $$3);
+      int $$6 = 0;
+      ebg $$7 = $$0.a($$5);
+
+      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
+         $$5.q($$8 - 1);
+         ebg $$9 = $$0.a($$5);
+         if (!a($$9) && a($$7) && !$$9.a(dng.I)) {
+            if ($$6 == $$4) {
+               return $$5.v() + 1;
+            }
+
+            $$6++;
+         }
+
+         $$7 = $$9;
+      }
+
+      return Integer.MAX_VALUE;
+   }
+
+   private static boolean a(ebg $$0) {
+      return $$0.l() || $$0.a(dng.J) || $$0.a(dng.K);
    }
 }

@@ -1,107 +1,108 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnq extends dnc {
+public class dnq extends dne {
    public static final MapCodec<dnq> a = b(dnq::new);
-   public static final int b = 6;
-   public static final ece c = ebu.aB;
-   public static final int d = b(0);
-   private static final fgk[] e = dnc.a(6, $$0 -> dnc.a((double)(1 + $$0 * 2), 0.0, 1.0, 15.0, 8.0, 15.0));
+   public static final ecg b = ebw.az;
+   public static final int c = 15;
+   private static final fgm d = dne.b(14.0, 0.0, 16.0);
+   private static final fgm e = dne.b(14.0, 0.0, 15.0);
+   private static final int f = 3;
+   private static final int g = 8;
+   private static final double h = 0.1;
+   private static final double i = 0.25;
 
    @Override
    public MapCodec<dnq> a() {
       return a;
    }
 
-   protected dnq(ebd.d $$0) {
+   protected dnq(ebf.d $$0) {
       super($$0);
-      this.l(this.C.b().b(c, Integer.valueOf(0)));
+      this.l(this.C.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return e[$$0.c(c)];
-   }
-
-   @Override
-   protected bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
-      czu $$7 = $$0.h();
-      if ($$0.a(axm.aO) && $$1.c(c) == 0 && dnc.a($$7) instanceof dnt $$8) {
-         $$0.a(1, $$4);
-         $$2.a(null, $$3, awp.dv, awq.e, 1.0F, 1.0F);
-         $$2.b($$3, dnu.a($$8));
-         $$2.a($$4, ege.c, $$3);
-         $$4.b(awz.c.b($$7));
-         return bur.a;
-      } else {
-         return bur.f;
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if ($$1.C) {
-         if (a($$1, $$2, $$0, $$3).a()) {
-            return bur.a;
+   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      iw $$4 = $$2.d();
+      if ($$1.v($$4)) {
+         int $$5 = 1;
+         int $$6 = $$0.c(b);
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            if (++$$5 == 3 && $$6 == 15) {
+               return;
+            }
          }
 
-         if ($$3.b(buq.a).f()) {
-            return bur.c;
-         }
-      }
-
-      return a($$1, $$2, $$0, $$3);
-   }
-
-   protected static bur a(djy $$0, iv $$1, ebe $$2, crx $$3) {
-      if (!$$3.t(false)) {
-         return bur.e;
-      } else {
-         $$3.a(awz.U);
-         $$3.gu().a(2, 0.1F);
-         int $$4 = $$2.c(c);
-         $$0.a($$3, ege.m, $$1);
-         if ($$4 < 6) {
-            $$0.a($$1, $$2.b(c, Integer.valueOf($$4 + 1)), 3);
-         } else {
-            $$0.a($$1, false);
-            $$0.a($$3, ege.f, $$1);
+         if ($$6 == 8 && this.a(this.m(), $$1, $$2.d())) {
+            double $$7 = $$5 >= 3 ? 0.25 : 0.1;
+            if ($$3.j() <= $$7) {
+               $$1.b($$4, dng.eh.m());
+            }
+         } else if ($$6 == 15 && $$5 < 3) {
+            $$1.b($$4, this.m());
+            ebg $$8 = $$0.b(b, Integer.valueOf(0));
+            $$1.a($$2, $$8, 260);
+            $$1.a($$8, $$4, this, null, false);
          }
 
-         return bur.a;
+         if ($$6 < 15) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 260);
+         }
       }
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      return $$4 == jb.a && !$$0.a($$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return e;
    }
 
    @Override
-   protected boolean a(ebe $$0, dka $$1, iv $$2) {
-      return $$1.a_($$2.e()).e();
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return d;
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(c);
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected int a(ebe $$0, djx $$1, iv $$2) {
-      return b($$0.c(c));
-   }
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      for (jc $$3 : jc.c.a) {
+         ebg $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(axl.b)) {
+            return false;
+         }
+      }
 
-   public static int b(int $$0) {
-      return (7 - $$0) * 2;
+      ebg $$5 = $$1.a_($$2.e());
+      return ($$5.a(dng.eg) || $$5.a(axg.J)) && !$$1.a_($$2.d()).n();
    }
 
    @Override
-   protected boolean c_(ebe $$0) {
-      return true;
+   protected void a(ebg $$0, djz $$1, iw $$2, bwv $$3, bxo $$4) {
+      $$3.a($$1.al().k(), 1.0F);
    }
 
    @Override
-   protected boolean a(ebe $$0, eyd $$1) {
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
       return false;
    }
 }

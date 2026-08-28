@@ -1,30 +1,29 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+public class bst implements bsu {
+   public static final bsu a = new bst();
 
-public class bst {
-   private final Set<String> a = new ObjectOpenHashSet();
-
-   public Set<bsl> a(Supplier<bqy> $$0) {
-      Set<bsl> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bsk)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (bsl $$2 : $$1) {
-         this.a.add($$2.d());
-      }
-
-      return $$1;
+   @Override
+   public void a() {
    }
 
-   private static bsl a(Supplier<bqy> $$0, String $$1, bsk $$2) {
-      return bsl.a($$1, $$2, () -> {
-         bqt.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)bas.b;
-      });
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public brd f() {
+      return bqz.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

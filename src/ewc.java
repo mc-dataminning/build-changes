@@ -1,26 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface ewc<P extends ewa> {
-   Codec<ewa> a = mg.af.q().dispatch("processor_type", ewa::a, ewc::codec);
-   Codec<ewb> b = a.listOf().xmap(ewb::new, ewb::a);
-   Codec<ewb> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jf<ewb>> d = ale.a(mh.bc, c);
-   ewc<eve> e = a("block_ignore", eve.a);
-   ewc<evg> f = a("block_rot", evg.a);
-   ewc<evj> g = a("gravity", evj.a);
-   ewc<evk> h = a("jigsaw_replacement", evk.a);
-   ewc<evw> i = a("rule", evw.a);
-   ewc<evo> j = a("nop", evo.a);
-   ewc<evd> k = a("block_age", evd.a);
-   ewc<evc> l = a("blackstone_replace", evc.a);
-   ewc<evl> m = a("lava_submerged_block", evl.a);
-   ewc<evt> n = a("protected_blocks", evt.b);
-   ewc<evi> o = a("capped", evi.a);
+public abstract class ewc {
+   @Nullable
+   public ewf.d a(dkc $$0, iw $$1, iw $$2, ewf.d $$3, ewf.d $$4, ewb $$5) {
+      return $$4;
+   }
 
-   MapCodec<P> codec();
+   protected abstract ewe<?> a();
 
-   static <P extends ewa> ewc<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.af, $$0, () -> $$1);
+   public List<ewf.d> a(dkq $$0, iw $$1, iw $$2, List<ewf.d> $$3, List<ewf.d> $$4, ewb $$5) {
+      return $$4;
    }
 }

@@ -1,29 +1,146 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
-public class cbc extends bzl<bxw> {
-   private final btw c;
-   private final float d;
-   private final float e;
-   private final float f;
+public class cbc<E extends bye> extends bzn<E> {
+   public static final int c = 160;
+   private final ToIntFunction<E> d;
+   private final int e;
+   private final int f;
+   private final float g;
+   private final cil h;
+   private final int i;
+   private final Function<E, awq> j;
+   private Optional<Long> k = Optional.empty();
+   private Optional<cbc.a> l = Optional.empty();
 
-   public cbc(btw $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(cgw.o, cgx.b, cgw.R, cgx.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
+   public cbc(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, cil $$4, int $$5, Function<E, awq> $$6) {
+      super(ImmutableMap.of(cgy.o, cgz.c, cgy.W, cgz.b, cgy.h, cgz.a, cgy.X, cgz.b), 160);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+   }
+
+   protected void a(aru $$0, bye $$1, long $$2) {
+      byw<?> $$3 = $$1.ec();
+      $$3.c(cgy.h).flatMap($$2x -> $$2x.a($$2xx -> this.h.a($$0, $$1, $$2xx))).ifPresent($$1x -> this.b($$1, $$1x));
+   }
+
+   protected void b(aru $$0, E $$1, long $$2) {
+      byw<?> $$3 = $$1.ec();
+      if (!$$3.a(cgy.X)) {
+         $$0.a($$1, (byte)59);
+         $$3.a(cgy.W, this.d.applyAsInt($$1));
       }
    }
 
-   protected void a(ars $$0, bxw $$1, long $$2) {
-      azx $$3 = $$1.dY();
-      float $$4 = azo.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = azo.h($$1.dL() + 2.0F * $$3.i() * this.d - this.d);
-      ffq $$6 = ffq.a($$4, $$5);
-      $$1.ec().a(cgw.o, new bzo($$1.bD().e($$6)));
-      $$1.ec().a(cgw.R, this.c.a($$3));
+   protected boolean c(aru $$0, bye $$1, long $$2) {
+      return this.l.isPresent() && this.l.get().c().bJ();
+   }
+
+   protected void d(aru $$0, E $$1, long $$2) {
+      if (!this.l.isEmpty()) {
+         $$1.ec().a(cgy.n, new chb(this.l.get().a(), this.g, 0));
+         $$1.ec().a(cgy.o, new bzy(this.l.get().c(), true));
+         boolean $$3 = !this.l.get().c().dv().equals(this.l.get().b());
+         if ($$3) {
+            $$0.a($$1, (byte)59);
+            $$1.O().m();
+            this.b($$1, this.l.get().c);
+         } else {
+            iw $$4 = $$1.dv();
+            if ($$4.equals(this.l.get().a())) {
+               $$0.a($$1, (byte)58);
+               if (this.k.isEmpty()) {
+                  this.k = Optional.of($$2);
+               }
+
+               if ($$2 - this.k.get() >= (long)this.i) {
+                  $$1.ec().a(cgy.X, this.a($$4, this.l.get().b()));
+                  $$0.a(null, $$1, this.j.apply($$1), aws.g, 1.0F, $$1.ff());
+                  this.l = Optional.empty();
+               }
+            }
+         }
+      }
+   }
+
+   private ffs a(iw $$0, iw $$1) {
+      double $$2 = 0.5;
+      double $$3 = 0.5 * (double)azq.j((double)($$1.u() - $$0.u()));
+      double $$4 = 0.5 * (double)azq.j((double)($$1.w() - $$0.w()));
+      return ffs.c($$1).b($$3, 0.0, $$4);
+   }
+
+   private Optional<iw> a(bye $$0, bxw $$1) {
+      iw $$2 = $$1.dv();
+      if (!this.a($$0, $$2)) {
+         return Optional.empty();
+      } else {
+         List<iw> $$3 = Lists.newArrayList();
+         iw.a $$4 = $$2.k();
+
+         for (jc $$5 : jc.c.a) {
+            $$4.g($$2);
+
+            for (int $$6 = 0; $$6 < this.f; $$6++) {
+               if (!this.a($$0, $$4.c($$5))) {
+                  $$4.c($$5.g());
+                  break;
+               }
+            }
+
+            if ($$4.k($$2) >= this.e) {
+               $$3.add($$4.j());
+            }
+         }
+
+         chg $$7 = $$0.O();
+         return $$3.stream().sorted(Comparator.comparingDouble($$0.dv()::j)).filter($$1x -> {
+            eye $$2x = $$7.a($$1x, 0);
+            return $$2x != null && $$2x.j();
+         }).findFirst();
+      }
+   }
+
+   private boolean a(bye $$0, iw $$1) {
+      return $$0.O().a($$1) && $$0.a(eym.b($$0, $$1)) == 0.0F;
+   }
+
+   private void b(bye $$0, bxw $$1) {
+      this.k = Optional.empty();
+      this.l = this.a($$0, $$1).map($$1x -> new cbc.a($$1x, $$1.dv(), $$1));
+   }
+
+   public static class a {
+      private final iw a;
+      private final iw b;
+      final bxw c;
+
+      public a(iw $$0, iw $$1, bxw $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public iw a() {
+         return this.a;
+      }
+
+      public iw b() {
+         return this.b;
+      }
+
+      public bxw c() {
+         return this.c;
+      }
    }
 }

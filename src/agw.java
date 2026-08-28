@@ -1,20 +1,37 @@
-public record agw(int b) implements zh<agr> {
-   public static final yy<vw, agw> a = zh.a(agw::a, agw::new);
+public class agw implements zj<agt> {
+   public static final za<vy, agw> a = zj.a(agw::a, agw::new);
+   private final int b;
+   private final iw c;
 
-   private agw(vw $$0) {
-      this($$0.l());
+   public agw(int $$0, iw $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vw $$0) {
+   private agw(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+   }
+
+   private void a(vy $$0) {
       $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zj<agw> a() {
-      return agp.bo;
+   public zl<agw> a() {
+      return agr.bl;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public iw e() {
+      return this.c;
    }
 }

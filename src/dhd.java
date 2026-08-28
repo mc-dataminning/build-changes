@@ -1,31 +1,60 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhd {
-   Codec<dhd> c = mg.at.q().dispatch(dhd::a, Function.identity());
+public record dhd(alk b, jg<byx> d, dgu e, bza.a f) implements dhf {
+   public static final MapCodec<dhd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alk.a.fieldOf("id").forGetter(dhd::b),
+               byx.a.fieldOf("attribute").forGetter(dhd::c),
+               dgu.b.fieldOf("amount").forGetter(dhd::d),
+               bza.a.f.fieldOf("operation").forGetter(dhd::e)
+            )
+            .apply($$0, dhd::new)
+   );
 
-   static MapCodec<? extends dhd> b(js<MapCodec<? extends dhd>> $$0) {
-      js.a($$0, "all_of", dgw.b.a);
-      js.a($$0, "apply_mob_effect", dgx.a);
-      js.a($$0, "attribute", dhb.a);
-      js.a($$0, "change_item_damage", dgy.a);
-      js.a($$0, "damage_entity", dgz.a);
-      js.a($$0, "explode", dhf.a);
-      js.a($$0, "ignite", dhg.a);
-      js.a($$0, "play_sound", dhi.a);
-      js.a($$0, "replace_block", dhk.a);
-      js.a($$0, "replace_disk", dhl.a);
-      js.a($$0, "run_function", dhm.a);
-      js.a($$0, "set_block_properties", dhn.a);
-      js.a($$0, "spawn_particles", dhp.a);
-      return js.a($$0, "summon_entity", dhq.a);
+   private alk a(bao $$0) {
+      return this.b.g("/" + $$0.c());
    }
 
-   void a(ars var1, int var2, dgk var3, bwt var4, ffq var5, boolean var6);
-
-   default void a(dgk $$0, bwt $$1, ffq $$2, int $$3) {
+   public bza a(int $$0, bao $$1) {
+      return new bza(this.a($$1), (double)this.d().a($$0), this.e());
    }
 
-   MapCodec<? extends dhd> a();
+   @Override
+   public void a(aru $$0, int $$1, dgm $$2, bwv $$3, ffs $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof bxw $$6) {
+         $$6.fa().a(this.a($$1, $$2.b()));
+      }
+   }
+
+   @Override
+   public void a(dgm $$0, bwv $$1, ffs $$2, int $$3) {
+      if ($$1 instanceof bxw $$4) {
+         $$4.fa().b(this.a($$3, $$0.b()));
+      }
+   }
+
+   private HashMultimap<jg<byx>, bza> a(int $$0, bxf $$1) {
+      HashMultimap<jg<byx>, bza> $$2 = HashMultimap.create();
+      $$2.put(this.d, this.a($$0, (bao)$$1));
+      return $$2;
+   }
+
+   @Override
+   public MapCodec<dhd> a() {
+      return a;
+   }
+
+   public jg<byx> c() {
+      return this.d;
+   }
+
+   public dgu d() {
+      return this.e;
+   }
+
+   public bza.a e() {
+      return this.f;
+   }
 }

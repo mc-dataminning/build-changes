@@ -1,23 +1,27 @@
-public class hco<S extends hdt, M extends gia<S> & ggq> extends hcw<S, M> {
-   public hco(haf<S, M> $$0) {
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+
+public class hco extends hcy<hfl, gis> {
+   private static final Map<bwr.a, alk> a = ImmutableMap.of(
+      bwr.a.b,
+      alk.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bwr.a.c,
+      alk.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bwr.a.d,
+      alk.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public hco(hah<hfl, gis> $$0) {
       super($$0);
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.g, bxl.b, $$0, $$1, $$2);
-      this.a($$3, $$3.i, bxl.a, $$0, $$1, $$2);
-   }
-
-   protected void a(S $$0, hhs $$1, bxl $$2, flo $$3, gsa $$4, int $$5) {
-      if (!$$1.c()) {
-         $$3.a();
-         this.d().a($$2, $$3);
-         $$3.a(a.b.rotationDegrees(-90.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         boolean $$6 = $$2 == bxl.a;
-         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         $$1.a($$3, $$4, $$5, hkq.d);
-         $$3.b();
+   public void a(flq $$0, gsc $$1, int $$2, hfl $$3, float $$4, float $$5) {
+      if (!$$3.z) {
+         bwr.a $$6 = $$3.c;
+         if ($$6 != bwr.a.a) {
+            alk $$7 = a.get($$6);
+            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
+         }
       }
    }
 }

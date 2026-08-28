@@ -1,127 +1,232 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class dzr {
-   private static final Codec<xa[]> c = xc.a
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ag.a($$0, 4).map($$0x -> new xa[]{(xa)$$0x.get(0), (xa)$$0x.get(1), (xa)$$0x.get(2), (xa)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dzr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dzr::d),
-               cyw.q.fieldOf("color").orElse(cyw.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dzr::a)
-   );
-   public static final int b = 4;
-   private final xa[] d;
-   private final xa[] e;
-   private final cyw f;
-   private final boolean g;
+public class dzr extends dzn implements bvd {
+   public static final int d = 9;
+   public static final int e = 3;
+   public static final int f = 27;
+   public static final int g = 1;
+   public static final int h = 10;
+   public static final float i = 0.5F;
+   public static final float j = 270.0F;
+   private static final int[] k = IntStream.range(0, 27).toArray();
+   private jp<daa> q = jp.a(27, daa.k);
+   private int r;
+   private dzr.a s = dzr.a.a;
+   private float t;
+   private float u;
    @Nullable
-   private aza[] h;
-   private boolean i;
+   private final cyy v;
 
-   public dzr() {
-      this(c(), c(), cyw.p, false);
+   public dzr(@Nullable cyy $$0, iw $$1, ebg $$2) {
+      super(dyg.y, $$1, $$2);
+      this.v = $$0;
    }
 
-   public dzr(xa[] $$0, xa[] $$1, cyw $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public dzr(iw $$0, ebg $$1) {
+      super(dyg.y, $$0, $$1);
+      this.v = $$1.b() instanceof dun $$2 ? $$2.b() : null;
    }
 
-   private static xa[] c() {
-      return new xa[]{wz.a, wz.a, wz.a, wz.a};
+   public static void a(djz $$0, iw $$1, ebg $$2, dzr $$3) {
+      $$3.b($$0, $$1, $$2);
    }
 
-   private static dzr a(xa[] $$0, Optional<xa[]> $$1, cyw $$2, boolean $$3) {
-      return new dzr($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   private void b(djz $$0, iw $$1, ebg $$2) {
+      this.u = this.t;
+      switch (this.s) {
+         case a:
+            this.t = 0.0F;
+            break;
+         case b:
+            this.t += 0.1F;
+            if (this.u == 0.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.t >= 1.0F) {
+               this.s = dzr.a.c;
+               this.t = 1.0F;
+               d($$0, $$1, $$2);
+            }
+
+            this.c($$0, $$1, $$2);
+            break;
+         case c:
+            this.t = 1.0F;
+            break;
+         case d:
+            this.t -= 0.1F;
+            if (this.u == 1.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.t <= 0.0F) {
+               this.s = dzr.a.a;
+               this.t = 0.0F;
+               d($$0, $$1, $$2);
+            }
+      }
    }
 
-   public boolean a() {
-      return this.g;
+   public dzr.a k() {
+      return this.s;
    }
 
-   public dzr a(boolean $$0) {
-      return $$0 == this.g ? this : new dzr(this.d, this.e, this.f, $$0);
+   public ffn a(ebg $$0) {
+      ffs $$1 = new ffs(0.5, 0.0, 0.5);
+      return cph.a(1.0F, $$0.c(dun.c), 0.5F * this.a(1.0F), $$1);
    }
 
-   public cyw b() {
-      return this.f;
-   }
-
-   public dzr a(cyw $$0) {
-      return $$0 == this.b() ? this : new dzr(this.d, this.e, $$0, this.g);
-   }
-
-   public xa a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dzr a(int $$0, xa $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dzr a(int $$0, xa $$1, xa $$2) {
-      xa[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      xa[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dzr($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(crx $$0) {
-      return Arrays.stream(this.b($$0.X())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public xa[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public aza[] a(boolean $$0, Function<xa, aza> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new aza[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+   private void c(djz $$0, iw $$1, ebg $$2) {
+      if ($$2.b() instanceof dun) {
+         jc $$3 = $$2.c(dun.c);
+         ffn $$4 = cph.a(1.0F, $$3, this.u, this.t, $$1.c());
+         List<bwv> $$5 = $$0.a_(null, $$4);
+         if (!$$5.isEmpty()) {
+            for (bwv $$6 : $$5) {
+               if ($$6.j_() != exv.d) {
+                  $$6.a(bya.d, new ffs(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
+               }
+            }
          }
       }
-
-      return this.h;
    }
 
-   private Optional<xa[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public int b() {
+      return this.q.size();
    }
 
-   public boolean b(crx $$0) {
-      for (xa $$1 : this.b($$0.X())) {
-         xx $$2 = $$1.a();
-         wy $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == wy.a.c) {
-            return true;
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.r = $$1;
+         if ($$1 == 0) {
+            this.s = dzr.a.d;
+         }
+
+         if ($$1 == 1) {
+            this.s = dzr.a.b;
+         }
+
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   private static void d(djz $$0, iw $$1, ebg $$2) {
+      $$2.a($$0, $$1, 3);
+      $$0.a($$1, $$2.b());
+   }
+
+   @Override
+   public void a(iw $$0, ebg $$1) {
+   }
+
+   @Override
+   public void c_(crz $$0) {
+      if (!this.p && !$$0.Z_()) {
+         if (this.r < 0) {
+            this.r = 0;
+         }
+
+         this.r++;
+         this.n.a(this.o, this.m().b(), 1, this.r);
+         if (this.r == 1) {
+            this.n.a($$0, egg.k, this.o);
+            this.n.a(null, this.o, awr.xD, aws.e, 0.5F, this.n.A.i() * 0.1F + 0.9F);
          }
       }
+   }
 
-      return false;
+   @Override
+   public void c(crz $$0) {
+      if (!this.p && !$$0.Z_()) {
+         this.r--;
+         this.n.a(this.o, this.m().b(), 1, this.r);
+         if (this.r <= 0) {
+            this.n.a($$0, egg.j, this.o);
+            this.n.a(null, this.o, awr.xC, aws.e, 0.5F, this.n.A.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   protected xc j() {
+      return xc.c("container.shulkerBox");
+   }
+
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.e($$0, $$1);
+   }
+
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bun.a($$0, this.q, false, $$1);
+      }
+   }
+
+   public void e(ua $$0, ji.a $$1) {
+      this.q = jp.a(this.b(), daa.k);
+      if (!this.b_($$0)) {
+         bun.b($$0, this.q, $$1);
+      }
+   }
+
+   @Override
+   protected jp<daa> f() {
+      return this.q;
+   }
+
+   @Override
+   protected void a(jp<daa> $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public int[] a(jc $$0) {
+      return k;
+   }
+
+   @Override
+   public boolean a(int $$0, daa $$1, @Nullable jc $$2) {
+      return !(dne.a($$1.h()) instanceof dun);
+   }
+
+   @Override
+   public boolean b(int $$0, daa $$1, jc $$2) {
+      return true;
+   }
+
+   public float a(float $$0) {
+      return azq.h($$0, this.u, this.t);
+   }
+
+   @Nullable
+   public cyy s() {
+      return this.v;
+   }
+
+   @Override
+   protected cvs a(int $$0, cry $$1) {
+      return new cxm($$0, $$1, this);
+   }
+
+   public boolean t() {
+      return this.s == dzr.a.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

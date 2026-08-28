@@ -1,113 +1,94 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import io.netty.buffer.ByteBuf;
+import java.net.URI;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class amc extends bva {
-   private long g = 0L;
-   private long h = 0L;
-   private long i = 0L;
-   private long j = 0L;
-   private boolean k = false;
-   private final MinecraftServer l;
-
-   public amc(MinecraftServer $$0) {
-      this.l = $$0;
-   }
+public record amc(List<amc.a> d) {
+   public static final amc a = new amc(List.of());
+   public static final za<ByteBuf, Either<amc.b, xc>> b = yy.a(amc.b.k, xe.f);
+   public static final za<ByteBuf, List<amc.c>> c = amc.c.a.a(yy.a());
 
    public boolean a() {
-      return this.j > 0L;
+      return this.d.isEmpty();
    }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.n();
+   public Optional<amc.a> a(amc.b $$0) {
+      return this.d.stream().filter($$1 -> (Boolean)$$1.a.map($$1x -> $$1x == $$0, $$0xx -> false)).findFirst();
    }
 
-   private void n() {
-      this.l.ag().a(agg.a(this));
+   public List<amc.c> b() {
+      return this.d.stream().map($$0 -> new amc.c($$0.a, $$0.b.toString())).toList();
    }
 
-   private void o() {
-      this.l.ag().a(agh.a(this));
+   public List<amc.a> c() {
+      return this.d;
    }
 
-   public boolean a(int $$0) {
-      if (!this.l()) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.o();
-         return true;
+   public static record a(Either<amc.b, xc> a, URI b) {
+
+      public static amc.a a(amc.b $$0, URI $$1) {
+         return new amc.a(Either.left($$0), $$1);
+      }
+
+      public static amc.a a(xc $$0, URI $$1) {
+         return new amc.a(Either.right($$0), $$1);
+      }
+
+      public xc a() {
+         return (xc)this.a.map(amc.b::a, $$0 -> $$0);
+      }
+
+      public Either<amc.b, xc> b() {
+         return this.a;
+      }
+
+      public URI c() {
+         return this.b;
       }
    }
 
-   public boolean b() {
-      if (this.d > 0) {
-         this.d = 0;
-         this.o();
-         return true;
-      } else {
-         return false;
+   public static enum b {
+      a(0, "report_bug"),
+      b(1, "community_guidelines"),
+      c(2, "support"),
+      d(3, "status"),
+      e(4, "feedback"),
+      f(5, "community"),
+      g(6, "website"),
+      h(7, "forums"),
+      i(8, "news"),
+      j(9, "announcements");
+
+      private static final IntFunction<amc.b> l = ayg.a($$0 -> $$0.m, values(), ayg.a.a);
+      public static final za<ByteBuf, amc.b> k = yy.a(l, $$0 -> $$0.m);
+      private final int m;
+      private final String n;
+
+      private b(final int $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      private xc a() {
+         return xc.c("known_server_link." + this.n);
+      }
+
+      public amc.a a(URI $$0) {
+         return amc.a.a(this, $$0);
       }
    }
 
-   public boolean c() {
-      if (this.g > 0L) {
-         this.p();
-         return true;
-      } else {
-         return false;
+   public static record c(Either<amc.b, xc> b, String c) {
+      public static final za<ByteBuf, amc.c> a = za.a(amc.b, amc.c::a, yy.p, amc.c::b, amc.c::new);
+
+      public Either<amc.b, xc> a() {
+         return this.b;
       }
-   }
 
-   public boolean b(int $$0) {
-      boolean $$1 = this.g > 0L;
-      this.i = 0L;
-      this.j = (long)$$0;
-      this.g = (long)$$0;
-      this.k = this.l();
-      this.a(false);
-      return $$1;
-   }
-
-   private void p() {
-      long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)bas.b;
-      int $$2 = (int)((double)(bas.c * $$0) / $$1);
-      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
-      this.j = 0L;
-      this.i = 0L;
-      this.l.aH().a(() -> xa.a("commands.tick.sprint.report", $$2, $$3), true);
-      this.g = 0L;
-      this.a(this.k);
-      this.l.F();
-   }
-
-   public boolean d() {
-      if (!this.e) {
-         return false;
-      } else if (this.g > 0L) {
-         this.h = System.nanoTime();
-         this.g--;
-         return true;
-      } else {
-         this.p();
-         return false;
+      public String b() {
+         return this.c;
       }
-   }
-
-   public void e() {
-      this.i = this.i + (System.nanoTime() - this.h);
-   }
-
-   @Override
-   public void a(float $$0) {
-      super.a($$0);
-      this.l.F();
-      this.n();
-   }
-
-   public void a(art $$0) {
-      $$0.f.b(agg.a(this));
-      $$0.f.b(agh.a(this));
    }
 }

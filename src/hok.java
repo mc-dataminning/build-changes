@@ -1,65 +1,16 @@
-public abstract class hok extends hog {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final cjl n;
-   private boolean r;
-
-   public hok(cjl $$0, awo $$1, awq $$2) {
-      super($$1, $$2, hox.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dA());
-      this.g = (double)((float)$$0.dC());
-      this.h = (double)((float)$$0.dG());
-      this.i = true;
+public class hok extends hom {
+   public hok(cjn $$0) {
+      super($$0, awr.bQ, aws.g);
       this.j = 0;
-      this.d = 0.0F;
    }
 
    @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         frd.Q().ak().a((hoy)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dQ() && !this.r) {
-         this.f = (double)((float)this.n.dA());
-         this.g = (double)((float)this.n.dC());
-         this.h = (double)((float)this.n.dG());
-         float $$1 = (float)this.n.dy().i();
-         if ($$1 >= 0.01F) {
-            this.e = azo.h(azo.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = azo.h(azo.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
-      } else {
-         this.n();
-      }
-   }
-
-   private float u() {
-      return this.n.n_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.n_() ? 1.5F : 1.1F;
+   protected hoi o() {
+      return new hol(this.n);
    }
 
    @Override
-   public boolean r() {
-      return true;
+   protected boolean p() {
+      return !this.n.ae_();
    }
-
-   @Override
-   public boolean s() {
-      return !this.n.ba();
-   }
-
-   protected abstract hog o();
-
-   protected abstract boolean p();
 }

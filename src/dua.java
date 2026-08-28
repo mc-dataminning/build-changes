@@ -1,52 +1,62 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dua {
-   dua s_ = new dua() {
-      @Override
-      public boolean a(djy $$0, iv $$1, ebe $$2, @Nullable Collection<jb> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dug)dne.rB).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.l() && !$$2.y().b(exp.c) ? false : dug.a($$0, $$1, $$2, $$3);
-         } else {
-            return dua.super.a($$0, $$1, $$2, $$3, $$4);
-         }
+public class dua extends dwq implements dnh {
+   public static final MapCodec<dua> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eau.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, dua::new)
+   );
+   public static final ecg f = ebw.aX;
+   private static final fgm a = dne.b(12.0, 0.0, 12.0);
+   protected final eau g;
+
+   @Override
+   public MapCodec<? extends dua> a() {
+      return e;
+   }
+
+   protected dua(eau $$0, ebf.d $$1) {
+      super($$1);
+      this.g = $$0;
+      this.l(this.C.b().b(f, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return a;
+   }
+
+   @Override
+   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      if ($$1.B($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
       }
+   }
 
-      @Override
-      public int a(duf.a $$0, djy $$1, iv $$2, azx $$3, duf $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
+   public void a(aru $$0, iw $$1, ebg $$2, azz $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 260);
+      } else {
+         this.g.a($$0, $$0.m().g(), $$1, $$2, $$3);
       }
-
-      @Override
-      public int j_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
    }
 
-   default void a(djy $$0, ebe $$1, iv $$2, azx $$3) {
-   }
-
-   default boolean a(djy $$0, iv $$1, azx $$2) {
-      return false;
-   }
-
-   default boolean a(djy $$0, iv $$1, ebe $$2, @Nullable Collection<jb> $$3, boolean $$4) {
-      return ((dsj)dne.rB).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
+   @Override
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
       return true;
    }
 
-   default int j_(int $$0) {
-      return 1;
+   @Override
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+      return (double)$$0.A.i() < 0.45;
    }
 
-   int a(duf.a var1, djy var2, iv var3, azx var4, duf var5, boolean var6);
+   @Override
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(f);
+   }
 }

@@ -1,30 +1,25 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum dec implements bam {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
-
-   public static final Codec<dec> e = bam.a(dec::values);
-   public static final IntFunction<dec> f = aye.a(dec::a, values(), aye.a.a);
-   public static final yy<ByteBuf, dec> g = yw.a(f, dec::a);
-   private final String h;
-   private final int i;
-
-   private dec(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+public class dec extends ddx {
+   public dec(String $$0, ded $$1, den $$2, daa $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.h;
+   protected czw f() {
+      return dae.xI;
    }
 
-   private int a() {
-      return this.i;
+   @Override
+   public dfb<dec> a() {
+      return dfb.r;
+   }
+
+   @Override
+   public dfc<dec> b() {
+      return dfc.e;
+   }
+
+   @Override
+   public deu h() {
+      return det.m;
    }
 }

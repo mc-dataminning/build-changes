@@ -1,82 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dri extends dpa {
-   public static final MapCodec<dri> g = b(dri::new);
+public class dri extends dne {
+   public static final MapCodec<dri> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mh.e.q().fieldOf("host").forGetter(dri::b), t()).apply($$0, dri::new));
+   private final dne b;
+   private static final Map<dne, dne> c = Maps.newIdentityHashMap();
+   private static final Map<ebg, ebg> d = Maps.newIdentityHashMap();
+   private static final Map<ebg, ebg> e = Maps.newIdentityHashMap();
 
    @Override
    public MapCodec<? extends dri> a() {
-      return g;
+      return a;
    }
 
-   protected dri(ebd.d $$0) {
-      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, $$0);
-      this.l(
-         this.C
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
+   public dri(dne $$0, ebf.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   public ebe a(ddr $$0) {
-      djb $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      exo $$3 = $$0.q().b_($$0.a());
-      iv $$4 = $$2.f();
-      iv $$5 = $$2.g();
-      iv $$6 = $$2.h();
-      iv $$7 = $$2.i();
-      ebe $$8 = $$1.a_($$4);
-      ebe $$9 = $$1.a_($$5);
-      ebe $$10 = $$1.a_($$6);
-      ebe $$11 = $$1.a_($$7);
-      return this.m()
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jb.d))))
-         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jb.c))))
-         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jb.f))))
-         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jb.e))))
-         .b(e, Boolean.valueOf($$3.a() == exp.c));
+   public dne b() {
+      return this.b;
    }
 
-   @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
+   public static boolean o(ebg $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(aru $$0, iw $$1) {
+      cpi $$2 = bxe.bf.a($$0, bxd.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.U();
       }
-
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected fgk c(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return fgh.a();
+   protected void a(ebg $$0, aru $$1, iw $$2, daa $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.O().c(djv.i) && !dgp.a($$3, axi.t)) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   protected boolean b(ebe $$0, ebe $$1, jb $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
+   public static ebg p(ebg $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
+   }
+
+   public ebg q(ebg $$0) {
+      return a(e, $$0, () -> this.b().m());
+   }
+
+   private static ebg a(Map<ebg, ebg> $$0, ebg $$1, Supplier<ebg> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         ebg $$2x = $$2.get();
+
+         for (ecj $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
          }
 
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   public final boolean a(ebe $$0, boolean $$1) {
-      return !k($$0) && $$1 || $$0.b() instanceof dri || $$0.a(axe.N);
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(a, b, d, c, e);
+         return $$2x;
+      });
    }
 }

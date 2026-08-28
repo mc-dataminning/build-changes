@@ -1,67 +1,21 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class hnh {
-   public static final Comparator<hnh> a = Comparator.<hnh, ali>comparing(hnh::a).thenComparing(hnh::b);
-   private final ali b;
-   private final ali c;
-   @Nullable
-   private gsl d;
+public class hnh extends avl<hni> {
+   public static final hni a = new hni(Map.of());
+   private static final ald b = ald.a("equipment");
+   private Map<alj<dih>, hni> c = Map.of();
 
-   public hnh(ali $$0, ali $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public hnh() {
+      super(hni.a, b);
    }
 
-   public ali a() {
-      return this.b;
+   protected void a(Map<alk, hni> $$0, avh $$1, brd $$2) {
+      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> alj.a(dii.a, (alk)$$0x.getKey()), Entry::getValue));
    }
 
-   public ali b() {
-      return this.c;
-   }
-
-   public hla c() {
-      return frd.Q().a(this.a()).apply(this.b());
-   }
-
-   public gsl a(Function<ali, gsl> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
-      }
-
-      return this.d;
-   }
-
-   public flr a(gsa $$0, Function<ali, gsl> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public flr a(gsa $$0, Function<ali, gsl> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(gzg.a($$0, this.a($$1), $$2, $$3));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         hnh $$1 = (hnh)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public hni a(alj<dih> $$0) {
+      return this.c.getOrDefault($$0, a);
    }
 }

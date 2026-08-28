@@ -1,48 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class euk extends esb {
-   public static final MapCodec<euk> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), eqi.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, euk::new)
-   );
-   public final eqi e;
+public class euk extends esd {
+   public static final btd<dlo.c> d = btd.<dlo.c>b()
+      .a(new dlo.c(bxe.p, 2, 3), 10)
+      .a(new dlo.c(bxe.bS, 4, 4), 5)
+      .a(new dlo.c(bxe.bL, 5, 5), 8)
+      .a(new dlo.c(bxe.bg, 5, 5), 2)
+      .a(new dlo.c(bxe.aA, 4, 4), 3)
+      .a();
+   public static final MapCodec<euk> e = a(euk::new);
 
-   public euk(esb.c $$0, eqi $$1) {
+   public euk(esd.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<esb.b> a(esb.a $$0) {
-      eic $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().f();
-      eia $$5 = new eia($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dkj $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      iv.a $$8 = new iv.a($$2, $$6, $$3);
+   public Optional<esd.b> a(esd.a $$0) {
+      dje $$1 = $$0.h();
+      iw $$2 = new iw($$1.d(), 64, $$1.e());
+      return Optional.of(new esd.b($$2, (Consumer<esv>)($$1x -> a($$1x, $$0))));
+   }
 
-      while ($$6 > $$4) {
-         ebe $$9 = $$7.a($$6);
-         ebe $$10 = $$7.a(--$$6);
-         if ($$9.l() && ($$10.a(dne.en) || $$10.c(djn.a, $$8.q($$6), jb.b))) {
-            break;
-         }
+   private static void a(esv $$0, esd.a $$1) {
+      euj.q $$2 = new euj.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<esh> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         esh $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         iv $$11 = new iv($$2, $$6, $$3);
-         return Optional.of(new esb.b($$11, (Consumer<est>)($$3x -> euj.a($$0.e(), $$3x, $$1, $$11))));
-      }
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public esk<?> e() {
-      return esk.i;
+   public esm<?> e() {
+      return esm.d;
    }
 }

@@ -1,69 +1,60 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class epk extends epl {
-   public static final MapCodec<epk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayw.m.fieldOf("tries").orElse(128).forGetter($$0x -> $$0x.b),
-               ayw.l.fieldOf("radius").orElse(2).forGetter($$0x -> $$0x.c),
-               ayw.l.fieldOf("height").orElse(1).forGetter($$0x -> $$0x.d),
-               eoq.a.fieldOf("block_state_provider").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, epk::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final eoq e;
+public class epk extends epn {
+   public static final MapCodec<epk> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(epk::new, $$0 -> $$0.b);
+   private final float b;
 
-   public epk(int $$0, int $$1, int $$2, eoq $$3) {
+   @Override
+   protected epo<?> a() {
+      return epo.b;
+   }
+
+   public epk(float $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
    @Override
-   protected epm<?> a() {
-      return epm.i;
-   }
-
-   @Override
-   public void a(epl.a $$0) {
-      List<iv> $$1 = elw.a($$0);
-      if (!$$1.isEmpty()) {
-         iv $$2 = $$1.getFirst();
-         int $$3 = $$2.v();
-         int $$4 = $$2.u();
-         int $$5 = $$2.u();
-         int $$6 = $$2.w();
-         int $$7 = $$2.w();
-
-         for (iv $$8 : $$1) {
-            if ($$8.v() == $$3) {
-               $$4 = Math.min($$4, $$8.u());
-               $$5 = Math.max($$5, $$8.u());
-               $$6 = Math.min($$6, $$8.w());
-               $$7 = Math.max($$7, $$8.w());
+   public void a(epn.a $$0) {
+      azz $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            iw $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dwr.d, $$0);
             }
          }
 
-         azx $$9 = $$0.b();
-         ert $$10 = new ert($$4, $$3, $$6, $$5, $$3, $$7).c(this.c, this.d, this.c);
-         iv.a $$11 = new iv.a();
-
-         for (int $$12 = 0; $$12 < this.b; $$12++) {
-            $$11.d($$9.a($$10.h(), $$10.k()), $$9.a($$10.i(), $$10.l()), $$9.a($$10.j(), $$10.m()));
-            this.a($$0, $$11);
+         if ($$1.i() < this.b) {
+            iw $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dwr.f, $$0);
+            }
          }
-      }
+
+         if ($$1.i() < this.b) {
+            iw $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dwr.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            iw $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dwr.c, $$0);
+            }
+         }
+      });
    }
 
-   private void a(epl.a $$0, iv $$1) {
-      iv $$2 = $$1.d();
-      if ($$0.a().a($$2, $$0x -> $$0x.l() || $$0x.a(dne.fx)) && $$0.a($$1, ebd.a::s)) {
-         $$0.a($$2, this.e.a($$0.b(), $$2));
+   private static void a(iw $$0, ebx $$1, epn.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (iw var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
       }
    }
 }

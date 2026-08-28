@@ -1,80 +1,29 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
 public class hne {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alb b = alb.a("items");
+   private static final ebh<dne, ebg> a = b();
+   private static final ebh<dne, ebg> b = b();
+   private static final alk c = alk.b("glow_item_frame");
+   private static final alk d = alk.b("item_frame");
+   private static final Map<alk, ebh<dne, ebg>> e = Map.of(d, a, c, b);
 
-   public static CompletableFuture<hne.a> a(avf $$0, Executor $$1) {
-      jt.b $$2 = gme.a().a();
-      return CompletableFuture.<Map<ali, avd>>supplyAsync(() -> b.a($$0), $$1)
-         .thenCompose(
-            $$2x -> {
-               List<CompletableFuture<hne.b>> $$3 = new ArrayList<>($$2x.size());
-               $$2x.forEach(
-                  ($$3x, $$4) -> $$3.add(
-                        CompletableFuture.supplyAsync(
-                           () -> {
-                              ali $$3xx = b.b($$3x);
-
-                              try {
-                                 hne.b var8;
-                                 try (Reader $$4x = $$4.e()) {
-                                    azt $$5 = new azt($$2);
-                                    DynamicOps<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
-                                    hhl $$7 = hhl.a
-                                       .parse($$6, JsonParser.parseReader($$4x))
-                                       .ifError(
-                                          $$2xxxx -> a.error(
-                                                "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$3xx, $$4.b(), $$2xxxx.message()}
-                                             )
-                                       )
-                                       .result()
-                                       .map($$1xxxx -> $$5.b() ? $$1xxxx.a($$5.a()) : $$1xxxx)
-                                       .orElse(null);
-                                    var8 = new hne.b($$3xx, $$7);
-                                 }
-
-                                 return var8;
-                              } catch (Exception var11) {
-                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$3x, $$4.b(), var11});
-                                 return new hne.b($$3xx, null);
-                              }
-                           },
-                           $$1
-                        )
-                     )
-               );
-               return ag.d($$3).thenApply($$0xx -> {
-                  Map<ali, hhl> $$1xx = new HashMap<>();
-
-                  for (hne.b $$2xx : $$0xx) {
-                     if ($$2xx.b != null) {
-                        $$1xx.put($$2xx.a, $$2xx.b);
-                     }
-                  }
-
-                  return new hne.a($$1xx);
-               });
-            }
-         );
+   private static ebh<dne, ebg> b() {
+      return new ebh.a<dne, ebg>(dng.a).a(ebw.bG).a(dne::m, ebg::new);
    }
 
-   public static record a(Map<ali, hhl> a) {
+   public static ebg a(boolean $$0, boolean $$1) {
+      return ($$0 ? b : a).b().b(ebw.bG, Boolean.valueOf($$1));
    }
 
-   static record b(ali a, @Nullable hhl b) {
+   static Function<alk, ebh<dne, ebg>> a() {
+      Map<alk, ebh<dne, ebg>> $$0 = new HashMap<>(e);
+
+      for (dne $$1 : mh.e) {
+         $$0.put($$1.p().h().a(), $$1.l());
+      }
+
+      return $$0::get;
    }
 }

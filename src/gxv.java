@@ -1,38 +1,44 @@
-public class gxv extends gzo<cok, hei, ghs> {
-   private static final ali a = ali.b("textures/entity/creeper/creeper.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gxv(gyi.a $$0) {
-      super($$0, new ghs($$0.a(gld.aq)), 0.5F);
-      this.a(new hbz(this, $$0.f()));
+public class gxv extends gzq<cjw, hei, ghs> {
+   private final Map<cjx.a, ggo<ghs>> a;
+
+   public gxv(gyk.a $$0) {
+      super($$0, new ghs($$0.a(glf.an)), 0.7F);
+      this.a = a($$0);
    }
 
-   protected void a(hei $$0, flo $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azo.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azo.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   private static Map<cjx.a, ggo<ghs>> a(gyk.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(
+            cjx.a.a,
+            new ggo<>(new ghs($$0.a(glf.an)), new ghs($$0.a(glf.ao))),
+            cjx.a.c,
+            new ggo<>(new ghs($$0.a(glf.dQ)), new ghs($$0.a(glf.dR))),
+            cjx.a.b,
+            new ggo<>(new ghs($$0.a(glf.ae)), new ghs($$0.a(glf.af)))
+         )
+      );
    }
 
-   protected float a(hei $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azo.a($$1, 0.5F, 1.0F);
-   }
-
-   public ali b(hei $$0) {
-      return a;
+   public alk a(hei $$0) {
+      return $$0.a == null ? hkr.c() : $$0.a.b().b().b();
    }
 
    public hei a() {
       return new hei();
    }
 
-   public void a(cok $$0, hei $$1, float $$2) {
+   public void a(cjw $$0, hei $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.m();
+      $$1.a = $$0.t().a();
+   }
+
+   public void a(hei $$0, flq $$1, gsc $$2, int $$3) {
+      if ($$0.a != null) {
+         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 }

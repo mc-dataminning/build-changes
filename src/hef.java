@@ -1,8 +1,10 @@
-import javax.annotation.Nullable;
-
-public class hef extends hfp {
-   public float a;
-   public float b;
-   @Nullable
-   public cjr c;
+public class hef extends hfr {
+   public daa a = daa.k;
+   public boolean b;
+   public float c;
+   public final bwm d = new bwm();
+   public final bwm e = new bwm();
+   public final bwm f = new bwm();
+   public final bwm g = new bwm();
+   public final bwm h = new bwm();
 }

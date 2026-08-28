@@ -1,51 +1,30 @@
-public class gju extends gia<hgj> {
-   public static final String a = "lid";
-   private static final String b = "base";
-   private final gle c;
-   private final gle d;
+public class gju extends giy {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final glg e;
+   private final glg f;
 
-   public gju(gle $$0) {
-      super($$0, gsl::h);
-      this.c = $$0.b("lid");
-      this.d = $$0.b("head");
+   public gju(glg $$0) {
+      super($$0, gsn::d);
+      this.e = $$0.b("plate");
+      this.f = $$0.b("handle");
    }
 
-   private static glm c() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-      $$1.a("lid", glj.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), glg.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", glj.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), glg.a(0.0F, 24.0F, 0.0F));
-      return $$0;
+   public static glm a() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      $$1.a("plate", gll.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gli.a);
+      $$1.a("handle", gll.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gli.a);
+      return glm.a($$0, 64, 64);
    }
 
-   public static glk a() {
-      glm $$0 = c();
-      $$0.a().a("head", glj.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), glg.a(0.0F, 12.0F, 0.0F));
-      return glk.a($$0, 64, 64);
+   public glg b() {
+      return this.e;
    }
 
-   public static glk b() {
-      glm $$0 = c();
-      return glk.a($$0, 64, 64);
-   }
-
-   public void a(hgj $$0) {
-      super.a($$0);
-      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
-      float $$2 = -1.0F + azo.a($$1);
-      float $$3 = 0.0F;
-      if ($$1 > (float) Math.PI) {
-         $$3 = azo.a($$0.u * 0.1F) * 0.7F;
-      }
-
-      this.c.a(0.0F, 16.0F + azo.a($$1) * 8.0F + $$3, 0.0F);
-      if ($$0.c > 0.3F) {
-         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
-      } else {
-         this.c.f = 0.0F;
-      }
-
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
+   public glg c() {
+      return this.f;
    }
 }

@@ -1,72 +1,66 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-public class deo {
-   public static final int a = -1;
-   public static final deo b = new deo(List.of(), IntList.of());
-   private final List<del> c;
-   private final IntList d;
-
-   private deo(List<del> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class deo extends deh {
+   public deo(dee $$0) {
+      super($$0);
    }
 
-   public static deo a(del $$0) {
-      return $$0.b() ? b : new deo(List.of($$0), IntList.of(0));
-   }
+   public boolean a(def $$0, djz $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   public static deo a(List<Optional<del>> $$0) {
-      int $$1 = $$0.size();
-      List<del> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            daa $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kl.M)) {
+                  if ($$3) {
+                     return false;
+                  }
 
-      for (Optional<del> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            del $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(dae.vt)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
             }
+         }
 
-            $$2.add($$6);
-            $$3.add($$4++);
-         } else {
-            $$3.add(-1);
+         return $$3 && $$2;
+      }
+   }
+
+   public daa a(def $$0, ji.a $$1) {
+      int $$2 = 0;
+      daa $$3 = daa.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         daa $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kl.M)) {
+               if (!$$3.f()) {
+                  return daa.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(dae.vt)) {
+                  return daa.k;
+               }
+
+               $$2++;
+            }
          }
       }
 
-      return new deo($$2, $$3);
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : daa.k;
    }
 
-   public static deo b(List<del> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         del $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new deo($$0, $$2);
-   }
-
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<del> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public dfb<deo> a() {
+      return dfb.e;
    }
 }

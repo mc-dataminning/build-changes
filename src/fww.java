@@ -1,194 +1,166 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Set;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class fww {
-   private static final int a = 5;
-   private static final int b = -1;
-   final frd c;
-   private final List<fww.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fwv> f = Queues.newArrayDeque();
-   private final Set<awo> g = new HashSet<>();
+public class fww implements fwx {
+   private static final alk a = alk.b("toast/system");
+   private static final int e = 200;
+   private static final int f = 12;
+   private static final int g = 10;
+   private final fww.a h;
+   private xc i;
+   private List<azc> j;
+   private long k;
+   private boolean l;
+   private final int m;
+   private boolean n;
+   private fwx.a o = fwx.a.b;
 
-   public fww(frd $$0) {
-      this.c = $$0;
+   public fww(fww.a $$0, xc $$1, @Nullable xc $$2) {
+      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(frf.Q().h.a($$1), $$2 == null ? 0 : frf.Q().h.a($$2))));
    }
 
-   public void a() {
-      MutableBoolean $$0 = new MutableBoolean(false);
-      this.d.removeIf($$1 -> {
-         fwv.a $$2 = $$1.h;
-         $$1.c();
-         if ($$1.h != $$2 && $$0.isFalse()) {
-            $$0.setTrue();
-            $$1.h.a(this.c.ak());
-         }
-
-         if ($$1.b()) {
-            this.e.clear($$1.d, $$1.d + $$1.e);
-            return true;
-         } else {
-            return false;
-         }
-      });
-      if (!this.f.isEmpty() && this.e() > 0) {
-         this.f.removeIf($$0x -> {
-            int $$1 = $$0x.h();
-            int $$2 = this.a($$1);
-            if ($$2 == -1) {
-               return false;
-            } else {
-               this.d.add(new fww.a<>($$0x, $$2, $$1));
-               this.e.set($$2, $$2 + $$1);
-               awo $$3 = $$0x.b();
-               if ($$3 != null && this.g.add($$3)) {
-                  this.c.ak().a(hos.a($$3, 1.0F, 1.0F));
-               }
-
-               return true;
-            }
-         });
-      }
-
-      this.g.clear();
+   public static fww a(frf $$0, fww.a $$1, xc $$2, xc $$3) {
+      ftx $$4 = $$0.h;
+      List<azc> $$5 = $$4.c($$3, 200);
+      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
+      return new fww($$1, $$2, $$5, $$6 + 30);
    }
 
-   public void a(ftx $$0) {
-      if (!this.c.n.X) {
-         int $$1 = $$0.a();
+   private fww(fww.a $$0, xc $$1, List<azc> $$2, int $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.m = $$3;
+   }
 
-         for (fww.a<?> $$2 : this.d) {
-            $$2.a($$0, $$1);
+   private static ImmutableList<azc> a(@Nullable xc $$0) {
+      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
+   }
+
+   @Override
+   public int c() {
+      return this.m;
+   }
+
+   @Override
+   public int d() {
+      return 20 + Math.max(this.j.size(), 1) * 12;
+   }
+
+   public void e() {
+      this.n = true;
+   }
+
+   @Override
+   public fwx.a a() {
+      return this.o;
+   }
+
+   @Override
+   public void a(fwy $$0, long $$1) {
+      if (this.l) {
+         this.k = $$1;
+         this.l = false;
+      }
+
+      double $$2 = (double)this.h.l * $$0.d();
+      long $$3 = $$1 - this.k;
+      this.o = !this.n && (double)$$3 < $$2 ? fwx.a.a : fwx.a.b;
+   }
+
+   @Override
+   public void a(ftz $$0, ftx $$1, long $$2) {
+      $$0.a(gsn::H, a, 0, 0, this.c(), this.d());
+      if (this.j.isEmpty()) {
+         $$0.a($$1, this.i, 18, 12, -256, false);
+      } else {
+         $$0.a($$1, this.i, 18, 7, -256, false);
+
+         for (int $$3 = 0; $$3 < this.j.size(); $$3++) {
+            $$0.a($$1, this.j.get($$3), 18, 18 + $$3 * 12, -1, false);
          }
       }
    }
 
-   private int a(int $$0) {
-      if (this.e() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
-      }
-
-      return -1;
+   public void a(xc $$0, @Nullable xc $$1) {
+      this.i = $$0;
+      this.j = a($$1);
+      this.l = true;
    }
 
-   private int e() {
-      return 5 - this.e.cardinality();
+   public fww.a f() {
+      return this.h;
    }
 
-   @Nullable
-   public <T extends fwv> T a(Class<? extends T> $$0, Object $$1) {
-      for (fww.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().g().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (fwv $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.g().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
+   public static void a(fwy $$0, fww.a $$1, xc $$2, @Nullable xc $$3) {
+      $$0.a(new fww($$1, $$2, $$3));
    }
 
-   public void b() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
+   public static void b(fwy $$0, fww.a $$1, xc $$2, @Nullable xc $$3) {
+      fww $$4 = $$0.a(fww.class, $$1);
+      if ($$4 == null) {
+         a($$0, $$1, $$2, $$3);
+      } else {
+         $$4.a($$2, $$3);
+      }
    }
 
-   public void a(fwv $$0) {
-      this.f.add($$0);
+   public static void a(fwy $$0, fww.a $$1) {
+      fww $$2 = $$0.a(fww.class, $$1);
+      if ($$2 != null) {
+         $$2.e();
+      }
    }
 
-   public frd c() {
-      return this.c;
+   public static void a(frf $$0, String $$1) {
+      a($$0.aA(), fww.a.d, xc.c("selectWorld.access_failure"), xc.b($$1));
    }
 
-   public double d() {
-      return this.c.n.D().c();
+   public static void b(frf $$0, String $$1) {
+      a($$0.aA(), fww.a.d, xc.c("selectWorld.delete_failure"), xc.b($$1));
    }
 
-   class a<T extends fwv> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      fwv.a h = fwv.a.b;
-      private long i;
-      private float j;
-      private boolean k;
+   public static void c(frf $$0, String $$1) {
+      a($$0.aA(), fww.a.e, xc.c("pack.copyFailure"), xc.b($$1));
+   }
 
-      a(final T $$0, final int $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   public static void a(frf $$0, int $$1) {
+      a($$0.aA(), fww.a.f, xc.c("gui.fileDropFailure.title"), xc.a("gui.fileDropFailure.detail", $$1));
+   }
+
+   public static void a(frf $$0) {
+      b($$0.aA(), fww.a.h, xc.c("chunk.toast.lowDiskSpace"), xc.c("chunk.toast.lowDiskSpace.description"));
+   }
+
+   public static void a(frf $$0, dje $$1) {
+      b($$0.aA(), fww.a.i, xc.a("chunk.toast.loadFailure", xc.a($$1)).a(o.m), xc.c("chunk.toast.checkLog"));
+   }
+
+   public static void b(frf $$0, dje $$1) {
+      b($$0.aA(), fww.a.j, xc.a("chunk.toast.saveFailure", xc.a($$1)).a(o.m), xc.c("chunk.toast.checkLog"));
+   }
+
+   public static class a {
+      public static final fww.a a = new fww.a();
+      public static final fww.a b = new fww.a();
+      public static final fww.a c = new fww.a();
+      public static final fww.a d = new fww.a();
+      public static final fww.a e = new fww.a();
+      public static final fww.a f = new fww.a();
+      public static final fww.a g = new fww.a();
+      public static final fww.a h = new fww.a(10000L);
+      public static final fww.a i = new fww.a();
+      public static final fww.a j = new fww.a();
+      public static final fww.a k = new fww.a(10000L);
+      final long l;
+
+      public a(long $$0) {
+         this.l = $$0;
       }
 
-      public T a() {
-         return this.c;
-      }
-
-      public boolean b() {
-         return this.k;
-      }
-
-      private void a(long $$0) {
-         float $$1 = azo.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         if (this.h == fwv.a.b) {
-            this.j = 1.0F - $$1;
-         } else {
-            this.j = $$1;
-         }
-      }
-
-      public void c() {
-         long $$0 = ag.c();
-         if (this.f == -1L) {
-            this.f = $$0;
-            this.h = fwv.a.a;
-         }
-
-         if (this.h == fwv.a.a && $$0 - this.f <= 600L) {
-            this.g = $$0;
-         }
-
-         this.i = $$0 - this.g;
-         this.a($$0);
-         this.c.a(fww.this, this.i);
-         fwv.a $$1 = this.c.a();
-         if ($$1 != this.h) {
-            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
-            this.h = $$1;
-         }
-
-         this.k = this.h == fwv.a.b && $$0 - this.f > 600L;
-      }
-
-      public void a(ftx $$0, int $$1) {
-         $$0.c().a();
-         $$0.c().a((float)$$1 - (float)this.c.c() * this.j, (float)(this.d * 32), 800.0F);
-         this.c.a($$0, fww.this.c.h, this.i);
-         $$0.c().b();
+      public a() {
+         this(5000L);
       }
    }
 }

@@ -1,22 +1,20 @@
-public class gxm extends gxa<coi, heb> {
-   private static final ali a = ali.b("textures/entity/skeleton/bogged.png");
-   private static final ali j = ali.b("textures/entity/skeleton/bogged_overlay.png");
+public class gxm extends gzq<coj, hfr, ghe> {
+   private static final alk a = alk.b("textures/entity/blaze.png");
 
-   public gxm(gyi.a $$0) {
-      super($$0, gld.G, gld.H, new ghe($$0.a(gld.F)));
-      this.a(new hda<>(this, $$0.f(), gld.I, j));
+   public gxm(gyk.a $$0) {
+      super($$0, new ghe($$0.a(glf.D)), 0.5F);
    }
 
-   public ali a(heb $$0) {
+   protected int a(coj $$0, iw $$1) {
+      return 15;
+   }
+
+   @Override
+   public alk b(hfr $$0) {
       return a;
    }
 
-   public heb a() {
-      return new heb();
-   }
-
-   public void a(coi $$0, heb $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gv();
+   public hfr a() {
+      return new hfr();
    }
 }

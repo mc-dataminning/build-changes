@@ -1,47 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ekr extends ekk<emw> {
-   public ekr(Codec<emw> $$0) {
-      super($$0);
-   }
+public class ekr implements emr {
+   public static final Codec<ekr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alk.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               alk.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               ewe.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               ewe.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ekr::new)
+   );
+   public final List<alk> b;
+   public final List<alk> c;
+   public final jg<ewd> d;
+   public final jg<ewd> e;
+   public final int f;
 
-   @Override
-   public boolean a(ekm<emw> $$0) {
-      dkw $$1 = $$0.b();
-      iv $$2 = $$0.e();
-      azx $$3 = $$0.d();
-      if (!$$1.v($$2)) {
-         return false;
+   public ekr(List<alk> $$0, List<alk> $$1, jg<ewd> $$2, jg<ewd> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         ebe $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dne.em) && !$$4.a(dne.ep) && !$$4.a(dne.pZ)) {
-            return false;
-         } else {
-            $$1.a($$2, dne.et.m(), 2);
-
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               iv $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
-
-                  for (jb $$8 : jb.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dne.et)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dne.et.m(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
    }
 }

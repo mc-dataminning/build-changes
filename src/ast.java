@@ -1,148 +1,137 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.microsoft.aad.msal4j.ClientCredentialFactory;
+import com.microsoft.aad.msal4j.ClientCredentialParameters;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication;
+import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCertificate;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class ast extends ass implements abm, wo {
-   private static final Logger f = LogUtils.getLogger();
-   private static final xa g = xa.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile h;
-   private final Queue<asj> i = new ConcurrentLinkedQueue<>();
+public class ast extends atc {
+   private final ConfidentialClientApplication b;
+   private final ClientCredentialParameters c;
+   private final Set<String> d;
+   private final int e;
+
+   private ast(URL $$0, atc.b $$1, atc.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$4;
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
    @Nullable
-   private asj j;
-   private arc k;
-   @Nullable
-   private ate l;
+   public static atc a(String $$0) {
+      JsonObject $$1 = azg.a($$0);
+      URI $$2 = URI.create(azg.i($$1, "apiServer"));
+      String $$3 = azg.i($$1, "apiPath");
+      String $$4 = azg.i($$1, "scope");
+      String $$5 = azg.a($$1, "serverId", "");
+      String $$6 = azg.i($$1, "applicationId");
+      String $$7 = azg.i($$1, "tenantId");
+      String $$8 = azg.a($$1, "roomId", "Java:Chat");
+      String $$9 = azg.i($$1, "certificatePath");
+      String $$10 = azg.a($$1, "certificatePassword", "");
+      int $$11 = azg.a($$1, "hashesToDrop", -1);
+      int $$12 = azg.a($$1, "maxConcurrentRequests", 7);
+      JsonArray $$13 = azg.v($$1, "fullyFilteredEvents");
+      Set<String> $$14 = new HashSet<>();
+      $$13.forEach($$1x -> $$14.add(azg.a($$1x, "filteredEvent")));
+      int $$15 = azg.a($$1, "connectionReadTimeoutMs", 2000);
 
-   public ast(MinecraftServer $$0, vt $$1, asi $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.k = $$2.c();
-   }
-
-   @Override
-   protected GameProfile i() {
-      return this.h;
-   }
-
-   @Override
-   public void a(vv $$0) {
-      f.info("{} lost connection: {}", this.h, $$0.a().getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.e.i();
-   }
-
-   @Override
-   public void l() {
-      this.b(new zo(new aai(this.d.getServerModName())));
-      ama $$0 = this.d.bp();
-      if (!$$0.a()) {
-         this.b(new zv($$0.b()));
-      }
-
-      jm<alr> $$1 = this.d.bb();
-      List<aul> $$2 = this.d.be().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new abj(cvj.e.b(this.d.aZ().K())));
-      this.l = new ate($$2, $$1);
-      this.i.add(this.l);
-      this.n();
-      this.i.add(new atc());
-      this.o();
-   }
-
-   public void m() {
-      this.i.add(new atc());
-      this.o();
-   }
-
-   private void n() {
-      this.d.Y().ifPresent($$0 -> this.i.add(new atd($$0)));
-   }
-
-   @Override
-   public void a(aab $$0) {
-      this.k = $$0.b();
-   }
-
-   @Override
-   public void a(aaf $$0) {
-      super.a($$0);
-      if ($$0.e().a()) {
-         this.a(atd.a);
-      }
-   }
-
-   @Override
-   public void a(abo $$0) {
-      zk.a($$0, this, this.d);
-      if (this.l == null) {
-         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
-      } else {
-         this.l.a($$0.b(), this::b);
-         this.a(ate.a);
-      }
-   }
-
-   @Override
-   public void a(abn $$0) {
-      zk.a($$0, this, this.d);
-      this.a(atc.a);
-      this.e.a(agq.b.a(wl.a(this.d.ba())));
-
+      URL $$16;
       try {
-         avs $$1 = this.d.ag();
-         if ($$1.a(this.h.getId()) != null) {
-            this.a(avs.f);
-            return;
-         }
+         $$16 = $$2.resolve($$3).toURL();
+      } catch (MalformedURLException var26) {
+         throw new RuntimeException(var26);
+      }
 
-         xa $$2 = $$1.a(this.e.d(), this.h);
-         if ($$2 != null) {
-            this.a($$2);
-            return;
-         }
+      atc.b $$19 = ($$2x, $$3x) -> {
+         JsonObject $$4x = new JsonObject();
+         $$4x.addProperty("userId", $$2x.getId().toString());
+         $$4x.addProperty("userDisplayName", $$2x.getName());
+         $$4x.addProperty("server", $$5);
+         $$4x.addProperty("room", $$8);
+         $$4x.addProperty("area", "JavaChatRealms");
+         $$4x.addProperty("data", $$3x);
+         $$4x.addProperty("language", "*");
+         return $$4x;
+      };
+      atc.a $$20 = atc.a.select($$11);
+      ExecutorService $$21 = a($$12);
 
-         art $$3 = $$1.a(this.h, this.k);
-         $$1.a(this.e, $$3, this.a(this.k));
-      } catch (Exception var5) {
-         f.error("Couldn't place player in world", var5);
-         this.e.a(new zq(g));
-         this.e.a(g);
+      IClientCertificate $$23;
+      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
+         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
+      } catch (Exception var28) {
+         a.warn("Failed to open certificate file");
+         return null;
+      }
+
+      ConfidentialClientApplication $$27;
+      try {
+         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
+               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
+            .build();
+      } catch (Exception var25) {
+         a.warn("Failed to create confidential client application");
+         return null;
+      }
+
+      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
+      return new ast($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
+   }
+
+   private IAuthenticationResult b() {
+      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
+   }
+
+   @Override
+   protected void a(HttpURLConnection $$0) {
+      IAuthenticationResult $$1 = this.b();
+      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
+   }
+
+   @Override
+   protected asn a(String $$0, atc.a $$1, JsonObject $$2) {
+      JsonObject $$3 = azg.a($$2, "result", null);
+      if ($$3 == null) {
+         return asn.b($$0);
+      } else {
+         boolean $$4 = azg.a($$3, "filtered", true);
+         if (!$$4) {
+            return asn.a($$0);
+         } else {
+            for (JsonElement $$6 : azg.a($$3, "events", new JsonArray())) {
+               JsonObject $$7 = $$6.getAsJsonObject();
+               String $$8 = azg.a($$7, "id", "");
+               if (this.d.contains($$8)) {
+                  return asn.b($$0);
+               }
+            }
+
+            JsonArray $$9 = azg.a($$3, "redactedTextIndex", new JsonArray());
+            return new asn($$0, this.a($$0, $$9, $$1));
+         }
       }
    }
 
    @Override
-   public void d() {
-      this.e();
-   }
-
-   private void o() {
-      if (this.j != null) {
-         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         asj $$0 = this.i.poll();
-         if ($$0 != null) {
-            this.j = $$0;
-            $$0.a(this::b);
-         }
-      }
-   }
-
-   private void a(asj.a $$0) {
-      asj.a $$1 = this.j != null ? this.j.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
-      } else {
-         this.j = null;
-         this.o();
-      }
+   protected int a() {
+      return this.e;
    }
 }

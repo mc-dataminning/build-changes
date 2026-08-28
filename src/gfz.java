@@ -1,3 +1,7 @@
+import java.util.List;
+
 public interface gfz {
-   void a(gfw var1);
+   List<gga> a();
+
+   xc b();
 }

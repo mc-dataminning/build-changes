@@ -1,22 +1,27 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class atd implements asj {
-   public static final asj.a a = new asj.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public interface atd {
+   atd e = new atd() {
+      @Override
+      public CompletableFuture<asn> a(String $$0) {
+         return CompletableFuture.completedFuture(asn.a($$0));
+      }
 
-   public atd(MinecraftServer.b $$0) {
-      this.b = $$0;
+      @Override
+      public CompletableFuture<List<asn>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(asn::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   default void a() {
    }
 
-   @Override
-   public void a(Consumer<zh<?>> $$0) {
-      $$0.accept(new zu(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   default void b() {
    }
 
-   @Override
-   public asj.a a() {
-      return a;
-   }
+   CompletableFuture<asn> a(String var1);
+
+   CompletableFuture<List<asn>> a(List<String> var1);
 }

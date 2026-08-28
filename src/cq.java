@@ -2,32 +2,95 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cq extends dk<cq.a> {
+public class cq extends dl<cq.a> {
    @Override
    public Codec<cq.a> a() {
       return cq.a.a;
    }
 
-   public void a(art $$0, ffq $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   public void a(arv $$0, bwv $$1, bvk $$2) {
+      faj $$3 = bz.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
-   public static record a(Optional<bj> b, Optional<bp> c, cw.d d) implements dk.a {
+   public static record a(Optional<bj> b, Optional<bj> c, Optional<bn> d) implements dl.a {
       public static final Codec<cq.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  by.b.optionalFieldOf("player").forGetter(cq.a::a),
-                  bp.a.optionalFieldOf("distance").forGetter(cq.a::b),
-                  cw.d.d.optionalFieldOf("duration", cw.d.c).forGetter(cq.a::c)
+                  bz.b.optionalFieldOf("player").forGetter(cq.a::a),
+                  bz.b.optionalFieldOf("entity").forGetter(cq.a::e),
+                  bn.a.optionalFieldOf("killing_blow").forGetter(cq.a::f)
                )
                .apply($$0, cq.a::new)
       );
 
-      public static ar<cq.a> a(bp $$0) {
-         return aq.v.a(new cq.a(Optional.empty(), Optional.of($$0), cw.d.c));
+      public static ar<cq.a> a(Optional<bz> $$0) {
+         return aq.c.a(new cq.a(Optional.empty(), bz.a($$0), Optional.empty()));
       }
 
-      public boolean a(art $$0, ffq $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dA(), $$0.dC(), $$0.dG()) ? false : this.d.d($$2);
+      public static ar<cq.a> a(bz.a $$0) {
+         return aq.c.a(new cq.a(Optional.empty(), Optional.of(bz.a($$0)), Optional.empty()));
+      }
+
+      public static ar<cq.a> b() {
+         return aq.c.a(new cq.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static ar<cq.a> a(Optional<bz> $$0, Optional<bn> $$1) {
+         return aq.c.a(new cq.a(Optional.empty(), bz.a($$0), $$1));
+      }
+
+      public static ar<cq.a> a(bz.a $$0, Optional<bn> $$1) {
+         return aq.c.a(new cq.a(Optional.empty(), Optional.of(bz.a($$0)), $$1));
+      }
+
+      public static ar<cq.a> a(Optional<bz> $$0, bn.a $$1) {
+         return aq.c.a(new cq.a(Optional.empty(), bz.a($$0), Optional.of($$1.b())));
+      }
+
+      public static ar<cq.a> a(bz.a $$0, bn.a $$1) {
+         return aq.c.a(new cq.a(Optional.empty(), Optional.of(bz.a($$0)), Optional.of($$1.b())));
+      }
+
+      public static ar<cq.a> c() {
+         return aq.Z.a(new cq.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static ar<cq.a> b(Optional<bz> $$0) {
+         return aq.d.a(new cq.a(Optional.empty(), bz.a($$0), Optional.empty()));
+      }
+
+      public static ar<cq.a> b(bz.a $$0) {
+         return aq.d.a(new cq.a(Optional.empty(), Optional.of(bz.a($$0)), Optional.empty()));
+      }
+
+      public static ar<cq.a> d() {
+         return aq.d.a(new cq.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static ar<cq.a> b(Optional<bz> $$0, Optional<bn> $$1) {
+         return aq.d.a(new cq.a(Optional.empty(), bz.a($$0), $$1));
+      }
+
+      public static ar<cq.a> b(bz.a $$0, Optional<bn> $$1) {
+         return aq.d.a(new cq.a(Optional.empty(), Optional.of(bz.a($$0)), $$1));
+      }
+
+      public static ar<cq.a> b(Optional<bz> $$0, bn.a $$1) {
+         return aq.d.a(new cq.a(Optional.empty(), bz.a($$0), Optional.of($$1.b())));
+      }
+
+      public static ar<cq.a> b(bz.a $$0, bn.a $$1) {
+         return aq.d.a(new cq.a(Optional.empty(), Optional.of(bz.a($$0)), Optional.of($$1.b())));
+      }
+
+      public boolean a(arv $$0, faj $$1, bvk $$2) {
+         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
+      }
+
+      @Override
+      public void a(bk $$0) {
+         dl.a.super.a($$0);
+         $$0.a(this.c, ".entity");
       }
 
       @Override
@@ -35,11 +98,11 @@ public class cq extends dk<cq.a> {
          return this.b;
       }
 
-      public Optional<bp> b() {
+      public Optional<bj> e() {
          return this.c;
       }
 
-      public cw.d c() {
+      public Optional<bn> f() {
          return this.d;
       }
    }

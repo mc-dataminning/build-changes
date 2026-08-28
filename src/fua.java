@@ -1,38 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import java.util.Set;
 
-public class fua {
-   public static final float a = 200.0F;
-   private final List<fua.a> b = new ArrayList<>();
+public class fua extends hmh {
+   private static final Set<aug<?>> a = Set.of(hmp.b, hmt.c);
 
-   public fua a(fua.a $$0) {
-      this.b.add($$0);
-      return this;
+   public fua(hle $$0) {
+      super($$0, alk.b("textures/atlas/gui.png"), hnb.g, a);
    }
 
-   public fua a(fua $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
-         }
-      });
+   @Override
+   public hlc a(alk $$0) {
+      return super.a($$0);
    }
 
-   public void a(ftx $$0, fqt $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
+   public hmu a(hlc $$0) {
+      return this.b($$0).a();
    }
 
-   private void b(ftx $$0, fqt $$1) {
-      for (fua.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
-      }
-   }
-
-   public interface a {
-      void render(ftx var1, fqt var2);
+   private hmt b(hlc $$0) {
+      return $$0.e().f().a(hmt.c).orElse(hmt.a);
    }
 }

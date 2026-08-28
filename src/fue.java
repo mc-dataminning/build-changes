@@ -1,97 +1,74 @@
-public abstract class fue extends fuj {
-   public static final int b = 6;
-   private double a;
-   private static final ali c = ali.b("widget/scroller");
-   private static final ali d = ali.b("widget/scroller_background");
-   private boolean e;
+import javax.annotation.Nullable;
 
-   public fue(int $$0, int $$1, int $$2, int $$3, xa $$4) {
+public abstract class fue extends fug implements fwj {
+   @Nullable
+   private fwk a;
+   private boolean c;
+
+   public fue(int $$0, int $$1, int $$2, int $$3, xc $$4) {
       super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.k) {
-         return false;
-      } else {
-         this.a(this.g() - $$3 * this.o());
-         return true;
+   public final boolean aL_() {
+      return this.c;
+   }
+
+   @Override
+   public final void b_(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fwk aM_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fwk $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ftw a(fyq $$0) {
+      return fwj.super.a($$0);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return fwj.super.a($$0, $$1, $$2) || $$3;
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      return fwj.super.b($$0, $$1, $$2);
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.e) {
-         if ($$1 < (double)this.G()) {
-            this.a(0.0);
-         } else if ($$1 > (double)this.I()) {
-            this.a((double)this.i());
-         } else {
-            double $$5 = (double)Math.max(1, this.i());
-            int $$6 = this.k();
-            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
-            this.a(this.g() + $$4 * $$7);
-         }
-
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+      super.a($$0, $$1, $$2, $$3, $$4);
+      return fwj.super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void b(double $$0, double $$1) {
-      this.e = false;
+   public boolean aN_() {
+      return fwj.super.aN_();
    }
 
-   public double g() {
-      return this.a;
+   @Override
+   public void a(boolean $$0) {
+      fwj.super.a($$0);
    }
-
-   public void a(double $$0) {
-      this.a = azo.a($$0, 0.0, (double)this.i());
-   }
-
-   public boolean c(double $$0, double $$1, int $$2) {
-      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
-      return this.e;
-   }
-
-   public void h() {
-      this.a(this.a);
-   }
-
-   public int i() {
-      return Math.max(0, this.n() - this.h);
-   }
-
-   protected boolean j() {
-      return this.i() > 0;
-   }
-
-   protected int k() {
-      return azo.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
-   }
-
-   protected int l() {
-      return this.H() - 6;
-   }
-
-   protected int m() {
-      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
-   }
-
-   protected void a(ftx $$0) {
-      if (this.j()) {
-         int $$1 = this.l();
-         int $$2 = this.k();
-         int $$3 = this.m();
-         $$0.a(gsl::H, d, $$1, this.G(), 6, this.y());
-         $$0.a(gsl::H, c, $$1, $$3, 6, $$2);
-      }
-   }
-
-   protected abstract int n();
-
-   protected abstract double o();
 }

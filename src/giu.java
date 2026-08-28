@@ -1,27 +1,16 @@
-public class giu extends gia<hep> {
-   private static final String a = "main";
+public class giu extends gic<her> {
+   private static final String a = "knot";
+   private final glg b;
 
-   public giu(gle $$0) {
+   public giu(glg $$0) {
       super($$0);
+      this.b = $$0.b("knot");
    }
 
-   public static glk a() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-      int $$2 = 2;
-      $$1.a(
-         "main",
-         glj.c()
-            .a(0, 0)
-            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         glg.a
-      );
-      return glk.a($$0, 64, 32);
+   public static glm a() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      $$1.a("knot", gll.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), gli.a);
+      return glm.a($$0, 32, 32);
    }
 }

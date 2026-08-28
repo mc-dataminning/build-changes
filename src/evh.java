@@ -1,20 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class evh extends evx {
-   public static final MapCodec<evh> a = ebe.a.fieldOf("block_state").xmap(evh::new, $$0 -> $$0.b);
-   private final ebe b;
+public class evh extends evz {
+   public static final MapCodec<evh> a = mh.e.q().fieldOf("block").xmap(evh::new, $$0 -> $$0.b);
+   private final dne b;
 
-   public evh(ebe $$0) {
+   public evh(dne $$0) {
       this.b = $$0;
    }
 
    @Override
-   public boolean a(ebe $$0, azx $$1) {
-      return $$0 == this.b;
+   public boolean a(ebg $$0, azz $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   protected evy<?> a() {
-      return evy.c;
+   protected ewa<?> a() {
+      return ewa.b;
    }
 }

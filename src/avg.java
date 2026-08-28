@@ -1,16 +1,23 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface avg extends auz {
-   @Override
-   default CompletableFuture<Void> reload(auz.a $$0, avf $$1, Executor $$2, Executor $$3) {
-      return $$0.wait(baw.a).thenRunAsync(() -> {
-         brb $$1x = bra.a();
-         $$1x.a("listener");
-         this.a($$1);
-         $$1x.c();
-      }, $$3);
+public class avg {
+   private static final Codec<avg> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(bab.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, avg::new)
+   );
+   public static final aug<avg> a = new aug<>("filter", b);
+   private final List<bab> c;
+
+   public avg(List<bab> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   void a(avf var1);
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   }
+
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   }
 }

@@ -1,19 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class evp extends evq {
-   public static final MapCodec<evp> a = MapCodec.unit(() -> evp.b);
-   public static final evp b = new evp();
+public enum evp implements bao {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   private evp() {
+   public static Codec<evp> c = bao.b(evp::values);
+   private final String d;
+
+   private evp(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public boolean a(iv $$0, iv $$1, iv $$2, azx $$3) {
-      return true;
-   }
-
-   @Override
-   protected evr<?> a() {
-      return evr.a;
+   public String c() {
+      return this.d;
    }
 }

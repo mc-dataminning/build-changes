@@ -1,97 +1,51 @@
-import java.util.Objects;
+public abstract class gbw<T extends cww> extends gau<T> implements cwg {
+   private final alk G;
 
-public class gbw extends gba implements gby<cww> {
-   private final cww y;
-   private final cwe z = new cwe() {
-      @Override
-      public void a(cvq $$0, int $$1, czy $$2) {
-         gbw.this.M();
-      }
-
-      @Override
-      public void a(cvq $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            gbw.this.N();
-         }
-      }
-   };
-
-   public gbw(cww $$0, crw $$1, xa $$2) {
-      this.y = $$0;
+   public gbw(T $$0, cry $$1, xc $$2, alk $$3) {
+      super($$0, $$1, $$2);
+      this.G = $$3;
    }
 
-   public cww L() {
-      return this.y;
+   @Override
+   protected void G() {
    }
 
    @Override
    protected void aS_() {
       super.aS_();
-      this.y.a(this.z);
-   }
-
-   @Override
-   public void aP_() {
-      this.m.t.p();
-      super.aP_();
+      this.G();
+      this.z.a(this);
    }
 
    @Override
    public void aJ_() {
       super.aJ_();
-      this.y.b(this.z);
+      this.z.b(this);
    }
 
    @Override
-   protected void m() {
-      if (this.m.t.gw()) {
-         this.c(ful.a(wz.d, $$0 -> this.aP_()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(ful.a(xa.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
-      }
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(ftz $$0, int $$1, int $$2, float $$3) {
    }
 
    @Override
-   protected void G() {
-      this.g(1);
+   protected void a(ftz $$0, float $$1, int $$2, int $$3) {
+      $$0.a(gsn::H, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.c($$0, this.C, this.D);
+   }
+
+   protected abstract void c(ftz var1, int var2, int var3);
+
+   @Override
+   public void a(cvs $$0, int $$1, int $$2) {
    }
 
    @Override
-   protected void H() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.y.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.m.r.a(this.y.l, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void M() {
-      czy $$0 = this.y.l();
-      this.a(Objects.requireNonNullElse(gba.a.a($$0), gba.d));
-   }
-
-   void N() {
-      this.a(this.y.m());
-   }
-
-   @Override
-   protected void I() {
-      this.m.t.p();
+   public void a(cvs $$0, int $$1, daa $$2) {
    }
 }

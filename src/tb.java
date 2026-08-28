@@ -1,19 +1,12 @@
-public class tb {
-   private static tq a = new td();
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public static void a(tq $$0) {
-      a = $$0;
+public record tb(Map<alk, tl<alj<tm>>> a, alj<Consumer<sq>> b, Consumer<sq> c) {
+   public tb(Map<alk, tl<alj<tm>>> $$0, alk $$1, Consumer<sq> $$2) {
+      this($$0, alj.a(mi.ay, $$1), $$2);
    }
 
-   public static void a(sq $$0) {
-      a.a($$0);
-   }
-
-   public static void b(sq $$0) {
-      a.b($$0);
-   }
-
-   public static void a() {
-      a.a();
+   public tb(alk $$0, tl<alj<tm>> $$1, Consumer<sq> $$2) {
+      this(Map.of($$0, $$1), $$0, $$2);
    }
 }

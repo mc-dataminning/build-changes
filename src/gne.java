@@ -1,102 +1,47 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gne {
-   final int a;
-   private final List<gne.a> b = new ArrayList<>();
+public enum gne {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   public gne(int $$0) {
-      this.a = $$0;
+   private final xc n;
+
+   private gne(final String $$0) {
+      this.n = xc.c("gui.banned.reason." + $$0);
    }
 
-   public void a(gmw $$0, IntCollection $$1, gne.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
-
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         gmy $$6 = $$0.b($$4);
-         if ($$6 instanceof gmz.a) {
-            gmz.a $$5 = (gmz.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
-      }
+   public xc a() {
+      return this.n;
    }
 
-   public void a(xq $$0) {
-      this.b.add(new gne.a($$0));
-   }
-
-   public boolean b(xq $$0) {
-      boolean $$1 = false;
-      Iterator<gne.a> $$2 = this.b.iterator();
-
-      while ($$2.hasNext()) {
-         gne.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean a() {
-      return !this.b.isEmpty();
-   }
-
-   class a {
-      private final Set<xm> b;
-      private xq c;
-      private boolean d = true;
-      private int e;
-
-      a(final xq $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(xq $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
-      }
-
-      boolean a() {
-         return this.e >= gne.this.a || !this.d && this.b.isEmpty();
-      }
-   }
-
-   public interface b {
-      void accept(int var1, gmz.a var2);
+   @Nullable
+   public static gne a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Supplier;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface cvd {
+public class cvd extends cuk {
+   public cvd(bxe<? extends cvd> $$0, djz $$1, Supplier<czw> $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected double b(bwy $$0) {
+      return (double)($$0.b() * 0.8888889F);
+   }
 }

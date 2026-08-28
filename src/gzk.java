@@ -1,32 +1,112 @@
-public class gzk extends gxc<clw, hfq, git> {
-   private static final ali a = ali.b("textures/entity/llama/creamy.png");
-   private static final ali j = ali.b("textures/entity/llama/white.png");
-   private static final ali k = ali.b("textures/entity/llama/brown.png");
-   private static final ali l = ali.b("textures/entity/llama/gray.png");
+import org.joml.Matrix4f;
 
-   public gzk(gyi.a $$0, glc $$1, glc $$2) {
-      super($$0, new git($$0.a($$1)), new git($$0.a($$2)), 0.7F);
-      this.a(new hcq(this, $$0.f(), $$0.h()));
+public class gzk extends gyj<bxv, hfq> {
+   public gzk(gyk.a $$0) {
+      super($$0);
    }
 
-   public ali a(hfq $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> j;
-         case c -> k;
-         case d -> l;
-      };
+   public void a(hfq $$0, flq $$1, gsc $$2, int $$3) {
+      float[] $$4 = new float[8];
+      float[] $$5 = new float[8];
+      float $$6 = 0.0F;
+      float $$7 = 0.0F;
+      azz $$8 = azz.a($$0.a);
+
+      for (int $$9 = 7; $$9 >= 0; $$9--) {
+         $$4[$$9] = $$6;
+         $$5[$$9] = $$7;
+         $$6 += (float)($$8.a(11) - 5);
+         $$7 += (float)($$8.a(11) - 5);
+      }
+
+      flt $$10 = $$2.getBuffer(gsn.q());
+      Matrix4f $$11 = $$1.c().a();
+
+      for (int $$12 = 0; $$12 < 4; $$12++) {
+         azz $$13 = azz.a($$0.a);
+
+         for (int $$14 = 0; $$14 < 3; $$14++) {
+            int $$15 = 7;
+            int $$16 = 0;
+            if ($$14 > 0) {
+               $$15 = 7 - $$14;
+            }
+
+            if ($$14 > 0) {
+               $$16 = $$15 - 2;
+            }
+
+            float $$17 = $$4[$$15] - $$6;
+            float $$18 = $$5[$$15] - $$7;
+
+            for (int $$19 = $$15; $$19 >= $$16; $$19--) {
+               float $$20 = $$17;
+               float $$21 = $$18;
+               if ($$14 == 0) {
+                  $$17 += (float)($$13.a(11) - 5);
+                  $$18 += (float)($$13.a(11) - 5);
+               } else {
+                  $$17 += (float)($$13.a(31) - 15);
+                  $$18 += (float)($$13.a(31) - 15);
+               }
+
+               float $$22 = 0.5F;
+               float $$23 = 0.45F;
+               float $$24 = 0.45F;
+               float $$25 = 0.5F;
+               float $$26 = 0.1F + (float)$$12 * 0.2F;
+               if ($$14 == 0) {
+                  $$26 *= (float)$$19 * 0.1F + 1.0F;
+               }
+
+               float $$27 = 0.1F + (float)$$12 * 0.2F;
+               if ($$14 == 0) {
+                  $$27 *= ((float)$$19 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, false, false, true, false);
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, true, false, true, true);
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, true, true, false, true);
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, false, true, false, false);
+            }
+         }
+      }
    }
 
-   public hfq b() {
+   private static void a(
+      Matrix4f $$0,
+      flt $$1,
+      float $$2,
+      float $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
+   ) {
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
+   }
+
+   public hfq a() {
       return new hfq();
    }
 
-   public void a(clw $$0, hfq $$1, float $$2) {
+   public void a(bxv $$0, hfq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gH();
-      $$1.b = !$$0.n_() && $$0.t();
-      $$1.c = $$0.fY();
-      $$1.d = $$0.gx();
+      $$1.a = $$0.a;
+   }
+
+   protected boolean a(bxv $$0) {
+      return false;
    }
 }

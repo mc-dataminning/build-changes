@@ -1,61 +1,70 @@
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public interface bxg {
-   void a(bxd var1, czy var2);
+public enum bxg implements bao, Iterable<bxf> {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bxf.a),
+   c(2, "offhand", bxf.b),
+   d(3, "hand", $$0 -> $$0.a() == bxf.a.a),
+   e(4, "feet", bxf.c),
+   f(5, "legs", bxf.d),
+   g(6, "chest", bxf.e),
+   h(7, "head", bxf.f),
+   i(8, "armor", bxf::f),
+   j(9, "body", bxf.g),
+   k(10, "saddle", bxf.h);
 
-   czy a(bxd var1);
+   public static final IntFunction<bxg> l = ayg.a($$0 -> $$0.o, values(), ayg.a.a);
+   public static final Codec<bxg> m = bao.a(bxg::values);
+   public static final za<ByteBuf, bxg> n = yy.a(l, $$0 -> $$0.o);
+   private final int o;
+   private final String p;
+   private final Predicate<bxf> q;
+   private final List<bxf> r;
 
-   void a(bxd var1, float var2);
-
-   default void a(bxf $$0, fak $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private bxg(final int $$0, final String $$1, final Predicate<bxf> $$2) {
+      this.o = $$0;
+      this.p = $$1;
+      this.q = $$2;
+      this.r = bxf.j.stream().filter($$2).toList();
    }
 
-   default void a(alh<fam> $$0, fak $$1, Map<bxd, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   private bxg(final int $$0, final String $$1, final bxf $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   default void a(alh<fam> $$0, fak $$1, long $$2, Map<bxd, Float> $$3) {
-      fam $$4 = $$1.a().p().bc().b($$0);
-      if ($$4 != fam.f) {
-         List<czy> $$5 = $$4.a($$1, $$2);
-         List<bxd> $$6 = new ArrayList<>();
-
-         for (czy $$7 : $$5) {
-            bxd $$8 = this.a($$7, $$6);
-            if ($$8 != null) {
-               czy $$9 = $$8.a($$7);
-               this.a($$8, $$9);
-               Float $$10 = $$3.get($$8);
-               if ($$10 != null) {
-                  this.a($$8, $$10);
-               }
-
-               $$6.add($$8);
-            }
-         }
-      }
+   public static bxg a(bxf $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+         case h -> k;
+      };
    }
 
-   @Nullable
-   default bxd a(czy $$0, List<bxd> $$1) {
-      if ($$0.f()) {
-         return null;
-      } else {
-         dih $$2 = $$0.a(kk.D);
-         if ($$2 != null) {
-            bxd $$3 = $$2.b();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(bxd.a)) {
-            return bxd.a;
-         }
+   @Override
+   public String c() {
+      return this.p;
+   }
 
-         return null;
-      }
+   public boolean b(bxf $$0) {
+      return this.q.test($$0);
+   }
+
+   public List<bxf> a() {
+      return this.r;
+   }
+
+   @Override
+   public Iterator<bxf> iterator() {
+      return this.r.iterator();
    }
 }

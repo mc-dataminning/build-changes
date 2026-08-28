@@ -1,40 +1,46 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public record hlm(ali c, Optional<ali> d) implements hlf {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<hlm> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ali.a.fieldOf("resource").forGetter(hlm::b), ali.a.optionalFieldOf("sprite").forGetter(hlm::c)).apply($$0, hlm::new)
-   );
+public class hlm {
+   private final alk a;
+   private final avf b;
+   private final AtomicReference<fki> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public hlm(ali $$0) {
-      this($$0, Optional.empty());
+   public hlm(alk $$0, avf $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   @Override
-   public void a(avf $$0, hlf.a $$1) {
-      ali $$2 = a.a(this.c);
-      Optional<avd> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.d.orElse(this.c), $$3.get());
-      } else {
-         e.warn("Missing sprite: {}", $$2);
+   public fki a() throws IOException {
+      fki $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = fki.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
       }
+
+      return $$0;
    }
 
-   @Override
-   public MapCodec<hlm> a() {
-      return b;
-   }
-
-   public ali b() {
-      return this.c;
-   }
-
-   public Optional<ali> c() {
-      return this.d;
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         fki $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

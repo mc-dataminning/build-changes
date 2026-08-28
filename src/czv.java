@@ -1,69 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+public interface czv {
+   int a = 256;
+   float b = 7.0F;
+   alj<czt> c = a("ponder_goat_horn");
+   alj<czt> d = a("sing_goat_horn");
+   alj<czt> e = a("seek_goat_horn");
+   alj<czt> f = a("feel_goat_horn");
+   alj<czt> g = a("admire_goat_horn");
+   alj<czt> h = a("call_goat_horn");
+   alj<czt> i = a("yearn_goat_horn");
+   alj<czt> j = a("dream_goat_horn");
 
-public class czv {
-   private final Map<ali, czv.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(czy $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   private static alj<czt> a(String $$0) {
+      return alj.a(mi.aU, alk.b($$0));
    }
 
-   public float a(czy $$0, float $$1) {
-      ali $$2 = this.b($$0);
-      czv.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azo.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
+   static void a(qi<czt> $$0) {
+      a($$0, c, (jg<awq>)awr.nh.get(0), 7.0F, 256.0F);
+      a($$0, d, (jg<awq>)awr.nh.get(1), 7.0F, 256.0F);
+      a($$0, e, (jg<awq>)awr.nh.get(2), 7.0F, 256.0F);
+      a($$0, f, (jg<awq>)awr.nh.get(3), 7.0F, 256.0F);
+      a($$0, g, (jg<awq>)awr.nh.get(4), 7.0F, 256.0F);
+      a($$0, h, (jg<awq>)awr.nh.get(5), 7.0F, 256.0F);
+      a($$0, i, (jg<awq>)awr.nh.get(6), 7.0F, 256.0F);
+      a($$0, j, (jg<awq>)awr.nh.get(7), 7.0F, 256.0F);
    }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ali, czv.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<ali, czv.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public ali b(czy $$0) {
-      dde $$1 = $$0.a(kk.y);
-      ali $$2 = mg.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
-   }
-
-   public void a(czy $$0, int $$1) {
-      this.a(this.b($$0), $$1);
-   }
-
-   public void a(ali $$0, int $$1) {
-      this.a.put($$0, new czv.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(ali $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(ali $$0, int $$1) {
-   }
-
-   protected void b(ali $$0) {
-   }
-
-   static record a(int a, int b) {
+   static void a(qi<czt> $$0, alj<czt> $$1, jg<awq> $$2, float $$3, float $$4) {
+      xq $$5 = xc.c(ag.a("instrument", $$1.a()));
+      $$0.a($$1, new czt($$2, $$3, $$4, $$5));
    }
 }

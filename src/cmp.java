@@ -1,48 +1,47 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record cmp(cmp.a e, cue f) implements cua<cud, cub> {
-   public static final Codec<cmp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cmp.a.a.fieldOf("assets").forGetter(cmp::b), cue.b.fieldOf("spawn_conditions").forGetter(cmp::c)).apply($$0, cmp::new)
-   );
-   public static final Codec<cmp> b = RecordCodecBuilder.create($$0 -> $$0.group(cmp.a.a.fieldOf("assets").forGetter(cmp::b)).apply($$0, cmp::new));
-   public static final Codec<jf<cmp>> c = alf.a(mh.bm);
-   public static final yy<wl, jf<cmp>> d = yw.b(mh.bm);
+public record cmp(jg<awq> e, jg<awq> f, jg<awq> g, jg<awq> h, jg<awq> i, jg<awq> j) {
+   public static final Codec<cmp> a = g();
+   public static final Codec<cmp> b = g();
+   public static final Codec<jg<cmp>> c = alh.a(mi.bn);
+   public static final za<wn, jg<cmp>> d = yy.b(mi.bn);
 
-   private cmp(cmp.a $$0) {
-      this($$0, cue.a);
+   private static Codec<cmp> g() {
+      return RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  awq.b.fieldOf("ambient_sound").forGetter(cmp::a),
+                  awq.b.fieldOf("death_sound").forGetter(cmp::b),
+                  awq.b.fieldOf("growl_sound").forGetter(cmp::c),
+                  awq.b.fieldOf("hurt_sound").forGetter(cmp::d),
+                  awq.b.fieldOf("pant_sound").forGetter(cmp::e),
+                  awq.b.fieldOf("whine_sound").forGetter(cmp::f)
+               )
+               .apply($$0, cmp::new)
+      );
    }
 
-   @Override
-   public List<cua.a<cud, cub>> a() {
-      return this.f.a();
-   }
-
-   public cmp.a b() {
+   public jg<awq> a() {
       return this.e;
    }
 
-   public cue c() {
+   public jg<awq> b() {
       return this.f;
    }
 
-   public static record a(iw b, iw c, iw d) {
-      public static final Codec<cmp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(iw.a.fieldOf("wild").forGetter(cmp.a::a), iw.a.fieldOf("tame").forGetter(cmp.a::b), iw.a.fieldOf("angry").forGetter(cmp.a::c))
-               .apply($$0, cmp.a::new)
-      );
+   public jg<awq> c() {
+      return this.g;
+   }
 
-      public iw a() {
-         return this.b;
-      }
+   public jg<awq> d() {
+      return this.h;
+   }
 
-      public iw b() {
-         return this.c;
-      }
+   public jg<awq> e() {
+      return this.i;
+   }
 
-      public iw c() {
-         return this.d;
-      }
+   public jg<awq> f() {
+      return this.j;
    }
 }

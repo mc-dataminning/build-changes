@@ -1,73 +1,46 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Set;
 
-public record fhi<T>(T d, iv e, long f, fhm g, long h) {
-   public static final Comparator<fhi<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+public class fhi<T> implements fhl<T>, fhn<T> {
+   private final List<fhj<T>> a = Lists.newArrayList();
+   private final Set<fhj<?>> b = new ObjectOpenCustomHashSet(fhj.a);
+
+   @Override
+   public void a(fhk<T> $$0) {
+      fhj<T> $$1 = new fhj<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
+   }
+
+   private void a(fhj<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
-   };
-   public static final Comparator<fhi<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<fhi<?>> c = new Strategy<fhi<?>>() {
-      public int a(fhi<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
-
-      public boolean a(@Nullable fhi<?> $$0, @Nullable fhi<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
-      }
-   };
-
-   public fhi(T $$0, iv $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, fhm.d, $$3);
    }
 
-   public fhi(T d, iv e, long f, fhm g, long h) {
-      e = e.j();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   @Override
+   public boolean a(iw $$0, T $$1) {
+      return this.b.contains(fhj.a($$1, $$0));
    }
 
-   public static <T> fhi<T> a(T $$0, iv $$1) {
-      return new fhi<>($$0, $$1, 0L, fhm.d, 0L);
+   @Override
+   public int a() {
+      return this.a.size();
    }
 
-   public fhh<T> a(long $$0) {
-      return new fhh<>(this.d, this.e, (int)(this.f - $$0), this.g);
+   @Override
+   public List<fhj<T>> a(long $$0) {
+      return this.a;
    }
 
-   public T a() {
-      return this.d;
+   public List<fhj<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   public iv b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public fhm d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+   public static <T> fhi<T> a(List<fhj<T>> $$0) {
+      fhi<T> $$1 = new fhi<>();
+      $$0.forEach($$1::a);
+      return $$1;
    }
 }

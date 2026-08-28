@@ -1,26 +1,19 @@
-import java.util.Optional;
-
-public interface dfk extends dep<dfl> {
+public record dfk(daa a) implements dex {
    @Override
-   default dfa<dfk> b() {
-      return dfa.g;
+   public daa a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   dez<? extends dfk> a();
-
-   default boolean a(dfl $$0, djx $$1) {
-      return del.a(this.c(), $$0.c()) && this.f().a($$0.d()) && del.a(this.k(), $$0.e());
+   public int a() {
+      return 1;
    }
 
-   Optional<del> c();
-
-   del f();
-
-   Optional<del> k();
-
-   @Override
-   default des h() {
-      return der.l;
+   public daa c() {
+      return this.a;
    }
 }

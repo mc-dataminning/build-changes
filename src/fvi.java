@@ -1,143 +1,356 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fvi extends fur<fvi.a> {
-   private static final int a = 310;
-   private static final int m = 25;
-   private final gdj n;
+public class fvi {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final ftx c;
+   private final List<fvi.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   public fvi(frd $$0, int $$1, gdj $$2) {
-      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
-      this.e = false;
-      this.n = $$2;
+   public fvi(ftx $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   public void a(frg<?> $$0) {
-      this.b(fvi.b.a(this.c.n, $$0, this.n));
-   }
-
-   public void a(frg<?>... $$0) {
-      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
-         frg<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
-         this.b(fvi.b.a(this.c.n, $$0[$$1], $$2, this.n));
-      }
-   }
-
-   public void a(List<fuj> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
-         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
-      }
-   }
-
-   public void a(fuj $$0, @Nullable fuj $$1) {
-      this.b(fvi.a.a($$0, $$1, this.n));
-   }
-
-   @Override
    public int a() {
-      return 310;
+      return this.i;
    }
 
-   @Nullable
-   public fuj b(frg<?> $$0) {
-      for (fvi.a $$1 : this.aI_()) {
-         if ($$1 instanceof fvi.b $$2) {
-            fuj $$3 = $$2.a.get($$0);
-            if ($$3 != null) {
-               return $$3;
-            }
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
+      } else {
+         this.i = $$0;
+      }
+   }
+
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
+   }
+
+   public void a(Runnable $$0) {
+      this.l = $$0;
+   }
+
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(bap.a($$0, true));
+         fvi.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
+      }
+   }
+
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = azq.a(this.f + $$0, 0, this.e.length());
+      }
+
+      this.b("");
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public fvi.a e() {
+      return new fvi.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         fvi.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
          }
       }
 
-      return null;
+      return -1;
    }
 
-   public void b() {
-      for (fvi.a $$0 : this.aI_()) {
-         if ($$0 instanceof fvi.b) {
-            fvi.b $$1 = (fvi.b)$$0;
+   public fvi.a c(int $$0) {
+      return this.d.get(azq.a($$0, 0, this.d.size() - 1));
+   }
 
-            for (fuj $$2 : $$1.a.values()) {
-               if ($$2 instanceof frg.i<?> $$3) {
-                  $$3.c();
+   public void a(fvz $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = azq.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
+      }
+   }
+
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         fvi.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(fvz.a, $$2.a + $$3);
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = azq.a($$0);
+      int $$3 = azq.a($$1 / 9.0);
+      fvi.a $$4 = this.d.get(azq.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(fvz.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = gaf.t();
+      if (gaf.f($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (gaf.e($$0)) {
+         frf.Q().p.a(this.j());
+         return true;
+      } else if (gaf.d($$0)) {
+         this.b(frf.Q().p.a());
+         return true;
+      } else if (gaf.c($$0)) {
+         frf.Q().p.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (gaf.s()) {
+                  fvi.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
                }
-            }
+
+               return true;
+            case 261:
+               if (gaf.s()) {
+                  fvi.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (gaf.s()) {
+                  fvi.a $$2 = this.l();
+                  this.a(fvz.a, $$2.a);
+               } else {
+                  this.a(fvz.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (gaf.s()) {
+                  fvi.a $$1 = this.k();
+                  this.a(fvz.a, $$1.a);
+               } else {
+                  this.a(fvz.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!gaf.s()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!gaf.s()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(fvz.a, 0);
+               return true;
+            case 267:
+               this.a(fvz.c, 0);
+               return true;
+            case 268:
+               if (gaf.s()) {
+                  this.a(fvz.a, 0);
+               } else {
+                  this.a(fvz.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (gaf.s()) {
+                  this.a(fvz.c, 0);
+               } else {
+                  this.a(fvz.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
    }
 
-   public Optional<fwi> e(double $$0, double $$1) {
-      for (fvi.a $$2 : this.aI_()) {
-         for (fwi $$3 : $$2.aI_()) {
-            if ($$3.a_($$0, $$1)) {
-               return Optional.of($$3);
-            }
-         }
-      }
-
-      return Optional.empty();
+   public Iterable<fvi.a> h() {
+      return this.d;
    }
 
-   protected static class a extends fur.a<fvi.a> {
-      private final List<fuj> a;
-      private final gad b;
-      private static final int c = 160;
+   public boolean i() {
+      return this.g != this.f;
+   }
 
-      a(List<fuj> $$0, gad $$1) {
-         this.a = ImmutableList.copyOf($$0);
-         this.b = $$1;
-      }
+   @VisibleForTesting
+   public String j() {
+      fvi.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
 
-      public static fvi.a a(List<fuj> $$0, gad $$1) {
-         return new fvi.a($$0, $$1);
-      }
+   private fvi.a m() {
+      return this.f(0);
+   }
 
-      public static fvi.a a(fuj $$0, @Nullable fuj $$1, gad $$2) {
-         return $$1 == null ? new fvi.a(ImmutableList.of($$0), $$2) : new fvi.a(ImmutableList.of($$0, $$1), $$2);
-      }
-
-      @Override
-      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = 0;
-         int $$11 = this.b.n / 2 - 155;
-
-         for (fuj $$12 : this.a) {
-            $$12.c($$11 + $$10, $$2);
-            $$12.a($$0, $$6, $$7, $$9);
-            $$10 += 160;
-         }
-      }
-
-      @Override
-      public List<? extends fwi> aI_() {
-         return this.a;
-      }
-
-      @Override
-      public List<? extends fyg> b() {
-         return this.a;
+   private fvi.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(azq.a($$1 + $$0, 0, this.d.size() - 1));
       }
    }
 
-   protected static class b extends fvi.a {
-      final Map<frg<?>, fuj> a;
+   @VisibleForTesting
+   public fvi.a k() {
+      if (this.e.isEmpty()) {
+         return fvi.a.c;
+      } else {
+         int $$0 = azq.a(this.f, 0, this.e.length() - 1);
 
-      private b(Map<frg<?>, fuj> $$0, gdj $$1) {
-         super(ImmutableList.copyOf($$0.values()), $$1);
-         this.a = $$0;
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new fvi.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public fvi.a l() {
+      if (this.e.isEmpty()) {
+         return fvi.a.c;
+      } else {
+         int $$0 = azq.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new fvi.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
       }
 
-      public static fvi.b a(frh $$0, frg<?> $$1, gdj $$2) {
-         return new fvi.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
-      }
+      return $$1;
+   }
 
-      public static fvi.b a(frh $$0, frg<?> $$1, @Nullable frg<?> $$2, gdj $$3) {
-         fuj $$4 = $$1.a($$0);
-         return $$2 == null ? new fvi.b(ImmutableMap.of($$1, $$4), $$3) : new fvi.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(fvi.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, xz.a, false, ($$0, $$1, $$2) -> this.d.add(new fvi.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new fvi.a(this.e.length(), this.e.length()));
+         }
       }
+   }
+
+   private String c(String $$0) {
+      return this.b() ? bap.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return bap.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final fvi.a c = new fvi.a(0, 0);
    }
 }

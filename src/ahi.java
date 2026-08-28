@@ -1,29 +1,16 @@
-public class ahi implements zh<agr> {
-   public static final yy<vw, ahi> a = zh.a(ahi::a, ahi::new);
-   private final int b;
-
-   public ahi(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahi(vw $$0) {
-      this.b = $$0.x();
-   }
-
-   private void a(vw $$0) {
-      $$0.f(this.b);
-   }
+public record ahi(int b, int c) implements zj<agt> {
+   public static final za<vy, ahi> a = za.a(yy.x, ahi::b, yy.h, ahi::e, ahi::new);
 
    @Override
-   public zj<ahi> a() {
-      return agp.bA;
+   public zl<ahi> a() {
+      return agr.by;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

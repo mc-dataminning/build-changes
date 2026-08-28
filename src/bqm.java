@@ -1,11 +1,21 @@
 import com.mojang.brigadier.StringReader;
-import java.util.stream.Stream;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
-public interface bqm extends bqc<StringReader> {
-   Stream<ali> a();
+public class bqm implements bqc<StringReader, alk> {
+   public static final bqc<StringReader, alk> a = new bqm();
 
-   @Override
-   default Stream<String> possibleValues(bpz<StringReader> $$0) {
-      return this.a().map(ali::toString);
+   private bqm() {
+   }
+
+   @Nullable
+   public alk b(bqb<StringReader> $$0) {
+      $$0.f().skipWhitespace();
+
+      try {
+         return alk.b($$0.f());
+      } catch (CommandSyntaxException var3) {
+         return null;
+      }
    }
 }

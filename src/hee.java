@@ -1,9 +1,8 @@
-import javax.annotation.Nullable;
-
-public class hee extends hev {
-   private static final ali j = ali.b("textures/entity/cat/tabby.png");
-   public ali a = j;
-   public boolean b;
-   @Nullable
-   public cyw c;
+public class hee extends hfr {
+   public final bwm a = new bwm();
+   public final bwm b = new bwm();
+   public final bwm c = new bwm();
+   public final bwm d = new bwm();
+   public final bwm e = new bwm();
+   public final bwm f = new bwm();
 }

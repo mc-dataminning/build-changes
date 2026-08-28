@@ -1,6 +1,9 @@
 import javax.annotation.Nullable;
 
-public class heg extends hfp {
+public class heg extends hex {
+   private static final alk j = alk.b("textures/entity/cat/tabby.png");
+   public alk a = j;
+   public boolean b;
    @Nullable
-   public cjv a;
+   public cyy c;
 }

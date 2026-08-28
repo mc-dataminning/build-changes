@@ -1,20 +1,42 @@
-public record aha(xr.a b) implements zh<agr> {
-   public static final yy<vw, aha> a = zh.a(aha::a, aha::new);
+import java.time.Instant;
 
-   private aha(vw $$0) {
-      this(xr.a.a($$0));
+public record aha(String b, Instant c, long d, er e, xj.b f) implements zj<agt> {
+   public static final za<vy, aha> a = zj.a(aha::a, aha::new);
+
+   private aha(vy $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new er($$0), new xj.b($$0));
    }
 
-   private void a(vw $$0) {
-      xr.a.a($$0, this.b);
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public zj<aha> a() {
-      return agp.bs;
+   public zl<aha> a() {
+      return agr.bq;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
+   }
+
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   public er g() {
+      return this.e;
+   }
+
+   public xj.b h() {
+      return this.f;
    }
 }

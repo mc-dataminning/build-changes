@@ -1,69 +1,29 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
+public class gvl implements gup<ean> {
+   private final hhs a;
+   private final azz b = azz.a();
+   private final hfm c = new hfm();
 
-public class gvl {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<gvq.b.a> c = new ObjectArrayList();
-
-   public synchronized void a(gvq.b.a $$0) {
-      this.c.add($$0);
+   public gvl(guq.a $$0) {
+      this.a = $$0.d();
    }
 
-   @Nullable
-   public synchronized gvq.b.a a(ffq $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-      ListIterator<gvq.b.a> $$5 = this.c.listIterator();
-
-      while ($$5.hasNext()) {
-         int $$6 = $$5.nextIndex();
-         gvq.b.a $$7 = $$5.next();
-         if ($$7.a.get()) {
-            $$5.remove();
-         } else {
-            double $$8 = $$7.d().b($$0);
-            if (!$$7.c() && $$8 < $$3) {
-               $$3 = $$8;
-               $$1 = $$6;
-            }
-
-            if ($$7.c() && $$8 < $$4) {
-               $$4 = $$8;
-               $$2 = $$6;
+   public void a(ean $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
+      if (ean.a.a($$0.c())) {
+         djz $$7 = $$0.i();
+         if ($$7 != null) {
+            daa $$8 = $$0.c().a();
+            if (!$$8.f()) {
+               this.a.a(this.c.a, $$8, czy.h, $$7, null, 0);
+               this.c.b = hfm.a($$8.M());
+               this.c.c = hfm.a($$8);
+               eao $$9 = $$0.d();
+               $$2.a();
+               $$2.a(0.5F, 0.4F, 0.5F);
+               $$2.a(a.d.rotationDegrees(azq.i($$1, $$9.b(), $$9.a())));
+               gzg.a($$2, $$3, $$4, this.c, this.b);
+               $$2.b();
             }
          }
       }
-
-      boolean $$9 = $$2 >= 0;
-      boolean $$10 = $$1 >= 0;
-      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
-      }
-   }
-
-   public int a() {
-      return this.c.size();
-   }
-
-   @Nullable
-   private gvq.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
-   }
-
-   public synchronized void b() {
-      for (gvq.b.a $$0 : this.c) {
-         $$0.a();
-      }
-
-      this.c.clear();
    }
 }

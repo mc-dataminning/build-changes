@@ -1,51 +1,17 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eos extends eou {
-   public static final MapCodec<eos> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               azg.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               ewr.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ayw.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, eos::new)
-   );
-   private final azg<Integer> i;
-   private final ewr.a j;
-   private final float k;
-   private final ewr l;
+public abstract class eos {
+   public static final Codec<eos> a = mh.T.q().dispatch(eos::a, eot::a);
 
-   public eos(azg<Integer> $$0, ewr.a $$1, float $$2, long $$3, ewr.a $$4, float $$5, List<ebe> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = ewr.b(new eic(new ehe($$3)), $$1);
+   public static epb a(ebg $$0) {
+      return new epb($$0);
    }
 
-   @Override
-   protected eor<?> a() {
-      return eor.e;
+   public static epb a(dne $$0) {
+      return new epb($$0.m());
    }
 
-   @Override
-   public ebe a(azx $$0, iv $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)azo.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<ebe> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected abstract eot<?> a();
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(iv $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
-   }
+   public abstract ebg a(azz var1, iw var2);
 }

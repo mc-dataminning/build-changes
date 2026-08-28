@@ -1,127 +1,192 @@
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cyi extends czu {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class cyi extends czw {
+   @Deprecated
+   private final dne a;
 
-   public cyi(czu.a $$0) {
-      super($$0);
+   public cyi(dne $$0, czw.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public bur a(ddt $$0) {
-      djx $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      iv $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.C) {
-            $$0.o().a(ege.C);
-            $$1.c(1505, $$2, 15);
-         }
+   public but a(ddv $$0) {
+      but $$1 = this.a(new ddt($$0));
+      return !$$1.a() && $$0.n().c(kl.w) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
+   }
 
-         return bur.a;
+   public but a(ddt $$0) {
+      if (!this.c().a($$0.q().K())) {
+         return but.d;
+      } else if (!$$0.b()) {
+         return but.d;
       } else {
-         ebe $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.c($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.C) {
-               $$0.o().a(ege.C);
-               $$1.c(1505, $$3, 15);
-            }
-
-            return bur.a;
+         ddt $$1 = this.b($$0);
+         if ($$1 == null) {
+            return but.d;
          } else {
-            return bur.e;
+            ebg $$2 = this.c($$1);
+            if ($$2 == null) {
+               return but.d;
+            } else if (!this.a($$1, $$2)) {
+               return but.d;
+            } else {
+               iw $$3 = $$1.a();
+               djz $$4 = $$1.q();
+               crz $$5 = $$1.o();
+               daa $$6 = $$1.n();
+               ebg $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  a($$4, $$3, $$6);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof arv) {
+                     aq.z.a((arv)$$5, $$3, $$6);
+                  }
+               }
+
+               dvb $$8 = $$7.A();
+               $$4.a($$5, $$3, this.a($$7), aws.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(egg.i, $$3, egg.a.a($$5, $$7));
+               $$6.a(1, $$5);
+               return but.a;
+            }
          }
       }
    }
 
-   public static boolean a(czy $$0, djx $$1, iv $$2) {
-      ebe $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dnf $$4 && $$4.a((dka)$$1, $$2, $$3)) {
-         if ($$1 instanceof ars) {
-            if ($$4.a($$1, $$1.A, $$2, $$3)) {
-               $$4.a((ars)$$1, $$1.A, $$2, $$3);
-            }
+   protected awq a(ebg $$0) {
+      return $$0.A().e();
+   }
 
-            $$0.h(1);
+   @Nullable
+   public ddt b(ddt $$0) {
+      return $$0;
+   }
+
+   private static void a(djz $$0, iw $$1, daa $$2) {
+      dye $$3 = $$0.c_($$1);
+      if ($$3 != null) {
+         $$3.a($$2);
+         $$3.e();
+      }
+   }
+
+   protected boolean a(iw $$0, djz $$1, @Nullable crz $$2, daa $$3, ebg $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   @Nullable
+   protected ebg c(ddt $$0) {
+      ebg $$1 = this.c().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private ebg a(iw $$0, djz $$1, daa $$2, ebg $$3) {
+      dca $$4 = $$2.a(kl.aq, dca.a);
+      if ($$4.a()) {
+         return $$3;
+      } else {
+         ebg $$5 = $$4.a($$3);
+         if ($$5 != $$3) {
+            $$1.a($$0, $$5, 2);
          }
 
-         return true;
+         return $$5;
+      }
+   }
+
+   protected boolean b(ddt $$0, ebg $$1) {
+      crz $$2 = $$0.o();
+      return (!this.b() || $$1.a((dkc)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), ffx.b($$2));
+   }
+
+   protected boolean b() {
+      return true;
+   }
+
+   protected boolean a(ddt $$0, ebg $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(djz $$0, @Nullable crz $$1, iw $$2, daa $$3) {
+      if ($$0.C) {
+         return false;
+      } else {
+         dci $$4 = $$3.a(kl.aa, dci.a);
+         if (!$$4.c()) {
+            dyg<?> $$5 = $$4.a($$0.J_(), mi.e);
+            if ($$5 == null) {
+               return false;
+            }
+
+            dye $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               dyg<?> $$7 = $$6.p();
+               if ($$7 != $$5) {
+                  return false;
+               }
+
+               if (!$$7.b() || $$1 != null && $$1.gG()) {
+                  return $$4.a($$6, $$0.J_());
+               }
+
+               return false;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(daa $$0, @Nullable crz $$1) {
+      if ($$1 != null && $$1.G() >= 2) {
+         dci $$2 = $$0.a(kl.aa);
+         if ($$2 != null) {
+            dyg<?> $$3 = $$2.a($$1.dV().J_(), mi.e);
+            return $$3 != null && $$3.b();
+         }
       }
 
       return false;
    }
 
-   public static boolean a(czy $$0, djx $$1, iv $$2, @Nullable jb $$3) {
-      if ($$1.a_($$2).a(dne.J) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof ars)) {
-            return true;
-         } else {
-            azx $$4 = $$1.G_();
+   public dne c() {
+      return this.a;
+   }
 
-            label80:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               iv $$6 = $$2;
-               ebe $$7 = dne.bG.m();
+   public void a(Map<dne, czw> $$0, czw $$1) {
+      $$0.put(this.c(), $$1);
+   }
 
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).m($$1, $$6)) {
-                     continue label80;
-                  }
-               }
+   @Override
+   public boolean d() {
+      return !(this.c() instanceof dun);
+   }
 
-               jf<dla> $$9 = $$1.u($$6);
-               if ($$9.a(axd.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = mg.e.a(axe.au, $$1.A).map($$0x -> ((dnc)$$0x.a()).m()).orElse($$7);
-                     if ($$7.b(dmn.d)) {
-                        $$7 = $$7.b(dmn.d, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = mg.e.a(axe.as, $$1.A).map($$0x -> ((dnc)$$0x.a()).m()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(axe.au, $$0x -> $$0x.b(dmn.d))) {
-                  for (int $$10 = 0; !$$7.a((dka)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.b(dmn.d, jb.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((dka)$$1, $$6)) {
-                  ebe $$11 = $$1.a_($$6);
-                  if ($$11.a(dne.J) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(dne.bG) && ((dnf)dne.bG).a((dka)$$1, $$6, $$11) && $$4.a(10) == 0) {
-                     ((dnf)dne.bG).a((ars)$$1, $$4, $$6, $$11);
-                  }
-               }
-            }
-
-            $$0.h(1);
-            return true;
-         }
-      } else {
-         return false;
+   @Override
+   public void a(coe $$0) {
+      dcs $$1 = $$0.f().b(kl.ap, dcs.a);
+      if ($$1 != null) {
+         dad.a($$0, $$1.e());
       }
    }
 
-   public static void a(djy $$0, iv $$1, int $$2) {
-      ebe $$3 = $$0.a_($$1);
-      if ($$3.b() instanceof dnf $$4) {
-         iv $$5 = $$4.a($$1);
-         switch ($$4.ar_()) {
-            case a:
-               azs.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, ly.Q);
-               break;
-            case b:
-               azs.a($$0, $$5, $$2, ly.Q);
-         }
-      } else if ($$3.a(dne.J)) {
-         azs.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, ly.Q);
+   public static void a(daa $$0, dyg<?> $$1, ua $$2) {
+      $$2.r("id");
+      if ($$2.j()) {
+         $$0.e(kl.aa);
+      } else {
+         dye.a($$2, $$1);
+         $$0.b(kl.aa, dci.a($$2));
       }
+   }
+
+   @Override
+   public cvj k() {
+      return this.c().k();
    }
 }

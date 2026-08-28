@@ -1,261 +1,281 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface bqd<S> {
-   boolean a(bpz<S> var1, bqb var2, bpt var3);
+public final class bqd {
+   private static final int b = -1;
+   private static final Object c = new Object() {
+      @Override
+      public String toString() {
+         return "frame";
+      }
+   };
+   private static final int d = 2;
+   private Object[] e = new Object[128];
+   private int f = 0;
+   private int g = 0;
 
-   static <S, T> bqd<S> a(bpr<T> $$0, T $$1) {
-      return new bqd.c<>($$0, $$1);
+   public bqd() {
+      this.e[0] = c;
+      this.e[1] = null;
+   }
+
+   private int c(bpt<?> $$0) {
+      for (int $$1 = this.f; $$1 > this.g; $$1 -= 2) {
+         Object $$2 = this.e[$$1];
+
+         assert $$2 instanceof bpt;
+
+         if ($$2 == $$0) {
+            return $$1 + 1;
+         }
+      }
+
+      return -1;
+   }
+
+   public int a(bpt<?>... $$0) {
+      for (int $$1 = this.f; $$1 > this.g; $$1 -= 2) {
+         Object $$2 = this.e[$$1];
+
+         assert $$2 instanceof bpt;
+
+         for (bpt<?> $$3 : $$0) {
+            if ($$3 == $$2) {
+               return $$1 + 1;
+            }
+         }
+      }
+
+      return -1;
+   }
+
+   private void a(int $$0) {
+      int $$1 = this.e.length;
+      int $$2 = this.f + 1;
+      int $$3 = $$2 + $$0 * 2;
+      if ($$3 >= $$1) {
+         int $$4 = ag.a($$1, $$3 + 1);
+         Object[] $$5 = new Object[$$4];
+         System.arraycopy(this.e, 0, $$5, 0, $$1);
+         this.e = $$5;
+      }
+
+      assert this.i();
+   }
+
+   private void h() {
+      this.f += 2;
+      this.e[this.f] = c;
+      this.e[this.f + 1] = this.g;
+      this.g = this.f;
+   }
+
+   public void a() {
+      this.a(1);
+      this.h();
+
+      assert this.i();
+   }
+
+   private int b(int $$0) {
+      return (Integer)this.e[$$0 + 1];
+   }
+
+   public void b() {
+      assert this.g != 0;
+
+      this.f = this.g - 2;
+      this.g = this.b(this.g);
+
+      assert this.i();
+   }
+
+   public void c() {
+      int $$0 = this.g;
+      int $$1 = (this.f - this.g) / 2;
+      this.a($$1 + 1);
+      this.h();
+      int $$2 = $$0 + 2;
+      int $$3 = this.f;
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         $$3 += 2;
+         Object $$5 = this.e[$$2];
+
+         assert $$5 != null;
+
+         this.e[$$3] = $$5;
+         this.e[$$3 + 1] = null;
+         $$2 += 2;
+      }
+
+      this.f = $$3;
+
+      assert this.i();
+   }
+
+   public void d() {
+      for (int $$0 = this.f; $$0 > this.g; $$0 -= 2) {
+         assert this.e[$$0] instanceof bpt;
+
+         this.e[$$0 + 1] = null;
+      }
+
+      assert this.i();
+   }
+
+   public void e() {
+      int $$0 = this.b(this.g);
+      int $$1 = $$0;
+      int $$2 = this.g;
+
+      while ($$2 < this.f) {
+         $$1 += 2;
+         $$2 += 2;
+         Object $$3 = this.e[$$2];
+
+         assert $$3 instanceof bpt;
+
+         Object $$4 = this.e[$$2 + 1];
+         Object $$5 = this.e[$$1];
+         if ($$5 != $$3) {
+            this.e[$$1] = $$3;
+            this.e[$$1 + 1] = $$4;
+         } else if ($$4 != null) {
+            this.e[$$1 + 1] = $$4;
+         }
+      }
+
+      this.f = $$1;
+      this.g = $$0;
+
+      assert this.i();
+   }
+
+   public <T> void a(bpt<T> $$0, @Nullable T $$1) {
+      int $$2 = this.c($$0);
+      if ($$2 != -1) {
+         this.e[$$2] = $$1;
+      } else {
+         this.a(1);
+         this.f += 2;
+         this.e[this.f] = $$0;
+         this.e[this.f + 1] = $$1;
+      }
+
+      assert this.i();
+   }
+
+   @Nullable
+   public <T> T a(bpt<T> $$0) {
+      int $$1 = this.c($$0);
+      return (T)($$1 != -1 ? this.e[$$1] : null);
+   }
+
+   public <T> T b(bpt<T> $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException("No value for atom " + $$0);
+      } else {
+         return (T)this.e[$$1];
+      }
+   }
+
+   public <T> T b(bpt<T> $$0, T $$1) {
+      int $$2 = this.c($$0);
+      return (T)($$2 != -1 ? this.e[$$2] : $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T b(bpt<? extends T>... $$0) {
+      int $$1 = this.a($$0);
+      return (T)($$1 != -1 ? this.e[$$1] : null);
    }
 
    @SafeVarargs
-   static <S> bqd<S> a(bqd<S>... $$0) {
-      return new bqd.g<>($$0);
-   }
-
-   @SafeVarargs
-   static <S> bqd<S> b(bqd<S>... $$0) {
-      return new bqd.a<>($$0);
-   }
-
-   static <S> bqd<S> a(bqd<S> $$0) {
-      return new bqd.d<>($$0);
-   }
-
-   static <S, T> bqd<S> a(bpy<S, T> $$0, bpr<List<T>> $$1) {
-      return a($$0, $$1, 0);
-   }
-
-   static <S, T> bqd<S> a(bpy<S, T> $$0, bpr<List<T>> $$1, int $$2) {
-      return new bqd.e<>($$0, $$1, $$2);
-   }
-
-   static <S, T> bqd<S> a(bpy<S, T> $$0, bpr<List<T>> $$1, bqd<S> $$2) {
-      return a($$0, $$1, $$2, 0);
-   }
-
-   static <S, T> bqd<S> a(bpy<S, T> $$0, bpr<List<T>> $$1, bqd<S> $$2, int $$3) {
-      return new bqd.f<>($$0, $$1, $$2, $$3, true);
-   }
-
-   static <S, T> bqd<S> b(bpy<S, T> $$0, bpr<List<T>> $$1, bqd<S> $$2) {
-      return b($$0, $$1, $$2, 0);
-   }
-
-   static <S, T> bqd<S> b(bpy<S, T> $$0, bpr<List<T>> $$1, bqd<S> $$2, int $$3) {
-      return new bqd.f<>($$0, $$1, $$2, $$3, false);
-   }
-
-   static <S> bqd<S> b(bqd<S> $$0) {
-      return new bqd.b<>($$0, true);
-   }
-
-   static <S> bqd<S> c(bqd<S> $$0) {
-      return new bqd.b<>($$0, false);
-   }
-
-   static <S> bqd<S> c() {
-      return new bqd<S>() {
-         @Override
-         public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-            $$2.a();
-            return true;
-         }
-
-         @Override
-         public String toString() {
-            return "↑";
-         }
-      };
-   }
-
-   static <S> bqd<S> d() {
-      return new bqd<S>() {
-         @Override
-         public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-            return true;
-         }
-
-         @Override
-         public String toString() {
-            return "ε";
-         }
-      };
-   }
-
-   static <S> bqd<S> a(final Object $$0) {
-      return new bqd<S>() {
-         @Override
-         public boolean a(bpz<S> $$0x, bqb $$1, bpt $$2) {
-            $$0.b().a($$0.g(), $$0);
-            return false;
-         }
-
-         @Override
-         public String toString() {
-            return "fail";
-         }
-      };
-   }
-
-   public static record a<S>(bqd<S>[] a) implements bqd<S> {
-      @Override
-      public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-         bpt $$3 = $$0.c();
-
-         try {
-            int $$4 = $$0.g();
-            $$1.c();
-
-            for (bqd<S> $$5 : this.a) {
-               if ($$5.a($$0, $$1, $$3)) {
-                  $$1.e();
-                  return true;
-               }
-
-               $$1.d();
-               $$0.a($$4);
-               if ($$3.b()) {
-                  break;
-               }
-            }
-
-            $$1.b();
-            return false;
-         } finally {
-            $$0.d();
-         }
+   public final <T> T c(bpt<? extends T>... $$0) {
+      int $$1 = this.a($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException("No value for atoms " + Arrays.toString((Object[])$$0));
+      } else {
+         return (T)this.e[$$1];
       }
    }
 
-   public static record b<S>(bqd<S> a, boolean b) implements bqd<S> {
-      @Override
-      public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-         int $$3 = $$0.g();
-         boolean $$4 = this.a.a($$0.e(), $$1, $$2);
-         $$0.a($$3);
-         return this.b == $$4;
-      }
-   }
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      boolean $$1 = true;
 
-   public static record c<S, T>(bpr<T> a, T b) implements bqd<S> {
-      @Override
-      public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-         $$1.a(this.a, this.b);
-         return true;
-      }
-   }
-
-   public static record d<S>(bqd<S> a) implements bqd<S> {
-      @Override
-      public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-         int $$3 = $$0.g();
-         if (!this.a.a($$0, $$1, $$2)) {
-            $$0.a($$3);
-         }
-
-         return true;
-      }
-   }
-
-   public static record e<S, T>(bpy<S, T> a, bpr<List<T>> b, int c) implements bqd<S> {
-      @Override
-      public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-         int $$3 = $$0.g();
-         List<T> $$4 = new ArrayList<>(this.c);
-
-         while (true) {
-            int $$5 = $$0.g();
-            T $$6 = $$0.a(this.a);
-            if ($$6 == null) {
-               $$0.a($$5);
-               if ($$4.size() < this.c) {
-                  $$0.a($$3);
-                  return false;
-               } else {
-                  $$1.a(this.b, $$4);
-                  return true;
-               }
-            }
-
-            $$4.add($$6);
-         }
-      }
-
-      public int e() {
-         return this.c;
-      }
-   }
-
-   public static record f<S, T>(bpy<S, T> a, bpr<List<T>> b, bqd<S> c, int d, boolean e) implements bqd<S> {
-      @Override
-      public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-         int $$3 = $$0.g();
-         List<T> $$4 = new ArrayList<>(this.d);
-         boolean $$5 = true;
-
-         while (true) {
-            int $$6 = $$0.g();
-            if (!$$5 && !this.c.a($$0, $$1, $$2)) {
-               $$0.a($$6);
-               break;
-            }
-
-            int $$7 = $$0.g();
-            T $$8 = $$0.a(this.a);
-            if ($$8 == null) {
-               if ($$5) {
-                  $$0.a($$7);
-               } else {
-                  if (!this.e) {
-                     $$0.a($$3);
-                     return false;
-                  }
-
-                  $$0.a($$7);
-               }
-               break;
-            }
-
-            $$4.add($$8);
-            $$5 = false;
-         }
-
-         if ($$4.size() < this.d) {
-            $$0.a($$3);
-            return false;
+      for (int $$2 = 0; $$2 <= this.f; $$2 += 2) {
+         Object $$3 = this.e[$$2];
+         Object $$4 = this.e[$$2 + 1];
+         if ($$3 == c) {
+            $$0.append('|');
+            $$1 = true;
          } else {
-            $$1.a(this.b, $$4);
-            return true;
+            if (!$$1) {
+               $$0.append(',');
+            }
+
+            $$1 = false;
+            $$0.append($$3).append(':').append($$4);
          }
       }
 
-      public bqd<S> e() {
-         return this.c;
+      return $$0.toString();
+   }
+
+   @VisibleForTesting
+   public Map<bpt<?>, ?> f() {
+      HashMap<bpt<?>, Object> $$0 = new HashMap<>();
+
+      for (int $$1 = this.f; $$1 > this.g; $$1 -= 2) {
+         Object $$2 = this.e[$$1];
+         Object $$3 = this.e[$$1 + 1];
+         $$0.put((bpt<?>)$$2, $$3);
       }
 
-      public int f() {
-         return this.d;
+      return $$0;
+   }
+
+   public boolean g() {
+      for (int $$0 = this.f; $$0 > 0; $$0--) {
+         if (this.e[$$0] == c) {
+            return false;
+         }
       }
 
-      public boolean g() {
-         return this.e;
+      if (this.e[0] != c) {
+         throw new IllegalStateException("Corrupted stack");
+      } else {
+         return true;
       }
    }
 
-   public static record g<S>(bqd<S>[] a) implements bqd<S> {
-      @Override
-      public boolean a(bpz<S> $$0, bqb $$1, bpt $$2) {
-         int $$3 = $$0.g();
+   private boolean i() {
+      assert this.g >= 0;
 
-         for (bqd<S> $$4 : this.a) {
-            if (!$$4.a($$0, $$1, $$2)) {
-               $$0.a($$3);
-               return false;
-            }
+      assert this.f >= this.g;
+
+      for (int $$0 = 0; $$0 <= this.f; $$0 += 2) {
+         Object $$1 = this.e[$$0];
+         if ($$1 != c && !($$1 instanceof bpt)) {
+            return false;
          }
-
-         return true;
       }
+
+      for (int $$2 = this.g; $$2 != 0; $$2 = this.b($$2)) {
+         Object $$3 = this.e[$$2];
+         if ($$3 != c) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

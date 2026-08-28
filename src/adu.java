@@ -1,33 +1,24 @@
-public class adu implements zh<abw> {
-   public static final yy<wl, adu> a = yy.a(yw.x, adu::b, yw.a(mh.V), adu::e, xc.d, adu::f, adu::new);
-   private final int b;
-   private final cwz<?> c;
-   private final xa d;
+public record adu(ffs b, float c, float d) implements zj<aby> {
+   public static final za<vy, adu> a = za.a(ffs.b, adu::b, yy.l, adu::e, yy.l, adu::f, adu::new);
 
-   public adu(int $$0, cwz<?> $$1, xa $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public static adu a(bwv $$0) {
+      return new adu($$0.dt(), $$0.dL(), $$0.dN());
    }
 
    @Override
-   public zj<adu> a() {
-      return agp.X;
+   public zl<adu> a() {
+      return agr.V;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public cwz<?> e() {
+   public float e() {
       return this.c;
    }
 
-   public xa f() {
+   public float f() {
       return this.d;
    }
 }

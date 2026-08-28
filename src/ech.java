@@ -1,112 +1,62 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public enum ech implements bao {
+   a("harp", awr.sK, ech.a.a),
+   b("basedrum", awr.sE, ech.a.a),
+   c("snare", awr.sN, ech.a.a),
+   d("hat", awr.sL, ech.a.a),
+   e("bass", awr.sF, ech.a.a),
+   f("flute", awr.sI, ech.a.a),
+   g("bell", awr.sG, ech.a.a),
+   h("guitar", awr.sJ, ech.a.a),
+   i("chime", awr.sH, ech.a.a),
+   j("xylophone", awr.sO, ech.a.a),
+   k("iron_xylophone", awr.sP, ech.a.a),
+   l("cow_bell", awr.sQ, ech.a.a),
+   m("didgeridoo", awr.sR, ech.a.a),
+   n("bit", awr.sS, ech.a.a),
+   o("banjo", awr.sT, ech.a.a),
+   p("pling", awr.sM, ech.a.a),
+   q("zombie", awr.sU, ech.a.b),
+   r("skeleton", awr.sV, ech.a.b),
+   s("creeper", awr.sW, ech.a.b),
+   t("dragon", awr.sX, ech.a.b),
+   u("wither_skeleton", awr.sY, ech.a.b),
+   v("piglin", awr.sZ, ech.a.b),
+   w("custom_head", awr.Bv, ech.a.c);
 
-public abstract class ech<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::b
-      );
-   private final Codec<ech.a<T>> e = this.d.xmap(this::c, ech.a::b);
+   private final String x;
+   private final jg<awq> y;
+   private final ech.a z;
 
-   protected ech(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
-   }
-
-   public ech.a<T> c(T $$0) {
-      return new ech.a<>(this, $$0);
-   }
-
-   public ech.a<T> a(ebg<?, ?> $$0) {
-      return new ech.a<>(this, $$0.c(this));
-   }
-
-   public Stream<ech.a<T>> c() {
-      return this.a().stream().map(this::c);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<ech.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
-      return this.a;
-   }
-
-   public abstract List<T> a();
-
-   public abstract String b(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   public abstract int a(T var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   private ech(final String $$0, final jg<awq> $$1, final ech.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ech<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
+   public String c() {
+      return this.x;
    }
 
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
+   public jg<awq> a() {
+      return this.y;
    }
 
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
+   public boolean b() {
+      return this.z == ech.a.a;
    }
 
-   public <U, S extends ebg<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
+   public boolean d() {
+      return this.z == ech.a.c;
    }
 
-   public static record a<T extends Comparable<T>>(ech<T> a, T b) {
-      public a(ech<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
+   public boolean e() {
+      return this.z != ech.a.a;
+   }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.b(this.b);
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

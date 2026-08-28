@@ -1,96 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class ccg extends bzl<crj> {
-   private Set<czu> c = ImmutableSet.of();
+public class ccg {
+   public static bzo<crl> a(cgy<List<jf>> $$0, float $$1, int $$2, int $$3, cgy<jf> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return cda.a(
+         (Function<cda.b<crl>, ? extends App<cda.c<crl>, cdd<crl>>>)($$6 -> $$6.group($$6.a(cgy.n), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<jf> $$11 = $$6.b($$6x);
+                     jf $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        jf $$13 = $$11.get($$8.G_().a($$11.size()));
+                        if ($$13 != null && $$8.aj() == $$13.a() && $$12.b().a($$9.dt(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new chb($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public ccg() {
-      super(ImmutableMap.of(cgw.r, cgx.a, cgw.h, cgx.a));
-   }
-
-   protected boolean a(ars $$0, crj $$1) {
-      return bzn.a($$1.ec(), cgw.r, bxc.bE);
-   }
-
-   protected boolean a(ars $$0, crj $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(ars $$0, crj $$1, long $$2) {
-      crj $$3 = (crj)$$1.ec().c(cgw.r).get();
-      bzn.a($$1, $$3, 0.5F, 2);
-      this.c = a($$1, $$3);
-   }
-
-   protected void c(ars $$0, crj $$1, long $$2) {
-      crj $$3 = (crj)$$1.ec().c(cgw.r).get();
-      if (!($$1.g($$3) > 5.0)) {
-         bzn.a($$1, $$3, 0.5F, 2);
-         $$1.a($$0, $$3, $$2);
-         boolean $$4 = $$1.gC().b().a(crm.g);
-         if ($$1.gL() && ($$4 || $$3.gM())) {
-            a($$1, crj.bL.keySet(), $$3);
-         }
-
-         if ($$4 && $$1.n().a_(dac.qk) > dac.qk.g() / 2) {
-            a($$1, ImmutableSet.of(dac.qk), $$3);
-         }
-
-         if (!this.c.isEmpty() && $$1.n().a(this.c)) {
-            a($$1, this.c, $$3);
-         }
-      }
-   }
-
-   protected void d(ars $$0, crj $$1, long $$2) {
-      $$1.ec().b(cgw.r);
-   }
-
-   private static Set<czu> a(crj $$0, crj $$1) {
-      ImmutableSet<czu> $$2 = $$1.gC().b().a().d();
-      ImmutableSet<czu> $$3 = $$0.gC().b().a().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(crj $$0, Set<czu> $$1, bxu $$2) {
-      buy $$3 = $$0.n();
-      czy $$4 = czy.k;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         czy $$6;
-         czu $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.f()) {
-               $$7 = $$6.h();
-               if ($$1.contains($$7)) {
-                  if ($$6.M() > $$6.k() / 2) {
-                     $$8 = $$6.M() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.M() > 24) {
-                     $$8 = $$6.M() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            $$5++;
-            continue;
-         }
-
-         $$6.h($$8);
-         $$4 = new czy($$7, $$8);
-         break;
-      }
-
-      if (!$$4.f()) {
-         bzn.a($$0, $$4, $$2.dt());
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

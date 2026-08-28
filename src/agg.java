@@ -1,29 +1,30 @@
-public record agg(float b, boolean c) implements zh<abw> {
-   public static final yy<vw, agg> a = zh.a(agg::a, agg::new);
+import java.util.Set;
 
-   private agg(vw $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
-   }
+public record agg(int b, byj c, Set<byk> d, boolean e) implements zj<aby> {
+   public static final za<vy, agg> a = za.a(yy.h, agg::b, byj.a, agg::e, byk.m, agg::f, yy.b, agg::g, agg::new);
 
-   public static agg a(bva $$0) {
-      return new agg($$0.f(), $$0.l());
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public static agg a(int $$0, byj $$1, Set<byk> $$2, boolean $$3) {
+      return new agg($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public zj<agg> a() {
-      return agp.cq;
+   public zl<agg> a() {
+      return agr.bd;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public byj e() {
       return this.c;
+   }
+
+   public Set<byk> f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

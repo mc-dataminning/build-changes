@@ -1,61 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record fdy(Optional<Long> b, fag c) implements fdq {
+public record fdy(float b, dgu c, jg<dgn> g) implements fds {
    public static final MapCodec<fdy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fdy::c), fag.a.fieldOf("value").forGetter(fdy::d)).apply($$0, fdy::new)
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(fdy::c),
+               dgu.b.fieldOf("enchanted_chance").forGetter(fdy::d),
+               dgn.c.fieldOf("enchantment").forGetter(fdy::e)
+            )
+            .apply($$0, fdy::new)
    );
 
    @Override
-   public fdr b() {
-      return fds.q;
+   public fdt b() {
+      return fdu.e;
    }
 
    @Override
-   public Set<baz<?>> a() {
-      return this.c.a();
+   public Set<bbb<?>> a() {
+      return Set.of(fdd.d);
    }
 
-   public boolean a(fah $$0) {
-      ars $$1 = $$0.d();
-      long $$2 = $$1.af();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public boolean a(faj $$0) {
+      bwv $$1 = $$0.c(fdd.d);
+      int $$3 = $$1 instanceof bxw $$2 ? dgp.a(this.g, $$2) : 0;
+      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
+      return $$0.b().i() < $$4;
    }
 
-   public static fdy.a a(fag $$0) {
-      return new fdy.a($$0);
+   public static fds.a a(ji.a $$0, float $$1, float $$2) {
+      ji.b<dgn> $$3 = $$0.e(mi.aR);
+      return () -> new fdy($$1, new dgu.e($$1 + $$2, $$2), $$3.b(dgs.s));
    }
 
-   public Optional<Long> c() {
+   public float c() {
       return this.b;
    }
 
-   public fag d() {
+   public dgu d() {
       return this.c;
    }
 
-   public static class a implements fdq.a {
-      private Optional<Long> a = Optional.empty();
-      private final fag b;
-
-      public a(fag $$0) {
-         this.b = $$0;
-      }
-
-      public fdy.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fdy a() {
-         return new fdy(this.a, this.b);
-      }
+   public jg<dgn> e() {
+      return this.g;
    }
 }

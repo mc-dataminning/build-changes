@@ -1,43 +1,27 @@
-public record bww(float a, float b, float c, bwv d, boolean e) {
-   private bww(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), bwv.a($$0, $$1), $$2);
+import java.util.List;
+
+public enum bww {
+   a(bww.a.c),
+   b(bww.a.b),
+   c(bww.a.c),
+   d(bww.a.d);
+
+   private final bww.a e;
+
+   private bww(final bww.a $$0) {
+      this.e = $$0;
    }
 
-   private static float c(float $$0) {
-      return $$0 * 0.85F;
+   public List<ffs> a(float $$0, float $$1) {
+      return this.e.create($$0, $$1);
    }
 
-   public ffl a(ffq $$0) {
-      return this.a($$0.d, $$0.e, $$0.f);
-   }
+   public interface a {
+      List<ffs> a = List.of(ffs.c);
+      bww.a b = ($$0, $$1) -> a;
+      bww.a c = ($$0, $$1) -> List.of(new ffs(0.0, (double)$$1, 0.0));
+      bww.a d = ($$0, $$1) -> List.of(new ffs(0.0, (double)$$1 / 2.0, 0.0));
 
-   public ffl a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new ffl($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
-   }
-
-   public bww a(float $$0) {
-      return this.a($$0, $$0);
-   }
-
-   public bww a(float $$0, float $$1) {
-      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bww(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
-   }
-
-   public static bww b(float $$0, float $$1) {
-      return new bww($$0, $$1, false);
-   }
-
-   public static bww c(float $$0, float $$1) {
-      return new bww($$0, $$1, true);
-   }
-
-   public bww b(float $$0) {
-      return new bww(this.a, this.b, $$0, this.d, this.e);
-   }
-
-   public bww a(bwv.a $$0) {
-      return new bww(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
+      List<ffs> create(float var1, float var2);
    }
 }

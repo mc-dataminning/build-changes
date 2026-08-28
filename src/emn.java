@@ -1,32 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class emn implements emp {
+public record emn(epa b, eim c, bty d, int e) implements emr {
    public static final Codec<emn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iv.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, emn::new)
+      $$0 -> $$0.group(
+               epa.a.fieldOf("state_provider").forGetter(emn::a),
+               eim.b.fieldOf("target").forGetter(emn::b),
+               bty.b(0, 8).fieldOf("radius").forGetter(emn::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(emn::d)
+            )
+            .apply($$0, emn::new)
    );
-   private final Optional<iv> b;
-   private final boolean c;
 
-   private emn(Optional<iv> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static emn a(iv $$0, boolean $$1) {
-      return new emn(Optional.of($$0), $$1);
-   }
-
-   public static emn a() {
-      return new emn(Optional.empty(), false);
-   }
-
-   public Optional<iv> b() {
+   public epa a() {
       return this.b;
    }
 
-   public boolean c() {
+   public eim b() {
       return this.c;
+   }
+
+   public bty c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

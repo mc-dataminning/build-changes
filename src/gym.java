@@ -1,56 +1,34 @@
-public class gym extends gyh<bxh, het> {
-   private static final ali a = ali.b("textures/entity/experience_orb.png");
-   private static final gsl g = gsl.i(a);
+public class gym extends gyj<csm, het> {
+   private static final alk a = alk.b("textures/entity/illager/evoker_fangs.png");
+   private final gie g;
 
-   public gym(gyi.a $$0) {
+   public gym(gyk.a $$0) {
       super($$0);
-      this.e = 0.15F;
-      this.f = 0.75F;
+      this.g = new gie($$0.a(glf.aW));
    }
 
-   protected int a(bxh $$0, iv $$1) {
-      return azo.a(super.a($$0, $$1) + 7, 0, 15);
-   }
-
-   public void a(het $$0, flo $$1, gsa $$2, int $$3) {
-      $$1.a();
-      int $$4 = $$0.a;
-      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
-      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
-      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
-      float $$9 = 1.0F;
-      float $$10 = 0.5F;
-      float $$11 = 0.25F;
-      float $$12 = 255.0F;
-      float $$13 = $$0.u / 2.0F;
-      int $$14 = (int)((azo.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$15 = 255;
-      int $$16 = (int)((azo.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$1.a(0.0F, 0.1F, 0.0F);
-      $$1.a(this.d.b());
-      float $$17 = 0.3F;
-      $$1.b(0.3F, 0.3F, 0.3F);
-      flr $$18 = $$2.getBuffer(g);
-      flo.a $$19 = $$1.c();
-      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
-      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
-      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
-      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private static void a(flr $$0, flo.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(hkq.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
+   public void a(het $$0, flq $$1, gsc $$2, int $$3) {
+      float $$4 = $$0.b;
+      if ($$4 != 0.0F) {
+         $$1.a();
+         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
+         $$1.b(-1.0F, -1.0F, 1.0F);
+         $$1.a(0.0F, -1.501F, 0.0F);
+         this.g.a($$0);
+         flt $$5 = $$2.getBuffer(this.g.a(a));
+         this.g.a($$1, $$5, $$3, hks.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    public het a() {
       return new het();
    }
 
-   public void a(bxh $$0, het $$1, float $$2) {
+   public void a(csm $$0, het $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.g();
+      $$1.a = $$0.dL();
+      $$1.b = $$0.a($$2);
    }
 }

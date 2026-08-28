@@ -1,76 +1,86 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Sets;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public enum bbd {
-   a(bjb.a),
-   b(bjb.b),
-   c(bjb.c),
-   d(bjb.d),
-   e(bjb.e),
-   f(bjb.f),
-   g(bjb.g),
-   h(bjb.h),
-   i(bjb.i),
-   j(bjb.j),
-   k(bjb.k),
-   l(bjb.l),
-   m(bjb.m),
-   n(bjb.o),
-   o(bjb.n),
-   p(bjb.p),
-   q(bjb.q),
-   r(bjb.O),
-   s(bjb.r);
+public class bbd {
+   private final Map<bbb<?>, Object> a;
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private bbd(final TypeReference $$0) {
-      this.u = $$0;
+   bbd(Map<bbb<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   static int a() {
-      return ac.b().d().c();
+   public boolean a(bbb<?> $$0) {
+      return this.a.containsKey($$0);
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bbd.a())));
+   public <T> T b(bbb<T> $$0) {
+      T $$1 = (T)this.a.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(bbb<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null; _,_->_")
+   public <T> T a(bbb<T> $$0, @Nullable T $$1) {
+      return (T)this.a.getOrDefault($$0, $$1);
+   }
+
+   public static class a {
+      private final Map<bbb<?>, Object> a = new IdentityHashMap<>();
+
+      public <T> bbd.a a(bbb<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> bbd.a b(bbb<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.a.remove($$0);
+         } else {
+            this.a.put($$0, $$1);
          }
 
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = bbd.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
+         return this;
+      }
+
+      public <T> T a(bbb<T> $$0) {
+         T $$1 = (T)this.a.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
          }
-      };
-   }
+      }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
+      @Nullable
+      public <T> T b(bbb<T> $$0) {
+         return (T)this.a.get($$0);
+      }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public tz a(DataFixer $$0, tz $$1, int $$2, int $$3) {
-      return (tz)this.a($$0, new Dynamic(un.a, $$1), $$2, $$3).getValue();
-   }
-
-   public tz a(DataFixer $$0, tz $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+      public bbd a(bbc $$0) {
+         Set<bbb<?>> $$1 = Sets.difference(this.a.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<bbb<?>> $$2 = Sets.difference($$0.a(), this.a.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new bbd(this.a);
+            }
+         }
+      }
    }
 }

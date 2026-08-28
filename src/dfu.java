@@ -1,55 +1,51 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dfu(dgb f, dgb g, dgb h, dgb i, int j, float k) implements dfv {
-   public static final MapCodec<dfu> a = RecordCodecBuilder.mapCodec(
+public record dfu(jg<czw> c, int d, kj e) {
+   private static final Codec<dfu> f = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dgb.a.fieldOf("ingredient").forGetter(dfu::b),
-               dgb.a.fieldOf("fuel").forGetter(dfu::c),
-               dgb.a.fieldOf("result").forGetter(dfu::d),
-               dgb.a.fieldOf("crafting_station").forGetter(dfu::e),
-               Codec.INT.fieldOf("duration").forGetter(dfu::f),
-               Codec.FLOAT.fieldOf("experience").forGetter(dfu::g)
+               czw.e.fieldOf("id").forGetter(dfu::b),
+               ayy.a(1, 99).optionalFieldOf("count", 1).forGetter(dfu::c),
+               kj.b.optionalFieldOf("components", kj.a).forGetter(dfu::d)
             )
             .apply($$0, dfu::new)
    );
-   public static final yy<wl, dfu> b = yy.a(dgb.b, dfu::b, dgb.b, dfu::c, dgb.b, dfu::d, dgb.b, dfu::e, yw.h, dfu::f, yw.l, dfu::g, dfu::new);
-   public static final dfv.a<dfu> c = new dfv.a<>(a, b);
+   public static final Codec<dfu> a = Codec.withAlternative(f, czw.e, $$0 -> new dfu((czw)$$0.a())).validate(dfu::a);
+   public static final za<wn, dfu> b = za.a(czw.f, dfu::b, yy.h, dfu::c, kj.c, dfu::d, dfu::new);
 
-   @Override
-   public dfv.a<dfu> a() {
-      return c;
+   public dfu(czw $$0) {
+      this($$0.e(), 1, kj.a);
    }
 
-   @Override
-   public boolean a(cvh $$0) {
-      return this.f.a($$0) && this.c().a($$0) && dfv.super.a($$0);
+   private static DataResult<dfu> a(dfu $$0) {
+      return daa.a(new daa($$0.c, $$0.d, $$0.e)).map($$1 -> $$0);
    }
 
-   public dgb b() {
-      return this.f;
+   public daa a(daa $$0) {
+      daa $$1 = $$0.a(this.c.a(), this.d);
+      $$1.b(this.e);
+      return $$1;
    }
 
-   public dgb c() {
-      return this.g;
+   public boolean b(daa $$0) {
+      daa $$1 = this.a($$0);
+      return $$1.M() == 1 && daa.c($$0, $$1);
    }
 
-   @Override
-   public dgb d() {
-      return this.h;
+   public dgd a() {
+      return new dgd.f(new daa(this.c, this.d, this.e));
    }
 
-   @Override
-   public dgb e() {
-      return this.i;
+   public jg<czw> b() {
+      return this.c;
    }
 
-   public int f() {
-      return this.j;
+   public int c() {
+      return this.d;
    }
 
-   public float g() {
-      return this.k;
+   public kj d() {
+      return this.e;
    }
 }

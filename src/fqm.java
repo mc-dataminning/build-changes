@@ -1,26 +1,30 @@
-public enum fqm {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import java.util.function.IntFunction;
 
-   private static final fqm[] d = values();
-   private final boolean e;
-   private final boolean f;
+public enum fqm implements azt {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   private fqm(final boolean $$0, final boolean $$1) {
+   private static final IntFunction<fqm> d = ayg.a(fqm::b, values(), ayg.a.b);
+   private final int e;
+   private final String f;
+
+   private fqm(final int $$0, final String $$1) {
       this.e = $$0;
       this.f = $$1;
    }
 
-   public boolean a() {
+   @Override
+   public int b() {
       return this.e;
    }
 
-   public boolean b() {
+   @Override
+   public String a() {
       return this.f;
    }
 
-   public fqm c() {
-      return d[(this.ordinal() + 1) % d.length];
+   public static fqm a(int $$0) {
+      return d.apply($$0);
    }
 }

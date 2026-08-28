@@ -1,80 +1,115 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class ekl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<ars, ekl.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<ars, ekl.b>() {
-         public ekl.b a(ars $$0) {
-            return new ekl.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+public class ekl extends ekm<emq> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 5;
+   private static final int d = 2;
+   private static final int ap = 2;
+   private static final int aq = 19;
+
+   public ekl(Codec<emq> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(eko<emq> $$0) {
+      this.a($$0.f(), $$0.e(), $$0.b(), $$0.d());
+      return true;
+   }
+
+   private void a(emq $$0, iw $$1, dky $$2, azz $$3) {
+      this.a($$0, $$2, $$3, $$1.k());
+      jc $$4 = jc.c.a.a($$3);
+      int $$5 = $$0.c.a($$3) - 2;
+      iw.a $$6 = $$1.a($$4, 2 + $$3.a(2)).k();
+      this.a($$2, $$6);
+      if (this.a($$2, $$5, $$6, $$4)) {
+         this.a($$0, $$2, $$3, $$5, $$6, $$4);
+      }
+   }
+
+   private void a(dky $$0, iw.a $$1) {
+      $$1.c(jc.b, 1);
+
+      for (int $$2 = 0; $$2 < 6; $$2++) {
+         if (this.a((dka)$$0, (iw)$$1)) {
+            return;
          }
-      });
 
-   public static void a(ars $$0) {
-      try {
-         ((ekl.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
+         $$1.c(jc.a);
       }
    }
 
-   public static void a(ars $$0, ejv<?, ?> $$1, Optional<erf> $$2) {
-      try {
-         ((ekl.b)b.get($$0)).a().computeInt(new ekl.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
+   private void a(emq $$0, dky $$1, azz $$2, iw.a $$3) {
+      iw $$4 = a($$0, $$1, $$2, $$3, Function.identity());
+      this.a($$1, $$2, Set.of($$4), $$0.d);
    }
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
+   private boolean a(dky $$0, int $$1, iw.a $$2, jc $$3) {
+      int $$4 = 0;
 
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.aj().a().toString();
-               boolean $$3 = $$0.p().x();
-               js<erf> $$4 = $$0.J_().f(mh.bb);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<ali>map(alh::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if (!ely.d($$0, $$2)) {
+            return false;
+         }
+
+         if (!this.b($$0, $$2)) {
+            if (++$$4 > 2) {
+               return false;
             }
-         );
+         } else {
+            $$4 = 0;
+         }
+
+         $$2.c($$3);
+      }
+
+      $$2.c($$3.g(), $$1);
+      return true;
    }
 
-   static record a(ejv<?, ?> a, Optional<erf> b) {
+   private void a(emq $$0, dky $$1, azz $$2, int $$3, iw.a $$4, jc $$5) {
+      Set<iw> $$6 = new HashSet<>();
+
+      for (int $$7 = 0; $$7 < $$3; $$7++) {
+         $$6.add(a($$0, $$1, $$2, $$4, a($$5)));
+         $$4.c($$5);
+      }
+
+      this.a($$1, $$2, $$6, $$0.e);
    }
 
-   static record b(Object2IntMap<ekl.a> a, MutableInt b) {
+   private boolean a(dka $$0, iw $$1) {
+      return ely.d($$0, $$1) && this.b($$0, $$1);
+   }
+
+   private boolean b(dka $$0, iw $$1) {
+      return $$0.a_($$1.e()).c($$0, $$1, jc.b);
+   }
+
+   private static iw a(emq $$0, dky $$1, azz $$2, iw.a $$3, Function<ebg, ebg> $$4) {
+      $$1.a($$3, $$4.apply($$0.b.a($$2, $$3)), 19);
+      return $$3.j();
+   }
+
+   private void a(dky $$0, azz $$1, Set<iw> $$2, List<epn> $$3) {
+      if (!$$3.isEmpty()) {
+         epn.a $$4 = new epn.a($$0, this.a($$0), $$1, $$2, Set.of(), Set.of());
+         $$3.forEach($$1x -> $$1x.a($$4));
+      }
+   }
+
+   private BiConsumer<iw, ebg> a(dky $$0) {
+      return ($$1, $$2) -> $$0.a($$1, $$2, 19);
+   }
+
+   private static Function<ebg, ebg> a(jc $$0) {
+      return $$1 -> $$1.c(dtx.d, $$0.o());
    }
 }

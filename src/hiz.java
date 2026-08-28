@@ -1,19 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hiz {
-   private static final ayw.b<ali, MapCodec<? extends hja>> b = new ayw.b<>();
-   public static final MapCodec<hja> a = b.a(ali.a).dispatchMap("property", hja::a, $$0 -> $$0);
+public record hiz(boolean b) implements hjc {
+   public static final MapCodec<hiz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hiz::b)).apply($$0, hiz::new)
+   );
 
-   public static void a() {
-      b.a(ali.b("custom_model_data"), hiw.a);
-      b.a(ali.b("bundle/fullness"), hiq.a);
-      b.a(ali.b("damage"), hix.a);
-      b.a(ali.b("cooldown"), hit.a);
-      b.a(ali.b("time"), hjb.a);
-      b.a(ali.b("compass"), hir.a);
-      b.a(ali.b("crossbow/pull"), hiv.a);
-      b.a(ali.b("use_cycle"), hjc.a);
-      b.a(ali.b("use_duration"), hjd.a);
-      b.a(ali.b("count"), hiu.a);
+   @Override
+   public float a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3) {
+      float $$4 = (float)$$0.o();
+      float $$5 = (float)$$0.p();
+      return this.b ? azq.a($$4 / $$5, 0.0F, 1.0F) : azq.a($$4, 0.0F, $$5);
+   }
+
+   @Override
+   public MapCodec<hiz> a() {
+      return a;
    }
 }

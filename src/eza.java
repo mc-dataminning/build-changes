@@ -1,37 +1,39 @@
-import java.util.Objects;
 import javax.annotation.Nullable;
 
 public abstract class eza {
-   private boolean a;
+   protected final dtn a;
 
-   public void f() {
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
+   protected eza(dtn $$0) {
       this.a = $$0;
    }
 
-   public boolean g() {
-      return this.a;
+   public abstract void a(djz var1, iw var2, ebg var3, @Nullable eyy var4, boolean var5);
+
+   protected int a(djz $$0, iw $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public static record a(@Nullable ars a, long b) {
-      public a(ars $$0) {
-         this($$0, $$0.E());
+   protected int a(iw $$0, ebg $$1) {
+      return $$1.a(this.a) ? $$1.c(dtn.f) : 0;
+   }
+
+   protected int b(djz $$0, iw $$1) {
+      int $$2 = 0;
+
+      for (jc $$3 : jc.c.a) {
+         iw $$4 = $$1.a($$3);
+         ebg $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         iw $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            iw $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            iw $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
+         }
       }
 
-      public ars a() {
-         return Objects.requireNonNull(this.a);
-      }
-
-      @Nullable
-      public ars b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
-      }
+      return Math.max(0, $$2 - 1);
    }
 }

@@ -1,7 +1,10 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dqa extends dnc implements dpz {
-   public dqa(ebd.d $$0) {
+public abstract class dqa extends drf {
+   public static final ece<ebr> c = ebw.X;
+
+   protected dqa(ebf.d $$0) {
       super($$0);
    }
 
@@ -9,44 +12,47 @@ public abstract class dqa extends dnc implements dpz {
    protected abstract MapCodec<? extends dqa> a();
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      return b($$1, $$2, n($$0).g());
    }
 
+   public static boolean b(dkc $$0, iw $$1, jc $$2) {
+      iw $$3 = $$1.a($$2);
+      return $$0.a_($$3).c($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      $$2.a($$3, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public ebg a(ddt $$0) {
+      for (jc $$1 : $$0.f()) {
+         ebg $$2;
+         if ($$1.o() == jc.a.b) {
+            $$2 = this.m().b(c, $$1 == jc.b ? ebr.c : ebr.a).b(e, $$0.g());
+         } else {
+            $$2 = this.m().b(c, ebr.b).b(e, $$1.g());
+         }
 
-   @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.K_()) {
-         cob $$4 = cob.a($$1, $$2, $$0);
-         this.a($$4);
-      }
-   }
-
-   protected void a(cob $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(ebe $$0) {
-      return $$0.l() || $$0.a(axe.aN) || $$0.n() || $$0.v();
-   }
-
-   @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      if ($$3.a(16) == 0) {
-         iv $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            azs.a($$1, $$2, $$3, new lq(ly.C, $$0));
+         if ($$2.a((dkc)$$0.q(), $$0.a())) {
+            return $$2;
          }
       }
+
+      return null;
    }
 
-   public abstract int b(ebe var1, djb var2, iv var3);
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return n($$0).g() == $$4 && !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static jc n(ebg $$0) {
+      switch ((ebr)$$0.c(c)) {
+         case c:
+            return jc.a;
+         case a:
+            return jc.b;
+         default:
+            return $$0.c(e);
+      }
+   }
 }

@@ -2,62 +2,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class fcb extends fbu {
+public class fcb implements fbx {
    public static final MapCodec<fcb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(dxs.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
-            .apply($$0, fcb::new)
+      $$0 -> $$0.group(fbz.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, fcb::new)
    );
-   private final dxs b;
-   private final boolean c;
+   public static final Codec<fcb> b = fbz.b.listOf().xmap(fcb::new, $$0 -> $$0.c);
+   private final List<fbx> c;
+   private final BiFunction<daa, faj, daa> d;
 
-   fcb(List<fdq> $$0, dxs $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private fcb(List<fbx> $$0) {
+      this.c = $$0;
+      this.d = fbz.a($$0);
+   }
+
+   public static fcb a(List<fbx> $$0) {
+      return new fcb(List.copyOf($$0));
+   }
+
+   public daa a(daa $$0, faj $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   protected czy a(czy $$0, fah $$1) {
-      if (this.c) {
-         $$0.a(kk.am, dxs.a, this.b, ($$0x, $$1x) -> new dxs.a().a($$0x).a($$1x).a());
-      } else {
-         $$0.b(kk.am, this.b);
-      }
+   public void a(fap $$0) {
+      fbx.super.a($$0);
 
-      return $$0;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public fbw<fcb> b() {
-      return fbx.E;
-   }
-
-   public static fcb.a a(boolean $$0) {
-      return new fcb.a($$0);
-   }
-
-   public static class a extends fbu.a<fcb.a> {
-      private final dxs.a a = new dxs.a();
-      private final boolean b;
-
-      a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected fcb.a a() {
-         return this;
-      }
-
-      @Override
-      public fbv b() {
-         return new fcb(this.g(), this.a.a(), this.b);
-      }
-
-      public fcb.a a(jf<dxr> $$0, cyw $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
+   public fby<fcb> b() {
+      return fbz.I;
    }
 }

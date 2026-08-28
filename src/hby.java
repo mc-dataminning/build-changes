@@ -1,20 +1,40 @@
-public class hby extends hcw<hee, ghj> {
-   private static final ali a = ali.b("textures/entity/cat/cat_collar.png");
-   private final ghj b;
-   private final ghj c;
+public class hby extends hcy<hgd, gji> {
+   private final giq<hgd> a;
+   private final hnh b;
 
-   public hby(haf<hee, ghj> $$0, gla $$1) {
+   public hby(hah<hgd, gji> $$0, glc $$1, hnh $$2) {
       super($$0);
-      this.b = new ghj($$1.a(gld.T));
-      this.c = new ghj($$1.a(gld.S));
+      this.a = new gjg<>($$1.a(glf.ct));
+      this.b = $$2;
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hee $$3, float $$4, float $$5) {
-      cyw $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         ghj $$8 = $$3.aj ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+   private boolean a(daa $$0, hni.d $$1) {
+      dij $$2 = $$0.a(kl.D);
+      if ($$2 != null && !$$2.d().isEmpty()) {
+         hni $$3 = this.b.a($$2.d().get());
+         return !$$3.a($$1).isEmpty();
+      } else {
+         return false;
+      }
+   }
+
+   public void a(flq $$0, gsc $$1, int $$2, hgd $$3, float $$4, float $$5) {
+      if (!$$3.z && $$3.ay) {
+         hme $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!this.a($$3.W, hni.d.c)) {
+               $$0.a();
+               if (this.a($$3.W, hni.d.a)) {
+                  $$0.a(0.0F, -0.053125F, 0.06875F);
+               }
+
+               flt $$7 = $$1.getBuffer(gsn.d($$6.c()));
+               this.d().a(this.a);
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, hks.d);
+               $$0.b();
+            }
+         }
       }
    }
 }

@@ -1,24 +1,47 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class asm {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
-
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+public record asm<T>(T a, Optional<T> b) {
+   public static <T> Codec<asm<T>> a(Codec<T> $$0) {
+      Codec<asm<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(asm::a), $$0.optionalFieldOf("filtered").forGetter(asm::b)).apply($$1x, asm::new)
+      );
+      Codec<asm<T>> $$2 = $$0.xmap(asm::a, asm::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   public static <B extends ByteBuf, T> za<B, asm<T>> a(za<B, T> $$0) {
+      return za.a($$0, asm::a, $$0.a(yy::a), asm::b, asm::new);
+   }
+
+   public static <T> asm<T> a(T $$0) {
+      return new asm<>($$0, Optional.empty());
+   }
+
+   public static asm<String> a(asn $$0) {
+      return new asm<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
+   }
+
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
+   }
+
+   public <U> asm<U> a(Function<T, U> $$0) {
+      return new asm<>($$0.apply(this.a), this.b.map($$0));
+   }
+
+   public <U> Optional<asm<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new asm<>($$1.get(), $$2));
+      } else {
+         return Optional.of(new asm<>($$1.get(), Optional.empty()));
+      }
    }
 }

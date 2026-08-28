@@ -1,20 +1,14 @@
-public record acj(int b) implements zh<abw> {
-   public static final yy<vw, acj> a = zh.a(acj::a, acj::new);
-
-   private acj(vw $$0) {
-      this($$0.l());
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
+public class acj extends zh<aby> {
+   public acj(Iterable<zj<? super aby>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zj<acj> a() {
-      return agp.m;
+   public zl<acj> a() {
+      return agr.a;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 }

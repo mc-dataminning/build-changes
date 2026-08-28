@@ -1,36 +1,30 @@
-public interface dee extends dep<ded> {
-   @Override
-   default dfa<dee> b() {
-      return dfa.a;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+
+public enum dee implements bao {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
+
+   public static final Codec<dee> e = bao.a(dee::values);
+   public static final IntFunction<dee> f = ayg.a(dee::a, values(), ayg.a.a);
+   public static final za<ByteBuf, dee> g = yy.a(f, dee::a);
+   private final String h;
+   private final int i;
+
+   private dee(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   dez<? extends dee> a();
-
-   dec c();
-
-   default jo<czy> a(ded $$0) {
-      return b($$0);
+   public String c() {
+      return this.h;
    }
 
-   static jo<czy> b(ded $$0) {
-      jo<czy> $$1 = jo.a($$0.a(), czy.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         czu $$3 = $$0.a($$2).h();
-         $$1.set($$2, $$3.i());
-      }
-
-      return $$1;
-   }
-
-   @Override
-   default des h() {
-      return switch (this.c()) {
-         case a -> der.a;
-         case c -> der.c;
-         case b -> der.b;
-         case d -> der.d;
-      };
+   private int a() {
+      return this.i;
    }
 }

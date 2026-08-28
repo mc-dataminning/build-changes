@@ -1,143 +1,159 @@
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Optional;
+import org.apache.commons.lang3.ArrayUtils;
 
-public record ue(int b) implements up {
-   private static final int c = 12;
-   public static final va<ue> a = new va.a<ue>() {
-      public ue a(DataInput $$0, ui $$1) throws IOException {
-         return ue.a(d($$0, $$1));
+public final class ue implements tz {
+   private static final int b = 24;
+   public static final vc<ue> a = new vc.b<ue>() {
+      public ue a(DataInput $$0, uj $$1) throws IOException {
+         return new ue(d($$0, $$1));
       }
 
       @Override
-      public uv.b a(DataInput $$0, uv $$1, ui $$2) throws IOException {
+      public ux.b a(DataInput $$0, ux $$1, uj $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static int d(DataInput $$0, ui $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readInt();
+      private static int[] d(DataInput $$0, uj $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(4L, (long)$$2);
+         int[] $$3 = new int[$$2];
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readInt();
+         }
+
+         return $$3;
       }
 
       @Override
-      public int c() {
-         return 4;
+      public void b(DataInput $$0, uj $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 4);
       }
 
       @Override
       public String a() {
-         return "INT";
+         return "INT[]";
       }
 
       @Override
       public String b() {
-         return "TAG_Int";
+         return "TAG_Int_Array";
       }
    };
+   private int[] c;
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public ue(int b) {
-      this.b = b;
-   }
-
-   public static ue a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? ue.a.a[$$0 - -128] : new ue($$0);
+   public ue(int[] $$0) {
+      this.c = $$0;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.b);
+      $$0.writeInt(this.c.length);
+
+      for (int $$1 : this.c) {
+         $$0.writeInt($$1);
+      }
    }
 
    @Override
    public int a() {
-      return 12;
+      return 24 + 4 * this.c.length;
    }
 
    @Override
    public byte b() {
-      return 3;
+      return 11;
    }
 
    @Override
-   public va<ue> c() {
+   public vc<ue> c() {
       return a;
-   }
-
-   public ue e() {
-      return this;
-   }
-
-   @Override
-   public void a(vc $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long g() {
-      return (long)this.b;
-   }
-
-   @Override
-   public int h() {
-      return this.b;
-   }
-
-   @Override
-   public short i() {
-      return (short)(this.b & 65535);
-   }
-
-   @Override
-   public byte j() {
-      return (byte)(this.b & 0xFF);
-   }
-
-   @Override
-   public double k() {
-      return (double)this.b;
-   }
-
-   @Override
-   public float l() {
-      return (float)this.b;
-   }
-
-   @Override
-   public Number m() {
-      return this.b;
-   }
-
-   @Override
-   public uv.b a(uv $$0) {
-      return $$0.a(this.b);
    }
 
    @Override
    public String toString() {
-      ux $$0 = new ux();
+      uz $$0 = new uz();
       $$0.a(this);
       return $$0.a();
    }
 
-   public int n() {
-      return this.b;
+   public ue e() {
+      int[] $$0 = new int[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new ue($$0);
    }
 
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final ue[] a = new ue[1153];
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ue && Arrays.equals(this.c, ((ue)$$0).c);
+   }
 
-      private a() {
-      }
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
 
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ue(-128 + $$0);
-         }
+   public int[] g() {
+      return this.c;
+   }
+
+   @Override
+   public void a(ve $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public int size() {
+      return this.c.length;
+   }
+
+   public uf a(int $$0) {
+      return uf.a(this.c[$$0]);
+   }
+
+   @Override
+   public boolean a(int $$0, va $$1) {
+      if ($$1 instanceof uq $$2) {
+         this.c[$$0] = $$2.h();
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public boolean b(int $$0, va $$1) {
+      if ($$1 instanceof uq $$2) {
+         this.c = ArrayUtils.add(this.c, $$0, $$2.h());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public uf b(int $$0) {
+      int $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return uf.a($$1);
+   }
+
+   @Override
+   public void clear() {
+      this.c = new int[0];
+   }
+
+   @Override
+   public Optional<int[]> q_() {
+      return Optional.of(this.c);
+   }
+
+   @Override
+   public ux.b a(ux $$0) {
+      return $$0.a(this.c);
    }
 }

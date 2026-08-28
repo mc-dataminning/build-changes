@@ -1,15 +1,16 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ewa {
-   @Nullable
-   public ewd.d a(dka $$0, iv $$1, iv $$2, ewd.d $$3, ewd.d $$4, evz $$5) {
-      return $$4;
-   }
+public interface ewa<P extends evz> {
+   ewa<evc> a = a("always_true", evc.a);
+   ewa<evh> b = a("block_match", evh.a);
+   ewa<evj> c = a("blockstate_match", evj.a);
+   ewa<ewh> d = a("tag_match", ewh.a);
+   ewa<evw> e = a("random_block_match", evw.a);
+   ewa<evx> f = a("random_blockstate_match", evx.a);
 
-   protected abstract ewc<?> a();
+   MapCodec<P> codec();
 
-   public List<ewd.d> a(dko $$0, iv $$1, iv $$2, List<ewd.d> $$3, List<ewd.d> $$4, evz $$5) {
-      return $$4;
+   static <P extends evz> ewa<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.m, $$0, () -> $$1);
    }
 }

@@ -1,11 +1,20 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
 public interface egi {
-   Codec<egi> c = mg.t.q().dispatch(egi::a, egj::a);
-   yy<wl, egi> d = yw.a(mh.ac).b(egi::a, egj::b);
+   egk a();
 
-   Optional<ffq> a(djx var1);
+   int b();
 
-   egj<? extends egi> a();
+   boolean a(aru var1, jg<egg> var2, egg.a var3, ffs var4);
+
+   default egi.a c() {
+      return egi.a.a;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends egi> {
+      T c();
+   }
 }

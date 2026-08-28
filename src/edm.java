@@ -1,193 +1,262 @@
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class edm {
-   public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final edt<ebe> h;
-   private edu<jf<dla>> i;
+public class edm extends edx {
+   private final edn n;
+   private final boolean o;
 
-   private edm(edm $$0) {
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h.d();
-      this.i = $$0.i.d();
+   public edm(edn $$0, boolean $$1) {
+      super($$0.f(), eea.a, $$0.l, $$0.H().J_().f(mi.aG), $$0.v());
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   public edm(edt<ebe> $$0, edu<jf<dla>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   @Nullable
+   @Override
+   public dye c_(iw $$0) {
+      return this.n.c_($$0);
    }
 
-   public edm(js<dla> $$0) {
-      this.h = new edt<>(dnc.k, dne.a.m(), edt.d.d);
-      this.i = new edt<>($$0.t(), $$0.b(dlh.b), edt.d.e);
+   @Override
+   public ebg a_(iw $$0) {
+      return this.n.a_($$0);
    }
 
-   public ebe a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
+   @Override
+   public exq b_(iw $$0) {
+      return this.n.b_($$0);
    }
 
-   public exo b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).y();
+   @Override
+   public edo b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
    }
 
-   public void a() {
-      this.h.a();
+   @Nullable
+   @Override
+   public ebg a(iw $$0, ebg $$1, int $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
    }
 
-   public void b() {
-      this.h.b();
+   @Override
+   public void a(dye $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
    }
 
-   public ebe a(int $$0, int $$1, int $$2, ebe $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
+   @Override
+   public void a(bwv $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
    }
 
-   public ebe a(int $$0, int $$1, int $$2, ebe $$3, boolean $$4) {
-      ebe $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
+   @Override
+   public void a(eee $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public edo[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(ehf.a $$0, long[] $$1) {
+   }
+
+   private ehf.a c(ehf.a $$0) {
+      if ($$0 == ehf.a.a) {
+         return ehf.a.b;
       } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
+         return $$0 == ehf.a.c ? ehf.a.d : $$0;
       }
+   }
 
-      exo $$7 = $$5.y();
-      exo $$8 = $$3.y();
-      if (!$$5.l()) {
-         this.e--;
-         if ($$5.z()) {
-            this.f--;
-         }
+   @Override
+   public ehf a(ehf.a $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public int a(ehf.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
+   }
+
+   @Override
+   public jg<dlc> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   @Override
+   public dje f() {
+      return this.n.f();
+   }
+
+   @Nullable
+   @Override
+   public esl a(esd $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public void a(esd $$0, esl $$1) {
+   }
+
+   @Override
+   public Map<esd, esl> g() {
+      return this.n.g();
+   }
+
+   @Override
+   public void a(Map<esd, esl> $$0) {
+   }
+
+   @Override
+   public LongSet b(esd $$0) {
+      return this.n.b($$0);
+   }
+
+   @Override
+   public void a(esd $$0, long $$1) {
+   }
+
+   @Override
+   public Map<esd, LongSet> h() {
+      return this.n.h();
+   }
+
+   @Override
+   public void b(Map<esd, LongSet> $$0) {
+   }
+
+   @Override
+   public void i() {
+      this.n.i();
+   }
+
+   @Override
+   public boolean s() {
+      return false;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public eee n() {
+      return this.n.n();
+   }
+
+   @Override
+   public void d(iw $$0) {
+   }
+
+   @Override
+   public void e(iw $$0) {
+   }
+
+   @Override
+   public void a(ua $$0) {
+   }
+
+   @Nullable
+   @Override
+   public ua f(iw $$0) {
+      return this.n.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public ua a(iw $$0, ji.a $$1) {
+      return this.n.a($$0, $$1);
+   }
+
+   @Override
+   public void a(Predicate<ebg> $$0, BiConsumer<iw, ebg> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public fhn<dne> q() {
+      return this.o ? this.n.q() : fhd.a();
+   }
+
+   @Override
+   public fhn<exp> r() {
+      return this.o ? this.n.r() : fhd.a();
+   }
+
+   @Override
+   public edd.a a(long $$0) {
+      return this.n.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public eii v() {
+      return this.n.v();
+   }
+
+   @Override
+   public edc E() {
+      if (this.o) {
+         return super.E();
+      } else {
+         throw (UnsupportedOperationException)ag.b(new UnsupportedOperationException("Meaningless in this context"));
       }
+   }
 
-      if (!$$7.c()) {
-         this.g--;
+   @Override
+   public edc F() {
+      if (this.o) {
+         return super.F();
+      } else {
+         throw (UnsupportedOperationException)ag.b(new UnsupportedOperationException("Meaningless in this context"));
       }
+   }
 
-      if (!$$3.l()) {
-         this.e++;
-         if ($$3.z()) {
-            this.f++;
-         }
+   public edn G() {
+      return this.n;
+   }
+
+   @Override
+   public boolean x() {
+      return this.n.x();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public void a(dlf $$0, dll.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
       }
-
-      if (!$$8.c()) {
-         this.g++;
-      }
-
-      return $$5;
    }
 
-   public boolean c() {
-      return this.e == 0;
+   @Override
+   public void C() {
+      this.n.C();
    }
 
-   public boolean d() {
-      return this.e() || this.f();
-   }
-
-   public boolean e() {
-      return this.f > 0;
-   }
-
-   public boolean f() {
-      return this.g > 0;
-   }
-
-   public void g() {
-      class a implements edt.b<ebe> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(ebe $$0, int $$1) {
-            exo $$2 = $$0.y();
-            if (!$$0.l()) {
-               this.a += $$1;
-               if ($$0.z()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
-            }
-         }
-      }
-
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
-   }
-
-   public edt<ebe> h() {
-      return this.h;
-   }
-
-   public edu<jf<dla>> i() {
-      return this.i;
-   }
-
-   public void a(vw $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      edt<jf<dla>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void b(vw $$0) {
-      edt<jf<dla>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void c(vw $$0) {
-      $$0.m(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
-   }
-
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
-   }
-
-   public boolean a(Predicate<ebe> $$0) {
-      return this.h.a($$0);
-   }
-
-   public jf<dla> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
-   }
-
-   public void a(dld $$0, dlj.f $$1, int $$2, int $$3, int $$4) {
-      edt<jf<dla>> $$5 = this.i.e();
-      int $$6 = 4;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
-            }
-         }
-      }
-
-      this.i = $$5;
-   }
-
-   public edm k() {
-      return new edm(this);
+   @Override
+   public exa D() {
+      return this.n.D();
    }
 }

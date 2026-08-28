@@ -1,84 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
 
-public class dqh extends dwo implements dnf, duj {
+public class dqh extends dwq implements dnh {
+   private static final double b = 0.7;
+   private static final double c = 10.0;
+   private static final double d = 5.0;
+   private static final int e = 13;
+   private static final int f = 30;
    public static final MapCodec<dqh> a = b(dqh::new);
-   public static final ecc<jb> b = ebu.T;
-   public static final ece c = ebu.U;
-   private final Function<ebe, fgk> g;
+
+   public dqh(ebf.d $$0) {
+      super($$0);
+   }
 
    @Override
-   public MapCodec<dqh> a() {
+   protected MapCodec<? extends dqh> a() {
       return a;
    }
 
-   protected dqh(ebd.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, jb.c).b(c, Integer.valueOf(1)));
-      this.g = this.q();
-   }
-
-   private Function<ebe, fgk> q() {
-      return this.a(this.a(b, c));
-   }
-
    @Override
-   public ebe a(ebe $$0, dtw $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public ebe a(ebe $$0, dsf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public boolean a(ebe $$0, ddr $$1) {
-      return this.a($$0, $$1, c) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return this.g.apply($$0);
-   }
-
-   @Override
-   public double b() {
-      return 3.0;
-   }
-
-   @Override
-   public ece c() {
-      return c;
-   }
-
-   @Override
-   public ebe a(ddr $$0) {
-      return this.a($$0, this, c, b);
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public boolean a(dka $$0, iv $$1, ebe $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
-      int $$4 = $$3.c(c);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.b(c, Integer.valueOf($$4 + 1)), 2);
-      } else {
-         a($$0, $$2, new czy(this));
+   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
+      if ($$3.a(30) == 0 && $$1.X() && $$1.b(ehf.a.f, $$2) <= $$2.v()) {
+         $$1.a($$2, awr.jo, aws.i, 1.0F, 1.0F, false);
       }
+
+      if ($$1.B($$2) <= 13 && $$3.j() <= 0.7) {
+         double $$4 = (double)$$2.u() + $$3.j() * 10.0 - 5.0;
+         double $$5 = (double)$$2.v() + $$3.j() * 5.0;
+         double $$6 = (double)$$2.w() + $$3.j() * 10.0 - 5.0;
+         $$1.a(lz.bj, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
+      return dnh.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      dnh.a((djz)$$0, $$2, $$3).ifPresent($$1x -> $$0.b($$1x, this.m()));
    }
 }

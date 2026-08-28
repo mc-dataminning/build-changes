@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface gnp {
-   zh<agr> predict(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gnp {
 }

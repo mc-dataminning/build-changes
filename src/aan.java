@@ -1,17 +1,23 @@
-public record aan(egi c, int d) implements aak {
-   public static final yy<wl, aan> a = yy.a(egi.d, aan::b, yw.h, aan::c, aan::new);
-   public static final aak.b<aan> b = aak.a("debug/game_event_listeners");
+public record aan(alk a) implements aam {
+   public static <T extends vy> za<T, aan> a(alk $$0, int $$1) {
+      return aam.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new aan($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
+   }
 
    @Override
-   public aak.b<aan> a() {
-      return b;
+   public aam.b<aan> a() {
+      return new aam.b<>(this.a);
    }
 
-   public egi b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public alk b() {
+      return this.a;
    }
 }

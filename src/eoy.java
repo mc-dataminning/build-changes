@@ -1,49 +1,69 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record eoy(eoq b, List<eoy.a> c) {
-   public static final Codec<eoy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eoq.a.fieldOf("fallback").forGetter(eoy::a), eoy.a.a.listOf().fieldOf("rules").forGetter(eoy::b)).apply($$0, eoy::new)
+public class eoy extends eos {
+   public static final MapCodec<eoy> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eos.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bty.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eoy::new)
    );
+   private final eos c;
+   private final String d;
+   @Nullable
+   private ecg e;
+   private final bty f;
 
-   public static eoy a(eoq $$0) {
-      return new eoy($$0, List.of());
-   }
+   public eoy(eos $$0, ecg $$1, bty $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   public static eoy a(dnc $$0) {
-      return a(eoq.a($$0));
-   }
-
-   public ebe a(dkw $$0, azx $$1, iv $$2) {
-      for (eoy.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public eoq a() {
-      return this.b;
+   public eoy(eos $$0, String $$1, bty $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
-   public List<eoy.a> b() {
-      return this.c;
+   @Override
+   protected eot<?> a() {
+      return eot.g;
    }
 
-   public static record a(eik b, eoq c) {
-      public static final Codec<eoy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eik.b.fieldOf("if_true").forGetter(eoy.a::a), eoq.a.fieldOf("then").forGetter(eoy.a::b)).apply($$0, eoy.a::new)
-      );
+   @Override
+   public ebg a(azz $$0, iw $$1) {
+      ebg $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         ecg $$3 = a($$2, this.d);
+         if ($$3 == null) {
+            return $$2;
+         }
 
-      public eik a() {
-         return this.b;
+         this.e = $$3;
       }
 
-      public eoq b() {
-         return this.c;
-      }
+      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   @Nullable
+   private static ecg a(ebg $$0, String $$1) {
+      Collection<ecj<?>> $$2 = $$0.F();
+      Optional<ecg> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ecg).map($$0x -> (ecg)$$0x).findAny();
+      return $$3.orElse(null);
    }
 }

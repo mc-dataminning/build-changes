@@ -1,104 +1,176 @@
-public class cvz extends cvq {
-   private final buk m;
-   private final int n;
+import java.util.Optional;
 
-   private cvz(cwz<?> $$0, int $$1, crw $$2, int $$3) {
-      this($$0, $$1, $$2, new buy(9 * $$3), $$3);
+public class cvz extends cvs {
+   static final alk m = alk.b("container/slot/brewing_fuel");
+   static final alk n = alk.b("container/slot/potion");
+   private static final int o = 0;
+   private static final int p = 2;
+   private static final int q = 3;
+   private static final int r = 4;
+   private static final int s = 5;
+   private static final int t = 2;
+   private static final int u = 5;
+   private static final int v = 32;
+   private static final int w = 32;
+   private static final int x = 41;
+   private final bum y;
+   private final cwe z;
+   private final cxp A;
+
+   public cvz(int $$0, cry $$1) {
+      this($$0, $$1, new bva(5), new cxo(2));
    }
 
-   public static cvz a(int $$0, crw $$1) {
-      return new cvz(cwz.a, $$0, $$1, 1);
-   }
-
-   public static cvz b(int $$0, crw $$1) {
-      return new cvz(cwz.b, $$0, $$1, 2);
-   }
-
-   public static cvz c(int $$0, crw $$1) {
-      return new cvz(cwz.c, $$0, $$1, 3);
-   }
-
-   public static cvz d(int $$0, crw $$1) {
-      return new cvz(cwz.d, $$0, $$1, 4);
-   }
-
-   public static cvz e(int $$0, crw $$1) {
-      return new cvz(cwz.e, $$0, $$1, 5);
-   }
-
-   public static cvz f(int $$0, crw $$1) {
-      return new cvz(cwz.f, $$0, $$1, 6);
-   }
-
-   public static cvz a(int $$0, crw $$1, buk $$2) {
-      return new cvz(cwz.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cvz b(int $$0, crw $$1, buk $$2) {
-      return new cvz(cwz.f, $$0, $$1, $$2, 6);
-   }
-
-   public cvz(cwz<?> $$0, int $$1, crw $$2, buk $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.c_($$2.h);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(buk $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cxn($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
+   public cvz(int $$0, cry $$1, bum $$2, cwe $$3) {
+      super(cxb.l, $$0);
+      a($$2, 5);
+      a($$3, 2);
+      this.y = $$2;
+      this.z = $$3;
+      dbv $$4 = $$1.h.dV().L();
+      this.a(new cvz.c($$2, 0, 56, 51));
+      this.a(new cvz.c($$2, 1, 79, 58));
+      this.a(new cvz.c($$2, 2, 102, 51));
+      this.A = this.a(new cvz.b($$4, $$2, 3, 79, 17));
+      this.a(new cvz.a($$2, 4, 17, 17));
+      this.a($$3);
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public boolean b(crx $$0) {
-      return this.m.a($$0);
+   public boolean b(crz $$0) {
+      return this.y.a($$0);
    }
 
    @Override
-   public czy b(crx $$0, int $$1) {
-      czy $$2 = czy.k;
-      cxn $$3 = this.k.get($$1);
+   public daa b(crz $$0, int $$1) {
+      daa $$2 = daa.k;
+      cxp $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         czy $$4 = $$3.g();
+         daa $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return czy.k;
+         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
+            if (cvz.a.b($$2)) {
+               if (this.a($$4, 4, 5, false) || this.A.a($$4) && !this.a($$4, 3, 4, false)) {
+                  return daa.k;
+               }
+            } else if (this.A.a($$4)) {
+               if (!this.a($$4, 3, 4, false)) {
+                  return daa.k;
+               }
+            } else if (cvz.c.b($$2)) {
+               if (!this.a($$4, 0, 3, false)) {
+                  return daa.k;
+               }
+            } else if ($$1 >= 5 && $$1 < 32) {
+               if (!this.a($$4, 32, 41, false)) {
+                  return daa.k;
+               }
+            } else if ($$1 >= 32 && $$1 < 41) {
+               if (!this.a($$4, 5, 32, false)) {
+                  return daa.k;
+               }
+            } else if (!this.a($$4, 5, 41, false)) {
+               return daa.k;
             }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return czy.k;
+         } else {
+            if (!this.a($$4, 5, 41, true)) {
+               return daa.k;
+            }
+
+            $$3.b($$4, $$2);
          }
 
          if ($$4.f()) {
-            $$3.e(czy.k);
+            $$3.e(daa.k);
          } else {
             $$3.d();
          }
+
+         if ($$4.M() == $$2.M()) {
+            return daa.k;
+         }
+
+         $$3.a($$0, $$2);
       }
 
       return $$2;
    }
 
-   @Override
-   public void a(crx $$0) {
-      super.a($$0);
-      this.m.c($$0);
-   }
-
-   public buk l() {
-      return this.m;
+   public int l() {
+      return this.z.a(1);
    }
 
    public int m() {
-      return this.n;
+      return this.z.a(0);
+   }
+
+   static class a extends cxp {
+      public a(bum $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(daa $$0) {
+         return b($$0);
+      }
+
+      public static boolean b(daa $$0) {
+         return $$0.a(axo.Y);
+      }
+
+      @Override
+      public alk c() {
+         return cvz.m;
+      }
+   }
+
+   static class b extends cxp {
+      private final dbv a;
+
+      public b(dbv $$0, bum $$1, int $$2, int $$3, int $$4) {
+         super($$1, $$2, $$3, $$4);
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean a(daa $$0) {
+         return this.a.a($$0);
+      }
+   }
+
+   static class c extends cxp {
+      public c(bum $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(daa $$0) {
+         return b($$0);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+
+      @Override
+      public void a(crz $$0, daa $$1) {
+         Optional<jg<dbu>> $$2 = $$1.a(kl.R, dbw.a).e();
+         if ($$2.isPresent() && $$0 instanceof arv $$3) {
+            aq.l.a($$3, $$2.get());
+         }
+
+         super.a($$0, $$1);
+      }
+
+      public static boolean b(daa $$0) {
+         return $$0.a(dae.tt) || $$0.a(dae.wz) || $$0.a(dae.wC) || $$0.a(dae.ts);
+      }
+
+      @Override
+      public alk c() {
+         return cvz.n;
+      }
    }
 }

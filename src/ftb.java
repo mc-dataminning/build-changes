@@ -1,33 +1,24 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import java.util.stream.Stream;
 
-public class ftb {
-   private final Builder<String, gub.b> a = ImmutableMap.builder();
-
-   private <T extends Comparable<T>> void a(ech<T> $$0, gub.b $$1) {
-      this.a.put($$0.f(), $$1);
+public record ftb(btd<gty> a) {
+   public ftb(btd<gty> a) {
+      if (a.c()) {
+         throw new IllegalArgumentException("Variant list must contain at least one element");
+      } else {
+         this.a = a;
+      }
    }
 
-   public final <T extends Comparable<T>> ftb a(ech<T> $$0, T $$1) {
-      this.a($$0, new gub.b(List.of(new gub.a($$0.b($$1), false))));
-      return this;
+   public ftb a(gtz $$0) {
+      return new ftb(this.a.a($$0));
    }
 
-   @SafeVarargs
-   public final <T extends Comparable<T>> ftb a(ech<T> $$0, T $$1, T... $$2) {
-      List<gub.a> $$3 = Stream.concat(Stream.of($$1), Stream.of($$2)).map($$0::b).sorted().distinct().map($$0x -> new gub.a($$0x, false)).toList();
-      this.a($$0, new gub.b($$3));
-      return this;
+   public gtp.b a() {
+      List<btc<gty>> $$0 = this.a.d();
+      return (gtp.b)($$0.size() == 1 ? new gtw.a($$0.getFirst().a()) : new hny.a(this.a.a(gtw.a::new)));
    }
 
-   public final <T extends Comparable<T>> ftb b(ech<T> $$0, T $$1) {
-      this.a($$0, new gub.b(List.of(new gub.a($$0.b($$1), true))));
-      return this;
-   }
-
-   public gua a() {
-      return new gub(this.a.buildOrThrow());
+   public btd<gty> b() {
+      return this.a;
    }
 }

@@ -1,182 +1,229 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fpb extends hrm {
-   static final Logger c = LogUtils.getLogger();
-   private static final xa C = xa.c("mco.selectServer.create");
-   private static final xa D = xa.c("mco.selectServer.create.subtitle");
-   private static final xa E = xa.c("mco.configure.world.switch.slot");
-   private static final xa F = xa.c("mco.configure.world.switch.slot.subtitle");
-   private static final xa G = xa.c("mco.reset.world.generate");
-   private static final xa H = xa.c("mco.reset.world.title");
-   private static final xa I = xa.c("mco.reset.world.warning");
-   public static final xa a = xa.c("mco.create.world.reset.title");
-   private static final xa J = xa.c("mco.reset.world.resetting.screen.title");
-   private static final xa K = xa.c("mco.reset.world.template");
-   private static final xa L = xa.c("mco.reset.world.adventure");
-   private static final xa M = xa.c("mco.reset.world.experience");
-   private static final xa N = xa.c("mco.reset.world.inspiration");
-   private final gad O;
-   private final fne P;
-   private final xa Q;
-   private final int R;
-   private final xa S;
-   private static final ali T = ali.b("textures/gui/realms/upload.png");
-   private static final ali U = ali.b("textures/gui/realms/adventure.png");
-   private static final ali V = ali.b("textures/gui/realms/survival_spawn.png");
-   private static final ali W = ali.b("textures/gui/realms/new_world.png");
-   private static final ali X = ali.b("textures/gui/realms/experience.png");
-   private static final ali Y = ali.b("textures/gui/realms/inspiration.png");
-   fnv Z;
-   fnv aa;
-   fnv ab;
-   fnv ac;
-   public final int b;
+public class fpb extends hro {
+   static final Logger a = LogUtils.getLogger();
+   private static final xc b = xc.c("mco.configure.world.players.title");
+   static final xc c = xc.c("mco.question");
+   private static final int C = 8;
+   final fyb D = new fyb(this);
+   private final fop E;
+   final fng F;
    @Nullable
-   private final fqd ad;
-   private final Runnable ae;
-   private final fxz af = new fxz(this);
+   private fpb.b G;
+   boolean H;
 
-   private fpb(gad $$0, fne $$1, int $$2, xa $$3, xa $$4, int $$5, xa $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
-   }
-
-   public fpb(gad $$0, fne $$1, int $$2, xa $$3, xa $$4, int $$5, xa $$6, @Nullable fqd $$7, Runnable $$8) {
-      super($$3);
-      this.O = $$0;
-      this.P = $$1;
-      this.b = $$2;
-      this.Q = $$4;
-      this.R = $$5;
-      this.S = $$6;
-      this.ad = $$7;
-      this.ae = $$8;
-   }
-
-   public static fpb a(gad $$0, fne $$1, fqd $$2, Runnable $$3) {
-      return new fpb($$0, $$1, $$1.p, C, D, -6250336, a, $$2, $$3);
-   }
-
-   public static fpb a(gad $$0, int $$1, fne $$2, Runnable $$3) {
-      return new fpb($$0, $$2, $$1, E, F, -6250336, a, $$3);
-   }
-
-   public static fpb a(gad $$0, fne $$1, Runnable $$2) {
-      return new fpb($$0, $$1, $$1.p, H, I, -65536, J, $$2);
+   public fpb(fop $$0, fng $$1) {
+      super(b);
+      this.E = $$0;
+      this.F = $$1;
    }
 
    @Override
    public void aS_() {
-      fyd $$0 = this.af.a(fyd.d());
-      $$0.c().a(9 / 3);
-      $$0.a(new fvs(this.l, this.p), fyc::b);
-      $$0.a(new fvs(this.Q, this.p).b(this.R), fyc::b);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            fmd $$0 = fmd.a();
-
-            try {
-               fnv $$1 = $$0.a(1, 10, fne.d.a);
-               fnv $$2 = $$0.a(1, 10, fne.d.c);
-               fnv $$3 = $$0.a(1, 10, fne.d.d);
-               fnv $$4 = $$0.a(1, 10, fne.d.e);
-               fpb.this.m.execute(() -> {
-                  fpb.this.Z = $$1;
-                  fpb.this.aa = $$2;
-                  fpb.this.ab = $$3;
-                  fpb.this.ac = $$4;
-               });
-            } catch (fnz var6) {
-               fpb.c.error("Couldn't fetch templates in reset world", var6);
-            }
-         }
-      }).start();
-      fxy $$1 = this.af.c(new fxy());
-      fxy.b $$2 = $$1.d(3);
-      $$2.c().f(16);
-      $$2.a(new fpb.a(this.m.h, G, W, $$0x -> fmj.a(this.m, this.O, this, this.b, this.P, this.ad)));
-      $$2.a(new fpb.a(this.m.h, fpc.a, T, $$0x -> this.m.a(new fpc(this.ad, this.P.a, this.b, this))));
-      $$2.a(new fpb.a(this.m.h, K, V, $$0x -> this.m.a(new fpd(K, this::a, fne.d.a, this.Z))));
-      $$2.a(fye.b(16), 3);
-      $$2.a(new fpb.a(this.m.h, L, U, $$0x -> this.m.a(new fpd(L, this::a, fne.d.c, this.aa))));
-      $$2.a(new fpb.a(this.m.h, M, X, $$0x -> this.m.a(new fpd(M, this::a, fne.d.d, this.ab))));
-      $$2.a(new fpb.a(this.m.h, N, Y, $$0x -> this.m.a(new fpd(N, this::a, fne.d.e, this.ac))));
-      this.af.b(ful.a(wz.k, $$0x -> this.aP_()).a());
-      this.af.a($$1x -> {
-         fuj var10000 = this.c($$1x);
+      this.D.a(b, this.p);
+      this.G = this.D.c(new fpb.b());
+      this.E();
+      fyf $$0 = this.D.b(fyf.e().a(8));
+      $$0.a(fun.a(xc.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fov(this.E, this, this.F))).a());
+      $$0.a(fun.a(xb.k, $$0x -> this.aP_()).a());
+      this.D.a($$1 -> {
+         ful var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      this.af.a();
+      this.D.a();
+      if (this.G != null) {
+         this.G.a(this.n, this.D);
+      }
    }
 
-   @Override
-   public xa i() {
-      return wz.a(this.n(), this.Q);
+   void E() {
+      if (this.G != null) {
+         this.G.aI_().clear();
+
+         for (fnc $$0 : this.F.h) {
+            this.G.aI_().add(new fpb.a($$0));
+         }
+      }
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.O);
+      this.F();
    }
 
-   private void a(@Nullable fnu $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new fqe($$0, this.P.a, this.S, this.ae));
+   private void F() {
+      if (this.H) {
+         this.m.a(this.E.g());
+      } else {
+         this.m.a(this.E);
       }
-
-      fly.g();
    }
 
-   private void a(fqb $$0) {
-      List<fqb> $$1 = new ArrayList<>();
-      if (this.ad != null) {
-         $$1.add(this.ad);
+   class a extends fut.a<fpb.a> {
+      private static final xc b = xc.c("mco.configure.world.invites.normal.tooltip");
+      private static final xc c = xc.c("mco.configure.world.invites.ops.tooltip");
+      private static final xc d = xc.c("mco.configure.world.invites.remove.tooltip");
+      private static final alk e = alk.b("player_list/make_operator");
+      private static final alk f = alk.b("player_list/remove_operator");
+      private static final alk g = alk.b("player_list/remove_player");
+      private static final int h = 8;
+      private static final int i = 7;
+      private final fnc j;
+      private final fun k;
+      private final fun l;
+      private final fun m;
+
+      public a(final fnc $$0) {
+         this.j = $$0;
+         int $$1 = fpb.this.F.h.indexOf(this.j);
+         this.l = fvs.a(b, $$1x -> this.a($$1), false)
+            .a(e, 8, 7)
+            .a(16 + fpb.this.p.a(b))
+            .a($$1x -> xb.a(xc.a("mco.invited.player.narration", $$0.a()), (xc)$$1x.get(), xc.a("narration.cycle_button.usage.focused", c)))
+            .a();
+         this.m = fvs.a(c, $$1x -> this.b($$1), false)
+            .a(f, 8, 7)
+            .a(16 + fpb.this.p.a(c))
+            .a($$1x -> xb.a(xc.a("mco.invited.player.narration", $$0.a()), (xc)$$1x.get(), xc.a("narration.cycle_button.usage.focused", b)))
+            .a();
+         this.k = fvs.a(d, $$1x -> this.c($$1), false)
+            .a(g, 8, 7)
+            .a(16 + fpb.this.p.a(d))
+            .a($$1x -> xb.a(xc.a("mco.invited.player.narration", $$0.a()), (xc)$$1x.get()))
+            .a();
+         this.c();
       }
 
-      if (this.b != this.P.p) {
-         $$1.add(new fqi(this.P.a, this.b, () -> {
-         }));
+      private void a(int $$0) {
+         fmf $$1 = fmf.a();
+         UUID $$2 = fpb.this.F.h.get($$0).b();
+
+         try {
+            this.a($$1.b(fpb.this.F.a, $$2));
+         } catch (fob var5) {
+            fpb.a.error("Couldn't op the user", var5);
+         }
+
+         this.c();
+         this.a(this.m);
       }
 
-      $$1.add($$0);
-      this.m.a(new fou(this.O, $$1.toArray(new fqb[0])));
-   }
+      private void b(int $$0) {
+         fmf $$1 = fmf.a();
+         UUID $$2 = fpb.this.F.h.get($$0).b();
 
-   class a extends ful {
-      private static final ali b = ali.b("widget/slot_frame");
-      private static final int c = 60;
-      private static final int d = 2;
-      private static final int u = 56;
-      private final ali v;
+         try {
+            this.a($$1.c(fpb.this.F.a, $$2));
+         } catch (fob var5) {
+            fpb.a.error("Couldn't deop the user", var5);
+         }
 
-      a(final ftv $$0, final xa $$1, final ali $$2, final ful.c $$3) {
-         super(0, 0, 60, 60 + 9, $$1, $$3, q);
-         this.v = $$2;
+         this.c();
+         this.a(this.l);
+      }
+
+      private void c(int $$0) {
+         if ($$0 >= 0 && $$0 < fpb.this.F.h.size()) {
+            fnc $$1 = fpb.this.F.h.get($$0);
+            foq $$2 = new foq($$2x -> {
+               if ($$2x) {
+                  fmf $$3 = fmf.a();
+
+                  try {
+                     $$3.a(fpb.this.F.a, $$1.b());
+                  } catch (fob var6) {
+                     fpb.a.error("Couldn't uninvite user", var6);
+                  }
+
+                  fpb.this.F.h.remove($$0);
+                  fpb.this.E();
+               }
+
+               fpb.this.H = true;
+               fpb.this.m.a(fpb.this);
+            }, fpb.c, xc.a("mco.configure.world.uninvite.player", $$1.a()));
+            fpb.this.m.a($$2);
+         }
+      }
+
+      private void a(fmy $$0) {
+         for (fnc $$1 : fpb.this.F.h) {
+            $$1.a($$0.a.contains($$1.a()));
+         }
+      }
+
+      private void c() {
+         this.l.k = !this.j.c();
+         this.m.k = !this.l.k;
+      }
+
+      private fun g() {
+         return this.l.k ? this.l : this.m;
       }
 
       @Override
-      public void b(ftx $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.D();
-         int $$5 = -1;
-         if ($$4) {
-            $$5 = axy.a(1.0F, 0.56F, 0.56F, 0.56F);
+      public List<? extends fwk> aI_() {
+         return ImmutableList.of(this.g(), this.k);
+      }
+
+      @Override
+      public List<? extends fyi> b() {
+         return ImmutableList.of(this.g(), this.k);
+      }
+
+      @Override
+      public void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.j.d()) {
+            $$10 = -6250336;
+         } else if (this.j.e()) {
+            $$10 = 8388479;
+         } else {
+            $$10 = -1;
          }
 
-         int $$6 = this.F();
-         int $$7 = this.G();
-         $$0.a(gsl::H, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
-         $$0.a(gsl::H, b, $$6, $$7, 60, 60, $$5);
-         int $$8 = $$4 ? -6250336 : -1;
-         $$0.a(fpb.this.p, this.B(), $$6 + 28, $$7 - 14, $$8);
+         int $$13 = $$2 + $$5 / 2 - 16;
+         fpv.a($$0, $$3, $$13, 32, this.j.b());
+         int $$14 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.b(fpb.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10);
+         int $$15 = $$2 + $$5 / 2 - 10;
+         int $$16 = $$3 + $$4 - this.k.A();
+         this.k.c($$16, $$15);
+         this.k.a($$0, $$6, $$7, $$9);
+         int $$17 = $$16 - this.g().A() - 8;
+         this.l.c($$17, $$15);
+         this.l.a($$0, $$6, $$7, $$9);
+         this.m.c($$17, $$15);
+         this.m.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   class b extends fut<fpb.a> {
+      private static final int m = 36;
+
+      public b() {
+         super(frf.Q(), fpb.this.n, fpb.this.D.d(), fpb.this.D.c(), 36, (int)(9.0F * 1.5F));
+      }
+
+      @Override
+      protected void a(ftz $$0, int $$1, int $$2) {
+         String $$3 = fpb.this.F.h != null ? Integer.toString(fpb.this.F.h.size()) : "0";
+         xc $$4 = xc.a("mco.configure.world.invited.number", $$3).a(o.t);
+         $$0.b(fpb.this.p, $$4, $$1 + this.a() / 2 - fpb.this.p.a($$4) / 2, $$2, -1);
+      }
+
+      @Override
+      public int a() {
+         return 300;
       }
    }
 }

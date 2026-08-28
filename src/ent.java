@@ -1,40 +1,19 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class ent extends enq {
-   public static final MapCodec<ent> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, ent::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
+public class ent<P extends ens> {
+   public static final ent<env> a = a("two_layers_feature_size", env.d);
+   public static final ent<enu> b = a("three_layers_feature_size", enu.d);
+   private final MapCodec<P> c;
 
-   public ent(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   private static <P extends ens> ent<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.Y, $$0, new ent<>($$1));
    }
 
-   public ent(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private ent(MapCodec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected enr<?> b() {
-      return enr.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public MapCodec<P> a() {
+      return this.c;
    }
 }

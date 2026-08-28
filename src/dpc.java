@@ -1,95 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class dpc extends dmo {
-   public static final MapCodec<dpc> a = b(dpc::new);
-   public static final ece b = ebu.aW;
-   public static final ebv c = ebu.s;
-   private static final fgk d = dnc.b(16.0, 0.0, 6.0);
+public abstract class dpc extends dne implements dup {
+   public static final ebx a = dsy.b;
+   public static final ebx b = dsy.c;
+   public static final ebx c = dsy.d;
+   public static final ebx d = dsy.e;
+   public static final ebx e = ebw.I;
+   public static final Map<jc, ebx> f = dsy.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ag.a());
+   private final Function<ebg, fgm> g;
+   private final Function<ebg, fgm> h;
 
-   @Override
-   public MapCodec<dpc> a() {
-      return a;
-   }
-
-   public dpc(ebd.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return d;
+   protected dpc(float $$0, float $$1, float $$2, float $$3, float $$4, ebf.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$4, $$2, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
    }
 
    @Override
-   protected boolean g_(ebe $$0) {
-      return true;
-   }
+   protected abstract MapCodec<? extends dpc> a();
 
-   @Override
-   protected int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-      return $$0.c(b);
-   }
+   protected Function<ebg, fgm> a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      fgm $$5 = dne.b((double)$$0, 0.0, (double)$$1);
+      Map<jc, fgm> $$6 = fgj.c(dne.a((double)$$2, (double)$$3, (double)$$4, 0.0, 8.0));
+      return this.a($$2x -> {
+         fgm $$3x = $$5;
 
-   private static void d(ebe $$0, djx $$1, iv $$2) {
-      int $$3 = $$1.a(dkg.a, $$2) - $$1.D_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * azo.b($$4));
-      }
-
-      $$3 = azo.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
-      }
-   }
-
-   @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if (!$$3.gw()) {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         if (!$$1.C) {
-            ebe $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(ege.c, $$2, ege.a.a($$3, $$5));
-            d($$5, $$1, $$2);
+         for (Entry<jc, ebx> $$4x : f.entrySet()) {
+            if ($$2x.c($$4x.getValue())) {
+               $$3x = fgj.a($$3x, $$6.get($$4x.getKey()));
+            }
          }
 
-         return bur.a;
+         return $$3x;
+      }, new ecj[]{e});
+   }
+
+   @Override
+   protected boolean e_(ebg $$0) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return this.h.apply($$0);
+   }
+
+   @Override
+   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return this.g.apply($$0);
+   }
+
+   @Override
+   protected exq b_(ebg $$0) {
+      return $$0.c(e) ? exr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dty $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
+         case d:
+            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
+         case b:
+            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
    @Override
-   protected boolean f_(ebe $$0) {
-      return true;
-   }
-
-   @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dyt($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
-      return !$$0.C && $$0.F_().g() ? a($$2, dye.r, dpc::a) : null;
-   }
-
-   private static void a(djx $$0, iv $$1, ebe $$2, dyt $$3) {
-      if ($$0.ae() % 20L == 0L) {
-         d($$2, $$0, $$1);
+   protected ebg a(ebg $$0, dsh $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
+         case c:
+            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b, c);
    }
 }

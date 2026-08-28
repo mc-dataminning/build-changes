@@ -1,37 +1,36 @@
-public class hrj extends hrm {
-   private final xa a;
-   private fve b = fve.a;
-   private final gad c;
-   private int C;
+import java.util.function.Function;
 
-   public hrj(gad $$0, xa $$1, xa $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public enum hrj {
+   a("movement", hre::new),
+   b("find_tree", hrd::new),
+   c("punch_tree", hrg::new),
+   d("open_inventory", hrf::new),
+   e("craft_planks", hrc::new),
+   f("none", hrb::new);
+
+   private final String g;
+   private final Function<hrh, ? extends hri> h;
+
+   private <T extends hri> hrj(final String $$0, final Function<hrh, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void aS_() {
-      this.m.af().i();
-      this.b = fve.a(this.p, this.a, this.n - 50);
-      this.C = this.b.a() * 9;
-      this.c(ful.a(wz.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.C / 2 + 9, 200, 20).a());
+   public hri a(hrh $$0) {
+      return this.h.apply($$0);
    }
 
-   @Override
-   public xa i() {
-      return xa.i().b(this.l).f(": ").b(this.a);
+   public String a() {
+      return this.g;
    }
 
-   @Override
-   public void aP_() {
-      frd.Q().a(this.c);
-   }
+   public static hrj a(String $$0) {
+      for (hrj $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
+      }
 
-   @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.C / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.C / 2);
+      return f;
    }
 }

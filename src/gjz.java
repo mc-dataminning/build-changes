@@ -1,22 +1,33 @@
-public class gjz extends gia<hep> {
-   public gjz(gle $$0) {
+public class gjz extends gka {
+   protected final glg a;
+
+   public gjz(glg $$0) {
       super($$0);
+      this.a = $$0.b("head");
    }
 
-   public static glk a() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-      $$1.a("cube", glj.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), glg.a);
-      return glk.a($$0, 64, 32);
+   public static glo a() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      $$1.a("head", gll.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gli.a);
+      return $$0;
    }
 
-   public static glk b() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-      $$1.a("cube", glj.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), glg.a);
-      $$1.a("right_eye", glj.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), glg.a);
-      $$1.a("left_eye", glj.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), glg.a);
-      $$1.a("mouth", glj.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), glg.a);
-      return glk.a($$0, 64, 32);
+   public static glm b() {
+      glo $$0 = a();
+      glq $$1 = $$0.a();
+      $$1.b("head").a("hat", gll.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new glk(0.25F)), gli.a);
+      return glm.a($$0, 64, 64);
+   }
+
+   public static glm c() {
+      glo $$0 = a();
+      return glm.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

@@ -1,32 +1,87 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
 public class eid {
-   private long b;
-   private long c;
-   public static final Codec<eid> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ag.a($$0, 2).map($$0x -> new eid($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+   public static final MapCodec<eid> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(eid::c),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(eid::d),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(eid::e),
+               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(eid::new))
+   );
+   public static final eid b = new eid((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public eid(ehs.a $$0) {
-      this($$0.b(), $$0.c());
+   public eid(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   public eid(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+   public static eid a() {
+      return new eid(g(), true, false);
+   }
+
+   public static eid b() {
+      return new eid(g(), false, false);
+   }
+
+   private eid(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public long c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f.isPresent();
+   }
+
+   public eid a(boolean $$0) {
+      return new eid(this.c, this.d, $$0, this.f);
+   }
+
+   public eid b(boolean $$0) {
+      return new eid(this.c, $$0, this.e, this.f);
+   }
+
+   public eid a(OptionalLong $$0) {
+      return new eid($$0.orElse(g()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
+         }
       }
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   public static long g() {
+      return azz.a().g();
    }
 }

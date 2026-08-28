@@ -1,30 +1,37 @@
-public class gjk extends gia<hep> {
-   private final gle a;
-   private final gle b;
+public class gjk extends gic<her> {
+   private final glg a;
+   private final glg b;
 
-   public gjk(gle $$0) {
+   public gjk(glg $$0) {
       super($$0);
-      this.a = $$0.b("left_fin");
-      this.b = $$0.b("right_fin");
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static glk a() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", glj.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), glg.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", glj.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), glg.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", glj.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), glg.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", glj.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), glg.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", glj.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), glg.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", glj.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), glg.a(1.5F, 22.0F, -1.5F));
-      return glk.a($$0, 32, 32);
+   public static glm a() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gll.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gli.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gll.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gli.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", gll.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gli.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", gll.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", gll.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gli.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", gll.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gll.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gll.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", gll.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", gll.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", gll.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", gll.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gll.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return glm.a($$0, 32, 32);
    }
 
    @Override
-   public void a(hep $$0) {
+   public void a(her $$0) {
       super.a($$0);
-      this.b.g = -0.2F + 0.4F * azo.a($$0.u * 0.2F);
-      this.a.g = 0.2F - 0.4F * azo.a($$0.u * 0.2F);
+      this.b.g = -0.2F + 0.4F * azq.a($$0.u * 0.2F);
+      this.a.g = 0.2F - 0.4F * azq.a($$0.u * 0.2F);
    }
 }

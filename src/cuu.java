@@ -1,109 +1,91 @@
-public class cuu extends cuk {
-   static final akl<String> b = akp.a(cuu.class, akn.e);
-   static final akl<xa> c = akp.a(cuu.class, akn.f);
-   private final diw d = new cuu.a();
-   private static final int h = 4;
-   private int i;
+public abstract class cuu {
+   protected final cum a;
 
-   public cuu(bxc<? extends cuu> $$0, djx $$1) {
-      super($$0, $$1);
+   protected cuu(cum $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected czu o() {
-      return dac.ov;
+   public bxr a() {
+      return null;
    }
 
-   @Override
-   public czy dI() {
-      return new czy(dac.vX);
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(akp.a $$0) {
-      super.a($$0);
-      $$0.a(b, "");
-      $$0.a(c, wz.a);
+   public abstract void b();
+
+   public djz c() {
+      return this.a.dV();
    }
 
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      this.d.b($$0, this.dX());
-      this.ar().a(b, this.q().m());
-      this.ar().a(c, this.q().l());
+   public abstract void a(aru var1);
+
+   public abstract double a(iw var1, eck var2, double var3);
+
+   public abstract boolean d();
+
+   public ffs e() {
+      return this.a.dy();
    }
 
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      this.d.a($$0, this.dX());
+   public void a(ffs $$0) {
+      this.a.i($$0);
    }
 
-   @Override
-   public ebe v() {
-      return dne.gm.m();
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
    }
 
-   public diw q() {
-      return this.d;
+   public ffs f() {
+      return this.a.dt();
    }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.af - this.i >= 4) {
-         this.q().a(this.dV());
-         this.i = this.af;
-      }
+   public double g() {
+      return this.a.dA();
    }
 
-   @Override
-   public bur a(crx $$0, buq $$1) {
-      return this.d.a($$0);
+   public double h() {
+      return this.a.dC();
    }
 
-   @Override
-   public void a(akl<?> $$0) {
-      super.a($$0);
-      if (c.equals($$0)) {
-         try {
-            this.d.c(this.ar().a(c));
-         } catch (Throwable var3) {
-         }
-      } else if (b.equals($$0)) {
-         this.d.a(this.ar().a(b));
-      }
+   public double i() {
+      return this.a.dG();
    }
 
-   public class a extends diw {
-      @Override
-      public ars e() {
-         return (ars)cuu.this.dV();
-      }
-
-      @Override
-      public void f() {
-         cuu.this.ar().a(cuu.b, this.m());
-         cuu.this.ar().a(cuu.c, this.l());
-      }
-
-      @Override
-      public ffq g() {
-         return cuu.this.dt();
-      }
-
-      public cuu h() {
-         return cuu.this;
-      }
-
-      @Override
-      public ej i() {
-         return new ej(this, cuu.this.dt(), cuu.this.bT(), this.e(), 2, this.n().getString(), cuu.this.m_(), this.e().p(), cuu.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cuu.this.dQ();
-      }
+   public void b(ffs $$0) {
+      this.a.b($$0);
    }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
+   }
+
+   public float j() {
+      return this.a.dN();
+   }
+
+   public void a(float $$0) {
+      this.a.x($$0);
+   }
+
+   public float k() {
+      return this.a.dL();
+   }
+
+   public void b(float $$0) {
+      this.a.w($$0);
+   }
+
+   public jc l() {
+      return this.a.cO();
+   }
+
+   public ffs c(ffs $$0) {
+      return $$0;
+   }
+
+   public abstract double b(aru var1);
+
+   public abstract double m();
 }

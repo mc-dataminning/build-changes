@@ -1,152 +1,154 @@
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class ckn extends cjh implements byk, cpd {
-   private static final akl<Byte> a = akp.a(ckn.class, akn.a);
-   private static final byte b = 16;
-   private static final boolean c = true;
+public class ckn extends cjk {
+   private static final String a = "type";
+   private static final akn<Integer> b = akr.a(ckn.class, akp.b);
 
-   public ckn(bxc<? extends ckn> $$0, djx $$1) {
+   public ckn(bxe<? extends ckn> $$0, djz $$1) {
       super($$0, $$1);
+      this.i_();
    }
 
    @Override
-   protected void D() {
-      this.bF.a(1, new cfp(this, 1.25, 20, 10.0F));
-      this.bF.a(2, new cgd(this, 1.0, 1.0000001E-5F));
-      this.bF.a(3, new cey(this, crx.class, 6.0F));
-      this.bF.a(4, new cfl(this));
-      this.bG.a(1, new cgj<>(this, bxw.class, 10, true, false, ($$0, $$1) -> $$0 instanceof cor));
-   }
-
-   public static byz.a j() {
-      return bxw.E().a(bza.s, 4.0).a(bza.v, 0.2F);
+   public int x() {
+      return 5;
    }
 
    @Override
-   protected void a(akp.a $$0) {
+   public daa W_() {
+      return new daa(dae.rw);
+   }
+
+   @Override
+   protected awq u() {
+      return awr.wt;
+   }
+
+   @Override
+   protected awq l_() {
+      return awr.wu;
+   }
+
+   @Override
+   protected awq e(bvk $$0) {
+      return awr.ww;
+   }
+
+   @Override
+   protected awq t() {
+      return awr.wv;
+   }
+
+   @Override
+   protected void a(akr.a $$0) {
       super.a($$0);
-      $$0.a(a, (byte)16);
+      $$0.a(b, ckn.a.d.a());
    }
 
    @Override
-   public void b(tz $$0) {
+   public void a(akn<?> $$0) {
+      super.a($$0);
+      if (b.equals($$0)) {
+         this.i_();
+      }
+   }
+
+   @Override
+   public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Pumpkin", this.m());
+      $$0.a("type", ckn.a.e, this.gA());
    }
 
    @Override
-   public void a(tz $$0) {
+   public void a(ua $$0) {
       super.a($$0);
-      this.w($$0.b("Pumpkin", true));
+      this.a($$0.<ckn.a>a("type", ckn.a.e).orElse(ckn.a.d));
    }
 
    @Override
-   public boolean fr() {
-      return true;
+   public void a_(daa $$0) {
+      cjo.a(this, $$0);
+      $$0.a(kl.aA, this);
+   }
+
+   private void a(ckn.a $$0) {
+      this.al.a(b, $$0.i);
+   }
+
+   public ckn.a gA() {
+      return ckn.a.g.apply(this.al.a(b));
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(kk<? extends T> $$0) {
+      return $$0 == kl.aA ? c((kk<T>)$$0, this.gA()) : super.a($$0);
    }
 
    @Override
-   public void k_() {
-      super.k_();
-      if (this.dV() instanceof ars $$0) {
-         if (this.dV().u(this.dv()).a(axd.ae)) {
-            this.a($$0, this.dW().d(), 1.0F);
-         }
-
-         if (!$$0.O().c(djt.d)) {
-            return;
-         }
-
-         ebe $$1 = dne.ed.m();
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            int $$3 = azo.a(this.dA() + (double)((float)($$2 % 2 * 2 - 1) * 0.25F));
-            int $$4 = azo.a(this.dC());
-            int $$5 = azo.a(this.dG() + (double)((float)($$2 / 2 % 2 * 2 - 1) * 0.25F));
-            iv $$6 = new iv($$3, $$4, $$5);
-            if (this.dV().a_($$6).l() && $$1.a((dka)this.dV(), $$6)) {
-               this.dV().b($$6, $$1);
-               this.dV().a(ege.i, $$6, ege.a.a(this, $$1));
-            }
-         }
-      }
+   protected void a(kg $$0) {
+      this.a($$0, kl.aA);
+      super.a($$0);
    }
 
    @Override
-   public void a(bxu $$0, float $$1) {
-      double $$2 = $$0.dA() - this.dA();
-      double $$3 = $$0.dE() - 1.1F;
-      double $$4 = $$0.dG() - this.dG();
-      double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4) * 0.2F;
-      if (this.dV() instanceof ars $$6) {
-         czy $$7 = new czy(dac.rs);
-         css.a(new csx($$6, this, $$7), $$6, $$7, $$4x -> $$4x.c($$2, $$3 + $$5 - $$4x.dC(), $$4, 1.6F, 12.0F));
-      }
-
-      this.a(awp.zK, 1.0F, 0.4F / (this.dY().i() * 0.4F + 0.8F));
-   }
-
-   @Override
-   protected bur b(crx $$0, buq $$1) {
-      czy $$2 = $$0.b($$1);
-      if ($$2.a(dac.td) && this.a()) {
-         if (this.dV() instanceof ars $$3) {
-            this.a($$3, awq.h, $$2);
-            this.a(ege.M, $$0);
-            $$2.a(1, $$0, d($$1));
-         }
-
-         return bur.a;
+   protected <T> boolean b(kk<T> $$0, T $$1) {
+      if ($$0 == kl.aA) {
+         this.a(c(kl.aA, $$1));
+         return true;
       } else {
-         return bur.e;
-      }
-   }
-
-   @Override
-   public void a(ars $$0, awq $$1, czy $$2) {
-      $$0.a(null, this, awp.zL, $$1, 1.0F, 1.0F);
-      this.w(false);
-      this.a($$0, fad.aU, $$2, ($$0x, $$1x) -> this.a($$0x, $$1x, this.cS()));
-   }
-
-   @Override
-   public boolean a() {
-      return this.bJ() && this.m();
-   }
-
-   public boolean m() {
-      return (this.al.a(a) & 16) != 0;
-   }
-
-   public void w(boolean $$0) {
-      byte $$1 = this.al.a(a);
-      if ($$0) {
-         this.al.a(a, (byte)($$1 | 16));
-      } else {
-         this.al.a(a, (byte)($$1 & -17));
+         return super.b($$0, $$1);
       }
    }
 
    @Nullable
    @Override
-   protected awo u() {
-      return awp.zH;
+   public byo a(dkq $$0, bur $$1, bxd $$2, @Nullable byo $$3) {
+      btd.a<ckn.a> $$4 = btd.b();
+      $$4.a(ckn.a.a, 30);
+      $$4.a(ckn.a.b, 50);
+      $$4.a(ckn.a.c, 15);
+      $$4.a().a(this.ae).ifPresent(this::a);
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   @Nullable
-   @Override
-   protected awo e(bvi $$0) {
-      return awp.zJ;
-   }
-
-   @Nullable
-   @Override
-   protected awo l_() {
-      return awp.zI;
+   public float gB() {
+      return this.gA().j;
    }
 
    @Override
-   public ffq cT() {
-      return new ffq(0.0, (double)(0.75F * this.cS()), (double)(this.dq() * 0.4F));
+   protected bwy e(byi $$0) {
+      return super.e($$0).a(this.gB());
+   }
+
+   public static enum a implements bao {
+      a("small", 0, 0.5F),
+      b("medium", 1, 1.0F),
+      c("large", 2, 1.5F);
+
+      public static final ckn.a d = b;
+      public static final bao.a<ckn.a> e = bao.a(ckn.a::values);
+      static final IntFunction<ckn.a> g = ayg.a(ckn.a::a, values(), ayg.a.c);
+      public static final za<ByteBuf, ckn.a> f = yy.a(g, ckn.a::a);
+      private final String h;
+      final int i;
+      final float j;
+
+      private a(final String $$0, final int $$1, final float $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+
+      int a() {
+         return this.i;
+      }
    }
 }

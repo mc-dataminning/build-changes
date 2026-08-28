@@ -1,19 +1,14 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dtb {
-   default int a(ars $$0, bwt $$1) {
-      return 0;
+public class dtb extends dww {
+   public static final MapCodec<dtb> b = b(dtb::new);
+
+   @Override
+   public MapCodec<dtb> a() {
+      return b;
    }
 
-   @Nullable
-   eyo a(ars var1, bwt var2, iv var3);
-
-   default dtb.a b() {
-      return dtb.a.b;
-   }
-
-   public static enum a {
-      a,
-      b;
+   protected dtb(ebf.d $$0) {
+      super(duq.b.e, $$0);
    }
 }

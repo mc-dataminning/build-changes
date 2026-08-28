@@ -1,75 +1,132 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
 import java.util.Map;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dre extends dnc {
+public class dre extends dmq {
    public static final MapCodec<dre> a = b(dre::new);
-   public static final ebv b = dsw.b;
-   public static final ebv c = dsw.c;
-   public static final ebv d = dsw.d;
-   public static final ebv e = dsw.e;
-   public static final ebv f = dsw.f;
-   public static final ebv g = dsw.g;
-   private static final Map<jb, ebv> h = dsw.h;
+   public static final ece<jc> b = ebw.S;
+   public static final ebx c = ebw.i;
+   private final Function<ebg, fgm> d;
+   private final Map<jc, fgm> e;
 
    @Override
    public MapCodec<dre> a() {
       return a;
    }
 
-   public dre(ebd.d $$0) {
+   public dre(ebf.d $$0) {
       super($$0);
-      this.l(
-         this.C
-            .b()
-            .b(b, Boolean.valueOf(true))
-            .b(c, Boolean.valueOf(true))
-            .b(d, Boolean.valueOf(true))
-            .b(e, Boolean.valueOf(true))
-            .b(f, Boolean.valueOf(true))
-            .b(g, Boolean.valueOf(true))
-      );
+      this.l(this.C.b().b(b, jc.a).b(c, Boolean.valueOf(true)));
+      fgm $$1 = dne.b(12.0, 11.0, 16.0);
+      this.d = this.b($$1);
+      this.e = ImmutableMap.builderWithExpectedSize(5).putAll(fgj.c(fgj.a($$1, dne.a(4.0, 8.0, 10.0, 0.0, 4.0)))).put(jc.a, $$1).build();
+   }
+
+   private Function<ebg, fgm> b(fgm $$0) {
+      fgm $$1 = fgj.a(dne.b(16.0, 10.0, 16.0), dne.b(8.0, 4.0, 10.0));
+      fgm $$2 = fgj.a($$1, $$0, ffw.e);
+      Map<jc, fgm> $$3 = fgj.d(dne.a(4.0, 4.0, 8.0, 0.0, 8.0), new ffs(8.0, 6.0, 8.0).c(0.0625));
+      return this.a($$2x -> fgj.a($$2, fgj.a($$3.get($$2x.c(b)), fgj.b(), ffw.i)), new ecj[]{c});
    }
 
    @Override
-   public ebe a(ddr $$0) {
-      djb $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      return this.m()
-         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
-         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
-         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return this.d.apply($$0);
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected fgm a(ebg $$0, djd $$1, iw $$2) {
+      return this.e.get($$0.c(b));
    }
 
    @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return $$0.b(h.get($$1.a(jb.c)), $$0.c(b))
-         .b(h.get($$1.a(jb.d)), $$0.c(d))
-         .b(h.get($$1.a(jb.f)), $$0.c(c))
-         .b(h.get($$1.a(jb.e)), $$0.c(e))
-         .b(h.get($$1.a(jb.b)), $$0.c(f))
-         .b(h.get($$1.a(jb.a)), $$0.c(g));
+   public ebg a(ddt $$0) {
+      jc $$1 = $$0.k().g();
+      return this.m().b(b, $$1.o() == jc.a.b ? jc.a : $$1).b(c, Boolean.valueOf(true));
    }
 
    @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      return $$0.b(h.get($$1.b(jb.c)), $$0.c(b))
-         .b(h.get($$1.b(jb.d)), $$0.c(d))
-         .b(h.get($$1.b(jb.f)), $$0.c(c))
-         .b(h.get($$1.b(jb.e)), $$0.c(e))
-         .b(h.get($$1.b(jb.b)), $$0.c(f))
-         .b(h.get($$1.b(jb.a)), $$0.c(g));
+   public dye a(iw $$0, ebg $$1) {
+      return new dzh($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
+      return $$0.C ? null : a($$2, dyg.s, dzh::a);
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   protected void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dzh $$5) {
+         $$3.a($$5);
+         $$3.a(axb.ad);
+      }
+
+      return but.a;
+   }
+
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3, @Nullable eyy $$4, boolean $$5) {
+      this.a($$1, $$2, $$0);
+   }
+
+   private void a(djz $$0, iw $$1, ebg $$2) {
+      boolean $$3 = !$$0.D($$1);
+      if ($$3 != $$2.c(c)) {
+         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
+      }
+   }
+
+   @Override
+   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
+      bup.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean c_(ebg $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(ebg $$0, djz $$1, iw $$2) {
+      return cvs.a($$1.c_($$2));
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, bwv $$3, bxo $$4) {
+      dye $$5 = $$1.c_($$2);
+      if ($$5 instanceof dzh) {
+         dzh.a($$1, $$2, $$0, $$3, (dzh)$$5);
+      }
+   }
+
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
    }
 }

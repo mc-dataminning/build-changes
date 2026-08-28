@@ -1,20 +1,29 @@
-public record ahk(bpd b) implements zh<agr> {
-   public static final yy<vw, ahk> a = zh.a(ahk::a, ahk::new);
+public class ahk implements zj<agt> {
+   public static final za<vy, ahk> a = zj.a(ahk::a, ahk::new);
+   private final int b;
 
-   private ahk(vw $$0) {
-      this($$0.b(bpd.class));
+   public ahk(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private ahk(vy $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(vy $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public zj<ahk> a() {
-      return agp.bC;
+   public zl<ahk> a() {
+      return agr.bA;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

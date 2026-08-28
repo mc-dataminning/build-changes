@@ -1,53 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record emf(List<emf.a> b, jb c, eik d, boolean e) implements emp {
-   public static final Codec<emf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               emf.a.a.listOf().fieldOf("layers").forGetter(emf::a),
-               jb.g.fieldOf("direction").forGetter(emf::b),
-               eik.b.fieldOf("allowed_placement").forGetter(emf::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(emf::d)
-            )
-            .apply($$0, emf::new)
-   );
+public class emf extends ekm<emy> {
+   private static final jc[] a = jc.values();
 
-   public static emf.a a(btw $$0, eoq $$1) {
-      return new emf.a($$0, $$1);
+   public emf(Codec<emy> $$0) {
+      super($$0);
    }
 
-   public static emf b(btw $$0, eoq $$1) {
-      return new emf(List.of(a($$0, $$1)), jb.b, eik.c, false);
-   }
-
-   public List<emf.a> a() {
-      return this.b;
-   }
-
-   public jb b() {
-      return this.c;
-   }
-
-   public eik c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(btw b, eoq c) {
-      public static final Codec<emf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(btw.d.fieldOf("height").forGetter(emf.a::a), eoq.a.fieldOf("provider").forGetter(emf.a::b)).apply($$0, emf.a::new)
-      );
-
-      public btw a() {
-         return this.b;
+   @Override
+   public boolean a(eko<emy> $$0) {
+      dky $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      azz $$3 = $$0.d();
+      if (!$$1.v($$2)) {
+         return false;
+      } else {
+         ebg $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dng.em) && !$$4.a(dng.lq)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
       }
+   }
 
-      public eoq b() {
-         return this.c;
+   private void a(dka $$0, azz $$1, iw $$2) {
+      $$0.a($$2, dng.lq.m(), 2);
+      iw.a $$3 = new iw.a();
+      iw.a $$4 = new iw.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.v($$3)) {
+            int $$6 = 0;
+
+            for (jc $$7 : a) {
+               ebg $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dng.em) || $$8.a(dng.lq)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dng.lq.m(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(dka $$0, azz $$1, iw $$2) {
+      iw.a $$3 = new iw.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.v($$3)) {
+            ebg $$5 = $$0.a_($$3.d());
+            if ($$5.a(dng.em) || $$5.a(dng.lq)) {
+               int $$6 = azq.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(dka $$0, azz $$1, iw.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.v($$2)) {
+            if ($$6 == $$3 || !$$0.v($$2.e())) {
+               $$0.a($$2, dng.pf.m().b(dqx.e, Integer.valueOf(azq.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dng.pg.m(), 2);
+         }
+
+         $$2.c(jc.a);
       }
    }
 }

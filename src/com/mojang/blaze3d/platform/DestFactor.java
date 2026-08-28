@@ -1,6 +1,6 @@
 package com.mojang.blaze3d.platform;
 
-@fhq
+@fhs
 public enum DestFactor {
    CONSTANT_ALPHA,
    CONSTANT_COLOR,

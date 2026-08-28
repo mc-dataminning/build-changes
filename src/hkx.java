@@ -1,225 +1,144 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class hkx<T extends hkx.a> {
-   private static final Comparator<hkx.b<?>> a = Comparator.<hkx.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<hkx.b<T>> c = new ArrayList<>();
-   private final List<hkx.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public class hkx {
+   public static final Set<aug<?>> a = Set.of(hmp.b);
+   private static final Logger b = LogUtils.getLogger();
+   private final alk c;
+   private final int d;
+   private final int e;
+   private final int f;
 
-   public hkx(int $$0, int $$1, int $$2) {
-      this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
+   public hkx(alk $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public int a() {
-      return this.e;
+   public static hkx a(hlb $$0) {
+      return new hkx($$0.e(), $$0.f(), $$0.g(), $$0.h());
    }
 
-   public int b() {
-      return this.f;
-   }
+   public hkx.a a(List<hkw> $$0, int $$1, Executor $$2) {
+      hkx.a var17;
+      try (bri $$3 = brc.a().c(() -> "stitch " + this.c)) {
+         int $$4 = this.d;
+         hkz<hkw> $$5 = new hkz<>($$4, $$4, $$1);
+         int $$6 = Integer.MAX_VALUE;
+         int $$7 = 1 << $$1;
 
-   public void a(T $$0) {
-      hkx.b<T> $$1 = new hkx.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<hkx.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (hkx.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new hky($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
-      }
-   }
-
-   public void a(hkx.d<T> $$0) {
-      for (hkx.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
-   }
-
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(hkx.b<T> $$0) {
-      for (hkx.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return this.b($$0);
-   }
-
-   private boolean b(hkx.b<T> $$0) {
-      int $$1 = azo.c(this.e);
-      int $$2 = azo.c(this.f);
-      int $$3 = azo.c(this.e + $$0.b);
-      int $$4 = azo.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
-      } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
-         }
-
-         hkx.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
+         for (hkw $$8 : $$0) {
+            $$6 = Math.min($$6, Math.min($$8.a(), $$8.b()));
+            int $$9 = Math.min(Integer.lowestOneBit($$8.a()), Integer.lowestOneBit($$8.b()));
+            if ($$9 < $$7) {
+               b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$8.c(), $$8.a(), $$8.b(), azq.f($$7), azq.f($$9)});
+               $$7 = $$9;
             }
 
-            $$11 = new hkx.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new hkx.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
+            $$5.a($$8);
          }
 
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
+         int $$10 = Math.min($$6, $$7);
+         int $$11 = azq.f($$10);
+         int $$12;
+         if ($$11 < $$1) {
+            b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$11, $$10});
+            $$12 = $$11;
+         } else {
+            $$12 = $$1;
+         }
+
+         try {
+            $$5.c();
+         } catch (hla var19) {
+            p $$15 = p.a(var19, "Stitching");
+            q $$16 = $$15.a("Stitcher");
+            $$16.a(
+               "Sprites",
+               var19.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
+            );
+            $$16.a("Max Texture Size", $$4);
+            throw new aa($$15);
+         }
+
+         int $$17 = Math.max($$5.a(), this.e);
+         int $$18 = Math.max($$5.b(), this.f);
+         Map<alk, hlc> $$19 = this.a($$5, $$17, $$18);
+         hlc $$20 = $$19.get(hkr.c());
+         CompletableFuture<Void> $$21;
+         if ($$12 > 0) {
+            $$21 = CompletableFuture.runAsync(() -> $$19.values().forEach($$1xx -> $$1xx.e().a($$12)), $$2);
+         } else {
+            $$21 = CompletableFuture.completedFuture(null);
+         }
+
+         var17 = new hkx.a($$17, $$18, $$12, $$20, $$19, $$21);
       }
+
+      return var17;
    }
 
-   public interface a {
-      int a();
-
-      int b();
-
-      ali c();
+   public static CompletableFuture<List<hkw>> a(hlg $$0, List<Function<hlg, hkw>> $$1, Executor $$2) {
+      List<CompletableFuture<hkw>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (hkw)$$2x.apply($$0), $$2)).toList();
+      return ag.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
    }
 
-   static record b<T extends hkx.a>(T a, int b, int c) {
-
-      public b(T $$0, int $$1) {
-         this($$0, hkx.a($$0.a(), $$1), hkx.a($$0.b(), $$1));
-      }
+   public CompletableFuture<hkx.a> a(avh $$0, alk $$1, int $$2, Executor $$3) {
+      return this.a($$0, $$1, $$2, $$3, a);
    }
 
-   public static class c<T extends hkx.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private List<hkx.c<T>> e;
-      @Nullable
-      private hkx.b<T> f;
+   public CompletableFuture<hkx.a> a(avh $$0, alk $$1, int $$2, Executor $$3, Collection<aug<?>> $$4) {
+      hlg $$5 = hlg.create($$4);
+      return CompletableFuture.<List<Function<hlg, hkw>>>supplyAsync(() -> hli.a($$0, $$1).a($$0), $$3)
+         .thenCompose($$2x -> a($$5, $$2x, $$3))
+         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   }
 
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   private Map<alk, hlc> a(hkz<hkw> $$0, int $$1, int $$2) {
+      Map<alk, hlc> $$3 = new HashMap<>();
+      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new hlc(this.c, $$3x, $$1, $$2, $$4, $$5)));
+      return $$3;
+   }
 
-      public int a() {
-         return this.a;
+   public static record a(int a, int b, int c, hlc d, Map<alk, hlc> e, CompletableFuture<Void> f) {
+      public CompletableFuture<hkx.a> a() {
+         return this.f.thenApply($$0 -> this);
       }
 
       public int b() {
+         return this.a;
+      }
+
+      public int c() {
          return this.b;
       }
 
-      public boolean a(hkx.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new hkx.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new hkx.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new hkx.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new hkx.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new hkx.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new hkx.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new hkx.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
-
-                  for (hkx.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
-            } else {
-               return false;
-            }
-         }
+      public int d() {
+         return this.c;
       }
 
-      public void a(hkx.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (hkx.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
+      public hlc e() {
+         return this.d;
       }
 
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
+      public Map<alk, hlc> f() {
+         return this.e;
       }
-   }
 
-   public interface d<T extends hkx.a> {
-      void load(T var1, int var2, int var3);
+      public CompletableFuture<Void> g() {
+         return this.f;
+      }
    }
 }

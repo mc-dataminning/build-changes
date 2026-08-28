@@ -1,146 +1,54 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Comparator;
+import com.mojang.datafixers.kinds.App;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
 
-public class cba<E extends byc> extends bzl<E> {
-   public static final int c = 160;
-   private final ToIntFunction<E> d;
-   private final int e;
-   private final int f;
-   private final float g;
-   private final cij h;
-   private final int i;
-   private final Function<E, awo> j;
-   private Optional<Long> k = Optional.empty();
-   private Optional<cba.a> l = Optional.empty();
-
-   public cba(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, cij $$4, int $$5, Function<E, awo> $$6) {
-      super(ImmutableMap.of(cgw.o, cgx.c, cgw.W, cgx.b, cgw.h, cgx.a, cgw.X, cgx.b), 160);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class cba {
+   public static bzo<crl> a() {
+      return cda.a(
+         (Function<cda.b<crl>, ? extends App<cda.c<crl>, cdd<crl>>>)($$0 -> $$0.group($$0.b(cgy.c), $$0.b(cgy.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jf $$6 = $$0.b($$1);
+                        $$3.A()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bxw>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof crl && $$1xxx != $$4)
+                                    .map($$0xxxx -> (crl)$$0xxxx)
+                                    .filter(bxw::bJ)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, cba::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
    }
 
-   protected void a(ars $$0, byc $$1, long $$2) {
-      byu<?> $$3 = $$1.ec();
-      $$3.c(cgw.h).flatMap($$2x -> $$2x.a($$2xx -> this.h.a($$0, $$1, $$2xx))).ifPresent($$1x -> this.b($$1, $$1x));
-   }
-
-   protected void b(ars $$0, E $$1, long $$2) {
-      byu<?> $$3 = $$1.ec();
-      if (!$$3.a(cgw.X)) {
-         $$0.a($$1, (byte)59);
-         $$3.a(cgw.W, this.d.applyAsInt($$1));
-      }
-   }
-
-   protected boolean c(ars $$0, byc $$1, long $$2) {
-      return this.l.isPresent() && this.l.get().c().bJ();
-   }
-
-   protected void d(ars $$0, E $$1, long $$2) {
-      if (!this.l.isEmpty()) {
-         $$1.ec().a(cgw.n, new cgz(this.l.get().a(), this.g, 0));
-         $$1.ec().a(cgw.o, new bzw(this.l.get().c(), true));
-         boolean $$3 = !this.l.get().c().dv().equals(this.l.get().b());
-         if ($$3) {
-            $$0.a($$1, (byte)59);
-            $$1.O().m();
-            this.b($$1, this.l.get().c);
-         } else {
-            iv $$4 = $$1.dv();
-            if ($$4.equals(this.l.get().a())) {
-               $$0.a($$1, (byte)58);
-               if (this.k.isEmpty()) {
-                  this.k = Optional.of($$2);
-               }
-
-               if ($$2 - this.k.get() >= (long)this.i) {
-                  $$1.ec().a(cgw.X, this.a($$4, this.l.get().b()));
-                  $$0.a(null, $$1, this.j.apply($$1), awq.g, 1.0F, $$1.ff());
-                  this.l = Optional.empty();
-               }
-            }
-         }
-      }
-   }
-
-   private ffq a(iv $$0, iv $$1) {
-      double $$2 = 0.5;
-      double $$3 = 0.5 * (double)azo.j((double)($$1.u() - $$0.u()));
-      double $$4 = 0.5 * (double)azo.j((double)($$1.w() - $$0.w()));
-      return ffq.c($$1).b($$3, 0.0, $$4);
-   }
-
-   private Optional<iv> a(byc $$0, bxu $$1) {
-      iv $$2 = $$1.dv();
-      if (!this.a($$0, $$2)) {
-         return Optional.empty();
+   private static crl a(crl $$0, crl $$1) {
+      crl $$2;
+      crl $$3;
+      if ($$0.t() > $$1.t()) {
+         $$2 = $$0;
+         $$3 = $$1;
       } else {
-         List<iv> $$3 = Lists.newArrayList();
-         iv.a $$4 = $$2.k();
-
-         for (jb $$5 : jb.c.a) {
-            $$4.g($$2);
-
-            for (int $$6 = 0; $$6 < this.f; $$6++) {
-               if (!this.a($$0, $$4.c($$5))) {
-                  $$4.c($$5.g());
-                  break;
-               }
-            }
-
-            if ($$4.k($$2) >= this.e) {
-               $$3.add($$4.j());
-            }
-         }
-
-         che $$7 = $$0.O();
-         return $$3.stream().sorted(Comparator.comparingDouble($$0.dv()::j)).filter($$1x -> {
-            eyc $$2x = $$7.a($$1x, 0);
-            return $$2x != null && $$2x.j();
-         }).findFirst();
+         $$2 = $$1;
+         $$3 = $$0;
       }
+
+      $$3.ec().b(cgy.c);
+      return $$2;
    }
 
-   private boolean a(byc $$0, iv $$1) {
-      return $$0.O().a($$1) && $$0.a(eyk.b($$0, $$1)) == 0.0F;
+   private static boolean a(jf $$0, jg<cjb> $$1, crl $$2) {
+      Optional<jf> $$3 = $$2.ec().c(cgy.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gC().b());
    }
 
-   private void b(byc $$0, bxu $$1) {
-      this.k = Optional.empty();
-      this.l = this.a($$0, $$1).map($$1x -> new cba.a($$1x, $$1.dv(), $$1));
-   }
-
-   public static class a {
-      private final iv a;
-      private final iv b;
-      final bxu c;
-
-      public a(iv $$0, iv $$1, bxu $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public iv a() {
-         return this.a;
-      }
-
-      public iv b() {
-         return this.b;
-      }
-
-      public bxu c() {
-         return this.c;
-      }
+   private static boolean a(jg<cjb> $$0, jg<cro> $$1) {
+      return $$1.a().b().test($$0);
    }
 }

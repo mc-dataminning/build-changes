@@ -1,32 +1,26 @@
-import java.util.function.Function;
+public class hcz extends hcy<hgj, gjt> {
+   private static final alk a = alk.b("textures/entity/sheep/sheep_wool.png");
+   private final gic<hgj> b;
+   private final gic<hgj> c;
 
-public class hcz<S extends hfp, RM extends gia<? super S>, EM extends gia<? super S>> extends hcw<S, RM> {
-   private final hch a;
-   private final hng.d b;
-   private final Function<S, czy> c;
-   private final EM d;
-   private final EM e;
-
-   public hcz(haf<S, RM> $$0, hch $$1, hng.d $$2, Function<S, czy> $$3, EM $$4, EM $$5) {
+   public hcz(hah<hgj, gjt> $$0, glc $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+      this.b = new gjs($$1.a(glf.cQ));
+      this.c = new gjs($$1.a(glf.cP));
    }
 
-   public hcz(haf<S, RM> $$0, hch $$1, EM $$2, hng.d $$3, Function<S, czy> $$4) {
-      this($$0, $$1, $$3, $$4, $$2, $$2);
-   }
-
-   public void a(flo $$0, gsa $$1, int $$2, S $$3, float $$4, float $$5) {
-      czy $$6 = this.c.apply($$3);
-      dih $$7 = $$6.a(kk.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         EM $$8 = $$3.aj ? this.e : this.d;
-         $$8.a($$3);
-         this.a.a(this.b, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
+   public void a(flq $$0, gsc $$1, int $$2, hgj $$3, float $$4, float $$5) {
+      if (!$$3.c) {
+         gic<hgj> $$6 = $$3.aj ? this.c : this.b;
+         if ($$3.z) {
+            if ($$3.ao) {
+               $$6.a($$3);
+               flt $$7 = $$1.getBuffer(gsn.s(a));
+               $$6.a($$0, $$7, $$2, gzl.a($$3, 0.0F), -16777216);
+            }
+         } else {
+            a($$6, a, $$0, $$1, $$2, $$3, $$3.a());
+         }
       }
    }
 }

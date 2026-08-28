@@ -1,143 +1,126 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dpx extends dqi {
-   public static final MapCodec<dpx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("open").forGetter($$0x -> $$0x.f.c), t()).apply($$0, dpx::new)
-   );
-   private static final int d = 3;
-   private static final int e = 2;
-   private final dpx.a f;
+public class dpx extends dly<dzc> implements dup {
+   public static final MapCodec<dpx> b = b(dpx::new);
+   public static final ece<jc> c = drf.e;
+   public static final ebx d = ebw.I;
+   private static final fgm e = dne.b(14.0, 0.0, 14.0);
+   private static final xc f = xc.c("container.enderchest");
 
    @Override
-   public MapCodec<? extends dpx> a() {
-      return a;
+   public MapCodec<dpx> a() {
+      return b;
    }
 
-   public dpx(dpx.a $$0, ebd.d $$1) {
-      super($$0.d, $$0.e, $$1);
-      this.f = $$0;
-   }
-
-   public dpx(boolean $$0, ebd.d $$1) {
-      super(dpx.a.a($$0).d, dpx.a.a($$0).e, $$1);
-      this.f = dpx.a.a($$0);
+   protected dpx(ebf.d $$0) {
+      super($$0, () -> dyg.d);
+      this.l(this.C.b().b(c, jc.c).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      if (this.f.d() && $$3.a(700) == 0) {
-         ebe $$4 = $$1.a_($$2.e());
-         if ($$4.a(dne.ue)) {
-            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awp.jk, awq.i, 1.0F, 1.0F, false);
-         }
-      }
+   public dpm.c<? extends dym> a(ebg $$0, djz $$1, iw $$2, boolean $$3) {
+      return dpm.b::b;
    }
 
    @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if (this.c($$0, $$1, $$2, $$3)) {
-         $$1.a(null, $$2, this.f.c().f, awq.e, 1.0F, 1.0F);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return e;
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if (this.c($$0, $$1, $$2, $$3)) {
-         $$1.a(null, $$2, this.f.c().g, awq.e, 1.0F, 1.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public ebg a(ddt $$0) {
+      exq $$1 = $$0.q().b_($$0.a());
+      return this.m().b(c, $$0.g().g()).b(d, Boolean.valueOf($$1.a() == exr.c));
    }
 
-   private boolean c(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if (!$$1.F_().j()) {
-         return false;
-      } else if (doy.a($$1) == this.f.c) {
-         return false;
-      } else {
-         dpx.a $$4 = this.f.c();
-         $$1.a($$2, $$4.b(), 3);
-         $$1.a(ege.c, $$2, ege.a.a($$0));
-         $$4.a($$1, $$2, $$3);
-         iv.c($$2.b(-3, -2, -3), $$2.b(3, 2, 3)).forEach($$4x -> {
-            ebe $$5 = $$1.a_($$4x);
-            if ($$5 == $$0) {
-               double $$6 = Math.sqrt($$2.j($$4x));
-               int $$7 = $$3.a((int)($$6 * 5.0), (int)($$6 * 10.0));
-               $$1.a($$4x, $$0.b(), $$7);
+   @Override
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      cxg $$5 = $$3.gx();
+      if ($$5 != null && $$1.c_($$2) instanceof dzc $$7) {
+         iw $$9 = $$2.d();
+         if ($$1.a_($$9).d($$1, $$9)) {
+            return but.a;
+         } else {
+            if ($$1 instanceof aru $$10) {
+               $$5.a($$7);
+               $$3.a(new bvb(($$1x, $$2x, $$3x) -> cwb.a($$1x, $$2x, $$5), f));
+               $$3.a(axb.aj);
+               cqp.a($$10, $$3, true);
             }
-         });
-         return true;
+
+            return but.a;
+         }
+      } else {
+         return but.a;
       }
    }
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
-      if (!$$1.A_() && $$1.an() != buo.a && $$3 instanceof cjl $$5 && cjl.c($$0) && !$$5.b(bvz.s)) {
-         $$5.a(this.b());
+   public dye a(iw $$0, ebg $$1) {
+      return new dzc($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
+      return $$0.C ? a($$2, dyg.d, dzc::a) : null;
+   }
+
+   @Override
+   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         int $$5 = $$3.a(2) * 2 - 1;
+         int $$6 = $$3.a(2) * 2 - 1;
+         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
+         double $$8 = (double)((float)$$2.v() + $$3.i());
+         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
+         double $$10 = (double)($$3.i() * (float)$$5);
+         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
+         double $$12 = (double)($$3.i() * (float)$$6);
+         $$1.a(lz.af, $$7, $$8, $$9, $$10, $$11, $$12);
       }
    }
 
    @Override
-   public bvx b() {
-      return new bvx(bvz.s, 25);
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
-   public static enum a {
-      a(true, bvz.o, 11.0F, awp.jg, awp.jh, 16545810),
-      b(false, bvz.i, 7.0F, awp.ji, awp.jj, 6250335);
+   @Override
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
 
-      final boolean c;
-      final jf<bvv> d;
-      final float e;
-      final awo f;
-      final awo g;
-      private final int h;
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(c, d);
+   }
 
-      private a(final boolean $$0, final jf<bvv> $$1, final float $$2, final awo $$3, final awo $$4, final int $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
+   @Override
+   protected exq b_(ebg $$0) {
+      return $$0.c(d) ? exr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, exr.c, exr.c.a($$1));
       }
 
-      public dnc a() {
-         return this.c ? dne.uh : dne.ui;
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-      public ebe b() {
-         return this.a().m();
-      }
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
+   }
 
-      public dpx.a c() {
-         return a(!this.c);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public static dpx.a a(boolean $$0) {
-         return $$0 ? a : b;
-      }
-
-      public void a(ars $$0, iv $$1, azx $$2) {
-         ffq $$3 = $$1.b();
-         double $$4 = 0.5 + $$2.j();
-         ffq $$5 = new ffq($$2.j() - 0.5, $$2.j() + 1.0, $$2.j() - 0.5);
-         ffq $$6 = $$3.e($$5.c($$4));
-         md $$7 = new md($$6, this.h, (int)(20.0 * $$4));
-         $$0.a($$7, $$3.d, $$3.e, $$3.f, 1, 0.0, 0.0, 0.0, 0.0);
-      }
-
-      public awo e() {
-         return this.f;
+   @Override
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      dye $$4 = $$1.c_($$2);
+      if ($$4 instanceof dzc) {
+         ((dzc)$$4).a();
       }
    }
 }

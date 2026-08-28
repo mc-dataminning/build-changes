@@ -1,23 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
+import java.util.Optional;
 
-public record dcz(alh<fam> b, long c) implements ddd {
-   private static final xa d = xa.c("item.container.loot_table.unknown");
-   public static final Codec<dcz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(fam.a.fieldOf("loot_table").forGetter(dcz::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(dcz::b)).apply($$0, dcz::new)
-   );
+public record dcz(czb<din> c) {
+   public static final Codec<dcz> a = czb.a(mi.bk, din.c).xmap(dcz::new, dcz::a);
+   public static final za<wn, dcz> b = czb.a(mi.bk, din.d).a(dcz::new, dcz::a);
 
-   @Override
-   public void a(czu.b $$0, Consumer<xa> $$1, dbn $$2, kf $$3) {
-      $$1.accept(d);
+   public dcz(jg<din> $$0) {
+      this(new czb<>($$0));
    }
 
-   public alh<fam> a() {
-      return this.b;
+   @Deprecated
+   public dcz(alj<din> $$0) {
+      this(new czb<>($$0));
    }
 
-   public long b() {
+   public Optional<jg<din>> a(ji.a $$0) {
+      return this.c.a($$0);
+   }
+
+   public czb<din> a() {
       return this.c;
    }
 }

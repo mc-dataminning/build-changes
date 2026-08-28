@@ -1,4 +1,8 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record fed(MapCodec<? extends fee> a) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fed {
 }

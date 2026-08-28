@@ -1,33 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddo(jj<bvv> c) implements ddm {
-   public static final MapCodec<ddo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ju.a(mh.W).fieldOf("effects").forGetter(ddo::b)).apply($$0, ddo::new));
-   public static final yy<wl, ddo> b = yy.a(yw.c(mh.W), ddo::b, ddo::new);
+public interface ddo {
+   Codec<ddo> d = mh.aw.q().dispatch(ddo::a, ddo.a::a);
+   za<wn, ddo> e = yy.a(mi.n).b(ddo::a, ddo.a::b);
 
-   public ddo(jf<bvv> $$0) {
-      this(jj.a($$0));
-   }
+   ddo.a<? extends ddo> a();
 
-   @Override
-   public ddm.a<ddo> a() {
-      return ddm.a.b;
-   }
+   boolean a(djz var1, daa var2, bxw var3);
 
-   @Override
-   public boolean a(djx $$0, czy $$1, bxu $$2) {
-      boolean $$3 = false;
+   public static record a<T extends ddo>(MapCodec<T> f, za<wn, T> g) {
+      public static final ddo.a<ddm> a = a("apply_effects", ddm.a, ddm.b);
+      public static final ddo.a<ddq> b = a("remove_effects", ddq.a, ddq.b);
+      public static final ddo.a<ddn> c = a("clear_all_effects", ddn.b, ddn.c);
+      public static final ddo.a<ddr> d = a("teleport_randomly", ddr.a, ddr.b);
+      public static final ddo.a<ddp> e = a("play_sound", ddp.a, ddp.b);
 
-      for (jf<bvv> $$4 : this.c) {
-         if ($$2.e($$4)) {
-            $$3 = true;
-         }
+      private static <T extends ddo> ddo.a<T> a(String $$0, MapCodec<T> $$1, za<wn, T> $$2) {
+         return jt.a(mh.aw, $$0, new ddo.a<>($$1, $$2));
       }
 
-      return $$3;
-   }
+      public MapCodec<T> a() {
+         return this.f;
+      }
 
-   public jj<bvv> b() {
-      return this.c;
+      public za<wn, T> b() {
+         return this.g;
+      }
    }
 }

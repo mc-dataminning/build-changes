@@ -1,85 +1,49 @@
-public class aim implements zh<agr> {
-   public static final yy<vw, aim> a = zh.a(aim::a, aim::new);
-   private final iv b;
-   private final ali c;
-   private final ali d;
-   private final ali e;
-   private final String f;
-   private final dzg.a g;
-   private final int h;
-   private final int i;
+import javax.annotation.Nullable;
 
-   public aim(iv $$0, ali $$1, ali $$2, ali $$3, String $$4, dzg.a $$5, int $$6, int $$7) {
+public class aim implements zj<agt> {
+   public static final za<vy, aim> a = zj.a(aim::a, aim::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public aim(int $$0, String $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
    }
 
-   private aim(vw $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
-      this.f = $$0.p();
-      this.g = dzg.a.c.a($$0.p(), dzg.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
+   private aim(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private void a(vy $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
    }
 
    @Override
-   public zj<aim> a() {
-      return agp.cg;
+   public zl<aim> a() {
+      return agr.ce;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public iv b() {
-      return this.b;
+   @Nullable
+   public diy a(djz $$0) {
+      bwv $$1 = $$0.a(this.b);
+      return $$1 instanceof cuw ? ((cuw)$$1).q() : null;
    }
 
-   public ali e() {
+   public String b() {
       return this.c;
    }
 
-   public ali f() {
+   public boolean e() {
       return this.d;
-   }
-
-   public ali g() {
-      return this.e;
-   }
-
-   public String h() {
-      return this.f;
-   }
-
-   public dzg.a i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
-   }
-
-   public int k() {
-      return this.i;
    }
 }

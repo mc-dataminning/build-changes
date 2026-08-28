@@ -1,90 +1,95 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public interface gtn {
-   void a(azx var1, List<gtm> var2);
+public record gtn(Optional<gtn.b> b, Optional<gtn.a> c) {
+   static final Logger d = LogUtils.getLogger();
+   public static final Codec<gtn> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gtn.b.a.optionalFieldOf("variants").forGetter(gtn::a), gtn.a.a.optionalFieldOf("multipart").forGetter(gtn::b)).apply($$0, gtn::new)
+      )
+      .validate($$0 -> $$0.a().isEmpty() && $$0.b().isEmpty() ? DataResult.error(() -> "Neither 'variants' nor 'multipart' found") : DataResult.success($$0));
 
-   default List<gtm> a(azx $$0) {
-      List<gtm> $$1 = new ObjectArrayList();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   hla a();
-
-   public static class a implements gtn.c {
-      final gtn.b a;
-      private final hnj.a<gtn> b = new hnj.a<gtn>() {
-         public gtn a(hnj $$0) {
-            return a.this.a.a($$0);
-         }
-      };
-
-      public a(gtn.b $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(hnr.a $$0) {
-         this.a.a($$0);
-      }
-
-      @Override
-      public gtn a(ebe $$0, hnj $$1) {
-         return $$1.a(this.b);
-      }
-
-      @Override
-      public Object a(ebe $$0) {
-         return this;
-      }
-   }
-
-   public interface b extends hnr {
-      Codec<bta<gtw>> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(gtw.a.forGetter(bta::a), ayw.m.optionalFieldOf("weight", 1).forGetter(bta::b)).apply($$0, bta::new)
-      );
-      Codec<hnw.a> b = ayw.b(a.listOf()).flatComapMap($$0 -> new hnw.a(btb.a(Lists.transform($$0, $$0x -> $$0x.a(gtu.a::new)))), $$0 -> {
-         List<bta<gtn.b>> $$1 = $$0.b().d();
-         List<bta<gtw>> $$2 = new ArrayList<>($$1.size());
-
-         for (bta<gtn.b> $$3 : $$1) {
-            if (!($$3.a() instanceof gtu.a $$5)) {
-               return DataResult.error(() -> "Only single variants are supported");
+   public Map<ebg, gtp.c> a(ebh<dne, ebg> $$0, Supplier<String> $$1) {
+      Map<ebg, gtp.c> $$2 = new IdentityHashMap<>();
+      this.b.ifPresent($$3 -> $$3.a($$0, $$1, ($$1xx, $$2xx) -> {
+            gtp.c $$3x = $$2.put($$1xx, $$2xx);
+            if ($$3x != null) {
+               throw new IllegalArgumentException("Overlapping definition on state: " + $$1xx);
             }
+         }));
+      this.c.ifPresent($$2x -> {
+         List<ebg> $$3 = $$0.a();
+         gtp.c $$4 = $$2x.a($$0);
 
-            $$2.add(new bta<>($$5.b(), $$3.b()));
+         for (ebg $$5 : $$3) {
+            $$2.putIfAbsent($$5, $$4);
+         }
+      });
+      return $$2;
+   }
+
+   public Optional<gtn.b> a() {
+      return this.b;
+   }
+
+   public Optional<gtn.a> b() {
+      return this.c;
+   }
+
+   public static record a(List<guf> b) {
+      public static final Codec<gtn.a> a = ayy.b(guf.a.listOf()).xmap(gtn.a::new, gtn.a::a);
+
+      public gue.c a(ebh<dne, ebg> $$0) {
+         Builder<gue.a<gtp.b>> $$1 = ImmutableList.builderWithExpectedSize(this.b.size());
+
+         for (guf $$2 : this.b) {
+            $$1.add(new gue.a<>($$2.a($$0), $$2.b()));
          }
 
-         return DataResult.success($$2);
-      });
-      Codec<gtn.b> c = Codec.either(b, gtu.a.d).flatComapMap($$0 -> (gtn.b)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
-         Objects.requireNonNull($$0);
+         return new gue.c($$1.build());
+      }
 
-         return switch ($$0) {
-            case gtu.a $$3 -> DataResult.success(Either.right($$3));
-            case hnw.a $$4 -> DataResult.success(Either.left($$4));
-            default -> DataResult.error(() -> "Only a single variant or a list of variants are supported");
-         };
-      });
-
-      gtn a(hnj var1);
-
-      default gtn.c a() {
-         return new gtn.a(this);
+      public List<guf> a() {
+         return this.b;
       }
    }
 
-   public interface c extends hnr {
-      gtn a(ebe var1, hnj var2);
+   public static record b(Map<String, gtp.b> b) {
+      public static final Codec<gtn.b> a = ayy.d(Codec.unboundedMap(Codec.STRING, gtp.b.c)).xmap(gtn.b::new, gtn.b::a);
 
-      Object a(ebe var1);
+      public void a(ebh<dne, ebg> $$0, Supplier<String> $$1, BiConsumer<ebg, gtp.c> $$2) {
+         this.b.forEach(($$3, $$4) -> {
+            try {
+               Predicate<ebi<dne, ebg>> $$5 = gua.a($$0, $$3);
+               gtp.c $$6 = $$4.a();
+               UnmodifiableIterator var7 = $$0.a().iterator();
+
+               while (var7.hasNext()) {
+                  ebg $$7 = (ebg)var7.next();
+                  if ($$5.test($$7)) {
+                     $$2.accept($$7, $$6);
+                  }
+               }
+            } catch (Exception var9) {
+               gtn.d.warn("Exception loading blockstate definition: '{}' for variant: '{}': {}", new Object[]{$$1.get(), $$3, var9.getMessage()});
+            }
+         });
+      }
+
+      public Map<String, gtp.b> a() {
+         return this.b;
+      }
    }
 }

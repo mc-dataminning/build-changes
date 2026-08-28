@@ -1,10 +1,14 @@
-public class gzq<T extends bwt> extends gyh<T, hep> {
-   public gzq(gyi.a $$0) {
-      super($$0);
+public abstract class gzq<T extends bxy, S extends hfr, M extends gic<? super S>> extends gzl<T, S, M> {
+   public gzq(gyk.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cM() || $$0.h_() && $$0 == this.d.c);
    }
 
    @Override
-   public hep d() {
-      return new hep();
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ag;
    }
 }

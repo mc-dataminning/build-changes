@@ -1,36 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class emu implements emp {
+public class emu implements emr {
    public static final Codec<emu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               mg.e.q().fieldOf("block").flatXmap(emu::a, DataResult::success).orElse((dsj)dne.fy).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               ju.a(mh.i).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
+               bty.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
+               btw.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
+               btw.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
+               btw.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
+               btw.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, emu::new)
    );
-   public final dsj b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final jj<dnc> h;
-   private final ObjectArrayList<jb> i;
+   public final int b;
+   public final bty c;
+   public final btw d;
+   public final float e;
+   public final btw f;
+   public final btw g;
+   public final btw h;
+   public final int i;
+   public final float j;
 
-   private static DataResult<dsj> a(dnc $$0) {
-      return $$0 instanceof dsj $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface spreadeable block");
-   }
-
-   public emu(dsj $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jj<dnc> $$6) {
+   public emu(int $$0, bty $$1, btw $$2, float $$3, btw $$4, btw $$5, btw $$6, int $$7, float $$8) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -38,25 +34,7 @@ public class emu implements emp {
       this.f = $$4;
       this.g = $$5;
       this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(jb.b);
-      }
-
-      if ($$2) {
-         this.i.add(jb.a);
-      }
-
-      if ($$4) {
-         jb.c.a.forEach(this.i::add);
-      }
-   }
-
-   public List<jb> a(azx $$0, jb $$1) {
-      return ag.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<jb> a(azx $$0) {
-      return ag.a(this.i, $$0);
+      this.i = $$7;
+      this.j = $$8;
    }
 }

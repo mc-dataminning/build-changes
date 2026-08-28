@@ -77,30 +77,30 @@ public class Main {
       String $$36 = "Pre-bootstrap";
 
       Logger $$40;
-      ggf $$73;
+      ggh $$73;
       try {
          if ($$33.has($$3)) {
-            brj.f.a(brh.a);
+            brl.f.a(brj.a);
          }
 
          if ($$33.has($$4)) {
-            fhv.a();
+            fhx.a();
          }
 
          Stopwatch $$37 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$38 = Stopwatch.createStarted(Ticker.systemTicker());
-         hqs.a.a(hqo.z, $$37);
-         hqs.a.a(hqo.A, $$38);
+         hqu.a.a(hqq.z, $$37);
+         hqu.a.a(hqq.A, $$38);
          ac.a();
          TracyClient.reportAppInfo("Minecraft Java Edition " + ac.b().c());
-         CompletableFuture<?> $$39 = bbe.a(bbd.t);
+         CompletableFuture<?> $$39 = bbg.a(bbf.t);
          p.g();
          $$40 = LogUtils.getLogger();
          $$36 = "Bootstrap";
-         alk.a();
-         fqn.a();
-         hqs.a.a(alk.b.get());
-         alk.c();
+         alm.a();
+         fqp.a();
+         hqu.a.a(alm.b.get());
+         alm.c();
          $$36 = "Argument parsing";
          List<String> $$41 = $$33.valuesOf($$32);
          if (!$$41.isEmpty()) {
@@ -108,7 +108,7 @@ public class Main {
          }
 
          String $$42 = (String)$$30.value($$33);
-         frp.a $$43 = frp.a.a($$42);
+         frr.a $$43 = frr.a.a($$42);
          if ($$43 == null) {
             $$40.warn("Unrecognized user type: {}", $$42);
          }
@@ -144,12 +144,12 @@ public class Main {
          boolean $$56 = !$$33.has($$5);
          boolean $$57 = $$33.has($$2);
          Gson $$58 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-         PropertyMap $$59 = aze.a($$58, a($$33, $$27), PropertyMap.class);
-         PropertyMap $$60 = aze.a($$58, a($$33, $$28), PropertyMap.class);
+         PropertyMap $$59 = azg.a($$58, a($$33, $$27), PropertyMap.class);
+         PropertyMap $$60 = azg.a($$58, a($$33, $$28), PropertyMap.class);
          String $$61 = a($$33, $$31);
          File $$62 = $$33.has($$11) ? a($$33, $$11) : new File($$34, "assets/");
          File $$63 = $$33.has($$12) ? a($$33, $$12) : new File($$34, "resourcepacks/");
-         UUID $$64 = a($$18, $$33, $$40) ? UndashedUuid.fromStringLenient((String)$$18.value($$33)) : jz.a((String)$$17.value($$33));
+         UUID $$64 = a($$18, $$33, $$40) ? UndashedUuid.fromStringLenient((String)$$18.value($$33)) : ka.a((String)$$17.value($$33));
          String $$65 = $$33.has($$29) ? (String)$$29.value($$33) : null;
          String $$66 = (String)$$33.valueOf($$19);
          String $$67 = (String)$$33.valueOf($$20);
@@ -157,31 +157,31 @@ public class Main {
          String $$69 = a(a($$33, $$7));
          String $$70 = a(a($$33, $$8));
          String $$71 = a(a($$33, $$9));
-         frp $$72 = new frp((String)$$17.value($$33), $$64, (String)$$21.value($$33), b($$66), b($$67), $$43);
-         $$73 = new ggf(
-            new ggf.d($$72, $$59, $$60, $$45),
-            new fjx($$48, $$49, $$50, $$51, $$52),
-            new ggf.a($$34, $$63, $$62, $$65),
-            new ggf.b($$53, $$35, $$61, $$54, $$55, $$56, $$57),
-            new ggf.c($$68, $$69, $$70, $$71)
+         frr $$72 = new frr((String)$$17.value($$33), $$64, (String)$$21.value($$33), b($$66), b($$67), $$43);
+         $$73 = new ggh(
+            new ggh.d($$72, $$59, $$60, $$45),
+            new fjz($$48, $$49, $$50, $$51, $$52),
+            new ggh.a($$34, $$63, $$62, $$65),
+            new ggh.b($$53, $$35, $$61, $$54, $$55, $$56, $$57),
+            new ggh.c($$68, $$69, $$70, $$71)
          );
          ag.p();
          $$39.join();
       } catch (Throwable var84) {
          p $$75 = p.a(var84, $$36);
          q $$76 = $$75.a("Initialization");
-         azp.a($$76);
-         frd.a(null, null, $$35, null, $$75);
-         frd.a(null, $$34, $$75);
+         azr.a($$76);
+         frf.a(null, null, $$35, null, $$75);
+         frf.a(null, $$34, $$75);
          return;
       }
 
       Thread $$79 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            frd $$0 = frd.Q();
+            frf $$0 = frf.Q();
             if ($$0 != null) {
-               hpl $$1 = $$0.V();
+               hpn $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -190,26 +190,26 @@ public class Main {
       };
       $$79.setUncaughtExceptionHandler(new s($$40));
       Runtime.getRuntime().addShutdownHook($$79);
-      frd $$80 = null;
+      frf $$80 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
-         $$80 = new frd($$73);
-      } catch (ggg var81) {
+         $$80 = new frf($$73);
+      } catch (ggi var81) {
          ag.k();
          $$40.warn("Failed to create window: ", var81);
          return;
       } catch (Throwable var82) {
          p $$83 = p.a(var82, "Initializing game");
          q $$84 = $$83.a("Initialization");
-         azp.a($$84);
-         frd.a($$80, null, $$73.d.b, null, $$83);
-         frd.a($$80, $$73.c.a, $$83);
+         azr.a($$84);
+         frf.a($$80, null, $$73.d.b, null, $$83);
+         frf.a($$80, $$73.c.a, $$83);
          return;
       }
 
-      frd $$85 = $$80;
+      frf $$85 = $$80;
       $$80.f();
 
       try {

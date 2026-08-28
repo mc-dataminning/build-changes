@@ -1,31 +1,35 @@
-public record aat(int c, eyc d, float e) implements aak {
-   public static final yy<vw, aat> a = aak.a(aat::a, aat::new);
-   public static final aak.b<aat> b = aak.a("debug/path");
+public record aat(aat.a c) implements aam {
+   public static final za<vy, aat> a = aam.a(aat::a, aat::new);
+   public static final aam.b<aat> b = aam.a("debug/hive");
 
-   private aat(vw $$0) {
-      this($$0.readInt(), eyc.b($$0), $$0.readFloat());
+   private aat(vy $$0) {
+      this(new aat.a($$0));
    }
 
-   private void a(vw $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(vy $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aak.b<aat> a() {
+   public aam.b<aat> a() {
       return b;
    }
 
-   public int b() {
+   public aat.a b() {
       return this.c;
    }
 
-   public eyc c() {
-      return this.d;
-   }
+   public static record a(iw a, String b, int c, int d, boolean e) {
+      public a(vy $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public float d() {
-      return this.e;
+      public void a(vy $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

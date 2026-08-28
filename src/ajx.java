@@ -1,3 +1,8 @@
-public interface ajx extends wg {
-   void a(ajy var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface ajx {
 }

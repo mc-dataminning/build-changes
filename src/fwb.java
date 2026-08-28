@@ -1,62 +1,55 @@
-import java.util.Locale;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public class fwb extends fwa {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
+public class fwb {
+   @Nullable
+   private fvy a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   public fwb(ftv $$0, bpg $$1) {
-      super($$0, $$1);
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void d(ftx $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
+   public void a(@Nullable fvy $$0) {
+      this.a = $$0;
    }
 
-   private void a(ftx $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   @Nullable
+   public fvy a() {
+      return this.a;
    }
 
-   private void a(ftx $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(gsl.G(), $$1, $$1 + $$2 - 1, $$3, -1);
-   }
-
-   @Override
-   protected String a(double $$0) {
-      return c(e($$0));
-   }
-
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
+   public void a(boolean $$0, boolean $$1, fyu $$2) {
+      if (this.a == null) {
+         this.d = false;
       } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", azo.a($$0));
+         boolean $$3 = $$0 || $$1 && frf.Q().aX().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ag.c();
+            }
+
+            this.d = $$3;
+         }
+
+         if ($$3 && ag.c() - this.c > this.b.toMillis()) {
+            gaf $$4 = frf.Q().z;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
    }
 
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
+   private gcs a(fyu $$0, boolean $$1, boolean $$2) {
+      return (gcs)(!$$1 && $$2 && frf.Q().aX().b() ? new gcn($$0) : new gcu($$0));
    }
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
-   }
-
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+   public void a(fyk $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
    }
 }

@@ -1,76 +1,95 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class wz {
-   public static final xa a = xa.i();
-   public static final xa b = xa.c("options.on");
-   public static final xa c = xa.c("options.off");
-   public static final xa d = xa.c("gui.done");
-   public static final xa e = xa.c("gui.cancel");
-   public static final xa f = xa.c("gui.yes");
-   public static final xa g = xa.c("gui.no");
-   public static final xa h = xa.c("gui.ok");
-   public static final xa i = xa.c("gui.proceed");
-   public static final xa j = xa.c("gui.continue");
-   public static final xa k = xa.c("gui.back");
-   public static final xa l = xa.c("gui.toTitle");
-   public static final xa m = xa.c("gui.acknowledge");
-   public static final xa n = xa.c("chat.link.open");
-   public static final xa o = xa.c("gui.copy_link_to_clipboard");
-   public static final xa p = xa.c("menu.disconnect");
-   public static final xa q = xa.c("connect.failed.transfer");
-   public static final xa r = xa.c("connect.failed");
-   public static final xa s = xa.b("\n");
-   public static final xa t = xa.b(". ");
-   public static final xa u = xa.b("...");
-   public static final xa v = a();
+public record wz(String c, List<wz.a> d, xz e) {
+   public static final Codec<wz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(wz::a),
+               wz.a.d.listOf().fieldOf("parameters").forGetter(wz::b),
+               xz.b.b.optionalFieldOf("style", xz.a).forGetter(wz::c)
+            )
+            .apply($$0, wz::new)
+   );
+   public static final za<wn, wz> b = za.a(yy.p, wz::a, wz.a.e.a(yy.a()), wz::b, xz.b.c, wz::c, wz::new);
 
-   public static xo a() {
-      return xa.b(" ");
+   public static wz a(String $$0) {
+      return new wz($$0, List.of(wz.a.a, wz.a.c), xz.a);
    }
 
-   public static xo a(long $$0) {
-      return xa.a("gui.days", $$0);
+   public static wz b(String $$0) {
+      xz $$1 = xz.a.a(o.h).b(true);
+      return new wz($$0, List.of(wz.a.a, wz.a.c), $$1);
    }
 
-   public static xo b(long $$0) {
-      return xa.a("gui.hours", $$0);
+   public static wz c(String $$0) {
+      xz $$1 = xz.a.a(o.h).b(true);
+      return new wz($$0, List.of(wz.a.b, wz.a.c), $$1);
    }
 
-   public static xo c(long $$0) {
-      return xa.a("gui.minutes", $$0);
+   public static wz d(String $$0) {
+      return new wz($$0, List.of(wz.a.b, wz.a.a, wz.a.c), xz.a);
    }
 
-   public static xa a(boolean $$0) {
-      return $$0 ? b : c;
+   public xc a(xc $$0, wy.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return xc.a(this.c, $$2).c(this.e);
    }
 
-   public static xo a(xa $$0, boolean $$1) {
-      return xa.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
+   private xc[] b(xc $$0, wy.a $$1) {
+      xc[] $$2 = new xc[this.d.size()];
 
-   public static xo a(xa $$0, xa $$1) {
-      return xa.a("options.generic_value", $$0, $$1);
-   }
-
-   public static xo a(xa... $$0) {
-      xo $$1 = xa.i();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(t);
-         }
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         wz.a $$4 = this.d.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      return $$1;
+      return $$2;
    }
 
-   public static xa b(xa... $$0) {
-      return a(Arrays.asList($$0));
+   public String a() {
+      return this.c;
    }
 
-   public static xa a(Collection<? extends xa> $$0) {
-      return xd.a($$0, s);
+   public List<wz.a> b() {
+      return this.d;
+   }
+
+   public xz c() {
+      return this.e;
+   }
+
+   public static enum a implements bao {
+      a(0, "sender", ($$0, $$1) -> $$1.b()),
+      b(1, "target", ($$0, $$1) -> $$1.c().orElse(xb.a)),
+      c(2, "content", ($$0, $$1) -> $$0);
+
+      private static final IntFunction<wz.a> f = ayg.a($$0 -> $$0.g, values(), ayg.a.a);
+      public static final Codec<wz.a> d = bao.a(wz.a::values);
+      public static final za<ByteBuf, wz.a> e = yy.a(f, $$0 -> $$0.g);
+      private final int g;
+      private final String h;
+      private final wz.a.a i;
+
+      private a(final int $$0, final String $$1, final wz.a.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      public xc a(xc $$0, wy.a $$1) {
+         return this.i.select($$0, $$1);
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+
+      public interface a {
+         xc select(xc var1, wy.a var2);
+      }
    }
 }

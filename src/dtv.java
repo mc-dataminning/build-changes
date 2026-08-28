@@ -1,48 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtv extends dnc {
-   public static final MapCodec<dtv> c = b(dtv::new);
-   public static final ecc<jb.a> d = ebu.K;
+public class dtv extends dne implements dnh {
+   public static final MapCodec<dtv> a = b(dtv::new);
 
    @Override
-   public MapCodec<? extends dtv> a() {
-      return c;
+   public MapCodec<dtv> a() {
+      return a;
    }
 
-   public dtv(ebd.d $$0) {
+   public dtv(ebf.d $$0) {
       super($$0);
-      this.l(this.m().b(d, jb.a.b));
    }
 
    @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return b($$0, $$1);
-   }
-
-   public static ebe b(ebe $$0, dtw $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jb.a)$$0.c(d)) {
-               case a:
-                  return $$0.b(d, jb.a.c);
-               case c:
-                  return $$0.b(d, jb.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(d);
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+      return true;
    }
 
    @Override
-   public ebe a(ddr $$0) {
-      return this.m().b(d, $$0.k().o());
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      $$0.b($$2.e(), dng.tq.m());
+   }
+
+   @Override
+   public iw a(iw $$0) {
+      return $$0.e();
    }
 }

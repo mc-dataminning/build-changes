@@ -1,5 +1,5 @@
-public enum fvx {
-   a,
-   b,
-   c;
+public interface fvx {
+   default int K() {
+      return 0;
+   }
 }

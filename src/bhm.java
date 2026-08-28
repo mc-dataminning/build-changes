@@ -1,34 +1,36 @@
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bhm extends bdt {
-   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+public class bhm extends DataFix {
+   private static final String a = "WorldGenSettings";
+   private static final List<String> b = List.of(
+      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
+   );
 
    public bhm(Schema $$0) {
-      super($$0, "LockComponentPredicateFix", "minecraft:lock");
+      super($$0, false);
    }
 
-   @Nullable
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
-   }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bjd.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
 
-   @Nullable
-   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isEmpty()) {
-         return null;
-      } else if ($$1.get().isEmpty()) {
-         return null;
-      } else {
-         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
-         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
-         return $$0.emptyMap().set("components", $$3);
-      }
+               for (String $$2 : b) {
+                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
+                  if ($$3.isPresent()) {
+                     $$0x = $$0x.remove($$2);
+                     $$1 = $$1.set($$2, $$3.get());
+                  }
+               }
+
+               return $$0x.set("WorldGenSettings", $$1);
+            })
+      );
    }
 }

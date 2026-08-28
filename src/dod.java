@@ -1,119 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class dod extends dum {
-   public static final MapCodec<dod> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ecs.a.fieldOf("wood_type").forGetter(dum::d), t()).apply($$0, dod::new));
-   public static final ece b = ebu.bd;
-   public static final ebv c = ebu.a;
-   private static final fgk e = dnc.b(10.0, 0.0, 16.0);
-   private static final Map<Integer, fgk> f = fgh.c(dnc.a(14.0, 2.0, 0.0, 10.0))
-      .entrySet()
-      .stream()
-      .collect(Collectors.toMap($$0 -> eck.a($$0.getKey()), Entry::getValue));
+public class dod extends dqx implements doc {
+   public static final MapCodec<dod> c = b(dod::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<dod> a() {
-      return a;
+      return c;
    }
 
-   public dod(ecs $$0, ebd.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.l(this.C.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
-      if ($$2.c_($$3) instanceof dzq $$7 && this.a($$4, $$6, $$7, $$0)) {
-         return bur.e;
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private boolean a(crx $$0, ffm $$1, dzq $$2, czy $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.h() instanceof czn && $$1.c().equals(jb.a);
+   public dod(ebf.d $$0) {
+      super($$0, jc.a, q_, false, 0.1);
+      this.l(this.C.b().b(e, Integer.valueOf(0)).b(r_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(ebe $$0, dka $$1, iv $$2) {
-      return $$1.a_($$2.d()).a($$1, $$2.d(), jb.a, dvn.b);
+   protected int a(azz $$0) {
+      return 1;
    }
 
    @Override
-   public ebe a(ddr $$0) {
-      djx $$1 = $$0.q();
-      exo $$2 = $$1.b_($$0.a());
-      iv $$3 = $$0.a().d();
-      ebe $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(axe.aD);
-      jb $$6 = jb.a((double)$$0.i());
-      boolean $$7 = !dnc.a($$4.g($$1, $$3), jb.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dws.b)) {
-            jb $$8 = $$4.c(dws.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<jb> $$9 = eck.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
-            }
-         }
-      }
-
-      int $$10 = !$$7 ? eck.a($$6.g()) : eck.a($$0.i() + 180.0F);
-      return this.m().b(c, Boolean.valueOf($$7)).b(b, Integer.valueOf($$10)).b(d, Boolean.valueOf($$2.a() == exp.c));
+   protected boolean h(ebg $$0) {
+      return $$0.l();
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return f.getOrDefault($$0.c(b), e);
+   protected dne b() {
+      return dng.te;
    }
 
    @Override
-   protected fgk b_(ebe $$0, djb $$1, iv $$2) {
-      return this.a($$0, $$1, $$2, ffv.a());
+   protected ebg a(ebg $$0, ebg $$1) {
+      return $$1.b(r_, $$0.c(r_));
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      return $$4 == jb.b && !this.a($$0, $$1, $$3) ? dne.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected ebg a(ebg $$0, azz $$1) {
+      return super.a($$0, $$1).b(r_, Boolean.valueOf($$1.i() < 0.11F));
    }
 
    @Override
-   public float h(ebe $$0) {
-      return eck.b($$0.c(b));
+   protected daa a(dkc $$0, iw $$1, ebg $$2, boolean $$3) {
+      return new daa(dae.xH);
    }
 
    @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      return doc.a($$3, $$0, $$1, $$2);
    }
 
    @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected void a(ebh.a<dne, ebg> $$0) {
+      super.a($$0);
+      $$0.a(r_);
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b, c, d);
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
+      return !$$2.c(r_);
    }
 
    @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dzd($$0, $$1);
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+      return true;
    }
 
-   @Nullable
    @Override
-   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
-      return a($$2, dye.i, dzq::a);
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      $$0.a($$2, $$3.b(r_, Boolean.valueOf(true)), 2);
    }
 }

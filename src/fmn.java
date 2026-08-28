@@ -1,12 +1,13 @@
-public class fmn extends fml {
-   final long a;
+import javax.annotation.Nullable;
 
-   public fmn(long $$0) {
-      this.a = $$0;
+public abstract class fmn extends RuntimeException {
+   @Nullable
+   public xc a() {
+      return null;
    }
 
-   @Override
-   public xa[] b() {
-      return new xa[]{xa.c("mco.upload.failed.too_big.title"), xa.a("mco.upload.failed.too_big.description", flz.b(this.a, flz.a(this.a)))};
+   @Nullable
+   public xc[] b() {
+      return null;
    }
 }

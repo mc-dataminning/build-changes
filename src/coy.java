@@ -1,93 +1,63 @@
-public class coy extends cpi {
-   public coy(bxc<? extends coy> $$0, djx $$1) {
+public class coy extends cpu {
+   public coy(bxe<? extends coy> $$0, djz $$1) {
       super($$0, $$1);
    }
 
-   public static byz.a j() {
-      return coz.gx().a(bza.v, 0.2F);
-   }
-
-   public static boolean b(bxc<coy> $$0, djy $$1, bxb $$2, iv $$3, azx $$4) {
-      return $$1.an() != buo.a;
+   public static boolean a(bxe<coy> $$0, dkq $$1, bxd $$2, iw $$3, azz $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (bxd.a($$2) || $$1.h($$3));
    }
 
    @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.g(bza.a).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float bw() {
-      return 1.0F;
-   }
-
-   @Override
-   protected lw m() {
-      return ly.F;
-   }
-
-   @Override
-   public boolean bX() {
+   protected boolean ah_() {
       return false;
    }
 
    @Override
-   protected int n() {
-      return super.n() * 4;
+   protected awq u() {
+      return awr.nB;
    }
 
    @Override
-   protected void q() {
-      this.d *= 0.9F;
+   protected awq e(bvk $$0) {
+      return awr.nE;
    }
 
    @Override
-   public void s() {
-      ffq $$0 = this.dy();
-      float $$1 = (float)this.gs() * 0.1F;
-      this.n($$0.d, (double)(this.fh() + $$1), $$0.f);
-      this.ar = true;
+   protected awq l_() {
+      return awr.nD;
    }
 
    @Override
-   protected void c(axt<exn> $$0) {
-      if ($$0 == axj.b) {
-         ffq $$1 = this.dy();
-         this.n($$1.d, (double)(0.22F + (float)this.gs() * 0.05F), $$1.f);
-         this.ar = true;
-      } else {
-         super.c($$0);
+   protected awq n() {
+      return awr.nF;
+   }
+
+   @Override
+   public boolean c(aru $$0, bwv $$1) {
+      boolean $$2 = super.c($$0, $$1);
+      if ($$2 && this.fb().f() && $$1 instanceof bxw) {
+         float $$3 = this.dV().d_(this.dv()).b();
+         ((bxw)$$1).b(new bvz(bwb.q, 140 * (int)$$3), this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected boolean x() {
+      return true;
+   }
+
+   @Override
+   protected void ag_() {
+      this.b(bxe.bP);
+      if (!this.ba()) {
+         this.dV().a(null, 1041, this.dv(), 0);
       }
    }
 
    @Override
-   protected boolean t() {
-      return this.dj();
-   }
-
-   @Override
-   protected float x() {
-      return super.x() + 2.0F;
-   }
-
-   @Override
-   protected awo e(bvi $$0) {
-      return this.gt() ? awp.pf : awp.pe;
-   }
-
-   @Override
-   protected awo l_() {
-      return this.gt() ? awp.oT : awp.pd;
-   }
-
-   @Override
-   protected awo gq() {
-      return this.gt() ? awp.pi : awp.ph;
-   }
-
-   @Override
-   protected awo gr() {
-      return awp.pg;
+   protected daa t() {
+      return daa.k;
    }
 }

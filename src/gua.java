@@ -1,33 +1,51 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
+import com.google.common.base.Splitter;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface gua {
-   Codec<gua> a = Codec.recursive("condition", $$0 -> {
-      Codec<gtz> $$1 = Codec.simpleMap(gtz.a.c, $$0.listOf(), bam.a(gtz.a.values())).codec().comapFlatMap($$0x -> {
-         if ($$0x.size() != 1) {
-            return DataResult.error(() -> "Invalid map size for combiner condition, expected exactly one element");
-         } else {
-            Entry<gtz.a, List<gua>> $$1x = (Entry<gtz.a, List<gua>>)$$0x.entrySet().iterator().next();
-            return DataResult.success(new gtz($$1x.getKey(), $$1x.getValue()));
+public class gua {
+   private static final Splitter a = Splitter.on(',');
+   private static final Splitter b = Splitter.on('=').limit(2);
+
+   public static <O, S extends ebi<O, S>> Predicate<ebi<O, S>> a(ebh<O, S> $$0, String $$1) {
+      Map<ecj<?>, Comparable<?>> $$2 = new HashMap<>();
+
+      for (String $$3 : a.split($$1)) {
+         Iterator<String> $$4 = b.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            ecj<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((ecj<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
+               }
+
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
+            }
          }
-      }, $$0x -> Map.of($$0x.a(), $$0x.b()));
-      return Codec.either($$1, gub.b).flatComapMap($$0x -> (gua)$$0x.map($$0xx -> $$0xx, $$0xx -> $$0xx), $$0x -> {
-         Objects.requireNonNull($$0x);
+      }
 
-         return switch ($$0x) {
-            case gtz $$3 -> DataResult.success(Either.left($$3));
-            case gub $$4 -> DataResult.success(Either.right($$4));
-            default -> DataResult.error(() -> "Unrecognized condition");
-         };
-      });
-   });
+      return $$1x -> {
+         for (Entry<ecj<?>, Comparable<?>> $$2x : $$2.entrySet()) {
+            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
+               return false;
+            }
+         }
 
-   <O, S extends ebg<O, S>> Predicate<S> instantiate(ebf<O, S> var1);
+         return true;
+      };
+   }
+
+   @Nullable
+   private static <T extends Comparable<T>> T a(ecj<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
+   }
 }

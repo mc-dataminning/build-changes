@@ -1,139 +1,80 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record hng(Map<hng.d, List<hng.c>> b) {
-   private static final Codec<List<hng.c>> c = ayw.b(hng.c.a.listOf());
-   public static final Codec<hng> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayw.d(Codec.unboundedMap(hng.d.o, c)).fieldOf("layers").forGetter(hng::b)).apply($$0, hng::new)
-   );
+public class hng {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ald b = ald.a("items");
 
-   public static hng.a a() {
-      return new hng.a();
+   public static CompletableFuture<hng.a> a(avh $$0, Executor $$1) {
+      ju.b $$2 = gmg.a().a();
+      return CompletableFuture.<Map<alk, avf>>supplyAsync(() -> b.a($$0), $$1)
+         .thenCompose(
+            $$2x -> {
+               List<CompletableFuture<hng.b>> $$3 = new ArrayList<>($$2x.size());
+               $$2x.forEach(
+                  ($$3x, $$4) -> $$3.add(
+                        CompletableFuture.supplyAsync(
+                           () -> {
+                              alk $$3xx = b.b($$3x);
+
+                              try {
+                                 hng.b var8;
+                                 try (Reader $$4x = $$4.e()) {
+                                    azv $$5 = new azv($$2);
+                                    DynamicOps<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
+                                    hhn $$7 = hhn.a
+                                       .parse($$6, JsonParser.parseReader($$4x))
+                                       .ifError(
+                                          $$2xxxx -> a.error(
+                                                "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$3xx, $$4.b(), $$2xxxx.message()}
+                                             )
+                                       )
+                                       .result()
+                                       .map($$1xxxx -> $$5.b() ? $$1xxxx.a($$5.a()) : $$1xxxx)
+                                       .orElse(null);
+                                    var8 = new hng.b($$3xx, $$7);
+                                 }
+
+                                 return var8;
+                              } catch (Exception var11) {
+                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$3x, $$4.b(), var11});
+                                 return new hng.b($$3xx, null);
+                              }
+                           },
+                           $$1
+                        )
+                     )
+               );
+               return ag.d($$3).thenApply($$0xx -> {
+                  Map<alk, hhn> $$1xx = new HashMap<>();
+
+                  for (hng.b $$2xx : $$0xx) {
+                     if ($$2xx.b != null) {
+                        $$1xx.put($$2xx.a, $$2xx.b);
+                     }
+                  }
+
+                  return new hng.a($$1xx);
+               });
+            }
+         );
    }
 
-   public List<hng.c> a(hng.d $$0) {
-      return this.b.getOrDefault($$0, List.of());
+   public static record a(Map<alk, hhn> a) {
    }
 
-   public static class a {
-      private final Map<hng.d, List<hng.c>> a = new EnumMap<>(hng.d.class);
-
-      a() {
-      }
-
-      public hng.a a(ali $$0) {
-         return this.a($$0, false);
-      }
-
-      public hng.a a(ali $$0, boolean $$1) {
-         this.a(hng.d.b, hng.c.a($$0, $$1));
-         this.b($$0, $$1);
-         return this;
-      }
-
-      public hng.a b(ali $$0, boolean $$1) {
-         return this.a(hng.d.a, hng.c.a($$0, $$1));
-      }
-
-      public hng.a a(hng.d $$0, hng.c... $$1) {
-         Collections.addAll(this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()), $$1);
-         return this;
-      }
-
-      public hng a() {
-         return new hng(this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> List.copyOf((Collection)$$0.getValue()))));
-      }
-   }
-
-   public static record b(Optional<Integer> b) {
-      public static final Codec<hng.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayw.i.optionalFieldOf("color_when_undyed").forGetter(hng.b::a)).apply($$0, hng.b::new)
-      );
-
-      public Optional<Integer> a() {
-         return this.b;
-      }
-   }
-
-   public static record c(ali b, Optional<hng.b> c, boolean d) {
-      public static final Codec<hng.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ali.a.fieldOf("texture").forGetter(hng.c::a),
-                  hng.b.a.optionalFieldOf("dyeable").forGetter(hng.c::b),
-                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(hng.c::c)
-               )
-               .apply($$0, hng.c::new)
-      );
-
-      public c(ali $$0) {
-         this($$0, Optional.empty(), false);
-      }
-
-      public static hng.c a(ali $$0, boolean $$1) {
-         return new hng.c($$0, $$1 ? Optional.of(new hng.b(Optional.of(-6265536))) : Optional.empty(), false);
-      }
-
-      public static hng.c b(ali $$0, boolean $$1) {
-         return new hng.c($$0, $$1 ? Optional.of(new hng.b(Optional.empty())) : Optional.empty(), false);
-      }
-
-      public ali a(hng.d $$0) {
-         return this.b.a((UnaryOperator<String>)($$1 -> "textures/entity/equipment/" + $$0.c() + "/" + $$1 + ".png"));
-      }
-
-      public ali a() {
-         return this.b;
-      }
-
-      public Optional<hng.b> b() {
-         return this.c;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
-   }
-
-   public static enum d implements bam {
-      a("humanoid"),
-      b("humanoid_leggings"),
-      c("wings"),
-      d("wolf_body"),
-      e("horse_body"),
-      f("llama_body"),
-      g("pig_saddle"),
-      h("strider_saddle"),
-      i("camel_saddle"),
-      j("horse_saddle"),
-      k("donkey_saddle"),
-      l("mule_saddle"),
-      m("zombie_horse_saddle"),
-      n("skeleton_horse_saddle");
-
-      public static final Codec<hng.d> o = bam.a(hng.d::values);
-      private final String p;
-
-      private d(final String $$0) {
-         this.p = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.p;
-      }
-
-      public String a() {
-         return "trims/entity/" + this.p;
-      }
+   static record b(alk a, @Nullable hhn b) {
    }
 }

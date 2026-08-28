@@ -1,31 +1,12 @@
-import javax.annotation.Nullable;
+public class djn {
+   public static final int a = -10732494;
+   private static int[] b = new int[65536];
 
-public enum djn implements djb {
-   a;
-
-   @Nullable
-   @Override
-   public dyc c_(iv $$0) {
-      return null;
+   public static void a(int[] $$0) {
+      b = $$0;
    }
 
-   @Override
-   public ebe a_(iv $$0) {
-      return dne.a.m();
-   }
-
-   @Override
-   public exo b_(iv $$0) {
-      return exp.a.g();
-   }
-
-   @Override
-   public int K_() {
-      return 0;
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public static int a(double $$0, double $$1) {
+      return dji.a($$0, $$1, b, -10732494);
    }
 }

@@ -1,32 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnx extends dnc {
+public class dnx extends dne {
    public static final MapCodec<dnx> a = b(dnx::new);
-   private static final xa b = xa.c("container.cartography_table");
+   private static final fgm b = dne.b(16.0, 0.0, 1.0);
 
    @Override
-   public MapCodec<dnx> a() {
+   public MapCodec<? extends dnx> a() {
       return a;
    }
 
-   protected dnx(ebd.d $$0) {
+   public dnx(ebf.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awz.aw);
-      }
-
-      return bur.a;
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return b;
    }
 
-   @Nullable
    @Override
-   protected but b(ebe $$0, djx $$1, iv $$2) {
-      return new buz(($$2x, $$3, $$4) -> new cvy($$2x, $$3, cwd.a($$1, $$2)), b);
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      return !$$1.v($$2.e());
    }
 }

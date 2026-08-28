@@ -1,95 +1,36 @@
-import java.util.List;
+import org.joml.Quaternionf;
 
-public class gjg extends gio<hgb> {
-   private static final String f = "left_sleeve";
-   private static final String g = "right_sleeve";
-   private static final String x = "left_pants";
-   private static final String y = "right_pants";
-   private final List<gle> z;
-   public final gle a;
-   public final gle b;
-   public final gle c;
-   public final gle d;
-   public final gle e;
-   private final boolean A;
+public class gjg<T extends hgd> extends giq<T> {
+   private static final String a = "cape";
+   private final glg b = this.q.b("cape");
 
-   public gjg(gle $$0, boolean $$1) {
-      super($$0, gsl::j);
-      this.A = $$1;
-      this.a = this.s.b("left_sleeve");
-      this.b = this.r.b("right_sleeve");
-      this.c = this.u.b("left_pants");
-      this.d = this.t.b("right_pants");
-      this.e = this.q.b("jacket");
-      this.z = List.of(this.o, this.q, this.s, this.r, this.u, this.t);
+   public gjg(glg $$0) {
+      super($$0);
    }
 
-   public static glm a(gli $$0, boolean $$1) {
-      glm $$2 = gio.a($$0, 0.0F);
-      glo $$3 = $$2.a();
-      float $$4 = 0.25F;
-      if ($$1) {
-         glo $$5 = $$3.a("left_arm", glj.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), glg.a(5.0F, 2.0F, 0.0F));
-         glo $$6 = $$3.a("right_arm", glj.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), glg.a(-5.0F, 2.0F, 0.0F));
-         $$5.a("left_sleeve", glj.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), glg.a);
-         $$6.a("right_sleeve", glj.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), glg.a);
-      } else {
-         glo $$7 = $$3.a("left_arm", glj.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), glg.a(5.0F, 2.0F, 0.0F));
-         glo $$8 = $$3.b("right_arm");
-         $$7.a("left_sleeve", glj.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), glg.a);
-         $$8.a("right_sleeve", glj.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), glg.a);
-      }
-
-      glo $$9 = $$3.a("left_leg", glj.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), glg.a(1.9F, 12.0F, 0.0F));
-      glo $$10 = $$3.b("right_leg");
-      $$9.a("left_pants", glj.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), glg.a);
-      $$10.a("right_pants", glj.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), glg.a);
-      glo $$11 = $$3.b("body");
-      $$11.a("jacket", glj.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), glg.a);
-      return $$2;
+   public static glm a() {
+      glo $$0 = giq.a(glk.a, 0.0F);
+      glq $$1 = $$0.a();
+      glq $$2 = $$1.a("head");
+      $$2.a("hat");
+      glq $$3 = $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      $$3.a("cape", gll.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, glk.a, 1.0F, 0.5F), gli.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
+      return glm.a($$0, 64, 64);
    }
 
-   public void a(hgb $$0) {
-      boolean $$1 = !$$0.m;
-      this.q.k = $$1;
-      this.r.k = $$1;
-      this.s.k = $$1;
-      this.t.k = $$1;
-      this.u.k = $$1;
-      this.p.k = $$0.n;
-      this.e.k = $$0.o;
-      this.c.k = $$0.p;
-      this.d.k = $$0.q;
-      this.a.k = $$0.aw;
-      this.b.k = $$0.ax;
+   public void a(T $$0) {
       super.a($$0);
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
-   }
-
-   @Override
-   public void a(bxl $$0, flo $$1) {
-      this.e().a($$1);
-      gle $$2 = this.a($$0);
-      if (this.A) {
-         float $$3 = 0.5F * (float)($$0 == bxl.b ? 1 : -1);
-         $$2.b += $$3;
-         $$2.a($$1);
-         $$2.b -= $$3;
-      } else {
-         $$2.a($$1);
-      }
-   }
-
-   public gle a(azx $$0) {
-      return ag.a(this.z, $$0);
+      this.b
+         .a(
+            new Quaternionf()
+               .rotateY((float) -Math.PI)
+               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
+               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
+               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
+         );
    }
 }

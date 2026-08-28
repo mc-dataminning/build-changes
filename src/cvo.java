@@ -1,46 +1,101 @@
 public class cvo {
-   public static final cvn a = new cvn.a().a(4).a(0.3F).b();
-   public static final cvn b = new cvn.a().a(5).a(0.6F).b();
-   public static final cvn c = new cvn.a().a(3).a(0.3F).b();
-   public static final cvn d = new cvn.a().a(1).a(0.6F).b();
-   public static final cvn e = a(6).b();
-   public static final cvn f = new cvn.a().a(5).a(0.6F).b();
-   public static final cvn g = new cvn.a().a(3).a(0.6F).b();
-   public static final cvn h = new cvn.a().a(2).a(0.3F).b();
-   public static final cvn i = new cvn.a().a(4).a(0.3F).a().b();
-   public static final cvn j = new cvn.a().a(2).a(0.1F).b();
-   public static final cvn k = new cvn.a().a(8).a(0.8F).b();
-   public static final cvn l = new cvn.a().a(6).a(0.6F).b();
-   public static final cvn m = new cvn.a().a(5).a(0.6F).b();
-   public static final cvn n = new cvn.a().a(6).a(0.8F).b();
-   public static final cvn o = new cvn.a().a(8).a(0.8F).b();
-   public static final cvn p = new cvn.a().a(5).a(0.6F).b();
-   public static final cvn q = new cvn.a().a(6).a(0.8F).b();
-   public static final cvn r = new cvn.a().a(2).a(0.1F).b();
-   public static final cvn s = new cvn.a().a(1).a(0.3F).b();
-   public static final cvn t = new cvn.a().a(4).a(1.2F).a().b();
-   public static final cvn u = new cvn.a().a(4).a(1.2F).a().b();
-   public static final cvn v = new cvn.a().a(6).a(1.2F).b();
-   public static final cvn w = new cvn.a().a(6).a(0.1F).a().b();
-   public static final cvn x = new cvn.a().a(2).a(0.3F).b();
-   public static final cvn y = a(6).b();
-   public static final cvn z = new cvn.a().a(2).a(0.3F).b();
-   public static final cvn A = new cvn.a().a(2).a(0.3F).b();
-   public static final cvn B = new cvn.a().a(3).a(0.3F).b();
-   public static final cvn C = new cvn.a().a(1).a(0.3F).b();
-   public static final cvn D = new cvn.a().a(1).a(0.1F).b();
-   public static final cvn E = new cvn.a().a(8).a(0.3F).b();
-   public static final cvn F = new cvn.a().a(3).a(0.3F).b();
-   public static final cvn G = a(10).b();
-   public static final cvn H = new cvn.a().a(4).a(0.1F).b();
-   public static final cvn I = new cvn.a().a(2).a(0.1F).b();
-   public static final cvn J = new cvn.a().a(2).a(0.8F).b();
-   public static final cvn K = a(6).a().b();
-   public static final cvn L = new cvn.a().a(2).a(0.1F).b();
-   public static final cvn M = new cvn.a().a(2).a(0.1F).b();
-   public static final cvn N = new cvn.a().a(1).a(0.1F).b();
+   private static final int a = 0;
+   private static final float b = 0.0F;
+   private int c = 20;
+   private float d = 5.0F;
+   private float e;
+   private int f;
 
-   private static cvn.a a(int $$0) {
-      return new cvn.a().a($$0).a(0.6F);
+   private void b(int $$0, float $$1) {
+      this.c = azq.a($$0 + this.c, 0, 20);
+      this.d = azq.a($$1 + this.d, 0.0F, (float)this.c);
+   }
+
+   public void a(int $$0, float $$1) {
+      this.b($$0, cvn.a($$0, $$1));
+   }
+
+   public void a(cvp $$0) {
+      this.b($$0.a(), $$0.b());
+   }
+
+   public void a(arv $$0) {
+      aru $$1 = $$0.y();
+      buq $$2 = $$1.an();
+      if (this.e > 4.0F) {
+         this.e -= 4.0F;
+         if (this.d > 0.0F) {
+            this.d = Math.max(this.d - 1.0F, 0.0F);
+         } else if ($$2 != buq.a) {
+            this.c = Math.max(this.c - 1, 0);
+         }
+      }
+
+      boolean $$3 = $$1.O().c(djv.l);
+      if ($$3 && this.d > 0.0F && $$0.gv() && this.c >= 20) {
+         this.f++;
+         if (this.f >= 10) {
+            float $$4 = Math.min(this.d, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.f = 0;
+         }
+      } else if ($$3 && this.c >= 18 && $$0.gv()) {
+         this.f++;
+         if (this.f >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.f = 0;
+         }
+      } else if (this.c <= 0) {
+         this.f++;
+         if (this.f >= 80) {
+            if ($$0.eG() > 10.0F || $$2 == buq.d || $$0.eG() > 1.0F && $$2 == buq.c) {
+               $$0.a($$1, $$0.dW().j(), 1.0F);
+            }
+
+            this.f = 0;
+         }
+      } else {
+         this.f = 0;
+      }
+   }
+
+   public void a(ua $$0) {
+      this.c = $$0.b("foodLevel", 20);
+      this.f = $$0.b("foodTickTimer", 0);
+      this.d = $$0.b("foodSaturationLevel", 5.0F);
+      this.e = $$0.b("foodExhaustionLevel", 0.0F);
+   }
+
+   public void b(ua $$0) {
+      $$0.a("foodLevel", this.c);
+      $$0.a("foodTickTimer", this.f);
+      $$0.a("foodSaturationLevel", this.d);
+      $$0.a("foodExhaustionLevel", this.e);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.c < 20;
+   }
+
+   public void a(float $$0) {
+      this.e = Math.min(this.e + $$0, 40.0F);
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   public void b(float $$0) {
+      this.d = $$0;
    }
 }

@@ -1,113 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dqv extends dqt implements dnf {
-   public static final ece e = ebu.aA;
-   public static final int f = 25;
-   private final double c;
+public abstract class dqv extends dne {
+   protected final jc a;
+   protected final boolean b;
+   protected final fgm d;
 
-   protected dqv(ebd.d $$0, jb $$1, fgk $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.l(this.C.b().b(e, Integer.valueOf(0)));
+   protected dqv(ebf.d $$0, jc $$1, fgm $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
    protected abstract MapCodec<? extends dqv> a();
 
+   @Nullable
    @Override
-   public ebe b(azx $$0) {
-      return this.m().b(e, Integer.valueOf($$0.a(25)));
+   public ebg a(ddt $$0) {
+      ebg $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
+   }
+
+   public ebg b(azz $$0) {
+      return this.m();
    }
 
    @Override
-   protected boolean f(ebe $$0) {
-      return $$0.c(e) < 25;
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      iw $$3 = $$2.a(this.a.g());
+      ebg $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
    }
 
    @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         iv $$4 = $$2.a(this.a);
-         if (this.h($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.A));
-         }
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   protected ebe a(ebe $$0, azx $$1) {
-      return $$0.a(e);
-   }
-
-   public ebe p(ebe $$0) {
-      return $$0.b(e, Integer.valueOf(25));
-   }
-
-   public boolean q(ebe $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected ebe a(ebe $$0, ebe $$1) {
-      return $$1;
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$4 == this.a.g()) {
-         if (!$$0.a($$1, $$3)) {
-            $$2.a($$3, this, 1);
-         } else {
-            ebe $$8 = $$1.a_($$3.a(this.a));
-            if ($$8.a(this) || $$8.a(this.b())) {
-               return this.a($$0, this.b().m());
-            }
-         }
-      }
-
-      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
-         if (this.b) {
-            $$2.a($$3, exp.c, exp.c.a($$1));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         return this.a($$0, this.b().m());
-      }
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean a(dka $$0, iv $$1, ebe $$2) {
-      return this.h($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+   protected boolean o(ebg $$0) {
       return true;
    }
 
    @Override
-   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
-      iv $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
-      }
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return this.d;
    }
 
-   protected abstract int a(azx var1);
+   protected abstract dqx c();
 
-   protected abstract boolean h(ebe var1);
-
-   @Override
-   protected dqv c() {
-      return this;
-   }
+   protected abstract dne b();
 }

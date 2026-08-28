@@ -1,65 +1,61 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class fbl extends fbu {
+public class fbl extends fbw {
    public static final MapCodec<fbl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fen.a.fieldOf("levels").forGetter($$0x -> $$0x.b), ju.a(mh.aR).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
-            .apply($$0, fbl::new)
+      $$0 -> a($$0).and(fbl.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, fbl::new)
    );
-   private final fem b;
-   private final Optional<jj<dgl>> c;
+   private final fbl.a b;
 
-   fbl(List<fdq> $$0, fem $$1, Optional<jj<dgl>> $$2) {
+   private fbl(List<fds> $$0, fbl.a $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public fbw<fbl> b() {
-      return fbx.g;
+   public fby<fbl> b() {
+      return fbz.s;
    }
 
    @Override
-   public Set<baz<?>> a() {
-      return this.b.a();
+   public Set<bbb<?>> a() {
+      return Set.of(this.b.g);
    }
 
    @Override
-   public czy a(czy $$0, fah $$1) {
-      azx $$2 = $$1.b();
-      jt $$3 = $$1.d().J_();
-      return dgn.a($$2, $$0, this.b.a($$1), $$3, this.c);
-   }
-
-   public static fbl.a a(jh.a $$0, fem $$1) {
-      return new fbl.a($$1).a($$0.e(mh.aR).b(axg.n));
-   }
-
-   public static class a extends fbu.a<fbl.a> {
-      private final fem a;
-      private Optional<jj<dgl>> b = Optional.empty();
-
-      public a(fem $$0) {
-         this.a = $$0;
+   public daa a(daa $$0, faj $$1) {
+      if ($$1.c(this.b.g) instanceof buw $$3) {
+         $$0.b(kl.g, $$3.ak());
       }
 
-      protected fbl.a a() {
-         return this;
-      }
+      return $$0;
+   }
 
-      public fbl.a a(jj<dgl> $$0) {
-         this.b = Optional.of($$0);
-         return this;
+   public static fbw.a<?> a(fbl.a $$0) {
+      return a($$1 -> new fbl($$1, $$0));
+   }
+
+   public static enum a implements bao {
+      a("this", fdd.a),
+      b("attacking_entity", fdd.d),
+      c("last_damage_player", fdd.b),
+      d("block_entity", fdd.h);
+
+      public static final Codec<fbl.a> e = bao.a(fbl.a::values);
+      private final String f;
+      final bbb<?> g;
+
+      private a(final String $$0, final bbb<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public fbv b() {
-         return new fbl(this.g(), this.a, this.b);
+      public String c() {
+         return this.f;
       }
    }
 }

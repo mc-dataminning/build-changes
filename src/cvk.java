@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cvk {
+   private final String a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface cvk {
+   public cvk(String $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

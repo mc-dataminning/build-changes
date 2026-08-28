@@ -1,34 +1,35 @@
-public class hcv<S extends hgb, M extends gia<S> & ggq & gik> extends hco<S, M> {
-   private static final float a = (float) (-Math.PI / 6);
-   private static final float b = (float) (Math.PI / 2);
+public class hcv extends hcy<hgd, gji> {
+   private final gjb a;
+   private final hfz b = new hfz();
 
-   public hcv(haf<S, M> $$0) {
+   public hcv(hah<hgd, gji> $$0, glc $$1) {
       super($$0);
+      this.a = new gjb($$1.a(glf.cb));
+      this.b.c = gjb.a.e;
    }
 
-   protected void a(S $$0, hhs $$1, bxl $$2, flo $$3, gsa $$4, int $$5) {
-      if (!$$1.c()) {
-         buq $$6 = $$2 == $$0.e ? buq.a : buq.b;
-         if ($$0.R && $$0.M == $$6 && $$0.H < 1.0E-5F && !$$0.aI.c()) {
-            this.a($$0.aI, $$2, $$3, $$4, $$5);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+   public void a(flq $$0, gsc $$1, int $$2, hgd $$3, float $$4, float $$5) {
+      ckg.b $$6 = $$3.aE;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
+      }
+
+      ckg.b $$7 = $$3.aF;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
       }
    }
 
-   private void a(hhs $$0, bxl $$1, flo $$2, gsa $$3, int $$4) {
-      $$2.a();
-      this.d().e().a($$2);
-      gle $$5 = this.d().b();
-      float $$6 = $$5.e;
-      $$5.e = azo.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$5.a($$2);
-      $$5.e = $$6;
-      hcb.a($$2, hcb.a.a);
-      boolean $$7 = $$1 == bxl.a;
-      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      $$0.a($$2, $$3, $$4, hkq.d);
-      $$2.b();
+   private void a(flq $$0, gsc $$1, int $$2, hgd $$3, ckg.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
+      this.b.u = $$3.u;
+      this.b.ad = $$3.ad;
+      this.b.ae = $$3.ae;
+      this.b.aa = $$5;
+      this.b.ab = $$6;
+      this.a.a(this.b);
+      this.a.a($$0, $$1.getBuffer(this.a.a(gzx.a($$4))), $$2, hks.d);
+      $$0.b();
    }
 }

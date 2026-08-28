@@ -1,42 +1,90 @@
 import java.util.EnumSet;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class cfl extends ceq {
-   private final bxw a;
-   private double b;
-   private double c;
-   private int d;
+public class cfl extends ces {
+   public static final int b = 1;
+   protected final bye c;
+   protected final double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected boolean h;
+   private final Function<bye, axv<bvm>> a;
 
-   public cfl(bxw $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ceq.a.a, ceq.a.b));
+   public cfl(bye $$0, double $$1) {
+      this($$0, $$1, axh.F);
+   }
+
+   public cfl(bye $$0, double $$1, axv<bvm> $$2) {
+      this($$0, $$1, $$1x -> $$2);
+   }
+
+   public cfl(bye $$0, double $$1, Function<bye, axv<bvm>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.a(EnumSet.of(ces.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.dY().i() < 0.02F;
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.c.bX()) {
+            iw $$0 = this.a(this.c.dV(), this.c, 5);
+            if ($$0 != null) {
+               this.e = (double)$$0.u();
+               this.f = (double)$$0.v();
+               this.g = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
    }
 
-   @Override
-   public boolean c() {
-      return this.d >= 0;
+   protected boolean h() {
+      return this.c.eI() != null && this.c.eI().a(this.a.apply(this.c));
+   }
+
+   protected boolean i() {
+      ffs $$0 = cip.a(this.c, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.e = $$0.d;
+         this.f = $$0.e;
+         this.g = $$0.f;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.h;
    }
 
    @Override
    public void d() {
-      double $$0 = (Math.PI * 2) * this.a.dY().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.dY().a(20);
+      this.c.O().a(this.e, this.f, this.g, this.d);
+      this.h = true;
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public void e() {
+      this.h = false;
    }
 
    @Override
-   public void a() {
-      this.d--;
-      this.a.J().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
+   public boolean c() {
+      return !this.c.O().k();
+   }
+
+   @Nullable
+   protected iw a(djd $$0, bwv $$1, int $$2) {
+      iw $$3 = $$1.dv();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : iw.a($$1.dv(), $$2, 1, $$1x -> $$0.b_($$1x).a(axl.a)).orElse(null);
    }
 }

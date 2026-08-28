@@ -1,60 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public record dch(List<Float> d, List<Boolean> e, List<String> f, List<Integer> g) {
-   public static final dch a = new dch(List.of(), List.of(), List.of(), List.of());
-   public static final Codec<dch> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(dch::a),
-               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(dch::b),
-               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(dch::c),
-               ayw.i.listOf().optionalFieldOf("colors", List.of()).forGetter(dch::d)
-            )
-            .apply($$0, dch::new)
-   );
-   public static final yy<ByteBuf, dch> c = yy.a(yw.l.a(yw.a()), dch::a, yw.b.a(yw.a()), dch::b, yw.p.a(yw.a()), dch::c, yw.g.a(yw.a()), dch::d, dch::new);
+public class dch {
+   public static final dcf a = a().a();
+   public static final dcf b = b().a();
+   public static final dcf c = b().a(2.0F).a(awr.nf).a(new ddq(bwb.s)).a();
+   public static final dcf d = b().b(awr.td).a();
+   public static final dcf e = a().a(0.8F).a();
+   public static final dcf f = a().a(new ddm(new bvz(bwb.q, 600, 0), 0.3F)).a();
+   public static final dcf g = a().a(new ddm(List.of(new bvz(bwb.j, 400, 1), new bvz(bwb.k, 6000, 0), new bvz(bwb.l, 6000, 0), new bvz(bwb.v, 2400, 3)))).a();
+   public static final dcf h = a().a(new ddm(List.of(new bvz(bwb.j, 100, 1), new bvz(bwb.v, 2400, 0)))).a();
+   public static final dcf i = a().a(new ddm(new bvz(bwb.s, 100, 0), 0.6F)).a();
+   public static final dcf j = a().a(new ddm(List.of(new bvz(bwb.s, 1200, 1), new bvz(bwb.q, 300, 2), new bvz(bwb.i, 300, 0)))).a();
+   public static final dcf k = a().a(new ddm(new bvz(bwb.q, 600, 0), 0.8F)).a();
+   public static final dcf l = a().a(new ddm(new bvz(bwb.s, 100, 0))).a();
+   public static final dcf m = b().a(ddn.a).a();
+   public static final dcf n = a().a(new ddr()).a();
 
-   @Nullable
-   private static <T> T a(List<T> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.get($$1) : null;
+   public static dcf.a a() {
+      return dcf.b().a(1.6F).a(dac.b).a(awr.kH).a(true);
    }
 
-   @Nullable
-   public Float a(int $$0) {
-      return a(this.d, $$0);
-   }
-
-   @Nullable
-   public Boolean b(int $$0) {
-      return a(this.e, $$0);
-   }
-
-   @Nullable
-   public String c(int $$0) {
-      return a(this.f, $$0);
-   }
-
-   @Nullable
-   public Integer d(int $$0) {
-      return a(this.g, $$0);
-   }
-
-   public List<Float> a() {
-      return this.d;
-   }
-
-   public List<Boolean> b() {
-      return this.e;
-   }
-
-   public List<String> c() {
-      return this.f;
-   }
-
-   public List<Integer> d() {
-      return this.g;
+   public static dcf.a b() {
+      return dcf.b().a(1.6F).a(dac.c).a(awr.kG).a(false);
    }
 }

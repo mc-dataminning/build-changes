@@ -1,147 +1,153 @@
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Optional;
+import org.apache.commons.lang3.ArrayUtils;
 
-public record tx(byte v) implements up {
-   private static final int w = 9;
-   public static final va<tx> a = new va.a<tx>() {
-      public tx a(DataInput $$0, ui $$1) throws IOException {
-         return tx.a(d($$0, $$1));
+public final class tx implements tz {
+   private static final int b = 24;
+   public static final vc<tx> a = new vc.b<tx>() {
+      public tx a(DataInput $$0, uj $$1) throws IOException {
+         return new tx(d($$0, $$1));
       }
 
       @Override
-      public uv.b a(DataInput $$0, uv $$1, ui $$2) throws IOException {
+      public ux.b a(DataInput $$0, ux $$1, uj $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static byte d(DataInput $$0, ui $$1) throws IOException {
-         $$1.b(9L);
-         return $$0.readByte();
+      private static byte[] d(DataInput $$0, uj $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(1L, (long)$$2);
+         byte[] $$3 = new byte[$$2];
+         $$0.readFully($$3);
+         return $$3;
       }
 
       @Override
-      public int c() {
-         return 1;
+      public void b(DataInput $$0, uj $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 1);
       }
 
       @Override
       public String a() {
-         return "BYTE";
+         return "BYTE[]";
       }
 
       @Override
       public String b() {
-         return "TAG_Byte";
+         return "TAG_Byte_Array";
       }
    };
-   public static final tx b = a((byte)0);
-   public static final tx c = a((byte)1);
+   private byte[] c;
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public tx(byte v) {
-      this.v = v;
-   }
-
-   public static tx a(byte $$0) {
-      return tx.a.a[128 + $$0];
-   }
-
-   public static tx a(boolean $$0) {
-      return $$0 ? c : b;
+   public tx(byte[] $$0) {
+      this.c = $$0;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeByte(this.v);
+      $$0.writeInt(this.c.length);
+      $$0.write(this.c);
    }
 
    @Override
    public int a() {
-      return 9;
+      return 24 + 1 * this.c.length;
    }
 
    @Override
    public byte b() {
-      return 1;
+      return 7;
    }
 
    @Override
-   public va<tx> c() {
+   public vc<tx> c() {
       return a;
-   }
-
-   public tx e() {
-      return this;
-   }
-
-   @Override
-   public void a(vc $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long g() {
-      return (long)this.v;
-   }
-
-   @Override
-   public int h() {
-      return this.v;
-   }
-
-   @Override
-   public short i() {
-      return (short)this.v;
-   }
-
-   @Override
-   public byte j() {
-      return this.v;
-   }
-
-   @Override
-   public double k() {
-      return (double)this.v;
-   }
-
-   @Override
-   public float l() {
-      return (float)this.v;
-   }
-
-   @Override
-   public Number m() {
-      return this.v;
-   }
-
-   @Override
-   public uv.b a(uv $$0) {
-      return $$0.a(this.v);
    }
 
    @Override
    public String toString() {
-      ux $$0 = new ux();
+      uz $$0 = new uz();
       $$0.a(this);
       return $$0.a();
    }
 
-   public byte n() {
-      return this.v;
+   @Override
+   public va d() {
+      byte[] $$0 = new byte[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new tx($$0);
    }
 
-   static class a {
-      static final tx[] a = new tx[256];
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof tx && Arrays.equals(this.c, ((tx)$$0).c);
+   }
 
-      private a() {
-      }
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
 
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new tx((byte)($$0 - 128));
-         }
+   @Override
+   public void a(ve $$0) {
+      $$0.a(this);
+   }
+
+   public byte[] e() {
+      return this.c;
+   }
+
+   @Override
+   public int size() {
+      return this.c.length;
+   }
+
+   public ty a(int $$0) {
+      return ty.a(this.c[$$0]);
+   }
+
+   @Override
+   public boolean a(int $$0, va $$1) {
+      if ($$1 instanceof uq $$2) {
+         this.c[$$0] = $$2.j();
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public boolean b(int $$0, va $$1) {
+      if ($$1 instanceof uq $$2) {
+         this.c = ArrayUtils.add(this.c, $$0, $$2.j());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public ty b(int $$0) {
+      byte $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return ty.a($$1);
+   }
+
+   @Override
+   public void clear() {
+      this.c = new byte[0];
+   }
+
+   @Override
+   public Optional<byte[]> f() {
+      return Optional.of(this.c);
+   }
+
+   @Override
+   public ux.b a(ux $$0) {
+      return $$0.a(this.c);
    }
 }

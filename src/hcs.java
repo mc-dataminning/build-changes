@@ -1,22 +1,28 @@
-public class hcs extends hcw<hfw, giy> {
-   public hcs(haf<hfw, giy> $$0) {
+public class hcs extends hcy<hfs, giv> {
+   private final giv a;
+   private final giv b;
+   private final hcj c;
+
+   public hcs(hah<hfs, giv> $$0, glc $$1, hcj $$2) {
       super($$0);
+      this.c = $$2;
+      this.a = new giv($$1.a(glf.bH));
+      this.b = new giv($$1.a(glf.bG));
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hfw $$3, float $$4, float $$5) {
-      hhs $$6 = $$3.i;
-      if (!$$6.c() && $$3.g && !$$3.f) {
-         float $$7 = -0.6F;
-         float $$8 = 1.4F;
-         if ($$3.e) {
-            $$7 -= 0.2F * azo.a($$3.u * 0.6F) + 0.2F;
-            $$8 -= 0.09F * azo.a($$3.u * 0.6F);
-         }
-
-         $$0.a();
-         $$0.a(0.1F, $$8, $$7);
-         $$6.a($$0, $$1, $$2, hkq.d);
-         $$0.b();
+   public void a(flq $$0, gsc $$1, int $$2, hfs $$3, float $$4, float $$5) {
+      daa $$6 = $$3.c;
+      dij $$7 = $$6.a(kl.D);
+      if ($$7 != null && $$7.d().isPresent()) {
+         this.a($$0, $$1, $$3, $$6, $$7.d().get(), $$2);
+      } else if ($$3.d) {
+         this.a($$0, $$1, $$3, daa.k, dii.m, $$2);
       }
+   }
+
+   private void a(flq $$0, gsc $$1, hfs $$2, daa $$3, alj<dih> $$4, int $$5) {
+      giv $$6 = $$2.aj ? this.b : this.a;
+      $$6.a($$2);
+      this.c.a(hni.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

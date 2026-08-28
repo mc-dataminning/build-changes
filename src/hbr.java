@@ -1,21 +1,13 @@
-public class hbr extends gyz<cpu, hhh, gkw> {
-   private static final ali a = ali.b("textures/entity/piglin/zombified_piglin.png");
-
-   public hbr(gyi.a $$0, glc $$1, glc $$2, glc $$3, glc $$4, glc $$5, glc $$6) {
-      super($$0, new gkw($$0.a($$1)), new gkw($$0.a($$2)), 0.5F, gzy.a);
-      this.a(new hcl<>(this, new gin($$0.a($$3)), new gin($$0.a($$4)), new gin($$0.a($$5)), new gin($$0.a($$6)), $$0.h()));
-   }
-
-   public ali a(hhh $$0) {
-      return a;
+public class hbr extends gxd<cpu, hhh, gkw<hhh>> {
+   public hbr(gyk.a $$0) {
+      this($$0, glf.eh, glf.ei, glf.eq, glf.er, glf.ej, glf.ek);
    }
 
    public hhh b() {
       return new hhh();
    }
 
-   public void a(cpu $$0, hhh $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gl();
+   public hbr(gyk.a $$0, gle $$1, gle $$2, gle $$3, gle $$4, gle $$5, gle $$6) {
+      super($$0, new gkw<>($$0.a($$1)), new gkw<>($$0.a($$2)), new gkw<>($$0.a($$3)), new gkw<>($$0.a($$4)), new gkw<>($$0.a($$5)), new gkw<>($$0.a($$6)));
    }
 }

@@ -1,27 +1,14 @@
-import java.util.UUID;
-
-public record ajn(String b, UUID c) implements zh<ajl> {
-   public static final yy<vw, ajn> a = zh.a(ajn::a, ajn::new);
-
-   private ajn(vw $$0) {
-      this($$0.d(16), $$0.n());
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
-   }
-
+public interface ajn extends abv {
    @Override
-   public zj<ajn> a() {
-      return ajj.g;
+   default vw b() {
+      return vw.d;
    }
 
-   public void a(ajl $$0) {
-      $$0.a(this);
-   }
+   void a(ajp var1);
 
-   public UUID e() {
-      return this.c;
-   }
+   void a(ajq var1);
+
+   void a(ajo var1);
+
+   void a(ajr var1);
 }

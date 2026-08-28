@@ -1,49 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class hkb implements hke<kh> {
-   private final gjs a;
+public class hkb implements hkc {
+   private final giy a;
+   private final hnj b;
 
-   public hkb(gjs $$0) {
+   public hkb(giy $$0, hnj $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   public kh a(czy $$0) {
-      return $$0.e();
+   @Override
+   public void a(czy $$0, flq $$1, gsc $$2, int $$3, int $$4, boolean $$5) {
+      gva.a($$1, $$2, $$3, $$4, this.a, this.b);
    }
 
-   public void a(@Nullable kh $$0, czw $$1, flo $$2, gsa $$3, int $$4, int $$5, boolean $$6) {
-      dxs $$7 = $$0 != null ? $$0.a(kk.am, dxs.a) : dxs.a;
-      cyw $$8 = $$0 != null ? $$0.a(kk.an) : null;
-      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
-      $$2.a();
-      $$2.b(1.0F, -1.0F, -1.0F);
-      hnh $$10 = $$9 ? hnk.g : hnk.h;
-      flr $$11 = $$10.c().a(gzg.a($$3, this.a.a($$10.a()), $$1 == czw.g, $$6));
-      this.a.c().a($$2, $$11, $$4, $$5);
-      if ($$9) {
-         gui.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cyw.a), $$7, $$6, false);
-      } else {
-         this.a.b().a($$2, $$11, $$4, $$5);
+   public static record a(ecu b, Optional<alk> c) implements hkg.a {
+      public static final MapCodec<hkb.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ecu.a.fieldOf("wood_type").forGetter(hkb.a::b), alk.a.optionalFieldOf("texture").forGetter(hkb.a::c)).apply($$0, hkb.a::new)
+      );
+
+      public a(ecu $$0) {
+         this($$0, Optional.empty());
       }
-
-      $$2.b();
-   }
-
-   public static record a() implements hke.a {
-      public static final hkb.a a = new hkb.a();
-      public static final MapCodec<hkb.a> b = MapCodec.unit(a);
 
       @Override
       public MapCodec<hkb.a> a() {
-         return b;
+         return a;
       }
 
       @Override
-      public hke<?> a(gla $$0) {
-         return new hkb(new gjs($$0.a(gld.cT)));
+      public hkg<?> a(glc $$0) {
+         giy $$1 = gva.a($$0, this.b, gva.a.c);
+         hnj $$2 = this.c.<hnj>map(gsw.r::a).orElseGet(() -> gsw.b(this.b));
+         return new hkb($$1, $$2);
       }
    }
 }

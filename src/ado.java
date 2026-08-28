@@ -1,42 +1,88 @@
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record ado(ezh b, byte c, boolean d, Optional<List<ezd>> e, Optional<ezj.c> f) implements zh<abw> {
-   public static final yy<wl, ado> a = yy.a(ezh.b, ado::b, yw.c, ado::e, yw.b, ado::f, ezd.a.a(yw.a()).a(yw::a), ado::g, ezj.c.a, ado::h, ado::new);
+public class ado {
+   private static final za<ByteBuf, byte[]> a = yy.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
 
-   public ado(ezh $$0, byte $$1, boolean $$2, @Nullable Collection<ezd> $$3, @Nullable ezj.c $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   public ado(dje $$0, exf $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, dki.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, dki.b, $$4, this.c, this.e, this.g);
+         }
+      }
    }
 
-   @Override
-   public zj<ado> a() {
-      return agp.P;
+   public ado(vy $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   public void a(abw $$0) {
-      $$0.a(this);
+   public void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   public void a(ezj $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   private void a(dje $$0, exf $$1, dki $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      edi $$7 = $$1.a($$2).a(jz.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public byte e() {
-      return this.c;
+   public BitSet a() {
+      return this.b;
    }
 
-   public boolean f() {
+   public BitSet b() {
       return this.d;
    }
 
-   public Optional<List<ezd>> g() {
+   public List<byte[]> c() {
+      return this.f;
+   }
+
+   public BitSet d() {
+      return this.c;
+   }
+
+   public BitSet e() {
       return this.e;
    }
 
-   public Optional<ezj.c> h() {
-      return this.f;
+   public List<byte[]> f() {
+      return this.g;
    }
 }

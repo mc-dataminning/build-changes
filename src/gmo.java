@@ -1,26 +1,17 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+public class gmo {
+   private final gme a;
+   private final bpe b;
 
-public interface gmo {
-   gmo a = new gmo() {
-      @Override
-      public CompletableFuture<Optional<csa>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static gmo a(UserApiService $$0, frp $$1, Path $$2) {
-      return (gmo)($$1.g() == frp.a.c ? new glt($$0, $$1.b(), $$2) : a);
+   public gmo(gme $$0, bpe $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Optional<csa>> a();
+   public void a() {
+      this.a.b(new akd(ag.c()));
+   }
 
-   boolean b();
+   public void a(aka $$0) {
+      this.b.a(ag.c() - $$0.b());
+   }
 }

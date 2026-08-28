@@ -1,46 +1,25 @@
-public class dfq extends def {
-   public dfq(dec $$0) {
-      super($$0);
-   }
-
-   public boolean a(ded $$0, djx $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               czy $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
-
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(dac.wC)) {
-                     return false;
-                  }
-               } else if (!$$4.a(dac.pk)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public czy a(ded $$0, jh.a $$1) {
-      czy $$2 = $$0.a(1, 1);
-      if (!$$2.a(dac.wC)) {
-         return czy.k;
-      } else {
-         czy $$3 = new czy(dac.wB, 8);
-         $$3.b(kk.R, $$2.a(kk.R));
-         return $$3;
-      }
+public class dfq extends ddx {
+   public dfq(String $$0, ded $$1, den $$2, daa $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dez<dfq> a() {
-      return dez.j;
+   protected czw f() {
+      return dae.xw;
+   }
+
+   @Override
+   public dfc<dfq> b() {
+      return dfc.d;
+   }
+
+   @Override
+   public dfb<dfq> a() {
+      return dfb.q;
+   }
+
+   @Override
+   public deu h() {
+      return det.j;
    }
 }

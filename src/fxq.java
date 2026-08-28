@@ -1,17 +1,34 @@
 import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public record fxq(ali c) implements fxo {
-   public static final MapCodec<fxq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.a.fieldOf("id").forGetter(fxq::c)).apply($$0, fxq::new));
+public interface fxq {
+   MapCodec<fxq> b = fxr.f.dispatchMap(fxq::a, fxr::a);
 
-   @Override
-   public fxp a() {
-      return fxp.e;
+   fxr a();
+
+   Either<fxq.b, fxq.c> b();
+
+   public static record a(fxq b, fxe.a c) {
+      public static final Codec<fxq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fxq.b.forGetter(fxq.a::a), fxe.a.a.optionalFieldOf("filter", fxe.a.b).forGetter(fxq.a::b)).apply($$0, fxq.a::new)
+      );
+
+      public fxq a() {
+         return this.b;
+      }
+
+      public fxe.a b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public Either<fxo.b, fxo.c> b() {
-      return Either.right(new fxo.c(this.c));
+   public interface b {
+      fim load(avh var1) throws IOException;
+   }
+
+   public static record c(alk a) {
    }
 }

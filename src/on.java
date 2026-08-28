@@ -1,24 +1,25 @@
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class on {
-   private final of a;
-   private final del b;
-   private final del c;
-   private final del d;
-   private final jf<din> e;
+   private final den a;
+   private final den b;
+   private final den c;
+   private final og d;
+   private final czw e;
    private final Map<String, ar<?>> f = new LinkedHashMap<>();
 
-   public on(of $$0, del $$1, del $$2, del $$3, jf<din> $$4) {
+   public on(den $$0, den $$1, den $$2, og $$3, czw $$4) {
+      this.d = $$3;
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
       this.e = $$4;
    }
 
-   public static on a(del $$0, del $$1, del $$2, jf<din> $$3, of $$4) {
-      return new on($$4, $$0, $$1, $$2, $$3);
+   public static on a(den $$0, den $$1, den $$2, og $$3, czw $$4) {
+      return new on($$0, $$1, $$2, $$3, $$4);
    }
 
    public on a(String $$0, ar<?> $$1) {
@@ -26,15 +27,19 @@ public class on {
       return this;
    }
 
-   public void a(og $$0, alh<dep<?>> $$1) {
-      this.a($$1);
-      ai.a $$2 = $$0.a().a("has_the_recipe", dh.a($$1)).a(an.a.c($$1)).a(am.a.b);
-      this.f.forEach($$2::a);
-      dfn $$3 = new dfn(this.b, this.c, this.d, this.e);
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.a.a() + "/")));
+   public void a(oh $$0, String $$1) {
+      this.a($$0, alj.a(mi.bv, alk.a($$1)));
    }
 
-   private void a(alh<dep<?>> $$0) {
+   public void a(oh $$0, alj<der<?>> $$1) {
+      this.a($$1);
+      ai.a $$2 = $$0.a().a("has_the_recipe", di.a($$1)).a(an.a.c($$1)).a(am.a.b);
+      this.f.forEach($$2::a);
+      dfo $$3 = new dfo(Optional.of(this.a), this.b, Optional.of(this.c), new dfu(this.e));
+      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.d.a() + "/")));
+   }
+
+   private void a(alj<der<?>> $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }

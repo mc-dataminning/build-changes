@@ -1,5 +1,147 @@
-public interface fjg {
-   int a();
+import com.mojang.blaze3d.platform.GlConst;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBVertexAttribBinding;
+import org.lwjgl.opengl.GLCapabilities;
 
-   void a(int var1, int var2, int var3, int var4, boolean var5);
+public abstract class fjg {
+   public static fjg a(GLCapabilities $$0, fiy $$1, Set<String> $$2) {
+      if ($$0.GL_ARB_vertex_attrib_binding && fiz.a) {
+         $$2.add("GL_ARB_vertex_attrib_binding");
+         return new fjg.b($$1);
+      } else {
+         return new fjg.a($$1);
+      }
+   }
+
+   public abstract void a(flu var1, fiv var2);
+
+   static class a extends fjg {
+      private final Map<flu, fjg.c> a = new HashMap<>();
+      private final fiy b;
+
+      public a(fiy $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(flu $$0, fiv $$1) {
+         fjg.c $$2 = this.a.get($$0);
+         if ($$2 == null) {
+            int $$3 = GlStateManager._glGenVertexArrays();
+            GlStateManager._glBindVertexArray($$3);
+            GlStateManager._glBindBuffer(34962, $$1.f);
+            a($$0, true);
+            fjg.c $$4 = new fjg.c($$3, $$0, $$1);
+            this.b.a($$4);
+            this.a.put($$0, $$4);
+         } else {
+            GlStateManager._glBindVertexArray($$2.a);
+            if ($$2.c != $$1) {
+               GlStateManager._glBindBuffer(34962, $$1.f);
+               $$2.c = $$1;
+               a($$0, false);
+            }
+         }
+      }
+
+      private static void a(flu $$0, boolean $$1) {
+         int $$2 = $$0.b();
+         List<flv> $$3 = $$0.c();
+
+         for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+            flv $$5 = $$3.get($$4);
+            if ($$1) {
+               GlStateManager._enableVertexAttribArray($$4);
+            }
+
+            switch ($$5.f()) {
+               case a:
+               case e:
+                  GlStateManager._vertexAttribPointer($$4, $$5.g(), GlConst.toGl($$5.e()), false, $$2, (long)$$0.a($$5));
+                  break;
+               case b:
+               case c:
+                  GlStateManager._vertexAttribPointer($$4, $$5.g(), GlConst.toGl($$5.e()), true, $$2, (long)$$0.a($$5));
+                  break;
+               case d:
+                  if ($$5.e() == flv.a.a) {
+                     GlStateManager._vertexAttribPointer($$4, $$5.g(), GlConst.toGl($$5.e()), false, $$2, (long)$$0.a($$5));
+                  } else {
+                     GlStateManager._vertexAttribIPointer($$4, $$5.g(), GlConst.toGl($$5.e()), $$2, (long)$$0.a($$5));
+                  }
+            }
+         }
+      }
+   }
+
+   static class b extends fjg {
+      private final Map<flu, fjg.c> a = new HashMap<>();
+      private final fiy b;
+
+      public b(fiy $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(flu $$0, fiv $$1) {
+         fjg.c $$2 = this.a.get($$0);
+         if ($$2 == null) {
+            int $$3 = GlStateManager._glGenVertexArrays();
+            GlStateManager._glBindVertexArray($$3);
+            ARBVertexAttribBinding.glBindVertexBuffer(0, $$1.f, 0L, $$0.b());
+            List<flv> $$4 = $$0.c();
+
+            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+               flv $$6 = $$4.get($$5);
+               GlStateManager._enableVertexAttribArray($$5);
+               switch ($$6.f()) {
+                  case a:
+                  case e:
+                     ARBVertexAttribBinding.glVertexAttribFormat($$5, $$6.g(), GlConst.toGl($$6.e()), false, $$0.a($$6));
+                     break;
+                  case b:
+                  case c:
+                     ARBVertexAttribBinding.glVertexAttribFormat($$5, $$6.g(), GlConst.toGl($$6.e()), true, $$0.a($$6));
+                     break;
+                  case d:
+                     if ($$6.e() == flv.a.a) {
+                        ARBVertexAttribBinding.glVertexAttribFormat($$5, $$6.g(), GlConst.toGl($$6.e()), true, $$0.a($$6));
+                     } else {
+                        ARBVertexAttribBinding.glVertexAttribIFormat($$5, $$6.g(), GlConst.toGl($$6.e()), $$0.a($$6));
+                     }
+               }
+
+               ARBVertexAttribBinding.glVertexAttribBinding($$5, 0);
+            }
+
+            fjg.c $$7 = new fjg.c($$3, $$0, $$1);
+            this.b.a($$7);
+            this.a.put($$0, $$7);
+         } else {
+            GlStateManager._glBindVertexArray($$2.a);
+            if ($$2.c != $$1) {
+               ARBVertexAttribBinding.glBindVertexBuffer(0, $$1.f, 0L, $$0.b());
+               $$2.c = $$1;
+            }
+         }
+      }
+   }
+
+   public static class c {
+      final int a;
+      final flu b;
+      @Nullable
+      fiv c;
+
+      c(int $$0, flu $$1, @Nullable fiv $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+   }
 }

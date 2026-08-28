@@ -1,9 +1,11 @@
-public interface axl {
-   axt<czr> a = a("regular_goat_horns");
-   axt<czr> b = a("screaming_goat_horns");
-   axt<czr> c = a("goat_horns");
+public final class axl {
+   public static final axv<exp> a = a("water");
+   public static final axv<exp> b = a("lava");
 
-   private static axt<czr> a(String $$0) {
-      return axt.a(mh.aU, ali.b($$0));
+   private axl() {
+   }
+
+   private static axv<exp> a(String $$0) {
+      return axv.a(mi.F, alk.b($$0));
    }
 }

@@ -1,59 +1,49 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class hkd implements hke<dcy> {
-   private final duo.a a;
-   private final gjy b;
-   @Nullable
-   private final ali c;
-   private final float d;
+public class hkd implements hkg<ki> {
+   private final gju a;
 
-   public hkd(duo.a $$0, gjy $$1, @Nullable ali $$2, float $$3) {
+   public hkd(gju $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
    @Nullable
-   public dcy a(czy $$0) {
-      return $$0.a(kk.ak);
+   public ki a(daa $$0) {
+      return $$0.e();
    }
 
-   public void a(@Nullable dcy $$0, czw $$1, flo $$2, gsa $$3, int $$4, int $$5, boolean $$6) {
-      gsl $$7 = gvd.a(this.a, $$0, this.c);
-      gvd.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
-   }
-
-   public static record a(duo.a b, Optional<ali> c, float d) implements hke.a {
-      public static final MapCodec<hkd.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  duo.a.b.fieldOf("kind").forGetter(hkd.a::b),
-                  ali.a.optionalFieldOf("texture").forGetter(hkd.a::c),
-                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hkd.a::d)
-               )
-               .apply($$0, hkd.a::new)
-      );
-
-      public a(duo.a $$0) {
-         this($$0, Optional.empty(), 0.0F);
+   public void a(@Nullable ki $$0, czy $$1, flq $$2, gsc $$3, int $$4, int $$5, boolean $$6) {
+      dxu $$7 = $$0 != null ? $$0.a(kl.am, dxu.a) : dxu.a;
+      cyy $$8 = $$0 != null ? $$0.a(kl.an) : null;
+      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
+      $$2.a();
+      $$2.b(1.0F, -1.0F, -1.0F);
+      hnj $$10 = $$9 ? hnm.g : hnm.h;
+      flt $$11 = $$10.c().a(gzi.a($$3, this.a.a($$10.a()), $$1 == czy.g, $$6));
+      this.a.c().a($$2, $$11, $$4, $$5);
+      if ($$9) {
+         guk.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cyy.a), $$7, $$6, false);
+      } else {
+         this.a.b().a($$2, $$11, $$4, $$5);
       }
+
+      $$2.b();
+   }
+
+   public static record a() implements hkg.a {
+      public static final hkd.a a = new hkd.a();
+      public static final MapCodec<hkd.a> b = MapCodec.unit(a);
 
       @Override
       public MapCodec<hkd.a> a() {
-         return a;
+         return b;
       }
 
-      @Nullable
       @Override
-      public hke<?> a(gla $$0) {
-         gjy $$1 = gvd.a($$0, this.b);
-         ali $$2 = this.c.<ali>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
-         return $$1 != null ? new hkd(this.b, $$1, $$2, this.d) : null;
+      public hkg<?> a(glc $$0) {
+         return new hkd(new gju($$0.a(glf.cT)));
       }
    }
 }

@@ -2,46 +2,55 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.Set;
 
-public record fea(Optional<Boolean> b, Optional<Boolean> c) implements fdq {
+public record fea(Optional<Long> b, fai c) implements fds {
    public static final MapCodec<fea> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fea::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fea::e))
-            .apply($$0, fea::new)
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fea::c), fai.a.fieldOf("value").forGetter(fea::d)).apply($$0, fea::new)
    );
 
    @Override
-   public fdr b() {
-      return fds.o;
+   public fdt b() {
+      return fdu.q;
    }
 
-   public boolean a(fah $$0) {
-      ars $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
+   @Override
+   public Set<bbb<?>> a() {
+      return this.c.a();
    }
 
-   public static fea.a c() {
-      return new fea.a();
+   public boolean a(faj $$0) {
+      aru $$1 = $$0.d();
+      long $$2 = $$1.af();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   public Optional<Boolean> d() {
+   public static fea.a a(fai $$0) {
+      return new fea.a($$0);
+   }
+
+   public Optional<Long> c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public fai d() {
       return this.c;
    }
 
-   public static class a implements fdq.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
+   public static class a implements fds.a {
+      private Optional<Long> a = Optional.empty();
+      private final fai b;
 
-      public fea.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      public a(fai $$0) {
+         this.b = $$0;
       }
 
-      public fea.a b(boolean $$0) {
-         this.b = Optional.of($$0);
+      public fea.a a(long $$0) {
+         this.a = Optional.of($$0);
          return this;
       }
 

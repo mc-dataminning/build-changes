@@ -1,87 +1,42 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cfn extends ceq {
-   public static final int a = 120;
-   protected final byc b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public class cfn extends ces {
+   private final bxy a;
+   private double b;
+   private double c;
+   private int d;
 
-   public cfn(byc $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public cfn(byc $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public cfn(byc $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(ceq.a.a));
+   public cfn(bxy $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ces.a.a, ces.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cX()) {
-         return false;
-      } else {
-         if (!this.h) {
-            if (this.i && this.b.ew() >= 100) {
-               return false;
-            }
-
-            if (this.b.dY().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         ffq $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            this.h = false;
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   protected ffq h() {
-      return cin.a(this.b, 10, 7);
+      return this.a.dY().i() < 0.02F;
    }
 
    @Override
    public boolean c() {
-      return !this.b.O().k() && !this.b.cX();
+      return this.d >= 0;
    }
 
    @Override
    public void d() {
-      this.b.O().a(this.c, this.d, this.e, this.f);
+      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dY().a(20);
    }
 
    @Override
-   public void e() {
-      this.b.O().m();
-      super.e();
+   public boolean V_() {
+      return true;
    }
 
-   public void i() {
-      this.h = true;
-   }
-
-   public void c(int $$0) {
-      this.g = $$0;
+   @Override
+   public void a() {
+      this.d--;
+      this.a.J().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
    }
 }

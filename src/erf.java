@@ -1,57 +1,38 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record erf(jf<ejv<?, ?>> e, List<eri> f) {
-   public static final Codec<erf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ejv.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eri.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, erf::new)
+public class erf extends ero {
+   public static final MapCodec<erf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, erf::new)
    );
-   public static final Codec<jf<erf>> b = ale.a(mh.bb, a);
-   public static final Codec<jj<erf>> c = ju.a(mh.bb, a);
-   public static final Codec<List<jj<erf>>> d = ju.a(mh.bb, a, true).listOf();
+   private final int c;
+   private final double d;
+   private final double e;
 
-   public boolean a(dkw $$0, edc $$1, azx $$2, iv $$3) {
-      return this.a(new erg($$0, $$1, Optional.empty()), $$2, $$3);
+   private erf(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean b(dkw $$0, edc $$1, azx $$2, iv $$3) {
-      return this.a(new erg($$0, $$1, Optional.of(this)), $$2, $$3);
-   }
-
-   private boolean a(erg $$0, azx $$1, iv $$2) {
-      Stream<iv> $$3 = Stream.of($$2);
-
-      for (eri $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      ejv<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
-
-   public Stream<ejv<?, ?>> a() {
-      return this.e.a().a();
+   public static erf a(int $$0, double $$1, double $$2) {
+      return new erf($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return "Placed " + this.e;
+   protected int a(azz $$0, iw $$1) {
+      double $$2 = dlc.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
-   public jf<ejv<?, ?>> b() {
-      return this.e;
-   }
-
-   public List<eri> c() {
-      return this.f;
+   @Override
+   public erl<?> b() {
+      return erl.g;
    }
 }

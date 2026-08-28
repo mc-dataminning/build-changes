@@ -1,87 +1,59 @@
-public class god extends gqk {
-   private final float a;
-   private final float b;
+public class god extends gqm {
+   private final gqh a;
 
-   god(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hhs $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-   }
-
-   @Override
-   public gpo b() {
-      return gpo.a;
-   }
-
-   protected god(gmb $$0, double $$1, double $$2, double $$3, hhs $$4) {
+   protected god(
+      gmd $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      gqh $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      hla $$5 = $$4.a(this.r);
-      if ($$5 != null) {
-         this.a($$5);
-      } else {
-         this.a(frd.Q().a(hkz.c).apply(hkp.c()));
-      }
-
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.A.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.A.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   public gpq b() {
+      return gpq.b;
    }
 
    @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
+   public float b(float $$0) {
+      return this.D * azq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a extends god.b<mc> {
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new god($$1, $$2, $$3, $$4, this.a(new czy(dac.cT), $$1));
-      }
-   }
-
-   public abstract static class b<T extends lw> implements gpn<T> {
-      private final hhs a = new hhs();
-
-      protected hhs a(czy $$0, gmb $$1) {
-         frd.Q().bf().a(this.a, $$0, czw.h, $$1, null, 0);
-         return this.a;
-      }
-   }
-
-   public static class c extends god.b<lu> {
-      public gpk a(lu $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new god($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
-      }
-   }
-
-   public static class d extends god.b<mc> {
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new god($$1, $$2, $$3, $$4, this.a(new czy(dac.rG), $$1));
-      }
-   }
-
-   public static class e extends god.b<mc> {
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new god($$1, $$2, $$3, $$4, this.a(new czy(dac.rs), $$1));
-      }
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

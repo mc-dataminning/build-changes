@@ -1,75 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dmj extends dnc implements dun {
-   public static final MapCodec<dmj> a = b(dmj::new);
-   public static final ebv b = ebu.I;
+public class dmj extends dlv {
+   public static final MapCodec<dmj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyy.q.fieldOf("color").forGetter(dlv::b), t()).apply($$0, dmj::new));
+   public static final ecg b = ebw.bd;
+   private static final Map<cyy, dne> c = Maps.newHashMap();
+   private static final fgm d = dne.b(8.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dmj> a() {
       return a;
    }
 
-   protected dmj(ebd.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+   public dmj(cyy $$0, ebf.d $$1) {
+      super($$0, $$1);
+      this.l(this.C.b().b(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected boolean e_(ebe $$0) {
-      return $$0.y().c();
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected dtp a_(ebe $$0) {
-      return dtp.a;
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return d;
    }
 
    @Override
-   protected float c(ebe $$0, djb $$1, iv $$2) {
-      return 1.0F;
+   public ebg a(ddt $$0) {
+      return this.m().b(b, Integer.valueOf(ecm.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return $$4 == jc.a && !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected exo b_(ebe $$0) {
-      return $$0.c(b) ? exp.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public ebe a(ddr $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == exp.c));
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
       $$0.a(b);
    }
 
-   @Override
-   public czy a(@Nullable bxu $$0, djy $$1, iv $$2, ebe $$3) {
-      if ($$0 instanceof crx $$4 && $$4.b()) {
-         return dun.super.a($$0, $$1, $$2, $$3);
-      }
-
-      return czy.k;
-   }
-
-   @Override
-   public boolean a(@Nullable bxu $$0, djb $$1, iv $$2, ebe $$3, exn $$4) {
-      if ($$0 instanceof crx $$5 && $$5.b()) {
-         return dun.super.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      return false;
+   public static dne a(cyy $$0) {
+      return c.getOrDefault($$0, dng.jl);
    }
 }

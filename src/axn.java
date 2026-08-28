@@ -1,10 +1,9 @@
-public class axn {
-   public static final axt<cny> a = a("placeable");
+public interface axn {
+   axv<czt> a = a("regular_goat_horns");
+   axv<czt> b = a("screaming_goat_horns");
+   axv<czt> c = a("goat_horns");
 
-   private axn() {
-   }
-
-   private static axt<cny> a(String $$0) {
-      return axt.a(mh.aZ, ali.b($$0));
+   private static axv<czt> a(String $$0) {
+      return axv.a(mi.aU, alk.b($$0));
    }
 }

@@ -1,59 +1,10 @@
-import javax.annotation.Nullable;
-
 public interface hnv {
-   String c = "particle";
+   hlc a(hnj var1, hnn var2);
 
-   @Nullable
-   default Boolean c() {
-      return null;
-   }
+   hlc a(String var1, hnn var2);
 
-   @Nullable
-   default hnv.a b() {
-      return null;
-   }
-
-   @Nullable
-   default gtr d() {
-      return null;
-   }
-
-   default gtv.a e() {
-      return gtv.a.a;
-   }
-
-   @Nullable
-   default hnu a() {
-      return null;
-   }
-
-   @Nullable
-   default ali f() {
-      return null;
-   }
-
-   public static enum a {
-      a("front"),
-      b("side");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static hnv.a a(String $$0) {
-         for (hnv.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
-      }
-
-      public boolean a() {
-         return this == b;
-      }
+   default hlc a(gtx $$0, String $$1, hnn $$2) {
+      hnj $$3 = $$0.a($$1);
+      return $$3 != null ? this.a($$3, $$2) : this.a($$1, $$2);
    }
 }

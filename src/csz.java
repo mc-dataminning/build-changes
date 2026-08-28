@@ -1,47 +1,51 @@
-public abstract class csz extends cta implements csp {
-   private static final akl<czy> a = akp.a(csz.class, akn.h);
-
-   public csz(bxc<? extends csz> $$0, djx $$1) {
+public class csz extends ctb {
+   public csz(bxe<? extends csz> $$0, djz $$1) {
       super($$0, $$1);
    }
 
-   public csz(bxc<? extends csz> $$0, double $$1, double $$2, double $$3, djx $$4, czy $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a($$5);
+   public csz(djz $$0, bxw $$1, daa $$2) {
+      super(bxe.bl, $$1, $$0, $$2);
    }
 
-   public csz(bxc<? extends csz> $$0, bxu $$1, djx $$2, czy $$3) {
-      this($$0, $$1.dA(), $$1.dE() - 0.1F, $$1.dG(), $$2, $$3);
-      this.c($$1);
-   }
-
-   public void a(czy $$0) {
-      this.ar().a(a, $$0.c(1));
-   }
-
-   protected abstract czu g();
-
-   @Override
-   public czy f() {
-      return this.ar().a(a);
+   public csz(djz $$0, double $$1, double $$2, double $$3, daa $$4) {
+      super(bxe.bl, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected void a(akp.a $$0) {
-      $$0.a(a, new czy(this.g()));
+   protected czw g() {
+      return dae.rs;
+   }
+
+   private lx j() {
+      daa $$0 = this.f();
+      return (lx)($$0.f() ? lz.Z : new lv(lz.U, $$0));
    }
 
    @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      alg<uy> $$1 = this.dX().a(un.a);
-      $$0.a("Item", czy.b, $$1, this.f());
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lx $$1 = this.j();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 
    @Override
-   public void a(tz $$0) {
+   protected void a(ffp $$0) {
       super.a($$0);
-      alg<uy> $$1 = this.dX().a(un.a);
-      this.a($$0.<czy>a("Item", czy.b, $$1).orElseGet(() -> new czy(this.g())));
+      bwv $$1 = $$0.a();
+      int $$2 = $$1 instanceof coj ? 3 : 0;
+      $$1.a(this.dW().b(this, this.q()), (float)$$2);
+   }
+
+   @Override
+   protected void a(ffq $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.dV().a(this, (byte)3);
+         this.aq();
+      }
    }
 }

@@ -1,29 +1,70 @@
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class hnc {
-   private static final ebf<dnc, ebe> a = b();
-   private static final ebf<dnc, ebe> b = b();
-   private static final ali c = ali.b("glow_item_frame");
-   private static final ali d = ali.b("item_frame");
-   private static final Map<ali, ebf<dnc, ebe>> e = Map.of(d, a, c, b);
+public class hnc implements AutoCloseable {
+   private final Map<alk, hnc.a> a;
 
-   private static ebf<dnc, ebe> b() {
-      return new ebf.a<dnc, ebe>(dne.a).a(ebu.bG).a(dnc::m, ebe::new);
+   public hnc(Map<alk, alk> $$0, hle $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         hlb $$2 = new hlb((alk)$$1x.getKey());
+         $$1.a((alk)$$1x.getKey(), $$2);
+         return new hnc.a($$2, (alk)$$1x.getValue());
+      }));
    }
 
-   public static ebe a(boolean $$0, boolean $$1) {
-      return ($$0 ? b : a).b().b(ebu.bG, Boolean.valueOf($$1));
+   public hlb a(alk $$0) {
+      return this.a.get($$0).a();
    }
 
-   static Function<ali, ebf<dnc, ebe>> a() {
-      Map<ali, ebf<dnc, ebe>> $$0 = new HashMap<>(e);
+   @Override
+   public void close() {
+      this.a.values().forEach(hnc.a::close);
+      this.a.clear();
+   }
 
-      for (dnc $$1 : mg.e) {
-         $$0.put($$1.p().h().a(), $$1.l());
+   public Map<alk, CompletableFuture<hnc.b>> a(avh $$0, int $$1, Executor $$2) {
+      return ag.a(
+         this.a, (Function<? super hnc.a, CompletableFuture<hnc.b>>)($$3 -> hkx.a($$3.a).a($$0, $$3.b, $$1, $$2).thenApply($$1xx -> new hnc.b($$3.a, $$1xx)))
+      );
+   }
+
+   static record a(hlb a, alk b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.d();
+      }
+   }
+
+   public static class b {
+      private final hlb a;
+      private final hkx.a b;
+
+      public b(hlb $$0, hkx.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$0::get;
+      @Nullable
+      public hlc a(alk $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public hlc a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

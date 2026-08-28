@@ -1,165 +1,130 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public record hqo<T>(String F, String G, Codec<T> H, hqo.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final hqo<String> a = b("user_id", "userId");
-   public static final hqo<String> b = b("client_id", "clientId");
-   public static final hqo<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final hqo<String> d = b("game_version", "buildDisplayName");
-   public static final hqo<String> e = b("operating_system", "buildPlatform");
-   public static final hqo<String> f = b("platform", "platform");
-   public static final hqo<Boolean> g = a("client_modded", "clientModded");
-   public static final hqo<String> h = b("launcher_name", "launcherName");
-   public static final hqo<UUID> i = e("world_session_id", "worldSessionId");
-   public static final hqo<Boolean> j = a("server_modded", "serverModded");
-   public static final hqo<hqo.c> k = a("server_type", "serverType", hqo.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final hqo<Boolean> l = a("opt_in", "isOptional");
-   public static final hqo<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ayw.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final hqo<hqo.b> n = a("game_mode", "playerGameMode", hqo.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final hqo<String> o = b("realms_map_content", "realmsMapContent");
-   public static final hqo<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final hqo<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final hqo<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final hqo<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final hqo<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final hqo<Integer> u = c("number_of_samples", "numSamples");
-   public static final hqo<Integer> v = c("render_distance", "renderDistance");
-   public static final hqo<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final hqo<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final hqo<Boolean> y = a("new_world", "newWorld");
-   public static final hqo<hqs.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final hqo<hqs.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final hqo<hqs.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final hqo<hqs.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final hqo<String> D = b("advancement_id", "advancementId");
-   public static final hqo<Long> E = d("advancement_game_time", "advancementGameTime");
+public class hqo {
+   static final Map<String, hqo> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<hqo> a = Codec.STRING.comapFlatMap($$0 -> {
+      hqo $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, hqo::a);
+   private static final List<hqq<?>> i = List.of(hqq.a, hqq.b, hqq.c, hqq.d, hqq.e, hqq.f, hqq.g, hqq.h, hqq.m, hqq.l);
+   private static final List<hqq<?>> j = Stream.concat(i.stream(), Stream.of(hqq.i, hqq.j, hqq.k)).toList();
+   public static final hqo b = a("world_loaded", "WorldLoaded").a(j).a(hqq.n).a(hqq.o).b();
+   public static final hqo c = a("performance_metrics", "PerformanceMetrics").a(j).a(hqq.r).a(hqq.s).a(hqq.t).a(hqq.u).a(hqq.v).a(hqq.w).a().b();
+   public static final hqo d = a("world_load_times", "WorldLoadTimes").a(j).a(hqq.x).a(hqq.y).a().b();
+   public static final hqo e = a("world_unloaded", "WorldUnloaded").a(j).a(hqq.p).a(hqq.q).b();
+   public static final hqo f = a("advancement_made", "AdvancementMade").a(j).a(hqq.D).a(hqq.E).a().b();
+   public static final hqo g = a("game_load_times", "GameLoadTimes").a(i).a(hqq.z).a(hqq.A).a(hqq.B).a(hqq.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<hqq<?>> m;
+   private final boolean n;
+   private final MapCodec<hqk> o;
 
-   public static <T> hqo<T> a(String $$0, String $$1, Codec<T> $$2, hqo.a<T> $$3) {
-      return new hqo<>($$0, $$1, $$2, $$3);
+   hqo(String $$0, String $$1, List<hqq<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = hqr.a($$2).xmap($$0x -> new hqk(this, $$0x), hqk::b);
    }
 
-   public static hqo<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   public static hqo.a a(String $$0, String $$1) {
+      return new hqo.a($$0, $$1);
    }
 
-   public static hqo<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   public String a() {
+      return this.k;
    }
 
-   public static hqo<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   public List<hqq<?>> b() {
+      return this.m;
    }
 
-   public static hqo<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
+   public MapCodec<hqk> c() {
+      return this.o;
    }
 
-   public static hqo<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, jz.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
+   public boolean d() {
+      return this.n;
    }
 
-   public static hqo<hqs.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hqs.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
+   public TelemetryEvent a(TelemetrySession $$0, hqr $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
 
-   public static hqo<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(hqp $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
+      for (hqq<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
       }
+
+      return $$2;
    }
 
-   public xo a() {
-      return xa.c("telemetry.property." + this.F + ".title");
+   public <T> boolean a(hqq<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
    public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+      return "TelemetryEventType[" + this.k + "]";
    }
 
-   public String b() {
-      return this.F;
+   public xq e() {
+      return this.a("title");
    }
 
-   public String c() {
-      return this.G;
+   public xq f() {
+      return this.a("description");
    }
 
-   public Codec<T> d() {
-      return this.H;
+   private xq a(String $$0) {
+      return xc.c("telemetry.event." + this.k + "." + $$0);
    }
 
-   public hqo.a<T> e() {
-      return this.I;
+   public static List<hqo> g() {
+      return List.copyOf(h.values());
    }
 
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
+   public static class a {
+      private final String a;
+      private final String b;
+      private final List<hqq<?>> c = new ArrayList<>();
+      private boolean d;
 
-   public static enum b implements bam {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<hqo.b> f = bam.a(hqo.b::values);
-      private final String g;
-      private final int h;
-
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public int a() {
-         return this.h;
+      public hqo.a a(List<hqq<?>> $$0) {
+         this.c.addAll($$0);
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.g;
-      }
-   }
-
-   public static enum c implements bam {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<hqo.c> d = bam.a(hqo.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
+      public <T> hqo.a a(hqq<T> $$0) {
+         this.c.add($$0);
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      public hqo.a a() {
+         this.d = true;
+         return this;
+      }
+
+      public hqo b() {
+         hqo $$0 = new hqo(this.a, this.b, List.copyOf(this.c), this.d);
+         if (hqo.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
+         } else {
+            return $$0;
+         }
       }
    }
 }

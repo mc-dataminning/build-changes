@@ -2,42 +2,28 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class eu implements ArgumentType<ali> {
-   private static final Collection<String> a = Stream.of(djx.i, djx.j).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xa.b("argument.dimension.invalid", $$0));
+public class eu implements ArgumentType<ua> {
+   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
 
-   public ali a(StringReader $$0) throws CommandSyntaxException {
-      return ali.a($$0);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eo ? eo.a(((eo)$$0.getSource()).t().stream().map(alh::a), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   private eu() {
    }
 
    public static eu a() {
       return new eu();
    }
 
-   public static ars a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      ali $$2 = (ali)$$0.getArgument($$1, ali.class);
-      alh<djx> $$3 = alh.a(mh.bp, $$2);
-      ars $$4 = ((ej)$$0.getSource()).l().a($$3);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
-      }
+   public static <S> ua a(CommandContext<S> $$0, String $$1) {
+      return (ua)$$0.getArgument($$1, ua.class);
+   }
+
+   public ua a(StringReader $$0) throws CommandSyntaxException {
+      return vb.c($$0);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 }

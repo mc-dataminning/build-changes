@@ -1,20 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dgv(dgs c) implements dhe {
-   public static final MapCodec<dgv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgs.b.fieldOf("value").forGetter(dgv::b)).apply($$0, dgv::new));
+public record dgv(jk<czw> c) {
+   public static final Codec<dgv> a = RecordCodecBuilder.create($$0 -> $$0.group(jv.a(mi.K).fieldOf("items").forGetter(dgv::a)).apply($$0, dgv::new));
+   public static final za<wn, dgv> b = za.a(yy.c(mi.K), dgv::a, dgv::new);
 
-   @Override
-   public float a(int $$0, azx $$1, float $$2) {
-      return $$2 + this.c.a($$0);
+   public boolean a(daa $$0) {
+      return $$0.a(this.c);
    }
 
-   @Override
-   public MapCodec<dgv> a() {
-      return a;
-   }
-
-   public dgs b() {
+   public jk<czw> a() {
       return this.c;
    }
 }

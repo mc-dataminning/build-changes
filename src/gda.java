@@ -1,63 +1,50 @@
-import javax.annotation.Nullable;
+public class gda extends gaf {
+   private static final int a = 600;
+   private final vv b;
+   private fun c;
+   private int d;
+   private final fyf s = fyf.d();
 
-public abstract class gda extends gad {
-   private static final int b = 100;
-   private final xa c;
-   @Nullable
-   private final xa d;
-   private final xa s;
-   @Nullable
-   protected fun a;
-   @Nullable
-   private fuw u;
-   private final fxx v;
-
-   protected gda(xa $$0, xa $$1, xa $$2) {
-      this($$0, $$1, null, $$2);
-   }
-
-   protected gda(xa $$0, xa $$1, @Nullable xa $$2, xa $$3) {
+   public gda(xc $$0, vv $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new fxx(0, 0, this.n, this.o);
+      this.b = $$1;
    }
 
-   protected abstract fya m();
+   @Override
+   public boolean aH_() {
+      return false;
+   }
 
    @Override
    protected void aS_() {
-      fyd $$0 = this.v.a(fyd.d().a(8));
-      $$0.c().b();
-      $$0.a(new fvs(this.n(), this.p));
-      this.u = $$0.a(new fuw(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fyd $$1 = $$0.a(fyd.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fun.a(this.d, this.p).a());
-      }
-
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fuj var10000 = this.c($$1x);
+      this.s.c().b().a(10);
+      this.s.a(new fvu(this.l, this.p));
+      this.c = this.s.a(fun.a(xb.p, $$0 -> this.b.a(fze.a)).a());
+      this.c.j = false;
+      this.s.a();
+      this.s.a($$1 -> {
+         ful var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
-      }
-
-      this.v.a();
-      fxx.a(this.v, this.J());
+      fxz.a(this.s, this.J());
    }
 
    @Override
-   public xa i() {
-      return this.s;
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
+      }
+
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

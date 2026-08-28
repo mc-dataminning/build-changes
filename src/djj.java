@@ -1,3 +1,4 @@
+@FunctionalInterface
 public interface djj {
-   void a(ars var1, boolean var2, boolean var3);
+   int getColor(dlc var1, double var2, double var4);
 }

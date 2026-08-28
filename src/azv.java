@@ -1,65 +1,84 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JavaOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public interface azv {
-   azv a(String var1);
+public class azv implements jh.a {
+   final ji.a a;
+   final azv.a b = new azv.a();
+   final Map<alj<Object>, jg.c<Object>> c = new HashMap<>();
+   final Map<axv<Object>, jk.c<Object>> d = new HashMap<>();
 
-   void b(String var1);
+   public azv(ji.a $$0) {
+      this.a = $$0;
+   }
 
-   public static class a implements azv {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
+   @Override
+   public <T> Optional<? extends jh<T>> a(alj<? extends jt<? extends T>> $$0) {
+      return Optional.of(this.b.a());
+   }
 
-      public a() {
-         this(HashMultimap.create(), () -> "");
-      }
-
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private String c() {
-         if (this.c == null) {
-            this.c = this.b.get();
+   public <V> ali<V> a(DynamicOps<V> $$0) {
+      return ali.a($$0, new ali.c() {
+         @Override
+         public <T> Optional<ali.b<T>> a(alj<? extends jt<? extends T>> $$0) {
+            return azv.this.a.a($$0).map(ali.b::a).or(() -> Optional.of(new ali.b<>(azv.this.b.b(), azv.this.b.a(), Lifecycle.experimental())));
          }
+      });
+   }
 
-         return this.c;
+   public baa a() {
+      return new baa() {
+         @Override
+         public <T> DataResult<T> a(Codec<T> $$0, T $$1, ji.a $$2) {
+            return $$0.encodeStart(azv.this.a(JavaOps.INSTANCE), $$1).flatMap($$2x -> $$0.parse($$2.a(JavaOps.INSTANCE), $$2x));
+         }
+      };
+   }
+
+   public boolean b() {
+      return !this.c.isEmpty() || !this.d.isEmpty();
+   }
+
+   class a implements jh<Object>, jj<Object> {
+      @Override
+      public Optional<jg.c<Object>> a(alj<Object> $$0) {
+         return Optional.of(this.c($$0));
       }
 
       @Override
-      public azv a(String $$0) {
-         return new azv.a(this.a, () -> this.c() + $$0);
+      public jg.c<Object> b(alj<Object> $$0) {
+         return this.c($$0);
+      }
+
+      private jg.c<Object> c(alj<Object> $$0) {
+         return azv.this.c.computeIfAbsent($$0, $$0x -> jg.c.a(this, $$0x));
       }
 
       @Override
-      public void b(String $$0) {
-         this.a.put(this.c(), $$0);
+      public Optional<jk.c<Object>> a(axv<Object> $$0) {
+         return Optional.of(this.c($$0));
       }
 
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
+      @Override
+      public jk.c<Object> b(axv<Object> $$0) {
+         return this.c($$0);
       }
 
-      public Optional<String> b() {
-         Multimap<String, String> $$0 = this.a();
-         if (!$$0.isEmpty()) {
-            String $$1 = $$0.asMap()
-               .entrySet()
-               .stream()
-               .map($$0x -> " at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-               .collect(Collectors.joining("\n"));
-            return Optional.of($$1);
-         } else {
-            return Optional.empty();
-         }
+      private jk.c<Object> c(axv<Object> $$0) {
+         return azv.this.d.computeIfAbsent($$0, $$0x -> jk.a(this, $$0x));
+      }
+
+      public <T> jh<T> a() {
+         return this;
+      }
+
+      public <T> jj<T> b() {
+         return this;
       }
    }
 }

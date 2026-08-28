@@ -1,37 +1,29 @@
-public class adv implements zh<abw> {
-   public static final yy<vw, adv> a = zh.a(adv::a, adv::new);
-   private final iv b;
-   private final boolean c;
+public class adv implements zj<aby> {
+   public static final za<vy, adv> a = zj.a(adv::a, adv::new);
+   private final bus b;
 
-   public adv(iv $$0, boolean $$1) {
+   public adv(bus $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private adv(vw $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private adv(vy $$0) {
+      this.b = $$0.b(bus.class);
    }
 
-   private void a(vw $$0) {
+   private void a(vy $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zj<adv> a() {
-      return agp.Y;
+   public zl<adv> a() {
+      return agr.W;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public iv b() {
+   public bus b() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

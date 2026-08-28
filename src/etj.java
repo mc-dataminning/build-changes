@@ -1,90 +1,87 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public abstract class etj {
-   public static final Codec<etj> f = mg.ag.q().dispatch("element_type", etj::a, etk::codec);
-   private static final jf<ewb> a = jf.a(new ewb(List.of()));
-   @Nullable
-   private volatile etl.a b;
+public class etj extends etl {
+   public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(etl.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), f()).apply($$0, etj::new)
+   );
+   private final List<etl> b;
 
-   protected static <E extends etj> RecordCodecBuilder<E, etl.a> f() {
-      return etl.a.c.fieldOf("projection").forGetter(etj::g);
-   }
-
-   protected etj(etl.a $$0) {
-      this.b = $$0;
-   }
-
-   public abstract ka a(ewe var1, dtw var2);
-
-   public abstract List<ewd.a> a(ewe var1, iv var2, dtw var3, azx var4);
-
-   public abstract ert a(ewe var1, iv var2, dtw var3);
-
-   public abstract boolean a(ewe var1, dkw var2, dkt var3, edc var4, iv var5, iv var6, dtw var7, ert var8, azx var9, evn var10, boolean var11);
-
-   public abstract etk<?> a();
-
-   public void a(djy $$0, ewd.d $$1, iv $$2, dtw $$3, azx $$4, ert $$5) {
-   }
-
-   public etj a(etl.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public etl.a g() {
-      etl.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
+   public etj(List<etl> $$0, etn.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
       } else {
-         return $$0;
+         this.b = $$0;
+         this.b($$1);
       }
    }
 
-   public int h() {
-      return 1;
+   @Override
+   public kb a(ewg $$0, dty $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (etl $$5 : this.b) {
+         kb $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new kb($$2, $$3, $$4);
    }
 
-   public static Function<etl.a, etc> i() {
-      return $$0 -> etc.b;
+   @Override
+   public List<ewf.a> a(ewg $$0, iw $$1, dty $$2, azz $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
    }
 
-   public static Function<etl.a, etg> a(String $$0) {
-      return $$1 -> new etg(Either.left(ali.a($$0)), a, $$1, Optional.empty());
+   @Override
+   public erv a(ewg $$0, iw $$1, dty $$2) {
+      Stream<erv> $$3 = this.b.stream().filter($$0x -> $$0x != ete.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return erv.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
    }
 
-   public static Function<etl.a, etg> a(String $$0, jf<ewb> $$1) {
-      return $$2 -> new etg(Either.left(ali.a($$0)), $$1, $$2, Optional.empty());
+   @Override
+   public boolean a(ewg $$0, dky $$1, dkv $$2, ede $$3, iw $$4, iw $$5, dty $$6, erv $$7, azz $$8, evp $$9, boolean $$10) {
+      for (etl $$11 : this.b) {
+         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public static Function<etl.a, eti> b(String $$0) {
-      return $$1 -> new eti(Either.left(ali.a($$0)), a, $$1, Optional.empty());
+   @Override
+   public etm<?> a() {
+      return etm.b;
    }
 
-   public static Function<etl.a, eti> b(String $$0, jf<ewb> $$1) {
-      return $$2 -> new eti(Either.left(ali.a($$0)), $$1, $$2, Optional.empty());
+   @Override
+   public etl a(etn.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
    }
 
-   public static Function<etl.a, eti> a(String $$0, evn $$1) {
-      return $$2 -> new eti(Either.left(ali.a($$0)), a, $$2, Optional.of($$1));
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
    }
 
-   public static Function<etl.a, eti> a(String $$0, jf<ewb> $$1, evn $$2) {
-      return $$3 -> new eti(Either.left(ali.a($$0)), $$1, $$3, Optional.of($$2));
+   private void b(etn.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 
-   public static Function<etl.a, etd> a(jf<erf> $$0) {
-      return $$1 -> new etd($$0, $$1);
-   }
-
-   public static Function<etl.a, eth> b(List<Function<etl.a, ? extends etj>> $$0) {
-      return $$1 -> new eth($$0.stream().map($$1x -> (etj)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @VisibleForTesting
+   public List<etl> b() {
+      return this.b;
    }
 }

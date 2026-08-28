@@ -1,69 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 
-public class eow extends eoq {
-   public static final MapCodec<eow> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eoq.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               btw.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eow::new)
-   );
-   private final eoq c;
-   private final String d;
-   @Nullable
-   private ece e;
-   private final btw f;
+public class eow extends eov {
+   public static final MapCodec<eow> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eow::new));
+   protected final List<ebg> h;
 
-   public eow(eoq $$0, ece $$1, btw $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
+   protected static <P extends eow> P4<Mu<P>, Long, ewt.a, Float, List<ebg>> b(Instance<P> $$0) {
+      return a($$0).and(ayy.b(ebg.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   public eow(eoq $$0, String $$1, btw $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public eow(long $$0, ewt.a $$1, float $$2, List<ebg> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected eor<?> a() {
-      return eor.g;
+   protected eot<?> a() {
+      return eot.d;
    }
 
    @Override
-   public ebe a(azx $$0, iv $$1) {
-      ebe $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         ece $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
-         }
-
-         this.e = $$3;
-      }
-
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   public ebg a(azz $$0, iw $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   @Nullable
-   private static ece a(ebe $$0, String $$1) {
-      Collection<ech<?>> $$2 = $$0.F();
-      Optional<ece> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ece).map($$0x -> (ece)$$0x).findAny();
-      return $$3.orElse(null);
+   protected ebg a(List<ebg> $$0, iw $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected ebg a(List<ebg> $$0, double $$1) {
+      double $$2 = azq.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

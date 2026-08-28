@@ -1,529 +1,287 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.OptionalLong;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public class gfs extends fvh<gfs.a> {
-   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
-   static final ali m = ali.b("world_list/error_highlighted");
-   static final ali n = ali.b("world_list/error");
-   static final ali o = ali.b("world_list/marked_join_highlighted");
-   static final ali p = ali.b("world_list/marked_join");
-   static final ali q = ali.b("world_list/warning_highlighted");
-   static final ali r = ali.b("world_list/warning");
-   static final ali s = ali.b("world_list/join_highlighted");
-   static final ali u = ali.b("world_list/join");
-   static final Logger v = LogUtils.getLogger();
-   static final xa w = xa.c("selectWorld.tooltip.fromNewerVersion1").a(o.m);
-   static final xa x = xa.c("selectWorld.tooltip.fromNewerVersion2").a(o.m);
-   static final xa y = xa.c("selectWorld.tooltip.snapshot1").a(o.g);
-   static final xa z = xa.c("selectWorld.tooltip.snapshot2").a(o.g);
-   static final xa A = xa.c("selectWorld.locked").a(o.m);
-   static final xa B = xa.c("selectWorld.conversion.tooltip").a(o.m);
-   static final xa C = xa.c("selectWorld.incompatible.tooltip").a(o.m);
-   static final xa D = xa.c("selectWorld.experimental");
-   private final gfm E;
-   private CompletableFuture<List<ezw>> F;
+public class gfs {
+   private static final xc a = xc.c("selectWorld.newWorld");
+   private final List<Consumer<gfs>> b = new ArrayList<>();
+   private String c = a.getString();
+   private gfs.a d = gfs.a.a;
+   private buq e = buq.c;
    @Nullable
-   private List<ezw> G;
-   private String H;
-   private final gfs.b I;
+   private Boolean f;
+   private String g;
+   private boolean h;
+   private boolean i;
+   private final Path j;
+   private String k;
+   private gfq l;
+   private gfs.b m;
+   private final List<gfs.b> n = new ArrayList<>();
+   private final List<gfs.b> o = new ArrayList<>();
+   private djv p;
 
-   public gfs(gfm $$0, frd $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable gfs $$7) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.E = $$0;
-      this.I = new gfs.b($$1);
-      this.H = $$6;
-      if ($$7 != null) {
-         this.F = $$7.F;
-      } else {
-         this.F = this.O();
+   public gfs(Path $$0, gfq $$1, Optional<alj<ers>> $$2, OptionalLong $$3) {
+      this.j = $$0;
+      this.l = $$1;
+      this.m = new gfs.b(a($$1, $$2).orElse(null));
+      this.r();
+      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
+      this.h = $$1.c().d();
+      this.i = $$1.c().e();
+      this.k = this.c(this.c);
+      this.d = $$1.i().a();
+      this.p = new djv($$1.h().b());
+      $$1.i().b().forEach($$0x -> this.p.<djv.a>b($$0x).a(false, null));
+      Optional.ofNullable($$1.i().c())
+         .flatMap($$1x -> $$1.a().a(mi.aS).flatMap($$1xx -> $$1xx.a($$1x)))
+         .map($$0x -> ((eqe)$$0x.a()).b())
+         .ifPresent($$0x -> this.a(gfn.a($$0x)));
+   }
+
+   public void a(Consumer<gfs> $$0) {
+      this.b.add($$0);
+   }
+
+   public void a() {
+      boolean $$0 = this.j();
+      if ($$0 != this.l.c().e()) {
+         this.l = this.l.a($$1x -> $$1x.a($$0));
       }
 
-      this.a(this.M());
-   }
-
-   @Override
-   protected void s() {
-      this.aI_().forEach(gfs.a::close);
-      super.s();
-   }
-
-   @Nullable
-   private List<ezw> M() {
-      try {
-         return this.F.getNow(null);
-      } catch (CancellationException | CompletionException var2) {
-         return null;
-      }
-   }
-
-   void N() {
-      this.F = this.O();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fyn.a($$0)) {
-         Optional<gfs.c> $$3 = this.b();
-         if ($$3.isPresent()) {
-            if ($$3.get().b()) {
-               this.c.ak().a(hos.a(awp.Bv, 1.0F));
-               $$3.get().c();
-            }
-
-            return true;
-         }
+      boolean $$1 = this.i();
+      if ($$1 != this.l.c().d()) {
+         this.l = this.l.a($$1x -> $$1x.b($$1));
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(ftx $$0, int $$1, int $$2, float $$3) {
-      List<ezw> $$4 = this.M();
-      if ($$4 != this.G) {
-         this.a($$4);
+      for (Consumer<gfs> $$2 : this.b) {
+         $$2.accept(this);
       }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(@Nullable List<ezw> $$0) {
-      if ($$0 == null) {
-         this.P();
-      } else {
-         this.a(this.H, $$0);
-      }
-
-      this.G = $$0;
    }
 
    public void a(String $$0) {
-      if (this.G != null && !$$0.equals(this.H)) {
-         this.a($$0, this.G);
-      }
-
-      this.H = $$0;
+      this.c = $$0;
+      this.k = this.c($$0);
+      this.a();
    }
 
-   private CompletableFuture<List<ezw>> O() {
-      ezv.a $$0;
+   private String c(String $$0) {
+      String $$1 = $$0.trim();
+
       try {
-         $$0 = this.c.m().b();
-      } catch (ezu var3) {
-         v.error("Couldn't load level list", var3);
-         this.c(var3.a());
-         return CompletableFuture.completedFuture(List.of());
+         return w.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
+      } catch (Exception var5) {
+         try {
+            return w.a(this.j, "World", "");
+         } catch (IOException var4) {
+            throw new RuntimeException("Could not create save folder", var4);
+         }
       }
+   }
 
-      if ($$0.a()) {
-         gfe.a(this.c, null);
-         return CompletableFuture.completedFuture(List.of());
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.k;
+   }
+
+   public void a(gfs.a $$0) {
+      this.d = $$0;
+      this.a();
+   }
+
+   public gfs.a d() {
+      return this.l() ? gfs.a.d : this.d;
+   }
+
+   public void a(buq $$0) {
+      this.e = $$0;
+      this.a();
+   }
+
+   public buq e() {
+      return this.f() ? buq.d : this.e;
+   }
+
+   public boolean f() {
+      return this.d() == gfs.a.b;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+      this.a();
+   }
+
+   public boolean g() {
+      if (this.l()) {
+         return true;
+      } else if (this.f()) {
+         return false;
       } else {
-         return this.c.m().a($$0).exceptionally($$0x -> {
-            this.c.a(p.a($$0x, "Couldn't load level list"));
-            return List.of();
-         });
+         return this.f == null ? this.d() == gfs.a.c : this.f;
       }
    }
 
-   private void a(String $$0, List<ezw> $$1) {
-      this.s();
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-
-      for (ezw $$2 : $$1) {
-         if (this.a($$0, $$2)) {
-            this.b(new gfs.c(this, $$2));
-         }
-      }
-
-      this.Q();
+   public void b(String $$0) {
+      this.g = $$0;
+      this.l = this.l.a($$0x -> $$0x.a(eid.a(this.h())));
+      this.a();
    }
 
-   private boolean a(String $$0, ezw $$1) {
-      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
+   public String h() {
+      return this.g;
    }
 
-   private void P() {
-      this.s();
-      this.b(this.I);
-      this.Q();
+   public void b(boolean $$0) {
+      this.h = $$0;
+      this.a();
    }
 
-   private void Q() {
-      this.h();
-      this.E.d(true);
+   public boolean i() {
+      return this.l() ? false : this.h;
    }
 
-   private void c(xa $$0) {
-      this.c.a(new fzm(xa.c("selectWorld.unable_to_load"), $$0));
+   public void c(boolean $$0) {
+      this.i = $$0;
+      this.a();
    }
 
-   @Override
-   public int a() {
-      return 270;
+   public boolean j() {
+      return !this.l() && !this.f() ? this.i : false;
    }
 
-   public void a(@Nullable gfs.a $$0) {
-      super.a($$0);
-      this.E.a($$0 instanceof gfs.c $$1 ? $$1.f : null);
+   public void a(gfq $$0) {
+      this.l = $$0;
+      this.r();
+      this.a();
    }
 
-   public Optional<gfs.c> b() {
-      gfs.a $$0 = this.p();
-      return $$0 instanceof gfs.c $$1 ? Optional.of($$1) : Optional.empty();
+   public gfq k() {
+      return this.l;
    }
 
-   public gfm c() {
-      return this.E;
+   public void a(gfq.a $$0) {
+      this.l = this.l.a($$0);
+      this.a();
    }
 
-   @Override
-   public void a(fyi $$0) {
-      if (this.aI_().contains(this.I)) {
-         this.I.b($$0);
+   protected boolean a(dkx $$0) {
+      dkx $$1 = this.l.h();
+      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
+         this.l = new gfq(this.l.c(), this.l.d(), this.l.e(), this.l.f(), this.l.g(), $$0, this.l.i());
+         return true;
       } else {
-         super.a($$0);
+         return false;
       }
    }
 
-   public abstract static class a extends fvh.a<gfs.a> implements AutoCloseable {
-      @Override
-      public void close() {
+   public boolean l() {
+      return this.l.e().c();
+   }
+
+   public void a(gfs.b $$0) {
+      this.m = $$0;
+      jg<ers> $$1 = $$0.c();
+      if ($$1 != null) {
+         this.a(($$1x, $$2) -> $$1.a().a());
       }
    }
 
-   public static class b extends gfs.a {
-      private static final xa a = xa.c("selectWorld.loading_list");
-      private final frd b;
-
-      public b(frd $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = (this.b.z.n - this.b.h.a(a)) / 2;
-         int $$11 = $$2 + ($$5 - 9) / 2;
-         $$0.b(this.b.h, a, $$10, $$11, -1);
-         String $$12 = fzs.a(ag.c());
-         int $$13 = (this.b.z.n - this.b.h.b($$12)) / 2;
-         int $$14 = $$11 + 9;
-         $$0.b(this.b.h, $$12, $$13, $$14, -8355712);
-      }
-
-      @Override
-      public xa a() {
-         return a;
-      }
+   public gfs.b m() {
+      return this.m;
    }
 
-   public final class c extends gfs.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private final frd d;
-      private final gfm e;
-      final ezw f;
-      private final fzn g;
-      @Nullable
-      private Path h;
-      private long i;
+   @Nullable
+   public gfn n() {
+      jg<ers> $$0 = this.m().c();
+      return $$0 != null ? gfn.a.get($$0.e()) : null;
+   }
 
-      public c(final gfs $$1, final ezw $$2) {
-         this.d = $$1.c;
-         this.e = $$1.c();
-         this.f = $$2;
-         this.g = fzn.a(this.d.aa(), $$2.a());
-         this.h = $$2.c();
-         this.k();
-         this.m();
-      }
+   public List<gfs.b> o() {
+      return this.n;
+   }
 
-      private void k() {
-         if (this.h != null) {
-            try {
-               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-               if ($$0.isSymbolicLink()) {
-                  List<ffh> $$1 = this.d.be().a(this.h);
-                  if (!$$1.isEmpty()) {
-                     gfs.v.warn("{}", fff.a(this.h, $$1));
-                     this.h = null;
-                  } else {
-                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
-                  }
-               }
+   public List<gfs.b> p() {
+      return this.o;
+   }
 
-               if (!$$0.isRegularFile()) {
-                  this.h = null;
-               }
-            } catch (NoSuchFileException var3) {
-               this.h = null;
-            } catch (IOException var4) {
-               gfs.v.error("could not validate symlink", var4);
-               this.h = null;
-            }
-         }
-      }
-
-      @Override
-      public xa a() {
-         xa $$0 = xa.a("narrator.select.world_info", this.f.b(), xa.a(new Date(this.f.f())), this.f.s());
-         if (this.f.p()) {
-            $$0 = wz.a($$0, gfs.A);
-         }
-
-         if (this.f.e()) {
-            $$0 = wz.a($$0, gfs.D);
-         }
-
-         return xa.a("narrator.select", $$0);
-      }
-
-      @Override
-      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         String $$10 = this.f.b();
-         String $$11 = this.f.a();
-         long $$12 = this.f.f();
-         if ($$12 != -1L) {
-            $$11 = $$11 + " (" + gfs.a.format(Instant.ofEpochMilli($$12)) + ")";
-         }
-
-         if (StringUtils.isEmpty($$10)) {
-            $$10 = hmi.a("selectWorld.world") + " " + ($$1 + 1);
-         }
-
-         xa $$13 = this.f.s();
-         $$0.b(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, -1);
-         $$0.b(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712);
-         $$0.b(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712);
-         $$0.a(gsl::H, this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         if (this.d.n.ac().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            boolean $$15 = $$14 < 32;
-            ali $$16 = $$15 ? gfs.s : gfs.u;
-            ali $$17 = $$15 ? gfs.q : gfs.r;
-            ali $$18 = $$15 ? gfs.m : gfs.n;
-            ali $$19 = $$15 ? gfs.o : gfs.p;
-            if (this.f instanceof ezw.c || this.f instanceof ezw.b) {
-               $$0.a(gsl::H, $$18, $$3, $$2, 32, 32);
-               $$0.a(gsl::H, $$19, $$3, $$2, 32, 32);
-               return;
-            }
-
-            if (this.f.p()) {
-               $$0.a(gsl::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(gfs.A, 175));
-               }
-            } else if (this.f.d()) {
-               $$0.a(gsl::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(gfs.B, 175));
-               }
-            } else if (!this.f.r()) {
-               $$0.a(gsl::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(gfs.C, 175));
-               }
-            } else if (this.f.m()) {
-               $$0.a(gsl::H, $$19, $$3, $$2, 32, 32);
-               if (this.f.n()) {
-                  $$0.a(gsl::H, $$18, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(gfs.w.g(), gfs.x.g()));
-                  }
-               } else if (!ac.b().g()) {
-                  $$0.a(gsl::H, $$17, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(gfs.y.g(), gfs.z.g()));
-                  }
-               }
-            } else {
-               $$0.a(gsl::H, $$16, $$3, $$2, 32, 32);
-            }
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.f.u()) {
-            return true;
+   private void r() {
+      jt<ers> $$0 = this.k().a().f(mi.bo);
+      this.n.clear();
+      this.n.addAll(a($$0, axy.a).orElseGet(() -> $$0.c().map(gfs.b::new).toList()));
+      this.o.clear();
+      this.o.addAll(a($$0, axy.b).orElse(this.n));
+      jg<ers> $$1 = this.m.c();
+      if ($$1 != null) {
+         gfs.b $$2 = a(this.k(), $$1.e()).map(gfs.b::new).orElse(this.n.getFirst());
+         boolean $$3 = gfn.a.get($$1.e()) != null;
+         if ($$3) {
+            this.m = $$2;
          } else {
-            gfs.this.a((gfs.a)this);
-            if (!($$0 - (double)gfs.this.u() <= 32.0) && ag.c() - this.i >= 250L) {
-               this.i = ag.c();
-               return super.a($$0, $$1, $$2);
-            } else {
-               if (this.b()) {
-                  this.d.ak().a(hos.a(awp.Bv, 1.0F));
-                  this.c();
-               }
-
-               return true;
-            }
+            this.a($$2);
          }
+      }
+   }
+
+   private static Optional<jg<ers>> a(gfq $$0, Optional<alj<ers>> $$1) {
+      return $$1.flatMap($$1x -> $$0.a().f(mi.bo).a($$1x));
+   }
+
+   private static Optional<List<gfs.b>> a(jt<ers> $$0, axv<ers> $$1) {
+      return $$0.a($$1).map($$0x -> $$0x.a().map(gfs.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
+   }
+
+   public void a(djv $$0) {
+      this.p = $$0;
+      this.a();
+   }
+
+   public djv q() {
+      return this.p;
+   }
+
+   public static enum a {
+      a("survival", djw.a),
+      b("hardcore", djw.a),
+      c("creative", djw.b),
+      d("spectator", djw.d);
+
+      public final djw e;
+      public final xc f;
+      private final xc g;
+
+      private a(final String $$0, final djw $$1) {
+         this.e = $$1;
+         this.f = xc.c("selectWorld.gameMode." + $$0);
+         this.g = xc.c("selectWorld.gameMode." + $$0 + ".info");
+      }
+
+      public xc a() {
+         return this.g;
+      }
+   }
+
+   public static record b(@Nullable jg<ers> a) {
+      private static final xc b = xc.c("generator.custom");
+
+      public xc a() {
+         return Optional.ofNullable(this.a).flatMap(jg::e).map($$0 -> xc.c($$0.a().h("generator"))).orElse(b);
       }
 
       public boolean b() {
-         return this.f.u();
+         return Optional.ofNullable(this.a).flatMap(jg::e).filter($$0 -> $$0.equals(ert.d)).isPresent();
       }
 
-      public void c() {
-         if (this.f.u()) {
-            if (this.f instanceof ezw.c) {
-               this.d.a(fzv.a(() -> this.d.a(this.e)));
-            } else {
-               this.d.x().a(this.f.a(), () -> {
-                  gfs.this.N();
-                  this.d.a(this.e);
-               });
-            }
-         }
-      }
-
-      public void d() {
-         this.d.a(new fzb($$0 -> {
-            if ($$0) {
-               this.d.a(new gaa(true));
-               this.e();
-            }
-
-            this.d.a(this.e);
-         }, xa.c("selectWorld.deleteQuestion"), xa.a("selectWorld.deleteWarning", this.f.b()), xa.c("selectWorld.deleteButton"), wz.e));
-      }
-
-      public void e() {
-         ezv $$0 = this.d.m();
-         String $$1 = this.f.a();
-
-         try (ezv.c $$2 = $$0.e($$1)) {
-            $$2.k();
-         } catch (IOException var8) {
-            fwu.b(this.d, $$1);
-            gfs.v.error("Failed to delete world {}", $$1, var8);
-         }
-
-         gfs.this.N();
-      }
-
-      public void g() {
-         this.l();
-         String $$0 = this.f.a();
-
-         ezv.c $$1;
-         try {
-            $$1 = this.d.m().d($$0);
-         } catch (IOException var6) {
-            fwu.a(this.d, $$0);
-            gfs.v.error("Failed to access level {}", $$0, var6);
-            gfs.this.N();
-            return;
-         } catch (fff var7) {
-            gfs.v.warn("{}", var7.getMessage());
-            this.d.a(fzv.a(() -> this.d.a(this.e)));
-            return;
-         }
-
-         gfh $$5;
-         try {
-            $$5 = gfh.a(this.d, $$1, $$1x -> {
-               $$1.c();
-               if ($$1x) {
-                  gfs.this.N();
-               }
-
-               this.d.a(this.e);
-            });
-         } catch (uk | ur | IOException var5) {
-            $$1.c();
-            fwu.a(this.d, $$0);
-            gfs.v.error("Failed to load world data {}", $$0, var5);
-            gfs.this.N();
-            return;
-         }
-
-         this.d.a($$5);
-      }
-
-      public void h() {
-         this.l();
-
-         try (ezv.c $$0 = this.d.m().d(this.f.a())) {
-            Pair<dkb, gfo> $$1 = this.d.x().a($$0);
-            dkb $$2 = (dkb)$$1.getFirst();
-            gfo $$3 = (gfo)$$1.getSecond();
-            Path $$4 = gfe.a($$0.a(ezt.j), this.d);
-            $$3.b();
-            if ($$3.c().f()) {
-               this.d
-                  .a(
-                     new fzb(
-                        $$3x -> this.d.a((gad)($$3x ? gfe.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                        xa.c("selectWorld.recreate.customized.title"),
-                        xa.c("selectWorld.recreate.customized.text"),
-                        wz.i,
-                        wz.e
-                     )
-                  );
-            } else {
-               this.d.a(gfe.a(this.d, this.e, $$2, $$3, $$4));
-            }
-         } catch (fff var8) {
-            gfs.v.warn("{}", var8.getMessage());
-            this.d.a(fzv.a(() -> this.d.a(this.e)));
-         } catch (Exception var9) {
-            gfs.v.error("Unable to recreate world", var9);
-            this.d.a(new fyw(() -> this.d.a(this.e), xa.c("selectWorld.recreate.error.title"), xa.c("selectWorld.recreate.error.text")));
-         }
-      }
-
-      private void l() {
-         this.d.d(new fzo(xa.c("selectWorld.data_read")));
-      }
-
-      private void m() {
-         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
-         if ($$0) {
-            try (InputStream $$1 = Files.newInputStream(this.h)) {
-               this.g.a(fkg.a($$1));
-            } catch (Throwable var7) {
-               gfs.v.error("Invalid icon for world {}", this.f.a(), var7);
-               this.h = null;
-            }
-         } else {
-            this.g.a();
-         }
-      }
-
-      @Override
-      public void close() {
-         this.g.close();
-      }
-
-      public String i() {
-         return this.f.b();
+      @Nullable
+      public jg<ers> c() {
+         return this.a;
       }
    }
 }

@@ -1,45 +1,80 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cnm {
-   private static final Logger a = LogUtils.getLogger();
-   private final cmv b;
-   private final cnf[] c = new cnf[cnl.c()];
+public class cnm extends cmz {
+   private boolean b;
    @Nullable
-   private cnf d;
+   private eye c;
+   @Nullable
+   private ffs d;
 
-   public cnm(cmv $$0) {
-      this.b = $$0;
-      this.a(cnl.k);
+   public cnm(cmx $$0) {
+      super($$0);
    }
 
-   public void a(cnl<?> $$0) {
-      if (this.d == null || $$0 != this.d.h()) {
-         if (this.d != null) {
-            this.d.d();
+   @Override
+   public void a(aru $$0) {
+      if (!this.b && this.c != null) {
+         iw $$1 = $$0.a(ehf.a.f, ekk.a(this.a.j()));
+         if (!$$1.a(this.a.dt(), 10.0)) {
+            this.a.t().a(cnn.a);
          }
-
-         this.d = this.b((cnl<cnf>)$$0);
-         if (!this.b.dV().C) {
-            this.b.ar().a(cmv.a, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dV().C ? "client" : "server");
-         this.d.c();
+      } else {
+         this.b = false;
+         this.i();
       }
    }
 
-   public cnf a() {
+   @Override
+   public void c() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
+   }
+
+   private void i() {
+      int $$0 = this.a.n();
+      ffs $$1 = this.a.J(1.0F);
+      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
+      if (this.a.x() != null && this.a.x().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.j();
+   }
+
+   private void j() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            kb $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new ffs((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public ffs f() {
       return this.d;
    }
 
-   public <T extends cnf> T b(cnl<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
-
-      return (T)this.c[$$1];
+   @Override
+   public cnn<cnm> h() {
+      return cnn.e;
    }
 }

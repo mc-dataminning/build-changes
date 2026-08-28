@@ -1,64 +1,58 @@
-import java.util.Calendar;
+public class guu implements gup<dyj> {
+   private final gzi a;
 
-public class guu<T extends dyc & dzj> implements gun<T> {
-   private final ghk a;
-   private final ghk b;
-   private final ghk c;
-   private final boolean d = b();
-
-   public guu(guo.a $$0) {
-      this.a = new ghk($$0.a(gld.X));
-      this.b = new ghk($$0.a(gld.aD));
-      this.c = new ghk($$0.a(gld.aE));
+   public guu(guq.a $$0) {
+      this.a = $$0.e();
    }
 
-   public static boolean b() {
-      Calendar $$0 = Calendar.getInstance();
-      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
-      djx $$7 = $$0.i();
-      boolean $$8 = $$7 != null;
-      ebe $$9 = $$8 ? $$0.m() : dne.cG.m().b(dog.c, jb.d);
-      ebw $$10 = $$9.b(dog.d) ? $$9.c(dog.d) : ebw.a;
-      if ($$9.b() instanceof dlw<?> $$12) {
-         boolean $$13 = $$10 != ebw.a;
-         $$2.a();
-         float $$14 = $$9.c(dog.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$14));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dpk.c<? extends dyk> $$15;
-         if ($$8) {
-            $$15 = $$12.a($$9, $$7, $$0.aB_(), true);
-         } else {
-            $$15 = dpk.b::b;
-         }
-
-         float $$17 = $$15.apply(dog.a($$0)).get($$1);
-         $$17 = 1.0F - $$17;
-         $$17 = 1.0F - $$17 * $$17 * $$17;
-         int $$18 = $$15.apply(new gur<>()).applyAsInt($$4);
-         hnh $$19 = gsu.a($$0, $$10, this.d);
-         flr $$20 = $$19.a($$3, gsl::f);
-         if ($$13) {
-            if ($$10 == ebw.b) {
-               this.a($$2, $$20, this.b, $$17, $$18, $$5);
-            } else {
-               this.a($$2, $$20, this.c, $$17, $$18, $$5);
+   public void a(dyj $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
+      if ($$0.i() != null) {
+         int $$7 = $$0.m().c(ebw.by);
+         if ($$7 > 0) {
+            jc $$8 = $$0.c();
+            if ($$8 != null) {
+               daa $$9 = $$0.d();
+               if (!$$9.f()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$10 = this.a($$8, $$7);
+                  $$2.a($$10[0], $$10[1], $$10[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$11 = $$8 == jc.f || $$8 == jc.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$11 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$12 = grx.a($$0.i(), $$0.m(), $$0.aB_().a($$8));
+                  this.a.a($$9, czy.i, $$12, hks.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
             }
-         } else {
-            this.a($$2, $$20, this.a, $$17, $$18, $$5);
          }
-
-         $$2.b();
       }
    }
 
-   private void a(flo $$0, flr $$1, ghk $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+   private float[] a(jc $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

@@ -1,18 +1,23 @@
 import io.netty.buffer.ByteBuf;
 
-public class abh implements zh<abe> {
+public class abh implements zj<abg> {
    public static final abh a = new abh();
-   public static final yy<ByteBuf, abh> b = yy.a(a);
+   public static final za<ByteBuf, abh> b = za.a(a);
 
    private abh() {
    }
 
    @Override
-   public zj<abh> a() {
-      return abk.e;
+   public zl<abh> a() {
+      return abm.a;
    }
 
-   public void a(abe $$0) {
+   public void a(abg $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,18 +1,28 @@
-import java.util.Optional;
+public record aih(int b, int c) implements zj<agt> {
+   public static final za<vy, aih> a = zj.a(aih::a, aih::new);
 
-public record aih(Optional<jf<bvv>> b, Optional<jf<bvv>> c) implements zh<agr> {
-   public static final yy<wl, aih> a = yy.a(bvv.b.a(yw::a), aih::b, bvv.b.a(yw::a), aih::e, aih::new);
-
-   @Override
-   public zj<aih> a() {
-      return agp.cb;
+   private aih(vy $$0) {
+      this($$0.l(), $$0.l());
+      if (this.c < 0 && this.c != -1) {
+         throw new IllegalArgumentException("Invalid selectedItemIndex: " + this.c);
+      }
    }
 
-   public void a(agr $$0) {
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public zl<aih> a() {
+      return agr.bm;
+   }
+
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public Optional<jf<bvv>> e() {
+   public int e() {
       return this.c;
    }
 }

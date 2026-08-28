@@ -1,23 +1,27 @@
-import io.netty.buffer.ByteBuf;
+import java.util.UUID;
 
-public class ajp implements zh<ajl> {
-   public static final ajp a = new ajp();
-   public static final yy<ByteBuf, ajp> b = yy.a(a);
+public record ajp(String b, UUID c) implements zj<ajn> {
+   public static final za<vy, ajp> a = zj.a(ajp::a, ajp::new);
 
-   private ajp() {
+   private ajp(vy $$0) {
+      this($$0.d(16), $$0.n());
+   }
+
+   private void a(vy $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public zj<ajp> a() {
-      return ajj.i;
+   public zl<ajp> a() {
+      return ajl.g;
    }
 
-   public void a(ajl $$0) {
+   public void a(ajn $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public UUID e() {
+      return this.c;
    }
 }

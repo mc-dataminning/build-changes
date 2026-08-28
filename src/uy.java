@@ -1,104 +1,154 @@
+import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.Optional;
 
-public sealed interface uy permits tz, ty, uq, ub {
-   int d = 8;
-   int e = 12;
-   int f = 4;
-   int g = 28;
-   byte h = 0;
-   byte i = 1;
-   byte j = 2;
-   byte k = 3;
-   byte l = 4;
-   byte m = 5;
-   byte n = 6;
-   byte o = 7;
-   byte p = 8;
-   byte q = 9;
-   byte r = 10;
-   byte s = 11;
-   byte t = 12;
-   int u = 512;
+public record uy(String b) implements ur {
+   private static final int c = 36;
+   public static final vc<uy> a = new vc.b<uy>() {
+      public uy a(DataInput $$0, uj $$1) throws IOException {
+         return uy.a(d($$0, $$1));
+      }
 
-   void a(DataOutput var1) throws IOException;
+      @Override
+      public ux.b a(DataInput $$0, ux $$1, uj $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static String d(DataInput $$0, uj $$1) throws IOException {
+         $$1.b(36L);
+         String $$2 = $$0.readUTF();
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
+      }
+
+      @Override
+      public void b(DataInput $$0, uj $$1) throws IOException {
+         uy.a($$0);
+      }
+
+      @Override
+      public String a() {
+         return "STRING";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_String";
+      }
+   };
+   private static final uy v = new uy("");
+   private static final char w = '"';
+   private static final char x = '\'';
+   private static final char y = '\\';
+   private static final char z = '\u0000';
+
+   @Deprecated(
+      forRemoval = true
+   )
+   public uy(String b) {
+      this.b = b;
+   }
+
+   public static void a(DataInput $$0) throws IOException {
+      $$0.skipBytes($$0.readUnsignedShort());
+   }
+
+   public static uy a(String $$0) {
+      return $$0.isEmpty() ? v : new uy($$0);
+   }
 
    @Override
-   String toString();
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeUTF(this.b);
+   }
 
-   byte b();
+   @Override
+   public int a() {
+      return 36 + 2 * this.b.length();
+   }
 
-   va<?> c();
+   @Override
+   public byte b() {
+      return 8;
+   }
 
-   uy d();
+   @Override
+   public vc<uy> c() {
+      return a;
+   }
 
-   int a();
+   @Override
+   public String toString() {
+      uz $$0 = new uz();
+      $$0.a(this);
+      return $$0.a();
+   }
 
-   void a(vc var1);
+   public uy e() {
+      return this;
+   }
 
-   uv.b a(uv var1);
+   @Override
+   public Optional<String> p_() {
+      return Optional.of(this.b);
+   }
 
-   default void b(uv $$0) {
-      uv.b $$1 = $$0.b(this.c());
-      if ($$1 == uv.b.a) {
-         this.a($$0);
+   @Override
+   public void a(ve $$0) {
+      $$0.a(this);
+   }
+
+   public static String b(String $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, $$1);
+      return $$1.toString();
+   }
+
+   public static void a(String $$0, StringBuilder $$1) {
+      int $$2 = $$1.length();
+      $$1.append(' ');
+      char $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.length(); $$4++) {
+         char $$5 = $$0.charAt($$4);
+         if ($$5 == '\\') {
+            $$1.append("\\\\");
+         } else if ($$5 != '"' && $$5 != '\'') {
+            String $$6 = uu.a($$5);
+            if ($$6 != null) {
+               $$1.append('\\');
+               $$1.append($$6);
+            } else {
+               $$1.append($$5);
+            }
+         } else {
+            if ($$3 == 0) {
+               $$3 = (char)($$5 == '"' ? 39 : 34);
+            }
+
+            if ($$3 == $$5) {
+               $$1.append('\\');
+            }
+
+            $$1.append($$5);
+         }
       }
+
+      if ($$3 == 0) {
+         $$3 = '"';
+      }
+
+      $$1.setCharAt($$2, $$3);
+      $$1.append($$3);
    }
 
-   default Optional<String> p_() {
-      return Optional.empty();
+   @Override
+   public ux.b a(ux $$0) {
+      return $$0.a(this.b);
    }
 
-   default Optional<Number> o() {
-      return Optional.empty();
-   }
-
-   default Optional<Byte> p() {
-      return this.o().map(Number::byteValue);
-   }
-
-   default Optional<Short> q() {
-      return this.o().map(Number::shortValue);
-   }
-
-   default Optional<Integer> r() {
-      return this.o().map(Number::intValue);
-   }
-
-   default Optional<Long> s() {
-      return this.o().map(Number::longValue);
-   }
-
-   default Optional<Float> t() {
-      return this.o().map(Number::floatValue);
-   }
-
-   default Optional<Double> u() {
-      return this.o().map(Number::doubleValue);
-   }
-
-   default Optional<Boolean> v() {
-      return this.p().map($$0 -> $$0 != 0);
-   }
-
-   default Optional<byte[]> f() {
-      return Optional.empty();
-   }
-
-   default Optional<int[]> q_() {
-      return Optional.empty();
-   }
-
-   default Optional<long[]> r_() {
-      return Optional.empty();
-   }
-
-   default Optional<tz> s_() {
-      return Optional.empty();
-   }
-
-   default Optional<uf> t_() {
-      return Optional.empty();
+   public String k() {
+      return this.b;
    }
 }

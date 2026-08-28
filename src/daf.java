@@ -1,85 +1,47 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public class daf {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jf<dae> c;
-   private final iv d;
-   private final daf.a e;
+public record daf(czb<dag> c) implements ddf {
+   public static final Codec<daf> a = czb.a(mi.aV, dag.c).xmap(daf::new, daf::a);
+   public static final za<wn, daf> b = za.a(czb.a(mi.aV, dag.d), daf::a, daf::new);
 
-   public daf(daf.a $$0, iv $$1) {
-      this.e = $$0;
-      this.d = $$1;
-   }
-
-   public boolean a() {
-      return this.c != null;
-   }
-
-   @Nullable
-   public dae b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jf<dae> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
+   @Override
+   public void a(czw.b $$0, Consumer<xc> $$1, dbp $$2, kg $$3) {
+      ji.a $$4 = $$0.a();
+      if ($$4 != null) {
+         this.c.a($$4).ifPresent($$1x -> {
+            xq $$2x = ((dag)$$1x.a()).c().f();
+            xf.a($$2x, xz.a.a(o.h));
+            $$1.accept($$2x);
+         });
       }
    }
 
-   public void a(djy $$0, jf<dae> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.J_().f(mh.aV).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
+   public static but a(djz $$0, iw $$1, daa $$2, crz $$3) {
+      daf $$4 = $$2.a(kl.ae);
+      if ($$4 == null) {
+         return but.f;
+      } else {
+         ebg $$5 = $$0.a_($$1);
+         if ($$5.a(dng.ek) && !$$5.c(drm.b)) {
+            if (!$$0.C) {
+               daa $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dzj $$7) {
+                  $$7.b($$6);
+                  $$0.a(egg.c, $$1, egg.a.a($$3, $$5));
+               }
 
-   public void a(djy $$0, @Nullable ebe $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(ege.F, this.d, ege.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(djy $$0, @Nullable ebe $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.d()) {
-               $$0.a(ege.E, this.d, ege.a.a($$1));
-               a($$0, this.d);
+               $$3.a(axb.al);
             }
 
-            this.b++;
+            return but.a;
+         } else {
+            return but.f;
          }
       }
    }
 
-   private boolean d() {
-      return this.b % 20L == 0L;
-   }
-
-   private static void a(djy $$0, iv $$1) {
-      if ($$0 instanceof ars $$2) {
-         ffq $$3 = ffq.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.G_().a(4) / 24.0F;
-         $$2.a(ly.ad, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
+   public czb<dag> a() {
+      return this.c;
    }
 }

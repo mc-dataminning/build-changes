@@ -1,60 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class duy extends dnc {
-   public static final MapCodec<duy> a = b(duy::new);
-   private static final fgk b = dnc.b(16.0, 0.0, 14.0);
-   private static final int c = 20;
+public class duy extends dne {
+   public static final MapCodec<duy> b = b(duy::new);
+   public static final ebx c = ebw.E;
 
    @Override
-   public MapCodec<duy> a() {
-      return a;
-   }
-
-   public duy(ebd.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected fgk b(ebe $$0, djb $$1, iv $$2, ffv $$3) {
+   protected MapCodec<? extends duy> a() {
       return b;
    }
 
-   @Override
-   protected fgk b_(ebe $$0, djb $$1, iv $$2) {
-      return fgh.b();
+   protected duy(ebf.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fgk c(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return fgh.b();
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return $$4 == jc.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      dnj.b($$1, $$2.d(), $$0);
+   public ebg a(ddt $$0) {
+      ebg $$1 = $$0.q().a_($$0.a().d());
+      return this.m().b(c, Boolean.valueOf(o($$1)));
+   }
+
+   protected static boolean o(ebg $$0) {
+      return $$0.a(axg.bC);
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$4 == jb.b && $$6.a(dne.J)) {
-         $$2.a($$3, this, 20);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   protected boolean a(ebe $$0, eyd $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(ebe $$0, djb $$1, iv $$2) {
-      return 0.2F;
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(c);
    }
 }

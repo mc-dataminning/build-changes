@@ -1,81 +1,23 @@
-import com.mojang.authlib.GameProfile;
+public class gra extends gqz {
+   private final frj c;
 
-public class gra extends gqw {
-   private ffq h = ffq.c;
-   private int i;
-
-   public gra(gmb $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ad = true;
+   public gra(frj $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cR().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cK();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean b(bvi $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.r(false);
-   }
-
-   @Override
-   public void k_() {
-      if (this.bQ()) {
-         this.R_().e();
-      }
-
-      if (this.bl > 0) {
-         this.a(this.bl, this.bk);
-         this.bl--;
-      }
-
-      if (this.i > 0) {
-         this.j(new ffq((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
-         this.i--;
-      }
-
-      this.bV = this.bW;
-      this.eZ();
-      float $$1;
-      if (this.aH() && !this.eH()) {
-         $$1 = (float)Math.min(0.1, this.dy().i());
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
       } else {
-         $$1 = 0.0F;
-      }
-
-      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
-
-      try (brg $$2 = bra.a().d("push")) {
-         this.o();
+         return $$0 ? 1.0F : -1.0F;
       }
    }
 
    @Override
-   public void k(double $$0, double $$1, double $$2) {
-      this.h = new ffq($$0, $$1, $$2);
-      this.i = this.an().p() + 1;
-   }
-
-   @Override
-   protected void gc() {
-   }
-
-   @Override
-   public void a(abx $$0) {
-      super.a($$0);
-      this.bx();
+   public void a() {
+      this.a = new crx(this.c.v.e(), this.c.x.e(), this.c.w.e(), this.c.y.e(), this.c.z.e(), this.c.A.e(), this.c.B.e());
+      float $$0 = a(this.a.a(), this.a.b());
+      float $$1 = a(this.a.c(), this.a.d());
+      this.b = new ffr($$1, $$0).a();
    }
 }

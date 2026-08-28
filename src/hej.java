@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
-
-public abstract class hej extends hep {
-   @Nullable
-   public bwq.j b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+public class hej extends hfr {
+   public final bwm a = new bwm();
+   public final bwm b = new bwm();
+   public final bwm c = new bwm();
+   public boolean d;
+   public boolean e;
 }

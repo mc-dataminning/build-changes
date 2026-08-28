@@ -1,27 +1,43 @@
-public class hbb extends gxc<ckr, hgw, gkk> {
-   private static final ali a = ali.b("textures/entity/turtle/big_sea_turtle.png");
+public class hbb extends gyj<cof, hgw> {
+   private final gtf a;
 
-   public hbb(gyi.a $$0) {
-      super($$0, new gkk($$0.a(gld.dI)), new gkk($$0.a(gld.dJ)), 0.7F);
+   public hbb(gyk.a $$0) {
+      super($$0);
+      this.e = 0.5F;
+      this.a = $$0.d();
    }
 
-   protected float a(hgw $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.83F : $$1;
+   public void a(hgw $$0, flq $$1, gsc $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = azq.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
+      }
+
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         hba.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hgw b() {
+   public hgw a() {
       return new hgw();
    }
 
-   public void a(ckr $$0, hgw $$1, float $$2) {
+   public void a(cof $$0, hgw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bi() && $$0.aH();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.n_() && $$0.q();
-   }
-
-   public ali b(hgw $$0) {
-      return a;
+      $$1.a = (float)$$0.g() - $$2 + 1.0F;
+      $$1.b = $$0.j();
    }
 }

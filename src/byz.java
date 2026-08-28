@@ -1,95 +1,143 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Multimap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
 import java.util.Map;
-import java.util.function.Consumer;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class byz {
-   private final Map<jf<byv>, byw> a;
+   private final Map<jg<byx>, byy> a = new Object2ObjectOpenHashMap();
+   private final Set<byy> b = new ObjectOpenHashSet();
+   private final Set<byy> c = new ObjectOpenHashSet();
+   private final bzb d;
 
-   byz(Map<jf<byv>, byw> $$0) {
-      this.a = $$0;
+   public byz(bzb $$0) {
+      this.d = $$0;
    }
 
-   private byw d(jf<byv> $$0) {
-      byw $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
+   private void a(byy $$0) {
+      this.c.add($$0);
+      if ($$0.a().a().b()) {
+         this.b.add($$0);
       }
    }
 
-   public double a(jf<byv> $$0) {
-      return this.d($$0).g();
+   public Set<byy> a() {
+      return this.b;
    }
 
-   public double b(jf<byv> $$0) {
-      return this.d($$0).b();
+   public Set<byy> b() {
+      return this.c;
    }
 
-   public double a(jf<byv> $$0, ali $$1) {
-      byy $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.b();
-      }
+   public Collection<byy> c() {
+      return this.a.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public byw a(Consumer<byw> $$0, jf<byv> $$1) {
-      byw $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
+   public byy a(jg<byx> $$0) {
+      return this.a.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   }
+
+   public boolean b(jg<byx> $$0) {
+      return this.a.get($$0) != null || this.d.c($$0);
+   }
+
+   public boolean a(jg<byx> $$0, alk $$1) {
+      byy $$2 = this.a.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   }
+
+   public double c(jg<byx> $$0) {
+      byy $$1 = this.a.get($$0);
+      return $$1 != null ? $$1.g() : this.d.a($$0);
+   }
+
+   public double d(jg<byx> $$0) {
+      byy $$1 = this.a.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
+   }
+
+   public double b(jg<byx> $$0, alk $$1) {
+      byy $$2 = this.a.get($$0);
+      return $$2 != null ? $$2.a($$1).b() : this.d.a($$0, $$1);
+   }
+
+   public void a(Multimap<jg<byx>, bza> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         byy $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.a());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jg<byx>, bza> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         byy $$2 = this.a.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.a()));
+         }
+      });
+   }
+
+   public void a(byz $$0) {
+      $$0.a.values().forEach($$0x -> {
+         byy $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(byz $$0) {
+      $$0.a.values().forEach($$0x -> {
+         byy $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public void c(byz $$0) {
+      $$0.a.values().forEach($$0x -> {
+         byy $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public boolean e(jg<byx> $$0) {
+      if (!this.d.c($$0)) {
+         return false;
       } else {
-         byw $$3 = new byw($$1, $$0);
-         $$3.a($$2);
-         return $$3;
+         byy $$1 = this.a.get($$0);
+         if ($$1 != null) {
+            $$1.a(this.d.b($$0));
+         }
+
+         return true;
       }
    }
 
-   public static byz.a a() {
-      return new byz.a();
-   }
+   public ug d() {
+      ug $$0 = new ug();
 
-   public boolean c(jf<byv> $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(jf<byv> $$0, ali $$1) {
-      byw $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Builder<jf<byv>, byw> a = ImmutableMap.builder();
-      private boolean b;
-
-      private byw b(jf<byv> $$0) {
-         byw $$1 = new byw($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+      for (byy $$1 : this.a.values()) {
+         $$0.add($$1.h());
       }
 
-      public byz.a a(jf<byv> $$0) {
-         this.b($$0);
-         return this;
-      }
+      return $$0;
+   }
 
-      public byz.a a(jf<byv> $$0, double $$1) {
-         byw $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public byz a() {
-         this.b = true;
-         return new byz(this.a.buildKeepingLast());
+   public void a(ug $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ua $$2 = $$0.b($$1);
+         $$2.<jg<byx>>a("id", byy.b).map(this::a).ifPresent($$1x -> $$1x.a($$2));
       }
    }
 }

@@ -1,7 +1,19 @@
-public class hfe extends hfp {
-   public final hhs i = new hhs();
+import javax.annotation.Nullable;
 
-   public static void a(bxu $$0, hfe $$1, hhq $$2) {
-      $$2.a($$1.i, $$0.fb(), czw.h, $$0);
+public class hfe extends hfr {
+   public float a;
+   public float b;
+   public ffs c;
+   @Nullable
+   public ffs d;
+   @Nullable
+   public ffs e;
+   @Nullable
+   public ffs f;
+   public float g;
+   public float h;
+
+   public hfe() {
+      this.c = ffs.c;
    }
 }

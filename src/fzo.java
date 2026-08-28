@@ -1,41 +1,31 @@
-import javax.annotation.Nullable;
+public class fzo extends gaf {
+   private final xc a;
 
-public class fzo extends gad {
-   @Nullable
-   private fuw a;
-
-   public fzo(xa $$0) {
+   public fzo(xc $$0, xc $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
    protected void aS_() {
-      this.a = this.c(new fuw(this.n, this.l, this.p, 12));
-      this.c();
+      super.aS_();
+      this.c(fun.a(xb.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
    }
 
    @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
-      }
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
+      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
+   }
+
+   @Override
+   public void b(ftz $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
    }
 
    @Override
    public boolean aH_() {
       return false;
-   }
-
-   @Override
-   protected boolean aR_() {
-      return false;
-   }
-
-   @Override
-   public void b(ftx $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.r();
-      this.a($$0);
    }
 }

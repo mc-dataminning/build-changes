@@ -1,33 +1,53 @@
-import java.util.List;
+public class acu implements zj<aby> {
+   public static final za<wn, acu> a = zj.a(acu::a, acu::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final daa e;
 
-public record acu(acu.a b, List<String> c) implements zh<abw> {
-   public static final yy<vw, acu> a = zh.a(acu::a, acu::new);
-
-   private acu(vw $$0) {
-      this($$0.b(acu.a.class), $$0.a(vw::p));
+   public acu(int $$0, int $$1, int $$2, daa $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3.v();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vw::a);
+   private acu(wn $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readShort();
+      this.e = daa.h.decode($$0);
+   }
+
+   private void a(wn $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.m(this.d);
+      daa.h.encode($$0, this.e);
    }
 
    @Override
-   public zj<acu> a() {
-      return agp.x;
+   public zl<acu> a() {
+      return agr.v;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int e() {
+      return this.d;
+   }
+
+   public daa f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

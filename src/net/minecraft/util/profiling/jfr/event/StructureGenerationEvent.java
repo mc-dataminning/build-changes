@@ -34,7 +34,7 @@ public class StructureGenerationEvent extends Event {
    @Label("Success")
    public boolean success;
 
-   public StructureGenerationEvent(djc $$0, jf<esb> $$1, alh<djx> $$2) {
+   public StructureGenerationEvent(dje $$0, jg<esd> $$1, alj<djz> $$2) {
       this.chunkPosX = $$0.h;
       this.chunkPosZ = $$0.i;
       this.structure = $$1.g();

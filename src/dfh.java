@@ -1,86 +1,85 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class dfh implements dep<dfi> {
-   private final del d;
-   private final czy e;
-   private final String f;
+public class dfh implements deg {
+   final String d;
+   final dee e;
+   final daa f;
+   final List<den> g;
    @Nullable
-   private deo g;
+   private deq h;
 
-   public dfh(String $$0, del $$1, czy $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public dfh(String $$0, dee $$1, daa $$2, List<den> $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public abstract dez<? extends dfh> a();
-
-   @Override
-   public abstract dfa<? extends dfh> b();
-
-   public boolean a(dfi $$0, djx $$1) {
-      return this.d.a($$0.c());
+   public dfb<dfh> a() {
+      return dfb.b;
    }
 
    @Override
    public String j() {
-      return this.f;
-   }
-
-   public del k() {
       return this.d;
    }
 
-   protected czy l() {
+   @Override
+   public dee c() {
       return this.e;
    }
 
    @Override
-   public deo ap_() {
-      if (this.g == null) {
-         this.g = deo.a(this.d);
+   public deq ap_() {
+      if (this.h == null) {
+         this.h = deq.b(this.g);
       }
 
-      return this.g;
+      return this.h;
    }
 
-   public czy a(dfi $$0, jh.a $$1) {
-      return this.e.v();
+   public boolean a(def $$0, djz $$1) {
+      if ($$0.e() != this.g.size()) {
+         return false;
+      } else {
+         return $$0.a() == 1 && this.g.size() == 1 ? this.g.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
+      }
    }
 
-   @FunctionalInterface
-   public interface a<T extends dfh> {
-      T create(String var1, del var2, czy var3);
+   public daa a(def $$0, ji.a $$1) {
+      return this.f.v();
    }
 
-   public static class b<T extends dfh> implements dez<T> {
-      private final MapCodec<T> w;
-      private final yy<wl, T> x;
+   @Override
+   public List<dfx> g() {
+      return List.of(new dgc(this.g.stream().map(den::c).toList(), new dgd.f(this.f), new dgd.d(dae.fi)));
+   }
 
-      protected b(dfh.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dfh::j),
-                     del.d.fieldOf("ingredient").forGetter(dfh::k),
-                     czy.d.fieldOf("result").forGetter(dfh::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = yy.a(yw.p, dfh::j, del.a, dfh::k, czy.i, dfh::l, $$0::create);
+   public static class a implements dfb<dfh> {
+      private static final MapCodec<dfh> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.d),
+                  dee.e.fieldOf("category").orElse(dee.d).forGetter($$0x -> $$0x.e),
+                  daa.d.fieldOf("result").forGetter($$0x -> $$0x.f),
+                  den.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dfh::new)
+      );
+      public static final za<wn, dfh> w = za.a(yy.p, $$0 -> $$0.d, dee.g, $$0 -> $$0.e, daa.i, $$0 -> $$0.f, den.a.a(yy.a()), $$0 -> $$0.g, dfh::new);
+
+      @Override
+      public MapCodec<dfh> a() {
+         return x;
       }
 
       @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yy<wl, T> b() {
-         return this.x;
+      public za<wn, dfh> b() {
+         return w;
       }
    }
 }

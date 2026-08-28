@@ -1,26 +1,18 @@
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class hht implements hhp {
-   private final List<gtg> a;
-   private final Supplier<Vector3f[]> b;
-   private final hhu c;
+public class hht {
+   private static final ayy.b<alk, MapCodec<? extends hhr.b>> b = new ayy.b<>();
+   public static final Codec<hhr.b> a = b.a(alk.a).dispatch(hhr.b::a, $$0 -> $$0);
 
-   public hht(List<gtg> $$0, hhu $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.b = Suppliers.memoize(() -> hhj.a(this.a));
-   }
-
-   @Override
-   public void a(hhs $$0, czy $$1, hhq $$2, czw $$3, @Nullable gmb $$4, @Nullable bxu $$5, int $$6) {
-      hhs.b $$7 = $$0.a();
-      $$7.a(gsu.i());
-      this.c.a($$7, $$3);
-      $$7.a(this.b);
-      $$7.b().addAll(this.a);
+   public static void a() {
+      b.a(alk.b("empty"), hhq.a.a);
+      b.a(alk.b("model"), hhl.a.a);
+      b.a(alk.b("range_dispatch"), hhx.b.a);
+      b.a(alk.b("special"), hhz.a.a);
+      b.a(alk.b("composite"), hho.a.a);
+      b.a(alk.b("bundle/selected_item"), hhm.a.a);
+      b.a(alk.b("select"), hhy.c.a);
+      b.a(alk.b("condition"), hhp.a.a);
    }
 }

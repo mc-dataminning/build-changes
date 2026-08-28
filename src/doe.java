@@ -1,56 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class doe extends dtv implements dun {
-   public static final MapCodec<doe> a = b(doe::new);
-   public static final ebv b = ebu.I;
-   private static final Map<jb.a, fgk> e = fgh.b(dnc.a(3.0, 3.0, 16.0));
+public class doe extends dqw implements doc {
+   public static final MapCodec<doe> c = b(doe::new);
 
    @Override
    public MapCodec<doe> a() {
-      return a;
+      return c;
    }
 
-   public doe(ebd.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(d, jb.a.b));
-   }
-
-   @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return e.get($$0.c(d));
-   }
-
-   @Nullable
-   @Override
-   public ebe a(ddr $$0) {
-      exo $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == exp.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
+   public doe(ebf.d $$0) {
+      super($$0, jc.a, q_, false);
+      this.l(this.C.b().b(r_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected dqx c() {
+      return (dqx)dng.td;
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b).a(d);
+   protected ebg a(ebg $$0, ebg $$1) {
+      return $$1.b(r_, $$0.c(r_));
    }
 
    @Override
-   protected exo b_(ebe $$0) {
-      return $$0.c(b) ? exp.c.a(false) : super.b_($$0);
+   protected daa a(dkc $$0, iw $$1, ebg $$2, boolean $$3) {
+      return new daa(dae.xH);
    }
 
    @Override
-   protected boolean a(ebe $$0, eyd $$1) {
-      return false;
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      return doc.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(r_);
+   }
+
+   @Override
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
+      return !$$2.c(r_);
+   }
+
+   @Override
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      $$0.a($$2, $$3.b(r_, Boolean.valueOf(true)), 2);
    }
 }

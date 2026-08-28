@@ -1,182 +1,249 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class gsu {
-   public static final ali a = ali.b("textures/atlas/shulker_boxes.png");
-   public static final ali b = ali.b("textures/atlas/beds.png");
-   public static final ali c = ali.b("textures/atlas/banner_patterns.png");
-   public static final ali d = ali.b("textures/atlas/shield_patterns.png");
-   public static final ali e = ali.b("textures/atlas/signs.png");
-   public static final ali f = ali.b("textures/atlas/chest.png");
-   public static final ali g = ali.b("textures/atlas/armor_trims.png");
-   public static final ali h = ali.b("textures/atlas/decorated_pot.png");
-   private static final gsl L = gsl.g(a);
-   private static final gsl M = gsl.d(b);
-   private static final gsl N = gsl.n(c);
-   private static final gsl O = gsl.n(d);
-   private static final gsl P = gsl.g(e);
-   private static final gsl Q = gsl.f(f);
-   private static final gsl R = gsl.a(g);
-   private static final gsl S = gsl.b(g);
-   private static final gsl T = gsl.d(hkz.c);
-   private static final gsl U = gsl.f(hkz.c);
-   private static final gsl V = gsl.i(hkz.c);
-   public static final grz i = new grz(hkz.c, "item");
-   public static final grz j = new grz(hkz.c, "block");
-   public static final grz k = new grz(c, "entity/banner");
-   public static final grz l = new grz(d, "entity/shield");
-   public static final grz m = new grz(f, "entity/chest");
-   public static final grz n = new grz(h, "entity/decorated_pot");
-   public static final grz o = new grz(b, "entity/bed");
-   public static final grz p = new grz(a, "entity/shulker");
-   public static final grz q = new grz(e, "entity/signs");
-   public static final grz r = new grz(e, "entity/signs/hanging");
-   public static final hnh s = p.a("shulker");
-   public static final List<hnh> t = Arrays.stream(cyw.values()).sorted(Comparator.comparingInt(cyw::a)).map(gsu::f).collect(ImmutableList.toImmutableList());
-   public static final Map<ecs, hnh> u = ecs.a().collect(Collectors.toMap(Function.identity(), gsu::c));
-   public static final Map<ecs, hnh> v = ecs.a().collect(Collectors.toMap(Function.identity(), gsu::d));
-   public static final hnh w = k.a("base");
-   public static final hnh x = l.a("base");
-   private static final Map<ali, hnh> W = new HashMap<>();
-   private static final Map<ali, hnh> X = new HashMap<>();
-   public static final Map<alh<dyv>, hnh> y = mg.ai.c().collect(Collectors.toMap(jf.c::h, $$0 -> n.a($$0.a().a())));
-   public static final hnh z = n.a("decorated_pot_base");
-   public static final hnh A = n.a("decorated_pot_side");
-   private static final hnh[] Y = Arrays.stream(cyw.values()).sorted(Comparator.comparingInt(cyw::a)).map(gsu::c).toArray(hnh[]::new);
-   public static final hnh B = m.a("trapped");
-   public static final hnh C = m.a("trapped_left");
-   public static final hnh D = m.a("trapped_right");
-   public static final hnh E = m.a("christmas");
-   public static final hnh F = m.a("christmas_left");
-   public static final hnh G = m.a("christmas_right");
-   public static final hnh H = m.a("normal");
-   public static final hnh I = m.a("normal_left");
-   public static final hnh J = m.a("normal_right");
-   public static final hnh K = m.a("ender");
+public class gsu extends avm<gsu.c> implements AutoCloseable {
+   static final Logger c = LogUtils.getLogger();
+   public static final int a = 32768;
+   public static final String b = "shaders";
+   private static final String d = "shaders/include/";
+   private static final ald e = ald.a("post_effect");
+   final hle f;
+   private final Consumer<Exception> g;
+   private gsu.a h = new gsu.a(gsu.c.a);
 
-   public static gsl a() {
-      return N;
+   public gsu(hle $$0, Consumer<Exception> $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public static gsl b() {
-      return O;
+   protected gsu.c a(avh $$0, brd $$1) {
+      Builder<gsu.d, String> $$2 = ImmutableMap.builder();
+      Map<alk, avf> $$3 = $$0.b("shaders", gsu::a);
+
+      for (Entry<alk, avf> $$4 : $$3.entrySet()) {
+         alk $$5 = $$4.getKey();
+         fky $$6 = fky.a($$5);
+         if ($$6 != null) {
+            a($$5, $$4.getValue(), $$6, $$3, $$2);
+         }
+      }
+
+      Builder<alk, gsh> $$7 = ImmutableMap.builder();
+
+      for (Entry<alk, avf> $$8 : e.a($$0).entrySet()) {
+         a($$8.getKey(), $$8.getValue(), $$7);
+      }
+
+      return new gsu.c($$2.build(), $$7.build());
    }
 
-   public static gsl c() {
-      return M;
-   }
+   private static void a(alk $$0, avf $$1, fky $$2, Map<alk, avf> $$3, Builder<gsu.d, String> $$4) {
+      alk $$5 = $$2.b().b($$0);
+      fkp $$6 = a($$3, $$0);
 
-   public static gsl d() {
-      return L;
-   }
-
-   public static gsl e() {
-      return P;
-   }
-
-   public static gsl f() {
-      return P;
-   }
-
-   public static gsl g() {
-      return Q;
-   }
-
-   public static gsl a(boolean $$0) {
-      return $$0 ? S : R;
-   }
-
-   public static gsl h() {
-      return T;
-   }
-
-   public static gsl i() {
-      return U;
-   }
-
-   public static gsl j() {
-      return V;
-   }
-
-   public static hnh a(cyw $$0) {
-      return Y[$$0.a()];
-   }
-
-   public static ali b(cyw $$0) {
-      return ali.b($$0.b());
-   }
-
-   public static hnh c(cyw $$0) {
-      return o.a(b($$0));
-   }
-
-   public static hnh d(cyw $$0) {
-      return t.get($$0.a());
-   }
-
-   public static ali e(cyw $$0) {
-      return ali.b("shulker_" + $$0.b());
-   }
-
-   public static hnh f(cyw $$0) {
-      return p.a(e($$0));
-   }
-
-   private static hnh c(ecs $$0) {
-      return q.a($$0.b());
-   }
-
-   private static hnh d(ecs $$0) {
-      return r.a($$0.b());
-   }
-
-   public static hnh a(ecs $$0) {
-      return u.get($$0);
-   }
-
-   public static hnh b(ecs $$0) {
-      return v.get($$0);
-   }
-
-   public static hnh a(jf<dxr> $$0) {
-      return W.computeIfAbsent($$0.a().a(), k::a);
-   }
-
-   public static hnh b(jf<dxr> $$0) {
-      return X.computeIfAbsent($$0.a().a(), l::a);
-   }
-
-   @Nullable
-   public static hnh a(@Nullable alh<dyv> $$0) {
-      return $$0 == null ? null : y.get($$0);
-   }
-
-   public static hnh a(dyc $$0, ebw $$1, boolean $$2) {
-      if ($$0 instanceof dza) {
-         return K;
-      } else if ($$2) {
-         return a($$1, E, F, G);
-      } else {
-         return $$0 instanceof eab ? a($$1, B, C, D) : a($$1, H, I, J);
+      try (Reader $$7 = $$1.e()) {
+         String $$8 = IOUtils.toString($$7);
+         $$4.put(new gsu.d($$5, $$2), String.join("", $$6.a($$8)));
+      } catch (IOException var12) {
+         c.error("Failed to load shader source at {}", $$0, var12);
       }
    }
 
-   private static hnh a(ebw $$0, hnh $$1, hnh $$2, hnh $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
+   private static fkp a(final Map<alk, avf> $$0, alk $$1) {
+      final alk $$2 = $$1.a(w::b);
+      return new fkp() {
+         private final Set<alk> c = new ObjectArraySet();
+
+         @Override
+         public String a(boolean $$0x, String $$1) {
+            alk $$2;
+            try {
+               if ($$0) {
+                  $$2 = $$2.a((UnaryOperator<String>)($$1x -> w.c($$1x + $$1)));
+               } else {
+                  $$2 = alk.a($$1).f("shaders/include/");
+               }
+            } catch (ab var8) {
+               gsu.c.error("Malformed GLSL import {}: {}", $$1, var8.getMessage());
+               return "#error " + var8.getMessage();
+            }
+
+            if (!this.c.add($$2)) {
+               return null;
+            } else {
+               try {
+                  String var5;
+                  try (Reader $$6 = $$0.get($$2).e()) {
+                     var5 = IOUtils.toString($$6);
+                  }
+
+                  return var5;
+               } catch (IOException var10) {
+                  gsu.c.error("Could not open GLSL import {}: {}", $$2, var10.getMessage());
+                  return "#error " + var10.getMessage();
+               }
+            }
+         }
+      };
+   }
+
+   private static void a(alk $$0, avf $$1, Builder<alk, gsh> $$2) {
+      alk $$3 = e.b($$0);
+
+      try (Reader $$4 = $$1.e()) {
+         JsonElement $$5 = JsonParser.parseReader($$4);
+         $$2.put($$3, (gsh)gsh.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new));
+      } catch (JsonParseException | IOException var9) {
+         c.error("Failed to parse post chain at {}", $$0, var9);
+      }
+   }
+
+   private static boolean a(alk $$0) {
+      return fky.a($$0) != null || $$0.a().endsWith(".glsl");
+   }
+
+   protected void a(gsu.c $$0, avh $$1, brd $$2) {
+      gsu.a $$3 = new gsu.a($$0);
+      Set<fjr> $$4 = new HashSet<>(gsl.a());
+      List<alk> $$5 = new ArrayList<>();
+      flc $$6 = RenderSystem.getDevice();
+      $$6.k();
+
+      for (fjr $$7 : $$4) {
+         fjo $$8 = $$6.b($$7, $$3::a);
+         if (!$$8.a()) {
+            $$5.add($$7.k());
+         }
+      }
+
+      if (!$$5.isEmpty()) {
+         $$6.k();
+         throw new RuntimeException("Failed to load required shader programs:\n" + $$5.stream().map($$0x -> " - " + $$0x).collect(Collectors.joining("\n")));
+      } else {
+         this.h.close();
+         this.h = $$3;
+      }
+   }
+
+   @Override
+   public String getName() {
+      return "Shader Loader";
+   }
+
+   private void a(Exception $$0) {
+      if (!this.h.d) {
+         this.g.accept($$0);
+         this.h.d = true;
+      }
+   }
+
+   @Nullable
+   public gsg a(alk $$0, Set<alk> $$1) {
+      try {
+         return this.h.a($$0, $$1);
+      } catch (gsu.b var4) {
+         c.error("Failed to load post chain: {}", $$0, var4);
+         this.h.c.put($$0, Optional.empty());
+         this.a(var4);
+         return null;
+      }
+   }
+
+   @Override
+   public void close() {
+      this.h.close();
+   }
+
+   public String a(alk $$0, fky $$1) {
+      return this.h.a($$0, $$1);
+   }
+
+   class a implements AutoCloseable {
+      private final gsu.c b;
+      final Map<alk, Optional<gsg>> c = new HashMap<>();
+      boolean d;
+
+      a(final gsu.c $$0) {
+         this.b = $$0;
+      }
+
+      @Nullable
+      public gsg a(alk $$0, Set<alk> $$1) throws gsu.b {
+         Optional<gsg> $$2 = this.c.get($$0);
+         if ($$2 != null) {
+            return $$2.orElse(null);
+         } else {
+            gsg $$3 = this.b($$0, $$1);
+            this.c.put($$0, Optional.of($$3));
             return $$3;
-         case a:
-         default:
-            return $$1;
+         }
+      }
+
+      private gsg b(alk $$0, Set<alk> $$1) throws gsu.b {
+         gsh $$2 = this.b.c.get($$0);
+         if ($$2 == null) {
+            throw new gsu.b("Could not find post chain with id: " + $$0);
+         } else {
+            return gsg.a($$2, gsu.this.f, $$1, $$0);
+         }
+      }
+
+      @Override
+      public void close() {
+         this.c.clear();
+      }
+
+      public String a(alk $$0, fky $$1) {
+         return this.b.b.get(new gsu.d($$0, $$1));
+      }
+   }
+
+   public static class b extends Exception {
+      public b(String $$0) {
+         super($$0);
+      }
+   }
+
+   public static record c(Map<gsu.d, String> b, Map<alk, gsh> c) {
+      public static final gsu.c a = new gsu.c(Map.of(), Map.of());
+
+      public Map<gsu.d, String> a() {
+         return this.b;
+      }
+
+      public Map<alk, gsh> b() {
+         return this.c;
+      }
+   }
+
+   static record d(alk a, fky b) {
+      @Override
+      public String toString() {
+         return this.a + " (" + this.b + ")";
       }
    }
 }

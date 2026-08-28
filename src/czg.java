@@ -1,52 +1,28 @@
-public class czg extends czu implements das {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public czg(czu.a $$0) {
+public class czg extends czw implements dau {
+   public czg(czw.a $$0) {
       super($$0);
    }
 
    @Override
-   public bur a(ddt $$0) {
-      djx $$1 = $$0.q();
-      if ($$1 instanceof ars $$2) {
-         czy $$3 = $$0.n();
-         ffq $$4 = $$0.l();
-         jb $$5 = $$0.k();
-         css.a(new csn($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
+   public but a(djz $$0, crz $$1, bus $$2) {
+      daa $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.je, aws.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof aru $$4) {
+         csu.a(ctf::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
       }
 
-      return bur.a;
+      $$1.b(axb.c.b(this));
+      $$3.a(1, $$1);
+      return but.a;
    }
 
    @Override
-   public bur a(djx $$0, crx $$1, buq $$2) {
-      if ($$1.fJ()) {
-         czy $$3 = $$1.b($$2);
-         if ($$0 instanceof ars $$4) {
-            css.a(new csn($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awz.c.b(this));
-         }
-
-         return bur.a;
-      } else {
-         return bur.e;
-      }
+   public csu a(djz $$0, jq $$1, daa $$2, jc $$3) {
+      return new ctf($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 
    @Override
-   public css a(djx $$0, jp $$1, czy $$2, jb $$3) {
-      return new csn($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
-   }
-
-   @Override
-   public das.a a() {
-      return das.a.a().a(czg::a).a(1.0F).b(0.5F).a(1004).a();
-   }
-
-   private static ffq a(le $$0, jb $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
+   public dau.a a() {
+      return dau.a.a().a(dau.a.a.c() * 0.5F).b(dau.a.a.d() * 1.25F).a();
    }
 }

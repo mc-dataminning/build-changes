@@ -1,99 +1,136 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface xf {
-   Optional<baw> a = Optional.of(baw.a);
-   xf b = new xf() {
-      @Override
-      public <T> Optional<T> a(xf.a<T> $$0) {
-         return Optional.empty();
+public class xf {
+   public static final String a = ", ";
+   public static final xc b = xc.b(", ").a(o.h);
+   public static final xc c = xc.b(", ");
+
+   public static xq a(xq $$0, xz $$1) {
+      if ($$1.h()) {
+         return $$0;
+      } else {
+         xz $$2 = $$0.a();
+         if ($$2.h()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
       }
+   }
 
-      @Override
-      public <T> Optional<T> a(xf.b<T> $$0, xx $$1) {
-         return Optional.empty();
+   public static Optional<xq> a(@Nullable ek $$0, Optional<xc> $$1, @Nullable bwv $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
+   }
+
+   public static xq a(@Nullable ek $$0, xc $$1, @Nullable bwv $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         xq $$4 = $$1.b().a($$0, $$2, $$3 + 1);
+
+         for (xc $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
+
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
       }
-   };
-
-   <T> Optional<T> a(xf.a<T> var1);
-
-   <T> Optional<T> a(xf.b<T> var1, xx var2);
-
-   static xf e(final String $$0) {
-      return new xf() {
-         @Override
-         public <T> Optional<T> a(xf.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(xf.b<T> $$0x, xx $$1) {
-            return $$0.accept($$1, $$0);
-         }
-      };
    }
 
-   static xf a(final String $$0, final xx $$1) {
-      return new xf() {
-         @Override
-         public <T> Optional<T> a(xf.a<T> $$0x) {
-            return $$0.accept($$0);
+   private static xz a(@Nullable ek $$0, xz $$1, @Nullable bwv $$2, int $$3) throws CommandSyntaxException {
+      if ($$1.j() instanceof xi.e var5) {
+         xi.e var10000 = var5;
+
+         try {
+            var10 = var10000.b();
+         } catch (Throwable var8) {
+            throw new MatchException(var8.toString(), var8);
          }
 
-         @Override
-         public <T> Optional<T> a(xf.b<T> $$0x, xx $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+         xi $$6 = var10;
+         $$6 = new xi.e(a($$0, $$6, $$2, $$3 + 1));
+         return $$1.a($$6);
+      } else {
+         return $$1;
+      }
    }
 
-   static xf a(xf... $$0) {
-      return a(ImmutableList.copyOf($$0));
+   public static xc a(Collection<String> $$0) {
+      return a($$0, $$0x -> xc.b($$0x).a(o.k));
    }
 
-   static xf a(final List<? extends xf> $$0) {
-      return new xf() {
-         @Override
-         public <T> Optional<T> a(xf.a<T> $$0x) {
-            for (xf $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
-               }
+   public static <T extends Comparable<T>> xc a(Collection<T> $$0, Function<T, xc> $$1) {
+      if ($$0.isEmpty()) {
+         return xb.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
+      }
+   }
+
+   public static <T> xc b(Collection<? extends T> $$0, Function<T, xc> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> xq a(Collection<? extends T> $$0, Optional<? extends xc> $$1, Function<T, xc> $$2) {
+      return a($$0, (xc)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static xc a(Collection<? extends xc> $$0, xc $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> xq a(Collection<? extends T> $$0, xc $$1, Function<T, xc> $$2) {
+      if ($$0.isEmpty()) {
+         return xc.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         xq $$3 = xc.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
             }
 
-            return Optional.empty();
+            $$3.b($$2.apply($$5));
+            $$4 = false;
          }
 
-         @Override
-         public <T> Optional<T> a(xf.b<T> $$0x, xx $$1) {
-            for (xf $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
-         }
-      };
+         return $$3;
+      }
    }
 
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
+   public static xq a(xc $$0) {
+      return xc.a("chat.square_brackets", $$0);
    }
 
-   public interface a<T> {
-      Optional<T> accept(String var1);
+   public static xc a(Message $$0) {
+      return (xc)($$0 instanceof xc ? (xc)$$0 : xc.b($$0.getString()));
    }
 
-   public interface b<T> {
-      Optional<T> accept(xx var1, String var2);
+   public static boolean b(@Nullable xc $$0) {
+      if ($$0 != null && $$0.b() instanceof yn $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || tv.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static xq a(String $$0) {
+      return a((xc)xc.b($$0).a($$1 -> $$1.a(o.k).a(new xa.c($$0)).a(new xi.e(xc.c("chat.copy.click"))).a($$0)));
    }
 }

@@ -1,6 +1,18 @@
-public record amh(auu a, alt b, jm<alr> c, fab d) implements AutoCloseable {
+public class amh implements Runnable {
+   private final int a;
+   private final Runnable b;
+
+   public amh(int $$0, Runnable $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
    @Override
-   public void close() {
-      this.a.close();
+   public void run() {
+      this.b.run();
    }
 }

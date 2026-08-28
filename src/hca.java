@@ -1,23 +1,20 @@
-public class hca<S extends hfe, M extends gia<S> & gkm> extends hcw<S, M> {
-   public hca(haf<S, M> $$0) {
+public class hca extends hcy<heg, ghl> {
+   private static final alk a = alk.b("textures/entity/cat/cat_collar.png");
+   private final ghl b;
+   private final ghl c;
+
+   public hca(hah<heg, ghl> $$0, glc $$1) {
       super($$0);
+      this.b = new ghl($$1.a(glf.T));
+      this.c = new ghl($$1.a(glf.S));
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, S $$3, float $$4, float $$5) {
-      hhs $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         this.a($$3, $$0);
-         $$6.a($$0, $$1, $$2, hkq.d);
-         $$0.b();
+   public void a(flq $$0, gsc $$1, int $$2, heg $$3, float $$4, float $$5) {
+      cyy $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         ghl $$8 = $$3.aj ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
       }
-   }
-
-   protected void a(S $$0, flo $$1) {
-      this.d().a($$1);
-      $$1.a(a.b.rotation(0.75F));
-      $$1.b(1.07F, 1.07F, 1.07F);
-      $$1.a(0.0F, 0.13F, -0.34F);
-      $$1.a(a.b.rotation((float) Math.PI));
    }
 }

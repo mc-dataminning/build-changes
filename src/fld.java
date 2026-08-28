@@ -1,90 +1,45 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
+import java.util.Collection;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import org.joml.Matrix4f;
 
-public class fld {
-   private int a;
+public interface fld extends AutoCloseable {
+   void a(fjr var1);
 
-   public static Optional<fld> a() {
-      return fld.b.a;
-   }
+   void a(String var1, flj var2);
 
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
+   void a(String var1, int... var2);
+
+   void a(String var1, float... var2);
+
+   void a(String var1, Matrix4f var2);
+
+   void a(fle var1);
+
+   void a(int var1, int var2, int var3, int var4);
+
+   void b();
+
+   void a(int var1, fii var2);
+
+   void a(fii var1, flu.b var2);
+
+   void a(int var1, int var2);
+
+   void a(Collection<fld.a> var1);
+
+   void b(int var1, int var2);
+
+   @Override
+   void close();
+
+   public static record a(int a, fii b, fii c, flu.b d, int e, int f, @Nullable Consumer<fld.b> g) {
+      public a(int $$0, fii $$1, fii $$2, flu.b $$3, int $$4, int $$5) {
+         this($$0, $$1, $$2, $$3, $$4, $$5, null);
       }
    }
 
-   public fld.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         fld.a $$0 = new fld.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
-   }
-
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
-   }
-
-   static class b {
-      static final Optional<fld> a = Optional.ofNullable(a());
-
-      private b() {
-      }
-
-      @Nullable
-      private static fld a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fld();
-      }
+   public interface b {
+      void upload(String var1, float... var2);
    }
 }

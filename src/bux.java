@@ -1,73 +1,37 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface bux extends buk {
-   String b = "LootTable";
-   String c = "LootTableSeed";
+public class bux {
+   public static final Codec<bux> a = RecordCodecBuilder.create($$0 -> $$0.group(eig.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bux::new));
+   private final eig b;
 
-   @Nullable
-   alh<fam> ax_();
-
-   void a(@Nullable alh<fam> var1);
-
-   default void a(alh<fam> $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   public bux(eig $$0) {
+      this.b = $$0;
    }
 
-   long aA_();
+   public bux(long $$0, alk $$1) {
+      this(a($$0, Optional.of($$1)));
+   }
 
-   void a(long var1);
+   public bux(long $$0, Optional<alk> $$1) {
+      this(a($$0, $$1));
+   }
 
-   iv aB_();
-
-   @Nullable
-   djx i();
-
-   static void a(djb $$0, azx $$1, iv $$2, alh<fam> $$3) {
-      if ($$0.c_($$2) instanceof bux $$5) {
-         $$5.a($$3, $$1.g());
+   private static eig a(long $$0, Optional<alk> $$1) {
+      ehu.a $$2 = ehu.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
       }
+
+      return new eig($$2.a());
    }
 
-   default boolean b_(tz $$0) {
-      alh<fam> $$1 = $$0.<alh<fam>>a("LootTable", fam.a).orElse(null);
-      this.a($$1);
-      this.a($$0.b("LootTableSeed", 0L));
-      return $$1 != null;
+   public static ehu.a a(alk $$0) {
+      return ehu.a($$0.toString());
    }
 
-   default boolean c_(tz $$0) {
-      alh<fam> $$1 = this.ax_();
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", fam.a, $$1);
-         long $$2 = this.aA_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
-         return true;
-      }
-   }
-
-   default void d_(@Nullable crx $$0) {
-      djx $$1 = this.i();
-      iv $$2 = this.aB_();
-      alh<fam> $$3 = this.ax_();
-      if ($$3 != null && $$1 != null && $$1.p() != null) {
-         fam $$4 = $$1.p().bc().b($$3);
-         if ($$0 instanceof art) {
-            aq.Q.a((art)$$0, $$3);
-         }
-
-         this.a(null);
-         fak.a $$5 = new fak.a((ars)$$1).a(fdb.f, ffq.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.eh()).a(fdb.a, $$0);
-         }
-
-         $$4.a(this, $$5.a(fda.c), this.aA_());
-      }
+   public azz a() {
+      return this.b;
    }
 }

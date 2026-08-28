@@ -1,60 +1,71 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dor extends dnc {
-   public static final MapCodec<dor> a = b(dor::new);
-   public static final ebv b = ebu.A;
-   public static final ebv c = ebu.u;
+public class dor extends dqc {
+   public static final MapCodec<dor> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mh.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, dor::new)
+   );
+   private final dne b;
 
    @Override
-   protected MapCodec<? extends dor> a() {
+   public MapCodec<dor> a() {
       return a;
    }
 
-   public dor(ebd.d $$0) {
-      super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
+   public dor(dne $$0, ebf.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof ars $$5) {
-         this.a($$0, $$5, $$2);
+   public void a(djz $$0, iw $$1, ebg $$2, ebg $$3, cod $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.m(), 3);
       }
    }
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3, @Nullable eyw $$4, boolean $$5) {
-      if ($$1 instanceof ars $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   public ebg a(ddt $$0) {
+      djd $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      ebg $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
    }
 
-   public void a(ebe $$0, ars $$1, iv $$2) {
-      boolean $$3 = $$1.D($$2);
-      if ($$3 != $$0.c(b)) {
-         ebe $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? awp.fK : awp.fL, awq.e);
+   private static boolean a(djd $$0, iw $$1, ebg $$2) {
+      return o($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(djd $$0, iw $$1) {
+      boolean $$2 = false;
+      iw.a $$3 = $$1.k();
+
+      for (jc $$4 : jc.values()) {
+         ebg $$5 = $$0.a_($$3);
+         if ($$4 != jc.a || o($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
-
-         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
       }
+
+      return $$2;
+   }
+
+   private static boolean o(ebg $$0) {
+      return $$0.y().a(axl.a);
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(c, b);
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean c_(ebe $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(ebe $$0, djx $$1, iv $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   public int b(ebg $$0, djd $$1, iw $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

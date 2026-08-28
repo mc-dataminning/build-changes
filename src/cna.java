@@ -1,59 +1,20 @@
-import javax.annotation.Nullable;
-
-public class cna extends cmx {
-   @Nullable
-   private ffq b;
-   private int c;
-
-   public cna(cmv $$0) {
+public abstract class cna extends cmz {
+   public cna(cmx $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.dY().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.dY().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.dY().i() - 0.5F) * 8.0F;
-         this.a.dV().a(ly.v, this.a.dA() + (double)$$0, this.a.dC() + 2.0 + (double)$$1, this.a.dG() + (double)$$2, 0.0, 0.0, 0.0);
-      }
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public void a(ars $$0) {
-      this.c++;
-      if (this.b == null) {
-         iv $$1 = $$0.a(ehd.a.e, eki.a(this.a.j()));
-         this.b = ffq.c($$1);
-      }
-
-      double $$2 = this.b.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
-         this.a.d(1.0F);
+   public float a(bvk $$0, float $$1) {
+      if (!($$0.c() instanceof csh) && !($$0.c() instanceof ctn)) {
+         return super.a($$0, $$1);
       } else {
-         this.a.d(0.0F);
+         $$0.c().e(1.0F);
+         return 0.0F;
       }
-   }
-
-   @Override
-   public void c() {
-      this.b = null;
-      this.c = 0;
-   }
-
-   @Override
-   public float e() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public ffq f() {
-      return this.b;
-   }
-
-   @Override
-   public cnl<cna> h() {
-      return cnl.j;
    }
 }

@@ -1,41 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emk implements emp {
+public class emk implements emr {
    public static final Codec<emk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ebe.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               ebe.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               btw.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               btw.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, emk::new)
+      $$0 -> $$0.group(bty.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bty.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, emk::new)
    );
-   private final ebe b;
-   private final ebe c;
-   private final btw d;
-   private final btw e;
+   private final bty b;
+   private final bty c;
 
-   public emk(ebe $$0, ebe $$1, btw $$2, btw $$3) {
+   public emk(bty $$0, bty $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   public ebe a() {
+   public bty a() {
       return this.b;
    }
 
-   public ebe b() {
+   public bty b() {
       return this.c;
-   }
-
-   public btw c() {
-      return this.d;
-   }
-
-   public btw d() {
-      return this.e;
    }
 }

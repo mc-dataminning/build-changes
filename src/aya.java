@@ -1,464 +1,137 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.AbstractList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class aya<T> extends AbstractList<T> implements azk<T> {
-   private static final int a = 1;
-   private Object[] b;
-   private int c;
-   private int d;
-
-   public aya() {
-      this(1);
+public class aya {
+   public static int a(int $$0) {
+      return $$0 >>> 24;
    }
 
-   public aya(int $$0) {
-      this.b = new Object[$$0];
-      this.c = 0;
-      this.d = 0;
+   public static int b(int $$0) {
+      return $$0 >> 16 & 0xFF;
    }
 
-   @Override
-   public int size() {
-      return this.d;
+   public static int c(int $$0) {
+      return $$0 >> 8 & 0xFF;
    }
 
-   @VisibleForTesting
-   public int a() {
-      return this.b.length;
+   public static int d(int $$0) {
+      return $$0 & 0xFF;
    }
 
-   private int a(int $$0) {
-      return ($$0 + this.c) % this.b.length;
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
    }
 
-   @Override
-   public T get(int $$0) {
-      this.b($$0);
-      return this.c(this.a($$0));
+   public static int a(int $$0, int $$1, int $$2) {
+      return a(255, $$0, $$1, $$2);
    }
 
-   private static void a(int $$0, int $$1) {
-      if ($$0 < 0 || $$0 >= $$1) {
-         throw new IndexOutOfBoundsException($$0);
-      }
+   public static int a(ffs $$0) {
+      return a(b((float)$$0.a()), b((float)$$0.b()), b((float)$$0.c()));
    }
 
-   private void b(int $$0) {
-      a($$0, this.d);
-   }
-
-   private T c(int $$0) {
-      return (T)this.b[$$0];
-   }
-
-   @Override
-   public T set(int $$0, T $$1) {
-      this.b($$0);
-      Objects.requireNonNull($$1);
-      int $$2 = this.a($$0);
-      T $$3 = this.c($$2);
-      this.b[$$2] = $$1;
-      return $$3;
-   }
-
-   @Override
-   public void add(int $$0, T $$1) {
-      a($$0, this.d + 1);
-      Objects.requireNonNull($$1);
-      if (this.d == this.b.length) {
-         this.c();
-      }
-
-      int $$2 = this.a($$0);
-      if ($$0 == this.d) {
-         this.b[$$2] = $$1;
-      } else if ($$0 == 0) {
-         this.c--;
-         if (this.c < 0) {
-            this.c = this.c + this.b.length;
-         }
-
-         this.b[this.a(0)] = $$1;
+   public static int a(int $$0, int $$1) {
+      if ($$0 == -1) {
+         return $$1;
       } else {
-         for (int $$3 = this.d - 1; $$3 >= $$0; $$3--) {
-            this.b[this.a($$3 + 1)] = this.b[this.a($$3)];
-         }
-
-         this.b[$$2] = $$1;
-      }
-
-      this.modCount++;
-      this.d++;
-   }
-
-   private void c() {
-      int $$0 = this.b.length + Math.max(this.b.length >> 1, 1);
-      Object[] $$1 = new Object[$$0];
-      this.a($$1, this.d);
-      this.c = 0;
-      this.b = $$1;
-   }
-
-   @Override
-   public T remove(int $$0) {
-      this.b($$0);
-      int $$1 = this.a($$0);
-      T $$2 = this.c($$1);
-      if ($$0 == 0) {
-         this.b[$$1] = null;
-         this.c++;
-      } else if ($$0 == this.d - 1) {
-         this.b[$$1] = null;
-      } else {
-         for (int $$3 = $$0 + 1; $$3 < this.d; $$3++) {
-            this.b[this.a($$3 - 1)] = this.get($$3);
-         }
-
-         this.b[this.a(this.d - 1)] = null;
-      }
-
-      this.modCount++;
-      this.d--;
-      return $$2;
-   }
-
-   @Override
-   public boolean removeIf(Predicate<? super T> $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < this.d; $$2++) {
-         T $$3 = this.get($$2);
-         if ($$0.test($$3)) {
-            $$1++;
-         } else if ($$1 != 0) {
-            this.b[this.a($$2 - $$1)] = $$3;
-            this.b[this.a($$2)] = null;
-         }
-      }
-
-      this.modCount += $$1;
-      this.d -= $$1;
-      return $$1 != 0;
-   }
-
-   private void a(Object[] $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0[$$2] = this.get($$2);
+         return $$1 == -1 ? $$0 : a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
       }
    }
 
-   @Override
-   public void replaceAll(UnaryOperator<T> $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         int $$2 = this.a($$1);
-         this.b[$$2] = Objects.requireNonNull($$0.apply(this.c($$1)));
-      }
+   public static int a(int $$0, float $$1) {
+      return a($$0, $$1, $$1, $$1);
    }
 
-   @Override
-   public void forEach(Consumer<? super T> $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         $$0.accept(this.get($$1));
-      }
+   public static int a(int $$0, float $$1, float $$2, float $$3) {
+      return a(
+         a($$0),
+         Math.clamp((long)((int)((float)b($$0) * $$1)), 0, 255),
+         Math.clamp((long)((int)((float)c($$0) * $$2)), 0, 255),
+         Math.clamp((long)((int)((float)d($$0) * $$3)), 0, 255)
+      );
    }
 
-   @Override
-   public void addFirst(T $$0) {
-      this.add(0, $$0);
+   public static int b(int $$0, int $$1) {
+      return a(
+         a($$0),
+         Math.clamp((long)b($$0) * (long)$$1 / 255L, 0, 255),
+         Math.clamp((long)c($$0) * (long)$$1 / 255L, 0, 255),
+         Math.clamp((long)d($$0) * (long)$$1 / 255L, 0, 255)
+      );
    }
 
-   @Override
-   public void addLast(T $$0) {
-      this.add(this.d, $$0);
+   public static int e(int $$0) {
+      int $$1 = (int)((float)b($$0) * 0.3F + (float)c($$0) * 0.59F + (float)d($$0) * 0.11F);
+      return a($$1, $$1, $$1);
    }
 
-   @Override
-   public boolean offerFirst(T $$0) {
-      this.addFirst($$0);
-      return true;
+   public static int a(float $$0, int $$1, int $$2) {
+      int $$3 = azq.a($$0, a($$1), a($$2));
+      int $$4 = azq.a($$0, b($$1), b($$2));
+      int $$5 = azq.a($$0, c($$1), c($$2));
+      int $$6 = azq.a($$0, d($$1), d($$2));
+      return a($$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public boolean offerLast(T $$0) {
-      this.addLast($$0);
-      return true;
+   public static int f(int $$0) {
+      return $$0 | 0xFF000000;
    }
 
-   @Override
-   public T removeFirst() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.remove(0);
-      }
+   public static int g(int $$0) {
+      return $$0 & 16777215;
    }
 
-   @Override
-   public T removeLast() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.remove(this.d - 1);
-      }
+   public static int c(int $$0, int $$1) {
+      return $$0 << 24 | $$1 & 16777215;
    }
 
-   @Override
-   public azk<T> b() {
-      return new aya.b(this);
+   public static int a(float $$0) {
+      return b($$0) << 24 | 16777215;
    }
 
-   @Nullable
-   @Override
-   public T pollFirst() {
-      return this.d == 0 ? null : this.removeFirst();
+   public static int a(float $$0, float $$1, float $$2, float $$3) {
+      return a(b($$0), b($$1), b($$2), b($$3));
    }
 
-   @Nullable
-   @Override
-   public T pollLast() {
-      return this.d == 0 ? null : this.removeLast();
+   public static Vector3f h(int $$0) {
+      float $$1 = (float)b($$0) / 255.0F;
+      float $$2 = (float)c($$0) / 255.0F;
+      float $$3 = (float)d($$0) / 255.0F;
+      return new Vector3f($$1, $$2, $$3);
    }
 
-   @Override
-   public T getFirst() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.get(0);
-      }
+   public static int d(int $$0, int $$1) {
+      return a((a($$0) + a($$1)) / 2, (b($$0) + b($$1)) / 2, (c($$0) + c($$1)) / 2, (d($$0) + d($$1)) / 2);
    }
 
-   @Override
-   public T getLast() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.get(this.d - 1);
-      }
+   public static int b(float $$0) {
+      return azq.d($$0 * 255.0F);
    }
 
-   @Nullable
-   @Override
-   public T peekFirst() {
-      return this.d == 0 ? null : this.getFirst();
+   public static float i(int $$0) {
+      return o(a($$0));
    }
 
-   @Nullable
-   @Override
-   public T peekLast() {
-      return this.d == 0 ? null : this.getLast();
+   public static float j(int $$0) {
+      return o(b($$0));
    }
 
-   @Override
-   public boolean removeFirstOccurrence(Object $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         T $$2 = this.get($$1);
-         if (Objects.equals($$0, $$2)) {
-            this.remove($$1);
-            return true;
-         }
-      }
-
-      return false;
+   public static float k(int $$0) {
+      return o(c($$0));
    }
 
-   @Override
-   public boolean removeLastOccurrence(Object $$0) {
-      for (int $$1 = this.d - 1; $$1 >= 0; $$1--) {
-         T $$2 = this.get($$1);
-         if (Objects.equals($$0, $$2)) {
-            this.remove($$1);
-            return true;
-         }
-      }
-
-      return false;
+   public static float l(int $$0) {
+      return o(d($$0));
    }
 
-   @Override
-   public Iterator<T> descendingIterator() {
-      return new aya.a();
+   private static float o(int $$0) {
+      return (float)$$0 / 255.0F;
    }
 
-   class a implements Iterator<T> {
-      private int b = aya.this.size() - 1;
-
-      public a() {
-      }
-
-      @Override
-      public boolean hasNext() {
-         return this.b >= 0;
-      }
-
-      @Override
-      public T next() {
-         return aya.this.get(this.b--);
-      }
-
-      @Override
-      public void remove() {
-         aya.this.remove(this.b + 1);
-      }
+   public static int m(int $$0) {
+      return $$0 & -16711936 | ($$0 & 0xFF0000) >> 16 | ($$0 & 0xFF) << 16;
    }
 
-   class b extends AbstractList<T> implements azk<T> {
-      private final aya<T> b;
-
-      public b(final aya<T> $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public azk<T> b() {
-         return this.b;
-      }
-
-      @Override
-      public T getFirst() {
-         return this.b.getLast();
-      }
-
-      @Override
-      public T getLast() {
-         return this.b.getFirst();
-      }
-
-      @Override
-      public void addFirst(T $$0) {
-         this.b.addLast($$0);
-      }
-
-      @Override
-      public void addLast(T $$0) {
-         this.b.addFirst($$0);
-      }
-
-      @Override
-      public boolean offerFirst(T $$0) {
-         return this.b.offerLast($$0);
-      }
-
-      @Override
-      public boolean offerLast(T $$0) {
-         return this.b.offerFirst($$0);
-      }
-
-      @Override
-      public T pollFirst() {
-         return this.b.pollLast();
-      }
-
-      @Override
-      public T pollLast() {
-         return this.b.pollFirst();
-      }
-
-      @Override
-      public T peekFirst() {
-         return this.b.peekLast();
-      }
-
-      @Override
-      public T peekLast() {
-         return this.b.peekFirst();
-      }
-
-      @Override
-      public T removeFirst() {
-         return this.b.removeLast();
-      }
-
-      @Override
-      public T removeLast() {
-         return this.b.removeFirst();
-      }
-
-      @Override
-      public boolean removeFirstOccurrence(Object $$0) {
-         return this.b.removeLastOccurrence($$0);
-      }
-
-      @Override
-      public boolean removeLastOccurrence(Object $$0) {
-         return this.b.removeFirstOccurrence($$0);
-      }
-
-      @Override
-      public Iterator<T> descendingIterator() {
-         return this.b.iterator();
-      }
-
-      @Override
-      public int size() {
-         return this.b.size();
-      }
-
-      @Override
-      public boolean isEmpty() {
-         return this.b.isEmpty();
-      }
-
-      @Override
-      public boolean contains(Object $$0) {
-         return this.b.contains($$0);
-      }
-
-      @Override
-      public T get(int $$0) {
-         return this.b.get(this.a($$0));
-      }
-
-      @Override
-      public T set(int $$0, T $$1) {
-         return this.b.set(this.a($$0), $$1);
-      }
-
-      @Override
-      public void add(int $$0, T $$1) {
-         this.b.add(this.a($$0) + 1, $$1);
-      }
-
-      @Override
-      public T remove(int $$0) {
-         return this.b.remove(this.a($$0));
-      }
-
-      @Override
-      public int indexOf(Object $$0) {
-         return this.a(this.b.lastIndexOf($$0));
-      }
-
-      @Override
-      public int lastIndexOf(Object $$0) {
-         return this.a(this.b.indexOf($$0));
-      }
-
-      @Override
-      public List<T> subList(int $$0, int $$1) {
-         return this.b.subList(this.a($$1) + 1, this.a($$0) + 1).reversed();
-      }
-
-      @Override
-      public Iterator<T> iterator() {
-         return this.b.descendingIterator();
-      }
-
-      @Override
-      public void clear() {
-         this.b.clear();
-      }
-
-      private int a(int $$0) {
-         return $$0 == -1 ? -1 : this.b.size() - 1 - $$0;
-      }
+   public static int n(int $$0) {
+      return m($$0);
    }
 }

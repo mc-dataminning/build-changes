@@ -1,19 +1,9 @@
-public class cwh extends cxn {
-   private final cwg a;
+public interface cwh {
+   void a(cvs var1, jp<daa> var2, daa var3, int[] var4);
 
-   public cwh(buk $$0, int $$1, int $$2, int $$3, cwg $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-   }
+   void a(cvs var1, int var2, daa var3);
 
-   @Override
-   public boolean a(czy $$0) {
-      return !this.a.e(this.d) && super.a($$0);
-   }
+   void a(cvs var1, daa var2);
 
-   @Override
-   public void d() {
-      super.d();
-      this.a.a(this.c);
-   }
+   void a(cvs var1, int var2, int var3);
 }

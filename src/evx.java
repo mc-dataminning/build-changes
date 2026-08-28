@@ -1,9 +1,27 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class evx {
-   public static final Codec<evx> c = mg.m.q().dispatch("predicate_type", evx::a, evy::codec);
+public class evx extends evz {
+   public static final MapCodec<evx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ebg.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, evx::new)
+   );
+   private final ebg b;
+   private final float d;
 
-   public abstract boolean a(ebe var1, azx var2);
+   public evx(ebg $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   protected abstract evy<?> a();
+   @Override
+   public boolean a(ebg $$0, azz $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
+   }
+
+   @Override
+   protected ewa<?> a() {
+      return ewa.f;
+   }
 }

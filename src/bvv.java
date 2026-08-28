@@ -1,173 +1,38 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
+import org.joml.Vector3f;
 
-public class bvv implements cve {
-   public static final Codec<jf<bvv>> a = mg.d.r();
-   public static final yy<wl, jf<bvv>> b = yw.b(mh.W);
-   private static final int c = azo.d(38.25F);
-   private final Map<jf<byv>, bvv.a> d = new Object2ObjectOpenHashMap();
-   private final bvw e;
-   private final int f;
-   private final Function<bvx, lw> g;
-   @Nullable
-   private String h;
-   private int i;
-   private int j;
-   private int k;
-   private Optional<awo> l = Optional.empty();
-   private cvh m = cvj.g;
+class bvv extends bvx {
+   private final float c;
+   private final ToIntFunction<azz> d;
 
-   protected bvv(bvw $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$1x -> {
-         int $$2 = $$1x.f() ? c : 255;
-         return lr.a(ly.u, axy.c($$2, $$1));
-      };
-   }
-
-   protected bvv(bvw $$0, int $$1, lw $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$1x -> $$2;
-   }
-
-   public int b() {
-      return this.i;
-   }
-
-   public int c() {
-      return this.j;
-   }
-
-   public int d() {
-      return this.k;
-   }
-
-   public boolean a(ars $$0, bxu $$1, int $$2) {
-      return true;
-   }
-
-   public void a(ars $$0, @Nullable bwt $$1, @Nullable bwt $$2, bxu $$3, int $$4, double $$5) {
-      this.a($$0, $$3, $$4);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(bxu $$0, int $$1) {
-   }
-
-   public void b(bxu $$0, int $$1) {
-      this.l.ifPresent($$1x -> $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), $$1x, $$0.dm(), 1.0F, 1.0F));
-   }
-
-   public void a(ars $$0, bxu $$1, int $$2, bwt.d $$3) {
-   }
-
-   public void a(ars $$0, bxu $$1, int $$2, bvi $$3, float $$4) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   protected String e() {
-      if (this.h == null) {
-         this.h = ag.a("effect", mg.d.b(this));
-      }
-
-      return this.h;
-   }
-
-   public String f() {
-      return this.e();
-   }
-
-   public xa g() {
-      return xa.c(this.f());
-   }
-
-   public bvw h() {
-      return this.e;
-   }
-
-   public int i() {
-      return this.f;
-   }
-
-   public bvv a(jf<byv> $$0, ali $$1, double $$2, byy.a $$3) {
-      this.d.put($$0, new bvv.a($$1, $$2, $$3));
-      return this;
-   }
-
-   public bvv a(int $$0) {
-      return this.a($$0, $$0, $$0);
-   }
-
-   public bvv a(int $$0, int $$1, int $$2) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      return this;
-   }
-
-   public void a(int $$0, BiConsumer<jf<byv>, byy> $$1) {
-      this.d.forEach(($$2, $$3) -> $$1.accept((jf<byv>)$$2, $$3.a($$0)));
-   }
-
-   public void a(byx $$0) {
-      for (Entry<jf<byv>, bvv.a> $$1 : this.d.entrySet()) {
-         byw $$2 = $$0.a($$1.getKey());
-         if ($$2 != null) {
-            $$2.c($$1.getValue().a());
-         }
-      }
-   }
-
-   public void a(byx $$0, int $$1) {
-      for (Entry<jf<byv>, bvv.a> $$2 : this.d.entrySet()) {
-         byw $$3 = $$0.a($$2.getKey());
-         if ($$3 != null) {
-            $$3.c($$2.getValue().a());
-            $$3.d($$2.getValue().a($$1));
-         }
-      }
-   }
-
-   public boolean j() {
-      return this.e == bvw.a;
-   }
-
-   public lw a(bvx $$0) {
-      return this.g.apply($$0);
-   }
-
-   public bvv a(awo $$0) {
-      this.l = Optional.of($$0);
-      return this;
-   }
-
-   public bvv a(cvf... $$0) {
-      this.m = cvj.e.a($$0);
-      return this;
+   protected bvv(bvy $$0, int $$1, float $$2, ToIntFunction<azz> $$3) {
+      super($$0, $$1, lz.G);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public cvh k() {
-      return this.m;
+   public void a(aru $$0, bxw $$1, int $$2, bvk $$3, float $$4) {
+      if ($$1.dY().i() <= this.c) {
+         int $$5 = this.d.applyAsInt($$1.dY());
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            this.a($$0, $$1, $$1.dA(), $$1.dC() + (double)$$1.dr() / 2.0, $$1.dG());
+         }
+      }
    }
 
-   static record a(ali a, double b, byy.a c) {
-      public byy a(int $$0) {
-         return new byy(this.a, this.b * (double)($$0 + 1), this.c);
+   private void a(aru $$0, bxw $$1, double $$2, double $$3, double $$4) {
+      cpi $$5 = bxe.bf.a($$0, bxd.k);
+      if ($$5 != null) {
+         azz $$6 = $$1.dY();
+         float $$7 = (float) (Math.PI / 2);
+         float $$8 = azq.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
+         Vector3f $$9 = $$1.bS().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
+         $$5.b($$2, $$3, $$4, $$0.G_().i() * 360.0F, 0.0F);
+         $$5.i(new ffs($$9));
+         $$0.b($$5);
+         $$5.a(awr.xP);
       }
    }
 }

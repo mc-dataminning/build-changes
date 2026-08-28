@@ -1,33 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.DoubleUnaryOperator;
 
-public class bec extends bhv {
-   private final String c;
-   private final DoubleUnaryOperator d;
-
-   public bec(Schema $$0, String $$1, String $$2, String $$3, DoubleUnaryOperator $$4) {
-      super($$0, false, $$1, bjb.D, $$2);
-      this.c = $$3;
-      this.d = $$4;
+public class bec extends DataFix {
+   public bec(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("attributes", $$1 -> $$0.createList($$1.asStream().map($$0xx -> {
-            String $$1x = bkw.a($$0xx.get("id").asString(""));
-            if (!$$1x.equals(this.c)) {
-               return $$0xx;
-            } else {
-               double $$2 = $$0xx.get("base").asDouble(0.0);
-               return $$0xx.set("base", $$0xx.createDouble(this.d.applyAsDouble($$2)));
-            }
-         })));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjd.x);
+      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
+         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
+         String $$2 = bky.a($$1.get("id").asString("minecraft:air"));
+         int $$3 = $$1.get("count").asInt(0);
+         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
+      });
    }
 }

@@ -1,42 +1,49 @@
-public class ghs extends gia<hei> {
-   private final gle a;
-   private final gle b;
-   private final gle c;
-   private final gle d;
-   private final gle e;
-   private static final int f = 6;
+import java.util.Set;
 
-   public ghs(gle $$0) {
+public class ghs extends gjn<hfr> {
+   public static final glp a = new ggx(false, 8.0F, 6.0F, Set.of("head"));
+   private static final int i = 12;
+
+   public ghs(glg $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.c = $$0.b("right_hind_leg");
-      this.b = $$0.b("left_hind_leg");
-      this.e = $$0.b("right_front_leg");
-      this.d = $$0.b("left_front_leg");
    }
 
-   public static glk a(gli $$0) {
-      glm $$1 = new glm();
-      glo $$2 = $$1.a();
-      $$2.a("head", glj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), glg.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", glj.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), glg.a(0.0F, 6.0F, 0.0F));
-      glj $$3 = glj.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, glg.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, glg.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, glg.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, glg.a(2.0F, 18.0F, -4.0F));
-      return glk.a($$1, 64, 32);
+   public static glm b() {
+      glo $$0 = c();
+      return glm.a($$0, 64, 64);
    }
 
-   public void a(hei $$0) {
-      super.a($$0);
-      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
-      float $$1 = $$0.ae;
-      float $$2 = $$0.ad;
-      this.b.e = azo.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.c.e = azo.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.d.e = azo.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.e.e = azo.b($$2 * 0.6662F) * 1.4F * $$1;
+   static glo c() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      $$1.a(
+         "head",
+         gll.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(1, 33)
+            .a(-3.0F, 1.0F, -7.0F, 6.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -5.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -5.0F, 1.0F, 3.0F, 1.0F),
+         gli.a(0.0F, 4.0F, -8.0F)
+      );
+      $$1.a(
+         "body",
+         gll.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         gli.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      gll $$2 = gll.c().a().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      gll $$3 = gll.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, gli.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, gli.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, gli.a(-4.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, gli.a(4.0F, 12.0F, -5.0F));
+      return $$0;
+   }
+
+   public glg d() {
+      return this.b;
    }
 }

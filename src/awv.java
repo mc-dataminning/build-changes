@@ -1,140 +1,149 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import java.util.EnumMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.function.UnaryOperator;
 
-public class awv extends axa {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<Map<aww<?>, Integer>> c = Codec.dispatchedMap(mg.v.q(), ag.b(awv::a)).xmap($$0 -> {
-      Map<aww<?>, Integer> $$1 = new HashMap<>();
-      $$0.forEach(($$1x, $$2) -> $$1.putAll((Map<? extends aww<?>, ? extends Integer>)$$2));
-      return $$1;
-   }, $$0 -> $$0.entrySet().stream().collect(Collectors.groupingBy($$0x -> ((aww)$$0x.getKey()).a(), ag.a())));
-   private final MinecraftServer d;
-   private final File e;
-   private final Set<aww<?>> f = Sets.newHashSet();
+public final class awv {
+   public static final za<vy, awv> a = za.a(awv::b, awv::a);
+   private static final Map<cxi, Pair<String, String>> b = ImmutableMap.of(
+      cxi.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      cxi.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      cxi.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      cxi.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<cxi, awv.a> c;
 
-   private static <T> Codec<Map<aww<?>, Integer>> a(awy<T> $$0) {
-      Codec<T> $$1 = $$0.b().q();
-      Codec<aww<?>> $$2 = $$1.flatComapMap(
-         $$0::b, $$1x -> $$1x.a() == $$0 ? DataResult.success($$1x.b()) : DataResult.error(() -> "Expected type " + $$0 + ", but got " + $$1x.a())
-      );
-      return Codec.unboundedMap($$2, Codec.INT);
+   private awv(Map<cxi, awv.a> $$0) {
+      this.c = $$0;
    }
 
-   public awv(MinecraftServer $$0, File $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      if ($$1.isFile()) {
-         try {
-            this.a($$0.aC(), FileUtils.readFileToString($$1));
-         } catch (IOException var4) {
-            b.error("Couldn't read statistics file {}", $$1, var4);
-         } catch (JsonParseException var5) {
-            b.error("Couldn't parse statistics file {}", $$1, var5);
+   public awv() {
+      this(new EnumMap<>(cxi.class));
+   }
+
+   private awv.a c(cxi $$0) {
+      return this.c.getOrDefault($$0, awv.a.a);
+   }
+
+   private void a(cxi $$0, UnaryOperator<awv.a> $$1) {
+      this.c.compute($$0, ($$1x, $$2) -> {
+         if ($$2 == null) {
+            $$2 = awv.a.a;
+         }
+
+         $$2 = $$1.apply($$2);
+         if ($$2.equals(awv.a.a)) {
+            $$2 = null;
+         }
+
+         return $$2;
+      });
+   }
+
+   public boolean a(cxi $$0) {
+      return this.c($$0).b;
+   }
+
+   public void a(cxi $$0, boolean $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public boolean b(cxi $$0) {
+      return this.c($$0).c;
+   }
+
+   public void b(cxi $$0, boolean $$1) {
+      this.a($$0, $$1x -> $$1x.b($$1));
+   }
+
+   private static awv a(vy $$0) {
+      Map<cxi, awv.a> $$1 = new EnumMap<>(cxi.class);
+
+      for (cxi $$2 : cxi.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         if ($$3 || $$4) {
+            $$1.put($$2, new awv.a($$3, $$4));
          }
       }
+
+      return new awv($$1);
    }
 
-   public void a() {
-      try {
-         FileUtils.writeStringToFile(this.e, this.b());
-      } catch (IOException var2) {
-         b.error("Couldn't save stats", var2);
+   private void b(vy $$0) {
+      for (cxi $$1 : cxi.values()) {
+         awv.a $$2 = this.c.getOrDefault($$1, awv.a.a);
+         $$0.a($$2.b);
+         $$0.a($$2.c);
       }
+   }
+
+   public static awv a(ua $$0) {
+      Map<cxi, awv.a> $$1 = new EnumMap<>(cxi.class);
+      b.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.b((String)$$3.getFirst(), awv.a.a.a());
+         boolean $$5 = $$0.b((String)$$3.getSecond(), awv.a.a.b());
+         if ($$4 || $$5) {
+            $$1.put($$2, new awv.a($$4, $$5));
+         }
+      });
+      return new awv($$1);
+   }
+
+   public void b(ua $$0) {
+      b.forEach(($$1, $$2) -> {
+         awv.a $$3 = this.c.getOrDefault($$1, awv.a.a);
+         $$0.a((String)$$2.getFirst(), $$3.b);
+         $$0.a((String)$$2.getSecond(), $$3.c);
+      });
+   }
+
+   public awv a() {
+      return new awv(new EnumMap<>(this.c));
+   }
+
+   public void a(awv $$0) {
+      this.c.clear();
+      this.c.putAll($$0.c);
    }
 
    @Override
-   public void a(crx $$0, aww<?> $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.f.add($$1);
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awv && this.c.equals(((awv)$$0).c);
    }
 
-   private Set<aww<?>> d() {
-      Set<aww<?>> $$0 = Sets.newHashSet(this.f);
-      this.f.clear();
-      return $$0;
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
    }
 
-   public void a(DataFixer $$0, String $$1) {
-      try {
-         JsonReader $$2 = new JsonReader(new StringReader($$1));
+   static record a(boolean b, boolean c) {
+      public static final awv.a a = new awv.a(false, false);
 
-         label35: {
-            try {
-               $$2.setLenient(false);
-               JsonElement $$3 = Streams.parse($$2);
-               if (!$$3.isJsonNull()) {
-                  Dynamic<JsonElement> $$4 = new Dynamic(JsonOps.INSTANCE, $$3);
-                  $$4 = bbd.g.a($$0, $$4, uo.a($$4, 1343));
-                  this.a
-                     .putAll(
-                        c.parse($$4.get("stats").orElseEmptyMap())
-                           .resultOrPartial($$0x -> b.error("Failed to parse statistics for {}: {}", this.e, $$0x))
-                           .orElse(Map.of())
-                     );
-                  break label35;
-               }
-
-               b.error("Unable to parse Stat data from {}", this.e);
-            } catch (Throwable var7) {
-               try {
-                  $$2.close();
-               } catch (Throwable var6) {
-                  var7.addSuppressed(var6);
-               }
-
-               throw var7;
-            }
-
-            $$2.close();
-            return;
-         }
-
-         $$2.close();
-      } catch (IOException | JsonParseException var8) {
-         b.error("Unable to parse Stat data from {}", this.e, var8);
-      }
-   }
-
-   protected String b() {
-      JsonObject $$0 = new JsonObject();
-      $$0.add("stats", (JsonElement)c.encodeStart(JsonOps.INSTANCE, this.a).getOrThrow());
-      $$0.addProperty("DataVersion", ac.b().d().c());
-      return $$0.toString();
-   }
-
-   public void c() {
-      this.f.addAll(this.a.keySet());
-   }
-
-   public void a(art $$0) {
-      Object2IntMap<aww<?>> $$1 = new Object2IntOpenHashMap();
-
-      for (aww<?> $$2 : this.d()) {
-         $$1.put($$2, this.a($$2));
+      @Override
+      public String toString() {
+         return "[open=" + this.b + ", filtering=" + this.c + "]";
       }
 
-      $$0.f.b(new abz($$1));
+      public awv.a a(boolean $$0) {
+         return new awv.a($$0, this.c);
+      }
+
+      public awv.a b(boolean $$0) {
+         return new awv.a(this.b, $$0);
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public boolean b() {
+         return this.c;
+      }
    }
 }

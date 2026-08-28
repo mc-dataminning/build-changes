@@ -1,50 +1,52 @@
-import javax.annotation.Nullable;
-
-public class csy extends csf {
-   private static final int d = 200;
-   private int e = 200;
-
-   public csy(bxc<? extends csy> $$0, djx $$1) {
+public class csy extends cso {
+   public csy(bxe<? extends csy> $$0, djz $$1) {
       super($$0, $$1);
    }
 
-   public csy(djx $$0, bxu $$1, czy $$2, @Nullable czy $$3) {
-      super(bxc.bo, $$1, $$0, $$2, $$3);
+   public csy(djz $$0, bxw $$1, ffs $$2) {
+      super(bxe.bj, $$1, $$2, $$0);
    }
 
-   public csy(djx $$0, double $$1, double $$2, double $$3, czy $$4, @Nullable czy $$5) {
-      super(bxc.bo, $$1, $$2, $$3, $$0, $$4, $$5);
+   public csy(djz $$0, double $$1, double $$2, double $$3, ffs $$4) {
+      super(bxe.bj, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.dV().C && !this.f()) {
-         this.dV().a(ly.T, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+   protected void a(ffp $$0) {
+      super.a($$0);
+      if (this.dV() instanceof aru $$1) {
+         bwv var7 = $$0.a();
+         bwv $$4 = this.q();
+         int $$5 = var7.aE();
+         var7.e(5.0F);
+         bvk $$6 = this.dW().a((cso)this, $$4);
+         if (!var7.a($$1, $$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            dgp.a($$1, var7, $$6);
+         }
       }
    }
 
    @Override
-   protected void a(bxu $$0) {
+   protected void a(ffo $$0) {
       super.a($$0);
-      bvx $$1 = new bvx(bvz.x, this.e, 0);
-      $$0.b($$1, this.z());
+      if (this.dV() instanceof aru $$1) {
+         bwv $$3 = this.q();
+         if (!($$3 instanceof bxy) || $$1.O().c(djv.d)) {
+            iw $$4 = $$0.b().a($$0.c());
+            if (this.dV().v($$4)) {
+               this.dV().b($$4, dmr.a(this.dV(), $$4));
+            }
+         }
+      }
    }
 
    @Override
-   public void a(tz $$0) {
+   protected void a(ffq $$0) {
       super.a($$0);
-      this.e = $$0.b("Duration", 200);
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.e);
-   }
-
-   @Override
-   protected czy o() {
-      return new czy(dac.wA);
+      if (!this.dV().C) {
+         this.aq();
+      }
    }
 }

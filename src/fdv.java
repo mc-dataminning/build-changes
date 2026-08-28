@@ -1,28 +1,46 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public record fdv(fem b) implements fdq {
-   public static final MapCodec<fdv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fen.a.fieldOf("chance").forGetter(fdv::c)).apply($$0, fdv::new));
+public record fdv(Optional<bz> b, faj.b c) implements fds {
+   public static final MapCodec<fdv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bz.a.optionalFieldOf("predicate").forGetter(fdv::c), faj.b.e.fieldOf("entity").forGetter(fdv::d)).apply($$0, fdv::new)
+   );
 
    @Override
-   public fdr b() {
-      return fds.d;
+   public fdt b() {
+      return fdu.f;
    }
 
-   public boolean a(fah $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public Set<bbb<?>> a() {
+      return Set.of(fdd.f, this.c.a());
    }
 
-   public static fdq.a a(float $$0) {
-      return () -> new fdv(fej.a($$0));
+   public boolean a(faj $$0) {
+      bwv $$1 = $$0.c(this.c.a());
+      ffs $$2 = $$0.c(fdd.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static fdq.a a(fem $$0) {
-      return () -> new fdv($$0);
+   public static fds.a a(faj.b $$0) {
+      return a($$0, bz.a.a());
    }
 
-   public fem c() {
+   public static fds.a a(faj.b $$0, bz.a $$1) {
+      return () -> new fdv(Optional.of($$1.b()), $$0);
+   }
+
+   public static fds.a a(faj.b $$0, bz $$1) {
+      return () -> new fdv(Optional.of($$1), $$0);
+   }
+
+   public Optional<bz> c() {
       return this.b;
+   }
+
+   public faj.b d() {
+      return this.c;
    }
 }

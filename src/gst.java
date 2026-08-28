@@ -1,160 +1,108 @@
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class gst {
-   public static void a(flo $$0, flr $$1, fgk $$2, double $$3, double $$4, double $$5, int $$6) {
-      flo.a $$7 = $$0.c();
-      $$2.a(($$6x, $$7x, $$8, $$9, $$10, $$11) -> {
-         Vector3f $$12 = new Vector3f((float)($$9 - $$6x), (float)($$10 - $$7x), (float)($$11 - $$8)).normalize();
-         $$1.a($$7, (float)($$6x + $$3), (float)($$7x + $$4), (float)($$8 + $$5)).a($$6).b($$7, $$12);
-         $$1.a($$7, (float)($$9 + $$3), (float)($$10 + $$4), (float)($$11 + $$5)).a($$6).b($$7, $$12);
-      });
+public record gst(Map<String, String> c, Set<String> d) {
+   public static final gst a = new gst(Map.of(), Set.of());
+   public static final Codec<gst> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gst::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gst::e)
+            )
+            .apply($$0, gst::new)
+   );
+
+   public static gst.a a() {
+      return new gst.a();
    }
 
-   public static void a(flo $$0, flr $$1, ffl $$2, float $$3, float $$4, float $$5, float $$6) {
-      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6, $$3, $$4, $$5);
-   }
-
-   public static void a(flo $$0, flr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$8, $$9, $$10);
-   }
-
-   public static void a(
-      flo $$0,
-      flr $$1,
-      double $$2,
-      double $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      double $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14
-   ) {
-      flo.a $$15 = $$0.c();
-      float $$16 = (float)$$2;
-      float $$17 = (float)$$3;
-      float $$18 = (float)$$4;
-      float $$19 = (float)$$5;
-      float $$20 = (float)$$6;
-      float $$21 = (float)$$7;
-      $$1.a($$15, $$16, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-   }
-
-   public static void b(flo $$0, flr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, (float)$$2, (float)$$3, (float)$$4, (float)$$5, (float)$$6, (float)$$7, $$8, $$9, $$10, $$11);
-   }
-
-   public static void a(flo $$0, flr $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      Matrix4f $$12 = $$0.c().a();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-   }
-
-   public static void a(
-      flo $$0, flr $$1, jb $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      Matrix4f $$13 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case b:
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case c:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case d:
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case e:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case f:
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
+   public gst a(gst $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
+      } else {
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gst($$1.buildKeepingLast(), $$2.build());
       }
    }
 
-   public static void a(flo $$0, flr $$1, Vector3f $$2, ffq $$3, int $$4) {
-      flo.a $$5 = $$0.c();
-      $$1.a($$5, $$2).a($$4).b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
-      $$1.a($$5, (float)((double)$$2.x() + $$3.d), (float)((double)$$2.y() + $$3.e), (float)((double)$$2.z() + $$3.f))
-         .a($$4)
-         .b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
+
+   public Map<String, String> d() {
+      return this.c;
+   }
+
+   public Set<String> e() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
+
+      a() {
+      }
+
+      public gst.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
+         } else {
+            this.a.put($$0, b($$1));
+            return this;
+         }
+      }
+
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
+      }
+
+      public gst.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public gst.a a(String $$0, int $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public gst.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public gst a() {
+         return new gst(this.a.build(), this.b.build());
+      }
    }
 }

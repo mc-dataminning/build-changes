@@ -1,21 +1,27 @@
-public class gzr extends gxc<ckc, hev, gix> {
-   private static final ali a = ali.b("textures/entity/cat/ocelot.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gzr(gyi.a $$0) {
-      super($$0, new gix($$0.a(gld.bV)), new gix($$0.a(gld.bW)), 0.4F);
+public class gzr extends gxe<ckd, hfw, ghs> {
+   private static final Map<ckd.a, alk> a = ag.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(ckd.a.b, alk.b("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(ckd.a.a, alk.b("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gzr(gyk.a $$0) {
+      super($$0, new ghs($$0.a(glf.bN)), new ghs($$0.a(glf.bO)), 0.7F);
+      this.a(new hct(this, $$0.d()));
    }
 
-   public ali a(hev $$0) {
-      return a;
+   public alk a(hfw $$0) {
+      return a.get($$0.a);
    }
 
-   public hev b() {
-      return new hev();
+   public hfw b() {
+      return new hfw();
    }
 
-   public void a(ckc $$0, hev $$1, float $$2) {
+   public void a(ckd $$0, hfw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.d = $$0.ch();
-      $$1.e = $$0.ci();
+      $$1.a = $$0.t();
    }
 }

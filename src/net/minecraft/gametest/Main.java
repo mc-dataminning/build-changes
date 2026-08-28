@@ -6,7 +6,7 @@ public class Main {
    @DontObfuscate
    public static void main(String[] $$0) throws Exception {
       ac.a();
-      su.a($$0, $$0x -> {
+      sv.a($$0, $$0x -> {
       });
    }
 }

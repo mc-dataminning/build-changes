@@ -1,26 +1,28 @@
-import java.util.function.Function;
+import com.mojang.blaze3d.platform.GlStateManager;
 
-public interface fij {
-   float getAdvance();
+public class fij implements AutoCloseable {
+   private long a = GlStateManager._glFenceSync(37143, 0);
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   @Override
+   public void close() {
+      if (this.a != 0L) {
+         GlStateManager._glDeleteSync(this.a);
+         this.a = 0L;
+      }
    }
 
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   fxh bake(Function<fil, fxh> var1);
-
-   public interface a extends fij {
-      @Override
-      default fxh bake(Function<fil, fxh> $$0) {
-         return fxi.b;
+   public boolean a(long $$0) {
+      if (this.a == 0L) {
+         return true;
+      } else {
+         int $$1 = GlStateManager._glClientWaitSync(this.a, 0, $$0);
+         if ($$1 == 37147) {
+            return false;
+         } else if ($$1 == 37149) {
+            throw new IllegalStateException("Failed to complete gpu fence");
+         } else {
+            return true;
+         }
       }
    }
 }

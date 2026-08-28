@@ -1,22 +1,28 @@
-public class gxi extends gzo<cjd, hdx, ggy> {
-   private static final ali a = ali.b("textures/entity/bat.png");
+public abstract class gxi<T extends csh, S extends hdx> extends gyj<T, S> {
+   private final ggv a;
 
-   public gxi(gyi.a $$0) {
-      super($$0, new ggy($$0.a(gld.u)), 0.25F);
+   public gxi(gyk.a $$0) {
+      super($$0);
+      this.a = new ggv($$0.a(glf.l));
    }
 
-   public ali a(hdx $$0) {
-      return a;
+   public void a(S $$0, flq $$1, gsc $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      flt $$4 = $$2.getBuffer(gsn.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, hks.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hdx a() {
-      return new hdx();
-   }
+   protected abstract alk a(S var1);
 
-   public void a(cjd $$0, hdx $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
-      $$1.b.a($$0.c);
-      $$1.c.a($$0.d);
+      $$1.a = $$0.k($$2);
+      $$1.b = $$0.l($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

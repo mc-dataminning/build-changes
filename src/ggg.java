@@ -1,9 +1,8 @@
-public class ggg extends RuntimeException {
-   public ggg(String $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public ggg(String $$0, Throwable $$1) {
-      super($$0, $$1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface ggg {
 }

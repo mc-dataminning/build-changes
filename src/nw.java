@@ -1,100 +1,61 @@
 import java.util.function.BiConsumer;
 
-public record nw(jh.a a) implements nl {
+public record nw(ji.a a) implements nm {
    @Override
-   public void generate(BiConsumer<alh<fam>, fam.a> $$0) {
-      jg<cjr> $$1 = this.a.e(mh.aJ);
+   public void generate(BiConsumer<alj<fao>, fao.a> $$0) {
+      ji.b<dlc> $$1 = this.a.e(mi.aG);
       $$0.accept(
-         fad.aq,
-         fam.b()
+         faf.am,
+         fao.b()
             .a(
-               fal.a()
-                  .a(fej.a(1.0F))
-                  .a(fau.a(dac.vP).a(10))
-                  .a(fau.a(dac.vO).a(10))
-                  .a(fau.a(dac.tk).a(10))
-                  .a(fau.a(dac.qh).a(10))
-                  .a(fau.a(dac.tm).a(10))
-                  .a(fau.a(dac.qg).a(10))
-                  .a(fau.a(dac.oC).a(2))
+               fan.a()
+                  .a(fel.a(1.0F))
+                  .a(fbc.a(faf.an).a(10).b(-2))
+                  .a(fbc.a(faf.ao).a(5).b(2).a(fdv.a(faj.b.a, bz.a.a().a(cf.a(true)))))
+                  .a(fbc.a(faf.ap).a(85).b(-1))
             )
       );
-      $$0.accept(fad.ar, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.qq)).a(fau.a(dac.qr)).a(fau.a(dac.qs)).a(fau.a(dac.qt))));
-      $$0.accept(fad.as, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.vM)).a(fau.a(dac.tl)).a(fau.a(dac.qM)).a(fau.a(dac.tj)).a(fau.a(dac.vZ))));
-      $$0.accept(fad.at, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.vt)).a(fau.a(dac.rE))));
-      $$0.accept(fad.au, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.ml)).a(fau.a(dac.pp))));
-      $$0.accept(fad.av, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.ql)).a(fau.a(dac.vD)).a(fau.a(dac.ta))));
-      $$0.accept(fad.aw, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.sh)).a(fau.a(dac.si))));
+      $$0.accept(faf.ap, a());
       $$0.accept(
-         fad.ax,
-         fam.b()
+         faf.an,
+         fao.b()
             .a(
-               fal.a()
-                  .a(fej.a(1.0F))
-                  .a(fau.a(dac.pk).a(26))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.n)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.q)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.I)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.y)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.A)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.i)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.F)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.l)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.w)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.g)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.e)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.L)))
-                  .a(fau.a(dac.wB).a(fcm.a(feq.a(0.0F, 1.0F))).a(fcs.a(dbv.C)))
+               fan.a()
+                  .a(faw.a(dng.fF).a(17))
+                  .a(faw.a(dae.qp).a(10).a(fcp.a(fes.a(0.0F, 0.9F))))
+                  .a(faw.a(dae.rt).a(10))
+                  .a(faw.a(dae.sH).a(10))
+                  .a(faw.a(dae.tt).a(10).a(fcu.a(dbx.a)))
+                  .a(faw.a(dae.qg).a(5))
+                  .a(faw.a(dae.sd).a(2).a(fcp.a(fes.a(0.0F, 0.9F))))
+                  .a(faw.a(dae.ph).a(10))
+                  .a(faw.a(dae.qe).a(5))
+                  .a(faw.a(dae.sn).a(1).a(fco.a(fel.a(10.0F))))
+                  .a(faw.a(dng.gg).a(10))
+                  .a(faw.a(dae.tm).a(10))
+                  .a(faw.a(dng.nF).a(fdq.a(cv.a.a().a(jk.a($$1.b(dlj.y), $$1.b(dlj.z), $$1.b(dlj.A))))).a(10))
             )
       );
-      $$0.accept(fad.ay, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.rt))));
-      $$0.accept(fad.az, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.rF))));
-      $$0.accept(fad.aA, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.fs))));
       $$0.accept(
-         fad.aB,
-         fam.b()
+         faf.ao,
+         fao.b()
             .a(
-               fal.a()
-                  .a(fej.a(1.0F))
-                  .a(fau.a(dac.df))
-                  .a(fau.a(dac.dg))
-                  .a(fau.a(dac.dh))
-                  .a(fau.a(dac.di))
-                  .a(fau.a(dac.dj))
-                  .a(fau.a(dac.dk))
-                  .a(fau.a(dac.dl))
-                  .a(fau.a(dac.dm))
-                  .a(fau.a(dac.dn))
-                  .a(fau.a(dac.do))
-                  .a(fau.a(dac.dp))
-                  .a(fau.a(dac.dq))
-                  .a(fau.a(dac.dr))
-                  .a(fau.a(dac.ds))
-                  .a(fau.a(dac.dt))
-                  .a(fau.a(dac.du))
+               fan.a()
+                  .a(faw.a(dae.vW))
+                  .a(faw.a(dae.ou))
+                  .a(faw.a(dae.pj).a(fcp.a(fes.a(0.0F, 0.25F))).a(fbn.a(this.a, fel.a(30.0F))))
+                  .a(faw.a(dae.sd).a(fcp.a(fes.a(0.0F, 0.25F))).a(fbn.a(this.a, fel.a(30.0F))))
+                  .a(faw.a(dae.rF).a(fbn.a(this.a, fel.a(30.0F))))
+                  .a(faw.a(dae.xe))
             )
       );
-      $$0.accept(fad.aC, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.pH)).a(fau.a(dac.pI)).a(fau.a(dac.pJ)).a(fau.a(dac.pG))));
-      $$0.accept(fad.aD, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.pI)).a(fau.a(dac.pN)).a(fau.a(dac.pS))));
-      $$0.accept(fad.aE, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.qj))));
-      $$0.accept(fad.aF, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.dy))));
-      $$0.accept(fad.aG, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.wt)).a(fau.a(dac.wu))));
-      $$0.accept(fad.aH, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.rG).a(1)).a(fas.b().a(699))));
-      $$0.accept(
-         fad.aI,
-         fam.b()
-            .a(
-               fal.a()
-                  .a(fej.a(1.0F))
-                  .a(
-                     fao.a(
-                        fau.a(dac.rH).a(fdt.a(fah.b.a, by.a.a().a(ke.a(kk.aJ, new cyz<>($$1.b(cjs.a)))))),
-                        fau.a(dac.rJ).a(fdt.a(fah.b.a, by.a.a().a(ke.a(kk.aJ, new cyz<>($$1.b(cjs.b)))))),
-                        fau.a(dac.rI).a(fdt.a(fah.b.a, by.a.a().a(ke.a(kk.aJ, new cyz<>($$1.b(cjs.c))))))
-                     )
-                  )
-            )
-      );
-      $$0.accept(fad.aJ, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.pe))));
+   }
+
+   public static fao.a a() {
+      return fao.b().a(fan.a().a(faw.a(dae.sh).a(60)).a(faw.a(dae.si).a(25)).a(faw.a(dae.sj).a(2)).a(faw.a(dae.sk).a(13)));
+   }
+
+   public ji.a b() {
+      return this.a;
    }
 }

@@ -1,38 +1,33 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cib {
-   private final bxw a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public cib(bxw $$0) {
-      this.a = $$0;
+public class cib extends cie<bxw> {
+   @Override
+   public Set<cgy<?>> a() {
+      return ImmutableSet.of(cgy.j, cgy.k, cgy.l, cgy.m);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   @Override
+   protected void a(aru $$0, bxw $$1) {
+      List<crz> $$2 = $$0.z()
+         .stream()
+         .filter(bxc.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      byw<?> $$3 = $$1.ec();
+      $$3.a(cgy.j, $$2);
+      List<crz> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cgy.k, $$4.isEmpty() ? null : $$4.get(0));
+      List<crz> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).toList();
+      $$3.a(cgy.m, $$5);
+      $$3.a(cgy.l, $$5.isEmpty() ? null : $$5.get(0));
    }
 
-   public boolean a(bwt $$0) {
-      int $$1 = $$0.ao();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         brb $$2 = bra.a();
-         $$2.a("hasLineOfSight");
-         boolean $$3 = this.a.E($$0);
-         $$2.c();
-         if ($$3) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
-
-         return $$3;
-      }
+   protected double a(bxw $$0) {
+      return $$0.h(bzc.m);
    }
 }

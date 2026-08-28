@@ -1,23 +1,34 @@
 import java.util.function.BiConsumer;
 
-public record nz(jh.a a) implements nl {
+public record nz(ji.a a) implements nm {
    @Override
-   public void generate(BiConsumer<alh<fam>, fam.a> $$0) {
-      $$0.accept(fad.aQ, fam.b().a(fal.a().a(fej.a(2.0F)).a(fau.a(dac.dN).a(fcm.a(fej.a(1.0F)))).a(fau.a(dac.dO).a(fcm.a(fej.a(1.0F))))));
-      nn.a.forEach(($$1, $$2) -> $$0.accept(fad.aW.get($$1), fam.b().a(fal.a().a(feq.a(1.0F, 3.0F)).a(fau.a($$2)))));
-      $$0.accept(fad.aV, fam.b().a(nj.a(fad.aW)));
+   public void generate(BiConsumer<alj<fao>, fao.a> $$0) {
+      ji.b<dgn> $$1 = this.a.e(mi.aR);
       $$0.accept(
-         fad.aR,
-         fam.b()
+         faf.aK,
+         fao.b()
             .a(
-               fal.a()
-                  .a(
-                     fao.a(fba.a(fad.aS).a(fdt.a(fah.b.a, by.a.a().a(ke.a(kk.aF, ckb.a.a)))), fba.a(fad.aT).a(fdt.a(fah.b.a, by.a.a().a(ke.a(kk.aF, ckb.a.b)))))
-                  )
+               fan.a()
+                  .a(fel.a(1.0F))
+                  .a(faw.a(dae.rF).a(5).a(new fbm.a().a($$1.b(dgs.l))))
+                  .a(faw.a(dae.qx).a(8).a(new fbm.a().a($$1.b(dgs.l))))
+                  .a(faw.a(dae.tt).a(8).a(fcu.a(dbx.l)))
+                  .a(faw.a(dae.wz).a(8).a(fcu.a(dbx.l)))
+                  .a(faw.a(dae.tt).a(10).a(fcu.a(dbx.a)))
+                  .a(faw.a(dae.wG).a(10).a(fco.a(fes.a(10.0F, 36.0F))))
+                  .a(faw.a(dae.tn).a(10).a(fco.a(fes.a(2.0F, 4.0F))))
+                  .a(faw.a(dae.qg).a(20).a(fco.a(fes.a(3.0F, 9.0F))))
+                  .a(faw.a(dae.pq).a(20).a(fco.a(fes.a(5.0F, 12.0F))))
+                  .a(faw.a(dae.eX).a(40))
+                  .a(faw.a(dae.xR).a(40).a(fco.a(fes.a(1.0F, 3.0F))))
+                  .a(faw.a(dae.vg).a(40))
+                  .a(faw.a(dae.rt).a(40).a(fco.a(fes.a(2.0F, 4.0F))))
+                  .a(faw.a(dae.fK).a(40).a(fco.a(fes.a(2.0F, 8.0F))))
+                  .a(faw.a(dae.vH).a(40).a(fco.a(fes.a(2.0F, 8.0F))))
+                  .a(faw.a(dae.wA).a(40).a(fco.a(fes.a(6.0F, 12.0F))))
+                  .a(faw.a(dae.al).a(40).a(fco.a(fes.a(8.0F, 16.0F))))
+                  .a(faw.a(dae.xS).a(40).a(fco.a(fes.a(8.0F, 16.0F))))
             )
       );
-      $$0.accept(fad.aS, fam.b().a(fal.a().a(fej.a(5.0F)).a(fau.a(dac.dO))));
-      $$0.accept(fad.aT, fam.b().a(fal.a().a(fej.a(5.0F)).a(fau.a(dac.dN))));
-      $$0.accept(fad.aU, fam.b().a(fal.a().a(fej.a(1.0F)).a(fau.a(dac.fH))));
    }
 }

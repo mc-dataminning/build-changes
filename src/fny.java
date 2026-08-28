@@ -1,5 +1,7 @@
-public class fny extends RuntimeException {
-   public fny(String $$0, Exception $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+interface fny {
 }

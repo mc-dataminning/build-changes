@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface aug {
+public record aug<T>(String a, Codec<T> b) {
 }

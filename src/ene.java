@@ -1,26 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ene implements emp {
+public record ene(int b, int c, int d, jg<erh> e) implements emr {
    public static final Codec<ene> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ebe.a.fieldOf("target").forGetter($$0x -> $$0x.b),
-               ebe.a.fieldOf("state").forGetter($$0x -> $$0x.c),
-               btw.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               ayy.m.fieldOf("tries").orElse(128).forGetter(ene::a),
+               ayy.l.fieldOf("xz_spread").orElse(7).forGetter(ene::b),
+               ayy.l.fieldOf("y_spread").orElse(3).forGetter(ene::c),
+               erh.b.fieldOf("feature").forGetter(ene::d)
             )
             .apply($$0, ene::new)
    );
-   public final ebe b;
-   public final ebe c;
-   private final btw d;
 
-   public ene(ebe $$0, ebe $$1, btw $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
    }
 
-   public btw a() {
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
       return this.d;
+   }
+
+   public jg<erh> d() {
+      return this.e;
    }
 }

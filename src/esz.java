@@ -1,12 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface esz<SP extends esy> {
-   esz<esw> a = a("random_spread", esw.a);
-   esz<esv> b = a("concentric_rings", esv.a);
+public enum esz implements bao {
+   a("linear"),
+   b("triangular");
 
-   MapCodec<SP> codec();
+   public static final Codec<esz> c = bao.a(esz::values);
+   private final String d;
 
-   private static <SP extends esy> esz<SP> a(String $$0, MapCodec<SP> $$1) {
-      return js.a(mg.P, $$0, () -> $$1);
+   private esz(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public int a(azz $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

@@ -2,241 +2,114 @@ import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dzy extends dzz {
+public class dzy extends dye {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final int c = 40;
-   private static final int d = 2400;
-   private static final int e = 1;
-   private static final int f = 10;
-   private static final long g = 0L;
-   private static final boolean h = false;
-   private long i = 0L;
-   private int j;
+   private static final String b = "";
+   private static final boolean c = false;
+   private ecr d;
+   private String e = "";
+   private boolean f = false;
+   private boolean g;
+
+   public dzy(iw $$0, ebg $$1) {
+      super(dyg.T, $$0, $$1);
+      this.d = $$1.c(dvy.b);
+   }
+
+   @Override
+   public void b(ua $$0, ji.a $$1) {
+      $$0.a("mode", ecr.e, this.d);
+      $$0.a("message", this.e);
+      $$0.a("powered", this.f);
+   }
+
+   @Override
+   public void a(ua $$0, ji.a $$1) {
+      this.d = $$0.<ecr>a("mode", ecr.e).orElse(ecr.c);
+      this.e = $$0.b("message", "");
+      this.f = $$0.b("powered", false);
+   }
+
+   private void u() {
+      if (this.n != null) {
+         iw $$0 = this.aB_();
+         ebg $$1 = this.n.a_($$0);
+         if ($$1.a(dng.pI)) {
+            this.n.a($$0, $$1.b(dvy.b, this.d), 2);
+         }
+      }
+   }
+
    @Nullable
-   private iv k;
-   private boolean l = false;
-
-   public dzy(iv $$0, ebe $$1) {
-      super(dye.w, $$0, $$1);
+   public ace a() {
+      return ace.a(this);
    }
 
    @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("Age", this.i);
-      $$0.b("exit_portal", iv.a, this.k);
-      if (this.l) {
-         $$0.a("ExactTeleport", true);
-      }
-   }
-
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.i = $$0.b("Age", 0L);
-      this.k = $$0.<iv>a("exit_portal", iv.a).filter(djx::l).orElse(null);
-      this.l = $$0.b("ExactTeleport", false);
-   }
-
-   public static void a(djx $$0, iv $$1, ebe $$2, dzy $$3) {
-      $$3.i++;
-      if ($$3.c()) {
-         $$3.j--;
-      }
-   }
-
-   public static void b(djx $$0, iv $$1, ebe $$2, dzy $$3) {
-      boolean $$4 = $$3.a();
-      boolean $$5 = $$3.c();
-      $$3.i++;
-      if ($$5) {
-         $$3.j--;
-      } else if ($$3.i % 2400L == 0L) {
-         c($$0, $$1, $$2, $$3);
-      }
-
-      if ($$4 != $$3.a() || $$5 != $$3.c()) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public boolean a() {
-      return this.i < 200L;
-   }
-
-   public boolean c() {
-      return this.j > 0;
-   }
-
-   public float a(float $$0) {
-      return azo.a(((float)this.i + $$0) / 200.0F, 0.0F, 1.0F);
-   }
-
-   public float b(float $$0) {
-      return 1.0F - azo.a(((float)this.j - $$0) / 40.0F, 0.0F, 1.0F);
-   }
-
-   public acc d() {
-      return acc.a(this);
-   }
-
-   @Override
-   public tz a(jh.a $$0) {
+   public ua a(ji.a $$0) {
       return this.e($$0);
    }
 
-   public static void c(djx $$0, iv $$1, ebe $$2, dzy $$3) {
-      if (!$$0.C) {
-         $$3.j = 40;
-         $$0.a($$1, $$2.b(), 1, 0);
-         a($$0, $$1, $$2);
+   public boolean c() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public ecr d() {
+      return this.d;
+   }
+
+   public void a(ecr $$0) {
+      this.d = $$0;
+      this.u();
+   }
+
+   private dne v() {
+      return this.m().b();
+   }
+
+   public void f() {
+      this.g = false;
+      if (this.d == ecr.a && this.n != null) {
+         this.a(false);
+         this.n.a(this.aB_(), this.v());
       }
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.j = 40;
-         return true;
+   public void j() {
+      if (this.d == ecr.a && this.n != null) {
+         this.a(true);
+         iw $$0 = this.aB_();
+         this.n.a($$0, this.v());
+         this.n.U().b($$0, this.v());
+         this.k();
       } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   @Nullable
-   public ffq a(ars $$0, iv $$1) {
-      if (this.k == null && $$0.aj() == djx.k) {
-         iv $$2 = b($$0, $$1);
-         $$2 = $$2.b(10);
-         a.debug("Creating portal at {}", $$2);
-         a($$0, $$2, emn.a($$1, false));
-         this.a($$2, this.l);
-      }
-
-      if (this.k != null) {
-         iv $$3 = this.l ? this.k : a((djx)$$0, this.k);
-         return $$3.c();
-      } else {
-         return null;
-      }
-   }
-
-   private static iv a(djx $$0, iv $$1) {
-      iv $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
-      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
-      return $$2.d();
-   }
-
-   private static iv b(ars $$0, iv $$1) {
-      ffq $$2 = c($$0, $$1);
-      edl $$3 = a((djx)$$0, $$2);
-      iv $$4 = a($$3);
-      if ($$4 == null) {
-         iv $$5 = iv.a($$2.d + 0.5, 75.0, $$2.f + 0.5);
-         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.J_().a(mh.aL).flatMap($$0x -> $$0x.a(rh.f)).ifPresent($$2x -> ((ejv)$$2x.a()).a($$0, $$0.m().g(), azx.a($$5.a()), $$5));
-         $$4 = $$5;
-      } else {
-         a.debug("Found suitable block to teleport to: {}", $$4);
-      }
-
-      return a($$0, $$4, 16, true);
-   }
-
-   private static ffq c(ars $$0, iv $$1) {
-      ffq $$2 = new ffq((double)$$1.u(), 0.0, (double)$$1.w()).d();
-      int $$3 = 1024;
-      ffq $$4 = $$2.c(1024.0);
-
-      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.c(-16.0))) {
-         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
-      }
-
-      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.c(16.0))) {
-         a.debug("Skipping forward past empty chunk at {}", $$4);
-      }
-
-      a.debug("Found chunk at {}", $$4);
-      return $$4;
-   }
-
-   private static boolean a(ars $$0, ffq $$1) {
-      return a((djx)$$0, $$1).a() == -1;
-   }
-
-   private static iv a(djb $$0, iv $$1, int $$2, boolean $$3) {
-      iv $$4 = null;
-
-      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
-         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
-            if ($$5 != 0 || $$6 != 0 || $$3) {
-               for (int $$7 = $$0.ao(); $$7 > ($$4 == null ? $$0.K_() : $$4.v()); $$7--) {
-                  iv $$8 = new iv($$1.u() + $$5, $$7, $$1.w() + $$6);
-                  ebe $$9 = $$0.a_($$8);
-                  if ($$9.m($$0, $$8) && ($$3 || !$$9.a(dne.I))) {
-                     $$4 = $$8;
-                     break;
-                  }
-               }
-            }
+         if (this.d == ecr.b) {
+            this.k();
          }
+
+         this.g = true;
       }
-
-      return $$4 == null ? $$1 : $$4;
    }
 
-   private static edl a(djx $$0, ffq $$1) {
-      return $$0.d(azo.a($$1.d / 16.0), azo.a($$1.f / 16.0));
-   }
-
-   @Nullable
-   private static iv a(edl $$0) {
-      djc $$1 = $$0.f();
-      iv $$2 = new iv($$1.d(), 30, $$1.e());
-      int $$3 = $$0.b() + 16 - 1;
-      iv $$4 = new iv($$1.f(), $$3, $$1.g());
-      iv $$5 = null;
-      double $$6 = 0.0;
-
-      for (iv $$7 : iv.c($$2, $$4)) {
-         ebe $$8 = $$0.a_($$7);
-         iv $$9 = $$7.d();
-         iv $$10 = $$7.b(2);
-         if ($$8.a(dne.fY) && !$$0.a_($$9).m($$0, $$9) && !$$0.a_($$10).m($$0, $$10)) {
-            double $$11 = $$7.c(0.0, 0.0, 0.0);
-            if ($$5 == null || $$11 < $$6) {
-               $$5 = $$7;
-               $$6 = $$11;
-            }
-         }
+   public void k() {
+      if (!this.e.isBlank()) {
+         a.info("Test {} (at {}): {}", new Object[]{this.d.c(), this.aB_(), this.e});
       }
-
-      return $$5;
    }
 
-   private static void a(ars $$0, iv $$1, emn $$2) {
-      ekk.N.a($$2, $$0, $$0.m().g(), azx.a(), $$1);
+   public boolean s() {
+      return this.g;
    }
 
-   @Override
-   public boolean a(jb $$0) {
-      return dnc.a(this.m(), this.n.a_(this.aB_().a($$0)), $$0);
+   public String t() {
+      return this.e;
    }
 
-   public int f() {
-      int $$0 = 0;
-
-      for (jb $$1 : jb.values()) {
-         $$0 += this.a($$1) ? 1 : 0;
-      }
-
-      return $$0;
-   }
-
-   public void a(iv $$0, boolean $$1) {
-      this.l = $$1;
-      this.k = $$0;
-      this.e();
+   public void a(String $$0) {
+      this.e = $$0;
    }
 }

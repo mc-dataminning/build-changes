@@ -1,56 +1,83 @@
-@FunctionalInterface
-public interface guo<T extends dyc> {
-   gun<T> create(guo.a var1);
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public static class a {
-      private final gum a;
-      private final gtd b;
-      private final hhq c;
-      private final gzg d;
-      private final gyg e;
-      private final gla f;
-      private final ftv g;
+public class guo implements avi {
+   private Map<dyg<?>, gup<?>> d = ImmutableMap.of();
+   private final ftx e;
+   private final Supplier<glc> f;
+   public djz a;
+   public fqn b;
+   public ffq c;
+   private final gtf g;
+   private final hhs h;
+   private final gzi i;
+   private final gyi j;
 
-      public a(gum $$0, gtd $$1, hhq $$2, gzg $$3, gyg $$4, gla $$5, ftv $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   public guo(ftx $$0, Supplier<glc> $$1, gtf $$2, hhs $$3, gzi $$4, gyi $$5) {
+      this.i = $$4;
+      this.h = $$3;
+      this.j = $$5;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   @Nullable
+   public <E extends dye> gup<E> a(E $$0) {
+      return (gup<E>)this.d.get($$0.p());
+   }
+
+   public void a(djz $$0, fqn $$1, ffq $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
       }
 
-      public gum a() {
-         return this.a;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dye> void a(E $$0, float $$1, flq $$2, gsc $$3) {
+      gup<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.p().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               try {
+                  a($$4, $$0, $$1, $$2, $$3, this.b.b());
+               } catch (Throwable var9) {
+                  p $$6 = p.a(var9, "Rendering Block Entity");
+                  q $$7 = $$6.a("Block Entity Details");
+                  $$0.a($$7);
+                  throw new aa($$6);
+               }
+            }
+         }
+      }
+   }
+
+   private static <T extends dye> void a(gup<T> $$0, T $$1, float $$2, flq $$3, gsc $$4, ffs $$5) {
+      djz $$6 = $$1.i();
+      int $$7;
+      if ($$6 != null) {
+         $$7 = grx.a($$6, $$1.aB_());
+      } else {
+         $$7 = 15728880;
       }
 
-      public gtd b() {
-         return this.b;
-      }
+      $$0.a($$1, $$2, $$3, $$4, $$7, hks.d, $$5);
+   }
 
-      public gyg c() {
-         return this.e;
+   public void a(@Nullable djz $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
       }
+   }
 
-      public hhq d() {
-         return this.c;
-      }
-
-      public gzg e() {
-         return this.d;
-      }
-
-      public gla f() {
-         return this.f;
-      }
-
-      public gle a(glc $$0) {
-         return this.f.a($$0);
-      }
-
-      public ftv g() {
-         return this.g;
-      }
+   @Override
+   public void a(avh $$0) {
+      guq.a $$1 = new guq.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
+      this.d = gur.a($$1);
    }
 }

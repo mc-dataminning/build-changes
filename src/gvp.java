@@ -1,112 +1,66 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class gvp {
-   private final gtd a;
-   private final gum b;
+public class gvp implements dja {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gvo[] c;
+   protected final djz d;
 
-   public gvp(gtd $$0, gum $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   gvp(djz $$0, int $$1, int $$2, gvo[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
    }
 
-   public gvp.a a(jy $$0, gvn $$1, flv $$2, gso $$3) {
-      gvp.a $$4 = new gvp.a();
-      iv $$5 = $$0.j();
-      iv $$6 = $$5.b(15, 15, 15);
-      gvr $$7 = new gvr();
-      flo $$8 = new flo();
-      gtf.a();
-      Map<gsl, flk> $$9 = new Reference2ObjectArrayMap(gsl.N().size());
-      azx $$10 = azx.a();
-      List<gtm> $$11 = new ObjectArrayList();
-
-      for (iv $$12 : iv.c($$5, $$6)) {
-         ebe $$13 = $$1.a_($$12);
-         if ($$13.s()) {
-            $$7.a($$12);
-         }
-
-         if ($$13.x()) {
-            dyc $$14 = $$1.c_($$12);
-            if ($$14 != null) {
-               this.a($$4, $$14);
-            }
-         }
-
-         exo $$15 = $$13.y();
-         if (!$$15.c()) {
-            gsl $$16 = grs.a($$15);
-            flk $$17 = this.a($$9, $$3, $$16);
-            this.a.a($$12, $$1, $$17, $$13, $$15);
-         }
-
-         if ($$13.o() == dtp.b) {
-            gsl $$18 = grs.a($$13);
-            flk $$19 = this.a($$9, $$3, $$18);
-            $$10.b($$13.b($$12));
-            this.a.a($$13).a($$10, $$11);
-            $$8.a();
-            $$8.a((float)jy.b($$12.u()), (float)jy.b($$12.v()), (float)jy.b($$12.w()));
-            this.a.a($$13, $$12, $$1, $$8, $$19, true, $$11);
-            $$8.b();
-            $$11.clear();
-         }
-      }
-
-      for (Entry<gsl, flk> $$20 : $$9.entrySet()) {
-         gsl $$21 = $$20.getKey();
-         fln $$22 = $$20.getValue().a();
-         if ($$22 != null) {
-            if ($$21 == gsl.g()) {
-               $$4.e = $$22.a($$3.a(gsl.g()), $$2);
-            }
-
-            $$4.c.put($$21, $$22);
-         }
-      }
-
-      gtf.b();
-      $$4.d = $$7.a();
-      return $$4;
+   @Override
+   public ebg a_(iw $$0) {
+      return this.a(jz.a($$0.u()), jz.a($$0.w())).b($$0);
    }
 
-   private flk a(Map<gsl, flk> $$0, gso $$1, gsl $$2) {
-      flk $$3 = $$0.get($$2);
-      if ($$3 == null) {
-         fll $$4 = $$1.a($$2);
-         $$3 = new flk($$4, fls.c.h, flm.b);
-         $$0.put($$2, $$3);
-      }
-
-      return $$3;
+   @Override
+   public exq b_(iw $$0) {
+      return this.a(jz.a($$0.u()), jz.a($$0.w())).b($$0).y();
    }
 
-   private <E extends dyc> void a(gvp.a $$0, E $$1) {
-      gun<E> $$2 = this.b.a($$1);
-      if ($$2 != null) {
-         $$0.b.add($$1);
-         if ($$2.a($$1)) {
-            $$0.a.add($$1);
-         }
-      }
+   @Override
+   public float a(jc $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
    }
 
-   public static final class a {
-      public final List<dyc> a = new ArrayList<>();
-      public final List<dyc> b = new ArrayList<>();
-      public final Map<gsl, fln> c = new Reference2ObjectArrayMap();
-      public gvs d = new gvs();
-      @Nullable
-      public fln.b e;
+   @Override
+   public exf B_() {
+      return this.d.B_();
+   }
 
-      public void a() {
-         this.c.values().forEach(fln::close);
-      }
+   @Nullable
+   @Override
+   public dye c_(iw $$0) {
+      return this.a(jz.a($$0.u()), jz.a($$0.w())).a($$0);
+   }
+
+   private gvo a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
+
+   @Override
+   public int a(iw $$0, djj $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public int K_() {
+      return this.d.K_();
+   }
+
+   @Override
+   public int L_() {
+      return this.d.L_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

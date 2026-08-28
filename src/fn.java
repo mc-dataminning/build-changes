@@ -3,7 +3,8 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.datafixers.util.Either;
@@ -15,20 +16,32 @@ import java.util.function.Predicate;
 
 public class fn<T> implements ArgumentType<fn.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final alh<? extends js<T>> b;
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xc.b("argument.resource_tag.not_found", $$0, $$1));
+   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> xc.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
+   );
+   private final ji<T> d;
+   final alj<? extends jt<T>> e;
 
-   public fn(alh<? extends js<T>> $$0) {
-      this.b = $$0;
+   public fn(eg $$0, alj<? extends jt<T>> $$1) {
+      this.e = $$1;
+      this.d = $$0.e($$1);
    }
 
-   public static <T> fn<T> a(alh<? extends js<T>> $$0) {
-      return new fn<>($$0);
+   public static <T> fn<T> a(eg $$0, alj<? extends jt<T>> $$1) {
+      return new fn<>($$0, $$1);
    }
 
-   public static <T> fn.c<T> a(CommandContext<ej> $$0, String $$1, alh<js<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      fn.c<?> $$4 = (fn.c<?>)$$0.getArgument($$1, fn.c.class);
-      Optional<fn.c<T>> $$5 = $$4.a($$2);
-      return $$5.orElseThrow(() -> $$3.create($$4));
+   public static <T> fn.c<T> a(CommandContext<ek> $$0, String $$1, alj<jt<T>> $$2) throws CommandSyntaxException {
+      fn.c<?> $$3 = (fn.c<?>)$$0.getArgument($$1, fn.c.class);
+      Optional<fn.c<T>> $$4 = $$3.a($$2);
+      return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
+            alj<?> $$2x = $$1xx.h();
+            return fj.b.create($$2x.a(), $$2x.b(), $$2.a());
+         }, $$1xx -> {
+            axv<?> $$2x = $$1xx.h();
+            return c.create($$2x.b(), $$2x.a(), $$2.a());
+         }));
    }
 
    public fn.c<T> a(StringReader $$0) throws CommandSyntaxException {
@@ -37,32 +50,37 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
 
          try {
             $$0.skip();
-            ali $$2 = ali.a($$0);
-            return new fn.d<>(axt.a(this.b, $$2));
-         } catch (CommandSyntaxException var4) {
+            alk $$2 = alk.a($$0);
+            axv<T> $$3 = axv.a(this.e, $$2);
+            jk.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
+            return new fn.d<>($$4);
+         } catch (CommandSyntaxException var6) {
             $$0.setCursor($$1);
-            throw var4;
+            throw var6;
          }
       } else {
-         ali $$4 = ali.a($$0);
-         return new fn.b<>(alh.a(this.b, $$4));
+         alk $$6 = alk.a($$0);
+         alj<T> $$7 = alj.a(this.e, $$6);
+         jg.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fj.a.createWithContext($$0, $$6, this.e.a()));
+         return new fn.b<>($$8);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eo $$2 ? $$2.a(this.b, eo.a.c, $$1, $$0) : $$1.buildFuture();
+      ep.a(this.d.f().map(axv::b), $$1, "#");
+      return ep.a(this.d.c_().map(alj::a), $$1);
    }
 
    public Collection<String> getExamples() {
       return a;
    }
 
-   public static class a<T> implements ig<fn<T>, fn.a<T>.a> {
-      public void a(fn.a<T>.a $$0, vw $$1) {
+   public static class a<T> implements ih<fn<T>, fn.a<T>.a> {
+      public void a(fn.a<T>.a $$0, vy $$1) {
          $$1.b($$0.b);
       }
 
-      public fn.a<T>.a a(vw $$0) {
+      public fn.a<T>.a a(vy $$0) {
          return new fn.a.a($$0.r());
       }
 
@@ -71,81 +89,81 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
       }
 
       public fn.a<T>.a a(fn<T> $$0) {
-         return new fn.a.a($$0.b);
+         return new fn.a.a($$0.e);
       }
 
-      public final class a implements ig.a<fn<T>> {
-         final alh<? extends js<T>> b;
+      public final class a implements ih.a<fn<T>> {
+         final alj<? extends jt<T>> b;
 
-         a(final alh<? extends js<T>> $$1) {
+         a(final alj<? extends jt<T>> $$1) {
             this.b = $$1;
          }
 
-         public fn<T> a(ef $$0) {
-            return new fn<>(this.b);
+         public fn<T> a(eg $$0) {
+            return new fn<>($$0, this.b);
          }
 
          @Override
-         public ig<fn<T>, ?> a() {
+         public ih<fn<T>, ?> a() {
             return a.this;
          }
       }
    }
 
-   static record b<T>(alh<T> a) implements fn.c<T> {
+   static record b<T>(jg.c<T> a) implements fn.c<T> {
       @Override
-      public Either<alh<T>, axt<T>> a() {
+      public Either<jg.c<T>, jk.c<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<fn.c<E>> a(alh<? extends js<E>> $$0) {
-         return this.a.d($$0).map(fn.b::new);
+      public <E> Optional<fn.c<E>> a(alj<? extends jt<E>> $$0) {
+         return this.a.h().c($$0) ? Optional.of((fn.c<E>)this) : Optional.empty();
       }
 
-      public boolean a(jf<T> $$0) {
-         return $$0.a(this.a);
+      public boolean a(jg<T> $$0) {
+         return $$0.equals(this.a);
       }
 
       @Override
       public String b() {
-         return this.a.a().toString();
+         return this.a.h().a().toString();
       }
 
-      public alh<T> c() {
+      public jg.c<T> c() {
          return this.a;
       }
    }
 
-   public interface c<T> extends Predicate<jf<T>> {
-      Either<alh<T>, axt<T>> a();
+   public interface c<T> extends Predicate<jg<T>> {
+      Either<jg.c<T>, jk.c<T>> a();
 
-      <E> Optional<fn.c<E>> a(alh<? extends js<E>> var1);
+      <E> Optional<fn.c<E>> a(alj<? extends jt<E>> var1);
 
       String b();
    }
 
-   static record d<T>(axt<T> a) implements fn.c<T> {
+   static record d<T>(jk.c<T> a) implements fn.c<T> {
       @Override
-      public Either<alh<T>, axt<T>> a() {
+      public Either<jg.c<T>, jk.c<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<fn.c<E>> a(alh<? extends js<E>> $$0) {
-         return this.a.e($$0).map(fn.d::new);
+      public <E> Optional<fn.c<E>> a(alj<? extends jt<E>> $$0) {
+         return this.a.h().d($$0) ? Optional.of((fn.c<E>)this) : Optional.empty();
       }
 
-      public boolean a(jf<T> $$0) {
-         return $$0.a(this.a);
+      public boolean a(jg<T> $$0) {
+         return this.a.a($$0);
       }
 
       @Override
       public String b() {
-         return "#" + this.a.b();
+         return "#" + this.a.h().b();
       }
 
-      public axt<T> c() {
+      public jk.c<T> c() {
          return this.a;
       }
    }

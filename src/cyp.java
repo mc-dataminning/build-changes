@@ -1,274 +1,277 @@
-import java.util.Collection;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.math.Fraction;
 
-public class cyp {
-   static final ali a = a("items");
-   private final xa b;
-   ali c = a;
-   boolean d = true;
-   boolean e = true;
-   boolean f = false;
-   private final cyp.f g;
-   private final int h;
-   private final cyp.h i;
-   @Nullable
-   private czy j;
-   private Collection<czy> k = czz.a();
-   private Set<czy> l = czz.a();
-   private final Supplier<czy> m;
-   private final cyp.b n;
+public class cyp extends czw {
+   public static final int a = 4;
+   public static final int b = 3;
+   public static final int c = 12;
+   public static final int d = 11;
+   private static final int o = aya.a(1.0F, 1.0F, 0.33F, 0.33F);
+   private static final int p = aya.a(1.0F, 0.44F, 0.53F, 1.0F);
+   private static final int q = 10;
+   private static final int r = 2;
+   private static final int s = 200;
 
-   cyp(cyp.f $$0, int $$1, cyp.h $$2, xa $$3, Supplier<czy> $$4, cyp.b $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.b = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.i = $$2;
+   public cyp(czw.a $$0) {
+      super($$0);
    }
 
-   public static ali a(String $$0) {
-      return ali.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
+   public static float c(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q, dcd.a);
+      return $$1.f().floatValue();
    }
 
-   public static cyp.a a(cyp.f $$0, int $$1) {
-      return new cyp.a($$0, $$1);
-   }
+   @Override
+   public boolean a(daa $$0, cxp $$1, cwc $$2, crz $$3) {
+      dcd $$4 = $$0.a(kl.Q);
+      if ($$4 == null) {
+         return false;
+      } else {
+         daa $$5 = $$1.g();
+         dcd.a $$6 = new dcd.a($$4);
+         if ($$2 == cwc.a && !$$5.f()) {
+            if ($$6.a($$1, $$3) > 0) {
+               b($$3);
+            } else {
+               c($$3);
+            }
 
-   public xa a() {
-      return this.b;
-   }
+            $$0.b(kl.Q, $$6.d());
+            this.a($$3);
+            return true;
+         } else if ($$2 == cwc.b && $$5.f()) {
+            daa $$7 = $$6.b();
+            if ($$7 != null) {
+               daa $$8 = $$1.d($$7);
+               if ($$8.M() > 0) {
+                  $$6.a($$8);
+               } else {
+                  a((bwv)$$3);
+               }
+            }
 
-   public czy b() {
-      if (this.j == null) {
-         this.j = this.m.get();
-      }
-
-      return this.j;
-   }
-
-   public ali c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public cyp.f g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return !this.k.isEmpty();
-   }
-
-   public boolean i() {
-      return this.i != cyp.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public cyp.h k() {
-      return this.i;
-   }
-
-   public void a(cyp.d $$0) {
-      cyp.c $$1 = new cyp.c(this, $$0.a);
-      alh<cyp> $$2 = mg.aj.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.k = $$1.a;
-      this.l = $$1.b;
-   }
-
-   public Collection<czy> l() {
-      return this.k;
-   }
-
-   public Collection<czy> m() {
-      return this.l;
-   }
-
-   public boolean a(czy $$0) {
-      return this.l.contains($$0);
-   }
-
-   public static class a {
-      private static final cyp.b a = ($$0, $$1) -> {
-      };
-      private final cyp.f b;
-      private final int c;
-      private xa d = xa.i();
-      private Supplier<czy> e = () -> czy.k;
-      private cyp.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cyp.h j = cyp.h.a;
-      private ali k = cyp.a;
-
-      public a(cyp.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cyp.a a(xa $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cyp.a a(Supplier<czy> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cyp.a a(cyp.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cyp.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cyp.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cyp.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cyp.a a(cyp.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cyp.a a(ali $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cyp d() {
-         if ((this.j == cyp.h.c || this.j == cyp.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
+            $$0.b(kl.Q, $$6.d());
+            this.a($$3);
+            return true;
          } else {
-            cyp $$0 = new cyp(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.f = this.i;
-            $$0.e = this.h;
-            $$0.d = this.g;
-            $$0.c = this.k;
-            return $$0;
+            return false;
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(cyp.d var1, cyp.e var2);
-   }
-
-   static class c implements cyp.e {
-      public final Collection<czy> a = czz.a();
-      public final Set<czy> b = czz.a();
-      private final cyp c;
-      private final cvh d;
-
-      public c(cyp $$0, cvh $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(czy $$0, cyp.g $$1) {
-         if ($$0.M() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
+   @Override
+   public boolean a(daa $$0, daa $$1, cxp $$2, cwc $$3, crz $$4, byn $$5) {
+      if ($$3 == cwc.a && $$1.f()) {
+         a($$0, -1);
+         return false;
+      } else {
+         dcd $$6 = $$0.a(kl.Q);
+         if ($$6 == null) {
+            return false;
          } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cyp.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.K().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.h().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+            dcd.a $$7 = new dcd.a($$6);
+            if ($$3 == cwc.a && !$$1.f()) {
+               if ($$2.b($$4) && $$7.a($$1) > 0) {
+                  b($$4);
+               } else {
+                  c($$4);
+               }
+
+               $$0.b(kl.Q, $$7.d());
+               this.a($$4);
+               return true;
+            } else if ($$3 == cwc.b && $$1.f()) {
+               if ($$2.b($$4)) {
+                  daa $$8 = $$7.b();
+                  if ($$8 != null) {
+                     a((bwv)$$4);
+                     $$5.a($$8);
                   }
                }
+
+               $$0.b(kl.Q, $$7.d());
+               this.a($$4);
+               return true;
+            } else {
+               a($$0, -1);
+               return false;
             }
          }
       }
    }
 
-   public static record d(cvh a, boolean b, jh.a c) {
+   @Override
+   public but a(djz $$0, crz $$1, bus $$2) {
+      $$1.c($$2);
+      return but.a;
+   }
 
-      public boolean a(cvh $$0, boolean $$1, jh.a $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   private void a(djz $$0, crz $$1, daa $$2) {
+      if (this.b($$2, $$1)) {
+         a($$0, $$1);
+         $$1.b(axb.c.b(this));
       }
    }
 
-   public interface e {
-      void a(czy var1, cyp.g var2);
+   @Override
+   public boolean d(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q, dcd.a);
+      return $$1.f().compareTo(Fraction.ZERO) > 0;
+   }
 
-      default void a(czy $$0) {
-         this.a($$0, cyp.g.a);
-      }
+   @Override
+   public int e(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q, dcd.a);
+      return Math.min(1 + azq.a($$1.f(), 12), 13);
+   }
 
-      default void a(djw $$0, cyp.g $$1) {
-         this.a(new czy($$0), $$1);
-      }
+   @Override
+   public int f(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q, dcd.a);
+      return $$1.f().compareTo(Fraction.ONE) >= 0 ? o : p;
+   }
 
-      default void a(djw $$0) {
-         this.a(new czy($$0), cyp.g.a);
-      }
-
-      default void a(Collection<czy> $$0, cyp.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<czy> $$0) {
-         this.a($$0, cyp.g.a);
+   public static void a(daa $$0, int $$1) {
+      dcd $$2 = $$0.a(kl.Q);
+      if ($$2 != null) {
+         dcd.a $$3 = new dcd.a($$2);
+         $$3.a($$1);
+         $$0.b(kl.Q, $$3.d());
       }
    }
 
-   public static enum f {
-      a,
-      b;
+   public static boolean g(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q);
+      return $$1 != null && $$1.h() != -1;
    }
 
-   protected static enum g {
-      a,
-      b,
-      c;
+   public static int h(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q, dcd.a);
+      return $$1.h();
    }
 
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
+   public static daa i(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q);
+      return $$1 != null && $$1.h() != -1 ? $$1.a($$1.h()) : daa.k;
+   }
+
+   public static int j(daa $$0) {
+      dcd $$1 = $$0.a(kl.Q, dcd.a);
+      return $$1.a();
+   }
+
+   private boolean b(daa $$0, crz $$1) {
+      dcd $$2 = $$0.a(kl.Q);
+      if ($$2 != null && !$$2.g()) {
+         Optional<daa> $$3 = a($$0, $$1, $$2);
+         if ($$3.isPresent()) {
+            $$1.a($$3.get(), true);
+            return true;
+         } else {
+            return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private static Optional<daa> a(daa $$0, crz $$1, dcd $$2) {
+      dcd.a $$3 = new dcd.a($$2);
+      daa $$4 = $$3.b();
+      if ($$4 != null) {
+         a((bwv)$$1);
+         $$0.b(kl.Q, $$3.d());
+         return Optional.of($$4);
+      } else {
+         return Optional.empty();
+      }
+   }
+
+   @Override
+   public void a(djz $$0, bxw $$1, daa $$2, int $$3) {
+      if ($$1 instanceof crz $$4) {
+         int $$5 = this.a($$2, $$1);
+         boolean $$6 = $$3 == $$5;
+         if ($$6 || $$3 < $$5 - 10 && $$3 % 2 == 0) {
+            this.a($$0, $$4, $$2);
+         }
+      }
+   }
+
+   @Override
+   public int a(daa $$0, bxw $$1) {
+      return 200;
+   }
+
+   @Override
+   public dac b(daa $$0) {
+      return dac.k;
+   }
+
+   @Override
+   public Optional<cxz> k(daa $$0) {
+      dde $$1 = $$0.a(kl.q, dde.c);
+      return !$$1.a(kl.Q) ? Optional.empty() : Optional.ofNullable($$0.a(kl.Q)).map(cxy::new);
+   }
+
+   @Override
+   public void a(coe $$0) {
+      dcd $$1 = $$0.f().a(kl.Q);
+      if ($$1 != null) {
+         $$0.f().b(kl.Q, dcd.a);
+         dad.a($$0, $$1.d());
+      }
+   }
+
+   public static List<cyp> a() {
+      return Stream.of(dae.rM, dae.rN, dae.rO, dae.rP, dae.rQ, dae.rR, dae.rS, dae.rT, dae.rU, dae.rV, dae.rW, dae.sc, dae.rZ, dae.sa, dae.sb, dae.rY, dae.rX)
+         .map($$0 -> (cyp)$$0)
+         .toList();
+   }
+
+   public static czw a(cyy $$0) {
+      return switch ($$0) {
+         case a -> dae.rN;
+         case b -> dae.rO;
+         case c -> dae.rP;
+         case d -> dae.rQ;
+         case e -> dae.rR;
+         case f -> dae.rS;
+         case g -> dae.rT;
+         case h -> dae.rU;
+         case i -> dae.rV;
+         case j -> dae.rW;
+         case l -> dae.rY;
+         case m -> dae.rZ;
+         case n -> dae.sa;
+         case o -> dae.sb;
+         case p -> dae.sc;
+         case k -> dae.rX;
+      };
+   }
+
+   private static void a(bwv $$0) {
+      $$0.a(awr.ds, 0.8F, 0.8F + $$0.dV().G_().i() * 0.4F);
+   }
+
+   private static void b(bwv $$0) {
+      $$0.a(awr.dq, 0.8F, 0.8F + $$0.dV().G_().i() * 0.4F);
+   }
+
+   private static void c(bwv $$0) {
+      $$0.a(awr.dr, 1.0F, 1.0F);
+   }
+
+   private static void a(djz $$0, bwv $$1) {
+      $$0.a(null, $$1.dv(), awr.dp, aws.h, 0.8F, 0.8F + $$1.dV().G_().i() * 0.4F);
+   }
+
+   private void a(crz $$0) {
+      cvs $$1 = $$0.bR;
+      if ($$1 != null) {
+         $$1.a($$0.gj());
+      }
    }
 }

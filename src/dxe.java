@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxe extends dvg implements dwy {
-   public static final MapCodec<dxe> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwy.a.e.fieldOf("weathering_state").forGetter(dof::c), ebe.a.fieldOf("base_state").forGetter($$0x -> $$0x.f), t()).apply($$0, dxe::new)
+public class dxe extends dwz implements dxa {
+   public static final MapCodec<dxe> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxa.a.e.fieldOf("weathering_state").forGetter(dxe::q), t()).apply($$0, dxe::new)
    );
-   private final dwy.a h;
+   private final dxa.a f;
 
    @Override
-   public MapCodec<dxe> a() {
-      return g;
+   protected MapCodec<dxe> a() {
+      return e;
    }
 
-   public dxe(dwy.a $$0, ebe $$1, ebd.d $$2) {
-      super($$1, $$2);
-      this.h = $$0;
+   protected dxe(dxa.a $$0, ebf.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
+   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean f(ebe $$0) {
-      return dwy.c($$0.b()).isPresent();
+   protected boolean f(ebg $$0) {
+      return dxa.c($$0.b()).isPresent();
    }
 
-   public dwy.a q() {
-      return this.h;
+   public dxa.a q() {
+      return this.f;
    }
 }

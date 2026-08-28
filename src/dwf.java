@@ -1,39 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dwf extends dog {
-   public static final MapCodec<dwf> g = b(dwf::new);
+public class dwf extends dqy {
+   public static final MapCodec<dwf> b = b(dwf::new);
 
-   @Override
-   public MapCodec<dwf> a() {
-      return g;
-   }
-
-   public dwf(ebd.d $$0) {
-      super(() -> dye.c, $$0);
+   protected dwf(ebf.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new eab($$0, $$1);
+   protected MapCodec<? extends dwf> a() {
+      return b;
    }
 
    @Override
-   protected aww<ali> c() {
-      return awz.i.b(awz.ai);
+   protected fgm c(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return fgj.a();
    }
 
    @Override
-   protected boolean f_(ebe $$0) {
+   protected float c(ebg $$0, djd $$1, iw $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean e_(ebg $$0) {
       return true;
-   }
-
-   @Override
-   protected int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-      return azo.a(dyk.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(ebe $$0, djb $$1, iv $$2, jb $$3) {
-      return $$3 == jb.b ? $$0.a($$1, $$2, $$3) : 0;
    }
 }

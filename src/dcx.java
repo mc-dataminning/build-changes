@@ -1,24 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record dcx(cyz<dil> c) {
-   public static final Codec<dcx> a = cyz.a(mh.bk, dil.c).xmap(dcx::new, dcx::a);
-   public static final yy<wl, dcx> b = cyz.a(mh.bk, dil.d).a(dcx::new, dcx::a);
+public enum dcx {
+   a(0),
+   b(1);
 
-   public dcx(jf<dil> $$0) {
-      this(new cyz<>($$0));
+   public static final IntFunction<dcx> c = ayg.a(dcx::a, values(), ayg.a.a);
+   public static final za<ByteBuf, dcx> d = yy.a(c, dcx::a);
+   private final int e;
+
+   private dcx(final int $$0) {
+      this.e = $$0;
    }
 
-   @Deprecated
-   public dcx(alh<dil> $$0) {
-      this(new cyz<>($$0));
-   }
-
-   public Optional<jf<dil>> a(jh.a $$0) {
-      return this.c.a($$0);
-   }
-
-   public cyz<dil> a() {
-      return this.c;
+   public int a() {
+      return this.e;
    }
 }

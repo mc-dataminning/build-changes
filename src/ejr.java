@@ -1,45 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class ejr extends ekk<emg> {
-   public ejr(Codec<emg> $$0) {
+public class ejr extends ekm<emj> {
+   public ejr(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<emg> $$0) {
-      iv $$1 = $$0.e();
-      dkw $$2 = $$0.b();
-      azx $$3 = $$0.d();
-      emg $$4 = $$0.f();
-      if ($$1.v() < $$2.K_() + 5) {
+   public boolean a(eko<emj> $$0) {
+      iw $$1 = $$0.e();
+      dky $$2 = $$0.b();
+      azz $$3 = $$0.d();
+
+      emj $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.K_() + 3; $$1 = $$1.e()) {
+         if (!$$2.v($$1.e())) {
+            ebg $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
+            }
+         }
+      }
+
+      if ($$1.v() <= $$2.K_() + 3) {
          return false;
       } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-         for (iv $$7 : iv.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+            for (iw $$11 : iw.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
             }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
          return true;
-      }
-   }
-
-   private boolean a(djy $$0, iv $$1, azx $$2) {
-      iv $$3 = $$1.e();
-      ebe $$4 = $$0.a_($$3);
-      return $$4.a(dne.lk) ? $$2.h() : $$4.c($$0, $$3, jb.b);
-   }
-
-   private void a(djy $$0, iv $$1, azx $$2, emg $$3) {
-      if ($$0.v($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 260);
       }
    }
 }

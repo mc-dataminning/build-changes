@@ -1,37 +1,13 @@
-public class cev extends ceq {
-   private final ckm a;
-   private boolean b;
+import java.util.EnumSet;
 
-   public cev(ckm $$0) {
-      this.a = $$0;
+public class cev extends cfa {
+   public cev(bxy $$0, Class<? extends bxw> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(ces.a.b, ces.a.a));
    }
 
-   @Override
-   public boolean b() {
-      if (!(this.a.e() instanceof art $$0)) {
-         return false;
-      } else {
-         boolean $$1 = !$$0.Z_() && !$$0.gk().b && !$$0.bi() && !$$0.av;
-         return !this.a.gu() && $$1 && this.a.gK();
-      }
-   }
-
-   @Override
-   public boolean U_() {
-      return !this.b;
-   }
-
-   @Override
-   public void d() {
-      this.b = false;
-   }
-
-   @Override
-   public void a() {
-      if (!this.b && !this.a.x() && !this.a.S_()) {
-         if (this.a.e() instanceof art $$0 && this.a.cR().c($$0.cR())) {
-            this.b = this.a.b($$0);
-         }
-      }
+   public cev(bxy $$0, Class<? extends bxw> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(ces.a.b, ces.a.a));
    }
 }

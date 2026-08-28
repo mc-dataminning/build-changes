@@ -1,20 +1,27 @@
-public class dxy extends dyc {
-   private final cyw a;
+import java.util.List;
 
-   public dxy(iv $$0, ebe $$1) {
-      this($$0, $$1, ((dmv)$$1.b()).b());
-   }
+public interface dxy {
+   List<dxy.a> a();
 
-   public dxy(iv $$0, ebe $$1, cyw $$2) {
-      super(dye.z, $$0, $$1);
-      this.a = $$2;
-   }
+   public static class a {
+      private final int a;
+      private int b;
 
-   public acc a() {
-      return acc.a(this);
-   }
+      public a(int $$0) {
+         this.a = $$0;
+         this.b = 1;
+      }
 
-   public cyw c() {
-      return this.a;
+      public void a() {
+         this.b++;
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
    }
 }

@@ -1,39 +1,35 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+public enum fkz implements bao {
+   a(1, "int"),
+   b(3, "ivec3"),
+   c(1, "float"),
+   d(2, "vec2"),
+   e(3, "vec3"),
+   f(4, "vec4"),
+   g(16, "matrix4x4");
 
-public interface fkz {
-   flb a(flh var1, OptionalInt var2);
+   public static final bao.a<fkz> h = bao.a(fkz::values);
+   final int i;
+   final String j;
 
-   flb a(flh var1, OptionalInt var2, @Nullable flh var3, OptionalDouble var4);
+   private fkz(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-   void a(flh var1, int var2);
+   public int a() {
+      return this.i;
+   }
 
-   void a(flh var1, int var2, flh var3, double var4);
+   public boolean b() {
+      return this == a || this == b;
+   }
 
-   void a(flh var1, double var2);
+   @Override
+   public String c() {
+      return this.j;
+   }
 
-   void a(fig var1, ByteBuffer var2, int var3);
-
-   void a(fig var1, int var2);
-
-   fig.a a(fig var1);
-
-   fig.a a(fig var1, int var2, int var3);
-
-   void a(flh var1, fkg var2);
-
-   void a(flh var1, fkg var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
-
-   void a(flh var1, IntBuffer var2, fkg.a var3, int var4, int var5, int var6, int var7, int var8);
-
-   void a(flh var1, fig var2, int var3, Runnable var4, int var5);
-
-   void a(flh var1, fig var2, int var3, Runnable var4, int var5, int var6, int var7, int var8, int var9);
-
-   void a(flh var1, flh var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
-
-   void a(flh var1);
+   public int d() {
+      return this.i;
+   }
 }

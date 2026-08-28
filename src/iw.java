@@ -1,22 +1,598 @@
+import com.google.common.collect.AbstractIterator;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import io.netty.buffer.ByteBuf;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayDeque;
+import java.util.Optional;
+import java.util.Queue;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.concurrent.Immutable;
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
 
-public record iw(ali d, ali e) {
-   public static final Codec<iw> a = ali.a.xmap(iw::new, iw::a);
-   public static final MapCodec<iw> b = a.fieldOf("asset_id");
-   public static final yy<ByteBuf, iw> c = yy.a(ali.b, iw::a, iw::new);
+@Immutable
+public class iw extends kb {
+   public static final Codec<iw> a = Codec.INT_STREAM
+      .comapFlatMap($$0 -> ag.a($$0, 3).map($$0x -> new iw($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
+      .stable();
+   public static final za<ByteBuf, iw> b = new za<ByteBuf, iw>() {
+      public iw a(ByteBuf $$0) {
+         return vy.c($$0);
+      }
 
-   public iw(ali $$0) {
-      this($$0, $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png")));
+      public void a(ByteBuf $$0, iw $$1) {
+         vy.a($$0, $$1);
+      }
+   };
+   private static final Logger j = LogUtils.getLogger();
+   public static final iw c = new iw(0, 0, 0);
+   public static final int d = 1 + azq.f(azq.c(30000000));
+   public static final int e = 64 - 2 * d;
+   private static final long k = (1L << d) - 1L;
+   private static final long l = (1L << e) - 1L;
+   private static final long m = (1L << d) - 1L;
+   private static final int n = 0;
+   private static final int o = e;
+   private static final int p = e + d;
+   public static final int f = (1 << d) / 2 - 1;
+
+   public iw(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public ali a() {
-      return this.d;
+   public iw(kb $$0) {
+      this($$0.u(), $$0.v(), $$0.w());
    }
 
-   public ali b() {
-      return this.e;
+   public static long a(long $$0, jc $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
+   }
+
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return a(a($$0) + $$1, b($$0) + $$2, c($$0) + $$3);
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 << 64 - p - d >> 64 - d);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 << 64 - e >> 64 - e);
+   }
+
+   public static int c(long $$0) {
+      return (int)($$0 << 64 - o - d >> 64 - d);
+   }
+
+   public static iw d(long $$0) {
+      return new iw(a($$0), b($$0), c($$0));
+   }
+
+   public static iw a(double $$0, double $$1, double $$2) {
+      return new iw(azq.a($$0), azq.a($$1), azq.a($$2));
+   }
+
+   public static iw a(jq $$0) {
+      return a($$0.a(), $$0.b(), $$0.c());
+   }
+
+   public static iw a(iw $$0, iw $$1) {
+      return new iw(Math.min($$0.u(), $$1.u()), Math.min($$0.v(), $$1.v()), Math.min($$0.w(), $$1.w()));
+   }
+
+   public static iw b(iw $$0, iw $$1) {
+      return new iw(Math.max($$0.u(), $$1.u()), Math.max($$0.v(), $$1.v()), Math.max($$0.w(), $$1.w()));
+   }
+
+   public long a() {
+      return a(this.u(), this.v(), this.w());
+   }
+
+   public static long a(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & k) << p;
+      $$3 |= ((long)$$1 & l) << 0;
+      return $$3 | ((long)$$2 & m) << o;
+   }
+
+   public static long e(long $$0) {
+      return $$0 & -16L;
+   }
+
+   public iw b(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new iw(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+   }
+
+   public ffs b() {
+      return ffs.b(this);
+   }
+
+   public ffs c() {
+      return ffs.c(this);
+   }
+
+   public iw a(kb $$0) {
+      return this.b($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public iw b(kb $$0) {
+      return this.b(-$$0.u(), -$$0.v(), -$$0.w());
+   }
+
+   public iw a(int $$0) {
+      if ($$0 == 1) {
+         return this;
+      } else {
+         return $$0 == 0 ? c : new iw(this.u() * $$0, this.v() * $$0, this.w() * $$0);
+      }
+   }
+
+   public iw d() {
+      return this.a(jc.b);
+   }
+
+   public iw b(int $$0) {
+      return this.a(jc.b, $$0);
+   }
+
+   public iw e() {
+      return this.a(jc.a);
+   }
+
+   public iw c(int $$0) {
+      return this.a(jc.a, $$0);
+   }
+
+   public iw f() {
+      return this.a(jc.c);
+   }
+
+   public iw d(int $$0) {
+      return this.a(jc.c, $$0);
+   }
+
+   public iw g() {
+      return this.a(jc.d);
+   }
+
+   public iw e(int $$0) {
+      return this.a(jc.d, $$0);
+   }
+
+   public iw h() {
+      return this.a(jc.e);
+   }
+
+   public iw f(int $$0) {
+      return this.a(jc.e, $$0);
+   }
+
+   public iw i() {
+      return this.a(jc.f);
+   }
+
+   public iw g(int $$0) {
+      return this.a(jc.f, $$0);
+   }
+
+   public iw a(jc $$0) {
+      return new iw(this.u() + $$0.j(), this.v() + $$0.k(), this.w() + $$0.l());
+   }
+
+   public iw a(jc $$0, int $$1) {
+      return $$1 == 0 ? this : new iw(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+   }
+
+   public iw a(jc.a $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
+      } else {
+         int $$2 = $$0 == jc.a.a ? $$1 : 0;
+         int $$3 = $$0 == jc.a.b ? $$1 : 0;
+         int $$4 = $$0 == jc.a.c ? $$1 : 0;
+         return new iw(this.u() + $$2, this.v() + $$3, this.w() + $$4);
+      }
+   }
+
+   public iw a(dty $$0) {
+      switch ($$0) {
+         case a:
+         default:
+            return this;
+         case b:
+            return new iw(-this.w(), this.v(), this.u());
+         case c:
+            return new iw(-this.u(), this.v(), -this.w());
+         case d:
+            return new iw(this.w(), this.v(), -this.u());
+      }
+   }
+
+   public iw c(kb $$0) {
+      return new iw(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
+   }
+
+   public iw h(int $$0) {
+      return new iw(this.u(), $$0, this.w());
+   }
+
+   public iw j() {
+      return this;
+   }
+
+   public iw.a k() {
+      return new iw.a(this.u(), this.v(), this.w());
+   }
+
+   public ffs a(ffs $$0) {
+      return new ffs(
+         azq.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
+         azq.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
+         azq.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
+      );
+   }
+
+   public static Iterable<iw> a(azz $$0, int $$1, iw $$2, int $$3) {
+      return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
+   }
+
+   @Deprecated
+   public static Stream<iw> a(iw $$0) {
+      return Stream.of($$0, $$0.g(), $$0.i(), $$0.g().i());
+   }
+
+   public static Iterable<iw> a(azz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 - $$3 + 1;
+      int $$10 = $$7 - $$4 + 1;
+      return () -> new AbstractIterator<iw>() {
+            final iw.a a = new iw.a();
+            int b = $$1;
+
+            protected iw a() {
+               if (this.b <= 0) {
+                  return (iw)this.endOfData();
+               } else {
+                  iw $$0 = this.a.d($$2 + $$0.a($$8), $$3 + $$0.a($$9), $$4 + $$0.a($$10));
+                  this.b--;
+                  return $$0;
+               }
+            }
+         };
+   }
+
+   public static Iterable<iw> a(iw $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 + $$2 + $$3;
+      int $$5 = $$0.u();
+      int $$6 = $$0.v();
+      int $$7 = $$0.w();
+      return () -> new AbstractIterator<iw>() {
+            private final iw.a h = new iw.a();
+            private int i;
+            private int j;
+            private int k;
+            private int l;
+            private int m;
+            private boolean n;
+
+            protected iw a() {
+               if (this.n) {
+                  this.n = false;
+                  this.h.r($$7 - (this.h.w() - $$7));
+                  return this.h;
+               } else {
+                  iw $$0;
+                  for ($$0 = null; $$0 == null; this.m++) {
+                     if (this.m > this.k) {
+                        this.l++;
+                        if (this.l > this.j) {
+                           this.i++;
+                           if (this.i > $$4) {
+                              return (iw)this.endOfData();
+                           }
+
+                           this.j = Math.min($$1, this.i);
+                           this.l = -this.j;
+                        }
+
+                        this.k = Math.min($$2, this.i - Math.abs(this.l));
+                        this.m = -this.k;
+                     }
+
+                     int $$1 = this.l;
+                     int $$2 = this.m;
+                     int $$3 = this.i - Math.abs($$1) - Math.abs($$2);
+                     if ($$3 <= $$3) {
+                        this.n = $$3 != 0;
+                        $$0 = this.h.d($$5 + $$1, $$6 + $$2, $$7 + $$3);
+                     }
+                  }
+
+                  return $$0;
+               }
+            }
+         };
+   }
+
+   public static Optional<iw> a(iw $$0, int $$1, int $$2, Predicate<iw> $$3) {
+      for (iw $$4 : a($$0, $$1, $$2, $$1)) {
+         if ($$3.test($$4)) {
+            return Optional.of($$4);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public static Stream<iw> b(iw $$0, int $$1, int $$2, int $$3) {
+      return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
+   }
+
+   public static Iterable<iw> a(ffn $$0) {
+      iw $$1 = a($$0.a, $$0.b, $$0.c);
+      iw $$2 = a($$0.d, $$0.e, $$0.f);
+      return c($$1, $$2);
+   }
+
+   public static Iterable<iw> c(iw $$0, iw $$1) {
+      return b(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
+   }
+
+   public static Stream<iw> d(iw $$0, iw $$1) {
+      return StreamSupport.stream(c($$0, $$1).spliterator(), false);
+   }
+
+   public static Stream<iw> a(erv $$0) {
+      return a(
+         Math.min($$0.h(), $$0.k()),
+         Math.min($$0.i(), $$0.l()),
+         Math.min($$0.j(), $$0.m()),
+         Math.max($$0.h(), $$0.k()),
+         Math.max($$0.i(), $$0.l()),
+         Math.max($$0.j(), $$0.m())
+      );
+   }
+
+   public static Stream<iw> b(ffn $$0) {
+      return a(azq.a($$0.a), azq.a($$0.b), azq.a($$0.c), azq.a($$0.d), azq.a($$0.e), azq.a($$0.f));
+   }
+
+   public static Stream<iw> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return StreamSupport.stream(b($$0, $$1, $$2, $$3, $$4, $$5).spliterator(), false);
+   }
+
+   public static Iterable<iw> b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$3 - $$0 + 1;
+      int $$7 = $$4 - $$1 + 1;
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 * $$7 * $$8;
+      return () -> new AbstractIterator<iw>() {
+            private final iw.a g = new iw.a();
+            private int h;
+
+            protected iw a() {
+               if (this.h == $$9) {
+                  return (iw)this.endOfData();
+               } else {
+                  int $$0 = this.h % $$6;
+                  int $$1 = this.h / $$6;
+                  int $$2 = $$1 % $$7;
+                  int $$3 = $$1 / $$7;
+                  this.h++;
+                  return this.g.d($$0 + $$0, $$1 + $$2, $$2 + $$3);
+               }
+            }
+         };
+   }
+
+   public static Iterable<iw.a> a(iw $$0, int $$1, jc $$2, jc $$3) {
+      Validate.validState($$2.o() != $$3.o(), "The two directions cannot be on the same axis", new Object[0]);
+      return () -> new AbstractIterator<iw.a>() {
+            private final jc[] e = new jc[]{$$2, $$3, $$2.g(), $$3.g()};
+            private final iw.a f = $$0.k().c($$3);
+            private final int g = 4 * $$1;
+            private int h = -1;
+            private int i;
+            private int j;
+            private int k = this.f.u();
+            private int l = this.f.v();
+            private int m = this.f.w();
+
+            protected iw.a a() {
+               this.f.d(this.k, this.l, this.m).c(this.e[(this.h + 4) % 4]);
+               this.k = this.f.u();
+               this.l = this.f.v();
+               this.m = this.f.w();
+               if (this.j >= this.i) {
+                  if (this.h >= this.g) {
+                     return (iw.a)this.endOfData();
+                  }
+
+                  this.h++;
+                  this.j = 0;
+                  this.i = this.h / 2 + 1;
+               }
+
+               this.j++;
+               return this.f;
+            }
+         };
+   }
+
+   public static int a(iw $$0, int $$1, int $$2, BiConsumer<iw, Consumer<iw>> $$3, Function<iw, iw.b> $$4) {
+      Queue<Pair<iw, Integer>> $$5 = new ArrayDeque<>();
+      LongSet $$6 = new LongOpenHashSet();
+      $$5.add(Pair.of($$0, 0));
+      int $$7 = 0;
+
+      while (!$$5.isEmpty()) {
+         Pair<iw, Integer> $$8 = $$5.poll();
+         iw $$9 = (iw)$$8.getLeft();
+         int $$10 = (Integer)$$8.getRight();
+         long $$11 = $$9.a();
+         if ($$6.add($$11)) {
+            iw.b $$12 = $$4.apply($$9);
+            if ($$12 != iw.b.b) {
+               if ($$12 == iw.b.c) {
+                  break;
+               }
+
+               if (++$$7 >= $$2) {
+                  return $$7;
+               }
+
+               if ($$10 < $$1) {
+                  $$3.accept($$9, $$2x -> $$5.add(Pair.of($$2x, $$10 + 1)));
+               }
+            }
+         }
+      }
+
+      return $$7;
+   }
+
+   public static class a extends iw {
+      public a() {
+         this(0, 0, 0);
+      }
+
+      public a(int $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public a(double $$0, double $$1, double $$2) {
+         this(azq.a($$0), azq.a($$1), azq.a($$2));
+      }
+
+      @Override
+      public iw b(int $$0, int $$1, int $$2) {
+         return super.b($$0, $$1, $$2).j();
+      }
+
+      @Override
+      public iw a(int $$0) {
+         return super.a($$0).j();
+      }
+
+      @Override
+      public iw a(jc $$0, int $$1) {
+         return super.a($$0, $$1).j();
+      }
+
+      @Override
+      public iw a(jc.a $$0, int $$1) {
+         return super.a($$0, $$1).j();
+      }
+
+      @Override
+      public iw a(dty $$0) {
+         return super.a($$0).j();
+      }
+
+      public iw.a d(int $$0, int $$1, int $$2) {
+         this.p($$0);
+         this.q($$1);
+         this.r($$2);
+         return this;
+      }
+
+      public iw.a b(double $$0, double $$1, double $$2) {
+         return this.d(azq.a($$0), azq.a($$1), azq.a($$2));
+      }
+
+      public iw.a g(kb $$0) {
+         return this.d($$0.u(), $$0.v(), $$0.w());
+      }
+
+      public iw.a f(long $$0) {
+         return this.d(a($$0), b($$0), c($$0));
+      }
+
+      public iw.a a(it $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.a($$1, $$2, $$3, jc.a.a), $$0.a($$1, $$2, $$3, jc.a.b), $$0.a($$1, $$2, $$3, jc.a.c));
+      }
+
+      public iw.a a(kb $$0, jc $$1) {
+         return this.d($$0.u() + $$1.j(), $$0.v() + $$1.k(), $$0.w() + $$1.l());
+      }
+
+      public iw.a a(kb $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.u() + $$1, $$0.v() + $$2, $$0.w() + $$3);
+      }
+
+      public iw.a a(kb $$0, kb $$1) {
+         return this.d($$0.u() + $$1.u(), $$0.v() + $$1.v(), $$0.w() + $$1.w());
+      }
+
+      public iw.a c(jc $$0) {
+         return this.c($$0, 1);
+      }
+
+      public iw.a c(jc $$0, int $$1) {
+         return this.d(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+      }
+
+      public iw.a e(int $$0, int $$1, int $$2) {
+         return this.d(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+      }
+
+      public iw.a h(kb $$0) {
+         return this.d(this.u() + $$0.u(), this.v() + $$0.v(), this.w() + $$0.w());
+      }
+
+      public iw.a a(jc.a $$0, int $$1, int $$2) {
+         switch ($$0) {
+            case a:
+               return this.d(azq.a(this.u(), $$1, $$2), this.v(), this.w());
+            case b:
+               return this.d(this.u(), azq.a(this.v(), $$1, $$2), this.w());
+            case c:
+               return this.d(this.u(), this.v(), azq.a(this.w(), $$1, $$2));
+            default:
+               throw new IllegalStateException("Unable to clamp axis " + $$0);
+         }
+      }
+
+      public iw.a p(int $$0) {
+         super.u($$0);
+         return this;
+      }
+
+      public iw.a q(int $$0) {
+         super.t($$0);
+         return this;
+      }
+
+      public iw.a r(int $$0) {
+         super.s($$0);
+         return this;
+      }
+
+      @Override
+      public iw j() {
+         return new iw(this);
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

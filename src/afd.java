@@ -1,37 +1,29 @@
-public class afd implements zh<abw> {
-   public static final yy<vw, afd> a = zh.a(afd::a, afd::new);
-   private final iv b;
-   private final float c;
+public class afd implements zj<aby> {
+   public static final za<vy, afd> a = zj.a(afd::a, afd::new);
+   private final int b;
 
-   public afd(iv $$0, float $$1) {
+   public afd(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private afd(vw $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private afd(vy $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vy $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zj<afd> a() {
-      return agp.aD;
+   public zl<afd> a() {
+      return agr.aC;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public iv b() {
+   public int b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

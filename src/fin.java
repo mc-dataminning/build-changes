@@ -1,220 +1,35 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.Locale;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+public interface fin {
+   int a();
 
-public class fin implements fik {
-   @Nullable
-   private ByteBuffer b;
-   @Nullable
-   private FT_Face c;
-   final float d;
-   private final fxa<fin.b> e = new fxa<>(fin.b[]::new, fin.b[][]::new);
+   int b();
 
-   public fin(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      IntSet $$7 = new IntArraySet();
-      $$6.codePoints().forEach($$7::add);
-      int $$8 = Math.round($$2 * $$3);
-      FreeType.FT_Set_Pixel_Sizes($$1, $$8, $$8);
-      float $$9 = $$4 * $$3;
-      float $$10 = -$$5 * $$3;
-      MemoryStack $$11 = MemoryStack.stackPush();
+   void a(int var1, int var2, flj var3);
 
-      try {
-         FT_Vector $$12 = fxn.a(FT_Vector.malloc($$11), $$9, $$10);
-         FreeType.FT_Set_Transform($$1, null, $$12);
-         IntBuffer $$13 = $$11.mallocInt(1);
-         int $$14 = (int)FreeType.FT_Get_First_Char($$1, $$13);
+   boolean c();
 
-         while (true) {
-            int $$15 = $$13.get(0);
-            if ($$15 == 0) {
-               break;
-            }
+   float d();
 
-            if (!$$7.contains($$14)) {
-               this.e.a($$14, new fin.b($$15));
-            }
-
-            $$14 = (int)FreeType.FT_Get_Next_Char($$1, (long)$$14, $$13);
-         }
-      } catch (Throwable var18) {
-         if ($$11 != null) {
-            try {
-               $$11.close();
-            } catch (Throwable var17) {
-               var18.addSuppressed(var17);
-            }
-         }
-
-         throw var18;
-      }
-
-      if ($$11 != null) {
-         $$11.close();
-      }
+   default float e() {
+      return this.i();
    }
 
-   @Nullable
-   @Override
-   public fij a(int $$0) {
-      fin.b $$1 = this.e.a($$0);
-      return $$1 != null ? this.a($$0, $$1) : null;
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
    }
 
-   private fij a(int $$0, fin.b $$1) {
-      fij $$2 = $$1.b;
-      if ($$2 == null) {
-         FT_Face $$3 = this.b();
-         synchronized ($$3) {
-            $$2 = $$1.b;
-            if ($$2 == null) {
-               $$2 = this.a($$0, $$3, $$1.a);
-               $$1.b = $$2;
-            }
-         }
-      }
-
-      return $$2;
+   default float g() {
+      return 7.0F - this.j();
    }
 
-   private fij a(int $$0, FT_Face $$1, int $$2) {
-      int $$3 = FreeType.FT_Load_Glyph($$1, $$2, 4194312);
-      if ($$3 != 0) {
-         fxn.a($$3, String.format(Locale.ROOT, "Loading glyph U+%06X", $$0));
-      }
-
-      FT_GlyphSlot $$4 = $$1.glyph();
-      if ($$4 == null) {
-         throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", $$0));
-      } else {
-         float $$5 = fxn.a($$4.advance());
-         FT_Bitmap $$6 = $$4.bitmap();
-         int $$7 = $$4.bitmap_left();
-         int $$8 = $$4.bitmap_top();
-         int $$9 = $$6.width();
-         int $$10 = $$6.rows();
-         return (fij)($$9 > 0 && $$10 > 0 ? new fin.a((float)$$7, (float)$$8, $$9, $$10, $$5, $$2) : () -> $$5 / this.d);
-      }
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
    }
 
-   FT_Face b() {
-      if (this.b != null && this.c != null) {
-         return this.c;
-      } else {
-         throw new IllegalStateException("Provider already closed");
-      }
+   default float i() {
+      return 0.0F;
    }
 
-   @Override
-   public void close() {
-      if (this.c != null) {
-         synchronized (fxn.a) {
-            fxn.b(FreeType.FT_Done_Face(this.c), "Deleting face");
-         }
-
-         this.c = null;
-      }
-
-      MemoryUtil.memFree(this.b);
-      this.b = null;
-   }
-
-   @Override
-   public IntSet a() {
-      return this.e.b();
-   }
-
-   class a implements fij {
-      final int b;
-      final int c;
-      final float d;
-      final float e;
-      private final float f;
-      final int g;
-
-      a(final float $$0, final float $$1, final int $$2, final int $$3, final float $$4, final int $$5) {
-         this.b = $$2;
-         this.c = $$3;
-         this.f = $$4 / fin.this.d;
-         this.d = $$0 / fin.this.d;
-         this.e = $$1 / fin.this.d;
-         this.g = $$5;
-      }
-
-      @Override
-      public float getAdvance() {
-         return this.f;
-      }
-
-      @Override
-      public fxh bake(Function<fil, fxh> $$0) {
-         return $$0.apply(new fil() {
-            @Override
-            public int a() {
-               return a.this.b;
-            }
-
-            @Override
-            public int b() {
-               return a.this.c;
-            }
-
-            @Override
-            public float d() {
-               return fin.this.d;
-            }
-
-            @Override
-            public float i() {
-               return a.this.d;
-            }
-
-            @Override
-            public float j() {
-               return a.this.e;
-            }
-
-            @Override
-            public void a(int $$0, int $$1, flh $$2) {
-               FT_Face $$3 = fin.this.b();
-
-               try (fkg $$4 = new fkg(fkg.a.d, a.this.b, a.this.c, false)) {
-                  if ($$4.a($$3, a.this.g)) {
-                     RenderSystem.getDevice().b().a($$2, $$4, 0, $$0, $$1, a.this.b, a.this.c, 0, 0);
-                  }
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return false;
-            }
-         });
-      }
-   }
-
-   static class b {
-      final int a;
-      @Nullable
-      volatile fij b;
-
-      b(int $$0) {
-         this.a = $$0;
-      }
+   default float j() {
+      return 7.0F;
    }
 }

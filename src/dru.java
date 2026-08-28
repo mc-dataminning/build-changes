@@ -1,84 +1,139 @@
-public class dru {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1004;
-   public static final int e = 1009;
-   public static final int f = 1010;
-   public static final int g = 1011;
-   public static final int h = 1015;
-   public static final int i = 1016;
-   public static final int j = 1017;
-   public static final int k = 1018;
-   public static final int l = 1019;
-   public static final int m = 1020;
-   public static final int n = 1021;
-   public static final int o = 1022;
-   public static final int p = 1023;
-   public static final int q = 1024;
-   public static final int r = 1025;
-   public static final int s = 1026;
-   public static final int t = 1027;
-   public static final int u = 1028;
-   public static final int v = 1029;
-   public static final int w = 1030;
-   public static final int x = 1031;
-   public static final int y = 1032;
-   public static final int z = 1033;
-   public static final int A = 1034;
-   public static final int B = 1035;
-   public static final int C = 1038;
-   public static final int D = 1039;
-   public static final int E = 1040;
-   public static final int F = 1041;
-   public static final int G = 1042;
-   public static final int H = 1043;
-   public static final int I = 1044;
-   public static final int J = 1045;
-   public static final int K = 1046;
-   public static final int L = 1047;
-   public static final int M = 1048;
-   public static final int N = 1049;
-   public static final int O = 1050;
-   public static final int P = 1051;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
+
+public abstract class dru extends dne implements dup {
+   public static final int a = 7;
+   public static final ecg b = ebw.aF;
+   public static final ebx c = ebw.z;
+   public static final ebx d = ebw.I;
+   protected final float e;
+   private static final int f = 1;
+
+   @Override
+   public abstract MapCodec<? extends dru> a();
+
+   public dru(float $$0, ebf.d $$1) {
+      super($$1);
+      this.e = $$0;
+      this.l(this.C.b().b(b, Integer.valueOf(7)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected fgm b_(ebg $$0, djd $$1, iw $$2) {
+      return fgj.a();
+   }
+
+   @Override
+   protected boolean f(ebg $$0) {
+      return $$0.c(b) == 7 && !$$0.c(c);
+   }
+
+   @Override
+   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      if (this.o($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean o(ebg $$0) {
+      return !$$0.c(c) && $$0.c(b) == 7;
+   }
+
+   @Override
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   protected int i_(ebg $$0) {
+      return 1;
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, exr.c, exr.c.a($$1));
+      }
+
+      int $$8 = r($$6) + 1;
+      if ($$8 != 1 || $$0.c(b) != $$8) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static ebg a(ebg $$0, dka $$1, iw $$2) {
+      int $$3 = 7;
+      iw.a $$4 = new iw.a();
+
+      for (jc $$5 : jc.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.b(b, Integer.valueOf($$3));
+   }
+
+   private static int r(ebg $$0) {
+      return q($$0).orElse(7);
+   }
+
+   public static OptionalInt q(ebg $$0) {
+      if ($$0.a(axg.u)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(b) ? OptionalInt.of($$0.c(b)) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   protected exq b_(ebg $$0) {
+      return $$0.c(d) ? exr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      iw $$4 = $$2.e();
+      ebg $$5 = $$1.a_($$4);
+      a($$1, $$2, $$3, $$5, $$4);
+      this.b($$1, $$2, $$3, $$5, $$4);
+   }
+
+   private static void a(djz $$0, iw $$1, azz $$2, ebg $$3, iw $$4) {
+      if ($$0.r($$1.d())) {
+         if ($$2.a(15) == 1) {
+            if (!$$3.t() || !$$3.c($$0, $$4, jc.b)) {
+               azu.a($$0, $$1, $$2, lz.l);
+            }
+         }
+      }
+   }
+
+   private void b(djz $$0, iw $$1, azz $$2, ebg $$3, iw $$4) {
+      if (!($$2.i() >= this.e)) {
+         if (!a($$3.g($$0, $$4), jc.b)) {
+            this.a($$0, $$1, $$2);
+         }
+      }
+   }
+
+   protected abstract void a(djz var1, iw var2, azz var3);
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public ebg a(ddt $$0) {
+      exq $$1 = $$0.q().b_($$0.a());
+      ebg $$2 = this.m().b(c, Boolean.valueOf(true)).b(d, Boolean.valueOf($$1.a() == exr.c));
+      return a($$2, $$0.q(), $$0.a());
+   }
 }

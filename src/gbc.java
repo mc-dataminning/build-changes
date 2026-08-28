@@ -1,96 +1,250 @@
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gbc extends gas<cvy> {
-   private static final ali G = ali.b("container/cartography_table/error");
-   private static final ali H = ali.b("container/cartography_table/scaled_map");
-   private static final ali I = ali.b("container/cartography_table/duplicated_map");
-   private static final ali J = ali.b("container/cartography_table/map");
-   private static final ali K = ali.b("container/cartography_table/locked");
-   private static final ali L = ali.b("textures/gui/container/cartography_table.png");
-   private final hkj M = new hkj();
+public class gbc extends gaf {
+   public static final int a = 16;
+   public static final int b = 36;
+   public static final int c = 30;
+   private static final int y = 256;
+   private static final int z = 256;
+   public static final gbc.a d = new gbc.a(List.of());
+   public static final alk s = alk.b("textures/gui/book.png");
+   protected static final int u = 114;
+   protected static final int v = 128;
+   protected static final int w = 192;
+   protected static final int x = 192;
+   private gbc.a A;
+   private int B;
+   private List<azc> C = Collections.emptyList();
+   private int D = -1;
+   private xc E = xb.a;
+   private gcd F;
+   private gcd G;
+   private final boolean H;
 
-   public gbc(cvy $$0, crw $$1, xa $$2) {
-      super($$0, $$1, $$2);
-      this.w -= 2;
+   public gbc(gbc.a $$0) {
+      this($$0, true);
+   }
+
+   public gbc() {
+      this(d, false);
+   }
+
+   private gbc(gbc.a $$0, boolean $$1) {
+      super(fqw.a);
+      this.A = $$0;
+      this.H = $$1;
+   }
+
+   public void a(gbc.a $$0) {
+      this.A = $$0;
+      this.B = azq.a(this.B, 0, $$0.a());
+      this.L();
+      this.D = -1;
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = azq.a($$0, 0, this.A.a() - 1);
+      if ($$1 != this.B) {
+         this.B = $$1;
+         this.L();
+         this.D = -1;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean b(int $$0) {
+      return this.a($$0);
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected void aS_() {
+      this.m();
+      this.E();
+   }
+
+   protected void m() {
+      this.c(fun.a(xb.d, $$0 -> this.aP_()).a(this.n / 2 - 100, 196, 200, 20).a());
+   }
+
+   protected void E() {
+      int $$0 = (this.n - 192) / 2;
+      int $$1 = 2;
+      this.F = this.c(new gcd($$0 + 116, 159, true, $$0x -> this.H(), this.H));
+      this.G = this.c(new gcd($$0 + 43, 159, false, $$0x -> this.G(), this.H));
+      this.L();
+   }
+
+   private int F() {
+      return this.A.a();
+   }
+
+   protected void G() {
+      if (this.B > 0) {
+         this.B--;
+      }
+
+      this.L();
+   }
+
+   protected void H() {
+      if (this.B < this.F() - 1) {
+         this.B++;
+      }
+
+      this.L();
+   }
+
+   private void L() {
+      this.F.k = this.B < this.F() - 1;
+      this.G.k = this.B > 0;
    }
 
    @Override
-   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gsl::H, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      czy $$6 = this.z.b(1).g();
-      boolean $$7 = $$6.a(dac.vt);
-      boolean $$8 = $$6.a(dac.rE);
-      boolean $$9 = $$6.a(dac.gp);
-      czy $$10 = this.z.b(0).g();
-      ezh $$11 = $$10.a(kk.M);
-      boolean $$12 = false;
-      ezj $$13;
-      if ($$11 != null) {
-         $$13 = dal.a($$11, this.m.s);
-         if ($$13 != null) {
-            if ($$13.i) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(gsl::H, G, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
-
-            if ($$8 && $$13.g >= 4) {
-               $$12 = true;
-               $$0.a(gsl::H, G, $$4 + 35, $$5 + 31, 28, 21);
-            }
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         switch ($$0) {
+            case 266:
+               this.G.b();
+               return true;
+            case 267:
+               this.F.b();
+               return true;
+            default:
+               return false;
          }
-      } else {
-         $$13 = null;
-      }
-
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
-   }
-
-   private void a(ftx $$0, @Nullable ezh $$1, @Nullable ezj $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.C;
-      int $$8 = this.D;
-      if ($$4 && !$$6) {
-         $$0.a(gsl::H, H, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(gsl::H, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gsl::H, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(gsl::H, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gsl::H, K, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(gsl::H, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
       }
    }
 
-   private void a(ftx $$0, @Nullable ezh $$1, @Nullable ezj $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         gry $$6 = this.m.at();
-         $$6.a($$1, $$2, this.M);
-         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
-         $$0.c().b();
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 192) / 2;
+      int $$5 = 2;
+      if (this.D != this.B) {
+         xh $$6 = this.A.a(this.B);
+         this.C = this.p.c($$6, 114);
+         this.E = xc.a("book.pageIndicator", this.B + 1, Math.max(this.F(), 1));
+      }
+
+      this.D = this.B;
+      int $$7 = this.p.a(this.E);
+      $$0.a(this.p, this.E, $$4 - $$7 + 192 - 44, 18, 0, false);
+      int $$8 = Math.min(128 / 9, this.C.size());
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         azc $$10 = this.C.get($$9);
+         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
+      }
+
+      xz $$11 = this.b((double)$$1, (double)$$2);
+      if ($$11 != null) {
+         $$0.a(this.p, $$11, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void b(ftz $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+      $$0.a(gsn::H, s, (this.n - 192) / 2, 2, 0.0F, 0.0F, 192, 192, 256, 256);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         xz $$3 = this.b($$0, $$1);
+         if ($$3 != null && this.a($$3)) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(xz $$0) {
+      xa $$1 = $$0.i();
+      if ($$1 == null) {
+         return false;
+      } else if ($$1 instanceof xa.b var7) {
+         xa.b var10000 = var7;
+
+         try {
+            var8 = var10000.b();
+         } catch (Throwable var6) {
+            throw new MatchException(var6.toString(), var6);
+         }
+
+         int var5 = var8;
+         return this.b(var5 - 1);
+      } else {
+         boolean $$3 = super.a($$0);
+         if ($$3 && $$1.a() == xa.a.c) {
+            this.I();
+         }
+
+         return $$3;
+      }
+   }
+
+   protected void I() {
+      this.m.a(null);
+   }
+
+   @Nullable
+   public xz b(double $$0, double $$1) {
+      if (this.C.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = azq.a($$0 - (double)((this.n - 192) / 2) - 36.0);
+         int $$3 = azq.a($$1 - 2.0 - 30.0);
+         if ($$2 >= 0 && $$3 >= 0) {
+            int $$4 = Math.min(128 / 9, this.C.size());
+            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
+               int $$5 = $$3 / 9;
+               if ($$5 >= 0 && $$5 < this.C.size()) {
+                  azc $$6 = this.C.get($$5);
+                  return this.m.h.b().a($$6, $$2);
+               } else {
+                  return null;
+               }
+            } else {
+               return null;
+            }
+         } else {
+            return null;
+         }
+      }
+   }
+
+   public static record a(List<xc> a) {
+      public int a() {
+         return this.a.size();
+      }
+
+      public xh a(int $$0) {
+         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : xh.b;
+      }
+
+      @Nullable
+      public static gbc.a a(daa $$0) {
+         boolean $$1 = frf.Q().aT();
+         ddk $$2 = $$0.a(kl.V);
+         if ($$2 != null) {
+            return new gbc.a($$2.a($$1));
+         } else {
+            ddj $$3 = $$0.a(kl.U);
+            return $$3 != null ? new gbc.a($$3.a($$1).map(xc::b).toList()) : null;
+         }
+      }
+
+      public List<xc> b() {
+         return this.a;
       }
    }
 }

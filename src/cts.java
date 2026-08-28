@@ -1,17 +1,8 @@
-public class cts {
-   private final int a;
-   private final float b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public cts(int $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface cts {
 }

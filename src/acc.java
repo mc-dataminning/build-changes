@@ -1,44 +1,20 @@
-import java.util.function.BiFunction;
+public record acc(int b) implements zj<aby> {
+   public static final za<vy, acc> a = zj.a(acc::a, acc::new);
 
-public class acc implements zh<abw> {
-   public static final yy<wl, acc> a = yy.a(iv.b, acc::b, yw.a(mh.e), acc::e, yw.t, acc::f, acc::new);
-   private final iv b;
-   private final dye<?> c;
-   private final tz d;
-
-   public static acc a(dyc $$0, BiFunction<dyc, jt, tz> $$1) {
-      jt $$2 = $$0.i().J_();
-      return new acc($$0.aB_(), $$0.p(), $$1.apply($$0, $$2));
+   private acc(vy $$0) {
+      this($$0.l());
    }
 
-   public static acc a(dyc $$0) {
-      return a($$0, dyc::a);
-   }
-
-   private acc(iv $$0, dye<?> $$1, tz $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private void a(vy $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zj<acc> a() {
-      return agp.h;
+   public zl<acc> a() {
+      return agr.f;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
-   }
-
-   public iv b() {
-      return this.b;
-   }
-
-   public dye<?> e() {
-      return this.c;
-   }
-
-   public tz f() {
-      return this.d;
    }
 }

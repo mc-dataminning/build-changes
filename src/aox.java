@@ -1,15 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aox {
-   public static void a(CommandDispatcher<ej> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("say").requires($$0x -> $$0x.c(2))).then(ek.a("message", fa.a()).executes($$0x -> {
-         fa.a($$0x, "message", $$1 -> {
-            ej $$2 = (ej)$$0x.getSource();
-            avs $$3 = $$2.l().ag();
-            $$3.a($$1, $$2, ww.a(ww.f, $$2));
-         });
-         return 1;
-      })));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.save.alreadyOff"));
+
+   public static void a(CommandDispatcher<ek> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ek $$1 = (ek)$$0x.getSource();
+         boolean $$2 = false;
+
+         for (aru $$3 : $$1.l().L()) {
+            if ($$3 != null && !$$3.e) {
+               $$3.e = true;
+               $$2 = true;
+            }
+         }
+
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> xc.c("commands.save.disabled"), true);
+            return 1;
+         }
+      }));
    }
 }

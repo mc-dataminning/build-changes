@@ -1,70 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class fat extends faq {
-   public static final MapCodec<fat> a = a(fat::new);
+public class fat extends fbb {
+   public static final MapCodec<fat> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alk.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, fat::new)
+   );
+   private final alk j;
 
-   fat(List<fax> $$0, List<fdq> $$1) {
-      super($$0, $$1);
+   private fat(alk $$0, int $$1, int $$2, List<fds> $$3, List<fbx> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public fay a() {
-      return fav.i;
+   public fba a() {
+      return fax.e;
    }
 
    @Override
-   protected fap a(List<? extends fap> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (fap)$$0.get(0);
-         case 2 -> {
-            fap $$1 = $$0.get(0);
-            fap $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (fap $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<daa> $$0, faj $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static fat.a a(fax.a<?>... $$0) {
-      return new fat.a($$0);
-   }
-
-   public static class a extends fax.a<fat.a> {
-      private final Builder<fax> a = ImmutableList.builder();
-
-      public a(fax.a<?>... $$0) {
-         for (fax.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected fat.a a() {
-         return this;
-      }
-
-      @Override
-      public fat.a b(fax.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public fax b() {
-         return new fat(this.a.build(), this.f());
-      }
+   public static fbb.a<?> a(alk $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fat($$0, $$1, $$2, $$3, $$4));
    }
 }

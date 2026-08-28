@@ -1,59 +1,56 @@
-import java.util.concurrent.locks.LockSupport;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class hqb extends btf<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class hqb {
+   private final avk a;
+   private final Map<alk, CompletableFuture<fie>> b = Maps.newHashMap();
 
-   public hqb() {
-      super("Sound executor");
+   public hqb(avk $$0) {
+      this.a = $$0;
    }
 
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
+   public CompletableFuture<fie> a(alk $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               fie var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  hpv $$2 = new hpx($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new fie($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ag.j()));
    }
 
-   @Override
-   public Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread ay() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.b(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void A() {
-      LockSupport.park("waiting for tasks");
+   public CompletableFuture<hps> a(alk $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (hps)($$1 ? new hpy(hpx::new, $$2) : new hpx($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ag.j());
    }
 
    public void a() {
-      this.b = true;
-      this.a.interrupt();
+      this.b.values().forEach($$0 -> $$0.thenAccept(fie::b));
+      this.b.clear();
+   }
 
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
-      }
-
-      this.bz();
-      this.b = false;
-      this.a = this.b();
+   public CompletableFuture<?> a(Collection<how> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

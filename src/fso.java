@@ -1,18 +1,24 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fso {
-   private static final ayw.b<ali, MapCodec<? extends fsn>> b = new ayw.b<>();
-   public static final Codec<fsn> a = b.a(ali.a).dispatch(fsn::a, $$0 -> $$0);
+public record fso(float b, float c) implements fsp {
+   public static final MapCodec<fso> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayy.a(0.0F, 1.0F).fieldOf("temperature").forGetter(fso::b), ayy.a(0.0F, 1.0F).fieldOf("downfall").forGetter(fso::c))
+            .apply($$0, fso::new)
+   );
 
-   public static void a() {
-      b.a(ali.b("custom_model_data"), fsj.a);
-      b.a(ali.b("constant"), fsi.a);
-      b.a(ali.b("dye"), fsk.a);
-      b.a(ali.b("grass"), fsm.a);
-      b.a(ali.b("firework"), fsl.a);
-      b.a(ali.b("potion"), fsq.a);
-      b.a(ali.b("map_color"), fsp.a);
-      b.a(ali.b("team"), fsr.a);
+   public fso() {
+      this(0.5F, 1.0F);
+   }
+
+   @Override
+   public int a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2) {
+      return djx.a((double)this.b, (double)this.c);
+   }
+
+   @Override
+   public MapCodec<fso> a() {
+      return a;
    }
 }

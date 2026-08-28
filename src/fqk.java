@@ -1,30 +1,52 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fqk implements azr {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
-
-   private static final IntFunction<fqk> d = aye.a(fqk::b, values(), aye.a.b);
+public class fqk extends fqd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xc c = xc.c("mco.minigame.world.slot.screen.title");
+   private final long d;
    private final int e;
-   private final String f;
+   private final Runnable f;
 
-   private fqk(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fqk(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void run() {
+      fmf $$0 = fmf.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (foc var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static fqk a(int $$0) {
-      return d.apply($$0);
+   public xc a() {
+      return c;
    }
 }

@@ -1,22 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dt<T>(axt<T> a, boolean b) {
-   public static <T> Codec<dt<T>> a(alh<? extends js<T>> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(axt.a($$0).fieldOf("id").forGetter(dt::a), Codec.BOOL.fieldOf("expected").forGetter(dt::b)).apply($$1, dt::new)
+public class dt extends dl<dt.a> {
+   @Override
+   public Codec<dt.a> a() {
+      return dt.a.a;
+   }
+
+   public void a(arv $$0, bwv $$1) {
+      faj $$2 = bz.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
+   }
+
+   public static record a(Optional<bj> b, Optional<bj> c) implements dl.a {
+      public static final Codec<dt.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bz.b.optionalFieldOf("player").forGetter(dt.a::a), bz.b.optionalFieldOf("entity").forGetter(dt.a::b)).apply($$0, dt.a::new)
       );
-   }
 
-   public static <T> dt<T> a(axt<T> $$0) {
-      return new dt<>($$0, true);
-   }
+      public static ar<dt.a> a(bz.a $$0) {
+         return aq.o.a(new dt.a(Optional.empty(), Optional.of(bz.a($$0))));
+      }
 
-   public static <T> dt<T> b(axt<T> $$0) {
-      return new dt<>($$0, false);
-   }
+      public boolean a(faj $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
+      }
 
-   public boolean a(jf<T> $$0) {
-      return $$0.a(this.a) == this.b;
+      @Override
+      public void a(bk $$0) {
+         dl.a.super.a($$0);
+         $$0.a(this.c, ".entity");
+      }
+
+      @Override
+      public Optional<bj> a() {
+         return this.b;
+      }
+
+      public Optional<bj> b() {
+         return this.c;
+      }
    }
 }

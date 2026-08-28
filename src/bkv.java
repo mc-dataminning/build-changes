@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import java.util.Optional;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface bkv {
+public class bkv extends bhx {
+   public bkv(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Zombie Villager XP rebuild", bjd.D, "minecraft:zombie_villager");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
+         if ($$1.isEmpty()) {
+            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
+            return $$0x.set("Xp", $$0x.createInt(bkm.a($$2)));
+         } else {
+            return $$0x;
+         }
+      });
+   }
 }

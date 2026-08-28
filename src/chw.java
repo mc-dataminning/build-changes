@@ -1,27 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class chw extends cic<bxu> {
-   protected abstract boolean a(ars var1, bxu var2, bxu var3);
-
-   protected abstract cgw<bxu> b();
-
-   @Override
-   public Set<cgw<?>> a() {
-      return ImmutableSet.of(this.b());
-   }
+public class chw extends cie<bxy> {
+   private static final long b = 32L;
+   private static final long c = 16L;
+   public static final int a = 32;
 
    @Override
-   protected void a(ars $$0, bxu $$1) {
-      $$1.ec().a(this.b(), this.c($$0, $$1));
+   public Set<cgy<?>> a() {
+      return ImmutableSet.of(cgy.M);
    }
 
-   private Optional<bxu> c(ars $$0, bxu $$1) {
-      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
-   }
-
-   protected Optional<cgy> a(bxu $$0) {
-      return $$0.ec().c(cgw.h);
+   protected void a(aru $$0, bxy $$1) {
+      byw<?> $$2 = $$1.ec();
+      List<coe> $$3 = $$0.a(coe.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<coe> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.f())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cgy.M, $$4);
    }
 }

@@ -1,161 +1,281 @@
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Dynamic;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.JavaOps;
+import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class gw extends bqj<gw.d> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo:'bar'}");
-   static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xa.b("argument.item.id.invalid", $$0));
-   static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xa.b("arguments.item.tag.unknown", $$0));
-   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xa.b("arguments.item.component.unknown", $$0));
-   static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> xa.b("arguments.item.component.malformed", $$0, $$1));
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xa.b("arguments.item.predicate.unknown", $$0));
-   static final Dynamic2CommandExceptionType g = new Dynamic2CommandExceptionType(($$0, $$1) -> xa.b("arguments.item.predicate.malformed", $$0, $$1));
-   private static final ali h = ali.b("count");
-   static final Map<ali, gw.a> i = Stream.of(new gw.a(h, $$0 -> true, cw.d.d.map($$0 -> $$1 -> $$0.d($$1.M()))))
-      .collect(Collectors.toUnmodifiableMap(gw.a::a, $$0 -> (gw.a)$$0));
-   static final Map<ali, gw.c> j = Stream.of(new gw.c(h, cw.d.d.map($$0 -> $$1 -> $$0.d($$1.M()))))
-      .collect(Collectors.toUnmodifiableMap(gw.c::a, $$0 -> (gw.c)$$0));
+public class gw {
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xc.b("argument.item.id.invalid", $$0));
+   static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> xc.b("arguments.item.component.unknown", $$0));
+   static final Dynamic2CommandExceptionType h = new Dynamic2CommandExceptionType(($$0, $$1) -> xc.b("arguments.item.component.malformed", $$0, $$1));
+   static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(xc.c("arguments.item.component.expected"));
+   static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> xc.b("arguments.item.component.repeated", $$0));
+   private static final DynamicCommandExceptionType k = new DynamicCommandExceptionType($$0 -> xc.b("arguments.item.malformed", $$0));
+   public static final char a = '[';
+   public static final char b = ']';
+   public static final char c = ',';
+   public static final char d = '=';
+   public static final char e = '!';
+   static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = SuggestionsBuilder::buildFuture;
+   final ji.b<czw> m;
+   final ali<Object> n;
+   final vb<Object> o;
 
-   public gw(ef $$0) {
-      super(gr.a(new gw.b($$0)).a($$0x -> ag.a($$0x)::test));
+   public gw(ji.a $$0) {
+      this.m = $$0.e(mi.K);
+      this.n = $$0.a(JavaOps.INSTANCE);
+      this.o = vb.a(this.n);
    }
 
-   public static gw a(ef $$0) {
-      return new gw($$0);
+   public gw.a a(StringReader $$0) throws CommandSyntaxException {
+      final MutableObject<jg<czw>> $$1 = new MutableObject();
+      final kj.a $$2 = kj.a();
+      this.a($$0, new gw.d() {
+         @Override
+         public void a(jg<czw> $$0) {
+            $$1.setValue($$0);
+         }
+
+         @Override
+         public <T> void a(kk<T> $$0, T $$1x) {
+            $$2.a($$0, $$1);
+         }
+
+         @Override
+         public <T> void a(kk<T> $$0) {
+            $$2.a($$0);
+         }
+      });
+      jg<czw> $$3 = Objects.requireNonNull((jg<czw>)$$1.getValue(), "Parser gave no item");
+      kj $$4 = $$2.a();
+      a($$0, $$3, $$4);
+      return new gw.a($$3, $$4);
    }
 
-   public static gw.d a(CommandContext<ej> $$0, String $$1) {
-      return (gw.d)$$0.getArgument($$1, gw.d.class);
+   private static void a(StringReader $$0, jg<czw> $$1, kj $$2) throws CommandSyntaxException {
+      ki $$3 = km.a($$1.a().f(), $$2);
+      DataResult<bay> $$4 = daa.a($$3);
+      $$4.getOrThrow($$1x -> k.createWithContext($$0, $$1x));
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   public void a(StringReader $$0, gw.d $$1) throws CommandSyntaxException {
+      int $$2 = $$0.getCursor();
+
+      try {
+         new gw.b($$0, $$1).a();
+      } catch (CommandSyntaxException var5) {
+         $$0.setCursor($$2);
+         throw var5;
+      }
    }
 
-   static record a(ali a, Predicate<czy> b, Decoder<? extends Predicate<czy>> c) {
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+      StringReader $$1 = new StringReader($$0.getInput());
+      $$1.setCursor($$0.getStart());
+      gw.c $$2 = new gw.c();
+      gw.b $$3 = new gw.b($$1, $$2);
 
-      public static <T> gw.a a(ImmutableStringReader $$0, ali $$1, kj<T> $$2) throws CommandSyntaxException {
-         Codec<T> $$3 = $$2.b();
-         if ($$3 == null) {
-            throw gw.d.createWithContext($$0, $$1);
-         } else {
-            return new gw.a($$1, $$1x -> $$1x.c($$2), $$3.map($$1x -> $$2x -> {
-                  T $$3x = $$2x.a($$2);
-                  return Objects.equals($$1x, $$3x);
-               }));
+      try {
+         $$3.a();
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return $$2.a($$0, $$1);
+   }
+
+   public static record a(jg<czw> a, kj b) {
+   }
+
+   class b {
+      private final StringReader b;
+      private final gw.d c;
+
+      b(final StringReader $$0, final gw.d $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public void a() throws CommandSyntaxException {
+         this.c.a(this::d);
+         this.b();
+         this.c.a(this::a);
+         if (this.b.canRead() && this.b.peek() == '[') {
+            this.c.a(gw.l);
+            this.c();
          }
       }
 
-      public Predicate<czy> a(ImmutableStringReader $$0, Dynamic<?> $$1) throws CommandSyntaxException {
-         DataResult<? extends Predicate<czy>> $$2 = this.c.parse($$1);
-         return (Predicate<czy>)$$2.getOrThrow($$1x -> gw.e.createWithContext($$0, this.a.toString(), $$1x));
+      private void b() throws CommandSyntaxException {
+         int $$0 = this.b.getCursor();
+         alk $$1 = alk.a(this.b);
+         this.c.a(gw.this.m.a(alj.a(mi.K, $$1)).orElseThrow(() -> {
+            this.b.setCursor($$0);
+            return gw.f.createWithContext(this.b, $$1);
+         }));
+      }
+
+      private void c() throws CommandSyntaxException {
+         this.b.expect('[');
+         this.c.a(this::e);
+         Set<kk<?>> $$0 = new ReferenceArraySet();
+
+         while (this.b.canRead() && this.b.peek() != ']') {
+            this.b.skipWhitespace();
+            if (this.b.canRead() && this.b.peek() == '!') {
+               this.b.skip();
+               this.c.a(this::f);
+               kk<?> $$1 = a(this.b);
+               if (!$$0.add($$1)) {
+                  throw gw.j.create($$1);
+               }
+
+               this.c.a($$1);
+               this.c.a(gw.l);
+               this.b.skipWhitespace();
+            } else {
+               kk<?> $$2 = a(this.b);
+               if (!$$0.add($$2)) {
+                  throw gw.j.create($$2);
+               }
+
+               this.c.a(this::c);
+               this.b.skipWhitespace();
+               this.b.expect('=');
+               this.c.a(gw.l);
+               this.b.skipWhitespace();
+               this.a(gw.this.o, gw.this.n, $$2);
+               this.b.skipWhitespace();
+            }
+
+            this.c.a(this::b);
+            if (!this.b.canRead() || this.b.peek() != ',') {
+               break;
+            }
+
+            this.b.skip();
+            this.b.skipWhitespace();
+            this.c.a(this::e);
+            if (!this.b.canRead()) {
+               throw gw.i.createWithContext(this.b);
+            }
+         }
+
+         this.b.expect(']');
+         this.c.a(gw.l);
+      }
+
+      public static kk<?> a(StringReader $$0) throws CommandSyntaxException {
+         if (!$$0.canRead()) {
+            throw gw.i.createWithContext($$0);
+         } else {
+            int $$1 = $$0.getCursor();
+            alk $$2 = alk.a($$0);
+            kk<?> $$3 = mh.am.a($$2);
+            if ($$3 != null && !$$3.d()) {
+               return $$3;
+            } else {
+               $$0.setCursor($$1);
+               throw gw.g.createWithContext($$0, $$2);
+            }
+         }
+      }
+
+      private <T, O> void a(vb<O> $$0, ali<O> $$1, kk<T> $$2) throws CommandSyntaxException {
+         int $$3 = this.b.getCursor();
+         O $$4 = $$0.b(this.b);
+         DataResult<T> $$5 = $$2.c().parse($$1, $$4);
+         this.c.a($$2, (T)$$5.getOrThrow($$2x -> {
+            this.b.setCursor($$3);
+            return gw.h.createWithContext(this.b, $$2.toString(), $$2x);
+         }));
+      }
+
+      private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+         if ($$0.getRemaining().isEmpty()) {
+            $$0.suggest(String.valueOf('['));
+         }
+
+         return $$0.buildFuture();
+      }
+
+      private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
+         if ($$0.getRemaining().isEmpty()) {
+            $$0.suggest(String.valueOf(','));
+            $$0.suggest(String.valueOf(']'));
+         }
+
+         return $$0.buildFuture();
+      }
+
+      private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
+         if ($$0.getRemaining().isEmpty()) {
+            $$0.suggest(String.valueOf('='));
+         }
+
+         return $$0.buildFuture();
+      }
+
+      private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
+         return ep.a(gw.this.m.c_().map(alj::a), $$0);
+      }
+
+      private CompletableFuture<Suggestions> e(SuggestionsBuilder $$0) {
+         $$0.suggest(String.valueOf('!'));
+         return this.a($$0, String.valueOf('='));
+      }
+
+      private CompletableFuture<Suggestions> f(SuggestionsBuilder $$0) {
+         return this.a($$0, "");
+      }
+
+      private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
+         String $$2 = $$0.getRemaining().toLowerCase(Locale.ROOT);
+         ep.a(mh.am.k(), $$2, $$0x -> ((alj)$$0x.getKey()).a(), $$2x -> {
+            kk<?> $$3 = (kk<?>)$$2x.getValue();
+            if ($$3.b() != null) {
+               alk $$4 = ((alj)$$2x.getKey()).a();
+               $$0.suggest($$4 + $$1);
+            }
+         });
+         return $$0.buildFuture();
       }
    }
 
-   static class b implements gr.b<Predicate<czy>, gw.a, gw.c> {
-      private final jh.a a;
-      private final jh.b<czu> b;
-      private final jh.b<kj<?>> c;
-      private final jh.b<kt.b<?>> d;
+   static class c implements gw.d {
+      private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> a = gw.l;
 
-      b(jh.a $$0) {
+      @Override
+      public void a(Function<SuggestionsBuilder, CompletableFuture<Suggestions>> $$0) {
          this.a = $$0;
-         this.b = $$0.e(mh.K);
-         this.c = $$0.e(mh.r);
-         this.d = $$0.e(mh.q);
       }
 
-      public Predicate<czy> e(ImmutableStringReader $$0, ali $$1) throws CommandSyntaxException {
-         jf.c<czu> $$2 = this.b.a(alh.a(mh.K, $$1)).orElseThrow(() -> gw.b.createWithContext($$0, $$1));
-         return $$1x -> $$1x.a($$2);
-      }
-
-      public Predicate<czy> f(ImmutableStringReader $$0, ali $$1) throws CommandSyntaxException {
-         jj<czu> $$2 = this.b.a(axt.a(mh.K, $$1)).orElseThrow(() -> gw.c.createWithContext($$0, $$1));
-         return $$1x -> $$1x.a($$2);
-      }
-
-      public gw.a g(ImmutableStringReader $$0, ali $$1) throws CommandSyntaxException {
-         gw.a $$2 = gw.i.get($$1);
-         if ($$2 != null) {
-            return $$2;
-         } else {
-            kj<?> $$3 = this.c.a(alh.a(mh.r, $$1)).map(jf::a).orElseThrow(() -> gw.d.createWithContext($$0, $$1));
-            return gw.a.a($$0, $$1, $$3);
-         }
-      }
-
-      public Predicate<czy> a(ImmutableStringReader $$0, gw.a $$1, Dynamic<?> $$2) throws CommandSyntaxException {
-         return $$1.a($$0, alg.a($$2, this.a));
-      }
-
-      public Predicate<czy> a(ImmutableStringReader $$0, gw.a $$1) {
-         return $$1.b;
-      }
-
-      public gw.c h(ImmutableStringReader $$0, ali $$1) throws CommandSyntaxException {
-         gw.c $$2 = gw.j.get($$1);
-         return $$2 != null ? $$2 : this.d.a(alh.a(mh.q, $$1)).map(gw.c::new).orElseThrow(() -> gw.f.createWithContext($$0, $$1));
-      }
-
-      public Predicate<czy> a(ImmutableStringReader $$0, gw.c $$1, Dynamic<?> $$2) throws CommandSyntaxException {
-         return $$1.a($$0, alg.a($$2, this.a));
-      }
-
-      @Override
-      public Stream<ali> a() {
-         return this.b.c_().map(alh::a);
-      }
-
-      @Override
-      public Stream<ali> b() {
-         return this.b.f().map(axt::b);
-      }
-
-      @Override
-      public Stream<ali> c() {
-         return Stream.concat(gw.i.keySet().stream(), this.c.c().filter($$0 -> !$$0.a().d()).map($$0 -> $$0.h().a()));
-      }
-
-      @Override
-      public Stream<ali> d() {
-         return Stream.concat(gw.j.keySet().stream(), this.d.c_().map(alh::a));
-      }
-
-      public Predicate<czy> a(Predicate<czy> $$0) {
-         return $$0.negate();
-      }
-
-      public Predicate<czy> b(List<Predicate<czy>> $$0) {
-         return ag.b($$0);
+      public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, StringReader $$1) {
+         return this.a.apply($$0.createOffset($$1.getCursor()));
       }
    }
 
-   static record c(ali a, Decoder<? extends Predicate<czy>> b) {
-      public c(jf.c<kt.b<?>> $$0) {
-         this($$0.h().a(), $$0.a().a().map($$0x -> $$0x::a));
+   public interface d {
+      default void a(jg<czw> $$0) {
       }
 
-      public Predicate<czy> a(ImmutableStringReader $$0, Dynamic<?> $$1) throws CommandSyntaxException {
-         DataResult<? extends Predicate<czy>> $$2 = this.b.parse($$1);
-         return (Predicate<czy>)$$2.getOrThrow($$1x -> gw.g.createWithContext($$0, this.a.toString(), $$1x));
+      default <T> void a(kk<T> $$0, T $$1) {
       }
-   }
 
-   public interface d extends Predicate<czy> {
+      default <T> void a(kk<T> $$0) {
+      }
+
+      default void a(Function<SuggestionsBuilder, CompletableFuture<Suggestions>> $$0) {
+      }
    }
 }

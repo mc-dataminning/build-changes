@@ -1,139 +1,17 @@
-public class ebu {
-   public static final ebv a = ebv.a("attached");
-   public static final ebv b = ebv.a("berries");
-   public static final ebv c = ebv.a("bloom");
-   public static final ebv d = ebv.a("bottom");
-   public static final ebv e = ebv.a("can_summon");
-   public static final ebv f = ebv.a("conditional");
-   public static final ebv g = ebv.a("disarmed");
-   public static final ebv h = ebv.a("drag");
-   public static final ebv i = ebv.a("enabled");
-   public static final ebv j = ebv.a("extended");
-   public static final ebv k = ebv.a("eye");
-   public static final ebv l = ebv.a("falling");
-   public static final ebv m = ebv.a("hanging");
-   public static final ebv n = ebv.a("has_bottle_0");
-   public static final ebv o = ebv.a("has_bottle_1");
-   public static final ebv p = ebv.a("has_bottle_2");
-   public static final ebv q = ebv.a("has_record");
-   public static final ebv r = ebv.a("has_book");
-   public static final ebv s = ebv.a("inverted");
-   public static final ebv t = ebv.a("in_wall");
-   public static final ebv u = ebv.a("lit");
-   public static final ebv v = ebv.a("locked");
-   public static final ebv w = ebv.a("natural");
-   public static final ebv x = ebv.a("occupied");
-   public static final ebv y = ebv.a("open");
-   public static final ebv z = ebv.a("persistent");
-   public static final ebv A = ebv.a("powered");
-   public static final ebv B = ebv.a("short");
-   public static final ebv C = ebv.a("shrieking");
-   public static final ebv D = ebv.a("signal_fire");
-   public static final ebv E = ebv.a("snowy");
-   public static final ebv F = ebv.a("tip");
-   public static final ebv G = ebv.a("triggered");
-   public static final ebv H = ebv.a("unstable");
-   public static final ebv I = ebv.a("waterlogged");
-   public static final ecc<jb.a> J = ecc.a("axis", jb.a.class, jb.a.a, jb.a.c);
-   public static final ecc<jb.a> K = ecc.a("axis", jb.a.class);
-   public static final ebv L = ebv.a("up");
-   public static final ebv M = ebv.a("down");
-   public static final ebv N = ebv.a("north");
-   public static final ebv O = ebv.a("east");
-   public static final ebv P = ebv.a("south");
-   public static final ebv Q = ebv.a("west");
-   public static final ecc<jb> R = ecc.a("facing", jb.class, jb.c, jb.f, jb.d, jb.e, jb.b, jb.a);
-   public static final ecc<jb> S = ecc.a("facing", jb.class, $$0 -> $$0 != jb.b);
-   public static final ecc<jb> T = ecc.a("facing", jb.class, jb.c.a);
-   public static final ece U = ece.a("flower_amount", 1, 4);
-   public static final ece V = ece.a("segment_amount", 1, 4);
-   public static final ecc<jd> W = ecc.a("orientation", jd.class);
-   public static final ecc<ebp> X = ecc.a("face", ebp.class);
-   public static final ecc<ebs> Y = ecc.a("attachment", ebs.class);
-   public static final ecc<ecr> Z = ecc.a("east", ecr.class);
-   public static final ecc<ecr> aa = ecc.a("north", ecr.class);
-   public static final ecc<ecr> ab = ecc.a("south", ecr.class);
-   public static final ecc<ecr> ac = ecc.a("west", ecr.class);
-   public static final ecc<ecj> ad = ecc.a("east", ecj.class);
-   public static final ecc<ecj> ae = ecc.a("north", ecj.class);
-   public static final ecc<ecj> af = ecc.a("south", ecj.class);
-   public static final ecc<ecj> ag = ecc.a("west", ecj.class);
-   public static final ecc<eca> ah = ecc.a("half", eca.class);
-   public static final ecc<ecd> ai = ecc.a("half", ecd.class);
-   public static final ecc<eci> aj = ecc.a("shape", eci.class);
-   public static final ecc<eci> ak = ecc.a("shape", eci.class, $$0 -> $$0 != eci.j && $$0 != eci.i && $$0 != eci.g && $$0 != eci.h);
-   public static final int al = 1;
-   public static final int am = 2;
-   public static final int an = 3;
-   public static final int ao = 4;
-   public static final int ap = 5;
-   public static final int aq = 7;
-   public static final int ar = 15;
-   public static final int as = 25;
-   public static final ece at = ece.a("age", 0, 1);
-   public static final ece au = ece.a("age", 0, 2);
-   public static final ece av = ece.a("age", 0, 3);
-   public static final ece aw = ece.a("age", 0, 4);
-   public static final ece ax = ece.a("age", 0, 5);
-   public static final ece ay = ece.a("age", 0, 7);
-   public static final ece az = ece.a("age", 0, 15);
-   public static final ece aA = ece.a("age", 0, 25);
-   public static final ece aB = ece.a("bites", 0, 6);
-   public static final ece aC = ece.a("candles", 1, 4);
-   public static final ece aD = ece.a("delay", 1, 4);
-   public static final int aE = 7;
-   public static final ece aF = ece.a("distance", 1, 7);
-   public static final ece aG = ece.a("eggs", 1, 4);
-   public static final ece aH = ece.a("hatch", 0, 2);
-   public static final ece aI = ece.a("layers", 1, 8);
-   public static final int aJ = 0;
-   public static final int aK = 1;
-   public static final int aL = 3;
-   public static final int aM = 8;
-   public static final ece aN = ece.a("level", 1, 3);
-   public static final ece aO = ece.a("level", 0, 8);
-   public static final ece aP = ece.a("level", 1, 8);
-   public static final ece aQ = ece.a("honey_level", 0, 5);
-   public static final int aR = 15;
-   public static final ece aS = ece.a("level", 0, 15);
-   public static final ece aT = ece.a("moisture", 0, 7);
-   public static final ece aU = ece.a("note", 0, 24);
-   public static final ece aV = ece.a("pickles", 1, 4);
-   public static final ece aW = ece.a("power", 0, 15);
-   public static final ece aX = ece.a("stage", 0, 1);
-   public static final int aY = 7;
-   public static final ece aZ = ece.a("distance", 0, 7);
-   public static final int ba = 0;
-   public static final int bb = 4;
-   public static final ece bc = ece.a("charges", 0, 4);
-   public static final ece bd = ece.a("rotation", 0, eck.a());
-   public static final ecc<ebr> be = ecc.a("part", ebr.class);
-   public static final ecc<ebw> bf = ecc.a("type", ebw.class);
-   public static final ecc<ebx> bg = ecc.a("mode", ebx.class);
-   public static final ecc<ebz> bh = ecc.a("hinge", ebz.class);
-   public static final ecc<ecf> bi = ecc.a("instrument", ecf.class);
-   public static final ecc<ecg> bj = ecc.a("type", ecg.class);
-   public static final ecc<ecm> bk = ecc.a("type", ecm.class);
-   public static final ecc<ecn> bl = ecc.a("shape", ecn.class);
-   public static final ecc<eco> bm = ecc.a("mode", eco.class);
-   public static final ecc<ebq> bn = ecc.a("leaves", ebq.class);
-   public static final ecc<ecq> bo = ecc.a("tilt", ecq.class);
-   public static final ecc<jb> bp = ecc.a("vertical_direction", jb.class, jb.b, jb.a);
-   public static final ecc<ecb> bq = ecc.a("thickness", ecb.class);
-   public static final ecc<ecl> br = ecc.a("sculk_sensor_phase", ecl.class);
-   public static final ebv bs = ebv.a("slot_0_occupied");
-   public static final ebv bt = ebv.a("slot_1_occupied");
-   public static final ebv bu = ebv.a("slot_2_occupied");
-   public static final ebv bv = ebv.a("slot_3_occupied");
-   public static final ebv bw = ebv.a("slot_4_occupied");
-   public static final ebv bx = ebv.a("slot_5_occupied");
-   public static final ece by = ece.a("dusted", 0, 3);
-   public static final ebv bz = ebv.a("cracked");
-   public static final ebv bA = ebv.a("crafting");
-   public static final ecc<eaj> bB = ecc.a("trial_spawner_state", eaj.class);
-   public static final ecc<eaq> bC = ecc.a("vault_state", eaq.class);
-   public static final ecc<eby> bD = ecc.a("creaking_heart_state", eby.class);
-   public static final ebv bE = ebv.a("ominous");
-   public static final ecc<ecp> bF = ecc.a("mode", ecp.class);
-   public static final ebv bG = ebv.a("map");
+public enum ebu implements bao {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
+
+   private final String e;
+
+   private ebu(final String $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
 }

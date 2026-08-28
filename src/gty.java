@@ -1,51 +1,97 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gty {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
+public record gty(alk c, gty.a d) implements gto.a {
+   public static final MapCodec<gty> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alk.a.fieldOf("model").forGetter(gty::a), gty.a.a.forGetter(gty::b)).apply($$0, gty::new)
+   );
+   public static final Codec<gty> b = a.codec();
 
-   public static <O, S extends ebg<O, S>> Predicate<ebg<O, S>> a(ebf<O, S> $$0, String $$1) {
-      Map<ech<?>, Comparable<?>> $$2 = new HashMap<>();
-
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            ech<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((ech<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
-
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
-         }
-      }
-
-      return $$1x -> {
-         for (Entry<ech<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   public gty(alk $$0) {
+      this($$0, gty.a.b);
    }
 
-   @Nullable
-   private static <T extends Comparable<T>> T a(ech<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+   public gty a(i $$0) {
+      return this.a(this.d.a($$0));
+   }
+
+   public gty b(i $$0) {
+      return this.a(this.d.b($$0));
+   }
+
+   public gty a(boolean $$0) {
+      return this.a(this.d.a($$0));
+   }
+
+   public gty a(alk $$0) {
+      return new gty($$0, this.d);
+   }
+
+   public gty a(gty.a $$0) {
+      return new gty(this.c, $$0);
+   }
+
+   public gty a(gtz $$0) {
+      return $$0.apply(this);
+   }
+
+   @Override
+   public gto a(hnl $$0) {
+      return gtu.a($$0, this.c, this.d.a());
+   }
+
+   @Override
+   public void a(hnt.a $$0) {
+      $$0.markDependency(this.c);
+   }
+
+   public alk a() {
+      return this.c;
+   }
+
+   public gty.a b() {
+      return this.d;
+   }
+
+   public static record a(i c, i d, boolean e) {
+      public static final MapCodec<gty.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  i.e.optionalFieldOf("x", i.a).forGetter(gty.a::b),
+                  i.e.optionalFieldOf("y", i.a).forGetter(gty.a::c),
+                  Codec.BOOL.optionalFieldOf("uvlock", false).forGetter(gty.a::d)
+               )
+               .apply($$0, gty.a::new)
+      );
+      public static final gty.a b = new gty.a(i.a, i.a, false);
+
+      public hnr a() {
+         hnd $$0 = hnd.a(this.c, this.d);
+         return (hnr)(this.e ? $$0.c() : $$0);
+      }
+
+      public gty.a a(i $$0) {
+         return new gty.a($$0, this.d, this.e);
+      }
+
+      public gty.a b(i $$0) {
+         return new gty.a(this.c, $$0, this.e);
+      }
+
+      public gty.a a(boolean $$0) {
+         return new gty.a(this.c, this.d, $$0);
+      }
+
+      public i b() {
+         return this.c;
+      }
+
+      public i c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
    }
 }

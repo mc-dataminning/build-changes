@@ -1,55 +1,43 @@
-public class gqb extends gps {
-   private final gqf b;
-   protected boolean a;
+public class gqb extends gqm {
+   private final gqh a;
 
-   gqb(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqf $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
+   protected gqb(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqh $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public gpo b() {
-      return gpo.c;
+   public gpq b() {
+      return gpq.b;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static class a implements gpn<mc> {
-      private final gqf a;
+   public static class a implements gpp<md> {
+      private final gqh a;
 
-      public a(gqf $$0) {
+      public a(gqh $$0) {
          this.a = $$0;
       }
 
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gqb $$8 = new gqb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements gpn<mc> {
-      private final gqf a;
-
-      public b(gqf $$0) {
-         this.a = $$0;
-      }
-
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gqb $$8 = new gqb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+         $$8.a(0.923F, 0.964F, 0.999F);
          return $$8;
       }
    }

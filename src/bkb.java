@@ -1,34 +1,42 @@
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bkb extends bhw {
+public class bkb extends DataFix {
    public bkb(Schema $$0) {
-      super($$0, false, "TippedArrowPotionToItemFix", bjb.D, "minecraft:arrow");
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
-      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
-      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
-         ? $$0
-         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
-            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
-            if ($$1.isPresent()) {
-               $$4 = $$4.set("Potion", $$1.get());
-            }
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>> $$0 = this.getInputSchema().getType(bjd.z);
+      return this.fixTypeEverywhere(
+         "TextComponentStringyFlagsFix",
+         $$0,
+         $$0x -> $$0xx -> $$0xx.mapSecond(
+                  $$0xxx -> $$0xxx.mapRight(
+                        $$0xxxx -> $$0xxxx.mapSecond(
+                              $$0xxxxx -> $$0xxxxx.mapSecond(
+                                    $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                          $$0xxxxxxx -> $$0xxxxxxx.update("bold", bkb::a)
+                                                .update("italic", bkb::a)
+                                                .update("underlined", bkb::a)
+                                                .update("strikethrough", bkb::a)
+                                                .update("obfuscated", bkb::a)
+                                       )
+                                 )
+                           )
+                     )
+               )
+      );
+   }
 
-            if ($$2.isPresent()) {
-               $$4 = $$4.set("custom_potion_effects", $$2.get());
-            }
-
-            if ($$3.isPresent()) {
-               $$4 = $$4.set("CustomPotionColor", $$3.get());
-            }
-
-            return $$3x.set("tag", $$4);
-         });
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      return $$1.isPresent() ? $$0.createBoolean(Boolean.parseBoolean($$1.get())) : $$0;
    }
 }

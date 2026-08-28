@@ -1,4 +1,5 @@
-public class hfd extends hfp {
-   public int a;
-   public boolean b;
+public class hfd extends hfr {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

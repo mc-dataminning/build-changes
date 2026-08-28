@@ -1,16 +1,13 @@
-public class eab extends dyk {
-   public eab(iv $$0, ebe $$1) {
-      super(dye.c, $$0, $$1);
+public class eab extends dye {
+   protected eab(dyg<?> $$0, iw $$1, ebg $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(djx $$0, iv $$1, ebe $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         eyw $$5 = eys.a($$0, $$2.c(dwf.c).g(), jb.b);
-         dnc $$6 = $$2.b();
-         $$0.a($$1, $$6, $$5);
-         $$0.a($$1.e(), $$6, $$5);
-      }
+   public eab(iw $$0, ebg $$1) {
+      this(dyg.o, $$0, $$1);
+   }
+
+   public boolean a(jc $$0) {
+      return $$0.o() == jc.a.b;
    }
 }

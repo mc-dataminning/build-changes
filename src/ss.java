@@ -1,15 +1,90 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public interface ss {
-   alh<sr> a = a("always_pass");
+public abstract class ss {
+   public static final Codec<ss> b = mh.aC.q().dispatch(ss::a, $$0 -> $$0);
+   private final tl<jg<tm>> a;
 
-   static void a(qh<sr> $$0) {
-      jg<Consumer<sp>> $$1 = $$0.a(mh.ay);
-      jg<tl> $$2 = $$0.a(mh.bg);
-      $$0.a(a, new sg(sd.a, new tk<>($$2.b(sm.b), ali.b("empty"), 1, 1, false)));
+   public static MapCodec<? extends ss> a(jt<MapCodec<? extends ss>> $$0) {
+      a($$0, "block_based", sd.a);
+      return a($$0, "function", sh.a);
    }
 
-   private static alh<sr> a(String $$0) {
-      return alh.a(mh.bh, ali.b($$0));
+   private static MapCodec<? extends ss> a(jt<MapCodec<? extends ss>> $$0, String $$1, MapCodec<? extends ss> $$2) {
+      return jt.a($$0, alj.a(mi.az, alk.b($$1)), $$2);
+   }
+
+   protected ss(tl<jg<tm>> $$0) {
+      this.a = $$0;
+   }
+
+   public abstract void a(sq var1);
+
+   public abstract MapCodec<? extends ss> a();
+
+   public jg<tm> d() {
+      return this.a.a();
+   }
+
+   public alk e() {
+      return this.a.b();
+   }
+
+   public int f() {
+      return this.a.c();
+   }
+
+   public int g() {
+      return this.a.d();
+   }
+
+   public boolean h() {
+      return this.a.e();
+   }
+
+   public boolean i() {
+      return this.a.g();
+   }
+
+   public int j() {
+      return this.a.h();
+   }
+
+   public int k() {
+      return this.a.i();
+   }
+
+   public boolean l() {
+      return this.a.j();
+   }
+
+   public dty m() {
+      return this.a.f();
+   }
+
+   protected tl<jg<tm>> n() {
+      return this.a;
+   }
+
+   protected abstract xq b();
+
+   public xc c() {
+      return this.o().b(this.p());
+   }
+
+   protected xq o() {
+      return this.a("test_instance.description.type", this.b());
+   }
+
+   protected xc p() {
+      return this.a("test_instance.description.structure", this.a.b().toString()).b(this.a("test_instance.description.batch", this.a.a().g()));
+   }
+
+   protected xq a(String $$0, String $$1) {
+      return this.a($$0, xc.b($$1));
+   }
+
+   protected xq a(String $$0, xq $$1) {
+      return xc.a($$0, $$1.a(o.j)).b(xc.b("\n"));
    }
 }

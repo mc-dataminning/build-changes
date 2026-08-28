@@ -1,52 +1,56 @@
-public class gpb extends gqk {
-   gpb(gmb $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class gpb extends gqm {
+   private final gqh a;
+
+   protected gpb(gmd $$0, double $$1, double $$2, double $$3, gqh $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gpo b() {
-      return gpo.b;
+   public gpq b() {
+      return gpq.b;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * azo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static class a implements gpn<mc> {
-      private final gqf a;
-
-      public a(gqf $$0) {
-         this.a = $$0;
-      }
-
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpb $$8 = new gpb($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
+   @Override
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class b implements gpn<mc> {
-      private final gqf a;
+   public static class a implements gpp<md> {
+      private final gqh a;
 
-      public b(gqf $$0) {
+      public a(gqh $$0) {
          this.a = $$0;
       }
 
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpb $$8 = new gpb($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gpb($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gpp<md> {
+      private final gqh a;
+
+      public b(gqh $$0) {
+         this.a = $$0;
+      }
+
+      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpm $$8 = new gpb($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
          return $$8;
       }
    }

@@ -1,60 +1,53 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public record dda(List<dda.a> e) implements dce, ddd {
-   public static final dda a = new dda(List.of());
-   public static final int b = 160;
-   public static final Codec<dda> c = dda.a.a.listOf().xmap(dda::new, dda::a);
-   public static final yy<wl, dda> d = dda.a.b.a(yw.a()).a(dda::new, dda::a);
+public record dda(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<dda> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayy.y.optionalFieldOf("name").forGetter(dda::c),
+               ka.a.optionalFieldOf("id").forGetter(dda::d),
+               ayy.x.optionalFieldOf("properties", new PropertyMap()).forGetter(dda::e)
+            )
+            .apply($$0, dda::new)
+   );
+   public static final Codec<dda> a = Codec.withAlternative(g, ayy.y, $$0 -> new dda(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final za<ByteBuf, dda> b = za.a(yy.b(16).a(yy::a), dda::c, ka.g.a(yy::a), dda::d, yy.y, dda::e, dda::new);
 
-   public dda a(dda.a $$0) {
-      return new dda(ag.a(this.e, $$0));
+   public dda(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Override
-   public void a(djx $$0, bxu $$1, czy $$2, dcd $$3) {
-      for (dda.a $$4 : this.e) {
-         $$1.a($$4.a());
+   public dda(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   }
+
+   public CompletableFuture<dda> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
+      } else {
+         return this.d.isPresent() ? dzu.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new dda($$1);
+         }) : dzu.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ag.e, this.c.get()));
+            return new dda($$1);
+         });
       }
    }
 
-   @Override
-   public void a(czu.b $$0, Consumer<xa> $$1, dbn $$2, kf $$3) {
-      if ($$2.b()) {
-         List<bvx> $$4 = new ArrayList<>();
-
-         for (dda.a $$5 : this.e) {
-            $$4.add($$5.a());
-         }
-
-         dbu.a($$4, $$1, 1.0F, $$0.b());
-      }
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ag.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
    }
 
-   public List<dda.a> a() {
-      return this.e;
-   }
-
-   public static record a(jf<bvv> c, int d) {
-      public static final Codec<dda.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bvv.a.fieldOf("id").forGetter(dda.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(dda.a::c))
-               .apply($$0, dda.a::new)
-      );
-      public static final yy<wl, dda.a> b = yy.a(bvv.b, dda.a::b, yw.h, dda.a::c, dda.a::new);
-
-      public bvx a() {
-         return new bvx(this.c, this.d);
-      }
-
-      public jf<bvv> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

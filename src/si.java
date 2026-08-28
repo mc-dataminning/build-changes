@@ -1,32 +1,20 @@
-import javax.annotation.Nullable;
+public class si extends sp {
+   protected final xc a;
+   protected final int b;
 
-public class si extends sh {
-   private final iv c;
-   private final iv d;
-
-   public si(xa $$0, iv $$1, iv $$2, int $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
+   public si(xc $$0, int $$1) {
+      super($$0.getString());
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public xa a() {
-      return xa.a("test.error.position", this.a, this.c.u(), this.c.v(), this.c.w(), this.d.u(), this.d.v(), this.d.w(), this.b);
+   public xc a() {
+      return xc.a("test.error.tick", this.a, this.b);
    }
 
-   @Nullable
-   public String b() {
-      return super.getMessage();
-   }
-
-   @Nullable
-   public iv c() {
-      return this.d;
-   }
-
-   @Nullable
-   public iv d() {
-      return this.c;
+   @Override
+   public String getMessage() {
+      return this.a().getString();
    }
 }

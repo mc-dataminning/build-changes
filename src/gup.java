@@ -1,52 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+public interface gup<T extends dye> {
+   void a(T var1, float var2, flq var3, gsc var4, int var5, int var6, ffs var7);
 
-public class gup {
-   private static final Map<dye<?>, guo<?>> a = Maps.newHashMap();
-
-   private static <T extends dyc> void a(dye<? extends T> $$0, guo<T> $$1) {
-      a.put($$0, $$1);
+   default boolean a(T $$0) {
+      return false;
    }
 
-   public static Map<dye<?>, gun<?>> a(guo.a $$0) {
-      Builder<dye<?>, gun<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + mg.j.b((dye<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
+   default int aV_() {
+      return 64;
    }
 
-   static {
-      a(dye.h, gvc::new);
-      a(dye.i, guy::new);
-      a(dye.j, gve::new);
-      a(dye.l, gva::new);
-      a(dye.b, guu::new);
-      a(dye.d, guu::new);
-      a(dye.c, guu::new);
-      a(dye.n, gux::new);
-      a(dye.E, guz::new);
-      a(dye.o, gvh::new);
-      a(dye.w, gvg::new);
-      a(dye.p, guj::new);
-      a(dye.q, gvd::new);
-      a(dye.u, gui::new);
-      a(dye.v, guq::new);
-      a(dye.U, gvf::new);
-      a(dye.y, gvb::new);
-      a(dye.z, guk::new);
-      a(dye.A, guv::new);
-      a(dye.F, gul::new);
-      a(dye.H, gut::new);
-      a(dye.O, gus::new);
-      a(dye.P, guw::new);
-      a(dye.R, gvi::new);
-      a(dye.S, gvj::new);
+   default boolean a(T $$0, ffs $$1) {
+      return ffs.b($$0.aB_()).a((jq)$$1, (double)this.aV_());
    }
 }

@@ -1,28 +1,23 @@
-public class hcq extends hcw<hfq, git> {
-   private final git a;
-   private final git b;
-   private final hch c;
-
-   public hcq(haf<hfq, git> $$0, gla $$1, hch $$2) {
+public class hcq<S extends hdv, M extends gic<S> & ggs> extends hcy<S, M> {
+   public hcq(hah<S, M> $$0) {
       super($$0);
-      this.c = $$2;
-      this.a = new git($$1.a(gld.bH));
-      this.b = new git($$1.a(gld.bG));
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hfq $$3, float $$4, float $$5) {
-      czy $$6 = $$3.c;
-      dih $$7 = $$6.a(kk.D);
-      if ($$7 != null && $$7.d().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.d().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, czy.k, dig.m, $$2);
+   public void a(flq $$0, gsc $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$3, $$3.g, bxn.b, $$0, $$1, $$2);
+      this.a($$3, $$3.i, bxn.a, $$0, $$1, $$2);
+   }
+
+   protected void a(S $$0, hhu $$1, bxn $$2, flq $$3, gsc $$4, int $$5) {
+      if (!$$1.c()) {
+         $$3.a();
+         this.d().a($$2, $$3);
+         $$3.a(a.b.rotationDegrees(-90.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         boolean $$6 = $$2 == bxn.a;
+         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         $$1.a($$3, $$4, $$5, hks.d);
+         $$3.b();
       }
-   }
-
-   private void a(flo $$0, gsa $$1, hfq $$2, czy $$3, alh<dif> $$4, int $$5) {
-      git $$6 = $$2.aj ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(hng.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

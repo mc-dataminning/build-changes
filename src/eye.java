@@ -1,138 +1,201 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class eye {
-   private static final float a = 1.5F;
-   private final eya[] b = new eya[32];
+   private final List<eyc> a;
+   @Nullable
+   private eye.a b;
    private int c;
-   private final eyb d;
-   private static final boolean e = false;
-   private final exy f = new exy();
+   private final iw d;
+   private final float e;
+   private final boolean f;
 
-   public eye(eyb $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   public eye(List<eyc> $$0, iw $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   public void a(int $$0) {
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
+   }
+
+   @Nullable
+   public eyc d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public eyc a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, eyc $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
       this.c = $$0;
    }
 
+   public ffs a(bwv $$0, int $$1) {
+      eyc $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      return new ffs($$3, $$4, $$5);
+   }
+
+   public iw d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public ffs a(bwv $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public iw g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eyc h() {
+      return this.a.get(this.c);
+   }
+
    @Nullable
-   public eyc a(dkk $$0, bxw $$1, Set<iv> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      eya $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
+   public eyc i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eye $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
       } else {
-         Map<eyj, iv> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         eyc $$8 = this.a($$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eyc $$2 = this.a.get($$1);
+            eyc $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
       }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @baz
+   void a(eyc[] $$0, eyc[] $$1, Set<eyl> $$2) {
+      this.b = new eye.a($$0, $$1, $$2);
    }
 
    @Nullable
-   private eyc a(eya $$0, Map<eyj, iv> $$1, float $$2, int $$3, float $$4) {
-      brb $$5 = bra.a();
-      $$5.a("find_path");
-      $$5.a(bsk.a);
-      Set<eyj> $$6 = $$1.keySet();
-      $$0.e = 0.0F;
-      $$0.f = this.a($$0, $$6);
-      $$0.g = $$0.f;
-      this.f.a();
-      this.f.a($$0);
-      Set<eya> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<eyj> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$4);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
-
-         eya $$11 = this.f.c();
-         $$11.i = true;
-
-         for (eyj $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$3) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$0) >= $$2)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               eya $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$2 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
-            }
-         }
-      }
-
-      Optional<eyc> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), true)).min(Comparator.comparingInt(eyc::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), false)).min(Comparator.comparingDouble(eyc::m).thenComparingInt(eyc::e));
-      $$5.c();
-      return $$18.isEmpty() ? null : $$18.get();
+   public eye.a k() {
+      return this.b;
    }
 
-   protected float a(eya $$0, eya $$1) {
-      return $$0.a($$1);
+   public void a(vy $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.q(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
    }
 
-   private float a(eya $$0, Set<eyj> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (eyj $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
-      }
-
-      return $$2;
+   public static eye b(vy $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      iw $$3 = $$0.e();
+      List<eyc> $$4 = $$0.a(eyc::b);
+      eye.a $$5 = eye.a.b($$0);
+      eye $$6 = new eye($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
    }
 
-   private eyc a(eya $$0, iv $$1, boolean $$2) {
-      List<eya> $$3 = Lists.newArrayList();
-      eya $$4 = $$0;
-      $$3.add(0, $$0);
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+   public iw l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static eyc[] c(vy $$0) {
+      eyc[] $$1 = new eyc[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eyc.b($$0);
       }
 
-      return new eyc($$3, $$1, $$2);
+      return $$1;
+   }
+
+   static void a(vy $$0, eyc[] $$1) {
+      $$0.c($$1.length);
+
+      for (eyc $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eye n() {
+      eye $$0 = new eye(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eyc[] a, eyc[] b, Set<eyl> c) {
+
+      public void a(vy $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eye.a($$0, this.a);
+         eye.a($$0, this.b);
+      }
+
+      public static eye.a b(vy $$0) {
+         HashSet<eyl> $$1 = $$0.a(HashSet::new, eyl::c);
+         eyc[] $$2 = eye.c($$0);
+         eyc[] $$3 = eye.c($$0);
+         return new eye.a($$2, $$3, $$1);
+      }
    }
 }

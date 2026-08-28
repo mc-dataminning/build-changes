@@ -1,25 +1,15 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-public record etm(alh<etl> c, alh<etl> d) implements etn {
-   static MapCodec<etm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alh.a(mh.bf).fieldOf("alias").forGetter(etm::c), alh.a(mh.bf).fieldOf("target").forGetter(etm::d)).apply($$0, etm::new)
-   );
+public interface etm<P extends etl> {
+   etm<etk> a = a("single_pool_element", etk.b);
+   etm<etj> b = a("list_pool_element", etj.a);
+   etm<etf> c = a("feature_pool_element", etf.a);
+   etm<ete> d = a("empty_pool_element", ete.a);
+   etm<eti> e = a("legacy_single_pool_element", eti.a);
 
-   @Override
-   public void a(azx $$0, BiConsumer<alh<etl>, alh<etl>> $$1) {
-      $$1.accept(this.c, this.d);
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public Stream<alh<etl>> a() {
-      return Stream.of(this.d);
-   }
-
-   @Override
-   public MapCodec<etm> b() {
-      return a;
+   static <P extends etl> etm<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.ag, $$0, () -> $$1);
    }
 }

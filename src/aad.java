@@ -1,29 +1,20 @@
-public class aad implements zh<aaa> {
-   public static final yy<vw, aad> a = zh.a(aad::a, aad::new);
-   private final long b;
+public record aad(are b) implements zj<aac> {
+   public static final za<vy, aad> a = zj.a(aad::a, aad::new);
 
-   public aad(long $$0) {
-      this.b = $$0;
+   private aad(vy $$0) {
+      this(new are($$0));
    }
 
-   private aad(vw $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vw $$0) {
-      $$0.b(this.b);
+   private void a(vy $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public zj<aad> a() {
-      return zz.n;
+   public zl<aad> a() {
+      return aab.l;
    }
 
-   public void a(aaa $$0) {
+   public void a(aac $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

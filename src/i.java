@@ -9,7 +9,7 @@ public enum i {
    d(3);
 
    public static final Codec<i> e = Codec.INT.comapFlatMap($$0 -> {
-      return switch (azo.b($$0, 360)) {
+      return switch (azq.b($$0, 360)) {
          case 0 -> DataResult.success(a);
          case 90 -> DataResult.success(b);
          case 180 -> DataResult.success(c);
@@ -32,7 +32,7 @@ public enum i {
 
    @Deprecated
    public static i a(int $$0) {
-      return switch (azo.b($$0, 360)) {
+      return switch (azq.b($$0, 360)) {
          case 0 -> a;
          case 90 -> b;
          case 180 -> c;

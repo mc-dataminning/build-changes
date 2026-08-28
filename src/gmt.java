@@ -1,92 +1,164 @@
-import java.util.IdentityHashMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gmt {
-   private static final gmt.a a = new gmt.a();
-   private static final gmt.a b = new gmt.a();
-   private static final gmt.a c = new gmt.a();
-   private CompletableFuture<hph<czy>> d = CompletableFuture.completedFuture(hph.empty());
-   private CompletableFuture<hph<czy>> e = CompletableFuture.completedFuture(hph.empty());
-   private CompletableFuture<hph<geg>> f = CompletableFuture.completedFuture(hph.empty());
-   private final Map<gmt.a, Runnable> g = new IdentityHashMap<>();
+   private static final Logger a = LogUtils.getLogger();
+   private static final bti b = new bti(ag.h(), "server-list-io");
+   private static final int c = 16;
+   private final frf d;
+   private final List<gms> e = Lists.newArrayList();
+   private final List<gms> f = Lists.newArrayList();
 
-   private void a(gmt.a $$0, Runnable $$1) {
-      $$1.run();
-      this.g.put($$0, $$1);
+   public gmt(frf $$0) {
+      this.d = $$0;
    }
 
    public void a() {
-      for (Runnable $$0 : this.g.values()) {
-         $$0.run();
+      try {
+         this.e.clear();
+         this.f.clear();
+         ua $$0 = un.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         $$0.p("servers").j().forEach($$0x -> {
+            gms $$1x = gms.a($$0x);
+            if ($$0x.b("hidden", false)) {
+               this.f.add($$1x);
+            } else {
+               this.e.add($$1x);
+            }
+         });
+      } catch (Exception var2) {
+         a.error("Couldn't load server list", var2);
       }
    }
 
-   private static Stream<String> a(Stream<czy> $$0, czu.b $$1, dbn $$2) {
-      return $$0.<xa>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> o.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
-   }
+   public void b() {
+      try {
+         ug $$0 = new ug();
 
-   public void a(fqo $$0, djx $$1) {
-      this.a(
-         a,
-         () -> {
-            List<geg> $$2 = $$0.d();
-            jt $$3 = $$1.J_();
-            js<czu> $$4 = $$3.f(mh.K);
-            czu.b $$5 = czu.b.a($$3);
-            bbb $$6 = dgc.a($$1);
-            dbn $$7 = dbn.a.a;
-            CompletableFuture<?> $$8 = this.f;
-            this.f = CompletableFuture.supplyAsync(
-               () -> new hpc<>(
-                     $$3xx -> a($$3xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()), $$5, $$7),
-                     $$2xx -> $$2xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()).map($$1xxxx -> $$4.b($$1xxxx.h())),
-                     $$2
-                  ),
-               ag.h()
-            );
-            $$8.cancel(true);
+         for (gms $$1 : this.e) {
+            ua $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
          }
-      );
+
+         for (gms $$3 : this.f) {
+            ua $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         ua $$5 = new ua();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         un.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ag.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
    }
 
-   public hph<geg> b() {
-      return this.f.join();
+   public gms a(int $$0) {
+      return this.e.get($$0);
    }
 
-   public void a(List<czy> $$0) {
-      this.a(c, () -> {
-         CompletableFuture<?> $$1 = this.e;
-         this.e = CompletableFuture.supplyAsync(() -> new hpd<>($$0xxx -> $$0xxx.j().map(axt::b), $$0), ag.h());
-         $$1.cancel(true);
+   @Nullable
+   public gms a(String $$0) {
+      for (gms $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      for (gms $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public gms b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         gms $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(gms $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(gms $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      gms $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, gms $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(gms $$0, List<gms> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         gms $$3 = $$1.get($$2);
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(gms $$0) {
+      b.a_(() -> {
+         gmt $$1 = new gmt(frf.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
       });
-   }
-
-   public hph<czy> c() {
-      return this.e.join();
-   }
-
-   public void a(jh.a $$0, List<czy> $$1) {
-      this.a(
-         b,
-         () -> {
-            czu.b $$2 = czu.b.a($$0);
-            dbn $$3 = dbn.a.a.c();
-            CompletableFuture<?> $$4 = this.d;
-            this.d = CompletableFuture.supplyAsync(
-               () -> new hpc<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(alh::a).stream(), $$1), ag.h()
-            );
-            $$4.cancel(true);
-         }
-      );
-   }
-
-   public hph<czy> d() {
-      return this.d.join();
-   }
-
-   static class a {
    }
 }

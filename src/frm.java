@@ -1,44 +1,99 @@
-import org.joml.Vector2i;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class frm {
-   private double a;
-   private double b;
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private frm.c b;
+   private int c;
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
+   public void a(frm.b $$0, List<att> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
       }
 
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
+      this.b = new frm.c($$0, $$1.stream().map(att::b).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new frm.c(frm.b.c, ImmutableList.of());
       }
 
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
+      this.b.c = new frm.a($$0);
+   }
+
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
       } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
+         this.b.d = true;
       }
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
+   public void a(p $$0) {
+      q $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+   }
 
-      while ($$1 < 0) {
-         $$1 += $$2;
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
       }
 
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
+      public void a(q $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final frm.b a;
+      private final List<String> b;
+      @Nullable
+      frm.a c;
+      boolean d;
+
+      c(frm.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$1;
+      public void a(q $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
+      }
    }
 }

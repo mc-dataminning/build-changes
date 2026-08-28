@@ -1,44 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class eqz extends eri {
-   public static final MapCodec<eqz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(iv.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eqz::new)
-   );
-   private final List<iv> c;
+public class eqz extends ero {
+   public static final MapCodec<eqz> a = bty.b(0, 256).fieldOf("count").xmap(eqz::new, $$0 -> $$0.c);
+   private final bty c;
 
-   public static eqz a(iv... $$0) {
-      return new eqz(List.of($$0));
-   }
-
-   private eqz(List<iv> $$0) {
+   private eqz(bty $$0) {
       this.c = $$0;
    }
 
-   @Override
-   public Stream<iv> a_(erg $$0, azx $$1, iv $$2) {
-      int $$3 = jy.a($$2.u());
-      int $$4 = jy.a($$2.w());
-      boolean $$5 = false;
-
-      for (iv $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
-         }
-      }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   public static eqz a(bty $$0) {
+      return new eqz($$0);
    }
 
-   private static boolean a(int $$0, int $$1, iv $$2) {
-      return $$0 == jy.a($$2.u()) && $$1 == jy.a($$2.w());
+   public static eqz a(int $$0) {
+      return a(btv.a($$0));
    }
 
    @Override
-   public erj<?> b() {
-      return erj.o;
+   protected int a(azz $$0, iw $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public erl<?> b() {
+      return erl.f;
    }
 }

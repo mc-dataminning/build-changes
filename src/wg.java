@@ -1,31 +1,46 @@
-public interface wg {
-   zi a();
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import java.io.IOException;
+import java.util.List;
+import org.slf4j.Logger;
 
-   vu b();
+public class wg<T extends wi> extends ByteToMessageDecoder implements wl {
+   private static final Logger a = LogUtils.getLogger();
+   private final wk<T> b;
 
-   void a(vv var1);
-
-   default void a(zh $$0, Exception $$1) throws aa {
-      throw zk.a($$1, $$0, this);
+   public wg(wk<T> $$0) {
+      this.b = $$0;
    }
 
-   default vv a(xa $$0, Throwable $$1) {
-      return new vv($$0);
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         zj<? super T> $$4 = this.b.c().decode($$1);
+         zl<? extends zj<? super T>> $$5 = $$4.a();
+         brl.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         if ($$1.readableBytes() > 0) {
+            throw new IOException(
+               "Packet "
+                  + this.b.a().a()
+                  + "/"
+                  + $$5
+                  + " ("
+                  + $$4.getClass().getSimpleName()
+                  + ") was larger than I expected, found "
+                  + $$1.readableBytes()
+                  + " bytes extra whilst reading packet "
+                  + $$5
+            );
+         } else {
+            $$2.add($$4);
+            if (a.isDebugEnabled()) {
+               a.debug(vv.c, " IN: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName(), $$3});
+            }
 
-   boolean c();
-
-   default boolean a(zh<?> $$0) {
-      return this.c();
-   }
-
-   default void a(p $$0) {
-      q $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$0, $$1);
-   }
-
-   default void a(p $$0, q $$1) {
+            wl.a($$0, $$4);
+         }
+      }
    }
 }

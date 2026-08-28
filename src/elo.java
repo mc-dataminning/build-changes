@@ -1,60 +1,109 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public class elo extends ekk<eng> {
-   public elo(Codec<eng> $$0) {
+public class elo extends ekm<enh> {
+   public elo(Codec<enh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<eng> $$0) {
-      dkw $$1 = $$0.b();
-      iv $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+   public boolean a(eko<enh> $$0) {
+      dky $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      if (!$$1.a_($$2).l()) {
          return false;
       } else {
-         eng $$3 = $$0.f();
-         azx $$4 = $$0.d();
-         duf $$5 = duf.b();
-         int $$6 = $$3.f() + $$3.d();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         iv $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dne.rC.m(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            iv $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jb.b)) {
-               $$1.a($$14, dne.rD.m().b(due.d, Boolean.valueOf(true)), 3);
-            }
+         azz $$3 = $$0.d();
+         iw $$4 = $$0.e();
+         enh $$5 = $$0.f();
+         iw.a $$6 = $$4.k();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
          }
 
          return true;
       }
    }
 
-   private boolean a(djy $$0, iv $$1) {
-      ebe $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dua) {
+   private static boolean a(dky $$0, enh $$1, iw $$2) {
+      iw.a $$3 = $$2.k();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(jc.b);
+         ebg $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(ebg $$0, int $$1, int $$2) {
+      if ($$0.l()) {
          return true;
       } else {
-         return !$$2.l() && (!$$2.a(dne.J) || !$$2.y().b()) ? false : jb.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.y().a(axl.a);
+      }
+   }
+
+   private static boolean a(dky $$0, ede $$1, enh $$2, azz $$3, iw.a $$4, iw $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(jc.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            iw $$7 = $$4.e();
+            if ($$0.b_($$7).a(axl.b) || !$$0.a_($$7).e()) {
+               return false;
+            }
+
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(iw $$0, int $$1, dky $$2, enh $$3, azz $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      iw.a $$7 = $$0.k();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(dky $$0, enh $$1, azz $$2, int $$3, int $$4, iw.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<ebg> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(dky $$0, enh $$1, azz $$2, iw $$3, iw.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.v($$4)) {
+            ebg $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jc.a)) {
+               $$0.a($$4, $$8, 2);
+            }
+         }
       }
    }
 }

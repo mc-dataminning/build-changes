@@ -1,7 +1,10 @@
-import javax.annotation.Nullable;
+public class hfz extends hfr {
+   public ckg.b a;
+   public float b;
+   public gjb.a c;
 
-public class hfz extends hfp {
-   public czy a = czy.k;
-   @Nullable
-   public ckg b;
+   public hfz() {
+      this.a = ckg.b.a;
+      this.c = gjb.a.a;
+   }
 }

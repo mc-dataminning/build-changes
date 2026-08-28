@@ -1,5 +1,5 @@
-public class hdx extends hfp {
-   public boolean a;
-   public final bwk b = new bwk();
-   public final bwk c = new bwk();
+public class hdx extends her {
+   public float a;
+   public float b;
+   public float c;
 }

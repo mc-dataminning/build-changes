@@ -1,16 +1,23 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eqp(ehh.c[] a) implements ehh.c {
-   @Nullable
+public class eqp extends eqk {
+   public static final MapCodec<eqp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(btd.b(eqk.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eqp::new)
+   );
+   private final btd<eqk> b;
+
+   public eqp(btd<eqk> $$0) {
+      this.b = $$0;
+   }
+
    @Override
-   public ebe calculate(egw.b $$0) {
-      for (ehh.c $$1 : this.a) {
-         ebe $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+   public int a(azz $$0, eic $$1) {
+      return this.b.b($$0).a($$0, $$1);
+   }
 
-      return null;
+   @Override
+   public eql<?> a() {
+      return eql.f;
    }
 }

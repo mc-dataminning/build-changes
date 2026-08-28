@@ -1,41 +1,91 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
-public class cl extends dk<cl.a> {
+public class cl extends dl<cl.a> {
    @Override
    public Codec<cl.a> a() {
       return cl.a.a;
    }
 
-   public void a(art $$0, czy $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public void a(arv $$0, cry $$1, daa $$2) {
+      int $$3 = 0;
+      int $$4 = 0;
+      int $$5 = 0;
+
+      for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
+         daa $$7 = $$1.a($$6);
+         if ($$7.f()) {
+            $$4++;
+         } else {
+            $$5++;
+            if ($$7.M() >= $$7.k()) {
+               $$3++;
+            }
+         }
+      }
+
+      this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static record a(Optional<bj> b, Optional<cm> c, cw.d d, cw.d e) implements dk.a {
+   private void a(arv $$0, cry $$1, daa $$2, int $$3, int $$4, int $$5) {
+      this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
+   }
+
+   public static record a(Optional<bj> b, cl.a.a c, List<cn> d) implements dl.a {
       public static final Codec<cl.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  by.b.optionalFieldOf("player").forGetter(cl.a::a),
-                  cm.a.optionalFieldOf("item").forGetter(cl.a::b),
-                  cw.d.d.optionalFieldOf("durability", cw.d.c).forGetter(cl.a::c),
-                  cw.d.d.optionalFieldOf("delta", cw.d.c).forGetter(cl.a::d)
+                  bz.b.optionalFieldOf("player").forGetter(cl.a::a),
+                  cl.a.a.a.optionalFieldOf("slots", cl.a.a.b).forGetter(cl.a::b),
+                  cn.a.listOf().optionalFieldOf("items", List.of()).forGetter(cl.a::c)
                )
                .apply($$0, cl.a::new)
       );
 
-      public static ar<cl.a> a(Optional<cm> $$0, cw.d $$1) {
-         return a(Optional.empty(), $$0, $$1);
+      public static ar<cl.a> a(cn.a... $$0) {
+         return a(Stream.of($$0).map(cn.a::b).toArray(cn[]::new));
       }
 
-      public static ar<cl.a> a(Optional<bj> $$0, Optional<cm> $$1, cw.d $$2) {
-         return aq.u.a(new cl.a($$0, $$1, $$2, cw.d.c));
+      public static ar<cl.a> a(cn... $$0) {
+         return aq.f.a(new cl.a(Optional.empty(), cl.a.a.b, List.of($$0)));
       }
 
-      public boolean a(czy $$0, int $$1) {
-         if (this.c.isPresent() && !this.c.get().a($$0)) {
+      public static ar<cl.a> a(djy... $$0) {
+         cn[] $$1 = new cn[$$0.length];
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            $$1[$$2] = new cn(Optional.of(jk.a($$0[$$2].h().e())), cx.d.c, bo.a);
+         }
+
+         return a($$1);
+      }
+
+      public boolean a(cry $$0, daa $$1, int $$2, int $$3, int $$4) {
+         if (!this.c.a($$2, $$3, $$4)) {
             return false;
+         } else if (this.d.isEmpty()) {
+            return true;
+         } else if (this.d.size() != 1) {
+            List<cn> $$5 = new ObjectArrayList(this.d);
+            int $$6 = $$0.b();
+
+            for (int $$7 = 0; $$7 < $$6; $$7++) {
+               if ($$5.isEmpty()) {
+                  return true;
+               }
+
+               daa $$8 = $$0.a($$7);
+               if (!$$8.f()) {
+                  $$5.removeIf($$1x -> $$1x.a($$8));
+               }
+            }
+
+            return $$5.isEmpty();
          } else {
-            return !this.d.d($$0.p() - $$1) ? false : this.e.d($$0.o() - $$1);
+            return !$$1.f() && this.d.get(0).a($$1);
          }
       }
 
@@ -44,16 +94,44 @@ public class cl extends dk<cl.a> {
          return this.b;
       }
 
-      public Optional<cm> b() {
+      public cl.a.a b() {
          return this.c;
       }
 
-      public cw.d c() {
+      public List<cn> c() {
          return this.d;
       }
 
-      public cw.d d() {
-         return this.e;
+      public static record a(cx.d c, cx.d d, cx.d e) {
+         public static final Codec<cl.a.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     cx.d.d.optionalFieldOf("occupied", cx.d.c).forGetter(cl.a.a::a),
+                     cx.d.d.optionalFieldOf("full", cx.d.c).forGetter(cl.a.a::b),
+                     cx.d.d.optionalFieldOf("empty", cx.d.c).forGetter(cl.a.a::c)
+                  )
+                  .apply($$0, cl.a.a::new)
+         );
+         public static final cl.a.a b = new cl.a.a(cx.d.c, cx.d.c, cx.d.c);
+
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (!this.d.d($$0)) {
+               return false;
+            } else {
+               return !this.e.d($$1) ? false : this.c.d($$2);
+            }
+         }
+
+         public cx.d a() {
+            return this.c;
+         }
+
+         public cx.d b() {
+            return this.d;
+         }
+
+         public cx.d c() {
+            return this.e;
+         }
       }
    }
 }

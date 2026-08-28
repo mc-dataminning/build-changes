@@ -1,110 +1,180 @@
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class cji extends cku implements cjo {
+   private static final akn<Boolean> a = akr.a(cji.class, akp.k);
+   private static final boolean b = false;
 
-public abstract class cji extends cjg {
-   @Nullable
-   private cji a;
-   private int b = 1;
-
-   public cji(bxc<? extends cji> $$0, djx $$1) {
+   public cji(bxe<? extends cji> $$0, djz $$1) {
       super($$0, $$1);
+      this.bC = new cji.a(this);
+   }
+
+   public static bzb.a j() {
+      return bxy.E().a(bzc.s, 3.0);
+   }
+
+   @Override
+   public boolean Z() {
+      return super.Z() || this.m();
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return !this.m() && !this.h_();
+   }
+
+   @Override
+   public int fX() {
+      return 8;
+   }
+
+   @Override
+   protected void a(akr.a $$0) {
+      super.a($$0);
+      $$0.a(a, false);
+   }
+
+   @Override
+   public boolean m() {
+      return this.al.a(a);
+   }
+
+   @Override
+   public void w(boolean $$0) {
+      this.al.a(a, $$0);
+   }
+
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("FromBucket", this.m());
+   }
+
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      this.w($$0.b("FromBucket", false));
    }
 
    @Override
    protected void D() {
       super.D();
-      this.bF.a(5, new cem(this));
+      this.bF.a(0, new cfl(this, 1.25));
+      this.bF.a(2, new cdz<>(this, crz.class, 8.0F, 1.6, 1.4, bxc.f::test));
+      this.bF.a(4, new cji.b(this));
    }
 
    @Override
-   public int fX() {
-      return this.x();
-   }
-
-   public int x() {
-      return super.fX();
+   protected chg b(djz $$0) {
+      return new chi(this, $$0);
    }
 
    @Override
+   public void a_(ffs $$0) {
+      if (this.bi()) {
+         this.a(0.01F, $$0);
+         this.a(bya.a, this.dy());
+         this.i(this.dy().c(0.9));
+         if (this.f() == null) {
+            this.i(this.dy().b(0.0, -0.005, 0.0));
+         }
+      } else {
+         super.a_($$0);
+      }
+   }
+
+   @Override
+   public void k_() {
+      if (!this.bi() && this.aH() && this.Q) {
+         this.i(this.dy().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ae.i() * 2.0F - 1.0F) * 0.05F)));
+         this.d(false);
+         this.ar = true;
+         this.b(this.t());
+      }
+
+      super.k_();
+   }
+
+   @Override
+   protected but b(crz $$0, bus $$1) {
+      return cjo.a($$0, $$1, this).orElse(super.b($$0, $$1));
+   }
+
+   @Override
+   public void a_(daa $$0) {
+      cjo.a(this, $$0);
+   }
+
+   @Override
+   public void d(ua $$0) {
+      cjo.a(this, $$0);
+   }
+
+   @Override
+   public awq n() {
+      return awr.dl;
+   }
+
    protected boolean q() {
-      return !this.gu();
+      return true;
    }
 
-   public boolean gu() {
-      return this.a != null && this.a.bJ();
-   }
+   protected abstract awq t();
 
-   public cji a(cji $$0) {
-      this.a = $$0;
-      $$0.gA();
-      return $$0;
-   }
-
-   public void gv() {
-      this.a.gB();
-      this.a = null;
-   }
-
-   private void gA() {
-      this.b++;
-   }
-
-   private void gB() {
-      this.b--;
-   }
-
-   public boolean gw() {
-      return this.gx() && this.b < this.x();
+   @Override
+   protected awq aU() {
+      return awr.jz;
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.gx() && this.dV().A.a(200) == 1) {
-         List<? extends cjg> $$0 = this.dV().a((Class<? extends cjg>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.b = 1;
+   protected void b(iw $$0, ebg $$1) {
+   }
+
+   static class a extends cdv {
+      private final cji l;
+
+      a(cji $$0) {
+         super($$0);
+         this.l = $$0;
+      }
+
+      @Override
+      public void a() {
+         if (this.l.a(axl.a)) {
+            this.l.i(this.l.dy().b(0.0, 0.005, 0.0));
+         }
+
+         if (this.k == cdv.a.b && !this.l.O().k()) {
+            float $$0 = (float)(this.h * this.l.h(bzc.v));
+            this.l.B(azq.h(0.125F, this.l.fo(), $$0));
+            double $$1 = this.e - this.l.dA();
+            double $$2 = this.f - this.l.dC();
+            double $$3 = this.g - this.l.dG();
+            if ($$2 != 0.0) {
+               double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+               this.l.i(this.l.dy().b(0.0, (double)this.l.fo() * ($$2 / $$4) * 0.1, 0.0));
+            }
+
+            if ($$1 != 0.0 || $$3 != 0.0) {
+               float $$5 = (float)(azq.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
+               this.l.w(this.b(this.l.dL(), $$5, 90.0F));
+               this.l.aV = this.l.dL();
+            }
+         } else {
+            this.l.B(0.0F);
          }
       }
    }
 
-   public boolean gx() {
-      return this.b > 1;
-   }
+   static class b extends cfq {
+      private final cji i;
 
-   public boolean gy() {
-      return this.g(this.a) <= 121.0;
-   }
-
-   public void gz() {
-      if (this.gu()) {
-         this.O().a(this.a, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cji> $$0) {
-      $$0.limit((long)(this.x() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public bym a(dko $$0, bup $$1, bxb $$2, @Nullable bym $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cji.a(this);
-      } else {
-         this.a(((cji.a)$$3).a);
+      public b(cji $$0) {
+         super($$0, 1.0, 40);
+         this.i = $$0;
       }
 
-      return $$3;
-   }
-
-   public static class a implements bym {
-      public final cji a;
-
-      public a(cji $$0) {
-         this.a = $$0;
+      @Override
+      public boolean b() {
+         return this.i.q() && super.b();
       }
    }
 }

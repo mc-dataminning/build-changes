@@ -1,234 +1,135 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectFunction;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.concurrent.Executor;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.slf4j.Logger;
 
 public class hnm {
-   private static final Logger a = LogUtils.getLogger();
-   private final Object2ObjectMap<ali, hnm.a> b = new Object2ObjectOpenHashMap();
-   private final hnm.a c;
-   private final Object2ObjectFunction<ali, hnm.a> d;
-   private final hnr.a e;
-   private final Queue<hnm.a> f = new ArrayDeque<>();
+   public static final hnj a = new hnj(hlb.c, alk.b("block/fire_0"));
+   public static final hnj b = new hnj(hlb.c, alk.b("block/fire_1"));
+   public static final hnj c = new hnj(hlb.c, alk.b("block/lava_flow"));
+   public static final hnj d = new hnj(hlb.c, alk.b("block/water_flow"));
+   public static final hnj e = new hnj(hlb.c, alk.b("block/water_overlay"));
+   public static final hnj f = new hnj(gsw.c, alk.b("entity/banner_base"));
+   public static final hnj g = new hnj(gsw.d, alk.b("entity/shield_base"));
+   public static final hnj h = new hnj(gsw.d, alk.b("entity/shield_base_nopattern"));
+   public static final int i = 10;
+   public static final List<alk> j = IntStream.range(0, 10).mapToObj($$0 -> alk.b("block/destroy_stage_" + $$0)).collect(Collectors.toList());
+   public static final List<alk> k = j.stream().map($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).collect(Collectors.toList());
+   public static final List<gsn> l = k.stream().map(gsn::t).collect(Collectors.toList());
+   static final Logger m = LogUtils.getLogger();
+   private final glc n;
+   private final Map<ebg, gtp.c> o;
+   private final Map<alk, hhn> p;
+   final Map<alk, hnu> q;
+   final hnu r;
 
-   public hnm(Map<ali, hnv> $$0, hnv $$1) {
-      this.c = new hnm.a(hni.a, $$1, true);
-      this.b.put(hni.a, this.c);
-      this.d = $$1x -> {
-         ali $$2 = (ali)$$1x;
-         hnv $$3 = $$0.get($$2);
-         if ($$3 == null) {
-            a.warn("Missing block model: {}", $$2);
-            return this.c;
-         } else {
-            return this.b($$2, $$3);
+   public hnm(glc $$0, Map<ebg, gtp.c> $$1, Map<alk, hhn> $$2, Map<alk, hnu> $$3, hnu $$4) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
+      this.r = $$4;
+   }
+
+   public CompletableFuture<hnm.a> a(hnv $$0, Executor $$1) {
+      hnm.b $$2 = hnm.b.a(this.r, $$0);
+      hnm.c $$3 = new hnm.c($$0);
+      CompletableFuture<Map<ebg, gtp>> $$4 = btk.a(this.o, ($$1x, $$2x) -> {
+         try {
+            return $$2x.a($$1x, $$3);
+         } catch (Exception var4x) {
+            m.warn("Unable to bake model: '{}': {}", $$1x, var4x);
+            return null;
          }
-      };
-      this.e = this::a;
-   }
-
-   private static boolean a(hnv $$0) {
-      return $$0.f() == null;
-   }
-
-   private hnm.a a(ali $$0) {
-      return (hnm.a)this.b.computeIfAbsent($$0, this.d);
-   }
-
-   private hnm.a b(ali $$0, hnv $$1) {
-      boolean $$2 = a($$1);
-      hnm.a $$3 = new hnm.a($$0, $$1, $$2);
-      if (!$$2) {
-         this.f.add($$3);
-      }
-
-      return $$3;
-   }
-
-   public void a(hnr $$0) {
-      $$0.a(this.e);
-   }
-
-   public void a(ali $$0, hnv $$1) {
-      if (!a($$1)) {
-         a.warn("Trying to add non-root special model {}, ignoring", $$0);
-      } else {
-         hnm.a $$2 = (hnm.a)this.b.put($$0, this.b($$0, $$1));
-         if ($$2 != null) {
-            a.warn("Duplicate special model {}", $$0);
+      }, $$1);
+      CompletableFuture<Map<alk, hhr>> $$5 = btk.a(this.p, ($$2x, $$3x) -> {
+         try {
+            return $$3x.a().a(new hhr.a($$3, this.n, $$2.b, $$3x.c()));
+         } catch (Exception var6x) {
+            m.warn("Unable to bake item model: '{}'", $$2x, var6x);
+            return null;
          }
-      }
-   }
-
-   public hns a() {
-      return this.c;
-   }
-
-   public Map<ali, hns> b() {
-      List<hnm.a> $$0 = new ArrayList<>();
-      this.a($$0);
-      b($$0);
-      Builder<ali, hns> $$1 = ImmutableMap.builder();
-      this.b.forEach(($$1x, $$2) -> {
-         if ($$2.l) {
-            $$1.put($$1x, $$2);
-         } else {
-            a.warn("Model {} ignored due to cyclic dependency", $$1x);
+      }, $$1);
+      Map<alk, hhn.a> $$6 = new HashMap<>(this.p.size());
+      this.p.forEach(($$1x, $$2x) -> {
+         hhn.a $$3x = $$2x.b();
+         if (!$$3x.equals(hhn.a.a)) {
+            $$6.put($$1x, $$3x);
          }
       });
-      return $$1.build();
+      return $$4.thenCombine($$5, ($$2x, $$3x) -> new hnm.a($$2, $$2x, $$3x, $$6));
    }
 
-   private void a(List<hnm.a> $$0) {
-      hnm.a $$1;
-      while (($$1 = this.f.poll()) != null) {
-         ali $$2 = Objects.requireNonNull($$1.n.f());
-         hnm.a $$3 = this.a($$2);
-         $$1.m = $$3;
-         if ($$3.l) {
-            $$1.l = true;
-         } else {
-            $$0.add($$1);
-         }
-      }
+   public static record a(hnm.b a, Map<ebg, gtp> b, Map<alk, hhr> c, Map<alk, hhn.a> d) {
    }
 
-   private static void b(List<hnm.a> $$0) {
-      boolean $$1 = true;
+   public static record b(gtp a, hhr b) {
 
-      while ($$1) {
-         $$1 = false;
-         Iterator<hnm.a> $$2 = $$0.iterator();
-
-         while ($$2.hasNext()) {
-            hnm.a $$3 = $$2.next();
-            if (Objects.requireNonNull($$3.m).l) {
-               $$3.l = true;
-               $$2.remove();
-               $$1 = true;
+      public static hnm.b a(hnu $$0, final hnv $$1) {
+         hnl $$2 = new hnl() {
+            @Override
+            public hnu a(alk $$0) {
+               throw new IllegalStateException("Missing model can't have dependencies, but asked for " + $$0);
             }
-         }
+
+            @Override
+            public <T> T a(hnl.a<T> $$0) {
+               return $$0.compute(this);
+            }
+
+            @Override
+            public hnv a() {
+               return $$1;
+            }
+         };
+         gtx $$3 = $$0.g();
+         boolean $$4 = $$0.c();
+         boolean $$5 = $$0.d().a();
+         gtt $$6 = $$0.e();
+         hns $$7 = $$0.a($$3, $$2, hnd.a);
+         hlc $$8 = $$0.a($$3, $$2);
+         gtp $$9 = new gtw(new gtu($$7, $$4, $$8));
+         hhr $$10 = new hhv($$7.a(), new hhw($$5, $$8, $$6));
+         return new hnm.b($$9, $$10);
       }
    }
 
-   static class a implements hns {
-      private static final hnm.b<Boolean> c = a(0);
-      private static final hnm.b<hnv.a> d = a(1);
-      private static final hnm.b<hnu> e = a(2);
-      private static final hnm.b<gtr> f = a(3);
-      private static final hnm.b<gtv> g = a(4);
-      private static final hnm.b<hla> h = a(5);
-      private static final hnm.b<hnq> i = a(6);
-      private static final int j = 7;
-      private final ali k;
-      boolean l;
-      @Nullable
-      hnm.a m;
-      final hnv n;
-      private final AtomicReferenceArray<Object> o = new AtomicReferenceArray<>(7);
-      private final Map<hnp, hnq> p = new ConcurrentHashMap<>();
+   class c implements hnl {
+      private final hnv b;
+      private final Map<hnl.a<Object>, Object> c = new ConcurrentHashMap<>();
+      private final Function<hnl.a<Object>, Object> d = $$0x -> $$0x.compute(this);
 
-      private static <T> hnm.b<T> a(int $$0) {
-         Objects.checkIndex($$0, 7);
-         return new hnm.b<>($$0);
-      }
-
-      a(ali $$0, hnv $$1, boolean $$2) {
-         this.k = $$0;
-         this.n = $$1;
-         this.l = $$2;
+      c(final hnv $$0) {
+         this.b = $$0;
       }
 
       @Override
       public hnv a() {
-         return this.n;
-      }
-
-      @Nullable
-      @Override
-      public hns b() {
-         return this.m;
+         return this.b;
       }
 
       @Override
-      public String debugName() {
-         return this.k.toString();
-      }
-
-      @Nullable
-      private <T> T a(hnm.b<T> $$0) {
-         return (T)this.o.get($$0.a);
-      }
-
-      private <T> T a(hnm.b<T> $$0, T $$1) {
-         T $$2 = (T)this.o.compareAndExchange($$0.a, null, $$1);
-         return $$2 == null ? $$1 : $$2;
-      }
-
-      private <T> T a(hnm.b<T> $$0, Function<hns, T> $$1) {
-         T $$2 = this.a($$0);
-         return $$2 != null ? $$2 : this.a($$0, $$1.apply(this));
+      public hnu a(alk $$0) {
+         hnu $$1 = hnm.this.q.get($$0);
+         if ($$1 == null) {
+            hnm.m.warn("Requested a model that was not discovered previously: {}", $$0);
+            return hnm.this.r;
+         } else {
+            return $$1;
+         }
       }
 
       @Override
-      public boolean c() {
-         return this.a(c, hns::b);
+      public <T> T a(hnl.a<T> $$0) {
+         return (T)this.c.computeIfAbsent($$0, this.d);
       }
-
-      @Override
-      public hnv.a d() {
-         return this.a(d, hns::c);
-      }
-
-      @Override
-      public gtr e() {
-         return this.a(f, hns::e);
-      }
-
-      @Override
-      public hnu f() {
-         return this.a(e, hns::d);
-      }
-
-      @Override
-      public gtv g() {
-         return this.a(g, hns::a);
-      }
-
-      @Override
-      public hla a(gtv $$0, hnj $$1) {
-         hla $$2 = this.a(h);
-         return $$2 != null ? $$2 : this.a(h, hns.a($$0, $$1, this));
-      }
-
-      private hnq b(gtv $$0, hnj $$1, hnp $$2) {
-         hnq $$3 = this.a(i);
-         return $$3 != null ? $$3 : this.a(i, this.f().bake($$0, $$1, $$2, this));
-      }
-
-      @Override
-      public hnq a(gtv $$0, hnj $$1, hnp $$2) {
-         return $$2 == hnb.a ? this.b($$0, $$1, $$2) : this.p.computeIfAbsent($$2, $$2x -> {
-            hnu $$3 = this.f();
-            return $$3.bake($$0, $$1, $$2x, this);
-         });
-      }
-   }
-
-   static record b<T>(int a) {
    }
 }

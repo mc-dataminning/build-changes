@@ -1,22 +1,53 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class hqv {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+public final class hqv extends hqt {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   public hqv(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   @Override
+   public void a(hqn $$0) {
+      if (frf.Q().C()) {
+         super.a($$0);
+      }
    }
 
-   public void a(hql $$0) {
-      if (this.b != null) {
-         $$0.send(hqm.d, $$0x -> {
-            $$0x.a(hqo.x, (int)this.b.toMillis());
-            $$0x.a(hqo.y, this.a);
-         });
-      }
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
+   }
+
+   @Override
+   public void f() {
+      this.b.add((long)frf.Q().o());
+      this.h();
+      this.c.add(frf.Q().p());
+   }
+
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
+   }
+
+   @Override
+   public void b(hqn $$0) {
+      $$0.send(hqo.c, $$0x -> {
+         $$0x.a(hqq.r, new LongArrayList(this.b));
+         $$0x.a(hqq.s, new LongArrayList(this.c));
+         $$0x.a(hqq.t, new LongArrayList(this.d));
+         $$0x.a(hqq.u, this.e());
+         $$0x.a(hqq.v, frf.Q().n.aH());
+         $$0x.a(hqq.w, (int)a);
+      });
+      this.g();
+   }
+
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

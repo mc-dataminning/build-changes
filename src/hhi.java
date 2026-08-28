@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hhi {
+public class hhi extends hhh implements hha {
+   @Nullable
+   public crm c;
+
+   @Nullable
+   @Override
+   public crm a() {
+      return this.c;
+   }
 }

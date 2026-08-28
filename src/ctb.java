@@ -1,78 +1,47 @@
-import java.util.Optional;
+public abstract class ctb extends ctc implements csr {
+   private static final akn<daa> a = akr.a(ctb.class, akp.h);
 
-public class ctb extends csz {
-   private static final bww a = bww.c(0.0F, 0.0F);
-
-   public ctb(bxc<? extends ctb> $$0, djx $$1) {
+   public ctb(bxe<? extends ctb> $$0, djz $$1) {
       super($$0, $$1);
    }
 
-   public ctb(djx $$0, bxu $$1, czy $$2) {
-      super(bxc.M, $$1, $$0, $$2);
+   public ctb(bxe<? extends ctb> $$0, double $$1, double $$2, double $$3, djz $$4, daa $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a($$5);
    }
 
-   public ctb(djx $$0, double $$1, double $$2, double $$3, czy $$4) {
-      super(bxc.M, $$1, $$2, $$3, $$0, $$4);
+   public ctb(bxe<? extends ctb> $$0, bxw $$1, djz $$2, daa $$3) {
+      this($$0, $$1.dA(), $$1.dE() - 0.1F, $$1.dG(), $$2, $$3);
+      this.c($$1);
+   }
+
+   public void a(daa $$0) {
+      this.ar().a(a, $$0.c(1));
+   }
+
+   protected abstract czw g();
+
+   @Override
+   public daa f() {
+      return this.ar().a(a);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV()
-               .a(
-                  new lu(ly.U, this.f()),
-                  this.dA(),
-                  this.dC(),
-                  this.dG(),
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08
-               );
-         }
-      }
+   protected void a(akr.a $$0) {
+      $$0.a(a, new daa(this.g()));
    }
 
    @Override
-   protected void a(ffn $$0) {
+   public void b(ua $$0) {
+      super.b($$0);
+      ali<va> $$1 = this.dX().a(uo.a);
+      $$0.a("Item", daa.b, $$1, this.f());
+   }
+
+   @Override
+   public void a(ua $$0) {
       super.a($$0);
-      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
-   }
-
-   @Override
-   protected void a(ffo $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         if (this.ae.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ae.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cjq $$3 = bxc.A.a(this.dV(), bxb.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
-                  Optional.ofNullable(this.f().a(kk.aJ)).flatMap($$0x -> $$0x.a(this.dX())).ifPresent($$3::j);
-                  if (!$$3.a(a)) {
-                     break;
-                  }
-
-                  this.dV().b($$3);
-               }
-            }
-         }
-
-         this.dV().a(this, (byte)3);
-         this.aq();
-      }
-   }
-
-   @Override
-   protected czu g() {
-      return dac.rH;
+      ali<va> $$1 = this.dX().a(uo.a);
+      this.a($$0.<daa>a("Item", daa.b, $$1).orElseGet(() -> new daa(this.g())));
    }
 }

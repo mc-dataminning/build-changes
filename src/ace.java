@@ -1,31 +1,44 @@
-public class ace implements zh<abw> {
-   public static final yy<wl, ace> a = yy.a(iv.b, ace::e, yw.a(dnc.k), ace::b, ace::new);
-   private final iv b;
-   private final ebe c;
+import java.util.function.BiFunction;
 
-   public ace(iv $$0, ebe $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ace implements zj<aby> {
+   public static final za<wn, ace> a = za.a(iw.b, ace::b, yy.a(mi.e), ace::e, yy.t, ace::f, ace::new);
+   private final iw b;
+   private final dyg<?> c;
+   private final ua d;
+
+   public static ace a(dye $$0, BiFunction<dye, ju, ua> $$1) {
+      ju $$2 = $$0.i().J_();
+      return new ace($$0.aB_(), $$0.p(), $$1.apply($$0, $$2));
    }
 
-   public ace(djb $$0, iv $$1) {
-      this($$1, $$0.a_($$1));
+   public static ace a(dye $$0) {
+      return a($$0, dye::a);
+   }
+
+   private ace(iw $$0, dyg<?> $$1, ua $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zj<ace> a() {
-      return agp.j;
+   public zl<ace> a() {
+      return agr.h;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public ebe b() {
+   public iw b() {
+      return this.b;
+   }
+
+   public dyg<?> e() {
       return this.c;
    }
 
-   public iv e() {
-      return this.b;
+   public ua f() {
+      return this.d;
    }
 }

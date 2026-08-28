@@ -1,24 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class chl extends chv<cpv> {
+public class chl extends cie<bwl> {
    @Override
-   public Set<cgw<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cgw.C)));
+   public Set<cgy<?>> a() {
+      return ImmutableSet.of(cgy.L, cgy.h);
    }
 
-   protected void a(ars $$0, cpv $$1) {
-      super.a($$0, $$1);
-      $$1.ec()
-         .c(cgw.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bxa.e)
-         .filter($$2 -> cic.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.ec().a(cgw.C, $$1x), () -> $$1.ec().b(cgw.C));
+   protected void a(aru $$0, bwl $$1) {
+      $$1.ec().c(cgy.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(bwl $$0, cha $$1) {
+      Optional<bwl> $$2 = $$1.a($$1x -> $$1x.an() == $$0.an() && !$$1x.n_()).map(bwl.class::cast);
+      $$0.ec().a(cgy.L, $$2);
    }
 }

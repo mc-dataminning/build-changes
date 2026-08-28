@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record kr(cz c) implements kt {
-   public static final Codec<kr> a = cz.a.xmap(kr::new, kr::a);
+public record kr(Optional<bg<daa, cn>> e) implements dm<dcs> {
+   public static final Codec<kr> a = RecordCodecBuilder.create($$0 -> $$0.group(bg.a(cn.a).optionalFieldOf("items").forGetter(kr::b)).apply($$0, kr::new));
 
    @Override
-   public boolean a(kf $$0) {
-      return this.c.a($$0);
+   public kk<dcs> a() {
+      return kl.ap;
    }
 
-   public static kr a(cz $$0) {
-      return new kr($$0);
+   public boolean a(dcs $$0) {
+      return !this.e.isPresent() || this.e.get().a($$0.d());
    }
 
-   public cz a() {
-      return this.c;
+   public Optional<bg<daa, cn>> b() {
+      return this.e;
    }
 }

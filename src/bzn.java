@@ -1,133 +1,101 @@
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bzn {
-   private bzn() {
+public abstract class bzn<E extends bxw> implements bzo<E> {
+   public static final int a = 60;
+   protected final Map<cgy<?>, cgz> b;
+   private bzn.a c = bzn.a.a;
+   private long d;
+   private final int e;
+   private final int f;
+
+   public bzn(Map<cgy<?>, cgz> $$0) {
+      this($$0, 60);
    }
 
-   public static void a(bxu $$0, bxu $$1, float $$2, int $$3) {
-      c($$0, $$1);
-      b($$0, $$1, $$2, $$3);
+   public bzn(Map<cgy<?>, cgz> $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public static boolean a(byu<?> $$0, bxu $$1) {
-      Optional<cgy> $$2 = $$0.c(cgw.h);
-      return $$2.isPresent() && $$2.get().a($$1);
+   public bzn(Map<cgy<?>, cgz> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
-   public static boolean a(byu<?> $$0, cgw<? extends bxu> $$1, bxc<?> $$2) {
-      return a($$0, $$1, $$1x -> $$1x.an() == $$2);
+   @Override
+   public bzn.a a() {
+      return this.c;
    }
 
-   private static boolean a(byu<?> $$0, cgw<? extends bxu> $$1, Predicate<bxu> $$2) {
-      return $$0.c($$1).filter($$2).filter(bxu::bJ).filter($$1x -> a($$0, $$1x)).isPresent();
-   }
-
-   private static void c(bxu $$0, bxu $$1) {
-      a($$0, $$1);
-      a($$1, $$0);
-   }
-
-   public static void a(bxu $$0, bxu $$1) {
-      $$0.ec().a(cgw.o, new bzw($$1, true));
-   }
-
-   private static void b(bxu $$0, bxu $$1, float $$2, int $$3) {
-      a($$0, (bwt)$$1, $$2, $$3);
-      a($$1, (bwt)$$0, $$2, $$3);
-   }
-
-   public static void a(bxu $$0, bwt $$1, float $$2, int $$3) {
-      a($$0, new bzw($$1, true), $$2, $$3);
-   }
-
-   public static void a(bxu $$0, iv $$1, float $$2, int $$3) {
-      a($$0, new bzo($$1), $$2, $$3);
-   }
-
-   public static void a(bxu $$0, caz $$1, float $$2, int $$3) {
-      cgz $$4 = new cgz($$1, $$2, $$3);
-      $$0.ec().a(cgw.o, $$1);
-      $$0.ec().a(cgw.n, $$4);
-   }
-
-   public static void a(bxu $$0, czy $$1, ffq $$2) {
-      ffq $$3 = new ffq(0.3F, 0.3F, 0.3F);
-      a($$0, $$1, $$2, $$3, 0.3F);
-   }
-
-   public static void a(bxu $$0, czy $$1, ffq $$2, ffq $$3, float $$4) {
-      double $$5 = $$0.dE() - (double)$$4;
-      coc $$6 = new coc($$0.dV(), $$0.dA(), $$5, $$0.dG(), $$1);
-      $$6.b($$0);
-      ffq $$7 = $$2.d($$0.dt());
-      $$7 = $$7.d().d($$3.d, $$3.e, $$3.f);
-      $$6.i($$7);
-      $$6.j();
-      $$0.dV().b($$6);
-   }
-
-   public static jy a(ars $$0, jy $$1, int $$2) {
-      int $$3 = $$0.b($$1);
-      return jy.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
-   }
-
-   public static boolean a(bxw $$0, bxu $$1, int $$2) {
-      if ($$0.fb().h() instanceof dat $$3 && $$0.a($$3)) {
-         int $$4 = $$3.b() - $$2;
-         return $$0.a($$1, (double)$$4);
-      }
-
-      return $$0.h($$1);
-   }
-
-   public static boolean a(bxu $$0, bxu $$1, double $$2) {
-      Optional<bxu> $$3 = $$0.ec().c(cgw.p);
-      if ($$3.isEmpty()) {
-         return false;
+   @Override
+   public final boolean e(aru $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bzn.a.b;
+         int $$3 = this.e + $$0.G_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
       } else {
-         double $$4 = $$0.g($$3.get().dt());
-         double $$5 = $$0.g($$1.dt());
-         return $$5 > $$4 + $$2 * $$2;
+         return false;
       }
    }
 
-   public static boolean b(bxu $$0, bxu $$1) {
-      byu<?> $$2 = $$0.ec();
-      return !$$2.a(cgw.h) ? false : $$2.c(cgw.h).get().a($$1);
+   protected void d(aru $$0, E $$1, long $$2) {
    }
 
-   public static bxu a(bxu $$0, Optional<bxu> $$1, bxu $$2) {
-      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   @Override
+   public final void f(aru $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
    }
 
-   public static bxu a(bxu $$0, bxu $$1, bxu $$2) {
-      ffq $$3 = $$1.dt();
-      ffq $$4 = $$2.dt();
-      return $$0.g($$3) < $$0.g($$4) ? $$1 : $$2;
+   protected void c(aru $$0, E $$1, long $$2) {
    }
 
-   public static Optional<bxu> a(bxu $$0, cgw<UUID> $$1) {
-      Optional<UUID> $$2 = $$0.ec().c($$1);
-      return $$2.<bwt>map($$1x -> ((ars)$$0.dV()).b($$1x)).map($$0x -> $$0x instanceof bxu $$1x ? $$1x : null);
+   @Override
+   public final void g(aru $$0, E $$1, long $$2) {
+      this.c = bzn.a.a;
+      this.b($$0, $$1, $$2);
    }
 
-   @Nullable
-   public static ffq a(byc $$0, int $$1, int $$2) {
-      ffq $$3 = cin.a($$0, $$1, $$2);
-      int $$4 = 0;
+   protected void b(aru $$0, E $$1, long $$2) {
+   }
 
-      while ($$3 != null && !$$0.dV().a_(iv.a((jp)$$3)).a(eyd.b) && $$4++ < 10) {
-         $$3 = cin.a($$0, $$1, $$2);
+   protected boolean a(aru $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(aru $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<cgy<?>, cgz> $$1 : this.b.entrySet()) {
+         cgy<?> $$2 = $$1.getKey();
+         cgz $$3 = $$1.getValue();
+         if (!$$0.ec().a($$2, $$3)) {
+            return false;
+         }
       }
 
-      return $$3;
+      return true;
    }
 
-   public static boolean a(bxu $$0) {
-      return $$0.ec().a(cgw.s);
+   public static enum a {
+      a,
+      b;
    }
 }

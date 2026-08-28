@@ -1,115 +1,103 @@
 import javax.annotation.Nullable;
 
-public class dzn extends dyc implements egg.b<egn.b>, egn {
-   private static final int a = 0;
-   private egn.a b;
-   private final egn.b c;
-   private final egn.d d;
-   private int e = 0;
+public abstract class dzn extends dxx implements buz {
+   @Nullable
+   protected alj<fao> l;
+   protected long m = 0L;
 
-   protected dzn(dye<?> $$0, iv $$1, ebe $$2) {
+   protected dzn(dyg<?> $$0, iw $$1, ebg $$2) {
       super($$0, $$1, $$2);
-      this.d = this.a();
-      this.b = new egn.a();
-      this.c = new egn.b(this);
    }
 
-   public dzn(iv $$0, ebe $$1) {
-      this(dye.J, $$0, $$1);
-   }
-
-   public egn.d a() {
-      return new dzn.a(this.aB_());
+   @Nullable
+   @Override
+   public alj<fao> ax_() {
+      return this.l;
    }
 
    @Override
-   protected void a(tz $$0, jh.a $$1) {
+   public void a(@Nullable alj<fao> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long aA_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public boolean c() {
+      this.d_(null);
+      return super.c();
+   }
+
+   @Override
+   public daa a(int $$0) {
+      this.d_(null);
+      return super.a($$0);
+   }
+
+   @Override
+   public daa a(int $$0, int $$1) {
+      this.d_(null);
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public daa b(int $$0) {
+      this.d_(null);
+      return super.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, daa $$1) {
+      this.d_(null);
       super.a($$0, $$1);
-      this.e = $$0.b("last_vibration_frequency", 0);
-      alg<uy> $$2 = $$1.a(un.a);
-      this.b = $$0.<egn.a>a("listener", egn.a.a, $$2).orElseGet(egn.a::new);
    }
 
    @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.e);
-      alg<uy> $$2 = $$1.a(un.a);
-      $$0.a("listener", egn.a.a, $$2, this.b);
+   public boolean d(crz $$0) {
+      return super.d($$0) && (this.l == null || !$$0.Z_());
+   }
+
+   @Nullable
+   @Override
+   public cvs createMenu(int $$0, cry $$1, crz $$2) {
+      if (this.d($$2)) {
+         this.d_($$1.h);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public egn.a x() {
-      return this.b;
+   protected void a(kg $$0) {
+      super.a($$0);
+      ddb $$1 = $$0.a(kl.at);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
+      }
    }
 
    @Override
-   public egn.d gu() {
-      return this.d;
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(kl.at, new ddb(this.l, this.m));
+      }
    }
 
-   public int d() {
-      return this.e;
-   }
-
-   public void a(int $$0) {
-      this.e = $$0;
-   }
-
-   public egn.b f() {
-      return this.c;
-   }
-
-   protected class a implements egn.d {
-      public static final int b = 8;
-      protected final iv c;
-      private final egi a;
-
-      public a(final iv $$1) {
-         this.c = $$1;
-         this.a = new ega($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public egi b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(ars $$0, iv $$1, jf<ege> $$2, @Nullable ege.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(ege.f) && !$$2.a(ege.i) ? dud.q(dzn.this.m()) : false;
-      }
-
-      @Override
-      public void a(ars $$0, iv $$1, jf<ege> $$2, @Nullable bwt $$3, @Nullable bwt $$4, float $$5) {
-         ebe $$6 = dzn.this.m();
-         if (dud.q($$6)) {
-            dzn.this.a(egn.a_($$2));
-            int $$7 = egn.a_($$5, this.a());
-            if ($$6.b() instanceof dud $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dzn.this.d());
-            }
-         }
-      }
-
-      @Override
-      public void e() {
-         dzn.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

@@ -1,27 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
 
-public class hcm extends hcw<hfj, giq> {
-   private static final Map<bwp.a, ali> a = ImmutableMap.of(
-      bwp.a.b,
-      ali.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bwp.a.c,
-      ali.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bwp.a.d,
-      ali.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+public class hcm extends hcy<hfh, gio> {
+   private static final alk a = alk.b("invisible");
+   private static final Map<clz, alk> b = Maps.newEnumMap(
+      Map.of(
+         clz.a,
+         a,
+         clz.b,
+         alk.b("textures/entity/horse/horse_markings_white.png"),
+         clz.c,
+         alk.b("textures/entity/horse/horse_markings_whitefield.png"),
+         clz.d,
+         alk.b("textures/entity/horse/horse_markings_whitedots.png"),
+         clz.e,
+         alk.b("textures/entity/horse/horse_markings_blackdots.png")
+      )
    );
 
-   public hcm(haf<hfj, giq> $$0) {
+   public hcm(hah<hfh, gio> $$0) {
       super($$0);
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hfj $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         bwp.a $$6 = $$3.c;
-         if ($$6 != bwp.a.a) {
-            ali $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
+   public void a(flq $$0, gsc $$1, int $$2, hfh $$3, float $$4, float $$5) {
+      alk $$6 = b.get($$3.h);
+      if ($$6 != a && !$$3.z) {
+         flt $$7 = $$1.getBuffer(gsn.j($$6));
+         this.d().a($$0, $$7, $$2, gzl.a($$3, 0.0F));
       }
    }
 }

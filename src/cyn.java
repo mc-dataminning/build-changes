@@ -1,277 +1,112 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.math.Fraction;
+public class cyn extends czw {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class cyn extends czu {
-   public static final int a = 4;
-   public static final int b = 3;
-   public static final int c = 12;
-   public static final int d = 11;
-   private static final int o = axy.a(1.0F, 1.0F, 0.33F, 0.33F);
-   private static final int p = axy.a(1.0F, 0.44F, 0.53F, 1.0F);
-   private static final int q = 10;
-   private static final int r = 2;
-   private static final int s = 200;
-
-   public cyn(czu.a $$0) {
+   public cyn(czw.a $$0) {
       super($$0);
    }
 
-   public static float c(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q, dcb.a);
-      return $$1.f().floatValue();
-   }
-
    @Override
-   public boolean a(czy $$0, cxn $$1, cwa $$2, crx $$3) {
-      dcb $$4 = $$0.a(kk.Q);
-      if ($$4 == null) {
-         return false;
-      } else {
-         czy $$5 = $$1.g();
-         dcb.a $$6 = new dcb.a($$4);
-         if ($$2 == cwa.a && !$$5.f()) {
-            if ($$6.a($$1, $$3) > 0) {
-               b($$3);
-            } else {
-               c($$3);
-            }
-
-            $$0.b(kk.Q, $$6.d());
-            this.a($$3);
-            return true;
-         } else if ($$2 == cwa.b && $$5.f()) {
-            czy $$7 = $$6.b();
-            if ($$7 != null) {
-               czy $$8 = $$1.d($$7);
-               if ($$8.M() > 0) {
-                  $$6.a($$8);
-               } else {
-                  a((bwt)$$3);
-               }
-            }
-
-            $$0.b(kk.Q, $$6.d());
-            this.a($$3);
-            return true;
-         } else {
-            return false;
-         }
+   public but a(ddv $$0) {
+      crz $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).d() == ffq.a.b) {
+         $$1.c($$0.p());
       }
+
+      return but.c;
    }
 
    @Override
-   public boolean a(czy $$0, czy $$1, cxn $$2, cwa $$3, crx $$4, byl $$5) {
-      if ($$3 == cwa.a && $$1.f()) {
-         a($$0, -1);
-         return false;
-      } else {
-         dcb $$6 = $$0.a(kk.Q);
-         if ($$6 == null) {
-            return false;
-         } else {
-            dcb.a $$7 = new dcb.a($$6);
-            if ($$3 == cwa.a && !$$1.f()) {
-               if ($$2.b($$4) && $$7.a($$1) > 0) {
-                  b($$4);
-               } else {
-                  c($$4);
-               }
-
-               $$0.b(kk.Q, $$7.d());
-               this.a($$4);
-               return true;
-            } else if ($$3 == cwa.b && $$1.f()) {
-               if ($$2.b($$4)) {
-                  czy $$8 = $$7.b();
-                  if ($$8 != null) {
-                     a((bwt)$$4);
-                     $$5.a($$8);
-                  }
-               }
-
-               $$0.b(kk.Q, $$7.d());
-               this.a($$4);
-               return true;
-            } else {
-               a($$0, -1);
-               return false;
-            }
-         }
-      }
+   public dac b(daa $$0) {
+      return dac.j;
    }
 
    @Override
-   public bur a(djx $$0, crx $$1, buq $$2) {
-      $$1.c($$2);
-      return bur.a;
-   }
-
-   private void a(djx $$0, crx $$1, czy $$2) {
-      if (this.b($$2, $$1)) {
-         a($$0, $$1);
-         $$1.b(awz.c.b(this));
-      }
-   }
-
-   @Override
-   public boolean d(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q, dcb.a);
-      return $$1.f().compareTo(Fraction.ZERO) > 0;
-   }
-
-   @Override
-   public int e(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q, dcb.a);
-      return Math.min(1 + azo.a($$1.f(), 12), 13);
-   }
-
-   @Override
-   public int f(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q, dcb.a);
-      return $$1.f().compareTo(Fraction.ONE) >= 0 ? o : p;
-   }
-
-   public static void a(czy $$0, int $$1) {
-      dcb $$2 = $$0.a(kk.Q);
-      if ($$2 != null) {
-         dcb.a $$3 = new dcb.a($$2);
-         $$3.a($$1);
-         $$0.b(kk.Q, $$3.d());
-      }
-   }
-
-   public static boolean g(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q);
-      return $$1 != null && $$1.h() != -1;
-   }
-
-   public static int h(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q, dcb.a);
-      return $$1.h();
-   }
-
-   public static czy i(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q);
-      return $$1 != null && $$1.h() != -1 ? $$1.a($$1.h()) : czy.k;
-   }
-
-   public static int j(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q, dcb.a);
-      return $$1.a();
-   }
-
-   private boolean b(czy $$0, crx $$1) {
-      dcb $$2 = $$0.a(kk.Q);
-      if ($$2 != null && !$$2.g()) {
-         Optional<czy> $$3 = a($$0, $$1, $$2);
-         if ($$3.isPresent()) {
-            $$1.a($$3.get(), true);
-            return true;
-         } else {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private static Optional<czy> a(czy $$0, crx $$1, dcb $$2) {
-      dcb.a $$3 = new dcb.a($$2);
-      czy $$4 = $$3.b();
-      if ($$4 != null) {
-         a((bwt)$$1);
-         $$0.b(kk.Q, $$3.d());
-         return Optional.of($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   @Override
-   public void a(djx $$0, bxu $$1, czy $$2, int $$3) {
-      if ($$1 instanceof crx $$4) {
-         int $$5 = this.a($$2, $$1);
-         boolean $$6 = $$3 == $$5;
-         if ($$6 || $$3 < $$5 - 10 && $$3 % 2 == 0) {
-            this.a($$0, $$4, $$2);
-         }
-      }
-   }
-
-   @Override
-   public int a(czy $$0, bxu $$1) {
+   public int a(daa $$0, bxw $$1) {
       return 200;
    }
 
    @Override
-   public daa b(czy $$0) {
-      return daa.k;
-   }
+   public void a(djz $$0, bxw $$1, daa $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof crz $$4) {
+         ffq $$6 = this.a($$4);
+         if ($$6 instanceof ffo $$7 && $$6.d() == ffq.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               iw $$11 = $$7.b();
+               ebg $$12 = $$0.a_($$11);
+               bxn $$13 = $$1.fA() == bus.a ? $$4.fy() : $$4.fy().e();
+               if ($$12.D() && $$12.o() != dtr.a) {
+                  this.a($$0, $$7, $$12, $$1.h(0.0F), $$13);
+               }
 
-   @Override
-   public Optional<cxx> k(czy $$0) {
-      ddc $$1 = $$0.a(kk.q, ddc.c);
-      return !$$1.a(kk.Q) ? Optional.empty() : Optional.ofNullable($$0.a(kk.Q)).map(cxw::new);
-   }
+               awq $$15;
+               if ($$12.b() instanceof dnk $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = awr.cS;
+               }
 
-   @Override
-   public void a(coc $$0) {
-      dcb $$1 = $$0.f().a(kk.Q);
-      if ($$1 != null) {
-         $$0.f().b(kk.Q, dcb.a);
-         dab.a($$0, $$1.d());
+               $$0.a($$4, $$11, $$15, aws.e);
+               if ($$0 instanceof aru $$17 && $$0.c_($$11) instanceof dyj $$18) {
+                  boolean $$19 = $$18.a($$0.ae(), $$17, $$4, $$7.c(), $$2);
+                  if ($$19) {
+                     bxf $$20 = $$2.equals($$4.a(bxf.b)) ? bxf.b : bxf.a;
+                     $$2.a(1, $$4, $$20);
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$1.fE();
+      } else {
+         $$1.fE();
       }
    }
 
-   public static List<cyn> a() {
-      return Stream.of(dac.rM, dac.rN, dac.rO, dac.rP, dac.rQ, dac.rR, dac.rS, dac.rT, dac.rU, dac.rV, dac.rW, dac.sc, dac.rZ, dac.sa, dac.sb, dac.rY, dac.rX)
-         .map($$0 -> (cyn)$$0)
-         .toList();
+   private ffq a(crz $$0) {
+      return csw.a($$0, bxc.h, $$0.gL());
    }
 
-   public static czu a(cyw $$0) {
-      return switch ($$0) {
-         case a -> dac.rN;
-         case b -> dac.rO;
-         case c -> dac.rP;
-         case d -> dac.rQ;
-         case e -> dac.rR;
-         case f -> dac.rS;
-         case g -> dac.rT;
-         case h -> dac.rU;
-         case i -> dac.rV;
-         case j -> dac.rW;
-         case l -> dac.rY;
-         case m -> dac.rZ;
-         case n -> dac.sa;
-         case o -> dac.sb;
-         case p -> dac.sc;
-         case k -> dac.rX;
-      };
+   private void a(djz $$0, ffo $$1, ebg $$2, ffs $$3, bxn $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bxn.b ? 1 : -1;
+      int $$7 = $$0.G_().b(7, 12);
+      lr $$8 = new lr(lz.b, $$2);
+      jc $$9 = $$1.c();
+      cyn.a $$10 = cyn.a.a($$3, $$9);
+      ffs $$11 = $$1.g();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.d - (double)($$9 == jc.e ? 1.0E-6F : 0.0F),
+            $$11.e,
+            $$11.f - (double)($$9 == jc.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.G_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.G_().j()
+         );
+      }
    }
 
-   private static void a(bwt $$0) {
-      $$0.a(awp.ds, 0.8F, 0.8F + $$0.dV().G_().i() * 0.4F);
-   }
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
 
-   private static void b(bwt $$0) {
-      $$0.a(awp.dq, 0.8F, 0.8F + $$0.dV().G_().i() * 0.4F);
-   }
+      public static cyn.a a(ffs $$0, jc $$1) {
+         double $$2 = 0.0;
 
-   private static void c(bwt $$0) {
-      $$0.a(awp.dr, 1.0F, 1.0F);
-   }
-
-   private static void a(djx $$0, bwt $$1) {
-      $$0.a(null, $$1.dv(), awp.dp, awq.h, 0.8F, 0.8F + $$1.dV().G_().i() * 0.4F);
-   }
-
-   private void a(crx $$0) {
-      cvq $$1 = $$0.bR;
-      if ($$1 != null) {
-         $$1.a($$0.gj());
+         return switch ($$1) {
+            case a, b -> new cyn.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cyn.a(1.0, 0.0, -0.1);
+            case d -> new cyn.a(-1.0, 0.0, 0.1);
+            case e -> new cyn.a(-0.1, 0.0, -1.0);
+            case f -> new cyn.a(0.1, 0.0, 1.0);
+         };
       }
    }
 }

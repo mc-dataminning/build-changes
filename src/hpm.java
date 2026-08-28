@@ -1,23 +1,37 @@
-public class hpm {
-   private final String a;
-   private final String b;
-   private long c;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-   public hpm(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ag.c();
+public class hpm extends avu {
+   @Nullable
+   private ua h;
+
+   public hpm(hpn $$0, jn<alt> $$1, faa $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public String a() {
-      return this.a;
+   @Override
+   protected void b(arv $$0) {
+      if (this.b().a($$0.gi())) {
+         this.h = $$0.h(new ua());
+      }
+
+      super.b($$0);
    }
 
-   public String b() {
-      return this.b;
+   @Override
+   public xc a(SocketAddress $$0, GameProfile $$1) {
+      return (xc)(this.b().a($$1) && this.a($$1.getName()) != null ? xc.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   public void c() {
-      this.c = ag.c();
+   public hpn b() {
+      return (hpn)super.c();
+   }
+
+   @Nullable
+   @Override
+   public ua r() {
+      return this.h;
    }
 }

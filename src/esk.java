@@ -1,26 +1,33 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface esk<S extends esb> {
-   esk<etv> a = a("buried_treasure", etv.d);
-   esk<etx> b = a("desert_pyramid", etx.d);
-   esk<etz> c = a("end_city", etz.d);
-   esk<eui> d = a("fortress", eui.e);
-   esk<eub> e = a("igloo", eub.d);
-   esk<euc> f = a("jigsaw", euc.i);
-   esk<eue> g = a("jungle_temple", eue.d);
-   esk<eug> h = a("mineshaft", eug.d);
-   esk<euk> i = a("nether_fossil", euk.d);
-   esk<eum> j = a("ocean_monument", eum.d);
-   esk<euo> k = a("ocean_ruin", euo.d);
-   esk<euq> l = a("ruined_portal", euq.d);
-   esk<eus> m = a("shipwreck", eus.d);
-   esk<euu> n = a("stronghold", euu.d);
-   esk<euw> o = a("swamp_hut", euw.d);
-   esk<euy> p = a("woodland_mansion", euy.d);
+public record esk(esk.a b, btd<dlo.c> c) {
+   public static final Codec<esk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(esk.a.c.fieldOf("bounding_box").forGetter(esk::a), btd.a(dlo.c.a).fieldOf("spawns").forGetter(esk::b)).apply($$0, esk::new)
+   );
 
-   MapCodec<S> codec();
+   public esk.a a() {
+      return this.b;
+   }
 
-   private static <S extends esb> esk<S> a(String $$0, MapCodec<S> $$1) {
-      return js.a(mg.R, $$0, () -> $$1);
+   public btd<dlo.c> b() {
+      return this.c;
+   }
+
+   public static enum a implements bao {
+      a("piece"),
+      b("full");
+
+      public static final Codec<esk.a> c = bao.a(esk.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

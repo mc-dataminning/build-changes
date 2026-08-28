@@ -1,180 +1,132 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
 public class gta {
-   private static final int a = 10;
-   private static final int b = 21;
-   private static final ali c = ali.b("textures/environment/rain.png");
-   private static final ali d = ali.b("textures/environment/snow.png");
-   private static final int e = 32;
-   private static final int f = 16;
+   protected final grx a;
+   protected final djz b;
+   protected int c;
+   protected int d;
+   protected int e;
    private int g;
-   private final float[] h = new float[1024];
-   private final float[] i = new float[1024];
+   private jz h;
+   public gvs.b[] f;
 
-   public gta() {
-      for (int $$0 = 0; $$0 < 32; $$0++) {
-         for (int $$1 = 0; $$1 < 32; $$1++) {
-            float $$2 = (float)($$1 - 16);
-            float $$3 = (float)($$0 - 16);
-            float $$4 = azo.f($$2, $$3);
-            this.h[$$0 * 32 + $$1] = -$$3 / $$4;
-            this.i[$$0 * 32 + $$1] = $$2 / $$4;
-         }
-      }
+   public gta(gvs $$0, djz $$1, int $$2, grx $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
+      this.h = jz.a(this.g + 1, 0, this.g + 1);
    }
 
-   public void a(djx $$0, gsa $$1, int $$2, float $$3, ffq $$4) {
-      float $$5 = $$0.d($$3);
-      if (!($$5 <= 0.0F)) {
-         int $$6 = frd.N() ? 10 : 5;
-         List<gta.a> $$7 = new ArrayList<>();
-         List<gta.a> $$8 = new ArrayList<>();
-         this.a($$0, $$2, $$3, $$4, $$6, $$7, $$8);
-         if (!$$7.isEmpty() || !$$8.isEmpty()) {
-            this.a($$1, $$4, $$6, $$5, $$7, $$8);
-         }
-      }
-   }
-
-   private void a(djx $$0, int $$1, float $$2, ffq $$3, int $$4, List<gta.a> $$5, List<gta.a> $$6) {
-      int $$7 = azo.a($$3.d);
-      int $$8 = azo.a($$3.e);
-      int $$9 = azo.a($$3.f);
-      iv.a $$10 = new iv.a();
-      azx $$11 = azx.a();
-
-      for (int $$12 = $$9 - $$4; $$12 <= $$9 + $$4; $$12++) {
-         for (int $$13 = $$7 - $$4; $$13 <= $$7 + $$4; $$13++) {
-            int $$14 = $$0.a(ehd.a.e, $$13, $$12);
-            int $$15 = Math.max($$8 - $$4, $$14);
-            int $$16 = Math.max($$8 + $$4, $$14);
-            if ($$16 - $$15 != 0) {
-               dla.c $$17 = this.a($$0, $$10.d($$13, $$8, $$12));
-               if ($$17 != dla.c.a) {
-                  int $$18 = $$13 * $$13 * 3121 + $$13 * 45238971 ^ $$12 * $$12 * 418711 + $$12 * 13761;
-                  $$11.b((long)$$18);
-                  int $$19 = Math.max($$8, $$14);
-                  int $$20 = grv.a($$0, $$10.d($$13, $$19, $$12));
-                  if ($$17 == dla.c.b) {
-                     $$5.add(this.a($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  } else if ($$17 == dla.c.c) {
-                     $$6.add(this.b($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void a(gsa $$0, ffq $$1, int $$2, float $$3, List<gta.a> $$4, List<gta.a> $$5) {
-      if (!$$4.isEmpty()) {
-         gsl $$6 = gsl.f(c, frd.O());
-         this.a($$0.getBuffer($$6), $$4, $$1, 1.0F, $$2, $$3);
-      }
-
-      if (!$$5.isEmpty()) {
-         gsl $$7 = gsl.f(d, frd.O());
-         this.a($$0.getBuffer($$7), $$5, $$1, 0.8F, $$2, $$3);
-      }
-   }
-
-   private gta.a a(azx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      int $$8 = $$1 & 131071;
-      int $$9 = $$2 * $$2 * 3121 + $$2 * 45238971 + $$5 * $$5 * 418711 + $$5 * 13761 & 0xFF;
-      float $$10 = 3.0F + $$0.i();
-      float $$11 = -((float)($$8 + $$9) + $$7) / 32.0F * $$10;
-      float $$12 = $$11 % 32.0F;
-      return new gta.a($$2, $$5, $$3, $$4, 0.0F, $$12, $$6);
-   }
-
-   private gta.a b(azx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      float $$8 = (float)$$1 + $$7;
-      float $$9 = (float)($$0.j() + (double)($$8 * 0.01F * (float)$$0.k()));
-      float $$10 = (float)($$0.j() + (double)($$8 * (float)$$0.k() * 0.001F));
-      float $$11 = -((float)($$1 & 511) + $$7) / 512.0F;
-      int $$12 = grx.a((grx.a($$6) * 3 + 15) / 4, (grx.b($$6) * 3 + 15) / 4);
-      return new gta.a($$2, $$5, $$3, $$4, $$9, $$11 + $$10, $$12);
-   }
-
-   private void a(flr $$0, List<gta.a> $$1, ffq $$2, float $$3, int $$4, float $$5) {
-      for (gta.a $$6 : $$1) {
-         float $$7 = (float)((double)$$6.a + 0.5 - $$2.d);
-         float $$8 = (float)((double)$$6.b + 0.5 - $$2.f);
-         float $$9 = (float)azo.e((double)$$7, (double)$$8);
-         float $$10 = azo.h($$9 / (float)($$4 * $$4), $$3, 0.5F) * $$5;
-         int $$11 = axy.a($$10);
-         int $$12 = ($$6.b - azo.a($$2.f) + 16) * 32 + $$6.a - azo.a($$2.d) + 16;
-         float $$13 = this.h[$$12] / 2.0F;
-         float $$14 = this.i[$$12] / 2.0F;
-         float $$15 = $$7 - $$13;
-         float $$16 = $$7 + $$13;
-         float $$17 = (float)((double)$$6.d - $$2.e);
-         float $$18 = (float)((double)$$6.c - $$2.e);
-         float $$19 = $$8 - $$14;
-         float $$20 = $$8 + $$14;
-         float $$21 = $$6.e + 0.0F;
-         float $$22 = $$6.e + 1.0F;
-         float $$23 = (float)$$6.c * 0.25F + $$6.f;
-         float $$24 = (float)$$6.d * 0.25F + $$6.f;
-         $$0.a($$15, $$17, $$19).a($$21, $$23).a($$11).c($$6.g);
-         $$0.a($$16, $$17, $$20).a($$22, $$23).a($$11).c($$6.g);
-         $$0.a($$16, $$18, $$20).a($$22, $$24).a($$11).c($$6.g);
-         $$0.a($$15, $$18, $$19).a($$21, $$24).a($$11).c($$6.g);
-      }
-   }
-
-   public void a(gmb $$0, fql $$1, int $$2, ark $$3) {
-      float $$4 = $$0.d(1.0F) / (frd.N() ? 1.0F : 2.0F);
-      if (!($$4 <= 0.0F)) {
-         azx $$5 = azx.a((long)$$2 * 312987231L);
-         iv $$6 = iv.a((jp)$$1.b());
-         iv $$7 = null;
-         int $$8 = (int)(100.0F * $$4 * $$4) / ($$3 == ark.b ? 2 : 1);
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$5.a(21) - 10;
-            int $$11 = $$5.a(21) - 10;
-            iv $$12 = $$0.a(ehd.a.e, $$6.b($$10, 0, $$11));
-            if ($$12.v() > $$0.K_() && $$12.v() <= $$6.v() + 10 && $$12.v() >= $$6.v() - 10 && this.a($$0, $$12) == dla.c.b) {
-               $$7 = $$12.e();
-               if ($$3 == ark.c) {
-                  break;
-               }
-
-               double $$13 = $$5.j();
-               double $$14 = $$5.j();
-               ebe $$15 = $$0.a_($$7);
-               exo $$16 = $$0.b_($$7);
-               fgk $$17 = $$15.g($$0, $$7);
-               double $$18 = $$17.b(jb.a.b, $$13, $$14);
-               double $$19 = (double)$$16.a($$0, $$7);
-               double $$20 = Math.max($$18, $$19);
-               lw $$21 = !$$16.a(axj.b) && !$$15.a(dne.lp) && !dns.h($$15) ? ly.ag : ly.ah;
-               $$0.a($$21, (double)$$7.u() + $$13, (double)$$7.v() + $$20, (double)$$7.w() + $$14, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if ($$7 != null && $$5.a(3) < this.g++) {
-            this.g = 0;
-            if ($$7.v() > $$6.v() + 1 && $$0.a(ehd.a.e, $$6).v() > azo.d((float)$$6.v())) {
-               $$0.a($$7, awp.Di, awq.d, 0.1F, 0.5F, false);
-            } else {
-               $$0.a($$7, awp.Dh, awq.d, 0.2F, 1.0F, false);
-            }
-         }
-      }
-   }
-
-   private dla.c a(djx $$0, iv $$1) {
-      if (!$$0.S().b(jy.a($$1.u()), jy.a($$1.w()))) {
-         return dla.c.a;
+   protected void a(gvs $$0) {
+      if (!frf.Q().bx()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
       } else {
-         dla $$2 = $$0.u($$1).a();
-         return $$2.a($$1, $$0.P());
+         int $$1 = this.d * this.c * this.e;
+         this.f = new gvs.b[$$1];
+
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, jz.b($$2, $$3 + this.b.aq(), $$4));
+               }
+            }
+         }
       }
    }
 
-   static record a(int a, int b, int c, int d, float e, float f, int g) {
+   public void a() {
+      for (gvs.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ap();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public dkb c() {
+      return this.b;
+   }
+
+   public void a(jz $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = $$0.a() - this.g;
+         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
+
+         for (int $$4 = 0; $$4 < this.e; $$4++) {
+            int $$5 = $$0.c() - this.g;
+            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
+
+            for (int $$7 = 0; $$7 < this.c; $$7++) {
+               int $$8 = this.b.aq() + $$7;
+               gvs.b $$9 = this.f[this.a($$1, $$7, $$4)];
+               long $$10 = $$9.g();
+               if ($$10 != jz.b($$3, $$8, $$6)) {
+                  $$9.a(jz.b($$3, $$8, $$6));
+               }
+            }
+         }
+      }
+
+      this.h = $$0;
+      this.a.w().a();
+   }
+
+   public jz d() {
+      return this.h;
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      gvs.b $$4 = this.b($$0, $$1, $$2);
+      if ($$4 != null) {
+         $$4.a($$3);
+      }
+   }
+
+   @Nullable
+   protected gvs.b a(iw $$0) {
+      return this.a(jz.c($$0));
+   }
+
+   @Nullable
+   protected gvs.b a(long $$0) {
+      int $$1 = jz.b($$0);
+      int $$2 = jz.c($$0);
+      int $$3 = jz.d($$0);
+      return this.b($$1, $$2, $$3);
+   }
+
+   @Nullable
+   private gvs.b b(int $$0, int $$1, int $$2) {
+      if (!this.c($$0, $$1, $$2)) {
+         return null;
+      } else {
+         int $$3 = $$1 - this.b.aq();
+         int $$4 = Math.floorMod($$0, this.d);
+         int $$5 = Math.floorMod($$2, this.e);
+         return this.f[this.a($$4, $$3, $$5)];
+      }
+   }
+
+   private boolean c(int $$0, int $$1, int $$2) {
+      if ($$1 >= this.b.aq() && $$1 <= this.b.ar()) {
+         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
+      } else {
+         return false;
+      }
    }
 }

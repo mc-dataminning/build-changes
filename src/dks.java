@@ -1,22 +1,50 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface dks {
-   void a(bxc<?> var1, azx var2);
+public class dks extends djt {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<jk<dne>> d;
 
-   static void a(dcg $$0, Consumer<xa> $$1, String $$2) {
-      xa $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.accept($$3);
+   public dks(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jk<dne>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   @Override
+   public Optional<Float> a(djs $$0, djd $$1, iw $$2, ebg $$3, exq $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
       } else {
-         $$1.accept(wz.a);
-         $$1.accept(xa.c("block.minecraft.spawner.desc1").a(o.h));
-         $$1.accept(wz.a().b(xa.c("block.minecraft.spawner.desc2").a(o.j)));
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   @Nullable
-   static xa a(dcg $$0, String $$1) {
-      return $$0.e().m($$1).flatMap($$0x -> $$0x.m("entity")).flatMap($$0x -> $$0x.a("id", bxc.a)).map($$0x -> xa.c($$0x.g()).a(o.h)).orElse(null);
+   @Override
+   public boolean a(djs $$0, djd $$1, iw $$2, ebg $$3, float $$4) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(djs $$0, bwv $$1) {
+      return this.b;
+   }
+
+   @Override
+   public float a(bwv $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof crz $$1 && $$1.gk().b) {
+            var10000 = true;
+            break label17;
+         }
+
+         var10000 = false;
+      }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

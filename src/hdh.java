@@ -1,71 +1,66 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+public abstract class hdh<M extends gji> extends hcy<hgd, M> {
+   private final giy a;
+   private final alk b;
+   private final hdh.a c;
 
-public class hdh<S extends hfp & hgy, M extends gia<S> & gkm> extends hcw<S, M> {
-   private static final Int2ObjectMap<ali> a = ag.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, ali.b("stone"));
-      $$0.put(2, ali.b("iron"));
-      $$0.put(3, ali.b("gold"));
-      $$0.put(4, ali.b("emerald"));
-      $$0.put(5, ali.b("diamond"));
-   });
-   private final Object2ObjectMap<alh<cro>, hmp.a> b = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<alh<crm>, hmp.a> c = new Object2ObjectOpenHashMap();
-   private final avf d;
-   private final String e;
-
-   public hdh(haf<S, M> $$0, avf $$1, String $$2) {
+   public hdh(gzl<?, hgd, M> $$0, giy $$1, alk $$2, hdh.a $$3) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         crk $$6 = $$3.a();
-         if ($$6 != null) {
-            jf<cro> $$7 = $$6.a();
-            jf<crm> $$8 = $$6.b();
-            hmp.a $$9 = this.a(this.b, "type", $$7);
-            hmp.a $$10 = this.a(this.c, "profession", $$8);
-            M $$11 = this.d();
-            $$11.a($$10 == hmp.a.a || $$10 == hmp.a.b && $$9 != hmp.a.c);
-            ali $$12 = this.a("type", $$7);
-            b($$11, $$12, $$0, $$1, $$2, $$3, -1);
-            $$11.a(true);
-            if (!$$8.a(crm.b) && !$$3.aj) {
-               ali $$13 = this.a("profession", $$8);
-               b($$11, $$13, $$0, $$1, $$2, $$3, -1);
-               if (!$$8.a(crm.m)) {
-                  ali $$14 = this.a("profession_level", (ali)a.get(azo.a($$6.c(), 1, a.size())));
-                  b($$11, $$14, $$0, $$1, $$2, $$3, -1);
+   protected abstract int a(hgd var1);
+
+   private void a(flq $$0, gsc $$1, int $$2, float $$3, float $$4, float $$5) {
+      float $$6 = azq.c($$3 * $$3 + $$5 * $$5);
+      float $$7 = (float)(Math.atan2((double)$$3, (double)$$5) * 180.0F / (float)Math.PI);
+      float $$8 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      $$0.a(a.d.rotationDegrees($$7 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$8));
+      this.a.a($$0, $$1.getBuffer(this.a.a(this.b)), $$2, hks.d);
+   }
+
+   public void a(flq $$0, gsc $$1, int $$2, hgd $$3, float $$4, float $$5) {
+      int $$6 = this.a($$3);
+      if ($$6 > 0) {
+         azz $$7 = azz.a((long)$$3.aG);
+
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$0.a();
+            glg $$9 = this.d().a($$7);
+            glg.a $$10 = $$9.a($$7);
+            $$9.a($$0);
+            float $$11 = $$7.i();
+            float $$12 = $$7.i();
+            float $$13 = $$7.i();
+            if (this.c == hdh.a.b) {
+               int $$14 = $$7.a(3);
+               switch ($$14) {
+                  case 0:
+                     $$11 = a($$11);
+                     break;
+                  case 1:
+                     $$12 = a($$12);
+                     break;
+                  default:
+                     $$13 = a($$13);
                }
             }
+
+            $$0.a(azq.h($$11, $$10.b, $$10.e) / 16.0F, azq.h($$12, $$10.c, $$10.f) / 16.0F, azq.h($$13, $$10.d, $$10.g) / 16.0F);
+            this.a($$0, $$1, $$2, -($$11 * 2.0F - 1.0F), -($$12 * 2.0F - 1.0F), -($$13 * 2.0F - 1.0F));
+            $$0.b();
          }
       }
    }
 
-   private ali a(String $$0, ali $$1) {
-      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
+   private static float a(float $$0) {
+      return $$0 > 0.5F ? 1.0F : 0.5F;
    }
 
-   private ali a(String $$0, jf<?> $$1) {
-      return $$1.e().map($$1x -> this.a($$0, $$1x.a())).orElse(hkp.c());
-   }
-
-   public <K> hmp.a a(Object2ObjectMap<alh<K>, hmp.a> $$0, String $$1, jf<K> $$2) {
-      alh<K> $$3 = $$2.e().orElse(null);
-      return $$3 == null ? hmp.a.a : (hmp.a)$$0.computeIfAbsent($$3, $$2x -> this.d.getResource(this.a($$1, $$3.a())).flatMap($$0xx -> {
-            try {
-               return $$0xx.f().a(hmp.b).map(hmp::a);
-            } catch (IOException var2x) {
-               return Optional.empty();
-            }
-         }).orElse(hmp.a.a));
+   public static enum a {
+      a,
+      b;
    }
 }

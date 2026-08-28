@@ -1,8 +1,8 @@
-public class fmk extends fml {
-   private static final xa a = xa.c("mco.upload.cancelled");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public xa a() {
-      return a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fmk {
 }

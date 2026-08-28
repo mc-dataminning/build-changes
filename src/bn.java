@@ -5,23 +5,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bn(List<dt<bvk>> b, Optional<by> c, Optional<by> d, Optional<Boolean> e) {
+public record bn(List<du<bvm>> b, Optional<bz> c, Optional<bz> d, Optional<Boolean> e) {
    public static final Codec<bn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dt.a(mh.aN).listOf().optionalFieldOf("tags", List.of()).forGetter(bn::a),
-               by.a.optionalFieldOf("direct_entity").forGetter(bn::b),
-               by.a.optionalFieldOf("source_entity").forGetter(bn::c),
+               du.a(mi.aN).listOf().optionalFieldOf("tags", List.of()).forGetter(bn::a),
+               bz.a.optionalFieldOf("direct_entity").forGetter(bn::b),
+               bz.a.optionalFieldOf("source_entity").forGetter(bn::c),
                Codec.BOOL.optionalFieldOf("is_direct").forGetter(bn::d)
             )
             .apply($$0, bn::new)
    );
 
-   public boolean a(art $$0, bvi $$1) {
+   public boolean a(arv $$0, bvk $$1) {
       return this.a($$0.y(), $$0.dt(), $$1);
    }
 
-   public boolean a(ars $$0, ffq $$1, bvi $$2) {
-      for (dt<bvk> $$3 : this.b) {
+   public boolean a(aru $$0, ffs $$1, bvk $$2) {
+      for (du<bvm> $$3 : this.b) {
          if (!$$3.a($$2.l())) {
             return false;
          }
@@ -34,15 +34,15 @@ public record bn(List<dt<bvk>> b, Optional<by> c, Optional<by> d, Optional<Boole
       }
    }
 
-   public List<dt<bvk>> a() {
+   public List<du<bvm>> a() {
       return this.b;
    }
 
-   public Optional<by> b() {
+   public Optional<bz> b() {
       return this.c;
    }
 
-   public Optional<by> c() {
+   public Optional<bz> c() {
       return this.d;
    }
 
@@ -51,26 +51,26 @@ public record bn(List<dt<bvk>> b, Optional<by> c, Optional<by> d, Optional<Boole
    }
 
    public static class a {
-      private final Builder<dt<bvk>> a = ImmutableList.builder();
-      private Optional<by> b = Optional.empty();
-      private Optional<by> c = Optional.empty();
+      private final Builder<du<bvm>> a = ImmutableList.builder();
+      private Optional<bz> b = Optional.empty();
+      private Optional<bz> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
 
       public static bn.a a() {
          return new bn.a();
       }
 
-      public bn.a a(dt<bvk> $$0) {
+      public bn.a a(du<bvm> $$0) {
          this.a.add($$0);
          return this;
       }
 
-      public bn.a a(by.a $$0) {
+      public bn.a a(bz.a $$0) {
          this.b = Optional.of($$0.b());
          return this;
       }
 
-      public bn.a b(by.a $$0) {
+      public bn.a b(bz.a $$0) {
          this.c = Optional.of($$0.b());
          return this;
       }

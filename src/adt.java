@@ -1,29 +1,24 @@
-public class adt implements zh<abw> {
-   public static final yy<vw, adt> a = zh.a(adt::a, adt::new);
-   private final buq b;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adt(buq $$0) {
-      this.b = $$0;
-   }
-
-   private adt(vw $$0) {
-      this.b = $$0.b(buq.class);
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-   }
+public record adt(int b, List<cvb.a> c) implements zj<aby> {
+   public static final za<vy, adt> a = za.a(yy.h, adt::b, cvb.a.a.a(yy.a()), adt::e, adt::new);
 
    @Override
-   public zj<adt> a() {
-      return agp.W;
+   public zl<adt> a() {
+      return agr.T;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public buq b() {
-      return this.b;
+   @Nullable
+   public bwv a(djz $$0) {
+      return $$0.a(this.b);
+   }
+
+   public List<cvb.a> e() {
+      return this.c;
    }
 }

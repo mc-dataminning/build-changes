@@ -1,17 +1,25 @@
-@Deprecated
-public abstract class gxc<T extends bxw, S extends hfp, M extends gia<? super S>> extends gzo<T, S, M> {
-   private final M a;
-   private final M j;
-
-   public gxc(gyi.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$3);
-      this.a = $$1;
-      this.j = $$2;
+public abstract class gxc<T extends coi, S extends hgm> extends gzb<T, S, gjy<S>> {
+   public gxc(gyk.a $$0, gle $$1, gle $$2, gle $$3) {
+      this($$0, $$2, $$3, new gjy<>($$0.a($$1)));
    }
 
-   @Override
-   public void a(S $$0, flo $$1, gsa $$2, int $$3) {
-      this.g = $$0.aj ? this.j : this.a;
-      super.a($$0, $$1, $$2, $$3);
+   public gxc(gyk.a $$0, gle $$1, gle $$2, gjy<S> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new hcn<>(this, new gjy($$0.a($$1)), new gjy($$0.a($$2)), $$0.h()));
+   }
+
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gl();
+      $$1.c = $$0.x();
+      $$1.d = $$0.fb().a(dae.pj);
+   }
+
+   protected boolean a(S $$0) {
+      return $$0.c;
+   }
+
+   protected giq.a a(coi $$0, bxn $$1) {
+      return $$0.fy() == $$1 && $$0.gl() && $$0.fb().a(dae.pj) ? giq.a.d : giq.a.a;
    }
 }

@@ -1,36 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class elr extends ekk<enh> {
-   public elr(Codec<enh> $$0) {
+public class elr extends ekm<eml> {
+   public elr(Codec<eml> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<enh> $$0) {
-      enh $$1 = $$0.f();
-      dkw $$2 = $$0.b();
-      iv $$3 = $$0.e();
-      ebe $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dpl) {
-            if (!$$2.v($$3.d())) {
-               return false;
-            }
+   public boolean a(eko<eml> $$0) {
+      int $$1 = 0;
+      azz $$2 = $$0.d();
+      dky $$3 = $$0.b();
+      iw $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-            dpl.a($$2, $$4, $$3, 2);
-         } else if ($$4.b() instanceof dsg) {
-            dsg.a($$2, $$3, $$2.G_(), 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(ehf.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         iw $$10 = new iw($$4.u() + $$7, $$9, $$4.w() + $$8);
+         ebg $$11 = dng.nB.m().b(duj.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dng.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
-
-         if ($$1.b()) {
-            $$2.a($$3, $$2.a_($$3).b(), 1);
-         }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$1 > 0;
    }
 }

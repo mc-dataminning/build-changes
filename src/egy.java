@@ -1,112 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class egy extends edc {
-   public static final MapCodec<egy> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eqe.a.fieldOf("settings").forGetter(egy::h)).apply($$0, $$0.stable(egy::new))
-   );
-   private final eqe d;
+public interface egy {
+   Codec<egy> b = egz.b;
+   Codec<jg<egy>> c = alg.a(mi.aO, b);
+   Codec<egy> d = c.xmap(egz.j::new, $$0 -> (jg)($$0 instanceof egz.j $$1 ? $$1.j() : new jg.a<>($$0)));
 
-   public egy(eqe $$0) {
-      super(new dll($$0.d()), ag.b($$0::a));
-      this.d = $$0;
+   double a(egy.b var1);
+
+   void a(double[] var1, egy.a var2);
+
+   egy a(egy.f var1);
+
+   double a();
+
+   double b();
+
+   azj<? extends egy> c();
+
+   default egy a(double $$0, double $$1) {
+      return new egz.g(this, $$0, $$1);
    }
 
-   @Override
-   public edd a(jh<esh> $$0, ehr $$1, long $$2) {
-      Stream<jf<esh>> $$3 = this.d.c().map(jj::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
-      return edd.a($$1, $$2, this.b, $$3);
+   default egy d() {
+      return egz.a(this, egz.k.a.a);
    }
 
-   @Override
-   protected MapCodec<? extends edc> b() {
-      return c;
+   default egy e() {
+      return egz.a(this, egz.k.a.b);
    }
 
-   public eqe h() {
-      return this.d;
+   default egy f() {
+      return egz.a(this, egz.k.a.c);
    }
 
-   @Override
-   public void a(asa $$0, dkt $$1, ehr $$2, edb $$3) {
+   default egy g() {
+      return egz.a(this, egz.k.a.d);
    }
 
-   @Override
-   public int a(djz $$0) {
-      return $$0.K_() + Math.min($$0.L_(), this.d.f().size());
+   default egy h() {
+      return egz.a(this, egz.k.a.e);
    }
 
-   @Override
-   public CompletableFuture<edb> a(eif $$0, ehr $$1, dkt $$2, edb $$3) {
-      List<ebe> $$4 = this.d.f();
-      iv.a $$5 = new iv.a();
-      ehd $$6 = $$3.a(ehd.a.c);
-      ehd $$7 = $$3.a(ehd.a.a);
+   default egy i() {
+      return egz.a(this, egz.k.a.f);
+   }
 
-      for (int $$8 = 0; $$8 < Math.min($$3.L_(), $$4.size()); $$8++) {
-         ebe $$9 = $$4.get($$8);
-         if ($$9 != null) {
-            int $$10 = $$3.K_() + $$8;
+   public interface a {
+      egy.b a(int var1);
 
-            for (int $$11 = 0; $$11 < 16; $$11++) {
-               for (int $$12 = 0; $$12 < 16; $$12++) {
-                  $$3.a($$5.d($$11, $$10, $$12), $$9);
-                  $$6.a($$11, $$10, $$12, $$9);
-                  $$7.a($$11, $$10, $$12, $$9);
-               }
-            }
-         }
+      void a(double[] var1, egy var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default eih d() {
+         return eih.a();
+      }
+   }
+
+   public static record c(jg<ewt.a> b, @Nullable ewt c) {
+      public static final Codec<egy.c> a = ewt.a.b.xmap($$0 -> new egy.c($$0, null), egy.c::b);
+
+      public c(jg<ewt.a> $$0) {
+         this($$0, null);
       }
 
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, ehd.a $$2, djz $$3, ehr $$4) {
-      List<ebe> $$5 = this.d.f();
-
-      for (int $$6 = Math.min($$5.size() - 1, $$3.ao()); $$6 >= 0; $$6--) {
-         ebe $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.K_() + $$6 + 1;
-         }
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
       }
 
-      return $$3.K_();
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
    }
 
-   @Override
-   public dkj a(int $$0, int $$1, djz $$2, ehr $$3) {
-      return new dkj($$2.K_(), this.d.f().stream().limit((long)$$2.L_()).map($$0x -> $$0x == null ? dne.a.m() : $$0x).toArray(ebe[]::new));
+   public interface d extends egy {
+      @Override
+      default void a(double[] $$0, egy.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default egy a(egy.f $$0) {
+         return $$0.apply(this);
+      }
    }
 
-   @Override
-   public void a(List<String> $$0, ehr $$1, iv $$2) {
+   public static record e(int a, int b, int c) implements egy.b {
    }
 
-   @Override
-   public void a(asa $$0, long $$1, ehr $$2, dlc $$3, dkt $$4, edb $$5) {
-   }
+   public interface f {
+      egy apply(egy var1);
 
-   @Override
-   public void a(asa $$0) {
-   }
-
-   @Override
-   public int g() {
-      return 0;
-   }
-
-   @Override
-   public int e() {
-      return 384;
-   }
-
-   @Override
-   public int f() {
-      return -63;
+      default egy.c a(egy.c $$0) {
+         return $$0;
+      }
    }
 }

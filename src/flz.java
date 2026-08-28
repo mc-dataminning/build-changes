@@ -1,43 +1,71 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum flz {
-   a,
-   b,
-   c,
-   d;
+public class flz {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<flz.a> b;
 
-   private static final int e = 1024;
+   public static CompletableFuture<flz.a> a() {
+      if (b == null || a(b)) {
+         b = b();
+      }
 
-   public static flz a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
+      return b;
+   }
+
+   private static boolean a(CompletableFuture<flz.a> $$0) {
+      flz.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
+
+   private static CompletableFuture<flz.a> b() {
+      frr $$0 = frf.Q().X();
+      return $$0.g() != frr.a.c ? CompletableFuture.completedFuture(new flz.a(flz.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fmf $$0x = fmf.a();
+
          try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+            if ($$0x.h() != fmf.a.a) {
+               return new flz.a(flz.b.b);
+            } else {
+               return !$$0x.g() ? new flz.a(flz.b.c) : new flz.a(flz.b.a);
+            }
+         } catch (fob var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new flz.a(flz.b.d) : new flz.a(var2);
          }
+      }, ag.i());
+   }
+
+   public static record a(flz.b a, @Nullable fob b) {
+      public a(flz.b $$0) {
+         this($$0, null);
+      }
+
+      public a(fob $$0) {
+         this(flz.b.e, $$0);
+      }
+
+      @Nullable
+      public gaf a(gaf $$0) {
+         return (gaf)(switch (this.a) {
+            case a -> null;
+            case b -> new foo($$0);
+            case c -> new foz($$0);
+            case d -> new fou(xc.c("mco.error.invalid.session.title"), xc.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fou(Objects.requireNonNull(this.b), $$0);
+         });
       }
    }
 
-   public static double a(long $$0, flz $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
-
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
-   }
-
-   public static String b(long $$0, flz $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

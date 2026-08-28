@@ -1,39 +1,39 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-
-public class gxr extends gzo<cjq, hef, ghl> {
-   private final Map<cjr.a, ggm<ghl>> a;
-
-   public gxr(gyi.a $$0) {
-      super($$0, new ghl($$0.a(gld.Z)), 0.3F);
-      this.a = a($$0);
+public class gxr extends gxe<cjp, heg, ghl> {
+   public gxr(gyk.a $$0) {
+      super($$0, new ghl($$0.a(glf.Q)), new ghl($$0.a(glf.R)), 0.4F);
+      this.a(new hca(this, $$0.f()));
    }
 
-   private static Map<cjr.a, ggm<ghl>> a(gyi.a $$0) {
-      return Maps.newEnumMap(
-         Map.of(cjr.a.a, new ggm<>(new ghl($$0.a(gld.Z)), new ghl($$0.a(gld.aa))), cjr.a.b, new ggm<>(new ghn($$0.a(gld.ac)), new ghn($$0.a(gld.ad))))
-      );
+   public alk a(heg $$0) {
+      return $$0.a;
    }
 
-   public void a(hef $$0, flo $$1, gsa $$2, int $$3) {
-      if ($$0.c != null) {
-         this.g = this.a.get($$0.c.b().a()).a($$0.aj);
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public heg a() {
+      return new heg();
    }
 
-   public ali a(hef $$0) {
-      return $$0.c == null ? hkp.c() : $$0.c.b().b().b();
-   }
-
-   public hef a() {
-      return new hef();
-   }
-
-   public void a(cjq $$0, hef $$1, float $$2) {
+   public void a(cjp $$0, heg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azo.h($$2, $$0.bM, $$0.bI);
-      $$1.b = azo.h($$2, $$0.bK, $$0.bJ);
-      $$1.c = $$0.t().a();
+      $$1.a = $$0.gG().a().b().b();
+      $$1.d = $$0.ch();
+      $$1.e = $$0.ci();
+      $$1.f = $$0.x();
+      $$1.g = $$0.J($$2);
+      $$1.h = $$0.K($$2);
+      $$1.i = $$0.L($$2);
+      $$1.b = $$0.gL();
+      $$1.c = $$0.q() ? $$0.gI() : null;
+   }
+
+   protected void a(heg $$0, flq $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.g;
+      if ($$4 > 0.0F) {
+         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
+         $$1.a(a.f.rotationDegrees(azq.i($$4, 0.0F, 90.0F)));
+         if ($$0.b) {
+            $$1.a(0.15F * $$4, 0.0F, 0.0F);
+         }
+      }
    }
 }

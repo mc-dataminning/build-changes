@@ -1,5 +1,7 @@
 public interface cwe {
-   void a(cvq var1, int var2, czy var3);
+   int a(int var1);
 
-   void a(cvq var1, int var2, int var3);
+   void a(int var1, int var2);
+
+   int a();
 }

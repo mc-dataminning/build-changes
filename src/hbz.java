@@ -1,27 +1,24 @@
-public class hbz extends hcg<hei, ghs> {
-   private static final ali a = ali.b("textures/entity/creeper/creeper_armor.png");
-   private final ghs b;
+public class hbz extends hcy<heq, gia<heq>> {
+   private final gtf a;
 
-   public hbz(haf<hei, ghs> $$0, gla $$1) {
+   public hbz(hah<heq, gia<heq>> $$0, gtf $$1) {
       super($$0);
-      this.b = new ghs($$1.a(gld.ar));
+      this.a = $$1;
    }
 
-   protected boolean a(hei $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ali a() {
-      return a;
-   }
-
-   protected ghs b() {
-      return this.b;
+   public void a(flq $$0, gsc $$1, int $$2, heq $$3, float $$4, float $$5) {
+      ebg $$6 = $$3.b;
+      if ($$6 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$7 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$6, $$0, $$1, $$2, hks.d);
+         $$0.b();
+      }
    }
 }

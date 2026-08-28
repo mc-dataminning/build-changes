@@ -1,42 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-
-public class fdd extends fdg {
-   public static final MapCodec<fdd> a = a(fdd::new);
-   public static final Codec<fdd> b = b(fdd::new);
-
-   fdd(List<fdq> $$0) {
-      super($$0, ag.a($$0));
-   }
-
-   public static fdd a(List<fdq> $$0) {
-      return new fdd(List.copyOf($$0));
-   }
-
-   @Override
-   public fdr b() {
-      return fds.c;
-   }
-
-   public static fdd.a a(fdq.a... $$0) {
-      return new fdd.a($$0);
-   }
-
-   public static class a extends fdg.a {
-      public a(fdq.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public fdd.a and(fdq.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected fdq a(List<fdq> $$0) {
-         return new fdd($$0);
-      }
-   }
+public class fdd {
+   public static final bbb<bwv> a = bbb.a("this_entity");
+   public static final bbb<crz> b = bbb.a("last_damage_player");
+   public static final bbb<bvk> c = bbb.a("damage_source");
+   public static final bbb<bwv> d = bbb.a("attacking_entity");
+   public static final bbb<bwv> e = bbb.a("direct_attacking_entity");
+   public static final bbb<ffs> f = bbb.a("origin");
+   public static final bbb<ebg> g = bbb.a("block_state");
+   public static final bbb<dye> h = bbb.a("block_entity");
+   public static final bbb<daa> i = bbb.a("tool");
+   public static final bbb<Float> j = bbb.a("explosion_radius");
+   public static final bbb<Integer> k = bbb.a("enchantment_level");
+   public static final bbb<Boolean> l = bbb.a("enchantment_active");
 }

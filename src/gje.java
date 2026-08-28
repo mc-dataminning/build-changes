@@ -1,36 +1,27 @@
-import org.joml.Quaternionf;
+public class gje extends gka {
+   private final glg a;
+   private final glg b;
+   private final glg c;
 
-public class gje<T extends hgb> extends gio<T> {
-   private static final String a = "cape";
-   private final gle b = this.q.b("cape");
-
-   public gje(gle $$0) {
+   public gje(glg $$0) {
       super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static glk a() {
-      glm $$0 = gio.a(gli.a, 0.0F);
-      glo $$1 = $$0.a();
-      glo $$2 = $$1.a("head");
-      $$2.a("hat");
-      glo $$3 = $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      $$3.a("cape", glj.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, gli.a, 1.0F, 0.5F), glg.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
-      return glk.a($$0, 64, 64);
+   public static glo a() {
+      glo $$0 = new glo();
+      gjf.a(glk.a, $$0);
+      return $$0;
    }
 
-   public void a(T $$0) {
-      super.a($$0);
-      this.b
-         .a(
-            new Quaternionf()
-               .rotateY((float) -Math.PI)
-               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
-               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
-         );
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
    }
 }

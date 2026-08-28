@@ -1,9 +1,34 @@
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+
 public interface cwf {
-   void a(cvq var1, jo<czy> var2, czy var3, int[] var4);
+   cwf a = new cwf() {
+      @Override
+      public <T> Optional<T> a(BiFunction<djz, iw, T> $$0) {
+         return Optional.empty();
+      }
+   };
 
-   void a(cvq var1, int var2, czy var3);
+   static cwf a(final djz $$0, final iw $$1) {
+      return new cwf() {
+         @Override
+         public <T> Optional<T> a(BiFunction<djz, iw, T> $$0x) {
+            return Optional.of($$0.apply($$0, $$1));
+         }
+      };
+   }
 
-   void a(cvq var1, czy var2);
+   <T> Optional<T> a(BiFunction<djz, iw, T> var1);
 
-   void a(cvq var1, int var2, int var3);
+   default <T> T a(BiFunction<djz, iw, T> $$0, T $$1) {
+      return this.a($$0).orElse($$1);
+   }
+
+   default void a(BiConsumer<djz, iw> $$0) {
+      this.a(($$1, $$2) -> {
+         $$0.accept($$1, $$2);
+         return Optional.empty();
+      });
+   }
 }

@@ -1,16 +1,10 @@
-public interface bpt {
-   bpt a = new bpt() {
-      @Override
-      public void a() {
-      }
+public record bpt<T>(String a) {
+   @Override
+   public String toString() {
+      return "<" + this.a + ">";
+   }
 
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   void a();
-
-   boolean b();
+   public static <T> bpt<T> a(String $$0) {
+      return new bpt<>($$0);
+   }
 }

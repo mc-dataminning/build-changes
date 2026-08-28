@@ -1,123 +1,49 @@
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fwx implements fwv {
-   private static final ali h = ali.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 4;
-   private static final int i = 7;
-   private static final int j = 3;
-   private static final int k = 11;
-   private static final int l = 30;
-   private static final int m = 126;
-   private final fwx.a n;
-   private final List<aza> o;
-   private fwv.a p = fwv.a.a;
-   private long q;
-   private float r;
-   private float s;
-   private final boolean t;
-   private final int u;
+public interface fwx {
+   Object b = new Object();
+   int c = 160;
+   int d = 32;
 
-   public fwx(ftv $$0, fwx.a $$1, xa $$2, @Nullable xa $$3, boolean $$4, int $$5) {
-      this.n = $$1;
-      this.o = new ArrayList<>(2);
-      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
-      if ($$3 != null) {
-         this.o.addAll($$0.c($$3, 126));
-      }
+   fwx.a a();
 
-      this.t = $$4;
-      this.u = $$5;
+   void a(fwy var1, long var2);
+
+   @Nullable
+   default awq b() {
+      return null;
    }
 
-   public fwx(ftv $$0, fwx.a $$1, xa $$2, @Nullable xa $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, 0);
+   void a(ftz var1, ftx var2, long var3);
+
+   default Object g() {
+      return b;
    }
 
-   @Override
-   public fwv.a a() {
-      return this.p;
+   default int c() {
+      return 160;
    }
 
-   @Override
-   public void a(fww $$0, long $$1) {
-      if (this.u > 0) {
-         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
-         this.r = this.s;
-         this.q = $$1;
-         if ($$1 > (long)this.u) {
-            this.e();
-         }
-      } else if (this.t) {
-         this.r = azo.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
-         this.q = $$1;
-      }
+   default int d() {
+      return 32;
    }
 
-   @Override
-   public int d() {
-      return 7 + this.f() + 3;
-   }
-
-   private int f() {
-      return Math.max(this.o.size(), 2) * 11;
-   }
-
-   @Override
-   public void a(ftx $$0, ftv $$1, long $$2) {
-      int $$3 = this.d();
-      $$0.a(gsl::H, h, 0, 0, this.c(), $$3);
-      this.n.a($$0, 6, 6);
-      int $$4 = this.o.size() * 11;
-      int $$5 = 7 + (this.f() - $$4) / 2;
-
-      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
-         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
-      }
-
-      if (this.t) {
-         int $$7 = $$3 - 4;
-         $$0.a(3, $$7, 157, $$7 + 1, -1);
-         int $$8;
-         if (this.s >= this.r) {
-            $$8 = -16755456;
-         } else {
-            $$8 = -11206656;
-         }
-
-         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
-      }
-   }
-
-   public void e() {
-      this.p = fwv.a.b;
-   }
-
-   public void a(float $$0) {
-      this.s = $$0;
+   default int h() {
+      return azq.e(this.d(), 32);
    }
 
    public static enum a {
-      a(ali.b("toast/movement_keys")),
-      b(ali.b("toast/mouse")),
-      c(ali.b("toast/tree")),
-      d(ali.b("toast/recipe_book")),
-      e(ali.b("toast/wooden_planks")),
-      f(ali.b("toast/social_interactions")),
-      g(ali.b("toast/right_click"));
+      a(awr.BC),
+      b(awr.BD);
 
-      private final ali h;
+      private final awq c;
 
-      private a(final ali $$0) {
-         this.h = $$0;
+      private a(final awq $$0) {
+         this.c = $$0;
       }
 
-      public void a(ftx $$0, int $$1, int $$2) {
-         $$0.a(gsl::H, this.h, $$1, $$2, 20, 20);
+      public void a(hqf $$0) {
+         $$0.a(hou.a(this.c, 1.0F, 1.0F));
       }
    }
 }

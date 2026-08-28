@@ -1,78 +1,115 @@
 import javax.annotation.Nullable;
 
-public class hre implements hrg {
-   private static final int a = 600;
-   private static final xa b = xa.c("tutorial.punch_tree.title");
-   private static final xa c = xa.a("tutorial.punch_tree.description", hrf.a("attack"));
-   private final hrf d;
+public class hre implements hri {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final xc f = xc.a("tutorial.move.title", hrh.a("forward"), hrh.a("left"), hrh.a("back"), hrh.a("right"));
+   private static final xc g = xc.a("tutorial.move.description", hrh.a("jump"));
+   private static final xc h = xc.c("tutorial.look.title");
+   private static final xc i = xc.c("tutorial.look.description");
+   private final hrh j;
    @Nullable
-   private fwx e;
-   private int f;
-   private int g;
+   private fwz k;
+   @Nullable
+   private fwz l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-   public hre(hrf $$0) {
-      this.d = $$0;
+   public hre(hrh $$0) {
+      this.j = $$0;
    }
 
    @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hrh.f);
-      } else {
-         frd $$0 = this.d.e();
-         if (this.f == 1) {
-            gqz $$1 = $$0.t;
-            if ($$1 != null) {
-               if ($$1.gj().a(axm.r)) {
-                  this.d.a(hrh.e);
-                  return;
-               }
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
 
-               if (hrb.a($$1)) {
-                  this.d.a(hrh.e);
-                  return;
-               }
-            }
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.e();
+            this.k = null;
          }
 
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fwx($$0.h, fwx.a.c, b, c, true);
-            $$0.aA().a(this.e);
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.e();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(hrj.b);
+         } else {
+            this.j.a(hrj.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         frf $$0 = this.j.e();
+         if (this.r == -1 && this.k == null) {
+            this.k = new fwz($$0.h, fwz.a.a, f, g, true);
+            $$0.aA().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fwz($$0.h, fwz.a.b, h, i, true);
+            $$0.aA().a(this.l);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
+      if (this.k != null) {
+         this.k.e();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.e();
+         this.l = null;
       }
    }
 
    @Override
-   public void a(gmb $$0, iv $$1, ebe $$2, float $$3) {
-      boolean $$4 = $$2.a(axe.u);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(hrh.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
+   public void a(gqz $$0) {
+      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
+         this.p = true;
       }
    }
 
    @Override
-   public void a(czy $$0) {
-      if ($$0.a(axm.r)) {
-         this.d.a(hrh.e);
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
       }
    }
 }

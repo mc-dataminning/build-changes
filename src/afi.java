@@ -1,59 +1,39 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class afi implements zh<abw> {
-   public static final yy<wl, afi> a = zh.a(afi::a, afi::new);
-   private static final byte b = -128;
+public class afi implements zj<aby> {
+   public static final za<vy, afi> a = zj.a(afi::a, afi::new);
+   private final int b;
    private final int c;
-   private final List<Pair<bxd, czy>> d;
 
-   public afi(int $$0, List<Pair<bxd, czy>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public afi(bwv $$0, @Nullable bwv $$1) {
+      this.b = $$0.ao();
+      this.c = $$1 != null ? $$1.ao() : 0;
    }
 
-   private afi(wl $$0) {
-      this.c = $$0.l();
-      this.d = Lists.newArrayList();
-
-      int $$1;
-      do {
-         $$1 = $$0.readByte();
-         bxd $$2 = bxd.j.get($$1 & 127);
-         czy $$3 = czy.h.decode($$0);
-         this.d.add(Pair.of($$2, $$3));
-      } while (($$1 & -128) != 0);
+   private afi(vy $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.c);
-      int $$1 = this.d.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bxd, czy> $$3 = this.d.get($$2);
-         bxd $$4 = (bxd)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.l($$5 ? $$6 | -128 : $$6);
-         czy.h.encode($$0, (czy)$$3.getSecond());
-      }
+   private void a(vy $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zj<afi> a() {
-      return agp.aI;
+   public zl<afi> a() {
+      return agr.aG;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.c;
+      return this.b;
    }
 
-   public List<Pair<bxd, czy>> e() {
-      return this.d;
+   public int e() {
+      return this.c;
    }
 }

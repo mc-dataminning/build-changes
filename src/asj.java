@@ -1,14 +1,8 @@
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface asj {
-   void a(Consumer<zh<?>> var1);
-
-   asj.a a();
-
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface asj {
 }

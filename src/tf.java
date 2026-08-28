@@ -1,130 +1,115 @@
-import com.google.common.base.MoreObjects;
-import java.util.Optional;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-class tf implements st {
-   private int a = 0;
-   private int b = 0;
+public class tf {
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<sr> f = Lists.newArrayList();
+   private final Collection<su> g = Lists.newArrayList();
 
    public tf() {
    }
 
-   @Override
-   public void a(sq $$0) {
-      this.a++;
+   public tf(Collection<sr> $$0) {
+      this.f.addAll($$0);
    }
 
-   private void a(sq $$0, sv $$1, boolean $$2) {
-      tg $$3 = $$0.B();
-      String $$4 = String.format("[Run: %4d, Ok: %4d, Fail: %4d", this.a, this.b, this.a - this.b);
-      if (!$$3.b()) {
-         $$4 = $$4 + String.format(", Left: %4d", $$3.d() - this.a);
-      }
-
-      $$4 = $$4 + "]";
-      String $$5 = $$0.b() + " " + ($$2 ? "passed" : "failed") + "! " + $$0.l() + "ms";
-      String $$6 = String.format("%-53s%s", $$4, $$5);
-      if ($$2) {
-         a($$0, $$6);
-      } else {
-         a($$0.g(), o.m, $$6);
-      }
-
-      if ($$3.a(this.a, this.b)) {
-         $$1.a($$0);
-      }
+   public void a(sr $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
    }
 
-   @Override
-   public void a(sq $$0, sv $$1) {
-      this.b++;
-      if ($$0.B().c()) {
-         this.a($$0, $$1, true);
-      } else if (!$$0.y()) {
-         a($$0, $$0.b() + " passed! (" + $$0.l() + "ms)");
-      } else {
-         if (this.b >= $$0.A()) {
-            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
+   public void a(su $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
+   }
+
+   public void a(final Consumer<sr> $$0) {
+      this.a(new su() {
+         @Override
+         public void a(sr $$0x) {
+         }
+
+         @Override
+         public void a(sr $$0x, sw $$1) {
+         }
+
+         @Override
+         public void b(sr $$0x, sw $$1) {
+            $$0.accept($$0);
+         }
+
+         @Override
+         public void a(sr $$0x, sr $$1, sw $$2) {
+         }
+      });
+   }
+
+   public int a() {
+      return (int)this.f.stream().filter(sr::i).filter(sr::r).count();
+   }
+
+   public int b() {
+      return (int)this.f.stream().filter(sr::i).filter(sr::s).count();
+   }
+
+   public int c() {
+      return (int)this.f.stream().filter(sr::k).count();
+   }
+
+   public boolean d() {
+      return this.a() > 0;
+   }
+
+   public boolean e() {
+      return this.b() > 0;
+   }
+
+   public Collection<sr> f() {
+      return this.f.stream().filter(sr::i).filter(sr::r).collect(Collectors.toList());
+   }
+
+   public Collection<sr> g() {
+      return this.f.stream().filter(sr::i).filter(sr::s).collect(Collectors.toList());
+   }
+
+   public int h() {
+      return this.f.size();
+   }
+
+   public boolean i() {
+      return this.c() == this.h();
+   }
+
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.j()) {
+            $$0.append(' ');
+         } else if ($$1.h()) {
+            $$0.append('+');
+         } else if ($$1.i()) {
+            $$0.append((char)($$1.r() ? 'X' : 'x'));
          } else {
-            a($$0.g(), o.k, "Flaky test " + $$0 + " succeeded, attempt: " + this.a + " successes: " + this.b);
-            $$1.a($$0);
+            $$0.append('_');
          }
-      }
+      });
+      $$0.append(']');
+      return $$0.toString();
    }
 
    @Override
-   public void b(sq $$0, sv $$1) {
-      if (!$$0.y()) {
-         a($$0, $$0.n());
-         if ($$0.B().c()) {
-            this.a($$0, $$1, false);
-         }
-      } else {
-         sr $$2 = $$0.v();
-         String $$3 = "Flaky test " + $$0 + " failed, attempt: " + this.a + "/" + $$2.j();
-         if ($$2.k() > 1) {
-            $$3 = $$3 + ", successes: " + this.b + " (" + $$2.k() + " required)";
-         }
-
-         a($$0.g(), o.o, $$3);
-         if ($$0.z() - this.a + this.b >= $$0.A()) {
-            $$1.a($$0);
-         } else {
-            a($$0, new se(this.a, this.b, $$0));
-         }
-      }
+   public String toString() {
+      return this.j();
    }
 
-   @Override
-   public void a(sq $$0, sq $$1, sv $$2) {
-      $$1.a(this);
-   }
-
-   public static void a(sq $$0, String $$1) {
-      b($$0).ifPresent($$0x -> $$0x.w());
-      b($$0, $$1);
-   }
-
-   private static void b(sq $$0, String $$1) {
-      a($$0.g(), o.k, $$1);
-      tb.b($$0);
-   }
-
-   protected static void a(sq $$0, Throwable $$1) {
-      xa $$3;
-      if ($$1 instanceof sh $$2) {
-         $$3 = $$2.a();
-      } else {
-         $$3 = xa.b(ag.c($$1));
-      }
-
-      b($$0).ifPresent($$1x -> $$1x.a($$3));
-      b($$0, $$1);
-   }
-
-   protected static void b(sq $$0, Throwable $$1) {
-      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ag.c($$1.getCause()));
-      String $$3 = ($$0.r() ? "" : "(optional) ") + $$0.b() + " failed! " + $$2;
-      a($$0.g(), $$0.r() ? o.m : o.o, $$3);
-      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
-      if ($$4 instanceof si $$5) {
-         a($$0.g(), $$5.d(), $$5.b());
-      }
-
-      tb.a($$0);
-   }
-
-   private static Optional<dzx> b(sq $$0) {
-      ars $$1 = $$0.g();
-      Optional<iv> $$2 = Optional.ofNullable($$0.c());
-      return $$2.flatMap($$1x -> $$1.a($$1x, dye.U));
-   }
-
-   protected static void a(ars $$0, o $$1, String $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(xa.b($$2).a($$1)));
-   }
-
-   private static void a(ars $$0, iv $$1, String $$2) {
-      ago.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
+   public void b(sr $$0) {
+      this.f.remove($$0);
    }
 }

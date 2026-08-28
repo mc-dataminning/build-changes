@@ -1,20 +1,44 @@
-public class czd extends czu {
-   public static float a = 1.5F;
+import java.util.List;
 
-   public czd(czu.a $$0) {
+public class czd extends czw {
+   public czd(czw.a $$0) {
       super($$0);
    }
 
    @Override
-   public bur a(djx $$0, crx $$1, buq $$2) {
-      czy $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awp.iR, awq.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof ars $$4) {
-         css.a(ctc::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
-      }
+   public but a(ddv $$0) {
+      djz $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      ebg $$3 = $$1.a_($$2);
+      if (!$$3.a(dng.cy) && !$$3.a(dng.I)) {
+         return but.d;
+      } else {
+         iw $$4 = $$2.d();
+         if (!$$1.v($$4)) {
+            return but.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bwv> $$8 = $$1.a_(null, new ffn($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return but.d;
+            } else {
+               if ($$1 instanceof aru) {
+                  cmw $$9 = new cmw($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), egg.t, $$4);
+                  efg $$10 = ((aru)$$1).F();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-      $$1.b(awz.c.b(this));
-      $$3.a(1, $$1);
-      return bur.a;
+               $$0.n().h(1);
+               return but.a;
+            }
+         }
+      }
    }
 }

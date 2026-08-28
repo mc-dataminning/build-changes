@@ -1,173 +1,320 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class grr extends avk<grr.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ali b = ali.b("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
+public class grr {
+   private static final int b = 96;
+   private static final List<grr.e> c = Lists.newArrayList(new grr.e[]{new grr.a(), new grr.b()});
+   public static final float a = 5000.0F;
+   private static int d = -1;
+   private static int e = -1;
+   private static long f = -1L;
+   private static boolean g = true;
 
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
+   public static Vector4f a(fqn $$0, float $$1, gmd $$2, int $$3, float $$4) {
+      exs $$5 = $$0.k();
+      bwv $$6 = $$0.g();
+      float $$19;
+      float $$20;
+      float $$21;
+      if ($$5 == exs.b) {
+         long $$7 = ag.c();
+         int $$8 = $$2.u(iw.a((jq)$$0.b())).a().k();
+         if (f < 0L) {
+            d = $$8;
+            e = $$8;
+            f = $$7;
+         }
 
-   public boolean b() {
-      return this.a() && !this.e;
-   }
+         int $$9 = d >> 16 & 0xFF;
+         int $$10 = d >> 8 & 0xFF;
+         int $$11 = d & 0xFF;
+         int $$12 = e >> 16 & 0xFF;
+         int $$13 = e >> 8 & 0xFF;
+         int $$14 = e & 0xFF;
+         float $$15 = azq.a((float)($$7 - f) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = azq.h($$15, (float)$$12, (float)$$9);
+         float $$17 = azq.h($$15, (float)$$13, (float)$$10);
+         float $$18 = azq.h($$15, (float)$$14, (float)$$11);
+         $$19 = $$16 / 255.0F;
+         $$20 = $$17 / 255.0F;
+         $$21 = $$18 / 255.0F;
+         if (d != $$8) {
+            d = $$8;
+            e = azq.d($$16) << 16 | azq.d($$17) << 8 | azq.d($$18);
+            f = $$7;
+         }
+      } else if ($$5 == exs.a) {
+         $$19 = 0.6F;
+         $$20 = 0.1F;
+         $$21 = 0.0F;
+         f = -1L;
+      } else if ($$5 == exs.c) {
+         $$19 = 0.623F;
+         $$20 = 0.734F;
+         $$21 = 0.785F;
+         f = -1L;
+      } else {
+         float $$28 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$28 = 1.0F - (float)Math.pow((double)$$28, 0.25);
+         int $$29 = $$2.a($$0.b(), $$1);
+         float $$30 = aya.j($$29);
+         float $$31 = aya.k($$29);
+         float $$32 = aya.l($$29);
+         float $$33 = azq.a(azq.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         dle $$34 = $$2.H_();
+         ffs $$35 = $$0.b().a(2.0, 2.0, 2.0).c(0.25);
+         ffs $$36 = ayq.a($$35, ($$3x, $$4x, $$5x) -> $$2.c().a(ffs.a($$34.a($$3x, $$4x, $$5x).a().e()), $$33));
+         $$19 = (float)$$36.a();
+         $$20 = (float)$$36.b();
+         $$21 = (float)$$36.c();
+         if ($$3 >= 4) {
+            float $$40 = azq.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$41 = new Vector3f($$40, 0.0F, 0.0F);
+            float $$42 = $$0.l().dot($$41);
+            if ($$42 < 0.0F) {
+               $$42 = 0.0F;
+            }
 
-   public void c() {
-      this.d = true;
-   }
+            if ($$42 > 0.0F && $$2.c().a($$2.f($$1))) {
+               int $$43 = $$2.c().b($$2.f($$1));
+               $$42 *= aya.i($$43);
+               $$19 = $$19 * (1.0F - $$42) + aya.j($$43) * $$42;
+               $$20 = $$20 * (1.0F - $$42) + aya.k($$43) * $$42;
+               $$21 = $$21 * (1.0F - $$42) + aya.l($$43) * $$42;
+            }
+         }
 
-   public void d() {
-      this.e = true;
-   }
+         $$19 += ($$30 - $$19) * $$28;
+         $$20 += ($$31 - $$20) * $$28;
+         $$21 += ($$32 - $$21) * $$28;
+         float $$44 = $$2.d($$1);
+         if ($$44 > 0.0F) {
+            float $$45 = 1.0F - $$44 * 0.5F;
+            float $$46 = 1.0F - $$44 * 0.4F;
+            $$19 *= $$45;
+            $$20 *= $$45;
+            $$21 *= $$46;
+         }
 
-   public void e() {
-      this.e = true;
-      this.f = true;
-   }
+         float $$47 = $$2.b($$1);
+         if ($$47 > 0.0F) {
+            float $$48 = 1.0F - $$47 * 0.5F;
+            $$19 *= $$48;
+            $$20 *= $$48;
+            $$21 *= $$48;
+         }
 
-   public boolean f() {
-      return this.d && !this.e;
-   }
+         f = -1L;
+      }
 
-   public boolean g() {
-      return this.f;
-   }
+      float $$49 = ((float)$$0.b().e - (float)$$2.K_()) * $$2.k().e();
+      grr.e $$50 = a($$6, $$1);
+      if ($$50 != null) {
+         bxw $$51 = (bxw)$$6;
+         $$49 = $$50.a($$51, $$51.c($$50.a()), $$49, $$1);
+      }
 
-   public void h() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
+      if ($$49 < 1.0F && $$5 != exs.a && $$5 != exs.c) {
+         if ($$49 < 0.0F) {
+            $$49 = 0.0F;
+         }
 
-   @Nullable
-   public String i() {
-      return (String)this.c.get("renderer");
-   }
+         $$49 *= $$49;
+         $$19 *= $$49;
+         $$20 *= $$49;
+         $$21 *= $$49;
+      }
 
-   @Nullable
-   public String j() {
-      return (String)this.c.get("version");
-   }
+      if ($$4 > 0.0F) {
+         $$19 = $$19 * (1.0F - $$4) + $$19 * 0.7F * $$4;
+         $$20 = $$20 * (1.0F - $$4) + $$20 * 0.6F * $$4;
+         $$21 = $$21 * (1.0F - $$4) + $$21 * 0.6F * $$4;
+      }
 
-   @Nullable
-   public String k() {
-      return (String)this.c.get("vendor");
-   }
+      float $$52;
+      if ($$5 == exs.b) {
+         if ($$6 instanceof grb) {
+            $$52 = ((grb)$$6).D();
+         } else {
+            $$52 = 1.0F;
+         }
+      } else {
+         label86: {
+            if ($$6 instanceof bxw $$54 && $$54.b(bwb.p) && !$$54.b(bwb.G)) {
+               $$52 = grs.a($$54, $$1);
+               break label86;
+            }
 
-   @Nullable
-   public String l() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected grr.a a(avf $$0, brb $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         try (brg $$6 = $$1.d("compile_regex")) {
-            a($$5.getAsJsonArray("renderer"), $$2);
-            a($$5.getAsJsonArray("version"), $$3);
-            a($$5.getAsJsonArray("vendor"), $$4);
+            $$52 = 0.0F;
          }
       }
 
-      return new grr.a($$2, $$3, $$4);
+      if ($$19 != 0.0F && $$20 != 0.0F && $$21 != 0.0F) {
+         float $$57 = Math.min(1.0F / $$19, Math.min(1.0F / $$20, 1.0F / $$21));
+         $$19 = $$19 * (1.0F - $$52) + $$19 * $$57 * $$52;
+         $$20 = $$20 * (1.0F - $$52) + $$20 * $$57 * $$52;
+         $$21 = $$21 * (1.0F - $$52) + $$21 * $$57 * $$52;
+      }
+
+      return new Vector4f($$19, $$20, $$21, 1.0F);
    }
 
-   protected void a(grr.a $$0, avf $$1, brb $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   public static boolean a() {
+      return g = !g;
    }
 
    @Nullable
-   private static JsonObject c(avf $$0, brb $$1) {
-      try {
-         JsonObject var4;
-         try (
-            brg $$2 = $$1.d("parse_json");
-            Reader $$3 = $$0.openAsReader(b);
-         ) {
-            var4 = JsonParser.parseReader($$3).getAsJsonObject();
+   private static grr.e a(bwv $$0, float $$1) {
+      return $$0 instanceof bxw $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   }
+
+   public static grq a(fqn $$0, grr.d $$1, Vector4f $$2, float $$3, boolean $$4, float $$5) {
+      if (!g) {
+         return grq.a;
+      } else {
+         exs $$6 = $$0.k();
+         bwv $$7 = $$0.g();
+         grr.c $$8 = new grr.c($$1);
+         grr.e $$9 = a($$7, $$5);
+         if ($$6 == exs.a) {
+            if ($$7.Z_()) {
+               $$8.b = -8.0F;
+               $$8.c = $$3 * 0.5F;
+            } else if ($$7 instanceof bxw && ((bxw)$$7).b(bwb.l)) {
+               $$8.b = 0.0F;
+               $$8.c = 5.0F;
+            } else {
+               $$8.b = 0.25F;
+               $$8.c = 1.0F;
+            }
+         } else if ($$6 == exs.c) {
+            if ($$7.Z_()) {
+               $$8.b = -8.0F;
+               $$8.c = $$3 * 0.5F;
+            } else {
+               $$8.b = 0.0F;
+               $$8.c = 2.0F;
+            }
+         } else if ($$9 != null) {
+            bxw $$10 = (bxw)$$7;
+            bvz $$11 = $$10.c($$9.a());
+            if ($$11 != null) {
+               $$9.a($$8, $$10, $$11, $$3, $$5);
+            }
+         } else if ($$6 == exs.b) {
+            $$8.b = -8.0F;
+            $$8.c = 96.0F;
+            if ($$7 instanceof grb $$12) {
+               $$8.c = $$8.c * Math.max(0.25F, $$12.D());
+               jg<dlc> $$13 = $$12.dV().u($$12.dv());
+               if ($$13.a(axf.aa)) {
+                  $$8.c *= 0.85F;
+               }
+            }
+
+            if ($$8.c > $$3) {
+               $$8.c = $$3;
+               $$8.d = fkx.b;
+            }
+         } else if ($$4) {
+            $$8.b = $$3 * 0.05F;
+            $$8.c = Math.min($$3, 192.0F) * 0.5F;
+         } else if ($$1 == grr.d.a) {
+            $$8.b = 0.0F;
+            $$8.c = $$3;
+            $$8.d = fkx.b;
+         } else if ($$1 == grr.d.b) {
+            float $$14 = azq.a($$3 / 10.0F, 4.0F, 64.0F);
+            $$8.b = $$3 - $$14;
+            $$8.c = $$3;
+            $$8.d = fkx.b;
          }
 
-         return var4;
-      } catch (JsonSyntaxException | IOException var10) {
-         a.warn("Failed to load GPU warnlist");
-         return null;
+         return new grq($$8.b, $$8.c, $$8.d, $$2.x, $$2.y, $$2.z, $$2.w);
       }
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   static class a implements grr.e {
+      @Override
+      public jg<bvx> a() {
+         return bwb.o;
+      }
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+      @Override
+      public void a(grr.c $$0, bxw $$1, bvz $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : azq.h(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == grr.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else if ($$0.a == grr.d.b) {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
+         }
+      }
+   }
+
+   static class b implements grr.e {
+      @Override
+      public jg<bvx> a() {
+         return bwb.G;
+      }
+
+      @Override
+      public void a(grr.c $$0, bxw $$1, bvz $$2, float $$3, float $$4) {
+         float $$5 = azq.h($$2.a($$1, $$4), $$3, 15.0F);
+
+         $$0.b = switch ($$0.a) {
+            case a -> 0.0F;
+            case b -> $$5 * 0.75F;
+         };
+         $$0.c = $$5;
+      }
+
+      @Override
+      public float a(bxw $$0, bvz $$1, float $$2, float $$3) {
+         return 1.0F - $$1.a($$0, $$3);
+      }
+   }
+
+   static class c {
+      public final grr.d a;
+      public float b;
+      public float c;
+      public fkx d = fkx.a;
+
+      public c(grr.d $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+   }
+
+   public static enum d {
+      a,
+      b;
+   }
+
+   interface e {
+      jg<bvx> a();
+
+      void a(grr.c var1, bxw var2, bvz var3, float var4, float var5);
+
+      default boolean a(bxw $$0, float $$1) {
+         return $$0.b(this.a());
       }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
+      default float a(bxw $$0, bvz $$1, float $$2, float $$3) {
+         bvz $$4 = $$0.c(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
             }
          }
 
-         return String.join(", ", $$2);
-      }
-
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         fla $$1 = RenderSystem.getDevice();
-         if ($$1.h().equals("OpenGL")) {
-            String $$2 = a(this.a, $$1.f());
-            if (!$$2.isEmpty()) {
-               $$0.put("renderer", $$2);
-            }
-
-            String $$3 = a(this.b, $$1.i());
-            if (!$$3.isEmpty()) {
-               $$0.put("version", $$3);
-            }
-
-            String $$4 = a(this.c, $$1.g());
-            if (!$$4.isEmpty()) {
-               $$0.put("vendor", $$4);
-            }
-         }
-
-         return $$0.build();
+         return $$2;
       }
    }
 }

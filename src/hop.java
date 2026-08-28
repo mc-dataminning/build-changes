@@ -1,32 +1,42 @@
-public class hop extends hog {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cov r;
+public class hop extends hoi {
+   public static final int n = 20;
+   private final grb o;
+   private int p;
 
-   public hop(cov $$0) {
-      super(awp.lU, awq.f, hox.t());
-      this.r = $$0;
-      this.k = hox.a.a;
+   public hop(grb $$0) {
+      super(awr.iu, aws.h, hoz.t());
+      this.o = $$0;
       this.i = true;
       this.j = 0;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.r.ba();
+      this.d = 0.1F;
    }
 
    @Override
    public void q() {
-      if (!this.r.dQ() && this.r.f() == null) {
-         this.f = (double)((float)this.r.dA());
-         this.g = (double)((float)this.r.dC());
-         this.h = (double)((float)this.r.dG());
-         float $$0 = this.r.L(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
+      this.p++;
+      if (!this.o.dQ() && (this.p <= 20 || this.o.fJ())) {
+         this.f = (double)((float)this.o.dA());
+         this.g = (double)((float)this.o.dC());
+         this.h = (double)((float)this.o.dG());
+         float $$0 = (float)this.o.dy().h();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = azq.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
+         }
+
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
       } else {
          this.n();
       }

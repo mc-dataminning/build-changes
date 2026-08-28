@@ -1,91 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dvu extends dnc {
+public class dvu extends dwq implements dnh {
    public static final MapCodec<dvu> a = b(dvu::new);
-   private static final ece b = ebu.aW;
-   private static final int c = 20;
-   private static final int d = 8;
+   private static final fgm b = dne.b(12.0, 0.0, 13.0);
 
    @Override
    public MapCodec<dvu> a() {
       return a;
    }
 
-   public dvu(ebd.d $$0) {
+   protected dvu(ebf.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(djx $$0, ebe $$1, ffm $$2, css $$3) {
-      int $$4 = a((djy)$$0, $$1, $$2, (bwt)$$3);
-      if ($$3.q() instanceof art $$6) {
-         $$6.a(awz.aE);
-         aq.M.a($$6, $$3, $$2.g(), $$4);
-      }
-   }
-
-   private static int a(djy $$0, ebe $$1, ffm $$2, bwt $$3) {
-      int $$4 = a($$2, $$2.g());
-      int $$5 = $$3 instanceof csf ? 20 : 8;
-      if (!$$0.U().a($$2.b(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.b(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(ffm $$0, ffq $$1) {
-      jb $$2 = $$0.c();
-      double $$3 = Math.abs(azo.e($$1.d) - 0.5);
-      double $$4 = Math.abs(azo.e($$1.e) - 0.5);
-      double $$5 = Math.abs(azo.e($$1.f) - 0.5);
-      jb.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == jb.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == jb.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, azo.c(15.0 * azo.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(djy $$0, ebe $$1, int $$2, iv $$3, int $$4) {
-      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return b;
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
-      }
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.v($$1.d());
    }
 
    @Override
-   protected int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-      return $$0.c(b);
-   }
-
-   @Override
-   protected boolean f_(ebe $$0) {
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
       return true;
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b);
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      dpn.a($$0, o($$3).m(), $$2, 2);
    }
 
-   @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, ebe $$3, boolean $$4) {
-      if (!$$1.A_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.U().a($$2, this)) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
-         }
-      }
+   private static dpn o(ebg $$0) {
+      return (dpn)($$0.a(dng.bB) ? dng.jk : dng.jj);
    }
 }

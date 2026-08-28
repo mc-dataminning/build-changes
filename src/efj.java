@@ -1,21 +1,24 @@
+import java.util.List;
 import java.util.stream.Stream;
 
-public interface efj extends efx {
-   int ao();
+public class efj<T> {
+   private final dje a;
+   private final List<T> b;
 
-   iv dv();
+   public efj(dje $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   ffl cR();
+   public dje a() {
+      return this.a;
+   }
 
-   void a(efk var1);
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   Stream<? extends efj> da();
-
-   Stream<? extends efj> db();
-
-   void c(bwt.d var1);
-
-   boolean dT();
-
-   boolean dU();
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

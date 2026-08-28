@@ -1,34 +1,41 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.JavaOps;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
-public class es extends bqj<xa> {
-   private static final Collection<String> b = Arrays.asList("\"hello world\"", "'hello world'", "\"\"", "{text:\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xa.b("argument.component.invalid", $$0));
-   private static final bqe<Object> c = ut.a(JavaOps.INSTANCE);
+public class es implements ArgumentType<o> {
+   private static final Collection<String> b = Arrays.asList("red", "green");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xc.b("argument.color.invalid", $$0));
 
-   private es(jh.a $$0) {
-      super(c.a($$0.a(JavaOps.INSTANCE), c, xc.a, a));
+   private es() {
    }
 
-   public static xa a(CommandContext<ej> $$0, String $$1) {
-      return (xa)$$0.getArgument($$1, xa.class);
+   public static es a() {
+      return new es();
    }
 
-   public static xa a(CommandContext<ej> $$0, String $$1, @Nullable bwt $$2) throws CommandSyntaxException {
-      return xd.a((ej)$$0.getSource(), a($$0, $$1), $$2, 0);
+   public static o a(CommandContext<ek> $$0, String $$1) {
+      return (o)$$0.getArgument($$1, o.class);
    }
 
-   public static xa b(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((ej)$$0.getSource()).f());
+   public o a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      o $$2 = o.b($$1);
+      if ($$2 != null && !$$2.d()) {
+         return $$2;
+      } else {
+         throw a.createWithContext($$0, $$1);
+      }
    }
 
-   public static es a(ef $$0) {
-      return new es($$0);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return ep.b(o.a(true, false), $$1);
    }
 
    public Collection<String> getExamples() {

@@ -1,32 +1,73 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cjw {
-   public static final alh<cjv> a = a(ckp.a);
-   public static final alh<cjv> b = a(ckp.b);
-   public static final alh<cjv> c = a(ckp.c);
-   public static final alh<cjv> d = a;
+public class cjw extends cjh {
+   private static final akn<jg<cjx>> bI = akr.a(cjw.class, akp.z);
 
-   private static alh<cjv> a(ali $$0) {
-      return alh.a(mh.aM, $$0);
+   public cjw(bxe<? extends cjw> $$0, djz $$1) {
+      super($$0, $$1);
    }
 
-   public static void a(qh<cjv> $$0) {
-      a($$0, a, cjv.a.a, "temperate_cow", cue.a(0));
-      a($$0, b, cjv.a.c, "warm_cow", axd.al);
-      a($$0, c, cjv.a.b, "cold_cow", axd.ak);
+   @Override
+   protected void a(akr.a $$0) {
+      super.a($$0);
+      $$0.a(bI, cui.a(this.dX(), cjy.a));
    }
 
-   private static void a(qh<cjv> $$0, alh<cjv> $$1, cjv.a $$2, String $$3, axt<dla> $$4) {
-      jj<dla> $$5 = $$0.a(mh.aG).b($$4);
-      a($$0, $$1, $$2, $$3, cue.a(new ctx($$5), 1));
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      cui.a($$0, this.t());
    }
 
-   private static void a(qh<cjv> $$0, alh<cjv> $$1, cjv.a $$2, String $$3, cue $$4) {
-      ali $$5 = ali.b("entity/cow/" + $$3);
-      $$0.a($$1, new cjv(new cty<>($$2, $$5), $$4));
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      cui.a($$0, this.dX(), mi.aM).ifPresent(this::j);
    }
 
-   public static Optional<jf.c<cjv>> a(azx $$0, jt $$1, cud $$2) {
-      return cua.a($$1.f(mh.aM).c(), jf::a, $$0, $$2);
+   @Nullable
+   public cjw b(aru $$0, bwl $$1) {
+      cjw $$2 = bxe.D.a($$0, bxd.e);
+      if ($$2 != null && $$1 instanceof cjw $$3) {
+         $$2.j(this.ae.h() ? this.t() : $$3.t());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public byo a(dkq $$0, bur $$1, bxd $$2, @Nullable byo $$3) {
+      cjy.a(this.ae, this.dX(), cuf.a($$0, this.dv())).ifPresent(this::j);
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void j(jg<cjx> $$0) {
+      this.al.a(bI, $$0);
+   }
+
+   public jg<cjx> t() {
+      return this.al.a(bI);
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(kk<? extends T> $$0) {
+      return $$0 == kl.aI ? c((kk<T>)$$0, this.t()) : super.a($$0);
+   }
+
+   @Override
+   protected void a(kg $$0) {
+      this.a($$0, kl.aI);
+      super.a($$0);
+   }
+
+   @Override
+   protected <T> boolean b(kk<T> $$0, T $$1) {
+      if ($$0 == kl.aI) {
+         this.j(c(kl.aI, $$1));
+         return true;
+      } else {
+         return super.b($$0, $$1);
+      }
    }
 }

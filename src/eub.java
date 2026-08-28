@@ -1,28 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eub extends esb {
+public class eub extends esd {
    public static final MapCodec<eub> d = a(eub::new);
 
-   public eub(esb.c $$0) {
+   public eub(esd.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<esb.b> a(esb.a $$0) {
-      return a($$0, ehd.a.a, $$1 -> this.a($$1, $$0));
+   public Optional<esd.b> a(esd.a $$0) {
+      dty $$1 = dty.a($$0.f());
+      iw $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new esd.b($$2, (Consumer<esv>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private void a(est $$0, esb.a $$1) {
-      djc $$2 = $$1.h();
-      eic $$3 = $$1.f();
-      iv $$4 = new iv($$2.d(), 90, $$2.e());
-      dtw $$5 = dtw.a($$3);
-      eua.a($$1.e(), $$4, $$5, $$0, $$3);
+   private void a(esv $$0, iw $$1, dty $$2, esd.a $$3) {
+      List<esh> $$4 = Lists.newArrayList();
+      eua.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public esk<?> e() {
-      return esk.e;
+   public esm<?> e() {
+      return esm.c;
    }
 }

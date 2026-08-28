@@ -1,154 +1,98 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class eyq implements eyv {
-   private static final Logger b = LogUtils.getLogger();
-   private final djx c;
-   private final int d;
-   private final ArrayDeque<eyq.c> e = new ArrayDeque<>();
-   private final List<eyq.c> f = new ArrayList<>();
-   private int g = 0;
+public record eyq(aru d, ffs e, ffs f, float g, float h, boolean i, boolean j, Set<byk> k, eyq.a l) {
+   public static final eyq.a a = $$0 -> {
+   };
+   public static final eyq.a b = eyq::a;
+   public static final eyq.a c = eyq::b;
 
-   public eyq(djx $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public eyq(aru $$0, ffs $$1, ffs $$2, float $$3, float $$4, eyq.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   @Override
-   public void a(jb $$0, ebe $$1, iv $$2, iv $$3, int $$4, int $$5) {
-      this.a($$2, new eyq.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
+   public eyq(aru $$0, ffs $$1, ffs $$2, float $$3, float $$4, Set<byk> $$5, eyq.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
    }
 
-   @Override
-   public void a(iv $$0, dnc $$1, @Nullable eyw $$2) {
-      this.a($$0, new eyq.e($$0, $$1, $$2));
+   public eyq(aru $$0, bwv $$1, eyq.a $$2) {
+      this($$0, a($$0, $$1), ffs.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
    }
 
-   @Override
-   public void a(ebe $$0, iv $$1, dnc $$2, @Nullable eyw $$3, boolean $$4) {
-      this.a($$1, new eyq.a($$0, $$1.j(), $$2, $$3, $$4));
-   }
-
-   @Override
-   public void a(iv $$0, dnc $$1, @Nullable jb $$2, @Nullable eyw $$3) {
-      this.a($$0, new eyq.b($$0.j(), $$1, $$3, $$2));
-   }
-
-   private void a(iv $$0, eyq.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
-
-      if (!$$2) {
-         this.a();
+   private static void a(bwv $$0) {
+      if ($$0 instanceof arv $$1) {
+         $$1.f.b(new adl(1032, iw.c, 0, false));
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            eyq.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
+   private static void b(bwv $$0) {
+      $$0.f(iw.a((jq)$$0.dt()));
    }
 
-   static record a(ebe a, iv b, dnc c, @Nullable eyw d, boolean e) implements eyq.c {
-      @Override
-      public boolean a(djx $$0) {
-         eyv.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
+   public static eyq a(aru $$0, bwv $$1, eyq.a $$2) {
+      return new eyq($$0, a($$0, $$1), ffs.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
    }
 
-   static final class b implements eyq.c {
-      private final iv a;
-      private final dnc b;
-      @Nullable
-      private eyw c;
-      @Nullable
-      private final jb d;
-      private int e = 0;
-
-      b(iv $$0, dnc $$1, @Nullable eyw $$2, @Nullable jb $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         if (eyv.a[this.e] == $$3) {
-            this.e++;
-         }
-      }
-
-      @Override
-      public boolean a(djx $$0) {
-         jb $$1 = eyv.a[this.e++];
-         iv $$2 = this.a.a($$1);
-         ebe $$3 = $$0.a_($$2);
-         eyw $$4 = null;
-         if ($$0.K().b(cvj.c)) {
-            if (this.c == null) {
-               this.c = eys.a($$0, this.d == null ? null : this.d.g(), null);
-            }
-
-            $$4 = this.c.b($$1);
-         }
-
-         eyv.a($$0, $$3, $$2, this.b, $$4, false);
-         if (this.e < eyv.a.length && eyv.a[this.e] == this.d) {
-            this.e++;
-         }
-
-         return this.e < eyv.a.length;
-      }
+   private static ffs a(aru $$0, bwv $$1) {
+      return $$1.a($$0, $$0.aa()).c();
    }
 
-   interface c {
-      boolean a(djx var1);
+   public eyq a(float $$0, float $$1) {
+      return new eyq(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
    }
 
-   static record d(jb a, ebe b, iv c, iv d, int e, int f) implements eyq.c {
-      @Override
-      public boolean a(djx $$0) {
-         eyv.a($$0, this.a, this.c, this.d, this.b, this.e, this.f);
-         return false;
-      }
+   public eyq a(ffs $$0) {
+      return new eyq(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
    }
 
-   static record e(iv a, dnc b, @Nullable eyw c) implements eyq.c {
-      @Override
-      public boolean a(djx $$0) {
-         ebe $$1 = $$0.a_(this.a);
-         eyv.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+   public eyq a() {
+      return new eyq(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public aru b() {
+      return this.d;
+   }
+
+   public ffs c() {
+      return this.e;
+   }
+
+   public ffs d() {
+      return this.f;
+   }
+
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<byk> i() {
+      return this.k;
+   }
+
+   public eyq.a j() {
+      return this.l;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(bwv var1);
+
+      default eyq.a then(eyq.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
    }
 }

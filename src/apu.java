@@ -1,63 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
 
 public class apu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xa.c("commands.transfer.error.no_players"));
-
-   public static void a(CommandDispatcher<ej> $$0) {
+   public static void a(CommandDispatcher<ek> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("transfer").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ek.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((ej)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ej)$$0x.getSource()).h()))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((RequiredArgumentBuilder)ek.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (ej)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((ej)$$0x.getSource()).h())
-                                 )
-                           ))
-                        .then(
-                           ek.a("players", ew.d())
-                              .executes(
-                                 $$0x -> a(
-                                       (ej)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       ew.f($$0x, "players")
-                                    )
-                              )
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("set")
+                                    .then(el.a("day").executes($$0x -> a((ek)$$0x.getSource(), 1000))))
+                                 .then(el.a("noon").executes($$0x -> a((ek)$$0x.getSource(), 6000))))
+                              .then(el.a("night").executes($$0x -> a((ek)$$0x.getSource(), 13000))))
+                           .then(el.a("midnight").executes($$0x -> a((ek)$$0x.getSource(), 18000))))
+                        .then(el.a("time", ga.a()).executes($$0x -> a((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(el.a("add").then(el.a("time", ga.a()).executes($$0x -> b((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("query")
+                        .then(el.a("daytime").executes($$0x -> c((ek)$$0x.getSource(), a(((ek)$$0x.getSource()).e())))))
+                     .then(el.a("gametime").executes($$0x -> c((ek)$$0x.getSource(), (int)(((ek)$$0x.getSource()).e().ae() % 2147483647L)))))
+                  .then(el.a("day").executes($$0x -> c((ek)$$0x.getSource(), (int)(((ek)$$0x.getSource()).e().af() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(ej $$0, String $$1, int $$2, Collection<art> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
-      } else {
-         for (art $$4 : $$3) {
-            $$4.f.b(new zx($$1, $$2));
-         }
+   private static int a(aru $$0) {
+      return (int)($$0.af() % 24000L);
+   }
 
-         if ($$3.size() == 1) {
-            $$0.a(() -> xa.a("commands.transfer.success.single", $$3.iterator().next().m_(), $$1, $$2), true);
-         } else {
-            $$0.a(() -> xa.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
-         }
+   private static int c(ek $$0, int $$1) {
+      $$0.a(() -> xc.a("commands.time.query", $$1), false);
+      return $$1;
+   }
 
-         return $$3.size();
+   public static int a(ek $$0, int $$1) {
+      for (aru $$2 : $$0.l().L()) {
+         $$2.b((long)$$1);
       }
+
+      $$0.l().H();
+      $$0.a(() -> xc.a("commands.time.set", $$1), true);
+      return a($$0.e());
+   }
+
+   public static int b(ek $$0, int $$1) {
+      for (aru $$2 : $$0.l().L()) {
+         $$2.b($$2.af() + (long)$$1);
+      }
+
+      $$0.l().H();
+      int $$3 = a($$0.e());
+      $$0.a(() -> xc.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

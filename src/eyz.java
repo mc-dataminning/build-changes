@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface eyz {
+public class eyz {
+   public static final int a = 4;
+   public static final int b = 15;
+   public static final int c = 0;
+   public static final int d = 15;
+   public static final int e = 0;
 }

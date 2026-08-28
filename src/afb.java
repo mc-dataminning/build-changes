@@ -1,29 +1,32 @@
-public class afb implements zh<abw> {
-   public static final yy<vw, afb> a = zh.a(afb::a, afb::new);
+import javax.annotation.Nullable;
+
+public class afb implements zj<aby> {
+   public static final za<vy, afb> a = zj.a(afb::a, afb::new);
    private final int b;
 
-   public afb(int $$0) {
-      this.b = $$0;
+   public afb(bwv $$0) {
+      this.b = $$0.ao();
    }
 
-   private afb(vw $$0) {
+   private afb(vy $$0) {
       this.b = $$0.l();
    }
 
-   private void a(vw $$0) {
+   private void a(vy $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zj<afb> a() {
-      return agp.aC;
+   public zl<afb> a() {
+      return agr.aA;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bwv a(djz $$0) {
+      return $$0.a(this.b);
    }
 }

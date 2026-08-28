@@ -1,39 +1,20 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
-
-class bwf extends bvv {
-   private final ToIntFunction<azx> c;
-
-   protected bwf(bvw $$0, int $$1, ToIntFunction<azx> $$2) {
-      super($$0, $$1, ly.Y);
-      this.c = $$2;
+class bwf extends bvx {
+   protected bwf(bvy $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(ars $$0, bxu $$1, int $$2, bwt.d $$3) {
-      if ($$3 == bwt.d.a && ($$1 instanceof crx || $$0.O().c(djt.d))) {
-         this.a($$0, $$1.dY(), $$1.dv());
+   public boolean a(aru $$0, bxw $$1, int $$2) {
+      if ($$1.eG() < $$1.eU()) {
+         $$1.c(1.0F);
       }
+
+      return true;
    }
 
-   private void a(ars $$0, azx $$1, iv $$2) {
-      Set<iv> $$3 = Sets.newHashSet();
-      int $$4 = this.c.applyAsInt($$1);
-
-      for (iv $$5 : iv.a($$1, 15, $$2, 1)) {
-         iv $$6 = $$5.e();
-         if (!$$3.contains($$5) && $$0.a_($$5).v() && $$0.a_($$6).c($$0, $$6, jb.b)) {
-            $$3.add($$5.j());
-            if ($$3.size() >= $$4) {
-               break;
-            }
-         }
-      }
-
-      for (iv $$7 : $$3) {
-         $$0.a($$7, dne.bz.m(), 3);
-         $$0.c(3018, $$7, 0);
-      }
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 50 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

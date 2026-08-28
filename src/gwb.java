@@ -1,104 +1,90 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class gwb implements gwd.a {
-   final frd a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private gwb.a d;
+public class gwb implements gwf.a {
+   private final frf a;
+   private static final int b = aya.a(255, 0, 155, 155);
+   private static final int c = aya.a(255, 255, 255, 0);
 
-   public gwb(frd $$0) {
+   public gwb(frf $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ag.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         hpl $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gwb.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
+   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
+      bwv $$5 = this.a.j.k().g();
+      float $$6 = (float)((double)this.a.s.K_() - $$3);
+      float $$7 = (float)((double)(this.a.s.ao() + 1) - $$3);
+      dje $$8 = $$5.dx();
+      float $$9 = (float)((double)$$8.d() - $$2);
+      float $$10 = (float)((double)$$8.e() - $$4);
+      flt $$11 = $$1.getBuffer(gsn.a(1.0));
+      Matrix4f $$12 = $$0.c().a();
+
+      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
+         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
          }
       }
 
-      if (this.d != null) {
-         Map<djc, String> $$7 = this.d.b.getNow(null);
-         double $$8 = this.a.j.k().b().e * 0.85;
+      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
+         int $$16 = $$15 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
+      }
 
-         for (Entry<djc, String> $$9 : this.d.a.entrySet()) {
-            djc $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
+      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
+         int $$18 = $$17 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+      }
 
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
+      for (int $$19 = this.a.s.K_(); $$19 <= this.a.s.ao() + 1; $$19 += 2) {
+         float $$20 = (float)((double)$$19 - $$3);
+         int $$21 = $$19 % 8 == 0 ? b : c;
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21);
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21);
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+      }
 
-            for (String $$14 : $$12) {
-               gwd.a($$0, $$1, $$14, (double)jy.a($$10.h, 8), $$8 + (double)$$13, (double)jy.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
+      $$11 = $$1.getBuffer(gsn.a(2.0));
+
+      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
+         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
          }
       }
-   }
 
-   final class a {
-      final Map<djc, String> a;
-      final CompletableFuture<Map<djc, String>> b;
-
-      a(final hpl $$0, final double $$1, final double $$2) {
-         gmb $$3 = gwb.this.a.s;
-         alh<djx> $$4 = $$3.aj();
-         int $$5 = jy.a($$1);
-         int $$6 = jy.a($$2);
-         Builder<djc, String> $$7 = ImmutableMap.builder();
-         glx $$8 = $$3.h();
-
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               djc $$11 = new djc($$9, $$10);
-               String $$12 = "";
-               edl $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.E() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
-         }
-
-         this.a = $$7.build();
-         this.b = $$0.a(() -> {
-            ars $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<djc, String> $$5x = ImmutableMap.builder();
-               arp $$6x = $$4x.m();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     djc $$9x = new djc($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
-         });
+      for (int $$24 = this.a.s.K_(); $$24 <= this.a.s.ao() + 1; $$24 += 16) {
+         float $$25 = (float)((double)$$24 - $$3);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
       }
    }
 }

@@ -1,634 +1,89 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.WritableByteChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.EnumSet;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.IntUnaryOperator;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.lwjgl.stb.STBIWriteCallback;
-import org.lwjgl.stb.STBImage;
-import org.lwjgl.stb.STBImageResize;
-import org.lwjgl.stb.STBImageWrite;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public final class fkg implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final MemoryPool b = TracyClient.createMemoryPool("NativeImage");
-   private static final Set<StandardOpenOption> c = EnumSet.of(StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-   private final fkg.a d;
-   private final int e;
-   private final int f;
-   private final boolean g;
-   private long h;
-   private final long i;
+public final class fkg {
+   private final long a;
+   private final List<fkl> b;
+   private fkl c;
+   private int d;
+   private int e;
 
-   public fkg(int $$0, int $$1, boolean $$2) {
-      this(fkg.a.a, $$0, $$1, $$2);
+   public fkg(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   public fkg(fkg.a $$0, int $$1, int $$2, boolean $$3) {
-      if ($$1 > 0 && $$2 > 0) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-         this.i = (long)$$1 * (long)$$2 * (long)$$0.a();
-         this.g = false;
-         if ($$3) {
-            this.h = MemoryUtil.nmemCalloc(1L, this.i);
-         } else {
-            this.h = MemoryUtil.nmemAlloc(this.i);
-         }
+   public void a() {
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
 
-         b.malloc(this.h, (int)this.i);
-         if (this.h == 0L) {
-            throw new IllegalStateException("Unable to allocate texture of size " + $$1 + "x" + $$2 + " (" + $$0.a() + " channels)");
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         fkl $$2 = new fkl($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
          }
-      } else {
-         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
       }
+
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new fkl($$5);
    }
 
-   public fkg(fkg.a $$0, int $$1, int $$2, boolean $$3, long $$4) {
-      if ($$1 > 0 && $$2 > 0) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
-         this.i = (long)$$1 * (long)$$2 * (long)$$0.a();
-      } else {
-         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
+   public fkl a(Optional<fkl> $$0) {
+      if ($$0.isPresent()) {
+         fkl $$1 = $$0.get();
+
+         for (fkl $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
       }
+
+      return this.b();
+   }
+
+   public int a(fkl $$0) {
+      return this.b.indexOf($$0);
+   }
+
+   public fkl b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public fkl a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
    }
 
    @Override
    public String toString() {
-      return "NativeImage[" + this.d + " " + this.e + "x" + this.f + "@" + this.h + (this.g ? "S" : "N") + "]";
-   }
-
-   private boolean c(int $$0, int $$1) {
-      return $$0 < 0 || $$0 >= this.e || $$1 < 0 || $$1 >= this.f;
-   }
-
-   public static fkg a(InputStream $$0) throws IOException {
-      return a(fkg.a.a, $$0);
-   }
-
-   public static fkg a(@Nullable fkg.a $$0, InputStream $$1) throws IOException {
-      ByteBuffer $$2 = null;
-
-      fkg var3;
-      try {
-         $$2 = TextureUtil.readResource($$1);
-         $$2.rewind();
-         var3 = a($$0, $$2);
-      } finally {
-         MemoryUtil.memFree($$2);
-         IOUtils.closeQuietly($$1);
-      }
-
-      return var3;
-   }
-
-   public static fkg a(ByteBuffer $$0) throws IOException {
-      return a(fkg.a.a, $$0);
-   }
-
-   public static fkg a(byte[] $$0) throws IOException {
-      MemoryStack $$1 = MemoryStack.stackGet();
-      int $$2 = $$1.getPointer();
-      if ($$2 < $$0.length) {
-         ByteBuffer $$3 = MemoryUtil.memAlloc($$0.length);
-
-         fkg var13;
-         try {
-            var13 = a($$3, $$0);
-         } finally {
-            MemoryUtil.memFree($$3);
-         }
-
-         return var13;
-      } else {
-         MemoryStack $$4 = MemoryStack.stackPush();
-
-         fkg var5;
-         try {
-            ByteBuffer $$5 = $$4.malloc($$0.length);
-            var5 = a($$5, $$0);
-         } catch (Throwable var11) {
-            if ($$4 != null) {
-               try {
-                  $$4.close();
-               } catch (Throwable var9) {
-                  var11.addSuppressed(var9);
-               }
-            }
-
-            throw var11;
-         }
-
-         if ($$4 != null) {
-            $$4.close();
-         }
-
-         return var5;
-      }
-   }
-
-   private static fkg a(ByteBuffer $$0, byte[] $$1) throws IOException {
-      $$0.put($$1);
-      $$0.rewind();
-      return a($$0);
-   }
-
-   public static fkg a(@Nullable fkg.a $$0, ByteBuffer $$1) throws IOException {
-      if ($$0 != null && !$$0.t()) {
-         throw new UnsupportedOperationException("Don't know how to read format " + $$0);
-      } else if (MemoryUtil.memAddress($$1) == 0L) {
-         throw new IllegalArgumentException("Invalid buffer");
-      } else {
-         azu.a($$1);
-         MemoryStack $$2 = MemoryStack.stackPush();
-
-         fkg var9;
-         try {
-            IntBuffer $$3 = $$2.mallocInt(1);
-            IntBuffer $$4 = $$2.mallocInt(1);
-            IntBuffer $$5 = $$2.mallocInt(1);
-            ByteBuffer $$6 = STBImage.stbi_load_from_memory($$1, $$3, $$4, $$5, $$0 == null ? 0 : $$0.e);
-            if ($$6 == null) {
-               throw new IOException("Could not load image: " + STBImage.stbi_failure_reason());
-            }
-
-            long $$7 = MemoryUtil.memAddress($$6);
-            b.malloc($$7, $$6.limit());
-            var9 = new fkg($$0 == null ? fkg.a.a($$5.get(0)) : $$0, $$3.get(0), $$4.get(0), true, $$7);
-         } catch (Throwable var11) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var10) {
-                  var11.addSuppressed(var10);
-               }
-            }
-
-            throw var11;
-         }
-
-         if ($$2 != null) {
-            $$2.close();
-         }
-
-         return var9;
-      }
-   }
-
-   private void i() {
-      if (this.h == 0L) {
-         throw new IllegalStateException("Image is not allocated.");
-      }
-   }
-
-   @Override
-   public void close() {
-      if (this.h != 0L) {
-         if (this.g) {
-            STBImage.nstbi_image_free(this.h);
-         } else {
-            MemoryUtil.nmemFree(this.h);
-         }
-
-         b.free(this.h);
-      }
-
-      this.h = 0L;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public fkg.a c() {
-      return this.d;
-   }
-
-   private int d(int $$0, int $$1) {
-      if (this.d != fkg.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixelRGBA only works on RGBA images; have %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         this.i();
-         long $$2 = ((long)$$0 + (long)$$1 * (long)this.e) * 4L;
-         return MemoryUtil.memGetInt(this.h + $$2);
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return axy.n(this.d($$0, $$1));
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-      if (this.d != fkg.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "setPixelRGBA only works on RGBA images; have %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         this.i();
-         long $$3 = ((long)$$0 + (long)$$1 * (long)this.e) * 4L;
-         MemoryUtil.memPutInt(this.h + $$3, $$2);
-      }
-   }
-
-   public void b(int $$0, int $$1, int $$2) {
-      this.a($$0, $$1, axy.m($$2));
-   }
-
-   public fkg a(IntUnaryOperator $$0) {
-      if (this.d != fkg.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.d));
-      } else {
-         this.i();
-         fkg $$1 = new fkg(this.e, this.f, false);
-         int $$2 = this.e * this.f;
-         IntBuffer $$3 = MemoryUtil.memIntBuffer(this.h, $$2);
-         IntBuffer $$4 = MemoryUtil.memIntBuffer($$1.h, $$2);
-
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            int $$6 = axy.n($$3.get($$5));
-            int $$7 = $$0.applyAsInt($$6);
-            $$4.put($$5, axy.m($$7));
-         }
-
-         return $$1;
-      }
-   }
-
-   public int[] d() {
-      if (this.d != fkg.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixels only works on RGBA images; have %s", this.d));
-      } else {
-         this.i();
-         int[] $$0 = new int[this.e * this.f];
-         MemoryUtil.memIntBuffer(this.h, this.e * this.f).get($$0);
-         return $$0;
-      }
-   }
-
-   public int[] e() {
-      int[] $$0 = this.d();
-
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         $$0[$$1] = axy.n($$0[$$1]);
-      }
-
-      return $$0;
-   }
-
-   public byte b(int $$0, int $$1) {
-      if (!this.d.o()) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "no luminance or alpha in %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         int $$2 = ($$0 + $$1 * this.e) * this.d.a() + this.d.s() / 8;
-         return MemoryUtil.memGetByte(this.h + (long)$$2);
-      }
-   }
-
-   @Deprecated
-   public int[] f() {
-      if (this.d != fkg.a.a) {
-         throw new UnsupportedOperationException("can only call makePixelArray for RGBA images.");
-      } else {
-         this.i();
-         int[] $$0 = new int[this.a() * this.b()];
-
-         for (int $$1 = 0; $$1 < this.b(); $$1++) {
-            for (int $$2 = 0; $$2 < this.a(); $$2++) {
-               $$0[$$2 + $$1 * this.a()] = this.a($$2, $$1);
-            }
-         }
-
-         return $$0;
-      }
-   }
-
-   public void a(File $$0) throws IOException {
-      this.a($$0.toPath());
-   }
-
-   public boolean a(FT_Face $$0, int $$1) {
-      if (this.d.a() != 1) {
-         throw new IllegalArgumentException("Can only write fonts into 1-component images.");
-      } else if (fxn.b(FreeType.FT_Load_Glyph($$0, $$1, 4), "Loading glyph")) {
-         return false;
-      } else {
-         FT_GlyphSlot $$2 = Objects.requireNonNull($$0.glyph(), "Glyph not initialized");
-         FT_Bitmap $$3 = $$2.bitmap();
-         if ($$3.pixel_mode() != 2) {
-            throw new IllegalStateException("Rendered glyph was not 8-bit grayscale");
-         } else if ($$3.width() == this.a() && $$3.rows() == this.b()) {
-            int $$4 = $$3.width() * $$3.rows();
-            ByteBuffer $$5 = Objects.requireNonNull($$3.buffer($$4), "Glyph has no bitmap");
-            MemoryUtil.memCopy(MemoryUtil.memAddress($$5), this.h, (long)$$4);
-            return true;
-         } else {
-            throw new IllegalArgumentException(
-               String.format(Locale.ROOT, "Glyph bitmap of size %sx%s does not match image of size: %sx%s", $$3.width(), $$3.rows(), this.a(), this.b())
-            );
-         }
-      }
-   }
-
-   public void a(Path $$0) throws IOException {
-      if (!this.d.t()) {
-         throw new UnsupportedOperationException("Don't know how to write format " + this.d);
-      } else {
-         this.i();
-
-         try (WritableByteChannel $$1 = Files.newByteChannel($$0, c)) {
-            if (!this.a($$1)) {
-               throw new IOException("Could not write image to the PNG file \"" + $$0.toAbsolutePath() + "\": " + STBImage.stbi_failure_reason());
-            }
-         }
-      }
-   }
-
-   private boolean a(WritableByteChannel $$0) throws IOException {
-      fkg.b $$1 = new fkg.b($$0);
-
-      boolean var4;
-      try {
-         int $$2 = Math.min(this.b(), Integer.MAX_VALUE / this.a() / this.d.a());
-         if ($$2 < this.b()) {
-            a.warn("Dropping image height from {} to {} to fit the size into 32-bit signed int", this.b(), $$2);
-         }
-
-         if (STBImageWrite.nstbi_write_png_to_func($$1.address(), 0L, this.a(), $$2, this.d.a(), this.h, 0) != 0) {
-            $$1.a();
-            return true;
-         }
-
-         var4 = false;
-      } finally {
-         $$1.free();
-      }
-
-      return var4;
-   }
-
-   public void a(fkg $$0) {
-      if ($$0.c() != this.d) {
-         throw new UnsupportedOperationException("Image formats don't match.");
-      } else {
-         int $$1 = this.d.a();
-         this.i();
-         $$0.i();
-         if (this.e == $$0.e) {
-            MemoryUtil.memCopy($$0.h, this.h, Math.min(this.i, $$0.i));
-         } else {
-            int $$2 = Math.min(this.a(), $$0.a());
-            int $$3 = Math.min(this.b(), $$0.b());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               int $$5 = $$4 * $$0.a() * $$1;
-               int $$6 = $$4 * this.a() * $$1;
-               MemoryUtil.memCopy($$0.h + (long)$$5, this.h + (long)$$6, (long)$$2);
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$1 + $$3; $$5++) {
-         for (int $$6 = $$0; $$6 < $$0 + $$2; $$6++) {
-            this.b($$6, $$5, $$4);
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, boolean $$6, boolean $$7) {
-      this.a(this, $$0, $$1, $$0 + $$2, $$1 + $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(fkg $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8) {
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            int $$11 = $$7 ? $$5 - 1 - $$10 : $$10;
-            int $$12 = $$8 ? $$6 - 1 - $$9 : $$9;
-            int $$13 = this.d($$1 + $$10, $$2 + $$9);
-            $$0.a($$3 + $$11, $$4 + $$12, $$13);
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, fkg $$4) {
-      this.i();
-      if ($$4.c() != this.d) {
-         throw new UnsupportedOperationException("resizeSubRectTo only works for images of the same format.");
-      } else {
-         int $$5 = this.d.a();
-         STBImageResize.nstbir_resize_uint8(this.h + (long)(($$0 + $$1 * this.a()) * $$5), $$2, $$3, this.a() * $$5, $$4.h, $$4.a(), $$4.b(), 0, $$5);
-      }
-   }
-
-   public void g() {
-      fjv.a(this.h);
-   }
-
-   public long h() {
-      return this.h;
-   }
-
-   public static enum a {
-      a(4, true, true, true, false, true, 0, 8, 16, 255, 24, true),
-      b(3, true, true, true, false, false, 0, 8, 16, 255, 255, true),
-      c(2, false, false, false, true, true, 255, 255, 255, 0, 8, true),
-      d(1, false, false, false, true, false, 0, 0, 0, 0, 255, true);
-
-      final int e;
-      private final boolean f;
-      private final boolean g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
-      private final int k;
-      private final int l;
-      private final int m;
-      private final int n;
-      private final int o;
-      private final boolean p;
-
-      private a(
-         final int $$0,
-         final boolean $$1,
-         final boolean $$2,
-         final boolean $$3,
-         final boolean $$4,
-         final boolean $$5,
-         final int $$6,
-         final int $$7,
-         final int $$8,
-         final int $$9,
-         final int $$10,
-         final boolean $$11
-      ) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$5;
-         this.k = $$6;
-         this.l = $$7;
-         this.m = $$8;
-         this.n = $$9;
-         this.o = $$10;
-         this.p = $$11;
-      }
-
-      public int a() {
-         return this.e;
-      }
-
-      public boolean b() {
-         return this.f;
-      }
-
-      public boolean c() {
-         return this.g;
-      }
-
-      public boolean d() {
-         return this.h;
-      }
-
-      public boolean e() {
-         return this.i;
-      }
-
-      public boolean f() {
-         return this.j;
-      }
-
-      public int g() {
-         return this.k;
-      }
-
-      public int h() {
-         return this.l;
-      }
-
-      public int i() {
-         return this.m;
-      }
-
-      public int j() {
-         return this.n;
-      }
-
-      public int k() {
-         return this.o;
-      }
-
-      public boolean l() {
-         return this.i || this.f;
-      }
-
-      public boolean m() {
-         return this.i || this.g;
-      }
-
-      public boolean n() {
-         return this.i || this.h;
-      }
-
-      public boolean o() {
-         return this.i || this.j;
-      }
-
-      public int p() {
-         return this.i ? this.n : this.k;
-      }
-
-      public int q() {
-         return this.i ? this.n : this.l;
-      }
-
-      public int r() {
-         return this.i ? this.n : this.m;
-      }
-
-      public int s() {
-         return this.i ? this.n : this.o;
-      }
-
-      public boolean t() {
-         return this.p;
-      }
-
-      static fkg.a a(int $$0) {
-         switch ($$0) {
-            case 1:
-               return d;
-            case 2:
-               return c;
-            case 3:
-               return b;
-            case 4:
-            default:
-               return a;
-         }
-      }
-   }
-
-   static class b extends STBIWriteCallback {
-      private final WritableByteChannel a;
-      @Nullable
-      private IOException b;
-
-      b(WritableByteChannel $$0) {
-         this.a = $$0;
-      }
-
-      public void invoke(long $$0, long $$1, int $$2) {
-         ByteBuffer $$3 = getData($$1, $$2);
-
-         try {
-            this.a.write($$3);
-         } catch (IOException var8) {
-            this.b = var8;
-         }
-      }
-
-      public void a() throws IOException {
-         if (this.b != null) {
-            throw this.b;
-         }
-      }
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

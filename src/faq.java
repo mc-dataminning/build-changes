@@ -1,45 +1,81 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
-public abstract class faq extends fax {
-   protected final List<fax> d;
-   private final fap a;
+public class faq extends fas {
+   public static final MapCodec<faq> a = a(faq::new);
 
-   protected faq(List<fax> $$0, List<fdq> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   faq(List<faz> $$0, List<fds> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(fan $$0) {
+   public fba a() {
+      return fax.g;
+   }
+
+   @Override
+   protected far a(List<? extends far> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (far)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (far $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(fap $$0) {
       super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static faq.a a(faz.a<?>... $$0) {
+      return new faq.a($$0);
+   }
+
+   public static <E> faq.a a(Collection<E> $$0, Function<E, faz.a<?>> $$1) {
+      return new faq.a($$0.stream().map($$1::apply).toArray(faz.a[]::new));
+   }
+
+   public static class a extends faz.a<faq.a> {
+      private final Builder<faz> a = ImmutableList.builder();
+
+      public a(faz.a<?>... $$0) {
+         for (faz.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      protected faq.a a() {
+         return this;
       }
-   }
 
-   protected abstract fap a(List<? extends fap> var1);
+      @Override
+      public faq.a a(faz.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   @Override
-   public final boolean expand(fah $$0, Consumer<faw> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
-
-   public static <T extends faq> MapCodec<T> a(faq.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(fav.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface a<T extends faq> {
-      T create(List<fax> var1, List<fdq> var2);
+      @Override
+      public faz b() {
+         return new faq(this.a.build(), this.f());
+      }
    }
 }

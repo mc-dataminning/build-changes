@@ -1,29 +1,75 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class fcg extends fbu {
-   public static final MapCodec<fcg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(uz.f.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, fcg::new));
-   private final tz b;
+public class fcg extends fbw {
+   public static final MapCodec<fcg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(fah.e.fieldOf("component").forGetter($$0x -> $$0x.b), fax.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, fcg::new)
+   );
+   private final fag<?> b;
+   private final List<faz> c;
 
-   private fcg(List<fdq> $$0, tz $$1) {
+   fcg(List<fds> $$0, fag<?> $$1, List<faz> $$2) {
       super($$0);
       this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public fbw<fcg> b() {
-      return fbx.j;
+   public fby<fcg> b() {
+      return fbz.t;
    }
 
    @Override
-   public czy a(czy $$0, fah $$1) {
-      dcg.a(kk.b, $$0, $$0x -> $$0x.a(this.b));
-      return $$0;
+   public daa a(daa $$0, faj $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         Builder<daa> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(fao.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
+      }
    }
 
-   @Deprecated
-   public static fbu.a<?> a(tz $$0) {
-      return a($$1 -> new fcg($$1, $$0));
+   @Override
+   public void a(fap $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static fcg.a a(fag<?> $$0) {
+      return new fcg.a($$0);
+   }
+
+   public static class a extends fbw.a<fcg.a> {
+      private final com.google.common.collect.ImmutableList.Builder<faz> a = ImmutableList.builder();
+      private final fag<?> b;
+
+      public a(fag<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected fcg.a a() {
+         return this;
+      }
+
+      public fcg.a a(faz.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public fbx b() {
+         return new fcg(this.g(), this.b, this.a.build());
+      }
    }
 }

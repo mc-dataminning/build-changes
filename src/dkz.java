@@ -3,21 +3,21 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dkz {
    public static final Codec<dkz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ly.bk.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dkz::new)
+      $$0 -> $$0.group(awq.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dkz::new)
    );
-   private final lw b;
-   private final float c;
+   private final jg<awq> b;
+   private final double c;
 
-   public dkz(lw $$0, float $$1) {
+   public dkz(jg<awq> $$0, double $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public lw a() {
+   public jg<awq> a() {
       return this.b;
    }
 
-   public boolean a(azx $$0) {
-      return $$0.i() <= this.c;
+   public double b() {
+      return this.c;
    }
 }

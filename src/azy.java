@@ -1,6 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-
 public interface azy {
-   <T> DataResult<T> a(Codec<T> var1, T var2, jh.a var3);
+   void a(xc var1);
+
+   void b(xc var1);
+
+   void c(xc var1);
+
+   void a(int var1);
+
+   void a();
 }

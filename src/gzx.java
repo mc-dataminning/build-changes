@@ -1,39 +1,38 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gzx extends gzq<ckg, hfz, gjb> {
+   private static final alk a = alk.b("textures/entity/parrot/parrot_red_blue.png");
+   private static final alk j = alk.b("textures/entity/parrot/parrot_blue.png");
+   private static final alk k = alk.b("textures/entity/parrot/parrot_green.png");
+   private static final alk l = alk.b("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final alk m = alk.b("textures/entity/parrot/parrot_grey.png");
 
-public class gzx extends gzo<ckf, hfz, gjb> {
-   private final Map<ckg.a, ggm<gjb>> a;
-
-   public gzx(gyi.a $$0) {
-      super($$0, new gjb($$0.a(gld.cd)), 0.7F);
-      this.a = a($$0);
-      this.a(new hcz<>(this, $$0.h(), hng.d.g, $$0x -> $$0x.a, new gjb($$0.a(gld.cq)), new gjb($$0.a(gld.cp))));
+   public gzx(gyk.a $$0) {
+      super($$0, new gjb($$0.a(glf.cb)), 0.3F);
    }
 
-   private static Map<ckg.a, ggm<gjb>> a(gyi.a $$0) {
-      return Maps.newEnumMap(
-         Map.of(ckg.a.a, new ggm<>(new gjb($$0.a(gld.cd)), new gjb($$0.a(gld.co))), ckg.a.b, new ggm<>(new ghp($$0.a(gld.ag)), new ghp($$0.a(gld.ah))))
-      );
-   }
-
-   public void a(hfz $$0, flo $$1, gsa $$2, int $$3) {
-      if ($$0.b != null) {
-         this.g = this.a.get($$0.b.b().a()).a($$0.aj);
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public ali a(hfz $$0) {
-      return $$0.b == null ? hkp.c() : $$0.b.b().b().b();
+   public alk a(hfz $$0) {
+      return a($$0.a);
    }
 
    public hfz b() {
       return new hfz();
    }
 
-   public void a(ckf $$0, hfz $$1, float $$2) {
+   public void a(ckg $$0, hfz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.a(bxd.h).v();
-      $$1.b = $$0.t().a();
+      $$1.a = $$0.gI();
+      float $$3 = azq.h($$2, $$0.bP, $$0.bM);
+      float $$4 = azq.h($$2, $$0.bO, $$0.bN);
+      $$1.b = (azq.a($$3) + 1.0F) * $$4;
+      $$1.c = gjb.a($$0);
+   }
+
+   public static alk a(ckg.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> j;
+         case c -> k;
+         case d -> l;
+         case e -> m;
+      };
    }
 }

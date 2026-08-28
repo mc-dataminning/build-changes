@@ -1,34 +1,36 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
+public final class hkr {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final alk d = alk.b("missingno");
 
-public abstract class hkr extends hkl {
-   private final ali c;
-
-   public hkr(ali $$0) {
-      this.c = $$0;
+   public static fki a() {
+      return a(16, 16);
    }
 
-   public ali b() {
-      return this.c;
-   }
+   public static fki a(int $$0, int $$1) {
+      fki $$2 = new fki($$0, $$1, false);
+      int $$3 = -524040;
 
-   public void a(hlb $$0) {
-      boolean $$1 = $$0.c();
-      boolean $$2 = $$0.b();
-      this.b = $$2;
-
-      try (fkg $$3 = $$0.d()) {
-         this.a($$3, $$2, $$1);
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
+               $$2.b($$5, $$4, -524040);
+            } else {
+               $$2.b($$5, $$4, -16777216);
+            }
+         }
       }
+
+      return $$2;
    }
 
-   private void a(fkg $$0, boolean $$1, boolean $$2) {
-      fla $$3 = RenderSystem.getDevice();
-      this.a = $$3.a(this.c::toString, fli.a, $$0.a(), $$0.b(), 1);
-      this.a($$1, false);
-      this.a($$2);
-      $$3.b().a(this.a, $$0);
+   public static hkw b() {
+      fki $$0 = a(16, 16);
+      return new hkw(d, new hmq(16, 16), $$0, avj.a);
    }
 
-   public abstract hlb a(avf var1) throws IOException;
+   public static alk c() {
+      return d;
+   }
 }

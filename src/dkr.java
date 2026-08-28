@@ -1,74 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public interface dkr extends djd {
+   jc[] D = jc.values();
 
-public record dkr(tz d, Optional<dkr.a> e, Optional<bxf> f) {
-   public static final String a = "entity";
-   public static final Codec<dkr> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               tz.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dkr.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bxf.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dkr::new)
-   );
-   public static final Codec<btb<dkr>> c = btb.a(b);
-
-   public dkr() {
-      this(new tz(), Optional.empty(), Optional.empty());
+   default int a(iw $$0, jc $$1) {
+      return this.a_($$0).b(this, $$0, $$1);
    }
 
-   public dkr(tz d, Optional<dkr.a> e, Optional<bxf> f) {
-      Optional<ali> $$3 = d.a("id", ali.a);
-      if ($$3.isPresent()) {
-         d.a("id", ali.a, $$3.get());
+   default int e_(iw $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.e(), jc.a));
+      if ($$1 >= 15) {
+         return $$1;
       } else {
-         d.r("id");
+         $$1 = Math.max($$1, this.a($$0.d(), jc.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.f(), jc.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.g(), jc.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.h(), jc.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.i(), jc.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
       }
-
-      this.d = d;
-      this.e = e;
-      this.f = f;
    }
 
-   public tz a() {
-      return this.d;
+   default int a(iw $$0, jc $$1, boolean $$2) {
+      ebg $$3 = this.a_($$0);
+      if ($$2) {
+         return dph.n($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(dng.hB)) {
+         return 15;
+      } else if ($$3.a(dng.cH)) {
+         return $$3.c(dtn.f);
+      } else {
+         return $$3.p() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   public Optional<dkr.a> b() {
-      return this.e;
+   default boolean b(iw $$0, jc $$1) {
+      return this.c($$0, $$1) > 0;
    }
 
-   public Optional<bxf> c() {
-      return this.f;
+   default int c(iw $$0, jc $$1) {
+      ebg $$2 = this.a_($$0);
+      int $$3 = $$2.a(this, $$0, $$1);
+      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
    }
 
-   public static record a(azg<Integer> b, azg<Integer> c) {
-      private static final azg<Integer> d = new azg<>(0, 15);
-      public static final Codec<dkr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dkr.a::new)
-      );
+   default boolean D(iw $$0) {
+      if (this.c($$0.e(), jc.a) > 0) {
+         return true;
+      } else if (this.c($$0.d(), jc.b) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jc.c) > 0) {
+         return true;
+      } else if (this.c($$0.g(), jc.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.h(), jc.e) > 0 ? true : this.c($$0.i(), jc.f) > 0;
+      }
+   }
 
-      private static DataResult<azg<Integer>> a(azg<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+   default int E(iw $$0) {
+      int $$1 = 0;
+
+      for (jc $$2 : D) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
       }
 
-      private static MapCodec<azg<Integer>> a(String $$0) {
-         return azg.a.lenientOptionalFieldOf($$0, d).validate(dkr.a::a);
-      }
-
-      public boolean a(iv $$0, ars $$1) {
-         return this.b.a($$1.a(dkg.b, $$0)) && this.c.a($$1.a(dkg.a, $$0));
-      }
-
-      public azg<Integer> a() {
-         return this.b;
-      }
-
-      public azg<Integer> b() {
-         return this.c;
-      }
+      return $$1;
    }
 }

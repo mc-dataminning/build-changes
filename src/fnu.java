@@ -1,46 +1,32 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-public class fnu extends fns {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public fnu.a i = fnu.a.a;
+public abstract class fnu {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
 
-   public static fnu a(JsonObject $$0) {
-      fnu $$1 = new fnu();
-
-      try {
-         $$1.a = fpp.b("id", $$0, "");
-         $$1.b = fpp.b("name", $$0, "");
-         $$1.c = fpp.b("version", $$0, "");
-         $$1.d = fpp.b("author", $$0, "");
-         $$1.e = fpp.b("link", $$0, "");
-         $$1.f = fpp.b("image", $$0, null);
-         $$1.g = fpp.b("trailer", $$0, "");
-         $$1.h = fpp.b("recommendedPlayers", $$0, "");
-         $$1.i = fnu.a.valueOf(fpp.b("type", $$0, fnu.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
       }
 
-      return $$1;
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
+   }
+
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

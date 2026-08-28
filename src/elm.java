@@ -1,109 +1,54 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class elm extends ekk<enf> {
-   public elm(Codec<enf> $$0) {
+public class elm extends ekm<eng> {
+   public elm(Codec<eng> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<enf> $$0) {
-      dkw $$1 = $$0.b();
-      iv $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
+   public boolean a(eko<eng> $$0) {
+      eng $$1 = $$0.f();
+      dky $$2 = $$0.b();
+      azz $$3 = $$0.d();
+      dne $$4 = $$1.b.b();
+      iw $$5 = a($$2, $$0.e().k().a(jc.a.b, $$2.K_() + 1, $$2.ao()), $$4);
+      if ($$5 == null) {
          return false;
       } else {
-         azx $$3 = $$0.d();
-         iv $$4 = $$0.e();
-         enf $$5 = $$0.f();
-         iv.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-         return true;
-      }
-   }
-
-   private static boolean a(dkw $$0, enf $$1, iv $$2) {
-      iv.a $$3 = $$2.k();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jb.b);
-         ebe $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(ebe $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(axj.a);
-      }
-   }
-
-   private static boolean a(dkw $$0, edc $$1, enf $$2, azx $$3, iv.a $$4, iv $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jb.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            iv $$7 = $$4.e();
-            if ($$0.b_($$7).a(axj.b) || !$$0.a_($$7).e()) {
-               return false;
+         for (iw $$11 : iw.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
+            ebg $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
          }
-      }
 
-      return false;
-   }
-
-   private static void a(iv $$0, int $$1, dkw $$2, enf $$3, azx $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      iv.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+         return $$10;
       }
    }
 
-   private static void a(dkw $$0, enf $$1, azx $$2, int $$3, int $$4, iv.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<ebe> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+   @Nullable
+   private static iw a(dka $$0, iw.a $$1, dne $$2) {
+      while ($$1.v() > $$0.K_() + 1) {
+         ebg $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
          }
 
-         $$5.p($$3);
-         $$5.r($$4);
+         $$1.c(jc.a);
       }
-   }
 
-   private static void a(dkw $$0, enf $$1, azx $$2, iv $$3, iv.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.v($$4)) {
-            ebe $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jb.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
-      }
+      return null;
    }
 }

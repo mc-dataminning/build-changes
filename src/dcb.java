@@ -1,223 +1,179 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.math.Fraction;
+import java.util.Optional;
 
-public final class dcb implements cxx {
-   public static final dcb a = new dcb(List.of());
-   public static final Codec<dcb> b = czy.b.listOf().flatXmap(dcb::a, $$0 -> DataResult.success($$0.g));
-   public static final yy<wl, dcb> c = czy.i.a(yw.a()).a(dcb::new, $$0 -> $$0.g);
-   private static final Fraction e = Fraction.getFraction(1, 16);
-   private static final int f = -1;
-   public static final int d = -1;
-   final List<czy> g;
-   final Fraction h;
-   final int i;
+public record dcb(float c, float d, List<dcb.a> e, dcb.b f, Optional<axv<bvm>> g, Optional<jg<awq>> h, Optional<jg<awq>> i) {
+   public static final Codec<dcb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayy.n.optionalFieldOf("block_delay_seconds", 0.0F).forGetter(dcb::b),
+               ayy.n.optionalFieldOf("disable_cooldown_scale", 1.0F).forGetter(dcb::c),
+               dcb.a.a.listOf().optionalFieldOf("damage_reductions", List.of(new dcb.a(90.0F, Optional.empty(), 0.0F, 1.0F))).forGetter(dcb::d),
+               dcb.b.a.optionalFieldOf("item_damage", dcb.b.c).forGetter(dcb::e),
+               axv.b(mi.aN).optionalFieldOf("bypassed_by").forGetter(dcb::f),
+               awq.b.optionalFieldOf("block_sound").forGetter(dcb::g),
+               awq.b.optionalFieldOf("disabled_sound").forGetter(dcb::h)
+            )
+            .apply($$0, dcb::new)
+   );
+   public static final za<wn, dcb> b = za.a(
+      yy.l,
+      dcb::b,
+      yy.l,
+      dcb::c,
+      dcb.a.b.a(yy.a()),
+      dcb::d,
+      dcb.b.b,
+      dcb::e,
+      axv.c(mi.aN).a(yy::a),
+      dcb::f,
+      awq.d.a(yy::a),
+      dcb::g,
+      awq.d.a(yy::a),
+      dcb::h,
+      dcb::new
+   );
 
-   dcb(List<czy> $$0, Fraction $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+   public void a(aru $$0, bxw $$1) {
+      this.h.ifPresent($$2 -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (jg<awq>)$$2, $$1.dm(), 1.0F, 0.8F + $$0.A.i() * 0.4F));
    }
 
-   private static DataResult<dcb> a(List<czy> $$0) {
-      try {
-         Fraction $$1 = b($$0);
-         return DataResult.success(new dcb($$0, $$1, -1));
-      } catch (ArithmeticException var2) {
-         return DataResult.error(() -> "Excessive total bundle weight");
+   public void a(aru $$0, bxw $$1, float $$2, daa $$3) {
+      int $$4 = this.a($$2);
+      if ($$4 > 0) {
+         if ($$1 instanceof crz $$5) {
+            $$5.gF().a($$3, $$4);
+         }
+
+         $$1.fF();
+         this.i.ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$2x, $$1.dm(), 0.8F, 0.8F + $$0.A.i() * 0.4F));
       }
    }
 
-   public dcb(List<czy> $$0) {
-      this($$0, b($$0), -1);
-   }
+   public void a(djz $$0, daa $$1, bxw $$2, bus $$3, float $$4) {
+      if ($$2 instanceof crz $$5) {
+         if (!$$0.C) {
+            $$5.b(axb.c.b($$1.h()));
+         }
 
-   private static Fraction b(List<czy> $$0) {
-      Fraction $$1 = Fraction.ZERO;
-
-      for (czy $$2 : $$0) {
-         $$1 = $$1.add(b($$2).multiplyBy(Fraction.getFraction($$2.M(), 1)));
-      }
-
-      return $$1;
-   }
-
-   static Fraction b(czy $$0) {
-      dcb $$1 = $$0.a(kk.Q);
-      if ($$1 != null) {
-         return e.add($$1.f());
-      } else {
-         List<dxz.c> $$2 = $$0.a(kk.ar, dbx.c).a();
-         return !$$2.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, $$0.k());
+         int $$7 = this.f.a($$4);
+         if ($$7 > 0) {
+            $$1.a($$7, $$2, bxw.d($$3));
+         }
       }
    }
 
-   public static boolean a(czy $$0) {
-      return !$$0.f() && $$0.h().d();
+   private int a(float $$0) {
+      float $$1 = $$0 * this.d;
+      return $$1 > 0.0F ? Math.round($$1 * 20.0F) : 0;
    }
 
    public int a() {
-      int $$0 = this.e();
-      int $$1 = $$0 > 12 ? 11 : 12;
-      int $$2 = $$0 % 4;
-      int $$3 = $$2 == 0 ? 0 : 4 - $$2;
-      return Math.min($$0, $$1 - $$3);
+      return Math.round(this.c * 20.0F);
    }
 
-   public czy a(int $$0) {
-      return this.g.get($$0);
+   public float a(bvk $$0, float $$1, double $$2) {
+      float $$3 = 0.0F;
+
+      for (dcb.a $$4 : this.e) {
+         $$3 += $$4.a($$0, $$1, $$2);
+      }
+
+      return azq.a($$3, 0.0F, $$1);
    }
 
-   public Stream<czy> b() {
-      return this.g.stream().map(czy::v);
+   public float b() {
+      return this.c;
    }
 
-   public Iterable<czy> c() {
+   public float c() {
+      return this.d;
+   }
+
+   public List<dcb.a> d() {
+      return this.e;
+   }
+
+   public dcb.b e() {
+      return this.f;
+   }
+
+   public Optional<axv<bvm>> f() {
       return this.g;
    }
 
-   public Iterable<czy> d() {
-      return Lists.transform(this.g, czy::v);
-   }
-
-   public int e() {
-      return this.g.size();
-   }
-
-   public Fraction f() {
+   public Optional<jg<awq>> g() {
       return this.h;
    }
 
-   public boolean g() {
-      return this.g.isEmpty();
-   }
-
-   public int h() {
+   public Optional<jg<awq>> h() {
       return this.i;
    }
 
-   public boolean i() {
-      return this.i != -1;
-   }
+   public static record a(float c, Optional<jk<bvm>> d, float e, float f) {
+      public static final Codec<dcb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayy.o.optionalFieldOf("horizontal_blocking_angle", 90.0F).forGetter(dcb.a::a),
+                  jv.a(mi.aN).optionalFieldOf("type").forGetter(dcb.a::b),
+                  Codec.FLOAT.fieldOf("base").forGetter(dcb.a::c),
+                  Codec.FLOAT.fieldOf("factor").forGetter(dcb.a::d)
+               )
+               .apply($$0, dcb.a::new)
+      );
+      public static final za<wn, dcb.a> b = za.a(yy.l, dcb.a::a, yy.c(mi.aN).a(yy::a), dcb.a::b, yy.l, dcb.a::c, yy.l, dcb.a::d, dcb.a::new);
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dcb $$1) ? false : this.h.equals($$1.h) && czy.a(this.g, $$1.g);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return czy.a(this.g);
-   }
-
-   @Override
-   public String toString() {
-      return "BundleContents" + this.g;
-   }
-
-   public static class a {
-      private final List<czy> a;
-      private Fraction b;
-      private int c;
-
-      public a(dcb $$0) {
-         this.a = new ArrayList<>($$0.g);
-         this.b = $$0.h;
-         this.c = $$0.i;
-      }
-
-      public dcb.a a() {
-         this.a.clear();
-         this.b = Fraction.ZERO;
-         this.c = -1;
-         return this;
-      }
-
-      private int b(czy $$0) {
-         if (!$$0.l()) {
-            return -1;
+      public float a(bvk $$0, float $$1, double $$2) {
+         if ($$2 > (double)((float) (Math.PI / 180.0) * this.c)) {
+            return 0.0F;
          } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (czy.c(this.a.get($$1), $$0)) {
-                  return $$1;
-               }
-            }
-
-            return -1;
+            return this.d.isPresent() && !this.d.get().a($$0.l()) ? 0.0F : azq.a(this.e + this.f * $$1, 0.0F, $$1);
          }
       }
 
-      private int c(czy $$0) {
-         Fraction $$1 = Fraction.ONE.subtract(this.b);
-         return Math.max($$1.divideBy(dcb.b($$0)).intValue(), 0);
+      public float a() {
+         return this.c;
       }
 
-      public int a(czy $$0) {
-         if (!dcb.a($$0)) {
-            return 0;
-         } else {
-            int $$1 = Math.min($$0.M(), this.c($$0));
-            if ($$1 == 0) {
-               return 0;
-            } else {
-               this.b = this.b.add(dcb.b($$0).multiplyBy(Fraction.getFraction($$1, 1)));
-               int $$2 = this.b($$0);
-               if ($$2 != -1) {
-                  czy $$3 = this.a.remove($$2);
-                  czy $$4 = $$3.c($$3.M() + $$1);
-                  $$0.h($$1);
-                  this.a.add(0, $$4);
-               } else {
-                  this.a.add(0, $$0.a($$1));
-               }
-
-               return $$1;
-            }
-         }
+      public Optional<jk<bvm>> b() {
+         return this.d;
       }
 
-      public int a(cxn $$0, crx $$1) {
-         czy $$2 = $$0.g();
-         int $$3 = this.c($$2);
-         return dcb.a($$2) ? this.a($$0.b($$2.M(), $$3, $$1)) : 0;
+      public float c() {
+         return this.e;
       }
 
-      public void a(int $$0) {
-         this.c = this.c != $$0 && !this.b($$0) ? $$0 : -1;
+      public float d() {
+         return this.f;
+      }
+   }
+
+   public static record b(float d, float e, float f) {
+      public static final Codec<dcb.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayy.n.fieldOf("threshold").forGetter(dcb.b::a),
+                  Codec.FLOAT.fieldOf("base").forGetter(dcb.b::b),
+                  Codec.FLOAT.fieldOf("factor").forGetter(dcb.b::c)
+               )
+               .apply($$0, dcb.b::new)
+      );
+      public static final za<ByteBuf, dcb.b> b = za.a(yy.l, dcb.b::a, yy.l, dcb.b::b, yy.l, dcb.b::c, dcb.b::new);
+      public static final dcb.b c = new dcb.b(1.0F, 0.0F, 1.0F);
+
+      public int a(float $$0) {
+         return $$0 < this.d ? 0 : azq.d(this.e + this.f * $$0);
       }
 
-      private boolean b(int $$0) {
-         return $$0 < 0 || $$0 >= this.a.size();
+      public float a() {
+         return this.d;
       }
 
-      @Nullable
-      public czy b() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            int $$0 = this.b(this.c) ? 0 : this.c;
-            czy $$1 = this.a.remove($$0).v();
-            this.b = this.b.subtract(dcb.b($$1).multiplyBy(Fraction.getFraction($$1.M(), 1)));
-            this.a(-1);
-            return $$1;
-         }
+      public float b() {
+         return this.e;
       }
 
-      public Fraction c() {
-         return this.b;
-      }
-
-      public dcb d() {
-         return new dcb(List.copyOf(this.a), this.b, this.c);
+      public float c() {
+         return this.f;
       }
    }
 }

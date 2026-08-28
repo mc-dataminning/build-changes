@@ -1,26 +1,56 @@
-public class gqt extends gob {
-   private static final int a = 12235202;
+public class gqt extends gqm {
+   private float a;
 
-   protected gqt(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gqf $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axy.b(12235202) / 255.0F;
-      this.w = (float)axy.c(12235202) / 255.0F;
-      this.x = (float)axy.d(12235202) / 255.0F;
+   gqt(gmd $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   public static class a implements gpn<mc> {
-      private final gqf a;
+   @Override
+   public gpq b() {
+      return gpq.b;
+   }
 
-      public a(gqf $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * azq.b(this.a));
+         this.l = this.l + (double)(0.6F * azq.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(iw.a(this.g, this.h, this.i)).a(axl.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements gpp<md> {
+      private final gqh a;
+
+      public a(gqh $$0) {
          this.a = $$0;
       }
 
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azx $$8 = $$1.A;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new gqt($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gqt $$8 = new gqt($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

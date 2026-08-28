@@ -1,19 +1,21 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-record eix(ka e) implements eik {
-   public static MapCodec<eix> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ka.g.optionalFieldOf("offset", ka.i).forGetter(eix::g)).apply($$0, eix::new));
+public abstract class eix implements eim {
+   protected final kb f;
 
-   @Override
-   public eil<?> a() {
-      return eil.m;
+   protected static <P extends eix> P1<Mu<P>, kb> a(Instance<P> $$0) {
+      return $$0.group(kb.v(16).optionalFieldOf("offset", kb.i).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(dkw $$0, iv $$1) {
-      return $$0.a(null, fgh.b().a($$1));
+   protected eix(kb $$0) {
+      this.f = $$0;
    }
 
-   public ka g() {
-      return this.e;
+   public final boolean a(dky $$0, iw $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(ebg var1);
 }

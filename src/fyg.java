@@ -1,24 +1,61 @@
-import java.util.Collection;
-import java.util.List;
+import java.util.function.Consumer;
 
-public interface fyg extends fvv, fyj {
-   fyg.a w();
+public class fyg implements fyd {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   default boolean E() {
-      return true;
+   public fyg(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   default Collection<? extends fyg> L() {
-      return List.of(this);
+   public fyg(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public static fyg a(int $$0) {
+      return new fyg($$0, 0);
+   }
 
-      public boolean a() {
-         return this == c;
-      }
+   public static fyg b(int $$0) {
+      return new fyg(0, $$0);
+   }
+
+   @Override
+   public void j(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void k(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int F() {
+      return this.a;
+   }
+
+   @Override
+   public int G() {
+      return this.b;
+   }
+
+   @Override
+   public int A() {
+      return this.c;
+   }
+
+   @Override
+   public int y() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<ful> $$0) {
    }
 }

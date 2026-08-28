@@ -1,17 +1,30 @@
-public class has extends gxa<cpl, hgk> {
-   private static final ali a = ali.b("textures/entity/skeleton/stray.png");
-   private static final ali j = ali.b("textures/entity/skeleton/stray_overlay.png");
+public class has<T extends cpm> extends gzq<T, hfr, gke> {
+   private static final alk a = alk.b("textures/entity/spider/spider.png");
 
-   public has(gyi.a $$0) {
-      super($$0, gld.dr, gld.ds, gld.dt);
-      this.a(new hda<>(this, $$0.f(), gld.du, j));
+   public has(gyk.a $$0) {
+      this($$0, glf.dm);
    }
 
-   public ali b(hgk $$0) {
+   public has(gyk.a $$0, gle $$1) {
+      super($$0, new gke($$0.a($$1)), 0.8F);
+      this.a(new hdf<>(this));
+   }
+
+   @Override
+   protected float aW_() {
+      return 180.0F;
+   }
+
+   @Override
+   public alk b(hfr $$0) {
       return a;
    }
 
-   public hgk b() {
-      return new hgk();
+   public hfr b() {
+      return new hfr();
+   }
+
+   public void a(T $$0, hfr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

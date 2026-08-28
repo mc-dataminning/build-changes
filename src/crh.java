@@ -1,34 +1,64 @@
-public interface crh {
-   String n_ = "Inventory";
+import java.util.List;
 
-   buy n();
+public class crh implements djl {
+   private static final int a = 1200;
+   private int b;
 
-   static void a(ars $$0, bxw $$1, crh $$2, coc $$3) {
-      czy $$4 = $$3.f();
-      if ($$1.c($$0, $$4)) {
-         buy $$5 = $$2.n();
-         boolean $$6 = $$5.c($$4);
-         if (!$$6) {
-            return;
-         }
-
-         $$1.a($$3);
-         int $$7 = $$4.M();
-         czy $$8 = $$5.b($$4);
-         $$1.a($$3, $$7 - $$8.M());
-         if ($$8.f()) {
-            $$3.aq();
-         } else {
-            $$4.e($$8.M());
+   @Override
+   public void a(aru $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.O().c(djv.f)) {
+         this.b--;
+         if (this.b <= 0) {
+            this.b = 1200;
+            crz $$3 = $$0.k();
+            if ($$3 != null) {
+               azz $$4 = $$0.A;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               iw $$7 = $$3.dv().b($$5, 0, $$6);
+               int $$8 = 10;
+               if ($$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  if (byr.a(bxe.v, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        this.a($$0, $$7);
+                     } else if ($$0.b().a($$7, axr.n).b()) {
+                        this.b($$0, $$7);
+                     }
+                  }
+               }
+            }
          }
       }
    }
 
-   default void a(tz $$0, jh.a $$1) {
-      $$0.o("Inventory").ifPresent($$1x -> this.n().a($$1x, $$1));
+   private void a(aru $$0, iw $$1) {
+      int $$2 = 48;
+      if ($$0.A().a($$0x -> $$0x.a(cjc.n), $$1, 48, ciy.b.b) > 4L) {
+         List<cjp> $$3 = $$0.a(cjp.class, new ffn($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            this.a($$1, $$0, false);
+         }
+      }
    }
 
-   default void b(tz $$0, jh.a $$1) {
-      $$0.a("Inventory", this.n().a($$1));
+   private void b(aru $$0, iw $$1) {
+      int $$2 = 16;
+      List<cjp> $$3 = $$0.a(cjp.class, new ffn($$1).c(16.0, 8.0, 16.0));
+      if ($$3.isEmpty()) {
+         this.a($$1, $$0, true);
+      }
+   }
+
+   private void a(iw $$0, aru $$1, boolean $$2) {
+      cjp $$3 = bxe.v.a($$1, bxd.a);
+      if ($$3 != null) {
+         $$3.a($$1, $$1.d_($$0), bxd.a, null);
+         if ($$2) {
+            $$3.gc();
+         }
+
+         $$3.a($$0, 0.0F, 0.0F);
+         $$1.a_($$3);
+      }
    }
 }

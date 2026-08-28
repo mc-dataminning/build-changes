@@ -2,67 +2,94 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fg implements ArgumentType<lw> {
-   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xa.b("particle.notFound", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xa.b("particle.invalidOptions", $$0));
-   private final jh.a d;
-   private static final uz<Object> e = uz.a(JavaOps.INSTANCE);
+public class fg implements ArgumentType<fg.a> {
+   private static final Collection<String> a = Arrays.asList("=", ">", "<");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xc.c("arguments.operation.div0"));
 
-   public fg(ef $$0) {
-      this.d = $$0;
+   public static fg a() {
+      return new fg();
    }
 
-   public static fg a(ef $$0) {
-      return new fg($$0);
+   public static fg.a a(CommandContext<ek> $$0, String $$1) {
+      return (fg.a)$$0.getArgument($$1, fg.a.class);
    }
 
-   public static lw a(CommandContext<ej> $$0, String $$1) {
-      return (lw)$$0.getArgument($$1, lw.class);
-   }
-
-   public lw a(StringReader $$0) throws CommandSyntaxException {
-      return a($$0, this.d);
-   }
-
-   public Collection<String> getExamples() {
-      return c;
-   }
-
-   public static lw a(StringReader $$0, jh.a $$1) throws CommandSyntaxException {
-      lx<?> $$2 = a($$0, $$1.e(mh.Y));
-      return a(JavaOps.INSTANCE, e, $$0, (lx<lw>)$$2, $$1);
-   }
-
-   private static lx<?> a(StringReader $$0, jh<lx<?>> $$1) throws CommandSyntaxException {
-      ali $$2 = ali.a($$0);
-      alh<lx<?>> $$3 = alh.a(mh.Y, $$2);
-      return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
-   }
-
-   private static <T extends lw, O> T a(DynamicOps<O> $$0, uz<O> $$1, StringReader $$2, lx<T> $$3, jh.a $$4) throws CommandSyntaxException {
-      alg<O> $$5 = $$4.a($$0);
-      O $$6;
-      if ($$2.canRead() && $$2.peek() == '{') {
-         $$6 = $$1.b($$2);
+   public fg.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw b.createWithContext($$0);
       } else {
-         $$6 = $$5.emptyMap();
-      }
+         int $$1 = $$0.getCursor();
 
-      return (T)$$3.c().codec().parse($$5, $$6).getOrThrow(b::create);
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
+
+         return a($$0.getString().substring($$1, $$0.getCursor()));
+      }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      jh.b<lx<?>> $$2 = this.d.e(mh.Y);
-      return eo.a($$2.c_().map(alh::a), $$1);
+      return ep.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   private static fg.a a(String $$0) throws CommandSyntaxException {
+      return (fg.a)($$0.equals("><") ? ($$0x, $$1) -> {
+         int $$2 = $$0x.a();
+         $$0x.a($$1.a());
+         $$1.a($$2);
+      } : b($$0));
+   }
+
+   private static fg.b b(String $$0) throws CommandSyntaxException {
+      return switch ($$0) {
+         case "=" -> ($$0x, $$1) -> $$1;
+         case "+=" -> Integer::sum;
+         case "-=" -> ($$0x, $$1) -> $$0x - $$1;
+         case "*=" -> ($$0x, $$1) -> $$0x * $$1;
+         case "/=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return azq.a($$0x, $$1);
+         }
+      };
+         case "%=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return azq.b($$0x, $$1);
+         }
+      };
+         case "<" -> Math::min;
+         case ">" -> Math::max;
+         default -> throw b.create();
+      };
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(fgv var1, fgv var2) throws CommandSyntaxException;
+   }
+
+   @FunctionalInterface
+   interface b extends fg.a {
+      int apply(int var1, int var2) throws CommandSyntaxException;
+
+      @Override
+      default void apply(fgv $$0, fgv $$1) throws CommandSyntaxException {
+         $$0.a(this.apply($$0.a(), $$1.a()));
+      }
    }
 }

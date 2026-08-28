@@ -1,31 +1,40 @@
-public class cvl {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-   public static float a(int $$0, float $$1) {
-      return (float)$$0 * $$1 * 2.0F;
+public class cvl {
+   public static final cvh a;
+   public static final cvh b;
+   public static final cvh c;
+   public static final cvh d;
+   public static final cvi e;
+   public static final Codec<cvj> f;
+   public static final cvj g;
+   public static final cvj h;
+
+   public static String a(cvj $$0, cvj $$1) {
+      return a(e, $$0, $$1);
+   }
+
+   public static String a(cvi $$0, cvj $$1, cvj $$2) {
+      Set<alk> $$3 = $$0.b($$2);
+      Set<alk> $$4 = $$0.b($$1);
+      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(alk::toString).collect(Collectors.joining(", "));
+   }
+
+   public static boolean a(cvj $$0) {
+      return !$$0.a(g);
+   }
+
+   static {
+      cvi.a $$0 = new cvi.a("main");
+      a = $$0.a("vanilla");
+      b = $$0.a("trade_rebalance");
+      c = $$0.a("redstone_experiments");
+      d = $$0.a("minecart_improvements");
+      e = $$0.a();
+      f = e.b();
+      g = cvj.a(a);
+      h = g;
    }
 }

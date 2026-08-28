@@ -1,30 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eml(eoy b, eik c, btw d, int e) implements emp {
-   public static final Codec<eml> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eoy.a.fieldOf("state_provider").forGetter(eml::a),
-               eik.b.fieldOf("target").forGetter(eml::b),
-               btw.b(0, 8).fieldOf("radius").forGetter(eml::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eml::d)
-            )
-            .apply($$0, eml::new)
-   );
+public class eml implements emr {
+   public static final Codec<eml> a = bty.b(0, 256).fieldOf("count").xmap(eml::new, eml::a).codec();
+   private final bty b;
 
-   public eoy a() {
+   public eml(int $$0) {
+      this.b = btv.a($$0);
+   }
+
+   public eml(bty $$0) {
+      this.b = $$0;
+   }
+
+   public bty a() {
       return this.b;
-   }
-
-   public eik b() {
-      return this.c;
-   }
-
-   public btw c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

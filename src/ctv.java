@@ -1,59 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class ctv {
-   private final List<cts> a = Lists.newArrayList();
-   private int b;
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final ctv c = a("empty").a(0, ctt.b).a();
+   public static final ctv d = a("simple").a(5000, ctt.c).a(11000, ctt.e).a();
+   public static final ctv e = a("villager_baby").a(10, ctt.b).a(3000, ctt.d).a(6000, ctt.b).a(10000, ctt.d).a(12000, ctt.e).a();
+   public static final ctv f = a("villager_default").a(10, ctt.b).a(2000, ctt.c).a(9000, ctt.f).a(11000, ctt.b).a(12000, ctt.e).a();
+   private final Map<ctt, ctx> g = Maps.newHashMap();
 
-   public ImmutableList<cts> a() {
-      return ImmutableList.copyOf(this.a);
+   protected static ctw a(String $$0) {
+      ctv $$1 = jt.a(mh.B, $$0, new ctv());
+      return new ctw($$1);
    }
 
-   public ctv a(int $$0, float $$1) {
-      this.a.add(new cts($$0, $$1));
-      this.b();
-      return this;
-   }
-
-   public ctv a(Collection<cts> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<cts> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cts $$1 = this.a.get(this.b);
-         cts $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cts $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+   protected void a(ctt $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new ctx());
       }
+   }
+
+   protected ctx b(ctt $$0) {
+      return this.g.get($$0);
+   }
+
+   protected List<ctx> c(ctt $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
+
+   public ctt a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(ctt.b);
    }
 }

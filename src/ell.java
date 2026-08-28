@@ -1,23 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class ell extends ekk<end> {
+public class ell extends ekm<end> {
    public ell(Codec<end> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<end> $$0) {
-      dkw $$1 = $$0.b();
-      iv $$2 = $$0.e();
-      end $$3 = $$0.f();
+   public boolean a(eko<end> $$0) {
+      end $$1 = $$0.f();
+      azz $$2 = $$0.d();
+      dky $$3 = $$0.b();
+      ede $$4 = $$0.c();
+      iw $$5 = $$0.e();
 
-      for (emx.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
+      for (emg $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
       }
 
-      return true;
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

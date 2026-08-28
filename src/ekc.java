@@ -1,54 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class ekc extends ekk<eml> {
-   public ekc(Codec<eml> $$0) {
+public class ekc extends ekm<emm> {
+   private static final ImmutableList<dne> a = ImmutableList.of(dng.I, dng.fM, dng.fN, dng.fO, dng.fP, dng.cG, dng.cD);
+   private static final jc[] b = jc.values();
+   private static final double c = 0.9;
+
+   public ekc(Codec<emm> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<eml> $$0) {
-      eml $$1 = $$0.f();
-      iv $$2 = $$0.e();
-      dkw $$3 = $$0.b();
-      azx $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      iv.a $$10 = new iv.a();
+   public boolean a(eko<emm> $$0) {
+      boolean $$1 = false;
+      azz $$2 = $$0.d();
+      dky $$3 = $$0.b();
+      emm $$4 = $$0.f();
+      iw $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      for (iv $$11 : iv.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+      for (iw $$13 : iw.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
          }
-      }
 
-      return $$5;
-   }
-
-   protected boolean a(eml $$0, dkw $$1, azx $$2, int $$3, int $$4, iv.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
-
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            ebe $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
             }
 
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
+            iw $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
          }
       }
 
-      return $$6;
+      return $$1;
+   }
+
+   private static boolean a(dka $$0, iw $$1, emm $$2) {
+      ebg $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (jc $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).l();
+            if ($$5 && $$4 != jc.b || !$$5 && $$4 == jc.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

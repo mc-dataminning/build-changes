@@ -1,528 +1,600 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.common.collect.Comparators;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Collections;
-import java.util.Comparator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractStringBuilder;
+import it.unimi.dsi.fastutil.bytes.ByteArrayList;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public final class uo {
-   private static final Comparator<uf> b = Comparator.<uf>comparingInt($$0 -> $$0.a(1, 0))
-      .thenComparingInt($$0 -> $$0.a(0, 0))
-      .thenComparingInt($$0 -> $$0.a(2, 0));
-   private static final Comparator<uf> c = Comparator.<uf>comparingDouble($$0 -> $$0.a(1, 0.0))
-      .thenComparingDouble($$0 -> $$0.a(0, 0.0))
-      .thenComparingDouble($$0 -> $$0.a(2, 0.0));
-   private static final Codec<alh<dnc>> d = alh.a(mh.i);
-   public static final String a = "data";
-   private static final char e = '{';
-   private static final char f = '}';
-   private static final String g = ",";
-   private static final char h = ':';
-   private static final Splitter i = Splitter.on(",");
-   private static final Splitter j = Splitter.on(':').limit(2);
-   private static final Logger k = LogUtils.getLogger();
-   private static final int l = 2;
-   private static final int m = -1;
+public class uo implements DynamicOps<va> {
+   public static final uo a = new uo();
 
    private uo() {
    }
 
-   @VisibleForTesting
-   public static boolean a(@Nullable uy $$0, @Nullable uy $$1, boolean $$2) {
-      if ($$0 == $$1) {
-         return true;
-      } else if ($$0 == null) {
-         return true;
-      } else if ($$1 == null) {
-         return false;
-      } else if (!$$0.getClass().equals($$1.getClass())) {
-         return false;
-      } else if ($$0 instanceof tz $$3) {
-         tz $$4 = (tz)$$1;
-         if ($$4.i() < $$3.i()) {
-            return false;
+   public va a() {
+      return uc.b;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public <U> U a(DynamicOps<U> $$0, va $$1) {
+      Objects.requireNonNull($$1);
+      Throwable var42;
+      switch ($$1) {
+         case uc $$2:
+            return (U)$$0.empty();
+         case ty var6:
+            ty var54 = var6;
+
+            try {
+               var55 = var54.n();
+            } catch (Throwable var33) {
+               var42 = var33;
+               boolean var61 = false;
+               break;
+            }
+
+            byte var34 = var55;
+            return (U)$$0.createByte(var34);
+         case ut var8:
+            ut var52 = var8;
+
+            try {
+               var53 = var52.n();
+            } catch (Throwable var32) {
+               var42 = var32;
+               boolean var60 = false;
+               break;
+            }
+
+            short var35 = var53;
+            return (U)$$0.createShort(var35);
+         case uf var10:
+            uf var50 = var10;
+
+            try {
+               var51 = var50.n();
+            } catch (Throwable var31) {
+               var42 = var31;
+               boolean var59 = false;
+               break;
+            }
+
+            int var36 = var51;
+            return (U)$$0.createInt(var36);
+         case ui var12:
+            ui var48 = var12;
+
+            try {
+               var49 = var48.n();
+            } catch (Throwable var30) {
+               var42 = var30;
+               boolean var58 = false;
+               break;
+            }
+
+            long var37 = var49;
+            return (U)$$0.createLong(var37);
+         case ud var15:
+            ud var46 = var15;
+
+            try {
+               var47 = var46.n();
+            } catch (Throwable var29) {
+               var42 = var29;
+               boolean var57 = false;
+               break;
+            }
+
+            float var38 = var47;
+            return (U)$$0.createFloat(var38);
+         case ub var17:
+            ub var44 = var17;
+
+            try {
+               var45 = var44.n();
+            } catch (Throwable var28) {
+               var42 = var28;
+               boolean var56 = false;
+               break;
+            }
+
+            double var39 = var45;
+            return (U)$$0.createDouble(var39);
+         case tx $$9:
+            return (U)$$0.createByteList(ByteBuffer.wrap($$9.e()));
+         case uy var21:
+            uy var41 = var21;
+
+            try {
+               var43 = var41.k();
+            } catch (Throwable var27) {
+               var42 = var27;
+               boolean var10001 = false;
+               break;
+            }
+
+            String var40 = var43;
+            return (U)$$0.createString(var40);
+         case ug $$11:
+            return (U)this.convertList($$0, $$11);
+         case ua $$12:
+            return (U)this.convertMap($$0, $$12);
+         case ue $$13:
+            return (U)$$0.createIntList(Arrays.stream($$13.g()));
+         case uh $$14:
+            return (U)$$0.createLongList(Arrays.stream($$14.g()));
+         default:
+            throw new MatchException(null, null);
+      }
+
+      Throwable var3 = var42;
+      throw new MatchException(var3.toString(), var3);
+   }
+
+   public DataResult<Number> a(va $$0) {
+      return $$0.o().<DataResult<Number>>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Not a number"));
+   }
+
+   public va a(Number $$0) {
+      return ub.a($$0.doubleValue());
+   }
+
+   public va a(byte $$0) {
+      return ty.a($$0);
+   }
+
+   public va a(short $$0) {
+      return ut.a($$0);
+   }
+
+   public va a(int $$0) {
+      return uf.a($$0);
+   }
+
+   public va a(long $$0) {
+      return ui.a($$0);
+   }
+
+   public va a(float $$0) {
+      return ud.a($$0);
+   }
+
+   public va a(double $$0) {
+      return ub.a($$0);
+   }
+
+   public va a(boolean $$0) {
+      return ty.a($$0);
+   }
+
+   public DataResult<String> b(va $$0) {
+      if ($$0 instanceof uy var2) {
+         uy var10000 = var2;
+
+         try {
+            var6 = var10000.k();
+         } catch (Throwable var5) {
+            throw new MatchException(var5.toString(), var5);
+         }
+
+         String var4 = var6;
+         return DataResult.success(var4);
+      } else {
+         return DataResult.error(() -> "Not a string");
+      }
+   }
+
+   public va a(String $$0) {
+      return uy.a($$0);
+   }
+
+   public DataResult<va> a(va $$0, va $$1) {
+      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
+   }
+
+   public DataResult<va> a(va $$0, List<va> $$1) {
+      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
+   }
+
+   public DataResult<va> a(va $$0, va $$1, va $$2) {
+      if (!($$0 instanceof ua) && !($$0 instanceof uc)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+      } else if ($$1 instanceof uy $$6) {
+         uy var10000 = $$6;
+
+         try {
+            var10 = var10000.k();
+         } catch (Throwable var7) {
+            throw new MatchException(var7.toString(), var7);
+         }
+
+         String $$5 = var10;
+         ua $$6x = $$0 instanceof ua $$5x ? $$5x.k() : new ua();
+         $$6x.a($$5, $$2);
+         return DataResult.success($$6x);
+      } else {
+         return DataResult.error(() -> "key is not a string: " + $$1, $$0);
+      }
+   }
+
+   public DataResult<va> a(va $$0, MapLike<va> $$1) {
+      if (!($$0 instanceof ua) && !($$0 instanceof uc)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+      } else {
+         ua $$3 = $$0 instanceof ua $$2 ? $$2.k() : new ua();
+         List<va> $$4 = new ArrayList<>();
+         $$1.entries().forEach($$2x -> {
+            va $$3x = (va)$$2x.getFirst();
+            if ($$3x instanceof uy $$4x) {
+               uy var10000 = $$4x;
+
+               try {
+                  var8 = var10000.k();
+               } catch (Throwable var7) {
+                  throw new MatchException(var7.toString(), var7);
+               }
+
+               String $$5 = var8;
+               $$3.a($$5, (va)$$2x.getSecond());
+            } else {
+               $$4.add($$3x);
+            }
+         });
+         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+      }
+   }
+
+   public DataResult<va> a(va $$0, Map<va, va> $$1) {
+      if (!($$0 instanceof ua) && !($$0 instanceof uc)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+      } else {
+         ua $$3 = $$0 instanceof ua $$2 ? $$2.k() : new ua();
+         List<va> $$4 = new ArrayList<>();
+
+         for (Entry<va, va> $$5 : $$1.entrySet()) {
+            va $$6 = $$5.getKey();
+            if ($$6 instanceof uy) {
+               uy var8 = (uy)$$6;
+               uy var13 = var8;
+
+               try {
+                  var14 = var13.k();
+               } catch (Throwable var11) {
+                  throw new MatchException(var11.toString(), var11);
+               }
+
+               String var10 = var14;
+               $$3.a(var10, $$5.getValue());
+            } else {
+               $$4.add($$6);
+            }
+         }
+
+         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+      }
+   }
+
+   public DataResult<Stream<Pair<va, va>>> c(va $$0) {
+      return $$0 instanceof ua $$1
+         ? DataResult.success($$1.g().stream().map($$0x -> Pair.of(this.a((String)$$0x.getKey()), (va)$$0x.getValue())))
+         : DataResult.error(() -> "Not a map: " + $$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<va, va>>> d(va $$0) {
+      return $$0 instanceof ua $$1 ? DataResult.success((Consumer<BiConsumer>)$$1x -> {
+         for (Entry<String, va> $$2 : $$1.g()) {
+            $$1x.accept(this.a($$2.getKey()), $$2.getValue());
+         }
+      }) : DataResult.error(() -> "Not a map: " + $$0);
+   }
+
+   public DataResult<MapLike<va>> e(va $$0) {
+      return $$0 instanceof ua $$1 ? DataResult.success(new MapLike<va>() {
+         @Nullable
+         public va a(va $$0) {
+            if ($$0 instanceof uy var2) {
+               uy var10000 = var2;
+
+               try {
+                  var6 = var10000.k();
+               } catch (Throwable var5) {
+                  throw new MatchException(var5.toString(), var5);
+               }
+
+               String var4 = var6;
+               return $$1.a(var4);
+            } else {
+               throw new UnsupportedOperationException("Cannot get map entry with non-string key: " + $$0);
+            }
+         }
+
+         @Nullable
+         public va a(String $$0) {
+            return $$1.a($$0);
+         }
+
+         public Stream<Pair<va, va>> entries() {
+            return $$1.g().stream().map($$0 -> Pair.of(uo.this.a($$0.getKey()), $$0.getValue()));
+         }
+
+         @Override
+         public String toString() {
+            return "MapLike[" + $$1 + "]";
+         }
+      }) : DataResult.error(() -> "Not a map: " + $$0);
+   }
+
+   public va a(Stream<Pair<va, va>> $$0) {
+      ua $$1 = new ua();
+      $$0.forEach($$1x -> {
+         va $$2 = (va)$$1x.getFirst();
+         va $$3 = (va)$$1x.getSecond();
+         if ($$2 instanceof uy $$4) {
+            uy var10000 = $$4;
+
+            try {
+               var8 = var10000.k();
+            } catch (Throwable var7) {
+               throw new MatchException(var7.toString(), var7);
+            }
+
+            String $$5 = var8;
+            $$1.a($$5, $$3);
          } else {
-            for (Entry<String, uy> $$5 : $$3.g()) {
-               uy $$6 = $$5.getValue();
-               if (!a($$6, $$4.a($$5.getKey()), $$2)) {
-                  return false;
-               }
-            }
-
-            return true;
+            throw new UnsupportedOperationException("Cannot create map with non-string key: " + $$2);
          }
-      } else {
-         if ($$0 instanceof uf $$7 && $$2) {
-            uf $$8 = (uf)$$1;
-            if ($$7.isEmpty()) {
-               return $$8.isEmpty();
-            }
-
-            if ($$8.size() < $$7.size()) {
-               return false;
-            }
-
-            for (uy $$9 : $$7) {
-               boolean $$10 = false;
-
-               for (uy $$11 : $$8) {
-                  if (a($$9, $$11, $$2)) {
-                     $$10 = true;
-                     break;
-                  }
-               }
-
-               if (!$$10) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-
-         return $$0.equals($$1);
-      }
+      });
+      return $$1;
    }
 
-   public static ebe a(jg<dnc> $$0, tz $$1) {
-      Optional<? extends jf<dnc>> $$2 = $$1.<alh<T>>a("Name", d).flatMap($$0::a);
-      if ($$2.isEmpty()) {
-         return dne.a.m();
-      } else {
-         dnc $$3 = $$2.get().a();
-         ebe $$4 = $$3.m();
-         Optional<tz> $$5 = $$1.m("Properties");
-         if ($$5.isPresent()) {
-            ebf<dnc, ebe> $$6 = $$3.l();
-
-            for (String $$7 : $$5.get().e()) {
-               ech<?> $$8 = $$6.a($$7);
-               if ($$8 != null) {
-                  $$4 = a($$4, $$8, $$7, $$5.get(), $$1);
-               }
-            }
-         }
-
-         return $$4;
-      }
+   public DataResult<Stream<va>> f(va $$0) {
+      return $$0 instanceof tz $$1 ? DataResult.success($$1.stream()) : DataResult.error(() -> "Not a list");
    }
 
-   private static <S extends ebg<?, S>, T extends Comparable<T>> S a(S $$0, ech<T> $$1, String $$2, tz $$3, tz $$4) {
-      Optional<T> $$5 = $$3.i($$2).flatMap($$1::b);
-      if ($$5.isPresent()) {
-         return $$0.b($$1, $$5.get());
+   public DataResult<Consumer<Consumer<va>>> g(va $$0) {
+      return $$0 instanceof tz $$1 ? DataResult.success($$1::forEach) : DataResult.error(() -> "Not a list: " + $$0);
+   }
+
+   public DataResult<ByteBuffer> h(va $$0) {
+      return $$0 instanceof tx $$1 ? DataResult.success(ByteBuffer.wrap($$1.e())) : super.getByteBuffer($$0);
+   }
+
+   public va a(ByteBuffer $$0) {
+      ByteBuffer $$1 = $$0.duplicate().clear();
+      byte[] $$2 = new byte[$$0.capacity()];
+      $$1.get(0, $$2, 0, $$2.length);
+      return new tx($$2);
+   }
+
+   public DataResult<IntStream> i(va $$0) {
+      return $$0 instanceof ue $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getIntStream($$0);
+   }
+
+   public va a(IntStream $$0) {
+      return new ue($$0.toArray());
+   }
+
+   public DataResult<LongStream> j(va $$0) {
+      return $$0 instanceof uh $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getLongStream($$0);
+   }
+
+   public va a(LongStream $$0) {
+      return new uh($$0.toArray());
+   }
+
+   public va b(Stream<va> $$0) {
+      return new ug($$0.collect(ag.b()));
+   }
+
+   public va a(va $$0, String $$1) {
+      if ($$0 instanceof ua $$2) {
+         ua $$3 = $$2.k();
+         $$3.r($$1);
+         return $$3;
       } else {
-         k.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{$$2, $$3.a($$2), $$4});
          return $$0;
       }
    }
 
-   public static tz a(ebe $$0) {
-      tz $$1 = new tz();
-      $$1.a("Name", mg.e.b($$0.b()).toString());
-      Map<ech<?>, Comparable<?>> $$2 = $$0.G();
-      if (!$$2.isEmpty()) {
-         tz $$3 = new tz();
-
-         for (Entry<ech<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            ech<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
+   @Override
+   public String toString() {
+      return "NBT";
    }
 
-   public static tz a(exo $$0) {
-      tz $$1 = new tz();
-      $$1.a("Name", mg.c.b($$0.a()).toString());
-      Map<ech<?>, Comparable<?>> $$2 = $$0.G();
-      if (!$$2.isEmpty()) {
-         tz $$3 = new tz();
-
-         for (Entry<ech<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            ech<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
+   public RecordBuilder<va> mapBuilder() {
+      return new uo.f();
    }
 
-   private static <T extends Comparable<T>> String a(ech<T> $$0, Comparable<?> $$1) {
-      return $$0.b((T)$$1);
-   }
+   private static Optional<uo.d> k(va $$0) {
+      if ($$0 instanceof uc) {
+         return Optional.of(new uo.b());
+      } else if ($$0 instanceof tz $$1) {
+         if ($$1.isEmpty()) {
+            return Optional.of(new uo.b());
+         } else {
+            Objects.requireNonNull($$1);
 
-   public static String a(uy $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(uy $$0, boolean $$1) {
-      return a(new StringBuilder(), $$0, 0, $$1).toString();
-   }
-
-   public static StringBuilder a(StringBuilder $$0, uy $$1, int $$2, boolean $$3) {
-      Objects.requireNonNull($$1);
-
-      return switch ($$1) {
-         case uq $$4 -> $$0.append($$4);
-         case ub $$5 -> $$0;
-         case tw $$6 -> {
-            byte[] $$7 = $$6.e();
-            int $$8 = $$7.length;
-            a($$2, $$0).append("byte[").append($$8).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$9 = 0; $$9 < $$7.length; $$9++) {
-                  if ($$9 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$9 % 16 == 0 && $$9 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$9 < $$7.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$9 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%02X", $$7[$$9] & 255));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            yield $$0;
-         }
-         case uf $$10 -> {
-            int $$11 = $$10.size();
-            a($$2, $$0).append("list").append("[").append($$11).append("] [");
-            if ($$11 != 0) {
-               $$0.append('\n');
-            }
-
-            for (int $$12 = 0; $$12 < $$11; $$12++) {
-               if ($$12 != 0) {
-                  $$0.append(",\n");
-               }
-
-               a($$2 + 1, $$0);
-               a($$0, $$10.c($$12), $$2 + 1, $$3);
-            }
-
-            if ($$11 != 0) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append(']');
-            yield $$0;
-         }
-         case ud $$13 -> {
-            int[] $$14 = $$13.g();
-            int $$15 = 0;
-
-            for (int $$16 : $$14) {
-               $$15 = Math.max($$15, String.format(Locale.ROOT, "%X", $$16).length());
-            }
-
-            int $$17 = $$14.length;
-            a($$2, $$0).append("int[").append($$17).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$18 = 0; $$18 < $$14.length; $$18++) {
-                  if ($$18 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$18 % 16 == 0 && $$18 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$18 < $$14.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$18 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$15 + "X", $$14[$$18]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            yield $$0;
-         }
-         case tz $$19 -> {
-            List<String> $$20 = Lists.newArrayList($$19.e());
-            Collections.sort($$20);
-            a($$2, $$0).append('{');
-            if ($$0.length() - $$0.lastIndexOf("\n") > 2 * ($$2 + 1)) {
-               $$0.append('\n');
-               a($$2 + 1, $$0);
-            }
-
-            int $$21 = $$20.stream().mapToInt(String::length).max().orElse(0);
-            String $$22 = Strings.repeat(" ", $$21);
-
-            for (int $$23 = 0; $$23 < $$20.size(); $$23++) {
-               if ($$23 != 0) {
-                  $$0.append(",\n");
-               }
-
-               String $$24 = $$20.get($$23);
-               a($$2 + 1, $$0).append('"').append($$24).append('"').append($$22, 0, $$22.length() - $$24.length()).append(": ");
-               a($$0, $$19.a($$24), $$2 + 1, $$3);
-            }
-
-            if (!$$20.isEmpty()) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append('}');
-            yield $$0;
-         }
-         case ug $$25 -> {
-            long[] $$26 = $$25.g();
-            long $$27 = 0L;
-
-            for (long $$28 : $$26) {
-               $$27 = Math.max($$27, (long)String.format(Locale.ROOT, "%X", $$28).length());
-            }
-
-            long $$29 = (long)$$26.length;
-            a($$2, $$0).append("long[").append($$29).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$30 = 0; $$30 < $$26.length; $$30++) {
-                  if ($$30 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$30 % 16 == 0 && $$30 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$30 < $$26.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$30 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$27 + "X", $$26[$$30]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            yield $$0;
-         }
-         default -> throw new MatchException(null, null);
-      };
-   }
-
-   private static StringBuilder a(int $$0, StringBuilder $$1) {
-      int $$2 = $$1.lastIndexOf("\n") + 1;
-      int $$3 = $$1.length() - $$2;
-
-      for (int $$4 = 0; $$4 < 2 * $$0 - $$3; $$4++) {
-         $$1.append(' ');
-      }
-
-      return $$1;
-   }
-
-   public static xa b(uy $$0) {
-      return new vd("").a($$0);
-   }
-
-   public static String a(tz $$0) {
-      return new uu().a((uy)b($$0));
-   }
-
-   public static tz a(String $$0) throws CommandSyntaxException {
-      return c(uz.a($$0));
-   }
-
-   @VisibleForTesting
-   static tz b(tz $$0) {
-      Optional<uf> $$1 = $$0.o("palettes");
-      uf $$2;
-      if ($$1.isPresent()) {
-         $$2 = $$1.get().f(0);
-      } else {
-         $$2 = $$0.p("palette");
-      }
-
-      uf $$4 = $$2.j().map(uo::d).map(uw::a).collect(Collectors.toCollection(uf::new));
-      $$0.a("palette", $$4);
-      if ($$1.isPresent()) {
-         uf $$5 = new uf();
-         $$1.get().stream().flatMap($$0x -> $$0x.t_().stream()).forEach($$2x -> {
-            tz $$3x = new tz();
-
-            for (int $$4x = 0; $$4x < $$2x.size(); $$4x++) {
-               $$3x.a($$4.m($$4x).orElseThrow(), d($$2x.a($$4x).orElseThrow()));
-            }
-
-            $$5.add($$3x);
-         });
-         $$0.a("palettes", $$5);
-      }
-
-      Optional<uf> $$6 = $$0.o("entities");
-      if ($$6.isPresent()) {
-         uf $$7 = $$6.get().j().sorted(Comparator.comparing($$0x -> $$0x.o("pos"), Comparators.emptiesLast(c))).collect(Collectors.toCollection(uf::new));
-         $$0.a("entities", $$7);
-      }
-
-      uf $$8 = $$0.o("blocks")
-         .stream()
-         .flatMap(uf::j)
-         .sorted(Comparator.comparing($$0x -> $$0x.o("pos"), Comparators.emptiesLast(b)))
-         .peek($$1x -> $$1x.a("state", $$4.m($$1x.b("state", 0)).orElseThrow()))
-         .collect(Collectors.toCollection(uf::new));
-      $$0.a("data", $$8);
-      $$0.r("blocks");
-      return $$0;
-   }
-
-   @VisibleForTesting
-   static tz c(tz $$0) {
-      uf $$1 = $$0.p("palette");
-      Map<String, uy> $$2 = $$1.stream().flatMap($$0x -> $$0x.p_().stream()).collect(ImmutableMap.toImmutableMap(Function.identity(), uo::b));
-      Optional<uf> $$3 = $$0.o("palettes");
-      if ($$3.isPresent()) {
-         $$0.a(
-            "palettes",
-            $$3.get()
-               .j()
-               .map($$1x -> $$2.keySet().stream().map($$1xx -> $$1x.i($$1xx).orElseThrow()).map(uo::b).collect(Collectors.toCollection(uf::new)))
-               .collect(Collectors.toCollection(uf::new))
-         );
-         $$0.r("palette");
-      } else {
-         $$0.a("palette", $$2.values().stream().collect(Collectors.toCollection(uf::new)));
-      }
-
-      Optional<uf> $$4 = $$0.o("data");
-      if ($$4.isPresent()) {
-         Object2IntMap<String> $$5 = new Object2IntOpenHashMap();
-         $$5.defaultReturnValue(-1);
-
-         for (int $$6 = 0; $$6 < $$1.size(); $$6++) {
-            $$5.put($$1.m($$6).orElseThrow(), $$6);
-         }
-
-         uf $$7 = $$4.get();
-
-         for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
-            tz $$9 = $$7.a($$8).orElseThrow();
-            String $$10 = $$9.i("state").orElseThrow();
-            int $$11 = $$5.getInt($$10);
-            if ($$11 == -1) {
-               throw new IllegalStateException("Entry " + $$10 + " missing from palette");
-            }
-
-            $$9.a("state", $$11);
-         }
-
-         $$0.a("blocks", $$7);
-         $$0.r("data");
-      }
-
-      return $$0;
-   }
-
-   @VisibleForTesting
-   static String d(tz $$0) {
-      StringBuilder $$1 = new StringBuilder($$0.i("Name").orElseThrow());
-      $$0.m("Properties")
-         .ifPresent(
-            $$1x -> {
-               String $$2 = $$1x.g()
-                  .stream()
-                  .sorted(Entry.comparingByKey())
-                  .map($$0xx -> (String)$$0xx.getKey() + ":" + ((uy)$$0xx.getValue()).p_().orElseThrow())
-                  .collect(Collectors.joining(","));
-               $$1.append('{').append($$2).append('}');
-            }
-         );
-      return $$1.toString();
-   }
-
-   @VisibleForTesting
-   static tz b(String $$0) {
-      tz $$1 = new tz();
-      int $$2 = $$0.indexOf(123);
-      String $$3;
-      if ($$2 >= 0) {
-         $$3 = $$0.substring(0, $$2);
-         tz $$4 = new tz();
-         if ($$2 + 2 <= $$0.length()) {
-            String $$5 = $$0.substring($$2 + 1, $$0.indexOf(125, $$2));
-            i.split($$5).forEach($$2x -> {
-               List<String> $$3x = j.splitToList($$2x);
-               if ($$3x.size() == 2) {
-                  $$4.a($$3x.get(0), $$3x.get(1));
-               } else {
-                  k.error("Something went wrong parsing: '{}' -- incorrect gamedata!", $$0);
-               }
-            });
-            $$1.a("Properties", $$4);
+            return switch ($$1) {
+               case ug $$2 -> Optional.of(new uo.b($$2));
+               case tx $$3 -> Optional.of(new uo.a($$3.e()));
+               case ue $$4 -> Optional.of(new uo.c($$4.g()));
+               case uh $$5 -> Optional.of(new uo.e($$5.g()));
+               default -> throw new MatchException(null, null);
+            };
          }
       } else {
-         $$3 = $$0;
+         return Optional.empty();
+      }
+   }
+
+   static class a implements uo.d {
+      private final ByteArrayList a = new ByteArrayList();
+
+      public a(byte[] $$0) {
+         this.a.addElements(0, $$0);
       }
 
-      $$1.a("Name", $$3);
-      return $$1;
+      @Override
+      public uo.d a(va $$0) {
+         if ($$0 instanceof ty $$1) {
+            this.a.add($$1.j());
+            return this;
+         } else {
+            return new uo.b(this.a).a($$0);
+         }
+      }
+
+      @Override
+      public va a() {
+         return new tx(this.a.toByteArray());
+      }
    }
 
-   public static tz e(tz $$0) {
-      int $$1 = ac.b().d().c();
-      return a($$0, $$1);
+   static class b implements uo.d {
+      private final ug a = new ug();
+
+      b() {
+      }
+
+      b(ug $$0) {
+         this.a.addAll($$0);
+      }
+
+      public b(IntArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(uf.a($$0x)));
+      }
+
+      public b(ByteArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(ty.a($$0x)));
+      }
+
+      public b(LongArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(ui.a($$0x)));
+      }
+
+      @Override
+      public uo.d a(va $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      @Override
+      public va a() {
+         return this.a;
+      }
    }
 
-   public static tz a(tz $$0, int $$1) {
-      $$0.a("DataVersion", $$1);
-      return $$0;
+   static class c implements uo.d {
+      private final IntArrayList a = new IntArrayList();
+
+      public c(int[] $$0) {
+         this.a.addElements(0, $$0);
+      }
+
+      @Override
+      public uo.d a(va $$0) {
+         if ($$0 instanceof uf $$1) {
+            this.a.add($$1.h());
+            return this;
+         } else {
+            return new uo.b(this.a).a($$0);
+         }
+      }
+
+      @Override
+      public va a() {
+         return new ue(this.a.toIntArray());
+      }
    }
 
-   public static int b(tz $$0, int $$1) {
-      return $$0.b("DataVersion", $$1);
+   interface d {
+      uo.d a(va var1);
+
+      default uo.d a(Iterable<va> $$0) {
+         uo.d $$1 = this;
+
+         for (va $$2 : $$0) {
+            $$1 = $$1.a($$2);
+         }
+
+         return $$1;
+      }
+
+      default uo.d a(Stream<va> $$0) {
+         return this.a($$0::iterator);
+      }
+
+      va a();
    }
 
-   public static int a(Dynamic<?> $$0, int $$1) {
-      return $$0.get("DataVersion").asInt($$1);
+   static class e implements uo.d {
+      private final LongArrayList a = new LongArrayList();
+
+      public e(long[] $$0) {
+         this.a.addElements(0, $$0);
+      }
+
+      @Override
+      public uo.d a(va $$0) {
+         if ($$0 instanceof ui $$1) {
+            this.a.add($$1.g());
+            return this;
+         } else {
+            return new uo.b(this.a).a($$0);
+         }
+      }
+
+      @Override
+      public va a() {
+         return new uh(this.a.toLongArray());
+      }
+   }
+
+   class f extends AbstractStringBuilder<va, ua> {
+      protected f() {
+         super(uo.this);
+      }
+
+      protected ua a() {
+         return new ua();
+      }
+
+      protected ua a(String $$0, va $$1, ua $$2) {
+         $$2.a($$0, $$1);
+         return $$2;
+      }
+
+      protected DataResult<va> a(ua $$0, va $$1) {
+         if ($$1 == null || $$1 == uc.b) {
+            return DataResult.success($$0);
+         } else if (!($$1 instanceof ua $$2)) {
+            return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
+         } else {
+            ua $$3 = $$2.k();
+
+            for (Entry<String, va> $$4 : $$0.g()) {
+               $$3.a($$4.getKey(), $$4.getValue());
+            }
+
+            return DataResult.success($$3);
+         }
+      }
    }
 }

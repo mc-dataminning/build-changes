@@ -2,21 +2,22 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hjl() implements hjq<czw> {
-   public static final Codec<czw> a = czw.j;
-   public static final hjq.a<hjl, czw> b = hjq.a.a(MapCodec.unit(new hjl()), a);
+public record hjl() implements hjs<alj<bxe<?>>> {
+   public static final Codec<alj<bxe<?>>> a = alj.a(mi.B);
+   public static final hjs.a<hjl, alj<bxe<?>>> b = hjs.a.a(MapCodec.unit(new hjl()), a);
 
-   public czw a(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
-      return $$4;
+   @Nullable
+   public alj<bxe<?>> a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
+      return $$2 == null ? null : $$2.an().r().h();
    }
 
    @Override
-   public hjq.a<hjl, czw> a() {
+   public hjs.a<hjl, alj<bxe<?>>> a() {
       return b;
    }
 
    @Override
-   public Codec<czw> b() {
+   public Codec<alj<bxe<?>>> b() {
       return a;
    }
 }

@@ -1,97 +1,79 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SequencedMap;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public interface gsa {
-   static gsa.a a(fll $$0) {
-      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
+public class gsa {
+   private static final float a = -0.01F;
+   private static final float b = -0.001F;
+   private static final int c = 128;
+   private static final int d = 128;
+   private final hmb e;
+   private final hma f;
+
+   public gsa(hma $$0, hmb $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   static gsa.a a(SequencedMap<gsl, fll> $$0, fll $$1) {
-      return new gsa.a($$1, $$0);
+   public void a(hkl $$0, flq $$1, gsc $$2, boolean $$3, int $$4) {
+      Matrix4f $$5 = $$1.c().a();
+      flt $$6 = $$2.getBuffer(gsn.u($$0.a));
+      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
+      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
+      int $$7 = 0;
+
+      for (hkl.a $$8 : $$0.b) {
+         if (!$$3 || $$8.e) {
+            $$1.a();
+            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
+            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
+            $$1.b(4.0F, 4.0F, 3.0F);
+            $$1.a(-0.125F, 0.125F, 0.0F);
+            Matrix4f $$9 = $$1.c().a();
+            hlc $$10 = $$8.a;
+            if ($$10 != null) {
+               flt $$11 = $$2.getBuffer(gsn.u($$10.i()));
+               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
+               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
+               $$1.b();
+            }
+
+            if ($$8.f != null) {
+               ftx $$12 = frf.Q().h;
+               float $$13 = (float)$$12.a($$8.f);
+               float $$14 = azq.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
+               $$1.a();
+               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
+               $$1.b($$14, $$14, 1.0F);
+               $$1.a(0.0F, 0.0F, -0.1F);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, ftx.a.a, Integer.MIN_VALUE, $$4, false);
+               $$1.b();
+            }
+
+            $$7++;
+         }
+      }
    }
 
-   flr getBuffer(gsl var1);
+   public void a(ezj $$0, ezl $$1, hkl $$2) {
+      $$2.a = this.e.b($$0, $$1);
+      $$2.b.clear();
 
-   public static class a implements gsa {
-      protected final fll a;
-      protected final SequencedMap<gsl, fll> b;
-      protected final Map<gsl, flk> c = new HashMap<>();
-      @Nullable
-      protected gsl d;
-
-      protected a(fll $$0, SequencedMap<gsl, fll> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (ezf $$3 : $$1.e()) {
+         $$2.b.add(this.a($$3));
       }
+   }
 
-      @Override
-      public flr getBuffer(gsl $$0) {
-         flk $$1 = this.c.get($$0);
-         if ($$1 != null && !$$0.U()) {
-            this.a($$0, $$1);
-            $$1 = null;
-         }
-
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            fll $$2 = this.b.get($$0);
-            if ($$2 != null) {
-               $$1 = new flk($$2, $$0.Q(), $$0.P());
-            } else {
-               if (this.d != null) {
-                  this.a(this.d);
-               }
-
-               $$1 = new flk(this.a, $$0.Q(), $$0.P());
-               this.d = $$0;
-            }
-
-            this.c.put($$0, $$1);
-            return $$1;
-         }
-      }
-
-      public void a() {
-         if (this.d != null) {
-            this.a(this.d);
-            this.d = null;
-         }
-      }
-
-      public void b() {
-         this.a();
-
-         for (gsl $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(gsl $$0) {
-         flk $$1 = this.c.remove($$0);
-         if ($$1 != null) {
-            this.a($$0, $$1);
-         }
-      }
-
-      private void a(gsl $$0, flk $$1) {
-         fln $$2 = $$1.a();
-         if ($$2 != null) {
-            if ($$0.V()) {
-               fll $$3 = this.b.getOrDefault($$0, this.a);
-               $$2.a($$3, RenderSystem.getProjectionType().a());
-            }
-
-            $$0.a($$2);
-         }
-
-         if ($$0.equals(this.d)) {
-            this.d = null;
-         }
-      }
+   private hkl.a a(ezf $$0) {
+      hkl.a $$1 = new hkl.a();
+      $$1.a = this.f.a($$0);
+      $$1.b = $$0.d();
+      $$1.c = $$0.e();
+      $$1.d = $$0.f();
+      $$1.f = $$0.g().orElse(null);
+      $$1.e = $$0.b();
+      return $$1;
    }
 }

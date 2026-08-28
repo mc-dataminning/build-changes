@@ -1,19 +1,22 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class end implements emp {
+public class end implements emr {
    public static final Codec<end> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(emx.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, end::new)
+      $$0 -> $$0.apply2(end::new, emg.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), erh.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
-   public final List<emx.a> b;
+   public final List<emg> b;
+   public final jg<erh> c;
 
-   public end(ebe $$0, ebe $$1) {
-      this(ImmutableList.of(emx.a(new evh($$0), $$1)));
+   public end(List<emg> $$0, jg<erh> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public end(List<emx.a> $$0) {
-      this.b = $$0;
+   @Override
+   public Stream<ejx<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

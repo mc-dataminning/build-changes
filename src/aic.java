@@ -1,12 +1,14 @@
-public record aic(dfx b) implements zh<agr> {
-   public static final yy<vw, aic> a = yy.a(dfx.a, aic::b, aic::new);
+import io.netty.buffer.ByteBuf;
+
+public record aic() implements zj<agt> {
+   public static final za<ByteBuf, aic> a = za.a(new aic());
 
    @Override
-   public zj<aic> a() {
-      return agp.bX;
+   public zl<aic> a() {
+      return agr.bV;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 }

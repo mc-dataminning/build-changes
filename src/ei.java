@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface ei {
    ei a = new ei() {
+      @Nullable
       @Override
-      public void a(xa $$0) {
-      }
-
-      @Override
-      public boolean x_() {
-         return false;
-      }
-
-      @Override
-      public boolean y_() {
-         return false;
-      }
-
-      @Override
-      public boolean c() {
-         return false;
+      public xs a(String $$0) {
+         return null;
       }
    };
 
-   void a(xa var1);
+   @Nullable
+   xs a(String var1);
 
-   boolean x_();
+   public static record a(Map<String, xs> b) implements ei {
+      @Nullable
+      @Override
+      public xs a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean y_();
-
-   boolean c();
-
-   default boolean o_() {
-      return false;
+      public Map<String, xs> a() {
+         return this.b;
+      }
    }
 }

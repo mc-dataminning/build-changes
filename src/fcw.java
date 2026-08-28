@@ -1,43 +1,33 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class fcw extends fbu {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<fcw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fcw::new));
+public class fcw extends fbw {
+   public static final MapCodec<fcw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(ddj.d.fieldOf("pages").forGetter($$0x -> $$0x.b), fbv.a(100).forGetter($$0x -> $$0x.c))).apply($$0, fcw::new)
+   );
+   private final List<asm<String>> b;
+   private final fbv c;
 
-   private fcw(List<fdq> $$0) {
+   protected fcw(List<fds> $$0, List<asm<String>> $$1, fbv $$2) {
       super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public fbw<fcw> b() {
-      return fbx.l;
+   protected daa a(daa $$0, faj $$1) {
+      $$0.a(kl.U, ddj.a, this::a);
+      return $$0;
+   }
+
+   public ddj a(ddj $$0) {
+      List<asm<String>> $$1 = this.c.a($$0.a(), this.b, 100);
+      return $$0.b($$1);
    }
 
    @Override
-   public czy a(czy $$0, fah $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         dfi $$2 = new dfi($$0);
-         Optional<deu<dfj>> $$3 = $$1.d().t().a(dfa.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            czy $$4 = $$3.get().b().a($$2, $$1.d().J_());
-            if (!$$4.f()) {
-               return $$4.c($$0.M());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
-   }
-
-   public static fbu.a<?> c() {
-      return a(fcw::new);
+   public fby<fcw> b() {
+      return fbz.O;
    }
 }

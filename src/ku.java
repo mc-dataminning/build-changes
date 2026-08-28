@@ -1,26 +1,49 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class ku {
-   public static final kt.b<ks> a = a("damage", ks.a);
-   public static final kt.b<kv.a> b = a("enchantments", kv.a.a);
-   public static final kt.b<kv.b> c = a("stored_enchantments", kv.b.a);
-   public static final kt.b<kz> d = a("potion_contents", kz.a);
-   public static final kt.b<kr> e = a("custom_data", kr.a);
-   public static final kt.b<kq> f = a("container", kq.a);
-   public static final kt.b<kp> g = a("bundle_contents", kp.a);
-   public static final kt.b<kw> h = a("firework_explosion", kw.a);
-   public static final kt.b<kx> i = a("fireworks", kx.a);
-   public static final kt.b<lb> j = a("writable_book_content", lb.a);
-   public static final kt.b<lc> k = a("written_book_content", lc.a);
-   public static final kt.b<ko> l = a("attribute_modifiers", ko.a);
-   public static final kt.b<la> m = a("trim", la.a);
-   public static final kt.b<ky> n = a("jukebox_playable", ky.a);
+public interface ku {
+   Codec<Map<ku.b<?>, ku>> b = Codec.dispatchedMap(mh.ao.q(), ku.b::a);
+   za<wn, ku.a<?>> c = yy.a(mi.q).b(ku.a::a, ku.b::c);
+   za<wn, Map<ku.b<?>, ku>> d = c.a(yy.c(64))
+      .a($$0 -> $$0.stream().collect(Collectors.toMap(ku.a::a, ku.a::b)), $$0 -> $$0.entrySet().stream().map(ku.a::a).toList());
 
-   private static <T extends kt> kt.b<T> a(String $$0, Codec<T> $$1) {
-      return js.a(mg.ao, $$0, new kt.b<>($$1));
+   static MapCodec<ku.a<?>> a(String $$0) {
+      return mh.ao.q().dispatchMap($$0, ku.a::a, ku.b::b);
    }
 
-   public static kt.b<?> a(js<kt.b<?>> $$0) {
-      return a;
+   boolean a(kg var1);
+
+   public static record a<T extends ku>(ku.b<T> a, T b) {
+      private static <T extends ku> ku.a<T> a(Entry<ku.b<?>, T> $$0) {
+         return new ku.a<>((ku.b<T>)$$0.getKey(), $$0.getValue());
+      }
+   }
+
+   public static final class b<T extends ku> {
+      private final Codec<T> a;
+      private final MapCodec<ku.a<T>> b;
+      private final za<wn, ku.a<T>> c;
+
+      public b(Codec<T> $$0) {
+         this.a = $$0;
+         this.b = RecordCodecBuilder.mapCodec($$1 -> $$1.group($$0.fieldOf("value").forGetter(ku.a::b)).apply($$1, $$0xx -> new ku.a<>(this, (T)$$0xx)));
+         this.c = yy.<ku>d($$0).a($$0x -> new ku.a<>(this, (T)$$0x), ku.a::b);
+      }
+
+      public Codec<T> a() {
+         return this.a;
+      }
+
+      public MapCodec<ku.a<T>> b() {
+         return this.b;
+      }
+
+      public za<wn, ku.a<T>> c() {
+         return this.c;
+      }
    }
 }

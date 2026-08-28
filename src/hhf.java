@@ -1,4 +1,5 @@
-public class hhf extends hfg {
+public class hhf extends her {
    public boolean a;
-   public boolean b;
+   public float b;
+   public float c;
 }

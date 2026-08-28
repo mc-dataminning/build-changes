@@ -1,22 +1,19 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class cug {
-   public static final String a = "variant";
+public record cug(List<cuc.a<cuf, cud>> c) {
+   public static final cug a = new cug(List.of());
+   public static final Codec<cug> b = cuc.a.a(cud.b).listOf().xmap(cug::new, cug::a);
 
-   public static <T> jf<T> a(jt $$0, alh<T> $$1) {
-      js<T> $$2 = $$0.f($$1.c());
-      return $$2.a($$1).or($$2::a).orElseThrow();
+   public static cug a(cud $$0, int $$1) {
+      return new cug(cuc.a($$0, $$1));
    }
 
-   public static <T> jf<T> b(jt $$0, alh<? extends js<T>> $$1) {
-      return $$0.f($$1).a().orElseThrow();
+   public static cug a(int $$0) {
+      return new cug(cuc.a($$0));
    }
 
-   public static <T> void a(tz $$0, jf<T> $$1) {
-      $$1.e().ifPresent($$1x -> $$0.a("variant", ali.a, $$1x.a()));
-   }
-
-   public static <T> Optional<jf<T>> a(tz $$0, jt $$1, alh<? extends js<T>> $$2) {
-      return $$0.<ali>a("variant", ali.a).map($$1x -> alh.a($$2, $$1x)).flatMap($$1::c);
+   public List<cuc.a<cuf, cud>> a() {
+      return this.c;
    }
 }

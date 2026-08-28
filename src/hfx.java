@@ -1,10 +1,8 @@
-public class hfx extends hfp {
-   public cke.b a;
-   public float b;
-   public giz.a c;
+import javax.annotation.Nullable;
 
-   public hfx() {
-      this.a = cke.b.a;
-      this.c = giz.a.a;
-   }
+public class hfx extends her {
+   public jc a = jc.c;
+   @Nullable
+   public coa b;
+   public int[] c = new int[0];
 }

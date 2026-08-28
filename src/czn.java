@@ -1,14 +1,15 @@
-public class czn extends dbb {
-   public czn(dnc $$0, dnc $$1, czu.a $$2) {
-      super($$2, $$0, $$1, jb.b);
+public class czn extends czw implements dbc {
+   public czn(czw.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dka $$0, ebe $$1, iv $$2) {
-      if ($$1.b() instanceof dws $$3 && !$$3.b($$1, $$0, $$2)) {
+   public boolean a(djz $$0, dzs $$1, boolean $$2, crz $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aB_(), awr.le, aws.e, 1.0F, 1.0F);
+         return true;
+      } else {
          return false;
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

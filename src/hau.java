@@ -1,16 +1,17 @@
-public class hau extends gzo<clm, hfp, gkg> {
-   private static final ali a = ali.b("textures/entity/tadpole/tadpole.png");
+public class hau extends gxc<cpn, hgm> {
+   private static final alk a = alk.b("textures/entity/skeleton/stray.png");
+   private static final alk j = alk.b("textures/entity/skeleton/stray_overlay.png");
 
-   public hau(gyi.a $$0) {
-      super($$0, new gkg($$0.a(gld.dz)), 0.14F);
+   public hau(gyk.a $$0) {
+      super($$0, glf.dr, glf.ds, glf.dt);
+      this.a(new hdc<>(this, $$0.f(), glf.du, j));
    }
 
-   @Override
-   public ali b(hfp $$0) {
+   public alk b(hgm $$0) {
       return a;
    }
 
-   public hfp b() {
-      return new hfp();
+   public hgm b() {
+      return new hgm();
    }
 }

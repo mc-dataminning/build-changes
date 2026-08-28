@@ -1,208 +1,88 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public abstract class ctc extends csu {
+   private static final float a = 12.25F;
 
-public class ctc extends csz {
-   private long a = 0L;
-
-   public ctc(bxc<? extends ctc> $$0, djx $$1) {
+   protected ctc(bxe<? extends ctc> $$0, djz $$1) {
       super($$0, $$1);
    }
 
-   public ctc(djx $$0, bxu $$1, czy $$2) {
-      super(bxc.R, $$1, $$0, $$2);
+   protected ctc(bxe<? extends ctc> $$0, double $$1, double $$2, double $$3, djz $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected czu g() {
-      return dac.tn;
-   }
-
-   @Override
-   protected void c(@Nullable UUID $$0) {
-      this.j();
-      super.c($$0);
-      this.m();
-   }
-
-   @Override
-   public void c(@Nullable bwt $$0) {
-      this.j();
-      super.c($$0);
-      this.m();
-   }
-
-   private void j() {
-      if (this.q() instanceof art $$0) {
-         $$0.b(this);
-      }
-   }
-
-   private void m() {
-      if (this.q() instanceof art $$0) {
-         $$0.a(this);
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bwt b(UUID $$0) {
-      if (this.dV() instanceof ars $$1) {
-         bwt $$3 = super.b($$0);
-         if ($$3 != null) {
-            return $$3;
-         } else {
-            for (ars $$4 : $$1.p().L()) {
-               if ($$4 != $$1) {
-                  $$3 = $$4.b($$0);
-                  if ($$3 != null) {
-                     return $$3;
-                  }
-               }
-            }
-
-            return null;
-         }
+   public boolean a(double $$0) {
+      if (this.af < 2 && $$0 < 12.25) {
+         return false;
       } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected void a(ffn $$0) {
-      super.a($$0);
-      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
-   }
-
-   @Override
-   protected void a(ffo $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dV().a(ly.af, this.dA(), this.dC() + this.ae.j() * 2.0, this.dG(), this.ae.k(), 0.0, this.ae.k());
-      }
-
-      if (this.dV() instanceof ars $$2 && !this.dQ()) {
-         bwt $$4 = this.q();
-         if ($$4 != null && a($$4, $$2)) {
-            ffq $$5 = this.bA();
-            if ($$4 instanceof art $$6) {
-               if ($$6.f.c()) {
-                  if (this.ae.i() < 0.05F && $$2.O().c(djt.f)) {
-                     coq $$7 = bxc.P.a($$2, bxb.k);
-                     if ($$7 != null) {
-                        $$7.b($$4.dA(), $$4.dC(), $$4.dG(), $$4.dL(), $$4.dN());
-                        $$2.b($$7);
-                     }
-                  }
-
-                  if (this.aA()) {
-                     $$4.ay();
-                  }
-
-                  art $$8 = $$6.a(new eyo($$2, $$5, ffq.c, 0.0F, 0.0F, byi.a(byi.k, byi.l), eyo.a));
-                  if ($$8 != null) {
-                     $$8.k();
-                     $$8.gP();
-                     $$8.a($$6.y(), this.dW().m(), 5.0F);
-                  }
-
-                  this.a($$2, $$5);
-               }
-            } else {
-               bwt $$9 = $$4.b(new eyo($$2, $$5, $$4.dy(), $$4.dL(), $$4.dN(), eyo.a));
-               if ($$9 != null) {
-                  $$9.k();
-               }
-
-               this.a($$2, $$5);
-            }
-
-            this.aq();
-            return;
+         double $$1 = this.cR().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
          }
 
-         this.aq();
-         return;
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
       }
    }
 
-   private static boolean a(bwt $$0, djx $$1) {
-      if ($$0.dV().aj() == $$1.aj()) {
-         return !($$0 instanceof bxu $$2) ? $$0.bJ() : $$2.bJ() && !$$2.fR();
-      } else {
-         return $$0.n(true);
-      }
+   @Override
+   public boolean n(boolean $$0) {
+      return true;
    }
 
    @Override
    public void h() {
-      int $$0;
-      int $$1;
-      bwt $$2;
-      label30: {
-         $$0 = jy.b(this.dt().a());
-         $$1 = jy.b(this.dt().c());
-         $$2 = this.q();
-         if ($$2 instanceof art $$3 && !$$2.bJ() && $$3.y().O().c(djt.aa)) {
-            this.aq();
-            break label30;
+      this.j();
+      this.be();
+      this.g();
+      ffq $$0 = csw.a(this, this::b);
+      ffs $$1;
+      if ($$0.d() != ffq.a.a) {
+         $$1 = $$0.g();
+      } else {
+         $$1 = this.dt().e(this.dy());
+      }
+
+      this.b($$1);
+      this.A();
+      this.aI();
+      super.h();
+      if ($$0.d() != ffq.a.a && this.bJ()) {
+         this.b($$0);
+      }
+   }
+
+   private void g() {
+      ffs $$0 = this.dy();
+      ffs $$1 = this.dt();
+      float $$4;
+      if (this.bi()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dV().a(lz.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
          }
 
-         super.h();
+         $$4 = 0.8F;
+      } else {
+         $$4 = 0.99F;
       }
 
-      if (this.bJ()) {
-         iv $$4 = iv.a((jp)this.dt());
-         if ((--this.a <= 0L || $$0 != jy.a($$4.u()) || $$1 != jy.a($$4.w())) && $$2 instanceof art $$5) {
-            this.a = $$5.c(this);
+      this.i($$0.c((double)$$4));
+   }
+
+   private void j() {
+      if (this.ak) {
+         for (iw $$0 : iw.a(this.cR())) {
+            ebg $$1 = this.dV().a_($$0);
+            if ($$1.a(dng.nJ)) {
+               $$1.a(this.dV(), $$0, this, bxo.a);
+            }
          }
       }
    }
 
-   private void a(djx $$0, ffq $$1) {
-      $$0.a(null, $$1.d, $$1.e, $$1.f, awp.vj, awq.h);
-   }
-
-   @Nullable
    @Override
-   public bwt b(eyo $$0) {
-      bwt $$1 = super.b($$0);
-      if ($$1 != null) {
-         $$1.f(iv.a((jp)$$1.dt()));
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(djx $$0, djx $$1) {
-      return $$0.aj() == djx.k && $$1.aj() == djx.i && this.q() instanceof art $$2 ? super.a($$0, $$1) && $$2.i : super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(ebe $$0) {
-      super.a($$0);
-      if ($$0.a(dne.ll) && this.q() instanceof art $$1) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void b(bwt.d $$0) {
-      if ($$0 != bwt.d.d) {
-         this.j();
-      }
-
-      super.b($$0);
-   }
-
-   @Override
-   public void a(boolean $$0, iv $$1) {
-      bwt.a(this, $$0, $$1);
-   }
-
-   @Override
-   public void l(boolean $$0) {
-      bwt.b(this, $$0);
+   protected double bc() {
+      return 0.03;
    }
 }

@@ -1,20 +1,22 @@
-public class gxk extends gzo<coh, hfp, ghc> {
-   private static final ali a = ali.b("textures/entity/blaze.png");
+public class gxk extends gzq<cjf, hdz, gha> {
+   private static final alk a = alk.b("textures/entity/bat.png");
 
-   public gxk(gyi.a $$0) {
-      super($$0, new ghc($$0.a(gld.D)), 0.5F);
+   public gxk(gyk.a $$0) {
+      super($$0, new gha($$0.a(glf.u)), 0.25F);
    }
 
-   protected int a(coh $$0, iv $$1) {
-      return 15;
-   }
-
-   @Override
-   public ali b(hfp $$0) {
+   public alk a(hdz $$0) {
       return a;
    }
 
-   public hfp a() {
-      return new hfp();
+   public hdz a() {
+      return new hdz();
+   }
+
+   public void a(cjf $$0, hdz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.m();
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
    }
 }

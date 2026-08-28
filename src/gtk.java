@@ -1,119 +1,104 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import java.io.Reader;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public record gtk(@Nullable hnu b, @Nullable hnv.a d, @Nullable Boolean e, @Nullable gtr f, gtv.a g, @Nullable ali h) implements hnv {
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gtk.class, new gtk.a())
-      .registerTypeAdapter(gth.class, new gth.a())
-      .registerTypeAdapter(gti.class, new gti.a())
-      .registerTypeAdapter(gtq.class, new gtq.a())
-      .registerTypeAdapter(gtr.class, new gtr.a())
-      .create();
+public record gtk(@Nullable jc b, int c, String d, @Nullable gtk.b e, i f) {
+   public static final int a = -1;
 
-   public static gtk a(Reader $$0) {
-      return aze.a(a, $$0, gtk.class);
+   public static float a(gtk.b $$0, i $$1, int $$2) {
+      return $$0.a($$1.b($$2)) / 16.0F;
+   }
+
+   public static float b(gtk.b $$0, i $$1, int $$2) {
+      return $$0.b($$1.b($$2)) / 16.0F;
    }
 
    @Nullable
-   @Override
-   public hnu a() {
+   public jc a() {
       return this.b;
    }
 
-   @Nullable
-   @Override
-   public hnv.a b() {
+   public int b() {
+      return this.c;
+   }
+
+   public String c() {
       return this.d;
    }
 
    @Nullable
-   @Override
-   public Boolean c() {
+   public gtk.b d() {
       return this.e;
    }
 
-   @Nullable
-   @Override
-   public gtr d() {
+   public i e() {
       return this.f;
    }
 
-   @Override
-   public gtv.a e() {
-      return this.g;
-   }
+   protected static class a implements JsonDeserializer<gtk> {
+      private static final int a = -1;
+      private static final int b = 0;
 
-   @Nullable
-   @Override
-   public ali f() {
-      return this.h;
-   }
-
-   public static class a implements JsonDeserializer<gtk> {
       public gtk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         hnu $$4 = this.a($$2, $$3);
-         String $$5 = this.c($$3);
-         gtv.a $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         gtr $$8 = null;
-         if ($$3.has("display")) {
-            JsonObject $$9 = aze.u($$3, "display");
-            $$8 = (gtr)$$2.deserialize($$9, gtr.class);
-         }
-
-         hnv.a $$10 = null;
-         if ($$3.has("gui_light")) {
-            $$10 = hnv.a.a(aze.i($$3, "gui_light"));
-         }
-
-         ali $$11 = $$5.isEmpty() ? null : ali.a($$5);
-         return new gtk($$4, $$10, $$7, $$8, $$6, $$11);
+         jc $$4 = c($$3);
+         int $$5 = a($$3);
+         String $$6 = b($$3);
+         gtk.b $$7 = e($$3);
+         i $$8 = d($$3);
+         return new gtk($$4, $$5, $$6, $$7, $$8);
       }
 
-      private gtv.a b(JsonObject $$0) {
-         if ($$0.has("textures")) {
-            JsonObject $$1 = aze.u($$0, "textures");
-            return gtv.a($$1, hkz.c);
-         } else {
-            return gtv.a.a;
-         }
+      private static int a(JsonObject $$0) {
+         return azg.a($$0, "tintindex", -1);
       }
 
-      private String c(JsonObject $$0) {
-         return aze.a($$0, "parent", "");
+      private static String b(JsonObject $$0) {
+         return azg.i($$0, "texture");
       }
 
       @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? aze.k($$0, "ambientocclusion") : null;
+      private static jc c(JsonObject $$0) {
+         String $$1 = azg.a($$0, "cullface", "");
+         return jc.a($$1);
+      }
+
+      private static i d(JsonObject $$0) {
+         int $$1 = azg.a($$0, "rotation", 0);
+         return i.a($$1);
       }
 
       @Nullable
-      protected hnu a(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("elements")) {
+      private static gtk.b e(JsonObject $$0) {
+         if (!$$0.has("uv")) {
             return null;
          } else {
-            List<gth> $$2 = new ArrayList<>();
-
-            for (JsonElement $$3 : aze.v($$1, "elements")) {
-               $$2.add((gth)$$0.deserialize($$3, gth.class));
+            JsonArray $$1 = azg.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float $$2 = azg.e($$1.get(0), "minU");
+               float $$3 = azg.e($$1.get(1), "minV");
+               float $$4 = azg.e($$1.get(2), "maxU");
+               float $$5 = azg.e($$1.get(3), "maxV");
+               return new gtk.b($$2, $$3, $$4, $$5);
             }
-
-            return new gtt($$2);
          }
+      }
+   }
+
+   public static record b(float a, float b, float c, float d) {
+      public float a(int $$0) {
+         return $$0 != 0 && $$0 != 1 ? this.c : this.a;
+      }
+
+      public float b(int $$0) {
+         return $$0 != 0 && $$0 != 3 ? this.d : this.b;
       }
    }
 }

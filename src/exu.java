@@ -1,122 +1,127 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.base.Preconditions;
 
-public abstract class exu extends exm {
-   @Override
-   public exn d() {
-      return exp.b;
-   }
+public class exu {
+   private static final exu[] am = new exu[64];
+   public static final exu a = new exu(0, 0);
+   public static final exu b = new exu(1, 8368696);
+   public static final exu c = new exu(2, 16247203);
+   public static final exu d = new exu(3, 13092807);
+   public static final exu e = new exu(4, 16711680);
+   public static final exu f = new exu(5, 10526975);
+   public static final exu g = new exu(6, 10987431);
+   public static final exu h = new exu(7, 31744);
+   public static final exu i = new exu(8, 16777215);
+   public static final exu j = new exu(9, 10791096);
+   public static final exu k = new exu(10, 9923917);
+   public static final exu l = new exu(11, 7368816);
+   public static final exu m = new exu(12, 4210943);
+   public static final exu n = new exu(13, 9402184);
+   public static final exu o = new exu(14, 16776437);
+   public static final exu p = new exu(15, 14188339);
+   public static final exu q = new exu(16, 11685080);
+   public static final exu r = new exu(17, 6724056);
+   public static final exu s = new exu(18, 15066419);
+   public static final exu t = new exu(19, 8375321);
+   public static final exu u = new exu(20, 15892389);
+   public static final exu v = new exu(21, 5000268);
+   public static final exu w = new exu(22, 10066329);
+   public static final exu x = new exu(23, 5013401);
+   public static final exu y = new exu(24, 8339378);
+   public static final exu z = new exu(25, 3361970);
+   public static final exu A = new exu(26, 6704179);
+   public static final exu B = new exu(27, 6717235);
+   public static final exu C = new exu(28, 10040115);
+   public static final exu D = new exu(29, 1644825);
+   public static final exu E = new exu(30, 16445005);
+   public static final exu F = new exu(31, 6085589);
+   public static final exu G = new exu(32, 4882687);
+   public static final exu H = new exu(33, 55610);
+   public static final exu I = new exu(34, 8476209);
+   public static final exu J = new exu(35, 7340544);
+   public static final exu K = new exu(36, 13742497);
+   public static final exu L = new exu(37, 10441252);
+   public static final exu M = new exu(38, 9787244);
+   public static final exu N = new exu(39, 7367818);
+   public static final exu O = new exu(40, 12223780);
+   public static final exu P = new exu(41, 6780213);
+   public static final exu Q = new exu(42, 10505550);
+   public static final exu R = new exu(43, 3746083);
+   public static final exu S = new exu(44, 8874850);
+   public static final exu T = new exu(45, 5725276);
+   public static final exu U = new exu(46, 8014168);
+   public static final exu V = new exu(47, 4996700);
+   public static final exu W = new exu(48, 4993571);
+   public static final exu X = new exu(49, 5001770);
+   public static final exu Y = new exu(50, 9321518);
+   public static final exu Z = new exu(51, 2430480);
+   public static final exu aa = new exu(52, 12398641);
+   public static final exu ab = new exu(53, 9715553);
+   public static final exu ac = new exu(54, 6035741);
+   public static final exu ad = new exu(55, 1474182);
+   public static final exu ae = new exu(56, 3837580);
+   public static final exu af = new exu(57, 5647422);
+   public static final exu ag = new exu(58, 1356933);
+   public static final exu ah = new exu(59, 6579300);
+   public static final exu ai = new exu(60, 14200723);
+   public static final exu aj = new exu(61, 8365974);
+   public final int ak;
+   public final int al;
 
-   @Override
-   public exn e() {
-      return exp.c;
-   }
-
-   @Override
-   public czu a() {
-      return dac.rp;
-   }
-
-   @Override
-   public void a(djx $$0, iv $$1, exo $$2, azx $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awp.Dg, awq.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-         }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(ly.ao, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+   private exu(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 <= 63) {
+         this.al = $$0;
+         this.ak = $$1;
+         am[$$0] = this;
+      } else {
+         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
       }
    }
 
-   @Nullable
-   @Override
-   public lw h() {
-      return ly.l;
+   public int a(exu.a $$0) {
+      return this == a ? 0 : aya.b(aya.f(this.ak), $$0.f);
    }
 
-   @Override
-   protected boolean a(ars $$0) {
-      return $$0.O().c(djt.W);
+   public static exu a(int $$0) {
+      Preconditions.checkPositionIndex($$0, am.length, "material id");
+      return c($$0);
    }
 
-   @Override
-   protected void a(djy $$0, iv $$1, ebe $$2) {
-      dyc $$3 = $$2.x() ? $$0.c_($$1) : null;
-      dnc.a($$2, $$0, $$1, $$3);
+   private static exu c(int $$0) {
+      exu $$1 = am[$$0];
+      return $$1 != null ? $$1 : a;
    }
 
-   @Override
-   protected void a(djx $$0, iv $$1, bwt $$2, bxm $$3) {
-      $$3.a(bxn.d);
+   public static int b(int $$0) {
+      int $$1 = $$0 & 0xFF;
+      return c($$1 >> 2).a(exu.a.b($$1 & 3));
    }
 
-   @Override
-   public int b(dka $$0) {
-      return 4;
+   public byte b(exu.a $$0) {
+      return (byte)(this.al << 2 | $$0.e & 3);
    }
 
-   @Override
-   public ebe b(exo $$0) {
-      return dne.J.m().b(dry.b, Integer.valueOf(e($$0)));
-   }
+   public static enum a {
+      a(0, 180),
+      b(1, 220),
+      c(2, 255),
+      d(3, 135);
 
-   @Override
-   public boolean a(exn $$0) {
-      return $$0 == exp.c || $$0 == exp.b;
-   }
+      private static final exu.a[] g = new exu.a[]{a, b, c, d};
+      public final int e;
+      public final int f;
 
-   @Override
-   public int c(dka $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(dka $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(exo $$0, djb $$1, iv $$2, exn $$3, jb $$4) {
-      return $$4 == jb.a && !$$3.a(axj.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<awo> j() {
-      return Optional.of(awp.dj);
-   }
-
-   public static class a extends exu {
-      @Override
-      protected void a(ebf.a<exn, exo> $$0) {
-         super.a($$0);
-         $$0.a(b);
+      private a(final int $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      @Override
-      public int d(exo $$0) {
-         return $$0.c(b);
+      public static exu.a a(int $$0) {
+         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
+         return b($$0);
       }
 
-      @Override
-      public boolean c(exo $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends exu {
-      @Override
-      public int d(exo $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(exo $$0) {
-         return true;
+      static exu.a b(int $$0) {
+         return g[$$0];
       }
    }
 }

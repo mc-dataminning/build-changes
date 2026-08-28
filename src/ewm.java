@@ -1,14 +1,18 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface ewm<P extends ewl> {
-   ewm<ewj> a = a("clear", ewj.a);
-   ewm<ewk> b = a("passthrough", ewk.b);
-   ewm<ewi> c = a("append_static", ewi.a);
-   ewm<ewh> d = a("append_loot", ewh.a);
+public class ewm implements ewn {
+   public static final ewm a = new ewm();
+   public static final MapCodec<ewm> b = MapCodec.unit(a);
 
-   MapCodec<P> codec();
+   @Nullable
+   @Override
+   public ua a(azz $$0, @Nullable ua $$1) {
+      return $$1;
+   }
 
-   private static <P extends ewl> ewm<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.n, $$0, () -> $$1);
+   @Override
+   public ewo<?> a() {
+      return ewo.b;
    }
 }

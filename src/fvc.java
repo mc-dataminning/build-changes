@@ -1,35 +1,39 @@
-public class fvc {
-   public static final ali a = ali.b("textures/gui/title/minecraft.png");
-   public static final ali b = ali.b("textures/gui/title/minceraft.png");
-   public static final ali c = ali.b("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azx.a().i() < 1.0E-4;
-   private final boolean o;
+import javax.annotation.Nullable;
 
-   public fvc(boolean $$0) {
-      this.o = $$0;
+public class fvc extends ful {
+   private final ftx a;
+
+   public fvc(ftx $$0, xc $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
-   public void a(ftx $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   @Override
+   protected void b(ftz $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.F() + this.A() / 2;
+      int $$5 = this.G() + this.y() / 2;
+      xc $$6 = this.B();
+      $$0.b(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1);
+      String $$7 = fzu.a(ag.c());
+      $$0.b(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712);
    }
 
-   public void a(ftx $$0, int $$1, float $$2, int $$3) {
-      int $$4 = $$1 / 2 - 128;
-      float $$5 = this.o ? 1.0F : $$2;
-      int $$6 = axy.a($$5);
-      $$0.a(gsl::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
-      int $$7 = $$1 / 2 - 64;
-      int $$8 = $$3 + 44 - 7;
-      $$0.a(gsl::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
+   @Override
+   protected void a(fyk $$0) {
+   }
+
+   @Override
+   public void a(hqf $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public ftw a(fyq $$0) {
+      return null;
    }
 }

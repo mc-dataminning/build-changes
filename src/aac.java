@@ -1,16 +1,11 @@
-import com.google.common.collect.Lists;
+public interface aac extends abv {
+   void a(aaf var1);
 
-public record aac(aak b) implements zh<aaa> {
-   private static final int c = 32767;
-   public static final yy<vw, aac> a = aak.<vw>a($$0 -> aal.a($$0, 32767), ag.a(Lists.newArrayList(new aak.c[]{new aak.c<>(aai.b, aai.a)}), $$0 -> {
-   })).a(aac::new, aac::b);
+   void a(aag var1);
 
-   @Override
-   public zj<aac> a() {
-      return zz.m;
-   }
+   void a(aae var1);
 
-   public void a(aaa $$0) {
-      $$0.a(this);
-   }
+   void a(aah var1);
+
+   void a(aad var1);
 }

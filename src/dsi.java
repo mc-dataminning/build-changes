@@ -1,263 +1,238 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dsi extends dnc implements dun {
-   public static final MapCodec<dsi> b = b(dsi::new);
-   public static final ebv c = ebu.I;
-   private static final Map<jb, ebv> a = dsw.h;
-   protected static final jb[] d = jb.values();
-   private final Function<ebe, fgk> e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
+public class dsi extends dne implements dnh {
+   public static final MapCodec<dsi> a = b(dsi::new);
+   public static final ebx b = ebw.d;
+   public static final ece<ect> c = ebw.aa;
+   public static final ece<ect> d = ebw.Z;
+   public static final ece<ect> e = ebw.ab;
+   public static final ece<ect> f = ebw.ac;
+   public static final Map<jc, ece<ect>> g = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jc.c, c, jc.f, d, jc.d, e, jc.e, f)));
+   private final Function<ebg, fgm> h;
 
    @Override
-   protected MapCodec<? extends dsi> a() {
-      return b;
+   public MapCodec<dsi> a() {
+      return a;
    }
 
-   public dsi(ebd.d $$0) {
+   public dsi(ebf.d $$0) {
       super($$0);
-      this.l(a(this.C));
-      this.e = this.q();
-      this.f = jb.c.a.a().allMatch(this::a);
-      this.g = jb.c.a.a().filter(jb.a.a).filter(this::a).count() % 2L == 0L;
-      this.h = jb.c.a.a().filter(jb.a.c).filter(this::a).count() % 2L == 0L;
+      this.l(this.C.b().b(b, Boolean.valueOf(true)).b(c, ect.a).b(d, ect.a).b(e, ect.a).b(f, ect.a));
+      this.h = this.b();
    }
 
-   private Function<ebe, fgk> q() {
-      Map<jb, fgk> $$0 = fgh.d(dnc.c(16.0, 0.0, 1.0));
-      return this.a($$1 -> {
-         fgk $$2 = fgh.a();
+   @Override
+   protected fgm d_(ebg $$0) {
+      return fgj.a();
+   }
 
-         for (jb $$3 : d) {
-            if (a($$1, $$3)) {
-               $$2 = fgh.a($$2, $$0.get($$3));
+   public Function<ebg, fgm> b() {
+      Map<jc, fgm> $$0 = fgj.c(dne.a(16.0, 0.0, 10.0, 0.0, 1.0));
+      Map<jc, fgm> $$1 = fgj.d(dne.c(16.0, 0.0, 1.0));
+      return this.a($$2 -> {
+         fgm $$3 = $$2.c(b) ? $$1.get(jc.a) : fgj.a();
+
+         for (Entry<jc, ece<ect>> $$4 : g.entrySet()) {
+            switch ((ect)$$2.c($$4.getValue())) {
+               case a:
+               default:
+                  break;
+               case b:
+                  $$3 = fgj.a($$3, $$0.get($$4.getKey()));
+                  break;
+               case c:
+                  $$3 = fgj.a($$3, $$1.get($$4.getKey()));
             }
          }
 
-         return $$2.c() ? fgh.b() : $$2;
-      }, new ech[]{c});
+         return $$3.c() ? fgj.b() : $$3;
+      });
    }
 
-   public static Set<jb> o(ebe $$0) {
-      if (!($$0.b() instanceof dsi)) {
-         return Set.of();
-      } else {
-         Set<jb> $$1 = EnumSet.noneOf(jb.class);
-
-         for (jb $$2 : jb.values()) {
-            if (a($$0, $$2)) {
-               $$1.add($$2);
-            }
-         }
-
-         return $$1;
-      }
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return this.h.apply($$0);
    }
 
-   public static Set<jb> a(byte $$0) {
-      Set<jb> $$1 = EnumSet.noneOf(jb.class);
-
-      for (jb $$2 : jb.values()) {
-         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
+   @Override
+   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return $$0.c(b) ? this.h.apply(this.m()) : fgj.a();
    }
 
-   public static byte a(Collection<jb> $$0) {
-      byte $$1 = 0;
-
-      for (jb $$2 : $$0) {
-         $$1 = (byte)($$1 | 1 << $$2.ordinal());
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(jb $$0) {
+   @Override
+   protected boolean e_(ebg $$0) {
       return true;
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      for (jb $$1 : d) {
-         if (this.a($$1)) {
-            $$0.a(b($$1));
-         }
-      }
-
-      $$0.a(c);
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      ebg $$3 = $$1.a_($$2.e());
+      return $$0.c(b) ? !$$3.l() : $$3.a(this) && $$3.c(b);
    }
 
-   @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
-      }
-
-      if (!q($$0)) {
-         return dne.a.m();
+   private static boolean o(ebg $$0) {
+      if ($$0.c(b)) {
+         return true;
       } else {
-         return a($$0, $$4) && !a($$1, $$4, $$5, $$6) ? a($$0, b($$4)) : $$0;
-      }
-   }
-
-   @Override
-   protected exo b_(ebe $$0) {
-      return $$0.c(c) ? exp.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return this.e.apply($$0);
-   }
-
-   @Override
-   protected boolean a(ebe $$0, dka $$1, iv $$2) {
-      boolean $$3 = false;
-
-      for (jb $$4 : d) {
-         if (a($$0, $$4)) {
-            if (!a($$1, $$2, $$4)) {
-               return false;
+         for (ece<ect> $$1 : g.values()) {
+            if ($$0.c($$1) != ect.a) {
+               return true;
             }
-
-            $$3 = true;
          }
-      }
 
-      return $$3;
-   }
-
-   @Override
-   protected boolean a(ebe $$0, ddr $$1) {
-      return !$$1.n().a(this.h()) || r($$0);
-   }
-
-   @Nullable
-   @Override
-   public ebe a(ddr $$0) {
-      djx $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      ebe $$3 = $$1.a_($$2);
-      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
-   }
-
-   public boolean a(djb $$0, ebe $$1, iv $$2, jb $$3) {
-      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
-         iv $$4 = $$2.a($$3);
-         return a($$0, $$3, $$4, $$0.a_($$4));
-      } else {
          return false;
       }
    }
 
+   private static boolean a(djd $$0, iw $$1, jc $$2) {
+      return $$2 == jc.b ? false : dsk.a($$0, $$1, $$2);
+   }
+
+   private static ebg a(ebg $$0, djd $$1, iw $$2, boolean $$3) {
+      ebg $$4 = null;
+      ebg $$5 = null;
+      $$3 |= $$0.c(b);
+
+      for (jc $$6 : jc.c.a) {
+         ece<ect> $$7 = a($$6);
+         ect $$8 = a($$1, $$2, $$6) ? ($$3 ? ect.b : $$0.c($$7)) : ect.a;
+         if ($$8 == ect.b) {
+            if ($$4 == null) {
+               $$4 = $$1.a_($$2.d());
+            }
+
+            if ($$4.a(dng.uf) && $$4.c($$7) != ect.a && !$$4.c(b)) {
+               $$8 = ect.c;
+            }
+
+            if (!$$0.c(b)) {
+               if ($$5 == null) {
+                  $$5 = $$1.a_($$2.e());
+               }
+
+               if ($$5.a(dng.uf) && $$5.c($$7) == ect.a) {
+                  $$8 = ect.a;
+               }
+            }
+         }
+
+         $$0 = $$0.b($$7, $$8);
+      }
+
+      return $$0;
+   }
+
    @Nullable
-   public ebe c(ebe $$0, djb $$1, iv $$2, jb $$3) {
-      if (!this.a($$1, $$0, $$2, $$3)) {
-         return null;
-      } else {
-         ebe $$4;
-         if ($$0.a(this)) {
-            $$4 = $$0;
-         } else if ($$0.y().a(exp.c)) {
-            $$4 = this.m().b(ebu.I, Boolean.valueOf(true));
-         } else {
-            $$4 = this.m();
-         }
+   @Override
+   public ebg a(ddt $$0) {
+      return a(this.m(), $$0.q(), $$0.a(), true);
+   }
 
-         return $$4.b(b($$3), Boolean.valueOf(true));
+   public static void a(dka $$0, iw $$1, azz $$2, int $$3) {
+      ebg $$4 = dng.uf.m();
+      ebg $$5 = a($$4, $$0, $$1, true);
+      $$0.a($$1, $$5, $$3);
+      ebg $$6 = a($$0, $$1, $$2::h);
+      if (!$$6.l()) {
+         $$0.a($$1.d(), $$6, $$3);
+         ebg $$7 = a($$5, $$0, $$1, true);
+         $$0.a($$1, $$7, $$3);
       }
    }
 
    @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return !this.f ? $$0 : this.a($$0, $$1::a);
+   public void a(djz $$0, iw $$1, ebg $$2, @Nullable bxw $$3, daa $$4) {
+      if (!$$0.C) {
+         azz $$5 = $$0.G_();
+         ebg $$6 = a($$0, $$1, $$5::h);
+         if (!$$6.l()) {
+            $$0.a($$1.d(), $$6, 3);
+         }
+      }
+   }
+
+   private static ebg a(djd $$0, iw $$1, BooleanSupplier $$2) {
+      iw $$3 = $$1.d();
+      ebg $$4 = $$0.a_($$3);
+      boolean $$5 = $$4.a(dng.uf);
+      if ((!$$5 || !$$4.c(b)) && ($$5 || $$4.v())) {
+         ebg $$6 = dng.uf.m().b(b, Boolean.valueOf(false));
+         ebg $$7 = a($$6, $$0, $$1.d(), true);
+
+         for (jc $$8 : jc.c.a) {
+            ece<ect> $$9 = a($$8);
+            if ($$7.c($$9) != ect.a && !$$2.getAsBoolean()) {
+               $$7 = $$7.b($$9, ect.a);
+            }
+         }
+
+         return o($$7) && $$7 != $$4 ? $$7 : dng.a.m();
+      } else {
+         return dng.a.m();
+      }
    }
 
    @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      if ($$1 == dsf.c && !this.g) {
-         return $$0;
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if (!$$0.a($$1, $$3)) {
+         return dng.a.m();
       } else {
-         return $$1 == dsf.b && !this.h ? $$0 : this.a($$0, $$1::b);
+         ebg $$8 = a($$0, $$1, $$3, false);
+         return !o($$8) ? dng.a.m() : $$8;
       }
    }
 
-   private ebe a(ebe $$0, Function<jb, jb> $$1) {
-      ebe $$2 = $$0;
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b, c, d, e, f);
+   }
 
-      for (jb $$3 : d) {
-         if (this.a($$3)) {
-            $$2 = $$2.b(b($$1.apply($$3)), $$0.c(b($$3)));
-         }
+   @Override
+   protected ebg a(ebg $$0, dty $$1) {
+      return switch ($$1) {
+         case c -> (ebg)$$0.b(c, $$0.c(e)).b(d, $$0.c(f)).b(e, $$0.c(c)).b(f, $$0.c(d));
+         case d -> (ebg)$$0.b(c, $$0.c(d)).b(d, $$0.c(e)).b(e, $$0.c(f)).b(f, $$0.c(c));
+         case b -> (ebg)$$0.b(c, $$0.c(f)).b(d, $$0.c(c)).b(e, $$0.c(d)).b(f, $$0.c(e));
+         default -> $$0;
+      };
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dsh $$1) {
+      return switch ($$1) {
+         case b -> (ebg)$$0.b(c, $$0.c(e)).b(e, $$0.c(c));
+         case c -> (ebg)$$0.b(d, $$0.c(f)).b(f, $$0.c(d));
+         default -> super.a($$0, $$1);
+      };
+   }
+
+   @Nullable
+   public static ece<ect> a(jc $$0) {
+      return g.get($$0);
+   }
+
+   @Override
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
+      return $$2.c(b) && !a($$0, $$1, () -> true).l();
+   }
+
+   @Override
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      ebg $$4 = a($$0, $$2, () -> true);
+      if (!$$4.l()) {
+         $$0.a($$2.d(), $$4, 3);
       }
-
-      return $$2;
-   }
-
-   public static boolean a(ebe $$0, jb $$1) {
-      ebv $$2 = b($$1);
-      return $$0.a($$2, Boolean.valueOf(false));
-   }
-
-   public static boolean a(djb $$0, iv $$1, jb $$2) {
-      iv $$3 = $$1.a($$2);
-      ebe $$4 = $$0.a_($$3);
-      return a($$0, $$2, $$3, $$4);
-   }
-
-   public static boolean a(djb $$0, jb $$1, iv $$2, ebe $$3) {
-      return dnc.a($$3.h($$0, $$2), $$1.g()) || dnc.a($$3.g($$0, $$2), $$1.g());
-   }
-
-   private static ebe a(ebe $$0, ebv $$1) {
-      ebe $$2 = $$0.b($$1, Boolean.valueOf(false));
-      return q($$2) ? $$2 : dne.a.m();
-   }
-
-   public static ebv b(jb $$0) {
-      return a.get($$0);
-   }
-
-   private static ebe a(ebf<dnc, ebe> $$0) {
-      ebe $$1 = $$0.b().b(c, Boolean.valueOf(false));
-
-      for (ebv $$2 : a.values()) {
-         $$1 = $$1.c($$2, Boolean.valueOf(false));
-      }
-
-      return $$1;
-   }
-
-   protected static boolean q(ebe $$0) {
-      for (jb $$1 : d) {
-         if (a($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean r(ebe $$0) {
-      for (jb $$1 : d) {
-         if (!a($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

@@ -1,63 +1,29 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class epc extends epl {
-   public static final MapCodec<epc> a = eoq.a.fieldOf("provider").xmap(epc::new, $$0 -> $$0.b);
-   private final eoq b;
+public class epc extends eos {
+   public static final MapCodec<epc> b = btd.b(ebg.a).comapFlatMap(epc::a, $$0 -> $$0.c).fieldOf("entries");
+   private final btd<ebg> c;
 
-   public epc(eoq $$0) {
-      this.b = $$0;
+   private static DataResult<epc> a(btd<ebg> $$0) {
+      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new epc($$0));
+   }
+
+   public epc(btd<ebg> $$0) {
+      this.c = $$0;
+   }
+
+   public epc(btd.a<ebg> $$0) {
+      this($$0.a());
    }
 
    @Override
-   protected epm<?> a() {
-      return epm.g;
+   protected eot<?> a() {
+      return eot.b;
    }
 
    @Override
-   public void a(epl.a $$0) {
-      List<iv> $$1 = elw.a($$0);
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3 = $$0.b().a(64);
-               int $$4 = $$3 % 8;
-               int $$5 = $$3 / 8;
-               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(epl.a $$0, iv $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(epl.a $$0, iv $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         iv $$3 = $$1.b($$2);
-         if (ekk.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   public ebg a(azz $$0, iw $$1) {
+      return this.c.b($$0);
    }
 }

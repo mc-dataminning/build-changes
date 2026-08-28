@@ -1,28 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cch {
-   public static <E extends bxu> caw<E> a(List<Pair<? extends cdb<? super E>, Integer>> $$0) {
-      return a($$0, bzz.a.b, bzz.b.a);
+public class cch<T extends bxy> extends bzn<T> {
+   private final float c;
+
+   public cch(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
    }
 
-   public static <E extends bxu> caw<E> a(List<Pair<? extends cdb<? super E>, Integer>> $$0, bzz.a $$1, bzz.b $$2) {
-      cbu<cdb<? super E>> $$3 = new cbu<>();
-      $$0.forEach($$1x -> $$3.a((cdb<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return ccy.a((Function<ccy.b<E>, ? extends App<ccy.c<E>, cdb<E>>>)($$3x -> $$3x.a((cdb<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bzz.a.b) {
-               $$3.a();
-            }
+   public static <T extends bxy> boolean a(T $$0) {
+      return $$0.bi() && $$0.b(axl.a) > $$0.dp() || $$0.bv();
+   }
 
-            for (cdb<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bzz.b.a) {
-                  break;
-               }
-            }
+   protected boolean a(aru $$0, bxy $$1) {
+      return a($$1);
+   }
 
-            return true;
-         }))));
+   protected boolean a(aru $$0, bxy $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aru $$0, bxy $$1, long $$2) {
+      if ($$1.dY().i() < this.c) {
+         $$1.N().a();
+      }
    }
 }

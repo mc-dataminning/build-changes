@@ -1,28 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 
 public class aov {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xa.c("commands.save.alreadyOff"));
+   public static void a(CommandDispatcher<ek> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("rotate").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)el.a("target", ex.a())
+                     .then(el.a("rotation", gl.a()).executes($$0x -> a((ek)$$0x.getSource(), ex.a($$0x, "target"), gl.a($$0x, "rotation")))))
+                  .then(
+                     ((LiteralArgumentBuilder)el.a("facing")
+                           .then(
+                              el.a("entity")
+                                 .then(
+                                    ((RequiredArgumentBuilder)el.a("facingEntity", ex.a())
+                                          .executes($$0x -> a((ek)$$0x.getSource(), ex.a($$0x, "target"), new aoe.a(ex.a($$0x, "facingEntity"), ew.a.a))))
+                                       .then(
+                                          el.a("facingAnchor", ew.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ek)$$0x.getSource(),
+                                                      ex.a($$0x, "target"),
+                                                      new aoe.a(ex.a($$0x, "facingEntity"), ew.a($$0x, "facingAnchor"))
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           el.a("facingLocation", go.a())
+                              .executes($$0x -> a((ek)$$0x.getSource(), ex.a($$0x, "target"), new aoe.b(go.a($$0x, "facingLocation"))))
+                        )
+                  )
+            )
+      );
+   }
 
-   public static void a(CommandDispatcher<ej> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         ej $$1 = (ej)$$0x.getSource();
-         boolean $$2 = false;
+   private static int a(ek $$0, bwv $$1, gj $$2) {
+      ffr $$3 = $$2.b($$0);
+      $$1.a($$3.k, $$3.j);
+      $$0.a(() -> xc.a("commands.rotate.success", $$1.m_()), true);
+      return 1;
+   }
 
-         for (ars $$3 : $$1.l().L()) {
-            if ($$3 != null && !$$3.e) {
-               $$3.e = true;
-               $$2 = true;
-            }
-         }
-
-         if (!$$2) {
-            throw a.create();
-         } else {
-            $$1.a(() -> xa.c("commands.save.disabled"), true);
-            return 1;
-         }
-      }));
+   private static int a(ek $$0, bwv $$1, aoe $$2) {
+      $$2.perform($$0, $$1);
+      $$0.a(() -> xc.a("commands.rotate.success", $$1.m_()), true);
+      return 1;
    }
 }

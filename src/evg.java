@@ -1,42 +1,27 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class evg extends ewa {
-   public static final MapCodec<evg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ju.a(mh.i).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, evg::new)
-   );
-   private final Optional<jj<dnc>> b;
-   private final float c;
+public class evg extends ewc {
+   public static final MapCodec<evg> a = ebg.a.xmap(ebf.a::b, dne::m).listOf().fieldOf("blocks").xmap(evg::new, $$0 -> $$0.e);
+   public static final evg b = new evg(ImmutableList.of(dng.pG));
+   public static final evg c = new evg(ImmutableList.of(dng.a));
+   public static final evg d = new evg(ImmutableList.of(dng.a, dng.pG));
+   private final ImmutableList<dne> e;
 
-   public evg(jj<dnc> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public evg(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private evg(Optional<jj<dnc>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
+   public evg(List<dne> $$0) {
+      this.e = ImmutableList.copyOf($$0);
    }
 
    @Nullable
    @Override
-   public ewd.d a(dka $$0, iv $$1, iv $$2, ewd.d $$3, ewd.d $$4, evz $$5) {
-      azx $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public ewf.d a(dkc $$0, iw $$1, iw $$2, ewf.d $$3, ewf.d $$4, ewb $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   protected ewc<?> a() {
-      return ewc.f;
+   protected ewe<?> a() {
+      return ewe.e;
    }
 }

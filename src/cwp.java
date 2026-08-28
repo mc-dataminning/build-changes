@@ -1,45 +1,22 @@
-public class cwp extends cxn {
-   private final crx a;
-   private int b;
+public class cwp extends cxp {
+   private final cvu a;
 
-   public cwp(crx $$0, buk $$1, int $$2, int $$3, int $$4) {
+   public cwp(cvu $$0, bum $$1, int $$2, int $$3, int $$4) {
       super($$1, $$2, $$3, $$4);
       this.a = $$0;
    }
 
    @Override
-   public boolean a(czy $$0) {
-      return false;
+   public boolean a(daa $$0) {
+      return this.a.d($$0) || c($$0);
    }
 
    @Override
-   public czy a(int $$0) {
-      if (this.h()) {
-         this.b = this.b + Math.min($$0, this.g().M());
-      }
-
-      return super.a($$0);
+   public int b_(daa $$0) {
+      return c($$0) ? 1 : super.b_($$0);
    }
 
-   @Override
-   public void a(crx $$0, czy $$1) {
-      this.c_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(czy $$0, int $$1) {
-      this.b += $$1;
-      this.c_($$0);
-   }
-
-   @Override
-   protected void c_(czy $$0) {
-      $$0.a(this.a.dV(), this.a, this.b);
-      if (this.a instanceof art $$1 && this.c instanceof dxp $$2) {
-         $$2.a($$1);
-      }
-
-      this.b = 0;
+   public static boolean c(daa $$0) {
+      return $$0.a(dae.ro);
    }
 }

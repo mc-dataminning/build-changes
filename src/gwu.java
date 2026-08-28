@@ -1,45 +1,37 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class gwu implements gwd.a {
-   private final List<iv> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class gwu implements gwf.a {
+   private static final int a = 60;
+   private final Set<jz> b = Sets.newHashSet();
 
-   public void a(iv $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   gwu() {
    }
 
    @Override
-   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
-      flr $$5 = $$1.getBuffer(gsl.z());
+   public void a() {
+      this.b.clear();
+   }
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         iv $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gst.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
-      }
+   public void a(jz $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(jz $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
+      iw $$5 = iw.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(flq $$0, gsc $$1, jz $$2) {
+      gwf.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

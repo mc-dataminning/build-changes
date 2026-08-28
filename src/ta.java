@@ -1,12 +1,13 @@
-import java.util.Map;
-import java.util.function.Consumer;
+public class ta extends sp {
+   protected final xc a;
 
-public record ta(Map<ali, tk<alh<tl>>> a, alh<Consumer<sp>> b, Consumer<sp> c) {
-   public ta(Map<ali, tk<alh<tl>>> $$0, ali $$1, Consumer<sp> $$2) {
-      this($$0, alh.a(mh.ay, $$1), $$2);
+   public ta(xc $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   public ta(ali $$0, tk<alh<tl>> $$1, Consumer<sp> $$2) {
-      this(Map.of($$0, $$1), $$0, $$2);
+   @Override
+   public xc a() {
+      return this.a;
    }
 }

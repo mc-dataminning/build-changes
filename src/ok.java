@@ -1,100 +1,91 @@
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class ok implements oe {
-   private final of b;
-   private final deb c;
-   private final czu d;
-   private final del e;
-   private final float f;
-   private final int g;
-   private final Map<String, ar<?>> h = new LinkedHashMap<>();
+public class ok implements of {
+   private final jh<czw> b;
+   private final og c;
+   private final daa d;
+   private final List<den> e = new ArrayList<>();
+   private final Map<String, ar<?>> f = new LinkedHashMap<>();
    @Nullable
-   private String i;
-   private final ddv.a<?> j;
+   private String g;
 
-   private ok(of $$0, deb $$1, djw $$2, del $$3, float $$4, int $$5, ddv.a<?> $$6) {
+   private ok(jh<czw> $$0, og $$1, daa $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.h();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+      this.d = $$2;
    }
 
-   public static <T extends ddv> ok a(del $$0, of $$1, djw $$2, float $$3, int $$4, dez<T> $$5, ddv.a<T> $$6) {
-      return new ok($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   public static ok a(jh<czw> $$0, og $$1, daa $$2) {
+      return new ok($$0, $$1, $$2);
    }
 
-   public static ok a(del $$0, of $$1, djw $$2, float $$3, int $$4) {
-      return new ok($$1, deb.a, $$2, $$0, $$3, $$4, dea::new);
+   public static ok a(jh<czw> $$0, og $$1, djy $$2) {
+      return a($$0, $$1, $$2, 1);
    }
 
-   public static ok b(del $$0, of $$1, djw $$2, float $$3, int $$4) {
-      return new ok($$1, c($$2), $$2, $$0, $$3, $$4, ddy::new);
+   public static ok a(jh<czw> $$0, og $$1, djy $$2, int $$3) {
+      return new ok($$0, $$1, $$2.h().m().c($$3));
    }
 
-   public static ok c(del $$0, of $$1, djw $$2, float $$3, int $$4) {
-      return new ok($$1, b($$2), $$2, $$0, $$3, $$4, dfj::new);
+   public ok a(axv<czw> $$0) {
+      return this.a(den.a(this.b.b($$0)));
    }
 
-   public static ok d(del $$0, of $$1, djw $$2, float $$3, int $$4) {
-      return new ok($$1, deb.a, $$2, $$0, $$3, $$4, dfo::new);
+   public ok b(djy $$0) {
+      return this.a($$0, 1);
+   }
+
+   public ok a(djy $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(den.a($$0));
+      }
+
+      return this;
+   }
+
+   public ok a(den $$0) {
+      return this.a($$0, 1);
+   }
+
+   public ok a(den $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
    }
 
    public ok b(String $$0, ar<?> $$1) {
-      this.h.put($$0, $$1);
+      this.f.put($$0, $$1);
       return this;
    }
 
    public ok b(@Nullable String $$0) {
-      this.i = $$0;
+      this.g = $$0;
       return this;
    }
 
    @Override
-   public czu a() {
-      return this.d;
+   public czw a() {
+      return this.d.h();
    }
 
    @Override
-   public void a(og $$0, alh<dep<?>> $$1) {
+   public void a(oh $$0, alj<der<?>> $$1) {
       this.a($$1);
-      ai.a $$2 = $$0.a().a("has_the_recipe", dh.a($$1)).a(an.a.c($$1)).a(am.a.b);
-      this.h.forEach($$2::a);
-      ddv $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new czy(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
+      ai.a $$2 = $$0.a().a("has_the_recipe", di.a($$1)).a(an.a.c($$1)).a(am.a.b);
+      this.f.forEach($$2::a);
+      dfh $$3 = new dfh(Objects.requireNonNullElse(this.g, ""), of.a(this.c), this.d, this.e);
+      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.c.a() + "/")));
    }
 
-   private static deb b(djw $$0) {
-      if ($$0.h().f().c(kk.v)) {
-         return deb.a;
-      } else {
-         return $$0.h() instanceof cyg ? deb.b : deb.c;
-      }
-   }
-
-   private static deb c(djw $$0) {
-      return $$0.h() instanceof cyg ? deb.b : deb.c;
-   }
-
-   private static deb a(dez<? extends ddv> $$0, djw $$1) {
-      if ($$0 == dez.o) {
-         return b($$1);
-      } else if ($$0 == dez.p) {
-         return c($$1);
-      } else if ($$0 != dez.q && $$0 != dez.r) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return deb.a;
-      }
-   }
-
-   private void a(alh<dep<?>> $$0) {
-      if (this.h.isEmpty()) {
+   private void a(alj<der<?>> $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }
    }

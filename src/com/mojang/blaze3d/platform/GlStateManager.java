@@ -24,7 +24,7 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@fhq
+@fhs
 public class GlStateManager {
    private static final boolean ON_LINUX = ag.n() == ag.a.a;
    private static final Plot PLOT_TEXTURES = TracyClient.createPlot("GPU Textures");
@@ -499,7 +499,7 @@ public class GlStateManager {
    public static void _clear(int $$0) {
       RenderSystem.assertOnRenderThread();
       GL11.glClear($$0);
-      if (fkd.a) {
+      if (fkf.a) {
          _getError();
       }
    }

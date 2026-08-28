@@ -1,25 +1,28 @@
-public class dea extends ddv {
-   public dea(String $$0, deb $$1, del $$2, czy $$3, float $$4, int $$5) {
+public class dea extends ddx {
+   public dea(String $$0, ded $$1, den $$2, daa $$3, float $$4, int $$5) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected czu f() {
-      return dac.xI;
+   protected czw f() {
+      return dae.xx;
    }
 
    @Override
-   public dez<dea> a() {
-      return dez.r;
+   public dfb<dea> a() {
+      return dfb.p;
    }
 
    @Override
-   public dfa<dea> b() {
-      return dfa.e;
+   public dfc<dea> b() {
+      return dfc.c;
    }
 
    @Override
-   public des h() {
-      return der.m;
+   public deu h() {
+      return switch (this.e()) {
+         case b -> det.h;
+         case a, c -> det.i;
+      };
    }
 }

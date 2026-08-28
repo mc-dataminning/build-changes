@@ -1,251 +1,255 @@
-public class gdw extends fvh<gdw.a> {
-   static final ali a = ali.b("transferable_list/select_highlighted");
-   static final ali m = ali.b("transferable_list/select");
-   static final ali n = ali.b("transferable_list/unselect_highlighted");
-   static final ali o = ali.b("transferable_list/unselect");
-   static final ali p = ali.b("transferable_list/move_up_highlighted");
-   static final ali q = ali.b("transferable_list/move_up");
-   static final ali r = ali.b("transferable_list/move_down_highlighted");
-   static final ali s = ali.b("transferable_list/move_down");
-   static final xa u = xa.c("pack.incompatible");
-   static final xa v = xa.c("pack.incompatible.confirm.title");
-   private final xa w;
-   final gdv x;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public gdw(frd $$0, gdv $$1, int $$2, int $$3, xa $$4) {
-      super($$0, $$2, $$3, 33, 36, (int)(9.0F * 1.5F));
-      this.x = $$1;
-      this.w = $$4;
-      this.e = false;
+public class gdw {
+   private final aur a;
+   final List<auo> b;
+   final List<auo> c;
+   final Function<auo, alk> d;
+   final Runnable e;
+   private final Consumer<aur> f;
+
+   public gdw(Runnable $$0, Function<auo, alk> $$1, aur $$2, Consumer<aur> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.g());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.d());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   protected void a(ftx $$0, int $$1, int $$2) {
-      xa $$3 = xa.i().b(this.w).a(o.t, o.r);
-      $$0.b(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.G() + 3, $$2), -1);
+   public Stream<gdw.a> a() {
+      return this.c.stream().map($$0 -> new gdw.d($$0));
    }
 
-   @Override
-   public int a() {
-      return this.g;
+   public Stream<gdw.a> b() {
+      return this.b.stream().map($$0 -> new gdw.c($$0));
    }
 
-   @Override
-   protected int l() {
-      return this.H() - 6;
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(auo::g).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   protected void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      if (this.j()) {
-         int $$6 = 2;
-         int $$7 = this.u() - 2;
-         int $$8 = this.H() - 6 - 1;
-         int $$9 = $$1 - 2;
-         int $$10 = $$1 + $$3 + 2;
-         $$0.a($$7, $$9, $$8, $$10, $$4);
-         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.p().c();
-               return true;
-            default:
-               if (gad.t()) {
-                  switch ($$0) {
-                     case 264:
-                        this.p().g();
-                        return true;
-                     case 265:
-                        this.p().e();
-                        return true;
-                  }
-               }
-         }
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.d());
+      this.c.clear();
+      this.c.addAll(this.a.d());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      alk a();
+
+      aup b();
+
+      String c();
+
+      xc d();
+
+      xc e();
+
+      aus f();
+
+      default xc g() {
+         return this.f().a(this.e());
       }
 
-      return super.a($$0, $$1, $$2);
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
    }
 
-   public static class a extends fvh.a<gdw.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final gdw e;
-      protected final frd a;
-      private final gdu.a f;
-      private final aza g;
-      private final fve h;
-      private final aza i;
-      private final fve j;
+   abstract class b implements gdw.a {
+      private final auo b;
 
-      public a(frd $$0, gdw $$1, gdu.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, gdw.u);
-         this.j = b($$0, $$2.b().b());
+      public b(final auo $$0) {
+         this.b = $$0;
       }
 
-      private static aza a(frd $$0, xa $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            xf $$3 = xf.a($$0.h.a($$1, 157 - $$0.h.b("...")), xf.e("..."));
-            return tu.a().a($$3);
-         } else {
-            return $$1.g();
-         }
-      }
+      protected abstract List<auo> s();
 
-      private static fve b(frd $$0, xa $$1) {
-         return fve.a($$0.h, 157, 2, $$1);
+      protected abstract List<auo> t();
+
+      @Override
+      public alk a() {
+         return gdw.this.d.apply(this.b);
       }
 
       @Override
-      public xa a() {
-         return xa.a("narrator.select", this.f.d());
+      public aup b() {
+         return this.b.d();
       }
 
       @Override
-      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         aun $$10 = this.f.b();
-         if (!$$10.a()) {
-            int $$11 = $$3 + $$4 - 3 - (this.e.j() ? 7 : 0);
-            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
-         }
-
-         $$0.a(gsl::H, this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         aza $$12 = this.g;
-         fve $$13 = this.h;
-         if (this.d() && (this.a.n.ac().c() || $$8 || this.e.p() == this && this.e.aN_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            int $$15 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$12 = this.i;
-               $$13 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$14 < 32) {
-                  $$0.a(gsl::H, gdw.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(gsl::H, gdw.m, $$3, $$2, 32, 32);
-               }
-            } else {
-               if (this.f.p()) {
-                  if ($$14 < 16) {
-                     $$0.a(gsl::H, gdw.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gsl::H, gdw.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
-                     $$0.a(gsl::H, gdw.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gsl::H, gdw.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
-                     $$0.a(gsl::H, gdw.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gsl::H, gdw.s, $$3, $$2, 32, 32);
-                  }
-               }
-            }
-         }
-
-         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
-      }
-
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void c() {
-         if (this.f.o() && this.h()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void g() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean h() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            xa $$0 = this.f.b().c();
-            this.a.a(new fzb($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, gdw.v, $$0));
-            return false;
-         }
+      public String c() {
+         return this.b.g();
       }
 
       @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.u();
-         double $$4 = $$1 - (double)this.e.d(this.e.aI_().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.m();
-            if (this.f.o()) {
-               this.h();
-               return true;
-            }
+      public xc d() {
+         return this.b.b();
+      }
 
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
+      @Override
+      public xc e() {
+         return this.b.c();
+      }
 
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
+      @Override
+      public aus f() {
+         return this.b.l();
+      }
 
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, auo::h, true);
+         gdw.this.e.run();
+         gdw.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fri<Boolean> $$0 = frf.Q().n.u();
+            $$0.a(!$$0.c());
          }
+      }
 
-         return super.a($$0, $$1, $$2);
+      protected void a(int $$0) {
+         List<auo> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         gdw.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<auo> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<auo> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
+   }
+
+   class c extends gdw.b {
+      public c(final auo $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<auo> s() {
+         return gdw.this.b;
+      }
+
+      @Override
+      protected List<auo> t() {
+         return gdw.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends gdw.b {
+      public d(final auo $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<auo> s() {
+         return gdw.this.c;
+      }
+
+      @Override
+      protected List<auo> t() {
+         return gdw.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

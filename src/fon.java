@@ -1,362 +1,213 @@
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Supplier;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fon extends hrm {
-   private static final ali a = ali.b("realm_status/expired");
-   private static final ali b = ali.b("realm_status/expires_soon");
-   private static final ali c = ali.b("realm_status/open");
-   private static final ali C = ali.b("realm_status/closed");
-   private static final Logger D = LogUtils.getLogger();
-   private static final xa E = xa.c("mco.configure.worlds.title");
-   private static final xa F = xa.c("mco.configure.world.title");
-   private static final xa G = xa.c("mco.selectServer.expired");
-   private static final xa H = xa.c("mco.selectServer.expires.soon");
-   private static final xa I = xa.c("mco.selectServer.expires.day");
-   private static final xa J = xa.c("mco.selectServer.open");
-   private static final xa K = xa.c("mco.selectServer.closed");
-   private static final int L = 80;
-   private static final int M = 5;
+public class fon extends hro {
+   private static final alk a = alk.b("widget/slot_frame");
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 80;
+   private final gaf C;
    @Nullable
-   private xa N;
-   private final fly O;
-   @Nullable
-   private fne P;
-   private final long Q;
-   private int R;
-   private int S;
-   private ful T;
-   private ful U;
-   private ful V;
-   private ful W;
-   private ful X;
-   private ful Y;
-   private ful Z;
-   private boolean aa;
-   private final List<fof> ab = Lists.newArrayList();
+   private fng D;
+   private final long E;
+   private final xc[] F = new xc[]{xc.c("mco.brokenworld.message.line1"), xc.c("mco.brokenworld.message.line2")};
+   private int G;
+   private final List<Integer> H = Lists.newArrayList();
+   private int I;
 
-   public fon(fly $$0, long $$1) {
-      super(F);
-      this.O = $$0;
-      this.Q = $$1;
+   public fon(gaf $$0, long $$1, boolean $$2) {
+      super($$2 ? xc.c("mco.brokenworld.minigame.title") : xc.c("mco.brokenworld.title"));
+      this.C = $$0;
+      this.E = $$1;
    }
 
    @Override
    public void aS_() {
-      if (this.P == null) {
-         this.a(this.Q);
-      }
-
-      this.R = this.n / 2 - 187;
-      this.S = this.n / 2 + 190;
-      this.T = this.c(ful.a(xa.c("mco.configure.world.buttons.players"), $$0x -> this.m.a(new foz(this, this.P))).a(this.a(0, 3), g(0), 100, 20).a());
-      this.U = this.c(ful.a(xa.c("mco.configure.world.buttons.settings"), $$0x -> this.m.a(new fpe(this, this.P.g()))).a(this.a(1, 3), g(0), 100, 20).a());
-      this.V = this.c(
-         ful.a(xa.c("mco.configure.world.buttons.subscription"), $$0x -> this.m.a(new fpg(this, this.P.g(), this.O))).a(this.a(2, 3), g(0), 100, 20).a()
-      );
-      this.ab.clear();
-
-      for (int $$0 = 1; $$0 < 5; $$0++) {
-         this.ab.add(this.a($$0));
-      }
-
-      this.Z = this.c(
-         ful.a(xa.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.m.a(new fpd(xa.c("mco.template.title.minigame"), this::a, fne.d.b)))
-            .a(this.b(0), g(13) - 5, 100, 20)
-            .a()
-      );
-      this.W = this.c(
-         ful.a(xa.c("mco.configure.world.buttons.options"), $$0x -> this.m.a(new fpf(this, this.P.i.get(this.P.p).d(), this.P.m, this.P.p)))
-            .a(this.b(0), g(13) - 5, 90, 20)
-            .a()
-      );
-      this.X = this.c(ful.a(xa.c("mco.configure.world.backup"), $$0x -> this.m.a(new fok(this, this.P.g(), this.P.p))).a(this.b(1), g(13) - 5, 90, 20).a());
-      this.Y = this.c(
-         ful.a(xa.c("mco.configure.world.buttons.resetworld"), $$0x -> this.m.a(fpb.a(this, this.P.g(), () -> this.m.execute(() -> this.m.a(this.g())))))
-            .a(this.b(2), g(13) - 5, 90, 20)
-            .a()
-      );
-      this.c(ful.a(wz.k, $$0x -> this.aP_()).a(this.S - 80 + 8, g(13) - 5, 70, 20).a());
-      this.X.j = true;
-      if (this.P == null) {
-         this.I();
-         this.H();
-         this.T.j = false;
-         this.U.j = false;
-         this.V.j = false;
+      this.G = this.n / 2 - 150;
+      this.c(fun.a(xb.k, $$0 -> this.aP_()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
+      if (this.D == null) {
+         this.a(this.E);
       } else {
          this.E();
-         if (this.G()) {
-            this.H();
+      }
+   }
+
+   @Override
+   public xc i() {
+      return xf.a(Stream.concat(Stream.of(this.l), Stream.of(this.F)).collect(Collectors.toList()), xb.v);
+   }
+
+   private void E() {
+      for (Entry<Integer, fnm> $$0 : this.D.i.entrySet()) {
+         int $$1 = $$0.getKey();
+         boolean $$2 = $$1 != this.D.p || this.D.i();
+         fun $$3;
+         if ($$2) {
+            $$3 = fun.a(xc.c("mco.brokenworld.play"), $$1x -> this.m.a(new fow(this.C, new fqk(this.D.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
+            $$3.j = !this.D.i.get($$1).m;
          } else {
-            this.I();
+            $$3 = fun.a(
+                  xc.c("mco.brokenworld.download"),
+                  $$1x -> this.m.a(fpc.a(this, xc.c("mco.configure.world.restore.download.question.line1"), $$1xx -> this.b($$1)))
+               )
+               .a(this.a($$1), g(8), 80, 20)
+               .a();
          }
-      }
-   }
 
-   private fof a(int $$0) {
-      int $$1 = this.h($$0);
-      int $$2 = g(5) + 5;
-      fof $$3 = new fof($$1, $$2, 80, 80, $$0, $$1x -> {
-         fof.b $$2x = ((fof)$$1x).a();
-         if ($$2x != null) {
-            switch ($$2x.c) {
-               case a:
-                  break;
-               case c:
-                  this.a(this.P);
-                  break;
-               case b:
-                  if ($$2x.b) {
-                     this.F();
-                  } else if ($$2x.a) {
-                     this.b($$0, this.P);
-                  } else {
-                     this.a($$0, this.P);
-                  }
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown action " + $$2x.c);
-            }
+         if (this.H.contains($$1)) {
+            $$3.j = false;
+            $$3.b(xc.c("mco.brokenworld.downloaded"));
          }
-      });
-      if (this.P != null) {
-         $$3.a(this.P);
+
+         this.c($$3);
       }
-
-      return this.c($$3);
-   }
-
-   private int b(int $$0) {
-      return this.R + $$0 * 95;
-   }
-
-   private int a(int $$0, int $$1) {
-      return this.n / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      this.I++;
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.N = null;
-      $$0.a(this.p, E, this.n / 2, g(4), -1);
-      if (this.P == null) {
-         $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      } else {
-         String $$4 = Objects.requireNonNullElse(this.P.b(), "");
-         int $$5 = this.p.b($$4);
-         int $$6 = this.P.e == fne.c.a ? -6250336 : 8388479;
-         int $$7 = this.p.a(this.l);
-         $$0.a(this.p, this.l, this.n / 2, 12, -1);
-         $$0.a(this.p, $$4, this.n / 2, 24, $$6);
-         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.n / 2 + $$5 / 2 + $$7 / 2 + 10);
-         this.b($$0, $$8, 7, $$1, $$2);
-         if (this.G()) {
-            String $$9 = this.P.c();
-            if ($$9 != null) {
-               $$0.b(this.p, xa.a("mco.configure.world.minigame", $$9), this.R + 80 + 20 + 10, g(13), -1);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+
+      for (int $$4 = 0; $$4 < this.F.length; $$4++) {
+         $$0.a(this.p, this.F[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
+      }
+
+      if (this.D != null) {
+         for (Entry<Integer, fnm> $$5 : this.D.i.entrySet()) {
+            if ($$5.getValue().l != null && $$5.getValue().k != -1L) {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.D.p == $$5.getKey() && !this.F(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  $$5.getValue().k,
+                  $$5.getValue().l,
+                  $$5.getValue().m
+               );
+            } else {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.D.p == $$5.getKey() && !this.F(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  -1L,
+                  null,
+                  $$5.getValue().m
+               );
             }
          }
       }
    }
 
-   private int h(int $$0) {
-      return this.R + ($$0 - 1) * 98;
+   private int a(int $$0) {
+      return this.G + ($$0 - 1) * 110;
    }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.O);
-      if (this.aa) {
-         this.O.h();
-      }
-   }
-
-   @Override
-   public void a(long $$0) {
+   private void a(long $$0) {
       new Thread(() -> {
-         fmd $$1 = fmd.a();
+         fmf $$1 = fmf.a();
 
          try {
-            fne $$2 = $$1.a($$0);
-            this.m.execute(() -> {
-               this.P = $$2;
-               this.E();
-               if (this.G()) {
-                  this.b(this.Z);
-               } else {
-                  this.b(this.W);
-                  this.b(this.X);
-                  this.b(this.Y);
-               }
-
-               for (fof $$1x : this.ab) {
-                  $$1x.a($$2);
-               }
-            });
-         } catch (fnz var5) {
-            D.error("Couldn't get own world", var5);
-            this.m.execute(() -> this.m.a(new fos(var5, this.O)));
+            this.D = $$1.a($$0);
+            this.E();
+         } catch (fob var5) {
+            b.error("Couldn't get own world", var5);
+            this.m.a(new fou(var5, this.C));
          }
       }).start();
    }
 
-   private void E() {
-      this.T.j = !this.P.j;
-      this.U.j = !this.P.j;
-      this.V.j = true;
-      this.Z.j = !this.P.j;
-      this.W.j = !this.P.j;
-      this.Y.j = !this.P.j;
-   }
-
-   private void a(fne $$0) {
-      if (this.P.e == fne.c.b) {
-         fly.a($$0, this);
-      } else {
-         this.b(true);
-      }
-   }
-
-   private void F() {
-      fpd $$0 = new fpd(xa.c("mco.template.title.minigame"), this::a, fne.d.b);
-      $$0.a(xa.c("mco.minigame.world.info.line1"), xa.c("mco.minigame.world.info.line2"));
-      this.m.a($$0);
-   }
-
-   private void a(int $$0, fne $$1) {
-      this.m.a(fpa.a(this, xa.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
-         this.f();
-         this.m.a(new fou(this.O, new fqi($$1.a, $$0, () -> this.m.execute(() -> this.m.a(this.g())))));
-      }));
-   }
-
-   private void b(int $$0, fne $$1) {
-      this.m.a(fpa.a(this, xa.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
-         this.f();
-         fpb $$3 = fpb.a(this, $$0, $$1, () -> this.m.execute(() -> this.m.a(this.g())));
-         this.m.a($$3);
-      }));
-   }
-
-   private void b(ftx $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.P.j) {
-         this.a($$0, $$1, $$2, $$3, $$4, a, () -> G);
-      } else if (this.P.e == fne.c.a) {
-         this.a($$0, $$1, $$2, $$3, $$4, C, () -> K);
-      } else if (this.P.e == fne.c.b) {
-         if (this.P.l < 7) {
-            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
-               if (this.P.l <= 0) {
-                  return H;
-               } else {
-                  return (xa)(this.P.l == 1 ? I : xa.a("mco.selectServer.expires.days", this.P.l));
-               }
-            });
-         } else {
-            this.a($$0, $$1, $$2, $$3, $$4, c, () -> J);
-         }
-      }
-   }
-
-   private void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, ali $$5, Supplier<xa> $$6) {
-      $$0.a(gsl::H, $$5, $$1, $$2, 10, 28);
-      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
-         this.d($$6.get());
-      }
-   }
-
-   private boolean G() {
-      return this.P != null && this.P.i();
-   }
-
-   private void H() {
-      this.a(this.W);
-      this.a(this.X);
-      this.a(this.Y);
-   }
-
-   private void a(ful $$0) {
-      $$0.k = false;
-   }
-
-   private void b(ful $$0) {
-      $$0.k = true;
-   }
-
-   private void I() {
-      this.a(this.Z);
-   }
-
-   public void a(fnk $$0) {
-      fnk $$1 = this.P.i.get(this.P.p);
-      $$0.k = $$1.k;
-      $$0.l = $$1.l;
-      fmd $$2 = fmd.a();
-
-      try {
-         $$2.a(this.P.a, this.P.p, $$0);
-         this.P.i.put(this.P.p, $$0);
-         if ($$1.g != $$0.g || $$1.h != $$0.h) {
-            fly.g();
-         }
-      } catch (fnz var5) {
-         D.error("Couldn't save slot settings", var5);
-         this.m.a(new fos(var5, this));
-         return;
-      }
-
-      this.m.a(this);
-   }
-
-   public void a(String $$0, String $$1) {
-      String $$2 = ban.h($$1) ? "" : $$1;
-      fmd $$3 = fmd.a();
-
-      try {
-         $$3.b(this.P.a, $$0, $$2);
-         this.P.a($$0);
-         this.P.b($$2);
-         this.f();
-      } catch (fnz var6) {
-         D.error("Couldn't save settings", var6);
-         this.m.a(new fos(var6, this));
-         return;
-      }
-
-      this.m.a(this);
-   }
-
-   public void b(boolean $$0) {
-      fon $$1 = this.g();
-      this.m.a(new fou($$1, new fqc(this.P, $$1, $$0, this.m)));
-   }
-
    public void b() {
-      fon $$0 = this.g();
-      this.m.a(new fou($$0, new fpx(this.P, $$0)));
+      new Thread(() -> {
+         fmf $$0 = fmf.a();
+         if (this.D.e == fng.c.a) {
+            this.m.execute(() -> this.m.a(new fow(this, new fqe(this.D, this, true, this.m))));
+         } else {
+            try {
+               fng $$1 = $$0.a(this.E);
+               this.m.execute(() -> fma.a($$1, this));
+            } catch (fob var3) {
+               b.error("Couldn't get own world", var3);
+               this.m.execute(() -> this.m.a(this.C));
+            }
+         }
+      }).start();
    }
 
-   public void f() {
-      this.aa = true;
-   }
+   private void b(int $$0) {
+      fmf $$1 = fmf.a();
 
-   private void a(@Nullable fnu $$0) {
-      if ($$0 != null && fnu.a.b == $$0.i) {
-         this.f();
-         this.m.a(new fou(this.O, new fqh(this.P.a, $$0, this.g())));
-      } else {
-         this.m.a(this);
+      try {
+         fnv $$2 = $$1.b(this.D.a, $$0);
+         fot $$3 = new fot(this, $$2, this.D.a($$0), $$1x -> {
+            if ($$1x) {
+               this.H.add($$0);
+               this.p();
+               this.E();
+            } else {
+               this.m.a(this);
+            }
+         });
+         this.m.a($$3);
+      } catch (fob var5) {
+         b.error("Couldn't download world data", var5);
+         this.m.a(new fou(var5, this));
       }
    }
 
-   public fon g() {
-      fon $$0 = new fon(this.O, this.Q);
-      $$0.aa = this.aa;
-      return $$0;
+   @Override
+   public void aP_() {
+      this.m.a(this.C);
+   }
+
+   private boolean F() {
+      return this.D != null && this.D.i();
+   }
+
+   private void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
+      alk $$11;
+      if ($$10) {
+         $$11 = foh.a;
+      } else if ($$9 != null && $$8 != -1L) {
+         $$11 = fpu.a(String.valueOf($$8), $$9);
+      } else if ($$7 == 1) {
+         $$11 = foh.b;
+      } else if ($$7 == 2) {
+         $$11 = foh.c;
+      } else if ($$7 == 3) {
+         $$11 = foh.d;
+      } else {
+         $$11 = fpu.a(String.valueOf(this.D.r), this.D.s);
+      }
+
+      if ($$5) {
+         float $$17 = 0.9F + 0.1F * azq.b((float)this.I * 0.2F);
+         $$0.a(gsn::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, aya.a(1.0F, $$17, $$17, $$17));
+         $$0.a(gsn::H, a, $$1, $$2, 80, 80);
+      } else {
+         int $$18 = aya.a(1.0F, 0.56F, 0.56F, 0.56F);
+         $$0.a(gsn::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$18);
+         $$0.a(gsn::H, a, $$1, $$2, 80, 80, $$18);
+      }
+
+      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
    }
 }

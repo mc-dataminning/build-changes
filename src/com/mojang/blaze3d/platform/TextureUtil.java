@@ -14,7 +14,7 @@ import java.util.function.IntUnaryOperator;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fhq
+@fhs
 public class TextureUtil {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final int MIN_MIPMAP_LEVEL = 0;
@@ -42,7 +42,7 @@ public class TextureUtil {
       }
    }
 
-   public static void writeAsPNG(Path $$0, String $$1, flh $$2, int $$3, IntUnaryOperator $$4) {
+   public static void writeAsPNG(Path $$0, String $$1, flj $$2, int $$3, IntUnaryOperator $$4) {
       RenderSystem.assertOnRenderThread();
       int $$5 = 0;
 
@@ -50,17 +50,17 @@ public class TextureUtil {
          $$5 += $$2.d().a() * $$2.a($$6) * $$2.b($$6);
       }
 
-      fig $$7 = RenderSystem.getDevice().a(() -> "Texture output buffer", fie.c, fif.d, $$5);
-      fkz $$8 = RenderSystem.getDevice().b();
+      fii $$7 = RenderSystem.getDevice().a(() -> "Texture output buffer", fig.c, fih.d, $$5);
+      flb $$8 = RenderSystem.getDevice().b();
       Runnable $$9 = () -> {
-         try (fig.a $$7x = $$8.a($$7)) {
+         try (fii.a $$7x = $$8.a($$7)) {
             int $$8x = 0;
 
             for (int $$9x = 0; $$9x <= $$3; $$9x++) {
                int $$10x = $$2.a($$9x);
                int $$11x = $$2.b($$9x);
 
-               try (fkg $$12x = new fkg($$10x, $$11x, false)) {
+               try (fki $$12x = new fki($$10x, $$11x, false)) {
                   for (int $$13 = 0; $$13 < $$11x; $$13++) {
                      for (int $$14 = 0; $$14 < $$10x; $$14++) {
                         int $$15 = $$7x.a().getInt($$8x + ($$14 + $$13 * $$10x) * $$2.d().a());

@@ -1,37 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsc extends dvz implements dnf {
-   public static final MapCodec<dsc> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayw.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, dsc::new)
-   );
+public class dsc extends drf {
+   public static final MapCodec<dsc> a = b(dsc::new);
+   private static final xc b = xc.c("container.loom");
 
    @Override
    public MapCodec<dsc> a() {
-      return f;
+      return a;
    }
 
-   public dsc(float $$0, ebd.d $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public boolean a(dka $$0, iv $$1, ebe $$2) {
-      return $$0.a_($$1.e()).l();
+   protected dsc(ebf.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
-      return true;
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(axb.ax);
+      }
+
+      return but.a;
    }
 
    @Override
-   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
-      $$0.a($$2.e(), dsd.c(), 2);
+   protected buv b(ebg $$0, djz $$1, iw $$2) {
+      return new bvb(($$2x, $$3, $$4) -> new cwz($$2x, $$3, cwf.a($$1, $$2)), b);
    }
 
    @Override
-   public iv a(iv $$0) {
-      return $$0.e();
+   public ebg a(ddt $$0) {
+      return this.m().b(e, $$0.g().g());
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(e);
    }
 }

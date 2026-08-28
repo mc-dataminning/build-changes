@@ -1,33 +1,37 @@
-import javax.annotation.Nullable;
+public class aer implements zj<aby> {
+   public static final za<vy, aer> a = zj.a(aer::a, aer::new);
+   private final int b;
+   private final byte c;
 
-public class aer implements zh<abw> {
-   public static final yy<vw, aer> a = zh.a(aer::a, aer::new);
-   @Nullable
-   private final ali b;
-
-   public aer(@Nullable ali $$0) {
-      this.b = $$0;
+   public aer(bwv $$0, byte $$1) {
+      this.b = $$0.ao();
+      this.c = $$1;
    }
 
-   private aer(vw $$0) {
-      this.b = $$0.c(vw::q);
+   private aer(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b, vw::a);
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zj<aer> a() {
-      return agp.as;
+   public zl<aer> a() {
+      return agr.aq;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public ali b() {
-      return this.b;
+   public bwv a(djz $$0) {
+      return $$0.a(this.b);
+   }
+
+   public float b() {
+      return azq.a(this.c);
    }
 }

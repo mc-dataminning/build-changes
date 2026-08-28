@@ -1,3 +1,3 @@
-public class hgt extends hdv {
-   public boolean d;
+public class hgt extends her {
+   public final hhu a = new hhu();
 }

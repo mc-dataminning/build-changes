@@ -1,59 +1,57 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
 
-public class daz extends czu {
-   protected static final Map<dnc, ebe> a = Maps.newHashMap(
-      new Builder()
-         .put(dne.i, dne.lk.m())
-         .put(dne.j, dne.lk.m())
-         .put(dne.l, dne.lk.m())
-         .put(dne.k, dne.lk.m())
-         .put(dne.fE, dne.lk.m())
-         .put(dne.tr, dne.lk.m())
-         .build()
-   );
+public class daz extends czw {
+   public daz(czw.a $$0) {
+      super($$0);
+   }
 
-   public daz(dbm $$0, float $$1, float $$2, czu.a $$3) {
-      super($$3.d($$0, $$1, $$2));
+   public static ddd a() {
+      jh<dne> $$0 = mh.a(mh.e);
+      return new ddd(
+         List.of(ddd.a.a(jk.a(dng.bz.p()), 15.0F), ddd.a.b($$0.b(axg.Q), 15.0F), ddd.a.b($$0.b(axg.a), 5.0F), ddd.a.b(jk.a(dng.fx.p(), dng.fy.p()), 2.0F)),
+         1.0F,
+         1,
+         true
+      );
    }
 
    @Override
-   public bur a(ddt $$0) {
-      djx $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      ebe $$3 = $$1.a_($$2);
-      if ($$0.k() == jb.a) {
-         return bur.e;
+   public boolean a(daa $$0, djz $$1, ebg $$2, iw $$3, bxw $$4) {
+      ddd $$5 = $$0.a(kl.A);
+      if ($$5 == null) {
+         return false;
       } else {
-         crx $$4 = $$0.o();
-         ebe $$5 = a.get($$3.b());
-         ebe $$6 = null;
-         if ($$5 != null && $$1.a_($$2.d()).l()) {
-            $$1.a($$4, $$2, awp.xA, awq.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dns && $$3.c(dns.b)) {
-            if (!$$1.A_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            dns.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.b(dns.b, Boolean.valueOf(false));
+         if (!$$1.A_() && !$$2.a(axg.aN) && $$5.c() > 0) {
+            $$0.a($$5.c(), $$4, bxf.a);
          }
 
-         if ($$6 != null) {
-            if (!$$1.C) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(ege.c, $$2, ege.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bxu.d($$0.p()));
-               }
-            }
-
-            return bur.a;
-         } else {
-            return bur.e;
-         }
+         return true;
       }
+   }
+
+   @Override
+   public but a(ddv $$0) {
+      djz $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      ebg $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dqx $$5 && !$$5.q($$3)) {
+         crz $$6 = $$0.o();
+         daa $$7 = $$0.n();
+         if ($$6 instanceof arv) {
+            aq.N.a((arv)$$6, $$2, $$7);
+         }
+
+         $$1.a($$6, $$2, awr.lR, aws.e, 1.0F, 1.0F);
+         ebg $$8 = $$5.p($$3);
+         $$1.b($$2, $$8);
+         $$1.a(egg.c, $$2, egg.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, bxw.d($$0.p()));
+         }
+
+         return but.a;
+      }
+
+      return super.a($$0);
    }
 }

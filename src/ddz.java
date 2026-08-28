@@ -1,88 +1,83 @@
-public class ddz extends def {
-   public ddz(dec $$0) {
+public class ddz extends deh {
+   public ddz(dee $$0) {
       super($$0);
    }
 
-   public boolean a(ded $$0, djx $$1) {
-      if ($$0.e() < 2) {
+   public boolean a(def $$0, djz $$1) {
+      if ($$0.e() != 2) {
          return false;
       } else {
-         boolean $$2 = false;
+         cyy $$2 = null;
          boolean $$3 = false;
+         boolean $$4 = false;
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czy $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kk.V)) {
+         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+            daa $$6 = $$0.a($$5);
+            if (!$$6.f()) {
+               czw $$7 = $$6.h();
+               if (!($$7 instanceof cyg)) {
+                  return false;
+               }
+
+               cyg $$8 = (cyg)$$7;
+               if ($$2 == null) {
+                  $$2 = $$8.a();
+               } else if ($$2 != $$8.a()) {
+                  return false;
+               }
+
+               int $$10 = $$6.a(kl.am, dxu.a).b().size();
+               if ($$10 > 6) {
+                  return false;
+               }
+
+               if ($$10 > 0) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else {
                   if ($$3) {
                      return false;
                   }
 
                   $$3 = true;
-               } else {
-                  if (!$$5.a(axm.bS)) {
-                     return false;
-                  }
-
-                  $$2 = true;
                }
             }
          }
 
-         return $$3 && $$2;
+         return $$4 && $$3;
       }
    }
 
-   public czy a(ded $$0, jh.a $$1) {
-      int $$2 = 0;
-      czy $$3 = czy.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czy $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kk.V)) {
-               if (!$$3.f()) {
-                  return czy.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(axm.bS)) {
-                  return czy.k;
-               }
-
-               $$2++;
+   public daa a(def $$0, ji.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         daa $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            int $$4 = $$3.a(kl.am, dxu.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      ddi $$6 = $$3.a(kk.V);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         ddi $$7 = $$6.b();
-         if ($$7 == null) {
-            return czy.k;
-         } else {
-            czy $$8 = $$3.c($$2);
-            $$8.b(kk.V, $$7);
-            return $$8;
-         }
-      } else {
-         return czy.k;
-      }
+      return daa.k;
    }
 
    @Override
-   public jo<czy> a(ded $$0) {
-      jo<czy> $$1 = jo.a($$0.a(), czy.k);
+   public jp<daa> a(def $$0) {
+      jp<daa> $$1 = jp.a($$0.a(), daa.k);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         czy $$3 = $$0.a($$2);
-         czy $$4 = $$3.h().i();
-         if (!$$4.f()) {
-            $$1.set($$2, $$4);
-         } else if ($$3.c(kk.V)) {
-            $$1.set($$2, $$3.c(1));
-            break;
+         daa $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            daa $$4 = $$3.h().i();
+            if (!$$4.f()) {
+               $$1.set($$2, $$4);
+            } else if (!$$3.a(kl.am, dxu.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
          }
       }
 
@@ -90,7 +85,7 @@ public class ddz extends def {
    }
 
    @Override
-   public dez<ddz> a() {
-      return dez.d;
+   public dfb<ddz> a() {
+      return dfb.k;
    }
 }

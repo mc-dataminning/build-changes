@@ -1,137 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
+import java.util.function.LongFunction;
 
-public class eie implements azx {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<eie> b = eid.a.xmap($$0 -> new eie($$0), $$0 -> $$0.e);
-   private eid e;
-   private final ehf f = new ehf(this);
+public class eie extends ehg {
+   private final azz d;
+   private int e;
 
-   public eie(long $$0) {
-      this.e = new eid(ehs.c($$0));
+   public eie(azz $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   public eie(ehs.a $$0) {
-      this.e = new eid($$0);
-   }
-
-   public eie(long $$0, long $$1) {
-      this.e = new eid($$0, $$1);
-   }
-
-   private eie(eid $$0) {
-      this.e = $$0;
+   public int l() {
+      return this.e;
    }
 
    @Override
-   public azx d() {
-      return new eie(this.e.a(), this.e.a());
+   public azz d() {
+      return this.d.d();
    }
 
    @Override
-   public ehq e() {
-      return new eie.a(this.e.a(), this.e.a());
+   public ehs e() {
+      return this.d.e();
    }
 
    @Override
-   public void b(long $$0) {
-      this.e = new eid(ehs.c($$0));
-      this.f.a();
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof ehg $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
    }
 
    @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
    }
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
    }
 
-   @Override
-   public double k() {
-      return this.f.b();
+   public static azz a(int $$0, int $$1, long $$2, long $$3) {
+      return azz.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
    }
 
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
+   public static enum a {
+      a(ehg::new),
+      b(eig::new);
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
+      private final LongFunction<azz> c;
 
-   public static class a implements ehq {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private a(final LongFunction<azz> $$0) {
+         this.c = $$0;
       }
 
-      @Override
-      public azx a(int $$0, int $$1, int $$2) {
-         long $$3 = azo.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new eie($$4, this.b);
-      }
-
-      @Override
-      public azx a(String $$0) {
-         ehs.a $$1 = ehs.a($$0);
-         return new eie($$1.a(this.a, this.b));
-      }
-
-      @Override
-      public azx a(long $$0) {
-         return new eie($$0 ^ this.a, $$0 ^ this.b);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      public azz a(long $$0) {
+         return this.c.apply($$0);
       }
    }
 }

@@ -1,34 +1,66 @@
-import java.util.Objects;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public record fgo(String a, int b, @Nullable xa c, @Nullable yq d) {
-   public boolean a() {
-      return this.a.startsWith("#");
+public enum fgo implements bao {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
+
+   public static final bao.a<fgo> t = bao.a(fgo::values);
+   public static final IntFunction<fgo> u = ayg.a(fgo::a, values(), ayg.a.a);
+   private final int v;
+   private final String w;
+
+   private fgo(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
-   public xa b() {
-      return (xa)(this.c != null ? this.c : xa.b(this.c()));
+   public int a() {
+      return this.v;
    }
 
-   public xo a(yq $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
-
+   @Override
    public String c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+      return this.w;
    }
 
    @Nullable
-   public xa e() {
-      return this.c;
-   }
-
-   @Nullable
-   public yq f() {
-      return this.d;
+   public static fgo a(o $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

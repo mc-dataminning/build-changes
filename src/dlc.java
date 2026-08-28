@@ -1,101 +1,404 @@
-import com.google.common.hash.Hashing;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dlc {
-   public static final int a = jq.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final dlc.a e;
-   private final long f;
+public final class dlc {
+   public static final Codec<dlc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dlc.b.a.forGetter($$0x -> $$0x.i),
+               dli.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
+               dld.b.forGetter($$0x -> $$0x.j),
+               dlo.c.forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, dlc::new)
+   );
+   public static final Codec<dlc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dlc.b.a.forGetter($$0x -> $$0x.i), dli.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
+            .apply($$0, ($$0x, $$1) -> new dlc($$0x, $$1, dld.a, dlo.b))
+   );
+   public static final Codec<jg<dlc>> c = alg.a(mi.aG, a);
+   public static final Codec<jk<dlc>> d = jv.a(mi.aG, a);
+   private static final ewv f = new ewv(new eie(new ehg(1234L)), ImmutableList.of(0));
+   static final ewv g = new ewv(new eie(new ehg(3456L)), ImmutableList.of(-2, -1, 0));
+   @Deprecated(
+      forRemoval = true
+   )
+   public static final ewv e = new ewv(new eie(new ehg(2345L)), ImmutableList.of(0));
+   private static final int h = 1024;
+   private final dlc.b i;
+   private final dld j;
+   private final dlo k;
+   private final dli l;
+   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> ag.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
+            protected void rehash(int $$0) {
+            }
+         };
+         $$0x.defaultReturnValue(Float.NaN);
+         return $$0x;
+      }));
 
-   public dlc(dlc.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   dlc(dlc.b $$0, dli $$1, dld $$2, dlo $$3) {
+      this.i = $$0;
+      this.j = $$2;
+      this.k = $$3;
+      this.l = $$1;
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
+   public int a() {
+      return this.l.d();
    }
 
-   public dlc a(dlc.a $$0) {
-      return new dlc($$0, this.f);
+   public dlo b() {
+      return this.k;
    }
 
-   public jf<dla> a(iv $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
+   public boolean c() {
+      return this.i.a();
+   }
 
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+   public dlc.c a(iw $$0, int $$1) {
+      if (!this.c()) {
+         return dlc.c.a;
+      } else {
+         return this.b($$0, $$1) ? dlc.c.c : dlc.c.b;
+      }
+   }
+
+   private float e(iw $$0, int $$1) {
+      float $$2 = this.i.d.a($$0, this.h());
+      int $$3 = $$1 + 17;
+      if ($$0.v() > $$3) {
+         float $$4 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
+         return $$2 - ($$4 + (float)$$0.v() - (float)$$3) * 0.05F / 40.0F;
+      } else {
+         return $$2;
+      }
+   }
+
+   @Deprecated
+   private float f(iw $$0, int $$1) {
+      long $$2 = $$0.a();
+      Long2FloatLinkedOpenHashMap $$3 = this.m.get();
+      float $$4 = $$3.get($$2);
+      if (!Float.isNaN($$4)) {
+         return $$4;
+      } else {
+         float $$5 = this.e($$0, $$1);
+         if ($$3.size() == 1024) {
+            $$3.removeFirstFloat();
+         }
+
+         $$3.put($$2, $$5);
+         return $$5;
+      }
+   }
+
+   public boolean a(dkc $$0, iw $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   public boolean a(dkc $$0, iw $$1, boolean $$2) {
+      if (this.c($$1, $$0.P())) {
+         return false;
+      } else {
+         if ($$0.d($$1.v()) && $$0.a(dki.b, $$1) < 10) {
+            ebg $$3 = $$0.a_($$1);
+            exq $$4 = $$0.b_($$1);
+            if ($$4.a() == exr.c && $$3.b() instanceof dsa) {
+               if (!$$2) {
+                  return true;
+               }
+
+               boolean $$5 = $$0.A($$1.h()) && $$0.A($$1.i()) && $$0.A($$1.f()) && $$0.A($$1.g());
+               if (!$$5) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public boolean b(iw $$0, int $$1) {
+      return !this.c($$0, $$1);
+   }
+
+   public boolean c(iw $$0, int $$1) {
+      return this.f($$0, $$1) >= 0.15F;
+   }
+
+   public boolean d(iw $$0, int $$1) {
+      return this.f($$0, $$1) > 0.1F;
+   }
+
+   public boolean b(dkc $$0, iw $$1) {
+      if (this.c($$1, $$0.P())) {
+         return false;
+      } else {
+         if ($$0.d($$1.v()) && $$0.a(dki.b, $$1) < 10) {
+            ebg $$2 = $$0.a_($$1);
+            if (($$2.l() || $$2.a(dng.ed)) && dng.ed.m().a($$0, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public dld d() {
+      return this.j;
+   }
+
+   public int e() {
+      return this.l.a();
+   }
+
+   public int a(double $$0, double $$1) {
+      int $$2 = this.r();
+      return this.l.h().a($$0, $$1, $$2);
+   }
+
+   private int r() {
+      Optional<Integer> $$0 = this.l.g();
+      return $$0.isPresent() ? $$0.get() : this.s();
+   }
+
+   private int s() {
+      double $$0 = (double)azq.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)azq.a(this.i.e, 0.0F, 1.0F);
+      return djx.a($$0, $$1);
+   }
+
+   public int f() {
+      return this.l.e().orElseGet(this::t);
+   }
+
+   private int t() {
+      double $$0 = (double)azq.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)azq.a(this.i.e, 0.0F, 1.0F);
+      return dju.a($$0, $$1);
+   }
+
+   public int g() {
+      return this.l.f().orElseGet(this::u);
+   }
+
+   private int u() {
+      double $$0 = (double)azq.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)azq.a(this.i.e, 0.0F, 1.0F);
+      return djn.a($$0, $$1);
+   }
+
+   public float h() {
+      return this.i.c;
+   }
+
+   public dli i() {
+      return this.l;
+   }
+
+   public int j() {
+      return this.l.b();
+   }
+
+   public int k() {
+      return this.l.c();
+   }
+
+   public Optional<dlb> l() {
+      return this.l.i();
+   }
+
+   public Optional<jg<awq>> m() {
+      return this.l.j();
+   }
+
+   public Optional<dla> n() {
+      return this.l.k();
+   }
+
+   public Optional<dkz> o() {
+      return this.l.l();
+   }
+
+   public Optional<btd<awo>> p() {
+      return this.l.m();
+   }
+
+   public float q() {
+      return this.l.n();
+   }
+
+   public static class a {
+      private boolean a = true;
+      @Nullable
+      private Float b;
+      private dlc.d c = dlc.d.a;
+      @Nullable
+      private Float d;
+      @Nullable
+      private dli e;
+      @Nullable
+      private dlo f;
+      @Nullable
+      private dld g;
+
+      public dlc.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public dlc.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public dlc.a b(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public dlc.a a(dli $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public dlc.a a(dlo $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public dlc.a a(dld $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public dlc.a a(dlc.d $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dlc a() {
+         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
+            return new dlc(new dlc.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+         } else {
+            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
+      @Override
+      public String toString() {
+         return "BiomeBuilder{\nhasPrecipitation="
+            + this.a
+            + ",\ntemperature="
+            + this.b
+            + ",\ntemperatureModifier="
+            + this.c
+            + ",\ndownfall="
+            + this.d
+            + ",\nspecialEffects="
+            + this.e
+            + ",\nmobSpawnSettings="
+            + this.f
+            + ",\ngenerationSettings="
+            + this.g
+            + ",\n}";
+      }
    }
 
-   public jf<dla> a(double $$0, double $$1, double $$2) {
-      int $$3 = jq.a(azo.a($$0));
-      int $$4 = jq.a(azo.a($$1));
-      int $$5 = jq.a(azo.a($$2));
-      return this.a($$3, $$4, $$5);
+   static record b(boolean b, float c, dlc.d d, float e) {
+      public static final MapCodec<dlc.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
+                  dlc.d.c.optionalFieldOf("temperature_modifier", dlc.d.a).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, dlc.b::new)
+      );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public dlc.d c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
    }
 
-   public jf<dla> b(iv $$0) {
-      int $$1 = jq.a($$0.u());
-      int $$2 = jq.a($$0.v());
-      int $$3 = jq.a($$0.w());
-      return this.a($$1, $$2, $$3);
+   public static enum c implements bao {
+      a("none"),
+      b("rain"),
+      c("snow");
+
+      public static final Codec<dlc.c> d = bao.a(dlc.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 
-   public jf<dla> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
-   }
+   public static enum d implements bao {
+      a("none") {
+         @Override
+         public float a(iw $$0, float $$1) {
+            return $$1;
+         }
+      },
+      b("frozen") {
+         @Override
+         public float a(iw $$0, float $$1) {
+            double $$2 = dlc.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
+            double $$3 = dlc.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
+            double $$4 = $$2 + $$3;
+            if ($$4 < 0.3) {
+               double $$5 = dlc.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
+               if ($$5 < 0.8) {
+                  return 0.2F;
+               }
+            }
 
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = azj.a($$0, (long)$$1);
-      $$7 = azj.a($$7, (long)$$2);
-      $$7 = azj.a($$7, (long)$$3);
-      $$7 = azj.a($$7, (long)$$1);
-      $$7 = azj.a($$7, (long)$$2);
-      $$7 = azj.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = azj.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = azj.a($$7, $$0);
-      double $$10 = b($$7);
-      return azo.k($$6 + $$10) + azo.k($$5 + $$9) + azo.k($$4 + $$8);
-   }
+            return $$1;
+         }
+      };
 
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
+      private final String d;
+      public static final Codec<dlc.d> c = bao.a(dlc.d::values);
 
-   public interface a {
-      jf<dla> getNoiseBiome(int var1, int var2, int var3);
+      public abstract float a(iw var1, float var2);
+
+      d(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

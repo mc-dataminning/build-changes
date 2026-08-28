@@ -1,24 +1,28 @@
-public class baq {
-   private final int a;
-   private final int b;
-   private int c;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   public baq(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+@FunctionalInterface
+public interface baq {
+   Logger a = LogUtils.getLogger();
+
+   static baq immediate(final Executor $$0) {
+      return new baq() {
+         @Override
+         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
+            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
+               a.error("Task failed", $$0xx);
+               return null;
+            });
+         }
+      };
    }
 
-   public void a() {
-      this.c = this.c + this.a;
+   default void append(Runnable $$0) {
+      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
    }
 
-   public void b() {
-      if (this.c > 0) {
-         this.c--;
-      }
-   }
-
-   public boolean c() {
-      return this.c < this.b;
-   }
+   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

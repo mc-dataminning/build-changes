@@ -1,41 +1,147 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record faj<T>(alh<js<T>> d, Codec<T> e, faj.a<T> f) {
-   public static final faj<fdq> a = new faj<>(mh.bt, fdq.e, e());
-   public static final faj<fbv> b = new faj<>(mh.bs, fbx.c, e());
-   public static final faj<fam> c = new faj<>(mh.br, fam.d, f());
+public class faj {
+   private final fam a;
+   private final azz b;
+   private final jh.a c;
+   private final Set<faj.c<?>> d = Sets.newLinkedHashSet();
 
-   public void a(fan $$0, alh<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   faj(fam $$0, azz $$1, jh.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static Stream<faj<?>> a() {
-      return Stream.of(a, b, c);
+   public boolean a(bbb<?> $$0) {
+      return this.a.b().a($$0);
    }
 
-   private static <T extends fai> faj.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public <T> T b(bbb<T> $$0) {
+      return this.a.b().b($$0);
    }
 
-   private static faj.a<fam> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   @Nullable
+   public <T> T c(bbb<T> $$0) {
+      return this.a.b().c($$0);
    }
 
-   public alh<js<T>> b() {
-      return this.d;
+   public void a(alk $$0, Consumer<daa> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public Codec<T> c() {
-      return this.e;
+   public boolean a(faj.c<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   public faj.a<T> d() {
-      return this.f;
+   public boolean b(faj.c<?> $$0) {
+      return this.d.add($$0);
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(fan var1, alh<T> var2, T var3);
+   public void c(faj.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public jh.a a() {
+      return this.c;
+   }
+
+   public azz b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.c();
+   }
+
+   public aru d() {
+      return this.a.a();
+   }
+
+   public static faj.c<fao> a(fao $$0) {
+      return new faj.c<>(fal.c, $$0);
+   }
+
+   public static faj.c<fds> a(fds $$0) {
+      return new faj.c<>(fal.a, $$0);
+   }
+
+   public static faj.c<fbx> a(fbx $$0) {
+      return new faj.c<>(fal.b, $$0);
+   }
+
+   public static class a {
+      private final fam a;
+      @Nullable
+      private azz b;
+
+      public a(fam $$0) {
+         this.a = $$0;
+      }
+
+      public faj.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = azz.a($$0);
+         }
+
+         return this;
+      }
+
+      public faj.a a(azz $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public aru a() {
+         return this.a.a();
+      }
+
+      public faj a(Optional<alk> $$0) {
+         aru $$1 = this.a();
+         MinecraftServer $$2 = $$1.p();
+         azz $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::G_);
+         return new faj(this.a, $$3, $$2.bc().a());
+      }
+   }
+
+   public static enum b implements bao {
+      a("this", fdd.a),
+      b("attacker", fdd.d),
+      c("direct_attacker", fdd.e),
+      d("attacking_player", fdd.b);
+
+      public static final bao.a<faj.b> e = bao.a(faj.b::values);
+      private final String f;
+      private final bbb<? extends bwv> g;
+
+      private b(final String $$0, final bbb<? extends bwv> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public bbb<? extends bwv> a() {
+         return this.g;
+      }
+
+      public static faj.b a(String $$0) {
+         faj.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static record c<T>(fal<T> a, T b) {
    }
 }

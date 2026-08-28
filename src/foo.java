@@ -1,27 +1,38 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class foo extends hro {
+   private static final xc a = xc.c("mco.client.incompatible.title").b(-65536);
+   private static final xc b = xc.b(ac.b().c()).b(-65536);
+   private static final xc c = xc.a("mco.client.unsupported.snapshot.version", b);
+   private static final xc C = xc.a("mco.client.outdated.stable.version", b);
+   private final gaf D;
+   private final fyb E = new fyb(this);
 
-public class foo extends hrm {
-   protected BooleanConsumer a;
-   private final xa b;
-   private final xa c;
-
-   public foo(BooleanConsumer $$0, xa $$1, xa $$2) {
-      super(fqu.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public foo(gaf $$0) {
+      super(a);
+      this.D = $$0;
    }
 
    @Override
    public void aS_() {
-      this.c(ful.a(wz.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(ful.a(wz.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+      this.E.a(a, this.p);
+      this.E.c(new fvh(this.E(), this.p).b(true));
+      this.E.b(fun.a(xb.k, $$0 -> this.aP_()).a(200).a());
+      this.E.a($$1 -> {
+         ful var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   protected void c() {
+      this.E.a();
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.D);
+   }
+
+   private xc E() {
+      return ac.b().g() ? C : c;
    }
 }

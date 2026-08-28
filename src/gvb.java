@@ -1,53 +1,23 @@
-public class gvb implements gun<dzp> {
-   private final gvb.a a;
+public class gvb implements gup<dzk> {
+   private final ghh a;
 
-   public gvb(guo.a $$0) {
-      this($$0.f());
+   public gvb(guq.a $$0) {
+      this.a = new ghh($$0.a(glf.J));
    }
 
-   public gvb(gla $$0) {
-      this.a = new gvb.a($$0.a(gld.cV));
-   }
-
-   public void a(dzp $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
-      jb $$7 = $$0.m().a(dul.c, jb.b);
-      cyw $$8 = $$0.s();
-      hnh $$9;
-      if ($$8 == null) {
-         $$9 = gsu.s;
-      } else {
-         $$9 = gsu.d($$8);
-      }
-
-      float $$11 = $$0.a($$1);
-      this.a($$2, $$3, $$4, $$5, $$7, $$11, $$9);
-   }
-
-   public void a(flo $$0, gsa $$1, int $$2, int $$3, jb $$4, float $$5, hnh $$6) {
-      $$0.a();
-      $$0.a(0.5F, 0.5F, 0.5F);
-      float $$7 = 0.9995F;
-      $$0.b(0.9995F, 0.9995F, 0.9995F);
-      $$0.a($$4.b());
-      $$0.b(1.0F, -1.0F, -1.0F);
-      $$0.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$5);
-      flr $$8 = $$6.a($$1, this.a::a);
-      this.a.a($$0, $$8, $$2, $$3);
-      $$0.b();
-   }
-
-   static class a extends giw {
-      private final gle a;
-
-      public a(gle $$0) {
-         super($$0, gsl::g);
-         this.a = $$0.b("lid");
-      }
-
-      public void a(float $$0) {
-         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+   public void a(dzk $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
+      ebg $$7 = $$0.m();
+      if ($$7.c(drv.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$8 = $$7.c(drv.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$8));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         flt $$9 = guz.a.a($$3, gsn::d);
+         this.a.a($$2, $$9, $$4, $$5);
+         $$2.b();
       }
    }
 }

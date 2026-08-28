@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
 public interface at<T extends au> {
-   void a(alq var1, at.a<T> var2);
+   void a(als var1, at.a<T> var2);
 
-   void b(alq var1, at.a<T> var2);
+   void b(als var1, at.a<T> var2);
 
-   void a(alq var1);
+   void a(als var1);
 
    Codec<T> a();
 
@@ -14,7 +14,7 @@ public interface at<T extends au> {
    }
 
    public static record a<T extends au>(T a, aj b, String c) {
-      public void a(alq $$0) {
+      public void a(als $$0) {
          $$0.a(this.b, this.c);
       }
    }

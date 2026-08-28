@@ -1,36 +1,23 @@
-public record aeo(agm e, byte f) implements zh<abw> {
-   public static final yy<wl, aeo> a = zh.a(aeo::a, aeo::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private aeo(wl $$0) {
-      this(new agm($$0), $$0.readByte());
-   }
-
-   private void a(wl $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
-   }
+public record aeo(int b, jg<bvx> c) implements zj<aby> {
+   public static final za<wn, aeo> a = za.a(yy.h, aeo::b, bvx.b, aeo::e, aeo::new);
 
    @Override
-   public zj<aeo> a() {
-      return agp.ap;
+   public zl<aeo> a() {
+      return agr.ao;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   @Nullable
+   public bwv a(djz $$0) {
+      return $$0.a(this.b);
    }
 
-   public agm b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public jg<bvx> e() {
+      return this.c;
    }
 }

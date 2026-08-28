@@ -1,25 +1,138 @@
-public class glv {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = ag.d();
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public void a() {
-      this.e = ag.d();
+public class glv implements gmq {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<csc>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
+
+   public glv(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(ag.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = azo.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
+   @Override
+   public CompletableFuture<Optional<csc>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
+   }
+
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(csc::a).orElse(true) : false;
+   }
+
+   private CompletableFuture<Optional<csc>> a(Optional<csc> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!ac.aU) {
+               this.a(null);
+            }
+
+            return $$0;
+         } else {
+            try {
+               csc $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (ayo | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
+            }
+         }
+      }, ag.j());
+   }
+
+   private Optional<csc> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
+      } else {
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = csc.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
       }
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   private void a(@Nullable csc $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
+
+      if ($$0 != null) {
+         if (ac.aU) {
+            csc.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
+      }
+   }
+
+   @Nullable
+   private csc a(UserApiService $$0) throws ayo, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         csd.a $$2 = a($$1);
+         return new csc(ayn.a($$1.keyPair().privateKey()), new csd($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         return null;
+      }
+   }
+
+   private static csd.a a(KeyPairResponse $$0) throws ayo {
+      KeyPair $$1 = $$0.keyPair();
+      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = ayn.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new csd.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new ayo(var5);
+         }
+      } else {
+         throw new ayo(new MissingException("Missing public key"));
+      }
    }
 }

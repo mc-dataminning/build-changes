@@ -1,268 +1,138 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.stream.JsonReader;
-import com.mojang.brigadier.Message;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.JsonOps;
-import java.io.StringReader;
-import java.lang.reflect.Type;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.File;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.nio.file.Path;
 
-public interface xa extends Message, xf {
-   xx a();
+public interface xa {
+   Codec<xa> a = xa.a.h.dispatch("action", xa::a, $$0 -> $$0.k);
 
-   xb b();
+   xa.a a();
 
-   @Override
-   default String getString() {
-      return xf.super.getString();
-   }
+   public static enum a implements bao {
+      a("open_url", true, xa.e.b),
+      b("open_file", false, xa.d.b),
+      c("run_command", true, xa.f.b),
+      d("suggest_command", true, xa.g.b),
+      e("change_page", true, xa.b.b),
+      f("copy_to_clipboard", true, xa.c.b);
 
-   default String a(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      this.a((xf.a)($$2 -> {
-         int $$3 = $$0 - $$1.length();
-         if ($$3 <= 0) {
-            return a;
-         } else {
-            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
-            return Optional.empty();
-         }
-      }));
-      return $$1.toString();
-   }
+      public static final Codec<xa.a> g = bao.a(xa.a::values);
+      public static final Codec<xa.a> h = g.validate(xa.a::a);
+      private final boolean i;
+      private final String j;
+      final MapCodec<? extends xa> k;
 
-   List<xa> c();
-
-   @Nullable
-   default String d() {
-      if (this.b() instanceof yh $$0 && this.c().isEmpty() && this.a().h()) {
-         return $$0.b();
+      private a(final String $$0, final boolean $$1, final MapCodec<? extends xa> $$2) {
+         this.j = $$0;
+         this.i = $$1;
+         this.k = $$2;
       }
 
-      return null;
-   }
+      public boolean a() {
+         return this.i;
+      }
 
-   default xo e() {
-      return xo.a(this.b());
-   }
+      @Override
+      public String c() {
+         return this.j;
+      }
 
-   default xo f() {
-      return new xo(this.b(), new ArrayList<>(this.c()), this.a());
-   }
-
-   aza g();
-
-   @Override
-   default <T> Optional<T> a(xf.b<T> $$0, xx $$1) {
-      xx $$2 = this.a().a($$1);
-      Optional<T> $$3 = this.b().a($$0, $$2);
-      if ($$3.isPresent()) {
-         return $$3;
-      } else {
-         for (xa $$4 : this.c()) {
-            Optional<T> $$5 = $$4.a($$0, $$2);
-            if ($$5.isPresent()) {
-               return $$5;
-            }
-         }
-
-         return Optional.empty();
+      public static DataResult<xa.a> a(xa.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Click event type not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 
-   @Override
-   default <T> Optional<T> a(xf.a<T> $$0) {
-      Optional<T> $$1 = this.b().a($$0);
-      if ($$1.isPresent()) {
-         return $$1;
-      } else {
-         for (xa $$2 : this.c()) {
-            Optional<T> $$3 = $$2.a($$0);
-            if ($$3.isPresent()) {
-               return $$3;
-            }
-         }
+   public static record b(int c) implements xa {
+      public static final MapCodec<xa.b> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.m.fieldOf("page").forGetter(xa.b::b)).apply($$0, xa.b::new));
 
-         return Optional.empty();
+      @Override
+      public xa.a a() {
+         return xa.a.e;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 
-   default List<xa> h() {
-      return this.a(xx.a);
-   }
+   public static record c(String c) implements xa {
+      public static final MapCodec<xa.c> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("value").forGetter(xa.c::b)).apply($$0, xa.c::new)
+      );
 
-   default List<xa> a(xx $$0) {
-      List<xa> $$1 = Lists.newArrayList();
-      this.a(($$1x, $$2) -> {
-         if (!$$2.isEmpty()) {
-            $$1.add(b($$2).c($$1x));
-         }
+      @Override
+      public xa.a a() {
+         return xa.a.f;
+      }
 
-         return Optional.empty();
-      }, $$0);
-      return $$1;
-   }
-
-   default boolean a(xa $$0) {
-      if (this.equals($$0)) {
-         return true;
-      } else {
-         List<xa> $$1 = this.h();
-         List<xa> $$2 = $$0.a(this.a());
-         return Collections.indexOfSubList($$1, $$2) != -1;
+      public String b() {
+         return this.c;
       }
    }
 
-   static xa a(@Nullable String $$0) {
-      return (xa)($$0 != null ? b($$0) : wz.a);
-   }
+   public static record d(String c) implements xa {
+      public static final MapCodec<xa.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("path").forGetter(xa.d::c)).apply($$0, xa.d::new)
+      );
 
-   static xo b(String $$0) {
-      return xo.a(yh.a($$0));
-   }
-
-   static xo c(String $$0) {
-      return xo.a(new yl($$0, null, yl.a));
-   }
-
-   static xo a(String $$0, Object... $$1) {
-      return xo.a(new yl($$0, null, $$1));
-   }
-
-   static xo b(String $$0, Object... $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         Object $$3 = $$1[$$2];
-         if (!yl.a($$3) && !($$3 instanceof xa)) {
-            $$1[$$2] = String.valueOf($$3);
-         }
+      public d(File $$0) {
+         this($$0.toString());
       }
 
-      return a($$0, $$1);
-   }
-
-   static xo a(String $$0, @Nullable String $$1) {
-      return xo.a(new yl($$0, $$1, yl.a));
-   }
-
-   static xo a(String $$0, @Nullable String $$1, Object... $$2) {
-      return xo.a(new yl($$0, $$1, $$2));
-   }
-
-   static xo i() {
-      return xo.a(yh.c);
-   }
-
-   static xo d(String $$0) {
-      return xo.a(new ye($$0));
-   }
-
-   static xo a(String $$0, boolean $$1, Optional<xa> $$2, yc $$3) {
-      return xo.a(new yg($$0, $$1, $$2, $$3));
-   }
-
-   static xo a(hb $$0, String $$1) {
-      return xo.a(new yi(Either.left($$0), $$1));
-   }
-
-   static xo b(String $$0, String $$1) {
-      return xo.a(new yi(Either.right($$0), $$1));
-   }
-
-   static xo a(hb $$0, Optional<xa> $$1) {
-      return xo.a(new yj($$0, $$1));
-   }
-
-   static xa a(Date $$0) {
-      return b($$0.toString());
-   }
-
-   static xa a(Message $$0) {
-      return (xa)($$0 instanceof xa $$1 ? $$1 : b($$0.getString()));
-   }
-
-   static xa a(UUID $$0) {
-      return b($$0.toString());
-   }
-
-   static xa a(ali $$0) {
-      return b($$0.toString());
-   }
-
-   static xa a(djc $$0) {
-      return b($$0.toString());
-   }
-
-   static xa a(URI $$0) {
-      return b($$0.toString());
-   }
-
-   public static class a {
-      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
-
-      private a() {
+      public d(Path $$0) {
+         this($$0.toFile());
       }
 
-      static xo b(JsonElement $$0, jh.a $$1) {
-         return (xo)xc.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      public File b() {
+         return new File(this.c);
       }
 
-      static JsonElement b(xa $$0, jh.a $$1) {
-         return (JsonElement)xc.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
-      }
-
-      public static String a(xa $$0, jh.a $$1) {
-         return a.toJson(b($$0, $$1));
-      }
-
-      @Nullable
-      public static xo a(String $$0, jh.a $$1) {
-         JsonElement $$2 = JsonParser.parseString($$0);
-         return $$2 == null ? null : b($$2, $$1);
-      }
-
-      @Nullable
-      public static xo a(@Nullable JsonElement $$0, jh.a $$1) {
-         return $$0 == null ? null : b($$0, $$1);
-      }
-
-      @Nullable
-      public static xo b(String $$0, jh.a $$1) {
-         JsonReader $$2 = new JsonReader(new StringReader($$0));
-         $$2.setLenient(true);
-         JsonElement $$3 = JsonParser.parseReader($$2);
-         return $$3 == null ? null : b($$3, $$1);
+      @Override
+      public xa.a a() {
+         return xa.a.b;
       }
    }
 
-   public static class b implements JsonDeserializer<xo>, JsonSerializer<xa> {
-      private final jh.a a;
+   public static record e(URI c) implements xa {
+      public static final MapCodec<xa.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.D.fieldOf("url").forGetter(xa.e::b)).apply($$0, xa.e::new));
 
-      public b(jh.a $$0) {
-         this.a = $$0;
+      @Override
+      public xa.a a() {
+         return xa.a.a;
       }
 
-      public xo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return xa.a.b($$0, this.a);
+      public URI b() {
+         return this.c;
+      }
+   }
+
+   public static record f(String c) implements xa {
+      public static final MapCodec<xa.f> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.E.fieldOf("command").forGetter(xa.f::b)).apply($$0, xa.f::new));
+
+      @Override
+      public xa.a a() {
+         return xa.a.c;
       }
 
-      public JsonElement a(xa $$0, Type $$1, JsonSerializationContext $$2) {
-         return xa.a.b($$0, this.a);
+      public String b() {
+         return this.c;
+      }
+   }
+
+   public static record g(String c) implements xa {
+      public static final MapCodec<xa.g> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.E.fieldOf("command").forGetter(xa.g::b)).apply($$0, xa.g::new));
+
+      @Override
+      public xa.a a() {
+         return xa.a.d;
+      }
+
+      public String b() {
+         return this.c;
       }
    }
 }

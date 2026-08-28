@@ -1,24 +1,139 @@
-public enum ebw implements bam {
-   a("single"),
-   b("left"),
-   c("right");
-
-   private final String d;
-
-   private ebw(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public ebw a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
-   }
+public class ebw {
+   public static final ebx a = ebx.a("attached");
+   public static final ebx b = ebx.a("berries");
+   public static final ebx c = ebx.a("bloom");
+   public static final ebx d = ebx.a("bottom");
+   public static final ebx e = ebx.a("can_summon");
+   public static final ebx f = ebx.a("conditional");
+   public static final ebx g = ebx.a("disarmed");
+   public static final ebx h = ebx.a("drag");
+   public static final ebx i = ebx.a("enabled");
+   public static final ebx j = ebx.a("extended");
+   public static final ebx k = ebx.a("eye");
+   public static final ebx l = ebx.a("falling");
+   public static final ebx m = ebx.a("hanging");
+   public static final ebx n = ebx.a("has_bottle_0");
+   public static final ebx o = ebx.a("has_bottle_1");
+   public static final ebx p = ebx.a("has_bottle_2");
+   public static final ebx q = ebx.a("has_record");
+   public static final ebx r = ebx.a("has_book");
+   public static final ebx s = ebx.a("inverted");
+   public static final ebx t = ebx.a("in_wall");
+   public static final ebx u = ebx.a("lit");
+   public static final ebx v = ebx.a("locked");
+   public static final ebx w = ebx.a("natural");
+   public static final ebx x = ebx.a("occupied");
+   public static final ebx y = ebx.a("open");
+   public static final ebx z = ebx.a("persistent");
+   public static final ebx A = ebx.a("powered");
+   public static final ebx B = ebx.a("short");
+   public static final ebx C = ebx.a("shrieking");
+   public static final ebx D = ebx.a("signal_fire");
+   public static final ebx E = ebx.a("snowy");
+   public static final ebx F = ebx.a("tip");
+   public static final ebx G = ebx.a("triggered");
+   public static final ebx H = ebx.a("unstable");
+   public static final ebx I = ebx.a("waterlogged");
+   public static final ece<jc.a> J = ece.a("axis", jc.a.class, jc.a.a, jc.a.c);
+   public static final ece<jc.a> K = ece.a("axis", jc.a.class);
+   public static final ebx L = ebx.a("up");
+   public static final ebx M = ebx.a("down");
+   public static final ebx N = ebx.a("north");
+   public static final ebx O = ebx.a("east");
+   public static final ebx P = ebx.a("south");
+   public static final ebx Q = ebx.a("west");
+   public static final ece<jc> R = ece.a("facing", jc.class, jc.c, jc.f, jc.d, jc.e, jc.b, jc.a);
+   public static final ece<jc> S = ece.a("facing", jc.class, $$0 -> $$0 != jc.b);
+   public static final ece<jc> T = ece.a("facing", jc.class, jc.c.a);
+   public static final ecg U = ecg.a("flower_amount", 1, 4);
+   public static final ecg V = ecg.a("segment_amount", 1, 4);
+   public static final ece<je> W = ece.a("orientation", je.class);
+   public static final ece<ebr> X = ece.a("face", ebr.class);
+   public static final ece<ebu> Y = ece.a("attachment", ebu.class);
+   public static final ece<ect> Z = ece.a("east", ect.class);
+   public static final ece<ect> aa = ece.a("north", ect.class);
+   public static final ece<ect> ab = ece.a("south", ect.class);
+   public static final ece<ect> ac = ece.a("west", ect.class);
+   public static final ece<ecl> ad = ece.a("east", ecl.class);
+   public static final ece<ecl> ae = ece.a("north", ecl.class);
+   public static final ece<ecl> af = ece.a("south", ecl.class);
+   public static final ece<ecl> ag = ece.a("west", ecl.class);
+   public static final ece<ecc> ah = ece.a("half", ecc.class);
+   public static final ece<ecf> ai = ece.a("half", ecf.class);
+   public static final ece<eck> aj = ece.a("shape", eck.class);
+   public static final ece<eck> ak = ece.a("shape", eck.class, $$0 -> $$0 != eck.j && $$0 != eck.i && $$0 != eck.g && $$0 != eck.h);
+   public static final int al = 1;
+   public static final int am = 2;
+   public static final int an = 3;
+   public static final int ao = 4;
+   public static final int ap = 5;
+   public static final int aq = 7;
+   public static final int ar = 15;
+   public static final int as = 25;
+   public static final ecg at = ecg.a("age", 0, 1);
+   public static final ecg au = ecg.a("age", 0, 2);
+   public static final ecg av = ecg.a("age", 0, 3);
+   public static final ecg aw = ecg.a("age", 0, 4);
+   public static final ecg ax = ecg.a("age", 0, 5);
+   public static final ecg ay = ecg.a("age", 0, 7);
+   public static final ecg az = ecg.a("age", 0, 15);
+   public static final ecg aA = ecg.a("age", 0, 25);
+   public static final ecg aB = ecg.a("bites", 0, 6);
+   public static final ecg aC = ecg.a("candles", 1, 4);
+   public static final ecg aD = ecg.a("delay", 1, 4);
+   public static final int aE = 7;
+   public static final ecg aF = ecg.a("distance", 1, 7);
+   public static final ecg aG = ecg.a("eggs", 1, 4);
+   public static final ecg aH = ecg.a("hatch", 0, 2);
+   public static final ecg aI = ecg.a("layers", 1, 8);
+   public static final int aJ = 0;
+   public static final int aK = 1;
+   public static final int aL = 3;
+   public static final int aM = 8;
+   public static final ecg aN = ecg.a("level", 1, 3);
+   public static final ecg aO = ecg.a("level", 0, 8);
+   public static final ecg aP = ecg.a("level", 1, 8);
+   public static final ecg aQ = ecg.a("honey_level", 0, 5);
+   public static final int aR = 15;
+   public static final ecg aS = ecg.a("level", 0, 15);
+   public static final ecg aT = ecg.a("moisture", 0, 7);
+   public static final ecg aU = ecg.a("note", 0, 24);
+   public static final ecg aV = ecg.a("pickles", 1, 4);
+   public static final ecg aW = ecg.a("power", 0, 15);
+   public static final ecg aX = ecg.a("stage", 0, 1);
+   public static final int aY = 7;
+   public static final ecg aZ = ecg.a("distance", 0, 7);
+   public static final int ba = 0;
+   public static final int bb = 4;
+   public static final ecg bc = ecg.a("charges", 0, 4);
+   public static final ecg bd = ecg.a("rotation", 0, ecm.a());
+   public static final ece<ebt> be = ece.a("part", ebt.class);
+   public static final ece<eby> bf = ece.a("type", eby.class);
+   public static final ece<ebz> bg = ece.a("mode", ebz.class);
+   public static final ece<ecb> bh = ece.a("hinge", ecb.class);
+   public static final ece<ech> bi = ece.a("instrument", ech.class);
+   public static final ece<eci> bj = ece.a("type", eci.class);
+   public static final ece<eco> bk = ece.a("type", eco.class);
+   public static final ece<ecp> bl = ece.a("shape", ecp.class);
+   public static final ece<ecq> bm = ece.a("mode", ecq.class);
+   public static final ece<ebs> bn = ece.a("leaves", ebs.class);
+   public static final ece<ecs> bo = ece.a("tilt", ecs.class);
+   public static final ece<jc> bp = ece.a("vertical_direction", jc.class, jc.b, jc.a);
+   public static final ece<ecd> bq = ece.a("thickness", ecd.class);
+   public static final ece<ecn> br = ece.a("sculk_sensor_phase", ecn.class);
+   public static final ebx bs = ebx.a("slot_0_occupied");
+   public static final ebx bt = ebx.a("slot_1_occupied");
+   public static final ebx bu = ebx.a("slot_2_occupied");
+   public static final ebx bv = ebx.a("slot_3_occupied");
+   public static final ebx bw = ebx.a("slot_4_occupied");
+   public static final ebx bx = ebx.a("slot_5_occupied");
+   public static final ecg by = ecg.a("dusted", 0, 3);
+   public static final ebx bz = ebx.a("cracked");
+   public static final ebx bA = ebx.a("crafting");
+   public static final ece<eal> bB = ece.a("trial_spawner_state", eal.class);
+   public static final ece<eas> bC = ece.a("vault_state", eas.class);
+   public static final ece<eca> bD = ece.a("creaking_heart_state", eca.class);
+   public static final ebx bE = ebx.a("ominous");
+   public static final ece<ecr> bF = ece.a("mode", ecr.class);
+   public static final ebx bG = ebx.a("map");
 }

@@ -1,135 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public class fpg extends hrm {
-   static final Logger a = LogUtils.getLogger();
-   private static final xa b = xa.c("mco.configure.world.subscription.title");
-   private static final xa c = xa.c("mco.configure.world.subscription.start");
-   private static final xa C = xa.c("mco.configure.world.subscription.timeleft");
-   private static final xa D = xa.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final xa E = xa.c("mco.configure.world.subscription.expired");
-   private static final xa F = xa.c("mco.configure.world.subscription.less_than_a_day");
-   private static final xa G = xa.c("mco.configure.world.subscription.unknown");
-   private static final xa H = xa.c("mco.configure.world.subscription.recurring.info");
-   private final gad I;
-   final fne J;
-   final gad K;
-   private xa L = G;
-   private xa M = G;
-   @Nullable
-   private fnq.a N;
+public class fpg extends hro {
+   private static final int a = 212;
+   private static final xc b = xc.c("mco.configure.world.name");
+   private static final xc c = xc.c("mco.configure.world.description");
+   private final fop C;
+   private final fng D;
+   private fuw E;
+   private fuw F;
 
-   public fpg(gad $$0, fne $$1, gad $$2) {
-      super(fqu.a);
-      this.I = $$0;
-      this.J = $$1;
-      this.K = $$2;
+   public fpg(fop $$0, fng $$1) {
+      super(xc.c("mco.configure.world.settings.title"));
+      this.C = $$0;
+      this.D = $$1;
    }
 
    @Override
    public void aS_() {
-      this.a(this.J.a);
-      this.c(ful.a(xa.c("mco.configure.world.subscription.extend"), $$0 -> fza.a(this, ayj.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
-      if (this.J.j) {
-         this.c(
-            ful.a(xa.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fpa.b(this, xa.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
-               .a(this.n / 2 - 100, g(10), 200, 20)
-               .a()
-         );
-      } else if (fly.b() && this.J.u != null) {
-         this.c(new fuv(this.n / 2 - 100, g(8), 200, 46, xa.a("mco.snapshot.subscription.info", this.J.u), this.p));
-      } else {
-         this.c(new fuv(this.n / 2 - 100, g(8), 200, 46, H, this.p));
-      }
-
-      this.c(ful.a(wz.k, $$0 -> this.aP_()).a(this.n / 2 - 100, g(12), 200, 20).a());
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.D.e == fng.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fun $$2 = fun.a(xc.c($$1), $$0x -> {
+         if (this.D.e == fng.c.b) {
+            this.m.a(fpc.a(this, xc.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
+         } else {
+            this.C.b(false);
+         }
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.F = new fuw(this.m.h, $$0, g(4), 212, 20, xc.c("mco.configure.world.name"));
+      this.F.f(32);
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
+      this.c(this.F);
+      this.E = new fuw(this.m.h, $$0, g(8), 212, 20, xc.c("mco.configure.world.description"));
+      this.E.f(32);
+      this.E.a(this.D.a());
+      this.c(this.E);
+      fun $$3 = this.c(fun.a(xc.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.F.b($$1x -> $$3.j = !bap.h($$1x));
+      this.c(fun.a(xb.e, $$0x -> this.aP_()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
    @Override
-   public xa i() {
-      return wz.b(b, c, this.M, C, this.L);
-   }
-
-   private void E() {
-      (new Thread("Realms-delete-realm") {
-         @Override
-         public void run() {
-            try {
-               fmd $$0 = fmd.a();
-               $$0.j(fpg.this.J.a);
-            } catch (fnz var2) {
-               fpg.a.error("Couldn't delete world", var2);
-            }
-
-            fpg.this.m.execute(() -> fpg.this.m.a(fpg.this.K));
-         }
-      }).start();
-      this.m.a(this);
-   }
-
-   private void a(long $$0) {
-      fmd $$1 = fmd.a();
-
-      try {
-         fnq $$2 = $$1.h($$0);
-         this.L = this.a($$2.b);
-         this.M = b($$2.a);
-         this.N = $$2.c;
-      } catch (fnz var5) {
-         a.error("Couldn't get subscription", var5);
-         this.m.a(new fos(var5, this.I));
-      }
-   }
-
-   private static xa b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return xa.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   protected void aG_() {
+      this.b(this.F);
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.I);
+      this.m.a(this.C);
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.n / 2 - 100;
-      $$0.a(this.p, b, this.n / 2, 17, -1);
-      $$0.b(this.p, c, $$4, g(0), -6250336);
-      $$0.b(this.p, this.M, $$4, g(1), -1);
-      if (this.N == fnq.a.a) {
-         $$0.b(this.p, C, $$4, g(3), -6250336);
-      } else if (this.N == fnq.a.b) {
-         $$0.b(this.p, D, $$4, g(3), -6250336);
-      }
-
-      $$0.b(this.p, this.L, $$4, g(4), -1);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
+      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
    }
 
-   private xa a(int $$0) {
-      if ($$0 < 0 && this.J.j) {
-         return E;
-      } else if ($$0 <= 1) {
-         return F;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return xa.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return xa.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? xa.a("mco.configure.world.subscription.remaining.days", $$2) : xa.i();
-         }
-      }
+   public void g() {
+      this.C.a(this.F.a(), this.E.a());
    }
 }

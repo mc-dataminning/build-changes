@@ -1,59 +1,104 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class egf {
-   private final ars a;
+public class egf implements egj {
+   private final List<egi> b = Lists.newArrayList();
+   private final Set<egi> c = Sets.newHashSet();
+   private final List<egi> d = Lists.newArrayList();
+   private boolean e;
+   private final aru f;
+   private final int g;
+   private final egf.a h;
 
-   public egf(ars $$0) {
-      this.a = $$0;
+   public egf(aru $$0, int $$1, egf.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public void a(jf<ege> $$0, ffq $$1, ege.a $$2) {
-      int $$3 = $$0.a().a();
-      iv $$4 = iv.a((jp)$$1);
-      int $$5 = jy.a($$4.u() - $$3);
-      int $$6 = jy.a($$4.v() - $$3);
-      int $$7 = jy.a($$4.w() - $$3);
-      int $$8 = jy.a($$4.u() + $$3);
-      int $$9 = jy.a($$4.v() + $$3);
-      int $$10 = jy.a($$4.w() + $$3);
-      List<ege.b> $$11 = new ArrayList<>();
-      egh.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == egg.a.b) {
-            $$11.add(new ege.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
+   }
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            edb $$16 = this.a.m().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+   @Override
+   public void a(egi $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
+      }
+
+      agq.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(egi $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
+      }
+
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
+      }
+   }
+
+   @Override
+   public boolean a(jg<egg> $$0, ffs $$1, egg.a $$2, egj.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
+
+      try {
+         Iterator<egi> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            egi $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<ffs> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
                }
             }
          }
+      } finally {
+         this.e = false;
       }
 
-      if (!$$11.isEmpty()) {
-         this.a($$11);
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
       }
 
-      if ($$13) {
-         ago.a(this.a, $$0, $$1);
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
+   }
+
+   private static Optional<ffs> a(aru $$0, ffs $$1, egi $$2) {
+      Optional<ffs> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = iw.a($$3.get()).j(iw.a((jq)$$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
       }
    }
 
-   private void a(List<ege.b> $$0) {
-      Collections.sort($$0);
-
-      for (ege.b $$1 : $$0) {
-         egg $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
-      }
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

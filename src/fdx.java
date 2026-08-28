@@ -1,31 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record fdx(Optional<cm> b) implements fdq {
-   public static final MapCodec<fdx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cm.a.optionalFieldOf("predicate").forGetter(fdx::c)).apply($$0, fdx::new));
+public record fdx(feo b) implements fds {
+   public static final MapCodec<fdx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fep.a.fieldOf("chance").forGetter(fdx::c)).apply($$0, fdx::new));
 
    @Override
-   public fdr b() {
-      return fds.j;
+   public fdt b() {
+      return fdu.d;
    }
 
-   @Override
-   public Set<baz<?>> a() {
-      return Set.of(fdb.i);
+   public boolean a(faj $$0) {
+      float $$1 = this.b.b($$0);
+      return $$0.b().i() < $$1;
    }
 
-   public boolean a(fah $$0) {
-      czy $$1 = $$0.c(fdb.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public static fds.a a(float $$0) {
+      return () -> new fdx(fel.a($$0));
    }
 
-   public static fdq.a a(cm.a $$0) {
-      return () -> new fdx(Optional.of($$0.b()));
+   public static fds.a a(feo $$0) {
+      return () -> new fdx($$0);
    }
 
-   public Optional<cm> c() {
+   public feo c() {
       return this.b;
    }
 }

@@ -1,14 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hin() implements hid {
+public record hin() implements hif {
    public static final MapCodec<hin> a = MapCodec.unit(new hin());
 
    @Override
-   public boolean get(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
-      frd $$5 = frd.Q();
-      bwt $$6 = $$5.ao();
-      return $$6 != null ? $$2 == $$6 : $$2 == $$5.t;
+   public boolean get(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
+      if ($$2 instanceof grb $$5 && $$5.gj().g() == $$0) {
+         return true;
+      }
+
+      return false;
    }
 
    @Override

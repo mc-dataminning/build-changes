@@ -1,22 +1,29 @@
-@FunctionalInterface
-public interface aoc {
-   void perform(ej var1, bwt var2);
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-   public static record a(bwt a, ev.a b) implements aoc {
-      @Override
-      public void perform(ej $$0, bwt $$1) {
-         if ($$1 instanceof art $$2) {
-            $$2.a($$0.m(), this.a, this.b);
-         } else {
-            $$1.a($$0.m(), this.b.a(this.a));
-         }
-      }
+public class aoc {
+   public static void a(CommandDispatcher<ek> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("list").executes($$0x -> a((ek)$$0x.getSource())))
+            .then(el.a("uuids").executes($$0x -> b((ek)$$0x.getSource())))
+      );
    }
 
-   public static record b(ffq a) implements aoc {
-      @Override
-      public void perform(ej $$0, bwt $$1) {
-         $$1.a($$0.m(), this.a);
-      }
+   private static int a(ek $$0) {
+      return a($$0, crz::m_);
+   }
+
+   private static int b(ek $$0) {
+      return a($$0, $$0x -> xc.a("commands.list.nameAndId", $$0x.ai(), xc.a($$0x.gi().getId())));
+   }
+
+   private static int a(ek $$0, Function<arv, xc> $$1) {
+      avu $$2 = $$0.l().ag();
+      List<arv> $$3 = $$2.t();
+      xc $$4 = xf.b($$3, $$1);
+      $$0.a(() -> xc.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class cje extends bxy {
+   protected cje(bxe<? extends cje> $$0, djz $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface cje {
+   @Override
+   public boolean w() {
+      return false;
+   }
 }

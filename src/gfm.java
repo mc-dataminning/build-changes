@@ -1,75 +1,103 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gfm extends gad {
-   private static final Logger d = LogUtils.getLogger();
-   public static final eib a = new eib((long)"test1".hashCode(), true, false);
-   protected final gad b;
-   private ful s;
-   private ful u;
-   private ful v;
-   private ful w;
-   protected fuu c;
-   private gfs x;
+public class gfm extends gaf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<alj<djz>> b = ag.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(djz.i, -13408734);
+      $$0.put(djz.j, -10075085);
+      $$0.put(djz.k, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final buh d;
 
-   public gfm(gad $$0) {
-      super(xa.c("selectWorld.title"));
-      this.b = $$0;
+   @Nullable
+   public static gfm a(frf $$0, BooleanConsumer $$1, DataFixer $$2, ezx.c $$3, boolean $$4) {
+      try {
+         gft $$5 = $$0.x();
+         aur $$6 = auu.a($$3);
+
+         gfm var10;
+         try (amj $$7 = $$5.a($$3.h(), false, $$6)) {
+            fad $$8 = $$7.d();
+            ju.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new gfm($$1, $$2, $$3, $$8, $$4, $$9);
+         }
+
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
+      }
+   }
+
+   private gfm(BooleanConsumer $$0, DataFixer $$1, ezx.c $$2, fad $$3, boolean $$4, ju $$5) {
+      super(xc.a("optimizeWorld.title", $$3.J().a()));
+      this.c = $$0;
+      this.d = new buh($$2, $$1, $$3, $$5, $$4, false);
    }
 
    @Override
    protected void aS_() {
-      this.c = new fuu(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xa.c("selectWorld.search"));
-      this.c.b($$0 -> this.x.a($$0));
-      this.d(this.c);
-      this.x = this.c(new gfs(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
-      this.u = this.c(ful.a(ezw.a, $$0 -> this.x.b().ifPresent(gfs.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
-      this.c(ful.a(xa.c("selectWorld.create"), $$0 -> gfe.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
-      this.v = this.c(ful.a(xa.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(gfs.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
-      this.s = this.c(ful.a(xa.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(gfs.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
-      this.w = this.c(ful.a(xa.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(gfs.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
-      this.c(ful.a(wz.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
-      this.a(null);
+      super.aS_();
+      this.c(fun.a(xb.e, $$0 -> {
+         this.d.a();
+         this.c.accept(false);
+      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.c);
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.b);
-   }
-
-   @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable ezw $$0) {
-      if ($$0 == null) {
-         this.u.b(ezw.a);
-         this.u.j = false;
-         this.v.j = false;
-         this.w.j = false;
-         this.s.j = false;
-      } else {
-         this.u.b($$0.t());
-         this.u.j = $$0.u();
-         this.v.j = $$0.w();
-         this.w.j = $$0.x();
-         this.s.j = $$0.y();
+   public void e() {
+      if (this.d.b()) {
+         this.c.accept(true);
       }
    }
 
    @Override
+   public void aP_() {
+      this.c.accept(false);
+   }
+
+   @Override
    public void aJ_() {
-      if (this.x != null) {
-         this.x.aI_().forEach(gfs.a::close);
+      this.d.a();
+      this.d.close();
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      int $$4 = this.n / 2 - 150;
+      int $$5 = this.n / 2 + 150;
+      int $$6 = this.o / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
+      if (this.d.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.p, xc.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
+         $$0.b(this.p, xc.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.p, xc.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
+
+         for (alj<djz> $$9 : this.d.c()) {
+            int $$10 = azq.d(this.d.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
+         }
+
+         int $$11 = this.d.f() + this.d.g();
+         xc $$12 = xc.a("optimizeWorld.progress.counter", $$11, this.d.e());
+         xc $$13 = xc.a("optimizeWorld.progress.percentage", azq.d(this.d.d() * 100.0F));
+         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
       }
    }
 }

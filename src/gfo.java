@@ -1,70 +1,75 @@
-import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gfo(eib a, js<efc> b, ehy c, jm<alr> d, alt e, dkv f, gfj g) {
-   public gfo(ehz $$0, jm<alr> $$1, alt $$2, dkv $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3, new gfj(gfq.a.a, Set.of(), null));
+public class gfo extends gaf {
+   private static final Logger d = LogUtils.getLogger();
+   public static final eid a = new eid((long)"test1".hashCode(), true, false);
+   protected final gaf b;
+   private fun s;
+   private fun u;
+   private fun v;
+   private fun w;
+   protected fuw c;
+   private gfu x;
+
+   public gfo(gaf $$0) {
+      super(xc.c("selectWorld.title"));
+      this.b = $$0;
    }
 
-   public gfo(eib $$0, ehy $$1, jm<alr> $$2, alt $$3, dkv $$4, gfj $$5) {
-      this($$0, $$2.a(alr.c).f(mh.bq), $$1, $$2.a(alr.c), $$3, $$4, $$5);
+   @Override
+   protected void aS_() {
+      this.c = new fuw(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xc.c("selectWorld.search"));
+      this.c.b($$0 -> this.x.a($$0));
+      this.d(this.c);
+      this.x = this.c(new gfu(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
+      this.u = this.c(fun.a(ezy.a, $$0 -> this.x.b().ifPresent(gfu.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
+      this.c(fun.a(xc.c("selectWorld.create"), $$0 -> gfg.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
+      this.v = this.c(fun.a(xc.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(gfu.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
+      this.s = this.c(fun.a(xc.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(gfu.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
+      this.w = this.c(fun.a(xc.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(gfu.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
+      this.c(fun.a(xb.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
+      this.a(null);
    }
 
-   public gfo a(eib $$0, ehy $$1) {
-      return new gfo($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   @Override
+   protected void aG_() {
+      this.b(this.c);
    }
 
-   public gfo a(gfo.b $$0) {
-      return new gfo($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   @Override
+   public void aP_() {
+      this.m.a(this.b);
    }
 
-   public gfo a(gfo.a $$0) {
-      return new gfo(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
    }
 
-   public jt.b a() {
-      return this.d.a();
-   }
-
-   public void b() {
-      for (efc $$0 : this.d()) {
-         $$0.b().a();
+   public void a(@Nullable ezy $$0) {
+      if ($$0 == null) {
+         this.u.b(ezy.a);
+         this.u.j = false;
+         this.v.j = false;
+         this.w.j = false;
+         this.s.j = false;
+      } else {
+         this.u.b($$0.t());
+         this.u.j = $$0.u();
+         this.v.j = $$0.w();
+         this.w.j = $$0.x();
+         this.s.j = $$0.y();
       }
    }
 
-   public eib c() {
-      return this.a;
-   }
-
-   public js<efc> d() {
-      return this.b;
-   }
-
-   public ehy e() {
-      return this.c;
-   }
-
-   public jm<alr> f() {
-      return this.d;
-   }
-
-   public alt g() {
-      return this.e;
-   }
-
-   public dkv h() {
-      return this.f;
-   }
-
-   public gfj i() {
-      return this.g;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<jt.b, ehy, ehy> {
-   }
-
-   public interface b extends UnaryOperator<eib> {
+   @Override
+   public void aJ_() {
+      if (this.x != null) {
+         this.x.aI_().forEach(gfu.a::close);
+      }
    }
 }

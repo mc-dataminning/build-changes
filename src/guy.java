@@ -1,126 +1,122 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.EnumSet;
+import java.util.Optional;
 
-public class guy extends guh {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final ffq k = new ffq(0.0, -0.32F, 0.073F);
-   private final Map<guy.b, giw> l;
+public class guy implements gup<dyw> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final glg h;
+   private final glg i;
+   private final glg j;
+   private final glg k;
+   private final glg l;
+   private final glg m;
+   private final glg n;
+   private static final float o = 0.125F;
 
-   public guy(guo.a $$0) {
-      super($$0);
-      Stream<guy.b> $$1 = ecs.a().flatMap($$0x -> Arrays.stream(guy.a.values()).map($$1x -> new guy.b($$0x, $$1x)));
-      this.l = $$1.collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1x -> a($$0.f(), $$1x.a, $$1x.b)));
+   public guy(guq.a $$0) {
+      this($$0.f());
    }
 
-   public static giw a(gla $$0, ecs $$1, guy.a $$2) {
-      return new giw.a($$0.a(gld.a($$1, $$2)), gsl::g);
+   public guy(glc $$0) {
+      glg $$1 = $$0.a(glf.av);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      glg $$2 = $$0.a(glf.aw);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   @Override
-   protected float a() {
-      return 1.0F;
+   public static glm b() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      glk $$2 = new glk(0.2F);
+      glk $$3 = new glk(-0.1F);
+      $$1.a(
+         "neck",
+         gll.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         gli.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      gll $$4 = gll.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, gli.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, gli.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return glm.a($$0, 32, 32);
    }
 
-   @Override
-   protected float b() {
-      return 0.9F;
+   public static glm c() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      gll $$2 = gll.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jc.c));
+      $$1.a("back", $$2, gli.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, gli.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, gli.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, gli.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return glm.a($$0, 16, 16);
    }
 
-   private static void a(flo $$0, float $$1) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   protected void a(flo $$0, float $$1, ebe $$2) {
-      a($$0, $$1);
-   }
-
-   @Override
-   protected giw a(ebe $$0, ecs $$1) {
-      guy.a $$2 = guy.a.a($$0);
-      return this.l.get(new guy.b($$1, $$2));
-   }
-
-   @Override
-   protected hnh a(ecs $$0) {
-      return gsu.b($$0);
-   }
-
-   @Override
-   protected ffq c() {
-      return k;
-   }
-
-   public static void a(flo $$0, gsa $$1, int $$2, int $$3, giw $$4, hnh $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(1.0F, -1.0F, -1.0F);
-      flr $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static glk a(guy.a $$0) {
-      glm $$1 = new glm();
-      glo $$2 = $$1.a();
-      $$2.a("board", glj.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), glg.a);
-      if ($$0 == guy.a.a) {
-         $$2.a("plank", glj.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), glg.a);
-      }
-
-      if ($$0 == guy.a.a || $$0 == guy.a.b) {
-         glo $$3 = $$2.a("normalChains", glj.c(), glg.a);
-         $$3.a("chainL1", glj.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), glg.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainL2", glj.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), glg.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-         $$3.a("chainR1", glj.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), glg.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainR2", glj.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), glg.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      }
-
-      if ($$0 == guy.a.c) {
-         $$2.a("vChains", glj.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), glg.a);
-      }
-
-      return glk.a($$1, 64, 32);
-   }
-
-   public static enum a implements bam {
-      a("wall"),
-      b("ceiling"),
-      c("ceiling_middle");
-
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public static guy.a a(ebe $$0) {
-         if ($$0.b() instanceof dod) {
-            return $$0.c(ebu.a) ? c : b;
-         } else {
-            return a;
+   private static hnj a(Optional<czw> $$0) {
+      if ($$0.isPresent()) {
+         hnj $$1 = gsw.a(dyy.a($$0.get()));
+         if ($$1 != null) {
+            return $$1;
          }
       }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+      return gsw.A;
    }
 
-   public static record b(ecs a, guy.a b) {
+   public void a(dyw $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
+      $$2.a();
+      jc $$7 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$7.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dyw.a $$8 = $$0.h;
+      if ($$8 != null && $$0.i() != null) {
+         float $$9 = ((float)($$0.i().ae() - $$0.g) + $$1) / (float)$$8.c;
+         if ($$9 >= 0.0F && $$9 <= 1.0F) {
+            if ($$8 == dyw.a.a) {
+               float $$10 = 0.015625F;
+               float $$11 = $$9 * (float) (Math.PI * 2);
+               float $$12 = -1.5F * (azq.b($$11) + 0.5F) * azq.a($$11 / 2.0F);
+               $$2.a(a.b.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$13 = azq.a($$11);
+               $$2.a(a.f.rotation($$13 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$14 = azq.a(-$$9 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$15 = 1.0F - $$9;
+               $$2.a(a.d.rotation($$14 * $$15), 0.5F, 0.0F, 0.5F);
+            }
+         }
+      }
+
+      this.b($$2, $$3, $$4, $$5, $$0.s());
+      $$2.b();
+   }
+
+   public void a(flq $$0, gsc $$1, int $$2, int $$3, dzm $$4) {
+      this.b($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private void b(flq $$0, gsc $$1, int $$2, int $$3, dzm $$4) {
+      flt $$5 = gsw.z.a($$1, gsn::d);
+      this.h.a($$0, $$5, $$2, $$3);
+      this.m.a($$0, $$5, $$2, $$3);
+      this.n.a($$0, $$5, $$2, $$3);
+      this.a(this.i, $$0, $$1, $$2, $$3, a($$4.e()));
+      this.a(this.j, $$0, $$1, $$2, $$3, a($$4.b()));
+      this.a(this.k, $$0, $$1, $$2, $$3, a($$4.c()));
+      this.a(this.l, $$0, $$1, $$2, $$3, a($$4.d()));
+   }
+
+   private void a(glg $$0, flq $$1, gsc $$2, int $$3, int $$4, hnj $$5) {
+      $$0.a($$1, $$5.a($$2, gsn::d), $$3, $$4);
    }
 }

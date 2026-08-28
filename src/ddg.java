@@ -1,26 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ddg(int d, float e) {
-   public static final float a = 5.0F;
-   public static final Codec<ddg> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayw.l.optionalFieldOf("item_damage_per_attack", 1).forGetter(ddg::a),
-               ayw.n.optionalFieldOf("disable_blocking_for_seconds", 0.0F).forGetter(ddg::b)
-            )
-            .apply($$0, ddg::new)
+public record ddg(float c, Optional<alk> d) {
+   public static final Codec<ddg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayy.o.fieldOf("seconds").forGetter(ddg::b), alk.a.optionalFieldOf("cooldown_group").forGetter(ddg::c)).apply($$0, ddg::new)
    );
-   public static final yy<wl, ddg> c = yy.a(yw.h, ddg::a, yw.l, ddg::b, ddg::new);
+   public static final za<wn, ddg> b = za.a(yy.l, ddg::b, alk.b.a(yy::a), ddg::c, ddg::new);
 
-   public ddg(int $$0) {
-      this($$0, 0.0F);
+   public ddg(float $$0) {
+      this($$0, Optional.empty());
    }
 
    public int a() {
-      return this.d;
+      return (int)(this.c * 20.0F);
+   }
+
+   public void a(daa $$0, bxw $$1) {
+      if ($$1 instanceof crz $$2) {
+         $$2.gF().a($$0, this.a());
+      }
    }
 
    public float b() {
-      return this.e;
+      return this.c;
+   }
+
+   public Optional<alk> c() {
+      return this.d;
    }
 }

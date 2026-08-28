@@ -1,25 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class dtu extends dwo {
-   public static final MapCodec<dtu> a = b(dtu::new);
-   private static final fgk b = dnc.b(12.0, 0.0, 13.0);
+public abstract class dtu extends dpi {
+   private static final Map<jc.a, fgm> b = fgj.b(dne.a(4.0, 4.0, 16.0));
 
-   @Override
-   public MapCodec<dtu> a() {
-      return a;
-   }
-
-   protected dtu(ebd.d $$0) {
+   protected dtu(ebf.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return b;
+   protected abstract MapCodec<? extends dtu> a();
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return b.get($$0.c(a).o());
    }
 
    @Override
-   protected boolean b(ebe $$0, djb $$1, iv $$2) {
-      return $$0.a(axe.aO) || $$0.a(dne.eo) || super.b($$0, $$1, $$2);
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.b(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
    }
 }

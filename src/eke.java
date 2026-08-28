@@ -1,111 +1,54 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public class eke {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class eke extends ekm<emn> {
+   public eke(Codec<emn> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(dkw $$0, iv $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   @Override
+   public boolean a(eko<emn> $$0) {
+      emn $$1 = $$0.f();
+      iw $$2 = $$0.e();
+      dky $$3 = $$0.b();
+      azz $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      iw.a $$10 = new iw.a();
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(azo.b($$5) * (float)$$2);
-            int $$7 = (int)(azo.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected static boolean a(djy $$0, iv $$1) {
-      return $$0.a($$1, eke::c);
-   }
-
-   protected static boolean b(djy $$0, iv $$1) {
-      return $$0.a($$1, eke::e);
-   }
-
-   protected static void a(jb $$0, int $$1, boolean $$2, Consumer<ebe> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, ecb.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, ecb.d));
+      for (iw $$11 : iw.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, ecb.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? ecb.a : ecb.b));
-      }
+      return $$5;
    }
 
-   protected static void a(djy $$0, iv $$1, jb $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         iv.a $$5 = $$1.k();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dne.tb)) {
-               $$3x = $$3x.b(dta.d, Boolean.valueOf($$0.A($$5)));
+   protected boolean a(emn $$0, dky $$1, azz $$2, int $$3, int $$4, iw.a $$5) {
+      boolean $$6 = false;
+      boolean $$7 = false;
+
+      for (int $$8 = $$3; $$8 > $$4; $$8--) {
+         $$5.q($$8);
+         if ($$0.b().test($$1, $$5)) {
+            ebg $$9 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$9, 2);
+            if (!$$7) {
+               this.a($$1, $$5);
             }
 
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
+            $$6 = true;
+            $$7 = true;
+         } else {
+            $$7 = false;
+         }
       }
-   }
 
-   protected static boolean c(djy $$0, iv $$1) {
-      ebe $$2 = $$0.a_($$1);
-      if ($$2.a(axe.bv)) {
-         $$0.a($$1, dne.tc.m(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static ebe a(jb $$0, ecb $$1) {
-      return dne.tb.m().b(dta.b, $$0).b(dta.c, $$1);
-   }
-
-   public static boolean a(ebe $$0) {
-      return b($$0) || $$0.a(dne.K);
-   }
-
-   public static boolean b(ebe $$0) {
-      return $$0.a(dne.tc) || $$0.a(axe.bv);
-   }
-
-   public static boolean c(ebe $$0) {
-      return $$0.l() || $$0.a(dne.J);
-   }
-
-   public static boolean d(ebe $$0) {
-      return !$$0.l() && !$$0.a(dne.J);
-   }
-
-   public static boolean e(ebe $$0) {
-      return $$0.l() || $$0.a(dne.J) || $$0.a(dne.K);
+      return $$6;
    }
 }

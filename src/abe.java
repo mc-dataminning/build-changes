@@ -1,16 +1,8 @@
-public interface abe extends zn {
-   @Override
-   default vu b() {
-      return vu.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(abf var1);
-
-   void a(abg var1);
-
-   void a(abj var1);
-
-   void a(abi var1);
-
-   void a(abh var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface abe {
 }

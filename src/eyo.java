@@ -1,98 +1,154 @@
-import java.util.Set;
+import java.util.Comparator;
+import java.util.Optional;
 
-public record eyo(ars d, ffq e, ffq f, float g, float h, boolean i, boolean j, Set<byi> k, eyo.a l) {
-   public static final eyo.a a = $$0 -> {
-   };
-   public static final eyo.a b = eyo::a;
-   public static final eyo.a c = eyo::b;
+public class eyo {
+   public static final int a = 3;
+   private static final int b = 16;
+   private static final int c = 128;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final aru n;
 
-   public eyo(ars $$0, ffq $$1, ffq $$2, float $$3, float $$4, eyo.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   public eyo(aru $$0) {
+      this.n = $$0;
    }
 
-   public eyo(ars $$0, ffq $$1, ffq $$2, float $$3, float $$4, Set<byi> $$5, eyo.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
+   public Optional<iw> a(iw $$0, boolean $$1, ecy $$2) {
+      ciy $$3 = this.n.A();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      return $$3.b($$0x -> $$0x.a(cjc.r), $$0, $$4, ciy.b.c)
+         .map(ciz::g)
+         .filter($$2::a)
+         .filter($$0x -> this.n.a_($$0x).b(ebw.J))
+         .min(Comparator.<iw>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(kb::v));
    }
 
-   public eyo(ars $$0, bwt $$1, eyo.a $$2) {
-      this($$0, a($$0, $$1), ffq.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
-   }
+   public Optional<m.a> a(iw $$0, jc.a $$1) {
+      jc $$2 = jc.a(jc.b.a, $$1);
+      double $$3 = -1.0;
+      iw $$4 = null;
+      double $$5 = -1.0;
+      iw $$6 = null;
+      ecy $$7 = this.n.E_();
+      int $$8 = Math.min(this.n.ao(), this.n.K_() + this.n.l() - 1);
+      int $$9 = 1;
+      iw.a $$10 = $$0.k();
 
-   private static void a(bwt $$0) {
-      if ($$0 instanceof art $$1) {
-         $$1.f.b(new adj(1032, iv.c, 0, false));
+      for (iw.a $$11 : iw.a($$0, 16, jc.f, jc.d)) {
+         int $$12 = Math.min($$8, this.n.a(ehf.a.e, $$11.u(), $$11.w()));
+         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
+            $$11.c($$2.g(), 1);
+
+            for (int $$13 = $$12; $$13 >= this.n.K_(); $$13--) {
+               $$11.q($$13);
+               if (this.a($$11)) {
+                  int $$14 = $$13;
+
+                  while ($$13 > this.n.K_() && this.a($$11.c(jc.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$11.q($$13);
+                        if (this.a($$11, $$10, $$2, 0)) {
+                           double $$16 = $$0.j($$11);
+                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$11.j();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$11.j();
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
-   }
 
-   private static void b(bwt $$0) {
-      $$0.f(iv.a((jp)$$0.dt()));
-   }
-
-   public static eyo a(ars $$0, bwt $$1, eyo.a $$2) {
-      return new eyo($$0, a($$0, $$1), ffq.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
-   }
-
-   private static ffq a(ars $$0, bwt $$1) {
-      return $$1.a($$0, $$0.aa()).c();
-   }
-
-   public eyo a(float $$0, float $$1) {
-      return new eyo(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
-   }
-
-   public eyo a(ffq $$0) {
-      return new eyo(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
-   }
-
-   public eyo a() {
-      return new eyo(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
-   }
-
-   public ars b() {
-      return this.d;
-   }
-
-   public ffq c() {
-      return this.e;
-   }
-
-   public ffq d() {
-      return this.f;
-   }
-
-   public float e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public Set<byi> i() {
-      return this.k;
-   }
-
-   public eyo.a j() {
-      return this.l;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(bwt var1);
-
-      default eyo.a then(eyo.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
+
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.K_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
+
+         $$4 = new iw($$0.u() - $$2.j() * 1, azq.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
+         $$4 = $$7.b($$4);
+         jc $$19 = $$2.h();
+
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  ebg $$23 = $$22 < 0 ? dng.cy.m() : dng.a.m();
+                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$10, $$23);
+               }
+            }
+         }
+      }
+
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$10, dng.cy.m(), 3);
+            }
+         }
+      }
+
+      ebg $$26 = dng.eu.m().b(dsp.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$10, $$26, 18);
+         }
+      }
+
+      return Optional.of(new m.a($$4.j(), 2, 3));
+   }
+
+   private boolean a(iw.a $$0) {
+      ebg $$1 = this.n.a_($$0);
+      return $$1.v() && $$1.y().c();
+   }
+
+   private boolean a(iw $$0, iw.a $$1, jc $$2, int $$3) {
+      jc $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 }

@@ -1,21 +1,29 @@
-public record aeb(int b, xa c) implements zh<abw> {
-   public static final yy<wl, aeb> a = yy.a(yw.h, aeb::b, xc.d, aeb::e, aeb::new);
+public class aeb implements zj<aby> {
+   public static final za<vy, aeb> a = zj.a(aeb::a, aeb::new);
+   private final int b;
 
-   @Override
-   public zj<aeb> a() {
-      return agp.ae;
+   public aeb(bvh $$0) {
+      this($$0.b());
    }
 
-   public void a(abw $$0) {
+   public aeb(int $$0) {
+      this.b = $$0;
+   }
+
+   private aeb(vy $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vy $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zl<aeb> a() {
+      return agr.ac;
+   }
+
+   public void a(aby $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public xa e() {
-      return this.c;
    }
 }

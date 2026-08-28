@@ -1,11 +1,31 @@
-public interface aaa extends abt {
-   void a(aad var1);
+import java.util.Map;
 
-   void a(aae var1);
+public class aaa implements zj<zp> {
+   public static final za<vy, aaa> a = zj.a(aaa::a, aaa::new);
+   private final Map<alj<? extends jt<?>>, axx.a> b;
 
-   void a(aac var1);
+   public aaa(Map<alj<? extends jt<?>>, axx.a> $$0) {
+      this.b = $$0;
+   }
 
-   void a(aaf var1);
+   private aaa(vy $$0) {
+      this.b = $$0.a(vy::r, axx.a::b);
+   }
 
-   void a(aab var1);
+   private void a(vy $$0) {
+      $$0.a(this.b, vy::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   @Override
+   public zl<aaa> a() {
+      return aab.k;
+   }
+
+   public void a(zp $$0) {
+      $$0.a(this);
+   }
+
+   public Map<alj<? extends jt<?>>, axx.a> b() {
+      return this.b;
+   }
 }

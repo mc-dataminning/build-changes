@@ -1,256 +1,135 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fpi extends hrm implements fmr {
-   private static final int b = 200;
-   private static final int c = 80;
-   private static final int C = 95;
-   private static final int D = 1;
-   private static final String[] E = new String[]{"", ".", ". .", ". . ."};
-   private static final xa F = xa.c("mco.upload.verifying");
-   private final fpb G;
-   private final ezw H;
+public class fpi extends hro {
+   static final Logger a = LogUtils.getLogger();
+   private static final xc b = xc.c("mco.configure.world.subscription.title");
+   private static final xc c = xc.c("mco.configure.world.subscription.start");
+   private static final xc C = xc.c("mco.configure.world.subscription.timeleft");
+   private static final xc D = xc.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final xc E = xc.c("mco.configure.world.subscription.expired");
+   private static final xc F = xc.c("mco.configure.world.subscription.less_than_a_day");
+   private static final xc G = xc.c("mco.configure.world.subscription.unknown");
+   private static final xc H = xc.c("mco.configure.world.subscription.recurring.info");
+   private final gaf I;
+   final fng J;
+   final gaf K;
+   private xc L = G;
+   private xc M = G;
    @Nullable
-   private final fqd I;
-   private final long J;
-   private final int K;
-   final AtomicReference<fmq> a = new AtomicReference<>();
-   private final fmh L;
-   private final RateLimiter M;
-   @Nullable
-   private volatile xa[] N;
-   private volatile xa O = xa.c("mco.upload.preparing");
-   @Nullable
-   private volatile String P;
-   private volatile boolean Q;
-   private volatile boolean R;
-   private volatile boolean S = true;
-   private volatile boolean T;
-   @Nullable
-   private ful U;
-   @Nullable
-   private ful V;
-   private int W;
-   private final fxz X = new fxz(this);
+   private fns.a N;
 
-   public fpi(@Nullable fqd $$0, long $$1, int $$2, fpb $$3, ezw $$4) {
-      super(fqu.a);
+   public fpi(gaf $$0, fng $$1, gaf $$2) {
+      super(fqw.a);
       this.I = $$0;
       this.J = $$1;
       this.K = $$2;
-      this.G = $$3;
-      this.H = $$4;
-      this.L = new fmh();
-      this.M = RateLimiter.create(0.1F);
    }
 
    @Override
    public void aS_() {
-      this.U = this.X.b(ful.a(wz.k, $$0x -> this.E()).a());
-      this.U.k = false;
-      this.V = this.X.b(ful.a(wz.e, $$0x -> this.F()).a());
-      if (!this.T) {
-         if (this.G.b == -1) {
-            this.T = true;
-            this.H();
-         } else {
-            List<fqb> $$0 = new ArrayList<>();
-            if (this.I != null) {
-               $$0.add(this.I);
-            }
-
-            $$0.add(new fqi(this.J, this.G.b, () -> {
-               if (!this.T) {
-                  this.T = true;
-                  this.m.execute(() -> {
-                     this.m.a(this);
-                     this.H();
-                  });
-               }
-            }));
-            this.m.a(new fou(this.G, $$0.toArray(new fqb[0])));
-         }
+      this.a(this.J.a);
+      this.c(fun.a(xc.c("mco.configure.world.subscription.extend"), $$0 -> fzc.a(this, ayl.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
+      if (this.J.j) {
+         this.c(
+            fun.a(xc.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fpc.b(this, xc.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
+               .a(this.n / 2 - 100, g(10), 200, 20)
+               .a()
+         );
+      } else if (fma.b() && this.J.u != null) {
+         this.c(new fux(this.n / 2 - 100, g(8), 200, 46, xc.a("mco.snapshot.subscription.info", this.J.u), this.p));
+      } else {
+         this.c(new fux(this.n / 2 - 100, g(8), 200, 46, H, this.p));
       }
 
-      this.X.a($$1 -> {
-         fuj var10000 = this.c($$1);
-      });
-      this.c();
+      this.c(fun.a(xb.k, $$0 -> this.aP_()).a(this.n / 2 - 100, g(12), 200, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.X.a();
+   public xc i() {
+      return xb.b(b, c, this.M, C, this.L);
    }
 
    private void E() {
-      this.m.a(new fon(new fly(new gaf()), this.J));
-   }
+      (new Thread("Realms-delete-realm") {
+         @Override
+         public void run() {
+            try {
+               fmf $$0 = fmf.a();
+               $$0.j(fpi.this.J.a);
+            } catch (fob var2) {
+               fpi.a.error("Couldn't delete world", var2);
+            }
 
-   private void F() {
-      this.Q = true;
-      fmq $$0 = this.a.get();
-      if ($$0 != null) {
-         $$0.b();
-      } else {
-         this.m.a(this.G);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         if (this.S) {
-            this.F();
-         } else {
-            this.E();
+            fpi.this.m.execute(() -> fpi.this.m.a(fpi.this.K));
          }
+      }).start();
+      this.m.a(this);
+   }
 
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   private void a(long $$0) {
+      fmf $$1 = fmf.a();
+
+      try {
+         fns $$2 = $$1.h($$0);
+         this.L = this.a($$2.b);
+         this.M = b($$2.a);
+         this.N = $$2.c;
+      } catch (fob var5) {
+         a.error("Couldn't get subscription", var5);
+         this.m.a(new fou(var5, this.I));
       }
    }
 
+   private static xc b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return xc.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   }
+
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+   public void aP_() {
+      this.m.a(this.I);
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (!this.R && this.L.c() && this.L.d() && this.V != null) {
-         this.O = F;
-         this.V.j = false;
+      int $$4 = this.n / 2 - 100;
+      $$0.a(this.p, b, this.n / 2, 17, -1);
+      $$0.b(this.p, c, $$4, g(0), -6250336);
+      $$0.b(this.p, this.M, $$4, g(1), -1);
+      if (this.N == fns.a.a) {
+         $$0.b(this.p, C, $$4, g(3), -6250336);
+      } else if (this.N == fns.a.b) {
+         $$0.b(this.p, D, $$4, g(3), -6250336);
       }
 
-      $$0.a(this.p, this.O, this.n / 2, 50, -1);
-      if (this.S) {
-         $$0.b(this.p, E[this.W / 10 % E.length], this.n / 2 + this.p.a(this.O) / 2 + 5, 50, -1);
-      }
+      $$0.b(this.p, this.L, $$4, g(4), -1);
+   }
 
-      if (this.L.c() && !this.Q) {
-         this.c($$0);
-         this.d($$0);
-      }
-
-      xa[] $$4 = this.N;
-      if ($$4 != null) {
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$0.a(this.p, $$4[$$5], this.n / 2, 110 + 12 * $$5, -65536);
+   private xc a(int $$0) {
+      if ($$0 < 0 && this.J.j) {
+         return E;
+      } else if ($$0 <= 1) {
+         return F;
+      } else {
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return xc.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return xc.a("mco.configure.world.subscription.remaining.months", $$1);
+         } else {
+            return $$4 ? xc.a("mco.configure.world.subscription.remaining.days", $$2) : xc.i();
          }
       }
-   }
-
-   private void c(ftx $$0) {
-      double $$1 = this.L.e();
-      this.P = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, xa.a("mco.upload.percent", this.P), this.n / 2, 84, -1);
-   }
-
-   private void d(ftx $$0) {
-      this.a($$0, this.L.g());
-   }
-
-   private void a(ftx $$0, long $$1) {
-      String $$2 = this.P;
-      if ($$1 > 0L && $$2 != null) {
-         int $$3 = this.p.b($$2);
-         String $$4 = "(" + flz.b($$1) + "/s)";
-         $$0.b(this.p, $$4, this.n / 2 + $$3 / 2 + 15, 84, -1);
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.W++;
-      this.L.f();
-      if (this.M.tryAcquire(1)) {
-         xa $$0 = this.G();
-         this.m.aY().c($$0);
-      }
-   }
-
-   private xa G() {
-      List<xa> $$0 = Lists.newArrayList();
-      $$0.add(this.O);
-      if (this.P != null) {
-         $$0.add(xa.a("mco.upload.percent", this.P));
-      }
-
-      xa[] $$1 = this.N;
-      if ($$1 != null) {
-         $$0.addAll(Arrays.asList($$1));
-      }
-
-      return wz.a($$0);
-   }
-
-   private void H() {
-      Path $$0 = this.m.q.toPath().resolve("saves").resolve(this.H.a());
-      fnk $$1 = fnk.a(this.H.g(), true, this.H.l().c());
-      fmq $$2 = new fmq($$0, $$1, this.m.X(), this.J, this.K, this);
-      if (!this.a.compareAndSet(null, $$2)) {
-         throw new IllegalStateException("Tried to start uploading but was already uploading");
-      } else {
-         $$2.a().handleAsync(($$0x, $$1x) -> {
-            if ($$1x != null) {
-               if ($$1x instanceof CompletionException $$2x) {
-                  $$1x = $$2x.getCause();
-               }
-
-               if ($$1x instanceof fml $$3) {
-                  if ($$3.a() != null) {
-                     this.O = $$3.a();
-                  }
-
-                  this.a($$3.b());
-               } else {
-                  this.O = xa.a("mco.upload.failed", $$1x.getMessage());
-               }
-            } else {
-               this.O = xa.c("mco.upload.done");
-               if (this.U != null) {
-                  this.U.b(wz.d);
-               }
-            }
-
-            this.R = true;
-            this.S = false;
-            if (this.U != null) {
-               this.U.k = true;
-            }
-
-            if (this.V != null) {
-               this.V.k = false;
-            }
-
-            this.a.set(null);
-            return null;
-         }, this.m);
-      }
-   }
-
-   private void a(@Nullable xa... $$0) {
-      this.N = $$0;
-   }
-
-   @Override
-   public fmh b() {
-      return this.L;
-   }
-
-   @Override
-   public void d() {
-      this.O = xa.a("mco.upload.uploading", this.H.b());
    }
 }

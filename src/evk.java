@@ -1,46 +1,64 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class evk extends ewa {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<evk> a = MapCodec.unit(() -> evk.b);
-   public static final evk b = new evk();
+public class evk extends ewc {
+   public static final MapCodec<evk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ewe.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bty.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, evk::new)
+   );
+   private final ewc b;
+   private final bty c;
 
-   private evk() {
+   public evk(ewc $$0, bty $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Nullable
    @Override
-   public ewd.d a(dka $$0, iv $$1, iv $$2, ewd.d $$3, ewd.d $$4, evz $$5) {
-      ebe $$6 = $$4.b();
-      if ($$6.a(dne.pH)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+   protected ewe<?> a() {
+      return ewe.o;
+   }
+
+   @Override
+   public final List<ewf.d> a(dkq $$0, iw $$1, iw $$2, List<ewf.d> $$3, List<ewf.d> $$4, ewb $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ag.b(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
             return $$4;
          } else {
-            String $$7 = $$4.c().b("final_state", "minecraft:air");
+            azz $$6 = azz.a($$0.a().E()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ag.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
 
-            ebe $$9;
-            try {
-               ge.a $$8 = ge.a($$0.a(mh.i), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  ewf.d $$12 = $$3.get($$11);
+                  ewf.d $$13 = $$4.get($$11);
+                  ewf.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
             }
-
-            return $$9.a(dne.lt) ? null : new ewd.d($$4.a(), $$9, null);
          }
       } else {
          return $$4;
       }
-   }
-
-   @Override
-   protected ewc<?> a() {
-      return ewc.h;
    }
 }

@@ -1,7 +1,21 @@
-@FunctionalInterface
-public interface eso<C extends emp> {
-   void generatePieces(est var1, eso.a<C> var2);
+import com.mojang.serialization.Codec;
 
-   public static record a<C extends emp>(C a, edc b, ewe c, djc d, djz e, eic f, long g) {
+public enum eso implements bao {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box"),
+   e("encapsulate");
+
+   public static final Codec<eso> f = bao.a(eso::values);
+   private final String g;
+
+   private eso(final String $$0) {
+      this.g = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.g;
    }
 }

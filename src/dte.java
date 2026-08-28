@@ -1,24 +1,25 @@
 import com.mojang.serialization.MapCodec;
 
-public class dte extends dnc {
+public class dte extends dpb {
    public static final MapCodec<dte> a = b(dte::new);
+   private static final fgm[] b = dne.a(7, $$0 -> dne.b(16.0, 0.0, (double)(2 + $$0)));
 
    @Override
    public MapCodec<dte> a() {
       return a;
    }
 
-   public dte(ebd.d $$0) {
+   public dte(ebf.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean f_(ebe $$0) {
-      return true;
+   protected djy d() {
+      return dae.vq;
    }
 
    @Override
-   protected int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-      return 15;
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return b[this.h($$0)];
    }
 }

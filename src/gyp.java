@@ -1,106 +1,41 @@
-public class gyp extends gyh<cso, hex> {
-   private static final ali a = ali.b("textures/entity/fishing_hook.png");
-   private static final gsl g = gsl.f(a);
-   private static final double h = 960.0;
+import java.util.List;
 
-   public gyp(gyi.a $$0) {
+public class gyp extends gyj<cod, hew> {
+   private final gtf a;
+
+   public gyp(gyk.a $$0) {
       super($$0);
+      this.e = 0.5F;
+      this.a = $$0.d();
    }
 
-   public boolean a(cso $$0, gvu $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) && $$0.g() != null;
+   public boolean a(cod $$0, gvw $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.j() != $$0.dV().a_($$0.dv());
    }
 
-   public void a(hex $$0, flo $$1, gsa $$2, int $$3) {
-      $$1.a();
-      $$1.a();
-      $$1.b(0.5F, 0.5F, 0.5F);
-      $$1.a(this.d.b());
-      flo.a $$4 = $$1.c();
-      flr $$5 = $$2.getBuffer(g);
-      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
-      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
-      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
-      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
-      $$1.b();
-      float $$6 = (float)$$0.a.d;
-      float $$7 = (float)$$0.a.e;
-      float $$8 = (float)$$0.a.f;
-      flr $$9 = $$2.getBuffer(gsl.y());
-      flo.a $$10 = $$1.c();
-      int $$11 = 16;
-
-      for (int $$12 = 0; $$12 <= 16; $$12++) {
-         a($$6, $$7, $$8, $$9, $$10, a($$12, 16), a($$12 + 1, 16));
-      }
-
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public static bxl a(crx $$0) {
-      return $$0.fb().h() instanceof czh ? $$0.fy() : $$0.fy().e();
-   }
-
-   private ffq a(crx $$0, float $$1, float $$2) {
-      int $$3 = a($$0) == bxl.b ? 1 : -1;
-      if (this.d.d.aE().a() && $$0 == frd.Q().t) {
-         double $$11 = 960.0 / (double)this.d.d.ak().c().intValue();
-         ffq $$12 = this.d.b.j().a((float)$$3 * 0.525F, -0.1F).c($$11).b($$1 * 0.5F).a(-$$1 * 0.7F);
-         return $$0.n($$2).e($$12);
-      } else {
-         float $$4 = azo.h($$2, $$0.aW, $$0.aV) * (float) (Math.PI / 180.0);
-         double $$5 = (double)azo.a($$4);
-         double $$6 = (double)azo.b($$4);
-         float $$7 = $$0.el();
-         double $$8 = (double)$$3 * 0.35 * (double)$$7;
-         double $$9 = 0.8 * (double)$$7;
-         float $$10 = $$0.ch() ? -0.1875F : 0.0F;
-         return $$0.n($$2).b(-$$6 * $$8 - $$5 * $$9, (double)$$10 - 0.45 * (double)$$7, -$$5 * $$8 + $$6 * $$9);
+   public void a(hew $$0, flq $$1, gsc $$2, int $$3) {
+      ebg $$4 = $$0.c;
+      if ($$4.o() == dtr.b) {
+         $$1.a();
+         $$1.a(-0.5, 0.0, -0.5);
+         List<gto> $$5 = this.a.a($$4).a(azz.a($$4.b($$0.a)));
+         this.a.b().a($$0, $$5, $$4, $$0.b, $$1, $$2.getBuffer(gru.b($$4)), false, hks.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   private static float a(int $$0, int $$1) {
-      return (float)$$0 / (float)$$1;
+   public hew a() {
+      return new hew();
    }
 
-   private static void a(flr $$0, flo.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.5F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hkq.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
-   }
-
-   private static void a(float $$0, float $$1, float $$2, flr $$3, flo.a $$4, float $$5, float $$6) {
-      float $$7 = $$0 * $$5;
-      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
-      float $$9 = $$2 * $$5;
-      float $$10 = $$0 * $$6 - $$7;
-      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
-      float $$12 = $$2 * $$6 - $$9;
-      float $$13 = azo.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
-      $$10 /= $$13;
-      $$11 /= $$13;
-      $$12 /= $$13;
-      $$3.a($$4, $$7, $$8, $$9).a(-16777216).b($$4, $$10, $$11, $$12);
-   }
-
-   public hex a() {
-      return new hex();
-   }
-
-   public void a(cso $$0, hex $$1, float $$2) {
+   public void a(cod $$0, hew $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      crx $$3 = $$0.g();
-      if ($$3 == null) {
-         $$1.a = ffq.c;
-      } else {
-         float $$4 = $$3.D($$2);
-         float $$5 = azo.a(azo.c($$4) * (float) Math.PI);
-         ffq $$6 = this.a($$3, $$5, $$2);
-         ffq $$7 = $$0.p($$2).b(0.0, 0.25, 0.0);
-         $$1.a = $$6.d($$7);
-      }
-   }
-
-   protected boolean a(cso $$0) {
-      return false;
+      iw $$3 = iw.a($$0.dA(), $$0.cR().e, $$0.dG());
+      $$1.a = $$0.f();
+      $$1.b = $$3;
+      $$1.c = $$0.j();
+      $$1.d = $$0.dV().u($$3);
+      $$1.e = $$0.dV();
    }
 }

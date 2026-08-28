@@ -1,4 +1,8 @@
-public class hqz implements hrg {
-   public hqz(hrf $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hqz {
 }

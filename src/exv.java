@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface exv {
+public enum exv {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

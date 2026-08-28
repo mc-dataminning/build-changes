@@ -1,289 +1,379 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Collections;
-import java.util.EnumSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
-public class edv extends edb {
-   @Nullable
-   private volatile exd n;
-   private volatile eec o = eec.c;
-   private final List<tz> p = Lists.newArrayList();
-   @Nullable
-   private eda q;
-   @Nullable
-   private egr r;
-   private final fhg<dnc> s;
-   private final fhg<exn> t;
+public class edv<T> implements edu<T>, edw<T> {
+   private static final int a = 0;
+   private final edu<T> b = ($$0x, $$1x) -> 0;
+   private final jl<T> c;
+   private volatile edv.c<T> d;
+   private final edv.d e;
+   private final bar f = new bar("PalettedContainer");
 
-   public edv(djc $$0, edy $$1, djz $$2, js<dla> $$3, @Nullable eig $$4) {
-      this($$0, $$1, null, new fhg<>(), new fhg<>(), $$2, $$3, $$4);
+   public void a() {
+      this.f.a();
    }
 
-   public edv(djc $$0, edy $$1, @Nullable edm[] $$2, fhg<dnc> $$3, fhg<exn> $$4, djz $$5, js<dla> $$6, @Nullable eig $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
+   public void b() {
+      this.f.b();
+   }
+
+   public static <T> Codec<edv<T>> a(jl<T> $$0, Codec<T> $$1, edv.d $$2, T $$3) {
+      edw.b<T, edv<T>> $$4 = edv::a;
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static <T> Codec<edw<T>> b(jl<T> $$0, Codec<T> $$1, edv.d $$2, T $$3) {
+      edw.b<T, edw<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private static <T, C extends edw<T>> Codec<C> a(jl<T> $$0, Codec<T> $$1, edv.d $$2, T $$3, edw.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(ayy.a($$3)).listOf().fieldOf("palette").forGetter(edw.a::a),
+                     Codec.LONG_STREAM.lenientOptionalFieldOf("data").forGetter(edw.a::b)
+                  )
+                  .apply($$2x, edw.a::new)
+         )
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   }
+
+   public edv(jl<T> $$0, edv.d $$1, edv.a<T> $$2, aye $$3, List<T> $$4) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new edv.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   }
+
+   private edv(jl<T> $$0, edv.d $$1, edv.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
+   }
+
+   private edv(edv<T> $$0) {
+      this.c = $$0.c;
+      this.e = $$0.e;
+      this.d = $$0.d.a(this);
+   }
+
+   public edv(jl<T> $$0, T $$1, edv.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
+   }
+
+   private edv.c<T> a(@Nullable edv.c<T> $$0, int $$1) {
+      edv.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.b()) ? $$0 : $$2.a(this.c, this, this.e.a());
    }
 
    @Override
-   public fhl<dnc> q() {
-      return this.s;
+   public int onResize(int $$0, T $$1) {
+      edv.c<T> $$2 = this.d;
+      edv.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
+   }
+
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+
+      return (T)var5;
+   }
+
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   }
+
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
+   }
+
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+   }
+
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
    }
 
    @Override
-   public fhl<exn> r() {
-      return this.t;
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
+   }
+
+   protected T a(int $$0) {
+      edv.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
    }
 
    @Override
-   public edb.a a(long $$0) {
-      return new edb.a(this.s.a($$0), this.t.a($$0));
+   public void a(Consumer<T> $$0) {
+      edt<T> $$1 = this.d.d();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
    }
 
-   @Override
-   public ebe a_(iv $$0) {
-      int $$1 = $$0.v();
-      if (this.e($$1)) {
-         return dne.nH.m();
-      } else {
-         edm $$2 = this.b(this.f($$1));
-         return $$2.c() ? dne.a.m() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+   public void a(vy $$0) {
+      this.a();
+
+      try {
+         int $$1 = $$0.readByte();
+         edv.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.c($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
       }
    }
 
    @Override
-   public exo b_(iv $$0) {
-      int $$1 = $$0.v();
-      if (this.e($$1)) {
-         return exp.a.g();
-      } else {
-         edm $$2 = this.b(this.f($$1));
-         return $$2.c() ? exp.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+   public void b(vy $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
       }
    }
 
-   @Nullable
-   @Override
-   public ebe a(iv $$0, ebe $$1, int $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if (this.e($$4)) {
-         return dne.nH.m();
+   private static <T> DataResult<edv<T>> a(jl<T> $$0, edv.d $$1, edw.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      edv.a<T> $$6 = $$1.a($$0, $$5);
+      aye $$7;
+      if ($$5 == 0) {
+         $$7 = new bba($$4);
       } else {
-         int $$6 = this.f($$4);
-         edm $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(dne.a)) {
-            return $$1;
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
+         }
+
+         long[] $$9 = $$8.get().toArray();
+
+         try {
+            if ($$6.a() == edv.d.f) {
+               edt<T> $$10 = new edl<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               bah $$11 = new bah($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new bah($$6.b(), $$4, $$12);
+            } else {
+               $$7 = new bah($$6.b(), $$4, $$9);
+            }
+         } catch (bah.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
+         }
+      }
+
+      return DataResult.success(new edv<>($$0, $$1, $$6, $$7, $$3));
+   }
+
+   @Override
+   public edw.a<T> a(jl<T> $$0, edv.d $$1) {
+      this.a();
+
+      edw.a var12;
+      try {
+         edl<T> $$2 = new edl<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            bah $$6 = new bah($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
          } else {
-            int $$9 = jy.b($$3);
-            int $$10 = jy.b($$4);
-            int $$11 = jy.b($$5);
-            ebe $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.a(eec.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
-
-               if (exf.a($$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
-            }
-
-            EnumSet<ehd.a> $$14 = this.n().e();
-            EnumSet<ehd.a> $$15 = null;
-
-            for (ehd.a $$16 : $$14) {
-               ehd $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(ehd.a.class);
-                  }
-
-                  $$15.add($$16);
-               }
-            }
-
-            if ($$15 != null) {
-               ehd.a(this, $$15);
-            }
-
-            for (ehd.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
+            $$7 = Optional.empty();
          }
+
+         var12 = new edw.a<>($$2.c(), $$7);
+      } finally {
+         this.b();
       }
+
+      return var12;
    }
 
-   @Override
-   public void a(dyc $$0) {
-      this.j.remove($$0.aB_());
-      this.k.put($$0.aB_(), $$0);
-   }
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
 
-   @Nullable
-   @Override
-   public dyc c_(iv $$0) {
-      return this.k.get($$0);
-   }
-
-   public Map<iv, dyc> H() {
-      return this.k;
-   }
-
-   public void b(tz $$0) {
-      this.p.add($$0);
-   }
-
-   @Override
-   public void a(bwt $$0) {
-      if (!$$0.bY()) {
-         tz $$1 = new tz();
-         $$0.g($$1);
-         this.b($$1);
-      }
-   }
-
-   @Override
-   public void a(esb $$0, esj $$1) {
-      egr $$2 = this.z();
-      if ($$2 != null && $$1.b()) {
-         ert $$3 = $$1.a();
-         djz $$4 = this.B();
-         if ($$3.i() < $$4.K_() || $$3.l() > $$4.ao()) {
-            return;
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
          }
+
+         $$0[$$4] = $$3;
       }
-
-      super.a($$0, $$1);
-   }
-
-   public List<tz> I() {
-      return this.p;
    }
 
    @Override
-   public eec n() {
-      return this.o;
-   }
-
-   public void a(eec $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.a(this.r.a())) {
-         this.a(null);
-      }
-
-      this.i();
+   public int c() {
+      return this.d.a();
    }
 
    @Override
-   public jf<dla> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.o().a(eec.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
+
+   @Override
+   public edv<T> d() {
+      return new edv<>(this);
+   }
+
+   @Override
+   public edv<T> e() {
+      return new edv<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(edv.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
       } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
       }
    }
 
-   public static short g(iv $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
-
-   public static iv a(short $$0, int $$1, djc $$2) {
-      int $$3 = jy.a($$2.h, $$0 & 15);
-      int $$4 = jy.a($$1, $$0 >>> 4 & 15);
-      int $$5 = jy.a($$2.i, $$0 >>> 8 & 15);
-      return new iv($$3, $$4, $$5);
-   }
-
-   @Override
-   public void e(iv $$0) {
-      if (!this.t($$0)) {
-         edb.a(this.b, this.f($$0.v())).add(g($$0));
+   static record a<T>(edt.a a, int b) {
+      public edv.c<T> a(jl<T> $$0, edu<T> $$1, int $$2) {
+         aye $$3 = (aye)(this.b == 0 ? new bba($$2) : new bah(this.b, $$2));
+         edt<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new edv.c<>(this, $$3, $$4);
       }
    }
 
-   @Override
-   public void a(ShortList $$0, int $$1) {
-      edb.a(this.b, $$1).addAll($$0);
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
    }
 
-   public Map<iv, tz> J() {
-      return Collections.unmodifiableMap(this.j);
-   }
+   static record c<T>(edv.a<T> a, aye b, edt<T> c) {
 
-   @Nullable
-   @Override
-   public tz a(iv $$0, jh.a $$1) {
-      dyc $$2 = this.c_($$0);
-      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
-   }
-
-   @Override
-   public void d(iv $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
-   }
-
-   @Nullable
-   public eda E() {
-      return this.q;
-   }
-
-   public eda F() {
-      if (this.q == null) {
-         this.q = new eda(this.L_(), this.K_());
+      public void a(edt<T> $$0, aye $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
+         }
       }
 
-      return this.q;
+      public int a() {
+         return 1 + this.c.a() + wt.a(this.b.a().length) + this.b.a().length * 8;
+      }
+
+      public void a(vy $$0) {
+         $$0.l(this.b.c());
+         this.c.b($$0);
+         $$0.b(this.b.a());
+      }
+
+      public edv.c<T> a(edu<T> $$0) {
+         return new edv.c<>(this.a, this.b.d(), this.c.a($$0));
+      }
+
+      public edv.a<T> b() {
+         return this.a;
+      }
+
+      public aye c() {
+         return this.b;
+      }
+
+      public edt<T> d() {
+         return this.c;
+      }
    }
 
-   public void a(eda $$0) {
-      this.q = $$0;
-   }
+   public abstract static class d {
+      public static final edt.a a = edy::a;
+      public static final edt.a b = edr::a;
+      public static final edt.a c = edl::a;
+      static final edt.a f = edk::a;
+      public static final edv.d d = new edv.d(4) {
+         @Override
+         public <A> edv.a<A> a(jl<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new edv.a(a, $$1);
+               case 1, 2, 3, 4 -> new edv.a(b, 4);
+               case 5, 6, 7, 8 -> new edv.a(c, $$1);
+               default -> new edv.a(edv.d.f, azq.e($$0.d()));
+            };
+         }
+      };
+      public static final edv.d e = new edv.d(2) {
+         @Override
+         public <A> edv.a<A> a(jl<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new edv.a(a, $$1);
+               case 1, 2, 3 -> new edv.a(b, $$1);
+               default -> new edv.a(edv.d.f, azq.e($$0.d()));
+            };
+         }
+      };
+      private final int g;
 
-   public void a(exd $$0) {
-      this.n = $$0;
-   }
+      d(int $$0) {
+         this.g = $$0;
+      }
 
-   public void a(@Nullable egr $$0) {
-      this.r = $$0;
-   }
+      public int a() {
+         return 1 << this.g * 3;
+      }
 
-   @Nullable
-   @Override
-   public egr z() {
-      return this.r;
-   }
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
 
-   private static <T> fhd<T> a(fhg<T> $$0) {
-      return new fhd<>($$0.b());
-   }
+      public abstract <A> edv.a<A> a(jl<A> var1, int var2);
 
-   public fhd<dnc> K() {
-      return a(this.s);
-   }
-
-   public fhd<exn> L() {
-      return a(this.t);
-   }
-
-   @Override
-   public djz B() {
-      return (djz)(this.A() ? egr.b : this);
+      <A> int b(jl<A> $$0, int $$1) {
+         int $$2 = azq.e($$1);
+         edv.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
+      }
    }
 }

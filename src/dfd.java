@@ -1,127 +1,69 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
 import javax.annotation.Nullable;
 
-public class dfd implements dee {
-   final dfe d;
-   final czy e;
-   final String f;
-   final dec g;
-   final boolean h;
+public class dfd extends deh {
+   public dfd(dee $$0) {
+      super($$0);
+   }
+
    @Nullable
-   private deo i;
+   private static Pair<daa, daa> c(def $$0) {
+      if ($$0.e() != 2) {
+         return null;
+      } else {
+         daa $$1 = null;
 
-   public dfd(String $$0, dec $$1, dfe $$2, czy $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.h = $$4;
-   }
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            daa $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
+               }
 
-   public dfd(String $$0, dec $$1, dfe $$2, czy $$3) {
-      this($$0, $$1, $$2, $$3, true);
-   }
+               $$1 = $$3;
+            }
+         }
 
-   @Override
-   public dez<? extends dfd> a() {
-      return dez.a;
-   }
-
-   @Override
-   public String j() {
-      return this.f;
-   }
-
-   @Override
-   public dec c() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public List<Optional<del>> f() {
-      return this.d.c();
-   }
-
-   @Override
-   public deo ap_() {
-      if (this.i == null) {
-         this.i = deo.a(this.d.c());
+         return null;
       }
+   }
 
-      return this.i;
+   private static boolean a(daa $$0, daa $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.c(kl.d) && $$1.c(kl.d) && $$0.c(kl.e) && $$1.c(kl.e);
+   }
+
+   public boolean a(def $$0, djz $$1) {
+      return c($$0) != null;
+   }
+
+   public daa a(def $$0, ji.a $$1) {
+      Pair<daa, daa> $$2 = c($$0);
+      if ($$2 == null) {
+         return daa.k;
+      } else {
+         daa $$3 = (daa)$$2.getFirst();
+         daa $$4 = (daa)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         daa $$9 = new daa($$3.h());
+         $$9.b(kl.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         dgt $$10 = dgp.b($$3);
+         dgt $$11 = dgp.b($$4);
+         dgp.a($$9, $$3x -> $$1.e(mi.aR).c().filter($$0xx -> $$0xx.a(axi.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
+      }
    }
 
    @Override
-   public boolean i() {
-      return this.h;
-   }
-
-   public boolean a(ded $$0, djx $$1) {
-      return this.d.a($$0);
-   }
-
-   public czy a(ded $$0, jh.a $$1) {
-      return this.e.v();
-   }
-
-   public int k() {
-      return this.d.a();
-   }
-
-   public int l() {
-      return this.d.b();
-   }
-
-   @Override
-   public List<dfv> g() {
-      return List.of(
-         new dfz(this.d.a(), this.d.b(), this.d.c().stream().map($$0 -> $$0.<dgb>map(del::c).orElse(dgb.c.c)).toList(), new dgb.f(this.e), new dgb.d(dac.fi))
-      );
-   }
-
-   public static class a implements dez<dfd> {
-      public static final MapCodec<dfd> w = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.f),
-                  dec.e.fieldOf("category").orElse(dec.d).forGetter($$0x -> $$0x.g),
-                  dfe.b.forGetter($$0x -> $$0x.d),
-                  czy.d.fieldOf("result").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, dfd::new)
-      );
-      public static final yy<wl, dfd> x = yy.a(dfd.a::a, dfd.a::a);
-
-      @Override
-      public MapCodec<dfd> a() {
-         return w;
-      }
-
-      @Override
-      public yy<wl, dfd> b() {
-         return x;
-      }
-
-      private static dfd a(wl $$0) {
-         String $$1 = $$0.p();
-         dec $$2 = $$0.b(dec.class);
-         dfe $$3 = dfe.c.decode($$0);
-         czy $$4 = czy.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new dfd($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wl $$0, dfd $$1) {
-         $$0.a($$1.f);
-         $$0.a($$1.g);
-         dfe.c.encode($$0, $$1.d);
-         czy.i.encode($$0, $$1.e);
-         $$0.a($$1.h);
-      }
+   public dfb<dfd> a() {
+      return dfb.n;
    }
 }

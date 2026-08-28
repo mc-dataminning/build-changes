@@ -1,118 +1,70 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class dek extends def {
-   private static final Map<czu, dcm.a> d = Map.of(
-      dac.vg,
-      dcm.a.b,
-      dac.qh,
-      dcm.a.e,
-      dac.tq,
-      dcm.a.c,
-      dac.vv,
-      dcm.a.d,
-      dac.vw,
-      dcm.a.d,
-      dac.vz,
-      dcm.a.d,
-      dac.vx,
-      dcm.a.d,
-      dac.vA,
-      dcm.a.d,
-      dac.vy,
-      dcm.a.d,
-      dac.vB,
-      dcm.a.d
-   );
-   private static final del e = del.a(dac.pn);
-   private static final del f = del.a(dac.sg);
-   private static final del g = del.a(dac.qi);
+public class dek extends deh {
+   private static final den d = den.a(dae.rE);
+   private static final den e = den.a(dae.qi);
+   private static final den f = den.a(dae.vF);
 
-   public dek(dec $$0) {
+   public dek(dee $$0) {
       super($$0);
    }
 
-   public boolean a(ded $$0, djx $$1) {
+   public boolean a(def $$0, djz $$1) {
       if ($$0.e() < 2) {
          return false;
       } else {
          boolean $$2 = false;
-         boolean $$3 = false;
-         boolean $$4 = false;
-         boolean $$5 = false;
-         boolean $$6 = false;
+         int $$3 = 0;
 
-         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-            czy $$8 = $$0.a($$7);
-            if (!$$8.f()) {
-               if (d.containsKey($$8.h())) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else if (f.a($$8)) {
-                  if ($$6) {
-                     return false;
-                  }
-
-                  $$6 = true;
-               } else if (e.a($$8)) {
-                  if ($$5) {
-                     return false;
-                  }
-
-                  $$5 = true;
-               } else if (g.a($$8)) {
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            daa $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (d.a($$5)) {
                   if ($$2) {
                      return false;
                   }
 
                   $$2 = true;
-               } else {
-                  if (!($$8.h() instanceof cyx)) {
+               } else if (e.a($$5)) {
+                  if (++$$3 > 3) {
                      return false;
                   }
-
-                  $$3 = true;
+               } else if (!f.a($$5)) {
+                  return false;
                }
             }
          }
 
-         return $$2 && $$3;
+         return $$2 && $$3 >= 1;
       }
    }
 
-   public czy a(ded $$0, jh.a $$1) {
-      dcm.a $$2 = dcm.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
+   public daa a(def $$0, ji.a $$1) {
+      List<dco> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         czy $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            dcm.a $$8 = d.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (f.a($$7)) {
-               $$3 = true;
-            } else if (e.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cyx $$9) {
-               $$5.add($$9.a().f());
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         daa $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (e.a($$5)) {
+               $$3++;
+            } else if (f.a($$5)) {
+               dco $$6 = $$5.a(kl.ai);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
             }
          }
       }
 
-      czy $$10 = new czy(dac.vF);
-      $$10.b(kk.ai, new dcm($$2, $$5, IntList.of(), $$4, $$3));
-      return $$10;
+      daa $$7 = new daa(dae.vE, 3);
+      $$7.b(kl.aj, new dcp($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public dez<dek> a() {
-      return dez.h;
+   public dfb<dek> a() {
+      return dfb.g;
    }
 }

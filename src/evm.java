@@ -1,42 +1,46 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class evm extends evq {
-   public static final MapCodec<evm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, evm::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class evm extends ewc {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<evm> a = MapCodec.unit(() -> evm.b);
+   public static final evm b = new evm();
 
-   public evm(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   private evm() {
+   }
+
+   @Nullable
+   @Override
+   public ewf.d a(dkc $$0, iw $$1, iw $$2, ewf.d $$3, ewf.d $$4, ewb $$5) {
+      ebg $$6 = $$4.b();
+      if ($$6.a(dng.pH)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().b("final_state", "minecraft:air");
+
+            ebg $$9;
+            try {
+               gf.a $$8 = gf.a($$0.a(mi.i), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(dng.lt) ? null : new ewf.d($$4.a(), $$9, null);
+         }
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         return $$4;
       }
    }
 
    @Override
-   public boolean a(iv $$0, iv $$1, iv $$2, azx $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= azo.b(this.b, this.d, azo.f((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected evr<?> a() {
-      return evr.b;
+   protected ewe<?> a() {
+      return ewe.h;
    }
 }

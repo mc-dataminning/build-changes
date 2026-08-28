@@ -1,127 +1,52 @@
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class aro extends buh {
-   private final Set<art> h = Sets.newHashSet();
-   private final Set<art> i = Collections.unmodifiableSet(this.h);
-   private boolean j = true;
+public class aro {
+   @Nullable
+   protected static iw a(aru $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.F_().h();
+      edn $$4 = $$0.d(jz.a($$1), jz.a($$2));
+      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(ehf.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.K_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(ehf.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(ehf.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            iw.a $$7 = new iw.a();
 
-   public aro(xa $$0, buh.a $$1, buh.b $$2) {
-      super(azo.a(), $$0, $$1, $$2);
-   }
+            for (int $$8 = $$5 + 1; $$8 >= $$0.K_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               ebg $$9 = $$0.a_($$7);
+               if (!$$9.y().c()) {
+                  break;
+               }
 
-   @Override
-   public void a(float $$0) {
-      if ($$0 != this.b) {
-         super.a($$0);
-         this.a(acf::b);
-      }
-   }
+               if (dne.a($$9.g($$0, $$7), jc.b)) {
+                  return $$7.d().j();
+               }
+            }
 
-   @Override
-   public void a(buh.a $$0) {
-      if ($$0 != this.c) {
-         super.a($$0);
-         this.a(acf::d);
-      }
-   }
-
-   @Override
-   public void a(buh.b $$0) {
-      if ($$0 != this.d) {
-         super.a($$0);
-         this.a(acf::d);
-      }
-   }
-
-   @Override
-   public buh a(boolean $$0) {
-      if ($$0 != this.e) {
-         super.a($$0);
-         this.a(acf::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public buh b(boolean $$0) {
-      if ($$0 != this.f) {
-         super.b($$0);
-         this.a(acf::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public buh c(boolean $$0) {
-      if ($$0 != this.g) {
-         super.c($$0);
-         this.a(acf::e);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void a(xa $$0) {
-      if (!Objects.equal($$0, this.a)) {
-         super.a($$0);
-         this.a(acf::c);
-      }
-   }
-
-   private void a(Function<buh, acf> $$0) {
-      if (this.j) {
-         acf $$1 = $$0.apply(this);
-
-         for (art $$2 : this.h) {
-            $$2.f.b($$1);
+            return null;
          }
       }
    }
 
-   public void a(art $$0) {
-      if (this.h.add($$0) && this.j) {
-         $$0.f.b(acf.a(this));
-      }
-   }
-
-   public void b(art $$0) {
-      if (this.h.remove($$0) && this.j) {
-         $$0.f.b(acf.a(this.i()));
-      }
-   }
-
-   public void b() {
-      if (!this.h.isEmpty()) {
-         for (art $$0 : Lists.newArrayList(this.h)) {
-            this.b($$0);
+   @Nullable
+   public static iw a(aru $$0, dje $$1) {
+      if (ac.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               iw $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
+               }
+            }
          }
+
+         return null;
       }
-   }
-
-   public boolean g() {
-      return this.j;
-   }
-
-   public void d(boolean $$0) {
-      if ($$0 != this.j) {
-         this.j = $$0;
-
-         for (art $$1 : this.h) {
-            $$1.f.b($$0 ? acf.a(this) : acf.a(this.i()));
-         }
-      }
-   }
-
-   public Collection<art> h() {
-      return this.i;
    }
 }

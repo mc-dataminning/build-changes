@@ -1,8 +1,3 @@
-public class hev extends hfp {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class hev extends her {
+   public int a;
 }

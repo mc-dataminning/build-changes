@@ -1,44 +1,28 @@
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bzw implements caz {
-   private final bwt a;
-   private final boolean b;
-
-   public bzw(bwt $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bzw {
+   public static <E extends bxw> bzo<E> a(int $$0, BiPredicate<E, bwv> $$1) {
+      return cda.a((Function<cda.b<E>, ? extends App<cda.c<E>, cdd<E>>>)($$2 -> $$2.group($$2.a(cgy.t)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bwv $$7 = $$5.dk();
+               bwv $$8 = $$2.<bwv>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  bwv $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.bO();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   @Override
-   public ffq a() {
-      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
-   }
-
-   @Override
-   public iv b() {
-      return this.a.dv();
-   }
-
-   @Override
-   public boolean a(bxu $$0) {
-      if (this.a instanceof bxu $$1) {
-         if (!$$1.bJ()) {
-            return false;
-         } else {
-            Optional<cgy> $$3 = $$0.ec().c(cgw.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public bwt c() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   private static boolean a(bxw $$0, bwv $$1, int $$2) {
+      return $$1.bJ() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
    }
 }

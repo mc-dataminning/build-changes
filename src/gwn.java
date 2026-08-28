@@ -1,44 +1,38 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class gwn implements gwd.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final frd c;
-   private Collection<iv> d = Lists.newArrayList();
+public class gwn {
+   private final frf a;
 
-   public gwn(frd $$0) {
-      this.c = $$0;
+   public gwn(frf $$0) {
+      this.a = $$0;
    }
 
-   public void a(Collection<iv> $$0) {
-      this.d = $$0;
+   public void a(flq $$0, gvw $$1, gsc $$2, double $$3, double $$4, double $$5) {
+      gsd $$6 = this.a.f.w().c();
+      MutableInt $$7 = new MutableInt(0);
+      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
    }
 
-   @Override
-   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
-      iv $$5 = this.b().c();
-
-      for (iv $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
+   private void a(gsd.d $$0, flq $$1, gsc $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
+      ffn $$10 = $$0.b();
+      double $$11 = $$10.b();
+      long $$12 = Math.round($$11 / 16.0);
+      if ($$12 == 1L) {
+         $$8.add(1);
+         double $$13 = $$10.f().d;
+         double $$14 = $$10.f().e;
+         double $$15 = $$10.f().f;
+         int $$16 = $$9 ? -16711936 : -1;
+         gwf.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
       }
+
+      flt $$17 = $$2.getBuffer(gsn.w());
+      long $$18 = $$12 + 5L;
+      gsv.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
    }
 
-   private static void a(flo $$0, gsa $$1, iv $$2) {
-      gwd.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(flo $$0, gsa $$1, String $$2, iv $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      gwd.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private fql b() {
-      return this.c.j.k();
+   private static float a(long $$0, float $$1) {
+      float $$2 = 0.1F;
+      return azq.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

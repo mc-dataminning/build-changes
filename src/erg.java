@@ -1,42 +1,38 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class erg extends eia {
-   private final dkw a;
-   private final edc b;
-   private final Optional<erf> c;
+public class erg extends ero {
+   public static final MapCodec<erg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, erg::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   public erg(dkw $$0, edc $$1, Optional<erf> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private erg(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public int a(ehd.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static erg a(double $$0, int $$1, int $$2) {
+      return new erg($$0, $$1, $$2);
    }
 
-   public eda a(djc $$0) {
-      return ((edv)this.a.a($$0.h, $$0.i)).F();
+   @Override
+   protected int a(azz $$0, iw $$1) {
+      double $$2 = dlc.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   public ebe a(iv $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.K_();
-   }
-
-   public dkw d() {
-      return this.a;
-   }
-
-   public Optional<erf> e() {
-      return this.c;
-   }
-
-   public edc f() {
-      return this.b;
+   @Override
+   public erl<?> b() {
+      return erl.h;
    }
 }

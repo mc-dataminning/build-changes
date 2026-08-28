@@ -1,41 +1,71 @@
-import java.util.UUID;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gep extends gel<gnf.a> {
-   private static final xa C = xa.c("gui.abuseReport.name.title");
-   private static final xa D = xa.c("gui.abuseReport.name.comment_box_label");
+public class gep {
+   private final gmy a;
+   private final gng b;
+   private final Predicate<gnb.a> c;
    @Nullable
-   private fvd E;
+   private xx d = null;
+   private int e;
+   private int f;
+   @Nullable
+   private xs g;
 
-   private gep(gad $$0, gnk $$1, gnf.a $$2) {
-      super(C, $$0, $$1, $$2);
+   public gep(gnm $$0, Predicate<gnb.a> $$1) {
+      this.a = $$0.b();
+      this.b = new gng($$0.a().b().leadingContextMessageCount());
+      this.c = $$1;
+      this.e = this.a.b();
    }
 
-   public gep(gad $$0, gnk $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new gnf.a($$2, $$3, $$1.a().b()));
+   public void a(int $$0, gep.a $$1) {
+      int $$2 = 0;
+
+      while ($$2 < $$0) {
+         gna $$3 = this.a.b(this.e);
+         if ($$3 == null) {
+            break;
+         }
+
+         int $$4 = this.e--;
+         if ($$3 instanceof gnb.a $$5 && !$$5.g().equals(this.g)) {
+            if (this.a($$1, $$5)) {
+               if (this.f > 0) {
+                  $$1.a(xc.a("gui.chatSelection.fold", this.f));
+                  this.f = 0;
+               }
+
+               $$1.a($$4, $$5);
+               $$2++;
+            } else {
+               this.f++;
+            }
+
+            this.g = $$5.g();
+         }
+      }
    }
 
-   public gep(gad $$0, gnk $$1, gnf $$2) {
-      this($$0, $$1, new gnf.a($$2, $$1.a().b()));
-   }
+   private boolean a(gep.a $$0, gnb.a $$1) {
+      xs $$2 = $$1.g();
+      boolean $$3 = this.b.b($$2);
+      if (this.c.test($$1)) {
+         this.b.a($$2);
+         if (this.d != null && !this.d.a($$2.k())) {
+            $$0.a(xc.a("gui.chatSelection.join", $$1.f().getName()).a(o.o));
+         }
 
-   @Override
-   protected void E() {
-      xa $$0 = xa.b(this.A.e().a()).a(o.o);
-      this.z.a(new fvs(xa.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
-      this.E = this.a(280, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.G();
-      });
-      this.z.a(fxv.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (super.b($$0, $$1, $$2)) {
+         this.d = $$2.k();
          return true;
       } else {
-         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
+         return $$3;
       }
+   }
+
+   public interface a {
+      void a(int var1, gnb.a var2);
+
+      void a(xc var1);
    }
 }

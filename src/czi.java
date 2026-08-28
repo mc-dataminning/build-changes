@@ -1,40 +1,52 @@
-public class czi extends czu {
-   public czi(czu.a $$0) {
+public class czi extends czw implements dau {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final double b = 0.15;
+
+   public czi(czw.a $$0) {
       super($$0);
    }
 
    @Override
-   public bur a(ddt $$0) {
-      crx $$1 = $$0.o();
-      djx $$2 = $$0.q();
-      iv $$3 = $$0.a();
-      ebe $$4 = $$2.a_($$3);
-      if (!dns.i($$4) && !dnt.h($$4) && !dnu.h($$4)) {
-         iv $$5 = $$3.a($$0.k());
-         if (dmp.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, awp.jD, awq.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
-            ebe $$6 = dmp.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, ege.i, $$3);
-            czy $$7 = $$0.n();
-            if ($$1 instanceof art) {
-               aq.z.a((art)$$1, $$5, $$7);
-               $$7.a(1, $$1, bxu.d($$0.p()));
-            }
-
-            return bur.a;
-         } else {
-            return bur.d;
-         }
-      } else {
-         $$2.a($$1, $$3, awp.jD, awq.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.b(ebu.u, Boolean.valueOf(true)), 11);
-         $$2.a($$1, ege.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bxu.d($$0.p()));
-         }
-
-         return bur.a;
+   public but a(ddv $$0) {
+      djz $$1 = $$0.q();
+      if ($$1 instanceof aru $$2) {
+         daa $$3 = $$0.n();
+         ffs $$4 = $$0.l();
+         jc $$5 = $$0.k();
+         csu.a(new csp($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
+         $$3.h(1);
       }
+
+      return but.a;
+   }
+
+   @Override
+   public but a(djz $$0, crz $$1, bus $$2) {
+      if ($$1.fJ()) {
+         daa $$3 = $$1.b($$2);
+         if ($$0 instanceof aru $$4) {
+            csu.a(new csp($$0, $$3, $$1), $$4, $$3);
+            $$3.a(1, $$1);
+            $$1.b(axb.c.b(this));
+         }
+
+         return but.a;
+      } else {
+         return but.e;
+      }
+   }
+
+   @Override
+   public csu a(djz $$0, jq $$1, daa $$2, jc $$3) {
+      return new csp($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   }
+
+   @Override
+   public dau.a a() {
+      return dau.a.a().a(czi::a).a(1.0F).b(0.5F).a(1004).a();
+   }
+
+   private static ffs a(lf $$0, jc $$1) {
+      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
    }
 }

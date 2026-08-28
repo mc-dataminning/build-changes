@@ -1,121 +1,111 @@
-public class gaw extends gbu<cvt> {
-   private static final ali G = ali.b("container/anvil/text_field");
-   private static final ali H = ali.b("container/anvil/text_field_disabled");
-   private static final ali I = ali.b("container/anvil/error");
-   private static final ali J = ali.b("textures/gui/container/anvil.png");
-   private static final xa K = xa.c("container.repair.expensive");
-   private fuu L;
-   private final crx M;
+public abstract class gaw<T extends cxh> extends gau<T> implements gej {
+   private final gee<?> G;
+   private boolean H;
 
-   public gaw(cvt $$0, crw $$1, xa $$2) {
-      super($$0, $$1, $$2, J);
-      this.M = $$1.h;
-      this.v = 60;
+   public gaw(T $$0, gee<?> $$1, cry $$2, xc $$3) {
+      super($$0, $$2, $$3);
+      this.G = $$1;
    }
 
    @Override
-   protected void G() {
-      int $$0 = (this.n - this.s) / 2;
-      int $$1 = (this.o - this.u) / 2;
-      this.L = new fuu(this.p, $$0 + 62, $$1 + 24, 103, 12, xa.c("container.repair"));
-      this.L.f(false);
-      this.L.m(-1);
-      this.L.n(-1);
-      this.L.d(false);
-      this.L.f(50);
-      this.L.b(this::a);
-      this.L.a("");
-      this.d(this.L);
-      this.L.e(this.z.b(0).h());
+   protected void aS_() {
+      super.aS_();
+      this.H = this.n < 379;
+      this.G.a(this.n, this.o, this.m, this.H);
+      this.C = this.G.a(this.n, this.s);
+      this.M();
+   }
+
+   protected abstract fyt G();
+
+   private void M() {
+      fyt $$0 = this.G();
+      this.c(new fuz($$0.a(), $$0.b(), 20, 18, gee.a, $$0x -> {
+         this.G.c();
+         this.C = this.G.a(this.n, this.s);
+         fyt $$1 = this.G();
+         $$0x.c($$1.a(), $$1.b());
+         this.H();
+      }));
+      this.d(this.G);
+   }
+
+   protected void H() {
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.L);
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      if (this.G.d() && this.H) {
+         this.b($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+
+      this.G.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+      this.G.a($$0, $$1, $$2, this.B);
    }
 
    @Override
-   public void a(frd $$0, int $$1, int $$2) {
-      String $$3 = this.L.a();
-      this.b($$0, $$1, $$2);
-      this.L.a($$3);
+   protected void c(ftz $$0) {
+      super.c($$0);
+      this.G.a($$0, this.I());
+   }
+
+   protected boolean I() {
+      return true;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.t.p();
-      }
-
-      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
    }
 
-   private void a(String $$0) {
-      cxn $$1 = this.z.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().c(kk.g) && $$0.equals($$1.g().y().getString())) {
-            $$2 = "";
-         }
-
-         if (this.z.a($$2)) {
-            this.m.t.j.b(new aid($$2));
-         }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.G.a($$0, $$1, $$2)) {
+         this.a(this.G);
+         return true;
+      } else {
+         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   protected void b(ftx $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.z.m();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         xa $$5;
-         if ($$3 >= 40 && !this.m.t.fV()) {
-            $$5 = K;
-            $$4 = 16736352;
-         } else if (!this.z.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = xa.a("container.repair.cost", $$3);
-            if (!this.z.b(2).a(this.M)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.s - 8 - this.p.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
-            $$0.b(this.p, $$5, $$8, 69, $$4);
-         }
-      }
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.H || !this.G.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
+      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(cxp $$0, int $$1, int $$2, cwd $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(gsl::H, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
+      this.G.b($$0);
    }
 
    @Override
-   public void d(ftx $$0, int $$1, int $$2, float $$3) {
-      this.L.a($$0, $$1, $$2, $$3);
+   public void E() {
+      super.E();
+      this.G.e();
    }
 
    @Override
-   protected void c(ftx $$0, int $$1, int $$2) {
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
-         $$0.a(gsl::H, I, $$1 + 99, $$2 + 45, 28, 21);
-      }
+   public void L() {
+      this.G.g();
    }
 
    @Override
-   public void a(cvq $$0, int $$1, czy $$2) {
-      if ($$1 == 0) {
-         this.L.a($$2.f() ? "" : $$2.y().getString());
-         this.L.e(!$$2.f());
-         this.a(this.L);
-      }
+   public void a(dfx $$0) {
+      this.G.a($$0);
    }
 }

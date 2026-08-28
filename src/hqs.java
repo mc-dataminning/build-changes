@@ -1,74 +1,65 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.time.Duration;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
 public class hqs {
-   public static final hqs a = new hqs(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hqo<hqs.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   private final UUID a = UUID.randomUUID();
+   private final hqn b;
+   private final hqw c;
+   private final hqy d = new hqy();
+   private final hqv e;
+   private final hqx f;
 
-   protected hqs(Ticker $$0) {
-      this.c = $$0;
-   }
-
-   public synchronized void a(hqo<hqs.a> $$0) {
-      this.a($$0, (Function<hqo<hqs.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(hqo<hqs.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hqo<hqs.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(hqo<hqs.a> $$0, Function<hqo<hqs.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(hqo<hqs.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
-      }
-   }
-
-   public void a(hql $$0) {
-      $$0.send(hqm.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hqo<hqs.a>)$$1, new hqs.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hqm.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hqo.B, new hqs.a((int)$$1)));
-            this.d.clear();
-         }
+   public hqs(hqn $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new hqw($$3);
+      this.e = new hqv();
+      this.f = new hqx($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(hqq.i, this.a);
       });
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
+   public void a() {
+      this.e.a(this.b);
    }
 
-   public static record a(int b) {
-      public static final Codec<hqs.a> a = Codec.INT.xmap(hqs.a::new, $$0 -> $$0.b);
+   public void a(djw $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
 
-      public int a() {
-         return this.b;
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
+      }
+   }
+
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(djz $$0, aj $$1) {
+      alk $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.ae();
+         this.b.send(hqo.f, $$2x -> {
+            $$2x.a(hqq.D, $$2.toString());
+            $$2x.a(hqq.E, $$3);
+         });
       }
    }
 }

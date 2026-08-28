@@ -1,45 +1,33 @@
-public class ait implements zh<agr> {
-   public static final yy<vw, ait> a = zh.a(ait::a, ait::new);
-   private final ffm b;
-   private final buq c;
-   private final int d;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public ait(buq $$0, ffm $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class ait implements zj<agt> {
+   public static final za<vy, ait> a = zj.a(ait::a, ait::new);
+   private final UUID b;
+
+   public ait(UUID $$0) {
+      this.b = $$0;
    }
 
-   private ait(vw $$0) {
-      this.c = $$0.b(buq.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private ait(vy $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.c);
+   private void a(vy $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
    }
 
    @Override
-   public zj<ait> a() {
-      return agp.cn;
+   public zl<ait> a() {
+      return agr.cm;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public buq b() {
-      return this.c;
-   }
-
-   public ffm e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   @Nullable
+   public bwv a(aru $$0) {
+      return $$0.b(this.b);
    }
 }

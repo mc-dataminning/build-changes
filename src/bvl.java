@@ -1,103 +1,263 @@
-public interface bvl {
-   alh<bvk> a = alh.a(mh.aN, ali.b("in_fire"));
-   alh<bvk> b = alh.a(mh.aN, ali.b("campfire"));
-   alh<bvk> c = alh.a(mh.aN, ali.b("lightning_bolt"));
-   alh<bvk> d = alh.a(mh.aN, ali.b("on_fire"));
-   alh<bvk> e = alh.a(mh.aN, ali.b("lava"));
-   alh<bvk> f = alh.a(mh.aN, ali.b("hot_floor"));
-   alh<bvk> g = alh.a(mh.aN, ali.b("in_wall"));
-   alh<bvk> h = alh.a(mh.aN, ali.b("cramming"));
-   alh<bvk> i = alh.a(mh.aN, ali.b("drown"));
-   alh<bvk> j = alh.a(mh.aN, ali.b("starve"));
-   alh<bvk> k = alh.a(mh.aN, ali.b("cactus"));
-   alh<bvk> l = alh.a(mh.aN, ali.b("fall"));
-   alh<bvk> m = alh.a(mh.aN, ali.b("ender_pearl"));
-   alh<bvk> n = alh.a(mh.aN, ali.b("fly_into_wall"));
-   alh<bvk> o = alh.a(mh.aN, ali.b("out_of_world"));
-   alh<bvk> p = alh.a(mh.aN, ali.b("generic"));
-   alh<bvk> q = alh.a(mh.aN, ali.b("magic"));
-   alh<bvk> r = alh.a(mh.aN, ali.b("wither"));
-   alh<bvk> s = alh.a(mh.aN, ali.b("dragon_breath"));
-   alh<bvk> t = alh.a(mh.aN, ali.b("dry_out"));
-   alh<bvk> u = alh.a(mh.aN, ali.b("sweet_berry_bush"));
-   alh<bvk> v = alh.a(mh.aN, ali.b("freeze"));
-   alh<bvk> w = alh.a(mh.aN, ali.b("stalagmite"));
-   alh<bvk> x = alh.a(mh.aN, ali.b("falling_block"));
-   alh<bvk> y = alh.a(mh.aN, ali.b("falling_anvil"));
-   alh<bvk> z = alh.a(mh.aN, ali.b("falling_stalactite"));
-   alh<bvk> A = alh.a(mh.aN, ali.b("sting"));
-   alh<bvk> B = alh.a(mh.aN, ali.b("mob_attack"));
-   alh<bvk> C = alh.a(mh.aN, ali.b("mob_attack_no_aggro"));
-   alh<bvk> D = alh.a(mh.aN, ali.b("player_attack"));
-   alh<bvk> E = alh.a(mh.aN, ali.b("arrow"));
-   alh<bvk> F = alh.a(mh.aN, ali.b("trident"));
-   alh<bvk> G = alh.a(mh.aN, ali.b("mob_projectile"));
-   alh<bvk> H = alh.a(mh.aN, ali.b("spit"));
-   alh<bvk> I = alh.a(mh.aN, ali.b("wind_charge"));
-   alh<bvk> J = alh.a(mh.aN, ali.b("fireworks"));
-   alh<bvk> K = alh.a(mh.aN, ali.b("fireball"));
-   alh<bvk> L = alh.a(mh.aN, ali.b("unattributed_fireball"));
-   alh<bvk> M = alh.a(mh.aN, ali.b("wither_skull"));
-   alh<bvk> N = alh.a(mh.aN, ali.b("thrown"));
-   alh<bvk> O = alh.a(mh.aN, ali.b("indirect_magic"));
-   alh<bvk> P = alh.a(mh.aN, ali.b("thorns"));
-   alh<bvk> Q = alh.a(mh.aN, ali.b("explosion"));
-   alh<bvk> R = alh.a(mh.aN, ali.b("player_explosion"));
-   alh<bvk> S = alh.a(mh.aN, ali.b("sonic_boom"));
-   alh<bvk> T = alh.a(mh.aN, ali.b("bad_respawn_point"));
-   alh<bvk> U = alh.a(mh.aN, ali.b("outside_border"));
-   alh<bvk> V = alh.a(mh.aN, ali.b("generic_kill"));
-   alh<bvk> W = alh.a(mh.aN, ali.b("mace_smash"));
+import javax.annotation.Nullable;
 
-   static void a(qh<bvk> $$0) {
-      $$0.a(a, new bvk("inFire", 0.1F, bvg.d));
-      $$0.a(b, new bvk("inFire", 0.1F, bvg.d));
-      $$0.a(c, new bvk("lightningBolt", 0.1F));
-      $$0.a(d, new bvk("onFire", 0.0F, bvg.d));
-      $$0.a(e, new bvk("lava", 0.1F, bvg.d));
-      $$0.a(f, new bvk("hotFloor", 0.1F, bvg.d));
-      $$0.a(g, new bvk("inWall", 0.0F));
-      $$0.a(h, new bvk("cramming", 0.0F));
-      $$0.a(i, new bvk("drown", 0.0F, bvg.c));
-      $$0.a(j, new bvk("starve", 0.0F));
-      $$0.a(k, new bvk("cactus", 0.1F));
-      $$0.a(l, new bvk("fall", bvh.b, 0.0F, bvg.a, bvm.b));
-      $$0.a(m, new bvk("fall", bvh.b, 0.0F, bvg.a, bvm.b));
-      $$0.a(n, new bvk("flyIntoWall", 0.0F));
-      $$0.a(o, new bvk("outOfWorld", 0.0F));
-      $$0.a(p, new bvk("generic", 0.0F));
-      $$0.a(q, new bvk("magic", 0.0F));
-      $$0.a(r, new bvk("wither", 0.0F));
-      $$0.a(s, new bvk("dragonBreath", 0.0F));
-      $$0.a(t, new bvk("dryout", 0.1F));
-      $$0.a(u, new bvk("sweetBerryBush", 0.1F, bvg.e));
-      $$0.a(v, new bvk("freeze", 0.0F, bvg.f));
-      $$0.a(w, new bvk("stalagmite", 0.0F));
-      $$0.a(x, new bvk("fallingBlock", 0.1F));
-      $$0.a(y, new bvk("anvil", 0.1F));
-      $$0.a(z, new bvk("fallingStalactite", 0.1F));
-      $$0.a(A, new bvk("sting", 0.1F));
-      $$0.a(B, new bvk("mob", 0.1F));
-      $$0.a(C, new bvk("mob", 0.1F));
-      $$0.a(D, new bvk("player", 0.1F));
-      $$0.a(E, new bvk("arrow", 0.1F));
-      $$0.a(F, new bvk("trident", 0.1F));
-      $$0.a(G, new bvk("mob", 0.1F));
-      $$0.a(H, new bvk("mob", 0.1F));
-      $$0.a(J, new bvk("fireworks", 0.1F));
-      $$0.a(L, new bvk("onFire", 0.1F, bvg.d));
-      $$0.a(K, new bvk("fireball", 0.1F, bvg.d));
-      $$0.a(M, new bvk("witherSkull", 0.1F));
-      $$0.a(N, new bvk("thrown", 0.1F));
-      $$0.a(O, new bvk("indirectMagic", 0.0F));
-      $$0.a(P, new bvk("thorns", 0.1F, bvg.b));
-      $$0.a(Q, new bvk("explosion", bvh.c, 0.1F));
-      $$0.a(R, new bvk("explosion.player", bvh.c, 0.1F));
-      $$0.a(S, new bvk("sonic_boom", bvh.c, 0.0F));
-      $$0.a(T, new bvk("badRespawnPoint", bvh.c, 0.1F, bvg.a, bvm.c));
-      $$0.a(U, new bvk("outsideBorder", 0.0F));
-      $$0.a(V, new bvk("genericKill", 0.0F));
-      $$0.a(I, new bvk("mob", 0.1F));
-      $$0.a(W, new bvk("mace_smash", 0.1F));
+public class bvl {
+   private final jt<bvm> a;
+   private final bvk b;
+   private final bvk c;
+   private final bvk d;
+   private final bvk e;
+   private final bvk f;
+   private final bvk g;
+   private final bvk h;
+   private final bvk i;
+   private final bvk j;
+   private final bvk k;
+   private final bvk l;
+   private final bvk m;
+   private final bvk n;
+   private final bvk o;
+   private final bvk p;
+   private final bvk q;
+   private final bvk r;
+   private final bvk s;
+   private final bvk t;
+   private final bvk u;
+   private final bvk v;
+   private final bvk w;
+   private final bvk x;
+   private final bvk y;
+   private final bvk z;
+
+   public bvl(ju $$0) {
+      this.a = $$0.f(mi.aN);
+      this.b = this.a(bvn.a);
+      this.c = this.a(bvn.b);
+      this.d = this.a(bvn.c);
+      this.e = this.a(bvn.d);
+      this.f = this.a(bvn.e);
+      this.g = this.a(bvn.f);
+      this.h = this.a(bvn.g);
+      this.i = this.a(bvn.h);
+      this.j = this.a(bvn.i);
+      this.k = this.a(bvn.j);
+      this.l = this.a(bvn.k);
+      this.m = this.a(bvn.l);
+      this.n = this.a(bvn.m);
+      this.o = this.a(bvn.n);
+      this.p = this.a(bvn.o);
+      this.q = this.a(bvn.p);
+      this.r = this.a(bvn.q);
+      this.s = this.a(bvn.r);
+      this.t = this.a(bvn.s);
+      this.u = this.a(bvn.t);
+      this.v = this.a(bvn.u);
+      this.w = this.a(bvn.v);
+      this.x = this.a(bvn.w);
+      this.y = this.a(bvn.U);
+      this.z = this.a(bvn.V);
+   }
+
+   private bvk a(alj<bvm> $$0) {
+      return new bvk(this.a.b($$0));
+   }
+
+   private bvk a(alj<bvm> $$0, @Nullable bwv $$1) {
+      return new bvk(this.a.b($$0), $$1);
+   }
+
+   private bvk a(alj<bvm> $$0, @Nullable bwv $$1, @Nullable bwv $$2) {
+      return new bvk(this.a.b($$0), $$1, $$2);
+   }
+
+   public bvk a() {
+      return this.b;
+   }
+
+   public bvk b() {
+      return this.c;
+   }
+
+   public bvk c() {
+      return this.d;
+   }
+
+   public bvk d() {
+      return this.e;
+   }
+
+   public bvk e() {
+      return this.f;
+   }
+
+   public bvk f() {
+      return this.g;
+   }
+
+   public bvk g() {
+      return this.h;
+   }
+
+   public bvk h() {
+      return this.i;
+   }
+
+   public bvk i() {
+      return this.j;
+   }
+
+   public bvk j() {
+      return this.k;
+   }
+
+   public bvk k() {
+      return this.l;
+   }
+
+   public bvk l() {
+      return this.m;
+   }
+
+   public bvk m() {
+      return this.n;
+   }
+
+   public bvk n() {
+      return this.o;
+   }
+
+   public bvk o() {
+      return this.p;
+   }
+
+   public bvk p() {
+      return this.q;
+   }
+
+   public bvk q() {
+      return this.r;
+   }
+
+   public bvk r() {
+      return this.s;
+   }
+
+   public bvk s() {
+      return this.t;
+   }
+
+   public bvk t() {
+      return this.u;
+   }
+
+   public bvk u() {
+      return this.v;
+   }
+
+   public bvk v() {
+      return this.w;
+   }
+
+   public bvk w() {
+      return this.x;
+   }
+
+   public bvk a(bwv $$0) {
+      return this.a(bvn.x, $$0);
+   }
+
+   public bvk b(bwv $$0) {
+      return this.a(bvn.y, $$0);
+   }
+
+   public bvk c(bwv $$0) {
+      return this.a(bvn.z, $$0);
+   }
+
+   public bvk a(bxw $$0) {
+      return this.a(bvn.A, $$0);
+   }
+
+   public bvk b(bxw $$0) {
+      return this.a(bvn.B, $$0);
+   }
+
+   public bvk c(bxw $$0) {
+      return this.a(bvn.C, $$0);
+   }
+
+   public bvk a(crz $$0) {
+      return this.a(bvn.D, $$0);
+   }
+
+   public bvk a(csh $$0, @Nullable bwv $$1) {
+      return this.a(bvn.E, $$0, $$1);
+   }
+
+   public bvk a(bwv $$0, @Nullable bwv $$1) {
+      return this.a(bvn.F, $$0, $$1);
+   }
+
+   public bvk a(bwv $$0, @Nullable bxw $$1) {
+      return this.a(bvn.G, $$0, $$1);
+   }
+
+   public bvk b(bwv $$0, @Nullable bxw $$1) {
+      return this.a(bvn.H, $$0, $$1);
+   }
+
+   public bvk c(bwv $$0, @Nullable bxw $$1) {
+      return this.a(bvn.I, $$0, $$1);
+   }
+
+   public bvk a(csp $$0, @Nullable bwv $$1) {
+      return this.a(bvn.J, $$0, $$1);
+   }
+
+   public bvk a(cso $$0, @Nullable bwv $$1) {
+      return $$1 == null ? this.a(bvn.L, $$0) : this.a(bvn.K, $$0, $$1);
+   }
+
+   public bvk a(ctj $$0, bwv $$1) {
+      return this.a(bvn.M, $$0, $$1);
+   }
+
+   public bvk b(bwv $$0, @Nullable bwv $$1) {
+      return this.a(bvn.N, $$0, $$1);
+   }
+
+   public bvk c(bwv $$0, @Nullable bwv $$1) {
+      return this.a(bvn.O, $$0, $$1);
+   }
+
+   public bvk d(bwv $$0) {
+      return this.a(bvn.P, $$0);
+   }
+
+   public bvk a(@Nullable djs $$0) {
+      return $$0 != null ? this.d($$0.d(), $$0.c()) : this.d(null, null);
+   }
+
+   public bvk d(@Nullable bwv $$0, @Nullable bwv $$1) {
+      return this.a($$1 != null && $$0 != null ? bvn.R : bvn.Q, $$0, $$1);
+   }
+
+   public bvk e(bwv $$0) {
+      return this.a(bvn.S, $$0);
+   }
+
+   public bvk a(ffs $$0) {
+      return new bvk(this.a.b(bvn.T), $$0);
+   }
+
+   public bvk x() {
+      return this.y;
+   }
+
+   public bvk y() {
+      return this.z;
+   }
+
+   public bvk f(bwv $$0) {
+      return this.a(bvn.W, $$0);
    }
 }

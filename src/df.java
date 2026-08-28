@@ -1,30 +1,55 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record df(boolean d, boolean e) implements bz {
-   public static final MapCodec<df> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(df::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(df::c))
-            .apply($$0, df::new)
-   );
-   public static final df c = new df(false, true);
-
+public class df extends dl<df.a> {
    @Override
-   public MapCodec<df> a() {
-      return ca.e;
+   public Codec<df.a> a() {
+      return df.a.a;
    }
 
-   @Override
-   public boolean a(bwt $$0, ars $$1, @Nullable ffq $$2) {
-      return !($$0 instanceof cto $$3) ? false : $$3.gH() == this.d && $$3.gG() == this.e;
+   public void a(arv $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public boolean b() {
-      return this.d;
-   }
+   public static record a(Optional<bj> b) implements dl.a {
+      public static final Codec<df.a> a = RecordCodecBuilder.create($$0 -> $$0.group(bz.b.optionalFieldOf("player").forGetter(df.a::a)).apply($$0, df.a::new));
 
-   public boolean c() {
-      return this.e;
+      public static ar<df.a> a(cv.a $$0) {
+         return aq.q.a(new df.a(Optional.of(bz.a(bz.a.a().a($$0)))));
+      }
+
+      public static ar<df.a> a(bz.a $$0) {
+         return aq.q.a(new df.a(Optional.of(bz.a($$0.b()))));
+      }
+
+      public static ar<df.a> a(Optional<bz> $$0) {
+         return aq.q.a(new df.a(bz.a($$0)));
+      }
+
+      public static ar<df.a> b() {
+         return aq.r.a(new df.a(Optional.empty()));
+      }
+
+      public static ar<df.a> c() {
+         return aq.I.a(new df.a(Optional.empty()));
+      }
+
+      public static ar<df.a> d() {
+         return aq.ab.a(new df.a(Optional.empty()));
+      }
+
+      public static ar<df.a> e() {
+         return aq.x.a(new df.a(Optional.empty()));
+      }
+
+      public static ar<df.a> a(jh<dne> $$0, jh<czw> $$1, dne $$2, czw $$3) {
+         return a(bz.a.a().a(bw.a.a().d(cn.a.a().a($$1, $$3))).b(cv.a.a().a(az.a.a().a($$0, $$2))));
+      }
+
+      @Override
+      public Optional<bj> a() {
+         return this.b;
+      }
    }
 }

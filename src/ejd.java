@@ -1,61 +1,104 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class ejd {
-   public static final ejd a = new ejd(false, dne.gZ.m(), dne.qt.m(), dne.eA.m(), dne.aX.m());
-   public static final Codec<ejd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(ejd::a),
-               ebe.a.optionalFieldOf("air_state", a.b()).forGetter(ejd::b),
-               ebe.a.optionalFieldOf("water_state", a.b()).forGetter(ejd::c),
-               ebe.a.optionalFieldOf("lava_state", a.b()).forGetter(ejd::d),
-               ebe.a.optionalFieldOf("barrier_state", a.b()).forGetter(ejd::e)
-            )
-            .apply($$0, ejd::new)
-   );
-   private final boolean c;
-   private final ebe d;
-   private final ebe e;
-   private final ebe f;
-   private final ebe g;
-
-   public static ejd a(boolean $$0, ebe $$1, ebe $$2, ebe $$3, ebe $$4) {
-      return new ejd($$0, $$1, $$2, $$3, $$4);
+public class ejd extends ejl<ejc> {
+   public ejd(Codec<ejc> $$0) {
+      super($$0);
    }
 
-   public static ejd a(ebe $$0, ebe $$1, ebe $$2, ebe $$3) {
-      return new ejd(false, $$0, $$1, $$2, $$3);
+   public boolean a(ejc $$0, azz $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   public static ejd a(boolean $$0, ebe $$1) {
-      return new ejd($$0, $$1, a.c(), a.d(), a.e());
+   public boolean a(ejg $$0, ejc $$1, edd $$2, Function<iw, jg<dlc>> $$3, azz $$4, egr $$5, dje $$6, edc $$7) {
+      int $$8 = (this.d() * 2 - 1) * 16;
+      double $$9 = (double)$$6.a($$4.a(16));
+      int $$10 = $$1.e.a($$4, $$0);
+      double $$11 = (double)$$6.b($$4.a(16));
+      float $$12 = $$4.i() * (float) (Math.PI * 2);
+      float $$13 = $$1.b.a($$4);
+      double $$14 = (double)$$1.f.a($$4);
+      float $$15 = $$1.c.c.a($$4);
+      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
+      int $$17 = 0;
+      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
+      return true;
    }
 
-   private ejd(boolean $$0, ebe $$1, ebe $$2, ebe $$3, ebe $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   private void a(
+      ejg $$0,
+      ejc $$1,
+      edd $$2,
+      Function<iw, jg<dlc>> $$3,
+      long $$4,
+      egr $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      int $$12,
+      int $$13,
+      double $$14,
+      edc $$15
+   ) {
+      azz $$16 = azz.a($$4);
+      float[] $$17 = this.a($$0, $$1, $$16);
+      float $$18 = 0.0F;
+      float $$19 = 0.0F;
+
+      for (int $$20 = $$12; $$20 < $$13; $$20++) {
+         double $$21 = 1.5 + (double)(azq.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
+         double $$22 = $$21 * $$14;
+         $$21 *= (double)$$1.c.e.a($$16);
+         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
+         float $$23 = azq.b($$11);
+         float $$24 = azq.a($$11);
+         $$6 += (double)(azq.b($$10) * $$23);
+         $$7 += (double)$$24;
+         $$8 += (double)(azq.a($$10) * $$23);
+         $$11 *= 0.7F;
+         $$11 += $$19 * 0.05F;
+         $$10 += $$18 * 0.05F;
+         $$19 *= 0.8F;
+         $$18 *= 0.5F;
+         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
+         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
+         if ($$16.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
+               return;
+            }
+
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
+         }
+      }
    }
 
-   public boolean a() {
-      return this.c;
+   private float[] a(ejg $$0, ejc $$1, azz $$2) {
+      int $$3 = $$0.b();
+      float[] $$4 = new float[$$3];
+      float $$5 = 1.0F;
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
+            $$5 = 1.0F + $$2.i() * $$2.i();
+         }
+
+         $$4[$$6] = $$5 * $$5;
+      }
+
+      return $$4;
    }
 
-   public ebe b() {
-      return this.d;
+   private double a(ejc $$0, azz $$1, double $$2, float $$3, float $$4) {
+      float $$5 = 1.0F - azq.e(0.5F - $$4 / $$3) * 2.0F;
+      float $$6 = $$0.c.f + $$0.c.g * $$5;
+      return (double)$$6 * $$2 * (double)azq.b($$1, 0.75F, 1.0F);
    }
 
-   public ebe c() {
-      return this.e;
-   }
-
-   public ebe d() {
-      return this.f;
-   }
-
-   public ebe e() {
-      return this.g;
+   private boolean a(ejg $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
+      int $$6 = $$5 - $$0.a();
+      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
    }
 }

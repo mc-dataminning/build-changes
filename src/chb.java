@@ -1,40 +1,35 @@
-public class chb extends che {
-   public chb(bxw $$0, djx $$1) {
-      super($$0, $$1);
+public class chb {
+   private final cbb a;
+   private final float b;
+   private final int c;
+
+   public chb(iw $$0, float $$1, int $$2) {
+      this(new bzq($$0), $$1, $$2);
    }
 
-   @Override
-   protected eye a(int $$0) {
-      this.o = new exx(false);
-      return new eye(this.o, $$0);
+   public chb(ffs $$0, float $$1, int $$2) {
+      this(new bzq(iw.a((jq)$$0)), $$1, $$2);
    }
 
-   @Override
-   protected boolean a() {
-      return true;
+   public chb(bwv $$0, float $$1, int $$2) {
+      this(new bzy($$0, false), $$1, $$2);
    }
 
-   @Override
-   protected ffq b() {
-      return new ffq(this.a.dA(), this.a.e(0.5), this.a.dG());
+   public chb(cbb $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected double a(ffq $$0) {
-      return $$0.e;
+   public cbb a() {
+      return this.a;
    }
 
-   @Override
-   protected boolean a(ffq $$0, ffq $$1) {
-      return this.a.bl() ? a(this.a, $$0, $$1, false) : false;
+   public float b() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(iv $$0) {
-      return !this.b.a_($$0.e()).l();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public int c() {
+      return this.c;
    }
 }

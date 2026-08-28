@@ -1,7 +1,3 @@
-public record ajs() implements ajq {
-   public static final ajs a = new ajs();
-
-   @Override
-   public void a(vw $$0) {
-   }
+public interface ajs {
+   void a(vy var1);
 }

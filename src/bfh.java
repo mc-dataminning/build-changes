@@ -1,57 +1,132 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bfh extends bjp {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
-      .put("minecraft:ender_crystal", "minecraft:end_crystal")
-      .put("minecraft:snowman", "minecraft:snow_golem")
-      .put("minecraft:evocation_illager", "minecraft:evoker")
-      .put("minecraft:evocation_fangs", "minecraft:evoker_fangs")
-      .put("minecraft:illusion_illager", "minecraft:illusioner")
-      .put("minecraft:vindication_illager", "minecraft:vindicator")
-      .put("minecraft:villager_golem", "minecraft:iron_golem")
-      .put("minecraft:xp_orb", "minecraft:experience_orb")
-      .put("minecraft:xp_bottle", "minecraft:experience_bottle")
-      .put("minecraft:eye_of_ender_signal", "minecraft:eye_of_ender")
-      .put("minecraft:fireworks_rocket", "minecraft:firework_rocket")
-      .build();
-   public static final Map<String, String> b = ImmutableMap.builder()
-      .put("minecraft:portal", "minecraft:nether_portal")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:stripped_oak_bark", "minecraft:stripped_oak_wood")
-      .put("minecraft:stripped_spruce_bark", "minecraft:stripped_spruce_wood")
-      .put("minecraft:stripped_birch_bark", "minecraft:stripped_birch_wood")
-      .put("minecraft:stripped_jungle_bark", "minecraft:stripped_jungle_wood")
-      .put("minecraft:stripped_acacia_bark", "minecraft:stripped_acacia_wood")
-      .put("minecraft:stripped_dark_oak_bark", "minecraft:stripped_dark_oak_wood")
-      .put("minecraft:mob_spawner", "minecraft:spawner")
-      .build();
-   public static final Map<String, String> c = ImmutableMap.builder()
-      .putAll(b)
-      .put("minecraft:clownfish", "minecraft:tropical_fish")
-      .put("minecraft:chorus_fruit_popped", "minecraft:popped_chorus_fruit")
-      .put("minecraft:evocation_illager_spawn_egg", "minecraft:evoker_spawn_egg")
-      .put("minecraft:vindication_illager_spawn_egg", "minecraft:vindicator_spawn_egg")
-      .build();
-   private static final String d = "minecraft:bred_";
-
-   public bfh(Schema $$0, boolean $$1) {
-      super("EntityTheRenameningBlock", $$0, $$1);
+public class bfh extends DataFix {
+   public bfh(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected String a(String $$0) {
-      if ($$0.startsWith("minecraft:bred_")) {
-         $$0 = "minecraft:" + $$0.substring("minecraft:bred_".length());
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjd.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bjd.F.typeName(), bky.a()));
+      OpticFinder<?> $$2 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped("ItemStack bucket_entity_data variants to separate components", $$0, $$2x -> {
+         String $$3 = $$2x.getOptional($$1).<String>map(Pair::getSecond).orElse("");
+
+         return switch ($$3) {
+            case "minecraft:salmon_bucket" -> $$2x.updateTyped($$2, bfh::c);
+            case "minecraft:axolotl_bucket" -> $$2x.updateTyped($$2, bfh::b);
+            case "minecraft:tropical_fish_bucket" -> $$2x.updateTyped($$2, bfh::a);
+            case "minecraft:painting" -> $$2x.updateTyped($$2, $$0xx -> ag.a($$0xx, $$0xx.getType(), bfh::a));
+            default -> $$2x;
+         };
+      });
+   }
+
+   private static String a(int $$0) {
+      return bbh.a($$0 >> 16 & 0xFF);
+   }
+
+   private static String b(int $$0) {
+      return bbh.a($$0 >> 24 & 0xFF);
+   }
+
+   private static String c(int $$0) {
+      return switch ($$0 & 65535) {
+         case 1 -> "flopper";
+         case 256 -> "sunstreak";
+         case 257 -> "stripey";
+         case 512 -> "snooper";
+         case 513 -> "glitter";
+         case 768 -> "dasher";
+         case 769 -> "blockfish";
+         case 1024 -> "brinely";
+         case 1025 -> "betty";
+         case 1280 -> "spotty";
+         case 1281 -> "clayfish";
+         default -> "kob";
+      };
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, Dynamic<T> $$1) {
+      Optional<Number> $$2 = $$1.get("BucketVariantTag").asNumber().result();
+      if ($$2.isEmpty()) {
+         return $$0;
+      } else {
+         int $$3 = $$2.get().intValue();
+         String $$4 = c($$3);
+         String $$5 = a($$3);
+         String $$6 = b($$3);
+         return $$0.update("minecraft:bucket_entity_data", $$0x -> $$0x.remove("BucketVariantTag"))
+            .set("minecraft:tropical_fish/pattern", $$0.createString($$4))
+            .set("minecraft:tropical_fish/base_color", $$0.createString($$5))
+            .set("minecraft:tropical_fish/pattern_color", $$0.createString($$6));
+      }
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0, Dynamic<T> $$1) {
+      Optional<Number> $$2 = $$1.get("Variant").asNumber().result();
+      if ($$2.isEmpty()) {
+         return $$0;
+      } else {
+         String $$3 = switch ($$2.get().intValue()) {
+            case 1 -> "wild";
+            case 2 -> "gold";
+            case 3 -> "cyan";
+            case 4 -> "blue";
+            default -> "lucy";
+         };
+         return $$0.update("minecraft:bucket_entity_data", $$0x -> $$0x.remove("Variant")).set("minecraft:axolotl/variant", $$0.createString($$3));
+      }
+   }
+
+   private static <T> Dynamic<T> c(Dynamic<T> $$0, Dynamic<T> $$1) {
+      Optional<Dynamic<T>> $$2 = $$1.get("type").result();
+      return $$2.isEmpty() ? $$0 : $$0.update("minecraft:bucket_entity_data", $$0x -> $$0x.remove("type")).set("minecraft:salmon/size", $$2.get());
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("minecraft:entity_data").result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else if ($$1.get().get("id").asString().result().filter($$0x -> $$0x.equals("minecraft:painting")).isEmpty()) {
+         return $$0;
+      } else {
+         Optional<Dynamic<T>> $$2 = $$1.get().get("variant").result();
+         Dynamic<T> $$3 = $$1.get().remove("variant");
+         if ($$3.remove("id").equals($$3.emptyMap())) {
+            $$0 = $$0.remove("minecraft:entity_data");
+         } else {
+            $$0 = $$0.set("minecraft:entity_data", $$3);
+         }
+
+         if ($$2.isPresent()) {
+            $$0 = $$0.set("minecraft:painting/variant", $$2.get());
+         }
+
+         return $$0;
+      }
+   }
+
+   @FunctionalInterface
+   interface a extends Function<Typed<?>, Typed<?>> {
+      default Typed<?> apply(Typed<?> $$0) {
+         return $$0.update(DSL.remainderFinder(), this::fixRemainder);
       }
 
-      return a.getOrDefault($$0, $$0);
+      default <T> Dynamic<T> fixRemainder(Dynamic<T> $$0) {
+         return $$0.get("minecraft:bucket_entity_data").result().map($$1 -> this.fixRemainder($$0, (Dynamic<T>)$$1)).orElse($$0);
+      }
+
+      <T> Dynamic<T> fixRemainder(Dynamic<T> var1, Dynamic<T> var2);
    }
 }

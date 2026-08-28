@@ -3,46 +3,21 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class cbp {
-   public static bzm<byc> a(cgw<iv> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, ffq::c);
-   }
-
-   public static caw<byc> b(cgw<? extends bwt> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bwt::dt);
-   }
-
-   private static <T> caw<byc> a(cgw<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ffq> $$4) {
-      return ccy.a(
-         (Function<ccy.b<byc>, ? extends App<ccy.c<byc>, cdb<byc>>>)($$5 -> $$5.group($$5.a(cgw.n), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cgz> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     ffq $$11 = $$8.dt();
-                     ffq $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((jp)$$12, (double)$$2)) {
+   public static bzo<bxw> a(bxe<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return cda.a(
+         (Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$2x -> $$2x.group($$2x.a(cgy.o), $$2x.c(cgy.r), $$2x.b(cgy.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bxw> $$9 = $$2x.<cha>b($$5).a($$3xx -> $$3xx.g($$7) <= (double)$$2 && $$0.equals($$3xx.an()));
+                     if ($$9.isEmpty()) {
                         return false;
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           ffq $$13 = $$10.get().a().a().d($$11);
-                           ffq $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           ffq $$16 = ciq.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cgz($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+                        bxw $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bzy($$10, true));
                         return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

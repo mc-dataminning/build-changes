@@ -1,64 +1,70 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+public class eae extends dye implements dku, eah.b {
+   private eah a = this.j();
 
-public interface eae {
-   eae a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.b() && !$$2x.Z_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD()))
-         .map(bwt::cG)
-         .toList();
-   eae b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.Z_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD()))
-         .map(bwt::cG)
-         .toList();
-   eae c = ($$0, $$1, $$2, $$3, $$4) -> {
-      ffl $$5 = new ffl($$2).g($$3);
-      return $$1.a($$0, bxc.bc, $$5, bxu::bJ).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD())).map(bwt::cG).toList();
-   };
-
-   List<UUID> detect(ars var1, eae.a var2, iv var3, double var4, boolean var6);
-
-   private static boolean a(djx $$0, ffq $$1, ffq $$2) {
-      ffm $$3 = $$0.a(new dje($$2, $$1, dje.a.c, dje.b.a, ffv.a()));
-      return $$3.b().equals(iv.a((jp)$$1)) || $$3.d() == ffo.a.a;
+   public eae(iw $$0, ebg $$1) {
+      super(dyg.R, $$0, $$1);
    }
 
-   public interface a {
-      eae.a a = new eae.a() {
-         @Override
-         public List<art> a(ars $$0, Predicate<? super crx> $$1) {
-            return $$0.a($$1);
-         }
+   private eah j() {
+      eag $$0 = eag.a;
+      eag.a $$1 = eag.a.a;
+      return new eah(this, $$0, $$1);
+   }
 
-         @Override
-         public <T extends bwt> List<T> a(ars $$0, efq<bwt, T> $$1, ffl $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
-
-      List<? extends crx> a(ars var1, Predicate<? super crx> var2);
-
-      <T extends bwt> List<T> a(ars var1, efq<bwt, T> var2, ffl var3, Predicate<? super T> var4);
-
-      static eae.a a(crx $$0) {
-         return a(List.of($$0));
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.a = $$0.<eah>a(this.a.a(), $$1.a(uo.a)).orElseGet(this::j);
+      if (this.n != null) {
+         this.f();
       }
+   }
 
-      static eae.a a(final List<crx> $$0) {
-         return new eae.a() {
-            @Override
-            public List<crx> a(ars $$0x, Predicate<? super crx> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      $$0.a(this.a.a(), $$1.a(uo.a), this.a);
+   }
 
-            @Override
-            public <T extends bwt> List<T> a(ars $$0x, efq<bwt, T> $$1, ffl $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
+   public ace a() {
+      return ace.a(this);
+   }
+
+   @Override
+   public ua a(ji.a $$0) {
+      return this.a.f().a(this.m().c(dwi.b));
+   }
+
+   @Override
+   public void a(bxe<?> $$0, azz $$1) {
+      if (this.n == null) {
+         ag.b("Expected non-null level");
+      } else {
+         this.a.a($$0, this.n);
+         this.e();
+      }
+   }
+
+   public eah c() {
+      return this.a;
+   }
+
+   @Override
+   public eal d() {
+      return !this.m().b(ebw.bB) ? eal.a : this.m().c(ebw.bB);
+   }
+
+   @Override
+   public void a(djz $$0, eal $$1) {
+      this.e();
+      $$0.b(this.o, this.m().b(ebw.bB, $$1));
+   }
+
+   @Override
+   public void f() {
+      this.e();
+      if (this.n != null) {
+         this.n.a(this.o, this.m(), this.m(), 3);
       }
    }
 }

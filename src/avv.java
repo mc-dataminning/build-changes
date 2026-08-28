@@ -1,45 +1,29 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class avv {
-   private int a;
-   private int b;
-
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
+public class avv extends avz<GameProfile, avw> {
+   public avv(File $$0) {
+      super($$0);
    }
 
-   public boolean a(int $$0, List<art> $$1) {
-      int $$2 = (int)$$1.stream().filter(crx::go).count();
-      return $$2 >= this.b($$0);
+   @Override
+   protected avy<GameProfile> a(JsonObject $$0) {
+      return new avw($$0);
    }
 
-   public int b(int $$0) {
-      return Math.max(1, azo.f((float)(this.a * $$0) / 100.0F));
+   @Override
+   public String[] a() {
+      return this.d().stream().map(avy::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public void a() {
-      this.b = 0;
+   public boolean a(GameProfile $$0) {
+      avw $$1 = this.b($$0);
+      return $$1 != null ? $$1.b() : false;
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public boolean a(List<art> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
-
-      for (art $$3 : $$0) {
-         if (!$$3.Z_()) {
-            this.a++;
-            if ($$3.fR()) {
-               this.b++;
-            }
-         }
-      }
-
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

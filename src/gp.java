@@ -1,42 +1,73 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public class gp implements gi {
-   private final go a;
-   private final go b;
-   private final go c;
+public class gp {
+   private static final char c = '~';
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("argument.pos.missing.double"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("argument.pos.missing.int"));
+   private final boolean d;
+   private final double e;
 
-   public gp(go $$0, go $$1, go $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gp(boolean $$0, double $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public ffq a(ej $$0) {
-      ffq $$1 = $$0.d();
-      return new ffq(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public double a(double $$0) {
+      return this.d ? this.e + $$0 : this.e;
    }
 
-   @Override
-   public ffp b(ej $$0) {
-      ffp $$1 = $$0.k();
-      return new ffp((float)this.a.a((double)$$1.j), (float)this.b.a((double)$$1.k));
+   public static gp a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw go.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         boolean $$2 = b($$0);
+         int $$3 = $$0.getCursor();
+         double $$4 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
+         String $$5 = $$0.getString().substring($$3, $$0.getCursor());
+         if ($$2 && $$5.isEmpty()) {
+            return new gp(true, 0.0);
+         } else {
+            if (!$$5.contains(".") && !$$2 && $$1) {
+               $$4 += 0.5;
+            }
+
+            return new gp($$2, $$4);
+         }
+      }
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   public static gp a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw go.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
+         throw b.createWithContext($$0);
+      } else {
+         boolean $$1 = b($$0);
+         double $$2;
+         if ($$0.canRead() && $$0.peek() != ' ') {
+            $$2 = $$1 ? $$0.readDouble() : (double)$$0.readInt();
+         } else {
+            $$2 = 0.0;
+         }
+
+         return new gp($$1, $$2);
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.b.a();
-   }
+   public static boolean b(StringReader $$0) {
+      boolean $$1;
+      if ($$0.peek() == '~') {
+         $$1 = true;
+         $$0.skip();
+      } else {
+         $$1 = false;
+      }
 
-   @Override
-   public boolean c() {
-      return this.c.a();
+      return $$1;
    }
 
    @Override
@@ -45,65 +76,19 @@ public class gp implements gi {
          return true;
       } else if (!($$0 instanceof gp $$1)) {
          return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
       } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
+         return this.d != $$1.d ? false : Double.compare($$1.e, this.e) == 0;
       }
-   }
-
-   public static gp a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      go $$2 = go.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         go $$3 = go.a($$0);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            go $$4 = go.a($$0);
-            return new gp($$2, $$3, $$4);
-         } else {
-            $$0.setCursor($$1);
-            throw gn.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$1);
-         throw gn.a.createWithContext($$0);
-      }
-   }
-
-   public static gp a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      go $$3 = go.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         go $$4 = go.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            go $$5 = go.a($$0, $$1);
-            return new gp($$3, $$4, $$5);
-         } else {
-            $$0.setCursor($$2);
-            throw gn.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$2);
-         throw gn.a.createWithContext($$0);
-      }
-   }
-
-   public static gp a(double $$0, double $$1, double $$2) {
-      return new gp(new go(false, $$0), new go(false, $$1), new go(false, $$2));
-   }
-
-   public static gp a(ffp $$0) {
-      return new gp(new go(false, (double)$$0.j), new go(false, (double)$$0.k), new go(true, 0.0));
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+      int $$0 = this.d ? 1 : 0;
+      long $$1 = Double.doubleToLongBits(this.e);
+      return 31 * $$0 + (int)($$1 ^ $$1 >>> 32);
+   }
+
+   public boolean a() {
+      return this.d;
    }
 }

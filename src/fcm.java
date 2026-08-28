@@ -1,46 +1,41 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public class fcm extends fbu {
+public class fcm extends fbw {
    public static final MapCodec<fcm> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(fen.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  fbv.e.a(dco.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ayy.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, fcm::new)
    );
-   private final fem b;
-   private final boolean c;
+   public static final dcp b = new dcp(0, List.of());
+   private final Optional<fbv.e<dco>> c;
+   private final Optional<Integer> d;
 
-   private fcm(List<fdq> $$0, fem $$1, boolean $$2) {
+   protected fcm(List<fds> $$0, Optional<fbv.e<dco>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public fbw<fcm> b() {
-      return fbx.e;
-   }
-
-   @Override
-   public Set<baz<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public czy a(czy $$0, fah $$1) {
-      int $$2 = this.c ? $$0.M() : 0;
-      $$0.e($$2 + this.b.a($$1));
+   protected daa a(daa $$0, faj $$1) {
+      $$0.a(kl.aj, b, this::a);
       return $$0;
    }
 
-   public static fbu.a<?> a(fem $$0) {
-      return a($$1 -> new fcm($$1, $$0, false));
+   private dcp a(dcp $$0) {
+      return new dcp(this.d.orElseGet($$0::a), this.c.<List<dco>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
-   public static fbu.a<?> a(fem $$0, boolean $$1) {
-      return a($$2 -> new fcm($$2, $$0, $$1));
+   @Override
+   public fby<fcm> b() {
+      return fbz.K;
    }
 }

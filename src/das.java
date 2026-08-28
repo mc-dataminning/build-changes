@@ -1,57 +1,19 @@
-import java.util.OptionalInt;
-
-public interface das {
-   css a(djx var1, jp var2, czy var3, jb var4);
-
-   default das.a a() {
-      return das.a.a;
+public class das extends dbl {
+   public das(dne $$0, dne $$1, czw.a $$2) {
+      super($$0, $$1, jc.a, $$2);
    }
 
-   default void a(css $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
+   @Override
+   public xc a(daa $$0) {
+      dda $$1 = $$0.a(kl.ak);
+      return (xc)($$1 != null && $$1.c().isPresent() ? xc.a(this.n + ".named", $$1.c().get()) : super.a($$0));
    }
 
-   public static record a(das.b b, float c, float d, OptionalInt e) {
-      public static final das.a a = a().a();
-
-      public static das.a.a a() {
-         return new das.a.a();
+   @Override
+   public void l(daa $$0) {
+      dda $$1 = $$0.a(kl.ak);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(kl.ak, $$1x), dzu.a);
       }
-
-      public static class a {
-         private das.b a = ($$0, $$1) -> dpi.a($$0, 0.7, new ffq(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public das.a.a a(das.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public das.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public das.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public das.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public das.a a() {
-            return new das.a(this.a, this.b, this.c, this.d);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      jp getDispensePosition(le var1, jb var2);
    }
 }

@@ -1,121 +1,100 @@
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Collection;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface hns extends hnl {
-   boolean a = true;
-   hnv.a b = hnv.a.b;
+public class hns {
+   public static final hns a = new hns(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
+   private final List<gti> b;
+   private final List<gti> c;
+   private final List<gti> d;
+   private final List<gti> e;
+   private final List<gti> f;
+   private final List<gti> g;
+   private final List<gti> h;
+   private final List<gti> i;
 
-   hnv a();
+   hns(List<gti> $$0, List<gti> $$1, List<gti> $$2, List<gti> $$3, List<gti> $$4, List<gti> $$5, List<gti> $$6, List<gti> $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
 
-   @Nullable
-   hns b();
+   public List<gti> a(@Nullable jc $$0) {
+      return switch ($$0) {
+         case null -> this.c;
+         case NORTH -> this.d;
+         case SOUTH -> this.e;
+         case EAST -> this.f;
+         case WEST -> this.g;
+         case UP -> this.h;
+         case DOWN -> this.i;
+         default -> throw new MatchException(null, null);
+      };
+   }
 
-   static gtv a(hns $$0) {
-      hns $$1 = $$0;
+   public List<gti> a() {
+      return this.b;
+   }
 
-      gtv.c $$2;
-      for ($$2 = new gtv.c(); $$1 != null; $$1 = $$1.b()) {
-         $$2.a($$1.a().e());
+   public static class a {
+      private final Builder<gti> a = ImmutableList.builder();
+      private final Multimap<jc, gti> b = ArrayListMultimap.create();
+
+      public hns.a a(jc $$0, gti $$1) {
+         this.b.put($$0, $$1);
+         return this;
       }
 
-      return $$2.a($$0);
-   }
+      public hns.a a(gti $$0) {
+         this.a.add($$0);
+         return this;
+      }
 
-   default gtv g() {
-      return a(this);
-   }
+      private static hns a(List<gti> $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+         int $$8 = 0;
+         int var16;
+         List<gti> $$9 = $$0.subList($$8, var16 = $$8 + $$1);
+         List<gti> $$10 = $$0.subList(var16, $$8 = var16 + $$2);
+         int var18;
+         List<gti> $$11 = $$0.subList($$8, var18 = $$8 + $$3);
+         List<gti> $$12 = $$0.subList(var18, $$8 = var18 + $$4);
+         int var20;
+         List<gti> $$13 = $$0.subList($$8, var20 = $$8 + $$5);
+         List<gti> $$14 = $$0.subList(var20, $$8 = var20 + $$6);
+         List<gti> $$15 = $$0.subList($$8, $$8 + $$7);
+         return new hns($$0, $$9, $$10, $$11, $$12, $$13, $$14, $$15);
+      }
 
-   static boolean b(hns $$0) {
-      while ($$0 != null) {
-         Boolean $$1 = $$0.a().c();
-         if ($$1 != null) {
-            return $$1;
+      public hns a() {
+         ImmutableList<gti> $$0 = this.a.build();
+         if (this.b.isEmpty()) {
+            return $$0.isEmpty() ? hns.a : new hns($$0, $$0, List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
+         } else {
+            Builder<gti> $$1 = ImmutableList.builder();
+            $$1.addAll($$0);
+            Collection<gti> $$2 = this.b.get(jc.c);
+            $$1.addAll($$2);
+            Collection<gti> $$3 = this.b.get(jc.d);
+            $$1.addAll($$3);
+            Collection<gti> $$4 = this.b.get(jc.f);
+            $$1.addAll($$4);
+            Collection<gti> $$5 = this.b.get(jc.e);
+            $$1.addAll($$5);
+            Collection<gti> $$6 = this.b.get(jc.b);
+            $$1.addAll($$6);
+            Collection<gti> $$7 = this.b.get(jc.a);
+            $$1.addAll($$7);
+            return a($$1.build(), $$0.size(), $$2.size(), $$3.size(), $$4.size(), $$5.size(), $$6.size(), $$7.size());
          }
-
-         $$0 = $$0.b();
       }
-
-      return true;
-   }
-
-   default boolean c() {
-      return b(this);
-   }
-
-   static hnv.a c(hns $$0) {
-      while ($$0 != null) {
-         hnv.a $$1 = $$0.a().b();
-         if ($$1 != null) {
-            return $$1;
-         }
-
-         $$0 = $$0.b();
-      }
-
-      return b;
-   }
-
-   default hnv.a d() {
-      return c(this);
-   }
-
-   static hnu d(hns $$0) {
-      while ($$0 != null) {
-         hnu $$1 = $$0.a().a();
-         if ($$1 != null) {
-            return $$1;
-         }
-
-         $$0 = $$0.b();
-      }
-
-      return hnu.a;
-   }
-
-   default hnu f() {
-      return d(this);
-   }
-
-   default hnq a(gtv $$0, hnj $$1, hnp $$2) {
-      return this.f().bake($$0, $$1, $$2, this);
-   }
-
-   static hla a(gtv $$0, hnj $$1, hnl $$2) {
-      return $$1.a().a($$0, "particle", $$2);
-   }
-
-   default hla a(gtv $$0, hnj $$1) {
-      return a($$0, $$1, this);
-   }
-
-   static gtq a(hns $$0, czw $$1) {
-      while ($$0 != null) {
-         gtr $$2 = $$0.a().d();
-         if ($$2 != null) {
-            gtq $$3 = $$2.a($$1);
-            if ($$3 != gtq.a) {
-               return $$3;
-            }
-         }
-
-         $$0 = $$0.b();
-      }
-
-      return gtq.a;
-   }
-
-   static gtr e(hns $$0) {
-      gtq $$1 = a($$0, czw.b);
-      gtq $$2 = a($$0, czw.c);
-      gtq $$3 = a($$0, czw.d);
-      gtq $$4 = a($$0, czw.e);
-      gtq $$5 = a($$0, czw.f);
-      gtq $$6 = a($$0, czw.g);
-      gtq $$7 = a($$0, czw.h);
-      gtq $$8 = a($$0, czw.i);
-      return new gtr($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-   }
-
-   default gtr e() {
-      return e(this);
    }
 }

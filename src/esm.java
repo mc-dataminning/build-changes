@@ -1,21 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum esm implements bam {
-   a("none"),
-   b("bury"),
-   c("beard_thin"),
-   d("beard_box"),
-   e("encapsulate");
+public interface esm<S extends esd> {
+   esm<etx> a = a("buried_treasure", etx.d);
+   esm<etz> b = a("desert_pyramid", etz.d);
+   esm<eub> c = a("end_city", eub.d);
+   esm<euk> d = a("fortress", euk.e);
+   esm<eud> e = a("igloo", eud.d);
+   esm<eue> f = a("jigsaw", eue.i);
+   esm<eug> g = a("jungle_temple", eug.d);
+   esm<eui> h = a("mineshaft", eui.d);
+   esm<eum> i = a("nether_fossil", eum.d);
+   esm<euo> j = a("ocean_monument", euo.d);
+   esm<euq> k = a("ocean_ruin", euq.d);
+   esm<eus> l = a("ruined_portal", eus.d);
+   esm<euu> m = a("shipwreck", euu.d);
+   esm<euw> n = a("stronghold", euw.d);
+   esm<euy> o = a("swamp_hut", euy.d);
+   esm<eva> p = a("woodland_mansion", eva.d);
 
-   public static final Codec<esm> f = bam.a(esm::values);
-   private final String g;
+   MapCodec<S> codec();
 
-   private esm(final String $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.g;
+   private static <S extends esd> esm<S> a(String $$0, MapCodec<S> $$1) {
+      return jt.a(mh.R, $$0, () -> $$1);
    }
 }

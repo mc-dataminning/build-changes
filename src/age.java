@@ -1,30 +1,46 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public record age(int b, byh c, Set<byi> d, boolean e) implements zh<abw> {
-   public static final yy<vw, age> a = yy.a(yw.h, age::b, byh.a, age::e, byi.m, age::f, yw.b, age::g, age::new);
+public class age implements zj<aby> {
+   public static final za<vy, age> a = zj.a(age::a, age::new);
+   private final int b;
+   @Nullable
+   private final ua c;
 
-   public static age a(int $$0, byh $$1, Set<byi> $$2, boolean $$3) {
-      return new age($$0, $$1, $$2, $$3);
+   public age(int $$0, @Nullable ua $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private age(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
+   }
+
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.a((va)this.c);
    }
 
    @Override
-   public zj<age> a() {
-      return agp.bd;
+   public zl<age> a() {
+      return agr.bb;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public byh e() {
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public ua e() {
       return this.c;
    }
 
-   public Set<byi> f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

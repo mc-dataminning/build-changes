@@ -1,29 +1,46 @@
-public class gvj implements gun<eal> {
-   private final hhq a;
-   private final azx b = azx.a();
-   private final hfk c = new hfk();
+import org.joml.Matrix4f;
 
-   public gvj(guo.a $$0) {
-      this.a = $$0.d();
+public class gvj<T extends eab> implements gup<T> {
+   public static final alk a = alk.b("textures/environment/end_sky.png");
+   public static final alk b = alk.b("textures/entity/end_portal.png");
+
+   public gvj(guq.a $$0) {
    }
 
-   public void a(eal $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
-      if (eal.a.a($$0.c())) {
-         djx $$7 = $$0.i();
-         if ($$7 != null) {
-            czy $$8 = $$0.c().a();
-            if (!$$8.f()) {
-               this.a.a(this.c.a, $$8, czw.h, $$7, null, 0);
-               this.c.b = hfk.a($$8.M());
-               this.c.c = hfk.a($$8);
-               eam $$9 = $$0.d();
-               $$2.a();
-               $$2.a(0.5F, 0.4F, 0.5F);
-               $$2.a(a.d.rotationDegrees(azo.i($$1, $$9.b(), $$9.a())));
-               gze.a($$2, $$3, $$4, this.c, this.b);
-               $$2.b();
-            }
-         }
+   public void a(T $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
+      Matrix4f $$7 = $$2.c().a();
+      this.a($$0, $$7, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, flt $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jc.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jc.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jc.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jc.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jc.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jc.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, flt $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jc $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7);
+         $$2.a($$1, $$4, $$5, $$8);
+         $$2.a($$1, $$4, $$6, $$9);
+         $$2.a($$1, $$3, $$6, $$10);
       }
+   }
+
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected gsn d() {
+      return gsn.u();
    }
 }

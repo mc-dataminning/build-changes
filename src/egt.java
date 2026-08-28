@@ -1,181 +1,90 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.LongStream;
 
-public abstract class egt {
-   public static egt.b a(int $$0, int $$1) {
-      return new egt.b($$0 - 1, $$1 + 1);
-   }
-
-   public static egt.b b(int $$0, int $$1) {
-      return new egt.b($$0, $$1);
-   }
-
-   public static egt a(int $$0) {
-      return new egt.c($$0, false);
-   }
-
-   public static egt b(int $$0) {
-      return new egt.c($$0 + 1, false);
-   }
-
-   public static egt c(int $$0) {
-      return new egt.c($$0, true);
-   }
-
-   public static egt d(int $$0) {
-      return new egt.c($$0 - 1, true);
-   }
-
-   public static egt a() {
-      return egt.a.a;
-   }
-
-   public static egt a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
-   }
-
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public egt a(OptionalInt $$0) {
-      return a($$0, this.b());
-   }
-
-   public egt b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<egt> a(dkd $$0, iv $$1, int $$2, Predicate<ebe> $$3, Predicate<ebe> $$4) {
-      iv.a $$5 = $$1.k();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(dkd $$0, int $$1, Predicate<ebe> $$2, Predicate<ebe> $$3, iv.a $$4, int $$5, jb $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends egt {
-      static final egt.a a = new egt.a();
-
-      private a() {
+public final class egt {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<eee> e = mh.l
+      .q()
+      .comapFlatMap($$0 -> $$0 == eee.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<egt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(egt::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, egt::new)
+   );
+   private static final Set<alj<dlc>> f = Set.of(dlj.ab, dlj.aa, dlj.ac);
+   public static final dkb b = new dkb() {
+      @Override
+      public int L_() {
+         return 64;
       }
 
       @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
+      public int K_() {
+         return -64;
       }
+   };
+   private final eee g;
+   private final BitSet h;
 
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
+   private egt(eee $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   public static final class b extends egt {
-      private final int a;
-      private final int b;
+   public static void a(edx $$0) {
+      int $$1 = 4;
+      iw.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dng.I)) {
+            $$0.a($$1x, dng.tt.m());
+         }
+      });
+   }
 
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+   public void b(edx $$0) {
+      dkb $$1 = $$0.B();
+      int $$2 = $$1.K_();
+      int $$3 = $$1.ao();
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               iw.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dng.a.m()));
+            }
          }
       }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
    }
 
-   public static final class c extends egt {
-      private final int a;
-      private final boolean b;
+   public eee a() {
+      return this.g;
+   }
 
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
 
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+   public static dlf a(dlf $$0, edd $$1) {
+      if (!$$1.A()) {
+         return $$0;
+      } else {
+         Predicate<alj<dlc>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            jg<dlc> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

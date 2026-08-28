@@ -1,35 +1,55 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dfw(dfx b, dfv c, OptionalInt d, des e, Optional<List<del>> f) {
-   public static final yy<wl, dfw> a = yy.a(dfx.a, dfw::a, dfv.e, dfw::b, yw.i, dfw::c, yw.a(mh.af), dfw::d, del.a.a(yw.a()).a(yw::a), dfw::e, dfw::new);
+public record dfw(dgd f, dgd g, dgd h, dgd i, int j, float k) implements dfx {
+   public static final MapCodec<dfw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dgd.a.fieldOf("ingredient").forGetter(dfw::b),
+               dgd.a.fieldOf("fuel").forGetter(dfw::c),
+               dgd.a.fieldOf("result").forGetter(dfw::d),
+               dgd.a.fieldOf("crafting_station").forGetter(dfw::e),
+               Codec.INT.fieldOf("duration").forGetter(dfw::f),
+               Codec.FLOAT.fieldOf("experience").forGetter(dfw::g)
+            )
+            .apply($$0, dfw::new)
+   );
+   public static final za<wn, dfw> b = za.a(dgd.b, dfw::b, dgd.b, dfw::c, dgd.b, dfw::d, dgd.b, dfw::e, yy.h, dfw::f, yy.l, dfw::g, dfw::new);
+   public static final dfx.a<dfw> c = new dfx.a<>(a, b);
 
-   public List<czy> a(bbb $$0) {
-      return this.c.d().a($$0);
+   @Override
+   public dfx.a<dfw> a() {
+      return c;
    }
 
-   public boolean a(csd $$0) {
-      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
+   @Override
+   public boolean a(cvj $$0) {
+      return this.f.a($$0) && this.c().a($$0) && dfx.super.a($$0);
    }
 
-   public dfx a() {
-      return this.b;
-   }
-
-   public dfv b() {
-      return this.c;
-   }
-
-   public OptionalInt c() {
-      return this.d;
-   }
-
-   public des d() {
-      return this.e;
-   }
-
-   public Optional<List<del>> e() {
+   public dgd b() {
       return this.f;
+   }
+
+   public dgd c() {
+      return this.g;
+   }
+
+   @Override
+   public dgd d() {
+      return this.h;
+   }
+
+   @Override
+   public dgd e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
+   }
+
+   public float g() {
+      return this.k;
    }
 }

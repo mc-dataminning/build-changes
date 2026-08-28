@@ -1,32 +1,47 @@
-public class hoz implements hoh {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gqz e;
-   private final hqd f;
-   private int g = 0;
+import javax.annotation.Nullable;
 
-   public hoz(gqz $$0, hqd $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public interface hoz {
+   alk a();
+
+   @Nullable
+   hqg a(hqf var1);
+
+   how b();
+
+   aws c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   hoz.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bm()) {
-         float $$0 = this.e.dV().A.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((hox)(new hpa.a(this.e, awp.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((hox)(new hpa.a(this.e, awp.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((hox)(new hpa.a(this.e, awp.A)));
-         }
-      }
+   default boolean s() {
+      return true;
+   }
+
+   static azz t() {
+      return azz.a();
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,88 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dpq extends dmo {
-   public static final MapCodec<dpq> a = b(dpq::new);
-   public static final List<iv> b = iv.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(iv::j).toList();
-   private static final fgk c = dnc.b(16.0, 0.0, 12.0);
+public class dpq extends dpk {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dpq> e = b(dpq::new);
+   private static final li g = new lh();
 
    @Override
    public MapCodec<dpq> a() {
-      return a;
+      return e;
    }
 
-   protected dpq(ebd.d $$0) {
+   public dpq(ebf.d $$0) {
       super($$0);
    }
 
-   public static boolean a(djx $$0, iv $$1, iv $$2) {
-      return $$0.a_($$1.a((ka)$$2)).a(axe.cC) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axe.cD);
+   @Override
+   protected li a(djz $$0, daa $$1) {
+      return g;
    }
 
    @Override
-   protected boolean g_(ebe $$0) {
-      return true;
+   public dye a(iw $$0, ebg $$1) {
+      return new dza($$0, $$1);
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return c;
-   }
+   protected void a(aru $$0, ebg $$1, iw $$2) {
+      dyz $$3 = $$0.a($$2, dyg.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         lf $$4 = new lf($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            daa $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               jc $$7 = $$0.a_($$2).c(b);
+               bum $$8 = dzh.a($$0, $$2.a($$7));
+               daa $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dzh.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.v();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.v();
+                  }
+               }
 
-   @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (iv $$4 : b) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               ly.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
+               $$3.a($$5, $$9);
+            }
          }
       }
-   }
-
-   @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dyz($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
-      return $$0.C ? a($$2, dye.n, dyz::a) : null;
-   }
-
-   @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-      }
-
-      return bur.a;
-   }
-
-   @Nullable
-   @Override
-   protected but b(ebe $$0, djx $$1, iv $$2) {
-      dyc $$3 = $$1.c_($$2);
-      if ($$3 instanceof dyz) {
-         xa $$4 = ((buu)$$3).m_();
-         return new buz(($$2x, $$3x, $$4x) -> new cwm($$2x, $$3x, cwd.a($$1, $$2)), $$4);
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean a(ebe $$0, eyd $$1) {
-      return false;
    }
 }

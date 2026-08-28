@@ -1,20 +1,29 @@
-public record agx(String b) implements zh<agr> {
-   public static final yy<vw, agx> a = zh.a(agx::a, agx::new);
+public class agx implements zj<agt> {
+   public static final za<vy, agx> a = zj.a(agx::a, agx::new);
+   private final buq b;
 
-   private agx(vw $$0) {
-      this($$0.p());
+   public agx(buq $$0) {
+      this.b = $$0;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private agx(vy $$0) {
+      this.b = buq.a($$0.readUnsignedByte());
+   }
+
+   private void a(vy $$0) {
+      $$0.l(this.b.a());
    }
 
    @Override
-   public zj<agx> a() {
-      return agp.bp;
+   public zl<agx> a() {
+      return agr.bn;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
+   }
+
+   public buq b() {
+      return this.b;
    }
 }

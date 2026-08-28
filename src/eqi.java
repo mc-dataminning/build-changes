@@ -1,13 +1,53 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class eqi {
-   private static final Codec<Either<ehx, eqi>> a = Codec.either(ehx.a, mg.L.q().dispatch(eqi::a, eqj::codec));
-   public static final Codec<eqi> c = a.xmap(
-      $$0 -> (eqi)$$0.map(eqh::a, $$0x -> $$0x), $$0 -> $$0.a() == eqj.a ? Either.left(((eqh)$$0).b()) : Either.right($$0)
+public class eqi extends eqk {
+   public static final MapCodec<eqi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ehz.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               ehz.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eqi::new)
    );
+   private static final Logger b = LogUtils.getLogger();
+   private final ehz d;
+   private final ehz e;
+   private final int f;
 
-   public abstract int a(azx var1, eia var2);
+   private eqi(ehz $$0, ehz $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-   public abstract eqj<?> a();
+   public static eqi a(ehz $$0, ehz $$1, int $$2) {
+      return new eqi($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(azz $$0, eic $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
+   }
+
+   @Override
+   public eql<?> a() {
+      return eql.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   }
 }

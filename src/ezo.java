@@ -1,184 +1,97 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ezo implements faa {
-   private final fab a;
-   private final faa b;
+public class ezo {
+   private static final String a = "command_storage_";
+   private final Map<String, ezo.a> b = new HashMap<>();
+   private final ezr c;
 
-   public ezo(fab $$0, faa $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ezo(ezr $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public iv a() {
-      return this.b.a();
+   public ua a(alk $$0) {
+      ezo.a $$1 = this.a($$0.b());
+      return $$1 != null ? $$1.b($$0.a()) : new ua();
    }
 
-   @Override
-   public float b() {
-      return this.b.b();
+   @Nullable
+   private ezo.a a(String $$0) {
+      ezo.a $$1 = this.b.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         ezo.a $$2 = this.c.b(ezo.a.a($$0));
+         if ($$2 != null) {
+            this.b.put($$0, $$2);
+         }
+
+         return $$2;
+      }
    }
 
-   @Override
-   public long c() {
-      return this.b.c();
+   private ezo.a b(String $$0) {
+      ezo.a $$1 = this.b.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         ezo.a $$2 = this.c.a(ezo.a.a($$0));
+         this.b.put($$0, $$2);
+         return $$2;
+      }
    }
 
-   @Override
-   public long d() {
-      return this.b.d();
+   public void a(alk $$0, ua $$1) {
+      this.b($$0.b()).a($$0.a(), $$1);
    }
 
-   @Override
-   public String e() {
-      return this.a.e();
+   public Stream<alk> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().c($$0.getKey()));
    }
 
-   @Override
-   public int f() {
-      return this.b.f();
+   static String c(String $$0) {
+      return "command_storage_" + $$0;
    }
 
-   @Override
-   public void a(int $$0) {
-   }
+   static class a extends ezc {
+      public static final Codec<ezo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(ayy.C, ua.a).fieldOf("contents").forGetter($$0x -> $$0x.b)).apply($$0, ezo.a::new)
+      );
+      private final Map<String, ua> b;
 
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
+      private a(Map<String, ua> $$0) {
+         this.b = new HashMap<>($$0);
+      }
 
-   @Override
-   public int h() {
-      return this.b.h();
-   }
+      private a() {
+         this(new HashMap<>());
+      }
 
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
+      public static ezd<ezo.a> a(String $$0) {
+         return new ezd<>(ezo.c($$0), ezo.a::new, a, bbf.h);
+      }
 
-   @Override
-   public int j() {
-      return this.b.j();
-   }
+      public ua b(String $$0) {
+         ua $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new ua();
+      }
 
-   @Override
-   public dju k() {
-      return this.a.k();
-   }
+      public void a(String $$0, ua $$1) {
+         if ($$1.j()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
 
-   @Override
-   public void a(long $$0) {
-   }
+         this.f();
+      }
 
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(iv $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(dju $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public djt o() {
-      return this.a.o();
-   }
-
-   @Override
-   public ecw.d p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(ecw.d $$0) {
-   }
-
-   @Override
-   public buo q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public ffd<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(q $$0, djz $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      public Stream<alk> c(String $$0) {
+         return this.b.keySet().stream().map($$1 -> alk.a($$0, $$1));
+      }
    }
 }

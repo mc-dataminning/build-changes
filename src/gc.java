@@ -1,137 +1,93 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gc implements ArgumentType<gc.b> {
-   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final jh<dnc> b;
+public class gc implements Predicate<ebk> {
+   private final ebg a;
+   private final Set<ecj<?>> b;
+   @Nullable
+   private final ua c;
 
-   public gc(ef $$0) {
-      this.b = $$0.e(mh.i);
+   public gc(ebg $$0, Set<ecj<?>> $$1, @Nullable ua $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static gc a(ef $$0) {
-      return new gc($$0);
+   public ebg a() {
+      return this.a;
    }
 
-   public gc.b a(StringReader $$0) throws CommandSyntaxException {
-      return a(this.b, $$0);
+   public Set<ecj<?>> b() {
+      return this.b;
    }
 
-   public static gc.b a(jh<dnc> $$0, StringReader $$1) throws CommandSyntaxException {
-      return (gc.b)ge.b($$0, $$1, true).map($$0x -> new gc.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new gc.c($$0x.a(), $$0x.b(), $$0x.c()));
+   public boolean a(ebk $$0) {
+      ebg $$1 = $$0.a();
+      if (!$$1.a(this.a.b())) {
+         return false;
+      } else {
+         for (ecj<?> $$2 : this.b) {
+            if ($$1.c($$2) != this.a.c($$2)) {
+               return false;
+            }
+         }
+
+         if (this.c == null) {
+            return true;
+         } else {
+            dye $$3 = $$0.b();
+            return $$3 != null && up.a(this.c, $$3.b($$0.c().J_()), true);
+         }
+      }
    }
 
-   public static Predicate<ebi> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<ebi>)$$0.getArgument($$1, gc.b.class);
+   public boolean a(aru $$0, iw $$1) {
+      return this.a(new ebk($$0, $$1, false));
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ge.a(this.b, $$1, true, true);
-   }
-
-   public Collection<String> getExamples() {
-      return a;
-   }
-
-   static class a implements gc.b {
-      private final ebe a;
-      private final Set<ech<?>> b;
-      @Nullable
-      private final tz c;
-
-      public a(ebe $$0, Set<ech<?>> $$1, @Nullable tz $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public boolean a(aru $$0, iw $$1, int $$2) {
+      ebg $$3 = ($$2 & 16) != 0 ? this.a : dne.b(this.a, $$0, $$1);
+      if ($$3.l()) {
+         $$3 = this.a;
       }
 
-      public boolean a(ebi $$0) {
-         ebe $$1 = $$0.a();
-         if (!$$1.a(this.a.b())) {
-            return false;
-         } else {
-            for (ech<?> $$2 : this.b) {
-               if ($$1.c($$2) != this.a.c($$2)) {
-                  return false;
-               }
-            }
+      $$3 = this.a($$3);
+      boolean $$4 = false;
+      if ($$0.a($$1, $$3, $$2)) {
+         $$4 = true;
+      }
 
-            if (this.c == null) {
-               return true;
-            } else {
-               dyc $$3 = $$0.b();
-               return $$3 != null && uo.a(this.c, $$3.b($$0.c().J_()), true);
+      if (this.c != null) {
+         dye $$5 = $$0.c_($$1);
+         if ($$5 != null) {
+            ua $$6 = $$5.d($$0.J_());
+            $$5.c(this.c, $$0.J_());
+            ua $$7 = $$5.d($$0.J_());
+            if (!$$7.equals($$6)) {
+               $$4 = true;
+               $$5.e();
+               $$0.m().a($$1);
             }
          }
       }
 
-      @Override
-      public boolean a() {
-         return this.c != null;
-      }
+      return $$4;
    }
 
-   public interface b extends Predicate<ebi> {
-      boolean a();
-   }
-
-   static class c implements gc.b {
-      private final jj<dnc> a;
-      @Nullable
-      private final tz b;
-      private final Map<String, String> c;
-
-      c(jj<dnc> $$0, Map<String, String> $$1, @Nullable tz $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-      }
-
-      public boolean a(ebi $$0) {
-         ebe $$1 = $$0.a();
-         if (!$$1.a(this.a)) {
-            return false;
-         } else {
-            for (Entry<String, String> $$2 : this.c.entrySet()) {
-               ech<?> $$3 = $$1.b().l().a($$2.getKey());
-               if ($$3 == null) {
-                  return false;
-               }
-
-               Comparable<?> $$4 = (Comparable<?>)$$3.b($$2.getValue()).orElse(null);
-               if ($$4 == null) {
-                  return false;
-               }
-
-               if ($$1.c($$3) != $$4) {
-                  return false;
-               }
-            }
-
-            if (this.b == null) {
-               return true;
-            } else {
-               dyc $$5 = $$0.b();
-               return $$5 != null && uo.a(this.b, $$5.b($$0.c().J_()), true);
-            }
+   private ebg a(ebg $$0) {
+      if ($$0 == this.a) {
+         return $$0;
+      } else {
+         for (ecj<?> $$1 : this.b) {
+            $$0 = a($$0, this.a, $$1);
          }
-      }
 
-      @Override
-      public boolean a() {
-         return this.b != null;
+         return $$0;
       }
+   }
+
+   private static <T extends Comparable<T>> ebg a(ebg $$0, ebg $$1, ecj<T> $$2) {
+      return $$0.c($$2, $$1.c($$2));
    }
 }

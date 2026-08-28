@@ -1,69 +1,75 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class drg extends dnc {
-   public static final MapCodec<drg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mg.e.q().fieldOf("host").forGetter(drg::b), t()).apply($$0, drg::new));
-   private final dnc b;
-   private static final Map<dnc, dnc> c = Maps.newIdentityHashMap();
-   private static final Map<ebe, ebe> d = Maps.newIdentityHashMap();
-   private static final Map<ebe, ebe> e = Maps.newIdentityHashMap();
+public class drg extends dne {
+   public static final MapCodec<drg> a = b(drg::new);
+   public static final ebx b = dsy.b;
+   public static final ebx c = dsy.c;
+   public static final ebx d = dsy.d;
+   public static final ebx e = dsy.e;
+   public static final ebx f = dsy.f;
+   public static final ebx g = dsy.g;
+   private static final Map<jc, ebx> h = dsy.h;
 
    @Override
-   public MapCodec<? extends drg> a() {
+   public MapCodec<drg> a() {
       return a;
    }
 
-   public drg(dnc $$0, ebd.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
-   }
-
-   public dnc b() {
-      return this.b;
-   }
-
-   public static boolean o(ebe $$0) {
-      return c.containsKey($$0.b());
-   }
-
-   private void a(ars $$0, iv $$1) {
-      cpg $$2 = bxc.bf.a($$0, bxb.k);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.U();
-      }
+   public drg(ebf.d $$0) {
+      super($$0);
+      this.l(
+         this.C
+            .b()
+            .b(b, Boolean.valueOf(true))
+            .b(c, Boolean.valueOf(true))
+            .b(d, Boolean.valueOf(true))
+            .b(e, Boolean.valueOf(true))
+            .b(f, Boolean.valueOf(true))
+            .b(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, czy $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.O().c(djt.i) && !dgn.a($$3, axg.t)) {
-         this.a($$1, $$2);
-      }
+   public ebg a(ddt $$0) {
+      djd $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      return this.m()
+         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
+         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
+         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
    }
 
-   public static ebe p(ebe $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).m());
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public ebe q(ebe $$0) {
-      return a(e, $$0, () -> this.b().m());
+   @Override
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(h.get($$1.a(jc.c)), $$0.c(b))
+         .b(h.get($$1.a(jc.d)), $$0.c(d))
+         .b(h.get($$1.a(jc.f)), $$0.c(c))
+         .b(h.get($$1.a(jc.e)), $$0.c(e))
+         .b(h.get($$1.a(jc.b)), $$0.c(f))
+         .b(h.get($$1.a(jc.a)), $$0.c(g));
    }
 
-   private static ebe a(Map<ebe, ebe> $$0, ebe $$1, Supplier<ebe> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         ebe $$2x = $$2.get();
+   @Override
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.b(h.get($$1.b(jc.c)), $$0.c(b))
+         .b(h.get($$1.b(jc.d)), $$0.c(d))
+         .b(h.get($$1.b(jc.f)), $$0.c(c))
+         .b(h.get($$1.b(jc.e)), $$0.c(e))
+         .b(h.get($$1.b(jc.b)), $$0.c(f))
+         .b(h.get($$1.b(jc.a)), $$0.c(g));
+   }
 
-         for (ech $$3 : $$1x.F()) {
-            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
-         }
-
-         return $$2x;
-      });
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

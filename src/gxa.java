@@ -1,25 +1,15 @@
-public abstract class gxa<T extends cog, S extends hgk> extends gyz<T, S, gjw<S>> {
-   public gxa(gyi.a $$0, glc $$1, glc $$2, glc $$3) {
-      this($$0, $$2, $$3, new gjw<>($$0.a($$1)));
-   }
-
-   public gxa(gyi.a $$0, glc $$1, glc $$2, gjw<S> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new hcl<>(this, new gjw($$0.a($$1)), new gjw($$0.a($$2)), $$0.h()));
+public abstract class gxa<T extends clv, S extends hes, M extends gic<? super S>> extends gxe<T, S, M> {
+   public gxa(gyk.a $$0, M $$1, M $$2) {
+      super($$0, $$1, $$2, 0.75F);
    }
 
    public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.gl();
-      $$1.c = $$0.x();
-      $$1.d = $$0.fb().a(dac.pj);
-   }
-
-   protected boolean a(S $$0) {
-      return $$0.c;
-   }
-
-   protected gio.a a(cog $$0, bxl $$1) {
-      return $$0.fy() == $$1 && $$0.gl() && $$0.fb().a(dac.pj) ? gio.a.d : gio.a.a;
+      $$1.b = $$0.a(bxf.h).v();
+      $$1.c = $$0.bZ();
+      $$1.e = $$0.J($$2);
+      $$1.f = $$0.K($$2);
+      $$1.g = $$0.L($$2);
+      $$1.d = $$0.bX > 0;
    }
 }

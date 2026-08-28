@@ -1,82 +1,142 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class duo extends dly {
-   public static final MapCodec<duo> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(duo.a.b.fieldOf("kind").forGetter(dly::b), t()).apply($$0, duo::new));
-   public static final int d = eck.a();
-   private static final int b = d + 1;
-   public static final ece e = ebu.bd;
-   private static final fgk f = dnc.b(8.0, 0.0, 8.0);
-   private static final fgk g = dnc.b(10.0, 0.0, 8.0);
+public abstract class duo extends dmq implements dup {
+   public static final ebx d = ebw.I;
+   private static final fgm a = dne.b(8.0, 0.0, 16.0);
+   private final ecu b;
 
-   @Override
-   public MapCodec<? extends duo> a() {
-      return c;
-   }
-
-   protected duo(duo.a $$0, ebd.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   protected duo(ecu $$0, ebf.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return this.b() == duo.b.h ? g : f;
-   }
+   protected abstract MapCodec<? extends duo> a();
 
    @Override
-   protected fgk d_(ebe $$0) {
-      return fgh.a();
-   }
-
-   @Override
-   public ebe a(ddr $$0) {
-      return super.a($$0).b(e, Integer.valueOf(eck.a($$0.i())));
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends bam {
-      Map<String, duo.a> a = new Object2ObjectArrayMap();
-      Codec<duo.a> b = Codec.stringResolver(bam::c, a::get);
-   }
-
-   public static enum b implements duo.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, exr.c, exr.c.a($$1));
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return a;
+   }
+
+   @Override
+   public boolean a(ebg $$0) {
+      return true;
+   }
+
+   @Override
+   public dye a(iw $$0, ebg $$1) {
+      return new dzs($$0, $$1);
+   }
+
+   @Override
+   protected but a(daa $$0, ebg $$1, djz $$2, iw $$3, crz $$4, bus $$5, ffo $$6) {
+      if ($$2.c_($$3) instanceof dzs $$7) {
+         dbc $$10 = $$0.h() instanceof dbc $$9 ? $$9 : null;
+         boolean $$11 = $$10 != null && $$4.gw();
+         if (!$$2.C) {
+            if ($$11 && !$$7.u() && !this.a($$4, $$7)) {
+               boolean $$12 = $$7.a($$4);
+               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
+                  $$7.a($$4, $$2, $$3, $$12);
+                  $$4.b(axb.c.b($$0.h()));
+                  $$2.a(egg.c, $$7.aB_(), egg.a.a($$4, $$7.m()));
+                  $$0.a(1, $$4);
+                  return but.a;
+               } else {
+                  return but.f;
+               }
+            } else {
+               return but.f;
+            }
+         } else {
+            return !$$11 && !$$7.u() ? but.c : but.a;
+         }
+      } else {
+         return but.e;
       }
+   }
+
+   @Override
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      if ($$1.c_($$2) instanceof dzs $$5) {
+         if ($$1.C) {
+            ag.b(new IllegalStateException("Expected to only call this on server"));
+         }
+
+         boolean $$7 = $$5.a($$3);
+         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
+         if ($$5.u()) {
+            $$1.a(null, $$5.aB_(), $$5.d(), aws.e);
+            return but.b;
+         } else if ($$8) {
+            return but.b;
+         } else if (!this.a($$3, $$5) && $$3.gw() && this.b($$3, $$5, $$7)) {
+            this.a($$3, $$5, $$7);
+            return but.b;
+         } else {
+            return but.e;
+         }
+      } else {
+         return but.e;
+      }
+   }
+
+   private boolean b(crz $$0, dzs $$1, boolean $$2) {
+      dzt $$3 = $$1.a($$2);
+      return Arrays.stream($$3.b($$0.X())).allMatch($$0x -> $$0x.equals(xb.a) || $$0x.b() instanceof yj);
+   }
+
+   public abstract float h(ebg var1);
+
+   public ffs o(ebg $$0) {
+      return new ffs(0.5, 0.5, 0.5);
+   }
+
+   @Override
+   protected exq b_(ebg $$0) {
+      return $$0.c(d) ? exr.c.a(false) : super.b_($$0);
+   }
+
+   public ecu d() {
+      return this.b;
+   }
+
+   public static ecu a(dne $$0) {
+      ecu $$1;
+      if ($$0 instanceof duo) {
+         $$1 = ((duo)$$0).d();
+      } else {
+         $$1 = ecu.b;
+      }
+
+      return $$1;
+   }
+
+   public void a(crz $$0, dzs $$1, boolean $$2) {
+      $$1.a($$0.cG());
+      $$0.a($$1, $$2);
+   }
+
+   private boolean a(crz $$0, dzs $$1) {
+      UUID $$2 = $$1.t();
+      return $$2 != null && !$$2.equals($$0.cG());
+   }
+
+   @Nullable
+   @Override
+   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
+      return a($$2, dyg.h, dzs::a);
    }
 }

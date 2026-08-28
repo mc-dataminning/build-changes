@@ -1,29 +1,18 @@
-public class acm implements zh<abw> {
-   public static final yy<vw, acm> a = zh.a(acm::a, acm::new);
-   private final boolean b;
+import io.netty.buffer.ByteBuf;
 
-   public acm(boolean $$0) {
-      this.b = $$0;
-   }
+public class acm implements zj<aby> {
+   public static final acm a = new acm();
+   public static final za<ByteBuf, acm> b = za.a(a);
 
-   private acm(vw $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private acm() {
    }
 
    @Override
-   public zj<acm> a() {
-      return agp.p;
+   public zl<acm> a() {
+      return agr.n;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

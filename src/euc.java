@@ -1,95 +1,80 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public final class euc extends esb {
-   public static final etb d = etb.b;
-   public static final evn e = evn.b;
-   public static final int f = 128;
-   public static final int g = 0;
-   public static final int h = 20;
-   public static final MapCodec<euc> i = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  a($$0),
-                  etl.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
-                  ali.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
-                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
-                  eqi.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
-                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
-                  ehd.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
-                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
-                  Codec.list(etn.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
-                  etb.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
-                  evn.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
-               )
-               .apply($$0, euc::new)
-      )
-      .validate(euc::a);
-   private final jf<etl> j;
-   private final Optional<ali> k;
-   private final int l;
-   private final eqi m;
-   private final boolean n;
-   private final Optional<ehd.a> o;
-   private final int p;
-   private final List<etn> q;
-   private final etb r;
-   private final evn s;
+public class euc {
+   public static final int a = 90;
+   static final alk b = alk.b("igloo/top");
+   private static final alk c = alk.b("igloo/middle");
+   private static final alk d = alk.b("igloo/bottom");
+   static final Map<alk, iw> e = ImmutableMap.of(b, new iw(3, 5, 5), c, new iw(1, 3, 1), d, new iw(3, 6, 7));
+   static final Map<alk, iw> f = ImmutableMap.of(b, iw.c, c, new iw(2, -3, 4), d, new iw(0, -3, -2));
 
-   private static DataResult<euc> a(euc $$0) {
-      int $$1 = switch ($$0.d()) {
-         case a -> 0;
-         case b, c, d, e -> 12;
-      };
-      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
+   public static void a(ewg $$0, iw $$1, dty $$2, esi $$3, azz $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new euc.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new euc.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new euc.a($$0, b, $$1, $$2, 0));
    }
 
-   public euc(esb.c $$0, jf<etl> $$1, Optional<ali> $$2, int $$3, eqi $$4, boolean $$5, Optional<ehd.a> $$6, int $$7, List<etn> $$8, etb $$9, evn $$10) {
-      super($$0);
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.o = $$6;
-      this.p = $$7;
-      this.q = $$8;
-      this.r = $$9;
-      this.s = $$10;
-   }
+   public static class a extends esn {
+      public a(ewg $$0, alk $$1, iw $$2, dty $$3, int $$4) {
+         super(esu.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      }
 
-   public euc(esb.c $$0, jf<etl> $$1, int $$2, eqi $$3, boolean $$4, ehd.a $$5) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
-   }
+      public a(ewg $$0, ua $$1) {
+         super(esu.I, $$1, $$0, $$1x -> a($$1.<dty>a("Rot", dty.h).orElseThrow(), $$1x));
+      }
 
-   public euc(esb.c $$0, jf<etl> $$1, int $$2, eqi $$3, boolean $$4) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
-   }
+      private static ewb a(dty $$0, alk $$1) {
+         return new ewb().a($$0).a(dsh.a).a(euc.e.get($$1)).a(evg.b).a(evp.a);
+      }
 
-   @Override
-   public Optional<esb.b> a(esb.a $$0) {
-      djc $$1 = $$0.h();
-      int $$2 = this.m.a($$0.f(), new eia($$0.b(), $$0.i()));
-      iv $$3 = new iv($$1.d(), $$2, $$1.e());
-      return etf.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, etp.create(this.q, $$3, $$0.g()), this.r, this.s);
-   }
+      private static iw a(alk $$0, iw $$1, int $$2) {
+         return $$1.a(euc.f.get($$0)).c($$2);
+      }
 
-   @Override
-   public esk<?> e() {
-      return esk.f;
-   }
+      @Override
+      protected void a(est $$0, ua $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", dty.h, this.c.d());
+      }
 
-   @VisibleForTesting
-   public jf<etl> f() {
-      return this.j;
-   }
+      @Override
+      protected void a(String $$0, iw $$1, dkq $$2, azz $$3, erv $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dng.a.m(), 3);
+            dye $$5 = $$2.c_($$1.e());
+            if ($$5 instanceof dym) {
+               ((dym)$$5).a(faf.B, $$3.g());
+            }
+         }
+      }
 
-   @VisibleForTesting
-   public List<etn> g() {
-      return this.q;
+      @Override
+      public void a(dky $$0, dkv $$1, ede $$2, azz $$3, erv $$4, dje $$5, iw $$6) {
+         alk $$7 = alk.a(this.a);
+         ewb $$8 = a(this.c.d(), $$7);
+         iw $$9 = euc.f.get($$7);
+         iw $$10 = this.d.a((kb)ewf.a($$8, new iw(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(ehf.a.a, $$10.u(), $$10.w());
+         iw $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(euc.b)) {
+            iw $$13 = this.d.a((kb)ewf.a($$8, new iw(3, 0, 5)));
+            ebg $$14 = $$0.a_($$13.e());
+            if (!$$14.l() && !$$14.a(dng.da)) {
+               $$0.a($$13, dng.ef.m(), 3);
+            }
+         }
+
+         this.d = $$12;
+      }
    }
 }

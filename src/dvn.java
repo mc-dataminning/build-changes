@@ -1,26 +1,30 @@
-public enum dvn {
-   a {
-      @Override
-      public boolean a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-         return dnc.a($$0.h($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final fgk d = dnc.b(2.0, 0.0, 10.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-         return !fgh.c($$0.h($$1, $$2).a($$3), this.d, ffu.c);
-      }
-   },
-   c {
-      private final fgk d = fgh.a(fgh.b(), dnc.b(12.0, 0.0, 16.0), ffu.e);
+public class dvn extends dne {
+   public static final MapCodec<dvn> a = b(dvn::new);
+   private static final fgm b = dne.a(6.0);
 
-      @Override
-      public boolean a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-         return !fgh.c($$0.h($$1, $$2).a($$3), this.d, ffu.c);
-      }
-   };
+   @Override
+   public MapCodec<dvn> a() {
+      return a;
+   }
 
-   public abstract boolean a(ebe var1, djb var2, iv var3, jb var4);
+   protected dvn(ebf.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected dtr a_(ebg $$0) {
+      return dtr.a;
+   }
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return b;
+   }
+
+   @Override
+   protected float c(ebg $$0, djd $$1, iw $$2) {
+      return 1.0F;
+   }
 }

@@ -1,56 +1,65 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dos extends dnc {
-   public static final MapCodec<dnc> a = mg.e.q().fieldOf("dead");
-   public static final MapCodec<dos> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dos::new));
-   private final dnc c;
-
-   public dos(dnc $$0, ebd.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dos extends dmq implements dup {
+   public static final MapCodec<dos> a = b(dos::new);
+   public static final ebx b = ebw.I;
+   private static final fgm c = dne.a(6.0);
 
    @Override
    public MapCodec<dos> a() {
-      return b;
+      return a;
+   }
+
+   public dos(ebf.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.m(), 2);
-      }
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if (!this.a($$1, $$3)) {
-         $$2.a($$3, this, 60 + $$7.a(40));
+   public dye a(iw $$0, ebg $$1) {
+      return new dyr($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
+      return a($$2, dyg.A, $$0.C ? dyr::a : dyr::b);
+   }
+
+   @Override
+   protected exq b_(ebg $$0) {
+      return $$0.c(b) ? exr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, exr.c, exr.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   protected boolean a(djb $$0, iv $$1) {
-      for (jb $$2 : jb.values()) {
-         exo $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(axj.a)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return c;
    }
 
    @Nullable
    @Override
-   public ebe a(ddr $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().G_().a(40));
-      }
+   public ebg a(ddt $$0) {
+      exq $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.a(axl.a) && $$1.e() == 8));
+   }
 
-      return this.m();
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
    }
 }

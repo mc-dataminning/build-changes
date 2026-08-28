@@ -1,96 +1,43 @@
 import com.mojang.serialization.Codec;
 
-public class emd extends ekk<emw> {
-   private static final jb[] a = jb.values();
+public class emd extends ekm<emy> {
+   private static final iw a = new iw(8, 3, 8);
+   private static final dje b = new dje(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public emd(Codec<emw> $$0) {
+   public emd(Codec<emy> $$0) {
       super($$0);
    }
 
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   }
+
    @Override
-   public boolean a(ekm<emw> $$0) {
-      dkw $$1 = $$0.b();
-      iv $$2 = $$0.e();
-      azx $$3 = $$0.d();
-      if (!$$1.v($$2)) {
-         return false;
+   public boolean a(eko<emy> $$0) {
+      dky $$1 = $$0.b();
+      dje $$2 = new dje($$0.e());
+      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
+         return true;
       } else {
-         ebe $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dne.em) && !$$4.a(dne.lq)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
-      }
-   }
+         iw $$3 = a.h($$0.e().v() + a.v());
+         iw.a $$4 = new iw.a();
 
-   private void a(djy $$0, azx $$1, iv $$2) {
-      $$0.a($$2, dne.lq.m(), 2);
-      iv.a $$3 = new iv.a();
-      iv.a $$4 = new iv.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.v($$3)) {
-            int $$6 = 0;
-
-            for (jb $$7 : a) {
-               ebe $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(dne.em) || $$8.a(dne.lq)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dng.m.m(), 2);
+                  } else {
+                     $$1.a($$4, dng.b.m(), 2);
+                  }
                }
             }
-
-            if ($$6 == 1) {
-               $$0.a($$3, dne.lq.m(), 2);
-            }
-         }
-      }
-   }
-
-   private void b(djy $$0, azx $$1, iv $$2) {
-      iv.a $$3 = new iv.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.v($$3)) {
-            ebe $$5 = $$0.a_($$3.d());
-            if ($$5.a(dne.em) || $$5.a(dne.lq)) {
-               int $$6 = azo.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(djy $$0, azx $$1, iv.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.v($$2)) {
-            if ($$6 == $$3 || !$$0.v($$2.e())) {
-               $$0.a($$2, dne.pf.m().b(dqv.e, Integer.valueOf(azo.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, dne.pg.m(), 2);
          }
 
-         $$2.c(jb.a);
+         return true;
       }
    }
 }

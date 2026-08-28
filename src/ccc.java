@@ -1,29 +1,50 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class ccc {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   private static final int a = 200;
 
-   public static caw<byc> a(cgw<je> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return ccy.a(
-         (Function<ccy.b<byc>, ? extends App<ccy.c<byc>, cdb<byc>>>)($$4 -> $$4.group($$4.a(cgw.n), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  je $$9 = $$4.b($$5);
-                  if ($$6.aj() != $$9.a() || !$$9.b().a($$7.dt(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
+   public static <E extends bxy> bzo<E> a(ccc.b<E> $$0) {
+      return a(($$0x, $$1) -> false, $$0, true);
+   }
+
+   public static <E extends bxy> bzo<E> a(ccc.a $$0) {
+      return a($$0, ($$0x, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bxy> bzo<E> a() {
+      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bxy> bzo<E> a(ccc.a $$0, ccc.b<E> $$1, boolean $$2) {
+      return cda.a(
+         (Function<cda.b<E>, ? extends App<cda.c<E>, cdd<E>>>)($$3 -> $$3.group($$3.b(cgy.p), $$3.a(cgy.F)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bxw $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bJ() && $$9.dV() == $$7.dV() && !$$0.test($$6, $$9)) {
                      return true;
                   } else {
-                     Optional<ffq> $$10 = Optional.ofNullable(ciq.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new cgz($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
+                     $$1.accept($$6, (E)$$7, $$9);
+                     $$4.b();
                      return true;
                   }
                }))
       );
+   }
+
+   private static boolean a(bxw $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dV().ae() - $$1.get() > 200L;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      boolean test(aru var1, bxw var2);
+   }
+
+   @FunctionalInterface
+   public interface b<E> {
+      void accept(aru var1, E var2, bxw var3);
    }
 }

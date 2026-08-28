@@ -1,21 +1,8 @@
-public record le(ars a, iv b, ebe c, dyx d) {
-   public ffq a() {
-      return this.b.b();
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public ars b() {
-      return this.a;
-   }
-
-   public iv c() {
-      return this.b;
-   }
-
-   public ebe d() {
-      return this.c;
-   }
-
-   public dyx e() {
-      return this.d;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface le {
 }

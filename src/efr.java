@@ -1,15 +1,63 @@
-public interface efr<T> {
-   void g(T var1);
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   void f(T var1);
+public class efr {
+   private Int2ObjectMap<bwv> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bwv> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bwv> c;
 
-   void e(T var1);
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   void d(T var1);
+         while ($$1.hasNext()) {
+            Entry<bwv> $$0 = (Entry<bwv>)$$1.next();
+            this.b.put($$0.getIntKey(), (bwv)$$0.getValue());
+         }
 
-   void c(T var1);
+         Int2ObjectMap<bwv> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
+      }
+   }
 
-   void b(T var1);
+   public void a(bwv $$0) {
+      this.a();
+      this.a.put($$0.ao(), $$0);
+   }
 
-   void a(T var1);
+   public void b(bwv $$0) {
+      this.a();
+      this.a.remove($$0.ao());
+   }
+
+   public boolean c(bwv $$0) {
+      return this.a.containsKey($$0.ao());
+   }
+
+   public void a(Consumer<bwv> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
+
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               bwv $$1 = (bwv)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
+      }
+   }
 }

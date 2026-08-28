@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 public class al implements Comparable<al> {
    private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   private static final Codec<Instant> c = ayw.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Instant> c = ayy.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
    private static final Codec<Map<String, as>> d = Codec.unboundedMap(Codec.STRING, c)
       .xmap(
          $$0 -> ag.a($$0, as::new),
@@ -92,12 +92,12 @@ public class al implements Comparable<al> {
       return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public void a(vw $$0) {
-      $$0.a(this.e, vw::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(vy $$0) {
+      $$0.a(this.e, vy::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static al b(vw $$0) {
-      Map<String, as> $$1 = $$0.a(vw::p, as::b);
+   public static al b(vy $$0) {
+      Map<String, as> $$1 = $$0.a(vy::p, as::b);
       return new al($$1);
    }
 
@@ -122,7 +122,7 @@ public class al implements Comparable<al> {
    }
 
    @Nullable
-   public xa d() {
+   public xc d() {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -131,7 +131,7 @@ public class al implements Comparable<al> {
             return null;
          } else {
             int $$1 = this.h();
-            return xa.a("advancements.progress", $$1, $$0);
+            return xc.a("advancements.progress", $$1, $$0);
          }
       }
    }

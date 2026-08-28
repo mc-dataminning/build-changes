@@ -1,7 +1,3 @@
-import javax.annotation.Nullable;
-
-public class hem extends hep {
-   public boolean a = true;
-   @Nullable
-   public ffq b;
+public class hem extends hfg {
+   public boolean a;
 }

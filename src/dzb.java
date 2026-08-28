@@ -1,137 +1,125 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import javax.annotation.Nullable;
 
-public class dzb {
-   private final Object2IntSortedMap<czu> a;
+public class dzb extends dye implements buw {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final azz k = azz.a();
+   @Nullable
+   private xc l;
 
-   dzb(Object2IntSortedMap<czu> $$0) {
-      this.a = $$0;
+   public dzb(iw $$0, ebg $$1) {
+      super(dyg.n, $$0, $$1);
    }
 
-   public boolean a(czy $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<czu> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(czy $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dzb a(jh.a $$0, cvh $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dzb a(jh.a $$0, cvh $$1, int $$2) {
-      return new dzb.a($$0, $$1)
-         .a(dac.rq, $$2 * 100)
-         .a(dne.jd, $$2 * 8 * 10)
-         .a(dac.to, $$2 * 12)
-         .a(dac.pl, $$2 * 8)
-         .a(dac.pm, $$2 * 8)
-         .a(axm.r, $$2 * 3 / 2)
-         .a(axm.D, $$2 * 3 / 2)
-         .a(axm.b, $$2 * 3 / 2)
-         .a(dne.y, $$2 * 3 / 2)
-         .a(axm.i, $$2 * 3 / 2)
-         .a(dne.iw, $$2 * 3 / 2)
-         .a(axm.j, $$2 * 3 / 4)
-         .a(dne.kf, $$2 * 3 / 4)
-         .a(axm.n, $$2 * 3 / 2)
-         .a(axm.m, $$2 * 3 / 2)
-         .a(axm.k, $$2 * 3 / 2)
-         .a(axm.l, $$2 * 3 / 2)
-         .a(dne.bf, $$2 * 3 / 2)
-         .a(dne.cv, $$2 * 3 / 2)
-         .a(dne.cw, $$2 * 3 / 2)
-         .a(dne.oG, $$2 * 3 / 2)
-         .a(dne.ek, $$2 * 3 / 2)
-         .a(dne.cG, $$2 * 3 / 2)
-         .a(dne.hw, $$2 * 3 / 2)
-         .a(dne.cL, $$2 * 3 / 2)
-         .a(dne.hA, $$2 * 3 / 2)
-         .a(axm.F, $$2 * 3 / 2)
-         .a(dac.pj, $$2 * 3 / 2)
-         .a(dac.sd, $$2 * 3 / 2)
-         .a(dne.da, $$2 * 3 / 2)
-         .a(axm.aV, $$2)
-         .a(axm.bv, $$2 * 4)
-         .a(dac.pB, $$2)
-         .a(dac.pA, $$2)
-         .a(dac.pE, $$2)
-         .a(dac.pD, $$2)
-         .a(dac.pC, $$2)
-         .a(axm.h, $$2)
-         .a(axm.aS, $$2 * 6)
-         .a(axm.a, $$2 / 2)
-         .a(axm.d, $$2 / 2)
-         .a(dac.qe, $$2 / 2)
-         .a(axm.p, $$2 / 2)
-         .a(dac.ph, $$2 / 2)
-         .a(axm.g, 1 + $$2 / 3)
-         .a(dne.mK, 1 + $$2 * 20)
-         .a(dac.xg, $$2 * 3 / 2)
-         .a(dne.nF, $$2 / 4)
-         .a(dne.bC, $$2 / 2)
-         .a(dne.bE, $$2 / 2)
-         .a(dne.bF, $$2 / 2)
-         .a(dne.oy, $$2 / 4)
-         .a(dne.oz, $$2 * 3 / 2)
-         .a(dne.oA, $$2 * 3 / 2)
-         .a(dne.oD, $$2 * 3 / 2)
-         .a(dne.oE, $$2 * 3 / 2)
-         .a(dne.oH, $$2 * 3 / 2)
-         .a(dne.pK, $$2 * 3 / 2)
-         .a(dne.tg, $$2 / 2)
-         .a(dne.th, $$2 / 2)
-         .a(dne.ag, $$2 * 3 / 2)
-         .a(dne.tl, $$2 / 2)
-         .a(axm.aM)
-         .a();
-   }
-
-   public static class a {
-      private final jh<czu> a;
-      private final cvh b;
-      private final Object2IntSortedMap<czu> c = new Object2IntLinkedOpenHashMap();
-
-      public a(jh.a $$0, cvh $$1) {
-         this.a = $$0.e(mh.K);
-         this.b = $$1;
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      if (this.h_()) {
+         $$0.a("CustomName", xe.a, $$1.a(uo.a), this.l);
       }
+   }
 
-      public dzb a() {
-         return new dzb(this.c);
-      }
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.l = a($$0.a("CustomName"), $$1);
+   }
 
-      public dzb.a a(axt<czu> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.e().a($$0));
-         return this;
-      }
+   public static void a(djz $$0, iw $$1, ebg $$2, dzb $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      crz $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dA() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dG() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)azq.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
 
-      public dzb.a a(axt<czu> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jf<czu> $$2 : $$1x) {
-               this.a($$1, $$2.a());
-            }
-         });
-         return this;
-      }
-
-      public dzb.a a(djw $$0, int $$1) {
-         czu $$2 = $$0.h();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, czu $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
          }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
+
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
+      }
+
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = azq.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = azq.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
+   }
+
+   @Override
+   public xc ai() {
+      return (xc)(this.l != null ? this.l : xc.c("container.enchant"));
+   }
+
+   public void a(@Nullable xc $$0) {
+      this.l = $$0;
+   }
+
+   @Nullable
+   @Override
+   public xc ak() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(kg $$0) {
+      super.a($$0);
+      this.l = $$0.a(kl.g);
+   }
+
+   @Override
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      $$0.a(kl.g, this.l);
+   }
+
+   @Override
+   public void a(ua $$0) {
+      $$0.r("CustomName");
    }
 }

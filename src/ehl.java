@@ -1,70 +1,110 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public record ehl(int g, int h, int i, int j) {
+public record ehl(egy b, egy c, egy d, egy e, egy f, egy g, egy h, egy i, egy j, egy k, egy l, egy m, egy n, egy o, egy p) {
    public static final Codec<ehl> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(efb.e, efb.d).fieldOf("min_y").forGetter(ehl::c),
-                  Codec.intRange(0, efb.c).fieldOf("height").forGetter(ehl::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(ehl::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(ehl::f)
-               )
-               .apply($$0, ehl::new)
-      )
-      .comapFlatMap(ehl::a, Function.identity());
-   protected static final ehl b = a(-64, 384, 1, 2);
-   protected static final ehl c = a(0, 128, 1, 2);
-   protected static final ehl d = a(0, 128, 2, 1);
-   protected static final ehl e = a(-64, 192, 1, 2);
-   protected static final ehl f = a(0, 256, 2, 1);
+      $$0 -> $$0.group(
+               a("barrier", ehl::a),
+               a("fluid_level_floodedness", ehl::b),
+               a("fluid_level_spread", ehl::c),
+               a("lava", ehl::d),
+               a("temperature", ehl::e),
+               a("vegetation", ehl::f),
+               a("continents", ehl::g),
+               a("erosion", ehl::h),
+               a("depth", ehl::i),
+               a("ridges", ehl::j),
+               a("initial_density_without_jaggedness", ehl::k),
+               a("final_density", ehl::l),
+               a("vein_toggle", ehl::m),
+               a("vein_ridged", ehl::n),
+               a("vein_gap", ehl::o)
+            )
+            .apply($$0, ehl::new)
+   );
 
-   private static DataResult<ehl> a(ehl $$0) {
-      if ($$0.c() + $$0.d() > efb.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (efb.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
-      }
+   private static RecordCodecBuilder<ehl, egy> a(String $$0, Function<ehl, egy> $$1) {
+      return egy.d.fieldOf($$0).forGetter($$1);
    }
 
-   public static ehl a(int $$0, int $$1, int $$2, int $$3) {
-      ehl $$4 = new ehl($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public ehl a(egy.f $$0) {
+      return new ehl(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public int a() {
-      return jq.c(this.f());
+   public egy a() {
+      return this.b;
    }
 
-   public int b() {
-      return jq.c(this.e());
+   public egy b() {
+      return this.c;
    }
 
-   public ehl a(djz $$0) {
-      int $$1 = Math.max(this.g, $$0.K_());
-      int $$2 = Math.min(this.g + this.h, $$0.ao() + 1) - $$1;
-      return new ehl($$1, $$2, this.i, this.j);
+   public egy c() {
+      return this.d;
    }
 
-   public int c() {
+   public egy d() {
+      return this.e;
+   }
+
+   public egy e() {
+      return this.f;
+   }
+
+   public egy f() {
       return this.g;
    }
 
-   public int d() {
+   public egy g() {
       return this.h;
    }
 
-   public int e() {
+   public egy h() {
       return this.i;
    }
 
-   public int f() {
+   public egy i() {
       return this.j;
+   }
+
+   public egy j() {
+      return this.k;
+   }
+
+   public egy k() {
+      return this.l;
+   }
+
+   public egy l() {
+      return this.m;
+   }
+
+   public egy m() {
+      return this.n;
+   }
+
+   public egy n() {
+      return this.o;
+   }
+
+   public egy o() {
+      return this.p;
    }
 }

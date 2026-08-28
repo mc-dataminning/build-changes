@@ -1,25 +1,21 @@
-public class dbd extends czu implements das {
-   public static float a = 1.5F;
+import javax.annotation.Nullable;
 
-   public dbd(czu.a $$0) {
-      super($$0);
+public class dbd extends dbl {
+   public dbd(dne $$0, dne $$1, czw.a $$2) {
+      super($$0, $$1, jc.a, $$2);
+   }
+
+   public dbd(czw.a $$0, dne $$1, dne $$2, jc $$3) {
+      super($$1, $$2, $$3, $$0);
    }
 
    @Override
-   public bur a(djx $$0, crx $$1, buq $$2) {
-      czy $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awp.zE, awq.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof ars $$4) {
-         css.a(csx::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
+   protected boolean a(iw $$0, djz $$1, @Nullable crz $$2, daa $$3, ebg $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dzs $$6 && $$1.a_($$0).b() instanceof duo $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      $$1.b(awz.c.b(this));
-      $$3.a(1, $$1);
-      return bur.a;
-   }
-
-   @Override
-   public css a(djx $$0, jp $$1, czy $$2, jb $$3) {
-      return new csx($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+      return $$5;
    }
 }

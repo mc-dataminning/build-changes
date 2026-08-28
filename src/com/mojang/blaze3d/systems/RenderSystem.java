@@ -9,7 +9,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BiFunction;
 import java.util.function.IntConsumer;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.joml.Matrix4f;
 import org.joml.Matrix4fStack;
@@ -19,15 +18,15 @@ import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fhq
+@fhs
 public class RenderSystem {
-   public static final flc SCISSOR_STATE = new flc();
+   public static final fle SCISSOR_STATE = new fle();
    static final Logger LOGGER = LogUtils.getLogger();
    public static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
    @Nullable
    private static Thread renderThread;
    @Nullable
-   private static fla DEVICE;
+   private static flc DEVICE;
    private static double lastDrawTime = Double.MIN_VALUE;
    private static final RenderSystem.a sharedSequential = new RenderSystem.a(1, 1, IntConsumer::accept);
    private static final RenderSystem.a sharedSequentialQuad = new RenderSystem.a(4, 6, ($$0, $$1) -> {
@@ -48,14 +47,14 @@ public class RenderSystem {
    });
    private static Matrix4f projectionMatrix = new Matrix4f();
    private static Matrix4f savedProjectionMatrix = new Matrix4f();
-   private static fhu projectionType = fhu.a;
-   private static fhu savedProjectionType = fhu.a;
+   private static fhw projectionType = fhw.a;
+   private static fhw savedProjectionType = fhw.a;
    private static final Matrix4fStack modelViewStack = new Matrix4fStack(16);
    private static Matrix4f textureMatrix = new Matrix4f();
-   private static final flh[] shaderTextures = new flh[12];
+   private static final flj[] shaderTextures = new flj[12];
    private static final float[] shaderColor = new float[]{1.0F, 1.0F, 1.0F, 1.0F};
    private static float shaderGlintAlpha = 1.0F;
-   private static gro shaderFog = gro.a;
+   private static grq shaderFog = grq.a;
    private static final Vector3f[] shaderLightDirections = new Vector3f[2];
    private static float shaderGameTime;
    private static final Vector3f modelOffset = new Vector3f();
@@ -64,8 +63,8 @@ public class RenderSystem {
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
    @Nullable
-   private static fig QUAD_VERTEX_BUFFER;
-   private static final aya<RenderSystem.b> PENDING_FENCES = new aya<>();
+   private static fii QUAD_VERTEX_BUFFER;
+   private static final ayc<RenderSystem.b> PENDING_FENCES = new ayc<>();
 
    public static void initRenderThread() {
       if (renderThread != null) {
@@ -100,9 +99,9 @@ public class RenderSystem {
       return pollingEvents.get() && ag.c() - pollEventsWaitStart.get() > 200L;
    }
 
-   public static void flipFrame(long $$0, @Nullable fhw $$1) {
+   public static void flipFrame(long $$0, @Nullable fhy $$1) {
       pollEvents();
-      flq.b().c();
+      fls.b().c();
       GLFW.glfwSwapBuffers($$0);
       if ($$1 != null) {
          $$1.b();
@@ -135,12 +134,12 @@ public class RenderSystem {
       GlStateManager._activeTexture($$0);
    }
 
-   public static void setShaderFog(gro $$0) {
+   public static void setShaderFog(grq $$0) {
       assertOnRenderThread();
       shaderFog = $$0;
    }
 
-   public static gro getShaderFog() {
+   public static grq getShaderFog() {
       assertOnRenderThread();
       return shaderFog;
    }
@@ -200,12 +199,12 @@ public class RenderSystem {
       return apiDescription;
    }
 
-   public static bar.a initBackendSystem() {
+   public static bat.a initBackendSystem() {
       return GLX._initGlfw()::getAsLong;
    }
 
-   public static void initRenderer(long $$0, int $$1, boolean $$2, BiFunction<ali, fkw, String> $$3, boolean $$4) {
-      DEVICE = new fix($$0, $$1, $$2, $$3, $$4);
+   public static void initRenderer(long $$0, int $$1, boolean $$2, BiFunction<alk, fky, String> $$3, boolean $$4) {
+      DEVICE = new fiz($$0, $$1, $$2, $$3, $$4);
       apiDescription = getDevice().c();
    }
 
@@ -220,7 +219,7 @@ public class RenderSystem {
       textureMatrix.identity();
    }
 
-   public static void setupOverlayColor(@Nullable flh $$0) {
+   public static void setupOverlayColor(@Nullable flj $$0) {
       assertOnRenderThread();
       setShaderTexture(1, $$0);
    }
@@ -245,7 +244,7 @@ public class RenderSystem {
       GlStateManager.setupGui3DDiffuseLighting($$0, $$1);
    }
 
-   public static void setShaderTexture(int $$0, @Nullable flh $$1) {
+   public static void setShaderTexture(int $$0, @Nullable flj $$1) {
       assertOnRenderThread();
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
          shaderTextures[$$0] = $$1;
@@ -253,12 +252,12 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static flh getShaderTexture(int $$0) {
+   public static flj getShaderTexture(int $$0) {
       assertOnRenderThread();
       return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : null;
    }
 
-   public static void setProjectionMatrix(Matrix4f $$0, fhu $$1) {
+   public static void setProjectionMatrix(Matrix4f $$0, fhw $$1) {
       assertOnRenderThread();
       projectionMatrix = new Matrix4f($$0);
       projectionType = $$1;
@@ -306,7 +305,7 @@ public class RenderSystem {
       return textureMatrix;
    }
 
-   public static RenderSystem.a getSequentialBuffer(fls.c $$0) {
+   public static RenderSystem.a getSequentialBuffer(flu.c $$0) {
       assertOnRenderThread();
 
       return switch ($$0) {
@@ -326,22 +325,22 @@ public class RenderSystem {
       return shaderGameTime;
    }
 
-   public static fhu getProjectionType() {
+   public static fhw getProjectionType() {
       assertOnRenderThread();
       return projectionType;
    }
 
-   public static fig getQuadVertexBuffer(@Nullable Supplier<String> $$0) {
+   public static fii getQuadVertexBuffer() {
       if (QUAD_VERTEX_BUFFER == null) {
-         try (fll $$1 = new fll(flm.e.b() * 4)) {
-            flk $$2 = new flk($$1, fls.c.h, flm.e);
-            $$2.a(0.0F, 0.0F, 0.0F);
-            $$2.a(1.0F, 0.0F, 0.0F);
-            $$2.a(1.0F, 1.0F, 0.0F);
-            $$2.a(0.0F, 1.0F, 0.0F);
+         try (fln $$0 = new fln(flo.e.b() * 4)) {
+            flm $$1 = new flm($$0, flu.c.h, flo.e);
+            $$1.a(0.0F, 0.0F, 0.0F);
+            $$1.a(1.0F, 0.0F, 0.0F);
+            $$1.a(1.0F, 1.0F, 0.0F);
+            $$1.a(0.0F, 1.0F, 0.0F);
 
-            try (fln $$3 = $$2.b()) {
-               QUAD_VERTEX_BUFFER = getDevice().a($$0, fie.a, fif.b, $$3.a());
+            try (flp $$2 = $$1.b()) {
+               QUAD_VERTEX_BUFFER = getDevice().a(() -> "Quad", fig.a, fih.b, $$2.a());
             }
          }
       }
@@ -365,7 +364,7 @@ public class RenderSystem {
    }
 
    public static void queueFencedTask(Runnable $$0) {
-      PENDING_FENCES.addLast(new RenderSystem.b($$0, new fih()));
+      PENDING_FENCES.addLast(new RenderSystem.b($$0, new fij()));
    }
 
    public static void executePendingTasks() {
@@ -384,7 +383,7 @@ public class RenderSystem {
       }
    }
 
-   public static fla getDevice() {
+   public static flc getDevice() {
       if (DEVICE == null) {
          throw new IllegalStateException("Can't getDevice() before it was initialized");
       } else {
@@ -393,7 +392,7 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static fla tryGetDevice() {
+   public static flc tryGetDevice() {
       return DEVICE;
    }
 
@@ -402,8 +401,8 @@ public class RenderSystem {
       private final int b;
       private final RenderSystem.a.a c;
       @Nullable
-      private fig d;
-      private fls.b e = fls.b.a;
+      private fii d;
+      private flu.b e = flu.b.a;
       private int f;
 
       a(int $$0, int $$1, RenderSystem.a.a $$2) {
@@ -416,9 +415,9 @@ public class RenderSystem {
          return $$0 <= this.f;
       }
 
-      public fig b(int $$0) {
+      public fii b(int $$0) {
          if (this.d == null) {
-            this.d = RenderSystem.getDevice().a(() -> "Auto Storage index buffer", fie.b, fif.a, 0);
+            this.d = RenderSystem.getDevice().a(() -> "Auto Storage index buffer", fig.b, fih.a, 0);
          }
 
          this.c($$0);
@@ -427,12 +426,12 @@ public class RenderSystem {
 
       private void c(int $$0) {
          if (!this.a($$0)) {
-            $$0 = azo.d($$0 * 2, this.b);
+            $$0 = azq.d($$0 * 2, this.b);
             RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.f, $$0);
             int $$1 = $$0 / this.b;
             int $$2 = $$1 * this.a;
-            fls.b $$3 = fls.b.a($$2);
-            int $$4 = azo.d($$0 * $$3.c, 4);
+            flu.b $$3 = flu.b.a($$2);
+            int $$4 = azq.d($$0 * $$3.c, 4);
             ByteBuffer $$5 = MemoryUtil.memAlloc($$4);
 
             try {
@@ -444,9 +443,11 @@ public class RenderSystem {
                }
 
                $$5.flip();
-               fkz $$8 = RenderSystem.getDevice().b();
-               $$8.a(this.d, $$4);
-               $$8.a(this.d, $$5, 0);
+               if (this.d != null) {
+                  this.d.close();
+               }
+
+               this.d = RenderSystem.getDevice().a(() -> "Auto Storage index buffer", fig.b, fih.a, $$5);
             } finally {
                MemoryUtil.memFree($$5);
             }
@@ -465,7 +466,7 @@ public class RenderSystem {
          }
       }
 
-      public fls.b a() {
+      public flu.b a() {
          return this.e;
       }
 
@@ -474,6 +475,6 @@ public class RenderSystem {
       }
    }
 
-   static record b(Runnable a, fih b) {
+   static record b(Runnable a, fij b) {
    }
 }

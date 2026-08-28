@@ -1,21 +1,23 @@
-public record aga(xa b, boolean c) implements zh<abw> {
-   public static final yy<wl, aga> a = yy.a(xc.d, aga::b, yw.b, aga::e, aga::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zj<aga> a() {
-      return agp.aZ;
+public class aga implements zj<aby> {
+   public static final aga a = new aga();
+   public static final za<ByteBuf, aga> b = za.a(a);
+
+   private aga() {
    }
 
-   public void a(abw $$0) {
+   @Override
+   public zl<aga> a() {
+      return agr.aX;
+   }
+
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
    @Override
-   public boolean c() {
+   public boolean d() {
       return true;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

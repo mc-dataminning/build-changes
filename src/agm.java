@@ -1,32 +1,94 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class agm implements zj<aby> {
+   public static final za<wn, agm> a = zj.a(agm::a, agm::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final int f;
+   private final jg<bvx> g;
+   private final int h;
+   private final int i;
+   private final byte j;
 
-public record agm(jf<efb> a, alh<djx> b, long c, dju d, @Nullable dju e, boolean f, boolean g, Optional<je> h, int i, int j) {
-   public agm(wl $$0) {
-      this(
-         efb.i.decode($$0),
-         $$0.a(mh.bp),
-         $$0.readLong(),
-         dju.a($$0.readByte()),
-         dju.b($$0.readByte()),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(vw::h),
-         $$0.l(),
-         $$0.l()
-      );
+   public agm(int $$0, bvz $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1.c();
+      this.h = $$1.e();
+      this.i = $$1.d();
+      byte $$3 = 0;
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 1);
+      }
+
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.h()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.j = $$3;
    }
 
-   public void a(wl $$0) {
-      efb.i.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.l(this.d.a());
-      $$0.l(dju.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, vw::a);
+   private agm(wn $$0) {
+      this.f = $$0.l();
+      this.g = bvx.b.decode($$0);
+      this.h = $$0.l();
+      this.i = $$0.l();
+      this.j = $$0.readByte();
+   }
+
+   private void a(wn $$0) {
+      $$0.c(this.f);
+      bvx.b.encode($$0, this.g);
+      $$0.c(this.h);
       $$0.c(this.i);
-      $$0.c(this.j);
+      $$0.l(this.j);
+   }
+
+   @Override
+   public zl<agm> a() {
+      return agr.bh;
+   }
+
+   public void a(aby $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.f;
+   }
+
+   public jg<bvx> e() {
+      return this.g;
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public int g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return (this.j & 2) != 0;
+   }
+
+   public boolean i() {
+      return (this.j & 1) != 0;
+   }
+
+   public boolean j() {
+      return (this.j & 4) != 0;
+   }
+
+   public boolean k() {
+      return (this.j & 8) != 0;
    }
 }

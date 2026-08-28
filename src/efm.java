@@ -1,14 +1,15 @@
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
+public interface efm {
+   efm a = new efm() {
+      @Override
+      public void a() {
+      }
 
-public interface efm<T> extends AutoCloseable {
-   CompletableFuture<efh<T>> a(djc var1);
+      @Override
+      public void a(bwv.d $$0) {
+      }
+   };
 
-   void a(efh<T> var1);
+   void a();
 
-   void a(boolean var1);
-
-   @Override
-   default void close() throws IOException {
-   }
+   void a(bwv.d var1);
 }

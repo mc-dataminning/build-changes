@@ -1,25 +1,9 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public interface dji extends djp, dka, dkc {
-   @Override
-   default <T extends dyc> Optional<T> a(iv $$0, dye<T> $$1) {
-      return dka.super.a($$0, $$1);
-   }
-
-   @Override
-   default List<fgk> c(@Nullable bwt $$0, ffl $$1) {
-      return djp.super.c($$0, $$1);
-   }
-
-   @Override
-   default boolean a(@Nullable bwt $$0, fgk $$1) {
-      return djp.super.a($$0, $$1);
-   }
-
-   @Override
-   default iv a(ehd.a $$0, iv $$1) {
-      return dka.super.a($$0, $$1);
+public interface dji {
+   static int a(double $$0, double $$1, int[] $$2, int $$3) {
+      $$1 *= $$0;
+      int $$4 = (int)((1.0 - $$0) * 255.0);
+      int $$5 = (int)((1.0 - $$1) * 255.0);
+      int $$6 = $$5 << 8 | $$4;
+      return $$6 >= $$2.length ? $$3 : $$2[$$6];
    }
 }

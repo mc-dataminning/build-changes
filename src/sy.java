@@ -1,57 +1,263 @@
-import com.google.common.collect.Lists;
+import com.google.common.base.Stopwatch;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.brigadier.StringReader;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Lifecycle;
+import java.net.Proxy;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import java.util.function.BooleanSupplier;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class sy {
-   public static final sy a = new sy();
-   private final Collection<sq> b = Lists.newCopyOnWriteArrayList();
+public class sy extends MinecraftServer {
+   private static final Logger l = LogUtils.getLogger();
+   private static final int m = 20;
+   private static final int n = 14999992;
+   private static final amf o = new amf(null, ServicesKeySet.EMPTY, null, null);
+   private static final cvj p = cvl.e.a().d(cvj.a(cvl.c, cvl.d));
+   private final bpe q = new bpe(4);
+   private final Optional<String> r;
+   private final boolean s;
+   private List<sk> t = new ArrayList<>();
+   private final Stopwatch u = Stopwatch.createUnstarted();
+   private static final eid v = new eid(0L, false, false);
    @Nullable
-   private sv c;
-   private sy.a d = sy.a.a;
+   private tf w;
 
-   private sy() {
+   public static sy a(Thread $$0, ezx.c $$1, aur $$2, Optional<String> $$3, boolean $$4) {
+      $$2.a();
+      ArrayList<String> $$5 = new ArrayList<>($$2.c());
+      $$5.remove("vanilla");
+      $$5.addFirst("vanilla");
+      dkx $$6 = new dkx(new djm($$5, List.of()), p);
+      dkd $$7 = new dkd("Test Level", djw.b, false, buq.c, true, new djv(p), $$6);
+      ami.d $$8 = new ami.d($$2, $$6, false, true);
+      ami.c $$9 = new ami.c($$8, el.a.b, 4);
+
+      try {
+         l.debug("Starting resource loading");
+         Stopwatch $$10 = Stopwatch.createStarted();
+         amj $$11 = ag.<amj>c($$2x -> ami.a($$9, $$1xx -> {
+               jt<efe> $$2xx = new jo<>(mi.bq, Lifecycle.stable()).n();
+               eia.b $$3x = $$1xx.c().e(mi.bo).b(ert.b).a().a().a($$2xx);
+               return new ami.b<>(new fab($$7, v, $$3x.d(), $$3x.a()), $$3x.b());
+            }, amj::new, ag.h(), $$2x)).get();
+         $$10.stop();
+         l.debug("Finished resource loading after {} ms", $$10.elapsed(TimeUnit.MILLISECONDS));
+         return new sy($$0, $$1, $$2, $$11, $$3, $$4);
+      } catch (Exception var12) {
+         l.warn("Failed to load vanilla datapack, bit oops", var12);
+         System.exit(-1);
+         throw new IllegalStateException();
+      }
    }
 
-   public void a(sq $$0) {
-      this.b.add($$0);
+   private sy(Thread $$0, ezx.c $$1, aur $$2, amj $$3, Optional<String> $$4, boolean $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bbg.a(), o, asg::b);
+      this.r = $$4;
+      this.s = $$5;
    }
 
-   public void a() {
-      if (this.d != sy.a.a) {
-         this.d = sy.a.c;
+   @Override
+   public boolean e() {
+      this.a(new avu(this, this.bb(), this.g, 1) {
+      });
+      this.u_();
+      aru $$0 = this.J();
+      this.t = this.b($$0);
+      l.info("Started game test server");
+      return true;
+   }
+
+   private List<sk> b(aru $$0) {
+      jt<ss> $$1 = $$0.J_().f(mi.bh);
+      Collection<jg.c<ss>> $$2;
+      sl.a $$3;
+      if (this.r.isPresent()) {
+         $$2 = a($$0.J_(), this.r.get()).filter($$0x -> !((ss)$$0x.a()).i()).toList();
+         if (this.s) {
+            $$3 = sy::a;
+            l.info("Verify requested. Will run each test that matches {} {} times", this.r.get(), 100 * dty.values().length);
+         } else {
+            $$3 = sl.a;
+            l.info("Will run tests matching {} ({} tests)", this.r.get(), $$2.size());
+         }
       } else {
-         this.b.clear();
-         if (this.c != null) {
-            this.c.c();
-            this.c = null;
+         $$2 = $$1.c().filter($$0x -> !((ss)$$0x.a()).i()).toList();
+         $$3 = sl.a;
+      }
+
+      return sl.a($$2, $$3, $$0);
+   }
+
+   private static Stream<sr> a(jg.c<ss> $$0, aru $$1) {
+      Builder<sr> $$2 = Stream.builder();
+
+      for (dty $$3 : dty.values()) {
+         for (int $$4 = 0; $$4 < 100; $$4++) {
+            $$2.add(new sr($$0, $$3, $$1, th.a()));
          }
       }
+
+      return $$2.build();
    }
 
-   public void a(sv $$0) {
-      if (this.c != null) {
-         ag.b("The runner was already set in GameTestTicker");
+   public static Stream<jg.c<ss>> a(ju $$0, String $$1) {
+      return fp.a(new StringReader($$1), $$0.f(mi.bh)).stream();
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0) {
+      super.a($$0);
+      aru $$1 = this.J();
+      if (!this.br()) {
+         this.c($$1);
       }
 
-      this.c = $$0;
-   }
+      if ($$1.ae() % 20L == 0L) {
+         l.info(this.w.j());
+      }
 
-   public void b() {
-      if (this.c != null) {
-         this.d = sy.a.b;
-         this.b.forEach($$0x -> $$0x.a(this.c));
-         this.b.removeIf(sq::k);
-         sy.a $$0 = this.d;
-         this.d = sy.a.a;
-         if ($$0 == sy.a.c) {
-            this.a();
+      if (this.w.i()) {
+         this.a(false);
+         l.info(this.w.j());
+         tc.a();
+         l.info("========= {} GAME TESTS COMPLETE IN {} ======================", this.w.h(), this.u.stop());
+         if (this.w.d()) {
+            l.info("{} required tests failed :(", this.w.a());
+            this.w.f().forEach(sy::a);
+         } else {
+            l.info("All {} required tests passed :)", this.w.h());
          }
+
+         if (this.w.e()) {
+            l.info("{} optional tests failed", this.w.b());
+            this.w.g().forEach(sy::a);
+         }
+
+         l.info("====================================================");
       }
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   private static void a(sr $$0) {
+      if ($$0.u() != dty.a) {
+         l.info("   - {} with rotation {}: {}", new Object[]{$$0.b(), $$0.u().c(), $$0.n().a().getString()});
+      } else {
+         l.info("   - {}: {}", $$0.b(), $$0.n().a().getString());
+      }
+   }
+
+   @Override
+   public bph f() {
+      return this.q;
+   }
+
+   @Override
+   public boolean g() {
+      return false;
+   }
+
+   @Override
+   public void w_() {
+      this.bA();
+   }
+
+   @Override
+   public ae a(ae $$0) {
+      $$0.a("Type", "Game test server");
+      return $$0;
+   }
+
+   @Override
+   public void i() {
+      super.i();
+      l.info("Game test server shutting down");
+      System.exit(this.w != null ? this.w.a() : -1);
+   }
+
+   @Override
+   public void a(p $$0) {
+      super.a($$0);
+      l.error("Game test server crashed\n{}", $$0.a(z.a));
+      System.exit(1);
+   }
+
+   private void c(aru $$0) {
+      iw $$1 = new iw($$0.A.a(-14999992, 14999992), -59, $$0.A.a(-14999992, 14999992));
+      $$0.a($$1, 0.0F);
+      sw $$2 = sw.a.a(this.t, $$0).a((sw.c)(new ti($$1, 8, false))).a();
+      Collection<sr> $$3 = $$2.a();
+      this.w = new tf($$3);
+      l.info("{} tests are now running at position {}!", this.w.h(), $$1.x());
+      this.u.reset();
+      this.u.start();
+      $$2.b();
+   }
+
+   private boolean br() {
+      return this.w != null;
+   }
+
+   @Override
+   public boolean v_() {
+      return false;
+   }
+
+   @Override
+   public int k() {
+      return 0;
+   }
+
+   @Override
+   public int l() {
+      return 4;
+   }
+
+   @Override
+   public boolean m() {
+      return false;
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public int o() {
+      return 0;
+   }
+
+   @Override
+   public boolean p() {
+      return false;
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public boolean r() {
+      return false;
+   }
+
+   @Override
+   public boolean c() {
+      return false;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return false;
    }
 }

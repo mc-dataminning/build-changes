@@ -1,29 +1,49 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class epa extends eoq {
-   public static final MapCodec<epa> b = btb.b(ebe.a).comapFlatMap(epa::a, $$0 -> $$0.c).fieldOf("entries");
-   private final btb<ebe> c;
+public record epa(eos b, List<epa.a> c) {
+   public static final Codec<epa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eos.a.fieldOf("fallback").forGetter(epa::a), epa.a.a.listOf().fieldOf("rules").forGetter(epa::b)).apply($$0, epa::new)
+   );
 
-   private static DataResult<epa> a(btb<ebe> $$0) {
-      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new epa($$0));
+   public static epa a(eos $$0) {
+      return new epa($$0, List.of());
    }
 
-   public epa(btb<ebe> $$0) {
-      this.c = $$0;
+   public static epa a(dne $$0) {
+      return a(eos.a($$0));
    }
 
-   public epa(btb.a<ebe> $$0) {
-      this($$0.a());
+   public ebg a(dky $$0, azz $$1, iw $$2) {
+      for (epa.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
    }
 
-   @Override
-   protected eor<?> a() {
-      return eor.b;
+   public eos a() {
+      return this.b;
    }
 
-   @Override
-   public ebe a(azx $$0, iv $$1) {
-      return this.c.b($$0);
+   public List<epa.a> b() {
+      return this.c;
+   }
+
+   public static record a(eim b, eos c) {
+      public static final Codec<epa.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eim.b.fieldOf("if_true").forGetter(epa.a::a), eos.a.fieldOf("then").forGetter(epa.a::b)).apply($$0, epa.a::new)
+      );
+
+      public eim a() {
+         return this.b;
+      }
+
+      public eos b() {
+         return this.c;
+      }
    }
 }

@@ -1,12 +1,12 @@
-public record afu(xa b) implements zh<abw> {
-   public static final yy<wl, afu> a = yy.a(xc.d, afu::b, afu::new);
+public record afu(xc b) implements zj<aby> {
+   public static final za<wn, afu> a = za.a(xe.d, afu::b, afu::new);
 
    @Override
-   public zj<afu> a() {
-      return agp.aT;
+   public zl<afu> a() {
+      return agr.aR;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 }

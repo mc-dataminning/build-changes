@@ -1,36 +1,18 @@
-public class ahw implements zh<agr> {
-   public static final yy<vw, ahw> a = zh.a(ahw::a, ahw::new);
-   private static final int b = 2;
-   private final boolean c;
+import io.netty.buffer.ByteBuf;
 
-   public ahw(crt $$0) {
-      this.c = $$0.b;
-   }
-
-   private ahw(vw $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
-   }
-
-   private void a(vw $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
-   }
+public record ahw(int b, boolean c) implements zj<agt> {
+   public static final za<ByteBuf, ahw> a = za.a(yy.h, ahw::b, yy.b, ahw::e, ahw::new);
 
    @Override
-   public zj<ahw> a() {
-      return agp.bR;
+   public zl<ahw> a() {
+      return agr.bP;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public boolean e() {
       return this.c;
    }
 }

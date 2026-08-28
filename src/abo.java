@@ -1,15 +1,10 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-
-public record abo(List<aul> b) implements zh<abm> {
-   public static final yy<ByteBuf, abo> a = yy.a(aul.a.a(yw.c(64)), abo::b, abo::new);
-
+public interface abo extends aac {
    @Override
-   public zj<abo> a() {
-      return abk.g;
+   default vw b() {
+      return vw.e;
    }
 
-   public void a(abm $$0) {
-      $$0.a(this);
-   }
+   void a(abp var1);
+
+   void a(abq var1);
 }

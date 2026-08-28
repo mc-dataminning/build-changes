@@ -1,40 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ems implements emp {
-   public static final Codec<ems> a = RecordCodecBuilder.create(
+public class ems implements emr {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<ems> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               btw.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               btu.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               btu.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               btu.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               btu.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
+               ehc.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               ehe.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               ehd.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bty.b(1, 20).fieldOf("outer_wall_distance").orElse(bue.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bty.b(1, 20).fieldOf("distribution_points").orElse(bue.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bty.b(0, 10).fieldOf("point_offset").orElse(bue.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, ems::new)
    );
-   public final int b;
-   public final btw c;
-   public final btu d;
-   public final float e;
-   public final btu f;
-   public final btu g;
-   public final btu h;
-   public final int i;
-   public final float j;
+   public final ehc c;
+   public final ehe d;
+   public final ehd e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bty i;
+   public final bty j;
+   public final bty k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   public ems(int $$0, btw $$1, btu $$2, float $$3, btu $$4, btu $$5, btu $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public ems(ehc $$0, ehe $$1, ehd $$2, double $$3, double $$4, boolean $$5, bty $$6, bty $$7, bty $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

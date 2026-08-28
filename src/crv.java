@@ -1,63 +1,55 @@
-public record crv(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
-   private static final byte j = 1;
-   private static final byte k = 2;
-   private static final byte l = 4;
-   private static final byte m = 8;
-   private static final byte n = 16;
-   private static final byte o = 32;
-   private static final byte p = 64;
-   public static final yy<vw, crv> a = new yy<vw, crv>() {
-      public void a(vw $$0, crv $$1) {
-         byte $$2 = 0;
-         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
-         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
-         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
-         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
-         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
-         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
-         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
-         $$0.l($$2);
-      }
+public class crv {
+   private static final boolean f = false;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = false;
+   private static final boolean j = true;
+   private static final float k = 0.05F;
+   private static final float l = 0.1F;
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float m = 0.05F;
+   private float n = 0.1F;
 
-      public crv a(vw $$0) {
-         byte $$1 = $$0.readByte();
-         boolean $$2 = ($$1 & 1) != 0;
-         boolean $$3 = ($$1 & 2) != 0;
-         boolean $$4 = ($$1 & 4) != 0;
-         boolean $$5 = ($$1 & 8) != 0;
-         boolean $$6 = ($$1 & 16) != 0;
-         boolean $$7 = ($$1 & 32) != 0;
-         boolean $$8 = ($$1 & 64) != 0;
-         return new crv($$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      }
-   };
-   public static crv b = new crv(false, false, false, false, false, false, false);
-
-   public boolean a() {
-      return this.c;
+   public void a(ua $$0) {
+      ua $$1 = new ua();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.m);
+      $$1.a("walkSpeed", this.n);
+      $$0.a("abilities", $$1);
    }
 
-   public boolean b() {
-      return this.d;
+   public void b(ua $$0) {
+      ua $$1 = $$0.n("abilities");
+      this.a = $$1.b("invulnerable", false);
+      this.b = $$1.b("flying", false);
+      this.c = $$1.b("mayfly", false);
+      this.d = $$1.b("instabuild", false);
+      this.m = $$1.b("flySpeed", 0.05F);
+      this.n = $$1.b("walkSpeed", 0.1F);
+      this.e = $$1.b("mayBuild", true);
    }
 
-   public boolean c() {
-      return this.e;
+   public float a() {
+      return this.m;
    }
 
-   public boolean d() {
-      return this.f;
+   public void a(float $$0) {
+      this.m = $$0;
    }
 
-   public boolean e() {
-      return this.g;
+   public float b() {
+      return this.n;
    }
 
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
+   public void b(float $$0) {
+      this.n = $$0;
    }
 }

@@ -1,57 +1,45 @@
-public class cwr extends cvq {
-   public static final int m = 5;
-   private final buk n;
+public class cwr extends cxp {
+   private final crz a;
+   private int b;
 
-   public cwr(int $$0, crw $$1) {
-      this($$0, $$1, new buy(5));
+   public cwr(crz $$0, bum $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   public cwr(int $$0, crw $$1, buk $$2) {
-      super(cwz.q, $$0);
-      this.n = $$2;
-      a($$2, 5);
-      $$2.c_($$1.h);
+   @Override
+   public boolean a(daa $$0) {
+      return false;
+   }
 
-      for (int $$3 = 0; $$3 < 5; $$3++) {
-         this.a(new cxn($$2, $$3, 44 + $$3 * 18, 20));
+   @Override
+   public daa a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().M());
       }
 
-      this.c($$1, 8, 51);
+      return super.a($$0);
    }
 
    @Override
-   public boolean b(crx $$0) {
-      return this.n.a($$0);
+   public void a(crz $$0, daa $$1) {
+      this.c_($$1);
+      super.a($$0, $$1);
    }
 
    @Override
-   public czy b(crx $$0, int $$1) {
-      czy $$2 = czy.k;
-      cxn $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         czy $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return czy.k;
-            }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return czy.k;
-         }
+   protected void a(daa $$0, int $$1) {
+      this.b += $$1;
+      this.c_($$0);
+   }
 
-         if ($$4.f()) {
-            $$3.e(czy.k);
-         } else {
-            $$3.d();
-         }
+   @Override
+   protected void c_(daa $$0) {
+      $$0.a(this.a.dV(), this.a, this.b);
+      if (this.a instanceof arv $$1 && this.c instanceof dxr $$2) {
+         $$2.a($$1);
       }
 
-      return $$2;
-   }
-
-   @Override
-   public void a(crx $$0) {
-      super.a($$0);
-      this.n.c($$0);
+      this.b = 0;
    }
 }

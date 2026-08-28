@@ -1,57 +1,54 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-public class il implements ig<DoubleArgumentType, il.a> {
-   public void a(il.a $$0, vw $$1) {
-      boolean $$2 = $$0.b != -Double.MAX_VALUE;
-      boolean $$3 = $$0.c != Double.MAX_VALUE;
-      $$1.l(ii.a($$2, $$3));
-      if ($$2) {
-         $$1.a($$0.b);
-      }
+public class il {
+   private static final Map<alk, SuggestionProvider<ep>> d = Maps.newHashMap();
+   private static final alk e = alk.b("ask_server");
+   public static final SuggestionProvider<ep> a = a(e, ($$0, $$1) -> ((ep)$$0.getSource()).a($$0));
+   public static final SuggestionProvider<ek> b = a(alk.b("available_sounds"), ($$0, $$1) -> ep.a(((ep)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<ek> c = a(
+      alk.b("summonable_entities"),
+      ($$0, $$1) -> ep.a(mh.f.s().filter($$1x -> $$1x.a(((ep)$$0.getSource()).v()) && $$1x.c()), $$1, bxe::a, $$0x -> xc.c(ag.a("entity", bxe.a($$0x))))
+   );
 
-      if ($$3) {
-         $$1.a($$0.c);
-      }
-   }
-
-   public il.a a(vw $$0) {
-      byte $$1 = $$0.readByte();
-      double $$2 = ii.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
-      double $$3 = ii.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
-      return new il.a($$2, $$3);
-   }
-
-   public void a(il.a $$0, JsonObject $$1) {
-      if ($$0.b != -Double.MAX_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Double.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
+   public static <S extends ep> SuggestionProvider<S> a(alk $$0, SuggestionProvider<ep> $$1) {
+      if (d.containsKey($$0)) {
+         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
+      } else {
+         d.put($$0, $$1);
+         return new il.a($$0, $$1);
       }
    }
 
-   public il.a a(DoubleArgumentType $$0) {
-      return new il.a($$0.getMinimum(), $$0.getMaximum());
+   public static SuggestionProvider<ep> a(alk $$0) {
+      return d.getOrDefault($$0, a);
    }
 
-   public final class a implements ig.a<DoubleArgumentType> {
-      final double b;
-      final double c;
+   public static alk a(SuggestionProvider<ep> $$0) {
+      return $$0 instanceof il.a ? ((il.a)$$0).b : e;
+   }
 
-      a(final double $$1, final double $$2) {
-         this.b = $$1;
-         this.c = $$2;
+   public static SuggestionProvider<ep> b(SuggestionProvider<ep> $$0) {
+      return $$0 instanceof il.a ? $$0 : a;
+   }
+
+   protected static class a implements SuggestionProvider<ep> {
+      private final SuggestionProvider<ep> a;
+      final alk b;
+
+      public a(alk $$0, SuggestionProvider<ep> $$1) {
+         this.a = $$1;
+         this.b = $$0;
       }
 
-      public DoubleArgumentType a(ef $$0) {
-         return DoubleArgumentType.doubleArg(this.b, this.c);
-      }
-
-      @Override
-      public ig<DoubleArgumentType, ?> a() {
-         return il.this;
+      public CompletableFuture<Suggestions> getSuggestions(CommandContext<ep> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
+         return this.a.getSuggestions($$0, $$1);
       }
    }
 }

@@ -1,115 +1,69 @@
 import javax.annotation.Nullable;
 
-public class hrc implements hrg {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final xa f = xa.a("tutorial.move.title", hrf.a("forward"), hrf.a("left"), hrf.a("back"), hrf.a("right"));
-   private static final xa g = xa.a("tutorial.move.description", hrf.a("jump"));
-   private static final xa h = xa.c("tutorial.look.title");
-   private static final xa i = xa.c("tutorial.look.description");
-   private final hrf j;
+public class hrc implements hri {
+   private static final int a = 1200;
+   private static final xc b = xc.c("tutorial.craft_planks.title");
+   private static final xc c = xc.c("tutorial.craft_planks.description");
+   private final hrh d;
    @Nullable
-   private fwx k;
-   @Nullable
-   private fwx l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+   private fwz e;
+   private int f;
 
-   public hrc(hrf $$0) {
-      this.j = $$0;
+   public hrc(hrh $$0) {
+      this.d = $$0;
    }
 
    @Override
    public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hrj.f);
+      } else {
+         frf $$0 = this.d.e();
+         if (this.f == 1) {
+            grb $$1 = $$0.t;
+            if ($$1 != null) {
+               if ($$1.gj().a(axo.b)) {
+                  this.d.a(hrj.f);
+                  return;
+               }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.e();
-            this.k = null;
+               if (a($$1, axo.b)) {
+                  this.d.a(hrj.f);
+                  return;
+               }
+            }
          }
 
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.e();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(hrh.b);
-         } else {
-            this.j.a(hrh.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         frd $$0 = this.j.e();
-         if (this.r == -1 && this.k == null) {
-            this.k = new fwx($$0.h, fwx.a.a, f, g, true);
-            $$0.aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fwx($$0.h, fwx.a.b, h, i, true);
-            $$0.aA().a(this.l);
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fwz($$0.h, fwz.a.e, b, c, false);
+            $$0.aA().a(this.e);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.k != null) {
-         this.k.e();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.e();
-         this.l = null;
+      if (this.e != null) {
+         this.e.e();
+         this.e = null;
       }
    }
 
    @Override
-   public void a(gqx $$0) {
-      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
-         this.p = true;
+   public void a(daa $$0) {
+      if ($$0.a(axo.b)) {
+         this.d.a(hrj.f);
       }
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public static boolean a(grb $$0, axv<czw> $$1) {
+      for (jg<czw> $$2 : mh.g.c($$1)) {
+         if ($$0.l().a(axb.b.b($$2.a())) > 0) {
+            return true;
+         }
       }
+
+      return false;
    }
 }

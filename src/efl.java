@@ -1,61 +1,21 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.stream.Stream;
 
-public class efl<T extends efj> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public interface efl extends efz {
+   int ao();
 
-   public <U extends T> void a(efq<T, U> $$0, axz<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
+   iw dv();
 
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
-         }
-      }
-   }
+   ffn cR();
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
-   }
+   void a(efm var1);
 
-   public void a(T $$0) {
-      UUID $$1 = $$0.cG();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.ao(), $$0);
-      }
-   }
+   Stream<? extends efl> da();
 
-   public void b(T $$0) {
-      this.c.remove($$0.cG());
-      this.b.remove($$0.ao());
-   }
+   Stream<? extends efl> db();
 
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
-   }
+   void c(bwv.d var1);
 
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
-   }
+   boolean dT();
 
-   public int b() {
-      return this.c.size();
-   }
+   boolean dU();
 }

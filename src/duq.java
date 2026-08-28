@@ -1,49 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class duq extends dqw {
-   public static final MapCodec<duq> a = b(duq::new);
-
-   @Override
-   public MapCodec<duq> a() {
-      return a;
-   }
-
-   public duq(ebd.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(djx $$0, ebe $$1, iv $$2, bwt $$3, double $$4) {
-      if (!$$3.ce()) {
-         $$3.a($$4, 0.0F, $$0.al().l());
-      }
-   }
+public class duq extends dma {
+   public static final MapCodec<duq> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(duq.a.b.fieldOf("kind").forGetter(dma::b), t()).apply($$0, duq::new));
+   public static final int d = ecm.a();
+   private static final int b = d + 1;
+   public static final ecg e = ebw.bd;
+   private static final fgm f = dne.b(8.0, 0.0, 8.0);
+   private static final fgm g = dne.b(10.0, 0.0, 8.0);
 
    @Override
-   public void a(djb $$0, bwt $$1) {
-      if ($$1.ce()) {
-         super.a($$0, $$1);
-      } else {
-         this.a($$1);
-      }
+   public MapCodec<? extends duq> a() {
+      return c;
    }
 
-   private void a(bwt $$0) {
-      ffq $$1 = $$0.dy();
-      if ($$1.e < 0.0) {
-         double $$2 = $$0 instanceof bxu ? 1.0 : 0.8;
-         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
-      }
+   protected duq(duq.a $$0, ebf.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(djx $$0, iv $$1, ebe $$2, bwt $$3) {
-      double $$4 = Math.abs($$3.dy().e);
-      if ($$4 < 0.1 && !$$3.cd()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.i($$3.dy().d($$5, 1.0, $$5));
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return this.b() == duq.b.h ? g : f;
+   }
+
+   @Override
+   protected fgm d_(ebg $$0) {
+      return fgj.a();
+   }
+
+   @Override
+   public ebg a(ddt $$0) {
+      return super.a($$0).b(e, Integer.valueOf(ecm.a($$0.i())));
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends bao {
+      Map<String, duq.a> a = new Object2ObjectArrayMap();
+      Codec<duq.a> b = Codec.stringResolver(bao::c, a::get);
+   }
+
+   public static enum b implements duq.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      @Override
+      public String c() {
+         return this.j;
+      }
    }
 }

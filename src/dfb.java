@@ -1,69 +1,35 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dfb extends def {
-   public dfb(dec $$0) {
-      super($$0);
-   }
+public interface dfb<T extends der<?>> {
+   dfb<dff> a = a("crafting_shaped", new dff.a());
+   dfb<dfh> b = a("crafting_shapeless", new dfh.a());
+   dfb<ddy> c = a("crafting_special_armordye", new deh.a<>(ddy::new));
+   dfb<deb> d = a("crafting_special_bookcloning", new deh.a<>(deb::new));
+   dfb<deo> e = a("crafting_special_mapcloning", new deh.a<>(deo::new));
+   dfb<dep> f = a("crafting_special_mapextending", new deh.a<>(dep::new));
+   dfb<dek> g = a("crafting_special_firework_rocket", new deh.a<>(dek::new));
+   dfb<dem> h = a("crafting_special_firework_star", new deh.a<>(dem::new));
+   dfb<del> i = a("crafting_special_firework_star_fade", new deh.a<>(del::new));
+   dfb<dfs> j = a("crafting_special_tippedarrow", new deh.a<>(dfs::new));
+   dfb<ddz> k = a("crafting_special_bannerduplicate", new deh.a<>(ddz::new));
+   dfb<dfi> l = a("crafting_special_shielddecoration", new deh.a<>(dfi::new));
+   dfb<dft> m = a("crafting_transmute", new dft.a());
+   dfb<dfd> n = a("crafting_special_repairitem", new deh.a<>(dfd::new));
+   dfb<dfl> o = a("smelting", new ddx.b<>(dfl::new, 200));
+   dfb<dea> p = a("blasting", new ddx.b<>(dea::new, 100));
+   dfb<dfq> q = a("smoking", new ddx.b<>(dfq::new, 100));
+   dfb<dec> r = a("campfire_cooking", new ddx.b<>(dec::new, 100));
+   dfb<dfr> s = a("stonecutting", new dfj.b<>(dfr::new));
+   dfb<dfo> t = a("smithing_transform", new dfo.a());
+   dfb<dfp> u = a("smithing_trim", new dfp.a());
+   dfb<dei> v = a("crafting_decorated_pot", new deh.a<>(dei::new));
 
-   @Nullable
-   private static Pair<czy, czy> c(ded $$0) {
-      if ($$0.e() != 2) {
-         return null;
-      } else {
-         czy $$1 = null;
+   MapCodec<T> a();
 
-         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-            czy $$3 = $$0.a($$2);
-            if (!$$3.f()) {
-               if ($$1 != null) {
-                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
-               }
+   @Deprecated
+   za<wn, T> b();
 
-               $$1 = $$3;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   private static boolean a(czy $$0, czy $$1) {
-      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.c(kk.d) && $$1.c(kk.d) && $$0.c(kk.e) && $$1.c(kk.e);
-   }
-
-   public boolean a(ded $$0, djx $$1) {
-      return c($$0) != null;
-   }
-
-   public czy a(ded $$0, jh.a $$1) {
-      Pair<czy, czy> $$2 = c($$0);
-      if ($$2 == null) {
-         return czy.k;
-      } else {
-         czy $$3 = (czy)$$2.getFirst();
-         czy $$4 = (czy)$$2.getSecond();
-         int $$5 = Math.max($$3.p(), $$4.p());
-         int $$6 = $$3.p() - $$3.o();
-         int $$7 = $$4.p() - $$4.o();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         czy $$9 = new czy($$3.h());
-         $$9.b(kk.d, $$5);
-         $$9.b(Math.max($$5 - $$8, 0));
-         dgr $$10 = dgn.b($$3);
-         dgr $$11 = dgn.b($$4);
-         dgn.a($$9, $$3x -> $$1.e(mh.aR).c().filter($$0xx -> $$0xx.a(axg.o)).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
-               }
-            }));
-         return $$9;
-      }
-   }
-
-   @Override
-   public dez<dfb> a() {
-      return dez.n;
+   static <S extends dfb<T>, T extends der<?>> S a(String $$0, S $$1) {
+      return jt.a(mh.r, $$0, $$1);
    }
 }

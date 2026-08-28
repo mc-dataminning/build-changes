@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.nio.file.Path;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface ffj {
+public record ffj(Path a, Path b) {
 }

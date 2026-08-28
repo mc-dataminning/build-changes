@@ -1,99 +1,88 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dps extends dmo implements dtb {
+public class dps extends dmq {
    public static final MapCodec<dps> a = b(dps::new);
-   private static final fgk b = dnc.b(16.0, 6.0, 12.0);
+   public static final List<iw> b = iw.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(iw::j).toList();
+   private static final fgm c = dne.b(16.0, 0.0, 12.0);
 
    @Override
    public MapCodec<dps> a() {
       return a;
    }
 
-   protected dps(ebd.d $$0) {
+   protected dps(ebf.d $$0) {
       super($$0);
    }
 
-   @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dzz($$0, $$1);
+   public static boolean a(djz $$0, iw $$1, iw $$2) {
+      return $$0.a_($$1.a((kb)$$2)).a(axg.cC) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axg.cD);
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return b;
+   protected boolean g_(ebg $$0) {
+      return true;
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, bwt $$3) {
-      return $$0.f($$1, $$2);
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return c;
    }
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
-      if ($$3.n(false)) {
-         if (!$$1.C && $$1.aj() == djx.k && $$3 instanceof art $$5 && !$$5.i) {
-            $$5.n();
-            return;
+   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
+      super.a($$0, $$1, $$2, $$3);
+
+      for (iw $$4 : b) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               lz.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
          }
-
-         $$3.a(this, $$2);
       }
    }
 
    @Override
-   public eyo a(ars $$0, bwt $$1, iv $$2) {
-      alh<djx> $$3 = $$0.aj() == djx.k ? djx.i : djx.k;
-      ars $$4 = $$0.p().a($$3);
-      if ($$4 == null) {
-         return null;
+   public dye a(iw $$0, ebg $$1) {
+      return new dzb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
+      return $$0.C ? a($$2, dyg.n, dzb::a) : null;
+   }
+
+   @Override
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+      }
+
+      return but.a;
+   }
+
+   @Nullable
+   @Override
+   protected buv b(ebg $$0, djz $$1, iw $$2) {
+      dye $$3 = $$1.c_($$2);
+      if ($$3 instanceof dzb) {
+         xc $$4 = ((buw)$$3).m_();
+         return new bvb(($$2x, $$3x, $$4x) -> new cwo($$2x, $$3x, cwf.a($$1, $$2)), $$4);
       } else {
-         boolean $$5 = $$3 == djx.k;
-         iv $$6 = $$5 ? ars.a : $$4.aa();
-         ffq $$7 = $$6.c();
-         float $$8;
-         Set<byi> $$9;
-         if ($$5) {
-            ekh.a($$4, iv.a((jp)$$7).e(), true);
-            $$8 = jb.e.p();
-            $$9 = byi.a(byi.l, Set.of(byi.e));
-            if ($$1 instanceof art) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            $$8 = 0.0F;
-            $$9 = byi.a(byi.l, byi.k);
-            if ($$1 instanceof art $$12) {
-               return $$12.a(false, eyo.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
-         }
-
-         return new eyo($$4, $$7, ffq.c, $$8, 0.0F, $$9, eyo.b.then(eyo.c));
+         return null;
       }
    }
 
    @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(ly.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   protected czy a(dka $$0, iv $$1, ebe $$2, boolean $$3) {
-      return czy.k;
-   }
-
-   @Override
-   protected boolean a(ebe $$0, exn $$1) {
+   protected boolean a(ebg $$0, eyf $$1) {
       return false;
-   }
-
-   @Override
-   protected dtp a_(ebe $$0) {
-      return dtp.a;
    }
 }

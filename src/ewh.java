@@ -1,27 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class ewh implements ewl {
-   public static final MapCodec<ewh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fam.a.fieldOf("loot_table").forGetter($$0x -> $$0x.b)).apply($$0, ewh::new)
-   );
-   private final alh<fam> b;
+public class ewh extends evz {
+   public static final MapCodec<ewh> a = axv.a(mi.i).fieldOf("tag").xmap(ewh::new, $$0 -> $$0.b);
+   private final axv<dne> b;
 
-   public ewh(alh<fam> $$0) {
+   public ewh(axv<dne> $$0) {
       this.b = $$0;
    }
 
    @Override
-   public tz a(azx $$0, @Nullable tz $$1) {
-      tz $$2 = $$1 == null ? new tz() : $$1.l();
-      $$2.a("LootTable", fam.a, this.b);
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
+   public boolean a(ebg $$0, azz $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   public ewm<?> a() {
-      return ewm.d;
+   protected ewa<?> a() {
+      return ewa.d;
    }
 }

@@ -1,32 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
 
 public class cqv {
-   public static bzm<bxu> a(int $$0, int $$1) {
-      return ccy.a(
-         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$2 -> $$2.group($$2.b(cgw.ae), $$2.b(cgw.M), $$2.a(cgw.af), $$2.a(cgw.ag))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.fc().f()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
-
+   public static cay<cqo> a() {
+      return cda.a(
+         (Function<cda.b<cqo>, ? extends App<cda.c<cqo>, cdd<cqo>>>)($$0 -> $$0.group($$0.b(cgy.al), $$0.c(cgy.ac), $$0.c(cgy.ai), $$0.a(cgy.ap))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.n_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cqv::a)).isPresent()) {
+                        cqi $$6 = $$0.b($$1);
+                        cqp.c($$3x, $$4x, $$6);
+                        cqp.b((cqn)$$4x);
+                        cqp.b($$3x, $$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cqp::b));
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(cqn $$0) {
+      return $$0.ec().a(cgy.ai);
    }
 }

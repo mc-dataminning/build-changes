@@ -1,32 +1,45 @@
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
 
-public class ht<T extends el<T>> implements ho<T> {
-   private final String a;
-   private final hf b;
-   private final CommandContext<T> c;
+public class ht<T, P> implements hk<T> {
+   private final ht.a<T, P> a;
+   private final List<P> b;
+   private final hh<T> c;
+   private int d;
 
-   public ht(String $$0, hf $$1, CommandContext<T> $$2) {
+   private ht(ht.a<T, P> $$0, List<P> $$1, hn $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
+      this.c = new hh<>($$2, this);
    }
 
-   public void a(T $$0, hk<T> $$1, hm $$2) {
-      $$1.c().a(() -> "execute " + this.a);
-
-      try {
-         $$1.e();
-         int $$3 = ContextChain.runExecutable(this.c, $$0, el.b_(), this.b.a());
-         hn $$4 = $$1.b();
-         if ($$4 != null) {
-            $$4.a($$2.c(), this.a, $$3);
-         }
-      } catch (CommandSyntaxException var9) {
-         $$0.a(var9, this.b.a(), $$1.b());
-      } finally {
-         $$1.c().c();
+   @Override
+   public void execute(hl<T> $$0, hn $$1) {
+      P $$2 = this.b.get(this.d);
+      $$0.a(this.a.create($$1, $$2));
+      if (++this.d < this.b.size()) {
+         $$0.a(this.c);
       }
+   }
+
+   public static <T, P> void a(hl<T> $$0, hn $$1, List<P> $$2, ht.a<T, P> $$3) {
+      int $$4 = $$2.size();
+      switch ($$4) {
+         case 0:
+            break;
+         case 1:
+            $$0.a($$3.create($$1, $$2.get(0)));
+            break;
+         case 2:
+            $$0.a($$3.create($$1, $$2.get(0)));
+            $$0.a($$3.create($$1, $$2.get(1)));
+            break;
+         default:
+            $$0.a((new ht<>($$3, $$2, $$1)).c);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a<T, P> {
+      hh<T> create(hn var1, P var2);
    }
 }

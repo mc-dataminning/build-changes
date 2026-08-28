@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import java.util.function.Supplier;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface bsp {
+public interface bsp {
+   Set<bsn> a(Supplier<bra> var1);
 }

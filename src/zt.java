@@ -1,23 +1,29 @@
-import java.util.Optional;
-import java.util.UUID;
+public class zt implements zj<zp> {
+   public static final za<vy, zt> a = zj.a(zt::a, zt::new);
+   private final long b;
 
-public record zt(Optional<UUID> b) implements zh<zn> {
-   public static final yy<vw, zt> a = zh.a(zt::a, zt::new);
-
-   private zt(vw $$0) {
-      this($$0.b(jz.g));
+   public zt(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b, jz.g);
+   private zt(vy $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vy $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zj<zt> a() {
-      return zz.f;
+   public zl<zt> a() {
+      return aab.d;
    }
 
-   public void a(zn $$0) {
+   public void a(zp $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

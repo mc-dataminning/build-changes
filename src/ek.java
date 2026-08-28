@@ -1,385 +1,363 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandExceptionType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.RootCommandNode;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BinaryOperator;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class ek {
-   private static final ThreadLocal<hk<ej>> f = new ThreadLocal<>();
-   private static final Logger g = LogUtils.getLogger();
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   private final CommandDispatcher<ej> h = new CommandDispatcher();
-
-   public ek(ek.a $$0, ef $$1) {
-      amq.a(this.h);
-      amr.a(this.h, $$1);
-      anl.a(this.h, $$1);
-      amv.a(this.h, $$1);
-      amx.a(this.h, $$1);
-      amy.a(this.h, $$1);
-      amz.a(this.h, $$1);
-      aqc.a(this.h);
-      ana.a(this.h);
-      anc.a(this.h);
-      ang.a(this.h);
-      anh.a(this.h);
-      ani.a(this.h, $$1);
-      anj.a(this.h);
-      ank.a(this.h, $$1);
-      anm.a(this.h);
-      ano.a(this.h, $$1);
-      ann.a(this.h, $$1);
-      anp.a(this.h);
-      anq.a(this.h);
-      anr.a(this.h);
-      ans.a(this.h, $$1);
-      ant.a(this.h, $$1);
-      anu.a(this.h);
-      anw.a(this.h, $$1);
-      any.a(this.h);
-      anz.a(this.h);
-      aoa.a(this.h);
-      aob.a(this.h, $$1);
-      aod.a(this.h, $$1);
-      aoe.a(this.h);
-      aoi.a(this.h, $$1);
-      aok.a(this.h);
-      aol.a(this.h);
-      aoo.a(this.h);
-      aoq.a(this.h);
-      aop.a(this.h);
-      aor.a(this.h);
-      aos.a(this.h);
-      aot.a(this.h);
-      aox.a(this.h);
-      aoy.a(this.h);
-      aoz.a(this.h, $$1);
-      apa.a(this.h, $$0 != ek.a.c);
-      apc.a(this.h, $$1);
-      ape.a(this.h);
-      apf.a(this.h);
-      aph.a(this.h);
-      api.a(this.h);
-      apk.a(this.h);
-      apl.a(this.h, $$1);
-      apm.a(this.h);
-      apn.a(this.h, $$1);
-      apo.a(this.h);
-      app.a(this.h);
-      apq.a(this.h, $$1);
-      tj.a(this.h, $$1);
-      apr.a(this.h);
-      aps.a(this.h);
-      apt.a(this.h, $$1);
-      apv.a(this.h);
-      apx.a(this.h);
-      apz.a(this.h);
-      if (brj.f.d()) {
-         anx.a(this.h);
-      }
-
-      if (ac.aU) {
-         aon.a(this.h, $$1);
-         anf.a(this.h);
-         ane.a(this.h);
-         apw.a(this.h);
-         apg.a(this.h);
-         apb.a(this.h);
-         if ($$0.e) {
-            and.a(this.h);
-         }
-      }
-
-      if ($$0.e) {
-         ams.a(this.h);
-         amt.a(this.h);
-         amu.a(this.h);
-         anb.a(this.h);
-         aof.a(this.h);
-         aog.a(this.h);
-         aoh.a(this.h);
-         aoj.a(this.h);
-         aou.a(this.h);
-         aov.a(this.h);
-         aow.a(this.h);
-         apd.a(this.h);
-         apj.a(this.h);
-         apu.a(this.h);
-         apy.a(this.h);
-      }
-
-      if ($$0.d) {
-         aom.a(this.h);
-      }
-
-      this.h.setConsumer(el.b_());
-   }
-
-   public static <S> ParseResults<S> a(ParseResults<S> $$0, UnaryOperator<S> $$1) {
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2.withSource($$1.apply((S)$$2.getSource()));
-      return new ParseResults($$3, $$0.getReader(), $$0.getExceptions());
-   }
-
-   public void a(ej $$0, String $$1) {
-      $$1 = $$1.startsWith("/") ? $$1.substring(1) : $$1;
-      this.a(this.h.parse($$1, $$0), $$1);
-   }
-
-   public void a(ParseResults<ej> $$0, String $$1) {
-      ej $$2 = (ej)$$0.getContext().getSource();
-      bra.a().a(() -> "/" + $$1);
-      ContextChain<ej> $$3 = a($$0, $$1, $$2);
-
-      try {
-         if ($$3 != null) {
-            a($$2, $$3x -> hk.a($$3x, $$1, $$3, $$2, eg.a));
-         }
-      } catch (Exception var12) {
-         xo $$5 = xa.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
-         if (g.isDebugEnabled()) {
-            g.error("Command exception: /{}", $$1, var12);
-            StackTraceElement[] $$6 = var12.getStackTrace();
-
-            for (int $$7 = 0; $$7 < Math.min($$6.length, 3); $$7++) {
-               $$5.f("\n\n").f($$6[$$7].getMethodName()).f("\n ").f($$6[$$7].getFileName()).f(":").f(String.valueOf($$6[$$7].getLineNumber()));
-            }
-         }
-
-         $$2.b(xa.c("command.failed").a($$1x -> $$1x.a(new xg.e($$5))));
-         if (ac.aU) {
-            $$2.b(xa.b(ag.c(var12)));
-            g.error("'/{}' threw an exception", $$1, var12);
-         }
-      } finally {
-         bra.a().c();
-      }
-   }
-
+public class ek implements em<ek>, ep {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("permissions.requires.entity"));
+   private final ej d;
+   private final ffs e;
+   private final aru f;
+   private final int g;
+   private final String h;
+   private final xc i;
+   private final MinecraftServer j;
+   private final boolean k;
    @Nullable
-   private static ContextChain<ej> a(ParseResults<ej> $$0, String $$1, ej $$2) {
-      try {
-         a($$0);
-         return (ContextChain<ej>)ContextChain.tryFlatten($$0.getContext().build($$1))
-            .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
-      } catch (CommandSyntaxException var7) {
-         $$2.b(xd.a(var7.getRawMessage()));
-         if (var7.getInput() != null && var7.getCursor() >= 0) {
-            int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            xo $$5 = xa.i().a(o.h).a($$1x -> $$1x.a(new wy.g("/" + $$1)));
-            if ($$4 > 10) {
-               $$5.b(wz.u);
-            }
+   private final bwv l;
+   private final eh m;
+   private final ew.a n;
+   private final ffr o;
+   private final ei p;
+   private final baq q;
 
-            $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
-            if ($$4 < var7.getInput().length()) {
-               xa $$6 = xa.b(var7.getInput().substring($$4)).a(o.m, o.t);
-               $$5.b($$6);
-            }
-
-            $$5.b(xa.c("command.context.here").a(o.m, o.u));
-            $$2.b($$5);
-         }
-
-         return null;
-      }
+   public ek(ej $$0, ffs $$1, ffr $$2, aru $$3, int $$4, String $$5, xc $$6, MinecraftServer $$7, @Nullable bwv $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eh.a, ew.a.a, ei.a, baq.immediate($$7));
    }
 
-   public static void a(ej $$0, Consumer<hk<ej>> $$1) {
-      MinecraftServer $$2 = $$0.l();
-      hk<ej> $$3 = f.get();
-      boolean $$4 = $$3 == null;
-      if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().d(djt.z));
-         int $$6 = $$2.aL().d(djt.A);
+   protected ek(
+      ej $$0,
+      ffs $$1,
+      ffr $$2,
+      aru $$3,
+      int $$4,
+      String $$5,
+      xc $$6,
+      MinecraftServer $$7,
+      @Nullable bwv $$8,
+      boolean $$9,
+      eh $$10,
+      ew.a $$11,
+      ei $$12,
+      baq $$13
+   ) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.k = $$9;
+      this.l = $$8;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.m = $$10;
+      this.n = $$11;
+      this.o = $$2;
+      this.p = $$12;
+      this.q = $$13;
+   }
 
-         try (hk<ej> $$7 = new hk<>($$5, $$6, bra.a())) {
-            f.set($$7);
-            $$1.accept($$7);
-            $$7.a();
-         } finally {
-            f.set(null);
-         }
+   public ek a(ej $$0) {
+      return this.d == $$0 ? this : new ek($$0, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
+   }
+
+   public ek a(bwv $$0) {
+      return this.l == $$0
+         ? this
+         : new ek(this.d, this.e, this.o, this.f, this.g, $$0.ai().getString(), $$0.m_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
+   }
+
+   public ek a(ffs $$0) {
+      return this.e.equals($$0) ? this : new ek(this.d, $$0, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
+   }
+
+   public ek a(ffr $$0) {
+      return this.o.c($$0) ? this : new ek(this.d, this.e, $$0, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
+   }
+
+   public ek a(eh $$0) {
+      return Objects.equals(this.m, $$0)
+         ? this
+         : new ek(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, $$0, this.n, this.p, this.q);
+   }
+
+   public ek a(eh $$0, BinaryOperator<eh> $$1) {
+      eh $$2 = $$1.apply(this.m, $$0);
+      return this.a($$2);
+   }
+
+   public ek a() {
+      return !this.k && !this.d.o_()
+         ? new ek(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, true, this.m, this.n, this.p, this.q)
+         : this;
+   }
+
+   public ek a(int $$0) {
+      return $$0 == this.g ? this : new ek(this.d, this.e, this.o, this.f, $$0, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
+   }
+
+   public ek b(int $$0) {
+      return $$0 <= this.g ? this : new ek(this.d, this.e, this.o, this.f, $$0, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
+   }
+
+   public ek a(ew.a $$0) {
+      return $$0 == this.n ? this : new ek(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, $$0, this.p, this.q);
+   }
+
+   public ek a(aru $$0) {
+      if ($$0 == this.f) {
+         return this;
       } else {
-         $$1.accept($$3);
+         double $$1 = efd.a(this.f.F_(), $$0.F_());
+         ffs $$2 = new ffs(this.e.d * $$1, this.e.e, this.e.f * $$1);
+         return new ek(this.d, $$2, this.o, $$0, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
       }
    }
 
-   public void a(art $$0) {
-      Map<CommandNode<ej>, CommandNode<eo>> $$1 = Maps.newHashMap();
-      RootCommandNode<eo> $$2 = new RootCommandNode();
-      $$1.put(this.h.getRoot(), $$2);
-      this.a(this.h.getRoot(), $$2, $$0.A(), $$1);
-      $$0.f.b(new aco($$2));
+   public ek a(bwv $$0, ew.a $$1) {
+      return this.b($$1.a($$0));
    }
 
-   private void a(CommandNode<ej> $$0, CommandNode<eo> $$1, ej $$2, Map<CommandNode<ej>, CommandNode<eo>> $$3) {
-      for (CommandNode<ej> $$4 : $$0.getChildren()) {
-         if ($$4.canUse($$2)) {
-            ArgumentBuilder<eo, ?> $$5 = $$4.createBuilder();
-            $$5.requires($$0x -> true);
-            if ($$5.getCommand() != null) {
-               $$5.executes($$0x -> 0);
-            }
-
-            if ($$5 instanceof RequiredArgumentBuilder) {
-               RequiredArgumentBuilder<eo, ?> $$6 = (RequiredArgumentBuilder<eo, ?>)$$5;
-               if ($$6.getSuggestionsProvider() != null) {
-                  $$6.suggests(ik.b($$6.getSuggestionsProvider()));
-               }
-            }
-
-            if ($$5.getRedirect() != null) {
-               $$5.redirect($$3.get($$5.getRedirect()));
-            }
-
-            CommandNode<eo> $$7 = $$5.build();
-            $$3.put($$4, $$7);
-            $$1.addChild($$7);
-            if (!$$4.getChildren().isEmpty()) {
-               this.a($$4, $$7, $$2, $$3);
-            }
-         }
-      }
+   public ek b(ffs $$0) {
+      ffs $$1 = this.n.a(this);
+      double $$2 = $$0.d - $$1.d;
+      double $$3 = $$0.e - $$1.e;
+      double $$4 = $$0.f - $$1.f;
+      double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
+      float $$6 = azq.h((float)(-(azq.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = azq.h((float)(azq.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new ffr($$6, $$7));
    }
 
-   public static LiteralArgumentBuilder<ej> a(String $$0) {
-      return LiteralArgumentBuilder.literal($$0);
+   public ek a(ei $$0, baq $$1) {
+      return $$0 == this.p && $$1 == this.q
+         ? this
+         : new ek(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, $$0, $$1);
    }
 
-   public static <T> RequiredArgumentBuilder<ej, T> a(String $$0, ArgumentType<T> $$1) {
-      return RequiredArgumentBuilder.argument($$0, $$1);
+   public xc b() {
+      return this.i;
    }
 
-   public static Predicate<String> a(ek.b $$0) {
-      return $$1 -> {
-         try {
-            $$0.parse(new StringReader($$1));
-            return true;
-         } catch (CommandSyntaxException var3) {
-            return false;
-         }
-      };
-   }
-
-   public CommandDispatcher<ej> a() {
+   public String c() {
       return this.h;
    }
 
-   public static <S> void a(ParseResults<S> $$0) throws CommandSyntaxException {
-      CommandSyntaxException $$1 = b($$0);
-      if ($$1 != null) {
-         throw $$1;
+   @Override
+   public boolean c(int $$0) {
+      return this.g >= $$0;
+   }
+
+   public ffs d() {
+      return this.e;
+   }
+
+   public aru e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bwv f() {
+      return this.l;
+   }
+
+   public bwv g() throws CommandSyntaxException {
+      if (this.l == null) {
+         throw b.create();
+      } else {
+         return this.l;
+      }
+   }
+
+   public arv h() throws CommandSyntaxException {
+      bwv var2 = this.l;
+      if (var2 instanceof arv) {
+         return (arv)var2;
+      } else {
+         throw a.create();
       }
    }
 
    @Nullable
-   public static <S> CommandSyntaxException b(ParseResults<S> $$0) {
-      if (!$$0.getReader().canRead()) {
-         return null;
-      } else if ($$0.getExceptions().size() == 1) {
-         return (CommandSyntaxException)$$0.getExceptions().values().iterator().next();
+   public arv i() {
+      return this.l instanceof arv $$0 ? $$0 : null;
+   }
+
+   public boolean j() {
+      return this.l instanceof arv;
+   }
+
+   public ffr k() {
+      return this.o;
+   }
+
+   public MinecraftServer l() {
+      return this.j;
+   }
+
+   public ew.a m() {
+      return this.n;
+   }
+
+   public ei n() {
+      return this.p;
+   }
+
+   public baq o() {
+      return this.q;
+   }
+
+   public boolean a(arv $$0) {
+      arv $$1 = this.i();
+      return $$0 == $$1 ? false : $$1 != null && $$1.X() || $$0.X();
+   }
+
+   public void a(xr $$0, boolean $$1, wy.a $$2) {
+      if (!this.k) {
+         arv $$3 = this.i();
+         if ($$3 != null) {
+            $$3.a($$0, $$1, $$2);
+         } else {
+            this.d.a($$2.a($$0.a()));
+         }
+      }
+   }
+
+   public void a(xc $$0) {
+      if (!this.k) {
+         arv $$1 = this.i();
+         if ($$1 != null) {
+            $$1.a($$0);
+         } else {
+            this.d.a($$0);
+         }
+      }
+   }
+
+   public void a(Supplier<xc> $$0, boolean $$1) {
+      boolean $$2 = this.d.x_() && !this.k;
+      boolean $$3 = $$1 && this.d.c() && !this.k;
+      if ($$2 || $$3) {
+         xc $$4 = $$0.get();
+         if ($$2) {
+            this.d.a($$4);
+         }
+
+         if ($$3) {
+            this.c($$4);
+         }
+      }
+   }
+
+   private void c(xc $$0) {
+      xc $$1 = xc.a("chat.type.admin", this.b(), $$0).a(o.h, o.u);
+      if (this.j.aL().c(djv.q)) {
+         for (arv $$2 : this.j.ag().t()) {
+            if ($$2.z() != this.d && this.j.ag().f($$2.gi())) {
+               $$2.a($$1);
+            }
+         }
+      }
+
+      if (this.d != this.j && this.j.aL().c(djv.n)) {
+         this.j.a($$1);
+      }
+   }
+
+   public void b(xc $$0) {
+      if (this.d.y_() && !this.k) {
+         this.d.a(xc.i().b($$0).a(o.m));
+      }
+   }
+
+   @Override
+   public eh p() {
+      return this.m;
+   }
+
+   @Override
+   public Collection<String> q() {
+      return Lists.newArrayList(this.j.P());
+   }
+
+   @Override
+   public Collection<String> r() {
+      return this.j.aJ().e();
+   }
+
+   @Override
+   public Stream<alk> s() {
+      return mh.b.s().map(awq::a);
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      return Suggestions.empty();
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(alj<? extends jt<?>> $$0, ep.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      if ($$0 == mi.bv) {
+         return ep.a(this.j.aI().d().stream().map($$0x -> $$0x.a().a()), $$2);
+      } else if ($$0 == mi.bu) {
+         Collection<aj> $$4 = this.j.aD().b();
+         return ep.a($$4.stream().map(aj::a), $$2);
       } else {
-         return $$0.getContext().getRange().isEmpty()
-            ? CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader())
-            : CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownArgument().createWithContext($$0.getReader());
+         return this.u().a($$0).map($$2x -> {
+            this.a($$2x, $$1, $$2);
+            return $$2.buildFuture();
+         }).orElseGet(Suggestions::empty);
       }
    }
 
-   public static ef a(final jh.a $$0) {
-      return new ef() {
-         @Override
-         public cvh a() {
-            return cvj.e.a();
-         }
-
-         @Override
-         public Stream<alh<? extends js<?>>> b() {
-            return $$0.b();
-         }
-
-         @Override
-         public <T> Optional<jh.b<T>> a(alh<? extends js<? extends T>> $$0x) {
-            return $$0.a($$0).map(this::a);
-         }
-
-         private <T> jh.b.a<T> a(final jh.b<T> $$0x) {
-            return new jh.b.a<T>() {
-               @Override
-               public jh.b<T> a() {
-                  return $$0;
-               }
-
-               @Override
-               public Optional<jj.c<T>> a(axt<T> $$0xx) {
-                  return Optional.of(this.b($$0));
-               }
-
-               @Override
-               public jj.c<T> b(axt<T> $$0xx) {
-                  Optional<jj.c<T>> $$1 = this.a().a($$0);
-                  return $$1.orElseGet(() -> jj.a(this.a(), $$0));
-               }
-            };
-         }
-      };
+   @Override
+   public Set<alj<djz>> t() {
+      return this.j.K();
    }
 
-   public static void b() {
-      ef $$0 = a(ow.a());
-      CommandDispatcher<ej> $$1 = new ek(ek.a.a, $$0).a();
-      RootCommandNode<ej> $$2 = $$1.getRoot();
-      $$1.findAmbiguities(
-         ($$1x, $$2x, $$3x, $$4x) -> g.warn("Ambiguity between arguments {} and {} with inputs: {}", new Object[]{$$1.getPath($$2x), $$1.getPath($$3x), $$4x})
-      );
-      Set<ArgumentType<?>> $$3 = ii.a($$2);
-      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !ih.a($$0x.getClass())).collect(Collectors.toSet());
-      if (!$$4.isEmpty()) {
-         g.warn("Missing type registration for following arguments:\n {}", $$4.stream().map($$0x -> "\t" + $$0x).collect(Collectors.joining(",\n")));
-         throw new IllegalStateException("Unregistered argument types");
+   @Override
+   public ju u() {
+      return this.j.ba();
+   }
+
+   @Override
+   public cvj v() {
+      return this.f.K();
+   }
+
+   @Override
+   public CommandDispatcher<ek> w() {
+      return this.l().aE().a();
+   }
+
+   @Override
+   public void a(CommandExceptionType $$0, Message $$1, boolean $$2, @Nullable ho $$3) {
+      if ($$3 != null) {
+         $$3.a($$1.getString());
+      }
+
+      if (!$$2) {
+         this.b(xf.a($$1));
       }
    }
 
-   public static enum a {
-      a(true, true),
-      b(false, true),
-      c(true, false);
-
-      final boolean d;
-      final boolean e;
-
-      private a(final boolean $$0, final boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void parse(StringReader var1) throws CommandSyntaxException;
+   @Override
+   public boolean x() {
+      return this.k;
    }
 }

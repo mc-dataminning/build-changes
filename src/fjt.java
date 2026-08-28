@@ -1,22 +1,10 @@
-import java.io.File;
-import java.time.Duration;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fjt {
-   private static final Duration a = Duration.ofSeconds(15L);
-
-   public static void a(File $$0, long $$1) {
-      Thread $$2 = new Thread(() -> {
-         try {
-            Thread.sleep(a);
-         } catch (InterruptedException var4) {
-            return;
-         }
-
-         p $$3 = aql.a("Client shutdown", $$1);
-         frd.a($$0, $$3);
-      });
-      $$2.setDaemon(true);
-      $$2.setName("Client shutdown watchdog");
-      $$2.start();
+public class fjt extends fjs {
+   public fjt(@Nullable String $$0, int $$1, int $$2, boolean $$3) {
+      super($$0, $$3);
+      RenderSystem.assertOnRenderThread();
+      this.a($$1, $$2);
    }
 }

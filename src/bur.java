@@ -1,75 +1,59 @@
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
-public sealed interface bur permits bur.d, bur.a, bur.c, bur.f {
-   bur.d a = new bur.d(bur.e.b, bur.b.b);
-   bur.d b = new bur.d(bur.e.c, bur.b.b);
-   bur.d c = new bur.d(bur.e.a, bur.b.b);
-   bur.a d = new bur.a();
-   bur.c e = new bur.c();
-   bur.f f = new bur.f();
+@Immutable
+public class bur {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final buq d;
+   private final float e;
 
-   default boolean a() {
-      return false;
+   public bur(buq $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public static record a() implements bur {
+   public buq a() {
+      return this.d;
    }
 
-   public static record b(boolean c, @Nullable czy d) {
-      static bur.b a = new bur.b(false, null);
-      static bur.b b = new bur.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public czy b() {
-         return this.d;
-      }
+   public float b() {
+      return this.e;
    }
 
-   public static record c() implements bur {
+   public boolean c() {
+      return this.e >= (float)buq.d.ordinal();
    }
 
-   public static record d(bur.e g, bur.b h) implements bur {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
 
-      public bur.d a(czy $$0) {
-         return new bur.d(this.g, new bur.b(true, $$0));
-      }
-
-      public bur.d b() {
-         return new bur.d(this.g, bur.b.a);
-      }
-
-      public boolean c() {
-         return this.h.c;
-      }
-
-      @Nullable
-      public czy d() {
-         return this.h.d;
-      }
-
-      public bur.e e() {
-         return this.g;
-      }
-
-      public bur.b f() {
-         return this.h;
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
       }
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
-   }
+   private float a(buq $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == buq.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == buq.d;
+         float $$5 = 0.75F;
+         float $$6 = azq.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azq.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azq.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == buq.b) {
+            $$7 *= 0.5F;
+         }
 
-   public static record f() implements bur {
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

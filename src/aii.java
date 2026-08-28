@@ -1,25 +1,25 @@
-public class aii implements zh<agr> {
-   public static final yy<vw, aii> a = zh.a(aii::a, aii::new);
+public class aii implements zj<agt> {
+   public static final za<vy, aii> a = zj.a(aii::a, aii::new);
    private final int b;
 
    public aii(int $$0) {
       this.b = $$0;
    }
 
-   private aii(vw $$0) {
-      this.b = $$0.readShort();
+   private aii(vy $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vw $$0) {
-      $$0.m(this.b);
+   private void a(vy $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zj<aii> a() {
-      return agp.cc;
+   public zl<aii> a() {
+      return agr.ca;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 

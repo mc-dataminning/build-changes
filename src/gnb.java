@@ -1,85 +1,119 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 
-public interface gnb {
-   static gnb a(gnh $$0, UserApiService $$1) {
+public interface gnb extends gna {
+   static gnb.a a(GameProfile $$0, xs $$1, gmz $$2) {
+      return new gnb.a($$0, $$1, $$2);
+   }
+
+   static gnb.b a(xc $$0, Instant $$1) {
       return new gnb.b($$0, $$1);
    }
 
-   CompletableFuture<Unit> a(UUID var1, gnj var2, AbuseReport var3);
+   xc b();
 
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   default xc c() {
+      return this.b();
    }
 
-   public static class a extends ya {
-      public a(xa $$0, Throwable $$1) {
-         super($$0, $$1);
+   boolean a(UUID var1);
+
+   public static record a(GameProfile c, xs d, gmz e) implements gnb {
+      public static final MapCodec<gnb.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  ayy.z.fieldOf("profile").forGetter(gnb.a::f), xs.a.forGetter(gnb.a::g), gmz.d.optionalFieldOf("trust_level", gmz.a).forGetter(gnb.a::h)
+               )
+               .apply($$0, gnb.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public xc b() {
+         if (!this.d.o().a()) {
+            xc $$0 = this.d.o().b(this.d.c());
+            return (xc)($$0 != null ? $$0 : xc.i());
+         } else {
+            return this.d.d();
+         }
+      }
+
+      @Override
+      public xc c() {
+         xc $$0 = this.b();
+         xc $$1 = this.i();
+         return xc.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public xc d() {
+         xc $$0 = this.i();
+         return xc.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private xc i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return xc.b($$0.format(f)).a(o.u, o.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public gna.a a() {
+         return gna.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public xs g() {
+         return this.d;
+      }
+
+      public gmz h() {
+         return this.e;
       }
    }
 
-   public static record b(gnh a, UserApiService b) implements gnb {
-      private static final xa c = xa.c("gui.abuseReport.send.service_unavailable");
-      private static final xa d = xa.c("gui.abuseReport.send.http_error");
-      private static final xa e = xa.c("gui.abuseReport.send.json_error");
+   public static record b(xc c, Instant d) implements gnb {
+      public static final MapCodec<gnb.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(xe.a.fieldOf("message").forGetter(gnb.b::d), ayy.q.fieldOf("time_stamp").forGetter(gnb.b::e)).apply($$0, gnb.b::new)
+      );
 
       @Override
-      public CompletableFuture<Unit> a(UUID $$0, gnj $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               xa $$5 = this.a(var7);
-               throw new CompletionException(new gnb.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               xa $$7 = this.a(var8);
-               throw new CompletionException(new gnb.a($$7, var8));
-            }
-         }, ag.i());
+      public xc b() {
+         return this.c;
       }
 
       @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
-
-      private xa a(MinecraftClientHttpException $$0) {
-         return xa.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
-
-      private xa a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
+      public boolean a(UUID $$0) {
+         return false;
       }
 
       @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
+      public gna.a a() {
+         return gna.a.b;
       }
 
-      public gnh c() {
-         return this.a;
+      public xc d() {
+         return this.c;
       }
 
-      public UserApiService d() {
-         return this.b;
+      public Instant e() {
+         return this.d;
       }
    }
 }

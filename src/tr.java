@@ -1,13 +1,8 @@
-public class tr extends so {
-   private final Throwable a;
+public interface tr {
+   void a(sr var1);
 
-   public tr(Throwable $$0) {
-      super($$0.getMessage());
-      this.a = $$0;
-   }
+   void b(sr var1);
 
-   @Override
-   public xa a() {
-      return xa.a("test.error.unknown", this.a.getMessage());
+   default void a() {
    }
 }

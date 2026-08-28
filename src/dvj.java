@@ -1,70 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvj extends dnc {
-   public static final MapCodec<dvj> a = b(dvj::new);
-   private static final xa c = xa.c("container.stonecutter");
-   public static final ecc<jb> b = drd.e;
-   private static final fgk d = dnc.b(16.0, 0.0, 9.0);
+public class dvj extends duo {
+   public static final MapCodec<dvj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ecu.a.fieldOf("wood_type").forGetter(duo::d), t()).apply($$0, dvj::new));
+   public static final ecg b = ebw.bd;
 
    @Override
    public MapCodec<dvj> a() {
       return a;
    }
 
-   public dvj(ebd.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, jb.c));
+   public dvj(ecu $$0, ebf.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.C.b().b(b, Integer.valueOf(0)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public ebe a(ddr $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awz.ay);
-      }
-
-      return bur.a;
-   }
-
-   @Nullable
-   @Override
-   protected but b(ebe $$0, djx $$1, iv $$2) {
-      return new buz(($$2x, $$3, $$4) -> new cxt($$2x, $$3, cwd.a($$1, $$2)), c);
+   public ebg a(ddt $$0) {
+      exq $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Integer.valueOf(ecm.a($$0.i() + 180.0F))).b(d, Boolean.valueOf($$1.a() == exr.c));
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return d;
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return $$4 == jc.a && !this.a($$0, $$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean g_(ebe $$0) {
-      return true;
+   public float h(ebg $$0) {
+      return ecm.b($$0.c(b));
    }
 
    @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(ebe $$0, eyd $$1) {
-      return false;
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b, d);
    }
 }

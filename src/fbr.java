@@ -1,22 +1,35 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface fbr<T extends fbr<T>> {
-   T b(fbv.a var1);
+public class fbr extends fbw {
+   public static final MapCodec<fbr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(cn.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), fbz.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, fbr::new)
+   );
+   private final cn b;
+   private final fbx c;
 
-   default <E> T a(Iterable<E> $$0, Function<E, fbv.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private fbr(List<fds> $$0, cn $$1, fbx $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default <E> T a(E[] $$0, Function<E, fbv.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   public fby<fbr> b() {
+      return fbz.v;
    }
 
-   T c();
+   @Override
+   public daa a(daa $$0, faj $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   }
+
+   @Override
+   public void a(fap $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
+   }
 }

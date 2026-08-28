@@ -1,36 +1,71 @@
 import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
 import java.security.SignatureException;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.time.Instant;
+import java.util.Optional;
 
-public record xv(int b, UUID c, UUID d) {
-   public static final Codec<xv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayw.l.fieldOf("index").forGetter(xv::b), jz.a.fieldOf("sender").forGetter(xv::c), jz.a.fieldOf("session_id").forGetter(xv::d))
+public record xv(String b, Instant c, long d, xj e) {
+   public static final MapCodec<xv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(xv::a),
+               ayy.q.fieldOf("time_stamp").forGetter(xv::b),
+               Codec.LONG.fieldOf("salt").forGetter(xv::c),
+               xj.a.optionalFieldOf("last_seen", xj.b).forGetter(xv::d)
+            )
             .apply($$0, xv::new)
    );
 
-   public static xv a(UUID $$0) {
-      return a($$0, ag.e);
+   public static xv a(String $$0) {
+      return new xv($$0, Instant.now(), 0L, xj.b);
    }
 
-   public static xv a(UUID $$0, UUID $$1) {
-      return new xv(0, $$0, $$1);
+   public void a(bae.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public void a(bac.a $$0) throws SignatureException {
-      $$0.update(jz.b(this.c));
-      $$0.update(jz.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
+   public xv.a a(xp $$0) {
+      return new xv.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   public boolean a(xv $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   public String a() {
+      return this.b;
    }
 
-   @Nullable
-   public xv a() {
-      return this.b == Integer.MAX_VALUE ? null : new xv(this.b + 1, this.c, this.d);
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public xj d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, xj.a d) {
+      public a(vy $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xj.a($$0));
+      }
+
+      public void a(vy $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
+      }
+
+      public Optional<xv> a(xp $$0) {
+         return this.d.a($$0).map($$0x -> new xv(this.a, this.b, this.c, $$0x));
+      }
    }
 }

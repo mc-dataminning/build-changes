@@ -1,22 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtx extends dol {
-   public static final MapCodec<dtx> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayh.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), t()).apply($$0, dtx::new)
-   );
+public class dtx extends dne {
+   public static final MapCodec<dtx> c = b(dtx::new);
+   public static final ece<jc.a> d = ebw.K;
 
    @Override
-   public MapCodec<dtx> a() {
+   public MapCodec<? extends dtx> a() {
       return c;
    }
 
-   public dtx(ayh $$0, ebd.d $$1) {
-      super($$0, $$1);
+   public dtx(ebf.d $$0) {
+      super($$0);
+      this.l(this.m().b(d, jc.a.b));
    }
 
    @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      ebc.a($$0, $$1, $$2, $$3);
+   protected ebg a(ebg $$0, dty $$1) {
+      return b($$0, $$1);
+   }
+
+   public static ebg b(ebg $$0, dty $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((jc.a)$$0.c(d)) {
+               case a:
+                  return $$0.b(d, jc.a.c);
+               case c:
+                  return $$0.b(d, jc.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public ebg a(ddt $$0) {
+      return this.m().b(d, $$0.k().o());
    }
 }

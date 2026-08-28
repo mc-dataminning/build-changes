@@ -1,30 +1,21 @@
-public class haq<T extends cpk> extends gzo<T, hfp, gkc> {
-   private static final ali a = ali.b("textures/entity/spider/spider.png");
+public class haq extends gzq<ckp, hgp, gkd> {
+   private static final alk a = alk.b("textures/entity/snow_golem.png");
 
-   public haq(gyi.a $$0) {
-      this($$0, gld.dm);
+   public haq(gyk.a $$0) {
+      super($$0, new gkd($$0.a(glf.dk)), 0.5F);
+      this.a(new hde(this, $$0.d()));
    }
 
-   public haq(gyi.a $$0, glc $$1) {
-      super($$0, new gkc($$0.a($$1)), 0.8F);
-      this.a(new hdd<>(this));
-   }
-
-   @Override
-   protected float aW_() {
-      return 180.0F;
-   }
-
-   @Override
-   public ali b(hfp $$0) {
+   public alk a(hgp $$0) {
       return a;
    }
 
-   public hfp b() {
-      return new hfp();
+   public hgp b() {
+      return new hgp();
    }
 
-   public void a(T $$0, hfp $$1, float $$2) {
+   public void a(ckp $$0, hgp $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = $$0.m();
    }
 }

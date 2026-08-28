@@ -1,32 +1,43 @@
-public class gya extends gxb<com, hhf, ghv> {
-   private static final ali a = ali.b("textures/entity/zombie/drowned.png");
+public class gya<T extends clu> extends gxa<T, hen, ghw> {
+   private final alk a;
 
-   public gya(gyi.a $$0) {
-      super($$0, new ghv($$0.a(gld.aG)), new ghv($$0.a(gld.aH)), new ghv($$0.a(gld.aL)), new ghv($$0.a(gld.aM)), new ghv($$0.a(gld.aI)), new ghv($$0.a(gld.aJ)));
-      this.a(new hce(this, $$0.f()));
+   public gya(gyk.a $$0, gya.a $$1) {
+      super($$0, new ghw($$0.a($$1.d)), new ghw($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hdb<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gid($$0.a($$1.g)), new gid($$0.a($$1.h))));
    }
 
-   public hhf a() {
-      return new hhf();
+   public alk a(hen $$0) {
+      return this.a;
    }
 
-   @Override
-   public ali a(hhf $$0) {
-      return a;
+   public hen a() {
+      return new hen();
    }
 
-   protected void a(hhf $$0, flo $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.G;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.ab;
-         float $$6 = azo.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
+   public void a(T $$0, hen $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+   }
+
+   public static enum a {
+      a(alk.b("textures/entity/horse/donkey.png"), glf.az, glf.aA, hni.d.k, glf.aB, glf.aC),
+      b(alk.b("textures/entity/horse/mule.png"), glf.bP, glf.bQ, hni.d.l, glf.bR, glf.bS);
+
+      final alk c;
+      final gle d;
+      final gle e;
+      final hni.d f;
+      final gle g;
+      final gle h;
+
+      private a(final alk $$0, final gle $$1, final gle $$2, final hni.d $$3, final gle $$4, final gle $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
       }
-   }
-
-   protected gio.a a(com $$0, bxl $$1) {
-      czy $$2 = $$0.a($$1);
-      return $$0.fy() == $$1 && $$0.gl() && $$2.a(dac.xd) ? gio.a.e : gio.a.a;
    }
 }

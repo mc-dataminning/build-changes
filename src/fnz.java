@@ -1,12 +1,15 @@
-public class fnz extends Exception {
-   public final fmf a;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-   public fnz(fmf $$0) {
+public class fnz implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public fnz(Logger $$0) {
       this.a = $$0;
    }
 
    @Override
-   public String getMessage() {
-      return this.a.c();
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

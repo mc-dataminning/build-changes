@@ -1,27 +1,24 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import javax.annotation.Nullable;
 
-public class bqp<T> implements bqa<StringReader, Dynamic<? extends T>> {
-   private final DynamicOps<T> a;
-   private final uz<T> b;
+public class bqp extends bpu<StringReader> {
+   private final StringReader a;
 
-   public bqp(DynamicOps<T> $$0) {
-      this.a = $$0;
-      this.b = uz.a($$0);
+   public bqp(bpy<StringReader> $$0, StringReader $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Nullable
-   public Dynamic<? extends T> b(bpz<StringReader> $$0) {
-      $$0.f().skipWhitespace();
-      int $$1 = $$0.g();
+   public StringReader h() {
+      return this.a;
+   }
 
-      try {
-         return new Dynamic(this.a, this.b.b($$0.f()));
-      } catch (Exception var4) {
-         $$0.b().a($$1, var4);
-         return null;
-      }
+   @Override
+   public int g() {
+      return this.a.getCursor();
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.a.setCursor($$0);
    }
 }

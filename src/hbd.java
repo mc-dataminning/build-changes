@@ -1,27 +1,27 @@
-public class hbd extends gzo<cpn, hgx, gkl> {
-   private static final ali a = ali.b("textures/entity/illager/vex.png");
-   private static final ali j = ali.b("textures/entity/illager/vex_charging.png");
+public class hbd extends gxe<ckt, hgy, gkm> {
+   private static final alk a = alk.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public hbd(gyi.a $$0) {
-      super($$0, new gkl($$0.a(gld.dK)), 0.3F);
-      this.a(new hco<>(this));
+   public hbd(gyk.a $$0) {
+      super($$0, new gkm($$0.a(glf.dI)), new gkm($$0.a(glf.dJ)), 0.7F);
    }
 
-   protected int a(cpn $$0, iv $$1) {
-      return 15;
+   protected float a(hgy $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   public ali a(hgx $$0) {
-      return $$0.a ? j : a;
+   public hgy b() {
+      return new hgy();
    }
 
-   public hgx b() {
-      return new hgx();
-   }
-
-   public void a(cpn $$0, hgx $$1, float $$2) {
+   public void a(ckt $$0, hgy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hdt.a($$0, $$1, this.h);
-      $$1.a = $$0.t();
+      $$1.a = !$$0.bi() && $$0.aH();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.n_() && $$0.q();
+   }
+
+   public alk b(hgy $$0) {
+      return a;
    }
 }

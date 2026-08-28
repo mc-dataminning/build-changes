@@ -1,110 +1,234 @@
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.LinkedList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class tm implements to, tp {
-   static final to a = Stream::empty;
-   static final tp b = Stream::empty;
-   private final to c;
-   private final tp d;
-   private final ej e;
+public interface tm {
+   Codec<tm> a = mh.aB.q().dispatch(tm::a, $$0 -> $$0);
+   Codec<jg<tm>> b = alg.a(mi.bg, a);
 
-   @Override
-   public Stream<iv> findTestPos() {
-      return this.d.findTestPos();
+   static MapCodec<? extends tm> a(jt<MapCodec<? extends tm>> $$0) {
+      jt.a($$0, "all_of", tm.a.c);
+      jt.a($$0, "game_rules", tm.c.c);
+      jt.a($$0, "time_of_day", tm.d.c);
+      jt.a($$0, "weather", tm.e.c);
+      return jt.a($$0, "function", tm.b.c);
    }
 
-   public static tm.a a() {
-      return new tm.a();
+   void a(aru var1);
+
+   default void b(aru $$0) {
    }
 
-   tm(ej $$0, to $$1, tp $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   MapCodec<? extends tm> a();
+
+   public static record a(List<jg<tm>> d) implements tm {
+      public static final MapCodec<tm.a> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(tm.b.listOf().fieldOf("definitions").forGetter(tm.a::b)).apply($$0, tm.a::new)
+      );
+
+      public a(tm... $$0) {
+         this(Arrays.stream($$0).map(jg::a).toList());
+      }
+
+      @Override
+      public void a(aru $$0) {
+         this.d.forEach($$1 -> $$1.a().a($$0));
+      }
+
+      @Override
+      public void b(aru $$0) {
+         this.d.forEach($$1 -> $$1.a().b($$0));
+      }
+
+      @Override
+      public MapCodec<tm.a> a() {
+         return c;
+      }
+
+      public List<jg<tm>> b() {
+         return this.d;
+      }
    }
 
-   public ej b() {
-      return this.e;
+   public static record b(Optional<alk> d, Optional<alk> e) implements tm {
+      private static final Logger f = LogUtils.getLogger();
+      public static final MapCodec<tm.b> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(alk.a.optionalFieldOf("setup").forGetter(tm.b::b), alk.a.optionalFieldOf("teardown").forGetter(tm.b::c)).apply($$0, tm.b::new)
+      );
+
+      @Override
+      public void a(aru $$0) {
+         this.d.ifPresent($$1 -> a($$0, $$1));
+      }
+
+      @Override
+      public void b(aru $$0) {
+         this.e.ifPresent($$1 -> a($$0, $$1));
+      }
+
+      private static void a(aru $$0, alk $$1) {
+         MinecraftServer $$2 = $$0.p();
+         alz $$3 = $$2.aE();
+         Optional<hy<ek>> $$4 = $$3.a($$1);
+         if ($$4.isPresent()) {
+            ek $$5 = $$2.aH().a(2).a().a($$0);
+            $$3.a($$4.get(), $$5);
+         } else {
+            f.error("Test Batch failed for non-existent function {}", $$1);
+         }
+      }
+
+      @Override
+      public MapCodec<tm.b> a() {
+         return c;
+      }
+
+      public Optional<alk> b() {
+         return this.d;
+      }
+
+      public Optional<alk> c() {
+         return this.e;
+      }
    }
 
-   @Override
-   public Stream<jf.c<sr>> findTests() {
-      return this.c.findTests();
+   public static record c(List<tm.c.a<Boolean, djv.a>> d, List<tm.c.a<Integer, djv.d>> e) implements tm {
+      public static final MapCodec<tm.c> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  tm.c.a.a(djv.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tm.c::b),
+                  tm.c.a.a(djv.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tm.c::c)
+               )
+               .apply($$0, tm.c::new)
+      );
+
+      @Override
+      public void a(aru $$0) {
+         djv $$1 = $$0.O();
+         MinecraftServer $$2 = $$0.p();
+
+         for (tm.c.a<Boolean, djv.a> $$3 : this.d) {
+            $$1.b($$3.a()).a($$3.b(), $$2);
+         }
+
+         for (tm.c.a<Integer, djv.d> $$4 : this.e) {
+            $$1.b($$4.a()).a($$4.b(), $$2);
+         }
+      }
+
+      @Override
+      public void b(aru $$0) {
+         djv $$1 = $$0.O();
+         MinecraftServer $$2 = $$0.p();
+
+         for (tm.c.a<Boolean, djv.a> $$3 : this.d) {
+            $$1.b($$3.a()).a(djv.a($$3.a()).a(), $$2);
+         }
+
+         for (tm.c.a<Integer, djv.d> $$4 : this.e) {
+            $$1.b($$4.a()).a(djv.a($$4.a()).a(), $$2);
+         }
+      }
+
+      @Override
+      public MapCodec<tm.c> a() {
+         return c;
+      }
+
+      public static <S, T extends djv.g<T>> tm.c.a<S, T> a(djv.e<T> $$0, S $$1) {
+         return new tm.c.a<>($$0, $$1);
+      }
+
+      public List<tm.c.a<Boolean, djv.a>> b() {
+         return this.d;
+      }
+
+      public List<tm.c.a<Integer, djv.d>> c() {
+         return this.e;
+      }
+
+      public static record a<S, T extends djv.g<T>>(djv.e<T> a, S b) {
+         public static <S, T extends djv.g<T>> Codec<tm.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
+            return RecordCodecBuilder.create(
+               $$2 -> $$2.group(djv.a($$0).fieldOf("rule").forGetter(tm.c.a::a), $$1.fieldOf("value").forGetter(tm.c.a::b)).apply($$2, tm.c.a::new)
+            );
+         }
+      }
    }
 
-   public static class a {
-      private final UnaryOperator<Supplier<Stream<jf.c<sr>>>> a;
-      private final UnaryOperator<Supplier<Stream<iv>>> b;
+   public static record d(int d) implements tm {
+      public static final MapCodec<tm.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.l.fieldOf("time").forGetter(tm.d::b)).apply($$0, tm.d::new));
 
-      public a() {
-         this.a = $$0 -> $$0;
-         this.b = $$0 -> $$0;
+      @Override
+      public void a(aru $$0) {
+         $$0.b((long)this.d);
       }
 
-      private a(UnaryOperator<Supplier<Stream<jf.c<sr>>>> $$0, UnaryOperator<Supplier<Stream<iv>>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      @Override
+      public MapCodec<tm.d> a() {
+         return c;
       }
 
-      public tm.a a(int $$0) {
-         return new tm.a(b($$0), b($$0));
+      public int b() {
+         return this.d;
+      }
+   }
+
+   public static record e(tm.e.a d) implements tm {
+      public static final MapCodec<tm.e> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tm.e.a.d.fieldOf("weather").forGetter(tm.e::b)).apply($$0, tm.e::new));
+
+      @Override
+      public void a(aru $$0) {
+         this.d.a($$0);
       }
 
-      private static <Q> UnaryOperator<Supplier<Stream<Q>>> b(int $$0) {
-         return $$1 -> {
-            List<Q> $$2 = new LinkedList<>();
-            List<Q> $$3 = ((Stream)$$1.get()).toList();
-
-            for (int $$4 = 0; $$4 < $$0; $$4++) {
-               $$2.addAll($$3);
-            }
-
-            return $$2::stream;
-         };
+      @Override
+      public void b(aru $$0) {
+         $$0.h();
       }
 
-      private tm a(ej $$0, to $$1, tp $$2) {
-         return new tm($$0, this.a.apply($$1::findTests)::get, this.b.apply($$2::findTestPos)::get);
+      @Override
+      public MapCodec<tm.e> a() {
+         return c;
       }
 
-      public tm a(CommandContext<ej> $$0, int $$1) {
-         ej $$2 = (ej)$$0.getSource();
-         iv $$3 = iv.a((jp)$$2.d());
-         return this.a($$2, tm.a, () -> ti.c($$3, $$1, $$2.e()));
+      public tm.e.a b() {
+         return this.d;
       }
 
-      public tm a(CommandContext<ej> $$0) {
-         ej $$1 = (ej)$$0.getSource();
-         iv $$2 = iv.a((jp)$$1.d());
-         return this.a($$1, tm.a, () -> ti.b($$2, 15, $$1.e()).stream());
-      }
+      public static enum a implements bao {
+         a("clear", 100000, 0, false, false),
+         b("rain", 0, 100000, true, false),
+         c("thunder", 0, 100000, true, true);
 
-      public tm b(CommandContext<ej> $$0) {
-         ej $$1 = (ej)$$0.getSource();
-         iv $$2 = iv.a((jp)$$1.d());
-         return this.a($$1, tm.a, () -> ti.c($$2, 200, $$1.e()));
-      }
+         public static final Codec<tm.e.a> d = bao.a(tm.e.a::values);
+         private final String e;
+         private final int f;
+         private final int g;
+         private final boolean h;
+         private final boolean i;
 
-      public tm c(CommandContext<ej> $$0) {
-         ej $$1 = (ej)$$0.getSource();
-         return this.a($$1, tm.a, () -> ti.a(iv.a((jp)$$1.d()), $$1.i().L(), $$1.e()));
-      }
+         private a(final String $$0, final int $$1, final int $$2, final boolean $$3, final boolean $$4) {
+            this.e = $$0;
+            this.f = $$1;
+            this.g = $$2;
+            this.h = $$3;
+            this.i = $$4;
+         }
 
-      public tm a(CommandContext<ej> $$0, boolean $$1) {
-         return this.a((ej)$$0.getSource(), () -> sf.a().filter($$1x -> !$$1 || ((sr)$$1x.a()).h()), tm.b);
-      }
+         void a(aru $$0) {
+            $$0.a(this.f, this.g, this.h, this.i);
+         }
 
-      public tm a(CommandContext<ej> $$0, Collection<jf.c<sr>> $$1) {
-         return this.a((ej)$$0.getSource(), $$1::stream, tm.b);
-      }
-
-      public tm d(CommandContext<ej> $$0) {
-         return this.a($$0, false);
+         @Override
+         public String c() {
+            return this.e;
+         }
       }
    }
 }

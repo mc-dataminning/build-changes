@@ -1,17 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eoq {
-   public static final Codec<eoq> a = mg.T.q().dispatch(eoq::a, eor::a);
+public class eoq<P extends eop> {
+   public static final eoq<eoo> a = a("mangrove_root_placer", eoo.c);
+   private final MapCodec<P> b;
 
-   public static eoz a(ebe $$0) {
-      return new eoz($$0);
+   private static <P extends eop> eoq<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.W, $$0, new eoq<>($$1));
    }
 
-   public static eoz a(dnc $$0) {
-      return new eoz($$0.m());
+   private eoq(MapCodec<P> $$0) {
+      this.b = $$0;
    }
 
-   protected abstract eor<?> a();
-
-   public abstract ebe a(azx var1, iv var2);
+   public MapCodec<P> a() {
+      return this.b;
+   }
 }

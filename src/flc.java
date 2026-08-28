@@ -1,47 +1,43 @@
-public class flc {
-   private boolean a;
-   private int b;
-   private int c;
-   private int d;
-   private int e;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a = true;
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public interface flc {
+   flb b();
+
+   flj a(@Nullable Supplier<String> var1, flk var2, int var3, int var4, int var5);
+
+   flj a(@Nullable String var1, flk var2, int var3, int var4, int var5);
+
+   fii a(@Nullable Supplier<String> var1, fig var2, fih var3, int var4);
+
+   fii a(@Nullable Supplier<String> var1, fig var2, fih var3, ByteBuffer var4);
+
+   String c();
+
+   List<String> d();
+
+   boolean e();
+
+   String g();
+
+   String h();
+
+   String i();
+
+   String f();
+
+   int j();
+
+   default fjo b(fjr $$0) {
+      return this.b($$0, null);
    }
 
-   public void a() {
-      this.a = false;
-   }
+   fjo b(fjr var1, @Nullable BiFunction<alk, fky, String> var2);
 
-   public boolean b() {
-      return this.a;
-   }
+   void k();
 
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public int e() {
-      return this.d;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public void a(flc $$0) {
-      this.a = $$0.a;
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-   }
+   List<String> l();
 }

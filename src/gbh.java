@@ -1,16 +1,100 @@
-public class gbh implements cwe {
-   private final frd a;
+public class gbh extends gau<cwi> {
+   private static final alk G = alk.b("container/crafter/disabled_slot");
+   private static final alk H = alk.b("container/crafter/powered_redstone");
+   private static final alk I = alk.b("container/crafter/unpowered_redstone");
+   private static final alk J = alk.b("textures/gui/container/crafter.png");
+   private static final xc K = xc.c("gui.togglable_slot");
+   private final crz L;
 
-   public gbh(frd $$0) {
-      this.a = $$0;
+   public gbh(cwi $$0, cry $$1, xc $$2) {
+      super($$0, $$1, $$2);
+      this.L = $$1.h;
    }
 
    @Override
-   public void a(cvq $$0, int $$1, czy $$2) {
-      this.a.r.a($$2, $$1);
+   protected void aS_() {
+      super.aS_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void a(cvq $$0, int $$1, int $$2) {
+   protected void a(cxp $$0, int $$1, int $$2, cwd $$3) {
+      if ($$0 instanceof cwj && !$$0.h() && !this.L.Z_()) {
+         switch ($$3) {
+            case a:
+               if (this.z.e($$1)) {
+                  this.a($$1);
+               } else if (this.z.g().f()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               daa $$4 = this.L.gj().a($$2);
+               if (this.z.e($$1) && !$$4.f()) {
+                  this.a($$1);
+               }
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.z.a($$0, $$1);
+      super.a($$0, this.z.l, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.L.a(awr.Bv.a(), 0.4F, $$2);
+   }
+
+   @Override
+   public void a(ftz $$0, cxp $$1) {
+      if ($$1 instanceof cwj $$2 && this.z.e($$1.d)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(ftz $$0, cwj $$1) {
+      $$0.a(gsn::H, G, $$1.e - 1, $$1.f - 1, 18, 18);
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0);
+      this.a($$0, $$1, $$2);
+      if (this.B instanceof cwj && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.Z_()) {
+         $$0.a(this.p, K, $$1, $$2);
+      }
+   }
+
+   private void d(ftz $$0) {
+      int $$1 = this.n / 2 + 9;
+      int $$2 = this.o / 2 - 48;
+      alk $$3;
+      if (this.z.l()) {
+         $$3 = H;
+      } else {
+         $$3 = I;
+      }
+
+      $$0.a(gsn::H, $$3, $$1, $$2, 16, 16);
+   }
+
+   @Override
+   protected void a(ftz $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gsn::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

@@ -1,35 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dva extends dmo {
+public class dva extends dne {
    public static final MapCodec<dva> a = b(dva::new);
+   private static final fgm b = dne.b(16.0, 0.0, 14.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dva> a() {
       return a;
    }
 
-   protected dva(ebd.d $$0) {
+   public dva(ebf.d $$0) {
       super($$0);
    }
 
    @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dzu($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
-      return a($$2, dye.j, $$0.C ? dzu::a : dzu::b);
+   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return b;
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, czy $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
-         this.a($$1, $$2, $$5);
+   protected fgm b_(ebg $$0, djd $$1, iw $$2) {
+      return fgj.b();
+   }
+
+   @Override
+   protected fgm c(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return fgj.b();
+   }
+
+   @Override
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      dnl.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$4 == jc.b && $$6.a(dng.J)) {
+         $$2.a($$3, this, 20);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
+
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(ebg $$0, djd $$1, iw $$2) {
+      return 0.2F;
    }
 }

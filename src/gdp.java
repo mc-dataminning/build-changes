@@ -1,180 +1,178 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Collections;
+import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Optional;
 
-public class gdp extends fur<gdp.b> {
-   private static final int a = 20;
-   final gdq m;
-   private int n;
+public class gdp extends gdl {
+   private static final xc a = xc.c("options.videoTitle");
+   private static final xc u = xc.c("options.graphics.fabulous").a(o.u);
+   private static final xc v = xc.a("options.graphics.warning.message", u, u);
+   private static final xc w = xc.c("options.graphics.warning.title").a(o.m);
+   private static final xc x = xc.c("options.graphics.warning.accept");
+   private static final xc y = xc.c("options.graphics.warning.cancel");
+   private final grt z;
+   private final int A;
 
-   public gdp(gdq $$0, frd $$1) {
-      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
-      this.m = $$0;
-      frb[] $$2 = (frb[])ArrayUtils.clone($$1.n.V);
-      Arrays.sort((Object[])$$2);
-      String $$3 = null;
+   private static fri<?>[] a(frj $$0) {
+      return new fri[]{
+         $$0.k(),
+         $$0.e(),
+         $$0.m(),
+         $$0.f(),
+         $$0.l(),
+         $$0.h(),
+         $$0.Q(),
+         $$0.i(),
+         $$0.at(),
+         $$0.F(),
+         $$0.as(),
+         $$0.j(),
+         $$0.ad(),
+         $$0.au(),
+         $$0.E(),
+         $$0.R(),
+         $$0.am(),
+         $$0.g(),
+         $$0.an(),
+         $$0.ai(),
+         $$0.ap(),
+         $$0.aq(),
+         $$0.q(),
+         $$0.ae()
+      };
+   }
 
-      for (frb $$4 : $$2) {
-         String $$5 = $$4.f();
-         if (!$$5.equals($$3)) {
-            $$3 = $$5;
-            this.b(new gdp.a(xa.c($$5)));
-         }
-
-         xa $$6 = xa.c($$4.h());
-         int $$7 = $$1.h.a($$6);
-         if ($$7 > this.n) {
-            this.n = $$7;
-         }
-
-         this.b(new gdp.c($$4, $$6));
+   public gdp(gaf $$0, frf $$1, frj $$2) {
+      super($$0, $$2, a);
+      this.z = $$1.aj();
+      this.z.h();
+      if ($$2.k().c() == fqx.c) {
+         this.z.d();
       }
-   }
 
-   public void b() {
-      frb.d();
-      this.c();
-   }
-
-   public void c() {
-      this.aI_().forEach(gdp.b::c);
+      this.A = $$2.E().c();
    }
 
    @Override
-   public int a() {
-      return 340;
-   }
-
-   public class a extends gdp.b {
-      final xa b;
-      private final int c;
-
-      public a(final xa $$1) {
-         this.b = $$1;
-         this.c = gdp.this.c.h.a(this.b);
+   protected void m() {
+      int $$0 = -1;
+      fkm $$1 = this.m.aO();
+      fkg $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
+      } else {
+         Optional<fkl> $$4 = $$1.e();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
 
-      @Override
-      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(gdp.this.c.h, this.b, gdp.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1);
-      }
-
-      @Nullable
-      @Override
-      public ftu a(fyo $$0) {
-         return null;
-      }
-
-      @Override
-      public List<? extends fwi> aI_() {
-         return Collections.emptyList();
-      }
-
-      @Override
-      public List<? extends fyg> b() {
-         return ImmutableList.of(new fyg() {
-            @Override
-            public fyg.a w() {
-               return fyg.a.b;
-            }
-
-            @Override
-            public void b(fyi $$0) {
-               $$0.a(fyh.a, a.this.b);
-            }
-         });
-      }
-
-      @Override
-      protected void c() {
-      }
-   }
-
-   public abstract static class b extends fur.a<gdp.b> {
-      abstract void c();
-   }
-
-   public class c extends gdp.b {
-      private static final xa b = xa.c("controls.reset");
-      private static final int c = 10;
-      private final frb d;
-      private final xa e;
-      private final ful f;
-      private final ful g;
-      private boolean h = false;
-
-      c(final frb $$1, final xa $$2) {
-         this.d = $$1;
-         this.e = $$2;
-         this.f = ful.a($$2, $$1x -> {
-            gdp.this.m.a = $$1;
-            gdp.this.b();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? xa.a("narrator.controls.unbound", $$2) : xa.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.g = ful.a(b, $$1x -> {
-            $$1.b($$1.i());
-            gdp.this.b();
-         }).a(0, 0, 50, 20).a($$1x -> xa.a("narrator.controls.reset", $$2)).a();
-         this.c();
-      }
-
-      @Override
-      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = gdp.this.l() - this.g.A() - 10;
-         int $$11 = $$2 - 2;
-         this.g.c($$10, $$11);
-         this.g.a($$0, $$6, $$7, $$9);
-         int $$12 = $$10 - 5 - this.f.A();
-         this.f.c($$12, $$11);
-         this.f.a($$0, $$6, $$7, $$9);
-         $$0.b(gdp.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
-         if (this.h) {
-            int $$13 = 3;
-            int $$14 = this.f.F() - 6;
-            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+      fri<Integer> $$6 = new fri<>("options.fullscreen.resolution", fri.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return xc.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return frj.a($$1x, xc.c("options.fullscreen.current"));
+         } else {
+            fkl $$3x = $$2.a($$2x);
+            return frj.a($$1x, xc.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
+      }, new fri.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.d.a($$6);
+      this.d.a(this.c.G());
+      this.d.a(a(this.c));
+   }
+
+   @Override
+   public void aP_() {
+      this.m.aO().f();
+      super.aP_();
+   }
+
+   @Override
+   public void aJ_() {
+      if (this.c.E().c() != this.A) {
+         this.m.a(this.c.E().c());
+         this.m.R();
       }
 
-      @Override
-      public List<? extends fwi> aI_() {
-         return ImmutableList.of(this.f, this.g);
+      super.aJ_();
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         if (this.z.f()) {
+            List<xc> $$3 = Lists.newArrayList(new xc[]{v, xb.s});
+            String $$4 = this.z.i();
+            if ($$4 != null) {
+               $$3.add(xb.s);
+               $$3.add(xc.a("options.graphics.warning.renderer", $$4).a(o.h));
+            }
+
+            String $$5 = this.z.k();
+            if ($$5 != null) {
+               $$3.add(xb.s);
+               $$3.add(xc.a("options.graphics.warning.vendor", $$5).a(o.h));
+            }
+
+            String $$6 = this.z.j();
+            if ($$6 != null) {
+               $$3.add(xb.s);
+               $$3.add(xc.a("options.graphics.warning.version", $$6).a(o.h));
+            }
+
+            this.m.a(new gdo(w, $$3, ImmutableList.of(new gdo.a(x, $$0x -> {
+               this.c.k().a(fqx.c);
+               frf.Q().f.d();
+               this.z.d();
+               this.m.a(this);
+            }), new gdo.a(y, $$0x -> {
+               this.z.e();
+               this.m.a(this);
+            }))));
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public List<? extends fyg> b() {
-         return ImmutableList.of(this.f, this.g);
-      }
-
-      @Override
-      protected void c() {
-         this.f.b(this.d.k());
-         this.g.j = !this.d.l();
-         this.h = false;
-         xo $$0 = xa.i();
-         if (!this.d.j()) {
-            for (frb $$1 : gdp.this.c.n.V) {
-               if ($$1 != this.d && this.d.b($$1)) {
-                  if (this.h) {
-                     $$0.f(", ");
-                  }
-
-                  this.h = true;
-                  $$0.b(xa.c($$1.h()));
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (gaf.s()) {
+         fri<Integer> $$4 = this.c.at();
+         if ($$4.e() instanceof fri.c $$5) {
+            int $$6 = $$4.c();
+            int $$7 = $$6 == 0 ? $$5.b() + 1 : $$6;
+            int $$8 = $$7 + (int)Math.signum($$3);
+            if ($$8 != 0 && $$8 <= $$5.b() && $$8 >= $$5.d()) {
+               fuu<Integer> $$9 = (fuu<Integer>)this.d.b($$4);
+               if ($$9 != null) {
+                  $$4.a($$8);
+                  $$9.a($$8);
+                  this.d.a(0.0);
+                  return true;
                }
             }
          }
 
-         if (this.h) {
-            this.f.b(xa.b("[ ").b(this.f.B().f().a(o.p)).f(" ]").a(o.m));
-            this.f.a(fvw.a(xa.a("controls.keybinds.duplicateKeybinds", $$0)));
-         } else {
-            this.f.a(null);
-         }
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
 
-         if (gdp.this.m.a == this.d) {
-            this.f.b(xa.b("> ").b(this.f.B().f().a(o.p, o.t)).f(" <").a(o.o));
+   @Override
+   public void c(boolean $$0) {
+      if (this.d != null) {
+         ful $$1 = this.d.b(this.c.ad());
+         if ($$1 != null) {
+            fuu<Boolean> $$2 = (fuu<Boolean>)$$1;
+            $$2.a($$0);
          }
       }
    }

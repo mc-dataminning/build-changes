@@ -1,37 +1,30 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
 
-public class bhq extends bhv {
-   public bhq(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bjb.D, $$1);
+public class bhq extends DataFix {
+   public bhq(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Brain", this::b);
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("memories", this::c);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.updateMapValues(this::a);
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      return $$0.mapSecond(this::d);
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjd.j);
+      OpticFinder<?> $$1 = $$0.findField("data");
+      OpticFinder<?> $$2 = $$1.type().findField("banners");
+      OpticFinder<?> $$3 = DSL.typeFinder(((ListType)$$2.type()).getElement());
+      return this.fixTypeEverywhereTyped(
+         "MapBannerBlockPosFormatFix",
+         $$0,
+         $$3x -> $$3x.updateTyped(
+               $$1,
+               $$2xx -> $$2xx.updateTyped(
+                     $$2, $$1xxx -> $$1xxx.updateTyped($$3, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), $$0xxxxx -> $$0xxxxx.update("Pos", bbh::a)))
+                  )
+            )
+      );
    }
 }

@@ -1,139 +1,95 @@
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class drs extends dnc implements dun {
-   public static final int a = 7;
-   public static final ece b = ebu.aF;
-   public static final ebv c = ebu.z;
-   public static final ebv d = ebu.I;
-   protected final float e;
-   private static final int f = 1;
+public class drs extends dlx {
+   public static final MapCodec<drs> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dlc.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.i), kd.b.fieldOf("interactions").forGetter($$0x -> $$0x.b), t())
+            .apply($$0, drs::new)
+   );
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final ecg f = ebw.aN;
+   private static final int g = 6;
+   private static final double h = 3.0;
+   private final dlc.c i;
 
    @Override
-   public abstract MapCodec<? extends drs> a();
-
-   public drs(float $$0, ebd.d $$1) {
-      super($$1);
-      this.e = $$0;
-      this.l(this.C.b().b(b, Integer.valueOf(7)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   public MapCodec<drs> a() {
+      return c;
    }
 
-   @Override
-   protected fgk b_(ebe $$0, djb $$1, iv $$2) {
-      return fgh.a();
-   }
-
-   @Override
-   protected boolean f(ebe $$0) {
-      return $$0.c(b) == 7 && !$$0.c(c);
+   public drs(dlc.c $$0, kd.a $$1, ebf.d $$2) {
+      super($$2, $$1);
+      this.i = $$0;
+      this.l(this.C.b().b(f, Integer.valueOf(1)));
    }
 
    @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if (this.o($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean o(ebe $$0) {
-      return !$$0.c(c) && $$0.c(b) == 7;
+   public boolean d(ebg $$0) {
+      return $$0.c(f) == 3;
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
+   protected boolean a(exp $$0) {
+      return $$0 == exr.c && this.i == dlc.c.b;
    }
 
    @Override
-   protected int i_(ebe $$0) {
-      return 1;
+   protected double b(ebg $$0) {
+      return (6.0 + (double)$$0.c(f).intValue() * 3.0) / 16.0;
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
-      }
-
-      int $$8 = r($$6) + 1;
-      if ($$8 != 1 || $$0.c(b) != $$8) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static ebe a(ebe $$0, djy $$1, iv $$2) {
-      int $$3 = 7;
-      iv.a $$4 = new iv.a();
-
-      for (jb $$5 : jb.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
+   protected void a(ebg $$0, djz $$1, iw $$2, bwv $$3, bxo $$4) {
+      if ($$1 instanceof aru $$5 && $$3.bX() && this.a($$0, $$2, $$3)) {
+         $$3.aF();
+         if ($$3.c($$5, $$2)) {
+            this.e($$0, $$1, $$2);
          }
       }
-
-      return $$0.b(b, Integer.valueOf($$3));
    }
 
-   private static int r(ebe $$0) {
-      return q($$0).orElse(7);
-   }
-
-   public static OptionalInt q(ebe $$0) {
-      if ($$0.a(axe.u)) {
-         return OptionalInt.of(0);
+   private void e(ebg $$0, djz $$1, iw $$2) {
+      if (this.i == dlc.c.c) {
+         d(dng.fT.m().b(f, $$0.c(f)), $$1, $$2);
       } else {
-         return $$0.b(b) ? OptionalInt.of($$0.c(b)) : OptionalInt.empty();
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public static void d(ebg $$0, djz $$1, iw $$2) {
+      int $$3 = $$0.c(f) - 1;
+      ebg $$4 = $$3 == 0 ? dng.fS.m() : $$0.b(f, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(egg.c, $$2, egg.a.a($$4));
+   }
+
+   @Override
+   public void a(ebg $$0, djz $$1, iw $$2, dlc.c $$3) {
+      if (dob.a($$1, $$3) && $$0.c(f) != 3 && $$3 == this.i) {
+         ebg $$4 = $$0.a(f);
+         $$1.b($$2, $$4);
+         $$1.a(egg.c, $$2, egg.a.a($$4));
       }
    }
 
    @Override
-   protected exo b_(ebe $$0) {
-      return $$0.c(d) ? exp.c.a(false) : super.b_($$0);
+   protected int a(ebg $$0, djz $$1, iw $$2) {
+      return $$0.c(f);
    }
 
    @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      iv $$4 = $$2.e();
-      ebe $$5 = $$1.a_($$4);
-      a($$1, $$2, $$3, $$5, $$4);
-      this.b($$1, $$2, $$3, $$5, $$4);
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(f);
    }
 
-   private static void a(djx $$0, iv $$1, azx $$2, ebe $$3, iv $$4) {
-      if ($$0.r($$1.d())) {
-         if ($$2.a(15) == 1) {
-            if (!$$3.t() || !$$3.c($$0, $$4, jb.b)) {
-               azs.a($$0, $$1, $$2, ly.l);
-            }
-         }
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, exp $$3) {
+      if (!this.d($$0)) {
+         ebg $$4 = $$0.b(f, Integer.valueOf($$0.c(f) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(egg.c, $$2, egg.a.a($$4));
+         $$1.c(1047, $$2, 0);
       }
-   }
-
-   private void b(djx $$0, iv $$1, azx $$2, ebe $$3, iv $$4) {
-      if (!($$2.i() >= this.e)) {
-         if (!a($$3.g($$0, $$4), jb.b)) {
-            this.a($$0, $$1, $$2);
-         }
-      }
-   }
-
-   protected abstract void a(djx var1, iv var2, azx var3);
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   public ebe a(ddr $$0) {
-      exo $$1 = $$0.q().b_($$0.a());
-      ebe $$2 = this.m().b(c, Boolean.valueOf(true)).b(d, Boolean.valueOf($$1.a() == exp.c));
-      return a($$2, $$0.q(), $$0.a());
    }
 }

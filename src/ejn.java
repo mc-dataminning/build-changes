@@ -1,118 +1,78 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ejn extends ekk<emi> {
-   private static final ImmutableList<dnc> a = ImmutableList.of(dne.K, dne.I, dne.lp, dne.en, dne.fM, dne.fN, dne.fO, dne.fP, dne.cG, dne.cD);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int ap = 15;
-
-   public ejn(Codec<emi> $$0) {
+public abstract class ejn extends ekm<emt> {
+   public ejn(Codec<emt> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(ekm<emi> $$0) {
-      int $$1 = $$0.c().f();
-      iv $$2 = $$0.e();
-      dkw $$3 = $$0.b();
-      azx $$4 = $$0.d();
-      emi $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.k())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
-
-         for (iv $$11 : iv.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
-         }
-
-         return $$10;
+   protected void a(dka $$0, azz $$1, iw $$2, emt $$3, int $$4, iw.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jc.b, $$6);
+         this.a($$0, $$5, $$3.c.a($$1, $$2));
       }
    }
 
-   private boolean a(djy $$0, int $$1, iv $$2, int $$3, int $$4) {
-      boolean $$5 = false;
+   protected void a(dka $$0, iw.a $$1, ebg $$2) {
+      ebg $$3 = $$0.a_($$1);
+      if ($$3.l() || $$3.a(axg.cu)) {
+         this.a($$0, $$1, $$2);
+      }
+   }
 
-      for (iv $$6 : iv.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         iv $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
+   protected int a(azz $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
 
-            for (iv.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (iv)$$10)) {
-                  this.a($$0, $$10, dne.ep.m());
-                  $$10.c(jb.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(dne.ep)) {
-                     break;
+      return $$1;
+   }
+
+   protected boolean a(dka $$0, iw $$1, int $$2, iw.a $$3, emt $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.K_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
+         ebg $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(axg.bc)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     ebg $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(axg.Q)) {
+                        return false;
+                     }
                   }
-
-                  $$10.c(jb.b);
                }
             }
-         }
-      }
 
-      return $$5;
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   @Nullable
-   private static iv a(djy $$0, int $$1, iv.a $$2, int $$3) {
-      while ($$2.v() > $$0.K_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(jb.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(djy $$0, int $$1, iv.a $$2) {
-      if (!a($$0, $$1, (iv)$$2)) {
+   @Override
+   public boolean a(eko<emt> $$0) {
+      dky $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      azz $$3 = $$0.d();
+      emt $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      iw.a $$6 = new iw.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
          return false;
       } else {
-         ebe $$3 = $$0.a_($$2.c(jb.a));
-         $$2.c(jb.b);
-         return !$$3.l() && !a.contains($$3.b());
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
       }
    }
 
-   @Nullable
-   private static iv a(djy $$0, iv.a $$1, int $$2) {
-      while ($$1.v() <= $$0.ao() && $$2 > 0) {
-         $$2--;
-         ebe $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
+   protected abstract int a(int var1, int var2, int var3, int var4);
 
-         if ($$3.l()) {
-            return $$1;
-         }
-
-         $$1.c(jb.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(djy $$0, int $$1, iv $$2) {
-      ebe $$3 = $$0.a_($$2);
-      return $$3.l() || $$3.a(dne.K) && $$2.v() <= $$1;
-   }
+   protected abstract void a(dka var1, azz var2, iw var3, int var4, iw.a var5, emt var6);
 }

@@ -1,61 +1,40 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eon {
-   public static final Codec<eon> d = mg.W.q().dispatch(eon::a, eoo::a);
-   protected final btw e;
-   protected final eoq f;
-   protected final Optional<eok> g;
+public record eon(jk<dne> b, jk<dne> c, eos d, int e, int f, float g) {
+   public static final Codec<eon> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jv.a(mi.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jv.a(mi.i).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               eos.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eon::new)
+   );
 
-   protected static <P extends eon> P3<Mu<P>, btw, eoq, Optional<eok>> a(Instance<P> $$0) {
-      return $$0.group(
-         btw.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eoq.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         eok.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public jk<dne> a() {
+      return this.b;
    }
 
-   public eon(btw $$0, eoq $$1, Optional<eok> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public jk<dne> b() {
+      return this.c;
    }
 
-   protected abstract eoo<?> a();
-
-   public abstract boolean a(dkd var1, BiConsumer<iv, ebe> var2, azx var3, iv var4, iv var5, enl var6);
-
-   protected boolean a(dkd $$0, iv $$1) {
-      return elw.d($$0, $$1);
+   public eos c() {
+      return this.d;
    }
 
-   protected void a(dkd $$0, BiConsumer<iv, ebe> $$1, azx $$2, iv $$3, enl $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            eok $$5 = this.g.get();
-            iv $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, ebd.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
-      }
+   public int d() {
+      return this.e;
    }
 
-   protected ebe a(dkd $$0, iv $$1, ebe $$2) {
-      if ($$2.b(ebu.I)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axj.a));
-         return $$2.b(ebu.I, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
+   public int e() {
+      return this.f;
    }
 
-   public iv a(iv $$0, azx $$1) {
-      return $$0.b(this.e.a($$1));
+   public float f() {
+      return this.g;
    }
 }

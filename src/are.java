@@ -1,85 +1,33 @@
-public class are extends aru {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+public record are(String b, int c, crw d, boolean e, int f, bxn g, boolean h, boolean i, arm j) {
+   public static final int a = 16;
 
-   public are(art $$0) {
-      super($$0);
+   public are(vy $$0) {
+      this(
+         $$0.d(16),
+         $$0.readByte(),
+         $$0.b(crw.class),
+         $$0.readBoolean(),
+         $$0.readUnsignedByte(),
+         $$0.b(bxn.class),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(arm.class)
+      );
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.ae();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.f.b(new add(add.g, 0.0F));
-      }
-
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
-      }
-
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.f.b(new add(add.g, 104.0F));
-            } else {
-               this.d.a(xa.c("demo.day." + $$1));
-            }
-         }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.f.b(new add(add.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.f.b(new add(add.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.f.b(new add(add.g, 103.0F));
-         }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(xa.c("demo.day.warning"));
-      }
+   public void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(xa.c("demo.reminder"));
-         this.g = 0;
-      }
-   }
-
-   @Override
-   public void a(iv $$0, ahx.a $$1, jb $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public bur a(art $$0, djx $$1, czy $$2, buq $$3) {
-      if (this.f) {
-         this.f();
-         return bur.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public bur a(art $$0, djx $$1, czy $$2, buq $$3, ffm $$4) {
-      if (this.f) {
-         this.f();
-         return bur.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public static are a() {
+      return new are("en_us", 2, crw.a, true, 0, crz.bu, false, false, arm.a);
    }
 }

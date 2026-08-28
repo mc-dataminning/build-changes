@@ -1,34 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cas {
-   public static <T extends bxw> caw<T> a(int $$0) {
-      return a($$0x -> true, $$0);
+public class cas extends bzn<crl> {
+   private final float c;
+
+   public cas(float $$0) {
+      super(ImmutableMap.of(cgy.n, cgz.c, cgy.o, cgz.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   public static <T extends bxw> caw<T> a(Predicate<T> $$0, int $$1) {
-      return ccy.a(
-         (Function<ccy.b<T>, ? extends App<ccy.c<T>, cdb<T>>>)($$2 -> $$2.group($$2.a(cgw.o), $$2.b(cgw.p), $$2.c(cgw.q), $$2.b(cgw.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bxu $$10 = $$2.b($$4);
-                     if ($$0.test((T)$$8) && !a($$8) && $$8.h($$10) && $$2.<cgy>b($$6).a($$10)) {
-                        $$3.a(new bzw($$10, true));
-                        $$8.a(buq.a);
-                        $$8.c($$7, $$10);
-                        $$5.a(true, (long)$$1);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   protected boolean a(aru $$0, crl $$1) {
+      crz $$2 = $$1.x();
+      return $$1.bJ() && $$2 != null && !$$1.bi() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bR != null;
    }
 
-   private static boolean a(bxw $$0) {
-      return $$0.b($$1 -> {
-         czu $$2 = $$1.h();
-         return $$2 instanceof dat && $$0.a((dat)$$2);
-      });
+   protected boolean a(aru $$0, crl $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aru $$0, crl $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(aru $$0, crl $$1, long $$2) {
+      byw<?> $$3 = $$1.ec();
+      $$3.b(cgy.n);
+      $$3.b(cgy.o);
+   }
+
+   protected void d(aru $$0, crl $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(crl $$0) {
+      byw<?> $$1 = $$0.ec();
+      $$1.a(cgy.n, new chb(new bzy($$0.x(), false), this.c, 2));
+      $$1.a(cgy.o, new bzy($$0.x(), true));
    }
 }

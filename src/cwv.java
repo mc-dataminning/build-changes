@@ -1,77 +1,173 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
 
-public class cwv {
-   private final List<cwv.b> a;
-   private final cwv.b b;
+public class cwv extends cvt {
+   public static final int o = 0;
+   public static final int p = 0;
+   private static final int H = 2;
+   private static final int I = 2;
+   public static final int q = 1;
+   public static final int r = 4;
+   public static final int s = 5;
+   public static final int t = 5;
+   public static final int u = 4;
+   public static final int v = 9;
+   public static final int w = 9;
+   public static final int x = 36;
+   public static final int y = 36;
+   public static final int z = 45;
+   public static final int A = 45;
+   public static final alk B = alk.b("container/slot/helmet");
+   public static final alk C = alk.b("container/slot/chestplate");
+   public static final alk D = alk.b("container/slot/leggings");
+   public static final alk E = alk.b("container/slot/boots");
+   public static final alk F = alk.b("container/slot/shield");
+   private static final Map<bxf, alk> J = Map.of(bxf.c, E, bxf.d, D, bxf.e, C, bxf.f, B);
+   private static final bxf[] K = new bxf[]{bxf.f, bxf.e, bxf.d, bxf.c};
+   public final boolean G;
+   private final crz L;
 
-   cwv(List<cwv.b> $$0, cwv.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cwv.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+   public cwv(cry $$0, boolean $$1, final crz $$2) {
+      super(null, 0, 2, 2);
+      this.G = $$1;
+      this.L = $$2;
+      this.a($$2, 154, 28);
+      this.d(98, 18);
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         bxf $$4 = K[$$3];
+         alk $$5 = J.get($$4);
+         this.a(new cvw($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
+      }
+
+      this.c($$0, 8, 84);
+      this.a(new cxp($$0, 40, 77, 62) {
+         @Override
+         public void a(daa $$0, daa $$1) {
+            $$2.a(bxf.b, $$1, $$0);
+            super.a($$0, $$1);
+         }
+
+         @Override
+         public alk c() {
+            return cwv.F;
+         }
+      });
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
+   }
+
+   @Override
+   public void a(bum $$0) {
+      if (this.L.dV() instanceof aru $$1) {
+         cwl.a(this, $$1, this.L, this.m, this.n, null);
       }
    }
 
-   public static cwv.a a() {
-      return new cwv.a();
-   }
-
-   public cwv.b a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public cwv.b b() {
-      return this.b;
-   }
-
-   public List<cwv.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public static class a {
-      private final List<cwv.b> a = new ArrayList<>();
-      private cwv.b b = cwv.b.e;
-
-      public cwv.a a(int $$0, int $$1, int $$2, Predicate<czy> $$3) {
-         this.a.add(new cwv.b($$0, $$1, $$2, $$3));
-         return this;
+   @Override
+   public void a(crz $$0) {
+      super.a($$0);
+      this.n.a();
+      if (!$$0.dV().C) {
+         this.a($$0, this.m);
       }
+   }
 
-      public cwv.a a(int $$0, int $$1, int $$2) {
-         this.b = new cwv.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
+   @Override
+   public boolean b(crz $$0) {
+      return true;
+   }
 
-      public cwv a() {
-         int $$0 = this.a.size();
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            cwv.b $$2 = this.a.get($$1);
-            if ($$2.a != $$1) {
-               throw new IllegalArgumentException("Expected input slots to have continous indexes");
+   @Override
+   public daa b(crz $$0, int $$1) {
+      daa $$2 = daa.k;
+      cxp $$3 = this.k.get($$1);
+      if ($$3.h()) {
+         daa $$4 = $$3.g();
+         $$2 = $$4.v();
+         bxf $$5 = $$0.f($$2);
+         if ($$1 == 0) {
+            if (!this.a($$4, 9, 45, true)) {
+               return daa.k;
             }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 >= 1 && $$1 < 5) {
+            if (!this.a($$4, 9, 45, false)) {
+               return daa.k;
+            }
+         } else if ($$1 >= 5 && $$1 < 9) {
+            if (!this.a($$4, 9, 45, false)) {
+               return daa.k;
+            }
+         } else if ($$5.a() == bxf.a.b && !this.k.get(8 - $$5.b()).h()) {
+            int $$6 = 8 - $$5.b();
+            if (!this.a($$4, $$6, $$6 + 1, false)) {
+               return daa.k;
+            }
+         } else if ($$5 == bxf.b && !this.k.get(45).h()) {
+            if (!this.a($$4, 45, 46, false)) {
+               return daa.k;
+            }
+         } else if ($$1 >= 9 && $$1 < 36) {
+            if (!this.a($$4, 36, 45, false)) {
+               return daa.k;
+            }
+         } else if ($$1 >= 36 && $$1 < 45) {
+            if (!this.a($$4, 9, 36, false)) {
+               return daa.k;
+            }
+         } else if (!this.a($$4, 9, 45, false)) {
+            return daa.k;
          }
 
-         if (this.b.a != $$0) {
-            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
+         if ($$4.f()) {
+            $$3.a(daa.k, $$2);
          } else {
-            return new cwv(this.a, this.b);
+            $$3.d();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return daa.k;
+         }
+
+         $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
          }
       }
+
+      return $$2;
    }
 
-   public static record b(int a, int b, int c, Predicate<czy> d) {
-      static final cwv.b e = new cwv.b(0, 0, 0, $$0 -> true);
+   @Override
+   public boolean a(daa $$0, cxp $$1) {
+      return $$1.c != this.n && super.a($$0, $$1);
+   }
+
+   @Override
+   public cxp m() {
+      return this.k.get(0);
+   }
+
+   @Override
+   public List<cxp> n() {
+      return this.k.subList(1, 5);
+   }
+
+   public cwk r() {
+      return this.m;
+   }
+
+   @Override
+   public cxi an_() {
+      return cxi.a;
+   }
+
+   @Override
+   protected crz q() {
+      return this.L;
    }
 }

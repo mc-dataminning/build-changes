@@ -1,57 +1,85 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public class adi implements zj<aby> {
+   public static final za<vy, adi> a = zj.a(adi::a, adi::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final long f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-public class adi implements zh<abw> {
-   public static final yy<wl, adi> a = zh.a(adi::a, adi::new);
-   private final int b;
-   private final int c;
-   private final adh d;
-   private final adm e;
-
-   public adi(edl $$0, exd $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      djc $$4 = $$0.f();
-      this.b = $$4.h;
-      this.c = $$4.i;
-      this.d = new adh($$0);
-      this.e = new adm($$4, $$1, $$2, $$3);
+   private adi(vy $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.m();
+      this.g = $$0.l();
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private adi(wl $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new adh($$0, this.b, this.c);
-      this.e = new adm($$0, this.b, this.c);
+   public adi(ecy $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
+      this.d = $$0.i();
+      this.e = $$0.k();
+      this.f = $$0.j();
+      this.g = $$0.m();
+      this.h = $$0.r();
+      this.i = $$0.q();
    }
 
-   private void a(wl $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zj<adi> a() {
-      return agp.K;
+   public zl<adi> a() {
+      return agr.J;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   public adh f() {
+   public double f() {
+      return this.e;
+   }
+
+   public double g() {
       return this.d;
    }
 
-   public adm g() {
-      return this.e;
+   public long h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int k() {
+      return this.h;
    }
 }

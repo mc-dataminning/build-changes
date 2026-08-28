@@ -1,29 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Locale;
 
-public class yo implements yq {
-   public static final yo a = new yo();
-   public static final yr<yo> b = new yr<yo>() {
-      private static final MapCodec<yo> a = MapCodec.unit(yo.a);
-      private static final yy<wl, yo> b = yy.a(yo.a);
-
-      @Override
-      public MapCodec<yo> a() {
-         return a;
-      }
-
-      @Override
-      public yy<wl, yo> b() {
-         return b;
-      }
-   };
-
-   @Override
-   public xo a(int $$0) {
-      return xa.i();
+public class yo extends IllegalArgumentException {
+   public yo(yn $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public yr<yo> a() {
-      return b;
+   public yo(yn $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public yo(yn $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

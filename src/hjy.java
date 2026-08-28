@@ -1,25 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hjy implements hke<dzk> {
-   private final guw a;
+public class hjy implements hkc {
+   public static final alk a = alk.b("christmas");
+   public static final alk b = alk.b("normal");
+   public static final alk c = alk.b("trapped");
+   public static final alk d = alk.b("ender");
+   private final ghm e;
+   private final hnj f;
+   private final float g;
 
-   public hjy(guw $$0) {
-      this.a = $$0;
+   public hjy(ghm $$0, hnj $$1, float $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Nullable
-   public dzk a(czy $$0) {
-      return $$0.a(kk.ao);
+   @Override
+   public void a(czy $$0, flq $$1, gsc $$2, int $$3, int $$4, boolean $$5) {
+      flt $$6 = this.f.a($$2, gsn::d);
+      this.e.a(this.g);
+      this.e.a($$1, $$6, $$3, $$4);
    }
 
-   public void a(@Nullable dzk $$0, czw $$1, flo $$2, gsa $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dzk.a));
-   }
+   public static record a(alk b, float c) implements hkg.a {
+      public static final MapCodec<hjy.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(alk.a.fieldOf("texture").forGetter(hjy.a::b), Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hjy.a::c))
+               .apply($$0, hjy.a::new)
+      );
 
-   public static record a() implements hke.a {
-      public static final MapCodec<hjy.a> a = MapCodec.unit(new hjy.a());
+      public a(alk $$0) {
+         this($$0, 0.0F);
+      }
 
       @Override
       public MapCodec<hjy.a> a() {
@@ -27,8 +40,10 @@ public class hjy implements hke<dzk> {
       }
 
       @Override
-      public hke<?> a(gla $$0) {
-         return new hjy(new guw($$0));
+      public hkg<?> a(glc $$0) {
+         ghm $$1 = new ghm($$0.a(glf.X));
+         hnj $$2 = gsw.m.a(this.b);
+         return new hjy($$1, $$2, this.c);
       }
    }
 }

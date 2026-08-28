@@ -1,16 +1,20 @@
-public class hmz {
-   public static final ali a = ali.b("armor_trims");
-   public static final ali b = ali.b("banner_patterns");
-   public static final ali c = ali.b("beds");
-   public static final ali d = ali.b("blocks");
-   public static final ali e = ali.b("chests");
-   public static final ali f = ali.b("decorated_pot");
-   public static final ali g = ali.b("gui");
-   public static final ali h = ali.b("map_decorations");
-   public static final ali i = ali.b("mob_effects");
-   public static final ali j = ali.b("paintings");
-   public static final ali k = ali.b("particles");
-   public static final ali l = ali.b("shield_patterns");
-   public static final ali m = ali.b("shulker_boxes");
-   public static final ali n = ali.b("signs");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record hmz(boolean e, boolean f) {
+   public static final boolean a = false;
+   public static final boolean b = false;
+   public static final Codec<hmz> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("blur", false).forGetter(hmz::a), Codec.BOOL.optionalFieldOf("clamp", false).forGetter(hmz::b))
+            .apply($$0, hmz::new)
+   );
+   public static final aug<hmz> d = new aug<>("texture", c);
+
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.f;
+   }
 }

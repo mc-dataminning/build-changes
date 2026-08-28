@@ -1,68 +1,51 @@
 import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cgj<T extends bxu> extends cgq {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class cgj extends cgs {
+   private final ckc a;
    @Nullable
-   protected bxu c;
-   protected cij d;
+   private bxw b;
+   private final cil c = cil.a().a(64.0);
 
-   public cgj(bxw $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cgj(bxw $$0, Class<T> $$1, boolean $$2, cij.a $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cgj(bxw $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cgj(bxw $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cij.a $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(ceq.a.d));
-      this.d = cij.a().a(this.l()).a($$5);
+   public cgj(ckc $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(ces.a.d));
    }
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dY().a(this.b) != 0) {
+      ffn $$0 = this.a.cR().c(10.0, 8.0, 10.0);
+      aru $$1 = a(this.a);
+      List<? extends bxw> $$2 = $$1.a(crl.class, this.c, this.a, $$0);
+      List<crz> $$3 = $$1.a(this.c, this.a, $$0);
+
+      for (bxw $$4 : $$2) {
+         crl $$5 = (crl)$$4;
+
+         for (crz $$6 : $$3) {
+            int $$7 = $$5.f($$6);
+            if ($$7 <= -100) {
+               this.b = $$6;
+            }
+         }
+      }
+
+      if (this.b == null) {
          return false;
       } else {
-         this.h();
-         return this.c != null;
-      }
-   }
+         if (this.b instanceof crz $$8 && ($$8.Z_() || $$8.b())) {
+            return false;
+         }
 
-   protected ffl a(double $$0) {
-      return this.e.cR().c($$0, $$0, $$0);
-   }
-
-   protected void h() {
-      ars $$0 = a(this.e);
-      if (this.a != crx.class && this.a != art.class) {
-         this.c = $$0.a(this.e.dV().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      } else {
-         this.c = $$0.a(this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
+         return true;
       }
    }
 
    @Override
    public void d() {
-      this.e.g(this.c);
+      this.a.g(this.b);
       super.d();
-   }
-
-   public void a(@Nullable bxu $$0) {
-      this.c = $$0;
-   }
-
-   private cij i() {
-      return this.d.a(this.l());
    }
 }

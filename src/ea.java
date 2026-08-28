@@ -1,164 +1,37 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ea(@Nullable Float c, @Nullable Float d) {
-   public static final ea a = new ea(null, null);
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xa.c("argument.range.ints"));
-
-   public static ea a(float $$0) {
-      return new ea($$0, $$0);
+public class ea extends dl<ea.a> {
+   @Override
+   public Codec<ea.a> a() {
+      return ea.a.a;
    }
 
-   public static ea a(float $$0, float $$1) {
-      return new ea($$0, $$1);
+   public void a(arv $$0, daa $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static ea b(float $$0) {
-      return new ea($$0, null);
-   }
+   public static record a(Optional<bj> b, Optional<cn> c) implements dl.a {
+      public static final Codec<ea.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bz.b.optionalFieldOf("player").forGetter(ea.a::a), cn.a.optionalFieldOf("item").forGetter(ea.a::b)).apply($$0, ea.a::new)
+      );
 
-   public static ea c(float $$0) {
-      return new ea(null, $$0);
-   }
-
-   public boolean d(float $$0) {
-      if (this.c != null && this.d != null && this.c > this.d && this.c > $$0 && this.d < $$0) {
-         return false;
-      } else {
-         return this.c != null && this.c > $$0 ? false : this.d == null || !(this.d < $$0);
-      }
-   }
-
-   public boolean a(double $$0) {
-      if (this.c != null && this.d != null && this.c > this.d && (double)(this.c * this.c) > $$0 && (double)(this.d * this.d) < $$0) {
-         return false;
-      } else {
-         return this.c != null && (double)(this.c * this.c) > $$0 ? false : this.d == null || !((double)(this.d * this.d) < $$0);
-      }
-   }
-
-   public JsonElement a() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
-      } else if (this.c != null && this.d != null && this.c.equals(this.d)) {
-         return new JsonPrimitive(this.c);
-      } else {
-         JsonObject $$0 = new JsonObject();
-         if (this.c != null) {
-            $$0.addProperty("min", this.c);
-         }
-
-         if (this.d != null) {
-            $$0.addProperty("max", this.c);
-         }
-
-         return $$0;
-      }
-   }
-
-   public static ea a(@Nullable JsonElement $$0) {
-      if ($$0 == null || $$0.isJsonNull()) {
-         return a;
-      } else if (aze.b($$0)) {
-         float $$1 = aze.e($$0, "value");
-         return new ea($$1, $$1);
-      } else {
-         JsonObject $$2 = aze.m($$0, "value");
-         Float $$3 = $$2.has("min") ? aze.m($$2, "min") : null;
-         Float $$4 = $$2.has("max") ? aze.m($$2, "max") : null;
-         return new ea($$3, $$4);
-      }
-   }
-
-   public static ea a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      return a($$0, $$1, $$0x -> $$0x);
-   }
-
-   public static ea a(StringReader $$0, boolean $$1, Function<Float, Float> $$2) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw cw.a.createWithContext($$0);
-      } else {
-         int $$3 = $$0.getCursor();
-         Float $$4 = a(b($$0, $$1), $$2);
-         Float $$5;
-         if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
-            $$0.skip();
-            $$0.skip();
-            $$5 = a(b($$0, $$1), $$2);
-            if ($$4 == null && $$5 == null) {
-               $$0.setCursor($$3);
-               throw cw.a.createWithContext($$0);
-            }
-         } else {
-            if (!$$1 && $$0.canRead() && $$0.peek() == '.') {
-               $$0.setCursor($$3);
-               throw b.createWithContext($$0);
-            }
-
-            $$5 = $$4;
-         }
-
-         if ($$4 == null && $$5 == null) {
-            $$0.setCursor($$3);
-            throw cw.a.createWithContext($$0);
-         } else {
-            return new ea($$4, $$5);
-         }
-      }
-   }
-
-   @Nullable
-   private static Float b(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-
-      while ($$0.canRead() && c($$0, $$1)) {
-         $$0.skip();
+      public static ar<ea.a> a(bz.a $$0, cn.a $$1) {
+         return aq.W.a(new ea.a(Optional.of(bz.a($$0)), Optional.of($$1.b())));
       }
 
-      String $$3 = $$0.getString().substring($$2, $$0.getCursor());
-      if ($$3.isEmpty()) {
-         return null;
-      } else {
-         try {
-            return Float.parseFloat($$3);
-         } catch (NumberFormatException var5) {
-            if ($$1) {
-               throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidDouble().createWithContext($$0, $$3);
-            } else {
-               throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidInt().createWithContext($$0, $$3);
-            }
-         }
+      public boolean a(daa $$0) {
+         return !this.c.isPresent() || this.c.get().a($$0);
       }
-   }
 
-   private static boolean c(StringReader $$0, boolean $$1) {
-      char $$2 = $$0.peek();
-      if (($$2 < '0' || $$2 > '9') && $$2 != '-') {
-         return $$1 && $$2 == '.' ? !$$0.canRead(2) || $$0.peek(1) != '.' : false;
-      } else {
-         return true;
+      @Override
+      public Optional<bj> a() {
+         return this.b;
       }
-   }
 
-   @Nullable
-   private static Float a(@Nullable Float $$0, Function<Float, Float> $$1) {
-      return $$0 == null ? null : $$1.apply($$0);
-   }
-
-   @Nullable
-   public Float b() {
-      return this.c;
-   }
-
-   @Nullable
-   public Float c() {
-      return this.d;
+      public Optional<cn> b() {
+         return this.c;
+      }
    }
 }

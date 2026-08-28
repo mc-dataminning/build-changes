@@ -1,54 +1,19 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public class ri {
-   public static void a(qh<ejv<?, ?>> $$0) {
-      rf.a($$0);
-      rg.a($$0);
-      rh.a($$0);
-      rj.a($$0);
-      rk.a($$0);
-      rl.a($$0);
-      rm.a($$0);
-      rn.a($$0);
-      ro.a($$0);
-   }
+   public static final alj<ejx<?, ?>> a = rj.a("end_platform");
+   public static final alj<ejx<?, ?>> b = rj.a("end_spike");
+   public static final alj<ejx<?, ?>> c = rj.a("end_gateway_return");
+   public static final alj<ejx<?, ?>> d = rj.a("end_gateway_delayed");
+   public static final alj<ejx<?, ?>> e = rj.a("chorus_plant");
+   public static final alj<ejx<?, ?>> f = rj.a("end_island");
 
-   private static eik a(List<dnc> $$0) {
-      eik $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = eik.a(eik.c, eik.a(jb.a.q(), $$0));
-      } else {
-         $$1 = eik.c;
-      }
-
-      return $$1;
-   }
-
-   public static enc a(int $$0, jf<erf> $$1) {
-      return new enc($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends emp, F extends ekk<FC>> enc a(F $$0, FC $$1, List<dnc> $$2, int $$3) {
-      return a($$3, rx.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends emp, F extends ekk<FC>> enc a(F $$0, FC $$1, List<dnc> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends emp, F extends ekk<FC>> enc a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static alh<ejv<?, ?>> a(String $$0) {
-      return alh.a(mh.aL, ali.b($$0));
-   }
-
-   public static void a(qh<ejv<?, ?>> $$0, alh<ejv<?, ?>> $$1, ekk<emw> $$2) {
-      a($$0, $$1, $$2, emp.m);
-   }
-
-   public static <FC extends emp, F extends ekk<FC>> void a(qh<ejv<?, ?>> $$0, alh<ejv<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new ejv($$2, $$3));
+   public static void a(qi<ejx<?, ?>> $$0) {
+      rj.a($$0, a, ekm.K);
+      rj.a($$0, b, ekm.L, new enl(false, ImmutableList.of(), null));
+      rj.a($$0, c, ekm.N, emp.a(aru.a, true));
+      rj.a($$0, d, ekm.N, emp.a());
+      rj.a($$0, e, ekm.m);
+      rj.a($$0, f, ekm.M);
    }
 }

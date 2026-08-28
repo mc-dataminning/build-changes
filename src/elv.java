@@ -1,75 +1,39 @@
 import com.mojang.serialization.Codec;
 
-public class elv extends ekk<enk> {
-   public elv(Codec<enk> $$0) {
+public class elv extends ekm<emy> {
+   public elv(Codec<emy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<enk> $$0) {
-      enk $$1 = $$0.f();
-      dkw $$2 = $$0.b();
-      iv $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
-         return false;
-      } else {
-         ebe $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
+   public boolean a(eko<emy> $$0) {
+      dky $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      iw.a $$3 = new iw.a();
+      iw.a $$4 = new iw.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(ehf.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(jc.a, 1);
+            dlc $$10 = $$1.u($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dng.ee.m(), 2);
             }
 
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dng.ed.m(), 2);
+               ebg $$11 = $$1.a_($$4);
+               if ($$11.b(duy.c)) {
+                  $$1.a($$4, $$11.b(duy.c, Boolean.valueOf(true)), 2);
+               }
             }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.v($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
          }
       }
+
+      return true;
    }
 }

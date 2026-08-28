@@ -1,6 +1,8 @@
-public enum fyh {
-   a,
-   b,
-   c,
-   d;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fyh {
 }

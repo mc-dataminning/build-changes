@@ -1,27 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+public class atb implements aki {
+   private static final xc b = xc.c("multiplayer.status.request_handled");
+   private final akh c;
+   private final vv d;
+   private boolean e;
 
-public interface atb {
-   atb e = new atb() {
-      @Override
-      public CompletableFuture<asl> a(String $$0) {
-         return CompletableFuture.completedFuture(asl.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<asl>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(asl::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   default void a() {
+   public atb(akh $$0, vv $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   default void b() {
+   @Override
+   public void a(vx $$0) {
    }
 
-   CompletableFuture<asl> a(String var1);
+   @Override
+   public boolean c() {
+      return this.d.i();
+   }
 
-   CompletableFuture<List<asl>> a(List<String> var1);
+   @Override
+   public void a(akj $$0) {
+      if (this.e) {
+         this.d.a(b);
+      } else {
+         this.e = true;
+         this.d.a(new akg(this.c));
+      }
+   }
+
+   @Override
+   public void a(akd $$0) {
+      this.d.a(new aka($$0.b()));
+      this.d.a(b);
+   }
 }

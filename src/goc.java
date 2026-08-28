@@ -1,25 +1,49 @@
-public class goc extends gqk {
-   goc(gmb $$0, double $$1, double $$2, double $$3, ebe $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(frd.Q().ap().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
+public class goc extends gqm {
+   private final gqh a;
+
+   goc(gmd $$0, double $$1, double $$2, double $$3, double $$4, gqh $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
    @Override
-   public gpo b() {
-      return gpo.a;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public float b(float $$0) {
-      return 0.5F;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
-   public static class a implements gpn<lq> {
-      public gpk a(lq $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new goc($$1, $$2, $$3, $$4, $$0.b());
+   @Override
+   public gpq b() {
+      return gpq.b;
+   }
+
+   public static class a implements gpp<md> {
+      private final gqh a;
+
+      public a(gqh $$0) {
+         this.a = $$0;
+      }
+
+      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goc($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

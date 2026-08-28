@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.jetbrains.annotations.Contract;
 
-public enum o implements bam {
+public enum o implements bao {
    a("BLACK", '0', 0, 0),
    b("DARK_BLUE", '1', 1, 170),
    c("DARK_GREEN", '2', 2, 43520),
@@ -35,7 +35,7 @@ public enum o implements bam {
    u("ITALIC", 'o', true),
    v("RESET", 'r', -1, null);
 
-   public static final Codec<o> w = bam.a(o::values);
+   public static final Codec<o> w = bao.a(o::values);
    public static final Codec<o> x = w.validate($$0 -> $$0.d() ? DataResult.error(() -> "Formatting was not a valid color: " + $$0) : DataResult.success($$0));
    public static final char y = '§';
    private static final Map<String, o> z = Arrays.stream(values()).collect(Collectors.toMap($$0 -> c($$0.B), $$0 -> (o)$$0));

@@ -1,33 +1,31 @@
-public enum aun {
-   a("old"),
-   b("new"),
-   c("compatible");
+import io.netty.buffer.ByteBuf;
 
-   private final xa d;
-   private final xa e;
+public record aun(String c, String d, String e) {
+   public static final za<ByteBuf, aun> a = za.a(yy.p, aun::b, yy.p, aun::c, yy.p, aun::d, aun::new);
+   public static final String b = "minecraft";
 
-   private aun(final String $$0) {
-      this.d = xa.c("pack.incompatible." + $$0).a(o.h);
-      this.e = xa.c("pack.incompatible.confirm." + $$0);
+   public static aun a(String $$0) {
+      return new aun("minecraft", $$0, ac.b().b());
    }
 
    public boolean a() {
-      return this == c;
+      return this.c.equals("minecraft");
    }
 
-   public static aun a(azg<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
    }
 
-   public xa b() {
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
       return this.d;
    }
 
-   public xa c() {
+   public String d() {
       return this.e;
    }
 }

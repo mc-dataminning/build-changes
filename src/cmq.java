@@ -1,53 +1,57 @@
-import java.util.Optional;
-
 public class cmq {
-   public static final alh<cmp> a = a("pale");
-   public static final alh<cmp> b = a("spotted");
-   public static final alh<cmp> c = a("snowy");
-   public static final alh<cmp> d = a("black");
-   public static final alh<cmp> e = a("ashen");
-   public static final alh<cmp> f = a("rusty");
-   public static final alh<cmp> g = a("woods");
-   public static final alh<cmp> h = a("chestnut");
-   public static final alh<cmp> i = a("striped");
-   public static final alh<cmp> j = a;
+   public static final alj<cmp> a = a(cmq.a.a);
+   public static final alj<cmp> b = a(cmq.a.b);
+   public static final alj<cmp> c = a(cmq.a.c);
+   public static final alj<cmp> d = a(cmq.a.d);
+   public static final alj<cmp> e = a(cmq.a.e);
+   public static final alj<cmp> f = a(cmq.a.f);
+   public static final alj<cmp> g = a(cmq.a.g);
 
-   private static alh<cmp> a(String $$0) {
-      return alh.a(mh.bm, ali.b($$0));
+   private static alj<cmp> a(cmq.a $$0) {
+      return alj.a(mi.bn, alk.b($$0.a()));
    }
 
-   private static void a(qh<cmp> $$0, alh<cmp> $$1, String $$2, alh<dla> $$3) {
-      a($$0, $$1, $$2, a(jj.a($$0.a(mh.aG).b($$3))));
+   public static void a(qi<cmp> $$0) {
+      a($$0, a, cmq.a.a);
+      a($$0, b, cmq.a.b);
+      a($$0, c, cmq.a.c);
+      a($$0, d, cmq.a.d);
+      a($$0, e, cmq.a.e);
+      a($$0, f, cmq.a.f);
+      a($$0, g, cmq.a.g);
    }
 
-   private static void a(qh<cmp> $$0, alh<cmp> $$1, String $$2, axt<dla> $$3) {
-      a($$0, $$1, $$2, a($$0.a(mh.aG).b($$3)));
+   private static void a(qi<cmp> $$0, alj<cmp> $$1, cmq.a $$2) {
+      $$0.a($$1, awr.DS.get($$2));
    }
 
-   private static cue a(jj<dla> $$0) {
-      return cue.a(new ctx($$0), 1);
+   public static jg<cmp> a(ju $$0, azz $$1) {
+      return $$0.f(mi.bn).a($$1).orElseThrow();
    }
 
-   private static void a(qh<cmp> $$0, alh<cmp> $$1, String $$2, cue $$3) {
-      ali $$4 = ali.b("entity/wolf/" + $$2);
-      ali $$5 = ali.b("entity/wolf/" + $$2 + "_tame");
-      ali $$6 = ali.b("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cmp(new cmp.a(new iw($$4), new iw($$5), new iw($$6)), $$3));
-   }
+   public static enum a {
+      a("classic", ""),
+      b("puglin", "_puglin"),
+      c("sad", "_sad"),
+      d("angry", "_angry"),
+      e("grumpy", "_grumpy"),
+      f("big", "_big"),
+      g("cute", "_cute");
 
-   public static Optional<? extends jf<cmp>> a(azx $$0, jt $$1, cud $$2) {
-      return cua.a($$1.f(mh.bm).c(), jf::a, $$0, $$2);
-   }
+      private final String h;
+      private final String i;
 
-   public static void a(qh<cmp> $$0) {
-      a($$0, a, "wolf", cue.a(0));
-      a($$0, b, "wolf_spotted", axd.k);
-      a($$0, c, "wolf_snowy", dlh.G);
-      a($$0, d, "wolf_black", dlh.o);
-      a($$0, e, "wolf_ashen", dlh.r);
-      a($$0, f, "wolf_rusty", axd.i);
-      a($$0, g, "wolf_woods", dlh.i);
-      a($$0, h, "wolf_chestnut", dlh.p);
-      a($$0, i, "wolf_striped", axd.f);
+      private a(final String $$0, final String $$1) {
+         this.h = $$0;
+         this.i = $$1;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
    }
 }

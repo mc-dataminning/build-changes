@@ -1,16 +1,65 @@
-public abstract class cxf extends cvq {
-   public cxf(cwz<?> $$0, int $$1) {
-      super($$0, $$1);
+import java.util.Optional;
+
+public class cxf extends cxp {
+   public cxf(bum $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public abstract cxf.a a(boolean var1, boolean var2, deu<?> var3, ars var4, crw var5);
+   @Override
+   public void b(daa $$0, daa $$1) {
+   }
 
-   public abstract void a(csd var1);
+   @Override
+   public boolean a(crz $$0) {
+      return false;
+   }
 
-   public abstract cxg an_();
+   @Override
+   public Optional<daa> a(int $$0, int $$1, crz $$2) {
+      return Optional.empty();
+   }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public daa b(int $$0, int $$1, crz $$2) {
+      return daa.k;
+   }
+
+   @Override
+   public daa d(daa $$0) {
+      return $$0;
+   }
+
+   @Override
+   public daa b(daa $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(crz $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(daa $$0) {
+      return false;
+   }
+
+   @Override
+   public daa a(int $$0) {
+      return daa.k;
+   }
+
+   @Override
+   public void a(crz $$0, daa $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

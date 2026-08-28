@@ -1,13 +1,10 @@
-public class hbu extends hcw<hec, ghg> {
-   private static final gsl a = gsl.r(ali.b("textures/entity/breeze/breeze_eyes.png"));
-
-   public hbu(haf<hec, ghg> $$0) {
-      super($$0);
+public class hbu<M extends gji> extends hdh<M> {
+   public hbu(gzl<?, hgd, M> $$0, gyk.a $$1) {
+      super($$0, new ggv($$1.a(glf.l)), haz.a, hdh.a.a);
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hec $$3, float $$4, float $$5) {
-      flr $$6 = $$1.getBuffer(a);
-      ghg $$7 = this.d();
-      gxn.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hkq.d);
+   @Override
+   protected int a(hgd $$0) {
+      return $$0.j;
    }
 }

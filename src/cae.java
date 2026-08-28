@@ -2,27 +2,36 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class cae {
-   private static iv a(bxw $$0, iv $$1) {
-      azx $$2 = $$0.dV().A;
-      return $$1.b(a($$2), 0, a($$2));
-   }
+   public static bzo<crl> a(float $$0, int $$1) {
+      return cda.a((Function<cda.b<crl>, ? extends App<cda.c<crl>, cdd<crl>>>)($$2 -> $$2.group($$2.c(cgy.n)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dv())) {
+                  return false;
+               } else {
+                  ciy $$6 = $$3.A();
+                  int $$7 = $$6.a(jz.a($$4.dv()));
+                  ffs $$8 = null;
 
-   private static int a(azx $$0) {
-      return $$0.a(3) - 1;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     ffs $$10 = cis.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(jz.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(jz.a(iw.a((jq)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   public static <E extends bxw> caw<E> a(cgw<iv> $$0, int $$1, float $$2) {
-      return ccy.a(
-         (Function<ccy.b<E>, ? extends App<ccy.c<E>, cdb<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cgw.p), $$3.c(cgw.n), $$3.a(cgw.o))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     iv $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dv(), (double)$$1);
-                     if (!$$8) {
-                        bzn.a($$5x, a($$5x, $$7), $$2, $$1);
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
                      }
+                  }
 
-                     return true;
-                  }))
-      );
+                  if ($$8 != null) {
+                     $$2x.a(new chb($$8, $$0, $$1));
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

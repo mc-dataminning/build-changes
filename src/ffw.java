@@ -1,21 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+public interface ffw {
+   ffw a = ($$0, $$1) -> false;
+   ffw b = ($$0, $$1) -> !$$0 && !$$1;
+   ffw c = ($$0, $$1) -> $$1 && !$$0;
+   ffw d = ($$0, $$1) -> !$$0;
+   ffw e = ($$0, $$1) -> $$0 && !$$1;
+   ffw f = ($$0, $$1) -> !$$1;
+   ffw g = ($$0, $$1) -> $$0 != $$1;
+   ffw h = ($$0, $$1) -> !$$0 || !$$1;
+   ffw i = ($$0, $$1) -> $$0 && $$1;
+   ffw j = ($$0, $$1) -> $$0 == $$1;
+   ffw k = ($$0, $$1) -> $$1;
+   ffw l = ($$0, $$1) -> !$$0 || $$1;
+   ffw m = ($$0, $$1) -> $$0;
+   ffw n = ($$0, $$1) -> $$0 || !$$1;
+   ffw o = ($$0, $$1) -> $$0 || $$1;
+   ffw p = ($$0, $$1) -> true;
 
-public class ffw extends AbstractDoubleList {
-   private final int a;
-
-   public ffw(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
-
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
-
-   public int size() {
-      return this.a + 1;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

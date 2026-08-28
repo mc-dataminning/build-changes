@@ -1,16 +1,8 @@
-public class fmm extends fml {
-   private final xa a;
-
-   public fmm(xa $$0) {
-      this.a = $$0;
-   }
-
-   public fmm(String $$0) {
-      this(xa.b($$0));
-   }
+public class fmm extends fmn {
+   private static final xc a = xc.c("mco.upload.cancelled");
 
    @Override
-   public xa a() {
-      return xa.a("mco.upload.failed", this.a);
+   public xc a() {
+      return a;
    }
 }

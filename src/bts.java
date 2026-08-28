@@ -1,45 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bts extends btu {
-   public static final bts a = new bts(0.0F);
-   public static final MapCodec<bts> b = Codec.FLOAT.fieldOf("value").xmap(bts::a, bts::d);
+public class bts extends btw {
+   public static final MapCodec<bts> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, bts::new)
+      )
+      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
+   private final float b;
    private final float d;
+   private final float e;
+   private final float f;
 
-   public static bts a(float $$0) {
-      return $$0 == 0.0F ? a : new bts($$0);
+   public static bts a(float $$0, float $$1, float $$2, float $$3) {
+      return new bts($$0, $$1, $$2, $$3);
    }
 
-   private bts(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
+   private bts(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
    @Override
-   public float a(azx $$0) {
-      return this.d;
+   public float a(azz $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
+   }
+
+   public static float a(azz $$0, float $$1, float $$2, float $$3, float $$4) {
+      return azq.a(azq.c($$0, $$1, $$2), $$3, $$4);
    }
 
    @Override
    public float a() {
-      return this.d;
+      return this.e;
    }
 
    @Override
    public float b() {
-      return this.d;
+      return this.f;
    }
 
    @Override
-   public btv<?> c() {
-      return btv.a;
+   public btx<?> c() {
+      return btx.c;
    }
 
    @Override
    public String toString() {
-      return Float.toString(this.d);
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

@@ -1,178 +1,137 @@
-public class gcg extends gas<cxt> {
-   private static final ali G = ali.b("container/stonecutter/scroller");
-   private static final ali H = ali.b("container/stonecutter/scroller_disabled");
-   private static final ali I = ali.b("container/stonecutter/recipe_selected");
-   private static final ali J = ali.b("container/stonecutter/recipe_highlighted");
-   private static final ali K = ali.b("container/stonecutter/recipe");
-   private static final ali L = ali.b("textures/gui/container/stonecutter.png");
-   private static final int M = 12;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
+public class gcg extends gbw<cxs> {
+   private static final alk G = alk.b("container/smithing/error");
+   private static final alk H = alk.b("container/slot/smithing_template_armor_trim");
+   private static final alk I = alk.b("container/slot/smithing_template_netherite_upgrade");
+   private static final xc J = xc.c("container.upgrade.missing_template_tooltip");
+   private static final xc K = xc.c("container.upgrade.error_tooltip");
+   private static final List<alk> L = List.of(H, I);
+   private static final int M = 44;
    private static final int N = 15;
-   private static final int O = 4;
-   private static final int P = 3;
-   private static final int Q = 16;
-   private static final int R = 18;
-   private static final int S = 54;
-   private static final int T = 52;
-   private static final int U = 14;
-   private float V;
-   private boolean W;
-   private int X;
-   private boolean Y;
+   private static final int O = 28;
+   private static final int P = 21;
+   private static final int Q = 65;
+   private static final int R = 46;
+   private static final int S = 115;
+   private static final int T = 210;
+   private static final int U = 25;
+   private static final Vector3f V = new Vector3f();
+   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int X = 25;
+   private static final int Y = 75;
+   private static final int Z = 141;
+   private final gbl aa = new gbl(0);
+   private final gbl ab = new gbl(1);
+   private final gbl ac = new gbl(2);
+   @Nullable
+   private cnt ad;
 
-   public gcg(cxt $$0, crw $$1, xa $$2) {
-      super($$0, $$1, $$2);
-      $$0.a(this::I);
-      this.w--;
+   public gcg(cxs $$0, cry $$1, xc $$2) {
+      super($$0, $$1, $$2, alk.b("textures/gui/container/smithing.png"));
+      this.v = 44;
+      this.w = 15;
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
+   protected void G() {
+      this.ad = new cnt(this.m.s, 0.0, 0.0, 0.0);
+      this.ad.b(true);
+      this.ad.a(true);
+      this.ad.aV = 210.0F;
+      this.ad.x(25.0F);
+      this.ad.aX = this.ad.dL();
+      this.ad.aY = this.ad.dL();
+      this.b(this.z.b(3).g());
+   }
+
+   @Override
+   public void E() {
+      super.E();
+      Optional<dbe> $$0 = this.H();
+      this.aa.a(L);
+      this.ab.a($$0.map(dbe::c).orElse(List.of()));
+      this.ac.a($$0.map(dbe::n).orElse(List.of()));
+   }
+
+   private Optional<dbe> H() {
+      daa $$0 = this.z.b(0).g();
+      return !$$0.f() && $$0.h() instanceof dbe $$1 ? Optional.of($$1) : Optional.empty();
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      this.d($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gsl::H, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      int $$6 = (int)(41.0F * this.V);
-      ali $$7 = this.H() ? G : H;
-      $$0.a(gsl::H, $$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
-      int $$8 = this.C + 52;
-      int $$9 = this.D + 14;
-      int $$10 = this.X + 12;
-      this.a($$0, $$2, $$3, $$8, $$9, $$10);
-      this.a($$0, $$8, $$9, $$10);
+   protected void a(ftz $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.aa.a(this.z, $$0, $$1, this.C, this.D);
+      this.ab.a(this.z, $$0, $$1, this.C, this.D);
+      this.ac.a(this.z, $$0, $$1, this.C, this.D);
+      gbv.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
    }
 
    @Override
-   protected void a(ftx $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.Y) {
-         int $$3 = this.C + 52;
-         int $$4 = this.D + 14;
-         int $$5 = this.X + 12;
-         dfc.b<dfp> $$6 = this.z.m();
+   public void a(cvs $$0, int $$1, daa $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
+      }
+   }
 
-         for (int $$7 = this.X; $$7 < $$5 && $$7 < $$6.d(); $$7++) {
-            int $$8 = $$7 - this.X;
-            int $$9 = $$3 + $$8 % 4 * 16;
-            int $$10 = $$4 + $$8 / 4 * 18 + 2;
-            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
-               bbb $$11 = dgc.a(this.m.s);
-               dgb $$12 = $$6.e().get($$7).c().b();
-               $$0.b(this.p, $$12.b($$11), $$1, $$2);
+   private void b(daa $$0) {
+      if (this.ad != null) {
+         for (bxf $$1 : bxf.j) {
+            this.ad.a($$1, daa.k);
+         }
+
+         if (!$$0.f()) {
+            dij $$2 = $$0.a(kl.D);
+            bxf $$3 = $$2 != null ? $$2.b() : bxf.b;
+            this.ad.a($$3, $$0.v());
+         }
+      }
+   }
+
+   @Override
+   protected void c(ftz $$0, int $$1, int $$2) {
+      if (this.I()) {
+         $$0.a(gsn::H, G, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
+
+   private void d(ftz $$0, int $$1, int $$2) {
+      Optional<xc> $$3 = Optional.empty();
+      if (this.I() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(K);
+      }
+
+      if (this.B != null) {
+         daa $$4 = this.z.b(0).g();
+         daa $$5 = this.B.g();
+         if ($$4.f()) {
+            if (this.B.d == 0) {
+               $$3 = Optional.of(J);
+            }
+         } else if ($$4.h() instanceof dbe $$6 && $$5.f()) {
+            if (this.B.d == 1) {
+               $$3 = Optional.of($$6.a());
+            } else if (this.B.d == 2) {
+               $$3 = Optional.of($$6.b());
             }
          }
       }
+
+      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
    }
 
-   private void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = this.X; $$6 < $$5 && $$6 < this.z.n(); $$6++) {
-         int $$7 = $$6 - this.X;
-         int $$8 = $$3 + $$7 % 4 * 16;
-         int $$9 = $$7 / 4;
-         int $$10 = $$4 + $$9 * 18 + 2;
-         ali $$11;
-         if ($$6 == this.z.l()) {
-            $$11 = I;
-         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
-            $$11 = J;
-         } else {
-            $$11 = K;
-         }
-
-         $$0.a(gsl::H, $$11, $$8, $$10 - 1, 16, 18);
-      }
-   }
-
-   private void a(ftx $$0, int $$1, int $$2, int $$3) {
-      dfc.b<dfp> $$4 = this.z.m();
-      bbb $$5 = dgc.a(this.m.s);
-
-      for (int $$6 = this.X; $$6 < $$3 && $$6 < $$4.d(); $$6++) {
-         int $$7 = $$6 - this.X;
-         int $$8 = $$1 + $$7 % 4 * 16;
-         int $$9 = $$7 / 4;
-         int $$10 = $$2 + $$9 * 18 + 2;
-         dgb $$11 = $$4.e().get($$6).c().b();
-         $$0.a($$11.b($$5), $$8, $$10);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      this.W = false;
-      if (this.Y) {
-         int $$3 = this.C + 52;
-         int $$4 = this.D + 14;
-         int $$5 = this.X + 12;
-
-         for (int $$6 = this.X; $$6 < $$5; $$6++) {
-            int $$7 = $$6 - this.X;
-            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
-            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
-            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.z.a(this.m.t, $$6)) {
-               frd.Q().ak().a(hos.a(awp.BA, 1.0F));
-               this.m.r.a(this.z.l, $$6);
-               return true;
-            }
-         }
-
-         $$3 = this.C + 119;
-         $$4 = this.D + 9;
-         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
-            this.W = true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.W && this.H()) {
-         int $$5 = this.D + 14;
-         int $$6 = $$5 + 54;
-         this.V = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
-         this.V = azo.a(this.V, 0.0F, 1.0F);
-         this.X = (int)((double)(this.V * (float)this.G()) + 0.5) * 4;
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (super.a($$0, $$1, $$2, $$3)) {
-         return true;
-      } else {
-         if (this.H()) {
-            int $$4 = this.G();
-            float $$5 = (float)$$3 / (float)$$4;
-            this.V = azo.a(this.V - $$5, 0.0F, 1.0F);
-            this.X = (int)((double)(this.V * (float)$$4) + 0.5) * 4;
-         }
-
-         return true;
-      }
-   }
-
-   private boolean H() {
-      return this.Y && this.z.n() > 12;
-   }
-
-   protected int G() {
-      return (this.z.n() + 4 - 1) / 4 - 3;
-   }
-
-   private void I() {
-      this.Y = this.z.o();
-      if (!this.Y) {
-         this.V = 0.0F;
-         this.X = 0;
-      }
+   private boolean I() {
+      return this.z.m();
    }
 }

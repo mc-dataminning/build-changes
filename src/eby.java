@@ -1,7 +1,7 @@
-public enum eby implements bam {
-   a("uprooted"),
-   b("dormant"),
-   c("awake");
+public enum eby implements bao {
+   a("single"),
+   b("left"),
+   c("right");
 
    private final String d;
 
@@ -10,12 +10,15 @@ public enum eby implements bam {
    }
 
    @Override
-   public String toString() {
+   public String c() {
       return this.d;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public eby a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

@@ -1,7 +1,60 @@
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public interface hz<T> {
-   ali a();
+class hz<T extends em<T>> {
+   @Nullable
+   private List<hp<T>> a = new ArrayList<>();
+   @Nullable
+   private List<ib.a<T>> b;
+   private final List<String> c = new ArrayList<>();
 
-   List<ho<T>> b();
+   public void a(hp<T> $$0) {
+      if (this.b != null) {
+         this.b.add(new ib.c<>($$0));
+      } else {
+         this.a.add($$0);
+      }
+   }
+
+   private int a(String $$0) {
+      int $$1 = this.c.indexOf($$0);
+      if ($$1 == -1) {
+         $$1 = this.c.size();
+         this.c.add($$0);
+      }
+
+      return $$1;
+   }
+
+   private IntList a(List<String> $$0) {
+      IntArrayList $$1 = new IntArrayList($$0.size());
+
+      for (String $$2 : $$0) {
+         $$1.add(this.a($$2));
+      }
+
+      return $$1;
+   }
+
+   public void a(String $$0, int $$1, T $$2) {
+      id $$3 = id.a($$0, $$1);
+      if (this.a != null) {
+         this.b = new ArrayList<>(this.a.size() + 1);
+
+         for (hp<T> $$4 : this.a) {
+            this.b.add(new ib.c<>($$4));
+         }
+
+         this.a = null;
+      }
+
+      this.b.add(new ib.b<>($$3, this.a($$3.b()), $$2));
+   }
+
+   public hy<T> a(alk $$0) {
+      return (hy<T>)(this.b != null ? new ib<>($$0, this.b, this.c) : new ic<>($$0, this.a));
+   }
 }

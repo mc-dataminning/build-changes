@@ -1,19 +1,46 @@
-import java.util.Objects;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface fgr {
-   int a();
-
-   boolean b();
+class fgr {
+   private final Reference2ObjectOpenHashMap<fgp, fgu> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
    @Nullable
-   yq c();
-
-   default xo a(yq $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   public fgu a(fgp $$0) {
+      return (fgu)this.a.get($$0);
    }
 
-   static xo a(@Nullable fgr $$0, yq $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   public fgu a(fgp $$0, Consumer<fgu> $$1) {
+      return (fgu)this.a.computeIfAbsent($$0, $$1x -> {
+         fgu $$2 = new fgu();
+         $$1.accept($$2);
+         return $$2;
+      });
+   }
+
+   public boolean b(fgp $$0) {
+      return this.a.remove($$0) != null;
+   }
+
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<fgp> b() {
+      Object2IntMap<fgp> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(fgp $$0, fgu $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<fgp, fgu> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

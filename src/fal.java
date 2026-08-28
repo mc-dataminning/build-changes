@@ -1,146 +1,41 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.stream.Stream;
 
-public class fal {
-   public static final Codec<fal> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               fav.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               fdq.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               fbx.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               fen.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               fen.a.fieldOf("bonus_rolls").orElse(fej.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, fal::new)
-   );
-   private final List<fax> b;
-   private final List<fdq> c;
-   private final Predicate<fah> d;
-   private final List<fbv> e;
-   private final BiFunction<czy, fah, czy> f;
-   private final fem g;
-   private final fem h;
+public record fal<T>(alj<jt<T>> d, Codec<T> e, fal.a<T> f) {
+   public static final fal<fds> a = new fal<>(mi.bt, fds.e, e());
+   public static final fal<fbx> b = new fal<>(mi.bs, fbz.c, e());
+   public static final fal<fao> c = new fal<>(mi.br, fao.d, f());
 
-   fal(List<fax> $$0, List<fdq> $$1, List<fbv> $$2, fem $$3, fem $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ag.a($$1);
-      this.e = $$2;
-      this.f = fbx.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   public void a(fap $$0, alj<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   private void b(Consumer<czy> $$0, fah $$1) {
-      azx $$2 = $$1.b();
-      List<faw> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (fax $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (faw $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
-      }
+   public static Stream<fal<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public void a(Consumer<czy> $$0, fah $$1) {
-      if (this.d.test($$1)) {
-         Consumer<czy> $$2 = fbv.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + azo.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
+   private static <T extends fak> fal.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public void a(fan $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
+   private static fal.a<fao> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static fal.a a() {
-      return new fal.a();
+   public alj<jt<T>> b() {
+      return this.d;
    }
 
-   public static class a implements fbr<fal.a>, fdi<fal.a> {
-      private final Builder<fax> a = ImmutableList.builder();
-      private final Builder<fdq> b = ImmutableList.builder();
-      private final Builder<fbv> c = ImmutableList.builder();
-      private fem d = fej.a(1.0F);
-      private fem e = fej.a(0.0F);
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      public fal.a a(fem $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public fal.a<T> d() {
+      return this.f;
+   }
 
-      public fal.a a() {
-         return this;
-      }
-
-      public fal.a b(fem $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fal.a a(fax.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public fal.a a(fdq.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public fal.a a(fbv.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public fal b() {
-         return new fal(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(fap var1, alj<T> var2, T var3);
    }
 }

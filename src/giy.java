@@ -1,98 +1,71 @@
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-public class giy extends gjl<hfw> {
-   public static final gln a = new ggv(true, 23.0F, 4.8F, 2.7F, 3.0F, 49.0F, Set.of("head"));
+public abstract class giy {
+   private static final Vector3f a = new Vector3f();
+   protected final glg v;
+   protected final Function<alk, gsn> w;
+   private final List<glg> b;
 
-   public giy(gle $$0) {
-      super($$0);
+   public giy(glg $$0, Function<alk, gsn> $$1) {
+      this.v = $$0;
+      this.w = $$1;
+      this.b = $$0.e().toList();
    }
 
-   public static glk a() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-      $$1.a(
-         "head",
-         glj.c()
-            .a(0, 6)
-            .a(-6.5F, -5.0F, -4.0F, 13.0F, 10.0F, 9.0F)
-            .a(45, 16)
-            .a("nose", -3.5F, 0.0F, -6.0F, 7.0F, 5.0F, 2.0F)
-            .a(52, 25)
-            .a("left_ear", 3.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F)
-            .a(52, 25)
-            .a("right_ear", -8.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F),
-         glg.a(0.0F, 11.5F, -17.0F)
-      );
-      $$1.a("body", glj.c().a(0, 25).a(-9.5F, -13.0F, -6.5F, 19.0F, 26.0F, 13.0F), glg.a(0.0F, 10.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 9;
-      int $$3 = 6;
-      glj $$4 = glj.c().a(40, 0).a(-3.0F, 0.0F, -3.0F, 6.0F, 9.0F, 6.0F);
-      $$1.a("right_hind_leg", $$4, glg.a(-5.5F, 15.0F, 9.0F));
-      $$1.a("left_hind_leg", $$4, glg.a(5.5F, 15.0F, 9.0F));
-      $$1.a("right_front_leg", $$4, glg.a(-5.5F, 15.0F, -9.0F));
-      $$1.a("left_front_leg", $$4, glg.a(5.5F, 15.0F, -9.0F));
-      return glk.a($$0, 64, 64);
+   public final gsn a(alk $$0) {
+      return this.w.apply($$0);
    }
 
-   public void a(hfw $$0) {
-      super.a($$0);
-      if ($$0.b) {
-         this.b.f = 0.35F * azo.a(0.6F * $$0.u);
-         this.b.g = 0.35F * azo.a(0.6F * $$0.u);
-         this.f.e = -0.75F * azo.a(0.3F * $$0.u);
-         this.g.e = 0.75F * azo.a(0.3F * $$0.u);
-      } else {
-         this.b.g = 0.0F;
+   public final void a(flq $$0, flt $$1, int $$2, int $$3, int $$4) {
+      this.e().a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public final void a(flq $$0, flt $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, -1);
+   }
+
+   public final glg e() {
+      return this.v;
+   }
+
+   public Optional<glg> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   public final List<glg> f() {
+      return this.b;
+   }
+
+   public final void g() {
+      for (glg $$0 : this.b) {
+         $$0.c();
       }
+   }
 
-      if ($$0.c) {
-         if ($$0.d < 15) {
-            this.b.e = (float) (-Math.PI / 4) * (float)$$0.d / 14.0F;
-         } else if ($$0.d < 20) {
-            float $$1 = (float)(($$0.d - 15) / 5);
-            this.b.e = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * $$1;
-         }
-      }
+   protected void a(bwm $$0, frt $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
 
-      if ($$0.h > 0.0F) {
-         this.c.e = azo.j($$0.h, this.c.e, 1.7407963F);
-         this.b.e = azo.j($$0.h, this.b.e, (float) (Math.PI / 2));
-         this.f.g = -0.27079642F;
-         this.g.g = 0.27079642F;
-         this.d.g = 0.5707964F;
-         this.e.g = -0.5707964F;
-         if ($$0.e) {
-            this.b.e = (float) (Math.PI / 2) + 0.2F * azo.a($$0.u * 0.6F);
-            this.f.e = -0.4F - 0.2F * azo.a($$0.u * 0.6F);
-            this.g.e = -0.4F - 0.2F * azo.a($$0.u * 0.6F);
-         }
+   protected void a(frt $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      frv.a(this, $$0, $$5, $$6, a);
+   }
 
-         if ($$0.f) {
-            this.b.e = 2.1707964F;
-            this.f.e = -0.9F;
-            this.g.e = -0.9F;
-         }
-      } else {
-         this.d.g = 0.0F;
-         this.e.g = 0.0F;
-         this.f.g = 0.0F;
-         this.g.g = 0.0F;
-      }
+   protected void a(bwm $$0, frt $$1, float $$2, float $$3) {
+      $$0.a($$3x -> frv.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
+   }
 
-      if ($$0.j > 0.0F) {
-         this.d.e = -0.6F * azo.a($$0.u * 0.15F);
-         this.e.e = 0.6F * azo.a($$0.u * 0.15F);
-         this.f.e = 0.3F * azo.a($$0.u * 0.25F);
-         this.g.e = -0.3F * azo.a($$0.u * 0.25F);
-         this.b.e = azo.j($$0.j, this.b.e, (float) (Math.PI / 2));
-      }
+   protected void a(frt $$0) {
+      frv.a(this, $$0, 0L, 1.0F, a);
+   }
 
-      if ($$0.k > 0.0F) {
-         this.b.e = azo.j($$0.k, this.b.e, 2.0561945F);
-         this.d.e = -0.5F * azo.a($$0.u * 0.5F);
-         this.e.e = 0.5F * azo.a($$0.u * 0.5F);
-         this.f.e = 0.5F * azo.a($$0.u * 0.5F);
-         this.g.e = -0.5F * azo.a($$0.u * 0.5F);
+   public static class a extends giy {
+      public a(glg $$0, Function<alk, gsn> $$1) {
+         super($$0, $$1);
       }
    }
 }

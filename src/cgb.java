@@ -1,41 +1,40 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cgb<T extends bxw> extends ceq {
-   private final T a;
-   private final czy b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final awo d;
+public class cgb extends ces {
+   private final crg a;
 
-   public cgb(T $$0, czy $$1, @Nullable awo $$2, Predicate<? super T> $$3) {
+   public cgb(crg $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+      this.a(EnumSet.of(ces.a.c, ces.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.fz();
+      if (!this.a.bJ()) {
+         return false;
+      } else if (this.a.bi()) {
+         return false;
+      } else if (!this.a.aH()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         crz $$0 = this.a.x();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.bR != null;
+         }
+      }
    }
 
    @Override
    public void d() {
-      this.a.a(bxd.a, this.b.v());
-      this.a.c(buq.a);
+      this.a.O().m();
    }
 
    @Override
    public void e() {
-      this.a.a(bxd.a, czy.k);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
-      }
+      this.a.a(null);
    }
 }

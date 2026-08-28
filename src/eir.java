@@ -1,24 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eir extends eiv {
-   private final jj<exn> e;
-   public static final MapCodec<eir> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ju.a(mh.F).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eir::new)
+public class eir extends eix {
+   final axv<dne> a;
+   public static final MapCodec<eir> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axv.a(mi.i).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eir::new)
    );
 
-   public eir(ka $$0, jj<exn> $$1) {
+   protected eir(kb $$0, axv<dne> $$1) {
       super($$0);
-      this.e = $$1;
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(ebe $$0) {
-      return $$0.y().a(this.e);
+   protected boolean a(ebg $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public eil<?> a() {
-      return eil.c;
+   public ein<?> a() {
+      return ein.b;
    }
 }

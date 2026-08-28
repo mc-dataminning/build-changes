@@ -1,62 +1,117 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class dty extends dwo implements dnf {
-   public static final MapCodec<dty> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eas.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, dty::new)
-   );
-   public static final ece f = ebu.aX;
-   private static final fgk a = dnc.b(12.0, 0.0, 12.0);
-   protected final eas g;
+public enum dty implements bao {
+   a(0, "none", h.a),
+   b(1, "clockwise_90", h.u),
+   c(2, "180", h.c),
+   d(3, "counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<? extends dty> a() {
-      return e;
+   public static final IntFunction<dty> e = ayg.a(dty::b, values(), ayg.a.b);
+   public static final Codec<dty> f = bao.a(dty::values);
+   public static final za<ByteBuf, dty> g = yy.a(e, dty::b);
+   @Deprecated
+   public static final Codec<dty> h = ayy.c(dty::valueOf);
+   private final int i;
+   private final String j;
+   private final h k;
+
+   private dty(final int $$0, final String $$1, final h $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
    }
 
-   protected dty(eas $$0, ebd.d $$1) {
-      super($$1);
-      this.g = $$0;
-      this.l(this.C.b().b(f, Integer.valueOf(0)));
+   public dty a(dty $$0) {
+      return switch ($$0) {
+         case b -> {
+            switch (this) {
+               case a:
+                  yield b;
+               case b:
+                  yield c;
+               case c:
+                  yield d;
+               case d:
+                  yield a;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case c -> {
+            switch (this) {
+               case a:
+                  yield c;
+               case b:
+                  yield d;
+               case c:
+                  yield a;
+               case d:
+                  yield b;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch (this) {
+               case a:
+                  yield d;
+               case b:
+                  yield a;
+               case c:
+                  yield b;
+               case d:
+                  yield c;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> this;
+      };
    }
 
-   @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return a;
+   public h a() {
+      return this.k;
    }
 
-   @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if ($$1.B($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
-
-   public void a(ars $$0, iv $$1, ebe $$2, azx $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 260);
+   public jc a(jc $$0) {
+      if ($$0.o() == jc.a.b) {
+         return $$0;
       } else {
-         this.g.a($$0, $$0.m().g(), $$1, $$2, $$3);
+         return switch (this) {
+            case b -> $$0.h();
+            case c -> $$0.g();
+            case d -> $$0.i();
+            default -> $$0;
+         };
       }
    }
 
-   @Override
-   public boolean a(dka $$0, iv $$1, ebe $$2) {
-      return true;
+   public int a(int $$0, int $$1) {
+      return switch (this) {
+         case b -> ($$0 + $$1 / 4) % $$1;
+         case c -> ($$0 + $$1 / 2) % $$1;
+         case d -> ($$0 + $$1 * 3 / 4) % $$1;
+         default -> $$0;
+      };
+   }
+
+   public static dty a(azz $$0) {
+      return ag.a(values(), $$0);
+   }
+
+   public static List<dty> b(azz $$0) {
+      return ag.b(values(), $$0);
    }
 
    @Override
-   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
-      return (double)$$0.A.i() < 0.45;
+   public String c() {
+      return this.j;
    }
 
-   @Override
-   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(f);
+   private int b() {
+      return this.i;
    }
 }

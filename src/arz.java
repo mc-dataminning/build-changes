@@ -1,45 +1,40 @@
-public record arz(long j, boolean k, arz.a l) {
-   public static final long a = 0L;
-   public static final arz b = a("start", 0L, false, arz.a.c);
-   public static final arz c = a("dragon", 0L, false, arz.a.c);
-   public static final arz d = a("player_loading", 0L, false, arz.a.a);
-   public static final arz e = a("player_simulation", 0L, false, arz.a.b);
-   public static final arz f = a("forced", 0L, true, arz.a.c);
-   public static final arz g = a("portal", 300L, true, arz.a.c);
-   public static final arz h = a("ender_pearl", 40L, false, arz.a.c);
-   public static final arz i = a("unknown", 1L, false, arz.a.a);
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   private static arz a(String $$0, long $$1, boolean $$2, arz.a $$3) {
-      return js.a(mg.aA, $$0, new arz($$1, $$2, $$3));
+public class arz extends ara {
+   private final LongSet c = new LongOpenHashSet();
+   private final int d;
+   private final String e;
+
+   public arz(bto<Runnable> $$0, Executor $$1, int $$2) {
+      super($$0, $$1);
+      this.d = $$2;
+      this.e = $$0.z_();
    }
 
-   public boolean a() {
-      return this.l == arz.a.a || this.l == arz.a.c;
+   @Override
+   protected void a(long $$0) {
+      this.c.remove($$0);
    }
 
-   public boolean b() {
-      return this.l == arz.a.b || this.l == arz.a.c;
+   @Nullable
+   @Override
+   protected arb.a c() {
+      return this.c.size() < this.d ? super.c() : null;
    }
 
-   public boolean c() {
-      return this.j != 0L;
+   @Override
+   protected void a(arb.a $$0) {
+      this.c.add($$0.a());
+      super.a($$0);
    }
 
-   public long d() {
-      return this.j;
-   }
-
-   public boolean e() {
-      return this.k;
-   }
-
-   public arz.a f() {
-      return this.l;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   @VisibleForTesting
+   public String d() {
+      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dje($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

@@ -10,8 +10,7 @@ public class bos extends Schema {
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "WitherSkeleton");
-      $$0.registerSimple($$1, "Stray");
+      $$0.registerSimple($$1, "PolarBear");
       return $$1;
    }
 }

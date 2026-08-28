@@ -1,93 +1,284 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Function;
 
-public interface ehx {
-   Codec<ehx> a = Codec.xor(ehx.b.d, Codec.xor(ehx.a.d, ehx.c.d)).xmap(ehx::a, ehx::a);
-   ehx b = b(0);
-   ehx c = c(0);
+public class ehx {
+   private static final ebg a = dng.hK.m();
+   private static final ebg b = dng.hL.m();
+   private static final ebg c = dng.jc.m();
+   private static final ebg d = dng.hO.m();
+   private static final ebg e = dng.hW.m();
+   private static final ebg f = dng.hY.m();
+   private static final ebg g = dng.hS.m();
+   private static final ebg h = dng.je.m();
+   private static final ebg i = dng.ef.m();
+   private final ebg j;
+   private final int k;
+   private final ebg[] l;
+   private final ewt m;
+   private final ewt n;
+   private final ewt o;
+   private final ewt p;
+   private final ewt q;
+   private final ewt r;
+   private final ewt s;
+   private final ehs t;
+   private final ewt u;
+   private final ewt v;
 
-   static ehx a(int $$0) {
-      return new ehx.b($$0);
+   public ehx(eht $$0, ebg $$1, int $$2, ehs $$3) {
+      this.j = $$1;
+      this.k = $$2;
+      this.t = $$3;
+      this.m = $$0.a(eho.P);
+      this.l = a($$3.a(alk.b("clay_bands")));
+      this.u = $$0.a(eho.N);
+      this.v = $$0.a(eho.O);
+      this.n = $$0.a(eho.Q);
+      this.o = $$0.a(eho.R);
+      this.p = $$0.a(eho.S);
+      this.q = $$0.a(eho.T);
+      this.r = $$0.a(eho.U);
+      this.s = $$0.a(eho.V);
    }
 
-   static ehx b(int $$0) {
-      return new ehx.a($$0);
+   public void a(eht $$0, dle $$1, jt<dlc> $$2, boolean $$3, eic $$4, final edd $$5, ehj $$6, ehw.o $$7) {
+      final iw.a $$8 = new iw.a();
+      final dje $$9 = $$5.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      eda $$12 = new eda() {
+         @Override
+         public ebg a(int $$0) {
+            return $$5.a_($$8.q($$0));
+         }
+
+         @Override
+         public void a(int $$0, ebg $$1) {
+            dkb $$2 = $$5.B();
+            if ($$2.d($$0)) {
+               $$5.a($$8.q($$0), $$1);
+               if (!$$1.y().c()) {
+                  $$5.e($$8);
+               }
+            }
+         }
+
+         @Override
+         public String toString() {
+            return "ChunkBlockColumn " + $$9;
+         }
+      };
+      ehw.g $$13 = new ehw.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
+      ehw.u $$14 = $$7.apply($$13);
+      iw.a $$15 = new iw.a();
+
+      for (int $$16 = 0; $$16 < 16; $$16++) {
+         for (int $$17 = 0; $$17 < 16; $$17++) {
+            int $$18 = $$10 + $$16;
+            int $$19 = $$11 + $$17;
+            int $$20 = $$5.a(ehf.a.a, $$16, $$17) + 1;
+            $$8.p($$18).r($$19);
+            jg<dlc> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
+            if ($$21.a(dlj.C)) {
+               this.a($$12, $$18, $$19, $$20, $$5);
+            }
+
+            int $$22 = $$5.a(ehf.a.a, $$16, $$17) + 1;
+            $$13.a($$18, $$19);
+            int $$23 = 0;
+            int $$24 = Integer.MIN_VALUE;
+            int $$25 = Integer.MAX_VALUE;
+            int $$26 = $$5.K_();
+
+            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
+               ebg $$28 = $$12.a($$27);
+               if ($$28.l()) {
+                  $$23 = 0;
+                  $$24 = Integer.MIN_VALUE;
+               } else if (!$$28.y().c()) {
+                  if ($$24 == Integer.MIN_VALUE) {
+                     $$24 = $$27 + 1;
+                  }
+               } else {
+                  if ($$25 >= $$27) {
+                     $$25 = efd.g;
+
+                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
+                        ebg $$30 = $$12.a($$29);
+                        if (!this.a($$30)) {
+                           $$25 = $$29 + 1;
+                           break;
+                        }
+                     }
+                  }
+
+                  $$23++;
+                  int $$31 = $$27 - $$25 + 1;
+                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
+                  if ($$28 == this.j) {
+                     ebg $$32 = $$14.tryApply($$18, $$27, $$19);
+                     if ($$32 != null) {
+                        $$12.a($$27, $$32);
+                     }
+                  }
+               }
+            }
+
+            if ($$21.a(dlj.X) || $$21.a(dlj.Y)) {
+               this.a($$13.c(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
+            }
+         }
+      }
    }
 
-   static ehx c(int $$0) {
-      return new ehx.c($$0);
+   protected int a(int $$0, int $$1) {
+      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
+      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
    }
 
-   static ehx a() {
-      return b;
+   protected double b(int $$0, int $$1) {
+      return this.v.a((double)$$0, 0.0, (double)$$1);
    }
 
-   static ehx b() {
-      return c;
+   private boolean a(ebg $$0) {
+      return !$$0.l() && $$0.y().c();
    }
 
-   private static ehx a(Either<ehx.b, Either<ehx.a, ehx.c>> $$0) {
-      return (ehx)$$0.map(Function.identity(), Either::unwrap);
+   public int a() {
+      return this.k;
    }
 
-   private static Either<ehx.b, Either<ehx.a, ehx.c>> a(ehx $$0) {
-      return $$0 instanceof ehx.b ? Either.left((ehx.b)$$0) : Either.right($$0 instanceof ehx.a ? Either.left((ehx.a)$$0) : Either.right((ehx.c)$$0));
+   @Deprecated
+   public Optional<ebg> a(ehw.o $$0, ejg $$1, Function<iw, jg<dlc>> $$2, edd $$3, ehj $$4, iw $$5, boolean $$6) {
+      ehw.g $$7 = new ehw.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().f(mi.aG), $$1);
+      ehw.u $$8 = $$0.apply($$7);
+      int $$9 = $$5.u();
+      int $$10 = $$5.v();
+      int $$11 = $$5.w();
+      $$7.a($$9, $$11);
+      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
+      ebg $$12 = $$8.tryApply($$9, $$10, $$11);
+      return Optional.ofNullable($$12);
    }
 
-   int a(eia var1);
+   private void a(eda $$0, int $$1, int $$2, int $$3, dkb $$4) {
+      double $$5 = 0.2;
+      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
+      if (!($$6 <= 0.0)) {
+         double $$7 = 0.75;
+         double $$8 = 1.5;
+         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
+         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
+         int $$11 = azq.a($$10);
+         if ($$3 <= $$11) {
+            for (int $$12 = $$11; $$12 >= $$4.K_(); $$12--) {
+               ebg $$13 = $$0.a($$12);
+               if ($$13.a(this.j.b())) {
+                  break;
+               }
 
-   public static record a(int e) implements ehx {
-      public static final Codec<ehx.a> d = Codec.intRange(efb.e, efb.d).fieldOf("above_bottom").xmap(ehx.a::new, ehx.a::c).codec();
+               if ($$13.a(dng.J)) {
+                  return;
+               }
+            }
 
-      @Override
-      public int a(eia $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements ehx {
-      public static final Codec<ehx.b> d = Codec.intRange(efb.e, efb.d).fieldOf("absolute").xmap(ehx.b::new, ehx.b::c).codec();
-
-      @Override
-      public int a(eia $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
+            for (int $$14 = $$11; $$14 >= $$4.K_() && $$0.a($$14).l(); $$14--) {
+               $$0.a($$14, this.j);
+            }
+         }
       }
    }
 
-   public static record c(int e) implements ehx {
-      public static final Codec<ehx.c> d = Codec.intRange(efb.e, efb.d).fieldOf("below_top").xmap(ehx.c::new, ehx.c::c).codec();
+   private void a(int $$0, dlc $$1, eda $$2, iw.a $$3, int $$4, int $$5, int $$6) {
+      double $$7 = 1.28;
+      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
+      if (!($$8 <= 1.8)) {
+         double $$9 = 1.17;
+         double $$10 = 1.5;
+         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
+         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
+         if ($$1.d($$3.d($$4, this.k, $$5), this.k)) {
+            $$12 -= 2.0;
+         }
 
-      @Override
-      public int a(eia $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
+         double $$13;
+         if ($$12 > 2.0) {
+            $$13 = (double)this.k - $$12 - 7.0;
+            $$12 += (double)this.k;
+         } else {
+            $$12 = 0.0;
+            $$13 = 0.0;
+         }
+
+         double $$15 = $$12;
+         azz $$16 = this.t.a($$4, 0, $$5);
+         int $$17 = 2 + $$16.a(4);
+         int $$18 = this.k + 18 + $$16.a(10);
+         int $$19 = 0;
+
+         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
+            if ($$2.a($$20).l() && $$20 < (int)$$15 && $$16.j() > 0.01
+               || $$2.a($$20).a(dng.J) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
+               if ($$19 <= $$17 && $$20 > $$18) {
+                  $$2.a($$20, i);
+                  $$19++;
+               } else {
+                  $$2.a($$20, h);
+               }
+            }
+         }
+      }
+   }
+
+   private static ebg[] a(azz $$0) {
+      ebg[] $$1 = new ebg[192];
+      Arrays.fill($$1, c);
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$2 += $$0.a(5) + 1;
+         if ($$2 < $$1.length) {
+            $$1[$$2] = b;
+         }
       }
 
-      @Override
-      public String toString() {
-         return this.e + " below top";
+      a($$0, $$1, 1, d);
+      a($$0, $$1, 2, e);
+      a($$0, $$1, 1, f);
+      int $$3 = $$0.a(9, 15);
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
+         $$1[$$5] = a;
+         if ($$5 - 1 > 0 && $$0.h()) {
+            $$1[$$5 - 1] = g;
+         }
+
+         if ($$5 + 1 < $$1.length && $$0.h()) {
+            $$1[$$5 + 1] = g;
+         }
+
+         $$4++;
       }
 
-      public int c() {
-         return this.e;
+      return $$1;
+   }
+
+   private static void a(azz $$0, ebg[] $$1, int $$2, ebg $$3) {
+      int $$4 = $$0.a(6, 15);
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         int $$6 = $$2 + $$0.a(3);
+         int $$7 = $$0.a($$1.length);
+
+         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
+            $$1[$$7 + $$8] = $$3;
+         }
       }
+   }
+
+   protected ebg a(int $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
+      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

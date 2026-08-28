@@ -1,59 +1,36 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class fqf extends fqb {
+public class fqf extends fqd {
    private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final xa d;
-   private final Runnable e;
+   private static final xc c = xc.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   public fqf(long $$0, xa $$1, Runnable $$2) {
-      this.c = $$0;
+   public fqf(long $$0, String $$1, String $$2) {
+      this.f = $$0;
       this.d = $$1;
       this.e = $$2;
    }
 
-   protected abstract void a(fmd var1, long var2) throws fnz;
-
    @Override
    public void run() {
-      fmd $$0 = fmd.a();
-      int $$1 = 0;
+      fmf $$0 = fmf.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (foa var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fob var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
       }
    }
 
    @Override
-   public xa a() {
-      return this.d;
+   public xc a() {
+      return c;
    }
 }

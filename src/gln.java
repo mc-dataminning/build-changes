@@ -1,11 +1,9 @@
-@FunctionalInterface
-public interface gln {
-   gln a = $$0 -> $$0;
+public class gln {
+   final int a;
+   final int b;
 
-   static gln scaling(float $$0) {
-      float $$1 = 24.016F * (1.0F - $$0);
-      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
+   public gln(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
-
-   glm apply(glm var1);
 }

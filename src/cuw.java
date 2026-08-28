@@ -1,122 +1,109 @@
-public class cuw extends cul implements dze {
-   private static final boolean c = true;
-   private boolean d = true;
-   private boolean h = false;
+public class cuw extends cum {
+   static final akn<String> b = akr.a(cuw.class, akp.e);
+   static final akn<xc> c = akr.a(cuw.class, akp.f);
+   private final diy d = new cuw.a();
+   private static final int h = 4;
+   private int i;
 
-   public cuw(bxc<? extends cuw> $$0, djx $$1) {
+   public cuw(bxe<? extends cuw> $$0, djz $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public ebe v() {
-      return dne.hD.m();
+   protected czw o() {
+      return dae.ov;
    }
 
    @Override
-   public int x() {
-      return 1;
+   public daa dI() {
+      return new daa(dae.vX);
    }
 
    @Override
-   public int b() {
-      return 5;
+   protected void a(akr.a $$0) {
+      super.a($$0);
+      $$0.a(b, "");
+      $$0.a(c, xb.a);
+   }
+
+   @Override
+   protected void a(ua $$0) {
+      super.a($$0);
+      this.d.b($$0, this.dX());
+      this.ar().a(b, this.q().m());
+      this.ar().a(c, this.q().l());
+   }
+
+   @Override
+   protected void b(ua $$0) {
+      super.b($$0);
+      this.d.a($$0, this.dX());
+   }
+
+   @Override
+   public ebg v() {
+      return dng.gm.m();
+   }
+
+   public diy q() {
+      return this.d;
    }
 
    @Override
    public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.A()) {
-         this.q($$4);
-      }
-   }
-
-   public boolean A() {
-      return this.d;
-   }
-
-   public void q(boolean $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public double B() {
-      return this.dA();
-   }
-
-   @Override
-   public double C() {
-      return this.dC() + 0.5;
-   }
-
-   @Override
-   public double D() {
-      return this.dG();
-   }
-
-   @Override
-   public boolean E() {
-      return false;
-   }
-
-   @Override
-   public void h() {
-      this.h = false;
-      super.h();
-      this.J();
-   }
-
-   @Override
-   protected double a(iv $$0, eci $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.J();
-      return $$3;
-   }
-
-   private void J() {
-      if (!this.dV().C && this.bJ() && this.A() && !this.h && this.F()) {
-         this.h = true;
-         this.e();
-      }
-   }
-
-   public boolean F() {
-      if (dzf.a(this.dV(), this)) {
-         return true;
-      } else {
-         for (coc $$1 : this.dV().a(coc.class, this.cR().c(0.25, 0.0, 0.25), bxa.a)) {
-            if (dzf.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
+      if ($$3 && this.af - this.i >= 4) {
+         this.q().a(this.dV());
+         this.i = this.af;
       }
    }
 
    @Override
-   protected czu o() {
-      return dac.oz;
+   public but a(crz $$0, bus $$1) {
+      return this.d.a($$0);
    }
 
    @Override
-   public czy dI() {
-      return new czy(dac.oz);
-   }
-
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.d);
-   }
-
-   @Override
-   protected void a(tz $$0) {
+   public void a(akn<?> $$0) {
       super.a($$0);
-      this.d = $$0.b("Enabled", true);
+      if (c.equals($$0)) {
+         try {
+            this.d.c(this.ar().a(c));
+         } catch (Throwable var3) {
+         }
+      } else if (b.equals($$0)) {
+         this.d.a(this.ar().a(b));
+      }
    }
 
-   @Override
-   public cvq a(int $$0, crw $$1) {
-      return new cwr($$0, $$1, this);
+   public class a extends diy {
+      @Override
+      public aru e() {
+         return (aru)cuw.this.dV();
+      }
+
+      @Override
+      public void f() {
+         cuw.this.ar().a(cuw.b, this.m());
+         cuw.this.ar().a(cuw.c, this.l());
+      }
+
+      @Override
+      public ffs g() {
+         return cuw.this.dt();
+      }
+
+      public cuw h() {
+         return cuw.this;
+      }
+
+      @Override
+      public ek i() {
+         return new ek(this, cuw.this.dt(), cuw.this.bT(), this.e(), 2, this.n().getString(), cuw.this.m_(), this.e().p(), cuw.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cuw.this.dQ();
+      }
    }
 }

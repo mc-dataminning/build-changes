@@ -1,26 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ein implements eik {
-   private final ka e;
-   private final jb f;
-   public static final MapCodec<ein> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ka.v(16).optionalFieldOf("offset", ka.i).forGetter($$0x -> $$0x.e), jb.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, ein::new)
-   );
+public interface ein<P extends eim> {
+   ein<eis> a = a("matching_blocks", eis.a);
+   ein<eir> b = a("matching_block_tag", eir.e);
+   ein<eit> c = a("matching_fluids", eit.a);
+   ein<eip> d = a("has_sturdy_face", eip.a);
+   ein<eiw> e = a("solid", eiw.a);
+   ein<eiv> f = a("replaceable", eiv.a);
+   ein<eja> g = a("would_survive", eja.a);
+   ein<eiq> h = a("inside_world_bounds", eiq.a);
+   ein<eil> i = a("any_of", eil.a);
+   ein<eik> j = a("all_of", eik.a);
+   ein<eiu> k = a("not", eiu.a);
+   ein<eiy> l = a("true", eiy.e);
+   ein<eiz> m = a("unobstructed", eiz.a);
 
-   public ein(ka $$0, jb $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+   MapCodec<P> codec();
 
-   public boolean a(dkw $$0, iv $$1) {
-      iv $$2 = $$1.a(this.e);
-      return $$0.a_($$2).c($$0, $$2, this.f);
-   }
-
-   @Override
-   public eil<?> a() {
-      return eil.d;
+   private static <P extends eim> ein<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.M, $$0, () -> $$1);
    }
 }

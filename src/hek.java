@@ -1,3 +1,4 @@
-public class hek extends hfe {
-   public boolean a;
+public class hek extends hfr {
+   public float a;
+   public boolean b;
 }

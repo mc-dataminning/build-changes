@@ -1,61 +1,68 @@
-public class cxk extends cvq {
-   private static final int m = 27;
-   private final buk n;
+import javax.annotation.Nullable;
 
-   public cxk(int $$0, crw $$1) {
-      this($$0, $$1, new buy(27));
+public class cxk implements bum, cxj {
+   private final jp<daa> b = jp.a(1, daa.k);
+   @Nullable
+   private dew<?> c;
+
+   @Override
+   public int b() {
+      return 1;
    }
 
-   public cxk(int $$0, crw $$1, buk $$2) {
-      super(cwz.u, $$0);
-      a($$2, 27);
-      this.n = $$2;
-      $$2.c_($$1.h);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cxl($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+   @Override
+   public boolean c() {
+      for (daa $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
          }
       }
 
-      this.c($$1, 8, 84);
+      return true;
    }
 
    @Override
-   public boolean b(crx $$0) {
-      return this.n.a($$0);
+   public daa a(int $$0) {
+      return this.b.get(0);
    }
 
    @Override
-   public czy b(crx $$0, int $$1) {
-      czy $$2 = czy.k;
-      cxn $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         czy $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return czy.k;
-            }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return czy.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(czy.k);
-         } else {
-            $$3.d();
-         }
-      }
-
-      return $$2;
+   public daa a(int $$0, int $$1) {
+      return bun.a(this.b, 0);
    }
 
    @Override
-   public void a(crx $$0) {
-      super.a($$0);
-      this.n.c($$0);
+   public daa b(int $$0) {
+      return bun.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, daa $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(crz $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable dew<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public dew<?> d() {
+      return this.c;
    }
 }

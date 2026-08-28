@@ -1,28 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bzu {
-   public static <E extends bxu> bzm<E> a(int $$0, BiPredicate<E, bwt> $$1) {
-      return ccy.a((Function<ccy.b<E>, ? extends App<ccy.c<E>, cdb<E>>>)($$2 -> $$2.group($$2.a(cgw.t)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bwt $$7 = $$5.dk();
-               bwt $$8 = $$2.<bwt>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bwt $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.bO();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class bzu extends bzn<clj> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bzu() {
+      super(ImmutableMap.of(cgy.n, cgz.b), 100);
    }
 
-   private static boolean a(bxu $$0, bwt $$1, int $$2) {
-      return $$1.bJ() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
+   protected boolean a(aru $$0, clj $$1) {
+      return $$1.at() == byi.a;
+   }
+
+   protected boolean a(aru $$0, clj $$1, long $$2) {
+      return this.e < 60;
+   }
+
+   protected void b(aru $$0, clj $$1, long $$2) {
+      if (!$$1.bl()) {
+         $$1.b(byi.i);
+         this.e = 0;
+      }
+   }
+
+   protected void c(aru $$0, clj $$1, long $$2) {
+      $$1.b(byi.a);
+   }
+
+   protected void d(aru $$0, clj $$1, long $$2) {
+      this.e++;
    }
 }

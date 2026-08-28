@@ -1,26 +1,40 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record adb(ffq b, Optional<ffq> c, lw d, jf<awo> e) implements zh<abw> {
-   public static final yy<wl, adb> a = yy.a(ffq.b, adb::b, ffq.b.a(yw::a), adb::e, ly.bl, adb::f, awo.d, adb::g, adb::new);
+public class adb implements zj<aby> {
+   public static final za<vy, adb> a = zj.a(adb::a, adb::new);
+   private final int b;
+   private final byte c;
 
-   @Override
-   public zj<adb> a() {
-      return agp.E;
+   public adb(bwv $$0, byte $$1) {
+      this.b = $$0.ao();
+      this.c = $$1;
    }
 
-   public void a(abw $$0) {
+   private adb(vy $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vy $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
+   }
+
+   @Override
+   public zl<adb> a() {
+      return agr.C;
+   }
+
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public Optional<ffq> e() {
+   @Nullable
+   public bwv a(djz $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
       return this.c;
-   }
-
-   public lw f() {
-      return this.d;
-   }
-
-   public jf<awo> g() {
-      return this.e;
    }
 }

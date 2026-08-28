@@ -1,56 +1,57 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cmz extends cmx {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private ffq d;
-   private int e;
+public abstract class cmz implements cnh {
+   protected final cmx a;
 
-   public cmz(cmv $$0) {
-      super($$0);
+   public cmz(cmx $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(ars $$0) {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.t().a(cnl.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.t().a(cnl.a);
-      } else {
-         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
-      }
+   public boolean a() {
+      return false;
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void a(aru $$0) {
+   }
+
+   @Override
+   public void a(cmw $$0, iw $$1, bvk $$2, @Nullable crz $$3) {
    }
 
    @Override
    public void c() {
-      this.d = null;
-      this.e = 0;
    }
 
-   public void a(ffq $$0) {
-      this.d = $$0;
+   @Override
+   public void d() {
    }
 
    @Override
    public float e() {
-      return 3.0F;
+      return 0.6F;
    }
 
    @Nullable
    @Override
-   public ffq f() {
-      return this.d;
+   public ffs f() {
+      return null;
    }
 
    @Override
-   public cnl<cmz> h() {
-      return cnl.i;
+   public float a(bvk $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

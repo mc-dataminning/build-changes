@@ -1,144 +1,148 @@
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
 public class hkv {
-   public static final Set<aue<?>> a = Set.of(hmn.b);
-   private static final Logger b = LogUtils.getLogger();
-   private final ali c;
-   private final int d;
-   private final int e;
-   private final int f;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 64;
+   private static final int c = 64;
+   private static final int d = 32;
 
-   public hkv(ali $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static CompletableFuture<alk> a(alk $$0, Path $$1, String $$2, boolean $$3) {
+      return CompletableFuture.<fki>supplyAsync(() -> {
+         fki $$3x;
+         try {
+            $$3x = a($$1, $$2);
+         } catch (IOException var5) {
+            throw new UncheckedIOException(var5);
+         }
+
+         return $$3 ? a($$3x, $$2) : $$3x;
+      }, ag.j().a("downloadTexture")).thenCompose($$1x -> a($$0, $$1x));
    }
 
-   public static hkv a(hkz $$0) {
-      return new hkv($$0.e(), $$0.f(), $$0.g(), $$0.h());
-   }
+   private static fki a(Path $$0, String $$1) throws IOException {
+      if (Files.isRegularFile($$0)) {
+         a.debug("Loading HTTP texture from local cache ({})", $$0);
 
-   public hkv.a a(List<hku> $$0, int $$1, Executor $$2) {
-      hkv.a var17;
-      try (brg $$3 = bra.a().c(() -> "stitch " + this.c)) {
-         int $$4 = this.d;
-         hkx<hku> $$5 = new hkx<>($$4, $$4, $$1);
-         int $$6 = Integer.MAX_VALUE;
-         int $$7 = 1 << $$1;
+         fki var17;
+         try (InputStream $$2 = Files.newInputStream($$0)) {
+            var17 = fki.a($$2);
+         }
 
-         for (hku $$8 : $$0) {
-            $$6 = Math.min($$6, Math.min($$8.a(), $$8.b()));
-            int $$9 = Math.min(Integer.lowestOneBit($$8.a()), Integer.lowestOneBit($$8.b()));
-            if ($$9 < $$7) {
-               b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$8.c(), $$8.a(), $$8.b(), azo.f($$7), azo.f($$9)});
-               $$7 = $$9;
+         return var17;
+      } else {
+         HttpURLConnection $$3 = null;
+         a.debug("Downloading HTTP texture from {} to {}", $$1, $$0);
+         URI $$4 = URI.create($$1);
+
+         fki $$7;
+         try {
+            $$3 = (HttpURLConnection)$$4.toURL().openConnection(frf.Q().Z());
+            $$3.setDoInput(true);
+            $$3.setDoOutput(false);
+            $$3.connect();
+            int $$5 = $$3.getResponseCode();
+            if ($$5 / 100 != 2) {
+               throw new IOException("Failed to open " + $$4 + ", HTTP error code: " + $$5);
             }
 
-            $$5.a($$8);
+            byte[] $$6 = $$3.getInputStream().readAllBytes();
+
+            try {
+               w.c($$0.getParent());
+               Files.write($$0, $$6);
+            } catch (IOException var13) {
+               a.warn("Failed to cache texture {} in {}", $$1, $$0);
+            }
+
+            $$7 = fki.a($$6);
+         } finally {
+            if ($$3 != null) {
+               $$3.disconnect();
+            }
          }
 
-         int $$10 = Math.min($$6, $$7);
-         int $$11 = azo.f($$10);
-         int $$12;
-         if ($$11 < $$1) {
-            b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$11, $$10});
-            $$12 = $$11;
-         } else {
-            $$12 = $$1;
+         return $$7;
+      }
+   }
+
+   private static CompletableFuture<alk> a(alk $$0, fki $$1) {
+      frf $$2 = frf.Q();
+      return CompletableFuture.supplyAsync(() -> {
+         $$2.aa().a($$0, new hkp($$0::toString, $$1));
+         return $$0;
+      }, $$2);
+   }
+
+   private static fki a(fki $$0, String $$1) {
+      int $$2 = $$0.b();
+      int $$3 = $$0.a();
+      if ($$3 == 64 && ($$2 == 32 || $$2 == 64)) {
+         boolean $$4 = $$2 == 32;
+         if ($$4) {
+            fki $$5 = new fki(64, 64, true);
+            $$5.a($$0);
+            $$0.close();
+            $$0 = $$5;
+            $$5.a(0, 32, 64, 32, 0);
+            $$5.a(4, 16, 16, 32, 4, 4, true, false);
+            $$5.a(8, 16, 16, 32, 4, 4, true, false);
+            $$5.a(0, 20, 24, 32, 4, 12, true, false);
+            $$5.a(4, 20, 16, 32, 4, 12, true, false);
+            $$5.a(8, 20, 8, 32, 4, 12, true, false);
+            $$5.a(12, 20, 16, 32, 4, 12, true, false);
+            $$5.a(44, 16, -8, 32, 4, 4, true, false);
+            $$5.a(48, 16, -8, 32, 4, 4, true, false);
+            $$5.a(40, 20, 0, 32, 4, 12, true, false);
+            $$5.a(44, 20, -8, 32, 4, 12, true, false);
+            $$5.a(48, 20, -16, 32, 4, 12, true, false);
+            $$5.a(52, 20, -8, 32, 4, 12, true, false);
          }
 
-         try {
-            $$5.c();
-         } catch (hky var19) {
-            p $$15 = p.a(var19, "Stitching");
-            q $$16 = $$15.a("Stitcher");
-            $$16.a(
-               "Sprites",
-               var19.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-            );
-            $$16.a("Max Texture Size", $$4);
-            throw new aa($$15);
+         b($$0, 0, 0, 32, 16);
+         if ($$4) {
+            a($$0, 32, 0, 64, 32);
          }
 
-         int $$17 = Math.max($$5.a(), this.e);
-         int $$18 = Math.max($$5.b(), this.f);
-         Map<ali, hla> $$19 = this.a($$5, $$17, $$18);
-         hla $$20 = $$19.get(hkp.c());
-         CompletableFuture<Void> $$21;
-         if ($$12 > 0) {
-            $$21 = CompletableFuture.runAsync(() -> $$19.values().forEach($$1xx -> $$1xx.e().a($$12)), $$2);
-         } else {
-            $$21 = CompletableFuture.completedFuture(null);
+         b($$0, 0, 16, 64, 32);
+         b($$0, 16, 48, 48, 64);
+         return $$0;
+      } else {
+         $$0.close();
+         throw new IllegalStateException("Discarding incorrectly sized (" + $$3 + "x" + $$2 + ") skin texture from " + $$1);
+      }
+   }
+
+   private static void a(fki $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            int $$7 = $$0.a($$5, $$6);
+            if (aya.a($$7) < 128) {
+               return;
+            }
          }
-
-         var17 = new hkv.a($$17, $$18, $$12, $$20, $$19, $$21);
       }
 
-      return var17;
+      for (int $$8 = $$1; $$8 < $$3; $$8++) {
+         for (int $$9 = $$2; $$9 < $$4; $$9++) {
+            $$0.b($$8, $$9, $$0.a($$8, $$9) & 16777215);
+         }
+      }
    }
 
-   public static CompletableFuture<List<hku>> a(hle $$0, List<Function<hle, hku>> $$1, Executor $$2) {
-      List<CompletableFuture<hku>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (hku)$$2x.apply($$0), $$2)).toList();
-      return ag.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
-   }
-
-   public CompletableFuture<hkv.a> a(avf $$0, ali $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
-   }
-
-   public CompletableFuture<hkv.a> a(avf $$0, ali $$1, int $$2, Executor $$3, Collection<aue<?>> $$4) {
-      hle $$5 = hle.create($$4);
-      return CompletableFuture.<List<Function<hle, hku>>>supplyAsync(() -> hlg.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
-   }
-
-   private Map<ali, hla> a(hkx<hku> $$0, int $$1, int $$2) {
-      Map<ali, hla> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new hla(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
-
-   public static record a(int a, int b, int c, hla d, Map<ali, hla> e, CompletableFuture<Void> f) {
-      public CompletableFuture<hkv.a> a() {
-         return this.f.thenApply($$0 -> this);
-      }
-
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public hla e() {
-         return this.d;
-      }
-
-      public Map<ali, hla> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
+   private static void b(fki $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            $$0.b($$5, $$6, aya.f($$0.a($$5, $$6)));
+         }
       }
    }
 }

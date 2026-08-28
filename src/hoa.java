@@ -1,7 +1,8 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface hoa {
-   void a(Map<UUID, atm.c> var1, Consumer<atm.b> var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hoa {
 }

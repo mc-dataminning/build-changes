@@ -1,47 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record fdf(jf<dgl> b, List<Float> c) implements fdq {
-   public static final MapCodec<fdf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgl.c.fieldOf("enchantment").forGetter(fdf::c), ayw.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(fdf::d)).apply($$0, fdf::new)
-   );
+public class fdf extends fdi {
+   public static final MapCodec<fdf> a = a(fdf::new);
+   public static final Codec<fdf> b = b(fdf::new);
 
-   @Override
-   public fdr b() {
-      return fds.k;
+   fdf(List<fds> $$0) {
+      super($$0, ag.a($$0));
+   }
+
+   public static fdf a(List<fds> $$0) {
+      return new fdf(List.copyOf($$0));
    }
 
    @Override
-   public Set<baz<?>> a() {
-      return Set.of(fdb.i);
+   public fdt b() {
+      return fdu.c;
    }
 
-   public boolean a(fah $$0) {
-      czy $$1 = $$0.c(fdb.i);
-      int $$2 = $$1 != null ? dgn.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public static fdf.a a(fds.a... $$0) {
+      return new fdf.a($$0);
    }
 
-   public static fdq.a a(jf<dgl> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+   public static class a extends fdi.a {
+      public a(fds.a... $$0) {
+         super($$0);
       }
 
-      return () -> new fdf($$0, $$2);
-   }
+      @Override
+      public fdf.a and(fds.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public jf<dgl> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+      @Override
+      protected fds a(List<fds> $$0) {
+         return new fdf($$0);
+      }
    }
 }

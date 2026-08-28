@@ -1,8 +1,8 @@
-public class akx {
-   public static final alh<czu> a = a("pumpkin_seeds");
-   public static final alh<czu> b = a("melon_seeds");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static alh<czu> a(String $$0) {
-      return alh.a(mh.K, ali.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface akx {
 }

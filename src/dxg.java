@@ -1,24 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxg extends dnc {
-   public static final MapCodec<dxg> a = b(dxg::new);
+public class dxg extends dvi implements dxa {
+   public static final MapCodec<dxg> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxa.a.e.fieldOf("weathering_state").forGetter(doh::c), ebg.a.fieldOf("base_state").forGetter($$0x -> $$0x.f), t()).apply($$0, dxg::new)
+   );
+   private final dxa.a h;
 
    @Override
    public MapCodec<dxg> a() {
-      return a;
+      return g;
    }
 
-   public dxg(ebd.d $$0) {
-      super($$0);
+   public dxg(dxa.a $$0, ebg $$1, ebf.d $$2) {
+      super($$1, $$2);
+      this.h = $$0;
    }
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
-      ffq $$5 = new ffq(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bxu $$6 && $$6.b(bvz.K)) {
-         $$5 = new ffq(0.5, 0.25, 0.5);
-      }
+   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-      $$3.a($$0, $$5);
+   @Override
+   protected boolean f(ebg $$0) {
+      return dxa.c($$0.b()).isPresent();
+   }
+
+   public dxa.a q() {
+      return this.h;
    }
 }

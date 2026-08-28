@@ -1,45 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class euu extends esb {
-   public static final MapCodec<euu> d = a(euu::new);
+public class euu extends esd {
+   public static final MapCodec<euu> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, euu::new)
+   );
+   public final boolean e;
 
-   public euu(esb.c $$0) {
+   public euu(esd.c $$0, boolean $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<esb.b> a(esb.a $$0) {
-      return Optional.of(new esb.b($$0.h().l(), (Consumer<est>)($$1 -> a($$1, $$0))));
+   public Optional<esd.b> a(esd.a $$0) {
+      ehf.a $$1 = this.e ? ehf.a.a : ehf.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
    }
 
-   private static void a(est $$0, esb.a $$1) {
-      int $$2 = 0;
-
-      eut.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().h, $$1.h().i);
-         eut.a();
-         $$3 = new eut.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<esf> $$4 = $$3.c;
-
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            esf $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
+   private void a(esv $$0, esd.a $$1) {
+      dty $$2 = dty.a($$1.f());
+      iw $$3 = new iw($$1.h().d(), 90, $$1.h().e());
+      eut.a $$4 = eut.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+      if ($$4.l()) {
+         erv $$5 = $$4.f();
+         int $$7;
+         if (this.e) {
+            int $$6 = esd.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+            $$7 = $$4.a($$6, $$1.f());
+         } else {
+            $$7 = esd.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
          }
 
-         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+         $$4.c($$7);
+      }
    }
 
    @Override
-   public esk<?> e() {
-      return esk.n;
+   public esm<?> e() {
+      return esm.m;
    }
 }

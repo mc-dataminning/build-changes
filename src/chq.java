@@ -1,30 +1,41 @@
 import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class chq extends cic<bxu> {
-   @Override
-   public Set<cgw<?>> a() {
-      return ImmutableSet.of(cgw.y, cgw.z);
+public class chq extends cie<bxw> {
+   private static final int a = 200;
+   private static final int b = 599;
+
+   public chq() {
+      this(200);
+   }
+
+   public chq(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(ars $$0, bxu $$1) {
-      byu<?> $$2 = $$1.ec();
-      bvi $$3 = $$1.eI();
-      if ($$3 != null) {
-         $$2.a(cgw.y, $$1.eI());
-         bwt $$4 = $$3.d();
-         if ($$4 instanceof bxu) {
-            $$2.a(cgw.z, (bxu)$$4);
-         }
-      } else {
-         $$2.b(cgw.y);
-      }
+   protected void a(aru $$0, bxw $$1) {
+      a($$1);
+   }
 
-      $$2.c(cgw.z).ifPresent($$2x -> {
-         if (!$$2x.bJ() || $$2x.dV() != $$0) {
-            $$2.b(cgw.z);
+   @Override
+   public Set<cgy<?>> a() {
+      return ImmutableSet.of(cgy.g);
+   }
+
+   public static void a(bxw $$0) {
+      Optional<List<bxw>> $$1 = $$0.ec().c(cgy.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.an().equals(bxe.aq));
+         if ($$2) {
+            b($$0);
          }
-      });
+      }
+   }
+
+   public static void b(bxw $$0) {
+      $$0.ec().a(cgy.G, true, 599L);
    }
 }

@@ -1,65 +1,60 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
 
-public class euo extends esb {
-   public static final MapCodec<euo> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               euo.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, euo::new)
-   );
-   public final euo.a e;
-   public final float f;
-   public final float g;
+public class euo extends esd {
+   public static final MapCodec<euo> d = a(euo::new);
 
-   public euo(esb.c $$0, euo.a $$1, float $$2, float $$3) {
+   public euo(esd.c $$0) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
-   public Optional<esb.b> a(esb.a $$0) {
-      return a($$0, ehd.a.c, $$1 -> this.a($$1, $$0));
+   public Optional<esd.b> a(esd.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (jg<dlc> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(axf.X)) {
+            return Optional.empty();
+         }
+      }
+
+      return a($$0, ehf.a.c, $$1x -> a($$1x, $$0));
    }
 
-   private void a(est $$0, esb.a $$1) {
-      iv $$2 = new iv($$1.h().d(), 90, $$1.h().e());
-      dtw $$3 = dtw.a($$1.f());
-      eun.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   private static esh a(dje $$0, eie $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      jc $$4 = jc.c.a.a($$1);
+      return new eun.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(esv $$0, esd.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static ess a(dje $$0, long $$1, ess $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         eie $$3 = new eie(new ehg(ehu.a()));
+         $$3.c($$1, $$0.h, $$0.i);
+         esh $$4 = $$2.c().get(0);
+         erv $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         jc $$8 = jc.c.a.a($$3);
+         jc $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         esh $$10 = new eun.h($$3, $$6, $$7, $$9);
+         esv $$11 = new esv();
+         $$11.a($$10);
+         return $$11.a();
+      }
    }
 
    @Override
-   public esk<?> e() {
-      return esk.k;
-   }
-
-   public static enum a implements bam {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<euo.a> c = bam.a(euo.a::values);
-      @Deprecated
-      public static final Codec<euo.a> d = ayw.c(euo.a::valueOf);
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
+   public esm<?> e() {
+      return esm.j;
    }
 }

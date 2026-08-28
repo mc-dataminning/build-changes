@@ -1,38 +1,48 @@
-public class gkd extends gia<hgb> {
-   private static final int a = 2;
-   private final gle[] b = new gle[2];
+public class gkd extends gic<hfr> {
+   private static final String a = "upper_body";
+   private final glg b;
+   private final glg c;
+   private final glg d;
+   private final glg e;
 
-   public gkd(gle $$0) {
+   public gkd(glg $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
+   public static glm a() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      float $$2 = 4.0F;
+      glk $$3 = new glk(-0.5F);
+      $$1.a("head", gll.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gli.a(0.0F, 4.0F, 0.0F));
+      gll $$4 = gll.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gli.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gli.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", gll.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gli.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", gll.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gli.a(0.0F, 24.0F, 0.0F));
+      return glm.a($$0, 64, 64);
    }
 
-   public static glk a() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), glj.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), glg.a.a($$4));
-      }
-
-      return glk.a($$0, 64, 64);
-   }
-
-   public void a(hgb $$0) {
+   public void a(hfr $$0) {
       super.a($$0);
+      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = azq.a(this.b.f);
+      float $$2 = azq.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
+   }
 
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = azo.h($$2) * (float) (Math.PI / 180.0);
-      }
+   public glg b() {
+      return this.c;
    }
 }

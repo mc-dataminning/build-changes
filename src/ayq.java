@@ -1,43 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+public class ayq {
+   private static final int a = 2;
+   private static final int b = 6;
+   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
 
-public class ayq<T> {
-   private final AtomicReferenceArray<T> a;
-   private final AtomicInteger b;
-
-   public ayq(int $$0) {
-      this.a = new AtomicReferenceArray<>($$0);
-      this.b = new AtomicInteger(0);
+   private ayq() {
    }
 
-   public void a(T $$0) {
-      int $$1 = this.a.length();
+   public static ffs a(ffs $$0, ayq.a $$1) {
+      int $$2 = azq.a($$0.a());
+      int $$3 = azq.a($$0.b());
+      int $$4 = azq.a($$0.c());
+      double $$5 = $$0.a() - (double)$$2;
+      double $$6 = $$0.b() - (double)$$3;
+      double $$7 = $$0.c() - (double)$$4;
+      double $$8 = 0.0;
+      ffs $$9 = ffs.c;
 
-      int $$2;
-      int $$3;
-      do {
-         $$2 = this.b.get();
-         $$3 = ($$2 + 1) % $$1;
-      } while (!this.b.compareAndSet($$2, $$3));
+      for (int $$10 = 0; $$10 < 6; $$10++) {
+         double $$11 = azq.d($$5, c[$$10 + 1], c[$$10]);
+         int $$12 = $$2 - 2 + $$10;
 
-      this.a.set($$3, $$0);
-   }
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            double $$14 = azq.d($$6, c[$$13 + 1], c[$$13]);
+            int $$15 = $$3 - 2 + $$13;
 
-   public List<T> a() {
-      int $$0 = this.b.get();
-      Builder<T> $$1 = ImmutableList.builder();
-
-      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
-         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
-         T $$4 = this.a.get($$3);
-         if ($$4 != null) {
-            $$1.add($$4);
+            for (int $$16 = 0; $$16 < 6; $$16++) {
+               double $$17 = azq.d($$7, c[$$16 + 1], c[$$16]);
+               int $$18 = $$4 - 2 + $$16;
+               double $$19 = $$11 * $$14 * $$17;
+               $$8 += $$19;
+               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).c($$19));
+            }
          }
       }
 
-      return $$1.build();
+      return $$9.c(1.0 / $$8);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      ffs fetch(int var1, int var2, int var3);
    }
 }

@@ -1,92 +1,85 @@
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class ctj extends csi {
+   private static final akn<Boolean> d = akr.a(ctj.class, akp.k);
+   private static final boolean e = false;
 
-public abstract class ctj extends csg implements csp {
-   public static final djr d = new dkq(true, false, Optional.empty(), mg.e.a(axe.cF).map(Function.identity()));
-   public static final double e = 0.25;
-
-   public ctj(bxc<? extends ctj> $$0, djx $$1) {
+   public ctj(bxe<? extends ctj> $$0, djz $$1) {
       super($$0, $$1);
-      this.c = 0.0;
    }
 
-   public ctj(bxc<? extends ctj> $$0, djx $$1, bwt $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
-      this.c = 0.0;
-   }
-
-   ctj(bxc<? extends ctj> $$0, double $$1, double $$2, double $$3, ffq $$4, djx $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.c = 0.0;
+   public ctj(djz $$0, bxw $$1, ffs $$2) {
+      super(bxe.bM, $$1, $$2, $$0);
    }
 
    @Override
-   protected ffl c(ffq $$0) {
-      float $$1 = this.an().n().a() / 2.0F;
-      float $$2 = this.an().n().b();
-      float $$3 = 0.15F;
-      return new ffl($$0.d - (double)$$1, $$0.e - 0.15F, $$0.f - (double)$$1, $$0.d + (double)$$1, $$0.e - 0.15F + (double)$$2, $$0.f + (double)$$1);
+   protected float m() {
+      return this.o() ? 0.73F : super.m();
    }
 
    @Override
-   public boolean i(bwt $$0) {
-      return $$0 instanceof ctj ? false : super.i($$0);
+   public boolean bX() {
+      return false;
    }
 
    @Override
-   protected boolean b(bwt $$0) {
-      if ($$0 instanceof ctj) {
-         return false;
-      } else {
-         return $$0.an() == bxc.S ? false : super.b($$0);
-      }
+   public float a(djs $$0, djd $$1, iw $$2, ebg $$3, exq $$4, float $$5) {
+      return this.o() && cnr.c($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
    @Override
-   protected void a(ffn $$0) {
+   protected void a(ffp $$0) {
       super.a($$0);
-      if (this.dV() instanceof ars $$1) {
-         bxu $$4 = this.q() instanceof bxu $$3 ? $$3 : null;
-         bwt $$5 = $$0.a();
-         if ($$4 != null) {
-            $$4.B($$5);
+      if (this.dV() instanceof aru $$1) {
+         bwv var8 = $$0.a();
+         boolean $$7;
+         if (this.q() instanceof bxw $$5) {
+            bvk $$6 = this.dW().a(this, $$5);
+            $$7 = var8.a($$1, $$6, 8.0F);
+            if ($$7) {
+               if (var8.bJ()) {
+                  dgp.a($$1, var8, $$6);
+               } else {
+                  $$5.c(5.0F);
+               }
+            }
+         } else {
+            $$7 = var8.a($$1, this.dW().q(), 5.0F);
          }
 
-         bvi $$6 = this.dW().c(this, $$4);
-         if ($$5.a($$1, $$6, 1.0F) && $$5 instanceof bxu $$7) {
-            dgn.a($$1, (bwt)$$7, $$6);
-         }
+         if ($$7 && var8 instanceof bxw $$9) {
+            int $$10 = 0;
+            if (this.dV().an() == buq.c) {
+               $$10 = 10;
+            } else if (this.dV().an() == buq.d) {
+               $$10 = 40;
+            }
 
-         this.a(this.dt());
+            if ($$10 > 0) {
+               $$9.b(new bvz(bwb.t, 20 * $$10, 1), this.z());
+            }
+         }
       }
    }
 
    @Override
-   public void i(double $$0, double $$1, double $$2) {
-   }
-
-   protected abstract void a(ffq var1);
-
-   @Override
-   protected void a(ffm $$0) {
+   protected void a(ffq $$0) {
       super.a($$0);
       if (!this.dV().C) {
-         ka $$1 = $$0.c().q();
-         ffq $$2 = ffq.a($$1).d(0.25, 0.25, 0.25);
-         ffq $$3 = $$0.g().e($$2);
-         this.a($$3);
+         this.dV().a(this, this.dA(), this.dC(), this.dG(), 1.0F, false, djz.a.c);
          this.aq();
       }
    }
 
    @Override
-   protected void a(ffo $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         this.aq();
-      }
+   protected void a(akr.a $$0) {
+      $$0.a(d, false);
+   }
+
+   public boolean o() {
+      return this.al.a(d);
+   }
+
+   public void a(boolean $$0) {
+      this.al.a(d, $$0);
    }
 
    @Override
@@ -95,33 +88,14 @@ public abstract class ctj extends csg implements csp {
    }
 
    @Override
-   public czy f() {
-      return czy.k;
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.o());
    }
 
    @Override
-   protected float m() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float n() {
-      return this.m();
-   }
-
-   @Nullable
-   @Override
-   protected lw j() {
-      return null;
-   }
-
-   @Override
-   public void h() {
-      if (!this.dV().C && this.dB() > this.dV().ao() + 30) {
-         this.a(this.dt());
-         this.aq();
-      } else {
-         super.h();
-      }
+   public void a(ua $$0) {
+      super.a($$0);
+      this.a($$0.b("dangerous", false));
    }
 }

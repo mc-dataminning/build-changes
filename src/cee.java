@@ -1,45 +1,77 @@
-public class cee extends cfd {
-   private final cjn g;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cee(cjn $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class cee extends ces {
+   private static final cil d = cil.b().a(8.0).d();
+   protected final cjm a;
+   private final Class<? extends cjm> e;
+   protected final aru b;
+   @Nullable
+   protected cjm c;
+   private int f;
+   private final double g;
+
+   public cee(cjm $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cjm>)$$0.getClass());
+   }
+
+   public cee(cjm $$0, double $$1, Class<? extends cjm> $$2) {
+      this.a = $$0;
+      this.b = a($$0);
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(ces.a.a, ces.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.g.q() && !this.g.gu() && super.b();
+      if (!this.a.gE()) {
+         return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
+      }
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
+   public boolean c() {
+      return this.c.bJ() && this.c.gE() && this.f < 60 && !this.c.gr();
    }
 
    @Override
    public void e() {
-      super.e();
-      this.g.x(false);
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.g.x(this.m());
+      this.a.J().a(this.c, 10.0F, (float)this.a.ad());
+      this.a.O().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
    }
 
-   @Override
-   protected boolean a(dka $$0, iv $$1) {
-      if (!$$0.v($$1.d())) {
-         return false;
-      } else {
-         ebe $$2 = $$0.a_($$1);
-         if ($$2.a(dne.cG)) {
-            return dyk.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dne.cO) && $$2.c(dqn.b) ? true : $$2.a(axe.T, $$0x -> $$0x.d(dmv.b).map($$0xx -> $$0xx != ebr.a).orElse(true));
+   @Nullable
+   private cjm h() {
+      List<? extends cjm> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cjm $$2 = null;
+
+      for (cjm $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gr() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
          }
       }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a(this.b, this.c);
    }
 }

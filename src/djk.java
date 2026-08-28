@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class djk {
-   public static final djk a = new djk(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<djk> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, djk::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
-
-   public djk(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+public interface djk extends djr, dkc, dke {
+   @Override
+   default <T extends dye> Optional<T> a(iw $$0, dyg<T> $$1) {
+      return dkc.super.a($$0, $$1);
    }
 
-   public List<String> a() {
-      return this.c;
+   @Override
+   default List<fgm> c(@Nullable bwv $$0, ffn $$1) {
+      return djr.super.c($$0, $$1);
    }
 
-   public List<String> b() {
-      return this.d;
+   @Override
+   default boolean a(@Nullable bwv $$0, fgm $$1) {
+      return djr.super.a($$0, $$1);
+   }
+
+   @Override
+   default iw a(ehf.a $$0, iw $$1) {
+      return dkc.super.a($$0, $$1);
    }
 }

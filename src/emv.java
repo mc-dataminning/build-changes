@@ -1,21 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emv extends emg {
-   public static final Codec<emv> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eoq.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               ayw.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               ayw.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
+public class emv implements emr {
+   public static final Codec<emv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, efd.c).fieldOf("height").forGetter($$0x -> $$0x.b), ebg.a.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, emv::new)
    );
-   public final int d;
-   public final int e;
+   public final int b;
+   public final ebg c;
 
-   public emv(eoq $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public emv(int $$0, ebg $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

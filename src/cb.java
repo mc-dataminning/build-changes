@@ -1,21 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public record cb(jj<bxc<?>> b) {
-   public static final Codec<cb> a = ju.a(mh.B).xmap(cb::new, cb::a);
+public class cb {
+   public static final MapCodec<ct> a = a("lightning", ct.b);
+   public static final MapCodec<cf> b = a("fishing_hook", cf.c);
+   public static final MapCodec<de> c = a("player", de.c);
+   public static final MapCodec<dp> d = a("slime", dp.b);
+   public static final MapCodec<dg> e = a("raider", dg.b);
+   public static final MapCodec<dj> f = a("sheep", dj.b);
 
-   public static cb a(jg<bxc<?>> $$0, bxc<?> $$1) {
-      return new cb(jj.a($$1.r()));
+   private static <T extends ca> MapCodec<T> a(String $$0, MapCodec<T> $$1) {
+      return jt.a(mh.an, $$0, $$1);
    }
 
-   public static cb a(jg<bxc<?>> $$0, axt<bxc<?>> $$1) {
-      return new cb($$0.b($$1));
-   }
-
-   public boolean a(bxc<?> $$0) {
-      return $$0.a(this.b);
-   }
-
-   public jj<bxc<?>> a() {
-      return this.b;
+   public static MapCodec<? extends ca> a(jt<MapCodec<? extends ca>> $$0) {
+      return a;
    }
 }

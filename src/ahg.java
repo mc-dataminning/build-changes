@@ -1,16 +1,37 @@
-public record ahg(int b, int c) implements zh<agr> {
-   public static final yy<vw, ahg> a = yy.a(yw.x, ahg::b, yw.h, ahg::e, ahg::new);
+public class ahg implements zj<agt> {
+   public static final za<vy, ahg> a = zj.a(ahg::a, ahg::new);
+   private final int b;
+   private final String c;
 
-   @Override
-   public zj<ahg> a() {
-      return agp.by;
+   public ahg(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(agr $$0) {
+   private ahg(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
+   }
+
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
+   }
+
+   @Override
+   public zl<ahg> a() {
+      return agr.bw;
+   }
+
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public int b() {
+      return this.b;
+   }
+
+   public String e() {
       return this.c;
    }
 }

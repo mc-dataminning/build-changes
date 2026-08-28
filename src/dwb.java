@@ -1,31 +1,23 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwb extends dms {
-   protected static final MapCodec<mc> a = mg.i
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof mc $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dwb> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dwb::new));
-   protected final mc c;
+public class dwb extends dru {
+   public static final MapCodec<dwb> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayy.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, dwb::new)
+   );
+
+   public dwb(float $$0, ebf.d $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected void a(djz $$0, iw $$1, azz $$2) {
+      ls $$3 = ls.a(lz.J, $$0.s($$1));
+      azu.a($$0, $$1, $$2, $$3);
+   }
 
    @Override
    public MapCodec<? extends dwb> a() {
-      return b;
-   }
-
-   protected dwb(mc $$0, ebd.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(ly.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.c, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      return g;
    }
 }

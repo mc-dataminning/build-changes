@@ -1,40 +1,46 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public record cyz<T>(Either<jf<T>, alh<T>> a) {
-   public cyz(jf<T> $$0) {
-      this(Either.left($$0));
+public class cyz extends czw implements dbc {
+   private static final Map<cyy, cyz> a = Maps.newEnumMap(cyy.class);
+   private final cyy b;
+
+   public cyz(cyy $$0, czw.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
-   public cyz(alh<T> $$0) {
-      this(Either.right($$0));
+   @Override
+   public but a(daa $$0, crz $$1, bxw $$2, bus $$3) {
+      if ($$2 instanceof cmi $$4 && $$4.bJ() && !$$4.x() && $$4.t() != this.b) {
+         $$4.dV().a($$1, $$4, awr.ik, aws.h, 1.0F, 1.0F);
+         if (!$$1.dV().C) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return but.a;
+      }
+
+      return but.e;
    }
 
-   public static <T> Codec<cyz<T>> a(alh<js<T>> $$0, Codec<jf<T>> $$1) {
-      return Codec.either($$1, alh.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(cyz::new, cyz::b);
+   public cyy a() {
+      return this.b;
    }
 
-   public static <T> yy<wl, cyz<T>> a(alh<js<T>> $$0, yy<wl, jf<T>> $$1) {
-      return yy.a(yw.a($$1, alh.b($$0)), cyz::b, cyz::new);
+   public static cyz a(cyy $$0) {
+      return a.get($$0);
    }
 
-   public Optional<T> a(js<T> $$0) {
-      return (Optional<T>)this.a.map($$0x -> Optional.of($$0x.a()), $$0::f);
-   }
-
-   public Optional<jf<T>> a(jh.a $$0) {
-      return (Optional<jf<T>>)this.a.map(Optional::of, $$1 -> $$0.c($$1).map($$0xx -> $$0xx));
-   }
-
-   public Optional<alh<T>> a() {
-      return (Optional<alh<T>>)this.a.map(jf::e, Optional::of);
-   }
-
-   public Either<jf<T>, alh<T>> b() {
-      return this.a;
+   @Override
+   public boolean a(djz $$0, dzs $$1, boolean $$2, crz $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.a()), $$2)) {
+         $$0.a(null, $$1.aB_(), awr.ik, aws.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

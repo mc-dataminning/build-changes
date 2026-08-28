@@ -1,57 +1,76 @@
-public class gpg extends gqk {
-   gpg(gmb $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+public class gpg extends gpm {
+   private static final int a = 3;
+   private final bwv b;
+   private final bwv D;
+   private int E;
+   private final gyi F;
+   private double G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+
+   public gpg(gyi $$0, gmd $$1, bwv $$2, bwv $$3) {
+      this($$0, $$1, $$2, $$3, $$2.dy());
+   }
+
+   private gpg(gyi $$0, gmd $$1, bwv $$2, bwv $$3, ffs $$4) {
+      super($$1, $$2.dA(), $$2.dC(), $$2.dG(), $$4.d, $$4.e, $$4.f);
+      this.b = this.a($$2);
+      this.D = $$3;
+      this.F = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bwv a(bwv $$0) {
+      return (bwv)(!($$0 instanceof coe) ? $$0 : ((coe)$$0).v());
    }
 
    @Override
-   public gpo b() {
-      return gpo.b;
+   public gpq b() {
+      return gpq.d;
    }
 
    @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
+   public void a(flq $$0, gsc $$1, fqn $$2, float $$3) {
+      float $$4 = ((float)this.E + $$3) / 3.0F;
+      $$4 *= $$4;
+      double $$5 = azq.d((double)$$3, this.J, this.G);
+      double $$6 = azq.d((double)$$3, this.K, this.H);
+      double $$7 = azq.d((double)$$3, this.L, this.I);
+      double $$8 = azq.d((double)$$4, this.b.dA(), $$5);
+      double $$9 = azq.d((double)$$4, this.b.dC(), $$6);
+      double $$10 = azq.d((double)$$4, this.b.dG(), $$7);
+      ffs $$11 = $$2.b();
+      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new flq(), $$1, this.F.a(this.b, $$3));
    }
 
    @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+   public void a(flt $$0, fqn $$1, float $$2) {
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(ly.ah, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
+      this.E++;
+      if (this.E == 3) {
+         this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements gpn<mc> {
-      private final gqf a;
+   private void c() {
+      this.G = this.D.dA();
+      this.H = (this.D.dC() + this.D.dE()) / 2.0;
+      this.I = this.D.dG();
+   }
 
-      public a(gqf $$0) {
-         this.a = $$0;
-      }
-
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpg $$8 = new gpg($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   private void d() {
+      this.J = this.G;
+      this.K = this.H;
+      this.L = this.I;
    }
 }

@@ -1,60 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eum extends esb {
-   public static final MapCodec<eum> d = a(eum::new);
+public class eum extends esd {
+   public static final MapCodec<eum> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), eqk.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eum::new)
+   );
+   public final eqk e;
 
-   public eum(esb.c $$0) {
+   public eum(esd.c $$0, eqk $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<esb.b> a(esb.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
+   public Optional<esd.b> a(esd.a $$0) {
+      eie $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      eic $$5 = new eic($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      dkl $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      iw.a $$8 = new iw.a($$2, $$6, $$3);
 
-      for (jf<dla> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(axd.X)) {
-            return Optional.empty();
+      while ($$6 > $$4) {
+         ebg $$9 = $$7.a($$6);
+         ebg $$10 = $$7.a(--$$6);
+         if ($$9.l() && ($$10.a(dng.en) || $$10.c(djp.a, $$8.q($$6), jc.b))) {
+            break;
          }
       }
 
-      return a($$0, ehd.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static esf a(djc $$0, eic $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      jb $$4 = jb.c.a.a($$1);
-      return new eul.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(est $$0, esb.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static esq a(djc $$0, long $$1, esq $$2) {
-      if ($$2.a()) {
-         return $$2;
+      if ($$6 <= $$4) {
+         return Optional.empty();
       } else {
-         eic $$3 = new eic(new ehe(ehs.a()));
-         $$3.c($$1, $$0.h, $$0.i);
-         esf $$4 = $$2.c().get(0);
-         ert $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         jb $$8 = jb.c.a.a($$3);
-         jb $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         esf $$10 = new eul.h($$3, $$6, $$7, $$9);
-         est $$11 = new est();
-         $$11.a($$10);
-         return $$11.a();
+         iw $$11 = new iw($$2, $$6, $$3);
+         return Optional.of(new esd.b($$11, (Consumer<esv>)($$3x -> eul.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   public esk<?> e() {
-      return esk.j;
+   public esm<?> e() {
+      return esm.i;
    }
 }

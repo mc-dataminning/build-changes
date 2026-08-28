@@ -1,18 +1,21 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eiw implements eik {
-   public static eiw a = new eiw();
-   public static final MapCodec<eiw> e = MapCodec.unit(() -> a);
+@Deprecated
+public class eiw extends eix {
+   public static final MapCodec<eiw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eiw::new));
 
-   private eiw() {
-   }
-
-   public boolean a(dkw $$0, iv $$1) {
-      return true;
+   public eiw(kb $$0) {
+      super($$0);
    }
 
    @Override
-   public eil<?> a() {
-      return eil.l;
+   protected boolean a(ebg $$0) {
+      return $$0.e();
+   }
+
+   @Override
+   public ein<?> a() {
+      return ein.e;
    }
 }

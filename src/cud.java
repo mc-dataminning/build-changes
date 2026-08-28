@@ -1,6 +1,8 @@
-public record cud(iv a, dko b, jf<dla> c) {
-   public static cud a(dko $$0, iv $$1) {
-      jf<dla> $$2 = $$0.u($$1);
-      return new cud($$1, $$0, $$2);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+
+public interface cud extends cuc.b<cuf> {
+   Codec<cud> b = mh.aD.q().dispatch(cud::a, $$0 -> $$0);
+
+   MapCodec<? extends cud> a();
 }

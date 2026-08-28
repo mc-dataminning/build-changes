@@ -1,30 +1,24 @@
-public class goo extends gob {
-   private static final int a = 12235202;
+import org.joml.Vector3f;
 
-   protected goo(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gqf $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)axy.b(12235202) / 255.0F - $$9;
-      this.w = (float)axy.c(12235202) / 255.0F - $$9;
-      this.x = (float)axy.d(12235202) / 255.0F - $$9;
+public class goo extends gop<lu> {
+   protected goo(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lu $$7, gqh $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      Vector3f $$10 = $$7.b();
+      this.v = this.a($$10.x(), $$9);
+      this.w = this.a($$10.y(), $$9);
+      this.x = this.a($$10.z(), $$9);
    }
 
-   @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
-   }
+   public static class a implements gpp<lu> {
+      private final gqh a;
 
-   public static class a implements gpn<mc> {
-      private final gqf a;
-
-      public a(gqf $$0) {
+      public a(gqh $$0) {
          this.a = $$0;
       }
 
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new goo($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public gpm a(lu $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goo($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

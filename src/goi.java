@@ -1,83 +1,45 @@
-public class goi extends gqk {
-   goi(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
-   }
+public class goi extends gqm {
+   private final gqh a;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   goi(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqh $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.b($$7);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
+      }
    }
 
    @Override
-   public gpo b() {
-      return gpo.b;
+   public gpq b() {
+      return gpq.b;
    }
 
-   public static class a implements gpn<mc> {
-      private final gqf a;
+   public static class a implements gpp<md> {
+      private final gqh a;
 
-      public a(gqf $$0) {
+      public a(gqh $$0) {
          this.a = $$0;
       }
 
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         goi $$8 = new goi($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gpn<mc> {
-      private final gqf a;
-
-      public b(gqf $$0) {
-         this.a = $$0;
-      }
-
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         goi $$8 = new goi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements gpn<mc> {
-      private final gqf a;
-
-      public c(gqf $$0) {
-         this.a = $$0;
-      }
-
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         goi $$8 = new goi($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goi($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

@@ -1,63 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Function;
 
-public abstract class kv implements dl<dgr> {
-   private final List<bt> a;
+public class kv {
+   public static final ku.b<kt> a = a("damage", kt.a);
+   public static final ku.b<kw.a> b = a("enchantments", kw.a.a);
+   public static final ku.b<kw.b> c = a("stored_enchantments", kw.b.a);
+   public static final ku.b<la> d = a("potion_contents", la.a);
+   public static final ku.b<ks> e = a("custom_data", ks.a);
+   public static final ku.b<kr> f = a("container", kr.a);
+   public static final ku.b<kq> g = a("bundle_contents", kq.a);
+   public static final ku.b<kx> h = a("firework_explosion", kx.a);
+   public static final ku.b<ky> i = a("fireworks", ky.a);
+   public static final ku.b<lc> j = a("writable_book_content", lc.a);
+   public static final ku.b<ld> k = a("written_book_content", ld.a);
+   public static final ku.b<kp> l = a("attribute_modifiers", kp.a);
+   public static final ku.b<lb> m = a("trim", lb.a);
+   public static final ku.b<kz> n = a("jukebox_playable", kz.a);
 
-   protected kv(List<bt> $$0) {
-      this.a = $$0;
+   private static <T extends ku> ku.b<T> a(String $$0, Codec<T> $$1) {
+      return jt.a(mh.ao, $$0, new ku.b<>($$1));
    }
 
-   public static <T extends kv> Codec<T> a(Function<List<bt>, T> $$0) {
-      return bt.a.listOf().xmap($$0, kv::b);
-   }
-
-   protected List<bt> b() {
-      return this.a;
-   }
-
-   public boolean a(dgr $$0) {
-      for (bt $$1 : this.a) {
-         if (!$$1.a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static kv.a a(List<bt> $$0) {
-      return new kv.a($$0);
-   }
-
-   public static kv.b b(List<bt> $$0) {
-      return new kv.b($$0);
-   }
-
-   public static class a extends kv {
-      public static final Codec<kv.a> a = a(kv.a::new);
-
-      protected a(List<bt> $$0) {
-         super($$0);
-      }
-
-      @Override
-      public kj<dgr> a() {
-         return kk.l;
-      }
-   }
-
-   public static class b extends kv {
-      public static final Codec<kv.b> a = a(kv.b::new);
-
-      protected b(List<bt> $$0) {
-         super($$0);
-      }
-
-      @Override
-      public kj<dgr> a() {
-         return kk.J;
-      }
+   public static ku.b<?> a(jt<ku.b<?>> $$0) {
+      return a;
    }
 }

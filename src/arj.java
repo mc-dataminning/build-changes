@@ -1,45 +1,13 @@
-class arj extends ara {
-   private static final int a = aqv.b + 1;
-   private final arf b;
-   private final dku c;
+import java.util.concurrent.CompletableFuture;
 
-   public arj(arf $$0, dku $$1) {
-      super(a + 1, 16, 256);
-      this.b = $$0;
-      this.c = $$1;
-      $$1.a(this::b);
-   }
+public interface arj {
+   ark d(long var1);
 
-   @Override
-   protected int b(long $$0) {
-      return this.c.a($$0, false);
-   }
+   void a(ark var1);
 
-   @Override
-   protected int c(long $$0) {
-      if (!this.b.a($$0)) {
-         aqu $$1 = this.b.b($$0);
-         if ($$1 != null) {
-            return $$1.j();
-         }
-      }
+   CompletableFuture<edd> a(ark var1, eeh var2, bam<ark> var3);
 
-      return a;
-   }
+   aqv a(eee var1, dje var2);
 
-   @Override
-   protected void a(long $$0, int $$1) {
-      aqu $$2 = this.b.b($$0);
-      int $$3 = $$2 == null ? a : $$2.j();
-      if ($$3 != $$1) {
-         $$2 = this.b.a($$0, $$1, $$2, $$3);
-         if ($$2 != null) {
-            this.b.b.add($$2);
-         }
-      }
-   }
-
-   public int a(int $$0) {
-      return this.b($$0);
-   }
+   void g();
 }

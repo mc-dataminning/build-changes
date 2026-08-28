@@ -1,93 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fcp extends fbu {
+public class fcp extends fbw {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<fcp> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  xc.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  fbt.a(256).forGetter($$0x -> $$0x.c),
-                  fah.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(fep.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
             .apply($$0, fcp::new)
    );
-   private final List<xa> b;
-   private final fbt c;
-   private final Optional<fah.b> d;
+   private final feo c;
+   private final boolean d;
 
-   public fcp(List<fdq> $$0, List<xa> $$1, fbt $$2, Optional<fah.b> $$3) {
+   private fcp(List<fds> $$0, feo $$1, boolean $$2) {
       super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public fbw<fcp> b() {
-      return fbx.A;
+   public fby<fcp> b() {
+      return fbz.n;
    }
 
    @Override
-   public Set<baz<?>> a() {
-      return this.d.<Set<baz<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   public Set<bbb<?>> a() {
+      return this.c.a();
    }
 
    @Override
-   public czy a(czy $$0, fah $$1) {
-      $$0.a(kk.j, dcr.a, $$1x -> new dcr(this.a($$1x, $$1)));
+   public daa a(daa $$0, faj $$1) {
+      if ($$0.m()) {
+         int $$2 = $$0.p();
+         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - azq.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(azq.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
       return $$0;
    }
 
-   private List<xa> a(@Nullable dcr $$0, fah $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
-      } else {
-         UnaryOperator<xa> $$2 = fcq.a($$1, this.d.orElse(null));
-         List<xa> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
-      }
+   public static fbw.a<?> a(feo $$0) {
+      return a($$1 -> new fcp($$1, $$0, false));
    }
 
-   public static fcp.a c() {
-      return new fcp.a();
-   }
-
-   public static class a extends fbu.a<fcp.a> {
-      private Optional<fah.b> a = Optional.empty();
-      private final Builder<xa> b = ImmutableList.builder();
-      private fbt c = fbt.a.b;
-
-      public fcp.a a(fbt $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fcp.a a(fah.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fcp.a a(xa $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected fcp.a a() {
-         return this;
-      }
-
-      @Override
-      public fbv b() {
-         return new fcp(this.g(), this.b.build(), this.c, this.a);
-      }
+   public static fbw.a<?> a(feo $$0, boolean $$1) {
+      return a($$2 -> new fcp($$2, $$0, $$1));
    }
 }

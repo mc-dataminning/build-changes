@@ -1,134 +1,140 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
+import org.lwjgl.system.MemoryStack;
 
-public record flt(int i, int j, flt.a k, flt.b l, int m) {
-   public static final int a = 32;
-   private static final flt[] n = new flt[32];
-   private static final List<flt> o = new ArrayList<>(32);
-   public static final flt b = a(0, 0, flt.a.a, flt.b.a, 3);
-   public static final flt c = a(1, 0, flt.a.b, flt.b.c, 4);
-   public static final flt d = a(2, 0, flt.a.a, flt.b.d, 2);
-   public static final flt e = d;
-   public static final flt f = a(3, 1, flt.a.e, flt.b.d, 2);
-   public static final flt g = a(4, 2, flt.a.e, flt.b.d, 2);
-   public static final flt h = a(5, 0, flt.a.c, flt.b.b, 3);
+public interface flt {
+   flt a(float var1, float var2, float var3);
 
-   public flt(int i, int j, flt.a k, flt.b l, int m) {
-      if (i < 0 || i >= n.length) {
-         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
-      } else if (!this.a(j, l)) {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      } else {
-         this.i = i;
-         this.j = j;
-         this.k = k;
-         this.l = l;
-         this.m = m;
+   flt a(int var1, int var2, int var3, int var4);
+
+   flt a(float var1, float var2);
+
+   flt a(int var1, int var2);
+
+   flt b(int var1, int var2);
+
+   flt b(float var1, float var2, float var3);
+
+   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a($$0, $$1, $$2);
+      this.a($$3);
+      this.a($$4, $$5);
+      this.b($$6);
+      this.c($$7);
+      this.b($$8, $$9, $$10);
+   }
+
+   default flt a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   }
+
+   default flt a(int $$0) {
+      return this.a(aya.b($$0), aya.c($$0), aya.d($$0), aya.a($$0));
+   }
+
+   default flt d(int $$0) {
+      return this.a(aya.c($$0, -1));
+   }
+
+   default flt c(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default flt b(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default void a(flq.a $$0, gti $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
+   }
+
+   default void a(flq.a $$0, gti $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      int[] $$10 = $$1.b();
+      Vector3fc $$11 = $$1.d().s();
+      Matrix4f $$12 = $$0.a();
+      Vector3f $$13 = $$0.a($$11, new Vector3f());
+      int $$14 = 8;
+      int $$15 = $$10.length / 8;
+      int $$16 = (int)($$6 * 255.0F);
+      int $$17 = $$1.g();
+      MemoryStack $$18 = MemoryStack.stackPush();
+
+      try {
+         ByteBuffer $$19 = $$18.malloc(flo.b.b());
+         IntBuffer $$20 = $$19.asIntBuffer();
+
+         for (int $$21 = 0; $$21 < $$15; $$21++) {
+            $$20.clear();
+            $$20.put($$10, $$21 * 8, 8);
+            float $$22 = $$19.getFloat(0);
+            float $$23 = $$19.getFloat(4);
+            float $$24 = $$19.getFloat(8);
+            float $$28;
+            float $$29;
+            float $$30;
+            if ($$9) {
+               float $$25 = (float)($$19.get(12) & 255);
+               float $$26 = (float)($$19.get(13) & 255);
+               float $$27 = (float)($$19.get(14) & 255);
+               $$28 = $$25 * $$2[$$21] * $$3;
+               $$29 = $$26 * $$2[$$21] * $$4;
+               $$30 = $$27 * $$2[$$21] * $$5;
+            } else {
+               $$28 = $$2[$$21] * $$3 * 255.0F;
+               $$29 = $$2[$$21] * $$4 * 255.0F;
+               $$30 = $$2[$$21] * $$5 * 255.0F;
+            }
+
+            int $$34 = aya.a($$16, (int)$$28, (int)$$29, (int)$$30);
+            int $$35 = grz.b($$7[$$21], $$17);
+            float $$36 = $$19.getFloat(16);
+            float $$37 = $$19.getFloat(20);
+            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
+            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
+         }
+      } catch (Throwable var35) {
+         if ($$18 != null) {
+            try {
+               $$18.close();
+            } catch (Throwable var34) {
+               var35.addSuppressed(var34);
+            }
+         }
+
+         throw var35;
+      }
+
+      if ($$18 != null) {
+         $$18.close();
       }
    }
 
-   public static flt a(int $$0, int $$1, flt.a $$2, flt.b $$3, int $$4) {
-      flt $$5 = new flt($$0, $$1, $$2, $$3, $$4);
-      if (n[$$0] != null) {
-         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
-      } else {
-         n[$$0] = $$5;
-         o.add($$5);
-         return $$5;
-      }
+   default flt a(Vector3f $$0) {
+      return this.a($$0.x(), $$0.y(), $$0.z());
    }
 
-   private boolean a(int $$0, flt.b $$1) {
-      return $$0 == 0 || $$1 == flt.b.d;
+   default flt a(flq.a $$0, Vector3f $$1) {
+      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
    }
 
-   @Override
-   public String toString() {
-      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+   default flt a(flq.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
    }
 
-   public int a() {
-      return 1 << this.i;
+   default flt a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 
-   public int b() {
-      return this.k.a() * this.m;
+   default flt b(flq.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.b($$4.x(), $$4.y(), $$4.z());
    }
 
-   @Nullable
-   public static flt a(int $$0) {
-      return n[$$0];
-   }
-
-   public static Stream<flt> b(int $$0) {
-      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
-   }
-
-   public int c() {
-      return this.i;
-   }
-
-   public int d() {
-      return this.j;
-   }
-
-   public flt.a e() {
-      return this.k;
-   }
-
-   public flt.b f() {
-      return this.l;
-   }
-
-   public int g() {
-      return this.m;
-   }
-
-   public static enum a {
-      a(4, "Float"),
-      b(1, "Unsigned Byte"),
-      c(1, "Byte"),
-      d(2, "Unsigned Short"),
-      e(2, "Short"),
-      f(4, "Unsigned Int"),
-      g(4, "Int");
-
-      private final int h;
-      private final String i;
-
-      private a(final int $$0, final String $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String toString() {
-         return this.i;
-      }
-   }
-
-   public static enum b {
-      a("Position"),
-      b("Normal"),
-      c("Vertex Color"),
-      d("UV"),
-      e("Generic");
-
-      private final String f;
-
-      private b(final String $$0) {
-         this.f = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.f;
-      }
+   default flt b(flq.a $$0, Vector3f $$1) {
+      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
    }
 }

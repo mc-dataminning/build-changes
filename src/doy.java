@@ -1,158 +1,197 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class doy extends dmo {
+public class doy extends dmq {
    public static final MapCodec<doy> a = b(doy::new);
-   public static final ecc<jb.a> b = ebu.K;
-   public static final ecc<eby> c = ebu.bD;
-   public static final ebv d = ebu.w;
+   public static final ebx b = ebw.bA;
+   public static final ebx c = ebw.G;
+   private static final ece<je> d = ebw.W;
+   private static final int e = 6;
+   private static final int f = 4;
+   private static final dev g = new dev(10);
+   private static final int h = 17;
+
+   public doy(ebf.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(d, je.k).b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
+   }
 
    @Override
-   public MapCodec<doy> a() {
+   protected MapCodec<doy> a() {
       return a;
    }
 
-   protected doy(ebd.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, jb.a.b).b(c, eby.a).b(d, Boolean.valueOf(false)));
+   @Override
+   protected boolean c_(ebg $$0) {
+      return true;
    }
 
    @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dys($$0, $$1);
+   protected int a(ebg $$0, djz $$1, iw $$2) {
+      return $$1.c_($$2) instanceof dyt $$4 ? $$4.s() : 0;
+   }
+
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3, @Nullable eyy $$4, boolean $$5) {
+      boolean $$6 = $$1.D($$2);
+      boolean $$7 = $$0.c(c);
+      dye $$8 = $$1.c_($$2);
+      if ($$6 && !$$7) {
+         $$1.a($$2, this, 4);
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+         this.a($$8, true);
+      } else if (!$$6 && $$7) {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)), 2);
+         this.a($$8, false);
+      }
+   }
+
+   @Override
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      this.a($$0, $$1, $$2);
    }
 
    @Nullable
    @Override
-   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
-      if ($$0.C) {
-         return null;
-      } else {
-         return $$1.c(c) != eby.a ? a($$2, dye.k, dys::a) : null;
+   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
+      return $$0.C ? null : a($$2, dyg.Q, dyt::a);
+   }
+
+   private void a(@Nullable dye $$0, boolean $$1) {
+      if ($$0 instanceof dyt $$2) {
+         $$2.a($$1);
       }
    }
 
-   public static boolean a(djx $$0) {
-      return $$0.X();
+   @Override
+   public dye a(iw $$0, ebg $$1) {
+      dyt $$2 = new dyt($$0, $$1);
+      $$2.a($$1.b(c) && $$1.c(c));
+      return $$2;
    }
 
    @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      if (a($$1)) {
-         if ($$0.c(c) != eby.a) {
-            if ($$3.a(16) == 0 && a($$1, $$2)) {
-               $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awp.gD, awq.e, 1.0F, 1.0F, false);
+   public ebg a(ddt $$0) {
+      jc $$1 = $$0.d().g();
+
+      jc $$2 = switch ($$1) {
+         case a -> $$0.g().g();
+         case b -> $$0.g();
+         case c, d, e, f -> jc.b;
+      };
+      return this.m().b(d, je.a($$1, $$2)).b(c, Boolean.valueOf($$0.q().D($$0.a())));
+   }
+
+   @Override
+   public void a(djz $$0, iw $$1, ebg $$2, bxw $$3, daa $$4) {
+      if ($$2.c(c)) {
+         $$0.a($$1, this, 4);
+      }
+   }
+
+   @Override
+   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
+      bup.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dyt $$5) {
+         $$3.a($$5);
+      }
+
+      return but.a;
+   }
+
+   protected void a(ebg $$0, aru $$1, iw $$2) {
+      if ($$1.c_($$2) instanceof dyt $$3) {
+         def var11 = $$3.aC_();
+         Optional<dew<deg>> $$6 = a($$1, var11);
+         if ($$6.isEmpty()) {
+            $$1.c(1050, $$2, 0);
+         } else {
+            dew<deg> $$7 = $$6.get();
+            daa $$8 = $$7.b().a(var11, $$1.J_());
+            if ($$8.f()) {
+               $$1.c(1050, $$2, 0);
+            } else {
+               $$3.d(6);
+               $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 2);
+               $$8.a($$1);
+               this.a($$1, $$2, $$3, $$8, $$0, $$7);
+
+               for (daa $$9 : $$7.b().a(var11)) {
+                  if (!$$9.f()) {
+                     this.a($$1, $$2, $$3, $$9, $$0, $$7);
+                  }
+               }
+
+               $$3.f().forEach($$0x -> {
+                  if (!$$0x.f()) {
+                     $$0x.h(1);
+                  }
+               });
+               $$3.e();
             }
          }
       }
    }
 
-   @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      $$2.a($$3, this, 1);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static Optional<dew<deg>> a(aru $$0, def $$1) {
+      return g.a($$0, $$1);
    }
 
-   @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      ebe $$4 = d($$0, $$1, $$2);
-      if ($$4 != $$0) {
-         $$1.a($$2, $$4, 3);
-      }
-   }
+   private void a(aru $$0, iw $$1, dyt $$2, daa $$3, ebg $$4, dew<?> $$5) {
+      jc $$6 = $$4.c(d).a();
+      bum $$7 = dzh.a($$0, $$1.a($$6));
+      daa $$8 = $$3.v();
+      if ($$7 != null && ($$7 instanceof dyt || $$3.M() > $$7.f_($$3))) {
+         while (!$$8.f()) {
+            daa $$9 = $$8.c(1);
+            daa $$10 = dzh.a($$2, $$7, $$9, $$6.g());
+            if (!$$10.f()) {
+               break;
+            }
 
-   private static ebe d(ebe $$0, djx $$1, iv $$2) {
-      boolean $$3 = b($$0, $$1, $$2);
-      boolean $$4 = $$0.c(c) == eby.a;
-      return $$3 && $$4 ? $$0.b(c, a($$1) ? eby.c : eby.b) : $$0;
-   }
-
-   public static boolean b(ebe $$0, dka $$1, iv $$2) {
-      jb.a $$3 = $$0.c(b);
-
-      for (jb $$4 : $$3.g()) {
-         ebe $$5 = $$1.a_($$2.a($$4));
-         if (!$$5.a(axe.w) || $$5.c(b) != $$3) {
-            return false;
+            $$8.h(1);
+         }
+      } else if ($$7 != null) {
+         while (!$$8.f()) {
+            int $$11 = $$8.M();
+            $$8 = dzh.a($$2, $$7, $$8, $$6.g());
+            if ($$11 == $$8.M()) {
+               break;
+            }
          }
       }
 
-      return true;
-   }
+      if (!$$8.f()) {
+         ffs $$12 = ffs.b($$1);
+         ffs $$13 = $$12.a($$6, 0.7);
+         lh.a($$0, $$8, 6, $$6, $$13);
 
-   private static boolean a(djy $$0, iv $$1) {
-      for (jb $$2 : jb.values()) {
-         iv $$3 = $$1.a($$2);
-         ebe $$4 = $$0.a_($$3);
-         if (!$$4.a(axe.w)) {
-            return false;
+         for (arv $$14 : $$0.a(arv.class, ffn.a($$12, 17.0, 17.0, 17.0))) {
+            aq.ad.a($$14, $$5.a(), $$2.f());
          }
-      }
 
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public ebe a(ddr $$0) {
-      return d(this.m().b(b, $$0.k().o()), $$0.q(), $$0.a());
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return dtv.b($$0, $$1);
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
-      bun.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, djq $$3, BiConsumer<czy, iv> $$4) {
-      if ($$1.c_($$2) instanceof dys $$5 && $$3 instanceof dkn $$6 && $$3.b().a()) {
-         $$5.a($$6.k());
-         if ($$3.c() instanceof crx $$7 && $$3.b().a()) {
-            this.a($$7, $$0, $$1, $$2);
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public ebe a(djx $$0, iv $$1, ebe $$2, crx $$3) {
-      if ($$0.c_($$1) instanceof dys $$4) {
-         $$4.a($$3.dW().a($$3));
-         this.a($$3, $$2, $$0, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(crx $$0, ebe $$1, djx $$2, iv $$3) {
-      if (!$$0.gl() && !$$0.Z_() && $$1.c(d) && $$2 instanceof ars $$4) {
-         this.a($$4, $$3, $$2.A.a(20, 24));
+         $$0.c(1049, $$1, 0);
+         $$0.c(2010, $$1, $$6.d());
       }
    }
 
    @Override
-   protected boolean c_(ebe $$0) {
-      return true;
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(d, $$1.a().a($$0.c(d)));
    }
 
    @Override
-   protected int a(ebe $$0, djx $$1, iv $$2) {
-      if ($$0.c(c) == eby.a) {
-         return 0;
-      } else {
-         return $$1.c_($$2) instanceof dys $$3 ? $$3.d() : 0;
-      }
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.b(d, $$1.a().a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(d, c, b);
    }
 }

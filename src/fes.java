@@ -1,30 +1,42 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public record fes(fah.b c) implements fev {
-   public static final MapCodec<fes> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fah.b.e.fieldOf("target").forGetter(fes::c)).apply($$0, fes::new));
-   public static final Codec<fes> b = fah.b.e.xmap(fes::new, fes::c);
+public record fes(feo b, feo c) implements feo {
+   public static final MapCodec<fes> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fep.a.fieldOf("min").forGetter(fes::c), fep.a.fieldOf("max").forGetter(fes::d)).apply($$0, fes::new)
+   );
 
-   public static fev a(fah.b $$0) {
-      return new fes($$0);
+   @Override
+   public fen b() {
+      return fep.c;
+   }
+
+   public static fes a(float $$0, float $$1) {
+      return new fes(fel.a($$0), fel.a($$1));
    }
 
    @Override
-   public feu a() {
-      return few.c;
-   }
-
-   @Nullable
-   @Override
-   public fgu a(fah $$0) {
-      return $$0.c(this.c.a());
+   public int a(faj $$0) {
+      return azq.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
    @Override
-   public Set<baz<?>> b() {
-      return Set.of(this.c.a());
+   public float b(faj $$0) {
+      return azq.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<bbb<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public feo c() {
+      return this.b;
+   }
+
+   public feo d() {
+      return this.c;
    }
 }

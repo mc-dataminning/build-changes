@@ -1,23 +1,27 @@
-public enum ecq implements bam {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+import com.mojang.serialization.Codec;
 
-   private final String e;
-   private final boolean f;
+public enum ecq implements bao {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private ecq(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   @Deprecated
+   public static final Codec<ecq> e = ayy.c(ecq::valueOf);
+   private final String f;
+   private final xc g;
+
+   private ecq(final String $$0) {
+      this.f = $$0;
+      this.g = xc.c("structure_block.mode_info." + $$0);
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.f;
    }
 
-   public boolean a() {
-      return this.f;
+   public xc a() {
+      return this.g;
    }
 }

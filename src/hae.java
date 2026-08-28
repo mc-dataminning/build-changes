@@ -1,26 +1,41 @@
-public class hae extends gzo<cpe, hgf, gjo> {
-   private static final ali a = ali.b("textures/entity/illager/ravager.png");
+public class hae extends gxe<ckm, hgg, gjo> {
+   private static final alk a = alk.b("textures/entity/rabbit/brown.png");
+   private static final alk j = alk.b("textures/entity/rabbit/white.png");
+   private static final alk k = alk.b("textures/entity/rabbit/black.png");
+   private static final alk l = alk.b("textures/entity/rabbit/gold.png");
+   private static final alk m = alk.b("textures/entity/rabbit/salt.png");
+   private static final alk n = alk.b("textures/entity/rabbit/white_splotched.png");
+   private static final alk o = alk.b("textures/entity/rabbit/toast.png");
+   private static final alk p = alk.b("textures/entity/rabbit/caerbannog.png");
 
-   public hae(gyi.a $$0) {
-      super($$0, new gjo($$0.a(gld.cJ)), 1.1F);
+   public hae(gyk.a $$0) {
+      super($$0, new gjo($$0.a(glf.cH)), new gjo($$0.a(glf.cI)), 0.3F);
    }
 
-   public ali a(hgf $$0) {
-      return a;
-   }
-
-   public hgf b() {
-      return new hgf();
-   }
-
-   public void a(cpe $$0, hgf $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
-      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
-      if ($$0.gB() > 0) {
-         $$1.c = ((float)(20 - $$0.gB()) + $$2) / 20.0F;
+   public alk a(hgg $$0) {
+      if ($$0.b) {
+         return o;
       } else {
-         $$1.c = 0.0F;
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> j;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
       }
+   }
+
+   public hgg b() {
+      return new hgg();
+   }
+
+   public void a(ckm $$0, hgg $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = "Toast".equals(o.a($$0.ai().getString()));
+      $$1.c = $$0.gu();
    }
 }

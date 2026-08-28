@@ -1,83 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class ejo extends ekk<emw> {
-   public ejo(Codec<emw> $$0) {
+public class ejo extends ekm<enb> {
+   private static final ebg a = dng.nF.m().b(dmi.b, Integer.valueOf(1)).b(dmi.c, ebs.a).b(dmi.d, Integer.valueOf(0));
+   private static final ebg b = a.b(dmi.c, ebs.c).b(dmi.d, Integer.valueOf(1));
+   private static final ebg c = a.b(dmi.c, ebs.c);
+   private static final ebg d = a.b(dmi.c, ebs.b);
+
+   public ejo(Codec<enb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<emw> $$0) {
-      iv $$1 = $$0.e();
-      dkw $$2 = $$0.b();
-      azx $$3 = $$0.d();
-      if ($$2.v($$1) && !$$2.v($$1.d())) {
-         iv.a $$4 = $$1.k();
-         iv.a $$5 = $$1.k();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
+   public boolean a(eko<enb> $$0) {
+      int $$1 = 0;
+      iw $$2 = $$0.e();
+      dky $$3 = $$0.b();
+      azz $$4 = $$0.d();
+      enb $$5 = $$0.f();
+      iw.a $$6 = $$2.k();
+      iw.a $$7 = $$2.k();
+      if ($$3.v($$6)) {
+         if (dng.nF.m().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-         while ($$2.v($$4)) {
-            if ($$2.t($$4)) {
-               return true;
-            }
-
-            $$2.a($$4, dne.ep.m(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jb.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jb.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jb.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jb.f));
-            $$4.c(jb.a);
-         }
-
-         $$4.c(jb.b);
-         this.a($$2, $$3, $$5.a($$4, jb.c));
-         this.a($$2, $$3, $$5.a($$4, jb.d));
-         this.a($$2, $$3, $$5.a($$4, jb.e));
-         this.a($$2, $$3, $$5.a($$4, jb.f));
-         $$4.c(jb.a);
-         iv.a $$10 = new iv.a();
-
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = azo.a($$11) * azo.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.v($$5.a($$10, jb.a))) {
-                     $$10.c(jb.a);
-                     if (--$$14 <= 0) {
-                        break;
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(ehf.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dng.l.m(), 2);
+                        }
                      }
-                  }
-
-                  if (!$$2.v($$5.a($$10, jb.a))) {
-                     $$2.a($$10, dne.ep.m(), 2);
                   }
                }
             }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.v($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jc.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jc.a, 1), c, 2);
+               $$3.a($$6.c(jc.a, 1), d, 2);
+            }
          }
 
-         return true;
-      } else {
-         return false;
+         $$1++;
       }
-   }
 
-   private void a(djy $$0, azx $$1, iv $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, dne.ep.m(), 2);
-      }
-   }
-
-   private boolean b(djy $$0, azx $$1, iv $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, dne.ep.m(), 2);
-         return true;
-      } else {
-         return false;
-      }
+      return $$1 > 0;
    }
 }

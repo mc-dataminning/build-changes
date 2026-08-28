@@ -1,15 +1,15 @@
-public enum bvw {
-   a(o.j),
-   b(o.m),
-   c(o.j);
-
-   private final o d;
-
-   private bvw(final o $$0) {
-      this.d = $$0;
+public class bvw extends bvx {
+   public bvw(bvy $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public o a() {
-      return this.d;
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 1;
    }
 }

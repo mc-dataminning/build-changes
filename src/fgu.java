@@ -1,53 +1,70 @@
-import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public interface fgu {
-   String co = "*";
-   fgu cp = new fgu() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
+public class fgu implements fgt {
+   public static final MapCodec<fgu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("Score", 0).forGetter(fgu::a),
+               Codec.BOOL.optionalFieldOf("Locked", false).forGetter(fgu::b),
+               xe.a.optionalFieldOf("display").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+               yu.b.optionalFieldOf("format").forGetter($$0x -> Optional.ofNullable($$0x.e))
+            )
+            .apply($$0, fgu::new)
+   );
+   private int b;
+   private boolean c = true;
+   @Nullable
+   private xc d;
+   @Nullable
+   private ys e;
 
-   String cI();
+   public fgu() {
+   }
+
+   private fgu(int $$0, boolean $$1, Optional<xc> $$2, Optional<ys> $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
+      this.e = $$3.orElse(null);
+   }
+
+   @Override
+   public int a() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
 
    @Nullable
-   default xa m_() {
-      return null;
+   public xc d() {
+      return this.d;
    }
 
-   default xa hg() {
-      xa $$0 = this.m_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xg.e(xa.b(this.cI())))) : xa.b(this.cI());
+   public void a(@Nullable xc $$0) {
+      this.d = $$0;
    }
 
-   static fgu c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cp;
-      } else {
-         final xa $$1 = xa.b($$0);
-         return new fgu() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public xa hg() {
-               return $$1;
-            }
-         };
-      }
+   @Nullable
+   @Override
+   public ys c() {
+      return this.e;
    }
 
-   static fgu a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fgu() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
-      };
+   public void b(@Nullable ys $$0) {
+      this.e = $$0;
    }
 }

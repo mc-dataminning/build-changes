@@ -1,20 +1,44 @@
 import javax.annotation.Nullable;
 
-public interface col extends cpd {
-   void b(boolean var1);
+public class col extends cpm {
+   public col(bxe<? extends col> $$0, djz $$1) {
+      super($$0, $$1);
+   }
+
+   public static bzb.a j() {
+      return cpm.m().a(bzc.s, 12.0);
+   }
+
+   @Override
+   public boolean c(aru $$0, bwv $$1) {
+      if (super.c($$0, $$1)) {
+         if ($$1 instanceof bxw) {
+            int $$2 = 0;
+            if (this.dV().an() == buq.c) {
+               $$2 = 7;
+            } else if (this.dV().an() == buq.d) {
+               $$2 = 15;
+            }
+
+            if ($$2 > 0) {
+               ((bxw)$$1).b(new bvz(bwb.s, $$2 * 20, 0), this);
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
 
    @Nullable
-   bxu f();
+   @Override
+   public byo a(dkq $$0, bur $$1, bxd $$2, @Nullable byo $$3) {
+      return $$3;
+   }
 
-   void a();
-
-   default void b(bxu $$0, float $$1) {
-      buq $$2 = csu.a($$0, dac.xg);
-      czy $$3 = $$0.b($$2);
-      if ($$3.h() instanceof cyr $$4) {
-         $$4.a($$0.dV(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dV().an().a() * 4), this.f());
-      }
-
-      this.a();
+   @Override
+   public ffs l(bwv $$0) {
+      return $$0.dq() <= this.dq() ? new ffs(0.0, 0.21875 * (double)this.el(), 0.0) : super.l($$0);
    }
 }

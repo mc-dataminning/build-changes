@@ -1,17 +1,17 @@
 import java.io.IOException;
-import java.io.InputStream;
 
-public class hlx {
-   @Deprecated
-   public static int[] a(avf $$0, ali $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         fkg $$3 = fkg.a($$2);
-      ) {
-         var4 = $$3.f();
+public class hlx extends avm<int[]> {
+   private static final alk a = alk.b("textures/colormap/grass.png");
+
+   protected int[] a(avh $$0, brd $$1) {
+      try {
+         return hlz.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
+   }
 
-      return var4;
+   protected void a(int[] $$0, avh $$1, brd $$2) {
+      djx.a($$0);
    }
 }

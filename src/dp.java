@@ -1,34 +1,27 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record dp(Map<cxo, cm> b) {
-   public static final Codec<dp> a = Codec.unboundedMap(cxp.a, cm.a).xmap(dp::new, dp::a);
+public record dp(cx.d c) implements ca {
+   public static final MapCodec<dp> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cx.d.d.optionalFieldOf("size", cx.d.c).forGetter(dp::b)).apply($$0, dp::new)
+   );
 
-   public boolean a(bwt $$0) {
-      for (Entry<cxo, cm> $$1 : this.b.entrySet()) {
-         if (!a($$0, $$1.getValue(), $$1.getKey().a())) {
-            return false;
-         }
-      }
-
-      return true;
+   public static dp a(cx.d $$0) {
+      return new dp($$0);
    }
 
-   private static boolean a(bwt $$0, cm $$1, IntList $$2) {
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         int $$4 = $$2.getInt($$3);
-         byl $$5 = $$0.a_($$4);
-         if ($$1.a($$5.a())) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public boolean a(bwv $$0, aru $$1, @Nullable ffs $$2) {
+      return $$0 instanceof cpk $$3 ? this.c.d($$3.gs()) : false;
    }
 
-   public Map<cxo, cm> a() {
-      return this.b;
+   @Override
+   public MapCodec<dp> a() {
+      return cb.d;
+   }
+
+   public cx.d b() {
+      return this.c;
    }
 }

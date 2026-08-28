@@ -1,38 +1,32 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class gtu implements gtn {
-   private final gtm a;
-
-   public gtu(gtm $$0) {
-      this.a = $$0;
+public record gtu(hns a, boolean b, hlc c) implements gto {
+   public static gtu a(hnl $$0, alk $$1, hnr $$2) {
+      hnu $$3 = $$0.a($$1);
+      gtx $$4 = $$3.g();
+      boolean $$5 = $$3.c();
+      hlc $$6 = $$3.a($$4, $$0);
+      hns $$7 = $$3.a($$4, $$0, $$2);
+      return new gtu($$7, $$5, $$6);
    }
 
    @Override
-   public void a(azx $$0, List<gtm> $$1) {
-      $$1.add(this.a);
+   public List<gti> a(@Nullable jc $$0) {
+      return this.a.a($$0);
+   }
+
+   public hns c() {
+      return this.a;
    }
 
    @Override
-   public hla a() {
-      return this.a.b();
+   public boolean a() {
+      return this.b;
    }
 
-   public static record a(gtw e) implements gtn.b {
-      public static final Codec<gtu.a> d = gtw.b.xmap(gtu.a::new, gtu.a::b);
-
-      @Override
-      public gtn a(hnj $$0) {
-         return new gtu(this.e.a($$0));
-      }
-
-      @Override
-      public void a(hnr.a $$0) {
-         this.e.a($$0);
-      }
-
-      public gtw b() {
-         return this.e;
-      }
+   @Override
+   public hlc b() {
+      return this.c;
    }
 }

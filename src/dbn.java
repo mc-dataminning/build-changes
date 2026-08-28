@@ -1,32 +1,18 @@
-public interface dbn {
-   dbn.a a = new dbn.a(false, false);
-   dbn.a b = new dbn.a(true, false);
+public class dbn extends cye {
+   public dbn(czw.a $$0) {
+      super($$0);
+   }
 
-   boolean a();
+   @Override
+   public daa m() {
+      daa $$0 = super.m();
+      $$0.b(kl.R, new dbw(dbx.C));
+      return $$0;
+   }
 
-   boolean b();
-
-   public static record a(boolean c, boolean d) implements dbn {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public dbn.a c() {
-         return new dbn.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public xc a(daa $$0) {
+      dbw $$1 = $$0.a(kl.R);
+      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
    }
 }

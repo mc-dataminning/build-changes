@@ -1,51 +1,45 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class aiv implements zj<agt> {
+   public static final za<vy, aiv> a = zj.a(aiv::a, aiv::new);
+   private final ffo b;
+   private final bus c;
+   private final int d;
 
-public class aiv {
-   private static final double a = 4096.0;
-   private ffq b = ffq.c;
-
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   public aiv(bus $$0, ffo $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
+   private aiv(vy $$0) {
+      this.c = $$0.b(bus.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   public ffq a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
-         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
-         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new ffq($$3, $$4, $$5);
-      }
+   private void a(vy $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
    }
 
-   public long a(ffq $$0) {
-      return a($$0.d) - a(this.b.d);
+   @Override
+   public zl<aiv> a() {
+      return agr.cn;
    }
 
-   public long b(ffq $$0) {
-      return a($$0.e) - a(this.b.e);
+   public void a(agt $$0) {
+      $$0.a(this);
    }
 
-   public long c(ffq $$0) {
-      return a($$0.f) - a(this.b.f);
+   public bus b() {
+      return this.c;
    }
 
-   public ffq d(ffq $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(ffq $$0) {
-      this.b = $$0;
-   }
-
-   public ffq a() {
+   public ffo e() {
       return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

@@ -1,42 +1,30 @@
-public class hay extends gwz<cuy, hft> {
-   private final gtd g;
+public class hay extends gyj<cti, hgu> {
+   public static final alk a = alk.b("textures/entity/trident.png");
+   private final gkj g;
 
-   public hay(gyi.a $$0) {
-      super($$0, gld.dA);
-      this.g = $$0.d();
+   public hay(gyk.a $$0) {
+      super($$0);
+      this.g = new gkj($$0.a(glf.dD));
    }
 
-   protected void a(hft $$0, ebe $$1, flo $$2, gsa $$3, int $$4) {
-      float $$5 = $$0.n;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azo.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   public void a(hgu $$0, flq $$1, gsc $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      flt $$4 = gzi.a($$2, this.g.a(a), false, $$0.c);
+      this.g.a($$1, $$4, $$3, hks.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public static void a(gtd $$0, ebe $$1, flo $$2, gsa $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = hkq.a(hkq.a(1.0F), 10);
-      } else {
-         $$6 = hkq.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public hgu a() {
+      return new hgu();
    }
 
-   public hft a() {
-      return new hft();
-   }
-
-   public void a(cuy $$0, hft $$1, float $$2) {
+   public void a(cti $$0, hgu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
+      $$1.b = $$0.l($$2);
+      $$1.a = $$0.k($$2);
+      $$1.c = $$0.y();
    }
 }

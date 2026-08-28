@@ -1,19 +1,28 @@
 import javax.annotation.Nullable;
 
-public class cnd extends cmx {
-   private static final cij b = cij.a().d();
+public class cnd extends cmz {
+   private static final cil b = cil.a().d();
    @Nullable
-   private eyc c;
+   private eye c;
    @Nullable
-   private ffq d;
+   private ffs d;
+   private boolean e;
 
-   public cnd(cmv $$0) {
+   public cnd(cmx $$0) {
       super($$0);
    }
 
    @Override
-   public cnl<cnd> h() {
-      return cnl.c;
+   public cnn<cnd> h() {
+      return cnn.a;
+   }
+
+   @Override
+   public void a(aru $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
+      }
    }
 
    @Override
@@ -22,49 +31,77 @@ public class cnd extends cmx {
       this.d = null;
    }
 
-   @Override
-   public void a(ars $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
-      }
-   }
-
    @Nullable
    @Override
-   public ffq f() {
+   public ffs f() {
       return this.d;
    }
 
-   private void b(ars $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.n();
-         iv $$2 = $$0.a(ehd.a.f, eki.a(this.a.j()));
-         crx $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            ffq $$4 = new ffq($$3.dA(), 0.0, $$3.dG()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
+   private void b(aru $$0) {
+      if (this.c != null && this.c.c()) {
+         iw $$1 = $$0.a(ehf.a.f, ekk.a(this.a.j()));
+         int $$2 = this.a.x() == null ? 0 : this.a.x().e();
+         if (this.a.dY().a($$2 + 3) == 0) {
+            this.a.t().a(cnn.c);
+            return;
          }
 
-         eya $$7 = new eya($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
+         crz $$3 = $$0.a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         double $$4;
+         if ($$3 != null) {
+            $$4 = $$1.b($$3.dt()) / 512.0;
+         } else {
+            $$4 = 64.0;
+         }
+
+         if ($$3 != null && (this.a.dY().a((int)($$4 + 2.0)) == 0 || this.a.dY().a($$2 + 2) == 0)) {
+            this.a($$3);
+            return;
+         }
+      }
+
+      if (this.c == null || this.c.c()) {
+         int $$6 = this.a.n();
+         int $$7 = $$6;
+         if (this.a.dY().a(8) == 0) {
+            this.e = !this.e;
+            $$7 = $$6 + 6;
+         }
+
+         if (this.e) {
+            $$7++;
+         } else {
+            $$7--;
+         }
+
+         if (this.a.x() != null && this.a.x().e() >= 0) {
+            $$7 %= 12;
+            if ($$7 < 0) {
+               $$7 += 12;
+            }
+         } else {
+            $$7 -= 12;
+            $$7 &= 7;
+            $$7 += 12;
+         }
+
+         this.c = this.a.a($$6, $$7, null);
          if (this.c != null) {
             this.c.a();
          }
       }
 
       this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.t().a(cnl.d);
-      }
+   }
+
+   private void a(crz $$0) {
+      this.a.t().a(cnn.b);
+      this.a.t().b(cnn.b).a($$0);
    }
 
    private void i() {
       if (this.c != null && !this.c.c()) {
-         ka $$0 = this.c.g();
+         kb $$0 = this.c.g();
          this.c.a();
          double $$1 = (double)$$0.u();
          double $$2 = (double)$$0.w();
@@ -74,7 +111,14 @@ public class cnd extends cmx {
             $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
          } while ($$3 < (double)$$0.v());
 
-         this.d = new ffq($$1, $$3, $$2);
+         this.d = new ffs($$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public void a(cmw $$0, iw $$1, bvk $$2, @Nullable crz $$3) {
+      if ($$3 != null && this.a.c($$3)) {
+         this.a($$3);
       }
    }
 }

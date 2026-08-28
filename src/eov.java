@@ -1,49 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eov extends eot {
-   public static final MapCodec<eov> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  ebe.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  ayw.b(ebe.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  ayw.b(ebe.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, eov::new)
-   );
-   private final float g;
-   private final float h;
-   private final ebe i;
-   private final List<ebe> j;
-   private final List<ebe> k;
+public abstract class eov extends eos {
+   protected final long c;
+   protected final ewt.a d;
+   protected final float e;
+   protected final ewt f;
 
-   public eov(long $$0, ewr.a $$1, float $$2, float $$3, float $$4, ebe $$5, List<ebe> $$6, List<ebe> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   protected static <P extends eov> P3<Mu<P>, Long, ewt.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         ewt.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ayy.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected eor<?> a() {
-      return eor.c;
+   protected eov(long $$0, ewt.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = ewt.b(new eie(new ehg($$0)), $$1);
    }
 
-   @Override
-   public ebe a(azx $$0, iv $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ag.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ag.a(this.k, $$0) : this.i;
-      }
+   protected double a(iw $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

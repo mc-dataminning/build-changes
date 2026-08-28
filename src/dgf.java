@@ -1,30 +1,12 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record dgf(dgb f, dgb g, dgb h) implements dfv {
-   public static final MapCodec<dgf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgb.a.fieldOf("input").forGetter(dgf::b), dgb.a.fieldOf("result").forGetter(dgf::d), dgb.a.fieldOf("crafting_station").forGetter(dgf::e))
-            .apply($$0, dgf::new)
-   );
-   public static final yy<wl, dgf> b = yy.a(dgb.b, dgf::b, dgb.b, dgf::d, dgb.b, dgf::e, dgf::new);
-   public static final dfv.a<dgf> c = new dfv.a<>(a, b);
-
-   @Override
-   public dfv.a<dgf> a() {
-      return c;
-   }
-
-   public dgb b() {
-      return this.f;
-   }
-
-   @Override
-   public dgb d() {
-      return this.g;
-   }
-
-   @Override
-   public dgb e() {
-      return this.h;
+public class dgf {
+   public static dgd.i<?> a(jt<dgd.i<?>> $$0) {
+      jt.a($$0, "empty", dgd.c.f);
+      jt.a($$0, "any_fuel", dgd.a.f);
+      jt.a($$0, "item", dgd.d.e);
+      jt.a($$0, "item_stack", dgd.f.e);
+      jt.a($$0, "tag", dgd.h.e);
+      jt.a($$0, "smithing_trim", dgd.g.e);
+      jt.a($$0, "with_remainder", dgd.j.e);
+      return jt.a($$0, "composite", dgd.b.e);
    }
 }

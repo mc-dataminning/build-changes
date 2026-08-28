@@ -1,61 +1,52 @@
-public class afh implements zh<abw> {
-   public static final yy<vw, afh> a = zh.a(afh::a, afh::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
+import java.util.ArrayList;
+import java.util.List;
 
-   public afh(bwt $$0) {
-      this($$0.ao(), $$0.dy());
+public record afh(int c, List<akr.c<?>> d) implements zj<aby> {
+   public static final za<wn, afh> a = zj.a(afh::b, afh::new);
+   public static final int b = 255;
+
+   private afh(wn $$0) {
+      this($$0.l(), a($$0));
    }
 
-   public afh(int $$0, ffq $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = azo.a($$1.d, -3.9, 3.9);
-      double $$4 = azo.a($$1.e, -3.9, 3.9);
-      double $$5 = azo.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private static void a(List<akr.c<?>> $$0, wn $$1) {
+      for (akr.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.l(255);
    }
 
-   private afh(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+   private static List<akr.c<?>> a(wn $$0) {
+      List<akr.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(akr.c.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
+   private void b(wn $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zj<afh> a() {
-      return agp.aH;
+   public zl<afh> a() {
+      return agr.aF;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
+      return this.c;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public List<akr.c<?>> e() {
+      return this.d;
    }
 }

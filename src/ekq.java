@@ -1,149 +1,58 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ekq extends ekk<emq> {
-   private static final jb[] a = jb.values();
-
-   public ekq(Codec<emq> $$0) {
+public class ekq extends ekm<ekr> {
+   public ekq(Codec<ekr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<emq> $$0) {
-      emq $$1 = $$0.f();
-      azx $$2 = $$0.d();
-      iv $$3 = $$0.e();
-      dkw $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<iv, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      eic $$9 = new eic(new ehe($$4.E()));
-      ewr $$10 = ewr.a($$9, -4, 1.0);
-      List<iv> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      ehc $$13 = $$1.d;
-      eha $$14 = $$1.c;
-      ehb $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
+   public boolean a(eko<ekr> $$0) {
+      azz $$1 = $$0.d();
+      dky $$2 = $$0.b();
+      iw $$3 = $$0.e();
+      dty $$4 = dty.a($$1);
+      ekr $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      ewg $$7 = $$2.a().p().aY();
+      ewf $$8 = $$7.a($$5.b.get($$6));
+      ewf $$9 = $$7.a($$5.c.get($$6));
+      dje $$10 = new dje($$3);
+      erv $$11 = new erv($$10.d() - 16, $$2.K_(), $$10.e() - 16, $$10.f() + 16, $$2.ao(), $$10.g() + 16);
+      ewb $$12 = new ewb().a($$4).a($$11).a($$1);
+      kb $$13 = $$8.a($$4);
+      iw $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
 
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         iv $$27 = $$3.b($$24, $$25, $$26);
-         ebe $$28 = $$4.a_($$27);
-         if ($$28.l() || $$28.a($$14.h)) {
-            if (++$$22 > $$1.p) {
-               return false;
-            }
-         }
-
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
-      }
-
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(ehf.a.c, $$14.u() + $$16, $$14.w() + $$17));
          }
       }
 
-      List<iv> $$31 = Lists.newArrayList();
-      Predicate<ebe> $$32 = a($$1.c.g);
-
-      for (iv $$33 : iv.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
-
-         for (Pair<iv, Integer> $$37 : $$7) {
-            $$35 += azo.f($$33.j((ka)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
-         }
-
-         for (iv $$38 : $$11) {
-            $$36 += azo.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, dne.a.m(), $$32);
-
-               for (jb $$39 : a) {
-                  iv $$40 = $$33.a($$39);
-                  exo $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
-               } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
-               }
-
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.j());
-               }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
-            }
-         }
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.K_() + 10);
+      iw $$19 = $$8.a($$14.h($$18), dsh.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 260);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 260);
+         return true;
       }
+   }
 
-      List<ebe> $$43 = $$14.f;
-
-      for (iv $$44 : $$31) {
-         ebe $$45 = ag.a($$43, $$2);
-
-         for (jb $$46 : a) {
-            if ($$45.b(ebu.R)) {
-               $$45 = $$45.b(ebu.R, $$46);
-            }
-
-            iv $$47 = $$44.a($$46);
-            ebe $$48 = $$4.a_($$47);
-            if ($$45.b(ebu.I)) {
-               $$45 = $$45.b(ebu.I, Boolean.valueOf($$48.y().b()));
-            }
-
-            if (dnl.h($$48)) {
-               this.a($$4, $$47, $$45, $$32);
-               break;
-            }
+   private static int a(dky $$0, erv $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         ebg $$3 = $$0.a_($$2x);
+         if ($$3.l() || $$3.a(dng.K) || $$3.a(dng.J)) {
+            $$2.add(1);
          }
-      }
-
-      return true;
+      });
+      return $$2.getValue();
    }
 }

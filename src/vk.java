@@ -1,42 +1,36 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
-public class vk extends vg {
-   private final Deque<vi> a = new ArrayDeque<>();
-
-   public vk(vh... $$0) {
-      vi $$1 = vi.a();
-
-      for (vh $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+public record vk(int a, Map<String, vc<?>> b, Map<String, vk> c) {
+   private vk(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   public uv.a a(va<?> $$0, String $$1) {
-      vi $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return uv.a.b;
+   public static vk a() {
+      return new vk(1);
+   }
+
+   public void a(vj $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vk(this.a + 1)).a($$0);
       } else {
-         if ($$0 == tz.b) {
-            vi $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
+         this.b.put($$0.c(), $$0.b());
       }
    }
 
-   @Override
-   public uv.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   public boolean a(vc<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
+   }
 
-      return super.b();
+   public int b() {
+      return this.a;
+   }
+
+   public Map<String, vc<?>> c() {
+      return this.b;
+   }
+
+   public Map<String, vk> d() {
+      return this.c;
    }
 }

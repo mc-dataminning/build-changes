@@ -1,72 +1,62 @@
 import com.mojang.serialization.MapCodec;
 
-public class dob extends dqv implements doa {
+public class dob extends dlx {
    public static final MapCodec<dob> c = b(dob::new);
-   private static final float g = 0.11F;
+   private static final float d = 0.05F;
+   private static final float e = 0.1F;
 
    @Override
    public MapCodec<dob> a() {
       return c;
    }
 
-   public dob(ebd.d $$0) {
-      super($$0, jb.a, q_, false, 0.1);
-      this.l(this.C.b().b(e, Integer.valueOf(0)).b(r_, Boolean.valueOf(false)));
+   public dob(ebf.d $$0) {
+      super($$0, kd.c);
    }
 
    @Override
-   protected int a(azx $$0) {
-      return 1;
+   public boolean d(ebg $$0) {
+      return false;
+   }
+
+   protected static boolean a(djz $$0, dlc.c $$1) {
+      if ($$1 == dlc.c.b) {
+         return $$0.G_().i() < 0.05F;
+      } else {
+         return $$1 == dlc.c.c ? $$0.G_().i() < 0.1F : false;
+      }
    }
 
    @Override
-   protected boolean h(ebe $$0) {
-      return $$0.l();
+   public void a(ebg $$0, djz $$1, iw $$2, dlc.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dlc.c.b) {
+            $$1.b($$2, dng.fT.m());
+            $$1.a(null, egg.c, $$2);
+         } else if ($$3 == dlc.c.c) {
+            $$1.b($$2, dng.fV.m());
+            $$1.a(null, egg.c, $$2);
+         }
+      }
    }
 
    @Override
-   protected dnc b() {
-      return dne.te;
-   }
-
-   @Override
-   protected ebe a(ebe $$0, ebe $$1) {
-      return $$1.b(r_, $$0.c(r_));
-   }
-
-   @Override
-   protected ebe a(ebe $$0, azx $$1) {
-      return super.a($$0, $$1).b(r_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   protected czy a(dka $$0, iv $$1, ebe $$2, boolean $$3) {
-      return new czy(dac.xH);
-   }
-
-   @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      return doa.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      super.a($$0);
-      $$0.a(r_);
-   }
-
-   @Override
-   public boolean a(dka $$0, iv $$1, ebe $$2) {
-      return !$$2.c(r_);
-   }
-
-   @Override
-   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
+   protected boolean a(exp $$0) {
       return true;
    }
 
    @Override
-   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
-      $$0.a($$2, $$3.b(r_, Boolean.valueOf(true)), 2);
+   protected void a(ebg $$0, djz $$1, iw $$2, exp $$3) {
+      if ($$3 == exr.c) {
+         ebg $$4 = dng.fT.m();
+         $$1.b($$2, $$4);
+         $$1.a(egg.c, $$2, egg.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == exr.e) {
+         ebg $$5 = dng.fU.m();
+         $$1.b($$2, $$5);
+         $$1.a(egg.c, $$2, egg.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

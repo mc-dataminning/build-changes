@@ -1,42 +1,28 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record ezd(jf<eze> b, byte c, byte d, byte e, Optional<xa> f) {
-   public static final yy<wl, ezd> a = yy.a(eze.c, ezd::c, yw.c, ezd::d, yw.c, ezd::e, yw.c, ezd::f, xc.c, ezd::g, ezd::new);
-
-   public ezd(jf<eze> b, byte c, byte d, byte e, Optional<xa> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+public record ezd<T extends ezc>(String a, Function<ezc.a, T> b, Function<ezc.a, Codec<T>> c, bbf d) {
+   public ezd(String $$0, Supplier<T> $$1, Codec<T> $$2, bbf $$3) {
+      this($$0, $$1x -> $$1.get(), $$1x -> $$2, $$3);
    }
 
-   public ali a() {
-      return this.b.a().b();
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof ezd<?> $$1 && this.a.equals($$1.a)) {
+         return true;
+      }
+
+      return false;
    }
 
-   public boolean b() {
-      return this.b.a().c();
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 
-   public jf<eze> c() {
-      return this.b;
-   }
-
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<xa> g() {
-      return this.f;
+   @Override
+   public String toString() {
+      return "SavedDataType[" + this.a + "]";
    }
 }

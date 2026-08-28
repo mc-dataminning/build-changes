@@ -1,1032 +1,377 @@
 public class fsa {
-   public static final frr a = frr.a.a(0.0F)
-      .a("head", new frq(frq.d.c, new frs(0.0F, frt.a(1.2F, 1.2F, 1.2F), frq.b.a)))
-      .a("head", new frq(frq.d.a, new frs(0.0F, frt.a(0.0F, 1.0F, 1.0F), frq.b.a)))
-      .b();
-   public static final frr b = frr.a.a(8.0F)
+   public static final frt a = frt.a.a(1.125F)
       .a()
       .a(
-         "nose",
-         new frq(
-            frq.d.c,
-            new frs(0.0F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(0.5417F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(0.5833F, frt.a(1.0, 0.5, 1.0), frq.b.b),
-            new frs(0.6667F, frt.a(1.0, 2.5, 1.0), frq.b.b),
-            new frs(0.7917F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(0.9167F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(1.0F, frt.a(1.0, 3.0, 1.0), frq.b.b),
-            new frs(1.125F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(2.0F, frt.a(1.0, 1.0, 1.0), frq.b.a)
-         )
-      )
-      .b();
-   public static final frr c = frr.a.a(1.0F)
-      .a(
-         "nose",
-         new frq(
-            frq.d.c,
-            new frs(0.0F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(0.0833F, frt.a(1.0, 0.7F, 1.0), frq.b.b),
-            new frs(0.125F, frt.a(1.0, 3.0, 1.0), frq.b.b),
-            new frs(0.25F, frt.a(1.0, 3.0, 1.0), frq.b.b),
-            new frs(0.7083F, frt.a(1.0, 4.0, 1.0), frq.b.b),
-            new frs(0.8333F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(1.0F, frt.a(1.0, 1.0, 1.0), frq.b.b)
+         "upper_body",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(26.8802F, -23.399F, -9.0616F), frs.b.a),
+            new fru(0.125F, frv.b(-2.2093F, 5.9119F, 0.0675F), frs.b.a),
+            new fru(0.5417F, frv.b(23.0778F, 14.2906F, 4.6066F), frs.b.a),
+            new fru(0.7083F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.875F, frv.b(7.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.125F, frv.b(26.8802F, -23.399F, -9.0616F), frs.b.a)
          )
       )
       .a(
          "head",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.125F, frt.b(-5.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.875F, frt.b(-20.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0417F, frv.b(-17.5F, -62.5F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.4167F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.4583F, frv.b(0.0F, 15.0F, 0.0F), frs.b.a),
+            new fru(0.5F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.0417F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.0833F, frv.b(-37.1532F, 81.1131F, -28.3621F), frs.b.a),
+            new fru(1.125F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(12.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(-32.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.875F, frv.b(12.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.125F, frv.b(-15.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(-15.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.125F, frv.b(10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5417F, frv.b(-25.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.75F, frv.b(-9.0923F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7917F, frv.b(-15.137F, -66.7758F, 13.9603F), frs.b.a),
+            new fru(0.8333F, frv.b(-9.0923F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.0F, frv.b(10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.125F, frv.b(-15.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(30.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.375F, frv.b(49.8924F, -3.8282F, 3.2187F), frs.b.a),
+            new fru(0.5F, frv.b(17.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.b(-56.5613F, -12.2403F, -8.7374F), frs.b.a),
+            new fru(0.9167F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.125F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 2.0F), frs.b.a),
+            new fru(0.25F, frv.a(0.0F, 0.1846F, 0.5979F), frs.b.a),
+            new fru(0.375F, frv.a(0.0F, -0.0665F, -2.2177F), frs.b.a),
+            new fru(0.5F, frv.a(0.0F, 1.3563F, -4.3474F), frs.b.a),
+            new fru(0.625F, frv.a(0.0F, 0.1047F, -1.6556F), frs.b.a),
+            new fru(0.9167F, frv.a(0.0F, 0.0F, -1.0F), frs.b.a),
+            new fru(1.125F, frv.a(0.0F, 0.0F, 2.0F), frs.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(25.5305F, 11.3125F, 5.3525F), frs.b.a),
+            new fru(0.125F, frv.b(-49.5628F, 7.3556F, 6.7933F), frs.b.a),
+            new fru(0.25F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.4583F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.9167F, frv.b(30.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.0417F, frv.b(55.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.125F, frv.b(25.5305F, 11.3125F, 5.3525F), frs.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.9674F, -3.6578F), frs.b.a),
+            new fru(0.125F, frv.a(0.0F, -0.2979F, -0.9411F), frs.b.a),
+            new fru(0.25F, frv.a(0.0F, -0.3F, -0.94F), frs.b.a),
+            new fru(0.4583F, frv.a(0.0F, -0.3F, 1.06F), frs.b.a),
+            new fru(1.125F, frv.a(0.0F, 0.9674F, -3.6578F), frs.b.a)
          )
       )
       .b();
-   public static final frr d = frr.a.a(2.0F)
+   public static final frt b = frt.a.a(0.7083F)
       .a()
       .a(
-         "right_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5833F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
+         "upper_body",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.b(0.0F, 45.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(-115.0F, 67.5F, -90.0F), frs.b.a),
+            new fru(0.375F, frv.b(67.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5417F, frv.b(0.0F, 45.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
       .a(
-         "right_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(0.75F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.a(0.0F, 0.0F, -1.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a)
+         "upper_body",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.2917F, frv.a(0.0F, -2.7716F, -1.1481F), frs.b.a),
+            new fru(0.375F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5417F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
+      .a("upper_body", new frs(frs.d.c, new fru(0.0F, frv.a(1.0, 1.0, 1.0), frs.b.a), new fru(0.7083F, frv.a(1.0, 1.0, 1.0), frs.b.a)))
       .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(-7.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(-7.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 2.67F, -0.67F), frq.b.a),
-            new frs(0.1667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.3333F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(1.1667F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(1.9167F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 2.67F, -0.67F), frq.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(25.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5833F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, -0.5F), frq.b.a),
-            new frs(0.5833F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 2.22F, 0.78F), frq.b.a),
-            new frs(1.3333F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(1.5833F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, -0.5F), frq.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5833F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.a(0.0F, 0.0F, -1.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(1.75F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(0.1667F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(0.9167F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(1.1667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(25.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5833F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(25.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 2.22F, 0.78F), frq.b.a),
-            new frs(0.3333F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(0.5833F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, -0.5F), frq.b.a),
-            new frs(1.5833F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 2.22F, 0.78F), frq.b.a)
-         )
-      )
-      .a(
-         "body",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(1.0F, 0.0F, -2.5F), frq.b.a),
-            new frs(0.5F, frt.b(-1.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(1.0F, 0.0F, 2.5F), frq.b.a),
-            new frs(1.5F, frt.b(-1.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(1.0F, 0.0F, -2.5F), frq.b.a)
-         )
-      )
-      .a(
-         "body",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.2083F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.375F, frt.a(0.0F, -1.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2083F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.a(0.0F, -1.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)
+         "head",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(0.0F, -45.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(-11.25F, -45.0F, 0.0F), frs.b.a),
+            new fru(0.2917F, frv.b(-117.3939F, 76.6331F, -130.1483F), frs.b.a),
+            new fru(0.4167F, frv.b(-45.0F, -45.0F, 0.0F), frs.b.a),
+            new fru(0.5F, frv.b(60.0F, -45.0F, 0.0F), frs.b.a),
+            new fru(0.5833F, frv.b(60.0F, -45.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.b(0.0F, -45.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
       .a(
          "head",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(7.5F, 0.0F, 0.0F), frq.b.b),
-            new frs(0.1667F, frt.b(9.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(0.875F, frt.b(-1.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.25F, frt.b(7.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.75F, frt.b(5.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(2.0F, frt.b(7.5F, 0.0F, 0.0F), frq.b.b)
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.4167F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5F, frv.a(0.3827F, 0.5133F, -0.7682F), frs.b.a),
+            new fru(0.5833F, frv.a(0.3827F, 0.5133F, -0.7682F), frs.b.a),
+            new fru(0.625F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
       .a(
-         "left_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, -2.5F), frq.b.b),
-            new frs(0.5F, frt.b(0.0F, 0.0F, -7.5F), frq.b.b),
-            new frs(1.0F, frt.b(0.0F, 0.0F, -2.5F), frq.b.b),
-            new frs(1.5F, frt.b(0.0F, 0.0F, -7.5F), frq.b.b),
-            new frs(2.0F, frt.b(0.0F, 0.0F, -2.5F), frq.b.b)
+         "head",
+         new frs(
+            frs.d.c,
+            new fru(0.1667F, frv.a(1.0, 1.0, 1.0), frs.b.a),
+            new fru(0.4167F, frv.a(1.0, 1.0, 1.0), frs.b.a),
+            new fru(0.5F, frv.a(1.0, 1.3F, 1.0), frs.b.a),
+            new fru(0.625F, frv.a(1.0, 1.0, 1.0), frs.b.a)
          )
       )
       .a(
-         "right_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 2.5F), frq.b.b),
-            new frs(0.5F, frt.b(0.0F, 0.0F, 7.5F), frq.b.b),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 2.5F), frq.b.b),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 7.5F), frq.b.b),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 2.5F), frq.b.b)
+         "right_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(7.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.4583F, frv.b(55.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
+      .a(
+         "right_arm",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.a(0.0F, 0.0F, -2.0F), frs.b.a),
+            new fru(0.625F, frv.a(0.0F, 0.0F, -2.0F), frs.b.a),
+            new fru(0.7083F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(0.0F, 45.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.b(0.0F, 45.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.a(0.7071F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.a(0.7071F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(10.3453F, 14.7669F, 2.664F), frs.b.a),
+            new fru(0.4583F, frv.b(57.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.625F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.7083F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a("left_arm", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.7083F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
       .b();
-   public static final frr e = frr.a.a(2.0F)
-      .a()
+   public static final frt c = frt.a.a(0.2917F)
       .a(
-         "right_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5833F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
+         "upper_body",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.b(-5.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(5.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
       .a(
-         "right_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(0.75F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.a(0.0F, 0.0F, -1.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a)
+         "upper_body",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
       .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(-7.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(-7.0F, 0.0F, 0.0F), frq.b.a)
+         "right_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.b(17.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(-15.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
+      .a("right_arm", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.25F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
       .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 2.67F, -0.67F), frq.b.a),
-            new frs(0.1667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.3333F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(1.1667F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(1.9167F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 2.67F, -0.67F), frq.b.a)
+         "left_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.b(20.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(-15.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.25F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(25.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5833F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, -0.5F), frq.b.a),
-            new frs(0.5833F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 2.22F, 0.78F), frq.b.a),
-            new frs(1.3333F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(1.5833F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, -0.5F), frq.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5833F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.a(0.0F, 0.0F, -1.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(1.75F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.1667F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(0.1667F, frt.a(0.0F, 0.0F, 3.0F), frq.b.a),
-            new frs(0.9167F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(1.1667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(25.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.1667F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5833F, frt.b(-35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(25.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 2.22F, 0.78F), frq.b.a),
-            new frs(0.3333F, frt.a(0.0F, 4.0F, -1.0F), frq.b.a),
-            new frs(0.5833F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.a(0.0F, 0.0F, -2.0F), frq.b.a),
-            new frs(1.0F, frt.a(0.0F, 0.0F, -0.5F), frq.b.a),
-            new frs(1.5833F, frt.a(0.0F, 0.0F, 2.0F), frq.b.a),
-            new frs(2.0F, frt.a(0.0F, 2.22F, 0.78F), frq.b.a)
-         )
-      )
-      .a(
-         "body",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(2.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5F, frt.b(1.25F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(2.5F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.125F, frt.b(33.61503F, 11.46526F, 9.803F), frq.b.a),
-            new frs(0.875F, frt.b(34.71128F, 17.67415F, 14.15251F), frq.b.a),
-            new frs(1.125F, frt.b(37.21128F, -17.67415F, -14.15251F), frq.b.a),
-            new frs(1.875F, frt.b(38.30529F, -21.62827F, -17.40292F), frq.b.a),
-            new frs(2.0F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("head", new frq(frq.d.a, new frs(0.0F, frt.a(0.0F, -2.0F, 0.0F), frq.b.a), new frs(2.0F, frt.a(0.0F, -2.0F, 0.0F), frq.b.a)))
-      .a(
-         "left_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, -2.5F), frq.b.a),
-            new frs(0.25F, frt.b(0.0F, 0.0F, -15.0F), frq.b.a),
-            new frs(0.5F, frt.b(0.0F, 0.0F, -2.5F), frq.b.a),
-            new frs(0.75F, frt.b(0.0F, 0.0F, -15.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, -2.5F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, -15.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, -2.5F), frq.b.a),
-            new frs(1.75F, frt.b(0.0F, 0.0F, -15.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, -2.5F), frq.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 2.5F), frq.b.a),
-            new frs(0.25F, frt.b(0.0F, 0.0F, 15.0F), frq.b.a),
-            new frs(0.5F, frt.b(0.0F, 0.0F, 2.5F), frq.b.a),
-            new frs(0.75F, frt.b(0.0F, 0.0F, 15.0F), frq.b.a),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 2.5F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, 15.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 2.5F), frq.b.a),
-            new frs(1.75F, frt.b(0.0F, 0.0F, 15.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 2.5F), frq.b.a)
-         )
-      )
-      .a(
-         "nose",
-         new frq(
-            frq.d.c,
-            new frs(0.0F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(0.0833F, frt.a(1.0, 1.5, 1.0), frq.b.b),
-            new frs(0.2083F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(0.375F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(0.4583F, frt.a(1.0, 2.5, 1.0), frq.b.b),
-            new frs(0.625F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(0.8333F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(0.9167F, frt.a(1.0, 2.5, 1.0), frq.b.b),
-            new frs(1.0833F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(1.2917F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(1.3333F, frt.a(1.0, 2.5, 1.0), frq.b.b),
-            new frs(1.5F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(1.625F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(1.6667F, frt.a(1.0, 3.5, 1.0), frq.b.b),
-            new frs(1.8333F, frt.a(1.0, 1.0, 1.0), frq.b.b),
-            new frs(2.0F, frt.a(1.0, 1.0, 1.0), frq.b.b)
-         )
-      )
+      .a("left_arm", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.25F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
       .b();
-   public static final frr f = frr.a.a(8.0F)
+   public static final frt d = frt.a.a(2.25F)
       .a(
-         "body",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5F, frt.b(1.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.b(-5.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.5F, frt.b(2.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.5F, frt.b(2.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(4.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(4.5F, frt.b(2.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(5.6667F, frt.b(5.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(5.8333F, frt.b(-2.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(6.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
+         "upper_body",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.b(-40.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.1667F, frv.b(-5.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.2917F, frv.b(7.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5833F, frv.b(16.25F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.6667F, frv.b(29.0814F, 62.5516F, 26.5771F), frs.b.a),
+            new fru(0.75F, frv.b(12.2115F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.0F, frv.b(10.25F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.0417F, frv.b(-47.64F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.125F, frv.b(21.96F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.25F, frv.b(12.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(2.25F, frv.b(17.3266F, 7.9022F, -0.1381F), frs.b.a)
          )
       )
       .a(
-         "body",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.a(0.0F, -7.0F, 0.0F), frq.b.a)
+         "upper_body",
+         new frs(
+            frs.d.a,
+            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.a(0.0F, 0.557F, 1.2659F), frs.b.a),
+            new fru(0.1667F, frv.a(0.0F, -2.0889F, -0.3493F), frs.b.a),
+            new fru(0.2917F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
       .a(
-         "body",
-         new frq(
-            frq.d.c,
-            new frs(0.0F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(1.5F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(1.5417F, frt.a(1.04F, 0.98F, 1.02F), frq.b.a),
-            new frs(1.5833F, frt.a(1.0, 1.0, 1.0), frq.b.a)
+         "upper_body",
+         new frs(
+            frs.d.c,
+            new fru(0.0F, frv.a(1.0, 1.0, 1.0), frs.b.a),
+            new fru(0.0833F, frv.a(1.0, 1.1F, 1.0), frs.b.a),
+            new fru(0.1667F, frv.a(1.0, 0.9F, 1.0), frs.b.a),
+            new fru(0.2917F, frv.a(1.0, 1.0, 1.0), frs.b.a)
          )
       )
       .a(
-         "head",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.1667F, frt.b(10.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.4167F, frt.b(-10.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.5833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.875F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(2.0833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(2.5F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
-            new frs(2.6667F, frt.b(38.44F, 0.0F, 0.0F), frq.b.b),
-            new frs(2.875F, frt.b(10.95951F, 13.57454F, -14.93501F), frq.b.b),
-            new frs(3.2083F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
-            new frs(3.5833F, frt.b(55.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(3.7917F, frt.b(4.2932F, -16.187F, 10.90042F), frq.b.b),
-            new frs(4.125F, frt.b(47.5F, 0.0F, 0.0F), frq.b.b),
-            new frs(4.4167F, frt.b(54.71135F, 7.98009F, -5.56662F), frq.b.b),
-            new frs(4.5F, frt.b(55.72895F, -6.77684F, 4.46197F), frq.b.b),
-            new frs(4.5833F, frt.b(54.71135F, 7.98009F, -5.56662F), frq.b.b),
-            new frs(4.6667F, frt.b(55.72895F, -6.77684F, 4.46197F), frq.b.b),
-            new frs(4.75F, frt.b(54.71135F, 7.98009F, -5.56662F), frq.b.b),
-            new frs(4.8333F, frt.b(55.72895F, -6.77684F, 4.46197F), frq.b.b),
-            new frs(5.0F, frt.b(65.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(5.75F, frt.b(65.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(5.9167F, frt.b(-32.5F, 0.0F, 0.0F), frq.b.b),
-            new frs(6.25F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
+         "right_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.2917F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.25F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.5417F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.5833F, frv.b(-12.1479F, -34.3927F, 6.9326F), frs.b.a),
+            new fru(1.6667F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
+      .a("right_arm", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.2917F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
+      .a(
+         "left_arm",
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.2917F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.8333F, frv.b(-4.4444F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.875F, frv.b(-26.7402F, -78.831F, 26.3025F), frs.b.a),
+            new fru(0.9583F, frv.b(-5.5556F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.25F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a)
+         )
+      )
+      .a("left_arm", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.2917F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
       .a(
          "head",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.625F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a),
-            new frs(1.5833F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a),
-            new frs(1.875F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a),
-            new frs(2.0833F, frt.a(0.0F, 3.0F, 0.0F), frq.b.a),
-            new frs(2.2917F, frt.a(0.0F, 6.0F, 0.0F), frq.b.a),
-            new frs(2.6667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.2083F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a),
-            new frs(3.5833F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(4.125F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a),
-            new frs(5.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(5.75F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a),
-            new frs(6.0F, frt.a(0.0F, 1.5F, 0.0F), frq.b.a),
-            new frs(6.25F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a)
+         new frs(
+            frs.d.b,
+            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.0833F, frv.b(-5.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.2917F, frv.b(10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5F, frv.b(2.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5417F, frv.b(5.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(0.5833F, frv.b(-67.4168F, -12.9552F, -8.0231F), frs.b.a),
+            new fru(0.6667F, frv.b(8.5F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.0F, frv.b(10.773F, -29.5608F, -5.3627F), frs.b.a),
+            new fru(1.25F, frv.b(10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.7917F, frv.b(10.0F, 0.0F, 0.0F), frs.b.a),
+            new fru(1.8333F, frv.b(12.9625F, 39.2735F, 8.2901F), frs.b.a),
+            new fru(1.9167F, frv.b(10.0F, 0.0F, 0.0F), frs.b.a)
          )
       )
-      .a(
-         "left_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, -2.5F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, -2.5F), frq.b.a),
-            new frs(1.4167F, frt.b(0.0F, 0.0F, -50.0F), frq.b.a),
-            new frs(1.5833F, frt.b(0.0F, 0.0F, -30.0F), frq.b.a),
-            new frs(5.9167F, frt.b(0.0F, 0.0F, -30.0F), frq.b.a),
-            new frs(6.0833F, frt.b(0.0F, 0.0F, -65.0F), frq.b.a),
-            new frs(6.3333F, frt.b(0.0F, 0.0F, -30.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 2.5F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, 2.5F), frq.b.a),
-            new frs(1.4167F, frt.b(0.0F, 0.0F, 50.0F), frq.b.a),
-            new frs(1.5833F, frt.b(0.0F, 0.0F, 30.0F), frq.b.a),
-            new frs(5.9167F, frt.b(0.0F, 0.0F, 30.0F), frq.b.a),
-            new frs(6.0833F, frt.b(0.0F, 0.0F, 65.0F), frq.b.a),
-            new frs(6.3333F, frt.b(0.0F, 0.0F, 30.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2083F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.b(0.0F, 0.0F, 90.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2083F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2917F, frt.a(-2.0F, -0.75F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.a(-4.0F, -5.5F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.4167F, frt.b(0.0F, 0.0F, 90.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.25F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.a(-2.0F, -0.75F, 0.0F), frq.b.a),
-            new frs(1.4167F, frt.a(-4.0F, -5.5F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 90.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.4167F, frt.a(-2.0F, -0.75F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.a(-4.0F, -5.5F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2083F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.b(0.0F, 0.0F, -90.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2083F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2917F, frt.a(2.0F, -0.75F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.a(4.0F, -5.5F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.4167F, frt.b(0.0F, 0.0F, -90.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.25F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.a(2.0F, -0.75F, 0.0F), frq.b.a),
-            new frs(1.4167F, frt.a(4.0F, -5.5F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, -90.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.3333F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.4167F, frt.a(2.0F, -0.75F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.a(4.0F, -5.5F, 0.0F), frq.b.a)
-         )
-      )
-      .b();
-   public static final frr g = frr.a.a(3.0F)
-      .a(
-         "body",
-         new frq(
-            frq.d.b,
-            new frs(0.25F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.b(2.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(-2.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.7083F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "body",
-         new frq(
-            frq.d.a,
-            new frs(0.25F, frt.a(0.0F, -7.0F, 0.0F), frq.b.a),
-            new frs(0.75F, frt.a(0.0F, -7.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.7083F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.3333F, frt.b(-5.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.7083F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.0F, frt.b(10.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("head", new frq(frq.d.a, new frs(0.0F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a), new frs(1.375F, frt.a(0.0F, 1.0F, 0.0F), frq.b.a)))
-      .a(
-         "left_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, -30.0F), frq.b.a),
-            new frs(0.9167F, frt.b(0.0F, 0.0F, -30.0F), frq.b.a),
-            new frs(1.2083F, frt.b(0.0F, 0.0F, -5.0F), frq.b.a)
-         )
-      )
-      .a(
-         "right_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 30.0F), frq.b.a),
-            new frs(0.9167F, frt.b(0.0F, 0.0F, 30.0F), frq.b.a),
-            new frs(1.2083F, frt.b(0.0F, 0.0F, 5.0F), frq.b.a)
-         )
-      )
-      .a("right_front_leg", new frq(frq.d.b, new frs(0.0F, frt.b(0.0F, 0.0F, 90.0F), frq.b.b), new frs(0.4583F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)))
-      .a(
-         "right_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(-4.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.2083F, frt.a(6.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.4583F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a("right_mid_leg", new frq(frq.d.b, new frs(0.0833F, frt.b(0.0F, 0.0F, 90.0F), frq.b.b), new frs(0.5833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)))
-      .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0833F, frt.a(-4.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.3333F, frt.a(6.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.5833F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a("right_hind_leg", new frq(frq.d.b, new frs(0.1667F, frt.b(0.0F, 0.0F, 90.0F), frq.b.b), new frs(0.6667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)))
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.1667F, frt.a(-4.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.4167F, frt.a(6.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.6667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a("left_front_leg", new frq(frq.d.b, new frs(0.0F, frt.b(0.0F, 0.0F, -90.0F), frq.b.b), new frs(0.4583F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)))
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0F, frt.a(4.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.2083F, frt.a(-6.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.4583F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a("left_mid_leg", new frq(frq.d.b, new frs(0.0833F, frt.b(0.0F, 0.0F, -90.0F), frq.b.b), new frs(0.5833F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)))
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.0833F, frt.a(4.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.3333F, frt.a(-6.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.5833F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a("left_hind_leg", new frq(frq.d.b, new frs(0.1667F, frt.b(0.0F, 0.0F, -90.0F), frq.b.b), new frs(0.6667F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)))
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.a,
-            new frs(0.1667F, frt.a(4.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.4167F, frt.a(-6.0F, -5.5F, 0.0F), frq.b.b),
-            new frs(0.6667F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .b();
-   public static final frr h = frr.a.a(4.0F)
-      .a(
-         "bone",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(-90.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.5F, frt.b(-98.91F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.9583F, frt.b(-90.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(2.7083F, frt.b(-68.28F, 0.0F, 0.0F), frq.b.b),
-            new frs(2.9583F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a(
-         "bone",
-         new frq(
-            frq.d.a,
-            new frs(1.0F, frt.a(0.0F, 20.0F, 17.0F), frq.b.b),
-            new frs(1.5F, frt.a(0.0F, 25.19F, 20.37F), frq.b.b),
-            new frs(1.9583F, frt.a(0.0F, 20.0F, 17.0F), frq.b.b),
-            new frs(2.7083F, frt.a(0.0F, 17.06F, 11.25F), frq.b.b),
-            new frs(2.8333F, frt.a(0.0F, 9.85F, 2.2F), frq.b.b),
-            new frs(2.9583F, frt.a(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a(
-         "body",
-         new frq(
-            frq.d.c,
-            new frs(1.0F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(1.9583F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(2.9167F, frt.a(1.0, 1.0, 1.0), frq.b.a),
-            new frs(3.0F, frt.a(1.05F, 0.95F, 1.05F), frq.b.a),
-            new frs(3.0833F, frt.a(1.0, 1.0, 1.0), frq.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.2917F, frt.b(17.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.9583F, frt.b(-10.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.75F, frt.b(35.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.9167F, frt.b(-30.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0417F, frt.b(7.5F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.125F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frq(
-            frq.d.a,
-            new frs(1.0F, frt.a(0.0F, 7.0F, 19.0F), frq.b.a),
-            new frs(1.5F, frt.a(0.0F, 7.0F, 0.0F), frq.b.a),
-            new frs(1.9583F, frt.a(0.0F, 7.0F, 0.0F), frq.b.a),
-            new frs(2.75F, frt.a(0.0F, 7.0F, 0.0F), frq.b.a),
-            new frs(2.9583F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a(
-         "left_ear",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, -5.0F), frq.b.a),
-            new frs(1.9583F, frt.b(0.0F, 0.0F, -5.0F), frq.b.a),
-            new frs(2.7083F, frt.b(0.0F, 0.0F, -5.0F), frq.b.a),
-            new frs(2.9167F, frt.b(0.0F, 0.0F, -90.0F), frq.b.b),
-            new frs(3.125F, frt.b(0.0F, 0.0F, -5.0F), frq.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 5.0F), frq.b.a),
-            new frs(1.9583F, frt.b(0.0F, 0.0F, 5.0F), frq.b.a),
-            new frs(2.7083F, frt.b(0.0F, 0.0F, 5.0F), frq.b.a),
-            new frs(2.9167F, frt.b(0.0F, 0.0F, 90.0F), frq.b.b),
-            new frs(3.125F, frt.b(0.0F, 0.0F, 5.0F), frq.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.25F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.5F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.75F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("right_front_leg", new frq(frq.d.a, new frs(1.0F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a), new frs(1.5F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)))
-      .a(
-         "right_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.625F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.875F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.125F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.375F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.625F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("right_mid_leg", new frq(frq.d.a, new frs(1.0F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a), new frs(1.5F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)))
-      .a(
-         "right_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.25F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.5F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("right_hind_leg", new frq(frq.d.a, new frs(1.0F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a), new frs(1.5F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)))
-      .a(
-         "left_front_leg",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.25F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.5F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.75F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("left_front_leg", new frq(frq.d.a, new frs(1.0F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a), new frs(1.5F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)))
-      .a(
-         "left_mid_leg",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.375F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.625F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.875F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.125F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.375F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.625F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("left_mid_leg", new frq(frq.d.a, new frs(1.0F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a), new frs(1.5F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)))
-      .a(
-         "left_hind_leg",
-         new frq(
-            frq.d.b,
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.25F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.5F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(1.75F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.0F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.25F, frt.b(-15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(2.5F, frt.b(15.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(3.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a)
-         )
-      )
-      .a("left_hind_leg", new frq(frq.d.a, new frs(1.0F, frt.a(0.0F, 4.0F, 0.0F), frq.b.a), new frs(1.5F, frt.a(0.0F, 0.0F, 0.0F), frq.b.a)))
-      .b();
-   public static final frr i = frr.a.a(2.0F)
-      .a()
-      .a(
-         "head",
-         new frq(
-            frq.d.b,
-            new frs(0.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.a),
-            new frs(0.5F, frt.b(-32.00206F, 19.3546F, -11.70092F), frq.b.b),
-            new frs(1.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.5F, frt.b(-32.00206F, -19.3546F, 11.70092F), frq.b.b),
-            new frs(2.0F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.5F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(0.75F, frt.b(0.0F, 0.0F, -67.5F), frq.b.b),
-            new frs(0.9583F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.125F, frt.b(0.0F, 0.0F, -67.5F), frq.b.b),
-            new frs(1.2917F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new frq(
-            frq.d.b,
-            new frs(0.5F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(0.75F, frt.b(0.0F, 0.0F, 67.5F), frq.b.b),
-            new frs(0.9583F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b),
-            new frs(1.125F, frt.b(0.0F, 0.0F, 67.5F), frq.b.b),
-            new frs(1.2917F, frt.b(0.0F, 0.0F, 0.0F), frq.b.b)
-         )
-      )
+      .a("head", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.2917F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
       .b();
 }

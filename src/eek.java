@@ -1,5 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eek {
-   CompletableFuture<Void> a(djc var1, uv var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface eek {
 }

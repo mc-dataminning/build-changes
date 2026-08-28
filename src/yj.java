@@ -1,50 +1,53 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record yj(hb c, Optional<xa> d) implements xb {
-   public static final MapCodec<yj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(hb.a.fieldOf("selector").forGetter(yj::b), xc.a.optionalFieldOf("separator").forGetter(yj::c)).apply($$0, yj::new)
-   );
-   public static final xb.a<yj> b = new xb.a<>(a, "selector");
+public interface yj extends xd {
+   MapCodec<yj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(yj::b)).apply($$0, yj::a));
+   xd.a<yj> b = new xd.a<>(a, "text");
+   yj c = new yj() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+
+      @Override
+      public String b() {
+         return "";
+      }
+   };
+
+   static yj a(String $$0) {
+      return (yj)($$0.isEmpty() ? c : new yj.a($$0));
+   }
+
+   String b();
 
    @Override
-   public xb.a<?> a() {
+   default xd.a<?> a() {
       return b;
    }
 
-   @Override
-   public xo a(@Nullable ej $$0, @Nullable bwt $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return xa.i();
-      } else {
-         Optional<? extends xa> $$3 = xd.a($$0, this.d, $$1, $$2);
-         return xd.a(this.c.b().b($$0), $$3, bwt::m_);
+   public static record a(String d) implements yj {
+      @Override
+      public <T> Optional<T> a(xh.a<T> $$0) {
+         return $$0.accept(this.d);
       }
-   }
 
-   @Override
-   public <T> Optional<T> a(xf.b<T> $$0, xx $$1) {
-      return $$0.accept($$1, this.c.a());
-   }
+      @Override
+      public <T> Optional<T> a(xh.b<T> $$0, xz $$1) {
+         return $$0.accept($$1, this.d);
+      }
 
-   @Override
-   public <T> Optional<T> a(xf.a<T> $$0) {
-      return $$0.accept(this.c.a());
-   }
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
+      }
 
-   @Override
-   public String toString() {
-      return "pattern{" + this.c + "}";
-   }
-
-   public hb b() {
-      return this.c;
-   }
-
-   public Optional<xa> c() {
-      return this.d;
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

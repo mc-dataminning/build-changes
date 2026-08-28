@@ -1,2 +1,5 @@
-public interface fhl<T> extends fhk<T> {
+import java.util.List;
+
+public interface fhl<T> {
+   List<fhj<T>> a(long var1);
 }

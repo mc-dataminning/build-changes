@@ -1,11 +1,17 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface ewl {
-   Codec<ewl> c = mg.n.q().dispatch(ewl::a, ewm::codec);
+public class ewl implements ewn {
+   private static final ewl b = new ewl();
+   public static final MapCodec<ewl> a = MapCodec.unit(b);
 
-   @Nullable
-   tz a(azx var1, @Nullable tz var2);
+   @Override
+   public ua a(azz $$0, @Nullable ua $$1) {
+      return new ua();
+   }
 
-   ewm<?> a();
+   @Override
+   public ewo<?> a() {
+      return ewo.a;
+   }
 }

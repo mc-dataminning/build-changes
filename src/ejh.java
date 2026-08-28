@@ -1,24 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ejh<WC extends ejc>(ejj<WC> d, WC e) {
-   public static final Codec<ejh<?>> a = mg.N.q().dispatch($$0 -> $$0.d, ejj::c);
-   public static final Codec<jf<ejh<?>>> b = ale.a(mh.aK, a);
-   public static final Codec<jj<ejh<?>>> c = ju.a(mh.aK, a);
+public class ejh extends eje {
+   public static final Codec<ejh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eje.d.forGetter($$0x -> $$0x),
+               btw.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               btw.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               btw.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, ejh::new)
+   );
+   public final btw b;
+   public final btw c;
+   final btw j;
 
-   public boolean a(azx $$0) {
-      return this.d.a(this.e, $$0);
+   public ejh(float $$0, eqk $$1, btw $$2, ehz $$3, ejf $$4, jk<dne> $$5, btw $$6, btw $$7, btw $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   public boolean a(eje $$0, edb $$1, Function<iv, jf<dla>> $$2, azx $$3, egp $$4, djc $$5, eda $$6) {
-      return ac.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   public ejh(float $$0, eqk $$1, btw $$2, ehz $$3, jk<dne> $$4, btw $$5, btw $$6, btw $$7) {
+      this($$0, $$1, $$2, $$3, ejf.a, $$4, $$5, $$6, $$7);
    }
 
-   public ejj<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   public ejh(eje $$0, btw $$1, btw $$2, btw $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

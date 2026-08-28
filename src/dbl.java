@@ -1,18 +1,44 @@
-public class dbl extends cyc {
-   public dbl(czu.a $$0) {
-      super($$0);
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class dbl extends cyi {
+   protected final dne a;
+   private final jc b;
+
+   public dbl(dne $$0, dne $$1, jc $$2, czw.a $$3) {
+      super($$0, $$3);
+      this.a = $$1;
+      this.b = $$2;
+   }
+
+   protected boolean a(dkc $$0, ebg $$1, iw $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
+   @Override
+   protected ebg c(ddt $$0) {
+      ebg $$1 = this.a.a($$0);
+      ebg $$2 = null;
+      dkc $$3 = $$0.q();
+      iw $$4 = $$0.a();
+
+      for (jc $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            ebg $$6 = $$5 == this.b ? this.c().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
+      }
+
+      return $$2 != null && $$3.a($$2, $$4, ffx.a()) ? $$2 : null;
    }
 
    @Override
-   public czy m() {
-      czy $$0 = super.m();
-      $$0.b(kk.R, new dbu(dbv.C));
-      return $$0;
-   }
-
-   @Override
-   public xa a(czy $$0) {
-      dbu $$1 = $$0.a(kk.R);
-      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
+   public void a(Map<dne, czw> $$0, czw $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

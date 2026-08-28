@@ -1,130 +1,108 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class dlm {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final btb<dlm.c> a = btb.a();
-   public static final dlm b = new dlm.a().a();
-   public static final MapCodec<dlm> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bxx.i, btb.a(dlm.c.a).promotePartial(ag.a("Spawn data: ", d::error)), bam.a(bxx.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(mg.f.q(), dlm.b.a, mg.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dlm::new)
-   );
-   private final float f;
-   private final Map<bxx, btb<dlm.c>> g;
-   private final Map<bxc<?>, dlm.b> h;
+   public static <T> List<dlm.b> a(List<T> $$0, Function<T, List<jk<erh>>> $$1, boolean $$2) {
+      Object2IntMap<erh> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   dlm(float $$0, Map<bxx, btb<dlm.c>> $$1, Map<bxc<?>, dlm.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+      record a(int a, int b, erh c) {
+      }
+
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
+
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<jk<erh>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
+
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (jg<erh> $$12 : $$10.get($$11)) {
+               erh $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
+         }
+      }
+
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && azf.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<dlm.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<erh> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new dlm.b($$28));
+      }
+
+      return $$25.build();
    }
 
-   public btb<dlm.c> a(bxx $$0) {
-      return this.g.getOrDefault($$0, a);
-   }
-
-   @Nullable
-   public dlm.b a(bxc<?> $$0) {
-      return this.h.get($$0);
-   }
-
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bxx, btb.a<dlm.c>> a = ag.a(bxx.class, $$0 -> btb.b());
-      private final Map<bxc<?>, dlm.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public dlm.a a(bxx $$0, int $$1, dlm.c $$2) {
-         this.a.get($$0).a($$2, $$1);
-         return this;
-      }
-
-      public dlm.a a(bxc<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new dlm.b($$2, $$1));
-         return this;
-      }
-
-      public dlm.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public dlm a() {
-         return new dlm(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((btb.a)$$0.getValue()).a())),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<dlm.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, dlm.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static record c(bxc<?> b, int c, int d) {
-      public static final MapCodec<dlm.c> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     mg.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     ayw.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     ayw.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, dlm.c::new)
-         )
-         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
-
-      public c(bxc<?> b, int c, int d) {
-         b = b.f() == bxx.h ? bxc.aR : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-
-      @Override
-      public String toString() {
-         return bxc.a(this.b) + "*(" + this.c + "-" + this.d + ")";
-      }
-
-      public bxc<?> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
+   public static record b(List<erh> a, ToIntFunction<erh> b) {
+      b(List<erh> $$0) {
+         this($$0, ag.h($$0));
       }
    }
 }

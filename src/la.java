@@ -1,26 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record la(Optional<jj<dil>> c, Optional<jj<din>> d) implements dl<dij> {
-   public static final Codec<la> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ju.a(mh.bk).optionalFieldOf("material").forGetter(la::b), ju.a(mh.bl).optionalFieldOf("pattern").forGetter(la::c)).apply($$0, la::new)
-   );
+public record la(jk<dbu> e) implements dm<dbw> {
+   public static final Codec<la> a = jv.a(mi.ae).xmap(la::new, la::b);
 
    @Override
-   public kj<dij> a() {
-      return kk.W;
+   public kk<dbw> a() {
+      return kl.R;
    }
 
-   public boolean a(dij $$0) {
-      return this.c.isPresent() && !this.c.get().a($$0.a()) ? false : !this.d.isPresent() || this.d.get().a($$0.b());
+   public boolean a(dbw $$0) {
+      Optional<jg<dbu>> $$1 = $$0.e();
+      return !$$1.isEmpty() && this.e.a($$1.get());
    }
 
-   public Optional<jj<dil>> b() {
-      return this.c;
+   public static ku a(jk<dbu> $$0) {
+      return new la($$0);
    }
 
-   public Optional<jj<din>> c() {
-      return this.d;
+   public jk<dbu> b() {
+      return this.e;
    }
 }

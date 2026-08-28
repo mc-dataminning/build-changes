@@ -1,3 +1,5 @@
 public interface fjo {
-   void a();
+   boolean a(String var1);
+
+   boolean a();
 }

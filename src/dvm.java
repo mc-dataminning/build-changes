@@ -1,86 +1,79 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dvm extends dnc {
+public class dvm extends dmq implements dqq {
    public static final MapCodec<dvm> a = b(dvm::new);
-   public static final ece b = ebu.az;
-   private static final fgk c = dnc.b(12.0, 0.0, 16.0);
+   public static final ece<ecq> b = ebw.bm;
 
    @Override
    public MapCodec<dvm> a() {
       return a;
    }
 
-   protected dvm(ebd.d $$0) {
+   protected dvm(ebf.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
+      this.l(this.C.b().b(b, ecq.b));
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return c;
+   public dye a(iw $$0, ebg $$1) {
+      return new dzx($$0, $$1);
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if ($$1.v($$2.d())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.d(), this.m());
-               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 260);
-            } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 260);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(ebe $$0, dka $$1, iv $$2) {
-      ebe $$3 = $$1.a_($$2.e());
-      if ($$3.a(this)) {
-         return true;
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      dye $$5 = $$1.c_($$2);
+      if ($$5 instanceof dzx) {
+         return (but)(((dzx)$$5).a($$3) ? but.a : but.e);
       } else {
-         if ($$3.a(axe.ah) || $$3.a(axe.J)) {
-            iv $$4 = $$2.e();
-
-            for (jb $$5 : jb.c.a) {
-               ebe $$6 = $$1.a_($$4.a($$5));
-               exo $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(axj.a) || $$6.a(dne.lo)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
+         return but.e;
       }
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
+   public void a(djz $$0, iw $$1, ebg $$2, @Nullable bxw $$3, daa $$4) {
+      if (!$$0.C) {
+         if ($$3 != null) {
+            dye $$5 = $$0.c_($$1);
+            if ($$5 instanceof dzx) {
+               ((dzx)$$5).a($$3);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
       $$0.a(b);
+   }
+
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3, @Nullable eyy $$4, boolean $$5) {
+      if ($$1 instanceof aru) {
+         if ($$1.c_($$2) instanceof dzx $$7) {
+            boolean $$8 = $$1.D($$2);
+            boolean $$9 = $$7.E();
+            if ($$8 && !$$9) {
+               $$7.d(true);
+               this.a((aru)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.d(false);
+            }
+         }
+      }
+   }
+
+   private void a(aru $$0, dzx $$1) {
+      switch ($$1.v()) {
+         case a:
+            $$1.c(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.C();
+         case d:
+      }
    }
 }

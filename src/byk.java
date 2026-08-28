@@ -1,5 +1,67 @@
-public interface byk {
-   void a(ars var1, awq var2, czy var3);
+import io.netty.buffer.ByteBuf;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
-   boolean a();
+public enum byk {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8);
+
+   public static final Set<byk> j = Set.of(values());
+   public static final Set<byk> k = Set.of(e, d);
+   public static final Set<byk> l = Set.of(f, g, h, i);
+   public static final za<ByteBuf, Set<byk>> m = yy.g.a(byk::a, byk::a);
+   private final int n;
+
+   @SafeVarargs
+   public static Set<byk> a(Set<byk>... $$0) {
+      HashSet<byk> $$1 = new HashSet<>();
+
+      for (Set<byk> $$2 : $$0) {
+         $$1.addAll($$2);
+      }
+
+      return $$1;
+   }
+
+   private byk(final int $$0) {
+      this.n = $$0;
+   }
+
+   private int a() {
+      return 1 << this.n;
+   }
+
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
+   }
+
+   public static Set<byk> a(int $$0) {
+      Set<byk> $$1 = EnumSet.noneOf(byk.class);
+
+      for (byk $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static int a(Set<byk> $$0) {
+      int $$1 = 0;
+
+      for (byk $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
+
+      return $$1;
+   }
 }

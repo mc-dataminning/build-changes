@@ -1,19 +1,35 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cdm {
-   private static final btw a = buc.a(100, 200);
+public class cdm<E extends crc> extends bzn<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
 
-   public static bzm<bxu> a() {
-      return ccy.a(
-         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$0 -> $$0.group($$0.a(cgw.aC), $$0.a(cgw.n), $$0.c(cgw.aH), $$0.b(cgw.C), $$0.c(cgw.aA))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(baw.a);
-                     $$2.a(baw.a, (long)a.a($$3x.G_()));
-                     $$1.b();
-                     $$4x.b(byg.m);
-                     return true;
-                  }))
-      );
+   public cdm(int $$0) {
+      super(ImmutableMap.of(cgy.aC, cgz.a, cgy.p, cgz.b, cgy.n, cgz.b, cgy.o, cgz.c, cgy.C, cgz.c, cgy.aA, cgz.c, cgy.aH, cgz.c), $$0);
+   }
+
+   protected boolean a(aru $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aru $$0, E $$1, long $$2) {
+      $$1.a(awr.CZ, 5.0F, 1.0F);
+   }
+
+   protected void c(aru $$0, E $$1, long $$2) {
+      if ($$1.c(byi.m)) {
+         $$1.b(byi.a);
+      }
+
+      $$1.ec().b(cgy.aC);
+      $$1.ec().c(cgy.C).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
+         }
+
+         if (!$$1.ec().a(cgy.aA)) {
+            crd.a($$1, $$1x.dv());
+         }
+      });
    }
 }

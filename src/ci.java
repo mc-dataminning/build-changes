@@ -1,28 +1,21 @@
 import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.List;
 
-public class ci implements at<ci.a> {
-   @Override
-   public void a(alq $$0, at.a<ci.a> $$1) {
+public record ci(List<djw> d) {
+   public static final ci a = a(djw.values());
+   public static final ci b = a(djw.a, djw.c);
+   public static final Codec<ci> c = djw.f.listOf().xmap(ci::new, ci::a);
+
+   public static ci a(djw... $$0) {
+      return new ci(Arrays.stream($$0).toList());
    }
 
-   @Override
-   public void b(alq $$0, at.a<ci.a> $$1) {
+   public boolean a(djw $$0) {
+      return this.d.contains($$0);
    }
 
-   @Override
-   public void a(alq $$0) {
-   }
-
-   @Override
-   public Codec<ci.a> a() {
-      return ci.a.a;
-   }
-
-   public static record a() implements au {
-      public static final Codec<ci.a> a = Codec.unit(new ci.a());
-
-      @Override
-      public void a(bk $$0) {
-      }
+   public List<djw> a() {
+      return this.d;
    }
 }

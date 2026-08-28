@@ -1,58 +1,45 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class awh implements Runnable {
-   private static final Logger d = LogUtils.getLogger();
-   private static final AtomicInteger e = new AtomicInteger(0);
-   private static final int f = 5;
-   protected volatile boolean a;
-   protected final String b;
-   @Nullable
-   protected Thread c;
+public class awh implements ej {
+   private static final String b = "Rcon";
+   private static final xc c = xc.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   protected awh(String $$0) {
-      this.b = $$0;
+   public awh(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   public synchronized boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         this.a = true;
-         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new t(d));
-         this.c.start();
-         d.info("Thread {} started", this.b);
-         return true;
-      }
+   public void e() {
+      this.d.setLength(0);
    }
 
-   public synchronized void b() {
-      this.a = false;
-      if (null != this.c) {
-         int $$0 = 0;
-
-         while (this.c.isAlive()) {
-            try {
-               this.c.join(1000L);
-               if (++$$0 >= 5) {
-                  d.warn("Waited {} seconds attempting force stop!", $$0);
-               } else if (this.c.isAlive()) {
-                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
-                  this.c.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         d.info("Thread {} stopped", this.b);
-         this.c = null;
-      }
+   public String f() {
+      return this.d.toString();
    }
 
+   public ek g() {
+      aru $$0 = this.e.J();
+      return new ek(this, ffs.a($$0.aa()), ffr.a, $$0, 4, "Rcon", c, this.e, null);
+   }
+
+   @Override
+   public void a(xc $$0) {
+      this.d.append($$0.getString());
+   }
+
+   @Override
+   public boolean x_() {
+      return true;
+   }
+
+   @Override
+   public boolean y_() {
+      return true;
+   }
+
+   @Override
    public boolean c() {
-      return this.a;
+      return this.e.m();
    }
 }

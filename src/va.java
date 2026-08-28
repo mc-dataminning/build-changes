@@ -1,88 +1,104 @@
-import java.io.DataInput;
+import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Optional;
 
-public interface va<T extends uy> {
-   T c(DataInput var1, ui var2) throws IOException;
+public sealed interface va permits ua, tz, ur, uc {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   int u = 512;
 
-   uv.b a(DataInput var1, uv var2, ui var3) throws IOException;
+   void a(DataOutput var1) throws IOException;
 
-   default void b(DataInput $$0, uv $$1, ui $$2) throws IOException {
-      switch ($$1.b(this)) {
-         case a:
-            this.a($$0, $$1, $$2);
-         case c:
-         default:
-            break;
-         case b:
-            this.b($$0, $$2);
+   @Override
+   String toString();
+
+   byte b();
+
+   vc<?> c();
+
+   va d();
+
+   int a();
+
+   void a(ve var1);
+
+   ux.b a(ux var1);
+
+   default void b(ux $$0) {
+      ux.b $$1 = $$0.b(this.c());
+      if ($$1 == ux.b.a) {
+         this.a($$0);
       }
    }
 
-   void a(DataInput var1, int var2, ui var3) throws IOException;
-
-   void b(DataInput var1, ui var2) throws IOException;
-
-   String a();
-
-   String b();
-
-   static va<ub> a(final int $$0) {
-      return new va<ub>() {
-         private IOException c() {
-            return new IOException("Invalid tag id: " + $$0);
-         }
-
-         public ub a(DataInput $$0x, ui $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public uv.b a(DataInput $$0x, uv $$1, ui $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void a(DataInput $$0x, int $$1, ui $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void b(DataInput $$0x, ui $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public String a() {
-            return "INVALID[" + $$0 + "]";
-         }
-
-         @Override
-         public String b() {
-            return "UNKNOWN_" + $$0;
-         }
-      };
+   default Optional<String> p_() {
+      return Optional.empty();
    }
 
-   public interface a<T extends uy> extends va<T> {
-      @Override
-      default void b(DataInput $$0, ui $$1) throws IOException {
-         $$0.skipBytes(this.c());
-      }
-
-      @Override
-      default void a(DataInput $$0, int $$1, ui $$2) throws IOException {
-         $$0.skipBytes(this.c() * $$1);
-      }
-
-      int c();
+   default Optional<Number> o() {
+      return Optional.empty();
    }
 
-   public interface b<T extends uy> extends va<T> {
-      @Override
-      default void a(DataInput $$0, int $$1, ui $$2) throws IOException {
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            this.b($$0, $$2);
-         }
-      }
+   default Optional<Byte> p() {
+      return this.o().map(Number::byteValue);
+   }
+
+   default Optional<Short> q() {
+      return this.o().map(Number::shortValue);
+   }
+
+   default Optional<Integer> r() {
+      return this.o().map(Number::intValue);
+   }
+
+   default Optional<Long> s() {
+      return this.o().map(Number::longValue);
+   }
+
+   default Optional<Float> t() {
+      return this.o().map(Number::floatValue);
+   }
+
+   default Optional<Double> u() {
+      return this.o().map(Number::doubleValue);
+   }
+
+   default Optional<Boolean> v() {
+      return this.p().map($$0 -> $$0 != 0);
+   }
+
+   default Optional<byte[]> f() {
+      return Optional.empty();
+   }
+
+   default Optional<int[]> q_() {
+      return Optional.empty();
+   }
+
+   default Optional<long[]> r_() {
+      return Optional.empty();
+   }
+
+   default Optional<ua> s_() {
+      return Optional.empty();
+   }
+
+   default Optional<ug> t_() {
+      return Optional.empty();
    }
 }

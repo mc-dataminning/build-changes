@@ -1,105 +1,107 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public interface egw {
-   Codec<egw> b = egx.b;
-   Codec<jf<egw>> c = ale.a(mh.aO, b);
-   Codec<egw> d = c.xmap(egx.j::new, $$0 -> (jf)($$0 instanceof egx.j $$1 ? $$1.j() : new jf.a<>($$0)));
+public class egw extends ede {
+   public static final MapCodec<egw> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.d(dlj.b)).apply($$0, $$0.stable(egw::new)));
+   private static final int h = 2;
+   private static final List<ebg> i = StreamSupport.stream(mh.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
+   private static final int j = azq.f(azq.c((float)i.size()));
+   private static final int k = azq.f((float)i.size() / (float)j);
+   protected static final ebg d = dng.a.m();
+   protected static final ebg e = dng.iy.m();
+   public static final int f = 70;
+   public static final int g = 60;
 
-   double a(egw.b var1);
-
-   void a(double[] var1, egw.a var2);
-
-   egw a(egw.f var1);
-
-   double a();
-
-   double b();
-
-   azh<? extends egw> c();
-
-   default egw a(double $$0, double $$1) {
-      return new egx.g(this, $$0, $$1);
+   public egw(jg.c<dlc> $$0) {
+      super(new dln($$0));
    }
 
-   default egw d() {
-      return egx.a(this, egx.k.a.a);
+   @Override
+   protected MapCodec<? extends ede> b() {
+      return c;
    }
 
-   default egw e() {
-      return egx.a(this, egx.k.a.b);
+   @Override
+   public void a(asc $$0, dkv $$1, eht $$2, edd $$3) {
    }
 
-   default egw f() {
-      return egx.a(this, egx.k.a.c);
-   }
+   @Override
+   public void a(dky $$0, edd $$1, dkv $$2) {
+      iw.a $$3 = new iw.a();
+      dje $$4 = $$1.f();
+      int $$5 = $$4.h;
+      int $$6 = $$4.i;
 
-   default egw g() {
-      return egx.a(this, egx.k.a.d);
-   }
-
-   default egw h() {
-      return egx.a(this, egx.k.a.e);
-   }
-
-   default egw i() {
-      return egx.a(this, egx.k.a.f);
-   }
-
-   public interface a {
-      egw.b a(int var1);
-
-      void a(double[] var1, egw var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default eif d() {
-         return eif.a();
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = jz.a($$5, $$7);
+            int $$10 = jz.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            ebg $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+         }
       }
    }
 
-   public static record c(jf<ewr.a> b, @Nullable ewr c) {
-      public static final Codec<egw.c> a = ewr.a.b.xmap($$0 -> new egw.c($$0, null), egw.c::b);
-
-      public c(jf<ewr.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+   @Override
+   public CompletableFuture<edd> a(eih $$0, eht $$1, dkv $$2, edd $$3) {
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public interface d extends egw {
-      @Override
-      default void a(double[] $$0, egw.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default egw a(egw.f $$0) {
-         return $$0.apply(this);
-      }
+   @Override
+   public int a(int $$0, int $$1, ehf.a $$2, dkb $$3, eht $$4) {
+      return 0;
    }
 
-   public static record e(int a, int b, int c) implements egw.b {
+   @Override
+   public dkl a(int $$0, int $$1, dkb $$2, eht $$3) {
+      return new dkl(0, new ebg[0]);
    }
 
-   public interface f {
-      egw apply(egw var1);
+   @Override
+   public void a(List<String> $$0, eht $$1, iw $$2) {
+   }
 
-      default egw.c a(egw.c $$0) {
-         return $$0;
+   public static ebg a(int $$0, int $$1) {
+      ebg $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = azq.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
+         }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(asc $$0, long $$1, eht $$2, dle $$3, dkv $$4, edd $$5) {
+   }
+
+   @Override
+   public void a(asc $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return 63;
    }
 }

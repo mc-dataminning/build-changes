@@ -1,181 +1,393 @@
-import com.google.common.base.Splitter;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.PathMatcher;
+import java.nio.file.ProviderMismatchException;
+import java.nio.file.ReadOnlyFileSystemException;
+import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
-import java.nio.file.attribute.UserPrincipalLookupService;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.HashMap;
+import java.nio.file.WatchEvent.Kind;
+import java.nio.file.WatchEvent.Modifier;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class aub extends FileSystem {
-   private static final Set<String> b = Set.of("basic");
-   public static final String a = "/";
-   private static final Splitter c = Splitter.on('/');
-   private final FileStore d;
-   private final FileSystemProvider e = new aua();
-   private final atz f;
+class aub implements Path {
+   private static final BasicFileAttributes a = new atz() {
+      @Override
+      public boolean isRegularFile() {
+         return false;
+      }
 
-   aub(String $$0, aub.b $$1) {
-      this.d = new aty($$0);
-      this.f = a($$1, this, "", null);
+      @Override
+      public boolean isDirectory() {
+         return true;
+      }
+   };
+   private static final BasicFileAttributes b = new atz() {
+      @Override
+      public boolean isRegularFile() {
+         return true;
+      }
+
+      @Override
+      public boolean isDirectory() {
+         return false;
+      }
+   };
+   private static final Comparator<aub> c = Comparator.comparing(aub::n);
+   private final String d;
+   private final aud e;
+   @Nullable
+   private final aub f;
+   @Nullable
+   private List<String> g;
+   @Nullable
+   private String h;
+   private final aue i;
+
+   public aub(aud $$0, String $$1, @Nullable aub $$2, aue $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.i = $$3;
    }
 
-   private static atz a(aub.b $$0, aub $$1, String $$2, @Nullable atz $$3) {
-      Object2ObjectOpenHashMap<String, atz> $$4 = new Object2ObjectOpenHashMap();
-      atz $$5 = new atz($$1, $$2, $$3, new auc.a($$4));
-      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new atz($$1, $$3x, $$5, new auc.b($$4x))));
-      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
-      $$4.trim();
-      return $$5;
+   private aub a(@Nullable aub $$0, String $$1) {
+      return new aub(this.e, $$1, $$0, aue.b);
    }
 
-   @Override
-   public FileSystemProvider provider() {
+   public aud a() {
       return this.e;
    }
 
    @Override
-   public void close() {
+   public boolean isAbsolute() {
+      return this.i != aue.b;
    }
 
    @Override
-   public boolean isOpen() {
-      return true;
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public String getSeparator() {
-      return "/";
-   }
-
-   @Override
-   public Iterable<Path> getRootDirectories() {
-      return List.of(this.f);
-   }
-
-   @Override
-   public Iterable<FileStore> getFileStores() {
-      return List.of(this.d);
-   }
-
-   @Override
-   public Set<String> supportedFileAttributeViews() {
-      return b;
-   }
-
-   @Override
-   public Path getPath(String $$0, String... $$1) {
-      Stream<String> $$2 = Stream.of($$0);
-      if ($$1.length > 0) {
-         $$2 = Stream.concat($$2, Stream.of($$1));
-      }
-
-      String $$3 = $$2.collect(Collectors.joining("/"));
-      if ($$3.equals("/")) {
-         return this.f;
-      } else if ($$3.startsWith("/")) {
-         atz $$4 = this.f;
-
-         for (String $$5 : c.split($$3.substring(1))) {
-            if ($$5.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
-            }
-
-            $$4 = $$4.a($$5);
-         }
-
-         return $$4;
+   public File toFile() {
+      if (this.i instanceof aue.b $$0) {
+         return $$0.a().toFile();
       } else {
-         atz $$6 = null;
-
-         for (String $$7 : c.split($$3)) {
-            if ($$7.isEmpty()) {
-               throw new IllegalArgumentException("Empty paths not allowed");
-            }
-
-            $$6 = new atz(this, $$7, $$6, auc.b);
-         }
-
-         if ($$6 == null) {
-            throw new IllegalArgumentException("Empty paths not allowed");
-         } else {
-            return $$6;
-         }
+         throw new UnsupportedOperationException("Path " + this.n() + " does not represent file");
       }
    }
 
-   @Override
-   public PathMatcher getPathMatcher(String $$0) {
-      throw new UnsupportedOperationException();
+   @Nullable
+   public aub b() {
+      return this.isAbsolute() ? this.e.b() : null;
    }
 
-   @Override
-   public UserPrincipalLookupService getUserPrincipalLookupService() {
-      throw new UnsupportedOperationException();
+   public aub c() {
+      return this.a(null, this.d);
    }
 
-   @Override
-   public WatchService newWatchService() {
-      throw new UnsupportedOperationException();
-   }
-
-   public FileStore a() {
-      return this.d;
-   }
-
-   public atz b() {
+   @Nullable
+   public aub d() {
       return this.f;
    }
 
-   public static aub.a c() {
-      return new aub.a();
+   @Override
+   public int getNameCount() {
+      return this.l().size();
    }
 
-   public static class a {
-      private final aub.b a = new aub.b();
+   private List<String> l() {
+      if (this.d.isEmpty()) {
+         return List.of();
+      } else {
+         if (this.g == null) {
+            Builder<String> $$0 = ImmutableList.builder();
+            if (this.f != null) {
+               $$0.addAll(this.f.l());
+            }
 
-      public aub.a a(List<String> $$0, String $$1, Path $$2) {
-         aub.b $$3 = this.a;
-
-         for (String $$4 : $$0) {
-            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new aub.b());
+            $$0.add(this.d);
+            this.g = $$0.build();
          }
 
-         $$3.b.put($$1, $$2);
-         return this;
+         return this.g;
       }
+   }
 
-      public aub.a a(List<String> $$0, Path $$1) {
-         if ($$0.isEmpty()) {
-            throw new IllegalArgumentException("Path can't be empty");
+   public aub a(int $$0) {
+      List<String> $$1 = this.l();
+      if ($$0 >= 0 && $$0 < $$1.size()) {
+         return this.a(null, $$1.get($$0));
+      } else {
+         throw new IllegalArgumentException("Invalid index: " + $$0);
+      }
+   }
+
+   public aub a(int $$0, int $$1) {
+      List<String> $$2 = this.l();
+      if ($$0 >= 0 && $$1 <= $$2.size() && $$0 < $$1) {
+         aub $$3 = null;
+
+         for (int $$4 = $$0; $$4 < $$1; $$4++) {
+            $$3 = this.a($$3, $$2.get($$4));
+         }
+
+         return $$3;
+      } else {
+         throw new IllegalArgumentException();
+      }
+   }
+
+   @Override
+   public boolean startsWith(Path $$0) {
+      if ($$0.isAbsolute() != this.isAbsolute()) {
+         return false;
+      } else if ($$0 instanceof aub $$1) {
+         if ($$1.e != this.e) {
+            return false;
          } else {
-            int $$2 = $$0.size() - 1;
-            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
-         }
-      }
+            List<String> $$2 = this.l();
+            List<String> $$3 = $$1.l();
+            int $$4 = $$3.size();
+            if ($$4 > $$2.size()) {
+               return false;
+            } else {
+               for (int $$5 = 0; $$5 < $$4; $$5++) {
+                  if (!$$3.get($$5).equals($$2.get($$5))) {
+                     return false;
+                  }
+               }
 
-      public FileSystem a(String $$0) {
-         return new aub($$0, this.a);
+               return true;
+            }
+         }
+      } else {
+         return false;
       }
    }
 
-   static record b(Map<String, aub.b> a, Map<String, Path> b) {
+   @Override
+   public boolean endsWith(Path $$0) {
+      if ($$0.isAbsolute() && !this.isAbsolute()) {
+         return false;
+      } else if ($$0 instanceof aub $$1) {
+         if ($$1.e != this.e) {
+            return false;
+         } else {
+            List<String> $$2 = this.l();
+            List<String> $$3 = $$1.l();
+            int $$4 = $$3.size();
+            int $$5 = $$2.size() - $$4;
+            if ($$5 < 0) {
+               return false;
+            } else {
+               for (int $$6 = $$4 - 1; $$6 >= 0; $$6--) {
+                  if (!$$3.get($$6).equals($$2.get($$5 + $$6))) {
+                     return false;
+                  }
+               }
 
-      public b() {
-         this(new HashMap<>(), new HashMap<>());
+               return true;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public aub e() {
+      return this;
+   }
+
+   public aub a(Path $$0) {
+      aub $$1 = this.c($$0);
+      return $$0.isAbsolute() ? $$1 : this.a($$1.l());
+   }
+
+   private aub a(List<String> $$0) {
+      aub $$1 = this;
+
+      for (String $$2 : $$0) {
+         $$1 = $$1.a($$2);
+      }
+
+      return $$1;
+   }
+
+   aub a(String $$0) {
+      if (a(this.i)) {
+         return new aub(this.e, $$0, this, this.i);
+      } else if (this.i instanceof aue.a $$1) {
+         aub $$2 = $$1.a().get($$0);
+         return $$2 != null ? $$2 : new aub(this.e, $$0, this, aue.a);
+      } else if (this.i instanceof aue.b) {
+         return new aub(this.e, $$0, this, aue.a);
+      } else {
+         throw new AssertionError("All content types should be already handled");
+      }
+   }
+
+   private static boolean a(aue $$0) {
+      return $$0 == aue.a || $$0 == aue.b;
+   }
+
+   public aub b(Path $$0) {
+      aub $$1 = this.c($$0);
+      if (this.isAbsolute() != $$1.isAbsolute()) {
+         throw new IllegalArgumentException("absolute mismatch");
+      } else {
+         List<String> $$2 = this.l();
+         List<String> $$3 = $$1.l();
+         if ($$2.size() >= $$3.size()) {
+            throw new IllegalArgumentException();
+         } else {
+            for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+               if (!$$2.get($$4).equals($$3.get($$4))) {
+                  throw new IllegalArgumentException();
+               }
+            }
+
+            return $$1.a($$2.size(), $$3.size());
+         }
+      }
+   }
+
+   @Override
+   public URI toUri() {
+      try {
+         return new URI("x-mc-link", this.e.a().name(), this.n(), null);
+      } catch (URISyntaxException var2) {
+         throw new AssertionError("Failed to create URI", var2);
+      }
+   }
+
+   public aub f() {
+      return this.isAbsolute() ? this : this.e.b().a(this);
+   }
+
+   public aub a(LinkOption... $$0) {
+      return this.f();
+   }
+
+   @Override
+   public WatchKey register(WatchService $$0, Kind<?>[] $$1, Modifier... $$2) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public int compareTo(Path $$0) {
+      aub $$1 = this.c($$0);
+      return c.compare(this, $$1);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else if ($$0 instanceof aub $$1) {
+         if (this.e != $$1.e) {
+            return false;
+         } else {
+            boolean $$2 = this.m();
+            if ($$2 != $$1.m()) {
+               return false;
+            } else {
+               return $$2 ? this.i == $$1.i : Objects.equals(this.f, $$1.f) && Objects.equals(this.d, $$1.d);
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private boolean m() {
+      return !a(this.i);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.m() ? this.i.hashCode() : this.d.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.n();
+   }
+
+   private String n() {
+      if (this.h == null) {
+         StringBuilder $$0 = new StringBuilder();
+         if (this.isAbsolute()) {
+            $$0.append("/");
+         }
+
+         Joiner.on("/").appendTo($$0, this.l());
+         this.h = $$0.toString();
+      }
+
+      return this.h;
+   }
+
+   private aub c(@Nullable Path $$0) {
+      if ($$0 == null) {
+         throw new NullPointerException();
+      } else {
+         if ($$0 instanceof aub $$1 && $$1.e == this.e) {
+            return $$1;
+         }
+
+         throw new ProviderMismatchException();
+      }
+   }
+
+   public boolean g() {
+      return this.m();
+   }
+
+   @Nullable
+   public Path h() {
+      return this.i instanceof aue.b $$0 ? $$0.a() : null;
+   }
+
+   @Nullable
+   public aue.a i() {
+      return this.i instanceof aue.a $$0 ? $$0 : null;
+   }
+
+   public BasicFileAttributeView j() {
+      return new BasicFileAttributeView() {
+         @Override
+         public String name() {
+            return "basic";
+         }
+
+         @Override
+         public BasicFileAttributes readAttributes() throws IOException {
+            return aub.this.k();
+         }
+
+         @Override
+         public void setTimes(FileTime $$0, FileTime $$1, FileTime $$2) {
+            throw new ReadOnlyFileSystemException();
+         }
+      };
+   }
+
+   public BasicFileAttributes k() throws IOException {
+      if (this.i instanceof aue.a) {
+         return a;
+      } else if (this.i instanceof aue.b) {
+         return b;
+      } else {
+         throw new NoSuchFileException(this.n());
       }
    }
 }

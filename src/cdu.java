@@ -1,32 +1,102 @@
-public class cdu extends cds {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import java.util.Optional;
 
-   public cdu(bxw $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class cdu implements cdr {
+   protected final bxy a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
+
+   public cdu(bxy $$0) {
+      this.a = $$0;
    }
 
-   @Override
+   public void a(ffs $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
+   }
+
+   public void a(bwv $$0) {
+      this.a($$0.dA(), b($$0), $$0.dG());
+   }
+
+   public void a(bwv $$0, float $$1, float $$2) {
+      this.a($$0.dA(), b($$0), $$0.dG(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.ah(), (float)this.a.ad());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
    public void a() {
+      if (this.c()) {
+         this.a.x(0.0F);
+      }
+
       if (this.d > 0) {
          this.d--;
-         this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+         this.i().ifPresent($$0 -> this.a.aX = this.a(this.a.aX, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.x(this.a(this.a.dN(), $$0, this.c)));
       } else {
-         if (this.a.O().k()) {
-            this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
-         }
-
-         this.a.aX = this.a(this.a.aX, this.a.aV, this.b);
+         this.a.aX = this.a(this.a.aX, this.a.aV, 10.0F);
       }
 
-      float $$0 = azo.h(this.a.aX - this.a.aV);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aV -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aV += 4.0F;
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.O().k()) {
+         this.a.aX = azq.c(this.a.aX, this.a.aV, (float)this.a.af());
       }
+   }
+
+   protected boolean c() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dA();
+      double $$1 = this.f - this.a.dE();
+      double $$2 = this.g - this.a.dG();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(azq.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dA();
+      double $$1 = this.g - this.a.dG();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(azq.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   private static double b(bwv $$0) {
+      return $$0 instanceof bxw ? $$0.dE() : ($$0.cR().b + $$0.cR().e) / 2.0;
    }
 }

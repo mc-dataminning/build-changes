@@ -1,25 +1,39 @@
+import com.mojang.serialization.Codec;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public interface ef extends jh.a {
-   static ef a(final jh.a $$0, final cvh $$1) {
-      return new ef() {
-         @Override
-         public Stream<alh<? extends js<?>>> b() {
-            return $$0.b();
-         }
+public class ef {
+   public static final Codec<ef> a = alk.a.xmap(ef::new, ef::a);
+   private final alk b;
+   private boolean c;
+   private Optional<hy<ek>> d = Optional.empty();
 
-         @Override
-         public <T> Optional<jh.b<T>> a(alh<? extends js<? extends T>> $$0x) {
-            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
-         }
-
-         @Override
-         public cvh a() {
-            return $$1;
-         }
-      };
+   public ef(alk $$0) {
+      this.b = $$0;
    }
 
-   cvh a();
+   public Optional<hy<ek>> a(alz $$0) {
+      if (!this.c) {
+         this.d = $$0.a(this.b);
+         this.c = true;
+      }
+
+      return this.d;
+   }
+
+   public alk a() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         if ($$0 instanceof ef $$1 && this.a().equals($$1.a())) {
+            return true;
+         }
+
+         return false;
+      }
+   }
 }

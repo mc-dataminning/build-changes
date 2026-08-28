@@ -1,74 +1,94 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public abstract class bcs extends DataFix {
-   private final String a;
+public class bcs extends DataFix {
+   private static final List<String> a = List.of(
+      "minecraft:witch", "minecraft:ravager", "minecraft:pillager", "minecraft:illusioner", "minecraft:evoker", "minecraft:vindicator"
+   );
 
-   public bcs(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public bcs(Schema $$0) {
+      super($$0, true);
+   }
+
+   private Typed<?> a(Typed<?> $$0, Map<String, String> $$1) {
+      return $$0.update(DSL.remainderFinder(), $$1x -> {
+         for (Entry<String, String> $$2 : $$1.entrySet()) {
+            $$1x = $$1x.renameAndFixField($$2.getKey(), $$2.getValue(), bbh::a);
+         }
+
+         return $$1x;
+      });
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("frames", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> {
+            $$0xx = $$0xx.renameAndFixField("Pos", "pos", bbh::a);
+            $$0xx = $$0xx.renameField("Rotation", "rotation");
+            return $$0xx.renameField("EntityId", "entity_id");
+         }))).update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> {
+            $$0xx = $$0xx.renameField("Pos", "pos");
+            $$0xx = $$0xx.renameField("Color", "color");
+            return $$0xx.renameField("Name", "name");
+         })));
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjb.E);
-      Type<Pair<String, String>> $$1 = DSL.named(bjb.E.typeName(), bkw.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(bjb.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
-         );
-         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
-            this.a + " for flat_block_state",
-            this.getInputSchema().getType(bjb.v),
-            $$0x -> $$0x.update(
-                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
-               )
-         );
-         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
-      }
+      List<TypeRewriteRule> $$0 = new ArrayList<>();
+      this.a($$0);
+      this.b($$0);
+      $$0.add(
+         this.writeFixAndRead(
+            "BlockPos format for map frames", this.getInputSchema().getType(bjd.j), this.getOutputSchema().getType(bjd.j), $$0x -> $$0x.update("data", this::a)
+         )
+      );
+      Type<?> $$1 = this.getInputSchema().getType(bjd.t);
+      $$0.add(
+         this.fixTypeEverywhereTyped(
+            "BlockPos format for compass target",
+            $$1,
+            bgz.a($$1, "minecraft:compass"::equals, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("LodestonePos", bbh::a)))
+         )
+      );
+      return TypeRewriteRule.seq($$0);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
-   }
+   private void a(List<TypeRewriteRule> $$0) {
+      $$0.add(this.a(bjd.D, "minecraft:bee", Map.of("HivePos", "hive_pos", "FlowerPos", "flower_pos")));
+      $$0.add(this.a(bjd.D, "minecraft:end_crystal", Map.of("BeamTarget", "beam_target")));
+      $$0.add(this.a(bjd.D, "minecraft:wandering_trader", Map.of("WanderTarget", "wander_target")));
 
-   private String b(String $$0) {
-      int $$1 = $$0.indexOf(91);
-      int $$2 = $$0.indexOf(123);
-      int $$3 = $$0.length();
-      if ($$1 > 0) {
-         $$3 = $$1;
+      for (String $$1 : a) {
+         $$0.add(this.a(bjd.D, $$1, Map.of("PatrolTarget", "patrol_target")));
       }
 
-      if ($$2 > 0) {
-         $$3 = Math.min($$3, $$2);
-      }
-
-      String $$4 = $$0.substring(0, $$3);
-      String $$5 = this.a($$4);
-      return $$5 + $$0.substring($$3);
+      $$0.add(
+         this.fixTypeEverywhereTyped(
+            "BlockPos format in Leash for mobs",
+            this.getInputSchema().getType(bjd.D),
+            $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.renameAndFixField("Leash", "leash", bbh::a))
+         )
+      );
    }
 
-   protected abstract String a(String var1);
+   private void b(List<TypeRewriteRule> $$0) {
+      $$0.add(this.a(bjd.s, "minecraft:beehive", Map.of("FlowerPos", "flower_pos")));
+      $$0.add(this.a(bjd.s, "minecraft:end_gateway", Map.of("ExitPortal", "exit_portal")));
+   }
 
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bcs($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   private TypeRewriteRule a(TypeReference $$0, String $$1, Map<String, String> $$2) {
+      String $$3 = "BlockPos format in " + $$2.keySet() + " for " + $$1 + " (" + $$0.typeName() + ")";
+      OpticFinder<?> $$4 = DSL.namedChoice($$1, this.getInputSchema().getChoiceType($$0, $$1));
+      return this.fixTypeEverywhereTyped($$3, this.getInputSchema().getType($$0), $$2x -> $$2x.updateTyped($$4, $$1xx -> this.a($$1xx, $$2)));
    }
 }

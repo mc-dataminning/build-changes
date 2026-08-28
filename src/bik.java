@@ -2,28 +2,29 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.stream.Collectors;
 
 public class bik extends DataFix {
-   public bik(Schema $$0) {
-      super($$0, false);
+   public bik(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsMenuBlurrinessFix",
-         this.getInputSchema().getType(bjb.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> {
-                  int $$1 = this.a($$0xx.asString("0.5"));
-                  return $$0xx.createString(String.valueOf($$1));
-               }))
-      );
-   }
+         "OptionsKeyTranslationFix",
+         this.getInputSchema().getType(bjd.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
+                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
+                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
+                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
+                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
+                        }
+                     }
 
-   private int a(String $$0) {
-      try {
-         return Math.round(Float.parseFloat($$0) * 10.0F);
-      } catch (NumberFormatException var3) {
-         return 5;
-      }
+                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
+                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
+      );
    }
 }

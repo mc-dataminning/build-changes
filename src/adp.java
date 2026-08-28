@@ -1,57 +1,53 @@
-public class adp implements zh<abw> {
-   public static final yy<wl, adp> a = zh.a(adp::a, adp::new);
-   private final int b;
-   private final diu c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public adp(int $$0, diu $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public record adp(int b, boolean c, Set<alj<djz>> d, int e, int f, int g, boolean h, boolean i, boolean j, ago k, boolean l) implements zj<aby> {
+   public static final za<wn, adp> a = zj.a(adp::a, adp::new);
+
+   private adp(wn $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mi.bp)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new ago($$0),
+         $$0.readBoolean()
+      );
    }
 
-   private adp(wl $$0) {
-      this.b = $$0.x();
-      this.c = diu.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
-   }
-
-   private void a(wl $$0) {
-      $$0.f(this.b);
-      diu.b.encode($$0, this.c);
-      $$0.c(this.d);
+   private void a(wn $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, vy::b);
       $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public zj<adp> a() {
-      return agp.Q;
+   public zl<adp> a() {
+      return agr.O;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public diu e() {
+   public boolean e() {
       return this.c;
    }
 
-   public int f() {
+   public Set<alj<djz>> f() {
       return this.d;
    }
 
@@ -59,11 +55,31 @@ public class adp implements zh<abw> {
       return this.e;
    }
 
-   public boolean h() {
+   public int h() {
       return this.f;
    }
 
-   public boolean i() {
+   public int i() {
       return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public ago m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

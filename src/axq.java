@@ -1,35 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class axq {
-   private final List<axr> a = new ArrayList<>();
+   public static final axv<cjb> a = a("acquirable_job_site");
+   public static final axv<cjb> b = a("village");
+   public static final axv<cjb> c = a("bee_home");
 
-   public static axq a() {
-      return new axq();
+   private axq() {
    }
 
-   public List<axr> b() {
-      return List.copyOf(this.a);
-   }
-
-   public axq a(axr $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public axq a(ali $$0) {
-      return this.a(axr.a($$0));
-   }
-
-   public axq b(ali $$0) {
-      return this.a(axr.b($$0));
-   }
-
-   public axq c(ali $$0) {
-      return this.a(axr.c($$0));
-   }
-
-   public axq d(ali $$0) {
-      return this.a(axr.d($$0));
+   private static axv<cjb> a(String $$0) {
+      return axv.a(mi.aa, alk.b($$0));
    }
 }

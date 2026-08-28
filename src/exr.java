@@ -1,221 +1,24 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.UnmodifiableIterator;
 
-public abstract class exr extends exm {
-   public static final float e = 0.44444445F;
+public class exr {
+   public static final exp a = a("empty", new exn());
+   public static final exo b = a("flowing_water", new exw.a());
+   public static final exo c = a("water", new exw.b());
+   public static final exo d = a("flowing_lava", new ext.a());
+   public static final exo e = a("lava", new ext.b());
 
-   @Override
-   public exn d() {
-      return exp.d;
+   private static <T extends exp> T a(String $$0, T $$1) {
+      return jt.a(mh.c, $$0, $$1);
    }
 
-   @Override
-   public exn e() {
-      return exp.e;
-   }
+   static {
+      for (exp $$0 : mh.c) {
+         UnmodifiableIterator var2 = $$0.f().a().iterator();
 
-   @Override
-   public czu a() {
-      return dac.rq;
-   }
-
-   @Override
-   public void a(djx $$0, iv $$1, exo $$2, azx $$3) {
-      iv $$4 = $$1.d();
-      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(ly.ab, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, awp.oy, awq.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         while (var2.hasNext()) {
+            exq $$1 = (exq)var2.next();
+            exp.c.b($$1);
          }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awp.ow, awq.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   public void a(ars $$0, iv $$1, exo $$2, azx $$3) {
-      if ($$0.O().c(djt.b)) {
-         if ($$0.O().c(djt.c) || $$0.g($$1)) {
-            int $$4 = $$3.a(3);
-            if ($$4 > 0) {
-               iv $$5 = $$1;
-
-               for (int $$6 = 0; $$6 < $$4; $$6++) {
-                  $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-                  if (!$$0.p($$5)) {
-                     return;
-                  }
-
-                  ebe $$7 = $$0.a_($$5);
-                  if ($$7.l()) {
-                     if (this.a((dka)$$0, $$5)) {
-                        $$0.b($$5, dmp.a($$0, $$5));
-                        return;
-                     }
-                  } else if ($$7.d()) {
-                     return;
-                  }
-               }
-            } else {
-               for (int $$8 = 0; $$8 < 3; $$8++) {
-                  iv $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-                  if (!$$0.p($$9)) {
-                     return;
-                  }
-
-                  if ($$0.v($$9.d()) && this.b($$0, $$9)) {
-                     $$0.b($$9.d(), dmp.a($$0, $$9));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(djx $$0, iv $$1, bwt $$2, bxm $$3) {
-      $$3.a(bxn.c);
-      $$3.b(bxn.c, bwt::aC);
-   }
-
-   private boolean a(dka $$0, iv $$1) {
-      for (jb $$2 : jb.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean b(dka $$0, iv $$1) {
-      return $$0.d($$1.v()) && !$$0.C($$1) ? false : $$0.a_($$1).m();
-   }
-
-   @Nullable
-   @Override
-   public lw h() {
-      return ly.i;
-   }
-
-   @Override
-   protected void a(djy $$0, iv $$1, ebe $$2) {
-      this.a($$0, $$1);
-   }
-
-   @Override
-   public int b(dka $$0) {
-      return $$0.F_().i() ? 4 : 2;
-   }
-
-   @Override
-   public ebe b(exo $$0) {
-      return dne.K.m().b(dry.b, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(exn $$0) {
-      return $$0 == exp.e || $$0 == exp.d;
-   }
-
-   @Override
-   public int c(dka $$0) {
-      return $$0.F_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(exo $$0, djb $$1, iv $$2, exn $$3, jb $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(axj.a);
-   }
-
-   @Override
-   public int a(dka $$0) {
-      return $$0.F_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(djx $$0, iv $$1, exo $$2, exo $$3) {
-      int $$4 = this.a($$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.G_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(djy $$0, iv $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(ars $$0) {
-      return $$0.O().c(djt.X);
-   }
-
-   @Override
-   protected void a(djy $$0, iv $$1, ebe $$2, jb $$3, exo $$4) {
-      if ($$3 == jb.a) {
-         exo $$5 = $$0.b_($$1);
-         if (this.a(axj.b) && $$5.a(axj.a)) {
-            if ($$2.b() instanceof dry) {
-               $$0.a($$1, dne.b.m(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean i() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<awo> j() {
-      return Optional.of(awp.dm);
-   }
-
-   public static class a extends exr {
-      @Override
-      protected void a(ebf.a<exn, exo> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(exo $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(exo $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends exr {
-      @Override
-      public int d(exo $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(exo $$0) {
-         return true;
       }
    }
 }

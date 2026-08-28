@@ -1,21 +1,30 @@
-public class gcc extends gas<cxk> {
-   private static final ali G = ali.b("textures/gui/container/shulker_box.png");
+public class gcc extends gat {
+   private final diy u;
 
-   public gcc(cxk $$0, crw $$1, xa $$2) {
-      super($$0, $$1, $$2);
-      this.u++;
+   public gcc(diy $$0) {
+      this.u = $$0;
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public diy m() {
+      return this.u;
    }
 
    @Override
-   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gsl::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   int E() {
+      return 150;
+   }
+
+   @Override
+   protected void aS_() {
+      super.aS_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(diy $$0) {
+      if ($$0 instanceof cuw.a $$1) {
+         this.m.L().b(new aim($$1.h().ao(), this.a.a(), $$0.p()));
+      }
    }
 }

@@ -1,96 +1,26 @@
-public class gbm {
-   private static final ali a = ali.b("alt");
-   private static final xx b = xx.a.a(a);
-   private static final gbm c = new gbm();
-   private final azx d = azx.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public class gbm extends gau<cwn> {
+   private static final alk G = alk.b("textures/gui/container/dispenser.png");
 
-   private gbm() {
+   public gbm(cwn $$0, cry $$1, xc $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static gbm a() {
-      return c;
+   @Override
+   protected void aS_() {
+      super.aS_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
-   public xf a(ftv $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ag.a(this.e, this.d));
-      }
-
-      return $$0.b().a(xa.b($$2.toString()).c(b), $$1, xx.a);
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   protected void a(ftz $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gsn::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

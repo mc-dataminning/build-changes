@@ -1,52 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class bto extends btw {
-   public static final MapCodec<bto> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bto::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public interface bto<R extends Runnable> extends AutoCloseable {
+   String z_();
 
-   private bto(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
-   }
-
-   public static bto a(int $$0, int $$1) {
-      return new bto($$0, $$1);
-   }
+   void a_(R var1);
 
    @Override
-   public int a(azx $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   default void close() {
    }
 
-   @Override
-   public int a() {
-      return this.b;
+   R f(Runnable var1);
+
+   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      this.a_(this.f(() -> $$0.accept($$1)));
+      return $$1;
    }
 
-   @Override
-   public int b() {
-      return this.f;
-   }
+   static bto<Runnable> a(final String $$0, final Executor $$1) {
+      return new bto<Runnable>() {
+         @Override
+         public String z_() {
+            return $$0;
+         }
 
-   @Override
-   public btx<?> c() {
-      return btx.c;
-   }
+         @Override
+         public void a_(Runnable $$0x) {
+            $$1.execute($$0);
+         }
 
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+         @Override
+         public Runnable f(Runnable $$0x) {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

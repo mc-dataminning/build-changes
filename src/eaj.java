@@ -1,263 +1,105 @@
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public enum eaj implements bam {
-   a("inactive", 0, eaj.b.a, -1.0, false),
-   b("waiting_for_players", 4, eaj.b.b, 200.0, true),
-   c("active", 8, eaj.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, eaj.b.b, -1.0, false),
-   e("ejecting_reward", 8, eaj.b.b, -1.0, false),
-   f("cooldown", 0, eaj.b.d, -1.0, false);
+public class eaj {
+   private static final eaj.a a = eaj.a.a("trial_chamber/breeze");
+   private static final eaj.a b = eaj.a.a("trial_chamber/melee/husk");
+   private static final eaj.a c = eaj.a.a("trial_chamber/melee/spider");
+   private static final eaj.a d = eaj.a.a("trial_chamber/melee/zombie");
+   private static final eaj.a e = eaj.a.a("trial_chamber/ranged/poison_skeleton");
+   private static final eaj.a f = eaj.a.a("trial_chamber/ranged/skeleton");
+   private static final eaj.a g = eaj.a.a("trial_chamber/ranged/stray");
+   private static final eaj.a h = eaj.a.a("trial_chamber/slow_ranged/poison_skeleton");
+   private static final eaj.a i = eaj.a.a("trial_chamber/slow_ranged/skeleton");
+   private static final eaj.a j = eaj.a.a("trial_chamber/slow_ranged/stray");
+   private static final eaj.a k = eaj.a.a("trial_chamber/small_melee/baby_zombie");
+   private static final eaj.a l = eaj.a.a("trial_chamber/small_melee/cave_spider");
+   private static final eaj.a m = eaj.a.a("trial_chamber/small_melee/silverfish");
+   private static final eaj.a n = eaj.a.a("trial_chamber/small_melee/slime");
 
-   private static final float g = 40.0F;
-   private static final int h = azo.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final eaj.b l;
-   private final boolean m;
-
-   private eaj(final String $$0, final int $$1, final eaj.b $$2, final double $$3, final boolean $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+   public static void a(qi<eai> $$0) {
+      a(
+         $$0,
+         a,
+         eai.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(btd.a(a(bxe.s))).a(),
+         eai.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(btd.a(a(bxe.s))).b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a()
+      );
+      a($$0, b, c().a(btd.a(a(bxe.an))).a(), c().a(btd.a(a(bxe.an, faf.ak))).b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a());
+      a($$0, c, c().a(btd.a(a(bxe.bp))).a(), a().a(btd.a(a(bxe.bp))).b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a());
+      a($$0, d, c().a(btd.a(a(bxe.bP))).a(), c().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.bP, faf.ak))).a());
+      a($$0, e, c().a(btd.a(a(bxe.r))).a(), c().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.r, faf.aj))).a());
+      a($$0, f, c().a(btd.a(a(bxe.bg))).a(), c().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.bg, faf.aj))).a());
+      a($$0, g, c().a(btd.a(a(bxe.bt))).a(), c().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.bt, faf.aj))).a());
+      a($$0, h, b().a(btd.a(a(bxe.r))).a(), b().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.r, faf.aj))).a());
+      a($$0, i, b().a(btd.a(a(bxe.bg))).a(), b().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.bg, faf.aj))).a());
+      a($$0, j, b().a(btd.a(a(bxe.bt))).a(), b().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.bt, faf.aj))).a());
+      a(
+         $$0,
+         k,
+         eai.b().d(0.5F).b(20).a(btd.a(a(bxe.bP, $$0x -> $$0x.a("IsBaby", true), null))).a(),
+         eai.b().d(0.5F).b(20).b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.bP, $$0x -> $$0x.a("IsBaby", true), faf.ak))).a()
+      );
+      a($$0, l, c().a(btd.a(a(bxe.w))).a(), a().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.w))).a());
+      a($$0, m, c().a(btd.a(a(bxe.bf))).a(), a().b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a()).a(btd.a(a(bxe.bf))).a());
+      a(
+         $$0,
+         n,
+         c().a(btd.<dkt>b().a(a(bxe.bi, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bxe.bi, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
+         a()
+            .b(btd.<alj<fao>>b().a(faf.aN, 3).a(faf.aO, 7).a())
+            .a(btd.<dkt>b().a(a(bxe.bi, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bxe.bi, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
+            .a()
+      );
    }
 
-   eaj a(iv $$0, eaf $$1, ars $$2) {
-      eai $$3 = $$1.f();
-      eag $$4 = $$1.b();
-
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield this;
-            } else if (!$$3.a($$1, $$2.A)) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$1);
-               yield $$3.c.isEmpty() ? this : c;
-            }
-         }
-         case c -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield b;
-            } else if (!$$3.a($$1, $$2.A)) {
-               yield a;
-            } else {
-               int $$5 = $$3.a($$0);
-               $$3.a($$2, $$0, $$1);
-               if ($$1.e()) {
-                  this.a($$2, $$0, $$1);
-               }
-
-               if ($$3.a($$4, $$5)) {
-                  if ($$3.c()) {
-                     $$3.e = $$2.ae() + (long)$$1.g();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$5)) {
-                  $$1.c($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.ae() + (long)$$4.h();
-                     $$4.i().a($$2.G_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of($$2xx);
-                        $$1.j();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, 40.0F, $$1.g())) {
-               $$2.a(null, $$0, awp.mM, awq.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, (float)h, $$1.g())) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, awp.mN, awq.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.j().a($$2.G_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            $$3.a($$2, $$0, $$1);
-            if (!$$3.c.isEmpty()) {
-               $$3.g = 0;
-               $$3.f = 0L;
-               yield c;
-            } else if ($$3.a($$2)) {
-               $$1.b($$2, $$0);
-               $$3.a();
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
+   private static <T extends bwv> dkt a(bxe<T> $$0) {
+      return a($$0, $$0x -> {
+      }, null);
    }
 
-   private void a(ars $$0, iv $$1, eaf $$2) {
-      eai $$3 = $$2.f();
-      eag $$4 = $$2.b();
-      czy $$5 = $$3.a($$0, $$4, $$1).a($$0.A).orElse(czy.k);
-      if (!$$5.f()) {
-         if (this.a($$0, $$3)) {
-            a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
-               bya $$5x = bya.a($$0, $$5);
-               $$5x.f($$4x);
-               $$0.b($$5x);
-               float $$6 = ($$0.G_().i() - $$0.G_().i()) * 0.2F + 1.0F;
-               $$0.a(null, iv.a((jp)$$4x), awp.mH, awq.e, 1.0F, $$6);
-               $$3.e = $$0.ae() + $$2.d().a();
-            });
-         }
-      }
+   private static <T extends bwv> dkt a(bxe<T> $$0, Consumer<ua> $$1) {
+      return a($$0, $$1, null);
    }
 
-   private static Optional<ffq> a(ars $$0, iv $$1, eaf $$2, eai $$3) {
-      List<crx> $$4 = $$3.c
-         .stream()
-         .map($$0::a)
-         .filter(Objects::nonNull)
-         .filter($$2x -> !$$2x.b() && !$$2x.Z_() && $$2x.bJ() && $$2x.g($$1.b()) <= (double)azo.h($$2.h()))
-         .toList();
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         bwt $$5 = a($$4, $$3.d, $$2, $$1, $$0);
-         return $$5 == null ? Optional.empty() : a($$5, $$0);
-      }
+   private static <T extends bwv> dkt a(bxe<T> $$0, alj<fao> $$1) {
+      return a($$0, $$0x -> {
+      }, $$1);
    }
 
-   private static Optional<ffq> a(bwt $$0, ars $$1) {
-      ffq $$2 = $$0.dt();
-      ffq $$3 = $$2.a(jb.b, (double)($$0.dr() + 2.0F + (float)$$1.A.a(4)));
-      ffm $$4 = $$1.a(new dje($$2, $$3, dje.a.c, dje.b.a, ffv.a()));
-      ffq $$5 = $$4.b().b().a(jb.a, 1.0);
-      iv $$6 = iv.a((jp)$$5);
-      return !$$1.a_($$6).g($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
+   private static <T extends bwv> dkt a(bxe<T> $$0, Consumer<ua> $$1, @Nullable alj<fao> $$2) {
+      ua $$3 = new ua();
+      $$3.a("id", mh.f.b($$0).toString());
+      $$1.accept($$3);
+      Optional<bxh> $$4 = Optional.ofNullable($$2).map($$0x -> new bxh($$0x, 0.0F));
+      return new dkt($$3, Optional.empty(), $$4);
    }
 
-   @Nullable
-   private static bwt a(List<crx> $$0, Set<UUID> $$1, eaf $$2, iv $$3, ars $$4) {
-      Stream<bwt> $$5 = $$1.stream().map($$4::b).filter(Objects::nonNull).filter($$2x -> $$2x.bJ() && $$2x.g($$3.b()) <= (double)azo.h($$2.h()));
-      List<? extends bwt> $$6 = $$4.A.h() ? $$5.toList() : $$0;
-      if ($$6.isEmpty()) {
-         return null;
-      } else {
-         return $$6.size() == 1 ? $$6.getFirst() : ag.a($$6, $$4.A);
-      }
+   private static void a(qi<eai> $$0, eaj.a $$1, eai $$2, eai $$3) {
+      $$0.a($$1.a, $$2);
+      $$0.a($$1.b, $$3);
    }
 
-   private boolean a(ars $$0, eai $$1) {
-      return $$0.ae() >= $$1.e;
+   static alj<eai> a(String $$0) {
+      return alj.a(mi.bi, alk.b($$0));
    }
 
-   public int a() {
-      return this.j;
+   private static eai.a a() {
+      return eai.b().b(4.0F).d(0.5F).b(20).a(12.0F);
    }
 
-   public double b() {
-      return this.k;
+   private static eai.a b() {
+      return eai.b().b(4.0F).d(2.0F).b(160);
    }
 
-   public boolean d() {
-      return this.k >= 0.0;
+   private static eai.a c() {
+      return eai.b().b(3.0F).d(0.5F).b(20);
    }
 
-   public boolean e() {
-      return this.m;
-   }
+   static record a(alj<eai> a, alj<eai> b) {
 
-   public void a(djx $$0, iv $$1, boolean $$2) {
-      this.l.emit($$0, $$0.G_(), $$1, $$2);
-   }
-
-   @Override
-   public String c() {
-      return this.i;
-   }
-
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
-
-      private a() {
-      }
-   }
-
-   interface b {
-      eaj.b a = ($$0, $$1, $$2, $$3) -> {
-      };
-      eaj.b b = ($$0, $$1, $$2, $$3) -> {
-         if ($$1.a(2) == 0) {
-            ffq $$4 = $$2.b().a($$1, 0.9F);
-            a($$3 ? ly.N : ly.aM, $$4, $$0);
-         }
-      };
-      eaj.b c = ($$0, $$1, $$2, $$3) -> {
-         ffq $$4 = $$2.b().a($$1, 1.0F);
-         a(ly.ah, $$4, $$0);
-         a($$3 ? ly.N : ly.F, $$4, $$0);
-      };
-      eaj.b d = ($$0, $$1, $$2, $$3) -> {
-         ffq $$4 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(ly.ah, $$4, $$0);
-         }
-
-         if ($$0.ae() % 20L == 0L) {
-            ffq $$5 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$6 = $$0.G_().a(4) + 20;
-
-            for (int $$7 = 0; $$7 < $$6; $$7++) {
-               a(ly.ah, $$5, $$0);
-            }
-         }
-      };
-
-      private static void a(mc $$0, ffq $$1, djx $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
-      }
-
-      void emit(djx var1, azx var2, iv var3, boolean var4);
-   }
-
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
-
-      private c() {
+      public static eaj.a a(String $$0) {
+         return new eaj.a(eaj.a($$0 + "/normal"), eaj.a($$0 + "/ominous"));
       }
    }
 }

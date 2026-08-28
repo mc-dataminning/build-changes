@@ -1,14 +1,11 @@
-public enum fkv {
-   a(0),
-   b(1);
+public interface fkv<T> {
+   fkv<?> a = () -> {
+      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
+   };
 
-   private final int c;
-
-   private fkv(final int $$0) {
-      this.c = $$0;
+   static <T> fkv<T> a() {
+      return (fkv<T>)a;
    }
 
-   public int a() {
-      return this.c;
-   }
+   T get();
 }

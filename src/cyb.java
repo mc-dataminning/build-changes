@@ -1,42 +1,100 @@
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class cyb extends czu {
-   public cyb(czu.a $$0) {
-      super($$0);
+public class cyb {
+   public static final Codec<cyb> a = ayy.c(az.a, ayy.b(az.a.listOf())).xmap(cyb::new, $$0 -> $$0.f);
+   public static final za<wn, cyb> b = za.a(az.b.a(yy.a()), $$0 -> $$0.f, cyb::new);
+   public static final xc c = xc.c("item.canBreak").a(o.h);
+   public static final xc d = xc.c("item.canPlace").a(o.h);
+   private static final xc e = xc.c("item.canUse.unknown").a(o.h);
+   private final List<az> f;
+   @Nullable
+   private List<xc> g;
+   @Nullable
+   private ebk h;
+   private boolean i;
+   private boolean j;
+
+   public cyb(List<az> $$0) {
+      this.f = $$0;
+   }
+
+   private static boolean a(ebk $$0, @Nullable ebk $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
+         return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         ju $$3 = $$0.c().J_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(ebk $$0) {
+      if (a($$0, this.h, this.j)) {
+         return this.i;
+      } else {
+         this.h = $$0;
+         this.j = false;
+
+         for (az $$1 : this.f) {
+            if ($$1.a($$0)) {
+               this.j = this.j | $$1.a();
+               this.i = true;
+               return true;
+            }
+         }
+
+         this.i = false;
+         return false;
+      }
+   }
+
+   private List<xc> a() {
+      if (this.g == null) {
+         this.g = a(this.f);
+      }
+
+      return this.g;
+   }
+
+   public void a(Consumer<xc> $$0) {
+      this.a().forEach($$0);
+   }
+
+   private static List<xc> a(List<az> $$0) {
+      for (az $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(e);
+         }
+      }
+
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dne)$$0x.a()).f().a(o.i)).toList();
    }
 
    @Override
-   public bur a(ddt $$0) {
-      jb $$1 = $$0.k();
-      if ($$1 == jb.a) {
-         return bur.d;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         djx $$2 = $$0.q();
-         ddr $$3 = new ddr($$0);
-         iv $$4 = $$3.a();
-         czy $$5 = $$0.n();
-         ffq $$6 = ffq.c($$4);
-         ffl $$7 = bxc.g.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof ars $$8) {
-               Consumer<cnr> $$9 = bxc.a($$8, $$5, $$0.o());
-               cnr $$10 = bxc.g.b($$8, $$9, $$4, bxb.m, true, true);
-               if ($$10 == null) {
-                  return bur.d;
-               }
-
-               float $$11 = (float)azo.d((azo.h($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dA(), $$10.dC(), $$10.dG(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dA(), $$10.dC(), $$10.dG(), awp.aD, awq.e, 0.75F, 0.8F);
-               $$10.a(ege.t, $$0.o());
-            }
-
-            $$5.h(1);
-            return bur.a;
-         } else {
-            return bur.d;
-         }
+         return $$0 instanceof cyb $$1 ? this.f.equals($$1.f) : false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.f + "}";
    }
 }

@@ -1,6 +1,6 @@
 package com.mojang.blaze3d.platform;
 
-@fhq
+@fhs
 public class GlConst {
    public static final int GL_READ_FRAMEBUFFER = 36008;
    public static final int GL_DRAW_FRAMEBUFFER = 36009;
@@ -123,7 +123,7 @@ public class GlConst {
    public static final int GL_RED = 6403;
    public static final int GL_OUT_OF_MEMORY = 1285;
 
-   public static int toGl(fjw $$0) {
+   public static int toGl(fjy $$0) {
       return switch ($$0) {
          case a -> 519;
          case b -> 514;
@@ -133,7 +133,7 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fkh $$0) {
+   public static int toGl(fkj $$0) {
       return switch ($$0) {
          case b -> 6913;
          default -> 6914;
@@ -179,7 +179,7 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fie $$0) {
+   public static int toGl(fig $$0) {
       return switch ($$0) {
          case a -> '袒';
          case b -> '袓';
@@ -191,7 +191,7 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fls.c $$0) {
+   public static int toGl(flu.c $$0) {
       return switch ($$0) {
          case a -> 4;
          case b -> 5;
@@ -204,14 +204,14 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fls.b $$0) {
+   public static int toGl(flu.b $$0) {
       return switch ($$0) {
          case a -> 5123;
          case b -> 5125;
       };
    }
 
-   public static int toGl(fkg.a $$0) {
+   public static int toGl(fki.a $$0) {
       return switch ($$0) {
          case a -> 'ᤈ';
          case b -> 'ᤇ';
@@ -220,7 +220,7 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fif $$0) {
+   public static int toGl(fih $$0) {
       return switch ($$0) {
          case a -> '裨';
          case b -> '裤';
@@ -234,14 +234,14 @@ public class GlConst {
       };
    }
 
-   public static int toGl(flf $$0) {
+   public static int toGl(flh $$0) {
       return switch ($$0) {
          case a -> '⤁';
          case b -> '脯';
       };
    }
 
-   public static int toGl(flt.a $$0) {
+   public static int toGl(flv.a $$0) {
       return switch ($$0) {
          case a -> 5126;
          case b -> 5121;
@@ -253,7 +253,7 @@ public class GlConst {
       };
    }
 
-   public static int toGlInternalId(fli $$0) {
+   public static int toGlInternalId(flk $$0) {
       return switch ($$0) {
          case a -> '聘';
          case b -> '舩';
@@ -261,7 +261,7 @@ public class GlConst {
       };
    }
 
-   public static int toGlExternalId(fli $$0) {
+   public static int toGlExternalId(flk $$0) {
       return switch ($$0) {
          case a -> 6408;
          case b -> 6403;
@@ -269,7 +269,7 @@ public class GlConst {
       };
    }
 
-   public static int toGlType(fli $$0) {
+   public static int toGlType(flk $$0) {
       return switch ($$0) {
          case a -> 5121;
          case b -> 5121;
@@ -277,7 +277,7 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fkw $$0) {
+   public static int toGl(fky $$0) {
       return switch ($$0) {
          case a -> '謱';
          case b -> '謰';

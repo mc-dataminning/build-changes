@@ -1,59 +1,16 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class hqn implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bpj d;
-   @Nullable
-   private CompletableFuture<Optional<hqj>> e;
+@FunctionalInterface
+public interface hqn {
+   hqn a = ($$0, $$1) -> {
+   };
 
-   private hqn(bpj $$0) {
-      this.d = $$0;
+   default hqn decorate(Consumer<hqr.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
    }
 
-   public static CompletableFuture<Optional<hqn>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bpj $$1 = bpj.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new hqn($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ag.h());
-   }
-
-   public CompletableFuture<Optional<hqk>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bpj.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new hqj($$1, ag.h()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ag.h());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(hqj::a));
-   }
-
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(hqj::close));
-      }
-   }
+   void send(hqo var1, Consumer<hqr.a> var2);
 }

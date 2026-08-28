@@ -1,141 +1,118 @@
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class csk extends bwt implements bys {
-   public static final int a = 20;
-   public static final int b = 2;
-   public static final int c = 14;
-   private static final int d = 0;
-   private int e = 0;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
-   @Nullable
-   private bxu i;
-   @Nullable
-   private UUID j;
+public class csk extends csh {
+   private static final int d = 600;
+   private static final int e = -1;
+   private static final akn<Integer> f = akr.a(csk.class, akp.b);
+   private static final byte g = 0;
 
-   public csk(bxc<? extends csk> $$0, djx $$1) {
+   public csk(bxe<? extends csk> $$0, djz $$1) {
       super($$0, $$1);
    }
 
-   public csk(djx $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bxu $$6) {
-      this(bxc.U, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.w($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
+   public csk(djz $$0, double $$1, double $$2, double $$3, daa $$4, @Nullable daa $$5) {
+      super(bxe.h, $$1, $$2, $$3, $$0, $$4, $$5);
+      this.D();
+   }
+
+   public csk(djz $$0, bxw $$1, daa $$2, @Nullable daa $$3) {
+      super(bxe.h, $$1, $$0, $$2, $$3);
+      this.D();
+   }
+
+   private dbw B() {
+      return this.s().a(kl.R, dbw.a);
+   }
+
+   private float C() {
+      return this.s().a(kl.S, 1.0F);
+   }
+
+   private void a(dbw $$0) {
+      this.s().b(kl.R, $$0);
+      this.D();
    }
 
    @Override
-   protected void a(akp.a $$0) {
+   protected void a(daa $$0) {
+      super.a($$0);
+      this.D();
    }
 
-   public void a(@Nullable bxu $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cG();
+   private void D() {
+      dbw $$0 = this.B();
+      this.al.a(f, $$0.equals(dbw.a) ? -1 : $$0.b());
    }
 
-   @Nullable
-   public bxu f() {
-      if (this.i == null && this.j != null && this.dV() instanceof ars) {
-         bwt $$0 = ((ars)this.dV()).b(this.j);
-         if ($$0 instanceof bxu) {
-            this.i = (bxu)$$0;
-         }
-      }
-
-      return this.i;
+   public void a(bvz $$0) {
+      this.a(this.B().a($$0));
    }
 
    @Override
-   protected void a(tz $$0) {
-      this.e = $$0.b("Warmup", 0);
-      this.j = $$0.<UUID>a("Owner", jz.a).orElse(null);
-   }
-
-   @Override
-   protected void b(tz $$0) {
-      $$0.a("Warmup", this.e);
-      $$0.b("Owner", jz.a, this.j);
+   protected void a(akr.a $$0) {
+      super.a($$0);
+      $$0.a(f, -1);
    }
 
    @Override
    public void h() {
       super.h();
       if (this.dV().C) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dA() + (this.ae.j() * 2.0 - 1.0) * (double)this.dq() * 0.5;
-                  double $$2 = this.dC() + 0.05 + this.ae.j();
-                  double $$3 = this.dG() + (this.ae.j() * 2.0 - 1.0) * (double)this.dq() * 0.5;
-                  double $$4 = (this.ae.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ae.j() * 0.3;
-                  double $$6 = (this.ae.j() * 2.0 - 1.0) * 0.3;
-                  this.dV().a(ly.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
+         if (this.f()) {
+            if (this.a % 5 == 0) {
+               this.b(1);
             }
+         } else {
+            this.b(2);
          }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (bxu $$8 : this.dV().a(bxu.class, this.cR().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
+      } else if (this.f() && this.a != 0 && !this.B().equals(dbw.a) && this.a >= 600) {
+         this.dV().a(this, (byte)0);
+         this.a(new daa(dae.pk));
+      }
+   }
 
-         if (!this.f) {
-            this.dV().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.aq();
+   private void b(int $$0) {
+      int $$1 = this.y();
+      if ($$1 != -1 && $$0 > 0) {
+         for (int $$2 = 0; $$2 < $$0; $$2++) {
+            this.dV().a(ls.a(lz.u, $$1), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
          }
       }
    }
 
-   private void c(bxu $$0) {
-      bxu $$1 = this.f();
-      if ($$0.bJ() && !$$0.cC() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dW().q(), 6.0F);
-         } else {
-            if ($$1.s($$0)) {
-               return;
-            }
+   public int y() {
+      return this.al.a(f);
+   }
 
-            bvi $$2 = this.dW().c(this, (bwt)$$1);
-            if (this.dV() instanceof ars $$3 && $$0.a($$3, $$2, 6.0F)) {
-               dgn.a($$3, (bwt)$$0, $$2);
-            }
-         }
-      }
+   @Override
+   protected void a(bxw $$0) {
+      super.a($$0);
+      bwv $$1 = this.z();
+      dbw $$2 = this.B();
+      float $$3 = this.C();
+      $$2.a($$2x -> $$0.b($$2x, $$1), $$3);
+   }
+
+   @Override
+   protected daa o() {
+      return new daa(dae.pk);
    }
 
    @Override
    public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.ba()) {
-            this.dV().a(this.dA(), this.dC(), this.dG(), awp.iZ, this.dm(), 1.0F, this.ae.i() * 0.2F + 0.85F, false);
+      if ($$0 == 0) {
+         int $$1 = this.y();
+         if ($$1 != -1) {
+            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
+            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
+            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
+
+            for (int $$5 = 0; $$5 < 20; $$5++) {
+               this.dV().a(ls.a(lz.u, $$2, $$3, $$4), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
+            }
          }
-      }
-   }
-
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
       } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+         super.b($$0);
       }
-   }
-
-   @Override
-   public boolean a(ars $$0, bvi $$1, float $$2) {
-      return false;
    }
 }

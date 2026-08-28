@@ -1,13 +1,32 @@
-public class hu<T extends el<T>> implements hj<T> {
-   private static final hu<? extends el<?>> a = (hu<? extends el<?>>)(new hu<>());
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-   public static <T extends el<T>> hj<T> a() {
-      return (hj<T>)a;
+public class hu<T extends em<T>> implements hp<T> {
+   private final String a;
+   private final hg b;
+   private final CommandContext<T> c;
+
+   public hu(String $$0, hg $$1, CommandContext<T> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void execute(hk<T> $$0, hm $$1) {
-      $$1.a();
-      $$1.b();
+   public void a(T $$0, hl<T> $$1, hn $$2) {
+      $$1.c().a(() -> "execute " + this.a);
+
+      try {
+         $$1.e();
+         int $$3 = ContextChain.runExecutable(this.c, $$0, em.b_(), this.b.a());
+         ho $$4 = $$1.b();
+         if ($$4 != null) {
+            $$4.a($$2.c(), this.a, $$3);
+         }
+      } catch (CommandSyntaxException var9) {
+         $$0.a(var9, this.b.a(), $$1.b());
+      } finally {
+         $$1.c().c();
+      }
    }
 }

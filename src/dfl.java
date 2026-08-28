@@ -1,33 +1,29 @@
-public record dfl(czy a, czy b, czy c) implements dev {
+public class dfl extends ddx {
+   public dfl(String $$0, ded $$1, den $$2, daa $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
    @Override
-   public czy a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+   protected czw f() {
+      return dae.fk;
+   }
+
+   @Override
+   public dfb<dfl> a() {
+      return dfb.o;
+   }
+
+   @Override
+   public dfc<dfl> b() {
+      return dfc.b;
+   }
+
+   @Override
+   public deu h() {
+      return switch (this.e()) {
+         case b -> det.f;
+         case a -> det.e;
+         case c -> det.g;
       };
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public czy c() {
-      return this.a;
-   }
-
-   public czy d() {
-      return this.b;
-   }
-
-   public czy e() {
-      return this.c;
    }
 }

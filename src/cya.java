@@ -1,10 +1,8 @@
-public class cya extends czu {
-   public cya(dnc $$0, czu.a $$1) {
-      super($$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public xa a(czy $$0) {
-      return this.l();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@v
+@x
+interface cya {
 }

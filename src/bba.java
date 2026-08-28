@@ -1,53 +1,63 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public class bba {
-   private final Set<baz<?>> a;
-   private final Set<baz<?>> b;
+public class bba implements aye {
+   public static final long[] a = new long[0];
+   private final int b;
 
-   bba(Set<baz<?>> $$0, Set<baz<?>> $$1) {
-      this.a = Set.copyOf($$0);
-      this.b = Set.copyOf(Sets.union($$0, $$1));
+   public bba(int $$0) {
+      this.b = $$0;
    }
 
-   public Set<baz<?>> a() {
-      return this.a;
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
    }
 
-   public Set<baz<?>> b() {
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   }
+
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
+   }
+
+   @Override
+   public long[] a() {
+      return a;
+   }
+
+   @Override
+   public int b() {
       return this.b;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public int c() {
+      return 0;
    }
 
-   public static class a {
-      private final Set<baz<?>> a = Sets.newIdentityHashSet();
-      private final Set<baz<?>> b = Sets.newIdentityHashSet();
-
-      public bba.a a(baz<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
       }
+   }
 
-      public bba.a b(baz<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
+   }
 
-      public bba a() {
-         return new bba(this.a, this.b);
-      }
+   @Override
+   public aye d() {
+      return this;
    }
 }

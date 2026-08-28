@@ -1,23 +1,36 @@
-public class guz implements gun<dzi> {
-   private final ghf a;
+public class guz implements gup<dzb> {
+   public static final hnj a = new hnj(hlb.c, alk.b("entity/enchanting_table_book"));
+   private final ghh b;
 
-   public guz(guo.a $$0) {
-      this.a = new ghf($$0.a(gld.J));
+   public guz(guq.a $$0) {
+      this.b = new ghh($$0.a(glf.J));
    }
 
-   public void a(dzi $$0, float $$1, flo $$2, gsa $$3, int $$4, int $$5, ffq $$6) {
-      ebe $$7 = $$0.m();
-      if ($$7.c(drt.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$8 = $$7.c(drt.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$8));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         flr $$9 = gux.a.a($$3, gsl::d);
-         this.a.a($$2, $$9, $$4, $$5);
-         $$2.b();
+   public void a(dzb $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$7 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + azq.a($$7 * 0.1F) * 0.01F, 0.0F);
+      float $$8 = $$0.h - $$0.i;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
       }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      float $$9 = $$0.i + $$8 * $$1;
+      $$2.a(a.d.rotation(-$$9));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$10 = azq.h($$1, $$0.c, $$0.b);
+      float $$11 = azq.i($$10 + 0.25F) * 1.6F - 0.3F;
+      float $$12 = azq.i($$10 + 0.75F) * 1.6F - 0.3F;
+      float $$13 = azq.h($$1, $$0.g, $$0.f);
+      this.b.a($$7, azq.a($$11, 0.0F, 1.0F), azq.a($$12, 0.0F, 1.0F), $$13);
+      flt $$14 = a.a($$3, gsn::d);
+      this.b.a($$2, $$14, $$4, $$5);
+      $$2.b();
    }
 }

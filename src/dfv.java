@@ -1,20 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface dfv {
-   Codec<dfv> d = mg.ax.q().dispatch(dfv::a, dfv.a::a);
-   yy<wl, dfv> e = yw.a(mh.ag).b(dfv::a, dfv.a::b);
-
-   dgb d();
-
-   dgb e();
-
-   dfv.a<? extends dfv> a();
-
-   default boolean a(cvh $$0) {
-      return this.d().a($$0) && this.e().a($$0);
+public interface dfv<T> {
+   public interface a<T> extends dfv<T> {
+      T a(T var1, List<T> var2);
    }
 
-   public static record a<T extends dfv>(MapCodec<T> a, yy<wl, T> b) {
+   public interface b<T> extends dfv<T> {
+      default T a(jg<czw> $$0) {
+         return this.a(new daa($$0));
+      }
+
+      default T a(czw $$0) {
+         return this.a(new daa($$0));
+      }
+
+      T a(daa var1);
    }
 }

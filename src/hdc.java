@@ -1,28 +1,14 @@
-public class hdc extends hcw<hgn, gkb> {
-   private final gtd a;
+public class hdc<S extends hgm, M extends gic<S>> extends hcy<S, M> {
+   private final gjy<S> a;
+   private final alk b;
 
-   public hdc(haf<hgn, gkb> $$0, gtd $$1) {
+   public hdc(hah<S, M> $$0, glc $$1, gle $$2, alk $$3) {
       super($$0);
-      this.a = $$1;
+      this.b = $$3;
+      this.a = new gjy<>($$1.a($$2));
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hgn $$3, float $$4, float $$5) {
-      if ($$3.a) {
-         if (!$$3.z || $$3.ao) {
-            $$0.a();
-            this.d().b().a($$0);
-            float $$6 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            ebe $$7 = dne.ev.m();
-            gtn $$8 = this.a.a($$7);
-            int $$9 = gzj.a($$3, 0.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            flr $$10 = $$3.ao && $$3.z ? $$1.getBuffer(gsl.s(hkz.c)) : $$1.getBuffer(grs.c($$7));
-            this.a.b().a($$0.c(), $$10, $$8, 0.0F, 0.0F, 0.0F, $$2, $$9);
-            $$0.b();
-         }
-      }
+   public void a(flq $$0, gsc $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

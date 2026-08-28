@@ -1,48 +1,30 @@
-public class gbs extends gas<cws> {
-   private static final ali G = ali.b("container/slot");
-   private static final ali H = ali.b("container/horse/chest_slots");
-   private static final ali I = ali.b("textures/gui/container/horse.png");
-   private final clt J;
-   private final int K;
-   private float L;
-   private float M;
+import org.joml.Vector3f;
 
-   public gbs(cws $$0, crw $$1, clt $$2, int $$3) {
-      super($$0, $$1, $$2.m_());
-      this.J = $$2;
-      this.K = $$3;
+public class gbs extends gax {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final alk v = alk.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
+
+   public gbs(dzs $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, xc.c("hanging_sign.edit"));
    }
 
    @Override
-   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gsl::H, I, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if (this.K > 0) {
-         $$0.a(gsl::H, H, 90, 54, 0, 0, $$4 + 79, $$5 + 17, this.K * 18, 54);
-      }
-
-      if (this.J.e(bxd.h) && this.J.an().a(axh.J)) {
-         this.c($$0, $$4 + 7, $$5 + 35 - 18);
-      }
-
-      boolean $$6 = this.J instanceof clw;
-      if (this.J.e(bxd.g) && (this.J.an().a(axh.K) || $$6)) {
-         this.c($$0, $$4 + 7, $$5 + 35);
-      }
-
-      gbt.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.L, this.M, this.J);
-   }
-
-   private void c(ftx $$0, int $$1, int $$2) {
-      $$0.a(gsl::H, G, $$1, $$2, 18, 18);
+   protected void a(ftz $$0, ebg $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      this.L = (float)$$1;
-      this.M = (float)$$2;
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected void c(ftz $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(gsn::H, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   }
+
+   @Override
+   protected Vector3f m() {
+      return d;
    }
 }

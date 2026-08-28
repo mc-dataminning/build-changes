@@ -1,17 +1,21 @@
-public class gyu extends har<bxj> {
-   private static final ali a = ali.b("textures/entity/squid/glow_squid.png");
+public class gyu extends gzq<cov, hfc, gii> {
+   private static final alk a = alk.b("textures/entity/ghast/ghast.png");
+   private static final alk j = alk.b("textures/entity/ghast/ghast_shooting.png");
 
-   public gyu(gyi.a $$0, gke $$1, gke $$2) {
-      super($$0, $$1, $$2);
+   public gyu(gyk.a $$0) {
+      super($$0, new gii($$0.a(glf.bb)), 1.5F);
    }
 
-   @Override
-   public ali a(hgo $$0) {
-      return a;
+   public alk a(hfc $$0) {
+      return $$0.a ? j : a;
    }
 
-   protected int a(bxj $$0, iv $$1) {
-      int $$2 = (int)azo.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   public hfc b() {
+      return new hfc();
+   }
+
+   public void a(cov $$0, hfc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.j();
    }
 }

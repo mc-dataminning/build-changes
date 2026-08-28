@@ -1,112 +1,94 @@
-import org.joml.Matrix4f;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class gzi extends gyh<bxt, hfo> {
-   public gzi(gyi.a $$0) {
-      super($$0);
+public class gzi {
+   public static final alk a = alk.b("textures/misc/enchanted_glint_armor.png");
+   public static final alk b = alk.b("textures/misc/enchanted_glint_item.png");
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 200;
+   public static final float f = 0.5F;
+   public static final float g = 0.75F;
+   public static final float h = 0.0078125F;
+   public static final int i = -1;
+   private final hhs j;
+   private final hhu k = new hhu();
+
+   public gzi(hhs $$0) {
+      this.j = $$0;
    }
 
-   public void a(hfo $$0, flo $$1, gsa $$2, int $$3) {
-      float[] $$4 = new float[8];
-      float[] $$5 = new float[8];
-      float $$6 = 0.0F;
-      float $$7 = 0.0F;
-      azx $$8 = azx.a($$0.a);
-
-      for (int $$9 = 7; $$9 >= 0; $$9--) {
-         $$4[$$9] = $$6;
-         $$5[$$9] = $$7;
-         $$6 += (float)($$8.a(11) - 5);
-         $$7 += (float)($$8.a(11) - 5);
-      }
-
-      flr $$10 = $$2.getBuffer(gsl.q());
-      Matrix4f $$11 = $$1.c().a();
-
-      for (int $$12 = 0; $$12 < 4; $$12++) {
-         azx $$13 = azx.a($$0.a);
-
-         for (int $$14 = 0; $$14 < 3; $$14++) {
-            int $$15 = 7;
-            int $$16 = 0;
-            if ($$14 > 0) {
-               $$15 = 7 - $$14;
-            }
-
-            if ($$14 > 0) {
-               $$16 = $$15 - 2;
-            }
-
-            float $$17 = $$4[$$15] - $$6;
-            float $$18 = $$5[$$15] - $$7;
-
-            for (int $$19 = $$15; $$19 >= $$16; $$19--) {
-               float $$20 = $$17;
-               float $$21 = $$18;
-               if ($$14 == 0) {
-                  $$17 += (float)($$13.a(11) - 5);
-                  $$18 += (float)($$13.a(11) - 5);
-               } else {
-                  $$17 += (float)($$13.a(31) - 15);
-                  $$18 += (float)($$13.a(31) - 15);
-               }
-
-               float $$22 = 0.5F;
-               float $$23 = 0.45F;
-               float $$24 = 0.45F;
-               float $$25 = 0.5F;
-               float $$26 = 0.1F + (float)$$12 * 0.2F;
-               if ($$14 == 0) {
-                  $$26 *= (float)$$19 * 0.1F + 1.0F;
-               }
-
-               float $$27 = 0.1F + (float)$$12 * 0.2F;
-               if ($$14 == 0) {
-                  $$27 *= ((float)$$19 - 1.0F) * 0.1F + 1.0F;
-               }
-
-               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, false, false, true, false);
-               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, true, false, true, true);
-               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, true, true, false, true);
-               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, false, true, false, false);
-            }
+   public static void a(czy $$0, flq $$1, gsc $$2, int $$3, int $$4, int[] $$5, List<gti> $$6, gsn $$7, hhu.a $$8) {
+      flt $$10;
+      if ($$8 == hhu.a.c) {
+         flq.a $$9 = $$1.c().d();
+         if ($$0 == czy.g) {
+            f.a($$9.a(), 0.5F);
+         } else if ($$0.b()) {
+            f.a($$9.a(), 0.75F);
          }
+
+         $$10 = a($$2, $$7, $$9);
+      } else {
+         $$10 = a($$2, $$7, true, $$8 != hhu.a.a);
+      }
+
+      a($$1, $$10, $$6, $$5, $$3, $$4);
+   }
+
+   public static flt a(gsc $$0, gsn $$1, boolean $$2) {
+      return $$2 ? flw.a($$0.getBuffer(gsn.k()), $$0.getBuffer($$1)) : $$0.getBuffer($$1);
+   }
+
+   private static flt a(gsc $$0, gsn $$1, flq.a $$2) {
+      return flw.a(new flr($$0.getBuffer(gsn.m()), $$2, 0.0078125F), $$0.getBuffer($$1));
+   }
+
+   public static flt a(gsc $$0, gsn $$1, boolean $$2, boolean $$3) {
+      if ($$3) {
+         return frf.O() && $$1 == gsw.j()
+            ? flw.a($$0.getBuffer(gsn.l()), $$0.getBuffer($$1))
+            : flw.a($$0.getBuffer($$2 ? gsn.m() : gsn.n()), $$0.getBuffer($$1));
+      } else {
+         return $$0.getBuffer($$1);
       }
    }
 
-   private static void a(
-      Matrix4f $$0,
-      flr $$1,
-      float $$2,
-      float $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      boolean $$12,
-      boolean $$13,
-      boolean $$14,
-      boolean $$15
-   ) {
-      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
-      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
-      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
-      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
+   private static int a(int[] $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.length ? $$0[$$1] : -1;
    }
 
-   public hfo a() {
-      return new hfo();
+   private static void a(flq $$0, flt $$1, List<gti> $$2, int[] $$3, int $$4, int $$5) {
+      flq.a $$6 = $$0.c();
+
+      for (gti $$7 : $$2) {
+         float $$9;
+         float $$10;
+         float $$11;
+         float $$12;
+         if ($$7.a()) {
+            int $$8 = a($$3, $$7.c());
+            $$9 = (float)aya.a($$8) / 255.0F;
+            $$10 = (float)aya.b($$8) / 255.0F;
+            $$11 = (float)aya.c($$8) / 255.0F;
+            $$12 = (float)aya.d($$8) / 255.0F;
+         } else {
+            $$9 = 1.0F;
+            $$10 = 1.0F;
+            $$11 = 1.0F;
+            $$12 = 1.0F;
+         }
+
+         $$1.a($$6, $$7, $$10, $$11, $$12, $$9, $$4, $$5);
+      }
    }
 
-   public void a(bxt $$0, hfo $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.a;
+   public void a(daa $$0, czy $$1, int $$2, int $$3, flq $$4, gsc $$5, @Nullable djz $$6, int $$7) {
+      this.a(null, $$0, $$1, $$4, $$5, $$6, $$2, $$3, $$7);
    }
 
-   protected boolean a(bxt $$0) {
-      return false;
+   public void a(@Nullable bxw $$0, daa $$1, czy $$2, flq $$3, gsc $$4, @Nullable djz $$5, int $$6, int $$7, int $$8) {
+      this.j.a(this.k, $$1, $$2, $$5, $$0, $$8);
+      this.k.a($$3, $$4, $$6, $$7);
    }
 }

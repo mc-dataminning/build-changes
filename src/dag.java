@@ -1,51 +1,48 @@
-public interface dag {
-   alh<dae> a = a("13");
-   alh<dae> b = a("cat");
-   alh<dae> c = a("blocks");
-   alh<dae> d = a("chirp");
-   alh<dae> e = a("far");
-   alh<dae> f = a("mall");
-   alh<dae> g = a("mellohi");
-   alh<dae> h = a("stal");
-   alh<dae> i = a("strad");
-   alh<dae> j = a("ward");
-   alh<dae> k = a("11");
-   alh<dae> l = a("wait");
-   alh<dae> m = a("pigstep");
-   alh<dae> n = a("otherside");
-   alh<dae> o = a("5");
-   alh<dae> p = a("relic");
-   alh<dae> q = a("precipice");
-   alh<dae> r = a("creator");
-   alh<dae> s = a("creator_music_box");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   private static alh<dae> a(String $$0) {
-      return alh.a(mh.aV, ali.b($$0));
+public record dag(jg<awq> e, xc f, float g, int h) {
+   public static final Codec<dag> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awq.b.fieldOf("sound_event").forGetter(dag::b),
+               xe.a.fieldOf("description").forGetter(dag::c),
+               ayy.o.fieldOf("length_in_seconds").forGetter(dag::d),
+               ayy.a(0, 15).fieldOf("comparator_output").forGetter(dag::e)
+            )
+            .apply($$0, dag::new)
+   );
+   public static final za<wn, dag> b = za.a(awq.d, dag::b, xe.b, dag::c, yy.l, dag::d, yy.h, dag::e, dag::new);
+   public static final Codec<jg<dag>> c = alh.a(mi.aV);
+   public static final za<wn, jg<dag>> d = yy.a(mi.aV, b);
+   private static final int i = 20;
+
+   public int a() {
+      return azq.f(this.g * 20.0F);
    }
 
-   private static void a(qh<dae> $$0, alh<dae> $$1, jf.c<awo> $$2, int $$3, int $$4) {
-      $$0.a($$1, new dae($$2, xa.c(ag.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
    }
 
-   static void a(qh<dae> $$0) {
-      a($$0, a, awp.qu, 178, 1);
-      a($$0, b, awp.qw, 185, 2);
-      a($$0, c, awp.qv, 345, 3);
-      a($$0, d, awp.qx, 185, 4);
-      a($$0, e, awp.qy, 174, 5);
-      a($$0, f, awp.qz, 197, 6);
-      a($$0, g, awp.qA, 96, 7);
-      a($$0, h, awp.qC, 150, 8);
-      a($$0, i, awp.qD, 188, 9);
-      a($$0, j, awp.qF, 251, 10);
-      a($$0, k, awp.qt, 71, 11);
-      a($$0, l, awp.qE, 238, 12);
-      a($$0, m, awp.qB, 149, 13);
-      a($$0, n, awp.qG, 195, 14);
-      a($$0, o, awp.qs, 178, 15);
-      a($$0, p, awp.qH, 218, 14);
-      a($$0, q, awp.qK, 299, 13);
-      a($$0, r, awp.qI, 176, 12);
-      a($$0, s, awp.qJ, 73, 11);
+   public static Optional<jg<dag>> a(ji.a $$0, daa $$1) {
+      daf $$2 = $$1.a(kl.ae);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   }
+
+   public jg<awq> b() {
+      return this.e;
+   }
+
+   public xc c() {
+      return this.f;
+   }
+
+   public float d() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

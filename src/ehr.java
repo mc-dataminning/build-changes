@@ -1,127 +1,49 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+public class ehr implements djl {
+   private int a;
 
-public final class ehr {
-   final ehq a;
-   private final jg<ewr.a> b;
-   private final ehj c;
-   private final dlj.f d;
-   private final ehv e;
-   private final ehq f;
-   private final ehq g;
-   private final Map<alh<ewr.a>, ewr> h;
-   private final Map<ali, ehq> i;
+   @Override
+   public void a(aru $$0, boolean $$1, boolean $$2) {
+      if ($$1) {
+         if ($$0.O().c(djv.E)) {
+            azz $$3 = $$0.A;
+            this.a--;
+            if (this.a <= 0) {
+               this.a = this.a + (60 + $$3.a(60)) * 20;
+               if ($$0.D_() >= 5 || !$$0.F_().g()) {
+                  for (arv $$4 : $$0.z()) {
+                     if (!$$4.Z_()) {
+                        iw $$5 = $$4.dv();
+                        if (!$$0.F_().g() || $$5.v() >= $$0.P() && $$0.h($$5)) {
+                           bur $$6 = $$0.d_($$5);
+                           if ($$6.a($$3.i() * 3.0F)) {
+                              awx $$7 = $$4.I();
+                              int $$8 = azq.a($$7.a(axb.i.b(axb.n)), 1, Integer.MAX_VALUE);
+                              int $$9 = 24000;
+                              if ($$3.a($$8) >= 72000) {
+                                 iw $$10 = $$5.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                                 ebg $$11 = $$0.a_($$10);
+                                 exq $$12 = $$0.b_($$10);
+                                 if (dkk.a($$0, $$10, $$11, $$12, bxe.aQ)) {
+                                    byo $$13 = null;
+                                    int $$14 = 1 + $$3.a($$6.a().a() + 1);
 
-   public static ehr a(jg.a $$0, alh<ehi> $$1, long $$2) {
-      return a($$0.b(mh.aX).b($$1).a(), $$0.b(mh.aY), $$2);
-   }
-
-   public static ehr a(ehi $$0, jg<ewr.a> $$1, long $$2) {
-      return new ehr($$0, $$1, $$2);
-   }
-
-   private ehr(ehi $$0, jg<ewr.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(ali.b("aquifer")).e();
-      this.g = this.a.a(ali.b("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new ehv(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements egw.f {
-         private final Map<egw, egw> d = new HashMap<>();
-
-         private azx a(long $$0) {
-            return new ehe($$2 + $$0);
-         }
-
-         @Override
-         public egw.c a(egw.c $$0) {
-            jf<ewr.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(ehm.a)) {
-                  ewr $$2 = ewr.a(this.a(0L), new ewr.a(-7, 1.0, 1.0));
-                  return new egw.c($$1, $$2);
-               }
-
-               if ($$1.a(ehm.b)) {
-                  ewr $$3 = ewr.a(this.a(1L), new ewr.a(-7, 1.0, 1.0));
-                  return new egw.c($$1, $$3);
-               }
-
-               if ($$1.a(ehm.j)) {
-                  ewr $$4 = ewr.b(ehr.this.a.a(ehm.j.a()), new ewr.a(0, 0.0));
-                  return new egw.c($$1, $$4);
+                                    for (int $$15 = 0; $$15 < $$14; $$15++) {
+                                       cpd $$16 = bxe.aQ.a($$0, bxd.a);
+                                       if ($$16 != null) {
+                                          $$16.a($$10, 0.0F, 0.0F);
+                                          $$13 = $$16.a($$0, $$6, bxd.a, $$13);
+                                          $$0.a_($$16);
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
                }
             }
-
-            ewr $$5 = ehr.this.a($$1.e().orElseThrow());
-            return new egw.c($$1, $$5);
-         }
-
-         private egw a(egw $$0) {
-            if ($$0 instanceof ewo $$1) {
-               azx $$2 = $$3 ? this.a(0L) : ehr.this.a.a(ali.b("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (egw)($$0 instanceof egx.i ? new egx.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public egw apply(egw $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
          }
       }
-
-      this.c = $$0.i().a(new a());
-      egw.f $$4 = new egw.f() {
-         private final Map<egw, egw> a = new HashMap<>();
-
-         private egw a(egw $$0) {
-            if ($$0 instanceof egx.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof egx.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public egw apply(egw $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new dlj.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public ewr a(alh<ewr.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> ehm.a(this.b, this.a, $$0));
-   }
-
-   public ehq a(ali $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public ehj a() {
-      return this.c;
-   }
-
-   public dlj.f b() {
-      return this.d;
-   }
-
-   public ehv c() {
-      return this.e;
-   }
-
-   public ehq d() {
-      return this.f;
-   }
-
-   public ehq e() {
-      return this.g;
    }
 }

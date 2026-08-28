@@ -1,43 +1,33 @@
 import javax.annotation.Nullable;
 
-public class hep {
-   public double r;
-   public double s;
-   public double t;
-   public float u;
-   public float v;
-   public float w;
-   public float x;
-   public double y;
-   public boolean z;
-   public boolean A;
-   public boolean B;
+public class hep extends her {
+   public float a;
+   public float b;
+   public boolean c;
    @Nullable
-   public ffq C;
-   @Nullable
-   public xa D;
-   @Nullable
-   public ffq E;
-   @Nullable
-   public hep.a F;
+   public ffs d;
+   public boolean e;
+   public boolean f;
+   public double g;
+   public float h;
+   public final cmv i = new cmv();
 
-   public static class a {
-      public ffq a;
-      public ffq b;
-      public ffq c;
-      public int d;
-      public int e;
-      public int f;
-      public int g;
+   public cmv.a a(int $$0) {
+      return this.i.a($$0, this.h);
+   }
 
-      public a() {
-         this.a = ffq.c;
-         this.b = ffq.c;
-         this.c = ffq.c;
-         this.d = 0;
-         this.e = 0;
-         this.f = 15;
-         this.g = 15;
+   public float a(int $$0, cmv.a $$1, cmv.a $$2) {
+      double $$3;
+      if (this.e) {
+         $$3 = (double)$$0 / Math.max(this.g / 4.0, 1.0);
+      } else if (this.f) {
+         $$3 = (double)$$0;
+      } else if ($$0 == 6) {
+         $$3 = 0.0;
+      } else {
+         $$3 = $$2.a() - $$1.a();
       }
+
+      return (float)$$3;
    }
 }

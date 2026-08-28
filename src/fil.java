@@ -1,35 +1,26 @@
+import java.util.function.Function;
+
 public interface fil {
-   int a();
+   float getAdvance();
 
-   int b();
-
-   void a(int var1, int var2, flh var3);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   default float a() {
+      return 1.0F;
    }
 
-   default float g() {
-      return 7.0F - this.j();
+   default float b() {
+      return 1.0F;
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
+   fxj bake(Function<fin, fxj> var1);
 
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 7.0F;
+   public interface a extends fil {
+      @Override
+      default fxj bake(Function<fin, fxj> $$0) {
+         return fxk.b;
+      }
    }
 }

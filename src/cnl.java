@@ -1,63 +1,174 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cnl<T extends cnf> {
-   private static cnl<?>[] l = new cnl[0];
-   public static final cnl<cnb> a = a(cnb.class, "HoldingPattern");
-   public static final cnl<cnj> b = a(cnj.class, "StrafePlayer");
-   public static final cnl<cnd> c = a(cnd.class, "LandingApproach");
-   public static final cnl<cne> d = a(cne.class, "Landing");
-   public static final cnl<cnk> e = a(cnk.class, "Takeoff");
-   public static final cnl<cnh> f = a(cnh.class, "SittingFlaming");
-   public static final cnl<cni> g = a(cni.class, "SittingScanning");
-   public static final cnl<cng> h = a(cng.class, "SittingAttacking");
-   public static final cnl<cmz> i = a(cmz.class, "ChargingPlayer");
-   public static final cnl<cna> j = a(cna.class, "Dying");
-   public static final cnl<cnc> k = a(cnc.class, "Hover");
-   private final Class<? extends cnf> m;
-   private final int n;
-   private final String o;
+public class cnl extends cmz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 5;
+   private int d;
+   @Nullable
+   private eye e;
+   @Nullable
+   private ffs f;
+   @Nullable
+   private bxw g;
+   private boolean h;
 
-   private cnl(int $$0, Class<? extends cnf> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cnf a(cmv $$0) {
-      try {
-         Constructor<? extends cnf> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cnf> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cmv.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cnl(cmx $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void a(aru $$0) {
+      if (this.g == null) {
+         b.warn("Skipping player strafe phase because no player was found");
+         this.a.t().a(cnn.a);
+      } else {
+         if (this.e != null && this.e.c()) {
+            double $$1 = this.g.dA();
+            double $$2 = this.g.dG();
+            double $$3 = $$1 - this.a.dA();
+            double $$4 = $$2 - this.a.dG();
+            double $$5 = Math.sqrt($$3 * $$3 + $$4 * $$4);
+            double $$6 = Math.min(0.4F + $$5 / 80.0 - 1.0, 10.0);
+            this.f = new ffs($$1, this.g.dC() + $$6, $$2);
+         }
+
+         double $$7 = this.f == null ? 0.0 : this.f.c(this.a.dA(), this.a.dC(), this.a.dG());
+         if ($$7 < 100.0 || $$7 > 22500.0) {
+            this.i();
+         }
+
+         double $$8 = 64.0;
+         if (this.g.g(this.a) < 4096.0) {
+            if (this.a.E(this.g)) {
+               this.d++;
+               ffs $$9 = new ffs(this.g.dA() - this.a.dA(), 0.0, this.g.dG() - this.a.dG()).d();
+               ffs $$10 = new ffs((double)azq.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-azq.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
+               float $$11 = (float)$$10.b($$9);
+               float $$12 = (float)(Math.acos((double)$$11) * 180.0F / (float)Math.PI);
+               $$12 += 0.5F;
+               if (this.d >= 5 && $$12 >= 0.0F && $$12 < 10.0F) {
+                  double $$13 = 1.0;
+                  ffs $$14 = this.a.h(1.0F);
+                  double $$15 = this.a.c.dA() - $$14.d * 1.0;
+                  double $$16 = this.a.c.e(0.5) + 0.5;
+                  double $$17 = this.a.c.dG() - $$14.f * 1.0;
+                  double $$18 = this.g.dA() - $$15;
+                  double $$19 = this.g.e(0.5) - $$16;
+                  double $$20 = this.g.dG() - $$17;
+                  ffs $$21 = new ffs($$18, $$19, $$20);
+                  if (!this.a.ba()) {
+                     $$0.a(null, 1017, this.a.dv(), 0);
+                  }
+
+                  csl $$22 = new csl($$0, this.a, $$21.d());
+                  $$22.b($$15, $$16, $$17, 0.0F, 0.0F);
+                  $$0.b($$22);
+                  this.d = 0;
+                  if (this.e != null) {
+                     while (!this.e.c()) {
+                        this.e.a();
+                     }
+                  }
+
+                  this.a.t().a(cnn.a);
+               }
+            } else if (this.d > 0) {
+               this.d--;
+            }
+         } else if (this.d > 0) {
+            this.d--;
+         }
+      }
    }
 
-   public static cnl<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   private void i() {
+      if (this.e == null || this.e.c()) {
+         int $$0 = this.a.n();
+         int $$1 = $$0;
+         if (this.a.dY().a(8) == 0) {
+            this.h = !this.h;
+            $$1 = $$0 + 6;
+         }
+
+         if (this.h) {
+            $$1++;
+         } else {
+            $$1--;
+         }
+
+         if (this.a.x() != null && this.a.x().e() > 0) {
+            $$1 %= 12;
+            if ($$1 < 0) {
+               $$1 += 12;
+            }
+         } else {
+            $$1 -= 12;
+            $$1 &= 7;
+            $$1 += 12;
+         }
+
+         this.e = this.a.a($$0, $$1, null);
+         if (this.e != null) {
+            this.e.a();
+         }
+      }
+
+      this.j();
    }
 
-   public static int c() {
-      return l.length;
+   private void j() {
+      if (this.e != null && !this.e.c()) {
+         kb $$0 = this.e.g();
+         this.e.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.f = new ffs($$1, $$3, $$2);
+      }
    }
 
-   private static <T extends cnf> cnl<T> a(Class<T> $$0, String $$1) {
-      cnl<T> $$2 = new cnl<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public void c() {
+      this.d = 0;
+      this.f = null;
+      this.e = null;
+      this.g = null;
+   }
+
+   public void a(bxw $$0) {
+      this.g = $$0;
+      int $$1 = this.a.n();
+      int $$2 = this.a.q(this.g.dA(), this.g.dC(), this.g.dG());
+      int $$3 = this.g.dz();
+      int $$4 = this.g.dF();
+      double $$5 = (double)$$3 - this.a.dA();
+      double $$6 = (double)$$4 - this.a.dG();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
+      int $$9 = azq.a(this.g.dC() + $$8);
+      eyc $$10 = new eyc($$3, $$9, $$4);
+      this.e = this.a.a($$1, $$2, $$10);
+      if (this.e != null) {
+         this.e.a();
+         this.j();
+      }
+   }
+
+   @Nullable
+   @Override
+   public ffs f() {
+      return this.f;
+   }
+
+   @Override
+   public cnn<cnl> h() {
+      return cnn.b;
    }
 }

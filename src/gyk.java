@@ -1,34 +1,72 @@
-public class gyk extends gyh<csk, her> {
-   private static final ali a = ali.b("textures/entity/illager/evoker_fangs.png");
-   private final gic g;
+@FunctionalInterface
+public interface gyk<T extends bwv> {
+   gyj<T, ?> create(gyk.a var1);
 
-   public gyk(gyi.a $$0) {
-      super($$0);
-      this.g = new gic($$0.a(gld.aW));
-   }
+   public static class a {
+      private final gyi a;
+      private final hhs b;
+      private final gsa c;
+      private final gtf d;
+      private final avh e;
+      private final glc f;
+      private final hnh g;
+      private final ftx h;
+      private final hcj i;
 
-   public void a(her $$0, flo $$1, gsa $$2, int $$3) {
-      float $$4 = $$0.b;
-      if ($$4 != 0.0F) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
-         $$1.b(-1.0F, -1.0F, 1.0F);
-         $$1.a(0.0F, -1.501F, 0.0F);
-         this.g.a($$0);
-         flr $$5 = $$2.getBuffer(this.g.a(a));
-         this.g.a($$1, $$5, $$3, hkq.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+      public a(gyi $$0, hhs $$1, gsa $$2, gtf $$3, avh $$4, glc $$5, hnh $$6, ftx $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new hcj($$6, this.i().c(gsw.g));
       }
-   }
 
-   public her a() {
-      return new her();
-   }
+      public gyi a() {
+         return this.a;
+      }
 
-   public void a(csk $$0, her $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.dL();
-      $$1.b = $$0.a($$2);
+      public hhs b() {
+         return this.b;
+      }
+
+      public gsa c() {
+         return this.c;
+      }
+
+      public gtf d() {
+         return this.d;
+      }
+
+      public avh e() {
+         return this.e;
+      }
+
+      public glc f() {
+         return this.f;
+      }
+
+      public hnh g() {
+         return this.g;
+      }
+
+      public hcj h() {
+         return this.i;
+      }
+
+      public hnq i() {
+         return this.d.a().a();
+      }
+
+      public glg a(gle $$0) {
+         return this.f.a($$0);
+      }
+
+      public ftx j() {
+         return this.h;
+      }
    }
 }

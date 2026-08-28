@@ -1,70 +1,79 @@
-public class got extends gqk {
-   private static final float a = 0.3F;
-   private static final float b = 0.1F;
-   private static final float F = 0.5F;
-   private static final float G = 0.3F;
-   private static final int H = 36;
-   private static final int I = 180;
+import javax.annotation.Nullable;
 
-   got(gmb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.C = true;
-      this.B = 0.96F;
-      this.D *= 0.75F;
-      this.k *= 0.8F;
-      this.j *= 0.8F;
-      this.l *= 0.8F;
+public class got extends gqm {
+   private final float a;
+   private final gqh b;
+
+   got(gmd $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gqh $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public gpo b() {
-      return gpo.c;
+   public gpq b() {
+      return gpq.b;
    }
 
    @Override
-   public int a(float $$0) {
-      return (int)(255.0F * b(this.f((float)this.s + $$0), 0.1F, 0.3F));
+   public float b(float $$0) {
+      return this.D * azq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.c.a_(iv.a(this.g, this.h, this.i)).l()) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.e(b(this.f((float)this.s), 0.3F, 0.5F));
-         if (Math.random() > 0.95 || this.s == 1) {
-            this.b(-0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random());
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
          }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   private float f(float $$0) {
-      return azo.a($$0 / (float)this.t, 0.0F, 1.0F);
-   }
+   public static class a implements gpp<lr> {
+      private final gqh a;
 
-   private static float b(float $$0, float $$1, float $$2) {
-      if ($$0 >= 1.0F - $$1) {
-         return (1.0F - $$0) / $$1;
-      } else {
-         return $$0 <= $$2 ? $$0 / $$2 : 1.0F;
-      }
-   }
-
-   public static class a implements gpn<mc> {
-      private final gqf a;
-
-      public a(gqf $$0) {
+      public a(gqh $$0) {
          this.a = $$0;
       }
 
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         got $$8 = new got($$1, $$2, $$3, $$4, 0.5 - $$1.A.j(), $$1.A.h() ? $$6 : -$$6, 0.5 - $$1.A.j());
-         $$8.a($$1.A.a(36, 180));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         $$8.e(0.0F);
-         return $$8;
+      @Nullable
+      public gpm a(lr $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ebg $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == dtr.a) {
+            return null;
+         } else {
+            iw $$9 = iw.a($$2, $$3, $$4);
+            int $$10 = frf.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dqc) {
+               $$10 = ((dqc)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new got($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

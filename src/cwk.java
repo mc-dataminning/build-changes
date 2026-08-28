@@ -1,58 +1,17 @@
-public abstract class cwk {
-   private int a;
+import java.util.List;
 
-   public static cwk a(final cwc $$0, final int $$1) {
-      return new cwk() {
-         @Override
-         public int b() {
-            return $$0.a($$1);
-         }
+public interface cwk extends bum, cxu {
+   int az_();
 
-         @Override
-         public void a(int $$0x) {
-            $$0.a($$1, $$0);
-         }
-      };
+   int g();
+
+   List<daa> h();
+
+   default def aC_() {
+      return this.aD_().a();
    }
 
-   public static cwk a(final int[] $$0, final int $$1) {
-      return new cwk() {
-         @Override
-         public int b() {
-            return $$0[$$1];
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0[$$1] = $$0;
-         }
-      };
-   }
-
-   public static cwk a() {
-      return new cwk() {
-         private int a;
-
-         @Override
-         public int b() {
-            return this.a;
-         }
-
-         @Override
-         public void a(int $$0) {
-            this.a = $$0;
-         }
-      };
-   }
-
-   public abstract int b();
-
-   public abstract void a(int var1);
-
-   public boolean c() {
-      int $$0 = this.b();
-      boolean $$1 = $$0 != this.a;
-      this.a = $$0;
-      return $$1;
+   default def.a aD_() {
+      return def.b(this.az_(), this.g(), this.h());
    }
 }

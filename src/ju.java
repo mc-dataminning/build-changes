@@ -1,19 +1,102 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ju {
-   public static <E> Codec<jj<E>> a(alh<? extends js<E>> $$0, Codec<E> $$1) {
-      return a($$0, $$1, false);
+public interface ju extends ji.a {
+   Logger a = LogUtils.getLogger();
+   ju.b b = new ju.c(Map.of()).e();
+
+   @Override
+   <E> Optional<jt<E>> a(alj<? extends jt<? extends E>> var1);
+
+   default <E> jt<E> f(alj<? extends jt<? extends E>> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
-   public static <E> Codec<jj<E>> a(alh<? extends js<E>> $$0, Codec<E> $$1, boolean $$2) {
-      return alc.a($$0, ale.a($$0, $$1), $$2);
+   Stream<ju.d<?>> a();
+
+   @Override
+   default Stream<alj<? extends jt<?>>> b() {
+      return this.a().map($$0 -> $$0.a);
    }
 
-   public static <E> Codec<jj<E>> a(alh<? extends js<E>> $$0) {
-      return a($$0, false);
+   static ju.b a(final jt<? extends jt<?>> $$0) {
+      return new ju.b() {
+         @Override
+         public <T> Optional<jt<T>> a(alj<? extends jt<? extends T>> $$0x) {
+            jt<jt<T>> $$1 = (jt<jt<T>>)$$0;
+            return $$1.f((alj<jt<T>>)$$0);
+         }
+
+         @Override
+         public Stream<ju.d<?>> a() {
+            return $$0.k().stream().map(ju.d::a);
+         }
+
+         @Override
+         public ju.b e() {
+            return this;
+         }
+      };
    }
 
-   public static <E> Codec<jj<E>> a(alh<? extends js<E>> $$0, boolean $$1) {
-      return alc.a($$0, alf.a($$0), $$1);
+   default ju.b e() {
+      class a extends ju.c implements ju.b {
+         protected a(final Stream<ju.d<?>> $$1) {
+            super($$1);
+         }
+      }
+
+      return new a(this.a().map(ju.d::c));
+   }
+
+   public interface b extends ju {
+   }
+
+   public static class c implements ju {
+      private final Map<? extends alj<? extends jt<?>>, ? extends jt<?>> c;
+
+      public c(List<? extends jt<?>> $$0) {
+         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(jt::g, $$0x -> $$0x));
+      }
+
+      public c(Map<? extends alj<? extends jt<?>>, ? extends jt<?>> $$0) {
+         this.c = Map.copyOf($$0);
+      }
+
+      public c(Stream<ju.d<?>> $$0) {
+         this.c = $$0.collect(ImmutableMap.toImmutableMap(ju.d::a, ju.d::b));
+      }
+
+      @Override
+      public <E> Optional<jt<E>> a(alj<? extends jt<? extends E>> $$0) {
+         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
+      }
+
+      @Override
+      public Stream<ju.d<?>> a() {
+         return this.c.entrySet().stream().map(ju.d::a);
+      }
+   }
+
+   public static record d<T>(alj<? extends jt<T>> a, jt<T> b) {
+
+      private static <T, R extends jt<? extends T>> ju.d<T> a(Entry<? extends alj<? extends jt<?>>, R> $$0) {
+         return a((alj<? extends jt<?>>)$$0.getKey(), $$0.getValue());
+      }
+
+      private static <T> ju.d<T> a(alj<? extends jt<?>> $$0, jt<?> $$1) {
+         return new ju.d<>((alj<? extends jt<T>>)$$0, (jt<T>)$$1);
+      }
+
+      private ju.d<T> c() {
+         return new ju.d<>(this.a, this.b.n());
+      }
    }
 }

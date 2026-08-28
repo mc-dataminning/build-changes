@@ -1,135 +1,77 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dnj extends dnc implements dnk {
+public class dnj extends dmq {
    public static final MapCodec<dnj> a = b(dnj::new);
-   public static final ebv b = ebu.h;
-   private static final int c = 5;
+   public static final ebx[] b = new ebx[]{ebw.n, ebw.o, ebw.p};
+   private static final fgm c = fgj.a(dne.b(2.0, 2.0, 14.0), dne.b(14.0, 0.0, 2.0));
 
    @Override
    public MapCodec<dnj> a() {
       return a;
    }
 
-   public dnj(ebd.d $$0) {
+   public dnj(ebf.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)));
+      this.l(this.C.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
-      ebe $$5 = $$1.a_($$2.d());
-      boolean $$6 = $$5.g($$1, $$2).c() && $$5.y().c();
-      if ($$6) {
-         $$3.a($$0.c(b), $$2);
-      } else {
-         $$3.l($$0.c(b));
-      }
+   public dye a(iw $$0, ebg $$1) {
+      return new dyi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
+      return $$0.C ? null : a($$2, dyg.m, dyi::a);
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      a($$1, $$2, $$0, $$1.a_($$2.e()));
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return c;
    }
 
    @Override
-   protected exo b_(ebe $$0) {
-      return exp.c.a(false);
-   }
-
-   public static void b(djy $$0, iv $$1, ebe $$2) {
-      a($$0, $$1, $$0.a_($$1), $$2);
-   }
-
-   public static void a(djy $$0, iv $$1, ebe $$2, ebe $$3) {
-      if (o($$2)) {
-         ebe $$4 = q($$3);
-         $$0.a($$1, $$4, 2);
-         iv.a $$5 = $$1.k().c(jb.b);
-
-         while (o($$0.a_($$5))) {
-            if (!$$0.a($$5, $$4, 2)) {
-               return;
-            }
-
-            $$5.c(jb.b);
-         }
-      }
-   }
-
-   private static boolean o(ebe $$0) {
-      return $$0.a(dne.nJ) || $$0.a(dne.J) && $$0.y().e() >= 8 && $$0.y().b();
-   }
-
-   private static ebe q(ebe $$0) {
-      if ($$0.a(dne.nJ)) {
-         return $$0;
-      } else if ($$0.a(dne.en)) {
-         return dne.nJ.m().b(b, Boolean.valueOf(false));
-      } else {
-         return $$0.a(dne.lp) ? dne.nJ.m().b(b, Boolean.valueOf(true)) : dne.J.m();
-      }
-   }
-
-   @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      double $$4 = (double)$$2.u();
-      double $$5 = (double)$$2.v();
-      double $$6 = (double)$$2.w();
-      if ($$0.c(b)) {
-         $$1.b(ly.as, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, awp.da, awq.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      } else {
-         $$1.b(ly.at, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
-         $$1.b(ly.at, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, awp.cY, awq.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      $$2.a($$3, exp.c, exp.c.a($$1));
-      if (!$$0.a($$1, $$3) || $$4 == jb.a || $$4 == jb.b && !$$6.a(dne.nJ) && o($$6)) {
-         $$2.a($$3, this, 5);
+   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dyi $$5) {
+         $$3.a($$5);
+         $$3.a(axb.aa);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return but.a;
    }
 
    @Override
-   protected boolean a(ebe $$0, dka $$1, iv $$2) {
-      ebe $$3 = $$1.a_($$2.e());
-      return $$3.a(dne.nJ) || $$3.a(dne.lp) || $$3.a(dne.en);
+   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(lz.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return fgh.a();
+   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
+      bup.a($$0, $$1, $$2);
    }
 
    @Override
-   protected dtp a_(ebe $$0) {
-      return dtp.a;
+   protected boolean c_(ebg $$0) {
+      return true;
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b);
+   protected int a(ebg $$0, djz $$1, iw $$2) {
+      return cvs.a($$1.c_($$2));
    }
 
    @Override
-   public czy a(@Nullable bxu $$0, djy $$1, iv $$2, ebe $$3) {
-      $$1.a($$2, dne.a.m(), 11);
-      return new czy(dac.rp);
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b[0], b[1], b[2]);
    }
 
    @Override
-   public Optional<awo> at_() {
-      return exp.c.j();
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
    }
 }

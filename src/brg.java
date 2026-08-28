@@ -1,51 +1,47 @@
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.LongSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class brg implements AutoCloseable {
-   public static final brg a = new brg(null);
-   @Nullable
-   private final brb b;
+public class brg {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bra f = bqz.a;
 
-   brg(@Nullable brb $$0) {
+   public brg(LongSupplier $$0, String $$1, long $$2) {
       this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public brg a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
-
-      return this;
+   public brd a() {
+      this.f = new bqv(this.b, () -> this.d, () -> true);
+      this.d++;
+      return this.f;
    }
 
-   public brg a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
+   public void b() {
+      if (this.f != bqz.a) {
+         brb $$0 = this.f.d();
+         this.f = bqz.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ag.f() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
       }
-
-      return this;
    }
 
-   public brg a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
+   @Nullable
+   public static brg a(String $$0) {
+      return null;
    }
 
-   public brg a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
+   public static brd a(brd $$0, @Nullable brg $$1) {
+      return $$1 != null ? brd.a($$1.a(), $$0) : $$0;
    }
 }

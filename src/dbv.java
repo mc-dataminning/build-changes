@@ -1,56 +1,233 @@
-public class dbv {
-   public static final jf<dbs> a = a("water", new dbs("water"));
-   public static final jf<dbs> b = a("mundane", new dbs("mundane"));
-   public static final jf<dbs> c = a("thick", new dbs("thick"));
-   public static final jf<dbs> d = a("awkward", new dbs("awkward"));
-   public static final jf<dbs> e = a("night_vision", new dbs("night_vision", new bvx(bvz.p, 3600)));
-   public static final jf<dbs> f = a("long_night_vision", new dbs("night_vision", new bvx(bvz.p, 9600)));
-   public static final jf<dbs> g = a("invisibility", new dbs("invisibility", new bvx(bvz.n, 3600)));
-   public static final jf<dbs> h = a("long_invisibility", new dbs("invisibility", new bvx(bvz.n, 9600)));
-   public static final jf<dbs> i = a("leaping", new dbs("leaping", new bvx(bvz.h, 3600)));
-   public static final jf<dbs> j = a("long_leaping", new dbs("leaping", new bvx(bvz.h, 9600)));
-   public static final jf<dbs> k = a("strong_leaping", new dbs("leaping", new bvx(bvz.h, 1800, 1)));
-   public static final jf<dbs> l = a("fire_resistance", new dbs("fire_resistance", new bvx(bvz.l, 3600)));
-   public static final jf<dbs> m = a("long_fire_resistance", new dbs("fire_resistance", new bvx(bvz.l, 9600)));
-   public static final jf<dbs> n = a("swiftness", new dbs("swiftness", new bvx(bvz.a, 3600)));
-   public static final jf<dbs> o = a("long_swiftness", new dbs("swiftness", new bvx(bvz.a, 9600)));
-   public static final jf<dbs> p = a("strong_swiftness", new dbs("swiftness", new bvx(bvz.a, 1800, 1)));
-   public static final jf<dbs> q = a("slowness", new dbs("slowness", new bvx(bvz.b, 1800)));
-   public static final jf<dbs> r = a("long_slowness", new dbs("slowness", new bvx(bvz.b, 4800)));
-   public static final jf<dbs> s = a("strong_slowness", new dbs("slowness", new bvx(bvz.b, 400, 3)));
-   public static final jf<dbs> t = a("turtle_master", new dbs("turtle_master", new bvx(bvz.b, 400, 3), new bvx(bvz.k, 400, 2)));
-   public static final jf<dbs> u = a("long_turtle_master", new dbs("turtle_master", new bvx(bvz.b, 800, 3), new bvx(bvz.k, 800, 2)));
-   public static final jf<dbs> v = a("strong_turtle_master", new dbs("turtle_master", new bvx(bvz.b, 400, 5), new bvx(bvz.k, 400, 3)));
-   public static final jf<dbs> w = a("water_breathing", new dbs("water_breathing", new bvx(bvz.m, 3600)));
-   public static final jf<dbs> x = a("long_water_breathing", new dbs("water_breathing", new bvx(bvz.m, 9600)));
-   public static final jf<dbs> y = a("healing", new dbs("healing", new bvx(bvz.f, 1)));
-   public static final jf<dbs> z = a("strong_healing", new dbs("healing", new bvx(bvz.f, 1, 1)));
-   public static final jf<dbs> A = a("harming", new dbs("harming", new bvx(bvz.g, 1)));
-   public static final jf<dbs> B = a("strong_harming", new dbs("harming", new bvx(bvz.g, 1, 1)));
-   public static final jf<dbs> C = a("poison", new dbs("poison", new bvx(bvz.s, 900)));
-   public static final jf<dbs> D = a("long_poison", new dbs("poison", new bvx(bvz.s, 1800)));
-   public static final jf<dbs> E = a("strong_poison", new dbs("poison", new bvx(bvz.s, 432, 1)));
-   public static final jf<dbs> F = a("regeneration", new dbs("regeneration", new bvx(bvz.j, 900)));
-   public static final jf<dbs> G = a("long_regeneration", new dbs("regeneration", new bvx(bvz.j, 1800)));
-   public static final jf<dbs> H = a("strong_regeneration", new dbs("regeneration", new bvx(bvz.j, 450, 1)));
-   public static final jf<dbs> I = a("strength", new dbs("strength", new bvx(bvz.e, 3600)));
-   public static final jf<dbs> J = a("long_strength", new dbs("strength", new bvx(bvz.e, 9600)));
-   public static final jf<dbs> K = a("strong_strength", new dbs("strength", new bvx(bvz.e, 1800, 1)));
-   public static final jf<dbs> L = a("weakness", new dbs("weakness", new bvx(bvz.r, 1800)));
-   public static final jf<dbs> M = a("long_weakness", new dbs("weakness", new bvx(bvz.r, 4800)));
-   public static final jf<dbs> N = a("luck", new dbs("luck", new bvx(bvz.z, 6000)));
-   public static final jf<dbs> O = a("slow_falling", new dbs("slow_falling", new bvx(bvz.B, 1800)));
-   public static final jf<dbs> P = a("long_slow_falling", new dbs("slow_falling", new bvx(bvz.B, 4800)));
-   public static final jf<dbs> Q = a("wind_charged", new dbs("wind_charged", new bvx(bvz.J, 3600)));
-   public static final jf<dbs> R = a("weaving", new dbs("weaving", new bvx(bvz.K, 3600)));
-   public static final jf<dbs> S = a("oozing", new dbs("oozing", new bvx(bvz.L, 3600)));
-   public static final jf<dbs> T = a("infested", new dbs("infested", new bvx(bvz.M, 3600)));
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-   private static jf<dbs> a(String $$0, dbs $$1) {
-      return js.b(mg.h, ali.b($$0), $$1);
+public class dbv {
+   public static final int a = 20;
+   public static final dbv b = new dbv(List.of(), List.of(), List.of());
+   private final List<den> c;
+   private final List<dbv.b<dbu>> d;
+   private final List<dbv.b<czw>> e;
+
+   dbv(List<den> $$0, List<dbv.b<dbu>> $$1, List<dbv.b<czw>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static jf<dbs> a(js<dbs> $$0) {
-      return a;
+   public boolean a(daa $$0) {
+      return this.b($$0) || this.c($$0);
+   }
+
+   private boolean d(daa $$0) {
+      for (den $$1 : this.c) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean b(daa $$0) {
+      for (dbv.b<czw> $$1 : this.e) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c(daa $$0) {
+      for (dbv.b<dbu> $$1 : this.d) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(jg<dbu> $$0) {
+      for (dbv.b<dbu> $$1 : this.d) {
+         if ($$1.c.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(daa $$0, daa $$1) {
+      return !this.d($$0) ? false : this.b($$0, $$1) || this.c($$0, $$1);
+   }
+
+   public boolean b(daa $$0, daa $$1) {
+      for (dbv.b<czw> $$2 : this.e) {
+         if ($$0.a($$2.a) && $$2.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c(daa $$0, daa $$1) {
+      Optional<jg<dbu>> $$2 = $$0.a(kl.R, dbw.a).e();
+      if ($$2.isEmpty()) {
+         return false;
+      } else {
+         for (dbv.b<dbu> $$3 : this.d) {
+            if ($$3.a.a($$2.get()) && $$3.b.a($$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public daa d(daa $$0, daa $$1) {
+      if ($$1.f()) {
+         return $$1;
+      } else {
+         Optional<jg<dbu>> $$2 = $$1.a(kl.R, dbw.a).e();
+         if ($$2.isEmpty()) {
+            return $$1;
+         } else {
+            for (dbv.b<czw> $$3 : this.e) {
+               if ($$1.a($$3.a) && $$3.b.a($$0)) {
+                  return dbw.a($$3.c.a(), $$2.get());
+               }
+            }
+
+            for (dbv.b<dbu> $$4 : this.d) {
+               if ($$4.a.a($$2.get()) && $$4.b.a($$0)) {
+                  return dbw.a($$1.h(), $$4.c);
+               }
+            }
+
+            return $$1;
+         }
+      }
+   }
+
+   public static dbv a(cvj $$0) {
+      dbv.a $$1 = new dbv.a($$0);
+      a($$1);
+      return $$1.a();
+   }
+
+   public static void a(dbv.a $$0) {
+      $$0.a(dae.tt);
+      $$0.a(dae.wz);
+      $$0.a(dae.wC);
+      $$0.a(dae.tt, dae.qi, dae.wz);
+      $$0.a(dae.wz, dae.wy, dae.wC);
+      $$0.a(dbx.a, dae.sg, dbx.c);
+      $$0.a(dbx.a, dae.ml, dbx.b);
+      $$0.a(dbx.a, dae.tr, dbx.d);
+      $$0.a(dae.vk, dbx.Q);
+      $$0.a(dae.ms, dbx.S);
+      $$0.a(dae.b, dbx.T);
+      $$0.a(dae.cT, dbx.R);
+      $$0.a(dbx.d, dae.vu, dbx.e);
+      $$0.a(dbx.e, dae.ml, dbx.f);
+      $$0.a(dbx.e, dae.tv, dbx.g);
+      $$0.a(dbx.f, dae.tv, dbx.h);
+      $$0.a(dbx.g, dae.ml, dbx.h);
+      $$0.a(dae.tx, dbx.l);
+      $$0.a(dbx.l, dae.ml, dbx.m);
+      $$0.a(dae.vO, dbx.i);
+      $$0.a(dbx.i, dae.ml, dbx.j);
+      $$0.a(dbx.i, dae.sg, dbx.k);
+      $$0.a(dbx.i, dae.tv, dbx.q);
+      $$0.a(dbx.j, dae.tv, dbx.r);
+      $$0.a(dbx.q, dae.ml, dbx.r);
+      $$0.a(dbx.q, dae.sg, dbx.s);
+      $$0.a(dbx.d, dae.pc, dbx.t);
+      $$0.a(dbx.t, dae.ml, dbx.u);
+      $$0.a(dbx.t, dae.sg, dbx.v);
+      $$0.a(dbx.n, dae.tv, dbx.q);
+      $$0.a(dbx.o, dae.tv, dbx.r);
+      $$0.a(dae.sI, dbx.n);
+      $$0.a(dbx.n, dae.ml, dbx.o);
+      $$0.a(dbx.n, dae.sg, dbx.p);
+      $$0.a(dbx.d, dae.sk, dbx.w);
+      $$0.a(dbx.w, dae.ml, dbx.x);
+      $$0.a(dae.tB, dbx.y);
+      $$0.a(dbx.y, dae.sg, dbx.z);
+      $$0.a(dbx.y, dae.tv, dbx.A);
+      $$0.a(dbx.z, dae.tv, dbx.B);
+      $$0.a(dbx.A, dae.sg, dbx.B);
+      $$0.a(dbx.C, dae.tv, dbx.A);
+      $$0.a(dbx.D, dae.tv, dbx.A);
+      $$0.a(dbx.E, dae.tv, dbx.B);
+      $$0.a(dae.tu, dbx.C);
+      $$0.a(dbx.C, dae.ml, dbx.D);
+      $$0.a(dbx.C, dae.sg, dbx.E);
+      $$0.a(dae.tp, dbx.F);
+      $$0.a(dbx.F, dae.ml, dbx.G);
+      $$0.a(dbx.F, dae.sg, dbx.H);
+      $$0.a(dae.tw, dbx.I);
+      $$0.a(dbx.I, dae.ml, dbx.J);
+      $$0.a(dbx.I, dae.sg, dbx.K);
+      $$0.a(dbx.a, dae.tv, dbx.L);
+      $$0.a(dbx.L, dae.ml, dbx.M);
+      $$0.a(dbx.d, dae.oC, dbx.O);
+      $$0.a(dbx.O, dae.ml, dbx.P);
+   }
+
+   public static class a {
+      private final List<den> a = new ArrayList<>();
+      private final List<dbv.b<dbu>> b = new ArrayList<>();
+      private final List<dbv.b<czw>> c = new ArrayList<>();
+      private final cvj d;
+
+      public a(cvj $$0) {
+         this.d = $$0;
+      }
+
+      private static void b(czw $$0) {
+         if (!($$0 instanceof dat)) {
+            throw new IllegalArgumentException("Expected a potion, got: " + mh.g.b($$0));
+         }
+      }
+
+      public void a(czw $$0, czw $$1, czw $$2) {
+         if ($$0.a(this.d) && $$1.a(this.d) && $$2.a(this.d)) {
+            b($$0);
+            b($$2);
+            this.c.add(new dbv.b<>($$0.e(), den.a($$1), $$2.e()));
+         }
+      }
+
+      public void a(czw $$0) {
+         if ($$0.a(this.d)) {
+            b($$0);
+            this.a.add(den.a($$0));
+         }
+      }
+
+      public void a(jg<dbu> $$0, czw $$1, jg<dbu> $$2) {
+         if ($$0.a().a(this.d) && $$1.a(this.d) && $$2.a().a(this.d)) {
+            this.b.add(new dbv.b<>($$0, den.a($$1), $$2));
+         }
+      }
+
+      public void a(czw $$0, jg<dbu> $$1) {
+         if ($$1.a().a(this.d)) {
+            this.a(dbx.a, $$0, dbx.b);
+            this.a(dbx.d, $$0, $$1);
+         }
+      }
+
+      public dbv a() {
+         return new dbv(List.copyOf(this.a), List.copyOf(this.b), List.copyOf(this.c));
+      }
+   }
+
+   static record b<T>(jg<T> a, den b, jg<T> c) {
    }
 }

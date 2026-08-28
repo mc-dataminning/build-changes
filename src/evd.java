@@ -1,93 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class evd extends ewa {
-   public static final MapCodec<evd> a = Codec.FLOAT.fieldOf("mossiness").xmap(evd::new, $$0 -> $$0.f);
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final ebe[] e = new ebe[]{dne.kg.m(), dne.kn.m()};
-   private final float f;
+public class evd extends evs {
+   public static final MapCodec<evd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               jc.a.e.fieldOf("axis").orElse(jc.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, evd::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final jc.a g;
 
-   public evd(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ewd.d a(dka $$0, iv $$1, iv $$2, ewd.d $$3, ewd.d $$4, evz $$5) {
-      azx $$6 = $$5.b($$4.a());
-      ebe $$7 = $$4.b();
-      iv $$8 = $$4.a();
-      ebe $$9 = null;
-      if ($$7.a(dne.eZ) || $$7.a(dne.b) || $$7.a(dne.fc)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(axe.L)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(axe.M)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(axe.N)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(dne.cy)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new ewd.d($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private ebe a(azx $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
+   public evd(float $$0, float $$1, int $$2, int $$3, jc.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         ebe[] $$1 = new ebe[]{dne.fb.m(), a($$0, dne.fC)};
-         ebe[] $$2 = new ebe[]{dne.fa.m(), a($$0, dne.nM)};
-         return this.a($$0, $$1, $$2);
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
       }
-   }
-
-   @Nullable
-   private ebe a(azx $$0, ebe $$1) {
-      jb $$2 = $$1.c(dvg.b);
-      ecd $$3 = $$1.c(dvg.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         ebe[] $$4 = new ebe[]{dne.nM.m().b(dvg.b, $$2).b(dvg.c, $$3), dne.oa.m()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private ebe b(azx $$0) {
-      return $$0.i() < this.f ? dne.oa.m() : null;
-   }
-
-   @Nullable
-   private ebe c(azx $$0) {
-      return $$0.i() < this.f ? dne.oo.m() : null;
-   }
-
-   @Nullable
-   private ebe d(azx $$0) {
-      return $$0.i() < 0.15F ? dne.pS.m() : null;
-   }
-
-   private static ebe a(azx $$0, dnc $$1) {
-      return $$1.m().b(dvg.b, jb.c.a.a($$0)).b(dvg.c, ag.a(ecd.values(), $$0));
-   }
-
-   private ebe a(azx $$0, ebe[] $$1, ebe[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static ebe a(azx $$0, ebe[] $$1) {
-      return $$1[$$0.a($$1.length)];
    }
 
    @Override
-   protected ewc<?> a() {
-      return ewc.k;
+   public boolean a(iw $$0, iw $$1, iw $$2, azz $$3) {
+      jc $$4 = jc.a(jc.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= azq.b(this.b, this.d, azq.f((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected evt<?> a() {
+      return evt.c;
    }
 }

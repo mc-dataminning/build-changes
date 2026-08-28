@@ -1,20 +1,17 @@
-public class gqa extends gpc {
-   protected gqa(gmb $$0, double $$1, double $$2, double $$3, double $$4, gqf $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+public class gqa extends god {
+   protected gqa(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gqh $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   public static class a implements gpn<mc> {
-      private final gqf a;
+   public static class a implements gpp<md> {
+      private final gqh a;
 
-      public a(gqf $$0) {
+      public a(gqh $$0) {
          this.a = $$0;
       }
 
-      public gpk a(mc $$0, gmb $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gqa($$1, $$2, $$3, $$4, $$5, this.a);
+      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gqa($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

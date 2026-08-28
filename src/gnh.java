@@ -1,67 +1,66 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record gnh(String a, @Nullable gnh.a b) {
-   public static gnh a() {
-      return a(null);
+public class gnh extends gni {
+   private final String g;
+
+   gnh(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public static gnh a(String $$0) {
-      return a(new gnh.a.b($$0));
+   public String a() {
+      return this.g;
    }
 
-   public static gnh a(fne $$0) {
-      return a(new gnh.a.a($$0));
+   public gnh c() {
+      gnh $$0 = new gnh(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
    }
 
-   public static gnh a(@Nullable gnh.a $$0) {
-      return new gnh(g(), $$0);
+   @Override
+   public gaf a(gaf $$0, gnm $$1) {
+      return new ger($$0, $$1, this);
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof gnh.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof gnh.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("25w09b");
-      if (frd.e().a()) {
-         $$0.append(" (modded)");
+   public static class a extends gni.a<gnh> {
+      public a(gnh $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      return $$0.toString();
-   }
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new gnh(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   public String e() {
-      return this.a;
-   }
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
 
-   @Nullable
-   public gnh.a f() {
-      return this.b;
-   }
+      @Nullable
+      @Override
+      public gni.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gni.b.d : super.c();
+      }
 
-   public interface a {
-      public static record a(long a, int b) implements gnh.a {
-         public a(fne $$0) {
-            this($$0.a, $$0.p);
+      @Override
+      public Either<gni.c, gni.b> a(gnm $$0) {
+         gni.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gni.c(this.a.a, gnl.c, $$3));
          }
-      }
-
-      public static record b(String a) implements gnh.a {
       }
    }
 }

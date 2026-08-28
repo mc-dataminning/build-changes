@@ -1,38 +1,36 @@
-import java.util.function.ToIntFunction;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-class bvt extends bvv {
-   private final float c;
-   private final ToIntFunction<azx> d;
+class bvt extends bvw {
+   private final boolean c;
 
-   protected bvt(bvw $$0, int $$1, float $$2, ToIntFunction<azx> $$3) {
-      super($$0, $$1, ly.G);
+   public bvt(bvy $$0, int $$1, boolean $$2) {
+      super($$0, $$1);
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public void a(ars $$0, bxu $$1, int $$2, bvi $$3, float $$4) {
-      if ($$1.dY().i() <= this.c) {
-         int $$5 = this.d.applyAsInt($$1.dY());
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            this.a($$0, $$1, $$1.dA(), $$1.dC() + (double)$$1.dr() / 2.0, $$1.dG());
-         }
+   public boolean a(aru $$0, bxw $$1, int $$2) {
+      if (this.c == $$1.eF()) {
+         $$1.c((float)Math.max(4 << $$2, 0));
+      } else {
+         $$1.a($$0, $$1.dW().q(), (float)(6 << $$2));
       }
+
+      return true;
    }
 
-   private void a(ars $$0, bxu $$1, double $$2, double $$3, double $$4) {
-      cpg $$5 = bxc.bf.a($$0, bxb.k);
-      if ($$5 != null) {
-         azx $$6 = $$1.dY();
-         float $$7 = (float) (Math.PI / 2);
-         float $$8 = azo.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
-         Vector3f $$9 = $$1.bS().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
-         $$5.b($$2, $$3, $$4, $$0.G_().i() * 360.0F, 0.0F);
-         $$5.i(new ffq($$9));
-         $$0.b($$5);
-         $$5.a(awp.xP);
+   @Override
+   public void a(aru $$0, @Nullable bwv $$1, @Nullable bwv $$2, bxw $$3, int $$4, double $$5) {
+      if (this.c == $$3.eF()) {
+         int $$6 = (int)($$5 * (double)(4 << $$4) + 0.5);
+         $$3.c((float)$$6);
+      } else {
+         int $$7 = (int)($$5 * (double)(6 << $$4) + 0.5);
+         if ($$1 == null) {
+            $$3.a($$0, $$3.dW().q(), (float)$$7);
+         } else {
+            $$3.a($$0, $$3.dW().c($$1, $$2), (float)$$7);
+         }
       }
    }
 }

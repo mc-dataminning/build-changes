@@ -1,32 +1,26 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record aay(iw c, int d) implements aam {
+   public static final za<vy, aay> a = aam.a(aay::a, aay::new);
+   public static final aam.b<aay> b = aam.a("debug/poi_ticket_count");
 
-public record aay(long c, List<aay.a> d) implements aak {
-   public static final aak.b<aay> a = aak.a("debug/redstone_update_order");
-   public static final yy<vw, aay> b = yy.a(yw.k, aay::b, aay.a.a.a(yw.a()), aay::c, aay::new);
-
-   @Override
-   public aak.b<aay> a() {
-      return a;
+   private aay(vy $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   public long b() {
+   private void a(vy $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+   }
+
+   @Override
+   public aam.b<aay> a() {
+      return b;
+   }
+
+   public iw b() {
       return this.c;
    }
 
-   public List<aay.a> c() {
+   public int c() {
       return this.d;
-   }
-
-   public static record a(iv b, eyw c) {
-      public static final yy<ByteBuf, aay.a> a = yy.a(iv.b, aay.a::a, eyw.a, aay.a::b, aay.a::new);
-
-      public iv a() {
-         return this.b;
-      }
-
-      public eyw b() {
-         return this.c;
-      }
    }
 }

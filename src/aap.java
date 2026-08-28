@@ -1,16 +1,17 @@
-public record aap() implements aak {
-   public static final yy<vw, aap> a = aak.a(aap::a, aap::new);
-   public static final aak.b<aap> b = aak.a("debug/game_test_clear");
-
-   private aap(vw $$0) {
-      this();
-   }
-
-   private void a(vw $$0) {
-   }
+public record aap(egk c, int d) implements aam {
+   public static final za<wn, aap> a = za.a(egk.d, aap::b, yy.h, aap::c, aap::new);
+   public static final aam.b<aap> b = aam.a("debug/game_event_listeners");
 
    @Override
-   public aak.b<aap> a() {
+   public aam.b<aap> a() {
       return b;
+   }
+
+   public egk b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

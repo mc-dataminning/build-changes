@@ -1,120 +1,51 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class apy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xa.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xa.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xa.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xa.c("commands.whitelist.remove.failed"));
-
-   public static void a(CommandDispatcher<ej> $$0) {
+   public static void a(CommandDispatcher<ek> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
-                                 "whitelist"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ek.a("on").executes($$0x -> b((ej)$$0x.getSource()))))
-                        .then(ek.a("off").executes($$0x -> c((ej)$$0x.getSource()))))
-                     .then(ek.a("list").executes($$0x -> d((ej)$$0x.getSource()))))
-                  .then(ek.a("add").then(ek.a("targets", ey.a()).suggests(($$0x, $$1) -> {
-                     avs $$2 = ((ej)$$0x.getSource()).l().ag();
-                     return eo.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gi())).map($$0xx -> $$0xx.gi().getName()), $$1);
-                  }).executes($$0x -> a((ej)$$0x.getSource(), ey.a($$0x, "targets"))))))
-               .then(
-                  ek.a("remove")
-                     .then(
-                        ek.a("targets", ey.a())
-                           .suggests(($$0x, $$1) -> eo.a(((ej)$$0x.getSource()).l().ag().j(), $$1))
-                           .executes($$0x -> b((ej)$$0x.getSource(), ey.a($$0x, "targets")))
-                     )
-               ))
-            .then(ek.a("reload").executes($$0x -> a((ej)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(el.a("clear").executes($$0x -> a((ek)$$0x.getSource(), ImmutableList.of(((ek)$$0x.getSource()).h())))))
+            .then(
+               el.a("set")
+                  .then(
+                     el.a("warning_level", IntegerArgumentType.integer(0, 4))
+                        .executes(
+                           $$0x -> a((ek)$$0x.getSource(), ImmutableList.of(((ek)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ej $$0) {
-      $$0.l().ag().a();
-      $$0.a(() -> xa.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
+   private static int a(ek $$0, Collection<? extends crz> $$1, int $$2) {
+      for (crz $$3 : $$1) {
+         $$3.Z().ifPresent($$1x -> $$1x.a($$2));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xc.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> xc.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(ej $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      awa $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            awb $$5 = new awb($$4);
-            $$2.a($$5);
-            $$0.a(() -> xa.a("commands.whitelist.add.success", xa.b($$4.getName())), true);
-            $$3++;
-         }
+   private static int a(ek $$0, Collection<? extends crz> $$1) {
+      for (crz $$2 : $$1) {
+         $$2.Z().ifPresent(cre::b);
       }
 
-      if ($$3 == 0) {
-         throw c.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xc.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().m_()), true);
       } else {
-         return $$3;
-      }
-   }
-
-   private static int b(ej $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      awa $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            awb $$5 = new awb($$4);
-            $$2.b($$5);
-            $$0.a(() -> xa.a("commands.whitelist.remove.success", xa.b($$4.getName())), true);
-            $$3++;
-         }
+         $$0.a(() -> xc.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
       }
 
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
-   }
-
-   private static int b(ej $$0) throws CommandSyntaxException {
-      avs $$1 = $$0.l().ag();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> xa.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
-      }
-   }
-
-   private static int c(ej $$0) throws CommandSyntaxException {
-      avs $$1 = $$0.l().ag();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> xa.c("commands.whitelist.disabled"), true);
-         return 1;
-      }
-   }
-
-   private static int d(ej $$0) {
-      String[] $$1 = $$0.l().ag().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> xa.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> xa.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
-      }
-
-      return $$1.length;
+      return $$1.size();
    }
 }

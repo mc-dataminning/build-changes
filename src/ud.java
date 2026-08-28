@@ -1,159 +1,129 @@
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Optional;
-import org.apache.commons.lang3.ArrayUtils;
 
-public final class ud implements ty {
-   private static final int b = 24;
-   public static final va<ud> a = new va.b<ud>() {
-      public ud a(DataInput $$0, ui $$1) throws IOException {
-         return new ud(d($$0, $$1));
+public record ud(float c) implements uq {
+   private static final int v = 12;
+   public static final ud a = new ud(0.0F);
+   public static final vc<ud> b = new vc.a<ud>() {
+      public ud a(DataInput $$0, uj $$1) throws IOException {
+         return ud.a(d($$0, $$1));
       }
 
       @Override
-      public uv.b a(DataInput $$0, uv $$1, ui $$2) throws IOException {
+      public ux.b a(DataInput $$0, ux $$1, uj $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static int[] d(DataInput $$0, ui $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(4L, (long)$$2);
-         int[] $$3 = new int[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readInt();
-         }
-
-         return $$3;
+      private static float d(DataInput $$0, uj $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readFloat();
       }
 
       @Override
-      public void b(DataInput $$0, ui $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 4);
+      public int c() {
+         return 4;
       }
 
       @Override
       public String a() {
-         return "INT[]";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Int_Array";
+         return "TAG_Float";
       }
    };
-   private int[] c;
 
-   public ud(int[] $$0) {
-      this.c = $$0;
+   @Deprecated(
+      forRemoval = true
+   )
+   public ud(float c) {
+      this.c = c;
+   }
+
+   public static ud a(float $$0) {
+      return $$0 == 0.0F ? a : new ud($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-
-      for (int $$1 : this.c) {
-         $$0.writeInt($$1);
-      }
+      $$0.writeFloat(this.c);
    }
 
    @Override
    public int a() {
-      return 24 + 4 * this.c.length;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 11;
+      return 5;
    }
 
    @Override
-   public va<ud> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      ux $$0 = new ux();
-      $$0.a(this);
-      return $$0.a();
+   public vc<ud> c() {
+      return b;
    }
 
    public ud e() {
-      int[] $$0 = new int[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new ud($$0);
+      return this;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ud && Arrays.equals(this.c, ((ud)$$0).c);
+   public void a(ve $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
+   public long g() {
+      return (long)this.c;
    }
 
-   public int[] g() {
+   @Override
+   public int h() {
+      return azq.d(this.c);
+   }
+
+   @Override
+   public short i() {
+      return (short)(azq.d(this.c) & 65535);
+   }
+
+   @Override
+   public byte j() {
+      return (byte)(azq.d(this.c) & 0xFF);
+   }
+
+   @Override
+   public double k() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float l() {
       return this.c;
    }
 
    @Override
-   public void a(vc $$0) {
-      $$0.a(this);
+   public Number m() {
+      return this.c;
    }
 
    @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public ue a(int $$0) {
-      return ue.a(this.c[$$0]);
-   }
-
-   @Override
-   public boolean a(int $$0, uy $$1) {
-      if ($$1 instanceof up $$2) {
-         this.c[$$0] = $$2.h();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(int $$0, uy $$1) {
-      if ($$1 instanceof up $$2) {
-         this.c = ArrayUtils.add(this.c, $$0, $$2.h());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public ue b(int $$0) {
-      int $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return ue.a($$1);
-   }
-
-   @Override
-   public void clear() {
-      this.c = new int[0];
-   }
-
-   @Override
-   public Optional<int[]> q_() {
-      return Optional.of(this.c);
-   }
-
-   @Override
-   public uv.b a(uv $$0) {
+   public ux.b a(ux $$0) {
       return $$0.a(this.c);
+   }
+
+   @Override
+   public String toString() {
+      uz $$0 = new uz();
+      $$0.a(this);
+      return $$0.a();
+   }
+
+   public float n() {
+      return this.c;
    }
 }

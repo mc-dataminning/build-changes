@@ -1,28 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public record aen(String b, @Nullable String c) implements zh<abw> {
-   public static final yy<vw, aen> a = zh.a(aen::a, aen::new);
+public class aen implements zj<aby> {
+   public static final za<vy, aen> a = zj.a(aen::a, aen::new);
+   private final IntList b;
 
-   private aen(vw $$0) {
-      this($$0.p(), $$0.c(vw::p));
+   public aen(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vw $$0) {
+   public aen(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aen(vy $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vy $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, vw::a);
    }
 
    @Override
-   public zj<aen> a() {
-      return agp.cp;
+   public zl<aen> a() {
+      return agr.an;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

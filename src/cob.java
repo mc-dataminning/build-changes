@@ -1,304 +1,128 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class cob extends bwt {
-   private static final Logger f = LogUtils.getLogger();
-   private static final ebe g = dne.L.m();
-   private static final int h = 0;
-   private static final float i = 0.0F;
-   private static final int j = 40;
-   private static final boolean k = true;
-   private static final boolean l = false;
-   private ebe m = g;
-   public int a = 0;
-   public boolean b = true;
-   private boolean n = false;
-   private boolean o;
-   private int p = 40;
-   private float q = 0.0F;
-   @Nullable
-   public tz c;
-   public boolean d;
-   protected static final akl<iv> e = akp.a(cob.class, akn.o);
+public class cob {
+   public static final alj<coa> a = a("kebab");
+   public static final alj<coa> b = a("aztec");
+   public static final alj<coa> c = a("alban");
+   public static final alj<coa> d = a("aztec2");
+   public static final alj<coa> e = a("bomb");
+   public static final alj<coa> f = a("plant");
+   public static final alj<coa> g = a("wasteland");
+   public static final alj<coa> h = a("pool");
+   public static final alj<coa> i = a("courbet");
+   public static final alj<coa> j = a("sea");
+   public static final alj<coa> k = a("sunset");
+   public static final alj<coa> l = a("creebet");
+   public static final alj<coa> m = a("wanderer");
+   public static final alj<coa> n = a("graham");
+   public static final alj<coa> o = a("match");
+   public static final alj<coa> p = a("bust");
+   public static final alj<coa> q = a("stage");
+   public static final alj<coa> r = a("void");
+   public static final alj<coa> s = a("skull_and_roses");
+   public static final alj<coa> t = a("wither");
+   public static final alj<coa> u = a("fighters");
+   public static final alj<coa> v = a("pointer");
+   public static final alj<coa> w = a("pigscene");
+   public static final alj<coa> x = a("burning_skull");
+   public static final alj<coa> y = a("skeleton");
+   public static final alj<coa> z = a("donkey_kong");
+   public static final alj<coa> A = a("earth");
+   public static final alj<coa> B = a("wind");
+   public static final alj<coa> C = a("water");
+   public static final alj<coa> D = a("fire");
+   public static final alj<coa> E = a("baroque");
+   public static final alj<coa> F = a("humble");
+   public static final alj<coa> G = a("meditative");
+   public static final alj<coa> H = a("prairie_ride");
+   public static final alj<coa> I = a("unpacked");
+   public static final alj<coa> J = a("backyard");
+   public static final alj<coa> K = a("bouquet");
+   public static final alj<coa> L = a("cavebird");
+   public static final alj<coa> M = a("changing");
+   public static final alj<coa> N = a("cotan");
+   public static final alj<coa> O = a("endboss");
+   public static final alj<coa> P = a("fern");
+   public static final alj<coa> Q = a("finding");
+   public static final alj<coa> R = a("lowmist");
+   public static final alj<coa> S = a("orb");
+   public static final alj<coa> T = a("owlemons");
+   public static final alj<coa> U = a("passage");
+   public static final alj<coa> V = a("pond");
+   public static final alj<coa> W = a("sunflowers");
+   public static final alj<coa> X = a("tides");
 
-   public cob(bxc<? extends cob> $$0, djx $$1) {
-      super($$0, $$1);
+   public static void a(qi<coa> $$0) {
+      a($$0, a, 1, 1);
+      a($$0, b, 1, 1);
+      a($$0, c, 1, 1);
+      a($$0, d, 1, 1);
+      a($$0, e, 1, 1);
+      a($$0, f, 1, 1);
+      a($$0, g, 1, 1);
+      a($$0, h, 2, 1);
+      a($$0, i, 2, 1);
+      a($$0, j, 2, 1);
+      a($$0, k, 2, 1);
+      a($$0, l, 2, 1);
+      a($$0, m, 1, 2);
+      a($$0, n, 1, 2);
+      a($$0, o, 2, 2);
+      a($$0, p, 2, 2);
+      a($$0, q, 2, 2);
+      a($$0, r, 2, 2);
+      a($$0, s, 2, 2);
+      a($$0, t, 2, 2, false);
+      a($$0, u, 4, 2);
+      a($$0, v, 4, 4);
+      a($$0, w, 4, 4);
+      a($$0, x, 4, 4);
+      a($$0, y, 4, 3);
+      a($$0, A, 2, 2, false);
+      a($$0, B, 2, 2, false);
+      a($$0, C, 2, 2, false);
+      a($$0, D, 2, 2, false);
+      a($$0, z, 4, 3);
+      a($$0, E, 2, 2);
+      a($$0, F, 2, 2);
+      a($$0, G, 1, 1);
+      a($$0, H, 1, 2);
+      a($$0, I, 4, 4);
+      a($$0, J, 3, 4);
+      a($$0, K, 3, 3);
+      a($$0, L, 3, 3);
+      a($$0, M, 4, 2);
+      a($$0, N, 3, 3);
+      a($$0, O, 3, 3);
+      a($$0, P, 3, 3);
+      a($$0, Q, 4, 2);
+      a($$0, R, 4, 2);
+      a($$0, S, 4, 4);
+      a($$0, T, 3, 3);
+      a($$0, U, 4, 2);
+      a($$0, V, 3, 4);
+      a($$0, W, 3, 3);
+      a($$0, X, 3, 3);
    }
 
-   private cob(djx $$0, double $$1, double $$2, double $$3, ebe $$4) {
-      this(bxc.Y, $$0);
-      this.m = $$4;
-      this.I = true;
-      this.a_($$1, $$2, $$3);
-      this.i(ffq.c);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.a(this.dv());
+   private static void a(qi<coa> $$0, alj<coa> $$1, int $$2, int $$3) {
+      a($$0, $$1, $$2, $$3, true);
    }
 
-   public static cob a(djx $$0, iv $$1, ebe $$2) {
-      cob $$3 = new cob($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.b(ebu.I) ? $$2.b(ebu.I, Boolean.valueOf(false)) : $$2);
-      $$0.a($$1, $$2.y().g(), 3);
-      $$0.b($$3);
-      return $$3;
+   private static void a(qi<coa> $$0, alj<coa> $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(
+         $$1,
+         new coa(
+            $$2,
+            $$3,
+            $$1.a(),
+            Optional.of(xc.c($$1.a().c("painting", "title")).a(o.o)),
+            $$4 ? Optional.of(xc.c($$1.a().c("painting", "author")).a(o.h)) : Optional.empty()
+         )
+      );
    }
 
-   @Override
-   public boolean cB() {
-      return false;
-   }
-
-   @Override
-   public final boolean a(ars $$0, bvi $$1, float $$2) {
-      if (!this.d($$1)) {
-         this.bB();
-      }
-
-      return false;
-   }
-
-   public void a(iv $$0) {
-      this.al.a(e, $$0);
-   }
-
-   public iv f() {
-      return this.al.a(e);
-   }
-
-   @Override
-   protected bwt.c bf() {
-      return bwt.c.a;
-   }
-
-   @Override
-   protected void a(akp.a $$0) {
-      $$0.a(e, iv.c);
-   }
-
-   @Override
-   public boolean bF() {
-      return !this.dQ();
-   }
-
-   @Override
-   protected double bc() {
-      return 0.04;
-   }
-
-   @Override
-   public void h() {
-      if (this.m.l()) {
-         this.aq();
-      } else {
-         dnc $$0 = this.m.b();
-         this.a++;
-         this.be();
-         this.a(bxy.a, this.dy());
-         this.aI();
-         this.bV();
-         if (this.dV() instanceof ars $$1 && (this.bJ() || this.d)) {
-            iv $$2 = this.dv();
-            boolean $$3 = this.m.b() instanceof dop;
-            boolean $$4 = $$3 && this.dV().b_($$2).a(axj.a);
-            double $$5 = this.dy().h();
-            if ($$3 && $$5 > 1.0) {
-               ffm $$6 = this.dV().a(new dje(new ffq(this.K, this.L, this.M), this.dt(), dje.a.a, dje.b.b, this));
-               if ($$6.d() != ffo.a.a && this.dV().b_($$6.b()).a(axj.a)) {
-                  $$2 = $$6.b();
-                  $$4 = true;
-               }
-            }
-
-            if (!this.aH() && !$$4) {
-               if (this.a > 100 && ($$2.v() <= this.dV().K_() || $$2.v() > this.dV().ao()) || this.a > 600) {
-                  if (this.b && $$1.O().c(djt.j)) {
-                     this.a($$1, $$0);
-                  }
-
-                  this.aq();
-               }
-            } else {
-               ebe $$7 = this.dV().a_($$2);
-               this.i(this.dy().d(0.7, -0.5, 0.7));
-               if (!$$7.a(dne.ca)) {
-                  if (!this.n) {
-                     boolean $$8 = $$7.a(new dds(this.dV(), $$2, jb.a, czy.k, jb.b));
-                     boolean $$9 = dqa.n(this.dV().a_($$2.e())) && (!$$3 || !$$4);
-                     boolean $$10 = this.m.a((dka)this.dV(), $$2) && !$$9;
-                     if ($$8 && $$10) {
-                        if (this.m.b(ebu.I) && this.dV().b_($$2).a() == exp.c) {
-                           this.m = this.m.b(ebu.I, Boolean.valueOf(true));
-                        }
-
-                        if (this.dV().a($$2, this.m, 3)) {
-                           ((ars)this.dV()).m().a.a(this, new ace($$2, this.dV().a_($$2)));
-                           this.aq();
-                           if ($$0 instanceof dpz) {
-                              ((dpz)$$0).a(this.dV(), $$2, this.m, $$7, this);
-                           }
-
-                           if (this.c != null && this.m.x()) {
-                              dyc $$11 = this.dV().c_($$2);
-                              if ($$11 != null) {
-                                 tz $$12 = $$11.d(this.dV().J_());
-                                 this.c.a((BiConsumer<String, uy>)(($$1x, $$2x) -> $$12.a($$1x, $$2x.d())));
-
-                                 try {
-                                    $$11.c($$12, this.dV().J_());
-                                 } catch (Exception var15) {
-                                    f.error("Failed to load block entity from falling block", var15);
-                                 }
-
-                                 $$11.e();
-                              }
-                           }
-                        } else if (this.b && $$1.O().c(djt.j)) {
-                           this.aq();
-                           this.a($$0, $$2);
-                           this.a($$1, $$0);
-                        }
-                     } else {
-                        this.aq();
-                        if (this.b && $$1.O().c(djt.j)) {
-                           this.a($$0, $$2);
-                           this.a($$1, $$0);
-                        }
-                     }
-                  } else {
-                     this.aq();
-                     this.a($$0, $$2);
-                  }
-               }
-            }
-         }
-
-         this.i(this.dy().c(0.98));
-      }
-   }
-
-   public void a(dnc $$0, iv $$1) {
-      if ($$0 instanceof dpz) {
-         ((dpz)$$0).a(this.dV(), $$1, this);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, float $$1, bvi $$2) {
-      if (!this.o) {
-         return false;
-      } else {
-         int $$3 = azo.c($$0 - 1.0);
-         if ($$3 < 0) {
-            return false;
-         } else {
-            Predicate<bwt> $$4 = bxa.e.and(bxa.b);
-            bvi $$6 = this.m.b() instanceof dpz $$5 ? $$5.a(this) : this.dW().a(this);
-            float $$7 = (float)Math.min(azo.d((float)$$3 * this.q), this.p);
-            this.dV().a(this, this.cR(), $$4).forEach($$2x -> $$2x.a($$6, $$7));
-            boolean $$8 = this.m.a(axe.O);
-            if ($$8 && $$7 > 0.0F && this.ae.i() < 0.05F + (float)$$3 * 0.05F) {
-               ebe $$9 = dmc.e(this.m);
-               if ($$9 == null) {
-                  this.n = true;
-               } else {
-                  this.m = $$9;
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   @Override
-   protected void b(tz $$0) {
-      alg<uy> $$1 = this.dX().a(un.a);
-      $$0.a("BlockState", ebe.a, $$1, this.m);
-      $$0.a("Time", this.a);
-      $$0.a("DropItem", this.b);
-      $$0.a("HurtEntities", this.o);
-      $$0.a("FallHurtAmount", this.q);
-      $$0.a("FallHurtMax", this.p);
-      if (this.c != null) {
-         $$0.a("TileEntityData", this.c);
-      }
-
-      $$0.a("CancelDrop", this.n);
-   }
-
-   @Override
-   protected void a(tz $$0) {
-      alg<uy> $$1 = this.dX().a(un.a);
-      this.m = $$0.<ebe>a("BlockState", ebe.a, $$1).orElse(g);
-      this.a = $$0.b("Time", 0);
-      boolean $$2 = this.m.a(axe.O);
-      this.o = $$0.b("HurtEntities", $$2);
-      this.q = $$0.b("FallHurtAmount", 0.0F);
-      this.p = $$0.b("FallHurtMax", 40);
-      this.b = $$0.b("DropItem", true);
-      this.c = $$0.m("TileEntityData").map(tz::l).orElse(null);
-      this.n = $$0.b("CancelDrop", false);
-   }
-
-   public void b(float $$0, int $$1) {
-      this.o = true;
-      this.q = $$0;
-      this.p = $$1;
-   }
-
-   public void g() {
-      this.n = true;
-   }
-
-   @Override
-   public boolean cF() {
-      return false;
-   }
-
-   @Override
-   public void a(q $$0) {
-      super.a($$0);
-      $$0.a("Immitating BlockState", this.m.toString());
-   }
-
-   public ebe j() {
-      return this.m;
-   }
-
-   @Override
-   protected xa cz() {
-      return xa.a("entity.minecraft.falling_block_type", this.m.b().f());
-   }
-
-   @Override
-   public zh<abw> a(arq $$0) {
-      return new abx(this, $$0, dnc.j(this.j()));
-   }
-
-   @Override
-   public void a(abx $$0) {
-      super.a($$0);
-      this.m = dnc.a($$0.p());
-      this.I = true;
-      double $$1 = $$0.g();
-      double $$2 = $$0.h();
-      double $$3 = $$0.i();
-      this.a_($$1, $$2, $$3);
-      this.a(this.dv());
-   }
-
-   @Nullable
-   @Override
-   public bwt b(eyo $$0) {
-      alh<djx> $$1 = $$0.b().aj();
-      alh<djx> $$2 = this.dV().aj();
-      boolean $$3 = ($$2 == djx.k || $$1 == djx.k) && $$2 != $$1;
-      bwt $$4 = super.b($$0);
-      this.d = $$4 != null && $$3;
-      return $$4;
+   private static alj<coa> a(String $$0) {
+      return alj.a(mi.aZ, alk.b($$0));
    }
 }

@@ -1,97 +1,42 @@
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class cyd extends czu {
-   protected static final Map<dnc, dnc> a = new Builder()
-      .put(dne.at, dne.aB)
-      .put(dne.X, dne.aq)
-      .put(dne.az, dne.aH)
-      .put(dne.ad, dne.ao)
-      .put(dne.u, dne.aI)
-      .put(dne.ae, dne.ap)
-      .put(dne.ax, dne.aF)
-      .put(dne.ab, dne.am)
-      .put(dne.ay, dne.aG)
-      .put(dne.ac, dne.an)
-      .put(dne.av, dne.aD)
-      .put(dne.Z, dne.ak)
-      .put(dne.aw, dne.aE)
-      .put(dne.aa, dne.al)
-      .put(dne.au, dne.aC)
-      .put(dne.Y, dne.aj)
-      .put(dne.oP, dne.oQ)
-      .put(dne.oR, dne.oS)
-      .put(dne.oY, dne.oZ)
-      .put(dne.pa, dne.pb)
-      .put(dne.aA, dne.aJ)
-      .put(dne.af, dne.ar)
-      .put(dne.ai, dne.as)
-      .build();
-
-   public cyd(dbm $$0, float $$1, float $$2, czu.a $$3) {
-      super($$3.b($$0, $$1, $$2));
+public class cyd extends czw {
+   public cyd(czw.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bur a(ddt $$0) {
-      djx $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      crx $$3 = $$0.o();
-      if (b($$0)) {
-         return bur.e;
+   public but a(ddv $$0) {
+      jc $$1 = $$0.k();
+      if ($$1 == jc.a) {
+         return but.d;
       } else {
-         Optional<ebe> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
-         if ($$4.isEmpty()) {
-            return bur.e;
+         djz $$2 = $$0.q();
+         ddt $$3 = new ddt($$0);
+         iw $$4 = $$3.a();
+         daa $$5 = $$0.n();
+         ffs $$6 = ffs.c($$4);
+         ffn $$7 = bxe.g.n().a($$6.a(), $$6.b(), $$6.c());
+         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
+            if ($$2 instanceof aru $$8) {
+               Consumer<cnt> $$9 = bxe.a($$8, $$5, $$0.o());
+               cnt $$10 = bxe.g.b($$8, $$9, $$4, bxd.m, true, true);
+               if ($$10 == null) {
+                  return but.d;
+               }
+
+               float $$11 = (float)azq.d((azq.h($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+               $$10.b($$10.dA(), $$10.dC(), $$10.dG(), $$11, 0.0F);
+               $$8.a_($$10);
+               $$2.a(null, $$10.dA(), $$10.dC(), $$10.dG(), awr.aD, aws.e, 0.75F, 0.8F);
+               $$10.a(egg.t, $$0.o());
+            }
+
+            $$5.h(1);
+            return but.a;
          } else {
-            czy $$5 = $$0.n();
-            if ($$3 instanceof art) {
-               aq.N.a((art)$$3, $$2, $$5);
-            }
-
-            $$1.a($$2, $$4.get(), 11);
-            $$1.a(ege.c, $$2, ege.a.a($$3, $$4.get()));
-            if ($$3 != null) {
-               $$5.a(1, $$3, bxu.d($$0.p()));
-            }
-
-            return bur.a;
+            return but.d;
          }
       }
-   }
-
-   private static boolean b(ddt $$0) {
-      crx $$1 = $$0.o();
-      return $$0.p().equals(buq.a) && $$1.fc().c(kk.I) && !$$1.fY();
-   }
-
-   private Optional<ebe> a(djx $$0, iv $$1, @Nullable crx $$2, ebe $$3) {
-      Optional<ebe> $$4 = this.a($$3);
-      if ($$4.isPresent()) {
-         $$0.a($$2, $$1, awp.aH, awq.e, 1.0F, 1.0F);
-         return $$4;
-      } else {
-         Optional<ebe> $$5 = dwy.b($$3);
-         if ($$5.isPresent()) {
-            $$0.a($$2, $$1, awp.aI, awq.e, 1.0F, 1.0F);
-            $$0.a($$2, 3005, $$1, 0);
-            return $$5;
-         } else {
-            Optional<ebe> $$6 = Optional.ofNullable((dnc)czp.b.get().get($$3.b())).map($$1x -> $$1x.m($$3));
-            if ($$6.isPresent()) {
-               $$0.a($$2, $$1, awp.aJ, awq.e, 1.0F, 1.0F);
-               $$0.a($$2, 3004, $$1, 0);
-               return $$6;
-            } else {
-               return Optional.empty();
-            }
-         }
-      }
-   }
-
-   private Optional<ebe> a(ebe $$0) {
-      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.m().b(dtv.d, $$0.c(dtv.d)));
    }
 }

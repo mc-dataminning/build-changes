@@ -1,48 +1,53 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class adl implements zh<abw> {
-   public static final yy<vw, adl> a = zh.a(adl::a, adl::new);
+public class adl implements zj<aby> {
+   public static final za<vy, adl> a = zj.a(adl::a, adl::new);
    private final int b;
-   private final int c;
-   private final adm d;
+   private final iw c;
+   private final int d;
+   private final boolean e;
 
-   public adl(djc $$0, exd $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.h;
-      this.c = $$0.i;
-      this.d = new adm($$0, $$1, $$2, $$3);
+   public adl(int $$0, iw $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.j();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private adl(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new adm($$0, this.b, this.c);
+   private adl(vy $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+   private void a(vy $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zj<adl> a() {
-      return agp.N;
+   public zl<adl> a() {
+      return agr.L;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean b() {
+      return this.e;
    }
 
    public int e() {
-      return this.c;
+      return this.b;
    }
 
-   public adm f() {
+   public int f() {
       return this.d;
+   }
+
+   public iw g() {
+      return this.c;
    }
 }

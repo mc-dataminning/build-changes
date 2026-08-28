@@ -5,32 +5,32 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class bd extends dk<bd.a> {
+public class bd extends dl<bd.a> {
    @Override
    public Codec<bd.a> a() {
       return bd.a.a;
    }
 
-   public void a(art $$0, Collection<? extends bwt> $$1) {
-      List<fah> $$2 = $$1.stream().map($$1x -> by.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(arv $$0, Collection<? extends bwv> $$1) {
+      List<faj> $$2 = $$1.stream().map($$1x -> bz.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bj> b, List<bj> c) implements dk.a {
+   public static record a(Optional<bj> b, List<bj> c) implements dl.a {
       public static final Codec<bd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(bd.a::a), by.b.listOf().optionalFieldOf("victims", List.of()).forGetter(bd.a::b))
+         $$0 -> $$0.group(bz.b.optionalFieldOf("player").forGetter(bd.a::a), bz.b.listOf().optionalFieldOf("victims", List.of()).forGetter(bd.a::b))
                .apply($$0, bd.a::new)
       );
 
-      public static ar<bd.a> a(by.a... $$0) {
-         return aq.F.a(new bd.a(Optional.empty(), by.a($$0)));
+      public static ar<bd.a> a(bz.a... $$0) {
+         return aq.F.a(new bd.a(Optional.empty(), bz.a($$0)));
       }
 
-      public boolean a(Collection<? extends fah> $$0) {
+      public boolean a(Collection<? extends faj> $$0) {
          for (bj $$1 : this.c) {
             boolean $$2 = false;
 
-            for (fah $$3 : $$0) {
+            for (faj $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;
@@ -47,7 +47,7 @@ public class bd extends dk<bd.a> {
 
       @Override
       public void a(bk $$0) {
-         dk.a.super.a($$0);
+         dl.a.super.a($$0);
          $$0.a(this.c, ".victims");
       }
 

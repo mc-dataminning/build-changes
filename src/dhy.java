@@ -1,78 +1,41 @@
-public interface dhy {
-   alh<dht> a = dhz.a("trades/desert_armorer_boots_4");
-   alh<dht> b = dhz.a("trades/desert_armorer_leggings_4");
-   alh<dht> c = dhz.a("trades/desert_armorer_chestplate_4");
-   alh<dht> d = dhz.a("trades/desert_armorer_helmet_4");
-   alh<dht> e = dhz.a("trades/desert_armorer_leggings_5");
-   alh<dht> f = dhz.a("trades/desert_armorer_chestplate_5");
-   alh<dht> g = dhz.a("trades/plains_armorer_boots_4");
-   alh<dht> h = dhz.a("trades/plains_armorer_leggings_4");
-   alh<dht> i = dhz.a("trades/plains_armorer_chestplate_4");
-   alh<dht> j = dhz.a("trades/plains_armorer_helmet_4");
-   alh<dht> k = dhz.a("trades/plains_armorer_boots_5");
-   alh<dht> l = dhz.a("trades/plains_armorer_leggings_5");
-   alh<dht> m = dhz.a("trades/savanna_armorer_boots_4");
-   alh<dht> n = dhz.a("trades/savanna_armorer_leggings_4");
-   alh<dht> o = dhz.a("trades/savanna_armorer_chestplate_4");
-   alh<dht> p = dhz.a("trades/savanna_armorer_helmet_4");
-   alh<dht> q = dhz.a("trades/savanna_armorer_chestplate_5");
-   alh<dht> r = dhz.a("trades/savanna_armorer_helmet_5");
-   alh<dht> s = dhz.a("trades/snow_armorer_boots_4");
-   alh<dht> t = dhz.a("trades/snow_armorer_helmet_4");
-   alh<dht> u = dhz.a("trades/snow_armorer_boots_5");
-   alh<dht> v = dhz.a("trades/snow_armorer_helmet_5");
-   alh<dht> w = dhz.a("trades/jungle_armorer_boots_4");
-   alh<dht> x = dhz.a("trades/jungle_armorer_leggings_4");
-   alh<dht> y = dhz.a("trades/jungle_armorer_chestplate_4");
-   alh<dht> z = dhz.a("trades/jungle_armorer_helmet_4");
-   alh<dht> A = dhz.a("trades/jungle_armorer_boots_5");
-   alh<dht> B = dhz.a("trades/jungle_armorer_helmet_5");
-   alh<dht> C = dhz.a("trades/swamp_armorer_boots_4");
-   alh<dht> D = dhz.a("trades/swamp_armorer_leggings_4");
-   alh<dht> E = dhz.a("trades/swamp_armorer_chestplate_4");
-   alh<dht> F = dhz.a("trades/swamp_armorer_helmet_4");
-   alh<dht> G = dhz.a("trades/swamp_armorer_boots_5");
-   alh<dht> H = dhz.a("trades/swamp_armorer_helmet_5");
-   alh<dht> I = dhz.a("trades/taiga_armorer_leggings_5");
-   alh<dht> J = dhz.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qh<dht> $$0) {
-      jg<dgl> $$1 = $$0.a(mh.aR);
-      $$0.a(a, new dhx($$1.b(dgq.h), btt.a(1)));
-      $$0.a(b, new dhx($$1.b(dgq.h), btt.a(1)));
-      $$0.a(c, new dhx($$1.b(dgq.h), btt.a(1)));
-      $$0.a(d, new dhx($$1.b(dgq.h), btt.a(1)));
-      $$0.a(e, new dhx($$1.b(dgq.h), btt.a(1)));
-      $$0.a(f, new dhx($$1.b(dgq.h), btt.a(1)));
-      $$0.a(g, new dhx($$1.b(dgq.a), btt.a(1)));
-      $$0.a(h, new dhx($$1.b(dgq.a), btt.a(1)));
-      $$0.a(i, new dhx($$1.b(dgq.a), btt.a(1)));
-      $$0.a(j, new dhx($$1.b(dgq.a), btt.a(1)));
-      $$0.a(k, new dhx($$1.b(dgq.a), btt.a(1)));
-      $$0.a(l, new dhx($$1.b(dgq.a), btt.a(1)));
-      $$0.a(m, new dhx($$1.b(dgq.k), btt.a(1)));
-      $$0.a(n, new dhx($$1.b(dgq.k), btt.a(1)));
-      $$0.a(o, new dhx($$1.b(dgq.k), btt.a(1)));
-      $$0.a(p, new dhx($$1.b(dgq.k), btt.a(1)));
-      $$0.a(q, new dhx($$1.b(dgq.k), btt.a(1)));
-      $$0.a(r, new dhx($$1.b(dgq.k), btt.a(1)));
-      $$0.a(s, new dhx($$1.b(dgq.j), btt.a(1)));
-      $$0.a(t, new dhx($$1.b(dgq.g), btt.a(1)));
-      $$0.a(u, new dhx($$1.b(dgq.j), btt.a(1)));
-      $$0.a(v, new dhx($$1.b(dgq.g), btt.a(1)));
-      $$0.a(w, new dhx($$1.b(dgq.w), btt.a(1)));
-      $$0.a(x, new dhx($$1.b(dgq.w), btt.a(1)));
-      $$0.a(y, new dhx($$1.b(dgq.w), btt.a(1)));
-      $$0.a(z, new dhx($$1.b(dgq.w), btt.a(1)));
-      $$0.a(A, new dhx($$1.b(dgq.c), btt.a(1)));
-      $$0.a(B, new dhx($$1.b(dgq.e), btt.a(1)));
-      $$0.a(C, new dhx($$1.b(dgq.O), btt.a(1)));
-      $$0.a(D, new dhx($$1.b(dgq.O), btt.a(1)));
-      $$0.a(E, new dhx($$1.b(dgq.O), btt.a(1)));
-      $$0.a(F, new dhx($$1.b(dgq.O), btt.a(1)));
-      $$0.a(G, new dhx($$1.b(dgq.i), btt.a(1)));
-      $$0.a(H, new dhx($$1.b(dgq.f), btt.a(1)));
-      $$0.a(I, new dhx($$1.b(dgq.d), btt.a(1)));
-      $$0.a(J, new dhx($$1.b(dgq.d), btt.a(1)));
+public record dhy(jk<dgn> d, int e, int f) implements dhv {
+   public static final int b = 10000;
+   public static final MapCodec<dhy> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jv.a(mi.aR).fieldOf("enchantments").forGetter(dhy::b),
+               ayy.a(1, 10000).fieldOf("min_cost").forGetter(dhy::c),
+               ayy.a(0, 10000).fieldOf("max_cost_span").forGetter(dhy::d)
+            )
+            .apply($$0, dhy::new)
+   );
+
+   @Override
+   public void a(daa $$0, dgt.a $$1, azz $$2, bur $$3) {
+      float $$4 = $$3.d();
+      int $$5 = azq.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
+
+      for (dgq $$7 : dgp.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.b(), $$7.c());
+      }
+   }
+
+   @Override
+   public MapCodec<dhy> a() {
+      return c;
+   }
+
+   public jk<dgn> b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

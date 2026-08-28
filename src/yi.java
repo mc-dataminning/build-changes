@@ -1,81 +1,149 @@
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record yi(Either<hb, String> d, String e) implements xb {
+public class yi implements xd {
+   private static final Logger d = LogUtils.getLogger();
    public static final MapCodec<yi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(hb.a, Codec.STRING).fieldOf("name").forGetter(yi::b), Codec.STRING.fieldOf("objective").forGetter(yi::c))
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("nbt").forGetter(yi::b),
+               Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(yi::c),
+               xe.a.lenientOptionalFieldOf("separator").forGetter(yi::d),
+               ye.c.forGetter(yi::e)
+            )
             .apply($$0, yi::new)
    );
-   public static final MapCodec<yi> b = a.fieldOf("score");
-   public static final xb.a<yi> c = new xb.a<>(b, "score");
+   public static final xd.a<yi> b = new xd.a<>(a, "nbt");
+   private final boolean e;
+   private final Optional<xc> f;
+   private final String g;
+   private final ye h;
+   @Nullable
+   protected final fc.g c;
+
+   public yi(String $$0, boolean $$1, Optional<xc> $$2, ye $$3) {
+      this($$0, a($$0), $$1, $$2, $$3);
+   }
+
+   private yi(String $$0, @Nullable fc.g $$1, boolean $$2, Optional<xc> $$3, ye $$4) {
+      this.g = $$0;
+      this.c = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.h = $$4;
+   }
+
+   @Nullable
+   private static fc.g a(String $$0) {
+      try {
+         return new fc().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
+
+   public String b() {
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public Optional<xc> d() {
+      return this.f;
+   }
+
+   public ye e() {
+      return this.h;
+   }
 
    @Override
-   public xb.a<?> a() {
-      return c;
-   }
-
-   private fgu a(ej $$0) throws CommandSyntaxException {
-      Optional<hb> $$1 = this.d.left();
-      if ($$1.isPresent()) {
-         List<? extends bwt> $$2 = $$1.get().b().b($$0);
-         if (!$$2.isEmpty()) {
-            if ($$2.size() != 1) {
-               throw ew.a.create();
-            } else {
-               return $$2.getFirst();
-            }
-         } else {
-            return fgu.c($$1.get().a());
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         return fgu.c((String)this.d.right().orElseThrow());
-      }
-   }
-
-   private xo a(fgu $$0, ej $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         fgv $$3 = $$2.aJ();
-         fgn $$4 = $$3.a(this.e);
-         if ($$4 != null) {
-            fgr $$5 = $$3.d($$0, $$4);
-            if ($$5 != null) {
-               return $$5.a($$4.a(yt.b));
-            }
+         if ($$0 instanceof yi $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
+            return true;
          }
-      }
 
-      return xa.i();
+         return false;
+      }
    }
 
    @Override
-   public xo a(@Nullable ej $$0, @Nullable bwt $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return xa.i();
-      } else {
-         fgu $$3 = this.a($$0);
-         fgu $$4 = (fgu)($$1 != null && $$3.equals(fgu.cp) ? $$1 : $$3);
-         return this.a($$4, $$0);
-      }
+   public int hashCode() {
+      int $$0 = this.e ? 1 : 0;
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.h.hashCode();
    }
 
    @Override
    public String toString() {
-      return "score{name='" + this.d + "', objective='" + this.e + "'}";
+      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
    }
 
-   public Either<hb, String> b() {
-      return this.d;
+   @Override
+   public xq a(@Nullable ek $$0, @Nullable bwv $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.c != null) {
+         Stream<va> $$3 = this.h.a($$0).flatMap($$0x -> {
+            try {
+               return this.c.a($$0x).stream();
+            } catch (CommandSyntaxException var3x) {
+               return Stream.empty();
+            }
+         });
+         if (this.e) {
+            ali<va> $$4 = $$0.u().a(uo.a);
+            xc $$5 = (xc)DataFixUtils.orElse(xf.a($$0, this.f, $$1, $$2), xf.c);
+            return $$3.flatMap($$4x -> {
+               try {
+                  xc $$5x = (xc)xe.a.parse($$4, $$4x).getOrThrow();
+                  return Stream.of(xf.a($$0, $$5x, $$1, $$2));
+               } catch (Exception var6x) {
+                  d.warn("Failed to parse component: {}", $$4x, var6x);
+                  return Stream.of();
+               }
+            }).reduce(($$1x, $$2x) -> $$1x.b($$5).b($$2x)).orElseGet(xc::i);
+         } else {
+            Stream<String> $$6 = $$3.map(yi::a);
+            return xf.a($$0, this.f, $$1, $$2)
+               .map($$1x -> $$6.map(xc::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(xc::i))
+               .orElseGet(() -> xc.b($$6.collect(Collectors.joining(", "))));
+         }
+      } else {
+         return xc.i();
+      }
    }
 
-   public String c() {
-      return this.e;
+   private static String a(va $$0) {
+      if ($$0 instanceof uy var1) {
+         uy var10000 = var1;
+
+         try {
+            var5 = var10000.k();
+         } catch (Throwable var4) {
+            throw new MatchException(var4.toString(), var4);
+         }
+
+         return var5;
+      } else {
+         return $$0.toString();
+      }
+   }
+
+   @Override
+   public xd.a<?> a() {
+      return b;
    }
 }

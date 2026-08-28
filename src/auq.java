@@ -1,33 +1,55 @@
-import java.util.function.UnaryOperator;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface auq {
-   UnaryOperator<xa> a = UnaryOperator.identity();
-   auq b = a(a, true);
-   auq c = a(a("pack.source.builtin"), true);
-   auq d = a(a("pack.source.feature"), false);
-   auq e = a(a("pack.source.world"), true);
-   auq f = a(a("pack.source.server"), true);
+public abstract class auq<T> {
+   private final ffi a;
 
-   xa a(xa var1);
-
-   boolean a();
-
-   static auq a(final UnaryOperator<xa> $$0, final boolean $$1) {
-      return new auq() {
-         @Override
-         public xa a(xa $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   protected auq(ffi $$0) {
+      this.a = $$0;
    }
 
-   private static UnaryOperator<xa> a(String $$0) {
-      xa $$1 = xa.c($$0);
-      return $$1x -> xa.a("pack.nameAndSource", $$1x, $$1).a(o.h);
+   @Nullable
+   public T a(Path $$0, List<ffj> $$1) throws IOException {
+      Path $$2 = $$0;
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return null;
+      }
+
+      if ($$3.isSymbolicLink()) {
+         this.a.a($$0, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         }
+
+         $$2 = Files.readSymbolicLink($$0);
+         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      }
+
+      if ($$3.isDirectory()) {
+         this.a.b($$2, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         } else {
+            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         }
+      } else {
+         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+      }
    }
+
+   @Nullable
+   protected abstract T d(Path var1) throws IOException;
+
+   @Nullable
+   protected abstract T c(Path var1) throws IOException;
 }

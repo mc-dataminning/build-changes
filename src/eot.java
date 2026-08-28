@@ -1,30 +1,24 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eot extends eoq {
-   protected final long c;
-   protected final ewr.a d;
-   protected final float e;
-   protected final ewr f;
+public class eot<P extends eos> {
+   public static final eot<epb> a = a("simple_state_provider", epb.b);
+   public static final eot<epc> b = a("weighted_state_provider", epc.b);
+   public static final eot<eox> c = a("noise_threshold_provider", eox.b);
+   public static final eot<eow> d = a("noise_provider", eow.g);
+   public static final eot<eou> e = a("dual_noise_provider", eou.b);
+   public static final eot<eoz> f = a("rotated_block_provider", eoz.b);
+   public static final eot<eoy> g = a("randomized_int_state_provider", eoy.b);
+   private final MapCodec<P> h;
 
-   protected static <P extends eot> P3<Mu<P>, Long, ewr.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         ewr.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ayw.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends eos> eot<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.T, $$0, new eot<>($$1));
    }
 
-   protected eot(long $$0, ewr.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = ewr.b(new eic(new ehe($$0)), $$1);
+   private eot(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   protected double a(iv $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

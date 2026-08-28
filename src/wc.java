@@ -1,43 +1,9 @@
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.annotation.Nullable;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
 
-public class wc extends MessageToMessageDecoder<zh<?>> {
-   private final zg a;
-   @Nullable
-   private zg.a b;
-
-   public wc(zg $$0) {
-      this.a = $$0;
-   }
-
-   protected void a(ChannelHandlerContext $$0, zh<?> $$1, List<Object> $$2) throws Exception {
-      if (this.b != null) {
-         a($$1);
-         zh<?> $$3 = this.b.a($$1);
-         if ($$3 != null) {
-            this.b = null;
-            $$2.add($$3);
-         }
-      } else {
-         zg.a $$4 = this.a.a($$1);
-         if ($$4 != null) {
-            a($$1);
-            this.b = $$4;
-         } else {
-            $$2.add($$1);
-            if ($$1.d()) {
-               $$0.pipeline().remove($$0.name());
-            }
-         }
-      }
-   }
-
-   private static void a(zh<?> $$0) {
-      if ($$0.d()) {
-         throw new DecoderException("Terminal message received in bundle");
-      }
+public class wc extends ChannelOutboundHandlerAdapter {
+   public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) {
+      $$0.write(wa.a($$1), $$2);
    }
 }

@@ -1,86 +1,140 @@
-public class buj implements buk {
-   private final buk b;
-   private final buk c;
+import com.mojang.serialization.Codec;
+import java.util.UUID;
 
-   public buj(buk $$0, buk $$1) {
+public abstract class buj {
+   private final UUID h;
+   protected xc a;
+   protected float b;
+   protected buj.a c;
+   protected buj.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
+
+   public buj(UUID $$0, xc $$1, buj.a $$2, buj.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
+   }
+
+   public UUID i() {
+      return this.h;
+   }
+
+   public xc j() {
+      return this.a;
+   }
+
+   public void a(xc $$0) {
+      this.a = $$0;
+   }
+
+   public float k() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
+   public buj.a l() {
+      return this.c;
    }
 
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
+   public void a(buj.a $$0) {
+      this.c = $$0;
    }
 
-   public boolean a(buk $$0) {
-      return this.b == $$0 || this.c == $$0;
+   public buj.b m() {
+      return this.d;
    }
 
-   @Override
-   public czy a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
+   public void a(buj.b $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public czy a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
+   public boolean n() {
+      return this.e;
    }
 
-   @Override
-   public czy b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
+   public buj a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   @Override
-   public void a(int $$0, czy $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
-      } else {
-         this.b.a($$0, $$1);
+   public boolean o() {
+      return this.f;
+   }
+
+   public buj b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public buj c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public static enum a implements bao {
+      a("pink", o.m),
+      b("blue", o.j),
+      c("red", o.e),
+      d("green", o.k),
+      e("yellow", o.o),
+      f("purple", o.b),
+      g("white", o.p);
+
+      public static final Codec<buj.a> h = bao.a(buj.a::values);
+      private final String i;
+      private final o j;
+
+      private a(final String $$0, final o $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
+
+      public o a() {
+         return this.j;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      @Override
+      public String c() {
+         return this.i;
       }
    }
 
-   @Override
-   public int ao_() {
-      return this.b.ao_();
-   }
+   public static enum b implements bao {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
-   }
+      public static final Codec<buj.b> f = bao.a(buj.b::values);
+      private final String g;
 
-   @Override
-   public boolean a(crx $$0) {
-      return this.b.a($$0) && this.c.a($$0);
-   }
+      private b(final String $$0) {
+         this.g = $$0;
+      }
 
-   @Override
-   public void c_(crx $$0) {
-      this.b.c_($$0);
-      this.c.c_($$0);
-   }
+      public String a() {
+         return this.g;
+      }
 
-   @Override
-   public void c(crx $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, czy $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

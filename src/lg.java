@@ -1,75 +1,46 @@
-public class lg implements lh {
-   private static final int c = 6;
+public class lg extends lh {
+   private final lh c = new lh();
+   private final bxe<? extends cuk> d;
 
-   @Override
-   public final czy dispense(le $$0, czy $$1) {
-      czy $$2 = this.a($$0, $$1);
-      this.a($$0);
-      this.a($$0, $$0.d().c(dpi.b));
-      return $$2;
+   public lg(bxe<? extends cuk> $$0) {
+      this.d = $$0;
    }
 
-   protected czy a(le $$0, czy $$1) {
-      jb $$2 = $$0.d().c(dpi.b);
-      jp $$3 = dpi.a($$0);
-      czy $$4 = $$1.a(1);
-      a($$0.b(), $$4, 6, $$2, $$3);
+   @Override
+   public daa a(lf $$0, daa $$1) {
+      jc $$2 = $$0.d().c(dpk.b);
+      aru $$3 = $$0.b();
+      ffs $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)this.d.l() / 2.0;
+      double $$6 = $$4.a() + (double)$$2.j() * $$5;
+      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
+      double $$8 = $$4.c() + (double)$$2.l() * $$5;
+      iw $$9 = $$0.c().a($$2);
+      double $$10;
+      if ($$3.b_($$9).a(axl.a)) {
+         $$10 = 1.0;
+      } else {
+         if (!$$3.a_($$9).l() || !$$3.b_($$9.e()).a(axl.a)) {
+            return this.c.dispense($$0, $$1);
+         }
+
+         $$10 = 0.0;
+      }
+
+      cuk $$13 = this.d.a($$3, bxd.o);
+      if ($$13 != null) {
+         $$13.p($$6, $$7 + $$10, $$8);
+         bxe.<cuk>a($$3, $$1, null).accept($$13);
+         $$13.w($$2.p());
+         $$3.b($$13);
+         $$1.h(1);
+      }
+
       return $$1;
    }
 
-   public static void a(djx $$0, czy $$1, int $$2, jb $$3, jp $$4) {
-      double $$5 = $$4.a();
-      double $$6 = $$4.b();
-      double $$7 = $$4.c();
-      if ($$3.o() == jb.a.b) {
-         $$6 -= 0.125;
-      } else {
-         $$6 -= 0.15625;
-      }
-
-      coc $$8 = new coc($$0, $$5, $$6, $$7, $$1);
-      double $$9 = $$0.A.j() * 0.1 + 0.2;
-      $$8.n(
-         $$0.A.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
-         $$0.A.a(0.2, 0.0172275 * (double)$$2),
-         $$0.A.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
-      );
-      $$0.b($$8);
-   }
-
-   protected void a(le $$0) {
-      b($$0);
-   }
-
-   protected void a(le $$0, jb $$1) {
-      b($$0, $$1);
-   }
-
-   private static void b(le $$0) {
+   @Override
+   protected void a(lf $$0) {
       $$0.b().c(1000, $$0.c(), 0);
-   }
-
-   private static void b(le $$0, jb $$1) {
-      $$0.b().c(2000, $$0.c(), $$1.d());
-   }
-
-   protected czy a(le $$0, czy $$1, czy $$2) {
-      $$1.h(1);
-      if ($$1.f()) {
-         return $$2;
-      } else {
-         this.b($$0, $$2);
-         return $$1;
-      }
-   }
-
-   private void b(le $$0, czy $$1) {
-      czy $$2 = $$0.e().b($$1);
-      if (!$$2.f()) {
-         jb $$3 = $$0.d().c(dpi.b);
-         a($$0.b(), $$2, 6, $$3, dpi.a($$0));
-         b($$0);
-         b($$0, $$3);
-      }
    }
 }

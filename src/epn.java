@@ -1,45 +1,71 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class epn extends epl {
-   public static final MapCodec<epn> a = MapCodec.unit(() -> epn.b);
-   public static final epn b = new epn();
+public abstract class epn {
+   public static final Codec<epn> h = mh.X.q().dispatch(epn::a, epo::a);
 
-   @Override
-   protected epm<?> a() {
-      return epm.a;
-   }
+   protected abstract epo<?> a();
 
-   @Override
-   public void a(epl.a $$0) {
-      azx $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            iv $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dwp.d);
-            }
-         }
+   public abstract void a(epn.a var1);
 
-         if ($$1.a(3) > 0) {
-            iv $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dwp.f);
-            }
-         }
+   public static final class a {
+      private final dkf a;
+      private final BiConsumer<iw, ebg> b;
+      private final azz c;
+      private final ObjectArrayList<iw> d;
+      private final ObjectArrayList<iw> e;
+      private final ObjectArrayList<iw> f;
 
-         if ($$1.a(3) > 0) {
-            iv $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dwp.e);
-            }
-         }
+      public a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, Set<iw> $$3, Set<iw> $$4, Set<iw> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(kb::v));
+         this.e.sort(Comparator.comparingInt(kb::v));
+         this.f.sort(Comparator.comparingInt(kb::v));
+      }
 
-         if ($$1.a(3) > 0) {
-            iv $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dwp.c);
-            }
-         }
-      });
+      public void a(iw $$0, ebx $$1) {
+         this.a($$0, dng.fx.m().b($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(iw $$0, ebg $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(iw $$0) {
+         return this.a.a($$0, ebf.a::l);
+      }
+
+      public boolean a(iw $$0, Predicate<ebg> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public dkf a() {
+         return this.a;
+      }
+
+      public azz b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<iw> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<iw> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<iw> e() {
+         return this.f;
+      }
    }
 }

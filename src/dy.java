@@ -2,31 +2,27 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dy extends dk<dy.a> {
+public class dy extends dl<dy.a> {
    @Override
    public Codec<dy.a> a() {
       return dy.a.a;
    }
 
-   public void a(art $$0, czy $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(arv $$0, iw $$1) {
+      double $$2 = $$0.dA() - (double)$$1.u();
+      double $$3 = $$0.dG() - (double)$$1.w();
+      double $$4 = $$2 * $$2 + $$3 * $$3;
+      this.a($$0, $$1x -> $$1x.a($$4));
    }
 
-   public static record a(Optional<bj> b, Optional<cm> c) implements dk.a {
+   public static record a(Optional<bj> b, cx.c c) implements dl.a {
       public static final Codec<dy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(dy.a::a), cm.a.optionalFieldOf("item").forGetter(dy.a::b)).apply($$0, dy.a::new)
+         $$0 -> $$0.group(bz.b.optionalFieldOf("player").forGetter(dy.a::a), cx.c.d.optionalFieldOf("distance", cx.c.c).forGetter(dy.a::b))
+               .apply($$0, dy.a::new)
       );
 
-      public static ar<dy.a> a(cm $$0) {
-         return aq.C.a(new dy.a(Optional.empty(), Optional.of($$0)));
-      }
-
-      public static ar<dy.a> a(jg<czu> $$0, djw $$1) {
-         return aq.C.a(new dy.a(Optional.empty(), Optional.of(cm.a.a().a($$0, $$1).b())));
-      }
-
-      public boolean a(czy $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+      public boolean a(double $$0) {
+         return this.c.e($$0);
       }
 
       @Override
@@ -34,7 +30,7 @@ public class dy extends dk<dy.a> {
          return this.b;
       }
 
-      public Optional<cm> b() {
+      public cx.c b() {
          return this.c;
       }
    }

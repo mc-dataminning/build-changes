@@ -1,25 +1,17 @@
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public interface kg extends kf {
-   kh a();
+public interface kg {
+   @Nullable
+   <T> T a(kk<? extends T> var1);
+
+   default <T> T a(kk<? extends T> $$0, T $$1) {
+      T $$2 = this.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
 
    @Nullable
-   @Override
-   default <T> T a(kj<? extends T> $$0) {
-      return this.a().a($$0);
-   }
-
-   default <T> Stream<T> a(Class<? extends T> $$0) {
-      return this.a().c().map(km::b).filter($$1 -> $$0.isAssignableFrom($$1.getClass())).map($$0x -> (T)$$0x);
-   }
-
-   @Override
-   default <T> T a(kj<? extends T> $$0, T $$1) {
-      return this.a().a($$0, $$1);
-   }
-
-   default boolean c(kj<?> $$0) {
-      return this.a().c($$0);
+   default <T> kn<T> b(kk<T> $$0) {
+      T $$1 = this.a($$0);
+      return $$1 != null ? new kn<>($$0, $$1) : null;
    }
 }

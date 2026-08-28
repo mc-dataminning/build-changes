@@ -1,39 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class epg extends epl {
-   public static final MapCodec<epg> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(epg::new, $$0 -> $$0.b);
+public class epg extends epn {
+   public static final MapCodec<epg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               eos.a.fieldOf("block_provider").forGetter($$0x -> $$0x.c),
+               ayy.b(jc.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, epg::new)
+   );
    private final float b;
+   private final eos c;
+   private final List<jc> d;
 
-   public epg(float $$0) {
+   public epg(float $$0, eos $$1, List<jc> $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected epm<?> a() {
-      return epm.e;
-   }
+   public void a(epn.a $$0) {
+      azz $$1 = $$0.b();
 
-   @Override
-   public void a(epl.a $$0) {
-      azx $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<iv> $$2 = $$0.c();
-         if (!$$2.isEmpty()) {
-            int $$3 = $$2.getFirst().v();
-            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-               for (jb $$3x : jb.c.a) {
-                  if ($$1.i() <= 0.25F) {
-                     jb $$4 = $$3x.g();
-                     iv $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                     if ($$0.a($$5)) {
-                        $$0.a($$5, dne.gb.m().b(dok.c, Integer.valueOf($$1.a(3))).b(dok.e, $$3x));
-                     }
-                  }
-               }
-            });
+      for (iw $$2 : ag.a($$0.c(), $$1)) {
+         jc $$3 = ag.a(this.d, $$1);
+         iw $$4 = $$2.a($$3);
+         if ($$1.i() <= this.b && $$0.a($$4)) {
+            $$0.a($$4, this.c.a($$1, $$4));
          }
       }
+   }
+
+   @Override
+   protected epo<?> a() {
+      return epo.j;
    }
 }

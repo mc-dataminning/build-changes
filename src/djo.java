@@ -1,19 +1,46 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class djo extends djr {
-   private final bwt a;
+public enum djo implements dja {
+   a;
 
-   public djo(bwt $$0) {
-      this.a = $$0;
+   @Override
+   public float a(jc $$0, boolean $$1) {
+      return 1.0F;
    }
 
    @Override
-   public Optional<Float> a(djq $$0, djb $$1, iv $$2, ebe $$3, exo $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public exf B_() {
+      return exf.c;
    }
 
    @Override
-   public boolean a(djq $$0, djb $$1, iv $$2, ebe $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public int a(iw $$0, djj $$1) {
+      return -1;
+   }
+
+   @Nullable
+   @Override
+   public dye c_(iw $$0) {
+      return null;
+   }
+
+   @Override
+   public ebg a_(iw $$0) {
+      return dng.a.m();
+   }
+
+   @Override
+   public exq b_(iw $$0) {
+      return exr.a.g();
+   }
+
+   @Override
+   public int L_() {
+      return 0;
+   }
+
+   @Override
+   public int K_() {
+      return 0;
    }
 }

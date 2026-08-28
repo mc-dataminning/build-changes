@@ -1,74 +1,55 @@
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.io.IOException;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class edh extends edl {
-   private final jf<dla> n;
-
-   public edh(djx $$0, djc $$1, jf<dla> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+public abstract class edh implements edq, AutoCloseable {
+   @Nullable
+   public edn a(int $$0, int $$1, boolean $$2) {
+      return (edn)this.a($$0, $$1, eee.n, $$2);
    }
 
-   @Override
-   public ebe a_(iv $$0) {
-      return dne.nH.m();
+   @Nullable
+   public edn a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
    @Nullable
    @Override
-   public ebe a(iv $$0, ebe $$1, int $$2) {
-      return null;
+   public edp c(int $$0, int $$1) {
+      return this.a($$0, $$1, eee.c, false);
    }
 
-   @Override
-   public exo b_(iv $$0) {
-      return exp.a.g();
-   }
-
-   @Override
-   public int i(iv $$0) {
-      return 0;
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, eee.n, false) != null;
    }
 
    @Nullable
-   @Override
-   public dyc a(iv $$0, edl.b $$1) {
-      return null;
+   public abstract edd a(int var1, int var2, eee var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
    }
 
-   @Override
-   public void b(dyc $$0) {
-   }
+   public abstract String e();
+
+   public abstract int j();
 
    @Override
-   public void a(dyc $$0) {
+   public void close() throws IOException {
    }
 
-   @Override
-   public void d(iv $$0) {
+   public abstract exf q();
+
+   public void b(boolean $$0) {
    }
 
-   @Override
-   public boolean E() {
-      return true;
+   public boolean a(dje $$0, boolean $$1) {
+      return false;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      return true;
-   }
-
-   @Override
-   public arg F() {
-      return arg.b;
-   }
-
-   @Override
-   public jf<dla> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   public LongSet k() {
+      return LongSet.of();
    }
 }

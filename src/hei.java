@@ -1,4 +1,6 @@
-public class hei extends hfp {
-   public float a;
-   public boolean b;
+import javax.annotation.Nullable;
+
+public class hei extends hfr {
+   @Nullable
+   public cjx a;
 }

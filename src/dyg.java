@@ -1,222 +1,220 @@
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dyg extends dxv implements bvb {
-   private static final int g = 3;
-   private static final int h = 4;
-   private static final int[] i = new int[]{3};
-   private static final int[] j = new int[]{0, 1, 2, 3};
-   private static final int[] k = new int[]{0, 1, 2, 4};
-   public static final int b = 20;
-   public static final int c = 0;
-   public static final int d = 1;
-   public static final int e = 2;
-   private static final short l = 0;
-   private static final byte m = 0;
-   private jo<czy> q = jo.a(5, czy.k);
-   int r;
-   private boolean[] s;
-   private czu t;
-   int u;
-   protected final cwc f = new cwc() {
-      @Override
-      public int a(int $$0) {
-         return switch ($$0) {
-            case 0 -> dyg.this.r;
-            case 1 -> dyg.this.u;
-            default -> 0;
-         };
+public class dyg<T extends dye> {
+   private static final Logger V = LogUtils.getLogger();
+   public static final dyg<dze> a = a("furnace", dze::new, dng.cO);
+   public static final dyg<dym> b = a("chest", dym::new, dng.cG);
+   public static final dyg<ead> c = a("trapped_chest", ead::new, dng.hw);
+   public static final dyg<dzc> d = a("ender_chest", dzc::new, dng.gf);
+   public static final dyg<dzj> e = a("jukebox", dzj::new, dng.ek);
+   public static final dyg<dyz> f = a("dispenser", dyz::new, dng.bb);
+   public static final dyg<dza> g = a("dropper", dza::new, dng.hJ);
+   public static final dyg<dzs> h = a(
+      "sign",
+      dzs::new,
+      dng.cP,
+      dng.cQ,
+      dng.cR,
+      dng.cS,
+      dng.cT,
+      dng.cU,
+      dng.cV,
+      dng.cW,
+      dng.dd,
+      dng.de,
+      dng.df,
+      dng.dg,
+      dng.dh,
+      dng.di,
+      dng.dj,
+      dng.dk,
+      dng.pC,
+      dng.pE,
+      dng.pD,
+      dng.pF,
+      dng.cX,
+      dng.dl,
+      dng.cY,
+      dng.dm
+   );
+   public static final dyg<dzf> i = a(
+      "hanging_sign",
+      dzf::new,
+      dng.dn,
+      dng.do,
+      dng.dp,
+      dng.dq,
+      dng.dr,
+      dng.ds,
+      dng.dt,
+      dng.du,
+      dng.dv,
+      dng.dw,
+      dng.dx,
+      dng.dy,
+      dng.dz,
+      dng.dA,
+      dng.dB,
+      dng.dC,
+      dng.dD,
+      dng.dE,
+      dng.dF,
+      dng.dG,
+      dng.dI,
+      dng.dJ,
+      dng.dH,
+      dng.dK
+   );
+   public static final dyg<dzw> j = a("mob_spawner", dzw::new, dng.cD);
+   public static final dyg<dyu> k = a("creaking_heart", dyu::new, dng.cE);
+   public static final dyg<ebb> l = a("piston", ebb::new, dng.ca);
+   public static final dyg<dyi> m = a("brewing_stand", dyi::new, dng.fR);
+   public static final dyg<dzb> n = a("enchanting_table", dzb::new, dng.fQ);
+   public static final dyg<eab> o = a("end_portal", eab::new, dng.fW);
+   public static final dyg<dxz> p = a("beacon", dxz::new, dng.gn);
+   public static final dyg<dzu> q = a(
+      "skull", dzu::new, dng.hf, dng.hg, dng.hn, dng.ho, dng.hp, dng.hq, dng.hj, dng.hk, dng.hh, dng.hi, dng.hl, dng.hm, dng.hr, dng.hs
+   );
+   public static final dyg<dyv> r = a("daylight_detector", dyv::new, dng.hA);
+   public static final dyg<dzh> s = a("hopper", dzh::new, dng.hD);
+   public static final dyg<dyq> t = a("comparator", dyq::new, dng.hz);
+   public static final dyg<dxs> u = a(
+      "banner",
+      dxs::new,
+      dng.jl,
+      dng.jm,
+      dng.jn,
+      dng.jo,
+      dng.jp,
+      dng.jq,
+      dng.jr,
+      dng.js,
+      dng.jt,
+      dng.ju,
+      dng.jv,
+      dng.jw,
+      dng.jx,
+      dng.jy,
+      dng.jz,
+      dng.jA,
+      dng.jB,
+      dng.jC,
+      dng.jD,
+      dng.jE,
+      dng.jF,
+      dng.jG,
+      dng.jH,
+      dng.jI,
+      dng.jJ,
+      dng.jK,
+      dng.jL,
+      dng.jM,
+      dng.jN,
+      dng.jO,
+      dng.jP,
+      dng.jQ
+   );
+   public static final dyg<dzx> v = a("structure_block", dzx::new, dng.pG);
+   public static final dyg<eaa> w = a("end_gateway", eaa::new, dng.ll);
+   public static final dyg<dyp> x = a("command_block", dyp::new, dng.gm, dng.ln, dng.lm);
+   public static final dyg<dzr> y = a(
+      "shulker_box",
+      dzr::new,
+      dng.lv,
+      dng.lL,
+      dng.lH,
+      dng.lI,
+      dng.lF,
+      dng.lD,
+      dng.lJ,
+      dng.lz,
+      dng.lE,
+      dng.lB,
+      dng.ly,
+      dng.lx,
+      dng.lC,
+      dng.lG,
+      dng.lK,
+      dng.lw,
+      dng.lA
+   );
+   public static final dyg<dya> z = a(
+      "bed", dya::new, dng.bu, dng.bv, dng.br, dng.bs, dng.bp, dng.bn, dng.bt, dng.bj, dng.bo, dng.bl, dng.bi, dng.bh, dng.bm, dng.bq, dng.bg, dng.bk
+   );
+   public static final dyg<dyr> A = a("conduit", dyr::new, dng.nD);
+   public static final dyg<dxw> B = a("barrel", dxw::new, dng.oA);
+   public static final dyg<dzv> C = a("smoker", dzv::new, dng.oB);
+   public static final dyg<dyd> D = a("blast_furnace", dyd::new, dng.oC);
+   public static final dyg<dzk> E = a("lectern", dzk::new, dng.oG);
+   public static final dyg<dyc> F = a("bell", dyc::new, dng.oJ);
+   public static final dyg<dzi> G = a("jigsaw", dzi::new, dng.pH);
+   public static final dyg<dyl> H = a("campfire", dyl::new, dng.oM, dng.oN);
+   public static final dyg<dyb> I = a("beehive", dyb::new, dng.pM, dng.pN);
+   public static final dyg<dzp> J = a("sculk_sensor", dzp::new, dng.ry);
+   public static final dyg<dyk> K = a("calibrated_sculk_sensor", dyk::new, dng.rz);
+   public static final dyg<dzo> L = a("sculk_catalyst", dzo::new, dng.rC);
+   public static final dyg<dzq> M = a("sculk_shrieker", dzq::new, dng.rD);
+   public static final dyg<dyo> N = a("chiseled_bookshelf", dyo::new, dng.cw);
+   public static final dyg<dyj> O = a("brushable_block", dyj::new, dng.M, dng.P);
+   public static final dyg<dyw> P = a("decorated_pot", dyw::new, dng.tZ);
+   public static final dyg<dyt> Q = a("crafter", dyt::new, dng.ua);
+   public static final dyg<eae> R = a("trial_spawner", eae::new, dng.ub);
+   public static final dyg<ean> S = a("vault", ean::new, dng.uc);
+   public static final dyg<dzy> T = a("test_block", dzy::new, dng.pI);
+   public static final dyg<dzz> U = a("test_instance_block", dzz::new, dng.pJ);
+   private static final Set<dyg<?>> W = Set.of(x, E, h, i, j, R);
+   private final dyg.a<? extends T> X;
+   private final Set<dne> Y;
+   private final jg.c<dyg<?>> Z = mh.j.f(this);
+
+   @Nullable
+   public static alk a(dyg<?> $$0) {
+      return mh.j.b($$0);
+   }
+
+   private static <T extends dye> dyg<T> a(String $$0, dyg.a<? extends T> $$1, dne... $$2) {
+      if ($$2.length == 0) {
+         V.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
       }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         switch ($$0) {
-            case 0:
-               dyg.this.r = $$1;
-               break;
-            case 1:
-               dyg.this.u = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 2;
-      }
-   };
-
-   public dyg(iv $$0, ebe $$1) {
-      super(dye.m, $$0, $$1);
+      ag.a(bjd.s, $$0);
+      return jt.a(mh.j, $$0, new dyg<>($$1, Set.of($$2)));
    }
 
-   @Override
-   protected xa j() {
-      return xa.c("container.brewing");
+   private dyg(dyg.a<? extends T> $$0, Set<dne> $$1) {
+      this.X = $$0;
+      this.Y = $$1;
    }
 
-   @Override
-   public int b() {
-      return this.q.size();
+   @Nullable
+   public T a(iw $$0, ebg $$1) {
+      return (T)this.X.create($$0, $$1);
    }
 
-   @Override
-   protected jo<czy> f() {
-      return this.q;
+   public boolean a(ebg $$0) {
+      return this.Y.contains($$0.b());
    }
 
-   @Override
-   protected void a(jo<czy> $$0) {
-      this.q = $$0;
+   @Deprecated
+   public jg.c<dyg<?>> a() {
+      return this.Z;
    }
 
-   public static void a(djx $$0, iv $$1, ebe $$2, dyg $$3) {
-      czy $$4 = $$3.q.get(4);
-      if ($$3.u <= 0 && $$4.a(axm.X)) {
-         $$3.u = 20;
-         $$4.h(1);
-         a($$0, $$1, $$2);
-      }
-
-      boolean $$5 = a($$0.L(), $$3.q);
-      boolean $$6 = $$3.r > 0;
-      czy $$7 = $$3.q.get(3);
-      if ($$6) {
-         $$3.r--;
-         boolean $$8 = $$3.r == 0;
-         if ($$8 && $$5) {
-            a($$0, $$1, $$3.q);
-         } else if (!$$5 || !$$7.a($$3.t)) {
-            $$3.r = 0;
-         }
-
-         a($$0, $$1, $$2);
-      } else if ($$5 && $$3.u > 0) {
-         $$3.u--;
-         $$3.r = 400;
-         $$3.t = $$7.h();
-         a($$0, $$1, $$2);
-      }
-
-      boolean[] $$9 = $$3.k();
-      if (!Arrays.equals($$9, $$3.s)) {
-         $$3.s = $$9;
-         ebe $$10 = $$2;
-         if (!($$2.b() instanceof dnh)) {
-            return;
-         }
-
-         for (int $$11 = 0; $$11 < dnh.b.length; $$11++) {
-            $$10 = $$10.b(dnh.b[$$11], Boolean.valueOf($$9[$$11]));
-         }
-
-         $$0.a($$1, $$10, 2);
-      }
+   @Nullable
+   public T a(djd $$0, iw $$1) {
+      dye $$2 = $$0.c_($$1);
+      return (T)($$2 != null && $$2.p() == this ? $$2 : null);
    }
 
-   private boolean[] k() {
-      boolean[] $$0 = new boolean[3];
-
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         if (!this.q.get($$1).f()) {
-            $$0[$$1] = true;
-         }
-      }
-
-      return $$0;
+   public boolean b() {
+      return W.contains(this);
    }
 
-   private static boolean a(dbt $$0, jo<czy> $$1) {
-      czy $$2 = $$1.get(3);
-      if ($$2.f()) {
-         return false;
-      } else if (!$$0.a($$2)) {
-         return false;
-      } else {
-         for (int $$3 = 0; $$3 < 3; $$3++) {
-            czy $$4 = $$1.get($$3);
-            if (!$$4.f() && $$0.a($$4, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private static void a(djx $$0, iv $$1, jo<czy> $$2) {
-      czy $$3 = $$2.get(3);
-      dbt $$4 = $$0.L();
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         $$2.set($$5, $$4.d($$3, $$2.get($$5)));
-      }
-
-      $$3.h(1);
-      czy $$6 = $$3.h().i();
-      if (!$$6.f()) {
-         if ($$3.f()) {
-            $$3 = $$6;
-         } else {
-            bun.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);
-         }
-      }
-
-      $$2.set(3, $$3);
-      $$0.c(1035, $$1, 0);
-   }
-
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.q = jo.a(this.b(), czy.k);
-      bul.b($$0, this.q, $$1);
-      this.r = $$0.b("BrewTime", (short)0);
-      if (this.r > 0) {
-         this.t = this.q.get(3).h();
-      }
-
-      this.u = $$0.b("Fuel", (byte)0);
-   }
-
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("BrewTime", (short)this.r);
-      bul.a($$0, this.q, $$1);
-      $$0.a("Fuel", (byte)this.u);
-   }
-
-   @Override
-   public boolean b(int $$0, czy $$1) {
-      if ($$0 == 3) {
-         dbt $$2 = this.n != null ? this.n.L() : dbt.b;
-         return $$2.a($$1);
-      } else {
-         return $$0 == 4 ? $$1.a(axm.X) : ($$1.a(dac.tt) || $$1.a(dac.wz) || $$1.a(dac.wC) || $$1.a(dac.ts)) && this.a($$0).f();
-      }
-   }
-
-   @Override
-   public int[] a(jb $$0) {
-      if ($$0 == jb.b) {
-         return i;
-      } else {
-         return $$0 == jb.a ? j : k;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, czy $$1, @Nullable jb $$2) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public boolean b(int $$0, czy $$1, jb $$2) {
-      return $$0 == 3 ? $$1.a(dac.ts) : true;
-   }
-
-   @Override
-   protected cvq a(int $$0, crw $$1) {
-      return new cvx($$0, $$1, this, this.f);
+   @FunctionalInterface
+   interface a<T extends dye> {
+      T create(iw var1, ebg var2);
    }
 }

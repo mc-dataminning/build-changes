@@ -1,20 +1,22 @@
-public class gyx extends gwx<cqg> {
-   private static final ali a = ali.b("textures/entity/hoglin/hoglin.png");
+public class gyx extends gxe<clr, hfd, gik> {
+   private static final alk a = alk.b("textures/entity/goat/goat.png");
 
-   public gyx(gyi.a $$0) {
-      super($$0, gld.bk, gld.bl, 0.7F);
+   public gyx(gyk.a $$0) {
+      super($$0, new gik($$0.a(glf.bh)), new gik($$0.a(glf.bi)), 0.7F);
    }
 
-   public ali a(hfd $$0) {
+   public alk a(hfd $$0) {
       return a;
    }
 
-   public void a(cqg $$0, hfd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gu();
+   public hfd b() {
+      return new hfd();
    }
 
-   protected boolean b(hfd $$0) {
-      return super.a($$0) || $$0.b;
+   public void a(clr $$0, hfd $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gu();
+      $$1.b = $$0.gv();
+      $$1.c = $$0.gH();
    }
 }

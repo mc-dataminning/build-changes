@@ -1,12 +1,23 @@
-public class hcf extends hci<heo, ghy<heo>> {
-   private static final gsl a = gsl.q(ali.b("textures/entity/enderman/enderman_eyes.png"));
-
-   public hcf(haf<heo, ghy<heo>> $$0) {
+public class hcf extends hcy<hem, ghv> {
+   public hcf(hah<hem, ghv> $$0) {
       super($$0);
    }
 
-   @Override
-   public gsl a() {
-      return a;
+   public void a(flq $$0, gsc $$1, int $$2, hem $$3, float $$4, float $$5) {
+      hhu $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         float $$7 = 1.0F;
+         float $$8 = -1.0F;
+         float $$9 = azq.e($$3.ab) / 60.0F;
+         if ($$3.ab < 0.0F) {
+            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
+         } else {
+            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
+         }
+
+         $$6.a($$0, $$1, $$2, hks.d);
+         $$0.b();
+      }
    }
 }

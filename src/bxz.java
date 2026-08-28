@@ -1,103 +1,57 @@
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface bxz {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
+public enum bxz implements bao {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-   int a();
+   public static final Codec<bxz> i = bao.a(bxz::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
 
-   void a(int var1);
-
-   @Nullable
-   UUID b();
-
-   void a(@Nullable UUID var1);
-
-   void c();
-
-   default void a_(tz $$0) {
-      $$0.a("AngerTime", this.a());
-      $$0.b("AngryAt", jz.a, this.b());
+   private bxz(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   default void a(djx $$0, tz $$1) {
-      this.a($$1.b("AngerTime", 0));
-      if ($$0 instanceof ars $$2) {
-         UUID $$4 = $$1.<UUID>a("AngryAt", jz.a).orElse(null);
-         this.a($$4);
-         if (($$4 != null ? $$2.b($$4) : null) instanceof bxu $$6) {
-            this.g($$6);
-         }
-      }
+   public String a() {
+      return this.m;
    }
 
-   default void a(ars $$0, boolean $$1) {
-      bxu $$2 = this.f();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.eH()) && $$3 != null && $$0.b($$3) instanceof bxw) {
-         this.aa_();
-      } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
-            this.a($$2.cG());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.an() != bxc.bT || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.aa_();
-            }
-         }
-      }
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   default boolean a(bxu $$0, ars $$1) {
-      if (!this.c($$0)) {
-         return false;
-      } else {
-         return $$0.an() == bxc.bT && this.a_($$1) ? true : $$0.cG().equals(this.b());
-      }
+   public int b() {
+      return this.j;
    }
 
-   default boolean a_(ars $$0) {
-      return $$0.O().c(djt.Q) && this.ae_() && this.b() == null;
+   public boolean d() {
+      return this.k;
    }
 
-   default boolean ae_() {
-      return this.a() > 0;
+   public boolean e() {
+      return this.l;
    }
 
-   default void a_(ars $$0, crx $$1) {
-      if ($$0.O().c(djt.P)) {
-         if ($$1.cG().equals(this.b())) {
-            this.aa_();
-         }
-      }
+   public int f() {
+      return this.o;
    }
 
-   default void af_() {
-      this.aa_();
-      this.c();
+   public int g() {
+      return 32;
    }
-
-   default void aa_() {
-      this.a(null);
-      this.a(null);
-      this.g(null);
-      this.a(0);
-   }
-
-   @Nullable
-   bxu er();
-
-   void a(@Nullable bxu var1);
-
-   void g(@Nullable bxu var1);
-
-   boolean c(bxu var1);
-
-   @Nullable
-   bxu f();
 }

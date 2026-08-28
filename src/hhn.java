@@ -1,59 +1,42 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hhn implements hhp {
-   private final hio a;
-   private final hhp b;
-   private final hhp c;
+public record hhn(hhr.b b, hhn.a c, @Nullable baa d) {
+   public static final Codec<hhn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hht.a.fieldOf("model").forGetter(hhn::a), hhn.a.b.forGetter(hhn::b)).apply($$0, hhn::new)
+   );
 
-   public hhn(hio $$0, hhp $$1, hhp $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public hhn(hhr.b $$0, hhn.a $$1) {
+      this($$0, $$1, null);
    }
 
-   @Override
-   public void a(hhs $$0, czy $$1, hhq $$2, czw $$3, @Nullable gmb $$4, @Nullable bxu $$5, int $$6) {
-      (this.a.get($$1, $$4, $$5, $$6, $$3) ? this.b : this.c).a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public hhn a(baa $$0) {
+      return new hhn(this.b, this.c, $$0);
    }
 
-   public static record a(hid b, hhp.b c, hhp.b d) implements hhp.b {
-      public static final MapCodec<hhn.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(hic.a.forGetter(hhn.a::b), hhr.a.fieldOf("on_true").forGetter(hhn.a::c), hhr.a.fieldOf("on_false").forGetter(hhn.a::d))
-               .apply($$0, hhn.a::new)
+   public hhr.b a() {
+      return this.b;
+   }
+
+   public hhn.a b() {
+      return this.c;
+   }
+
+   @Nullable
+   public baa c() {
+      return this.d;
+   }
+
+   public static record a(boolean c) {
+      public static final hhn.a a = new hhn.a(true);
+      public static final MapCodec<hhn.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("hand_animation_on_swap", true).forGetter(hhn.a::a)).apply($$0, hhn.a::new)
       );
 
-      @Override
-      public MapCodec<hhn.a> a() {
-         return a;
-      }
-
-      @Override
-      public hhp a(hhp.a $$0) {
-         return new hhn(this.a(this.b, $$0.d()), this.c.a($$0), this.d.a($$0));
-      }
-
-      private hio a(hid $$0, @Nullable azy $$1) {
-         if ($$1 == null) {
-            return $$0;
-         } else {
-            glu<gmb, hio> $$2 = new glu<>($$2x -> a($$0, $$1, $$2x));
-            return ($$2x, $$3, $$4, $$5, $$6) -> {
-               hio $$7 = (hio)($$3 == null ? $$0 : $$2.a($$3));
-               return $$7.get($$2x, $$3, $$4, $$5, $$6);
-            };
-         }
-      }
-
-      private static <T extends hid> T a(T $$0, azy $$1, gmb $$2) {
-         return (T)$$1.a($$0.a().codec(), $$0, $$2.J_()).result().orElse($$0);
-      }
-
-      @Override
-      public void a(hnr.a $$0) {
-         this.c.a($$0);
-         this.d.a($$0);
+      public boolean a() {
+         return this.c;
       }
    }
 }

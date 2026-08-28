@@ -1,289 +1,142 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dlg {
-   public static final Codec<dlg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("dry_foliage_color").forGetter($$0x -> $$0x.g),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.h),
-               dlg.b.d.optionalFieldOf("grass_color_modifier", dlg.b.a).forGetter($$0x -> $$0x.i),
-               dkz.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.j),
-               awo.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.k),
-               dky.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.l),
-               dkx.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.m),
-               btb.a(awm.a).optionalFieldOf("music").forGetter($$0x -> $$0x.n),
-               Codec.FLOAT.fieldOf("music_volume").orElse(1.0F).forGetter($$0x -> $$0x.o)
-            )
-            .apply($$0, dlg::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final Optional<Integer> h;
-   private final dlg.b i;
-   private final Optional<dkz> j;
-   private final Optional<jf<awo>> k;
-   private final Optional<dky> l;
-   private final Optional<dkx> m;
-   private final Optional<btb<awm>> n;
-   private final float o;
+public abstract class dlg implements dlf {
+   public static final Codec<dlg> a = mh.Z.q().dispatchStable(dlg::a, Function.identity());
+   private final Supplier<Set<jg<dlc>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   dlg(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      Optional<Integer> $$6,
-      dlg.b $$7,
-      Optional<dkz> $$8,
-      Optional<jf<awo>> $$9,
-      Optional<dky> $$10,
-      Optional<dkx> $$11,
-      Optional<btb<awm>> $$12,
-      float $$13
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
-      this.n = $$12;
-      this.o = $$13;
+   protected dlg() {
    }
 
-   public int a() {
-      return this.b;
+   protected abstract MapCodec<? extends dlg> a();
+
+   protected abstract Stream<jg<dlc>> b();
+
+   public Set<jg<dlc>> c() {
+      return this.b.get();
    }
 
-   public int b() {
-      return this.c;
-   }
+   public Set<jg<dlc>> a(int $$0, int $$1, int $$2, int $$3, dll.f $$4) {
+      int $$5 = jr.a($$0 - $$3);
+      int $$6 = jr.a($$1 - $$3);
+      int $$7 = jr.a($$2 - $$3);
+      int $$8 = jr.a($$0 + $$3);
+      int $$9 = jr.a($$1 + $$3);
+      int $$10 = jr.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<jg<dlc>> $$14 = Sets.newHashSet();
 
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public Optional<Integer> g() {
-      return this.h;
-   }
-
-   public dlg.b h() {
-      return this.i;
-   }
-
-   public Optional<dkz> i() {
-      return this.j;
-   }
-
-   public Optional<jf<awo>> j() {
-      return this.k;
-   }
-
-   public Optional<dky> k() {
-      return this.l;
-   }
-
-   public Optional<dkx> l() {
-      return this.m;
-   }
-
-   public Optional<btb<awm>> m() {
-      return this.n;
-   }
-
-   public float n() {
-      return this.o;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private Optional<Integer> g = Optional.empty();
-      private dlg.b h = dlg.b.a;
-      private Optional<dkz> i = Optional.empty();
-      private Optional<jf<awo>> j = Optional.empty();
-      private Optional<dky> k = Optional.empty();
-      private Optional<dkx> l = Optional.empty();
-      private Optional<btb<awm>> m = Optional.empty();
-      private float n = 1.0F;
-
-      public dlg.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dlg.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dlg.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dlg.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dlg.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public dlg.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public dlg.a g(int $$0) {
-         this.g = Optional.of($$0);
-         return this;
-      }
-
-      public dlg.a a(dlg.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public dlg.a a(dkz $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public dlg.a a(jf<awo> $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public dlg.a a(dky $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public dlg.a a(dkx $$0) {
-         this.l = Optional.of($$0);
-         return this;
-      }
-
-      public dlg.a a(@Nullable awm $$0) {
-         if ($$0 == null) {
-            this.m = Optional.empty();
-            return this;
-         } else {
-            this.m = Optional.of(btb.a($$0));
-            return this;
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
          }
       }
 
-      public dlg.a a() {
-         return this.a(btb.a()).a(0.0F);
-      }
+      return $$14;
+   }
 
-      public dlg.a a(btb<awm> $$0) {
-         this.m = Optional.of($$0);
-         return this;
-      }
+   @Nullable
+   public Pair<iw, jg<dlc>> a(int $$0, int $$1, int $$2, int $$3, Predicate<jg<dlc>> $$4, azz $$5, dll.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
 
-      public dlg.a a(float $$0) {
-         this.n = $$0;
-         return this;
-      }
+   @Nullable
+   public Pair<iw, jg<dlc>> a(iw $$0, int $$1, int $$2, int $$3, Predicate<jg<dlc>> $$4, dll.f $$5, dkc $$6) {
+      Set<jg<dlc>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = azq.a($$0.v(), $$6.K_() + 1, $$6.ao() + 1, $$3).toArray();
 
-      public dlg b() {
-         return new dlg(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l,
-            this.m,
-            this.n
-         );
+         for (iw.a $$10 : iw.a(iw.c, $$8, jc.f, jc.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = jr.a($$11);
+            int $$14 = jr.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = jr.a($$15);
+               jg<dlc> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new iw($$11, $$15, $$12), $$17);
+               }
+            }
+         }
+
+         return null;
       }
    }
 
-   public static enum b implements bam {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = dla.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
+   @Nullable
+   public Pair<iw, jg<dlc>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jg<dlc>> $$5, azz $$6, boolean $$7, dll.f $$8) {
+      int $$9 = jr.a($$0);
+      int $$10 = jr.a($$2);
+      int $$11 = jr.a($$3);
+      int $$12 = jr.a($$1);
+      Pair<iw, jg<dlc>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
 
-      private final String e;
-      public static final Codec<dlg.b> d = bam.a(dlg.b::values);
+      while ($$16 <= $$11) {
+         for (int $$17 = ac.ar ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
 
-      public abstract int a(double var1, double var3, int var5);
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
 
-      b(final String $$0) {
-         this.e = $$0;
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               jg<dlc> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     iw $$24 = new iw(jr.c($$21), $$1, jr.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
       }
 
-      public String a() {
-         return this.e;
-      }
+      return $$13;
+   }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+   @Override
+   public abstract jg<dlc> getNoiseBiome(int var1, int var2, int var3, dll.f var4);
+
+   public void a(List<String> $$0, iw $$1, dll.f $$2) {
    }
 }

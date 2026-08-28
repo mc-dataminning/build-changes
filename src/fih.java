@@ -1,28 +1,27 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+public enum fih {
+   a(false, true),
+   b(false, true),
+   c(false, true),
+   d(true, false),
+   e(true, false),
+   f(true, false),
+   g(false, false),
+   h(false, false),
+   i(false, false);
 
-public class fih implements AutoCloseable {
-   private long a = GlStateManager._glFenceSync(37143, 0);
+   final boolean j;
+   final boolean k;
 
-   @Override
-   public void close() {
-      if (this.a != 0L) {
-         GlStateManager._glDeleteSync(this.a);
-         this.a = 0L;
-      }
+   private fih(final boolean $$0, final boolean $$1) {
+      this.j = $$0;
+      this.k = $$1;
    }
 
-   public boolean a(long $$0) {
-      if (this.a == 0L) {
-         return true;
-      } else {
-         int $$1 = GlStateManager._glClientWaitSync(this.a, 0, $$0);
-         if ($$1 == 37147) {
-            return false;
-         } else if ($$1 == 37149) {
-            throw new IllegalStateException("Failed to complete gpu fence");
-         } else {
-            return true;
-         }
-      }
+   public boolean a() {
+      return this.j;
+   }
+
+   public boolean b() {
+      return this.k;
    }
 }

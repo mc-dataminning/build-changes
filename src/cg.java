@@ -1,57 +1,84 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
 
-public record cg(Optional<jj<exn>> b, Optional<dr> c) {
-   public static final Codec<cg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ju.a(mh.F).optionalFieldOf("fluids").forGetter(cg::a), dr.a.optionalFieldOf("state").forGetter(cg::b)).apply($$0, cg::new)
-   );
-
-   public boolean a(ars $$0, iv $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         exo $$2 = $$0.b_($$1);
-         return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
-      }
+public class cg extends dl<cg.a> {
+   @Override
+   public Codec<cg.a> a() {
+      return cg.a.a;
    }
 
-   public Optional<jj<exn>> a() {
-      return this.b;
+   public void a(arv $$0, daa $$1, csq $$2, Collection<daa> $$3) {
+      faj $$4 = bz.b($$0, (bwv)($$2.j() != null ? $$2.j() : $$2));
+      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public Optional<dr> b() {
-      return this.c;
-   }
+   public static record a(Optional<bj> b, Optional<cn> c, Optional<bj> d, Optional<cn> e) implements dl.a {
+      public static final Codec<cg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bz.b.optionalFieldOf("player").forGetter(cg.a::a),
+                  cn.a.optionalFieldOf("rod").forGetter(cg.a::b),
+                  bz.b.optionalFieldOf("entity").forGetter(cg.a::c),
+                  cn.a.optionalFieldOf("item").forGetter(cg.a::d)
+               )
+               .apply($$0, cg.a::new)
+      );
 
-   public static class a {
-      private Optional<jj<exn>> a = Optional.empty();
-      private Optional<dr> b = Optional.empty();
-
-      private a() {
+      public static ar<cg.a> a(Optional<cn> $$0, Optional<bz> $$1, Optional<cn> $$2) {
+         return aq.E.a(new cg.a(Optional.empty(), $$0, bz.a($$1), $$2));
       }
 
-      public static cg.a a() {
-         return new cg.a();
+      public boolean a(daa $$0, faj $$1, Collection<daa> $$2) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1)) {
+            return false;
+         } else {
+            if (this.e.isPresent()) {
+               boolean $$3 = false;
+               bwv $$4 = $$1.c(fdd.a);
+               if ($$4 instanceof coe $$5 && this.e.get().a($$5.f())) {
+                  $$3 = true;
+               }
+
+               for (daa $$6 : $$2) {
+                  if (this.e.get().a($$6)) {
+                     $$3 = true;
+                     break;
+                  }
+               }
+
+               if (!$$3) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
-      public cg.a a(exn $$0) {
-         this.a = Optional.of(jj.a($$0.k()));
-         return this;
+      @Override
+      public void a(bk $$0) {
+         dl.a.super.a($$0);
+         $$0.a(this.d, ".entity");
       }
 
-      public cg.a a(jj<exn> $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      @Override
+      public Optional<bj> a() {
+         return this.b;
       }
 
-      public cg.a a(dr $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      public Optional<cn> b() {
+         return this.c;
       }
 
-      public cg b() {
-         return new cg(this.a, this.b);
+      public Optional<bj> c() {
+         return this.d;
+      }
+
+      public Optional<cn> d() {
+         return this.e;
       }
    }
 }

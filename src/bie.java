@@ -1,32 +1,32 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bie extends DataFix {
-   public bie(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bie extends bgz {
+   public bie(Schema $$0) {
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bjb.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("chatOpacity").asString().map($$1 -> {
-                  double $$2 = this.a($$1);
-                  return $$0x.set("textBackgroundOpacity", $$0x.createString(String.valueOf($$2)));
-               }).result(), $$0x))
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update(
+         "display",
+         $$0x -> $$0x.update(
+               "Name",
+               $$0xx -> {
+                  Optional<String> $$1 = $$0xx.asString().result();
+                  return $$1.isPresent()
+                     ? $$0xx.createString(
+                        $$1.get().replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
+                     )
+                     : $$0xx;
+               }
+            )
       );
    }
 
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return ag.a($$0, $$0.getType(), this::a);
    }
 }

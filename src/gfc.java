@@ -1,132 +1,108 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
 import javax.annotation.Nullable;
 
-public class gfc extends gad {
-   private static final xa a = xa.c("selectWorld.experimental.title");
-   private static final xa b = xa.c("selectWorld.experimental.message");
-   private static final xa c = xa.c("selectWorld.experimental.details");
-   private static final int d = 10;
-   private static final int s = 100;
-   private final BooleanConsumer u;
-   final Collection<aum> v;
-   private final fxy w = new fxy().a(10).b(20);
+public class gfc extends gaf {
+   private static final xc a = xc.c("telemetry_info.screen.title");
+   private static final xc b = xc.c("telemetry_info.screen.description").b(-4539718);
+   private static final xc c = xc.c("telemetry_info.button.privacy_statement");
+   private static final xc d = xc.c("telemetry_info.button.give_feedback");
+   private static final xc s = xc.c("telemetry_info.button.show_data");
+   private static final xc u = xc.c("telemetry_info.opt_in.description");
+   private static final int v = 8;
+   private static final boolean w = frf.Q().D();
+   private final gaf x;
+   private final frj y;
+   private final fyb z = new fyb(this, 16 + 9 * 5 + 20, w ? 33 + fup.a(frf.Q().h) : 33);
+   @Nullable
+   private gfb A;
+   @Nullable
+   private fvh B;
+   private double C;
 
-   public gfc(Collection<aum> $$0, BooleanConsumer $$1) {
+   public gfc(gaf $$0, frj $$1) {
       super(a);
-      this.v = $$0;
-      this.u = $$1;
+      this.x = $$0;
+      this.y = $$1;
    }
 
    @Override
-   public xa i() {
-      return wz.a(super.i(), b);
+   public xc i() {
+      return xb.a(super.i(), b);
    }
 
    @Override
    protected void aS_() {
-      super.aS_();
-      fxy.b $$0 = this.w.d(2);
-      fyc $$1 = $$0.b().b();
-      $$0.a(new fvs(this.l, this.p), 2, $$1);
-      fvf $$2 = $$0.a(new fvf(b, this.p).b(true), 2, $$1);
-      $$2.d(310);
-      $$0.a(ful.a(c, $$0x -> this.m.a(new gfc.a())).a(100).a(), 2, $$1);
-      $$0.a(ful.a(wz.i, $$0x -> this.u.accept(true)).a());
-      $$0.a(ful.a(wz.k, $$0x -> this.u.accept(false)).a());
-      this.w.a($$1x -> {
-         fuj var10000 = this.c($$1x);
+      fyf $$0 = this.z.a(fyf.d().a(4));
+      $$0.c().b();
+      $$0.a(new fvu(a, this.p));
+      this.B = $$0.a(new fvh(b, this.p).b(true));
+      fyf $$1 = $$0.a(fyf.e().a(8));
+      $$1.a(fun.a(c, this::a).a());
+      $$1.a(fun.a(d, this::b).a());
+      fyf $$2 = this.z.b(fyf.d().a(4));
+      if (w) {
+         $$2.a(this.m());
+      }
+
+      fyf $$3 = $$2.a(fyf.e().a(8));
+      $$3.a(fun.a(s, this::c).a());
+      $$3.a(fun.a(xb.d, $$0x -> this.aP_()).a());
+      fyf $$4 = this.z.c(fyf.d().a(8));
+      this.A = $$4.a(new gfb(0, 0, this.n - 40, this.z.d(), this.p));
+      this.A.a($$0x -> this.C = $$0x);
+      this.z.a($$1x -> {
+         ful var10000 = this.c($$1x);
       });
-      this.w.a();
       this.c();
    }
 
    @Override
    protected void c() {
-      fxx.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
+      if (this.A != null) {
+         this.A.a(this.C);
+         this.A.h(this.n - 40);
+         this.A.i(this.z.d());
+         this.A.q();
+      }
+
+      if (this.B != null) {
+         this.B.d(this.n - 16);
+      }
+
+      this.z.a();
+   }
+
+   @Override
+   protected void aG_() {
+      if (this.A != null) {
+         this.b(this.A);
+      }
+   }
+
+   private ful m() {
+      fri<Boolean> $$0 = this.y.al();
+      return fup.a(u, this.p).a($$0).a(this::a).a();
+   }
+
+   private void a(ful $$0, boolean $$1) {
+      if (this.A != null) {
+         this.A.b($$1);
+      }
+   }
+
+   private void a(fun $$0) {
+      fzc.a(this, ayl.c);
+   }
+
+   private void b(fun $$0) {
+      fzc.a(this, ayl.i);
+   }
+
+   private void c(fun $$0) {
+      ag.n().a(this.m.u().b());
    }
 
    @Override
    public void aP_() {
-      this.u.accept(false);
-   }
-
-   class a extends gad {
-      private static final xa b = xa.c("selectWorld.experimental.details.title");
-      final fxz c = new fxz(this);
-      @Nullable
-      private gfc.a.a d;
-
-      a() {
-         super(b);
-      }
-
-      @Override
-      protected void aS_() {
-         this.c.a(b, this.p);
-         this.d = this.c.c(new gfc.a.a(this.m, gfc.this.v));
-         this.c.b(ful.a(wz.k, $$0 -> this.aP_()).a());
-         this.c.a($$1 -> {
-            fuj var10000 = this.c($$1);
-         });
-         this.c();
-      }
-
-      @Override
-      protected void c() {
-         if (this.d != null) {
-            this.d.a(this.n, this.c);
-         }
-
-         this.c.a();
-      }
-
-      @Override
-      public void aP_() {
-         this.m.a(gfc.this);
-      }
-
-      class a extends fvh<gfc.a.b> {
-         public a(final frd $$0, final Collection<aum> $$1) {
-            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
-
-            for (aum $$2 : $$1) {
-               String $$3 = cvj.a(cvj.g, $$2.e());
-               if (!$$3.isEmpty()) {
-                  xa $$4 = xd.a($$2.b().f(), xx.a.a(true));
-                  xa $$5 = xa.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, fve.a(a.this.p, $$5, this.a())));
-               }
-            }
-         }
-
-         @Override
-         public int a() {
-            return this.g * 3 / 4;
-         }
-      }
-
-      class b extends fvh.a<gfc.a.b> {
-         private final xa b;
-         private final xa c;
-         private final fve d;
-
-         b(final xa $$0, final xa $$1, final fve $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
-
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
-            this.d.b($$0, $$3, $$2 + 12, 9, -1);
-         }
-
-         @Override
-         public xa a() {
-            return xa.a("narrator.select", wz.a(this.b, this.c));
-         }
-      }
+      this.m.a(this.x);
    }
 }

@@ -1,50 +1,62 @@
 import java.util.EnumSet;
 
-public class ced extends cfd {
-   private final cjn g;
+public class ced extends ces {
+   private final bye a;
 
-   public ced(cjn $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(ceq.a.c, ceq.a.a));
+   public ced(bye $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ces.a.a, ces.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.g.q() && !this.g.gu() && !this.g.gH() && super.b();
+      return this.a.cs() < 140;
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public boolean U_() {
+      return false;
    }
 
    @Override
    public void d() {
-      super.d();
-      this.g.x(false);
+      this.h();
    }
 
-   @Override
-   protected int a(byc $$0) {
-      return 40;
-   }
+   private void h() {
+      Iterable<iw> $$0 = iw.b(
+         azq.a(this.a.dA() - 1.0), this.a.dB(), azq.a(this.a.dG() - 1.0), azq.a(this.a.dA() + 1.0), azq.a(this.a.dC() + 8.0), azq.a(this.a.dG() + 1.0)
+      );
+      iw $$1 = null;
 
-   @Override
-   public void e() {
-      super.e();
-      this.g.z(false);
+      for (iw $$2 : $$0) {
+         if (this.a(this.a.dV(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = iw.a(this.a.dA(), this.a.dC() + 8.0, this.a.dG());
+      }
+
+      this.a.O().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gH()) {
-         this.g.z(true);
-      }
+      this.h();
+      this.a.a(0.02F, new ffs((double)this.a.bg, (double)this.a.bh, (double)this.a.bi));
+      this.a.a(bya.a, this.a.dy());
    }
 
-   @Override
-   protected boolean a(dka $$0, iv $$1) {
-      return $$0.v($$1.d()) && $$0.a_($$1).a(axe.T);
+   private boolean a(dkc $$0, iw $$1) {
+      ebg $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dng.nJ)) && $$2.a(eyf.a);
    }
 }

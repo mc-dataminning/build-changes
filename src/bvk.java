@@ -1,53 +1,125 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record bvk(String d, bvh e, float f, bvg g, bvm h) {
-   public static final Codec<bvk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(bvk::a),
-               bvh.d.fieldOf("scaling").forGetter(bvk::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(bvk::c),
-               bvg.g.optionalFieldOf("effects", bvg.a).forGetter(bvk::d),
-               bvm.d.optionalFieldOf("death_message_type", bvm.a).forGetter(bvk::e)
-            )
-            .apply($$0, bvk::new)
-   );
-   public static final Codec<jf<bvk>> b = alf.a(mh.aN);
-   public static final yy<wl, jf<bvk>> c = yw.b(mh.aN);
+public class bvk {
+   private final jg<bvm> a;
+   @Nullable
+   private final bwv b;
+   @Nullable
+   private final bwv c;
+   @Nullable
+   private final ffs d;
 
-   public bvk(String $$0, bvh $$1, float $$2) {
-      this($$0, $$1, $$2, bvg.a, bvm.a);
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.k().a() + ")";
    }
 
-   public bvk(String $$0, bvh $$1, float $$2, bvg $$3) {
-      this($$0, $$1, $$2, $$3, bvm.a);
+   public float a() {
+      return this.k().c();
    }
 
-   public bvk(String $$0, float $$1, bvg $$2) {
-      this($$0, bvh.b, $$1, $$2);
+   public boolean b() {
+      return this.b == this.c;
    }
 
-   public bvk(String $$0, float $$1) {
-      this($$0, bvh.b, $$1);
+   private bvk(jg<bvm> $$0, @Nullable bwv $$1, @Nullable bwv $$2, @Nullable ffs $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
-   public String a() {
+   public bvk(jg<bvm> $$0, @Nullable bwv $$1, @Nullable bwv $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bvk(jg<bvm> $$0, ffs $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bvk(jg<bvm> $$0, @Nullable bwv $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bvk(jg<bvm> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bwv c() {
+      return this.c;
+   }
+
+   @Nullable
+   public bwv d() {
+      return this.b;
+   }
+
+   @Nullable
+   public daa e() {
+      return this.c != null ? this.c.dZ() : null;
+   }
+
+   public xc a(bxw $$0) {
+      String $$1 = "death.attack." + this.k().a();
+      if (this.b == null && this.c == null) {
+         bxw $$5 = $$0.eT();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? xc.a($$6, $$0.m_(), $$5.m_()) : xc.a($$1, $$0.m_());
+      } else {
+         xc $$2 = this.b == null ? this.c.m_() : this.b.m_();
+         daa $$4 = this.b instanceof bxw $$3 ? $$3.fb() : daa.k;
+         return !$$4.f() && $$4.c(kl.g) ? xc.a($$1 + ".item", $$0.m_(), $$2, $$4.K()) : xc.a($$1, $$0.m_(), $$2);
+      }
+   }
+
+   public String f() {
+      return this.k().a();
+   }
+
+   public boolean g() {
+      return switch (this.k().b()) {
+         case a -> false;
+         case b -> this.b instanceof bxw && !(this.b instanceof crz);
+         case c -> true;
+      };
+   }
+
+   public boolean h() {
+      if (this.d() instanceof crz $$0 && $$0.gk().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public ffs i() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dt() : null;
+      }
+   }
+
+   @Nullable
+   public ffs j() {
       return this.d;
    }
 
-   public bvh b() {
-      return this.e;
+   public boolean a(axv<bvm> $$0) {
+      return this.a.a($$0);
    }
 
-   public float c() {
-      return this.f;
+   public boolean a(alj<bvm> $$0) {
+      return this.a.a($$0);
    }
 
-   public bvg d() {
-      return this.g;
+   public bvm k() {
+      return this.a.a();
    }
 
-   public bvm e() {
-      return this.h;
+   public jg<bvm> l() {
+      return this.a;
    }
 }

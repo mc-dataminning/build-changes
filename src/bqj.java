@@ -1,23 +1,42 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public abstract class bqj<T> implements ArgumentType<T> {
-   private final bqe<T> a;
+public abstract class bqj implements bqc<StringReader, String> {
+   private final int a;
+   private final int b;
+   private final bpw<CommandSyntaxException> c;
 
-   public bqj(bqe<T> $$0) {
+   public bqj(int $$0, bpw<CommandSyntaxException> $$1) {
+      this($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public bqj(int $$0, int $$1, bpw<CommandSyntaxException> $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public T parse(StringReader $$0) throws CommandSyntaxException {
-      return this.a.a($$0);
+   @Nullable
+   public String b(bqb<StringReader> $$0) {
+      StringReader $$1 = $$0.f();
+      String $$2 = $$1.getString();
+      int $$3 = $$1.getCursor();
+      int $$4 = $$3;
+
+      while ($$4 < $$2.length() && this.a($$2.charAt($$4)) && $$4 - $$3 < this.b) {
+         $$4++;
+      }
+
+      int $$5 = $$4 - $$3;
+      if ($$5 < this.a) {
+         $$0.b().a($$0.g(), this.c);
+         return null;
+      } else {
+         $$1.setCursor($$4);
+         return $$2.substring($$3, $$4);
+      }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return this.a.a($$1);
-   }
+   protected abstract boolean a(char var1);
 }

@@ -1,8 +1,3 @@
-import javax.annotation.Nullable;
-
-public class hfv extends hep {
-   public jb a = jb.c;
-   @Nullable
-   public cny b;
-   public int[] c = new int[0];
+public class hfv extends hfu {
+   public float n = -1.0F;
 }

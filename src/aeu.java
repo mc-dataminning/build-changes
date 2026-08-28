@@ -1,37 +1,19 @@
-public class aeu implements zh<abw> {
-   public static final yy<vw, aeu> a = zh.a(aeu::a, aeu::new);
-   private final double b;
-   private final double c;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public aeu(ecw $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-   }
-
-   private aeu(vw $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aeu(xc b, Optional<byte[]> c) implements zj<aby> {
+   public static final za<ByteBuf, aeu> a = za.a(xe.f, aeu::b, yy.n.a(yy::a), aeu::e, aeu::new);
 
    @Override
-   public zj<aeu> a() {
-      return agp.av;
+   public zl<aeu> a() {
+      return agr.at;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public Optional<byte[]> e() {
       return this.c;
-   }
-
-   public double e() {
-      return this.b;
    }
 }

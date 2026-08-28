@@ -1,47 +1,28 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface hox {
-   ali a();
+public class hox {
+   private final List<how> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
+
+   public hox(List<how> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public List<how> a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
+   }
 
    @Nullable
-   hqe a(hqd var1);
-
-   hou b();
-
-   awq c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hox.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static azx t() {
-      return azx.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   public String c() {
+      return this.c;
    }
 }

@@ -1,33 +1,27 @@
-public class gxu<T extends cqd> extends gzo<T, heh, ghr> {
-   private static final ali a = ali.b("textures/entity/creaking/creaking.png");
-   private static final ali j = ali.b("textures/entity/creaking/creaking_eyes.png");
+public class gxu extends gzq<cjv, hfr, gho> {
+   private static final alk a = alk.b("textures/entity/fish/cod.png");
 
-   public gxu(gyi.a $$0) {
-      super($$0, new ghr($$0.a(gld.ap)), 0.6F);
-      this.a(new hcp<>(this, j, ($$0x, $$1) -> 1.0F, ghr::b, gsl::q, true));
+   public gxu(gyk.a $$0) {
+      super($$0, new gho($$0.a(glf.ab)), 0.3F);
    }
 
-   public ali a(heh $$0) {
+   @Override
+   public alk b(hfr $$0) {
       return a;
    }
 
-   public heh a() {
-      return new heh();
+   public hfr a() {
+      return new hfr();
    }
 
-   public void a(T $$0, heh $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b.a($$0.bI);
-      $$1.a.a($$0.bJ);
-      $$1.c.a($$0.bK);
-      if ($$0.gv()) {
-         $$1.ac = 0.0F;
-         $$1.am = false;
-         $$1.d = $$0.gy();
-      } else {
-         $$1.d = $$0.gC();
+   @Override
+   protected void a(hfr $$0, flq $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azq.a(0.6F * $$0.u);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.ak) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
       }
-
-      $$1.e = $$0.n();
    }
 }

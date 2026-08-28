@@ -1,46 +1,63 @@
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
-public class mq implements mn {
-   private final mp.a d;
-   private final List<mr> e;
-   private final CompletableFuture<jh.a> f;
+public class mq {
+   private final Path a;
 
-   public mq(mp $$0, CompletableFuture<jh.a> $$1, List<mr> $$2) {
-      this.d = $$0.a(mh.bu);
-      this.e = $$2;
-      this.f = $$1;
+   public mq(Path $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public CompletableFuture<?> a(ml $$0) {
-      return this.f.thenCompose($$1 -> {
-         Set<ali> $$2 = new HashSet<>();
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         Consumer<aj> $$4 = $$4x -> {
-            if (!$$2.add($$4x.a())) {
-               throw new IllegalStateException("Duplicate advancement " + $$4x.a());
-            } else {
-               Path $$5x = this.d.a($$4x.a());
-               $$3.add(mn.a($$0, $$1, ai.a, $$4x.b(), $$5x));
-            }
-         };
-
-         for (mr $$5 : this.e) {
-            $$5.a($$1, $$4);
-         }
-
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
+   public Path a() {
+      return this.a;
    }
 
-   @Override
-   public final String a() {
-      return "Advancements";
+   public Path a(mq.b $$0) {
+      return this.a().resolve($$0.d);
+   }
+
+   public mq.a a(mq.b $$0, String $$1) {
+      return new mq.a(this, $$0, $$1);
+   }
+
+   public mq.a a(alj<? extends jt<?>> $$0) {
+      return this.a(mq.b.a, mi.c($$0));
+   }
+
+   public mq.a b(alj<? extends jt<?>> $$0) {
+      return this.a(mq.b.a, mi.d($$0));
+   }
+
+   public static class a {
+      private final Path a;
+      private final String b;
+
+      a(mq $$0, mq.b $$1, String $$2) {
+         this.a = $$0.a($$1);
+         this.b = $$2;
+      }
+
+      public Path a(alk $$0, String $$1) {
+         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
+      }
+
+      public Path a(alk $$0) {
+         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
+      }
+
+      public Path a(alj<?> $$0) {
+         return this.a.resolve($$0.a().b()).resolve(this.b).resolve($$0.a().a() + ".json");
+      }
+   }
+
+   public static enum b {
+      a("data"),
+      b("assets"),
+      c("reports");
+
+      final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
+      }
    }
 }

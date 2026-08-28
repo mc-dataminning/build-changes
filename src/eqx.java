@@ -1,28 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eqx extends erm {
-   public static final MapCodec<eqx> a = btw.b(0, 256).fieldOf("count").xmap(eqx::new, $$0 -> $$0.c);
-   private final btw c;
+public enum eqx implements bao {
+   a(jc.b, 1, "ceiling"),
+   b(jc.a, -1, "floor");
 
-   private eqx(btw $$0) {
-      this.c = $$0;
+   public static final Codec<eqx> c = bao.a(eqx::values);
+   private final jc d;
+   private final int e;
+   private final String f;
+
+   private eqx(final jc $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static eqx a(btw $$0) {
-      return new eqx($$0);
+   public jc a() {
+      return this.d;
    }
 
-   public static eqx a(int $$0) {
-      return a(btt.a($$0));
+   public int b() {
+      return this.e;
    }
 
    @Override
-   protected int a(azx $$0, iv $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public erj<?> b() {
-      return erj.f;
+   public String c() {
+      return this.f;
    }
 }

@@ -1,33 +1,49 @@
 import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-public record zw(ali c, byte[] d) implements zh<zn> {
-   public static final yy<vw, zw> a = zh.a(zw::a, zw::new);
-   private static final int e = 5120;
-   public static final yy<ByteBuf, byte[]> b = yw.a(5120);
+public record zw(UUID c, String d, String e, boolean f, Optional<xc> g) implements zj<zp> {
+   public static final int a = 40;
+   public static final za<ByteBuf, zw> b = za.a(ka.g, zw::b, yy.p, zw::e, yy.b(40), zw::f, yy.b, zw::g, xe.f.a(yy::a), zw::h, zw::new);
 
-   private zw(vw $$0) {
-      this($$0.q(), b.decode($$0));
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   public zw(UUID c, String d, String e, boolean f, Optional<xc> g) {
+      if (e.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
+      } else {
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
    }
 
    @Override
-   public zj<zw> a() {
-      return zz.i;
+   public zl<zw> a() {
+      return aab.g;
    }
 
-   public void a(zn $$0) {
+   public void a(zp $$0) {
       $$0.a(this);
    }
 
-   public ali b() {
+   public UUID b() {
       return this.c;
    }
 
-   public byte[] e() {
+   public String e() {
       return this.d;
+   }
+
+   public String f() {
+      return this.e;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public Optional<xc> h() {
+      return this.g;
    }
 }

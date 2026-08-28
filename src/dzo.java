@@ -1,194 +1,98 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dzo extends dyc implements egg.b<egn.b>, egn {
-   private static final int a = 10;
-   private static final int b = 20;
-   private static final int c = 5;
-   private static final int d = 6;
-   private static final int e = 40;
-   private static final int f = 90;
-   private static final Int2ObjectMap<awo> j = ag.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, awp.CV);
-      $$0.put(2, awp.CW);
-      $$0.put(3, awp.CX);
-      $$0.put(4, awp.CU);
-   });
-   private static final int k = 0;
-   private int l = 0;
-   private final egn.d m = new dzo.a();
-   private egn.a q = new egn.a();
-   private final egn.b r = new egn.b(this);
+public class dzo extends dye implements egi.b<dzo.a> {
+   private final dzo.a a;
 
-   public dzo(iv $$0, ebe $$1) {
-      super(dye.M, $$0, $$1);
+   public dzo(iw $$0, ebg $$1) {
+      super(dyg.L, $$0, $$1);
+      this.a = new dzo.a($$1, new egc($$0));
+   }
+
+   public static void a(djz $$0, iw $$1, ebg $$2, dzo $$3) {
+      $$3.a.d().a($$0, $$1, $$0.G_(), true);
    }
 
    @Override
-   public egn.a x() {
-      return this.q;
-   }
-
-   @Override
-   public egn.d gu() {
-      return this.m;
-   }
-
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
+   protected void a(ua $$0, ji.a $$1) {
       super.a($$0, $$1);
-      this.l = $$0.b("warning_level", 0);
-      alg<uy> $$2 = $$1.a(un.a);
-      this.q = $$0.<egn.a>a("listener", egn.a.a, $$2).orElseGet(egn.a::new);
+      this.a.b.a($$0);
    }
 
    @Override
-   protected void b(tz $$0, jh.a $$1) {
+   protected void b(ua $$0, ji.a $$1) {
+      this.a.b.b($$0);
       super.b($$0, $$1);
-      $$0.a("warning_level", this.l);
-      alg<uy> $$2 = $$1.a(un.a);
-      $$0.a("listener", egn.a.a, $$2, this.q);
    }
 
-   @Nullable
-   public static art a(@Nullable bwt $$0) {
-      if ($$0 instanceof art) {
-         return (art)$$0;
-      } else {
-         if ($$0 != null) {
-            bxu $$6 = $$0.cW();
-            if ($$6 instanceof art) {
-               return (art)$$6;
-            }
-         }
-
-         if ($$0 instanceof css $$3) {
-            bwt var3 = $$3.q();
-            if (var3 instanceof art) {
-               return (art)var3;
-            }
-         }
-
-         if ($$0 instanceof coc $$5) {
-            bwt var9 = $$5.q();
-            if (var9 instanceof art) {
-               return (art)var9;
-            }
-         }
-
-         return null;
-      }
+   public dzo.a a() {
+      return this.a;
    }
 
-   public void a(ars $$0, @Nullable art $$1) {
-      if ($$1 != null) {
-         ebe $$2 = this.m();
-         if (!$$2.c(due.b)) {
-            this.l = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bwt)$$1);
-            }
-         }
-      }
-   }
+   public static class a implements egi {
+      public static final int a = 8;
+      final duh b;
+      private final ebg c;
+      private final egk d;
 
-   private boolean b(ars $$0, art $$1) {
-      OptionalInt $$2 = crc.a($$0, this.aB_(), $$1);
-      $$2.ifPresent($$0x -> this.l = $$0x);
-      return $$2.isPresent();
-   }
-
-   private void a(ars $$0, @Nullable bwt $$1) {
-      iv $$2 = this.aB_();
-      ebe $$3 = this.m();
-      $$0.a($$2, $$3.b(due.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(ege.N, $$2, ege.a.a($$1));
-   }
-
-   private boolean b(ars $$0) {
-      return this.m().c(due.d) && $$0.an() != buo.a && $$0.O().c(djt.O);
-   }
-
-   @Override
-   public void a(iv $$0, ebe $$1) {
-      if ($$1.c(due.b) && this.n instanceof ars $$2) {
-         this.a($$2);
-      }
-   }
-
-   public void a(ars $$0) {
-      if (this.b($$0) && this.l > 0) {
-         if (!this.c($$0)) {
-            this.b((djx)$$0);
-         }
-
-         cra.a($$0, ffq.b(this.aB_()), null, 40);
-      }
-   }
-
-   private void b(djx $$0) {
-      awo $$1 = (awo)j.get(this.l);
-      if ($$1 != null) {
-         iv $$2 = this.aB_();
-         int $$3 = $$2.u() + azo.b($$0.A, -10, 10);
-         int $$4 = $$2.v() + azo.b($$0.A, -10, 10);
-         int $$5 = $$2.w() + azo.b($$0.A, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, awq.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(ars $$0) {
-      return this.l < 4 ? false : baj.a(bxc.bH, bxb.k, $$0, this.aB_(), 20, 5, 6, baj.a.b, false).isPresent();
-   }
-
-   public egn.b a() {
-      return this.r;
-   }
-
-   class a implements egn.d {
-      private static final int b = 8;
-      private final egi c = new ega(dzo.this.o);
-
-      public a() {
+      public a(ebg $$0, egk $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = duh.a();
       }
 
       @Override
-      public int a() {
+      public egk a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
          return 8;
       }
 
       @Override
-      public egi b() {
-         return this.c;
+      public egi.a c() {
+         return egi.a.b;
       }
 
       @Override
-      public axt<ege> c() {
-         return axk.c;
+      public boolean a(aru $$0, jg<egg> $$1, egg.a $$2, ffs $$3) {
+         if ($$1.a(egg.p) && $$2.a() instanceof bxw $$4) {
+            if (!$$4.eL()) {
+               bvk $$5 = $$4.eI();
+               int $$6 = $$4.a($$0, y.a($$5, bvk::d));
+               if ($$4.eo() && $$6 > 0) {
+                  this.b.a(iw.a((jq)$$3.a(jc.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eK();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, iw.a((jq)$$1x), this.c, $$0.G_()));
+            }
+
+            return true;
+         } else {
+            return false;
+         }
       }
 
-      @Override
-      public boolean a(ars $$0, iv $$1, jf<ege> $$2, ege.a $$3) {
-         return !dzo.this.m().c(due.b) && dzo.a($$3.a()) != null;
+      @VisibleForTesting
+      public duh d() {
+         return this.b;
       }
 
-      @Override
-      public void a(ars $$0, iv $$1, jf<ege> $$2, @Nullable bwt $$3, @Nullable bwt $$4, float $$5) {
-         dzo.this.a($$0, dzo.a($$4 != null ? $$4 : $$3));
+      private void a(aru $$0, iw $$1, ebg $$2, azz $$3) {
+         $$0.a($$1, $$2.b(due.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lz.K, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awr.wQ, aws.e, 2.0F, 0.6F + $$3.i() * 0.4F);
       }
 
-      @Override
-      public void e() {
-         dzo.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
+      private void a(djz $$0, bxw $$1) {
+         if ($$1.er() instanceof arv $$3) {
+            bvk $$4 = $$1.eI() == null ? $$0.al().a((crz)$$3) : $$1.eI();
+            aq.Z.a($$3, $$1, $$4);
+         }
       }
    }
 }

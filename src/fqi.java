@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fqi extends fqb {
+public class fqi extends fqd {
    private static final Logger b = LogUtils.getLogger();
-   private static final xa c = xa.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private static final xc c = xc.c("mco.backup.restoring");
+   private final fmv d;
+   private final long e;
+   private final fop f;
 
-   public fqi(long $$0, int $$1, Runnable $$2) {
+   public fqi(fmv $$0, long $$1, fop $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,37 +16,52 @@ public class fqi extends fqb {
 
    @Override
    public void run() {
-      fmd $$0 = fmd.a();
+      fmf $$0 = fmf.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (foa var4) {
+
+            a(this.f.g());
+            return;
+         } catch (foc var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (fob var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't switch world!");
-            this.a(var5);
+            b.error("Couldn't restore backup", var5);
+            a(new fou(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
    }
 
    @Override
-   public xa a() {
+   public xc a() {
       return c;
    }
 }

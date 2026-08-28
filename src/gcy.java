@@ -1,50 +1,32 @@
-public class gcy extends gad {
-   private static final int a = 600;
-   private final vt b;
-   private ful c;
-   private int d;
-   private final fyd s = fyd.d();
+public class gcy extends gdc {
+   private static final xc b = xc.c("multiplayerWarning.header").a(o.r);
+   private static final xc c = xc.c("multiplayerWarning.message");
+   private static final xc d = xc.c("multiplayerWarning.check");
+   private static final xc s = b.f().f("\n").b(c);
+   private final gaf u;
 
-   public gcy(xa $$0, vt $$1) {
-      super($$0);
-      this.b = $$1;
+   public gcy(gaf $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   protected fyc m() {
+      fyf $$0 = fyf.e().a(8);
+      $$0.a(fun.a(xb.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.az();
+         }
+
+         this.m.a(new gcx(this.u));
+      }).a());
+      $$0.a(fun.a(xb.k, $$0x -> this.aP_()).a());
+      return $$0;
    }
 
    @Override
-   protected void aS_() {
-      this.s.c().b().a(10);
-      this.s.a(new fvs(this.l, this.p));
-      this.c = this.s.a(ful.a(wz.p, $$0 -> this.b.a(fzc.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         fuj var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fxx.a(this.s, this.J());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
-      }
+   public void aP_() {
+      this.m.a(this.u);
    }
 }

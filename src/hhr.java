@@ -1,18 +1,15 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hhr {
-   private static final ayw.b<ali, MapCodec<? extends hhp.b>> b = new ayw.b<>();
-   public static final Codec<hhp.b> a = b.a(ali.a).dispatch(hhp.b::a, $$0 -> $$0);
+public interface hhr {
+   void a(hhu var1, daa var2, hhs var3, czy var4, @Nullable gmd var5, @Nullable bxw var6, int var7);
 
-   public static void a() {
-      b.a(ali.b("empty"), hho.a.a);
-      b.a(ali.b("model"), hhj.a.a);
-      b.a(ali.b("range_dispatch"), hhv.b.a);
-      b.a(ali.b("special"), hhx.a.a);
-      b.a(ali.b("composite"), hhm.a.a);
-      b.a(ali.b("bundle/selected_item"), hhk.a.a);
-      b.a(ali.b("select"), hhw.c.a);
-      b.a(ali.b("condition"), hhn.a.a);
+   public static record a(hnl a, glc b, hhr c, @Nullable baa d) {
+   }
+
+   public interface b extends hnt {
+      MapCodec<? extends hhr.b> a();
+
+      hhr a(hhr.a var1);
    }
 }

@@ -1,81 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dtq extends dpf {
-   public static final MapCodec<dtq> a = b(dtq::new);
-   public static final ebv b = ebu.v;
-   public static final ece d = ebu.aD;
+public class dtq extends dtp {
+   public static final MapCodec<dtq> f = b(dtq::new);
+   public static final ece<jc> g = drf.e;
+   public static final ebx h = dtp.b;
 
    @Override
    public MapCodec<dtq> a() {
-      return a;
+      return f;
    }
 
-   protected dtq(ebd.d $$0) {
+   protected dtq(ebf.d $$0) {
       super($$0);
-      this.l(this.C.b().b(e, jb.c).b(d, Integer.valueOf(1)).b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
+      this.l(this.C.b().b(g, jc.c).b(h, Boolean.valueOf(true)));
    }
 
    @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if (!$$3.gk().e) {
-         return bur.e;
-      } else {
-         $$1.a($$2, $$0.a(d), 3);
-         return bur.a;
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return dwx.o($$0);
+   }
+
+   @Override
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      return dwx.b($$1, $$2, $$0.c(g));
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      return $$4.g() == $$0.c(g) && !$$0.a($$1, $$3) ? dng.a.m() : $$0;
+   }
+
+   @Nullable
+   @Override
+   public ebg a(ddt $$0) {
+      ebg $$1 = dng.cA.a($$0);
+      return $$1 == null ? null : this.m().b(g, $$1.c(g));
+   }
+
+   @Override
+   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
+      if ($$0.c(h)) {
+         jc $$4 = $$0.c(g).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(lu.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected int h(ebe $$0) {
-      return $$0.c(d) * 2;
+   protected boolean a(djz $$0, iw $$1, ebg $$2) {
+      jc $$3 = $$2.c(g).g();
+      return $$0.b($$1.a($$3), $$3);
    }
 
    @Override
-   public ebe a(ddr $$0) {
-      ebe $$1 = super.a($$0);
-      return $$1.b(b, Boolean.valueOf(this.b($$0.q(), $$0.a(), $$1)));
+   protected int a(ebg $$0, djd $$1, iw $$2, jc $$3) {
+      return $$0.c(h) && $$0.c(g) != $$3 ? 15 : 0;
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$4 == jb.a && !this.a($$1, $$5, $$6)) {
-         return dne.a.m();
-      } else {
-         return !$$1.A_() && $$4.o() != $$0.c(e).o() ? $$0.b(b, Boolean.valueOf(this.b($$1, $$3, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(g, $$1.a($$0.c(g)));
    }
 
    @Override
-   public boolean b(dka $$0, iv $$1, ebe $$2) {
-      return this.a((dkp)$$0, $$1, $$2) > 0;
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.a($$1.a($$0.c(g)));
    }
 
    @Override
-   protected boolean b() {
-      return true;
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(g, h);
    }
 
+   @Nullable
    @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      if ($$0.c(c)) {
-         jb $$4 = $$0.c(e);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(d) * 2 - 1);
-         }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(lt.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(e, d, b, c);
+   protected eyy a(djz $$0, ebg $$1) {
+      return eyu.a($$0, $$1.c(g).g(), jc.b);
    }
 }

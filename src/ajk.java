@@ -1,6 +1,20 @@
-public class ajk {
-   public static final wi.a<ajl, vw> a = zm.a(vu.d, $$0 -> $$0.a(ajj.g, ajn.a).a(ajj.h, ajo.a).a(ajj.f, ajm.a).a(ajj.i, ajp.b).a(abs.b, abu.a));
-   public static final wi<ajl> b = a.a(vw::new);
-   public static final wi.a<ajd, vw> c = zm.b(vu.d, $$0 -> $$0.a(ajj.e, ajh.a).a(ajj.c, ajf.a).a(ajj.b, aji.a).a(ajj.d, ajg.a).a(ajj.a, aje.a).a(abs.a, abr.a));
-   public static final wi<ajd> d = c.a(vw::new);
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
+
+public record ajk(GameProfile b) implements zj<ajf> {
+   public static final za<ByteBuf, ajk> a = za.a(yy.z, ajk::b, ajk::new);
+
+   @Override
+   public zl<ajk> a() {
+      return ajl.b;
+   }
+
+   public void a(ajf $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
 }

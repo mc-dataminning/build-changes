@@ -1,27 +1,44 @@
-public class hdk extends hcg<hhc, gks> {
-   private static final ali a = ali.b("textures/entity/wither/wither_armor.png");
-   private final gks b;
+import javax.annotation.Nullable;
 
-   public hdk(haf<hhc, gks> $$0, gla $$1) {
+public class hdk<S extends hfi, M extends gic<S>> extends hcy<S, M> {
+   private final ghy a;
+   private final ghy b;
+   private final hcj c;
+
+   public hdk(hah<S, M> $$0, glc $$1, hcj $$2) {
       super($$0);
-      this.b = new gks($$1.a(gld.dV));
+      this.a = new ghy($$1.a(glf.aP));
+      this.b = new ghy($$1.a(glf.aQ));
+      this.c = $$2;
    }
 
-   protected boolean a(hhc $$0) {
-      return $$0.d;
+   public void a(flq $$0, gsc $$1, int $$2, S $$3, float $$4, float $$5) {
+      daa $$6 = $$3.W;
+      dij $$7 = $$6.a(kl.D);
+      if ($$7 != null && !$$7.d().isEmpty()) {
+         alk $$8 = a($$3);
+         ghy $$9 = $$3.aj ? this.b : this.a;
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         $$9.a($$3);
+         this.c.a(hni.d.c, $$7.d().get(), $$9, $$6, $$0, $$1, $$2, $$8);
+         $$0.b();
+      }
    }
 
-   @Override
-   protected float a(float $$0) {
-      return azo.b($$0 * 0.02F) * 3.0F;
-   }
+   @Nullable
+   private static alk a(hfi $$0) {
+      if ($$0 instanceof hgd $$1) {
+         hme $$2 = $$1.a;
+         if ($$2.d() != null) {
+            return $$2.d();
+         }
 
-   @Override
-   protected ali a() {
-      return a;
-   }
+         if ($$2.c() != null && $$1.ay) {
+            return $$2.c();
+         }
+      }
 
-   protected gks b() {
-      return this.b;
+      return null;
    }
 }

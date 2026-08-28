@@ -1,3 +1,5 @@
-interface eds<T> {
-   int onResize(int var1, T var2);
+public class eds extends RuntimeException {
+   public eds(int $$0) {
+      super("Missing Palette entry for index " + $$0 + ".");
+   }
 }

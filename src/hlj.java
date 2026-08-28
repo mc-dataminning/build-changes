@@ -1,31 +1,17 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record hlj(String c, String d) implements hlf {
-   public static final MapCodec<hlj> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter(hlj::b), Codec.STRING.fieldOf("prefix").forGetter(hlj::c)).apply($$0, hlj::new)
-   );
+public class hlj {
+   private static final ayy.b<alk, MapCodec<? extends hlh>> c = new ayy.b<>();
+   public static final Codec<hlh> a = c.a(alk.a).dispatch(hlh::a, $$0 -> $$0);
+   public static final Codec<List<hlh>> b = a.listOf().fieldOf("sources").codec();
 
-   @Override
-   public void a(avf $$0, hlf.a $$1) {
-      alb $$2 = new alb("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         ali $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public MapCodec<hlj> a() {
-      return b;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.d;
+   public static void a() {
+      c.a(alk.b("single"), hlo.b);
+      c.a(alk.b("directory"), hll.b);
+      c.a(alk.b("filter"), hlp.b);
+      c.a(alk.b("unstitch"), hlq.b);
+      c.a(alk.b("paletted_permutations"), hln.c);
    }
 }

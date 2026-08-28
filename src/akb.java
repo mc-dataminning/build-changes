@@ -1,31 +1,12 @@
-import io.netty.buffer.ByteBuf;
+public class akb {
+   public static final zl<aka> a = a("pong_response");
+   public static final zl<akd> b = b("ping_request");
 
-public class akb implements zh<aka> {
-   public static final yy<ByteBuf, akb> a = zh.a(akb::a, akb::new);
-   private final long b;
-
-   public akb(long $$0) {
-      this.b = $$0;
+   private static <T extends zj<ajz>> zl<T> a(String $$0) {
+      return new zl<>(zk.b, alk.b($$0));
    }
 
-   private akb(ByteBuf $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(ByteBuf $$0) {
-      $$0.writeLong(this.b);
-   }
-
-   @Override
-   public zj<akb> a() {
-      return ajz.b;
-   }
-
-   public void a(aka $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
+   private static <T extends zj<akc>> zl<T> b(String $$0) {
+      return new zl<>(zk.a, alk.b($$0));
    }
 }

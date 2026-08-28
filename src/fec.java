@@ -1,92 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class fec implements fee {
-   private static final String d = "block_entity";
-   private static final fec.a e = new fec.a() {
-      @Override
-      public uy a(fah $$0) {
-         dyc $$1 = $$0.c(fdb.h);
-         return $$1 != null ? $$1.b($$1.i().J_()) : null;
-      }
-
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<baz<?>> b() {
-         return Set.of(fdb.h);
-      }
-   };
-   public static final fec a = new fec(e);
-   private static final Codec<fec.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         fah.b $$1 = fah.b.a($$0);
-         return b($$1);
-      }
-   }, fec.a::a);
-   public static final MapCodec<fec> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, fec::new));
-   public static final Codec<fec> c = f.xmap(fec::new, $$0 -> $$0.g);
-   private final fec.a g;
-
-   private static fec.a b(final fah.b $$0) {
-      return new fec.a() {
-         @Nullable
-         @Override
-         public uy a(fah $$0x) {
-            bwt $$1 = $$0.c($$0.a());
-            return $$1 != null ? cz.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<baz<?>> b() {
-            return Set.of($$0.a());
-         }
-      };
-   }
-
-   private fec(fec.a $$0) {
-      this.g = $$0;
-   }
+public record fec(Optional<Boolean> b, Optional<Boolean> c) implements fds {
+   public static final MapCodec<fec> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fec::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fec::e))
+            .apply($$0, fec::new)
+   );
 
    @Override
-   public fed a() {
-      return fef.c;
+   public fdt b() {
+      return fdu.o;
    }
 
-   @Nullable
-   @Override
-   public uy a(fah $$0) {
-      return this.g.a($$0);
+   public boolean a(faj $$0) {
+      aru $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
    }
 
-   @Override
-   public Set<baz<?>> b() {
-      return this.g.b();
+   public static fec.a c() {
+      return new fec.a();
    }
 
-   public static fee a(fah.b $$0) {
-      return new fec(b($$0));
+   public Optional<Boolean> d() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      uy a(fah var1);
+   public Optional<Boolean> e() {
+      return this.c;
+   }
 
-      String a();
+   public static class a implements fds.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
 
-      Set<baz<?>> b();
+      public fec.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fec.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public fec a() {
+         return new fec(this.a, this.b);
+      }
    }
 }

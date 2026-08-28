@@ -1,113 +1,107 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class gap extends gad {
-   static final ali a = ali.b("gamemode_switcher/slot");
-   static final ali b = ali.b("gamemode_switcher/selection");
-   private static final ali c = ali.b("textures/gui/container/gamemode_switcher.png");
-   private static final int d = 128;
-   private static final int s = 128;
-   private static final int u = 26;
-   private static final int v = 5;
-   private static final int w = 31;
-   private static final int x = 5;
-   private static final int y = gap.a.values().length * 31 - 5;
-   private static final xa z = xa.a("debug.gamemodes.select_next", xa.c("debug.gamemodes.press_f4").a(o.l));
-   private final gap.a A;
-   private gap.a B;
-   private int C;
-   private int D;
-   private boolean E;
-   private final List<gap.b> F = Lists.newArrayList();
+public class gap extends gaf implements gly.a {
+   private static final alk x = alk.b("textures/gui/advancements/window.png");
+   public static final int a = 252;
+   public static final int b = 140;
+   private static final int y = 9;
+   private static final int z = 18;
+   public static final int c = 234;
+   public static final int d = 113;
+   private static final int A = 8;
+   private static final int B = 6;
+   private static final int C = 256;
+   private static final int D = 256;
+   public static final int s = 16;
+   public static final int u = 16;
+   public static final int v = 14;
+   public static final int w = 7;
+   private static final double E = 16.0;
+   private static final xc F = xc.c("advancements.sad_label");
+   private static final xc G = xc.c("advancements.empty");
+   private static final xc H = xc.c("gui.advancements");
+   private final fyb I = new fyb(this);
+   @Nullable
+   private final gaf J;
+   private final gly K;
+   private final Map<aj, gal> L = Maps.newLinkedHashMap();
+   @Nullable
+   private gal M;
+   private boolean N;
 
-   public gap() {
-      super(fqu.a);
-      this.A = gap.a.a(this.m());
-      this.B = this.A;
+   public gap(gly $$0) {
+      this($$0, null);
    }
 
-   private dju m() {
-      gml $$0 = frd.Q().r;
-      dju $$1 = $$0.h();
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         return $$0.i() == dju.b ? dju.a : dju.b;
-      }
+   public gap(gly $$0, @Nullable gaf $$1) {
+      super(H);
+      this.K = $$0;
+      this.J = $$1;
    }
 
    @Override
    protected void aS_() {
-      super.aS_();
-      this.B = this.A;
+      this.I.a(H, this.p);
+      this.L.clear();
+      this.M = null;
+      this.K.a(this);
+      if (this.M == null && !this.L.isEmpty()) {
+         gal $$0 = this.L.values().iterator().next();
+         this.K.a($$0.c().b(), true);
+      } else {
+         this.K.a(this.M == null ? null : this.M.c().b(), true);
+      }
 
-      for (int $$0 = 0; $$0 < gap.a.e.length; $$0++) {
-         gap.a $$1 = gap.a.e[$$0];
-         this.F.add(new gap.b($$1, this.n / 2 - y / 2 + $$0 * 31, this.o / 2 - 31));
+      this.I.b(fun.a(xb.d, $$0x -> this.aP_()).a(200).a());
+      this.I.a($$1 -> {
+         ful var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.I.a();
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.J);
+   }
+
+   @Override
+   public void aJ_() {
+      this.K.a(null);
+      gme $$0 = this.m.L();
+      if ($$0 != null) {
+         $$0.b(aig.b());
       }
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      if (!this.F()) {
-         $$0.c().a();
-         int $$4 = this.n / 2 - 62;
-         int $$5 = this.o / 2 - 31 - 27;
-         $$0.a(gsl::H, c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.p, this.B.a(), this.n / 2, this.o / 2 - 31 - 20, -1);
-         $$0.a(this.p, z, this.n / 2, this.o / 2 + 5, 16777215);
-         if (!this.E) {
-            this.C = $$1;
-            this.D = $$2;
-            this.E = true;
-         }
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         int $$3 = (this.n - 252) / 2;
+         int $$4 = (this.o - 140) / 2;
 
-         boolean $$6 = this.C == $$1 && this.D == $$2;
-
-         for (gap.b $$7 : this.F) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.B == $$7.a);
-            if (!$$6 && $$7.D()) {
-               this.B = $$7.a;
+         for (gal $$5 : this.L.values()) {
+            if ($$5.a($$3, $$4, $$0, $$1)) {
+               this.K.a($$5.c().b(), true);
+               break;
             }
          }
       }
-   }
 
-   @Override
-   public void b(ftx $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void E() {
-      a(this.m, this.B);
-   }
-
-   private static void a(frd $$0, gap.a $$1) {
-      if ($$0.r != null && $$0.t != null) {
-         gap.a $$2 = gap.a.a($$0.r.i());
-         if ($$0.t.s(2) && $$1 != $$2) {
-            $$0.t.j.d($$1.b());
-         }
-      }
-   }
-
-   private boolean F() {
-      if (!fka.a(this.m.aO().h(), 292)) {
-         this.E();
-         this.m.a(null);
-         return true;
-      } else {
-         return false;
-      }
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.E = false;
-         this.B = this.B.c();
+      if (this.m.n.R.a($$0, $$1)) {
+         this.m.a(null);
+         this.m.o.i();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
@@ -115,98 +109,137 @@ public class gap extends gad {
    }
 
    @Override
-   public boolean k() {
-      return false;
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 252) / 2;
+      int $$5 = (this.o - 140) / 2;
+      this.b($$0, $$1, $$2, $$4, $$5);
+      this.a($$0, $$4, $$5);
+      this.c($$0, $$1, $$2, $$4, $$5);
    }
 
-   static enum a {
-      a(xa.c("gameMode.creative"), "gamemode creative", new czy(dne.i)),
-      b(xa.c("gameMode.survival"), "gamemode survival", new czy(dac.pP)),
-      c(xa.c("gameMode.adventure"), "gamemode adventure", new czy(dac.vt)),
-      d(xa.c("gameMode.spectator"), "gamemode spectator", new czy(dac.tA));
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if ($$2 != 0) {
+         this.N = false;
+         return false;
+      } else {
+         if (!this.N) {
+            this.N = true;
+         } else if (this.M != null) {
+            this.M.a($$3, $$4);
+         }
 
-      protected static final gap.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final xa g;
-      final String h;
-      final czy i;
-
-      private a(final xa $$0, final String $$1, final czy $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(ftx $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      xa a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      gap.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static gap.a a(dju $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
+         return true;
       }
    }
 
-   public static class b extends fuj {
-      final gap.a a;
-      private boolean b;
-
-      public b(gap.a $$0, int $$1, int $$2) {
-         super($$1, $$2, 26, 26, $$0.a());
-         this.a = $$0;
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.M != null) {
+         this.M.a($$2 * 16.0, $$3 * 16.0);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public void b(ftx $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.a.a($$0, this.F() + 5, this.G() + 5);
-         if (this.b) {
-            this.b($$0);
+   private void b(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
+      gal $$5 = this.M;
+      if ($$5 == null) {
+         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
+         int $$6 = $$3 + 9 + 117;
+         $$0.a(this.p, G, $$6, $$4 + 18 + 56 - 9 / 2, -1);
+         $$0.a(this.p, F, $$6, $$4 + 18 + 113 - 9, -1);
+      } else {
+         $$5.b($$0, $$3 + 9, $$4 + 18);
+      }
+   }
+
+   public void a(ftz $$0, int $$1, int $$2) {
+      $$0.a(gsn::H, x, $$1, $$2, 0.0F, 0.0F, 252, 140, 256, 256);
+      if (this.L.size() > 1) {
+         for (gal $$3 : this.L.values()) {
+            $$3.a($$0, $$1, $$2, $$3 == this.M);
+         }
+
+         for (gal $$4 : this.L.values()) {
+            $$4.a($$0, $$1, $$2);
          }
       }
 
-      @Override
-      public void a(fyi $$0) {
-         this.c($$0);
+      $$0.a(this.p, this.M != null ? this.M.d() : H, $$1 + 8, $$2 + 6, 4210752, false);
+   }
+
+   private void c(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.M != null) {
+         $$0.c().a();
+         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
+         this.M.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
+         $$0.c().b();
       }
 
-      @Override
-      public boolean D() {
-         return super.D() || this.b;
+      if (this.L.size() > 1) {
+         for (gal $$5 : this.L.values()) {
+            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
+               $$0.a(this.p, $$5.d(), $$1, $$2);
+            }
+         }
       }
+   }
 
-      public void b(boolean $$0) {
-         this.b = $$0;
+   @Override
+   public void a(ak $$0) {
+      gal $$1 = gal.a(this.m, this, this.L.size(), $$0);
+      if ($$1 != null) {
+         this.L.put($$0.b(), $$1);
       }
+   }
 
-      private void a(ftx $$0) {
-         $$0.a(gsl::H, gap.a, this.F(), this.G(), 26, 26);
-      }
+   @Override
+   public void b(ak $$0) {
+   }
 
-      private void b(ftx $$0) {
-         $$0.a(gsl::H, gap.b, this.F(), this.G(), 26, 26);
+   @Override
+   public void c(ak $$0) {
+      gal $$1 = this.f($$0);
+      if ($$1 != null) {
+         $$1.a($$0);
       }
+   }
+
+   @Override
+   public void d(ak $$0) {
+   }
+
+   @Override
+   public void a(ak $$0, al $$1) {
+      gan $$2 = this.e($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   @Override
+   public void a(@Nullable aj $$0) {
+      this.M = this.L.get($$0);
+   }
+
+   @Override
+   public void a() {
+      this.L.clear();
+      this.M = null;
+   }
+
+   @Nullable
+   public gan e(ak $$0) {
+      gal $$1 = this.f($$0);
+      return $$1 == null ? null : $$1.a($$0.b());
+   }
+
+   @Nullable
+   private gal f(ak $$0) {
+      ak $$1 = $$0.d();
+      return this.L.get($$1.b());
    }
 }

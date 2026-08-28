@@ -1,3 +1,8 @@
-public interface bui {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bui {
 }

@@ -1,59 +1,51 @@
-import java.util.List;
-import java.util.function.Predicate;
+public interface dai {
+   alj<dag> a = a("13");
+   alj<dag> b = a("cat");
+   alj<dag> c = a("blocks");
+   alj<dag> d = a("chirp");
+   alj<dag> e = a("far");
+   alj<dag> f = a("mall");
+   alj<dag> g = a("mellohi");
+   alj<dag> h = a("stal");
+   alj<dag> i = a("strad");
+   alj<dag> j = a("ward");
+   alj<dag> k = a("11");
+   alj<dag> l = a("wait");
+   alj<dag> m = a("pigstep");
+   alj<dag> n = a("otherside");
+   alj<dag> o = a("5");
+   alj<dag> p = a("relic");
+   alj<dag> q = a("precipice");
+   alj<dag> r = a("creator");
+   alj<dag> s = a("creator_music_box");
 
-public class dai extends czu {
-   public dai(czu.a $$0) {
-      super($$0);
+   private static alj<dag> a(String $$0) {
+      return alj.a(mi.aV, alk.b($$0));
    }
 
-   @Override
-   public bur a(ddt $$0) {
-      djx $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      ebe $$3 = $$1.a_($$2);
-      if ($$3.a(axe.U)) {
-         crx $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
-      }
-
-      return bur.e;
+   private static void a(qi<dag> $$0, alj<dag> $$1, jg.c<awq> $$2, int $$3, int $$4) {
+      $$0.a($$1, new dag($$2, xc.c(ag.a("jukebox_song", $$1.a())), (float)$$3, $$4));
    }
 
-   public static bur a(crx $$0, djx $$1, iv $$2) {
-      cnw $$3 = null;
-      List<bxs> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
-
-      for (bxs $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = cnw.b($$1, $$2);
-            $$3.m();
-         }
-
-         $$5.a_($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(ege.b, $$2, ege.a.a($$0));
-         return bur.b;
-      } else {
-         return bur.e;
-      }
-   }
-
-   public static List<bxs> a(djx $$0, iv $$1, Predicate<bxs> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      ffl $$7 = new ffl((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bwt.class, $$7, $$1x -> {
-         if ($$1x instanceof bxs $$2x && $$2.test($$2x)) {
-            return true;
-         }
-
-         return false;
-      }).stream().map(bxs.class::cast).toList();
+   static void a(qi<dag> $$0) {
+      a($$0, a, awr.qu, 178, 1);
+      a($$0, b, awr.qw, 185, 2);
+      a($$0, c, awr.qv, 345, 3);
+      a($$0, d, awr.qx, 185, 4);
+      a($$0, e, awr.qy, 174, 5);
+      a($$0, f, awr.qz, 197, 6);
+      a($$0, g, awr.qA, 96, 7);
+      a($$0, h, awr.qC, 150, 8);
+      a($$0, i, awr.qD, 188, 9);
+      a($$0, j, awr.qF, 251, 10);
+      a($$0, k, awr.qt, 71, 11);
+      a($$0, l, awr.qE, 238, 12);
+      a($$0, m, awr.qB, 149, 13);
+      a($$0, n, awr.qG, 195, 14);
+      a($$0, o, awr.qs, 178, 15);
+      a($$0, p, awr.qH, 218, 14);
+      a($$0, q, awr.qK, 299, 13);
+      a($$0, r, awr.qI, 176, 12);
+      a($$0, s, awr.qJ, 73, 11);
    }
 }

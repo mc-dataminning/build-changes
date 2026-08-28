@@ -1,112 +1,107 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dur extends dpl implements dnf, dun {
-   public static final MapCodec<dur> c = b(dur::new);
-   private static final ebv e = ebu.I;
-   public static final ecc<jb> d = ebu.T;
-   private static final fgk f = dnc.b(12.0, 0.0, 13.0);
+public class dur extends dne implements dup {
+   public static final MapCodec<dur> a = b(dur::new);
+   public static final ece<eco> b = ebw.bk;
+   public static final ebx c = ebw.I;
+   private static final fgm d = dne.b(16.0, 0.0, 8.0);
+   private static final fgm e = dne.b(16.0, 8.0, 16.0);
 
    @Override
-   public MapCodec<dur> a() {
-      return c;
+   public MapCodec<? extends dur> a() {
+      return a;
    }
 
-   public dur(ebd.d $$0) {
+   public dur(ebf.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, eca.b).b(e, Boolean.valueOf(false)).b(d, jb.c));
+      this.l(this.m().b(b, eco.b).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return f;
+   protected boolean g_(ebg $$0) {
+      return $$0.c(b) != eco.c;
    }
 
    @Override
-   protected boolean b(ebe $$0, djb $$1, iv $$2) {
-      return $$0.a(axe.bA) || $$1.b_($$2.d()).a(exp.c) && super.b($$0, $$1, $$2);
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return switch ((eco)$$0.c(b)) {
+         case a -> e;
+         case b -> d;
+         case c -> fgj.b();
+      };
    }
 
    @Nullable
    @Override
-   public ebe a(ddr $$0) {
-      ebe $$1 = super.a($$0);
-      return $$1 != null ? b($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(djx $$0, iv $$1, ebe $$2, bxu $$3, czy $$4) {
-      if (!$$0.A_()) {
-         iv $$5 = $$1.d();
-         ebe $$6 = dpl.b($$0, $$5, this.m().b(b, eca.a).b(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   protected exo b_(ebe $$0) {
-      return $$0.c(e) ? exp.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(ebe $$0, dka $$1, iv $$2) {
-      if ($$0.c(b) == eca.a) {
-         return super.a($$0, $$1, $$2);
+   public ebg a(ddt $$0) {
+      iw $$1 = $$0.a();
+      ebg $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.b(b, eco.c).b(c, Boolean.valueOf(false));
       } else {
-         iv $$3 = $$2.e();
-         ebe $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+         exq $$3 = $$0.q().b_($$1);
+         ebg $$4 = this.m().b(b, eco.b).b(c, Boolean.valueOf($$3.a() == exr.c));
+         jc $$5 = $$0.k();
+         return $$5 != jc.a && ($$5 == jc.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, eco.a);
       }
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
+   protected boolean a(ebg $$0, ddt $$1) {
+      daa $$2 = $$1.n();
+      eco $$3 = $$0.c(b);
+      if ($$3 == eco.c || !$$2.a(this.h())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
+         jc $$5 = $$1.k();
+         return $$3 == eco.b ? $$5 == jc.b || $$4 && $$5.o().d() : $$5 == jc.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
+   }
+
+   @Override
+   protected exq b_(ebg $$0) {
+      return $$0.c(c) ? exr.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public boolean a(dka $$0, iw $$1, ebg $$2, exq $$3) {
+      return $$2.c(b) != eco.c ? dup.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable bxw $$0, djd $$1, iw $$2, ebg $$3, exp $$4) {
+      return $$3.c(b) != eco.c ? dup.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, exr.c, exr.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b, e, d);
-   }
-
-   @Override
-   public boolean a(dka $$0, iv $$1, ebe $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
-      if ($$3.c(dpl.b) == eca.b) {
-         iv $$4 = $$2.d();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         dmz.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         iv $$5 = $$2.e();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+   protected boolean a(ebg $$0, eyf $$1) {
+      switch ($$1) {
+         case a:
+            return false;
+         case b:
+            return $$0.y().a(axl.a);
+         case c:
+            return false;
+         default:
+            return false;
       }
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float au_() {
-      return 0.1F;
    }
 }

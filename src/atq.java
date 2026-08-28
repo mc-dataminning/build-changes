@@ -1,9 +1,208 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public record atq(String a, xa b, auq c, Optional<aul> d) {
-   public xa a(boolean $$0, xa $$1) {
-      return xd.a(this.c.a(xa.b(this.a)))
-         .a($$2 -> $$2.a($$0 ? o.k : o.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xg.e(xa.i().b(this.b).f("\n").b($$1))));
+public class atq extends atk {
+   static final Logger c = LogUtils.getLogger();
+   private final atq.b d;
+   private final String e;
+
+   atq(ats $$0, atq.b $$1, String $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   private static String b(atv $$0, alk $$1) {
+      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
+   }
+
+   @Nullable
+   @Override
+   public auz<InputStream> a(String... $$0) {
+      return this.b(String.join("/", $$0));
+   }
+
+   @Override
+   public auz<InputStream> a(atv $$0, alk $$1) {
+      return this.b(b($$0, $$1));
+   }
+
+   private String a(String $$0) {
+      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
+   }
+
+   @Nullable
+   private auz<InputStream> b(String $$0) {
+      ZipFile $$1 = this.d.a();
+      if ($$1 == null) {
+         return null;
+      } else {
+         ZipEntry $$2 = $$1.getEntry(this.a($$0));
+         return $$2 == null ? null : auz.create($$1, $$2);
+      }
+   }
+
+   @Override
+   public Set<String> a(atv $$0) {
+      ZipFile $$1 = this.d.a();
+      if ($$1 == null) {
+         return Set.of();
+      } else {
+         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
+         Set<String> $$3 = Sets.newHashSet();
+         String $$4 = this.a($$0.a() + "/");
+
+         while ($$2.hasMoreElements()) {
+            ZipEntry $$5 = $$2.nextElement();
+            String $$6 = $$5.getName();
+            String $$7 = a($$4, $$6);
+            if (!$$7.isEmpty()) {
+               if (alk.j($$7)) {
+                  $$3.add($$7);
+               } else {
+                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
+               }
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static String a(String $$0, String $$1) {
+      if (!$$1.startsWith($$0)) {
+         return "";
+      } else {
+         int $$2 = $$0.length();
+         int $$3 = $$1.indexOf(47, $$2);
+         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.d.close();
+   }
+
+   @Override
+   public void a(atv $$0, String $$1, String $$2, att.a $$3) {
+      ZipFile $$4 = this.d.a();
+      if ($$4 != null) {
+         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
+         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
+         String $$7 = $$6 + $$2 + "/";
+
+         while ($$5.hasMoreElements()) {
+            ZipEntry $$8 = $$5.nextElement();
+            if (!$$8.isDirectory()) {
+               String $$9 = $$8.getName();
+               if ($$9.startsWith($$7)) {
+                  String $$10 = $$9.substring($$6.length());
+                  alk $$11 = alk.b($$1, $$10);
+                  if ($$11 != null) {
+                     $$3.accept($$11, auz.create($$4, $$8));
+                  } else {
+                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public static class a implements auo.c {
+      private final File a;
+
+      public a(Path $$0) {
+         this($$0.toFile());
+      }
+
+      public a(File $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public att a(ats $$0) {
+         atq.b $$1 = new atq.b(this.a);
+         return new atq($$0, $$1, "");
+      }
+
+      @Override
+      public att a(ats $$0, auo.a $$1) {
+         atq.b $$2 = new atq.b(this.a);
+         att $$3 = new atq($$0, $$2, "");
+         List<String> $$4 = $$1.d();
+         if ($$4.isEmpty()) {
+            return $$3;
+         } else {
+            List<att> $$5 = new ArrayList<>($$4.size());
+
+            for (String $$6 : $$4) {
+               $$5.add(new atq($$0, $$2, $$6));
+            }
+
+            return new atm($$3, $$5);
+         }
+      }
+   }
+
+   static class b implements AutoCloseable {
+      final File a;
+      @Nullable
+      private ZipFile b;
+      private boolean c;
+
+      b(File $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      ZipFile a() {
+         if (this.c) {
+            return null;
+         } else {
+            if (this.b == null) {
+               try {
+                  this.b = new ZipFile(this.a);
+               } catch (IOException var2) {
+                  atq.c.error("Failed to open pack {}", this.a, var2);
+                  this.c = true;
+                  return null;
+               }
+            }
+
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            IOUtils.closeQuietly(this.b);
+            this.b = null;
+         }
+      }
+
+      @Override
+      protected void finalize() throws Throwable {
+         this.close();
+         super.finalize();
+      }
    }
 }

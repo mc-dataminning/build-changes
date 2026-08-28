@@ -1,77 +1,282 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class vf extends vg {
-   private int a;
-   private final Set<va<?>> b;
-   private final Deque<vi> c = new ArrayDeque<>();
+public class vf implements ve {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 8;
+   private static final int c = 64;
+   private static final int d = 128;
+   private static final o e = o.l;
+   private static final o f = o.k;
+   private static final o g = o.g;
+   private static final o h = o.m;
+   private static final Pattern i = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String j = "[";
+   private static final String k = "]";
+   private static final String l = ";";
+   private static final String m = " ";
+   private static final String n = "{";
+   private static final String o = "}";
+   private static final String p = "\n";
+   private static final String q = ": ";
+   private static final String r = String.valueOf(',');
+   private static final String s = r + "\n";
+   private static final String t = r + " ";
+   private static final xc u = xc.b("<...>").a(o.h);
+   private static final xc v = xc.b("b").a(h);
+   private static final xc w = xc.b("s").a(h);
+   private static final xc x = xc.b("I").a(h);
+   private static final xc y = xc.b("L").a(h);
+   private static final xc z = xc.b("f").a(h);
+   private static final xc A = xc.b("d").a(h);
+   private static final xc B = xc.b("B").a(h);
+   private final String C;
+   private int D;
+   private int E;
+   private final xq F = xc.i();
 
-   public vf(vh... $$0) {
-      this.a = $$0.length;
-      Builder<va<?>> $$1 = ImmutableSet.builder();
-      vi $$2 = vi.a();
+   public vf(String $$0) {
+      this.C = $$0;
+   }
 
-      for (vh $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
+   public xc a(va $$0) {
+      $$0.a(this);
+      return this.F;
+   }
+
+   @Override
+   public void a(uy $$0) {
+      String $$1 = uy.b($$0.k());
+      String $$2 = $$1.substring(0, 1);
+      xc $$3 = xc.b($$1.substring(1, $$1.length() - 1)).a(f);
+      this.F.f($$2).b($$3).f($$2);
+   }
+
+   @Override
+   public void a(ty $$0) {
+      this.F.b(xc.b(String.valueOf($$0.n())).a(g)).b(v);
+   }
+
+   @Override
+   public void a(ut $$0) {
+      this.F.b(xc.b(String.valueOf($$0.n())).a(g)).b(w);
+   }
+
+   @Override
+   public void a(uf $$0) {
+      this.F.b(xc.b(String.valueOf($$0.n())).a(g));
+   }
+
+   @Override
+   public void a(ui $$0) {
+      this.F.b(xc.b(String.valueOf($$0.n())).a(g)).b(y);
+   }
+
+   @Override
+   public void a(ud $$0) {
+      this.F.b(xc.b(String.valueOf($$0.n())).a(g)).b(z);
+   }
+
+   @Override
+   public void a(ub $$0) {
+      this.F.b(xc.b(String.valueOf($$0.n())).a(g)).b(A);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      this.F.f("[").b(B).f(";");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         xq $$3 = xc.b(String.valueOf($$1[$$2])).a(g);
+         this.F.f(" ").b($$3).b(B);
+         if ($$2 != $$1.length - 1) {
+            this.F.f(r);
+         }
       }
 
-      this.c.push($$2);
-      $$1.add(tz.b);
-      this.b = $$1.build();
-   }
-
-   @Override
-   public uv.b b(va<?> $$0) {
-      return $$0 != tz.b ? uv.b.c : super.b($$0);
-   }
-
-   @Override
-   public uv.a a(va<?> $$0) {
-      vi $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return uv.a.d;
-      } else {
-         return !this.b.contains($$0) ? uv.a.b : super.a($$0);
+      if ($$1.length > 128) {
+         this.F.b(u);
       }
+
+      this.F.f("]");
    }
 
    @Override
-   public uv.a a(va<?> $$0, String $$1) {
-      vi $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
+   public void a(ue $$0) {
+      this.F.f("[").b(x).f(";");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         this.F.f(" ").b(xc.b(String.valueOf($$1[$$2])).a(g));
+         if ($$2 != $$1.length - 1) {
+            this.F.f(r);
+         }
+      }
+
+      if ($$1.length > 128) {
+         this.F.b(u);
+      }
+
+      this.F.f("]");
+   }
+
+   @Override
+   public void a(uh $$0) {
+      this.F.f("[").b(y).f(";");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         xc $$3 = xc.b(String.valueOf($$1[$$2])).a(g);
+         this.F.f(" ").b($$3).b(y);
+         if ($$2 != $$1.length - 1) {
+            this.F.f(r);
+         }
+      }
+
+      if ($$1.length > 128) {
+         this.F.b(u);
+      }
+
+      this.F.f("]");
+   }
+
+   private static boolean b(ug $$0) {
+      if ($$0.size() >= 8) {
+         return false;
       } else {
-         if ($$0 == tz.b) {
-            vi $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
+         for (va $$1 : $$0) {
+            if (!($$1 instanceof uq)) {
+               return true;
             }
          }
 
-         return uv.a.b;
+         return false;
       }
    }
 
    @Override
-   public uv.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
+   public void a(ug $$0) {
+      if ($$0.isEmpty()) {
+         this.F.f("[]");
+      } else if (this.E >= 64) {
+         this.F.f("[").b(u).f("]");
+      } else if (!b($$0)) {
+         this.F.f("[");
 
-      return super.b();
+         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+            if ($$1 != 0) {
+               this.F.f(t);
+            }
+
+            this.a($$0.c($$1), false);
+         }
+
+         this.F.f("]");
+      } else {
+         this.F.f("[");
+         if (!this.C.isEmpty()) {
+            this.F.f("\n");
+         }
+
+         String $$2 = Strings.repeat(this.C, this.D + 1);
+
+         for (int $$3 = 0; $$3 < $$0.size() && $$3 < 128; $$3++) {
+            this.F.f($$2);
+            this.a($$0.c($$3), true);
+            if ($$3 != $$0.size() - 1) {
+               this.F.f(this.C.isEmpty() ? t : s);
+            }
+         }
+
+         if ($$0.size() > 128) {
+            this.F.f($$2).b(u);
+         }
+
+         if (!this.C.isEmpty()) {
+            this.F.f("\n" + Strings.repeat(this.C, this.D));
+         }
+
+         this.F.f("]");
+      }
    }
 
-   public int c() {
-      return this.a;
+   @Override
+   public void a(ua $$0) {
+      if ($$0.j()) {
+         this.F.f("{}");
+      } else if (this.E >= 64) {
+         this.F.f("{").b(u).f("}");
+      } else {
+         this.F.f("{");
+         Collection<String> $$1 = $$0.e();
+         if (a.isDebugEnabled()) {
+            List<String> $$2 = Lists.newArrayList($$0.e());
+            Collections.sort($$2);
+            $$1 = $$2;
+         }
+
+         if (!this.C.isEmpty()) {
+            this.F.f("\n");
+         }
+
+         String $$3 = Strings.repeat(this.C, this.D + 1);
+         Iterator<String> $$4 = $$1.iterator();
+
+         while ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            this.F.f($$3).b(a($$5)).f(": ");
+            this.a($$0.a($$5), true);
+            if ($$4.hasNext()) {
+               this.F.f(this.C.isEmpty() ? t : s);
+            }
+         }
+
+         if (!this.C.isEmpty()) {
+            this.F.f("\n" + Strings.repeat(this.C, this.D));
+         }
+
+         this.F.f("}");
+      }
+   }
+
+   private void a(va $$0, boolean $$1) {
+      if ($$1) {
+         this.D++;
+      }
+
+      this.E++;
+
+      try {
+         $$0.a(this);
+      } finally {
+         if ($$1) {
+            this.D--;
+         }
+
+         this.E--;
+      }
+   }
+
+   protected static xc a(String $$0) {
+      if (i.matcher($$0).matches()) {
+         return xc.b($$0).a(e);
+      } else {
+         String $$1 = uy.b($$0);
+         String $$2 = $$1.substring(0, 1);
+         xc $$3 = xc.b($$1.substring(1, $$1.length() - 1)).a(e);
+         return xc.b($$2).b($$3).f($$2);
+      }
+   }
+
+   @Override
+   public void a(uc $$0) {
    }
 }

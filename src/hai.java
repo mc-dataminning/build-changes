@@ -1,42 +1,55 @@
-public class hai extends gyh<csv, hgi> {
-   private static final ali a = ali.b("textures/entity/shulker/spark.png");
-   private static final gsl g = gsl.j(a);
-   private final gjt h;
+public class hai extends gzq<ckn, hgi, gjr> {
+   private static final alk a = alk.b("textures/entity/fish/salmon.png");
+   private final gjr j;
+   private final gjr k;
+   private final gjr l;
 
-   public hai(gyi.a $$0) {
-      super($$0);
-      this.h = new gjt($$0.a(gld.cW));
+   public hai(gyk.a $$0) {
+      super($$0, new gjr($$0.a(glf.cK)), 0.4F);
+      this.j = new gjr($$0.a(glf.cM));
+      this.k = new gjr($$0.a(glf.cK));
+      this.l = new gjr($$0.a(glf.cL));
    }
 
-   protected int a(csv $$0, iv $$1) {
-      return 15;
+   public void a(ckn $$0, hgi $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gA();
    }
 
-   public void a(hgi $$0, flo $$1, gsa $$2, int $$3) {
-      $$1.a();
-      float $$4 = $$0.u;
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees(azo.a($$4 * 0.1F) * 180.0F));
-      $$1.a(a.b.rotationDegrees(azo.b($$4 * 0.1F) * 180.0F));
-      $$1.a(a.f.rotationDegrees(azo.a($$4 * 0.15F) * 360.0F));
-      $$1.b(-0.5F, -0.5F, 0.5F);
-      this.h.a($$0);
-      flr $$5 = $$2.getBuffer(this.h.a(a));
-      this.h.a($$1, $$5, $$3, hkq.d);
-      $$1.b(1.5F, 1.5F, 1.5F);
-      flr $$6 = $$2.getBuffer(g);
-      this.h.a($$1, $$6, $$3, hkq.d, 654311423);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public alk a(hgi $$0) {
+      return a;
    }
 
-   public hgi a() {
+   public hgi b() {
       return new hgi();
    }
 
-   public void a(csv $$0, hgi $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.l($$2);
-      $$1.a = $$0.k($$2);
+   protected void a(hgi $$0, flq $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 1.0F;
+      float $$5 = 1.0F;
+      if (!$$0.ak) {
+         $$4 = 1.3F;
+         $$5 = 1.7F;
+      }
+
+      float $$6 = $$4 * 4.3F * azq.a($$5 * 0.6F * $$0.u);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.ak) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
+   }
+
+   public void a(hgi $$0, flq $$1, gsc $$2, int $$3) {
+      if ($$0.a == ckn.a.a) {
+         this.g = this.j;
+      } else if ($$0.a == ckn.a.c) {
+         this.g = this.l;
+      } else {
+         this.g = this.k;
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

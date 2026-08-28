@@ -1,43 +1,60 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class dax extends czu {
-   public dax(czu.a $$0) {
-      super($$0);
+public class dax extends cyi {
+   public dax(dne $$0, czw.a $$1) {
+      super($$0, $$1);
    }
 
-   public static ddb a() {
-      jg<dnc> $$0 = mg.a(mg.e);
-      return new ddb(
-         List.of(ddb.a.a(jj.a(dne.bz.p()), 15.0F), ddb.a.b($$0.b(axe.Q), 15.0F), ddb.a.b($$0.b(axe.a), 5.0F), ddb.a.b(jj.a(dne.fx.p(), dne.fy.p()), 2.0F)),
-         1.0F,
-         1,
-         true
-      );
+   @Nullable
+   @Override
+   public ddt b(ddt $$0) {
+      iw $$1 = $$0.a();
+      djz $$2 = $$0.q();
+      ebg $$3 = $$2.a_($$1);
+      dne $$4 = this.c();
+      if (!$$3.a($$4)) {
+         return dub.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         jc $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == jc.b ? $$0.g() : jc.b;
+         }
+
+         int $$7 = 0;
+         iw.a $$8 = $$1.k().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               crz $$9 = $$0.o();
+               int $$10 = $$2.ao();
+               if ($$9 instanceof arv && $$8.v() > $$10) {
+                  ((arv)$$9).b(xc.a("build.tooHigh", $$10).a(o.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.c())) {
+               if ($$3.a($$0)) {
+                  return ddt.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public bur a(ddt $$0) {
-      djx $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      ebe $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dqv $$5 && !$$5.q($$3)) {
-         crx $$6 = $$0.o();
-         czy $$7 = $$0.n();
-         if ($$6 instanceof art) {
-            aq.N.a((art)$$6, $$2, $$7);
-         }
-
-         $$1.a($$6, $$2, awp.lR, awq.e, 1.0F, 1.0F);
-         ebe $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(ege.c, $$2, ege.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bxu.d($$0.p()));
-         }
-
-         return bur.a;
-      }
-
-      return super.a($$0);
+   protected boolean b() {
+      return false;
    }
 }

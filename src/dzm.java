@@ -1,98 +1,63 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
-public class dzm extends dyc implements egg.b<dzm.a> {
-   private final dzm.a a;
+public record dzm(Optional<czw> d, Optional<czw> e, Optional<czw> f, Optional<czw> g) implements ddf {
+   public static final dzm a = new dzm(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dzm> b = mh.g.q().sizeLimitedListOf(4).xmap(dzm::new, dzm::a);
+   public static final za<wn, dzm> c = yy.a(mi.K).a(yy.c(4)).a(dzm::new, dzm::a);
 
-   public dzm(iv $$0, ebe $$1) {
-      super(dye.L, $$0, $$1);
-      this.a = new dzm.a($$1, new ega($$0));
+   private dzm(List<czw> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
    }
 
-   public static void a(djx $$0, iv $$1, ebe $$2, dzm $$3) {
-      $$3.a.d().a($$0, $$1, $$0.G_(), true);
+   public dzm(czw $$0, czw $$1, czw $$2, czw $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
+   }
+
+   private static Optional<czw> a(List<czw> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
+      } else {
+         czw $$2 = $$0.get($$1);
+         return $$2 == dae.rB ? Optional.empty() : Optional.of($$2);
+      }
+   }
+
+   public List<czw> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(dae.rB)).toList();
    }
 
    @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.a.b.a($$0);
+   public void a(czw.b $$0, Consumer<xc> $$1, dbp $$2, kg $$3) {
+      if (!this.equals(a)) {
+         $$1.accept(xb.a);
+         a($$1, this.g);
+         a($$1, this.e);
+         a($$1, this.f);
+         a($$1, this.d);
+      }
    }
 
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
+   private static void a(Consumer<xc> $$0, Optional<czw> $$1) {
+      $$0.accept(new daa($$1.orElse(dae.rB), 1).y().e().a(o.h));
    }
 
-   public dzm.a a() {
-      return this.a;
+   public Optional<czw> b() {
+      return this.d;
    }
 
-   public static class a implements egg {
-      public static final int a = 8;
-      final duf b;
-      private final ebe c;
-      private final egi d;
+   public Optional<czw> c() {
+      return this.e;
+   }
 
-      public a(ebe $$0, egi $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = duf.a();
-      }
+   public Optional<czw> d() {
+      return this.f;
+   }
 
-      @Override
-      public egi a() {
-         return this.d;
-      }
-
-      @Override
-      public int b() {
-         return 8;
-      }
-
-      @Override
-      public egg.a c() {
-         return egg.a.b;
-      }
-
-      @Override
-      public boolean a(ars $$0, jf<ege> $$1, ege.a $$2, ffq $$3) {
-         if ($$1.a(ege.p) && $$2.a() instanceof bxu $$4) {
-            if (!$$4.eL()) {
-               bvi $$5 = $$4.eI();
-               int $$6 = $$4.a($$0, y.a($$5, bvi::d));
-               if ($$4.eo() && $$6 > 0) {
-                  this.b.a(iv.a((jp)$$3.a(jb.b, 0.5)), $$6);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eK();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, iv.a((jp)$$1x), this.c, $$0.G_()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public duf d() {
-         return this.b;
-      }
-
-      private void a(ars $$0, iv $$1, ebe $$2, azx $$3) {
-         $$0.a($$1, $$2.b(duc.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(ly.K, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, awp.wQ, awq.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(djx $$0, bxu $$1) {
-         if ($$1.er() instanceof art $$3) {
-            bvi $$4 = $$1.eI() == null ? $$0.al().a((crx)$$3) : $$1.eI();
-            aq.Z.a($$3, $$1, $$4);
-         }
-      }
+   public Optional<czw> e() {
+      return this.g;
    }
 }

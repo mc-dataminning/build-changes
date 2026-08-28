@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface eqs {
+public interface eqs {
+   @Nullable
+   ebg a(ehj var1, int var2, int var3, int var4);
 }

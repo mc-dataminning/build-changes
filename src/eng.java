@@ -1,33 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eng(int b, int c, int d, int e, int f, btw g, float h) implements emp {
+public class eng implements emr {
    public static final Codec<eng> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eng::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eng::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eng::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eng::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eng::f),
-               btw.c.fieldOf("extra_rare_growths").forGetter(eng::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eng::h)
+               ebg.a.fieldOf("target").forGetter($$0x -> $$0x.b),
+               ebg.a.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bty.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, eng::new)
    );
+   public final ebg b;
+   public final ebg c;
+   private final bty d;
 
-   public int a() {
-      return this.b;
+   public eng(ebg $$0, ebg $$1, bty $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   public bty a() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

@@ -1,59 +1,43 @@
-import com.mojang.serialization.Codec;
-
 public class byv {
-   public static final Codec<jf<byv>> a = mg.s.r();
-   public static final yy<wl, jf<byv>> b = yw.b(mh.c);
-   private final double c;
-   private boolean d;
-   private final String e;
-   private byv.a f = byv.a.a;
+   private float a;
+   private float b;
+   private float c;
+   private float d = 1.0F;
 
-   protected byv(String $$0, double $$1) {
-      this.c = $$1;
-      this.e = $$0;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   public double a() {
-      return this.c;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
+      this.d = $$2;
    }
 
-   public boolean b() {
-      return this.d;
+   public void a() {
+      this.a = 0.0F;
+      this.b = 0.0F;
+      this.c = 0.0F;
    }
 
-   public byv a(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public float b() {
+      return this.b;
    }
 
-   public byv a(byv.a $$0) {
-      this.f = $$0;
-      return this;
+   public float b(float $$0) {
+      return Math.min(azq.h($$0, this.a, this.b), 1.0F);
    }
 
-   public double a(double $$0) {
-      return $$0;
+   public float c() {
+      return this.c * this.d;
    }
 
-   public String c() {
-      return this.e;
+   public float c(float $$0) {
+      return (this.c - this.b * (1.0F - $$0)) * this.d;
    }
 
-   public o b(boolean $$0) {
-      return this.f.a($$0);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public o a(boolean $$0) {
-         return switch (this) {
-            case a -> $$0 ? o.j : o.m;
-            case b -> o.h;
-            case c -> $$0 ? o.m : o.j;
-         };
-      }
+   public boolean d() {
+      return this.b > 1.0E-5F;
    }
 }

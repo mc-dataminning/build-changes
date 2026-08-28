@@ -1,42 +1,96 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cci {
-   private static final int a = 60;
+public class cci extends bzn<crl> {
+   private Set<czw> c = ImmutableSet.of();
 
-   public static bzm<byc> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return ccy.a(
-         (Function<ccy.b<byc>, ? extends App<ccy.c<byc>, cdb<byc>>>)($$3 -> $$3.group($$3.c(cgw.p), $$3.c(cgw.n), $$3.a(cgw.o))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dv()).a(axj.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        iv $$8 = $$6.dv();
-                        iv.a $$9 = new iv.a();
-                        ffv $$10 = ffv.a($$6);
+   public cci() {
+      super(ImmutableMap.of(cgy.r, cgz.a, cgy.h, cgz.a));
+   }
 
-                        for (iv $$11 : iv.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              ebe $$12 = $$5x.a_($$11);
-                              ebe $$13 = $$5x.a_($$9.a($$11, jb.a));
-                              if (!$$12.a(dne.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jb.b)) {
-                                 iv $$14 = $$11.j();
-                                 $$5.a(new bzo($$14));
-                                 $$4.a(new cgz(new bzo($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
+   protected boolean a(aru $$0, crl $$1) {
+      return bzp.a($$1.ec(), cgy.r, bxe.bE);
+   }
 
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean a(aru $$0, crl $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aru $$0, crl $$1, long $$2) {
+      crl $$3 = (crl)$$1.ec().c(cgy.r).get();
+      bzp.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(aru $$0, crl $$1, long $$2) {
+      crl $$3 = (crl)$$1.ec().c(cgy.r).get();
+      if (!($$1.g($$3) > 5.0)) {
+         bzp.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         boolean $$4 = $$1.gC().b().a(cro.g);
+         if ($$1.gL() && ($$4 || $$3.gM())) {
+            a($$1, crl.bL.keySet(), $$3);
+         }
+
+         if ($$4 && $$1.n().a_(dae.qk) > dae.qk.g() / 2) {
+            a($$1, ImmutableSet.of(dae.qk), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.n().a(this.c)) {
+            a($$1, this.c, $$3);
+         }
+      }
+   }
+
+   protected void d(aru $$0, crl $$1, long $$2) {
+      $$1.ec().b(cgy.r);
+   }
+
+   private static Set<czw> a(crl $$0, crl $$1) {
+      ImmutableSet<czw> $$2 = $$1.gC().b().a().d();
+      ImmutableSet<czw> $$3 = $$0.gC().b().a().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
+
+   private static void a(crl $$0, Set<czw> $$1, bxw $$2) {
+      bva $$3 = $$0.n();
+      daa $$4 = daa.k;
+      int $$5 = 0;
+
+      while ($$5 < $$3.b()) {
+         daa $$6;
+         czw $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               $$7 = $$6.h();
+               if ($$1.contains($$7)) {
+                  if ($$6.M() > $$6.k() / 2) {
+                     $$8 = $$6.M() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.M() > 24) {
+                     $$8 = $$6.M() - 24;
+                     break label28;
+                  }
+               }
+            }
+
+            $$5++;
+            continue;
+         }
+
+         $$6.h($$8);
+         $$4 = new daa($$7, $$8);
+         break;
+      }
+
+      if (!$$4.f()) {
+         bzp.a($$0, $$4, $$2.dt());
+      }
    }
 }

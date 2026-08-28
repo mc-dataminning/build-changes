@@ -1,36 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public enum ega {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public class ega implements egi {
-   public static final MapCodec<ega> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(iv.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, ega::new));
-   public static final yy<ByteBuf, ega> b = yy.a(iv.b, $$0 -> $$0.e, ega::new);
-   private final iv e;
+   private final boolean d;
+   private final boolean e;
 
-   public ega(iv $$0) {
-      this.e = $$0;
+   private ega(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public Optional<ffq> a(djx $$0) {
-      return Optional.of(ffq.b(this.e));
+   public boolean a() {
+      return this.e;
    }
 
-   @Override
-   public egj<ega> a() {
-      return egj.a;
+   public boolean b() {
+      return this.d;
    }
 
-   public static class a implements egj<ega> {
-      @Override
-      public MapCodec<ega> a() {
-         return ega.a;
-      }
-
-      @Override
-      public yy<ByteBuf, ega> b() {
-         return ega.b;
+   public static ega a(ari $$0) {
+      if ($$0.a(ari.d)) {
+         return c;
+      } else {
+         return $$0.a(ari.b) ? b : a;
       }
    }
 }

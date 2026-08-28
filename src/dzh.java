@@ -1,141 +1,437 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class dzh extends dyc implements fhc.a {
-   public static final String b = "RecordItem";
-   public static final String c = "ticks_since_song_started";
-   private czy d = czy.k;
-   private final daf e = new daf(this::k, this.aB_());
+public class dzh extends dzn implements dzg {
+   public static final int d = 8;
+   public static final int e = 5;
+   private static final int[][] f = new int[54][];
+   private static final int g = -1;
+   private jp<daa> h = jp.a(5, daa.k);
+   private int i = -1;
+   private long j;
+   private jc k;
 
-   public dzh(iv $$0, ebe $$1) {
-      super(dye.e, $$0, $$1);
+   public dzh(iw $$0, ebg $$1) {
+      super(dyg.s, $$0, $$1);
+      this.k = $$1.c(dre.b);
    }
 
-   public daf j() {
-      return this.e;
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.h = jp.a(this.b(), daa.k);
+      if (!this.b_($$0)) {
+         bun.b($$0, this.h, $$1);
+      }
+
+      this.i = $$0.b("TransferCooldown", -1);
    }
 
-   public void k() {
-      this.n.a(this.aB_(), this.m().b());
-      this.e();
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bun.a($$0, this.h, $$1);
+      }
+
+      $$0.a("TransferCooldown", this.i);
    }
 
-   private void a(boolean $$0) {
-      if (this.n != null && this.n.a_(this.aB_()) == this.m()) {
-         this.n.a(this.aB_(), this.m().b(drk.b, Boolean.valueOf($$0)), 2);
-         this.n.a(ege.c, this.aB_(), ege.a.a(this.m()));
+   @Override
+   public int b() {
+      return this.h.size();
+   }
+
+   @Override
+   public daa a(int $$0, int $$1) {
+      this.d_(null);
+      return bun.a(this.f(), $$0, $$1);
+   }
+
+   @Override
+   public void a(int $$0, daa $$1) {
+      this.d_(null);
+      this.f().set($$0, $$1);
+      $$1.f(this.f_($$1));
+   }
+
+   @Override
+   public void c(ebg $$0) {
+      super.c($$0);
+      this.k = $$0.c(dre.b);
+   }
+
+   @Override
+   protected xc j() {
+      return xc.c("container.hopper");
+   }
+
+   public static void a(djz $$0, iw $$1, ebg $$2, dzh $$3) {
+      $$3.i--;
+      $$3.j = $$0.ae();
+      if (!$$3.s()) {
+         $$3.d(0);
+         a($$0, $$1, $$2, $$3, () -> a($$0, (dzg)$$3));
       }
    }
 
-   public void s() {
-      if (this.n != null && !this.n.C) {
-         iv $$0 = this.aB_();
-         czy $$1 = this.f();
-         if (!$$1.f()) {
-            this.h();
-            ffq $$2 = ffq.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
-            czy $$3 = $$1.v();
-            coc $$4 = new coc(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.j();
-            this.n.b($$4);
+   private static boolean a(djz $$0, iw $$1, ebg $$2, dzh $$3, BooleanSupplier $$4) {
+      if ($$0.C) {
+         return false;
+      } else {
+         if (!$$3.s() && $$2.c(dre.c)) {
+            boolean $$5 = false;
+            if (!$$3.c()) {
+               $$5 = a($$0, $$1, $$3);
+            }
+
+            if (!$$3.k()) {
+               $$5 |= $$4.getAsBoolean();
+            }
+
+            if ($$5) {
+               $$3.d(8);
+               a($$0, $$1, $$2);
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private boolean k() {
+      for (daa $$0 : this.h) {
+         if ($$0.f() || $$0.M() != $$0.k()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(djz $$0, iw $$1, dzh $$2) {
+      bum $$3 = b($$0, $$1, $$2);
+      if ($$3 == null) {
+         return false;
+      } else {
+         jc $$4 = $$2.k.g();
+         if (b($$3, $$4)) {
+            return false;
+         } else {
+            for (int $$5 = 0; $$5 < $$2.b(); $$5++) {
+               daa $$6 = $$2.a($$5);
+               if (!$$6.f()) {
+                  int $$7 = $$6.M();
+                  daa $$8 = a($$2, $$3, $$2.a($$5, 1), $$4);
+                  if ($$8.f()) {
+                     $$3.e();
+                     return true;
+                  }
+
+                  $$6.e($$7);
+                  if ($$7 == 1) {
+                     $$2.a($$5, $$6);
+                  }
+               }
+            }
+
+            return false;
          }
       }
    }
 
-   public static void a(djx $$0, iv $$1, ebe $$2, dzh $$3) {
-      $$3.e.b($$0, $$2);
-   }
-
-   public int u() {
-      return dae.a(this.n.J_(), this.d).map(jf::a).map(dae::e).orElse(0);
-   }
-
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      alg<uy> $$2 = $$1.a(un.a);
-      czy $$3 = $$0.<czy>a("RecordItem", czy.b, $$2).orElse(czy.k);
-      if (!this.d.f() && !czy.c($$3, this.d)) {
-         this.e.a(this.n, this.m());
-      }
-
-      this.d = $$3;
-      $$0.f("ticks_since_song_started").ifPresent($$1x -> dae.a($$1, this.d).ifPresent($$1xx -> this.e.a($$1xx, $$1x)));
-   }
-
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f().f()) {
-         alg<uy> $$2 = $$1.a(un.a);
-         $$0.a("RecordItem", czy.b, $$2, this.f());
-      }
-
-      if (this.e.b() != null) {
-         $$0.a("ticks_since_song_started", this.e.c());
+   private static int[] a(bum $$0, jc $$1) {
+      if ($$0 instanceof bvd $$2) {
+         return $$2.a($$1);
+      } else {
+         int $$3 = $$0.b();
+         if ($$3 < f.length) {
+            int[] $$4 = f[$$3];
+            if ($$4 != null) {
+               return $$4;
+            } else {
+               int[] $$5 = c($$3);
+               f[$$3] = $$5;
+               return $$5;
+            }
+         } else {
+            return c($$3);
+         }
       }
    }
 
-   @Override
-   public czy f() {
-      return this.d;
-   }
+   private static int[] c(int $$0) {
+      int[] $$1 = new int[$$0];
+      int $$2 = 0;
 
-   @Override
-   public czy c(int $$0) {
-      czy $$1 = this.d;
-      this.b(czy.k);
+      while ($$2 < $$1.length) {
+         $$1[$$2] = $$2++;
+      }
+
       return $$1;
    }
 
-   @Override
-   public void b(czy $$0) {
-      this.d = $$0;
-      boolean $$1 = !this.d.f();
-      Optional<jf<dae>> $$2 = dae.a(this.n.J_(), this.d);
-      this.a($$1);
-      if ($$1 && $$2.isPresent()) {
-         this.e.a(this.n, $$2.get());
+   private static boolean b(bum $$0, jc $$1) {
+      int[] $$2 = a($$0, $$1);
+
+      for (int $$3 : $$2) {
+         daa $$4 = $$0.a($$3);
+         if ($$4.M() < $$4.k()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean a(djz $$0, dzg $$1) {
+      iw $$2 = iw.a($$1.B(), $$1.C() + 1.0, $$1.D());
+      ebg $$3 = $$0.a_($$2);
+      bum $$4 = a($$0, $$1, $$2, $$3);
+      if ($$4 != null) {
+         jc $$5 = jc.a;
+
+         for (int $$6 : a($$4, $$5)) {
+            if (a($$1, $$4, $$6, $$5)) {
+               return true;
+            }
+         }
+
+         return false;
       } else {
-         this.e.a(this.n, this.m());
+         boolean $$7 = $$1.E() && $$3.m($$0, $$2) && !$$3.a(axg.cG);
+         if (!$$7) {
+            for (coe $$8 : b($$0, $$1)) {
+               if (a($$1, $$8)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static boolean a(dzg $$0, bum $$1, int $$2, jc $$3) {
+      daa $$4 = $$1.a($$2);
+      if (!$$4.f() && a($$0, $$1, $$4, $$2, $$3)) {
+         int $$5 = $$4.M();
+         daa $$6 = a($$1, $$0, $$1.a($$2, 1), null);
+         if ($$6.f()) {
+            $$1.e();
+            return true;
+         }
+
+         $$4.e($$5);
+         if ($$5 == 1) {
+            $$1.a($$2, $$4);
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(bum $$0, coe $$1) {
+      boolean $$2 = false;
+      daa $$3 = $$1.f().v();
+      daa $$4 = a(null, $$0, $$3, null);
+      if ($$4.f()) {
+         $$2 = true;
+         $$1.a(daa.k);
+         $$1.aq();
+      } else {
+         $$1.a($$4);
+      }
+
+      return $$2;
+   }
+
+   public static daa a(@Nullable bum $$0, bum $$1, daa $$2, @Nullable jc $$3) {
+      if ($$1 instanceof bvd $$4 && $$3 != null) {
+         int[] $$5 = $$4.a($$3);
+
+         for (int $$6 = 0; $$6 < $$5.length && !$$2.f(); $$6++) {
+            $$2 = b($$0, $$1, $$2, $$5[$$6], $$3);
+         }
+
+         return $$2;
+      }
+
+      int $$7 = $$1.b();
+
+      for (int $$8 = 0; $$8 < $$7 && !$$2.f(); $$8++) {
+         $$2 = b($$0, $$1, $$2, $$8, $$3);
+      }
+
+      return $$2;
+   }
+
+   private static boolean a(bum $$0, daa $$1, int $$2, @Nullable jc $$3) {
+      if (!$$0.b($$2, $$1)) {
+         return false;
+      } else {
+         if ($$0 instanceof bvd $$4 && !$$4.a($$2, $$1, $$3)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(bum $$0, bum $$1, daa $$2, int $$3, jc $$4) {
+      if (!$$1.a($$0, $$3, $$2)) {
+         return false;
+      } else {
+         if ($$1 instanceof bvd $$5 && !$$5.b($$3, $$2, $$4)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static daa b(@Nullable bum $$0, bum $$1, daa $$2, int $$3, @Nullable jc $$4) {
+      daa $$5 = $$1.a($$3);
+      if (a($$1, $$2, $$3, $$4)) {
+         boolean $$6 = false;
+         boolean $$7 = $$1.c();
+         if ($$5.f()) {
+            $$1.a($$3, $$2);
+            $$2 = daa.k;
+            $$6 = true;
+         } else if (a($$5, $$2)) {
+            int $$8 = $$2.k() - $$5.M();
+            int $$9 = Math.min($$2.M(), $$8);
+            $$2.h($$9);
+            $$5.g($$9);
+            $$6 = $$9 > 0;
+         }
+
+         if ($$6) {
+            if ($$7 && $$1 instanceof dzh $$10 && !$$10.t()) {
+               int $$11 = 0;
+               if ($$0 instanceof dzh $$12 && $$10.j >= $$12.j) {
+                  $$11 = 1;
+               }
+
+               $$10.d(8 - $$11);
+            }
+
+            $$1.e();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Nullable
+   private static bum b(djz $$0, iw $$1, dzh $$2) {
+      return a($$0, $$1.a($$2.k));
+   }
+
+   @Nullable
+   private static bum a(djz $$0, dzg $$1, iw $$2, ebg $$3) {
+      return a($$0, $$2, $$3, $$1.B(), $$1.C() + 1.0, $$1.D());
+   }
+
+   public static List<coe> b(djz $$0, dzg $$1) {
+      ffn $$2 = $$1.am_().d($$1.B() - 0.5, $$1.C() - 0.5, $$1.D() - 0.5);
+      return $$0.a(coe.class, $$2, bxc.a);
+   }
+
+   @Nullable
+   public static bum a(djz $$0, iw $$1) {
+      return a($$0, $$1, $$0.a_($$1), (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5);
+   }
+
+   @Nullable
+   private static bum a(djz $$0, iw $$1, ebg $$2, double $$3, double $$4, double $$5) {
+      bum $$6 = b($$0, $$1, $$2);
+      if ($$6 == null) {
+         $$6 = a($$0, $$3, $$4, $$5);
+      }
+
+      return $$6;
+   }
+
+   @Nullable
+   private static bum b(djz $$0, iw $$1, ebg $$2) {
+      dne $$3 = $$2.b();
+      if ($$3 instanceof bve) {
+         return ((bve)$$3).a($$2, $$0, $$1);
+      } else if ($$2.x() && $$0.c_($$1) instanceof bum $$5) {
+         if ($$5 instanceof dym && $$3 instanceof doi) {
+            $$5 = doi.a((doi)$$3, $$2, $$0, $$1, true);
+         }
+
+         return $$5;
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   private static bum a(djz $$0, double $$1, double $$2, double $$3) {
+      List<bwv> $$4 = $$0.a((bwv)null, new ffn($$1 - 0.5, $$2 - 0.5, $$3 - 0.5, $$1 + 0.5, $$2 + 0.5, $$3 + 0.5), bxc.d);
+      return !$$4.isEmpty() ? (bum)$$4.get($$0.A.a($$4.size())) : null;
+   }
+
+   private static boolean a(daa $$0, daa $$1) {
+      return $$0.M() <= $$0.k() && daa.c($$0, $$1);
+   }
+
+   @Override
+   public double B() {
+      return (double)this.o.u() + 0.5;
+   }
+
+   @Override
+   public double C() {
+      return (double)this.o.v() + 0.5;
+   }
+
+   @Override
+   public double D() {
+      return (double)this.o.w() + 0.5;
+   }
+
+   @Override
+   public boolean E() {
+      return true;
+   }
+
+   private void d(int $$0) {
+      this.i = $$0;
+   }
+
+   private boolean s() {
+      return this.i > 0;
+   }
+
+   private boolean t() {
+      return this.i > 8;
+   }
+
+   @Override
+   protected jp<daa> f() {
+      return this.h;
+   }
+
+   @Override
+   protected void a(jp<daa> $$0) {
+      this.h = $$0;
+   }
+
+   public static void a(djz $$0, iw $$1, ebg $$2, bwv $$3, dzh $$4) {
+      if ($$3 instanceof coe $$5 && !$$5.f().f() && $$3.cR().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w())).c($$4.am_())) {
+         a($$0, $$1, $$2, $$4, () -> a((bum)$$4, $$5));
       }
    }
 
    @Override
-   public int ao_() {
-      return 1;
-   }
-
-   @Override
-   public dyc t() {
-      return this;
-   }
-
-   @Override
-   public boolean b(int $$0, czy $$1) {
-      return $$1.c(kk.ae) && this.a($$0).f();
-   }
-
-   @Override
-   public boolean a(buk $$0, int $$1, czy $$2) {
-      return $$0.a_(czy::f);
-   }
-
-   @Override
-   public void a(iv $$0, ebe $$1) {
-      this.s();
-   }
-
-   @VisibleForTesting
-   public void c(czy $$0) {
-      this.d = $$0;
-      dae.a(this.n.J_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
-      this.n.a(this.aB_(), this.m().b());
-      this.e();
-   }
-
-   @VisibleForTesting
-   public void v() {
-      dae.a(this.n.J_(), this.f()).ifPresent($$0 -> this.e.a(this.n, (jf<dae>)$$0));
+   protected cvs a(int $$0, cry $$1) {
+      return new cwt($$0, $$1, this);
    }
 }

@@ -1,97 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtk extends dnc {
-   public static final MapCodec<dtk> a = b(dtk::new);
-   public static final ebv b = dtn.b;
+public class dtk extends dmt {
+   public static final MapCodec<dtk> b = b(dtk::new);
+   public static final ece<eck> c = ebw.aj;
 
    @Override
    public MapCodec<dtk> a() {
-      return a;
+      return b;
    }
 
-   public dtk(ebd.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a_(ebe $$0, djx $$1, iv $$2, crx $$3) {
-      d($$0, $$1, $$2);
-      super.a_($$0, $$1, $$2, $$3);
+   protected dtk(ebf.d $$0) {
+      super(false, $$0);
+      this.l(this.C.b().b(c, eck.a).b(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(djx $$0, iv $$1, ebe $$2, bwt $$3) {
-      if (!$$3.cd()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
-      if ($$2.C) {
-         a($$2, $$3);
-      } else {
-         d($$1, $$2, $$3);
-      }
-
-      return (bur)($$0.h() instanceof cyg && new ddr($$4, $$5, $$0, $$6).b() ? bur.e : bur.a);
-   }
-
-   private static void d(ebe $$0, djx $$1, iv $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
+   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3) {
+      if ($$3.m().p() && new dtl($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected boolean f(ebe $$0) {
-      return $$0.c(b);
+   public ecj<eck> c() {
+      return c;
    }
 
    @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
-      }
-   }
+   protected ebg a(ebg $$0, dty $$1) {
+      eck $$2 = $$0.c(c);
 
-   @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, czy $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, buc.a(1, 5));
-      }
-   }
-
-   @Override
-   public void a(ebe $$0, djx $$1, iv $$2, azx $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(djx $$0, iv $$1) {
-      double $$2 = 0.5625;
-      azx $$3 = $$0.A;
-
-      for (jb $$4 : jb.values()) {
-         iv $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).s()) {
-            jb.a $$6 = $$4.o();
-            double $$7 = $$6 == jb.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == jb.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == jb.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(lt.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+      return $$0.b(c, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield eck.a;
+               case b:
+                  yield eck.b;
+               case c:
+                  yield eck.d;
+               case d:
+                  yield eck.c;
+               case e:
+                  yield eck.f;
+               case f:
+                  yield eck.e;
+               case g:
+                  yield eck.i;
+               case h:
+                  yield eck.j;
+               case i:
+                  yield eck.g;
+               case j:
+                  yield eck.h;
+               default:
+                  throw new MatchException(null, null);
+            }
          }
-      }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield eck.b;
+               case b:
+                  yield eck.a;
+               case c:
+                  yield eck.e;
+               case d:
+                  yield eck.f;
+               case e:
+                  yield eck.d;
+               case f:
+                  yield eck.c;
+               case g:
+                  yield eck.j;
+               case h:
+                  yield eck.g;
+               case i:
+                  yield eck.h;
+               case j:
+                  yield eck.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield eck.b;
+               case b:
+                  yield eck.a;
+               case c:
+                  yield eck.f;
+               case d:
+                  yield eck.e;
+               case e:
+                  yield eck.c;
+               case f:
+                  yield eck.d;
+               case g:
+                  yield eck.h;
+               case h:
+                  yield eck.i;
+               case i:
+                  yield eck.j;
+               case j:
+                  yield eck.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b);
+   protected ebg a(ebg $$0, dsh $$1) {
+      eck $$2 = $$0.c(c);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(c, eck.f);
+               case f:
+                  return $$0.b(c, eck.e);
+               case g:
+                  return $$0.b(c, eck.j);
+               case h:
+                  return $$0.b(c, eck.i);
+               case i:
+                  return $$0.b(c, eck.h);
+               case j:
+                  return $$0.b(c, eck.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(c, eck.d);
+               case d:
+                  return $$0.b(c, eck.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(c, eck.h);
+               case h:
+                  return $$0.b(c, eck.g);
+               case i:
+                  return $$0.b(c, eck.j);
+               case j:
+                  return $$0.b(c, eck.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(c, a);
    }
 }

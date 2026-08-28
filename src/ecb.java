@@ -1,23 +1,14 @@
-public enum ecb implements bam {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
-
-   private final String f;
-
-   private ecb(final String $$0) {
-      this.f = $$0;
-   }
+public enum ecb implements bao {
+   a,
+   b;
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this == a ? "left" : "right";
    }
 }

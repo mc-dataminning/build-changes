@@ -1,11 +1,19 @@
-public class day extends czu {
-   public day(czu.a $$0) {
-      super($$0);
+public class day extends czx {
+   private final arv a;
+
+   public day(arv $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public xa a(czy $$0) {
-      cyw $$1 = $$0.a(kk.an);
-      return (xa)($$1 != null ? xa.c(this.n + "." + $$1.b()) : super.a($$0));
+   protected void b(alk $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.f.b(new acv($$0, $$1));
+   }
+
+   @Override
+   protected void b(alk $$0) {
+      super.b($$0);
+      this.a.f.b(new acv($$0, 0));
    }
 }

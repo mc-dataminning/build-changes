@@ -1,19 +1,24 @@
-import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public interface fyi {
-   default void a(fyh $$0, xa $$1) {
-      this.a($$0, fyk.a($$1.getString()));
+public interface fyi extends fvx, fyl {
+   fyi.a w();
+
+   default boolean E() {
+      return true;
    }
 
-   default void a(fyh $$0, String $$1) {
-      this.a($$0, fyk.a($$1));
+   default Collection<? extends fyi> L() {
+      return List.of(this);
    }
 
-   default void a(fyh $$0, xa... $$1) {
-      this.a($$0, fyk.a(ImmutableList.copyOf($$1)));
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
    }
-
-   void a(fyh var1, fyk<?> var2);
-
-   fyi a();
 }

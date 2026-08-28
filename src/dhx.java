@@ -1,14 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dhx(jf<dgl> c, btw d) implements dht {
+public record dhx(jk<dgn> c, bty d) implements dhv {
    public static final MapCodec<dhx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgl.c.fieldOf("enchantment").forGetter(dhx::b), btw.c.fieldOf("level").forGetter(dhx::c)).apply($$0, dhx::new)
+      $$0 -> $$0.group(jv.a(mi.aR).fieldOf("enchantments").forGetter(dhx::b), bty.c.fieldOf("cost").forGetter(dhx::c)).apply($$0, dhx::new)
    );
 
    @Override
-   public void a(czy $$0, dgr.a $$1, azx $$2, bup $$3) {
-      $$1.b(this.c, azo.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public void a(daa $$0, dgt.a $$1, azz $$2, bur $$3) {
+      for (dgq $$5 : dgp.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.b(), $$5.c());
+      }
    }
 
    @Override
@@ -16,11 +18,11 @@ public record dhx(jf<dgl> c, btw d) implements dht {
       return b;
    }
 
-   public jf<dgl> b() {
+   public jk<dgn> b() {
       return this.c;
    }
 
-   public btw c() {
+   public bty c() {
       return this.d;
    }
 }

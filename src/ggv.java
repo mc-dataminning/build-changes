@@ -1,58 +1,23 @@
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-
-public record ggv(boolean b, float c, float d, float e, float f, float g, Set<String> h) implements gln {
-   public ggv(Set<String> $$0) {
-      this(false, 5.0F, 2.0F, $$0);
+public class ggv extends gic<hdx> {
+   public ggv(glg $$0) {
+      super($$0, gsn::f);
    }
 
-   public ggv(boolean $$0, float $$1, float $$2, Set<String> $$3) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
+   public static glm a() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      $$1.a("back", gll.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), gli.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
+      gll $$2 = gll.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, glk.a, 1.0F, 0.8F);
+      $$1.a("cross_1", $$2, gli.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gli.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return glm.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
    }
 
-   @Override
-   public glm apply(glm $$0) {
-      float $$1 = this.b ? 1.5F / this.e : 1.0F;
-      float $$2 = 1.0F / this.f;
-      UnaryOperator<glg> $$3 = $$1x -> $$1x.c(0.0F, this.c, this.d).b($$1);
-      UnaryOperator<glg> $$4 = $$1x -> $$1x.c(0.0F, this.g, 0.0F).b($$2);
-      glm $$5 = new glm();
-
-      for (Entry<String, glo> $$6 : $$0.a().a()) {
-         String $$7 = $$6.getKey();
-         glo $$8 = $$6.getValue();
-         $$5.a().a($$7, $$8.a(this.h.contains($$7) ? $$3 : $$4));
+   public void a(hdx $$0) {
+      super.a($$0);
+      if ($$0.c > 0.0F) {
+         float $$1 = -azq.a($$0.c * 3.0F) * $$0.c;
+         this.v.g += $$1 * (float) (Math.PI / 180.0);
       }
-
-      return $$5;
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public Set<String> g() {
-      return this.h;
    }
 }

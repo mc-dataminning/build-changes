@@ -1,21 +1,25 @@
-public record acy(xa b, ww.a c) implements zh<abw> {
-   public static final yy<wl, acy> a = yy.a(xc.d, acy::b, ww.a.a, acy::e, acy::new);
+public record acy(long[] b, bpf c) implements zj<aby> {
+   public static final za<vy, acy> a = zj.a(acy::a, acy::new);
 
-   @Override
-   public zj<acy> a() {
-      return agp.B;
+   private acy(vy $$0) {
+      this($$0.d(), $$0.b(bpf.class));
    }
 
-   public void a(abw $$0) {
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zl<acy> a() {
+      return agr.z;
+   }
+
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public ww.a e() {
+   public bpf e() {
       return this.c;
    }
 }

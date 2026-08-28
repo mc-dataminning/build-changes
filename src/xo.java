@@ -1,90 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class xo implements xa {
-   private final xb c;
-   private final List<xa> d;
-   private xx e;
-   private aza f = aza.a;
-   @Nullable
-   private tu g;
+public record xo(byte[] c) {
+   public static final Codec<xo> a = ayy.r.xmap(xo::new, xo::b);
+   public static final int b = 256;
 
-   xo(xb $$0, List<xa> $$1, xx $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public xo(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static xo a(xb $$0) {
-      return new xo($$0, Lists.newArrayList(), xx.a);
+   public static xo a(vy $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xo($$1);
    }
 
-   @Override
-   public xb b() {
-      return this.c;
+   public static void a(vy $$0, xo $$1) {
+      $$0.c($$1.c);
    }
 
-   @Override
-   public List<xa> c() {
-      return this.d;
+   public boolean a(baf $$0, bae $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   public xo b(xx $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public xx a() {
-      return this.e;
-   }
-
-   public xo f(String $$0) {
-      return $$0.isEmpty() ? this : this.b(xa.b($$0));
-   }
-
-   public xo b(xa $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public xo a(UnaryOperator<xx> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public xo c(xx $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public xo a(o... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public xo a(o $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public xo b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public aza g() {
-      tu $$0 = tu.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
    }
 
    @Override
@@ -92,39 +38,67 @@ public class xo implements xa {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof xo $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         if ($$0 instanceof xo $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+      return Arrays.hashCode(this.c);
    }
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.h();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+      return Base64.getEncoder().encodeToString(this.c);
+   }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+   public xo.a a(xp $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xo.a($$1) : new xo.a(this);
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
+   public byte[] b() {
+      return this.c;
+   }
 
-         $$0.append(']');
+   public static record a(int b, @Nullable xo c) {
+      public static final int a = -1;
+
+      public a(xo $$0) {
+         this(-1, $$0);
       }
 
-      return $$0.toString();
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static xo.a a(vy $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xo.a(xo.a($$0)) : new xo.a($$1);
+      }
+
+      public static void a(vy $$0, xo.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xo.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<xo> a(xp $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public xo b() {
+         return this.c;
+      }
    }
 }

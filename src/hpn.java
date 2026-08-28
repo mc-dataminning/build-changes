@@ -1,101 +1,285 @@
+import com.google.common.base.MoreObjects;
 import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.nio.file.Path;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class hpn {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+public class hpn extends MinecraftServer {
+   private static final Logger l = LogUtils.getLogger();
+   private static final int m = 2;
+   private final frf n;
+   private boolean o = true;
+   private int p = -1;
+   @Nullable
+   private djw q;
+   @Nullable
+   private hpq r;
+   @Nullable
+   private UUID s;
+   private int t = 0;
 
-   public static class a extends Thread {
-      private final hpn.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
+   public hpn(Thread $$0, frf $$1, ezx.c $$2, aur $$3, amj $$4, amf $$5, asf $$6) {
+      super($$0, $$2, $$3, $$4, $$1.Z(), $$1.au(), $$5, $$6);
+      this.b($$1.Y());
+      this.c($$1.K());
+      this.a(new hpm(this, this.bb(), this.g));
+      this.n = $$1;
+   }
 
-      public a(hpn.b $$0) throws IOException {
-         super("LanServerDetector #" + hpn.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new s(hpn.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
+   @Override
+   public boolean e() {
+      l.info("Starting integrated minecraft server version {}", ac.b().c());
+      this.d(true);
+      this.f(true);
+      this.g(true);
+      this.V();
+      this.u_();
+      GameProfile $$0 = this.T();
+      String $$1 = this.aZ().e();
+      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
+      return true;
+   }
+
+   @Override
+   public boolean E() {
+      return this.o;
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0) {
+      boolean $$1 = this.o;
+      this.o = frf.Q().ai();
+      brd $$2 = brc.a();
+      if (!$$1 && this.o) {
+         $$2.a("autoSave");
+         l.info("Saving and pausing game...");
+         this.b(false, false, false);
+         $$2.c();
       }
 
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               hpn.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            hpn.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
+      boolean $$3 = frf.Q().L() != null;
+      if ($$3 && this.o) {
+         this.b();
+      } else {
+         if ($$1 && !this.o) {
+            this.H();
          }
 
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
+         super.a($$0);
+         int $$4 = Math.max(2, this.n.n.e().c());
+         if ($$4 != this.ag().p()) {
+            l.info("Changing view distance to {}, from {}", $$4, this.ag().p());
+            this.ag().a($$4);
          }
 
-         this.c.close();
+         int $$5 = Math.max(2, this.n.n.f().c());
+         if ($$5 != this.t) {
+            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
+            this.ag().b($$5);
+            this.t = $$5;
+         }
       }
    }
 
-   public static class b {
-      private final List<hpm> a = Lists.newArrayList();
-      private boolean b;
+   protected bpe a() {
+      return this.n.aQ().l();
+   }
 
-      @Nullable
-      public synchronized List<hpm> a() {
-         if (this.b) {
-            List<hpm> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
+   @Override
+   public boolean g() {
+      return true;
+   }
+
+   private void b() {
+      for (arv $$0 : this.ag().t()) {
+         $$0.a(axb.l);
       }
+   }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = hpo.a($$0);
-         String $$3 = hpo.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
+   @Override
+   public boolean m() {
+      return true;
+   }
 
-            for (hpm $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
+   @Override
+   public boolean c() {
+      return true;
+   }
 
-            if (!$$4) {
-               this.a.add(new hpm($$2, $$3));
-               this.b = true;
+   @Override
+   public Path D() {
+      return this.n.q.toPath();
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public int o() {
+      return 0;
+   }
+
+   @Override
+   public boolean p() {
+      return false;
+   }
+
+   @Override
+   public void a(p $$0) {
+      this.n.b($$0);
+   }
+
+   @Override
+   public ae a(ae $$0) {
+      $$0.a("Type", "Integrated Server (map_client.txt)");
+      $$0.a("Is Modded", () -> this.Q().b());
+      $$0.a("Launched Version", this.n::i);
+      return $$0;
+   }
+
+   @Override
+   public azp Q() {
+      return frf.e().a(super.Q());
+   }
+
+   @Override
+   public boolean a(@Nullable djw $$0, boolean $$1, int $$2) {
+      try {
+         this.n.aU();
+         this.n.L().w();
+         this.ah().a(null, $$2);
+         l.info("Started serving on {}", $$2);
+         this.p = $$2;
+         this.r = new hpq(this.ae(), $$2 + "");
+         this.r.start();
+         this.q = $$0;
+         this.ag().b($$1);
+         int $$3 = this.c(this.n.t.gi());
+         this.n.t.a($$3);
+
+         for (arv $$4 : this.ag().t()) {
+            this.aG().a($$4);
+         }
+
+         return true;
+      } catch (IOException var7) {
+         return false;
+      }
+   }
+
+   @Override
+   public void v() {
+      super.v();
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.h(() -> {
+         for (arv $$1 : Lists.newArrayList(this.ag().t())) {
+            if (!$$1.cG().equals(this.s)) {
+               this.ag().c($$1);
             }
          }
+      });
+      super.a($$0);
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
       }
+   }
+
+   @Override
+   public boolean r() {
+      return this.p > -1;
+   }
+
+   @Override
+   public int S() {
+      return this.p;
+   }
+
+   @Override
+   public void a(djw $$0) {
+      super.a($$0);
+      this.q = null;
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public int k() {
+      return 2;
+   }
+
+   @Override
+   public int l() {
+      return 2;
+   }
+
+   public void a(UUID $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return this.T() != null && $$0.getName().equalsIgnoreCase(this.T().getName());
+   }
+
+   @Override
+   public int b(int $$0) {
+      return (int)(this.n.n.g().c() * (double)$$0);
+   }
+
+   @Override
+   public boolean aX() {
+      return this.n.n.ad;
+   }
+
+   @Nullable
+   @Override
+   public djw bd() {
+      return this.r() && !this.v_() ? (djw)MoreObjects.firstNonNull(this.q, this.j.k()) : null;
+   }
+
+   @Override
+   public boolean b(boolean $$0, boolean $$1, boolean $$2) {
+      boolean $$3 = super.b($$0, $$1, $$2);
+      this.d();
+      return $$3;
+   }
+
+   private void d() {
+      if (this.f.b()) {
+         this.n.execute(() -> fww.a(this.n));
+      }
+   }
+
+   @Override
+   public void a(Throwable $$0, eew $$1, dje $$2) {
+      super.a($$0, $$1, $$2);
+      this.d();
+      this.n.execute(() -> fww.a(this.n, $$2));
+   }
+
+   @Override
+   public void b(Throwable $$0, eew $$1, dje $$2) {
+      super.b($$0, $$1, $$2);
+      this.d();
+      this.n.execute(() -> fww.b(this.n, $$2));
    }
 }

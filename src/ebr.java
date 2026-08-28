@@ -1,20 +1,16 @@
-public enum ebr implements bam {
-   a("head"),
-   b("foot");
+public enum ebr implements bao {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-   private final String c;
+   private final String d;
 
    private ebr(final String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
    }
 }

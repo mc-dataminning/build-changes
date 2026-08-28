@@ -1,8 +1,47 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fht
-@fhr
-interface fio {
+public class fio implements fim {
+   private final Int2ObjectMap<fil.a> b;
+
+   public fio(Map<Integer, Float> $$0) {
+      this.b = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (fil.a)() -> $$1));
+   }
+
+   @Nullable
+   @Override
+   public fil a(int $$0) {
+      return (fil)this.b.get($$0);
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.b.keySet());
+   }
+
+   public static record a(Map<Integer, Float> c) implements fxq {
+      public static final MapCodec<fio.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(ayy.B, Codec.FLOAT).fieldOf("advances").forGetter(fio.a::c)).apply($$0, fio.a::new)
+      );
+
+      @Override
+      public fxr a() {
+         return fxr.c;
+      }
+
+      @Override
+      public Either<fxq.b, fxq.c> b() {
+         fxq.b $$0 = $$0x -> new fio(this.c);
+         return Either.left($$0);
+      }
+   }
 }

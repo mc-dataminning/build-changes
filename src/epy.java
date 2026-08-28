@@ -1,26 +1,29 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class epy<P extends epx> {
-   public static final epy<epw> a = a("straight_trunk_placer", epw.a);
-   public static final epy<ept> b = a("forking_trunk_placer", ept.a);
-   public static final epy<epu> c = a("giant_trunk_placer", epu.a);
-   public static final epy<epv> d = a("mega_jungle_trunk_placer", epv.b);
-   public static final epy<epr> e = a("dark_oak_trunk_placer", epr.a);
-   public static final epy<eps> f = a("fancy_trunk_placer", eps.a);
-   public static final epy<epp> g = a("bending_trunk_placer", epp.a);
-   public static final epy<epz> h = a("upwards_branching_trunk_placer", epz.a);
-   public static final epy<epq> i = a("cherry_trunk_placer", epq.a);
-   private final MapCodec<P> j;
+public class epy extends epz {
+   public static final MapCodec<epy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epy::new));
 
-   private static <P extends epx> epy<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.V, $$0, new epy<>($$1));
+   public epy(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private epy(MapCodec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected eqa<?> a() {
+      return eqa.a;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   @Override
+   public List<eod.a> a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, int $$3, iw $$4, enn $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
+
+      return ImmutableList.of(new eod.a($$4.b($$3), 0, false));
    }
 }

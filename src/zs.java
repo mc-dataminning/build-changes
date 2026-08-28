@@ -1,29 +1,14 @@
-public class zs implements zh<zn> {
-   public static final yy<vw, zs> a = zh.a(zs::a, zs::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public zs(int $$0) {
-      this.b = $$0;
-   }
-
-   private zs(vw $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vw $$0) {
-      $$0.q(this.b);
-   }
+public record zs(xc b) implements zj<zp> {
+   public static final za<ByteBuf, zs> a = xe.f.a(zs::new, zs::b);
 
    @Override
-   public zj<zs> a() {
-      return zz.e;
+   public zl<zs> a() {
+      return aab.c;
    }
 
-   public void a(zn $$0) {
+   public void a(zp $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

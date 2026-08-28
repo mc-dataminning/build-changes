@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.UUID;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface efz {
+public interface efz {
+   UUID cG();
+
+   boolean dQ();
 }

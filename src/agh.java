@@ -1,24 +1,18 @@
-public record agh(int b) implements zh<abw> {
-   public static final yy<vw, agh> a = zh.a(agh::a, agh::new);
+import java.util.Optional;
 
-   private agh(vw $$0) {
-      this($$0.l());
-   }
-
-   public static agh a(bva $$0) {
-      return new agh($$0.k());
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
-   }
+public record agh(xc b, Optional<kb> c) implements zj<aby> {
+   public static final za<wn, agh> a = za.a(xe.b, agh::b, yy.a(kb.h), agh::e, agh::new);
 
    @Override
-   public zj<agh> a() {
-      return agp.cr;
+   public zl<agh> a() {
+      return agr.be;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
+   }
+
+   public Optional<kb> e() {
+      return this.c;
    }
 }

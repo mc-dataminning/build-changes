@@ -1,29 +1,29 @@
-public class agv implements zh<agr> {
-   public static final yy<vw, agv> a = zh.a(agv::a, agv::new);
-   private final buo b;
+public class agv implements zj<agt> {
+   public static final za<vy, agv> a = zj.a(agv::a, agv::new);
+   private final int b;
 
-   public agv(buo $$0) {
+   public agv(int $$0) {
       this.b = $$0;
    }
 
-   private agv(vw $$0) {
-      this.b = buo.a($$0.readUnsignedByte());
+   private agv(vy $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vw $$0) {
-      $$0.l(this.b.a());
+   private void a(vy $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zj<agv> a() {
-      return agp.bn;
+   public zl<agv> a() {
+      return agr.bk;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public buo b() {
+   public int b() {
       return this.b;
    }
 }

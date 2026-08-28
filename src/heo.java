@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
-public class heo extends hfg {
-   public boolean a;
+public class heo extends her {
+   public boolean a = true;
    @Nullable
-   public ebe b;
+   public ffs b;
 }

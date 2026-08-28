@@ -1,147 +1,81 @@
 import com.mojang.blaze3d.platform.GlConst;
 import com.mojang.blaze3d.platform.GlStateManager;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntIterator;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBVertexAttribBinding;
-import org.lwjgl.opengl.GLCapabilities;
 
-public abstract class fje {
-   public static fje a(GLCapabilities $$0, fiw $$1, Set<String> $$2) {
-      if ($$0.GL_ARB_vertex_attrib_binding && fix.a) {
-         $$2.add("GL_ARB_vertex_attrib_binding");
-         return new fje.b($$1);
-      } else {
-         return new fje.a($$1);
-      }
+public class fje extends flj {
+   protected final int a;
+   private final Int2IntMap i = new Int2IntOpenHashMap();
+   protected boolean b;
+   protected boolean c = true;
+
+   protected fje(String $$0, flk $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
-   public abstract void a(fls var1, fit var2);
+   @Override
+   public void close() {
+      if (!this.b) {
+         this.b = true;
+         GlStateManager._deleteTexture(this.a);
+         IntIterator var1 = this.i.values().iterator();
 
-   static class a extends fje {
-      private final Map<fls, fje.c> a = new HashMap<>();
-      private final fiw b;
-
-      public a(fiw $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fls $$0, fit $$1) {
-         fje.c $$2 = this.a.get($$0);
-         if ($$2 == null) {
-            int $$3 = GlStateManager._glGenVertexArrays();
-            GlStateManager._glBindVertexArray($$3);
-            GlStateManager._glBindBuffer(34962, $$1.f);
-            a($$0, true);
-            fje.c $$4 = new fje.c($$3, $$0, $$1);
-            this.b.a($$4);
-            this.a.put($$0, $$4);
-         } else {
-            GlStateManager._glBindVertexArray($$2.a);
-            if ($$2.c != $$1) {
-               GlStateManager._glBindBuffer(34962, $$1.f);
-               $$2.c = $$1;
-               a($$0, false);
-            }
-         }
-      }
-
-      private static void a(fls $$0, boolean $$1) {
-         int $$2 = $$0.b();
-         List<flt> $$3 = $$0.c();
-
-         for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-            flt $$5 = $$3.get($$4);
-            if ($$1) {
-               GlStateManager._enableVertexAttribArray($$4);
-            }
-
-            switch ($$5.f()) {
-               case a:
-               case e:
-                  GlStateManager._vertexAttribPointer($$4, $$5.g(), GlConst.toGl($$5.e()), false, $$2, (long)$$0.a($$5));
-                  break;
-               case b:
-               case c:
-                  GlStateManager._vertexAttribPointer($$4, $$5.g(), GlConst.toGl($$5.e()), true, $$2, (long)$$0.a($$5));
-                  break;
-               case d:
-                  if ($$5.e() == flt.a.a) {
-                     GlStateManager._vertexAttribPointer($$4, $$5.g(), GlConst.toGl($$5.e()), true, $$2, (long)$$0.a($$5));
-                  } else {
-                     GlStateManager._vertexAttribIPointer($$4, $$5.g(), GlConst.toGl($$5.e()), $$2, (long)$$0.a($$5));
-                  }
-            }
+         while (var1.hasNext()) {
+            int $$0 = (Integer)var1.next();
+            GlStateManager._glDeleteFramebuffers($$0);
          }
       }
    }
 
-   static class b extends fje {
-      private final Map<fls, fje.c> a = new HashMap<>();
-      private final fiw b;
+   public int a(fji $$0, @Nullable flj $$1) {
+      int $$2 = $$1 == null ? 0 : ((fje)$$1).a;
+      return this.i.computeIfAbsent($$2, $$2x -> {
+         int $$3 = $$0.a();
+         $$0.a($$3, this.a, $$2, 0, false);
+         return $$3;
+      });
+   }
 
-      public b(fiw $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fls $$0, fit $$1) {
-         fje.c $$2 = this.a.get($$0);
-         if ($$2 == null) {
-            int $$3 = GlStateManager._glGenVertexArrays();
-            GlStateManager._glBindVertexArray($$3);
-            ARBVertexAttribBinding.glBindVertexBuffer(0, $$1.f, 0L, $$0.b());
-            List<flt> $$4 = $$0.c();
-
-            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-               flt $$6 = $$4.get($$5);
-               GlStateManager._enableVertexAttribArray($$5);
-               switch ($$6.f()) {
-                  case a:
-                  case e:
-                     ARBVertexAttribBinding.glVertexAttribFormat($$5, $$6.g(), GlConst.toGl($$6.e()), false, $$0.a($$6));
-                     break;
-                  case b:
-                  case c:
-                     ARBVertexAttribBinding.glVertexAttribFormat($$5, $$6.g(), GlConst.toGl($$6.e()), true, $$0.a($$6));
-                     break;
-                  case d:
-                     if ($$6.e() == flt.a.a) {
-                        ARBVertexAttribBinding.glVertexAttribFormat($$5, $$6.g(), GlConst.toGl($$6.e()), true, $$0.a($$6));
-                     } else {
-                        ARBVertexAttribBinding.glVertexAttribIFormat($$5, $$6.g(), GlConst.toGl($$6.e()), $$0.a($$6));
-                     }
-               }
-
-               ARBVertexAttribBinding.glVertexAttribBinding($$5, 0);
-            }
-
-            fje.c $$7 = new fje.c($$3, $$0, $$1);
-            this.b.a($$7);
-            this.a.put($$0, $$7);
-         } else {
-            GlStateManager._glBindVertexArray($$2.a);
-            if ($$2.c != $$1) {
-               ARBVertexAttribBinding.glBindVertexBuffer(0, $$1.f, 0L, $$0.b());
-               $$2.c = $$1;
-            }
+   public void a() {
+      if (this.c) {
+         GlStateManager._texParameter(3553, 10242, GlConst.toGl(this.d));
+         GlStateManager._texParameter(3553, 10243, GlConst.toGl(this.e));
+         switch (this.f) {
+            case a:
+               GlStateManager._texParameter(3553, 10241, this.h ? 9986 : 9728);
+               break;
+            case b:
+               GlStateManager._texParameter(3553, 10241, this.h ? 9987 : 9729);
          }
+
+         switch (this.g) {
+            case a:
+               GlStateManager._texParameter(3553, 10240, 9728);
+               break;
+            case b:
+               GlStateManager._texParameter(3553, 10240, 9729);
+         }
+
+         this.c = false;
       }
    }
 
-   public static class c {
-      final int a;
-      final fls b;
-      @Nullable
-      fit c;
+   public int b() {
+      return this.a;
+   }
 
-      c(int $$0, fls $$1, @Nullable fit $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   @Override
+   public void a(flh $$0, flh $$1) {
+      super.a($$0, $$1);
+      this.c = true;
+   }
+
+   @Override
+   public void a(fli $$0, fli $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      this.c = true;
    }
 }

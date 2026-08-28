@@ -1,55 +1,47 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-class bwa extends bvv {
-   private static final int d = 2;
-   public static final int c = 2;
-   private final ToIntFunction<azx> e;
-
-   protected bwa(bvw $$0, int $$1, ToIntFunction<azx> $$2) {
-      super($$0, $$1, ly.X);
-      this.e = $$2;
-   }
-
-   @VisibleForTesting
-   protected static int a(int $$0, bwa.a $$1, int $$2) {
-      return $$0 < 1 ? $$2 : azo.a(0, $$0 - $$1.count($$0), $$2);
-   }
-
-   @Override
-   public void a(ars $$0, bxu $$1, int $$2, bwt.d $$3) {
-      if ($$3 == bwt.d.a) {
-         int $$4 = this.e.applyAsInt($$1.dY());
-         int $$5 = $$0.O().d(djt.w);
-         int $$6 = a($$5, bwa.a.a($$1), $$4);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            this.a($$1.dV(), $$1.dA(), $$1.dC() + 0.5, $$1.dG());
-         }
+public final class bwa {
+   public static xc a(bvz $$0, float $$1, float $$2) {
+      if ($$0.b()) {
+         return xc.c("effect.duration.infinite");
+      } else {
+         int $$3 = azq.d((float)$$0.d() * $$1);
+         return xc.b(bap.a($$3, $$2));
       }
    }
 
-   private void a(djx $$0, double $$1, double $$2, double $$3) {
-      cpi $$4 = bxc.bi.a($$0, bxb.k);
-      if ($$4 != null) {
-         $$4.a(2, true);
-         $$4.b($$1, $$2, $$3, $$0.G_().i() * 360.0F, 0.0F);
-         $$0.b($$4);
-      }
+   public static boolean a(bxw $$0) {
+      return $$0.b(bwb.c) || $$0.b(bwb.C);
    }
 
-   @FunctionalInterface
-   protected interface a {
-      int count(int var1);
-
-      static bwa.a a(bxu $$0) {
-         return $$1 -> {
-            List<cpi> $$2 = new ArrayList<>();
-            $$0.dV().a(bxc.bi, $$0.cR().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
-            return $$2.size();
-         };
+   public static int b(bxw $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      if ($$0.b(bwb.c)) {
+         $$1 = $$0.c(bwb.c).e();
       }
+
+      if ($$0.b(bwb.C)) {
+         $$2 = $$0.c(bwb.C).e();
+      }
+
+      return Math.max($$1, $$2);
+   }
+
+   public static boolean c(bxw $$0) {
+      return $$0.b(bwb.m) || $$0.b(bwb.C);
+   }
+
+   public static List<arv> a(aru $$0, @Nullable bwv $$1, ffs $$2, double $$3, bvz $$4, int $$5) {
+      jg<bvx> $$6 = $$4.c();
+      List<arv> $$7 = $$0.a(
+         $$6x -> $$6x.h.d()
+               && ($$1 == null || !$$1.s($$6x))
+               && $$2.a((jq)$$6x.dt(), $$3)
+               && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
+      );
+      $$7.forEach($$2x -> $$2x.b(new bvz($$4), $$1));
+      return $$7;
    }
 }

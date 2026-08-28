@@ -1,53 +1,45 @@
-public class acd implements zh<abw> {
-   public static final yy<wl, acd> a = zh.a(acd::a, acd::new);
-   private final iv b;
-   private final int c;
+public class acd implements zj<aby> {
+   public static final za<vy, acd> a = zj.a(acd::a, acd::new);
+   private final int b;
+   private final iw c;
    private final int d;
-   private final dnc e;
 
-   public acd(iv $$0, dnc $$1, int $$2, int $$3) {
+   public acd(int $$0, iw $$1, int $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private acd(wl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+   private acd(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
       this.d = $$0.readUnsignedByte();
-      this.e = yw.a(mh.i).decode($$0);
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
       $$0.l(this.d);
-      yw.a(mh.i).encode($$0, this.e);
    }
 
    @Override
-   public zj<acd> a() {
-      return agp.i;
+   public zl<acd> a() {
+      return agr.g;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public iv b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public iw e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public dnc g() {
-      return this.e;
    }
 }

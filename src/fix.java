@@ -1,283 +1,182 @@
-import com.mojang.blaze3d.platform.GlConst;
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GLX;
 import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.lwjgl.glfw.GLFW;
+import org.lwjgl.opengl.ARBDebugOutput;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLCapabilities;
+import org.lwjgl.opengl.GLDebugMessageARBCallback;
+import org.lwjgl.opengl.GLDebugMessageCallback;
+import org.lwjgl.opengl.KHRDebug;
 import org.slf4j.Logger;
 
-public class fix implements fla {
-   private static final Logger f = LogUtils.getLogger();
-   protected static boolean a = true;
-   protected static boolean b = true;
-   protected static boolean c = true;
-   protected static boolean d = true;
-   protected static boolean e = true;
-   private final fkz g;
+public class fix {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 10;
+   private final Queue<fix.a> c = EvictingQueue.create(10);
    @Nullable
-   private final fiv h;
-   private final fiw i;
-   private final int j;
-   private final fjg k;
-   private final BiFunction<ali, fkw, String> l;
-   private final Map<fjp, fja> m = new IdentityHashMap<>();
-   private final Map<fix.a, fjb> n = new HashMap<>();
-   private final fje o;
-   private final Set<String> p = new HashSet<>();
+   private volatile fix.a d;
+   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
+   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
 
-   public fix(long $$0, int $$1, boolean $$2, BiFunction<ali, fkw, String> $$3, boolean $$4) {
-      GLFW.glfwMakeContextCurrent($$0);
-      GLCapabilities $$5 = GL.createCapabilities();
-      int $$6 = o();
-      GLFW.glfwSetWindowSizeLimits($$0, -1, -1, $$6, $$6);
-      this.h = fiv.a($$1, $$2, this.p);
-      this.i = fiw.a($$5, $$4, this.p);
-      this.o = fje.a($$5, this.i, this.p);
-      this.j = $$6;
-      if ($$5.GL_ARB_direct_state_access && e) {
-         this.p.add("GL_ARB_direct_state_access");
-         this.k = new fjf();
-      } else {
-         this.k = new fjh();
+   private static String d(int $$0) {
+      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
+   }
+
+   public static String a(int $$0) {
+      switch ($$0) {
+         case 33350:
+            return "API";
+         case 33351:
+            return "WINDOW SYSTEM";
+         case 33352:
+            return "SHADER COMPILER";
+         case 33353:
+            return "THIRD PARTY";
+         case 33354:
+            return "APPLICATION";
+         case 33355:
+            return "OTHER";
+         default:
+            return d($$0);
       }
-
-      this.l = $$3;
-      this.g = new fiu(this);
    }
 
-   public fiw a() {
-      return this.i;
+   public static String b(int $$0) {
+      switch ($$0) {
+         case 33356:
+            return "ERROR";
+         case 33357:
+            return "DEPRECATED BEHAVIOR";
+         case 33358:
+            return "UNDEFINED BEHAVIOR";
+         case 33359:
+            return "PORTABILITY";
+         case 33360:
+            return "PERFORMANCE";
+         case 33361:
+            return "OTHER";
+         case 33384:
+            return "MARKER";
+         default:
+            return d($$0);
+      }
    }
 
-   @Override
-   public fkz b() {
-      return this.g;
+   public static String c(int $$0) {
+      switch ($$0) {
+         case 33387:
+            return "NOTIFICATION";
+         case 37190:
+            return "HIGH";
+         case 37191:
+            return "MEDIUM";
+         case 37192:
+            return "LOW";
+         default:
+            return d($$0);
+      }
    }
 
-   @Override
-   public flh a(@Nullable Supplier<String> $$0, fli $$1, int $$2, int $$3, int $$4) {
-      return this.a(this.i.a() && $$0 != null ? $$0.get() : null, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public flh a(@Nullable String $$0, fli $$1, int $$2, int $$3, int $$4) {
-      if ($$4 < 1) {
-         throw new IllegalArgumentException("mipLevels must be at least 1");
-      } else {
-         GlStateManager.clearGlErrors();
-         int $$5 = GlStateManager._genTexture();
-         if ($$0 == null) {
-            $$0 = String.valueOf($$5);
-         }
-
-         GlStateManager._bindTexture($$5);
-         GlStateManager._texParameter(3553, 33085, $$4 - 1);
-         GlStateManager._texParameter(3553, 33082, 0);
-         GlStateManager._texParameter(3553, 33083, $$4 - 1);
-         if ($$1 == fli.c) {
-            GlStateManager._texParameter(3553, 34892, 0);
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            GlStateManager._texImage2D(
-               3553, $$6, GlConst.toGlInternalId($$1), $$2 >> $$6, $$3 >> $$6, 0, GlConst.toGlExternalId($$1), GlConst.toGlType($$1), null
-            );
-         }
-
-         int $$7 = GlStateManager._getError();
-         if ($$7 == 1285) {
-            throw new fhs("Could not allocate texture of " + $$2 + "x" + $$3 + " for " + $$0);
-         } else if ($$7 != 0) {
-            throw new IllegalStateException("OpenGL error " + $$7);
+   private void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
+      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
+      fix.a $$8;
+      synchronized (this.c) {
+         $$8 = this.d;
+         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
+            $$8.f++;
          } else {
-            fjc $$8 = new fjc($$0, $$1, $$2, $$3, $$4, $$5);
-            this.i.a($$8);
-            return $$8;
-         }
-      }
-   }
-
-   @Override
-   public fig a(@Nullable Supplier<String> $$0, fie $$1, fif $$2, int $$3) {
-      return new fit(this.i, $$0, $$1, $$2, $$3, GlStateManager._glGenBuffers());
-   }
-
-   @Override
-   public fig a(@Nullable Supplier<String> $$0, fie $$1, fif $$2, ByteBuffer $$3) {
-      fit $$4 = new fit(this.i, $$0, $$1, $$2, $$3.remaining(), GlStateManager._glGenBuffers());
-      this.g.a($$4, $$3, 0);
-      return $$4;
-   }
-
-   @Override
-   public String c() {
-      return GLFW.glfwGetCurrentContext() == 0L
-         ? "NO CONTEXT"
-         : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
-   }
-
-   @Override
-   public List<String> d() {
-      return this.h == null ? Collections.emptyList() : this.h.a();
-   }
-
-   @Override
-   public boolean e() {
-      return this.h != null;
-   }
-
-   @Override
-   public String f() {
-      return GlStateManager._getString(7937);
-   }
-
-   @Override
-   public String g() {
-      return GlStateManager._getString(7936);
-   }
-
-   @Override
-   public String h() {
-      return "OpenGL";
-   }
-
-   @Override
-   public String i() {
-      return GlStateManager._getString(7938);
-   }
-
-   private static int o() {
-      int $$0 = GlStateManager._getInteger(3379);
-
-      for (int $$1 = Math.max(32768, $$0); $$1 >= 1024; $$1 >>= 1) {
-         GlStateManager._texImage2D(32868, 0, 6408, $$1, $$1, 0, 6408, 5121, null);
-         int $$2 = GlStateManager._getTexLevelParameter(32868, 0, 4096);
-         if ($$2 != 0) {
-            return $$1;
+            $$8 = new fix.a($$0, $$1, $$2, $$3, $$7);
+            this.c.add($$8);
+            this.d = $$8;
          }
       }
 
-      int $$3 = Math.max($$0, 1024);
-      f.info("Failed to determine maximum texture size by probing, trying GL_MAX_TEXTURE_SIZE = {}", $$3);
-      return $$3;
+      a.info("OpenGL debug message: {}", $$8);
    }
 
-   @Override
-   public int j() {
-      return this.j;
-   }
+   public List<String> a() {
+      synchronized (this.c) {
+         List<String> $$0 = Lists.newArrayListWithCapacity(this.c.size());
 
-   @Override
-   public void k() {
-      for (fja $$0 : this.m.values()) {
-         if ($$0.c() != fiy.b) {
-            $$0.c().close();
+         for (fix.a $$1 : this.c) {
+            $$0.add($$1 + " x " + $$1.f);
          }
+
+         return $$0;
       }
-
-      this.m.clear();
-
-      for (fjb $$1 : this.n.values()) {
-         if ($$1 != fjb.a) {
-            $$1.close();
-         }
-      }
-
-      this.n.clear();
    }
 
-   @Override
-   public List<String> l() {
-      return new ArrayList<>(this.p);
-   }
-
-   public fjg m() {
-      return this.k;
-   }
-
-   protected fja a(fjp $$0) {
-      return this.m.computeIfAbsent($$0, $$1 -> this.c($$0, this.l));
-   }
-
-   protected fjb a(ali $$0, fkw $$1, gsr $$2, BiFunction<ali, fkw, String> $$3) {
-      fix.a $$4 = new fix.a($$0, $$1, $$2);
-      return this.n.computeIfAbsent($$4, $$2x -> this.a($$4, $$3));
-   }
-
-   public fja a(fjp $$0, @Nullable BiFunction<ali, fkw, String> $$1) {
-      BiFunction<ali, fkw, String> $$2 = $$1 == null ? this.l : $$1;
-      return this.m.computeIfAbsent($$0, $$2x -> this.c($$0, $$2));
-   }
-
-   private fjb a(fix.a $$0, BiFunction<ali, fkw, String> $$1) {
-      String $$2 = $$1.apply($$0.a, $$0.b);
-      if ($$2 == null) {
-         f.error("Couldn't find source for {} shader ({})", $$0.b, $$0.a);
-         return fjb.a;
+   @Nullable
+   public static fix a(int $$0, boolean $$1, Set<String> $$2) {
+      if ($$0 <= 0) {
+         return null;
       } else {
-         String $$3 = fkn.a($$2, $$0.c);
-         int $$4 = GlStateManager.glCreateShader(GlConst.toGl($$0.b));
-         GlStateManager.glShaderSource($$4, $$3);
-         GlStateManager.glCompileShader($$4);
-         if (GlStateManager.glGetShaderi($$4, 35713) == 0) {
-            String $$5 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$4, 32768));
-            f.error("Couldn't compile {} shader ({}): {}", new Object[]{$$0.b.a(), $$0.a, $$5});
-            return fjb.a;
+         GLCapabilities $$3 = GL.getCapabilities();
+         if ($$3.GL_KHR_debug && fiz.b) {
+            fix $$4 = new fix();
+            $$2.add("GL_KHR_debug");
+            GL11.glEnable(37600);
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$5 = 0; $$5 < e.size(); $$5++) {
+               boolean $$6 = $$5 < $$0;
+               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$5), (int[])null, $$6);
+            }
+
+            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create($$4::a), fjx::a), 0L);
+            return $$4;
+         } else if ($$3.GL_ARB_debug_output && fiz.d) {
+            fix $$7 = new fix();
+            $$2.add("GL_ARB_debug_output");
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$8 = 0; $$8 < f.size(); $$8++) {
+               boolean $$9 = $$8 < $$0;
+               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$8), (int[])null, $$9);
+            }
+
+            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create($$7::a), fjx::a), 0L);
+            return $$7;
          } else {
-            fjb $$6 = new fjb($$4, $$0.a, $$0.b);
-            this.i.a($$6);
-            return $$6;
+            return null;
          }
       }
    }
 
-   private fja c(fjp $$0, BiFunction<ali, fkw, String> $$1) {
-      fjb $$2 = this.a($$0.n(), fkw.a, $$0.p(), $$1);
-      fjb $$3 = this.a($$0.o(), fkw.b, $$0.p(), $$1);
-      if ($$2 == fjb.a) {
-         f.error("Couldn't compile pipeline {}: vertex shader {} was invalid", $$0.k(), $$0.n());
-         return new fja($$0, fiy.b);
-      } else if ($$3 == fjb.a) {
-         f.error("Couldn't compile pipeline {}: fragment shader {} was invalid", $$0.k(), $$0.o());
-         return new fja($$0, fiy.b);
-      } else {
-         fiy $$4;
-         try {
-            $$4 = fiy.a($$2, $$3, $$0.l(), $$0.k().toString());
-         } catch (gss.b var7) {
-            f.error("Couldn't compile program for pipeline {}: {}", $$0.k(), var7);
-            return new fja($$0, fiy.b);
-         }
+   static class a {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final String e;
+      int f = 1;
 
-         $$4.a($$0.r(), $$0.q());
-         this.i.a($$4);
-         return new fja($$0, $$4);
+      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         this.a = $$2;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$3;
+         this.e = $$4;
       }
-   }
 
-   public fje n() {
-      return this.o;
-   }
-
-   static record a(ali a, fkw b, gsr c) {
+      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
+      }
 
       @Override
       public String toString() {
-         String $$0 = this.a + " (" + this.b + ")";
-         return !this.c.c() ? $$0 + " with " + this.c : $$0;
+         return "id=" + this.a + ", source=" + fix.a(this.b) + ", type=" + fix.b(this.c) + ", severity=" + fix.c(this.d) + ", message='" + this.e + "'";
       }
    }
 }

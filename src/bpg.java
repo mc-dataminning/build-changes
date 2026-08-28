@@ -1,11 +1,19 @@
-public interface bpg {
-   int c();
+public class bpg extends bpc {
+   private final bpd c;
+   private final bpf d;
 
-   int d();
+   public bpg(int $$0, bpd $$1, bpf $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
+   }
 
-   long a(int var1);
+   public bpg(int $$0, bpd $$1, bpf $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   long a(int var1, int var2);
-
-   void e();
+   @Override
+   protected void a() {
+      this.c.a(new acy((long[])this.b.clone(), this.d));
+   }
 }

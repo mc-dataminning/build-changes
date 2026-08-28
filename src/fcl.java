@@ -1,36 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
 
-public class fcl extends fbu {
+public class fcl extends fbw {
    public static final MapCodec<fcl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axt.b(mh.aU).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, fcl::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  dco.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  dco.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  dco.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, fcl::new)
    );
-   private final axt<czr> b;
+   public static final dco b = new dco(dco.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<dco.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private fcl(List<fdq> $$0, axt<czr> $$1) {
+   public fcl(List<fds> $$0, Optional<dco.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public fbw<fcl> b() {
-      return fbx.G;
-   }
-
-   @Override
-   public czy a(czy $$0, fah $$1) {
-      js<czr> $$2 = $$1.d().J_().f(mh.aU);
-      Optional<jf<czr>> $$3 = $$2.a(this.b, $$1.b());
-      if ($$3.isPresent()) {
-         $$0.b(kk.ab, new dco($$3.get()));
-      }
-
+   protected daa a(daa $$0, faj $$1) {
+      $$0.a(kl.ai, b, this::a);
       return $$0;
    }
 
-   public static fbu.a<?> a(axt<czr> $$0) {
-      return a($$1 -> new fcl($$1, $$0));
+   private dco a(dco $$0) {
+      return new dco(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   }
+
+   @Override
+   public fby<fcl> b() {
+      return fbz.L;
    }
 }

@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+@FunctionalInterface
+public interface hp<T> {
+   void execute(T var1, hl<T> var2, hn var3);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hp {
+   default hk<T> bind(T $$0) {
+      return ($$1, $$2) -> this.execute($$0, $$1, $$2);
+   }
 }

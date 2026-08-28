@@ -1,21 +1,24 @@
 public class glk {
-   private final glm a;
-   private final gll b;
+   public static final glk a = new glk(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   private glk(glm $$0, gll $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public glk(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public glk a(gln $$0) {
-      return new glk($$0.apply(this.a), this.b);
+   public glk(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public gle a() {
-      return this.a.a().a(this.b.a, this.b.b);
+   public glk a(float $$0) {
+      return new glk(this.b + $$0, this.c + $$0, this.d + $$0);
    }
 
-   public static glk a(glm $$0, int $$1, int $$2) {
-      return new glk($$0, new gll($$1, $$2));
+   public glk a(float $$0, float $$1, float $$2) {
+      return new glk(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

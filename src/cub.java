@@ -1,8 +1,19 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface cub extends cua.b<cud> {
-   Codec<cub> b = mg.aD.q().dispatch(cub::a, $$0 -> $$0);
+public record cub(cx.c c) implements cud {
+   public static final MapCodec<cub> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cx.c.d.fieldOf("range").forGetter(cub::b)).apply($$0, cub::new));
 
-   MapCodec<? extends cub> a();
+   public boolean a(cuf $$0) {
+      return this.c.d((double)$$0.b().a().as());
+   }
+
+   @Override
+   public MapCodec<cub> a() {
+      return a;
+   }
+
+   public cx.c b() {
+      return this.c;
+   }
 }

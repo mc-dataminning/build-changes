@@ -1,41 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dj extends dk<dj.a> {
+public record dj(Optional<Boolean> c) implements ca {
+   public static final MapCodec<dj> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dj::c)).apply($$0, dj::new)
+   );
+
    @Override
-   public Codec<dj.a> a() {
-      return dj.a.a;
+   public MapCodec<dj> a() {
+      return cb.f;
    }
 
-   public void a(art $$0, czy $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public boolean a(bwv $$0, aru $$1, @Nullable ffs $$2) {
+      return $$0 instanceof cmi $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
    }
 
-   public static record a(Optional<bj> b, Optional<cm> c) implements dk.a {
-      public static final Codec<dj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(dj.a::a), cm.a.optionalFieldOf("item").forGetter(dj.a::b)).apply($$0, dj.a::new)
-      );
-
-      public static ar<dj.a> a(Optional<cm> $$0) {
-         return aq.G.a(new dj.a(Optional.empty(), $$0));
-      }
-
-      public static ar<dj.a> a(jg<czu> $$0, djw $$1) {
-         return aq.G.a(new dj.a(Optional.empty(), Optional.of(cm.a.a().a($$0, $$1).b())));
-      }
-
-      public boolean a(czy $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public Optional<bj> a() {
-         return this.b;
-      }
-
-      public Optional<cm> b() {
-         return this.c;
-      }
+   public static dj b() {
+      return new dj(Optional.of(false));
    }
 }

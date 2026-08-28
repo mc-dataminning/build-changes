@@ -1,58 +1,58 @@
-public interface ecu {
-   void a(ecw var1, double var2);
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-   void a(ecw var1, double var2, double var4, long var6);
+public record ecu(String n, ebv o, dvb p, dvb q, awq r, awq s) {
+   private static final Map<String, ecu> t = new Object2ObjectArrayMap();
+   public static final Codec<ecu> a = Codec.stringResolver(ecu::b, t::get);
+   public static final ecu b = a(new ecu("oak", ebv.g));
+   public static final ecu c = a(new ecu("spruce", ebv.h));
+   public static final ecu d = a(new ecu("birch", ebv.i));
+   public static final ecu e = a(new ecu("acacia", ebv.j));
+   public static final ecu f = a(new ecu("cherry", ebv.k, dvb.aW, dvb.aZ, awr.eQ, awr.eR));
+   public static final ecu g = a(new ecu("jungle", ebv.l));
+   public static final ecu h = a(new ecu("dark_oak", ebv.m));
+   public static final ecu i = a(new ecu("pale_oak", ebv.n));
+   public static final ecu j = a(new ecu("crimson", ebv.o, dvb.aV, dvb.aS, awr.rI, awr.rJ));
+   public static final ecu k = a(new ecu("warped", ebv.p, dvb.aV, dvb.aS, awr.rI, awr.rJ));
+   public static final ecu l = a(new ecu("mangrove", ebv.q));
+   public static final ecu m = a(new ecu("bamboo", ebv.r, dvb.aU, dvb.aT, awr.bw, awr.bx));
 
-   void a(ecw var1, double var2, double var4);
+   public ecu(String $$0, ebv $$1) {
+      this($$0, $$1, dvb.b, dvb.aR, awr.jl, awr.jm);
+   }
 
-   void a(ecw var1, int var2);
+   private static ecu a(ecu $$0) {
+      t.put($$0.b(), $$0);
+      return $$0;
+   }
 
-   void b(ecw var1, int var2);
+   public static Stream<ecu> a() {
+      return t.values().stream();
+   }
 
-   void b(ecw var1, double var2);
+   public String b() {
+      return this.n;
+   }
 
-   void c(ecw var1, double var2);
+   public ebv c() {
+      return this.o;
+   }
 
-   public static class a implements ecu {
-      private final ecw a;
+   public dvb d() {
+      return this.p;
+   }
 
-      public a(ecw $$0) {
-         this.a = $$0;
-      }
+   public dvb e() {
+      return this.q;
+   }
 
-      @Override
-      public void a(ecw $$0, double $$1) {
-         this.a.a($$1);
-      }
+   public awq f() {
+      return this.r;
+   }
 
-      @Override
-      public void a(ecw $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(ecw $$0, double $$1, double $$2) {
-         this.a.d($$1, $$2);
-      }
-
-      @Override
-      public void a(ecw $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(ecw $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(ecw $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(ecw $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public awq g() {
+      return this.s;
    }
 }

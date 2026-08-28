@@ -1,66 +1,69 @@
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.ListIterator;
 import javax.annotation.Nullable;
 
-public class gvn implements diy {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final gvm[] c;
-   protected final djx d;
+public class gvn {
+   private static final int a = 2;
+   private int b = 2;
+   private final List<gvs.b.a> c = new ObjectArrayList();
 
-   gvn(djx $$0, int $$1, int $$2, gvm[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
-   }
-
-   @Override
-   public ebe a_(iv $$0) {
-      return this.a(jy.a($$0.u()), jy.a($$0.w())).b($$0);
-   }
-
-   @Override
-   public exo b_(iv $$0) {
-      return this.a(jy.a($$0.u()), jy.a($$0.w())).b($$0).y();
-   }
-
-   @Override
-   public float a(jb $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public exd B_() {
-      return this.d.B_();
+   public synchronized void a(gvs.b.a $$0) {
+      this.c.add($$0);
    }
 
    @Nullable
-   @Override
-   public dyc c_(iv $$0) {
-      return this.a(jy.a($$0.u()), jy.a($$0.w())).a($$0);
+   public synchronized gvs.b.a a(ffs $$0) {
+      int $$1 = -1;
+      int $$2 = -1;
+      double $$3 = Double.MAX_VALUE;
+      double $$4 = Double.MAX_VALUE;
+      ListIterator<gvs.b.a> $$5 = this.c.listIterator();
+
+      while ($$5.hasNext()) {
+         int $$6 = $$5.nextIndex();
+         gvs.b.a $$7 = $$5.next();
+         if ($$7.a.get()) {
+            $$5.remove();
+         } else {
+            double $$8 = $$7.d().b($$0);
+            if (!$$7.c() && $$8 < $$3) {
+               $$3 = $$8;
+               $$1 = $$6;
+            }
+
+            if ($$7.c() && $$8 < $$4) {
+               $$4 = $$8;
+               $$2 = $$6;
+            }
+         }
+      }
+
+      boolean $$9 = $$2 >= 0;
+      boolean $$10 = $$1 >= 0;
+      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
+         this.b = 2;
+         return this.a($$1);
+      } else {
+         this.b--;
+         return this.a($$2);
+      }
    }
 
-   private gvm a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
+   public int a() {
+      return this.c.size();
    }
 
-   @Override
-   public int a(iv $$0, djh $$1) {
-      return this.d.a($$0, $$1);
+   @Nullable
+   private gvs.b.a a(int $$0) {
+      return $$0 >= 0 ? this.c.remove($$0) : null;
    }
 
-   @Override
-   public int K_() {
-      return this.d.K_();
-   }
+   public synchronized void b() {
+      for (gvs.b.a $$0 : this.c) {
+         $$0.a();
+      }
 
-   @Override
-   public int L_() {
-      return this.d.L_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+      this.c.clear();
    }
 }

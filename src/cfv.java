@@ -1,45 +1,24 @@
-import java.util.EnumSet;
+public class cfv extends ces {
+   private final bye a;
 
-public class cfv extends ceq {
-   private final byq a;
-
-   public cfv(byq $$0) {
+   public cfv(bye $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(ceq.a.c, ceq.a.a));
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.gu();
    }
 
    @Override
    public boolean b() {
-      boolean $$0 = this.a.gu();
-      if (!$$0 && !this.a.q()) {
-         return false;
-      } else if (this.a.bi()) {
-         return false;
-      } else if (!this.a.aH()) {
-         return false;
-      } else {
-         bxu $$1 = this.a.e();
-         if ($$1 == null) {
-            return true;
-         } else {
-            return this.a.g((bwt)$$1) < 144.0 && $$1.er() != null ? false : $$0;
-         }
-      }
+      return this.a.dV().V() && this.a.a(bxf.f).f() && ciq.a(this.a);
    }
 
    @Override
    public void d() {
-      this.a.O().m();
-      this.a.x(true);
+      ((chf)this.a.O()).c(true);
    }
 
    @Override
    public void e() {
-      this.a.x(false);
+      if (ciq.a(this.a)) {
+         ((chf)this.a.O()).c(false);
+      }
    }
 }

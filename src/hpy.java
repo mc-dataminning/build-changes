@@ -1,107 +1,58 @@
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class hpy {
-   private static final int a = 100;
-   private final azx b = azx.a();
-   private final frd c;
-   @Nullable
-   private hox d;
-   private float e = 1.0F;
-   private int f = 100;
+public class hpy implements hps {
+   private final hpy.a a;
+   private hps b;
+   private final BufferedInputStream c;
 
-   public hpy(frd $$0) {
-      this.c = $$0;
+   public hpy(hpy.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new hpy.b(this.c));
    }
 
-   public void a() {
-      hpx $$0 = this.c.al();
-      float $$1 = $$0.b();
-      if (this.d != null && this.e != $$1) {
-         boolean $$2 = this.a($$1);
-         if (!$$2) {
-            return;
-         }
-      }
-
-      awm $$3 = $$0.a();
-      if ($$3 == null) {
-         this.f = Math.max(this.f, 100);
-      } else {
-         if (this.d != null) {
-            if ($$0.a(this.d)) {
-               this.c.ak().b(this.d);
-               this.f = azo.a(this.b, 0, $$3.b() / 2);
-            }
-
-            if (!this.c.ak().c(this.d)) {
-               this.d = null;
-               this.f = Math.min(this.f, azo.a(this.b, $$3.b(), $$3.c()));
-            }
-         }
-
-         this.f = Math.min(this.f, $$3.c());
-         if (this.d == null && this.f-- <= 0) {
-            this.a($$0);
-         }
-      }
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
    }
 
-   public void a(hpx $$0) {
-      this.d = hos.a($$0.a().a().a());
-      if (this.d.b() != hqd.b) {
-         this.c.ak().a(this.d);
-         this.c.ak().a(this.d, $$0.b());
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new hpy.b(this.c));
+         $$1 = this.b.a($$0);
       }
 
-      this.f = Integer.MAX_VALUE;
-      this.e = $$0.b();
+      return $$1;
    }
 
-   public void a(awm $$0) {
-      if (this.b($$0)) {
-         this.b();
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      hps create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
-   }
 
-   public void b() {
-      if (this.d != null) {
-         this.c.ak().b(this.d);
-         this.d = null;
+      @Override
+      public void close() {
       }
-
-      this.f += 100;
-   }
-
-   private boolean a(float $$0) {
-      if (this.d == null) {
-         return false;
-      } else if (this.e == $$0) {
-         return true;
-      } else {
-         if (this.e < $$0) {
-            this.e = this.e + azo.a(this.e, 5.0E-4F, 0.005F);
-            if (this.e > $$0) {
-               this.e = $$0;
-            }
-         } else {
-            this.e = 0.03F * $$0 + 0.97F * this.e;
-            if (Math.abs(this.e - $$0) < 1.0E-4F || this.e < $$0) {
-               this.e = $$0;
-            }
-         }
-
-         this.e = azo.a(this.e, 0.0F, 1.0F);
-         if (this.e <= 1.0E-4F) {
-            this.b();
-            return false;
-         } else {
-            this.c.ak().a(this.d, this.e);
-            return true;
-         }
-      }
-   }
-
-   public boolean b(awm $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

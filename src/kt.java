@@ -1,35 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public interface kt {
-   Codec<Map<kt.b<?>, kt>> b = Codec.dispatchedMap(mg.ao.q(), kt.b::a);
+public record kt(cx.d e, cx.d f) implements ku {
+   public static final Codec<kt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cx.d.d.optionalFieldOf("durability", cx.d.c).forGetter(kt::a), cx.d.d.optionalFieldOf("damage", cx.d.c).forGetter(kt::b))
+            .apply($$0, kt::new)
+   );
 
-   static MapCodec<kt.a<?>> a(String $$0) {
-      return mg.ao.q().dispatchMap($$0, kt.a::a, kt.b::b);
+   @Override
+   public boolean a(kg $$0) {
+      Integer $$1 = $$0.a(kl.e);
+      if ($$1 == null) {
+         return false;
+      } else {
+         int $$2 = $$0.a(kl.d, 0);
+         return !this.e.d($$2 - $$1) ? false : this.f.d($$1);
+      }
    }
 
-   boolean a(kf var1);
-
-   public static record a<T extends kt>(kt.b<T> a, T b) {
+   public static kt a(cx.d $$0) {
+      return new kt($$0, cx.d.c);
    }
 
-   public static final class b<T extends kt> {
-      private final Codec<T> a;
-      private final MapCodec<kt.a<T>> b;
+   public cx.d a() {
+      return this.e;
+   }
 
-      public b(Codec<T> $$0) {
-         this.a = $$0;
-         this.b = RecordCodecBuilder.mapCodec($$1 -> $$1.group($$0.fieldOf("value").forGetter(kt.a::b)).apply($$1, $$0xx -> new kt.a<>(this, (T)$$0xx)));
-      }
-
-      public Codec<T> a() {
-         return this.a;
-      }
-
-      public MapCodec<kt.a<T>> b() {
-         return this.b;
-      }
+   public cx.d b() {
+      return this.f;
    }
 }

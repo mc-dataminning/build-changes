@@ -1,22 +1,13 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class evt extends ewa {
-   public final axt<dnc> a;
-   public static final MapCodec<evt> b = axt.b(mh.i).xmap(evt::new, $$0 -> $$0.a).fieldOf("value");
+public interface evt<P extends evs> {
+   evt<evr> a = a("always_true", evr.a);
+   evt<evo> b = a("linear_pos", evo.a);
+   evt<evd> c = a("axis_aligned_linear_pos", evd.a);
 
-   public evt(axt<dnc> $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Nullable
-   @Override
-   public ewd.d a(dka $$0, iv $$1, iv $$2, ewd.d $$3, ewd.d $$4, evz $$5) {
-      return ekk.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
-   }
-
-   @Override
-   protected ewc<?> a() {
-      return ewc.n;
+   static <P extends evs> evt<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.o, $$0, () -> $$1);
    }
 }

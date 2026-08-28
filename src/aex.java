@@ -1,29 +1,45 @@
-public class aex implements zh<abw> {
-   public static final yy<vw, aex> a = zh.a(aex::a, aex::new);
-   private final int b;
+public class aex implements zj<aby> {
+   public static final za<vy, aex> a = zj.a(aex::a, aex::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public aex(ecw $$0) {
-      this.b = $$0.q();
+   public aex(ecy $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private aex(vw $$0) {
-      this.b = $$0.l();
+   private aex(vy $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zj<aex> a() {
-      return agp.ay;
+   public zl<aex> a() {
+      return agr.aw;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

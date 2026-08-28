@@ -1,15 +1,82 @@
-public class rm {
-   public static final alh<ejv<?, ?>> a = ri.a("pile_hay");
-   public static final alh<ejv<?, ?>> b = ri.a("pile_melon");
-   public static final alh<ejv<?, ?>> c = ri.a("pile_snow");
-   public static final alh<ejv<?, ?>> d = ri.a("pile_ice");
-   public static final alh<ejv<?, ?>> e = ri.a("pile_pumpkin");
+import java.util.List;
 
-   public static void a(qh<ejv<?, ?>> $$0) {
-      ri.a($$0, a, ekk.k, new emg(new eox(dne.iL)));
-      ri.a($$0, b, ekk.k, new emg(eoq.a(dne.fs)));
-      ri.a($$0, c, ekk.k, new emg(eoq.a(dne.ed)));
-      ri.a($$0, d, ekk.k, new emg(new epa(btb.<ebe>b().a(dne.nC.m(), 1).a(dne.je.m(), 5))));
-      ri.a($$0, e, ekk.k, new emg(new epa(btb.<ebe>b().a(dne.fr.m(), 19).a(dne.ew.m(), 1))));
+public class rm {
+   public static final alj<ejx<?, ?>> a = rj.a("ore_magma");
+   public static final alj<ejx<?, ?>> b = rj.a("ore_soul_sand");
+   public static final alj<ejx<?, ?>> c = rj.a("ore_nether_gold");
+   public static final alj<ejx<?, ?>> d = rj.a("ore_quartz");
+   public static final alj<ejx<?, ?>> e = rj.a("ore_gravel_nether");
+   public static final alj<ejx<?, ?>> f = rj.a("ore_blackstone");
+   public static final alj<ejx<?, ?>> g = rj.a("ore_dirt");
+   public static final alj<ejx<?, ?>> h = rj.a("ore_gravel");
+   public static final alj<ejx<?, ?>> i = rj.a("ore_granite");
+   public static final alj<ejx<?, ?>> j = rj.a("ore_diorite");
+   public static final alj<ejx<?, ?>> k = rj.a("ore_andesite");
+   public static final alj<ejx<?, ?>> l = rj.a("ore_tuff");
+   public static final alj<ejx<?, ?>> m = rj.a("ore_coal");
+   public static final alj<ejx<?, ?>> n = rj.a("ore_coal_buried");
+   public static final alj<ejx<?, ?>> o = rj.a("ore_iron");
+   public static final alj<ejx<?, ?>> p = rj.a("ore_iron_small");
+   public static final alj<ejx<?, ?>> q = rj.a("ore_gold");
+   public static final alj<ejx<?, ?>> r = rj.a("ore_gold_buried");
+   public static final alj<ejx<?, ?>> s = rj.a("ore_redstone");
+   public static final alj<ejx<?, ?>> t = rj.a("ore_diamond_small");
+   public static final alj<ejx<?, ?>> u = rj.a("ore_diamond_medium");
+   public static final alj<ejx<?, ?>> v = rj.a("ore_diamond_large");
+   public static final alj<ejx<?, ?>> w = rj.a("ore_diamond_buried");
+   public static final alj<ejx<?, ?>> x = rj.a("ore_lapis");
+   public static final alj<ejx<?, ?>> y = rj.a("ore_lapis_buried");
+   public static final alj<ejx<?, ?>> z = rj.a("ore_infested");
+   public static final alj<ejx<?, ?>> A = rj.a("ore_emerald");
+   public static final alj<ejx<?, ?>> B = rj.a("ore_ancient_debris_large");
+   public static final alj<ejx<?, ?>> C = rj.a("ore_ancient_debris_small");
+   public static final alj<ejx<?, ?>> D = rj.a("ore_copper_small");
+   public static final alj<ejx<?, ?>> E = rj.a("ore_copper_large");
+   public static final alj<ejx<?, ?>> F = rj.a("ore_clay");
+
+   public static void a(qi<ejx<?, ?>> $$0) {
+      evz $$1 = new ewh(axg.bh);
+      evz $$2 = new ewh(axg.bi);
+      evz $$3 = new ewh(axg.bj);
+      evz $$4 = new evh(dng.em);
+      evz $$5 = new ewh(axg.bk);
+      List<emz.a> $$6 = List.of(emz.a($$2, dng.S.m()), emz.a($$3, dng.T.m()));
+      List<emz.a> $$7 = List.of(emz.a($$2, dng.Q.m()), emz.a($$3, dng.R.m()));
+      List<emz.a> $$8 = List.of(emz.a($$2, dng.cI.m()), emz.a($$3, dng.cJ.m()));
+      List<emz.a> $$9 = List.of(emz.a($$2, dng.aY.m()), emz.a($$3, dng.aZ.m()));
+      List<emz.a> $$10 = List.of(emz.a($$2, dng.rI.m()), emz.a($$3, dng.rJ.m()));
+      List<emz.a> $$11 = List.of(emz.a($$2, dng.U.m()), emz.a($$3, dng.V.m()));
+      rj.a($$0, a, ekm.J, new emz($$4, dng.lp.m(), 33));
+      rj.a($$0, b, ekm.J, new emz($$4, dng.en.m(), 12));
+      rj.a($$0, c, ekm.J, new emz($$4, dng.W.m(), 10));
+      rj.a($$0, d, ekm.J, new emz($$4, dng.hC.m(), 14));
+      rj.a($$0, e, ekm.J, new emz($$4, dng.O.m(), 33));
+      rj.a($$0, f, ekm.J, new emz($$4, dng.pZ.m(), 33));
+      rj.a($$0, g, ekm.J, new emz($$1, dng.j.m(), 33));
+      rj.a($$0, h, ekm.J, new emz($$1, dng.O.m(), 33));
+      rj.a($$0, i, ekm.J, new emz($$1, dng.c.m(), 64));
+      rj.a($$0, j, ekm.J, new emz($$1, dng.e.m(), 64));
+      rj.a($$0, k, ekm.J, new emz($$1, dng.g.m(), 64));
+      rj.a($$0, l, ekm.J, new emz($$1, dng.rh.m(), 64));
+      rj.a($$0, m, ekm.J, new emz($$11, 17));
+      rj.a($$0, n, ekm.J, new emz($$11, 17, 0.5F));
+      rj.a($$0, o, ekm.J, new emz($$6, 9));
+      rj.a($$0, p, ekm.J, new emz($$6, 4));
+      rj.a($$0, q, ekm.J, new emz($$7, 9));
+      rj.a($$0, r, ekm.J, new emz($$7, 9, 0.5F));
+      rj.a($$0, s, ekm.J, new emz(List.of(emz.a($$2, dng.dY.m()), emz.a($$3, dng.dZ.m())), 8));
+      rj.a($$0, t, ekm.J, new emz($$8, 4, 0.5F));
+      rj.a($$0, v, ekm.J, new emz($$8, 12, 0.7F));
+      rj.a($$0, w, ekm.J, new emz($$8, 8, 1.0F));
+      rj.a($$0, u, ekm.J, new emz($$8, 8, 0.5F));
+      rj.a($$0, x, ekm.J, new emz($$9, 7));
+      rj.a($$0, y, ekm.J, new emz($$9, 7, 1.0F));
+      rj.a($$0, z, ekm.J, new emz(List.of(emz.a($$2, dng.ff.m()), emz.a($$3, dng.tN.m())), 9));
+      rj.a($$0, A, ekm.J, new emz(List.of(emz.a($$2, dng.gd.m()), emz.a($$3, dng.ge.m())), 3));
+      rj.a($$0, B, ekm.ag, new emz($$5, dng.pR.m(), 3, 1.0F));
+      rj.a($$0, C, ekm.ag, new emz($$5, dng.pR.m(), 2, 1.0F));
+      rj.a($$0, D, ekm.J, new emz($$10, 10));
+      rj.a($$0, E, ekm.J, new emz($$10, 20));
+      rj.a($$0, F, ekm.J, new emz($$1, dng.ei.m(), 33));
    }
 }

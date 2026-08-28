@@ -1,31 +1,40 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class hmh {
-   public static aza a(xf $$0, boolean $$1) {
-      xy $$2 = xy.a($$0, UCharacter::getMirror, hmh::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<aza> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
+public abstract class hmh implements avb, AutoCloseable {
+   private final hlb a;
+   private final alk b;
+   private final Set<aug<?>> c;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
-      }
-
-      return aza.composite($$4);
+   public hmh(hle $$0, alk $$1, alk $$2) {
+      this($$0, $$1, $$2, hkx.a);
    }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
+   public hmh(hle $$0, alk $$1, alk $$2, Set<aug<?>> $$3) {
+      this.b = $$2;
+      this.a = new hlb($$1);
+      $$0.a(this.a.e(), this.a);
+      this.c = $$3;
+   }
+
+   protected hlc a(alk $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public final CompletableFuture<Void> reload(avb.a $$0, avh $$1, Executor $$2, Executor $$3) {
+      return hkx.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hkx.a::a).thenCompose($$0::wait).thenAcceptAsync(this::a, $$3);
+   }
+
+   private void a(hkx.a $$0) {
+      try (bri $$1 = brc.a().d("upload")) {
+         this.a.a($$0);
       }
+   }
+
+   @Override
+   public void close() {
+      this.a.d();
    }
 }

@@ -1,66 +1,107 @@
-public class fyx extends gad {
-   private static final xa s = xa.c("selectWorld.backupJoinSkipButton");
-   public static final xa a = xa.c("selectWorld.backupJoinConfirmButton");
-   private final Runnable u;
-   protected final fyx.a b;
-   private final xa v;
-   private final boolean w;
-   private fve x = fve.a;
-   final xa c;
-   protected int d;
-   private fun y;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public fyx(Runnable $$0, fyx.a $$1, xa $$2, xa $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, a, $$4);
-   }
+public class fyx extends gaf {
+   private static final xc a = xc.c("accessibility.onboarding.screen.title");
+   private static final xc b = xc.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fve s;
+   private final frj u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
+   @Nullable
+   private fuy z;
+   private final fyb A = new fyb(this, this.m(), 33);
 
-   public fyx(Runnable $$0, fyx.a $$1, xa $$2, xa $$3, xa $$4, boolean $$5) {
-      super($$2);
+   public fyx(frj $$0, Runnable $$1) {
+      super(a);
       this.u = $$0;
-      this.b = $$1;
-      this.v = $$3;
-      this.w = $$5;
-      this.c = $$4;
+      this.y = $$1;
+      this.s = new fve(true);
+      this.v = frf.Q().aY().a();
    }
 
    @Override
-   protected void aS_() {
-      super.aS_();
-      this.x = fve.a(this.p, this.v, this.n - 50);
-      int $$0 = (this.x.a() + 1) * 9;
-      this.y = fun.a(xa.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.w) {
-         this.c(this.y);
+   public void aS_() {
+      fyf $$0 = this.A.c(fyf.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fuy(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      if (this.u.av().a(this.u) instanceof fuu $$1) {
+         this.q = $$1;
+         this.q.j = this.v;
+         $$0.a(this.q);
       }
 
-      this.c(ful.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(ful.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(ful.a(wz.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      $$0.a(fur.b(150, $$0x -> this.a(new gde(this, this.m.n)), false));
+      $$0.a(fur.a(150, $$0x -> this.a(new gdh(this, this.m.n, this.m.ah())), false));
+      this.A.b(fun.a(xb.j, $$0x -> this.aP_()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.x.a($$0, this.n / 2, 70);
+   protected void c() {
+      if (this.z != null) {
+         this.z.b(this.n);
+      }
+
+      this.A.a();
    }
 
    @Override
-   public boolean aH_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.u.run();
-         return true;
+   protected void aG_() {
+      if (this.v && this.q != null) {
+         this.b(this.q);
       } else {
-         return super.a($$0, $$1, $$2);
+         super.aG_();
       }
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   private int m() {
+      return 90;
+   }
+
+   @Override
+   public void aP_() {
+      this.a(true, this.y);
+   }
+
+   private void a(gaf $$0) {
+      this.a(false, () -> this.m.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.ax();
+      }
+
+      Narrator.getNarrator().clear();
+      $$1.run();
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E();
+      this.s.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(ftz $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void E() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.m.aC()) {
+            Narrator.getNarrator().say(b.getString(), true, 1.0F);
+            this.w = true;
+         }
+      }
    }
 }

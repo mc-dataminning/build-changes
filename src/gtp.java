@@ -1,269 +1,90 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import java.util.Objects;
 
-public class gtp implements hnv {
-   public static final ali a = ali.b("builtin/generated");
-   public static final List<String> b = List.of("layer0", "layer1", "layer2", "layer3", "layer4");
-   private static final float d = 7.5F;
-   private static final float e = 8.5F;
-   private static final gtv.a f = new gtv.a.a().a("particle", "layer0").a();
-   private static final gti.b g = new gti.b(0.0F, 0.0F, 16.0F, 16.0F);
-   private static final gti.b h = new gti.b(16.0F, 0.0F, 0.0F, 16.0F);
+public interface gtp {
+   void a(azz var1, List<gto> var2);
 
-   @Override
-   public gtv.a e() {
-      return f;
+   default List<gto> a(azz $$0) {
+      List<gto> $$1 = new ObjectArrayList();
+      this.a($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   public hnu a() {
-      return gtp::a;
-   }
+   hlc a();
 
-   @Nullable
-   @Override
-   public hnv.a b() {
-      return hnv.a.a;
-   }
-
-   private static hnq a(gtv $$0, hnj $$1, hnp $$2, hnl $$3) {
-      return a($$0, $$1.a(), $$2, $$3);
-   }
-
-   private static hnq a(gtv $$0, hnt $$1, hnp $$2, hnl $$3) {
-      List<gth> $$4 = new ArrayList<>();
-
-      for (int $$5 = 0; $$5 < b.size(); $$5++) {
-         String $$6 = b.get($$5);
-         hnh $$7 = $$0.a($$6);
-         if ($$7 == null) {
-            break;
+   public static class a implements gtp.c {
+      final gtp.b a;
+      private final hnl.a<gtp> b = new hnl.a<gtp>() {
+         public gtp a(hnl $$0) {
+            return a.this.a.a($$0);
          }
+      };
 
-         hku $$8 = $$1.a($$7, $$3).e();
-         $$4.addAll(a($$5, $$6, $$8));
-      }
-
-      return gtt.a($$4, $$0, $$1, $$2, $$3);
-   }
-
-   private static List<gth> a(int $$0, String $$1, hku $$2) {
-      Map<jb, gti> $$3 = Map.of(jb.d, new gti(null, $$0, $$1, g, i.a), jb.c, new gti(null, $$0, $$1, h, i.a));
-      List<gth> $$4 = new ArrayList<>();
-      $$4.add(new gth(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3));
-      $$4.addAll(a($$2, $$1, $$0));
-      return $$4;
-   }
-
-   private static List<gth> a(hku $$0, String $$1, int $$2) {
-      float $$3 = (float)$$0.a();
-      float $$4 = (float)$$0.b();
-      List<gth> $$5 = new ArrayList<>();
-
-      for (gtp.a $$6 : a($$0)) {
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         float $$9 = 0.0F;
-         float $$10 = 0.0F;
-         float $$11 = 0.0F;
-         float $$12 = 0.0F;
-         float $$13 = 0.0F;
-         float $$14 = 0.0F;
-         float $$15 = 16.0F / $$3;
-         float $$16 = 16.0F / $$4;
-         float $$17 = (float)$$6.b();
-         float $$18 = (float)$$6.c();
-         float $$19 = (float)$$6.d();
-         gtp.b $$20 = $$6.a();
-         switch ($$20) {
-            case a:
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$13 = $$19;
-               $$8 = $$19;
-               $$10 = $$19;
-               $$14 = $$19 + 1.0F;
-               break;
-            case b:
-               $$13 = $$19;
-               $$14 = $$19 + 1.0F;
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$8 = $$19 + 1.0F;
-               $$10 = $$19 + 1.0F;
-               break;
-            case c:
-               $$11 = $$19;
-               $$7 = $$19;
-               $$9 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-               break;
-            case d:
-               $$11 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$7 = $$19 + 1.0F;
-               $$9 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-         }
-
-         $$7 *= $$15;
-         $$9 *= $$15;
-         $$8 *= $$16;
-         $$10 *= $$16;
-         $$8 = 16.0F - $$8;
-         $$10 = 16.0F - $$10;
-         $$11 *= $$15;
-         $$12 *= $$15;
-         $$13 *= $$16;
-         $$14 *= $$16;
-         Map<jb, gti> $$21 = Map.of($$20.a(), new gti(null, $$2, $$1, new gti.b($$11, $$13, $$12, $$14), i.a));
-         switch ($$20) {
-            case a:
-               $$5.add(new gth(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21));
-               break;
-            case b:
-               $$5.add(new gth(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
-               break;
-            case c:
-               $$5.add(new gth(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21));
-               break;
-            case d:
-               $$5.add(new gth(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
-         }
-      }
-
-      return $$5;
-   }
-
-   private static List<gtp.a> a(hku $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      List<gtp.a> $$3 = new ArrayList<>();
-      $$0.d().forEach($$4 -> {
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               boolean $$7 = !a($$0, $$4, $$6, $$5, $$1, $$2);
-               a(gtp.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               a(gtp.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               a(gtp.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               a(gtp.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-            }
-         }
-      });
-      return $$3;
-   }
-
-   private static void a(gtp.b $$0, List<gtp.a> $$1, hku $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
-      boolean $$9 = a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
-      if ($$9) {
-         a($$1, $$0, $$4, $$5);
-      }
-   }
-
-   private static void a(List<gtp.a> $$0, gtp.b $$1, int $$2, int $$3) {
-      gtp.a $$4 = null;
-
-      for (gtp.a $$5 : $$0) {
-         if ($$5.a() == $$1) {
-            int $$6 = $$1.d() ? $$3 : $$2;
-            if ($$5.d() == $$6) {
-               $$4 = $$5;
-               break;
-            }
-         }
-      }
-
-      int $$7 = $$1.d() ? $$3 : $$2;
-      int $$8 = $$1.d() ? $$2 : $$3;
-      if ($$4 == null) {
-         $$0.add(new gtp.a($$1, $$8, $$7));
-      } else {
-         $$4.a($$8);
-      }
-   }
-
-   private static boolean a(hku $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
-   }
-
-   static class a {
-      private final gtp.b a;
-      private int b;
-      private int c;
-      private final int d;
-
-      public a(gtp.b $$0, int $$1, int $$2) {
+      public a(gtp.b $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$1;
-         this.d = $$2;
       }
 
-      public void a(int $$0) {
-         if ($$0 < this.b) {
-            this.b = $$0;
-         } else if ($$0 > this.c) {
-            this.c = $$0;
-         }
+      @Override
+      public void a(hnt.a $$0) {
+         this.a.a($$0);
       }
 
-      public gtp.b a() {
-         return this.a;
+      @Override
+      public gtp a(ebg $$0, hnl $$1) {
+         return $$1.a(this.b);
       }
 
-      public int b() {
-         return this.b;
-      }
-
-      public int c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.d;
+      @Override
+      public Object a(ebg $$0) {
+         return this;
       }
    }
 
-   static enum b {
-      a(jb.b, 0, -1),
-      b(jb.a, 0, 1),
-      c(jb.f, -1, 0),
-      d(jb.e, 1, 0);
+   public interface b extends hnt {
+      Codec<btc<gty>> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gty.a.forGetter(btc::a), ayy.m.optionalFieldOf("weight", 1).forGetter(btc::b)).apply($$0, btc::new)
+      );
+      Codec<hny.a> b = ayy.b(a.listOf()).flatComapMap($$0 -> new hny.a(btd.a(Lists.transform($$0, $$0x -> $$0x.a(gtw.a::new)))), $$0 -> {
+         List<btc<gtp.b>> $$1 = $$0.b().d();
+         List<btc<gty>> $$2 = new ArrayList<>($$1.size());
 
-      private final jb e;
-      private final int f;
-      private final int g;
+         for (btc<gtp.b> $$3 : $$1) {
+            if (!($$3.a() instanceof gtw.a $$5)) {
+               return DataResult.error(() -> "Only single variants are supported");
+            }
 
-      private b(final jb $$0, final int $$1, final int $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
+            $$2.add(new btc<>($$5.b(), $$3.b()));
+         }
+
+         return DataResult.success($$2);
+      });
+      Codec<gtp.b> c = Codec.either(b, gtw.a.d).flatComapMap($$0 -> (gtp.b)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
+         Objects.requireNonNull($$0);
+
+         return switch ($$0) {
+            case gtw.a $$3 -> DataResult.success(Either.right($$3));
+            case hny.a $$4 -> DataResult.success(Either.left($$4));
+            default -> DataResult.error(() -> "Only a single variant or a list of variants are supported");
+         };
+      });
+
+      gtp a(hnl var1);
+
+      default gtp.c a() {
+         return new gtp.a(this);
       }
+   }
 
-      public jb a() {
-         return this.e;
-      }
+   public interface c extends hnt {
+      gtp a(ebg var1, hnl var2);
 
-      public int b() {
-         return this.f;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      boolean d() {
-         return this == b || this == a;
-      }
+      Object a(ebg var1);
    }
 }

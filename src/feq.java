@@ -1,42 +1,62 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record feq(fem b, fem c) implements fem {
+public record feq(fex b, String c, float d) implements feo {
    public static final MapCodec<feq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fen.a.fieldOf("min").forGetter(feq::c), fen.a.fieldOf("max").forGetter(feq::d)).apply($$0, feq::new)
+      $$0 -> $$0.group(
+               fey.a.fieldOf("target").forGetter(feq::c),
+               Codec.STRING.fieldOf("score").forGetter(feq::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(feq::e)
+            )
+            .apply($$0, feq::new)
    );
 
    @Override
-   public fel b() {
-      return fen.c;
-   }
-
-   public static feq a(float $$0, float $$1) {
-      return new feq(fej.a($$0), fej.a($$1));
+   public fen b() {
+      return fep.e;
    }
 
    @Override
-   public int a(fah $$0) {
-      return azo.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public Set<bbb<?>> a() {
+      return this.b.b();
+   }
+
+   public static feq a(faj.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
+
+   public static feq a(faj.b $$0, String $$1, float $$2) {
+      return new feq(feu.a($$0), $$1, $$2);
    }
 
    @Override
-   public float b(fah $$0) {
-      return azo.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public float b(faj $$0) {
+      fgw $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         fgx $$2 = $$0.d().g();
+         fgp $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            fgt $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+         }
+      }
    }
 
-   @Override
-   public Set<baz<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public fem c() {
+   public fex c() {
       return this.b;
    }
 
-   public fem d() {
+   public String d() {
       return this.c;
+   }
+
+   public float e() {
+      return this.d;
    }
 }

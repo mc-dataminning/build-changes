@@ -1,40 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class elq extends ekk<emz> {
-   public elq(Codec<emz> $$0) {
+public class elq extends ekm<eni> {
+   public elq(Codec<eni> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ekm<emz> $$0) {
-      boolean $$1 = false;
-      azx $$2 = $$0.d();
-      dkw $$3 = $$0.b();
-      iv $$4 = $$0.e();
-      emz $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(ehd.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      iv $$9 = new iv($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dne.J)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         ebe $$11 = $$10 ? dne.bH.m() : dne.bG.m();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               ebe $$12 = $$11.b(dvt.d, eca.a);
-               iv $$13 = $$9.d();
-               if ($$3.a_($$13).a(dne.J)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
+   public boolean a(eko<eni> $$0) {
+      dky $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         eni $$3 = $$0.f();
+         azz $$4 = $$0.d();
+         duh $$5 = duh.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
             }
 
-            $$1 = true;
-         }
-      }
+            boolean $$9 = $$7 < $$3.f();
 
-      return $$1;
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         iw $$11 = $$2.e();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
+            $$1.a($$2, dng.rC.m(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            iw $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jc.b)) {
+               $$1.a($$14, dng.rD.m().b(dug.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(dka $$0, iw $$1) {
+      ebg $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof duc) {
+         return true;
+      } else {
+         return !$$2.l() && (!$$2.a(dng.J) || !$$2.y().b()) ? false : jc.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+      }
    }
 }

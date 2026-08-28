@@ -1,4 +1,3 @@
-public enum fkh {
-   a,
-   b;
+public interface fkh {
+   fkg createMonitor(long var1);
 }

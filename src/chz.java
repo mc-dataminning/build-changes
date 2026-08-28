@@ -1,33 +1,30 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class chz extends cic<bxu> {
+public class chz extends cie<bxw> {
    @Override
-   public Set<cgw<?>> a() {
-      return ImmutableSet.of(cgw.j, cgw.k, cgw.l, cgw.m);
+   public Set<cgy<?>> a() {
+      return ImmutableSet.of(cgy.h, cgy.N, cgy.ao);
    }
 
    @Override
-   protected void a(ars $$0, bxu $$1) {
-      List<crx> $$2 = $$0.z()
-         .stream()
-         .filter(bxa.f)
-         .filter($$1x -> $$1.a($$1x, this.a($$1)))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      byu<?> $$3 = $$1.ec();
-      $$3.a(cgw.j, $$2);
-      List<crx> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
-      $$3.a(cgw.k, $$4.isEmpty() ? null : $$4.get(0));
-      List<crx> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).toList();
-      $$3.a(cgw.m, $$5);
-      $$3.a(cgw.l, $$5.isEmpty() ? null : $$5.get(0));
-   }
+   protected void a(aru $$0, bxw $$1) {
+      byw<?> $$2 = $$1.ec();
+      List<cqn> $$3 = Lists.newArrayList();
+      cha $$4 = $$2.c(cgy.h).orElse(cha.a());
+      Optional<bxy> $$5 = $$4.a($$0x -> $$0x instanceof cps || $$0x instanceof cnr).map(bxy.class::cast);
 
-   protected double a(bxu $$0) {
-      return $$0.h(bza.m);
+      for (bxw $$7 : $$2.c(cgy.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cqn && ((cqn)$$7).t()) {
+            $$3.add((cqn)$$7);
+         }
+      }
+
+      $$2.a(cgy.N, $$5);
+      $$2.a(cgy.ao, $$3);
    }
 }

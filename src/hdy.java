@@ -1,7 +1,7 @@
-public class hdy extends hfp {
-   public float a;
-   public boolean b = true;
-   public boolean c;
-   public boolean d;
-   public boolean e;
+public class hdy extends hfr {
+   public clb.e a = clb.e.f;
+   public float b;
+   public float c;
+   public float d = 1.0F;
+   public float e;
 }

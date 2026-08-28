@@ -1,26 +1,21 @@
-import com.google.common.collect.ImmutableList;
-import java.util.function.UnaryOperator;
-
 public class glm {
    private final glo a;
+   private final gln b;
 
-   public glm() {
-      this(new glo(ImmutableList.of(), glg.a));
-   }
-
-   private glm(glo $$0) {
+   private glm(glo $$0, gln $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public glo a() {
-      return this.a;
+   public glm a(glp $$0) {
+      return new glm($$0.apply(this.a), this.b);
    }
 
-   public glm a(UnaryOperator<glg> $$0) {
-      return new glm(this.a.a($$0));
+   public glg a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public glm a(gln $$0) {
-      return $$0.apply(this);
+   public static glm a(glo $$0, int $$1, int $$2) {
+      return new glm($$0, new gln($$1, $$2));
    }
 }

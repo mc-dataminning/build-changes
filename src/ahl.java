@@ -1,30 +1,30 @@
-import java.util.List;
-import java.util.Optional;
+public record ahl(int b, int c, boolean d) implements zj<agt> {
+   public static final za<vy, ahl> a = zj.a(ahl::a, ahl::new);
 
-public record ahl(int b, List<String> c, Optional<String> d) implements zh<agr> {
-   public static final yy<vw, ahl> a = yy.a(yw.h, ahl::b, yw.b(1024).a(yw.c(100)), ahl::e, yw.b(32).a(yw::a), ahl::f, ahl::new);
+   private ahl(vy $$0) {
+      this($$0.l(), $$0.x(), $$0.readBoolean());
+   }
 
-   public ahl(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.f(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zj<ahl> a() {
-      return agp.bD;
+   public zl<ahl> a() {
+      return agr.bB;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public int e() {
       return this.c;
    }
 
-   public Optional<String> f() {
+   public boolean f() {
       return this.d;
    }
 }

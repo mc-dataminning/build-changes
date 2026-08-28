@@ -1,32 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
+import java.util.List;
+import java.util.SequencedSet;
 
-public record dde(float c, Optional<ali> d) {
+public record dde(boolean d, SequencedSet<kk<?>> e) {
+   private static final Codec<SequencedSet<kk<?>>> f = kk.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
    public static final Codec<dde> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayw.o.fieldOf("seconds").forGetter(dde::b), ali.a.optionalFieldOf("cooldown_group").forGetter(dde::c)).apply($$0, dde::new)
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(dde::a),
+               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(dde::b)
+            )
+            .apply($$0, dde::new)
    );
-   public static final yy<wl, dde> b = yy.a(yw.l, dde::b, ali.b.a(yw::a), dde::c, dde::new);
+   public static final za<wn, dde> b = za.a(yy.b, dde::a, kk.b.a(yy.a(ReferenceLinkedOpenHashSet::new)), dde::b, dde::new);
+   public static final dde c = new dde(false, ReferenceSortedSets.emptySet());
 
-   public dde(float $$0) {
-      this($$0, Optional.empty());
-   }
+   public dde a(kk<?> $$0, boolean $$1) {
+      if (this.e.contains($$0) == $$1) {
+         return this;
+      } else {
+         SequencedSet<kk<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
+         if ($$1) {
+            $$2.add($$0);
+         } else {
+            $$2.remove($$0);
+         }
 
-   public int a() {
-      return (int)(this.c * 20.0F);
-   }
-
-   public void a(czy $$0, bxu $$1) {
-      if ($$1 instanceof crx $$2) {
-         $$2.gF().a($$0, this.a());
+         return new dde(this.d, $$2);
       }
    }
 
-   public float b() {
-      return this.c;
+   public boolean a(kk<?> $$0) {
+      return !this.d && !this.e.contains($$0);
    }
 
-   public Optional<ali> c() {
+   public boolean a() {
       return this.d;
+   }
+
+   public SequencedSet<kk<?>> b() {
+      return this.e;
    }
 }

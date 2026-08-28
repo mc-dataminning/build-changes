@@ -1,211 +1,167 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class foy extends hrm {
-   static final ali a = ali.b("pending_invite/accept_highlighted");
-   static final ali b = ali.b("pending_invite/accept");
-   static final ali c = ali.b("pending_invite/reject_highlighted");
-   static final ali C = ali.b("pending_invite/reject");
-   private static final Logger D = LogUtils.getLogger();
-   private static final xa E = xa.c("mco.invites.nopending");
-   static final xa F = xa.c("mco.invites.button.accept");
-   static final xa G = xa.c("mco.invites.button.reject");
-   private final gad H;
-   private final CompletableFuture<List<fmx>> I = CompletableFuture.supplyAsync(() -> {
-      try {
-         return fmd.a().j().a;
-      } catch (fnz var1x) {
-         D.error("Couldn't list invites", var1x);
-         return List.of();
-      }
-   }, ag.i());
+public class foy extends hro {
+   private static final alk a = alk.b("icon/unseen_notification");
+   private static final alk b = alk.b("icon/news");
+   private static final alk c = alk.b("icon/invite");
+   private static final alk C = alk.b("icon/trial_available");
+   private final CompletableFuture<Boolean> D = flz.a().thenApply($$0 -> $$0.a() == flz.b.a);
    @Nullable
-   xa J;
-   foy.b K;
-   private ful L;
-   private ful M;
+   private fpn.c E;
+   @Nullable
+   private foy.a F;
+   private volatile int G;
+   private static boolean H;
+   private static boolean I;
+   private static boolean J;
+   private final foy.a K = new foy.a() {
+      @Override
+      public fpn.c a(foe $$0) {
+         fpn.c $$1 = $$0.a.a();
+         foy.this.a($$0, $$1);
+         foy.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public foy(gad $$0, xa $$1) {
-      super($$1);
-      this.H = $$0;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final foy.a L = new foy.a() {
+      @Override
+      public fpn.c a(foe $$0) {
+         fpn.c $$1 = $$0.a.a();
+         foy.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public foy() {
+      super(fqw.a);
    }
 
    @Override
    public void aS_() {
-      fly.f();
-      this.K = new foy.b();
-      this.I.thenAcceptAsync($$0 -> {
-         List<foy.a> $$1 = $$0.stream().map($$0x -> new foy.a($$0x)).toList();
-         this.K.a($$1);
-         if ($$1.isEmpty()) {
-            this.m.aY().b(E);
-         }
-      }, this.r);
-      this.c(this.K);
-      this.L = this.c((ful)ful.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
-      this.c((ful)ful.a(wz.d, $$0 -> this.aP_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
-      this.M = this.c((ful)ful.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
-      this.E();
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.H);
-   }
-
-   @Override
-   void c(boolean $$0) {
-      if (this.K.p() instanceof foy.a $$1) {
-         String $$2 = $$1.c.a;
-         CompletableFuture.<Boolean>supplyAsync(() -> {
-            try {
-               fmd $$2x = fmd.a();
-               if ($$0) {
-                  $$2x.a($$2);
-               } else {
-                  $$2x.b($$2);
-               }
-
-               return true;
-            } catch (fnz var3) {
-               D.error("Couldn't handle invite", var3);
-               return false;
-            }
-         }, ag.i()).thenAcceptAsync($$2x -> {
-            if ($$2x) {
-               this.K.a($$1);
-               this.E();
-               foc $$3 = this.m.bb();
-               if ($$0) {
-                  $$3.c.a();
-               }
-
-               $$3.d.a();
-            }
-         }, this.r);
+      if (this.E != null) {
+         this.E.a();
       }
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      this.J = null;
+   public void aK_() {
+      super.aK_();
+      this.m.bb().b.a();
+   }
+
+   @Nullable
+   private foy.a E() {
+      boolean $$0 = this.G() && this.D.getNow(false);
+      if (!$$0) {
+         return null;
+      } else {
+         return this.F() ? this.K : this.L;
+      }
+   }
+
+   @Override
+   public void e() {
+      foy.a $$0 = this.E();
+      if (!Objects.equals(this.F, $$0)) {
+         this.F = $$0;
+         if (this.F != null) {
+            this.E = this.F.a(this.m.bb());
+         } else {
+            this.E = null;
+         }
+      }
+
+      if (this.E != null) {
+         this.E.b();
+      }
+   }
+
+   private boolean F() {
+      return this.m.n.W().c();
+   }
+
+   private boolean G() {
+      return this.m.z instanceof gah;
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 12, -1);
-      if (this.J != null) {
-         $$0.a(this.p, this.J, $$1, $$2);
-      }
-
-      if (this.I.isDone() && this.K.b()) {
-         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
+      if (this.D.getNow(false)) {
+         this.c($$0);
       }
    }
 
-   void E() {
-      foy.a $$0 = this.K.p();
-      this.L.k = $$0 != null;
-      this.M.k = $$0 != null;
+   @Override
+   public void b(ftz $$0, int $$1, int $$2, float $$3) {
    }
 
-   class a extends fvh.a<foy.a> {
-      private static final int b = 38;
-      final fmx c;
-      private final List<fog> d;
-
-      a(final fmx $$0) {
-         this.c = $$0;
-         this.d = Arrays.asList(new foy.a.a(), new foy.a.b());
+   private void c(ftz $$0) {
+      int $$1 = this.G;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      int $$4 = this.n / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (J) {
+         $$0.a(gsn::H, a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
       }
 
-      @Override
-      public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, this.c, $$3, $$2, $$6, $$7);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         fog.a(foy.this.K, this, this.d, $$2, $$0, $$1);
-         return super.a($$0, $$1, $$2);
-      }
-
-      private void a(ftx $$0, fmx $$1, int $$2, int $$3, int $$4, int $$5) {
-         $$0.b(foy.this.p, $$1.b, $$2 + 38, $$3 + 1, -1);
-         $$0.b(foy.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644);
-         $$0.b(foy.this.p, fpt.a($$1.e), $$2 + 38, $$3 + 24, 7105644);
-         fog.a($$0, this.d, foy.this.K, $$2, $$3, $$4, $$5);
-         fpt.a($$0, $$2, $$3, 32, $$1.d);
-      }
-
-      @Override
-      public xa a() {
-         xa $$0 = wz.b(xa.b(this.c.b), xa.b(this.c.c), fpt.a(this.c.e));
-         return xa.a("narrator.select", $$0);
-      }
-
-      class a extends fog {
-         a() {
-            super(15, 15, 215, 5);
+      if (this.F != null && this.F.a()) {
+         if (I) {
+            $$0.a(gsn::H, b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
          }
 
-         @Override
-         protected void a(ftx $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(gsl::H, $$3 ? foy.a : foy.b, $$1, $$2, 18, 18);
-            if ($$3) {
-               foy.this.J = foy.F;
+         if ($$1 != 0) {
+            $$0.a(gsn::H, c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (H) {
+            $$0.a(gsn::H, C, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(foe $$0, fpn.c $$1) {
+      $$1.a($$0.d, $$0x -> this.G = $$0x);
+      $$1.a($$0.e, $$0x -> H = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.h.a($$1x);
+         I = $$0.h.a();
+      });
+   }
+
+   void b(foe $$0, fpn.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         J = false;
+
+         for (fnf $$1x : $$0x) {
+            if (!$$1x.a()) {
+               J = true;
+               break;
             }
          }
-
-         @Override
-         public void a(int $$0) {
-            foy.this.c(true);
-         }
-      }
-
-      class b extends fog {
-         b() {
-            super(15, 15, 235, 5);
-         }
-
-         @Override
-         protected void a(ftx $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(gsl::H, $$3 ? foy.c : foy.C, $$1, $$2, 18, 18);
-            if ($$3) {
-               foy.this.J = foy.G;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            foy.this.c(false);
-         }
-      }
+      });
    }
 
-   class b extends fvh<foy.a> {
-      public b() {
-         super(frd.Q(), foy.this.n, foy.this.o - 72, 32, 36);
-      }
+   interface a {
+      fpn.c a(foe var1);
 
-      @Override
-      public int a() {
-         return 260;
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         foy.this.E();
-      }
-
-      public boolean b() {
-         return this.t() == 0;
-      }
-
-      public void a(foy.a $$0) {
-         this.g($$0);
-      }
+      boolean a();
    }
 }

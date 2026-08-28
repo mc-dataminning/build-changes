@@ -1,11 +1,5 @@
-import javax.annotation.Nullable;
-
-public class hdz extends hej {
-   @Nullable
-   public bwq.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class hdz extends hfr {
+   public boolean a;
+   public final bwm b = new bwm();
+   public final bwm c = new bwm();
 }

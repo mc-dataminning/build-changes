@@ -1,67 +1,58 @@
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class gdj extends gad {
-   protected final gad b;
-   protected final frh c;
+public class gdj extends gdl {
+   private static final xc a = xc.c("options.online.title");
    @Nullable
-   protected fvi d;
-   public final fxz s = new fxz(this);
+   private fri<Unit> u;
 
-   public gdj(gad $$0, frh $$1, xa $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public gdj(gaf $$0, frj $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
    protected void aS_() {
-      this.G();
-      this.F();
-      this.E();
-      this.s.a($$1 -> {
-         fuj var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   protected void G() {
-      this.s.a(this.l, this.p);
-   }
-
-   protected void F() {
-      this.d = this.s.c(new fvi(this.m, this.n, this));
-      this.m();
-      if (this.d.b(this.c.av()) instanceof fus $$0) {
-         this.q = $$0;
-         this.q.j = this.m.aY().a();
+      super.aS_();
+      if (this.u != null) {
+         ful $$0 = this.d.b(this.u);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
       }
    }
 
-   protected abstract void m();
-
-   protected void E() {
-      this.s.b(ful.a(wz.d, $$0 -> this.aP_()).a(200).a());
-   }
-
-   @Override
-   protected void c() {
-      this.s.a();
-      if (this.d != null) {
-         this.d.a(this.n, this.s);
+   private fri<?>[] a(frj $$0, frf $$1) {
+      List<fri<?>> $$2 = new ArrayList<>();
+      $$2.add($$0.W());
+      $$2.add($$0.X());
+      fri<Unit> $$3 = y.a(
+         $$1.s,
+         $$0x -> {
+            buq $$1x = $$0x.an();
+            return new fri<>(
+               "options.difficulty.online",
+               fri.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new fri.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$3 != null) {
+         this.u = $$3;
+         $$2.add($$3);
       }
+
+      return $$2.toArray(new fri[0]);
    }
 
    @Override
-   public void aJ_() {
-      this.m.n.az();
-   }
-
-   @Override
-   public void aP_() {
-      if (this.d != null) {
-         this.d.b();
-      }
-
-      this.m.a(this.b);
+   protected void m() {
+      this.d.a(this.a(this.c, this.m));
    }
 }

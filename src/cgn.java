@@ -1,40 +1,36 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cgn extends cgq {
-   private final byq a;
-   private bxu b;
-   private int c;
+public class cgn<T extends bxw> extends cgl<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cgn(byq $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(ceq.a.d));
+   public cgn(ctq $$0, Class<T> $$1, boolean $$2, @Nullable cil.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gu()) {
-         bxu $$0 = this.a.e();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.er();
-            int $$1 = $$0.et();
-            return $$1 != this.c && this.a(this.b, cij.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.dY().h()) {
          return false;
+      } else if (!((ctq)this.e).gI()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void d() {
-      this.e.g(this.b);
-      bxu $$0 = this.a.e();
-      if ($$0 != null) {
-         this.c = $$0.et();
-      }
-
+      this.j = b(200);
       super.d();
    }
 }

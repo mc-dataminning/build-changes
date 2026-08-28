@@ -1,42 +1,27 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
+import com.mojang.serialization.JavaOps;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-public class fw implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xa.b("team.notFound", $$0));
+public class fw extends bql<xz> {
+   private static final Collection<String> b = List.of("{bold: true}", "{color: 'red'}", "{}");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xc.b("argument.style.invalid", $$0));
+   private static final bqg<Object> c = uu.a(JavaOps.INSTANCE);
 
-   public static fw a() {
-      return new fw();
+   private fw(ji.a $$0) {
+      super(c.a($$0.a(JavaOps.INSTANCE), c, xz.b.b, a));
    }
 
-   public static fgq a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      fgv $$3 = ((ej)$$0.getSource()).l().aJ();
-      fgq $$4 = $$3.b($$2);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
-      }
+   public static xz a(CommandContext<ek> $$0, String $$1) {
+      return (xz)$$0.getArgument($$1, xz.class);
    }
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eo ? eo.b(((eo)$$0.getSource()).r(), $$1) : Suggestions.empty();
+   public static fw a(eg $$0) {
+      return new fw($$0);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

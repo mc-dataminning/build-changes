@@ -1,29 +1,130 @@
-public record tg(int a, boolean b) {
-   private static final tg c = new tg(1, true);
+import com.google.common.base.MoreObjects;
+import java.util.Optional;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
-   public static tg a() {
-      return c;
+class tg implements su {
+   private int a = 0;
+   private int b = 0;
+
+   public tg() {
    }
 
-   public boolean b() {
-      return this.a < 1;
+   @Override
+   public void a(sr $$0) {
+      this.a++;
    }
 
-   public boolean a(int $$0, int $$1) {
-      boolean $$2 = $$0 != $$1;
-      boolean $$3 = this.b() || $$0 < this.a;
-      return $$3 && (!$$2 || !this.b);
+   private void a(sr $$0, sw $$1, boolean $$2) {
+      th $$3 = $$0.B();
+      String $$4 = String.format("[Run: %4d, Ok: %4d, Fail: %4d", this.a, this.b, this.a - this.b);
+      if (!$$3.b()) {
+         $$4 = $$4 + String.format(", Left: %4d", $$3.d() - this.a);
+      }
+
+      $$4 = $$4 + "]";
+      String $$5 = $$0.b() + " " + ($$2 ? "passed" : "failed") + "! " + $$0.l() + "ms";
+      String $$6 = String.format("%-53s%s", $$4, $$5);
+      if ($$2) {
+         a($$0, $$6);
+      } else {
+         a($$0.g(), o.m, $$6);
+      }
+
+      if ($$3.a(this.a, this.b)) {
+         $$1.a($$0);
+      }
    }
 
-   public boolean c() {
-      return this.a != 1;
+   @Override
+   public void a(sr $$0, sw $$1) {
+      this.b++;
+      if ($$0.B().c()) {
+         this.a($$0, $$1, true);
+      } else if (!$$0.y()) {
+         a($$0, $$0.b() + " passed! (" + $$0.l() + "ms)");
+      } else {
+         if (this.b >= $$0.A()) {
+            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
+         } else {
+            a($$0.g(), o.k, "Flaky test " + $$0 + " succeeded, attempt: " + this.a + " successes: " + this.b);
+            $$1.a($$0);
+         }
+      }
    }
 
-   public int d() {
-      return this.a;
+   @Override
+   public void b(sr $$0, sw $$1) {
+      if (!$$0.y()) {
+         a($$0, $$0.n());
+         if ($$0.B().c()) {
+            this.a($$0, $$1, false);
+         }
+      } else {
+         ss $$2 = $$0.v();
+         String $$3 = "Flaky test " + $$0 + " failed, attempt: " + this.a + "/" + $$2.j();
+         if ($$2.k() > 1) {
+            $$3 = $$3 + ", successes: " + this.b + " (" + $$2.k() + " required)";
+         }
+
+         a($$0.g(), o.o, $$3);
+         if ($$0.z() - this.a + this.b >= $$0.A()) {
+            $$1.a($$0);
+         } else {
+            a($$0, new sf(this.a, this.b, $$0));
+         }
+      }
    }
 
-   public boolean e() {
-      return this.b;
+   @Override
+   public void a(sr $$0, sr $$1, sw $$2) {
+      $$1.a(this);
+   }
+
+   public static void a(sr $$0, String $$1) {
+      b($$0).ifPresent($$0x -> $$0x.w());
+      b($$0, $$1);
+   }
+
+   private static void b(sr $$0, String $$1) {
+      a($$0.g(), o.k, $$1);
+      tc.b($$0);
+   }
+
+   protected static void a(sr $$0, Throwable $$1) {
+      xc $$3;
+      if ($$1 instanceof si $$2) {
+         $$3 = $$2.a();
+      } else {
+         $$3 = xc.b(ag.c($$1));
+      }
+
+      b($$0).ifPresent($$1x -> $$1x.a($$3));
+      b($$0, $$1);
+   }
+
+   protected static void b(sr $$0, Throwable $$1) {
+      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ag.c($$1.getCause()));
+      String $$3 = ($$0.r() ? "" : "(optional) ") + $$0.b() + " failed! " + $$2;
+      a($$0.g(), $$0.r() ? o.m : o.o, $$3);
+      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
+      if ($$4 instanceof sj $$5) {
+         a($$0.g(), $$5.d(), $$5.b());
+      }
+
+      tc.a($$0);
+   }
+
+   private static Optional<dzz> b(sr $$0) {
+      aru $$1 = $$0.g();
+      Optional<iw> $$2 = Optional.ofNullable($$0.c());
+      return $$2.flatMap($$1x -> $$1.a($$1x, dyg.U));
+   }
+
+   protected static void a(aru $$0, o $$1, String $$2) {
+      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(xc.b($$2).a($$1)));
+   }
+
+   private static void a(aru $$0, iw $$1, String $$2) {
+      agq.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
    }
 }

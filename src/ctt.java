@@ -1,39 +1,65 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 public class ctt {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final ctt c = a("empty").a(0, ctr.b).a();
-   public static final ctt d = a("simple").a(5000, ctr.c).a(11000, ctr.e).a();
-   public static final ctt e = a("villager_baby").a(10, ctr.b).a(3000, ctr.d).a(6000, ctr.b).a(10000, ctr.d).a(12000, ctr.e).a();
-   public static final ctt f = a("villager_default").a(10, ctr.b).a(2000, ctr.c).a(9000, ctr.f).a(11000, ctr.b).a(12000, ctr.e).a();
-   private final Map<ctr, ctv> g = Maps.newHashMap();
+   public static final ctt a = a("core");
+   public static final ctt b = a("idle");
+   public static final ctt c = a("work");
+   public static final ctt d = a("play");
+   public static final ctt e = a("rest");
+   public static final ctt f = a("meet");
+   public static final ctt g = a("panic");
+   public static final ctt h = a("raid");
+   public static final ctt i = a("pre_raid");
+   public static final ctt j = a("hide");
+   public static final ctt k = a("fight");
+   public static final ctt l = a("celebrate");
+   public static final ctt m = a("admire_item");
+   public static final ctt n = a("avoid");
+   public static final ctt o = a("ride");
+   public static final ctt p = a("play_dead");
+   public static final ctt q = a("long_jump");
+   public static final ctt r = a("ram");
+   public static final ctt s = a("tongue");
+   public static final ctt t = a("swim");
+   public static final ctt u = a("lay_spawn");
+   public static final ctt v = a("sniff");
+   public static final ctt w = a("investigate");
+   public static final ctt x = a("roar");
+   public static final ctt y = a("emerge");
+   public static final ctt z = a("dig");
+   private final String A;
+   private final int B;
 
-   protected static ctu a(String $$0) {
-      ctt $$1 = js.a(mg.B, $$0, new ctt());
-      return new ctu($$1);
+   private ctt(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   protected void a(ctr $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new ctv());
+   public String a() {
+      return this.A;
+   }
+
+   private static ctt a(String $$0) {
+      return jt.a(mh.C, $$0, new ctt($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ctt $$1 = (ctt)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
    }
 
-   protected ctv b(ctr $$0) {
-      return this.g.get($$0);
+   @Override
+   public int hashCode() {
+      return this.B;
    }
 
-   protected List<ctv> c(ctr $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
-   }
-
-   public ctr a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(ctr.b);
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

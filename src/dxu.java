@@ -1,108 +1,84 @@
-public class dxu extends dzl {
-   private jo<czy> d = jo.a(27, czy.k);
-   private final dyq e = new dyq() {
-      @Override
-      protected void a(djx $$0, iv $$1, ebe $$2) {
-         dxu.this.a($$2, awp.bz);
-         dxu.this.a($$2, true);
-      }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(djx $$0, iv $$1, ebe $$2) {
-         dxu.this.a($$2, awp.by);
-         dxu.this.a($$2, false);
-      }
+public record dxu(List<dxu.b> d) implements ddf {
+   static final Logger e = LogUtils.getLogger();
+   public static final dxu a = new dxu(List.of());
+   public static final Codec<dxu> b = dxu.b.a.listOf().xmap(dxu::new, dxu::b);
+   public static final za<wn, dxu> c = dxu.b.b.a(yy.a()).a(dxu::new, dxu::b);
 
-      @Override
-      protected void a(djx $$0, iv $$1, ebe $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      protected boolean a(crx $$0) {
-         if ($$0.bR instanceof cvz) {
-            buk $$1 = ((cvz)$$0.bR).l();
-            return $$1 == dxu.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public dxu(iv $$0, ebe $$1) {
-      super(dye.B, $$0, $$1);
+   public dxu a() {
+      return new dxu(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
    @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bul.a($$0, this.d, $$1);
+   public void a(czw.b $$0, Consumer<xc> $$1, dbp $$2, kg $$3) {
+      for (int $$4 = 0; $$4 < Math.min(this.b().size(), 6); $$4++) {
+         $$1.accept(this.b().get($$4).a().a(o.h));
       }
    }
 
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.d = jo.a(this.b(), czy.k);
-      if (!this.b_($$0)) {
-         bul.b($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected jo<czy> f() {
+   public List<dxu.b> b() {
       return this.d;
    }
 
-   @Override
-   protected void a(jo<czy> $$0) {
-      this.d = $$0;
-   }
+   public static class a {
+      private final Builder<dxu.b> a = ImmutableList.builder();
 
-   @Override
-   protected xa j() {
-      return xa.c("container.barrel");
-   }
+      @Deprecated
+      public dxu.a a(jh<dxt> $$0, alj<dxt> $$1, cyy $$2) {
+         Optional<jg.c<dxt>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dxu.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
+      }
 
-   @Override
-   protected cvq a(int $$0, crw $$1) {
-      return cvz.a($$0, $$1, this);
-   }
+      public dxu.a a(jg<dxt> $$0, cyy $$1) {
+         return this.a(new dxu.b($$0, $$1));
+      }
 
-   @Override
-   public void c_(crx $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.e.a($$0, this.i(), this.aB_(), this.m());
+      public dxu.a a(dxu.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dxu.a a(dxu $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dxu a() {
+         return new dxu(this.a.build());
       }
    }
 
-   @Override
-   public void c(crx $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.e.b($$0, this.i(), this.aB_(), this.m());
+   public static record b(jg<dxt> c, cyy d) {
+      public static final Codec<dxu.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dxt.c.fieldOf("pattern").forGetter(dxu.b::b), cyy.q.fieldOf("color").forGetter(dxu.b::c)).apply($$0, dxu.b::new)
+      );
+      public static final za<wn, dxu.b> b = za.a(dxt.d, dxu.b::b, cyy.r, dxu.b::c, dxu.b::new);
+
+      public xq a() {
+         String $$0 = this.c.a().b();
+         return xc.c($$0 + "." + this.d.b());
       }
-   }
 
-   public void k() {
-      if (!this.p) {
-         this.e.c(this.i(), this.aB_(), this.m());
+      public jg<dxt> b() {
+         return this.c;
       }
-   }
 
-   void a(ebe $$0, boolean $$1) {
-      this.n.a(this.aB_(), $$0.b(dmi.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(ebe $$0, awo $$1) {
-      ka $$2 = $$0.c(dmi.b).q();
-      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.n.a(null, $$3, $$4, $$5, $$1, awq.e, 0.5F, this.n.A.i() * 0.1F + 0.9F);
+      public cyy c() {
+         return this.d;
+      }
    }
 }

@@ -1,51 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record fdo(Optional<cu> b, iv c) implements fdq {
-   private static final MapCodec<iv> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(ka::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(ka::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(ka::w)
-            )
-            .apply($$0, iv::new)
-   );
-   public static final MapCodec<fdo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cu.a.optionalFieldOf("predicate").forGetter(fdo::c), g.forGetter(fdo::d)).apply($$0, fdo::new)
-   );
+public class fdo implements fds {
+   private static final fdo b = new fdo();
+   public static final MapCodec<fdo> a = MapCodec.unit(b);
 
-   @Override
-   public fdr b() {
-      return fds.n;
-   }
-
-   public boolean a(fah $$0) {
-      ffq $$1 = $$0.c(fdb.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   private fdo() {
    }
 
    @Override
-   public Set<baz<?>> a() {
-      return Set.of(fdb.f);
+   public fdt b() {
+      return fdu.l;
    }
 
-   public static fdq.a a(cu.a $$0) {
-      return () -> new fdo(Optional.of($$0.b()), iv.c);
+   @Override
+   public Set<bbb<?>> a() {
+      return Set.of(fdd.j);
    }
 
-   public static fdq.a a(cu.a $$0, iv $$1) {
-      return () -> new fdo(Optional.of($$0.b()), $$1);
+   public boolean a(faj $$0) {
+      Float $$1 = $$0.c(fdd.j);
+      if ($$1 != null) {
+         azz $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public Optional<cu> c() {
-      return this.b;
-   }
-
-   public iv d() {
-      return this.c;
+   public static fds.a c() {
+      return () -> b;
    }
 }

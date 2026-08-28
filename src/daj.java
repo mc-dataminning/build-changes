@@ -1,21 +1,43 @@
-public class daj extends dbk {
-   public daj(czu.a $$0) {
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
+
+public class daj extends czw {
+   private static final Logger a = LogUtils.getLogger();
+
+   public daj(czw.a $$0) {
       super($$0);
    }
 
    @Override
-   public bur a(djx $$0, crx $$1, buq $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awp.oJ, awq.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
-   }
+   public but a(djz $$0, crz $$1, bus $$2) {
+      daa $$3 = $$1.b($$2);
+      List<alj<der<?>>> $$4 = $$3.a(kl.ag, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return but.d;
+      } else {
+         if (!$$0.C) {
+            dey $$5 = $$0.p().aI();
+            List<dew<?>> $$6 = new ArrayList<>($$4.size());
 
-   @Override
-   protected csh a(ars $$0, bxu $$1, czy $$2) {
-      return new cte($$0, $$1, $$2);
-   }
+            for (alj<der<?>> $$7 : $$4) {
+               Optional<dew<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return but.d;
+               }
 
-   @Override
-   protected csh a(djx $$0, jp $$1, czy $$2) {
-      return new cte($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(axb.c.b(this));
+         }
+
+         return but.a;
+      }
    }
 }

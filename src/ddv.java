@@ -1,77 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class ddv extends dfh {
-   private final deb d;
-   private final float e;
-   private final int f;
+public class ddv {
+   @Nullable
+   private final crz a;
+   private final bus b;
+   private final ffo c;
+   private final djz d;
+   private final daa e;
 
-   public ddv(String $$0, deb $$1, del $$2, czy $$3, float $$4, int $$5) {
-      super($$0, $$2, $$3);
-      this.d = $$1;
-      this.e = $$4;
-      this.f = $$5;
+   public ddv(crz $$0, bus $$1, ffo $$2) {
+      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   @Override
-   public abstract dez<? extends ddv> a();
+   protected ddv(djz $$0, @Nullable crz $$1, bus $$2, daa $$3, ffo $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
+   }
 
-   @Override
-   public abstract dfa<? extends ddv> b();
+   protected final ffo j() {
+      return this.c;
+   }
 
-   public float c() {
+   public iw a() {
+      return this.c.b();
+   }
+
+   public jc k() {
+      return this.c.c();
+   }
+
+   public ffs l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public daa n() {
       return this.e;
    }
 
-   public int d() {
-      return this.f;
+   @Nullable
+   public crz o() {
+      return this.a;
    }
 
-   public deb e() {
+   public bus p() {
+      return this.b;
+   }
+
+   public djz q() {
       return this.d;
    }
 
-   protected abstract czu f();
-
-   @Override
-   public List<dfv> g() {
-      return List.of(new dfu(this.k().c(), dgb.a.c, new dgb.f(this.l()), new dgb.d(this.f()), this.f, this.e));
+   public jc g() {
+      return this.a == null ? jc.c : this.a.cO();
    }
 
-   @FunctionalInterface
-   public interface a<T extends ddv> {
-      T create(String var1, deb var2, del var3, czy var4, float var5, int var6);
+   public boolean h() {
+      return this.a != null && this.a.fY();
    }
 
-   public static class b<T extends ddv> implements dez<T> {
-      private final MapCodec<T> w;
-      private final yy<wl, T> x;
-
-      public b(ddv.a<T> $$0, int $$1) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$2 -> $$2.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dfh::j),
-                     deb.d.fieldOf("category").orElse(deb.c).forGetter(ddv::e),
-                     del.d.fieldOf("ingredient").forGetter(dfh::k),
-                     czy.e.fieldOf("result").forGetter(dfh::l),
-                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(ddv::c),
-                     Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(ddv::d)
-                  )
-                  .apply($$2, $$0::create)
-         );
-         this.x = yy.a(yw.p, dfh::j, deb.e, ddv::e, del.a, dfh::k, czy.i, dfh::l, yw.l, ddv::c, yw.g, ddv::d, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yy<wl, T> b() {
-         return this.x;
-      }
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dL();
    }
 }

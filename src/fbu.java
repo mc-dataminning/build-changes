@@ -1,80 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class fbu implements fbv {
-   protected final List<fdq> g;
-   private final Predicate<fah> a;
+public class fbu extends fbw {
+   public static final MapCodec<fbu> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fai.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, fbu::new));
+   private final fai b;
 
-   protected fbu(List<fdq> $$0) {
-      this.g = $$0;
-      this.a = ag.a($$0);
+   private fbu(List<fds> $$0, fai $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public abstract fbw<? extends fbu> b();
-
-   protected static <T extends fbu> P1<Mu<T>, List<fdq>> a(Instance<T> $$0) {
-      return $$0.group(fdq.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   public fby<fbu> b() {
+      return fbz.w;
    }
-
-   public final czy b(czy $$0, fah $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract czy a(czy var1, fah var2);
 
    @Override
-   public void a(fan $$0) {
-      fbv.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public Set<bbb<?>> a() {
+      return this.b.a();
    }
 
-   protected static fbu.a<?> a(Function<List<fdq>, fbv> $$0) {
-      return new fbu.b($$0);
+   @Override
+   public daa a(daa $$0, faj $$1) {
+      int $$2 = this.b.a($$1, $$0.M());
+      $$0.e($$2);
+      return $$0;
    }
 
-   public abstract static class a<T extends fbu.a<T>> implements fbv.a, fdi<T> {
-      private final Builder<fdq> a = ImmutableList.builder();
-
-      public T a(fdq.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<fdq> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends fbu.a<fbu.b> {
-      private final Function<List<fdq>, fbv> a;
-
-      public b(Function<List<fdq>, fbv> $$0) {
-         this.a = $$0;
-      }
-
-      protected fbu.b a() {
-         return this;
-      }
-
-      @Override
-      public fbv b() {
-         return this.a.apply(this.g());
-      }
+   public static fbw.a<?> a(fai $$0) {
+      return a($$1 -> new fbu($$1, $$0));
    }
 }

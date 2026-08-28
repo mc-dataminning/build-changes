@@ -1,34 +1,77 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record frr(float a, boolean b, Map<String, List<frq>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<frq>> b = Maps.newHashMap();
-      private boolean c;
+public class frr {
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final frr.a f;
 
-      public static frr.a a(float $$0) {
-         return new frr.a($$0);
+   public frr(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, frr.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   }
+
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public frr.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, frr.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
       }
 
-      private a(float $$0) {
-         this.a = $$0;
+      @Nullable
+      public static frr.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
       }
 
-      public frr.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public frr.a a(String $$0, frq $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
-
-      public frr b() {
-         return new frr(this.a, this.c, this.b);
+      public String a() {
+         return this.e;
       }
    }
 }

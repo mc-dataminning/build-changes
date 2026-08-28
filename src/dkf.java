@@ -1,25 +1,12 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public interface dkf {
-   boolean a(iv var1, ebe var2, int var3, int var4);
+   boolean a(iw var1, Predicate<ebg> var2);
 
-   default boolean a(iv $$0, ebe $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
+   boolean b(iw var1, Predicate<exq> var2);
 
-   boolean a(iv var1, boolean var2);
+   <T extends dye> Optional<T> a(iw var1, dyg<T> var2);
 
-   default boolean b(iv $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
-   }
-
-   default boolean a(iv $$0, boolean $$1, @Nullable bwt $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(iv var1, boolean var2, @Nullable bwt var3, int var4);
-
-   default boolean b(bwt $$0) {
-      return false;
-   }
+   iw a(ehf.a var1, iw var2);
 }

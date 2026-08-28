@@ -1,50 +1,29 @@
-public class hoq extends hog {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cuk s;
-   private float t = 0.0F;
+public class hoq extends hoi {
+   private final bwv n;
 
-   public hoq(cuk $$0) {
-      super(awp.pz, awq.g, hox.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dA());
-      this.g = (double)((float)$$0.dC());
-      this.h = (double)((float)$$0.dG());
+   public hoq(awq $$0, aws $$1, float $$2, float $$3, bwv $$4, long $$5) {
+      super($$0, $$1, azz.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dA());
+      this.g = (double)((float)this.n.dC());
+      this.h = (double)((float)this.n.dG());
    }
 
    @Override
    public boolean s() {
-      return !this.s.ba();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
+      return !this.n.ba();
    }
 
    @Override
    public void q() {
-      if (this.s.dQ()) {
+      if (this.n.dQ()) {
          this.n();
       } else {
-         this.f = (double)((float)this.s.dA());
-         this.g = (double)((float)this.s.dC());
-         this.h = (double)((float)this.s.dG());
-         float $$0 = (float)this.s.dy().i();
-         boolean $$1 = !this.s.cp() && this.s.f() instanceof cuz;
-         if ($$0 >= 0.01F && this.s.dV().u().i() && !$$1) {
-            this.t = azo.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = azo.h(azo.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
       }
    }
 }

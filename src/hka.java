@@ -1,14 +1,34 @@
+import com.mojang.serialization.MapCodec;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface hka extends hke<Void> {
+public class hka implements hkg<dzm> {
+   private final guy a;
+
+   public hka(guy $$0) {
+      this.a = $$0;
+   }
+
    @Nullable
-   default Void a(czy $$0) {
-      return null;
+   public dzm a(daa $$0) {
+      return $$0.a(kl.ao);
    }
 
-   default void a(@Nullable Void $$0, czw $$1, flo $$2, gsa $$3, int $$4, int $$5, boolean $$6) {
-      this.a($$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(@Nullable dzm $$0, czy $$1, flq $$2, gsc $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dzm.a));
    }
 
-   void a(czw var1, flo var2, gsa var3, int var4, int var5, boolean var6);
+   public static record a() implements hkg.a {
+      public static final MapCodec<hka.a> a = MapCodec.unit(new hka.a());
+
+      @Override
+      public MapCodec<hka.a> a() {
+         return a;
+      }
+
+      @Override
+      public hkg<?> a(glc $$0) {
+         return new hka(new guy($$0));
+      }
+   }
 }

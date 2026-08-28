@@ -1,92 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drk extends dmo {
-   public static final MapCodec<drk> a = b(drk::new);
-   public static final ebv b = ebu.q;
+public class drk extends dpc {
+   public static final MapCodec<drk> g = b(drk::new);
 
    @Override
-   public MapCodec<drk> a() {
-      return a;
+   public MapCodec<? extends drk> a() {
+      return g;
    }
 
-   protected drk(ebd.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public void a(djx $$0, iv $$1, ebe $$2, @Nullable bxu $$3, czy $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dcg $$5 = $$4.a(kk.aa, dcg.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
-      }
+   protected drk(ebf.d $$0) {
+      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, $$0);
+      this.l(
+         this.C
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dzh $$5) {
-         $$5.s();
-         return bur.a;
-      } else {
-         return bur.e;
-      }
+   public ebg a(ddt $$0) {
+      djd $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      exq $$3 = $$0.q().b_($$0.a());
+      iw $$4 = $$2.f();
+      iw $$5 = $$2.g();
+      iw $$6 = $$2.h();
+      iw $$7 = $$2.i();
+      ebg $$8 = $$1.a_($$4);
+      ebg $$9 = $$1.a_($$5);
+      ebg $$10 = $$1.a_($$6);
+      ebg $$11 = $$1.a_($$7);
+      return this.m()
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jc.d))))
+         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jc.c))))
+         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jc.f))))
+         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jc.e))))
+         .b(e, Boolean.valueOf($$3.a() == exr.c));
    }
 
    @Override
-   protected bur a(czy $$0, ebe $$1, djx $$2, iv $$3, crx $$4, buq $$5, ffm $$6) {
-      if ($$1.c(b)) {
-         return bur.f;
-      } else {
-         czy $$7 = $$4.b($$5);
-         bur $$8 = dad.a($$2, $$3, $$7, $$4);
-         return (bur)(!$$8.a() ? bur.f : $$8);
-      }
-   }
-
-   @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
-      bun.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public dyc a(iv $$0, ebe $$1) {
-      return new dzh($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(ebe $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(ebe $$0, djb $$1, iv $$2, jb $$3) {
-      if ($$1.c_($$2) instanceof dzh $$4 && $$4.j().a()) {
-         return 15;
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, exr.c, exr.c.a($$1));
       }
 
-      return 0;
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean c_(ebe $$0) {
-      return true;
+   protected fgm c(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return fgj.a();
    }
 
    @Override
-   protected int a(ebe $$0, djx $$1, iv $$2) {
-      return $$1.c_($$2) instanceof dzh $$3 ? $$3.u() : 0;
+   protected boolean b(ebg $$0, ebg $$1, jc $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
+      }
+
+      return super.b($$0, $$1, $$2);
+   }
+
+   public final boolean a(ebg $$0, boolean $$1) {
+      return !k($$0) && $$1 || $$0.b() instanceof drk || $$0.a(axg.N);
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dyc> dyd<T> a(djx $$0, ebe $$1, dye<T> $$2) {
-      return $$1.c(b) ? a($$2, dye.e, dzh::a) : null;
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

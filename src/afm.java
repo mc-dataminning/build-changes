@@ -1,74 +1,45 @@
-import java.util.Optional;
+public class afm implements zj<aby> {
+   public static final za<vy, afm> a = zj.a(afm::a, afm::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-public class afm implements zh<abw> {
-   public static final yy<wl, afm> a = zh.a(afm::a, afm::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final xa f;
-   private final fgy.a g;
-   private final Optional<yq> h;
-   private final int i;
-
-   public afm(fgn $$0, int $$1) {
-      this.e = $$0.c();
-      this.f = $$0.e();
-      this.g = $$0.i();
-      this.h = Optional.ofNullable($$0.g());
-      this.i = $$1;
+   public afm(float $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afm(wl $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = wz.a;
-         this.g = fgy.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = xc.d.decode($$0);
-         this.g = $$0.b(fgy.a.class);
-         this.h = ys.d.decode($$0);
-      }
+   private afm(vy $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.e);
-      $$0.l(this.i);
-      if (this.i == 0 || this.i == 2) {
-         xc.d.encode($$0, this.f);
-         $$0.a(this.g);
-         ys.d.encode($$0, this.h);
-      }
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zj<afm> a() {
-      return agp.aM;
+   public zl<afm> a() {
+      return agr.aK;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public float b() {
+      return this.b;
    }
 
-   public xa e() {
-      return this.f;
+   public int e() {
+      return this.c;
    }
 
-   public int f() {
-      return this.i;
-   }
-
-   public fgy.a g() {
-      return this.g;
-   }
-
-   public Optional<yq> h() {
-      return this.h;
+   public float f() {
+      return this.d;
    }
 }

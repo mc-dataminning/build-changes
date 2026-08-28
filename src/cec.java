@@ -1,77 +1,77 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cec extends ceq {
-   private static final cij d = cij.b().a(8.0).d();
-   protected final cjk a;
-   private final Class<? extends cjk> e;
-   protected final ars b;
-   @Nullable
-   protected cjk c;
-   private int f;
-   private final double g;
+public class cec extends cej {
+   private static final int g = 240;
+   private final Predicate<buq> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public cec(cjk $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cjk>)$$0.getClass());
+   public cec(bxy $$0, Predicate<buq> $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
-   public cec(cjk $$0, double $$1, Class<? extends cjk> $$2) {
-      this.a = $$0;
-      this.b = a($$0);
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(ceq.a.a, ceq.a.b));
+   public cec(bxy $$0, int $$1, Predicate<buq> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gE()) {
+      if (!super.b()) {
          return false;
       } else {
-         this.c = this.h();
-         return this.c != null;
+         return !a(this.d).O().c(djv.d) ? false : this.a(this.d.dV().an()) && !this.h();
       }
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.a = 0;
    }
 
    @Override
    public boolean c() {
-      return this.c.bJ() && this.c.gE() && this.f < 60 && !this.c.gr();
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().an());
    }
 
    @Override
    public void e() {
-      this.c = null;
-      this.f = 0;
+      super.e();
+      this.d.dV().a(this.d.ao(), this.e, -1);
    }
 
    @Override
    public void a() {
-      this.a.J().a(this.c, 10.0F, (float)this.a.ad());
-      this.a.O().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private cjk h() {
-      List<? extends cjk> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cjk $$2 = null;
-
-      for (cjk $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gr() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
+      super.a();
+      if (this.d.dY().a(20) == 0) {
+         this.d.dV().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.fA());
          }
       }
 
-      return $$2;
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dV().a(this.d.ao(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dV().an())) {
+         this.d.dV().a(this.e, false);
+         this.d.dV().c(1021, this.e, 0);
+         this.d.dV().c(2001, this.e, dne.j(this.d.dV().a_(this.e)));
+      }
    }
 
-   protected void g() {
-      this.a.a(this.b, this.c);
+   private boolean a(buq $$0) {
+      return this.h.test($$0);
    }
 }

@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hoe {
+public interface hoe {
+   void scheduleReload(hoe.a var1);
+
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<hoe.b> b();
+   }
+
+   public static record b(UUID a, Path b) {
+   }
 }

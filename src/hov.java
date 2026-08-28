@@ -1,28 +1,31 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class hov extends hoi {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final cml p;
 
-public class hov {
-   private final List<hou> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public hov(List<hou> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public hov(cml $$0) {
+      super(awr.zy, aws.g, hoz.t());
+      this.p = $$0;
+      this.k = hoz.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
-   public List<hou> a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.p.ba();
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public void q() {
+      if (!this.p.dQ() && this.p.f() == null && this.p.gv()) {
+         this.f = (double)((float)this.p.dA());
+         this.g = (double)((float)this.p.dC());
+         this.h = (double)((float)this.p.dG());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
+      }
    }
 }

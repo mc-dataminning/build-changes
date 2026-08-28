@@ -1,4 +1,5 @@
-@FunctionalInterface
 public interface gej {
-   int currentIndex();
+   void L();
+
+   void a(dfx var1);
 }

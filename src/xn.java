@@ -1,63 +1,23 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.UUID;
 
-public class xn {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xm[] c;
-
-   public xn(int $$0) {
-      this.c = new xm[$$0];
+public record xn(UUID a, csc b) {
+   public static xn a(csc $$0) {
+      return new xn(UUID.randomUUID(), $$0);
    }
 
-   public static xn a() {
-      return new xn(128);
+   public xw.c a(UUID $$0) {
+      return new xw($$0, this.a).a(bag.a(this.b.b(), "SHA256withRSA"));
    }
 
-   public int a(xm $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
-         }
-      }
-
-      return -1;
+   public xt a() {
+      return new xt(this.a, this.b.c());
    }
 
-   @Nullable
-   public xm a(int $$0) {
-      return this.c[$$0];
+   public UUID b() {
+      return this.a;
    }
 
-   public void a(xt $$0, @Nullable xm $$1) {
-      List<xm> $$2 = $$0.d().a();
-      ArrayDeque<xm> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
-   }
-
-   @VisibleForTesting
-   void a(List<xm> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<xm> $$0) {
-      Set<xm> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xm $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
-      }
+   public csc c() {
+      return this.b;
    }
 }

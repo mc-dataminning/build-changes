@@ -1,137 +1,104 @@
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
 public class eee {
-   private static boolean a(edb $$0) {
-      return $$0.n().a(eec.l) && $$0.x();
+   public static final int a = 8;
+   private static final EnumSet<ehf.a> p = EnumSet.of(ehf.a.c, ehf.a.a);
+   public static final EnumSet<ehf.a> b = EnumSet.of(ehf.a.d, ehf.a.b, ehf.a.e, ehf.a.f);
+   public static final eee c = a("empty", null, p, eei.a);
+   public static final eee d = a("structure_starts", c, p, eei.a);
+   public static final eee e = a("structure_references", d, p, eei.a);
+   public static final eee f = a("biomes", e, p, eei.a);
+   public static final eee g = a("noise", f, p, eei.a);
+   public static final eee h = a("surface", g, p, eei.a);
+   public static final eee i = a("carvers", h, b, eei.a);
+   public static final eee j = a("features", i, b, eei.a);
+   public static final eee k = a("initialize_light", j, b, eei.a);
+   public static final eee l = a("light", k, b, eei.a);
+   public static final eee m = a("spawn", l, b, eei.a);
+   public static final eee n = a("full", m, b, eei.b);
+   public static final Codec<eee> o = mh.l.q();
+   private final int q;
+   private final eee r;
+   private final eei s;
+   private final EnumSet<ehf.a> t;
+
+   private static eee a(String $$0, @Nullable eee $$1, EnumSet<ehf.a> $$2, eei $$3) {
+      return jt.a(mh.l, $$0, new eee($$1, $$2, $$3));
    }
 
-   static CompletableFuture<edb> a(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      return CompletableFuture.completedFuture($$3);
-   }
+   public static List<eee> a() {
+      List<eee> $$0 = Lists.newArrayList();
 
-   static CompletableFuture<edb> b(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      ars $$4 = $$0.a();
-      if ($$4.p().aZ().y().d()) {
-         $$0.b().a($$4.J_(), $$4.m().h(), $$4.b(), $$3, $$0.c(), $$4.aj());
+      eee $$1;
+      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
+         $$0.add($$1);
       }
 
-      $$4.a($$3);
-      return CompletableFuture.completedFuture($$3);
+      $$0.add($$1);
+      Collections.reverse($$0);
+      return $$0;
    }
 
-   static CompletableFuture<edb> c(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      $$0.a().a($$3);
-      return CompletableFuture.completedFuture($$3);
+   @VisibleForTesting
+   protected eee(@Nullable eee $$0, EnumSet<ehf.a> $$1, eei $$2) {
+      this.r = $$0 == null ? this : $$0;
+      this.s = $$2;
+      this.t = $$1;
+      this.q = $$0 == null ? 0 : $$0.b() + 1;
    }
 
-   static CompletableFuture<edb> d(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      ars $$4 = $$0.a();
-      asa $$5 = new asa($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.b().a($$5), $$3);
-      return CompletableFuture.completedFuture($$3);
+   public int b() {
+      return this.q;
    }
 
-   static CompletableFuture<edb> e(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      ars $$4 = $$0.a();
-      asa $$5 = new asa($$4, $$2, $$1, $$3);
-      return $$0.b().a($$4.m().i(), eif.a($$5), $$4.b().a($$5), $$3);
+   public eee c() {
+      return this.r;
    }
 
-   static CompletableFuture<edb> f(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      ars $$4 = $$0.a();
-      asa $$5 = new asa($$4, $$2, $$1, $$3);
-      return $$0.b().a(eif.a($$5), $$4.m().i(), $$4.b().a($$5), $$3).thenApply($$0x -> {
-         if ($$0x instanceof edv $$1x) {
-            egr $$2x = $$1x.z();
-            if ($$2x != null) {
-               egr.a($$1x);
-               if ($$2x.b()) {
-                  $$2x.b($$1x);
-               }
-            }
-         }
-
-         return $$0x;
-      });
+   public eei d() {
+      return this.s;
    }
 
-   static CompletableFuture<edb> g(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      ars $$4 = $$0.a();
-      asa $$5 = new asa($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.b().a($$5), $$4.m().i(), $$3);
-      return CompletableFuture.completedFuture($$3);
+   public static eee a(String $$0) {
+      return mh.l.a(alk.c($$0));
    }
 
-   static CompletableFuture<edb> h(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      ars $$4 = $$0.a();
-      asa $$5 = new asa($$4, $$2, $$1, $$3);
-      if ($$3 instanceof edv $$6) {
-         eif.a($$5, $$6);
-      }
-
-      $$0.b().a($$5, $$4.E(), $$4.m().i(), $$4.H_(), $$4.b().a($$5), $$3);
-      return CompletableFuture.completedFuture($$3);
+   public EnumSet<ehf.a> e() {
+      return this.t;
    }
 
-   static CompletableFuture<edb> i(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      ars $$4 = $$0.a();
-      ehd.a($$3, EnumSet.of(ehd.a.e, ehd.a.f, ehd.a.d, ehd.a.b));
-      asa $$5 = new asa($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$3, $$4.b().a($$5));
-      eif.a($$5, $$3);
-      return CompletableFuture.completedFuture($$3);
+   public boolean a(eee $$0) {
+      return this.b() >= $$0.b();
    }
 
-   static CompletableFuture<edb> j(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      arw $$4 = $$0.d();
-      $$3.C();
-      ((edv)$$3).a($$4);
-      boolean $$5 = a($$3);
-      return $$4.a($$3, $$5);
+   public boolean b(eee $$0) {
+      return this.b() > $$0.b();
    }
 
-   static CompletableFuture<edb> k(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      boolean $$4 = a($$3);
-      return $$0.d().b($$3, $$4);
+   public boolean c(eee $$0) {
+      return this.b() <= $$0.b();
    }
 
-   static CompletableFuture<edb> l(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      if (!$$3.A()) {
-         $$0.b().a(new asa($$0.a(), $$2, $$1, $$3));
-      }
-
-      return CompletableFuture.completedFuture($$3);
+   public boolean d(eee $$0) {
+      return this.b() < $$0.b();
    }
 
-   static CompletableFuture<edb> m(eeh $$0, eef $$1, bak<ari> $$2, edb $$3) {
-      djc $$4 = $$3.f();
-      ari $$5 = $$2.a($$4.h, $$4.i);
-      return CompletableFuture.supplyAsync(() -> {
-         edv $$3x = (edv)$$3;
-         ars $$4x = $$0.a();
-         edl $$6;
-         if ($$3x instanceof edk $$5x) {
-            $$6 = $$5x.G();
-         } else {
-            $$6 = new edl($$4x, $$3x, $$2xx -> a($$4x, $$3x.I()));
-            $$5.a(new edk($$6, false));
-         }
-
-         $$6.b($$5::s);
-         $$6.G();
-         $$6.b(true);
-         $$6.K();
-         $$6.b($$4x);
-         $$6.a($$0.f());
-         return $$6;
-      }, $$0.e());
+   public static eee a(eee $$0, eee $$1) {
+      return $$0.b($$1) ? $$0 : $$1;
    }
 
-   private static void a(ars $$0, List<tz> $$1) {
-      if (!$$1.isEmpty()) {
-         $$0.b(bxc.a($$1, $$0, bxb.r));
-      }
+   @Override
+   public String toString() {
+      return this.f();
+   }
+
+   public String f() {
+      return mh.l.b(this).toString();
    }
 }

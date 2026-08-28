@@ -1,16 +1,8 @@
-public interface ajd extends abq {
+public interface ajd extends agu {
    @Override
-   default vu b() {
-      return vu.d;
+   default vw b() {
+      return vw.a;
    }
 
-   void a(ajf var1);
-
-   void a(aji var1);
-
-   void a(ajh var1);
-
-   void a(ajg var1);
-
-   void a(aje var1);
+   void a(aja var1);
 }

@@ -1,9 +1,9 @@
-public class hma extends hmf {
-   public hma(hlc $$0) {
-      super($$0, ali.b("textures/atlas/mob_effects.png"), hmz.i);
+public class hma extends hmh {
+   public hma(hle $$0) {
+      super($$0, alk.b("textures/atlas/map_decorations.png"), hnb.h);
    }
 
-   public hla a(jf<bvv> $$0) {
-      return this.a($$0.e().map(alh::a).orElseGet(hkp::c));
+   public hlc a(ezf $$0) {
+      return this.a($$0.a());
    }
 }

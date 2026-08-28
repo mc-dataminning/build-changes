@@ -7,33 +7,33 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record an(int c, List<alh<fam>> d, List<alh<dep<?>>> e, Optional<ee> f) {
+public record an(int c, List<alj<fao>> d, List<alj<der<?>>> e, Optional<ef> f) {
    public static final Codec<an> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(an::a),
-               fam.a.listOf().optionalFieldOf("loot", List.of()).forGetter(an::b),
-               dep.b.listOf().optionalFieldOf("recipes", List.of()).forGetter(an::c),
-               ee.a.optionalFieldOf("function").forGetter(an::d)
+               fao.a.listOf().optionalFieldOf("loot", List.of()).forGetter(an::b),
+               der.b.listOf().optionalFieldOf("recipes", List.of()).forGetter(an::c),
+               ef.a.optionalFieldOf("function").forGetter(an::d)
             )
             .apply($$0, an::new)
    );
    public static final an b = new an(0, List.of(), List.of(), Optional.empty());
 
-   public void a(art $$0) {
+   public void a(arv $$0) {
       $$0.d(this.c);
-      fak $$1 = new fak.a($$0.y()).a(fdb.a, $$0).a(fdb.f, $$0.dt()).a(fda.m);
+      fam $$1 = new fam.a($$0.y()).a(fdd.a, $$0).a(fdd.f, $$0.dt()).a(fdc.m);
       boolean $$2 = false;
 
-      for (alh<fam> $$3 : this.d) {
+      for (alj<fao> $$3 : this.d) {
          ObjectListIterator var6 = $$0.g.bc().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            czy $$4 = (czy)var6.next();
+            daa $$4 = (daa)var6.next();
             if ($$0.h($$4)) {
-               $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awp.oj, awq.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awr.oj, aws.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               coc $$5 = $$0.a($$4, false);
+               coe $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.m();
                   $$5.b($$0.cG());
@@ -58,23 +58,23 @@ public record an(int c, List<alh<fam>> d, List<alh<dep<?>>> e, Optional<ee> f) {
       return this.c;
    }
 
-   public List<alh<fam>> b() {
+   public List<alj<fao>> b() {
       return this.d;
    }
 
-   public List<alh<dep<?>>> c() {
+   public List<alj<der<?>>> c() {
       return this.e;
    }
 
-   public Optional<ee> d() {
+   public Optional<ef> d() {
       return this.f;
    }
 
    public static class a {
       private int a;
-      private final Builder<alh<fam>> b = ImmutableList.builder();
-      private final Builder<alh<dep<?>>> c = ImmutableList.builder();
-      private Optional<ali> d = Optional.empty();
+      private final Builder<alj<fao>> b = ImmutableList.builder();
+      private final Builder<alj<der<?>>> c = ImmutableList.builder();
+      private Optional<alk> d = Optional.empty();
 
       public static an.a a(int $$0) {
          return new an.a().b($$0);
@@ -85,35 +85,35 @@ public record an(int c, List<alh<fam>> d, List<alh<dep<?>>> e, Optional<ee> f) {
          return this;
       }
 
-      public static an.a a(alh<fam> $$0) {
+      public static an.a a(alj<fao> $$0) {
          return new an.a().b($$0);
       }
 
-      public an.a b(alh<fam> $$0) {
+      public an.a b(alj<fao> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static an.a c(alh<dep<?>> $$0) {
+      public static an.a c(alj<der<?>> $$0) {
          return new an.a().d($$0);
       }
 
-      public an.a d(alh<dep<?>> $$0) {
+      public an.a d(alj<der<?>> $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static an.a a(ali $$0) {
+      public static an.a a(alk $$0) {
          return new an.a().b($$0);
       }
 
-      public an.a b(ali $$0) {
+      public an.a b(alk $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
       public an a() {
-         return new an(this.a, this.b.build(), this.c.build(), this.d.map(ee::new));
+         return new an(this.a, this.b.build(), this.c.build(), this.d.map(ef::new));
       }
    }
 }

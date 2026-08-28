@@ -1,115 +1,20 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class te {
-   private static final char a = ' ';
-   private static final char b = '_';
-   private static final char c = '+';
-   private static final char d = 'x';
-   private static final char e = 'X';
-   private final Collection<sq> f = Lists.newArrayList();
-   private final Collection<st> g = Lists.newArrayList();
+public class te implements tr {
+   private static final Logger a = LogUtils.getLogger();
 
-   public te() {
-   }
-
-   public te(Collection<sq> $$0) {
-      this.f.addAll($$0);
-   }
-
-   public void a(sq $$0) {
-      this.f.add($$0);
-      this.g.forEach($$0::a);
-   }
-
-   public void a(st $$0) {
-      this.g.add($$0);
-      this.f.forEach($$1 -> $$1.a($$0));
-   }
-
-   public void a(final Consumer<sq> $$0) {
-      this.a(new st() {
-         @Override
-         public void a(sq $$0x) {
-         }
-
-         @Override
-         public void a(sq $$0x, sv $$1) {
-         }
-
-         @Override
-         public void b(sq $$0x, sv $$1) {
-            $$0.accept($$0);
-         }
-
-         @Override
-         public void a(sq $$0x, sq $$1, sv $$2) {
-         }
-      });
-   }
-
-   public int a() {
-      return (int)this.f.stream().filter(sq::i).filter(sq::r).count();
-   }
-
-   public int b() {
-      return (int)this.f.stream().filter(sq::i).filter(sq::s).count();
-   }
-
-   public int c() {
-      return (int)this.f.stream().filter(sq::k).count();
-   }
-
-   public boolean d() {
-      return this.a() > 0;
-   }
-
-   public boolean e() {
-      return this.b() > 0;
-   }
-
-   public Collection<sq> f() {
-      return this.f.stream().filter(sq::i).filter(sq::r).collect(Collectors.toList());
-   }
-
-   public Collection<sq> g() {
-      return this.f.stream().filter(sq::i).filter(sq::s).collect(Collectors.toList());
-   }
-
-   public int h() {
-      return this.f.size();
-   }
-
-   public boolean i() {
-      return this.c() == this.h();
-   }
-
-   public String j() {
-      StringBuffer $$0 = new StringBuffer();
-      $$0.append('[');
-      this.f.forEach($$1 -> {
-         if (!$$1.j()) {
-            $$0.append(' ');
-         } else if ($$1.h()) {
-            $$0.append('+');
-         } else if ($$1.i()) {
-            $$0.append((char)($$1.r() ? 'X' : 'x'));
-         } else {
-            $$0.append('_');
-         }
-      });
-      $$0.append(']');
-      return $$0.toString();
+   @Override
+   public void a(sr $$0) {
+      String $$1 = $$0.c().x();
+      if ($$0.r()) {
+         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ag.c($$0.n())});
+      } else {
+         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ag.c($$0.n())});
+      }
    }
 
    @Override
-   public String toString() {
-      return this.j();
-   }
-
-   public void b(sq $$0) {
-      this.f.remove($$0);
+   public void b(sr $$0) {
    }
 }

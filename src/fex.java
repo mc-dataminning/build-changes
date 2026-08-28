@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface fex {
+public interface fex {
+   @Nullable
+   fgw a(faj var1);
+
+   few a();
+
+   Set<bbb<?>> b();
 }

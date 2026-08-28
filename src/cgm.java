@@ -1,20 +1,18 @@
 import javax.annotation.Nullable;
 
-public class cgm<T extends bxu> extends cgj<T> {
-   private final byq i;
+public class cgm<T extends bxw> extends cgl<T> {
+   private boolean i = true;
 
-   public cgm(byq $$0, Class<T> $$1, boolean $$2, @Nullable cij.a $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
+   public cgm(ctq $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cil.a $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
       this.i = $$0;
    }
 
    @Override
    public boolean b() {
-      return !this.i.q() && super.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
+      return this.i && super.b();
    }
 }

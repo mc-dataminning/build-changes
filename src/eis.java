@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eis implements eik {
+class eis extends eix {
+   private final jk<dne> e;
    public static final MapCodec<eis> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eik.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, eis::new)
+      $$0 -> a($$0).and(jv.a(mi.i).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, eis::new)
    );
-   private final eik e;
 
-   public eis(eik $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(dkw $$0, iv $$1) {
-      return !this.e.test($$0, $$1);
+   public eis(kb $$0, jk<dne> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public eil<?> a() {
-      return eil.k;
+   protected boolean a(ebg $$0) {
+      return $$0.a(this.e);
+   }
+
+   @Override
+   public ein<?> a() {
+      return ein.a;
    }
 }

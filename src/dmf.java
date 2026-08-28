@@ -1,65 +1,77 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class dmf extends dnc implements dnf {
-   public static final MapCodec<dmf> a = b(dmf::new);
-   private static final fgk b = dnc.b(8.0, 0.0, 12.0);
+public class dmf extends dwq {
+   public static final MapCodec<dmf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alj.a(mi.i).fieldOf("fruit").forGetter($$0x -> $$0x.d),
+               alj.a(mi.i).fieldOf("stem").forGetter($$0x -> $$0x.e),
+               alj.a(mi.K).fieldOf("seed").forGetter($$0x -> $$0x.f),
+               t()
+            )
+            .apply($$0, dmf::new)
+   );
+   public static final ece<jc> b = drf.e;
+   private static final Map<jc, fgm> c = fgj.c(dne.a(4.0, 0.0, 10.0, 0.0, 10.0));
+   private final alj<dne> d;
+   private final alj<dne> e;
+   private final alj<czw> f;
 
    @Override
    public MapCodec<dmf> a() {
       return a;
    }
 
-   public dmf(ebd.d $$0) {
-      super($$0);
+   protected dmf(alj<dne> $$0, alj<dne> $$1, alj<czw> $$2, ebf.d $$3) {
+      super($$3);
+      this.l(this.C.b().b(b, jc.c));
+      this.e = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return b.a($$0.a($$2));
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return c.get($$0.c(b));
    }
 
    @Override
-   protected void b(ebe $$0, ars $$1, iv $$2, azx $$3) {
-      if ($$3.a(3) == 0 && $$1.v($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
-         this.a($$1, $$2);
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if (!$$6.a(this.d) && $$4 == $$0.c(b)) {
+         Optional<dne> $$8 = $$1.J_().f(mi.i).f(this.e);
+         if ($$8.isPresent()) {
+            return $$8.get().m().c(dvk.c, Integer.valueOf(7));
+         }
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(ebe $$0, dka $$1, iv $$2) {
-      return $$1.a_($$2.e()).a(axe.ax);
+   protected boolean b(ebg $$0, djd $$1, iw $$2) {
+      return $$0.a(dng.cN);
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if (!$$0.a($$1, $$3)) {
-         return dne.a.m();
-      } else {
-         return $$4 == jb.b && $$6.a(dne.nF) ? dne.nF.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   protected daa a(dkc $$0, iw $$1, ebg $$2, boolean $$3) {
+      return new daa((djy)DataFixUtils.orElse($$0.J_().f(mi.K).f(this.f), this));
    }
 
    @Override
-   protected czy a(dka $$0, iv $$1, ebe $$2, boolean $$3) {
-      return new czy(dac.ej);
+   protected ebg a(ebg $$0, dty $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(dka $$0, iv $$1, ebe $$2) {
-      return $$0.a_($$1.d()).l();
+   protected ebg a(ebg $$0, dsh $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(djx $$0, azx $$1, iv $$2, ebe $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(ars $$0, azx $$1, iv $$2, ebe $$3) {
-      this.a($$0, $$2);
-   }
-
-   protected void a(djx $$0, iv $$1) {
-      $$0.a($$1.d(), dne.nF.m().b(dmg.c, ebq.b), 3);
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b);
    }
 }

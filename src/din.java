@@ -1,32 +1,19 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record din(ali e, xa f, boolean g) {
+public record din(dim e, xc f) {
    public static final Codec<din> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ali.a.fieldOf("asset_id").forGetter(din::a),
-               xc.a.fieldOf("description").forGetter(din::b),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(din::c)
-            )
-            .apply($$0, din::new)
+      $$0 -> $$0.group(dim.b.forGetter(din::a), xe.a.fieldOf("description").forGetter(din::b)).apply($$0, din::new)
    );
-   public static final yy<wl, din> b = yy.a(ali.b, din::a, xc.b, din::b, yw.b, din::c, din::new);
-   public static final Codec<jf<din>> c = ale.a(mh.bl, a);
-   public static final yy<wl, jf<din>> d = yw.a(mh.bl, b);
+   public static final za<wn, din> b = za.a(dim.c, din::a, xe.b, din::b, din::new);
+   public static final Codec<jg<din>> c = alg.a(mi.bk, a);
+   public static final za<wn, jg<din>> d = yy.a(mi.bk, b);
 
-   public xa a(jf<dil> $$0) {
-      return this.f.f().c($$0.a().b().a());
-   }
-
-   public ali a() {
+   public dim a() {
       return this.e;
    }
 
-   public xa b() {
+   public xc b() {
       return this.f;
-   }
-
-   public boolean c() {
-      return this.g;
    }
 }

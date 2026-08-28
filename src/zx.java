@@ -1,25 +1,15 @@
-public record zx(String b, int c) implements zh<zn> {
-   public static final yy<vw, zx> a = zh.a(zx::a, zx::new);
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private zx(vw $$0) {
-      this($$0.p(), $$0.l());
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-   }
+public record zx(List<amc.c> b) implements zj<zp> {
+   public static final za<ByteBuf, zx> a = za.a(amc.c, zx::b, zx::new);
 
    @Override
-   public zj<zx> a() {
-      return zz.j;
+   public zl<zx> a() {
+      return aab.h;
    }
 
-   public void a(zn $$0) {
+   public void a(zp $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

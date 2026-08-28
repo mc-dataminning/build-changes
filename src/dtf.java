@@ -1,253 +1,126 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dtf extends dmr {
-   public static final MapCodec<dtf> b = b(dtf::new);
-   public static final ecc<eci> c = ebu.ak;
-   public static final ebv d = ebu.A;
+public class dtf extends dne implements dnm {
+   public static final MapCodec<dtf> a = b(dtf::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final fgm f = fgj.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dtf> a() {
-      return b;
+      return a;
    }
 
-   protected dtf(ebd.d $$0) {
-      super(true, $$0);
-      this.l(this.C.b().b(c, eci.a).b(d, Boolean.valueOf(false)).b(a, Boolean.valueOf(false)));
+   public dtf(ebf.d $$0) {
+      super($$0);
    }
 
-   protected boolean a(djx $$0, iv $$1, ebe $$2, boolean $$3, int $$4) {
-      if ($$4 >= 8) {
-         return false;
+   @Override
+   protected boolean b(ebg $$0, ebg $$1, jc $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ebg $$0, djz $$1, iw $$2, bwv $$3, bxo $$4) {
+      if (!($$3 instanceof bxw) || $$3.dw().a(this)) {
+         $$3.a($$0, new ffs(0.9F, 1.5, 0.9F));
+         if ($$1.C) {
+            azz $$5 = $$1.G_();
+            boolean $$6 = $$3.aa != $$3.dA() || $$3.ac != $$3.dG();
+            if ($$6 && $$5.h()) {
+               $$1.a(
+                  lz.aN,
+                  $$3.dA(),
+                  (double)($$2.v() + 1),
+                  $$3.dG(),
+                  (double)(azq.b($$5, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(azq.b($$5, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
+         }
+      }
+
+      iw $$7 = $$2.j();
+      $$4.a(bxp.d, $$2x -> {
+         if ($$1 instanceof aru $$3x && $$2x.bX() && ($$3x.O().c(djv.d) || $$2x instanceof crz) && $$2x.c($$3x, $$7)) {
+            $$1.b($$7, false);
+         }
+      });
+      $$4.a(bxp.a);
+      $$4.a(bxp.d);
+   }
+
+   @Override
+   public void a(djz $$0, ebg $$1, iw $$2, bwv $$3, double $$4) {
+      if (!($$4 < 4.0) && $$3 instanceof bxw $$5) {
+         bxw.a $$7 = $$5.eO();
+         awq $$8 = $$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, bwv $$3) {
+      fgm $$4 = this.b($$0, $$1, $$2, ffx.a($$3));
+      return $$4.c() ? fgj.b() : $$4;
+   }
+
+   @Override
+   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      if (!$$3.c() && $$3 instanceof fgc $$4) {
+         bwv $$5 = $$4.d();
+         if ($$5 != null) {
+            if ($$5.Z > 2.5) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cod;
+            if ($$6 || a($$5) && $$3.a(fgj.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return fgj.a();
+   }
+
+   @Override
+   protected fgm c(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return fgj.a();
+   }
+
+   public static boolean a(bwv $$0) {
+      if ($$0.an().a(axj.h)) {
+         return true;
       } else {
-         int $$5 = $$1.u();
-         int $$6 = $$1.v();
-         int $$7 = $$1.w();
-         boolean $$8 = true;
-         eci $$9 = $$2.c(c);
-         switch ($$9) {
-            case a:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-               }
-               break;
-            case b:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-               }
-               break;
-            case c:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = eci.b;
-               break;
-            case d:
-               if ($$3) {
-                  $$5--;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$5++;
-               }
-
-               $$9 = eci.b;
-               break;
-            case e:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = eci.a;
-               break;
-            case f:
-               if ($$3) {
-                  $$7++;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$7--;
-               }
-
-               $$9 = eci.a;
-         }
-
-         return this.a($$0, new iv($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new iv($$5, $$6 - 1, $$7), $$3, $$4, $$9);
-      }
-   }
-
-   protected boolean a(djx $$0, iv $$1, boolean $$2, int $$3, eci $$4) {
-      ebe $$5 = $$0.a_($$1);
-      if (!$$5.a(this)) {
-         return false;
-      } else {
-         eci $$6 = $$5.c(c);
-         if ($$4 != eci.b || $$6 != eci.a && $$6 != eci.e && $$6 != eci.f) {
-            if ($$4 != eci.a || $$6 != eci.b && $$6 != eci.c && $$6 != eci.d) {
-               if (!$$5.c(d)) {
-                  return false;
-               } else {
-                  return $$0.D($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
-               }
-            } else {
-               return false;
-            }
-         } else {
-            return false;
-         }
+         return $$0 instanceof bxw ? ((bxw)$$0).a(bxf.c).a(dae.qp) : false;
       }
    }
 
    @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, dnc $$3) {
-      boolean $$4 = $$0.c(d);
-      boolean $$5 = $$1.D($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
-      if ($$5 != $$4) {
-         $$1.a($$2, $$0.b(d, Boolean.valueOf($$5)), 3);
-         $$1.a($$2.e(), this);
-         if ($$0.c(c).b()) {
-            $$1.a($$2.d(), this);
-         }
-      }
-   }
-
-   @Override
-   public ech<eci> c() {
-      return c;
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      switch ($$1) {
-         case c:
-            switch ((eci)$$0.c(c)) {
-               case c:
-                  return $$0.b(c, eci.d);
-               case d:
-                  return $$0.b(c, eci.c);
-               case e:
-                  return $$0.b(c, eci.f);
-               case f:
-                  return $$0.b(c, eci.e);
-               case g:
-                  return $$0.b(c, eci.i);
-               case h:
-                  return $$0.b(c, eci.j);
-               case i:
-                  return $$0.b(c, eci.g);
-               case j:
-                  return $$0.b(c, eci.h);
-            }
-         case d:
-            switch ((eci)$$0.c(c)) {
-               case a:
-                  return $$0.b(c, eci.b);
-               case b:
-                  return $$0.b(c, eci.a);
-               case c:
-                  return $$0.b(c, eci.e);
-               case d:
-                  return $$0.b(c, eci.f);
-               case e:
-                  return $$0.b(c, eci.d);
-               case f:
-                  return $$0.b(c, eci.c);
-               case g:
-                  return $$0.b(c, eci.j);
-               case h:
-                  return $$0.b(c, eci.g);
-               case i:
-                  return $$0.b(c, eci.h);
-               case j:
-                  return $$0.b(c, eci.i);
-            }
-         case b:
-            switch ((eci)$$0.c(c)) {
-               case a:
-                  return $$0.b(c, eci.b);
-               case b:
-                  return $$0.b(c, eci.a);
-               case c:
-                  return $$0.b(c, eci.f);
-               case d:
-                  return $$0.b(c, eci.e);
-               case e:
-                  return $$0.b(c, eci.c);
-               case f:
-                  return $$0.b(c, eci.d);
-               case g:
-                  return $$0.b(c, eci.h);
-               case h:
-                  return $$0.b(c, eci.i);
-               case i:
-                  return $$0.b(c, eci.j);
-               case j:
-                  return $$0.b(c, eci.g);
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      eci $$2 = $$0.c(c);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.b(c, eci.f);
-               case f:
-                  return $$0.b(c, eci.e);
-               case g:
-                  return $$0.b(c, eci.j);
-               case h:
-                  return $$0.b(c, eci.i);
-               case i:
-                  return $$0.b(c, eci.h);
-               case j:
-                  return $$0.b(c, eci.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.b(c, eci.d);
-               case d:
-                  return $$0.b(c, eci.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.b(c, eci.h);
-               case h:
-                  return $$0.b(c, eci.g);
-               case i:
-                  return $$0.b(c, eci.j);
-               case j:
-                  return $$0.b(c, eci.i);
-            }
+   public daa a(@Nullable bxw $$0, dka $$1, iw $$2, ebg $$3) {
+      $$1.a($$2, dng.a.m(), 11);
+      if (!$$1.A_()) {
+         $$1.c(2001, $$2, dne.j($$3));
       }
 
-      return super.a($$0, $$1);
+      return new daa(dae.rr);
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(c, d, a);
+   public Optional<awq> at_() {
+      return Optional.of(awr.dn);
+   }
+
+   @Override
+   protected boolean a(ebg $$0, eyf $$1) {
+      return true;
    }
 }

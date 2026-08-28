@@ -1,30 +1,34 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bho extends DataFix {
+public class bho extends bdv {
+   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+
    public bho(Schema $$0) {
-      super($$0, false);
+      super($$0, "LockComponentPredicateFix", "minecraft:lock");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjb.j);
-      OpticFinder<?> $$1 = $$0.findField("data");
-      OpticFinder<?> $$2 = $$1.type().findField("banners");
-      OpticFinder<?> $$3 = DSL.typeFinder(((ListType)$$2.type()).getElement());
-      return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix",
-         $$0,
-         $$3x -> $$3x.updateTyped(
-               $$1,
-               $$2xx -> $$2xx.updateTyped(
-                     $$2, $$1xxx -> $$1xxx.updateTyped($$3, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), $$0xxxxx -> $$0xxxxx.update("Pos", bbf::a)))
-                  )
-            )
-      );
+   @Nullable
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
+   }
+
+   @Nullable
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return null;
+      } else if ($$1.get().isEmpty()) {
+         return null;
+      } else {
+         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
+         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
+         return $$0.emptyMap().set("components", $$3);
+      }
    }
 }

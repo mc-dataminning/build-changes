@@ -3,11 +3,12 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bkl extends bhv {
-   private static final String c = "CanPickUpLoot";
+public class bkl extends bhx {
+   private static final double c = 16.0;
+   private static final double d = 48.0;
 
    public bkl(Schema $$0) {
-      super($$0, true, "Villager CanPickUpLoot default value", bjb.D, "Villager");
+      super($$0, false, "Villager Follow Range Fix", bjd.D, "minecraft:villager");
    }
 
    @Override
@@ -16,6 +17,16 @@ public class bkl extends bhv {
    }
 
    private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
+      return $$0.update(
+         "Attributes",
+         $$1 -> $$0.createList(
+               $$1.asStream()
+                  .map(
+                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
+                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
+                           : $$0xx
+                  )
+            )
+      );
    }
 }

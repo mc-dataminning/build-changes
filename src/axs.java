@@ -1,17 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
-public record axs(List<axr> b, boolean c) {
-   public static final Codec<axs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axr.a.listOf().fieldOf("values").forGetter(axs::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(axs::b)).apply($$0, axs::new)
-   );
+public class axs {
+   private final List<axt> a = new ArrayList<>();
 
-   public List<axr> a() {
-      return this.b;
+   public static axs a() {
+      return new axs();
    }
 
-   public boolean b() {
-      return this.c;
+   public List<axt> b() {
+      return List.copyOf(this.a);
+   }
+
+   public axs a(axt $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public axs a(alk $$0) {
+      return this.a(axt.a($$0));
+   }
+
+   public axs b(alk $$0) {
+      return this.a(axt.b($$0));
+   }
+
+   public axs c(alk $$0) {
+      return this.a(axt.c($$0));
+   }
+
+   public axs d(alk $$0) {
+      return this.a(axt.d($$0));
    }
 }

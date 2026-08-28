@@ -1,5 +1,11 @@
-public class edq extends RuntimeException {
-   public edq(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
+import javax.annotation.Nullable;
+
+public interface edq {
+   @Nullable
+   edp c(int var1, int var2);
+
+   default void a(dki $$0, jz $$1) {
    }
+
+   djd r();
 }

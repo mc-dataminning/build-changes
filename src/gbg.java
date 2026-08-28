@@ -1,25 +1,27 @@
-public class gbg extends gau<cwj> {
-   private static final ali G = ali.b("textures/gui/container/crafting_table.png");
+public class gbg extends gau<cwb> {
+   private static final alk G = alk.b("textures/gui/container/generic_54.png");
+   private final int H;
 
-   public gbg(cwj $$0, crw $$1, xa $$2) {
-      super($$0, new gdy($$0), $$1, $$2);
+   public gbg(cwb $$0, cry $$1, xc $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.H = $$0.m();
+      this.u = 114 + this.H * 18;
+      this.y = this.u - 94;
    }
 
    @Override
-   protected void aS_() {
-      super.aS_();
-      this.v = 29;
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected fyr G() {
-      return new fyr(this.C + 5, this.o / 2 - 49);
-   }
-
-   @Override
-   protected void a(ftx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
+   protected void a(ftz $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
       int $$5 = (this.o - this.u) / 2;
-      $$0.a(gsl::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      $$0.a(gsn::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.H * 18 + 17, 256, 256);
+      $$0.a(gsn::H, G, $$4, $$5 + this.H * 18 + 17, 0.0F, 126.0F, this.s, 96, 256, 256);
    }
 }

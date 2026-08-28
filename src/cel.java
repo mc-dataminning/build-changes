@@ -1,86 +1,70 @@
-import java.util.List;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cel extends ceq {
-   private int a;
-   private final byc b;
-   @Nullable
-   private crx c;
-   private cdz d;
+public class cel extends ces {
+   protected final bye a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final djz f;
 
-   public cel(byc $$0) {
-      this.b = $$0;
+   public cel(bye $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dV();
+      this.a(EnumSet.of(ces.a.a));
    }
 
    @Override
    public boolean b() {
-      List<cui> $$0 = this.b.dV().a(cui.class, this.b.cR().g(5.0));
-      boolean $$1 = false;
-
-      for (cui $$2 : $$0) {
-         bwt $$3 = $$2.cW();
-         if ($$3 instanceof crx $$4 && (azo.e($$4.bg) > 0.0F || azo.e($$4.bi) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (this.a.f() != null) {
+         return false;
+      } else if (!this.f.V()) {
+         return false;
+      } else if (!this.a.bX()) {
+         return false;
+      } else if (!this.f.h(this.a.dv())) {
+         return false;
+      } else {
+         return !this.a.a(bxf.f).f() ? false : this.h();
       }
-
-      return this.c != null && (azo.e(this.c.bg) > 0.0F || azo.e(this.c.bi) > 0.0F) || $$1;
    }
 
-   @Override
-   public boolean U_() {
-      return true;
+   protected boolean h() {
+      ffs $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.d;
+         this.c = $$0.e;
+         this.d = $$0.f;
+         return true;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.c != null && this.c.bY() && (azo.e(this.c.bg) > 0.0F || azo.e(this.c.bi) > 0.0F);
+      return !this.a.O().k();
    }
 
    @Override
    public void d() {
-      for (cui $$1 : this.b.dV().a(cui.class, this.b.cR().g(5.0))) {
-         if ($$1.cW() instanceof crx $$2) {
-            this.c = $$2;
-            break;
+      this.a.O().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected ffs i() {
+      azz $$0 = this.a.dY();
+      iw $$1 = this.a.dv();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         iw $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return ffs.c($$3);
          }
       }
 
-      this.a = 0;
-      this.d = cdz.a;
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-   }
-
-   @Override
-   public void a() {
-      boolean $$0 = azo.e(this.c.bg) > 0.0F || azo.e(this.c.bi) > 0.0F;
-      float $$1 = this.d == cdz.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new ffq((double)this.b.bg, (double)this.b.bh, (double)this.b.bi));
-      this.b.a(bxy.a, this.b.dy());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == cdz.a) {
-            iv $$2 = this.c.dv().a(this.c.cO().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.O().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = cdz.b;
-            }
-         } else if (this.d == cdz.b) {
-            jb $$3 = this.c.cP();
-            iv $$4 = this.c.dv().a($$3, 10);
-            this.b.O().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = cdz.a;
-            }
-         }
-      }
+      return null;
    }
 }

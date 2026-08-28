@@ -1,57 +1,71 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gvo {
-   private final Long2ObjectMap<gvo.a> a = new Long2ObjectOpenHashMap();
+class gvo {
+   private final Map<iw, dye> a;
+   @Nullable
+   private final List<edv<ebg>> b;
+   private final boolean c;
+   private final edn d;
+
+   gvo(edn $$0) {
+      this.d = $$0;
+      this.c = $$0.H().ak();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof edj) {
+         this.b = null;
+      } else {
+         edo[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (edo $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
+   }
 
    @Nullable
-   public gvn a(djx $$0, jy $$1) {
-      gvo.a $$2 = this.a($$0, $$1.a(), $$1.c());
-      if ($$2.a().c($$1.b())) {
-         return null;
+   public dye a(iw $$0) {
+      return this.a.get($$0);
+   }
+
+   public ebg b(iw $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         ebg $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dng.iy.m();
+         }
+
+         if ($$2 == 70) {
+            $$4 = egw.a($$1, $$3);
+         }
+
+         return $$4 == null ? dng.a.m() : $$4;
+      } else if (this.b == null) {
+         return dng.a.m();
       } else {
-         int $$3 = $$1.a() - 1;
-         int $$4 = $$1.c() - 1;
-         int $$5 = $$1.a() + 1;
-         int $$6 = $$1.c() + 1;
-         gvm[] $$7 = new gvm[9];
-
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
-               int $$10 = gvn.a($$3, $$4, $$9, $$8);
-               gvo.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
-               $$7[$$10] = $$11.b();
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               edv<ebg> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
             }
+
+            return dng.a.m();
+         } catch (Throwable var8) {
+            p $$8 = p.a(var8, "Getting block state");
+            q $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> q.a(this.d, $$1, $$2, $$3));
+            throw new aa($$8);
          }
-
-         return new gvn($$0, $$3, $$4, $$7);
-      }
-   }
-
-   private gvo.a a(djx $$0, int $$1, int $$2) {
-      return (gvo.a)this.a.computeIfAbsent(djc.c($$1, $$2), $$1x -> new gvo.a($$0.d(djc.a($$1x), djc.b($$1x))));
-   }
-
-   static final class a {
-      private final edl a;
-      @Nullable
-      private gvm b;
-
-      a(edl $$0) {
-         this.a = $$0;
-      }
-
-      public edl a() {
-         return this.a;
-      }
-
-      public gvm b() {
-         if (this.b == null) {
-            this.b = new gvm(this.a);
-         }
-
-         return this.b;
       }
    }
 }

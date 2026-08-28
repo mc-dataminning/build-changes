@@ -1,5 +1,6 @@
-public class ur extends aa {
-   public ur(p $$0) {
-      super($$0);
+public sealed interface ur extends va permits uq, uy {
+   @Override
+   default va d() {
+      return this;
    }
 }

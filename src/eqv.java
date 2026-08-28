@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eqv implements bam {
-   a(jb.b, 1, "ceiling"),
-   b(jb.a, -1, "floor");
+public class eqv extends erj {
+   private static final eqv c = new eqv();
+   public static MapCodec<eqv> a = MapCodec.unit(() -> c);
 
-   public static final Codec<eqv> c = bam.a(eqv::values);
-   private final jb d;
-   private final int e;
-   private final String f;
-
-   private eqv(final jb $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private eqv() {
    }
 
-   public jb a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static eqv a() {
+      return c;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected boolean a(eri $$0, azz $$1, iw $$2) {
+      erh $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jg<dlc> $$4 = $$0.d().u($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public erl<?> b() {
+      return erl.e;
    }
 }

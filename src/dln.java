@@ -1,84 +1,57 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dln extends dle {
-   private static final MapCodec<jf<dla>> d = dla.c.fieldOf("biome");
-   public static final MapCodec<dlj.c<jf<dla>>> b = dlj.c.a(d).fieldOf("biomes");
-   private static final MapCodec<jf<dlo>> e = dlo.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dln> c = Codec.mapEither(b, e).xmap(dln::new, $$0 -> $$0.f);
-   private final Either<dlj.c<jf<dla>>, jf<dlo>> f;
+public class dln extends dlg implements dle.a {
+   public static final MapCodec<dln> b = dlc.c.fieldOf("biome").xmap(dln::new, $$0 -> $$0.c).stable();
+   private final jg<dlc> c;
 
-   private dln(Either<dlj.c<jf<dla>>, jf<dlo>> $$0) {
-      this.f = $$0;
-   }
-
-   public static dln a(dlj.c<jf<dla>> $$0) {
-      return new dln(Either.left($$0));
-   }
-
-   public static dln a(jf<dlo> $$0) {
-      return new dln(Either.right($$0));
-   }
-
-   private dlj.c<jf<dla>> d() {
-      return (dlj.c<jf<dla>>)this.f.map($$0 -> $$0, $$0 -> ((dlo)$$0.a()).a());
+   public dln(jg<dlc> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected Stream<jf<dla>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   protected Stream<jg<dlc>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected MapCodec<? extends dle> a() {
-      return c;
-   }
-
-   public boolean a(alh<dlo> $$0) {
-      Optional<jf<dlo>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   protected MapCodec<? extends dlg> a() {
+      return b;
    }
 
    @Override
-   public jf<dla> getNoiseBiome(int $$0, int $$1, int $$2, dlj.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @bax
-   public jf<dla> a(dlj.h $$0) {
-      return this.d().a($$0);
+   public jg<dlc> getNoiseBiome(int $$0, int $$1, int $$2, dll.f $$3) {
+      return this.c;
    }
 
    @Override
-   public void a(List<String> $$0, iv $$1, dlj.f $$2) {
-      int $$3 = jq.a($$1.u());
-      int $$4 = jq.a($$1.v());
-      int $$5 = jq.a($$1.w());
-      dlj.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dlj.a($$6.d());
-      float $$8 = dlj.a($$6.e());
-      float $$9 = dlj.a($$6.b());
-      float $$10 = dlj.a($$6.c());
-      float $$11 = dlj.a($$6.g());
-      double $$12 = (double)ehk.a($$11);
-      dlq $$13 = new dlq();
-      $$0.add(
-         "Biome builder PV: "
-            + dlq.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public jg<dlc> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<iw, jg<dlc>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jg<dlc>> $$5, azz $$6, boolean $$7, dll.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new iw($$0, $$1, $$2), this.c) : Pair.of(new iw($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<iw, jg<dlc>> a(iw $$0, int $$1, int $$2, int $$3, Predicate<jg<dlc>> $$4, dll.f $$5, dkc $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<jg<dlc>> a(int $$0, int $$1, int $$2, int $$3, dll.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

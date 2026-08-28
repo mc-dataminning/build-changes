@@ -1,158 +1,182 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class gef extends fuj {
-   private static final ali a = ali.b("recipe_book/slot_many_craftable");
-   private static final ali b = ali.b("recipe_book/slot_craftable");
-   private static final ali c = ali.b("recipe_book/slot_many_uncraftable");
-   private static final ali d = ali.b("recipe_book/slot_uncraftable");
-   private static final float e = 15.0F;
-   private static final int f = 25;
-   private static final xa m = xa.c("gui.recipebook.moreRecipes");
-   private geg n = geg.a;
-   private List<gef.a> o = List.of();
-   private boolean p;
-   private final gej q;
-   private float r;
+public class gef {
+   public static final int a = 20;
+   private static final fwa b = new fwa(alk.b("recipe_book/page_forward"), alk.b("recipe_book/page_forward_highlighted"));
+   private static final fwa c = new fwa(alk.b("recipe_book/page_backward"), alk.b("recipe_book/page_backward_highlighted"));
+   private final List<geh> d = Lists.newArrayListWithCapacity(20);
+   @Nullable
+   private geh e;
+   private final ged f;
+   private frf g;
+   private final gee<?> h;
+   private List<gei> i = ImmutableList.of();
+   private fvt j;
+   private fvt k;
+   private int l;
+   private int m;
+   private fqq n;
+   @Nullable
+   private dfz o;
+   @Nullable
+   private gei p;
+   private boolean q;
 
-   public gef(gej $$0) {
-      super(0, 0, 25, 25, wz.a);
-      this.q = $$0;
-   }
+   public gef(gee<?> $$0, gel $$1, boolean $$2) {
+      this.h = $$0;
+      this.f = new ged($$1, $$2);
 
-   public void a(geg $$0, boolean $$1, ged $$2, bbb $$3) {
-      this.n = $$0;
-      List<dfw> $$4 = $$0.a($$1 ? geg.a.b : geg.a.a);
-      this.o = $$4.stream().map($$1x -> new gef.a($$1x.a(), $$1x.a($$3))).toList();
-      this.p = a(this.o);
-      List<dfx> $$5 = $$4.stream().map(dfw::a).filter($$2.d()::b).toList();
-      if (!$$5.isEmpty()) {
-         $$5.forEach($$2::a);
-         this.r = 15.0F;
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         this.d.add(new geh($$1));
       }
    }
 
-   private static boolean a(List<gef.a> $$0) {
-      Iterator<czy> $$1 = $$0.stream().flatMap($$0x -> $$0x.b().stream()).iterator();
-      if (!$$1.hasNext()) {
+   public void a(frf $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.t.m();
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      }
+
+      this.j = new fvt($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new fvt($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
+   }
+
+   public void a(List<gei> $$0, boolean $$1, boolean $$2) {
+      this.i = $$0;
+      this.q = $$2;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.e();
+   }
+
+   private void e() {
+      int $$0 = 20 * this.m;
+      bbd $$1 = dge.a(this.g.s);
+
+      for (int $$2 = 0; $$2 < this.d.size(); $$2++) {
+         geh $$3 = this.d.get($$2);
+         if ($$0 + $$2 < this.i.size()) {
+            gei $$4 = this.i.get($$0 + $$2);
+            $$3.a($$4, this.q, this, $$1);
+            $$3.k = true;
+         } else {
+            $$3.k = false;
+         }
+      }
+
+      this.f();
+   }
+
+   private void f() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
+   }
+
+   public void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         xc $$6 = xc.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.b(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1);
+      }
+
+      this.e = null;
+
+      for (geh $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.D()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(ftz $$0, int $$1, int $$2) {
+      if (this.g.z != null && this.e != null && !this.f.c()) {
+         daa $$3 = this.e.e();
+         alk $$4 = $$3.a(kl.G);
+         $$0.a(this.g.h, this.e.a($$3), $$1, $$2, $$4);
+      }
+   }
+
+   @Nullable
+   public dfz a() {
+      return this.o;
+   }
+
+   @Nullable
+   public gei b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.e();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.e();
          return true;
       } else {
-         czy $$2 = $$1.next();
+         bbd $$7 = dge.a(this.g.s);
 
-         while ($$1.hasNext()) {
-            czy $$3 = $$1.next();
-            if (!czy.c($$2, $$3)) {
-               return false;
+         for (geh $$8 : this.d) {
+            if ($$8.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$8.c();
+                  this.p = $$8.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$8.b()) {
+                  this.f.a($$8.a(), $$7, this.q, $$8.F(), $$8.G(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$8.A());
+               }
+
+               return true;
             }
          }
 
-         return true;
+         return false;
       }
    }
 
-   public geg a() {
+   public void a(dfz $$0) {
+      this.h.a($$0);
+   }
+
+   public fqq d() {
       return this.n;
    }
 
-   @Override
-   public void b(ftx $$0, int $$1, int $$2, float $$3) {
-      ali $$4;
-      if (this.n.a()) {
-         if (this.g()) {
-            $$4 = a;
-         } else {
-            $$4 = b;
-         }
-      } else if (this.g()) {
-         $$4 = c;
-      } else {
-         $$4 = d;
-      }
-
-      boolean $$8 = this.r > 0.0F;
-      if ($$8) {
-         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.r / 15.0F * (float) Math.PI));
-         $$0.c().a();
-         $$0.c().a((float)(this.F() + 8), (float)(this.G() + 12), 0.0F);
-         $$0.c().b($$9, $$9, 1.0F);
-         $$0.c().a((float)(-(this.F() + 8)), (float)(-(this.G() + 12)), 0.0F);
-         this.r -= $$3;
-      }
-
-      $$0.a(gsl::H, $$4, this.F(), this.G(), this.g, this.h);
-      czy $$10 = this.e();
-      int $$11 = 4;
-      if (this.g() && this.p) {
-         $$0.a($$10, this.F() + $$11 + 1, this.G() + $$11 + 1, 0, 10);
-         $$11--;
-      }
-
-      $$0.b($$10, this.F() + $$11, this.G() + $$11);
-      if ($$8) {
-         $$0.c().b();
-      }
-   }
-
-   private boolean g() {
-      return this.o.size() > 1;
-   }
-
-   public boolean b() {
-      return this.o.size() == 1;
-   }
-
-   public dfx c() {
-      int $$0 = this.q.currentIndex() % this.o.size();
-      return this.o.get($$0).a;
-   }
-
-   public czy e() {
-      int $$0 = this.q.currentIndex();
-      int $$1 = this.o.size();
-      int $$2 = $$0 / $$1;
-      int $$3 = $$0 - $$1 * $$2;
-      return this.o.get($$3).a($$2);
-   }
-
-   public List<xa> a(czy $$0) {
-      List<xa> $$1 = new ArrayList<>(gad.a(frd.Q(), $$0));
-      if (this.g()) {
-         $$1.add(m);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(fyi $$0) {
-      $$0.a(fyh.a, xa.a("narration.recipe", this.e().y()));
-      if (this.g()) {
-         $$0.a(fyh.d, xa.c("narration.button.usage.hovered"), xa.c("narration.recipe.usage.more"));
-      } else {
-         $$0.a(fyh.d, xa.c("narration.button.usage.hovered"));
-      }
-   }
-
-   @Override
-   public int A() {
-      return 25;
-   }
-
-   @Override
-   protected boolean g(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   static record a(dfx a, List<czy> b) {
-
-      public czy a(int $$0) {
-         if (this.b.isEmpty()) {
-            return czy.k;
-         } else {
-            int $$1 = $$0 % this.b.size();
-            return this.b.get($$1);
-         }
-      }
+   protected void a(Consumer<ful> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

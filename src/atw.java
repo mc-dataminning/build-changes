@@ -1,157 +1,147 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class atw {
-   private static final Logger b = LogUtils.getLogger();
-   public static Consumer<atw> a = $$0 -> {
-   };
-   private static final Map<att, Path> c = ag.a(() -> {
-      synchronized (atv.class) {
-         Builder<att, Path> $$0 = ImmutableMap.builder();
+public class atw extends atk {
+   private static final Logger c = LogUtils.getLogger();
+   private static final Joiner d = Joiner.on("/");
+   private final Path e;
 
-         for (att $$1 : att.values()) {
-            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
-            URL $$3 = atv.class.getResource($$2);
-            if ($$3 == null) {
-               b.error("File {} does not exist in classpath", $$2);
-            } else {
-               try {
-                  URI $$4 = $$3.toURI();
-                  String $$5 = $$4.getScheme();
-                  if (!"jar".equals($$5) && !"file".equals($$5)) {
-                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
-                  }
-
-                  Path $$6 = ayy.a($$4);
-                  $$0.put($$1, $$6.getParent());
-               } catch (Exception var12) {
-                  b.error("Couldn't resolve path to vanilla assets", var12);
-               }
-            }
-         }
-
-         return $$0.build();
-      }
-   });
-   private final Set<Path> d = new LinkedHashSet<>();
-   private final Map<att, Set<Path>> e = new EnumMap<>(att.class);
-   private atj f = atj.a();
-   private final Set<String> g = new HashSet<>();
-
-   private boolean b(Path $$0) {
-      if (!Files.exists($$0)) {
-         return false;
-      } else if (!Files.isDirectory($$0)) {
-         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
-      } else {
-         return true;
-      }
+   public atw(ats $$0, Path $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   private void c(Path $$0) {
-      if (this.b($$0)) {
-         this.d.add($$0);
-      }
+   @Nullable
+   @Override
+   public auz<InputStream> a(String... $$0) {
+      w.a($$0);
+      Path $$1 = w.a(this.e, List.of($$0));
+      return Files.exists($$1) ? auz.create($$1) : null;
    }
 
-   private void b(att $$0, Path $$1) {
-      if (this.b($$1)) {
-         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
-      }
+   public static boolean a(Path $$0) {
+      return true;
    }
 
-   public atw a() {
-      c.forEach(($$0, $$1) -> {
-         this.c($$1.getParent());
-         this.b($$0, $$1);
+   @Nullable
+   @Override
+   public auz<InputStream> a(atv $$0, alk $$1) {
+      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
+      return a($$1, $$2);
+   }
+
+   @Nullable
+   public static auz<InputStream> a(alk $$0, Path $$1) {
+      return (auz<InputStream>)w.d($$0.a()).mapOrElse($$1x -> {
+         Path $$2 = w.a($$1, $$1x);
+         return b($$2);
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$0, $$1x.message());
+         return null;
       });
-      return this;
    }
 
-   public atw a(att $$0, Class<?> $$1) {
-      Enumeration<URL> $$2 = null;
+   @Nullable
+   private static auz<InputStream> b(Path $$0) {
+      return Files.exists($$0) && a($$0) ? auz.create($$0) : null;
+   }
 
-      try {
-         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
-      } catch (IOException var8) {
+   @Override
+   public void a(atv $$0, String $$1, String $$2, att.a $$3) {
+      w.d($$2).ifSuccess($$3x -> {
+         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
+         a($$1, $$4, $$3x, $$3);
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
+
+   public static void a(String $$0, Path $$1, List<String> $$2, att.a $$3) {
+      Path $$4 = w.a($$1, $$2);
+
+      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
+         $$5.forEach($$3x -> {
+            String $$4x = d.join($$1.relativize($$3x));
+            alk $$5x = alk.b($$0, $$4x);
+            if ($$5x == null) {
+               ag.b(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
+            } else {
+               $$3.accept($$5x, auz.create($$3x));
+            }
+         });
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$4, var11);
+      }
+   }
+
+   @Override
+   public Set<String> a(atv $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+      Path $$2 = this.e.resolve($$0.a());
+
+      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
+         for (Path $$4 : $$3) {
+            String $$5 = $$4.getFileName().toString();
+            if (alk.j($$5)) {
+               $$1.add($$5);
+            } else {
+               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
+            }
+         }
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$2, var11);
       }
 
-      while ($$2 != null && $$2.hasMoreElements()) {
-         URL $$3 = $$2.nextElement();
+      return $$1;
+   }
 
-         try {
-            URI $$4 = $$3.toURI();
-            if ("file".equals($$4.getScheme())) {
-               Path $$5 = Paths.get($$4);
-               this.c($$5.getParent());
-               this.b($$0, $$5);
+   @Override
+   public void close() {
+   }
+
+   public static class a implements auo.c {
+      private final Path a;
+
+      public a(Path $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public att a(ats $$0) {
+         return new atw($$0, this.a);
+      }
+
+      @Override
+      public att a(ats $$0, auo.a $$1) {
+         att $$2 = this.a($$0);
+         List<String> $$3 = $$1.d();
+         if ($$3.isEmpty()) {
+            return $$2;
+         } else {
+            List<att> $$4 = new ArrayList<>($$3.size());
+
+            for (String $$5 : $$3) {
+               Path $$6 = this.a.resolve($$5);
+               $$4.add(new atw($$0, $$6));
             }
-         } catch (Exception var7) {
-            b.error("Failed to extract path from {}", $$3, var7);
+
+            return new atm($$2, $$4);
          }
       }
-
-      return this;
-   }
-
-   public atw b() {
-      a.accept(this);
-      return this;
-   }
-
-   public atw a(Path $$0) {
-      this.c($$0);
-
-      for (att $$1 : att.values()) {
-         this.b($$1, $$0.resolve($$1.a()));
-      }
-
-      return this;
-   }
-
-   public atw a(att $$0, Path $$1) {
-      this.c($$1);
-      this.b($$0, $$1);
-      return this;
-   }
-
-   public atw a(atj $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public atw a(String... $$0) {
-      this.g.addAll(Arrays.asList($$0));
-      return this;
-   }
-
-   public atv a(atq $$0) {
-      return new atv($$0, this.f, Set.copyOf(this.g), a(this.d), ag.a(att.class, $$0x -> a(this.e.getOrDefault($$0x, Set.of()))));
-   }
-
-   private static List<Path> a(Collection<Path> $$0) {
-      List<Path> $$1 = new ArrayList<>($$0);
-      Collections.reverse($$1);
-      return List.copyOf($$1);
    }
 }

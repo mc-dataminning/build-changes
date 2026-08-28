@@ -1,65 +1,51 @@
-public class fzk extends gad {
-   private static final xa a = xa.c("gui.toMenu");
-   private static final xa b = xa.c("gui.toTitle");
-   private static final xa c = xa.c("gui.report_to_server");
-   private static final xa d = xa.c("gui.open_report_dir");
-   private final gad s;
-   private final vv u;
-   private final xa v;
-   private final fyd w = fyd.d();
+public class fzk extends gaf {
+   private static final alk a = alk.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private fvg d = fvg.a;
+   private fvg s = fvg.a;
 
-   public fzk(gad $$0, xa $$1, xa $$2) {
-      this($$0, $$1, new vv($$2));
-   }
-
-   public fzk(gad $$0, xa $$1, xa $$2, xa $$3) {
-      this($$0, $$1, new vv($$2), $$3);
-   }
-
-   public fzk(gad $$0, xa $$1, vv $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fzk(gad $$0, xa $$1, vv $$2, xa $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   public fzk() {
+      super(xc.c("demo.help.title"));
    }
 
    @Override
    protected void aS_() {
-      this.w.c().b().a(10);
-      this.w.a(new fvs(this.l, this.p));
-      this.w.a(new fvf(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(ful.a(c, fza.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(ful.a(d, $$1x -> ag.n().a($$0.getParent())).a(200).a()));
-      ful $$0;
-      if (this.m.F()) {
-         $$0 = ful.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
-      } else {
-         $$0 = ful.a(b, $$0x -> this.m.a(new gaf())).a(200).a();
-      }
-
-      this.w.a($$0);
-      this.w.a();
-      this.w.a(this::c);
-      this.c();
+      int $$0 = -16;
+      this.c(fun.a(xc.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ag.n().a(ayl.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fun.a(xc.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      frj $$1 = this.m.n;
+      this.d = fvg.a(
+         this.p,
+         xc.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         xc.c("demo.help.movementMouse"),
+         xc.a("demo.help.jump", $$1.z.k()),
+         xc.a("demo.help.inventory", $$1.C.k())
+      );
+      this.s = fvg.a(this.p, xc.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void c() {
-      fxx.a(this.w, this.J());
+   public void b(ftz $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(gsn::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
    }
 
    @Override
-   public xa i() {
-      return wz.a(this.l, this.u.a());
-   }
-
-   @Override
-   public boolean aH_() {
-      return false;
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

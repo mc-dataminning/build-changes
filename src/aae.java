@@ -1,29 +1,16 @@
-public class aae implements zh<aaa> {
-   public static final yy<vw, aae> a = zh.a(aae::a, aae::new);
-   private final int b;
+import com.google.common.collect.Lists;
 
-   public aae(int $$0) {
-      this.b = $$0;
-   }
-
-   private aae(vw $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vw $$0) {
-      $$0.q(this.b);
-   }
+public record aae(aam b) implements zj<aac> {
+   private static final int c = 32767;
+   public static final za<vy, aae> a = aam.<vy>a($$0 -> aan.a($$0, 32767), ag.a(Lists.newArrayList(new aam.c[]{new aam.c<>(aak.b, aak.a)}), $$0 -> {
+   })).a(aae::new, aae::b);
 
    @Override
-   public zj<aae> a() {
-      return zz.o;
+   public zl<aae> a() {
+      return aab.m;
    }
 
-   public void a(aaa $$0) {
+   public void a(aac $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

@@ -1,29 +1,37 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.serialization.JavaOps;
 import java.util.Arrays;
 import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class et implements ArgumentType<tz> {
-   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
+public class et extends bql<xc> {
+   private static final Collection<String> b = Arrays.asList("\"hello world\"", "'hello world'", "\"\"", "{text:\"hello world\"}", "[\"\"]");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xc.b("argument.component.invalid", $$0));
+   private static final bqg<Object> c = uu.a(JavaOps.INSTANCE);
 
-   private et() {
+   private et(ji.a $$0) {
+      super(c.a($$0.a(JavaOps.INSTANCE), c, xe.a, a));
    }
 
-   public static et a() {
-      return new et();
+   public static xc a(CommandContext<ek> $$0, String $$1) {
+      return (xc)$$0.getArgument($$1, xc.class);
    }
 
-   public static <S> tz a(CommandContext<S> $$0, String $$1) {
-      return (tz)$$0.getArgument($$1, tz.class);
+   public static xc a(CommandContext<ek> $$0, String $$1, @Nullable bwv $$2) throws CommandSyntaxException {
+      return xf.a((ek)$$0.getSource(), a($$0, $$1), $$2, 0);
    }
 
-   public tz a(StringReader $$0) throws CommandSyntaxException {
-      return uz.c($$0);
+   public static xc b(CommandContext<ek> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ((ek)$$0.getSource()).f());
+   }
+
+   public static et a(eg $$0) {
+      return new et($$0);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

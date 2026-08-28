@@ -1,37 +1,26 @@
-public class aeh implements zh<abw> {
-   public static final yy<vw, aeh> a = zh.a(aeh::a, aeh::new);
-   private final int b;
-   private final double c;
+import java.util.Set;
 
-   public aeh(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record aeh(int b, byj c, Set<byk> d) implements zj<aby> {
+   public static final za<vy, aeh> a = za.a(yy.h, aeh::b, byj.a, aeh::e, byk.m, aeh::f, aeh::new);
 
-   private aeh(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public static aeh a(int $$0, byj $$1, Set<byk> $$2) {
+      return new aeh($$0, $$1, $$2);
    }
 
    @Override
-   public zj<aeh> a() {
-      return agp.bj;
+   public zl<aeh> a() {
+      return agr.ai;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public byj e() {
+      return this.c;
    }
 
-   public double e() {
-      return this.c;
+   public Set<byk> f() {
+      return this.d;
    }
 }

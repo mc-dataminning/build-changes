@@ -1,3 +1,6 @@
-public interface fyj {
-   void b(fyi var1);
+public enum fyj {
+   a,
+   b,
+   c,
+   d;
 }

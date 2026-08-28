@@ -1,20 +1,18 @@
-public record ahv(int b, dfx c, boolean d) implements zh<agr> {
-   public static final yy<vw, ahv> a = yy.a(yw.x, ahv::b, dfx.a, ahv::e, yw.b, ahv::f, ahv::new);
+import io.netty.buffer.ByteBuf;
+
+public record ahv(iw b, boolean c) implements zj<agt> {
+   public static final za<ByteBuf, ahv> a = za.a(iw.b, ahv::b, yy.b, ahv::e, ahv::new);
 
    @Override
-   public zj<ahv> a() {
-      return agp.bQ;
+   public zl<ahv> a() {
+      return agr.bO;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public dfx e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

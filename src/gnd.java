@@ -1,121 +1,85 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
 import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class gnd extends gng {
-   final IntSet g = new IntOpenHashSet();
-
-   gnd(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+public interface gnd {
+   static gnd a(gnj $$0, UserApiService $$1) {
+      return new gnd.b($$0, $$1);
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
-      }
+   CompletableFuture<Unit> a(UUID var1, gnl var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public gnd a() {
-      gnd $$0 = new gnd(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
-
-   @Override
-   public gad a(gad $$0, gnk $$1) {
-      return new gem($$0, $$1, this);
-   }
-
-   public static class a extends gng.a<gnd> {
-      public a(gnd $$0, AbuseReportLimits $$1) {
+   public static class a extends yc {
+      public a(xc $$0, Throwable $$1) {
          super($$0, $$1);
       }
+   }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new gnd(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
+   public static record b(gnj a, UserApiService b) implements gnd {
+      private static final xc c = xc.c("gui.abuseReport.send.service_unavailable");
+      private static final xc d = xc.c("gui.abuseReport.send.http_error");
+      private static final xc e = xc.c("gui.abuseReport.send.json_error");
 
-      public IntSet a() {
-         return this.a.g;
-      }
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, gnl $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xc $$5 = this.a(var7);
+               throw new CompletionException(new gnd.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xc $$7 = this.a(var8);
+               throw new CompletionException(new gnd.a($$7, var8));
+            }
+         }, ag.i());
       }
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      @Nullable
+      private xc a(MinecraftClientHttpException $$0) {
+         return xc.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xc a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
       @Override
-      public gng.b c() {
-         if (this.a.g.isEmpty()) {
-            return gng.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return gng.b.c;
-         } else if (this.a.e == null) {
-            return gng.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gng.b.d : super.c();
-         }
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
       }
 
-      @Override
-      public Either<gng.c, gng.b> a(gnk $$0) {
-         gng.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new gng.c(this.a.a, gnj.a, $$5));
-         }
+      public gnj c() {
+         return this.a;
       }
 
-      private ReportEvidence b(gnk $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         gne $$2 = new gne(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(gmz.a $$0, boolean $$1) {
-         xv $$2 = $$0.g().k();
-         xt $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xm::a).toList();
-         ByteBuffer $$5 = y.a($$0.g().l(), xm::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public gnd.a d() {
-         return new gnd.a(this.a.a(), this.b);
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

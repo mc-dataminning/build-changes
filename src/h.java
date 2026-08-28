@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 import org.joml.Matrix3fc;
 
-public enum h implements bam {
+public enum h implements bao {
    a("identity", j.a, false, false, false),
    b("rot_180_face_xy", j.a, true, true, false),
    c("rot_180_face_xz", j.a, true, false, true),
@@ -58,11 +58,11 @@ public enum h implements bam {
    U("rot_90_ref_z_neg", j.b, false, true, true),
    V("rot_90_ref_z_pos", j.b, true, false, true);
 
-   private static final jb.a[] X = jb.a.values();
+   private static final jc.a[] X = jc.a.values();
    private final Matrix3fc Y;
    private final String Z;
    @Nullable
-   private Map<jb, jb> aa;
+   private Map<jc, jc> aa;
    private final boolean ab;
    private final boolean ac;
    private final boolean ad;
@@ -141,21 +141,21 @@ public enum h implements bam {
       return this.Z;
    }
 
-   public jb a(jb $$0) {
+   public jc a(jc $$0) {
       if (this.aa == null) {
-         this.aa = ag.a(jb.class, $$0x -> {
-            jb.a $$1 = $$0x.o();
-            jb.b $$2 = $$0x.f();
-            jb.a $$3 = this.b($$1);
-            jb.b $$4 = this.a($$3) ? $$2.c() : $$2;
-            return jb.a($$3, $$4);
+         this.aa = ag.a(jc.class, $$0x -> {
+            jc.a $$1 = $$0x.o();
+            jc.b $$2 = $$0x.f();
+            jc.a $$3 = this.b($$1);
+            jc.b $$4 = this.a($$3) ? $$2.c() : $$2;
+            return jc.a($$3, $$4);
          });
       }
 
       return this.aa.get($$0);
    }
 
-   public boolean a(jb.a $$0) {
+   public boolean a(jc.a $$0) {
       return switch ($$0) {
          case a -> this.ab;
          case b -> this.ac;
@@ -163,12 +163,12 @@ public enum h implements bam {
       };
    }
 
-   public jb.a b(jb.a $$0) {
+   public jc.a b(jc.a $$0) {
       return X[this.ae.a($$0.ordinal())];
    }
 
-   public jd a(jd $$0) {
-      return jd.a(this.a($$0.a()), this.a($$0.b()));
+   public je a(je $$0) {
+      return je.a(this.a($$0.a()), this.a($$0.b()));
    }
 
    public static h a(i $$0, i $$1) {

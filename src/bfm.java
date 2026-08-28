@@ -1,51 +1,41 @@
-import com.google.common.base.Suppliers;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Supplier;
+import com.mojang.serialization.DynamicOps;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
-public class bfm extends bez {
-   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(bjb.D, "ZombieVillager"));
+public class bfm extends bhx {
+   private final String c;
+   private final IntFunction<String> d;
 
-   public bfm(Schema $$0) {
-      super("EntityZombieSplitFix", $$0, true);
+   public bfm(Schema $$0, String $$1, TypeReference $$2, String $$3, String $$4, IntFunction<String> $$5) {
+      super($$0, false, $$1, $$2, $$3);
+      this.c = $$4;
+      this.d = $$5;
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Function<Dynamic<T>, Dynamic<T>> $$3) {
+      return $$0.map($$4 -> {
+         DynamicOps<T> $$5 = $$0.getOps();
+         Function<T, T> $$6 = $$2xx -> (T)$$3.apply(new Dynamic($$5, $$2xx)).getValue();
+         return $$5.get($$4, $$1).map($$4x -> $$5.set($$4, $$2, $$6.apply((T)$$4x))).result().orElse($$4);
+      });
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Zombie")) {
-         return Pair.of($$0, $$1);
-      } else {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.getOptional(DSL.remainderFinder()).orElseThrow();
-         int $$3 = $$2.get("ZombieType").asInt(0);
-         String $$4;
-         Typed<?> $$5;
-         switch ($$3) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-               $$4 = "ZombieVillager";
-               $$5 = this.a($$1, $$3 - 1);
-               break;
-            case 6:
-               $$4 = "Husk";
-               $$5 = $$1;
-               break;
-            default:
-               $$4 = "Zombie";
-               $$5 = $$1;
-         }
-
-         return Pair.of($$4, $$5.update(DSL.remainderFinder(), $$0x -> $$0x.remove("ZombieType")));
-      }
-   }
-
-   private Typed<?> a(Typed<?> $$0, int $$1) {
-      return ag.a($$0, this.b.get(), $$1x -> $$1x.set("Profession", $$1x.createInt($$1)));
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> a(
+               $$0x,
+               this.c,
+               "variant",
+               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asNumber().map($$1 -> $$0xx.createString(this.d.apply($$1.intValue()))).result(), $$0xx)
+            )
+      );
    }
 }

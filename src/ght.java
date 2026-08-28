@@ -1,48 +1,87 @@
-public class ght extends gia<hek> {
-   public static final gln a = gln.scaling(0.5F);
-   private final gle b;
-   private final gle c;
-   private final gle d;
+import java.util.List;
 
-   public ght(gle $$0) {
+public class ght extends gic<hej> {
+   public static final List<glg> a = List.of();
+   private final glg b;
+   private final List<glg> c;
+
+   public ght(glg $$0) {
       super($$0);
-      this.b = $$0.b("body");
-      this.c = this.b.b("tail");
-      this.d = this.c.b("tail_fin");
+      glg $$1 = $$0.b("root");
+      glg $$2 = $$1.b("upper_body");
+      this.b = $$2.b("head");
+      this.c = List.of(this.b);
    }
 
-   public static glk a() {
-      glm $$0 = new glm();
-      glo $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      glo $$4 = $$1.a("body", glj.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), glg.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", glj.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), glg.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         glj.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         glg.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+   private static glo b() {
+      glo $$0 = new glo();
+      glq $$1 = $$0.a();
+      glq $$2 = $$1.a("root", gll.c(), gli.a(0.0F, 24.0F, 0.0F));
+      glq $$3 = $$2.a("upper_body", gll.c(), gli.a(-1.0F, -19.0F, 0.0F));
+      $$3.a(
+         "head",
+         gll.c()
+            .a(0, 0)
+            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
+            .a(28, 31)
+            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
+            .a(12, 40)
+            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
+            .a(34, 12)
+            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
+         gli.a(-3.0F, -11.0F, 0.0F)
       );
-      $$4.a(
-         "right_fin",
-         glj.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         glg.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      $$3.a("body", gll.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gli.a(0.0F, -7.0F, 1.0F));
+      $$3.a(
+         "right_arm", gll.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gli.a(-7.0F, -9.5F, 1.5F)
       );
-      glo $$5 = $$4.a("tail", glj.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), glg.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", glj.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), glg.a(0.0F, 0.0F, 9.0F));
-      glo $$6 = $$4.a("head", glj.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), glg.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", glj.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), glg.a);
-      return glk.a($$0, 64, 64);
+      $$3.a(
+         "left_arm",
+         gll.c()
+            .a(30, 40)
+            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
+            .a(52, 12)
+            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
+            .a(52, 19)
+            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+         gli.a(6.0F, -9.0F, 0.5F)
+      );
+      $$2.a(
+         "left_leg", gll.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gli.a(1.5F, -16.0F, 0.5F)
+      );
+      $$2.a(
+         "right_leg",
+         gll.c()
+            .a(0, 34)
+            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
+            .a(45, 46)
+            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
+            .a(12, 34)
+            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
+         gli.a(-1.0F, -17.5F, 0.5F)
+      );
+      return $$0;
    }
 
-   public void a(hek $$0) {
+   public static glm a() {
+      glo $$0 = b();
+      return glm.a($$0, 64, 64);
+   }
+
+   public void a(hej $$0) {
       super.a($$0);
       this.b.e = $$0.ab * (float) (Math.PI / 180.0);
       this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * azo.b($$0.u * 0.3F));
-         this.c.e = -0.1F * azo.b($$0.u * 0.3F);
-         this.d.e = -0.2F * azo.b($$0.u * 0.3F);
+      if ($$0.e) {
+         this.a(fsa.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
       }
+
+      this.a($$0.b, fsa.b, $$0.u);
+      this.a($$0.a, fsa.c, $$0.u);
+      this.a($$0.c, fsa.d, $$0.u);
+   }
+
+   public List<glg> b(hej $$0) {
+      return !$$0.d ? a : this.c;
    }
 }

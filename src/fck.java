@@ -1,41 +1,83 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
 
-public class fck extends fbu {
+public class fck extends fbw {
    public static final MapCodec<fck> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  fbt.e.a(dcm.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  ayw.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+                  Codec.unboundedMap(dgn.c, fep.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, fck::new)
    );
-   public static final dcn b = new dcn(0, List.of());
-   private final Optional<fbt.e<dcm>> c;
-   private final Optional<Integer> d;
+   private final Map<jg<dgn>, feo> b;
+   private final boolean c;
 
-   protected fck(List<fdq> $$0, Optional<fbt.e<dcm>> $$1, Optional<Integer> $$2) {
+   fck(List<fds> $$0, Map<jg<dgn>, feo> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   protected czy a(czy $$0, fah $$1) {
-      $$0.a(kk.aj, b, this::a);
+   public fby<fck> b() {
+      return fbz.i;
+   }
+
+   @Override
+   public Set<bbb<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public daa a(daa $$0, faj $$1) {
+      if ($$0.a(dae.rF)) {
+         $$0 = $$0.a((djy)dae.vG);
+      }
+
+      dgp.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jg<dgn>)$$2, azq.a($$1x.a((jg<dgn>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jg<dgn>)$$2, azq.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   private dcn a(dcn $$0) {
-      return new dcn(this.d.orElseGet($$0::a), this.c.<List<dcm>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
-   }
+   public static class a extends fbw.a<fck.a> {
+      private final Builder<jg<dgn>, feo> a = ImmutableMap.builder();
+      private final boolean b;
 
-   @Override
-   public fbw<fck> b() {
-      return fbx.K;
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected fck.a a() {
+         return this;
+      }
+
+      public fck.a a(jg<dgn> $$0, feo $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fbx b() {
+         return new fck(this.g(), this.a.build(), this.b);
+      }
    }
 }

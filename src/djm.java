@@ -1,46 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public enum djm implements diy {
-   a;
+public class djm {
+   public static final djm a = new djm(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<djm> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, djm::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   @Override
-   public float a(jb $$0, boolean $$1) {
-      return 1.0F;
+   public djm(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public exd B_() {
-      return exd.c;
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public int a(iv $$0, djh $$1) {
-      return -1;
-   }
-
-   @Nullable
-   @Override
-   public dyc c_(iv $$0) {
-      return null;
-   }
-
-   @Override
-   public ebe a_(iv $$0) {
-      return dne.a.m();
-   }
-
-   @Override
-   public exo b_(iv $$0) {
-      return exp.a.g();
-   }
-
-   @Override
-   public int L_() {
-      return 0;
-   }
-
-   @Override
-   public int K_() {
-      return 0;
+   public List<String> b() {
+      return this.d;
    }
 }

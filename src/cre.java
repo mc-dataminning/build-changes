@@ -1,217 +1,119 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public abstract class cre extends bwj implements crh, cri, dis {
-   private static final akl<Integer> bK = akp.a(cre.class, akn.b);
-   public static final int bI = 300;
-   private static final int bL = 8;
-   @Nullable
-   private crx bM;
-   @Nullable
-   protected diu bJ;
-   private final buy bN = new buy(8);
+public class cre {
+   public static final Codec<cre> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayy.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               ayy.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               ayy.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cre::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   public cre(bxc<? extends cre> $$0, djx $$1) {
-      super($$0, $$1);
-      this.a(eyf.n, 16.0F);
-      this.a(eyf.o, -1.0F);
+   public cre(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   @Override
-   public bym a(dko $$0, bup $$1, bxb $$2, @Nullable bym $$3) {
-      if ($$3 == null) {
-         $$3 = new bwj.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
+   public cre() {
+      this(0, 0, 0);
    }
 
-   public int q() {
-      return this.al.a(bK);
-   }
-
-   public void r(int $$0) {
-      this.al.a(bK, $$0);
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   protected void a(akp.a $$0) {
-      super.a($$0);
-      $$0.a(bK, 0);
-   }
-
-   @Override
-   public void a(@Nullable crx $$0) {
-      this.bM = $$0;
-   }
-
-   @Nullable
-   @Override
-   public crx x() {
-      return this.bM;
-   }
-
-   public boolean gu() {
-      return this.bM != null;
-   }
-
-   @Override
-   public diu gv() {
-      if (this.dV().C) {
-         throw new IllegalStateException("Cannot load Villager offers on the client");
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
       } else {
-         if (this.bJ == null) {
-            this.bJ = new diu();
-            this.gA();
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
+   }
+
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
+   }
+
+   public static OptionalInt a(aru $$0, iw $$1, arv $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<arv> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
          }
 
-         return this.bJ;
-      }
-   }
-
-   @Override
-   public void a(@Nullable diu $$0) {
-   }
-
-   @Override
-   public void s(int $$0) {
-   }
-
-   @Override
-   public void a(dit $$0) {
-      $$0.l();
-      this.bz = -this.S();
-      this.b($$0);
-      if (this.bM instanceof art) {
-         aq.t.a((art)this.bM, this, $$0.f());
-      }
-   }
-
-   protected abstract void b(dit var1);
-
-   @Override
-   public boolean gw() {
-      return true;
-   }
-
-   @Override
-   public void i(czy $$0) {
-      if (!this.dV().C && this.bz > -this.S() + 20) {
-         this.bz = -this.S();
-         this.b(this.w(!$$0.f()));
-      }
-   }
-
-   @Override
-   public awo gx() {
-      return awp.Cc;
-   }
-
-   protected awo w(boolean $$0) {
-      return $$0 ? awp.Cc : awp.Ca;
-   }
-
-   public void gy() {
-      this.b(awp.BX);
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      if (!this.dV().C) {
-         diu $$1 = this.gv();
-         if (!$$1.isEmpty()) {
-            $$0.a("Offers", diu.a, this.dX().a(un.a), $$1);
-         }
-      }
-
-      this.b($$0, this.dX());
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      this.bJ = $$0.<diu>a("Offers", diu.a, this.dX().a(un.a)).orElse(null);
-      this.a($$0, this.dX());
-   }
-
-   @Nullable
-   @Override
-   public bwt b(eyo $$0) {
-      this.gz();
-      return super.b($$0);
-   }
-
-   protected void gz() {
-      this.a(null);
-   }
-
-   @Override
-   public void a(bvi $$0) {
-      super.a($$0);
-      this.gz();
-   }
-
-   protected void a(lw $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.ae.k() * 0.02;
-         double $$3 = this.ae.k() * 0.02;
-         double $$4 = this.ae.k() * 0.02;
-         this.dV().a($$0, this.d(1.0), this.dD() + 1.0, this.g(1.0), $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean w() {
-      return false;
-   }
-
-   @Override
-   public buy n() {
-      return this.bN;
-   }
-
-   @Override
-   public byl a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.bN.b() ? byl.a(this.bN, $$1) : super.a_($$0);
-   }
-
-   protected abstract void gA();
-
-   protected void a(diu $$0, crn.g[] $$1, int $$2) {
-      ArrayList<crn.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         dit $$5 = $$3.remove(this.ae.a($$3.size())).a(this, this.ae);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
+         if ($$3.stream().anyMatch($$0x -> $$0x.Z().map(cre::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<cre> $$4 = $$3.stream().flatMap($$0x -> $$0x.Z().stream()).max(Comparator.comparingInt(cre::c));
+            if ($$4.isPresent()) {
+               cre $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.Z().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
          }
       }
    }
 
-   @Override
-   public ffq v(float $$0) {
-      float $$1 = azo.h($$0, this.aW, this.aV) * (float) (Math.PI / 180.0);
-      ffq $$2 = new ffq(0.0, this.cR().c() - 1.0, 0.2);
-      return this.p($$0).e($$2.b(-$$1));
+   private boolean d() {
+      return this.i > 0;
    }
 
-   @Override
-   public boolean gB() {
-      return this.dV().C;
+   private static boolean a(aru $$0, iw $$1) {
+      ffn $$2 = ffn.a(ffs.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(crc.class, $$2).isEmpty();
    }
 
-   @Override
-   public boolean e(crx $$0) {
-      return this.x() == $$0 && this.bJ() && $$0.b(this, 4.0);
+   private static List<arv> b(aru $$0, iw $$1) {
+      ffs $$2 = ffs.b($$1);
+      return $$0.a($$1x -> !$$1x.Z_() && $$1x.dt().a((jq)$$2, 16.0) && $$1x.bJ());
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
+      }
+   }
+
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = azq.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(cre $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

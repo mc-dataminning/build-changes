@@ -1,18 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public record hie(int b) implements hid {
-   public static final MapCodec<hie> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayw.l.optionalFieldOf("index", 0).forGetter(hie::b)).apply($$0, hie::new));
+public class hie {
+   private static final ayy.b<alk, MapCodec<? extends hif>> b = new ayy.b<>();
+   public static final MapCodec<hif> a = b.a(alk.a).dispatchMap("property", hif::a, $$0 -> $$0);
 
-   @Override
-   public boolean get(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
-      dch $$5 = $$0.a(kk.p);
-      return $$5 != null ? $$5.b(this.b) == Boolean.TRUE : false;
-   }
-
-   @Override
-   public MapCodec<hie> a() {
-      return a;
+   public static void a() {
+      b.a(alk.b("custom_model_data"), hig.a);
+      b.a(alk.b("using_item"), hio.a);
+      b.a(alk.b("broken"), hib.a);
+      b.a(alk.b("damaged"), hih.a);
+      b.a(alk.b("fishing_rod/cast"), hij.a);
+      b.a(alk.b("has_component"), hik.a);
+      b.a(alk.b("bundle/has_selected_item"), hic.a);
+      b.a(alk.b("selected"), hin.a);
+      b.a(alk.b("carried"), hil.a);
+      b.a(alk.b("extended_view"), hii.a);
+      b.a(alk.b("keybind_down"), him.a);
+      b.a(alk.b("view_entity"), hip.a);
+      b.a(alk.b("component"), hid.a);
    }
 }

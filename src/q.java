@@ -12,15 +12,15 @@ public class q {
       this.a = $$0;
    }
 
-   public static String a(djz $$0, double $$1, double $$2, double $$3) {
-      return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, iv.a($$1, $$2, $$3)));
+   public static String a(dkb $$0, double $$1, double $$2, double $$3) {
+      return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, iw.a($$1, $$2, $$3)));
    }
 
-   public static String a(djz $$0, iv $$1) {
+   public static String a(dkb $$0, iw $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(djz $$0, int $$1, int $$2, int $$3) {
+   public static String a(dkb $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -32,18 +32,18 @@ public class q {
       $$4.append(", ");
 
       try {
-         int $$6 = jy.a($$1);
-         int $$7 = jy.a($$2);
-         int $$8 = jy.a($$3);
+         int $$6 = jz.a($$1);
+         int $$7 = jz.a($$2);
+         int $$8 = jz.a($$3);
          int $$9 = $$1 & 15;
          int $$10 = $$2 & 15;
          int $$11 = $$3 & 15;
-         int $$12 = jy.c($$6);
+         int $$12 = jz.c($$6);
          int $$13 = $$0.K_();
-         int $$14 = jy.c($$8);
-         int $$15 = jy.c($$6 + 1) - 1;
+         int $$14 = jz.c($$8);
+         int $$15 = jz.c($$6 + 1) - 1;
          int $$16 = $$0.ao();
-         int $$17 = jy.c($$8 + 1) - 1;
+         int $$17 = jz.c($$8 + 1) - 1;
          $$4.append(
             String.format(
                Locale.ROOT,
@@ -190,7 +190,7 @@ public class q {
       return this.c;
    }
 
-   public static void a(q $$0, djz $$1, iv $$2, @Nullable ebe $$3) {
+   public static void a(q $$0, dkb $$1, iw $$2, @Nullable ebg $$3) {
       if ($$3 != null) {
          $$0.a("Block", $$3::toString);
       }

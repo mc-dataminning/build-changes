@@ -1,8 +1,8 @@
-@FunctionalInterface
-public interface ala<T, V> {
-   V get(alh<T> var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static <T, V> ala<T, V> fixed(V $$0) {
-      return $$1 -> $$0;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface ala {
 }

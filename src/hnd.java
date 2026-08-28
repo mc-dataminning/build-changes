@@ -1,86 +1,91 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
+import java.util.EnumMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
-public class hnd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alb b = alb.a("blockstates");
+public enum hnd implements hnr {
+   a(i.a, i.a),
+   b(i.a, i.b),
+   c(i.a, i.c),
+   d(i.a, i.d),
+   e(i.b, i.a),
+   f(i.b, i.b),
+   g(i.b, i.c),
+   h(i.b, i.d),
+   i(i.c, i.a),
+   j(i.c, i.b),
+   k(i.c, i.c),
+   l(i.c, i.d),
+   m(i.d, i.a),
+   n(i.d, i.b),
+   o(i.d, i.c),
+   p(i.d, i.d);
 
-   public static CompletableFuture<hnd.b> a(avf $$0, Executor $$1) {
-      Function<ali, ebf<dnc, ebe>> $$2 = hnc.a();
-      return CompletableFuture.<Map<ali, List<avd>>>supplyAsync(() -> b.b($$0), $$1).thenCompose($$2x -> {
-         List<CompletableFuture<hnd.b>> $$3 = new ArrayList<>($$2x.size());
+   private static final hnd[][] r = ag.a(new hnd[i.values().length][i.values().length], $$0 -> {
+      for (hnd $$1 : values()) {
+         $$0[$$1.s.ordinal()][$$1.t.ordinal()] = $$1;
+      }
+   });
+   private final i s;
+   private final i t;
+   final k u;
+   private final h v;
+   final Map<jc, Matrix4fc> w = new EnumMap<>(jc.class);
+   final Map<jc, Matrix4fc> x = new EnumMap<>(jc.class);
+   private final hnd.a y = new hnd.a(this);
 
-         for (Entry<ali, List<avd>> $$4 : $$2x.entrySet()) {
-            $$3.add(CompletableFuture.supplyAsync(() -> {
-               ali $$2xx = b.b($$4.getKey());
-               ebf<dnc, ebe> $$3x = $$2.apply($$2xx);
-               if ($$3x == null) {
-                  a.debug("Discovered unknown block state definition {}, ignoring", $$2xx);
-                  return null;
-               } else {
-                  List<avd> $$4x = $$4.getValue();
-                  List<hnd.a> $$5 = new ArrayList<>($$4x.size());
-
-                  for (avd $$6 : $$4x) {
-                     try (Reader $$7 = $$6.e()) {
-                        JsonElement $$8 = JsonParser.parseReader($$7);
-                        gtl $$9 = (gtl)gtl.a.parse(JsonOps.INSTANCE, $$8).getOrThrow(JsonParseException::new);
-                        $$5.add(new hnd.a($$6.b(), $$9));
-                     } catch (Exception var14) {
-                        a.error("Failed to load blockstate definition {} from pack {}", new Object[]{$$2xx, $$6.b(), var14});
-                     }
-                  }
-
-                  try {
-                     return a($$2xx, $$3x, $$5);
-                  } catch (Exception var11) {
-                     a.error("Failed to load blockstate definition {}", $$2xx, var11);
-                     return null;
-                  }
-               }
-            }, $$1));
-         }
-
-         return ag.d($$3).thenApply($$0xx -> {
-            Map<ebe, gtn.c> $$1xx = new IdentityHashMap<>();
-
-            for (hnd.b $$2xx : $$0xx) {
-               if ($$2xx != null) {
-                  $$1xx.putAll($$2xx.a());
-               }
-            }
-
-            return new hnd.b($$1xx);
-         });
-      });
-   }
-
-   private static hnd.b a(ali $$0, ebf<dnc, ebe> $$1, List<hnd.a> $$2) {
-      Map<ebe, gtn.c> $$3 = new IdentityHashMap<>();
-
-      for (hnd.a $$4 : $$2) {
-         $$3.putAll($$4.b.a($$1, () -> $$0 + "/" + $$4.a));
+   private hnd(final i $$0, final i $$1) {
+      this.s = $$0;
+      this.t = $$1;
+      this.v = h.a($$0, $$1);
+      if (this.v != h.a) {
+         this.u = new k(new Matrix4f(this.v.b()));
+      } else {
+         this.u = k.a();
       }
 
-      return new hnd.b($$3);
+      for (jc $$2 : jc.values()) {
+         Matrix4fc $$3 = iv.a(this.u, $$2).c();
+         this.w.put($$2, $$3);
+         this.x.put($$2, $$3.invertAffine(new Matrix4f()));
+      }
    }
 
-   static record a(String a, gtl b) {
+   @Override
+   public k a() {
+      return this.u;
    }
 
-   public static record b(Map<ebe, gtn.c> a) {
+   public static hnd a(i $$0, i $$1) {
+      return r[$$0.ordinal()][$$1.ordinal()];
+   }
+
+   public h b() {
+      return this.v;
+   }
+
+   public hnr c() {
+      return this.y;
+   }
+
+   static record a(hnd a) implements hnr {
+      @Override
+      public k a() {
+         return this.a.u;
+      }
+
+      @Override
+      public Matrix4fc a(jc $$0) {
+         return this.a.w.getOrDefault($$0, q);
+      }
+
+      @Override
+      public Matrix4fc b(jc $$0) {
+         return this.a.x.getOrDefault($$0, q);
+      }
+
+      public hnd b() {
+         return this.a;
+      }
    }
 }

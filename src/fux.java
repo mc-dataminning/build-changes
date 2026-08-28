@@ -1,22 +1,59 @@
-public class fux extends ful {
-   protected final fvy a;
+public class fux extends fuk {
+   private final ftx a;
+   private final fvh c;
 
-   public fux(int $$0, int $$1, int $$2, int $$3, fvy $$4, ful.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, wz.a);
+   public fux(int $$0, int $$1, int $$2, int $$3, xc $$4, ftx $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.c = new fvh($$4, $$5).d(this.A() - this.b());
    }
 
-   public fux(int $$0, int $$1, int $$2, int $$3, fvy $$4, ful.c $$5, xa $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
-   }
-
-   public fux(int $$0, int $$1, fvy $$2, ful.c $$3, xa $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public fux a(int $$0) {
+      this.c.c($$0);
+      return this;
    }
 
    @Override
-   public void b(ftx $$0, int $$1, int $$2, float $$3) {
-      ali $$4 = this.a.a(this.E(), this.D());
-      $$0.a(gsl::H, $$4, this.F(), this.G(), this.g, this.h);
+   public void h(int $$0) {
+      super.h($$0);
+      this.c.d(this.A() - this.b());
+   }
+
+   @Override
+   protected int c() {
+      return this.c.y();
+   }
+
+   @Override
+   protected double o() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(ftz $$0) {
+      super.c($$0);
+   }
+
+   public boolean q() {
+      return super.j();
+   }
+
+   @Override
+   protected void c(ftz $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fyk $$0) {
+      $$0.a(fyj.a, this.B());
+   }
+
+   @Override
+   public void b(xc $$0) {
+      super.b($$0);
+      this.c.b($$0);
    }
 }

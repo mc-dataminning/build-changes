@@ -1,29 +1,32 @@
-import java.util.HashSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record aba(Set<jy> c, Set<jy> d) implements aak {
-   public static final yy<vw, aba> a = aak.a(aba::a, aba::new);
-   public static final aak.b<aba> b = aak.a("debug/village_sections");
-
-   private aba(vw $$0) {
-      this($$0.a(HashSet::new, vw::g), $$0.a(HashSet::new, vw::g));
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.c, vw::a);
-      $$0.a(this.d, vw::a);
-   }
+public record aba(long c, List<aba.a> d) implements aam {
+   public static final aam.b<aba> a = aam.a("debug/redstone_update_order");
+   public static final za<vy, aba> b = za.a(yy.k, aba::b, aba.a.a.a(yy.a()), aba::c, aba::new);
 
    @Override
-   public aak.b<aba> a() {
-      return b;
+   public aam.b<aba> a() {
+      return a;
    }
 
-   public Set<jy> b() {
+   public long b() {
       return this.c;
    }
 
-   public Set<jy> c() {
+   public List<aba.a> c() {
       return this.d;
+   }
+
+   public static record a(iw b, eyy c) {
+      public static final za<ByteBuf, aba.a> a = za.a(iw.b, aba.a::a, eyy.a, aba.a::b, aba.a::new);
+
+      public iw a() {
+         return this.b;
+      }
+
+      public eyy b() {
+         return this.c;
+      }
    }
 }

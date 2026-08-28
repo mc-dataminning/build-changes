@@ -1,41 +1,41 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class gmk {
-   private final gqz a;
-   private final gmb b;
-   private final grv c;
-   private gmk.a d = gmk.a.a;
+   private final aur a = auu.c();
+   private final Map<aun, String> b;
 
-   public gmk(gqz $$0, gmb $$1, grv $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gmk() {
+      this.a.a();
+      Builder<aun, String> $$0 = ImmutableMap.builder();
+      this.a.d().forEach($$1 -> {
+         ats $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            iv $$0 = this.a.dv();
-            boolean $$1 = this.b.e($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.Z_() || !this.a.bJ()) {
-               this.d = gmk.a.c;
-            }
-         case a:
-         case c:
+   public List<aun> a(List<aun> $$0) {
+      List<aun> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
+
+      for (aun $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
       }
+
+      this.a.b($$2);
+      return $$1;
    }
 
-   public boolean b() {
-      return this.d == gmk.a.c;
-   }
-
-   public void c() {
-      if (this.d == gmk.a.a) {
-         this.d = gmk.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public auw a() {
+      List<att> $$0 = this.a.h();
+      return new ava(atv.b, $$0);
    }
 }

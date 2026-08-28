@@ -1,28 +1,29 @@
-public record ahr(ffq b, float c, float d, boolean e) implements zh<agr> {
-   public static final yy<vw, ahr> a = yy.a(ffq.b, ahr::b, yw.l, ahr::e, yw.l, ahr::f, yw.b, ahr::g, ahr::new);
+public class ahr implements zj<agt> {
+   public static final za<vy, ahr> a = zj.a(ahr::a, ahr::new);
+   private final boolean b;
 
-   public static ahr a(bwt $$0) {
-      return $$0.bQ() ? new ahr($$0.R_().a(), $$0.R_().b(), $$0.R_().c(), $$0.aH()) : new ahr($$0.dt(), $$0.dL(), $$0.dN(), $$0.aH());
+   public ahr(boolean $$0) {
+      this.b = $$0;
+   }
+
+   private ahr(vy $$0) {
+      this.b = $$0.readBoolean();
+   }
+
+   private void a(vy $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zj<ahr> a() {
-      return agp.bM;
+   public zl<ahr> a() {
+      return agr.bH;
    }
 
-   public void a(agr $$0) {
+   public void a(agt $$0) {
       $$0.a(this);
    }
 
-   public float e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
+   public boolean b() {
+      return this.b;
    }
 }

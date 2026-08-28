@@ -1,65 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class fgw extends eza {
-   public static final String a = "scoreboard";
-   private final fgv b;
+public interface fgw {
+   String co = "*";
+   fgw cp = new fgw() {
+      @Override
+      public String cI() {
+         return "*";
+      }
+   };
 
-   public fgw(fgv $$0) {
-      this.b = $$0;
+   String cI();
+
+   @Nullable
+   default xc m_() {
+      return null;
    }
 
-   public void a(fgw.a $$0) {
-      $$0.a().forEach(this.b::a);
-      $$0.b().forEach(this.b::a);
-      $$0.c().forEach(($$0x, $$1) -> {
-         fgn $$2 = this.b.a($$1);
-         this.b.a($$0x, $$2);
-      });
-      $$0.d().forEach(this.b::a);
+   default xc hg() {
+      xc $$0 = this.m_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xi.e(xc.b(this.cI())))) : xc.b(this.cI());
    }
 
-   public fgw.a a() {
-      Map<fgm, String> $$0 = new EnumMap<>(fgm.class);
+   static fgw c(final String $$0) {
+      if ($$0.equals("*")) {
+         return cp;
+      } else {
+         final xc $$1 = xc.b($$0);
+         return new fgw() {
+            @Override
+            public String cI() {
+               return $$0;
+            }
 
-      for (fgm $$1 : fgm.values()) {
-         fgn $$2 = this.b.a($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2.c());
+            @Override
+            public xc hg() {
+               return $$1;
+            }
+         };
+      }
+   }
+
+   static fgw a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new fgw() {
+         @Override
+         public String cI() {
+            return $$1;
          }
-      }
-
-      return new fgw.a(this.b.b().stream().map(fgn::a).toList(), this.b.g(), $$0, this.b.f().stream().map(fgq::a).toList());
-   }
-
-   public static record a(List<fgn.a> b, List<fgv.a> c, Map<fgm, String> d, List<fgq.a> e) {
-      public static final Codec<fgw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  fgn.a.a.listOf().optionalFieldOf("Objectives", List.of()).forGetter(fgw.a::a),
-                  fgv.a.a.listOf().optionalFieldOf("PlayerScores", List.of()).forGetter(fgw.a::b),
-                  Codec.unboundedMap(fgm.t, Codec.STRING).optionalFieldOf("DisplaySlots", Map.of()).forGetter(fgw.a::c),
-                  fgq.a.a.listOf().optionalFieldOf("Teams", List.of()).forGetter(fgw.a::d)
-               )
-               .apply($$0, fgw.a::new)
-      );
-
-      public List<fgn.a> a() {
-         return this.b;
-      }
-
-      public List<fgv.a> b() {
-         return this.c;
-      }
-
-      public Map<fgm, String> c() {
-         return this.d;
-      }
-
-      public List<fgq.a> d() {
-         return this.e;
-      }
+      };
    }
 }

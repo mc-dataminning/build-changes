@@ -1,481 +1,294 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import com.mojang.authlib.minecraft.BanDetails;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Objects;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class gah extends gad {
-   private static final xa b = xa.c("gui.stats");
-   static final ali c = ali.b("container/slot");
-   static final ali d = ali.b("statistics/header");
-   static final ali s = ali.b("statistics/sort_up");
-   static final ali u = ali.b("statistics/sort_down");
-   private static final xa v = xa.c("multiplayer.downloadingStats");
-   static final xa w = xa.c("stats.none");
-   private static final xa x = xa.c("stat.generalButton");
-   private static final xa y = xa.c("stat.itemsButton");
-   private static final xa z = xa.c("stat.mobsButton");
-   protected final gad a;
-   private static final int A = 280;
-   private static final int B = 5;
-   private static final int C = 58;
-   private fxz D = new fxz(this, 33, 58);
+public class gah extends gaf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xc b = xc.c("narrator.screen.title");
+   private static final xc c = xc.c("title.credits");
+   private static final String d = "Demo_World";
+   private static final float s = 2000.0F;
    @Nullable
-   private gah.a E;
+   private fvr u;
+   private fun v;
    @Nullable
-   gah.b F;
-   @Nullable
-   private gah.c G;
-   final axa H;
-   @Nullable
-   private fvh<?> I;
-   private boolean J = true;
+   private foy w;
+   private float x = 1.0F;
+   private boolean y;
+   private long z;
+   private final fve A;
 
-   public gah(gad $$0, axa $$1) {
+   public gah() {
+      this(false);
+   }
+
+   public gah(boolean $$0) {
+      this($$0, null);
+   }
+
+   public gah(boolean $$0, @Nullable fve $$1) {
       super(b);
-      this.a = $$0;
-      this.H = $$1;
+      this.y = $$0;
+      this.A = Objects.requireNonNullElseGet($$1, () -> new fve(false));
+   }
+
+   private boolean m() {
+      return this.w != null;
    }
 
    @Override
-   protected void aS_() {
-      this.D.c(new fva(this.p, v));
-      this.m.L().b(new ahc(ahc.a.b));
-   }
-
-   public void m() {
-      this.E = new gah.a(this.m);
-      this.F = new gah.b(this.m);
-      this.G = new gah.c(this.m);
-   }
-
-   public void E() {
-      fxz $$0 = new fxz(this, 33, 58);
-      $$0.a(b, this.p);
-      fyd $$1 = $$0.b(fyd.d()).a(5);
-      $$1.c().b();
-      fyd $$2 = $$1.a(fyd.e()).a(5);
-      $$2.a(ful.a(x, $$0x -> this.a(this.E)).a(120).a());
-      ful $$3 = $$2.a(ful.a(y, $$0x -> this.a(this.F)).a(120).a());
-      ful $$4 = $$2.a(ful.a(z, $$0x -> this.a(this.G)).a(120).a());
-      $$1.a(ful.a(wz.d, $$0x -> this.aP_()).a(200).a());
-      if (this.F != null && this.F.aI_().isEmpty()) {
-         $$3.j = false;
-      }
-
-      if (this.G != null && this.G.aI_().isEmpty()) {
-         $$4.j = false;
-      }
-
-      this.D = $$0;
-      this.D.a($$1x -> {
-         fuj var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.D.a();
-      if (this.I != null) {
-         this.I.a(this.n, this.D);
+   public void e() {
+      if (this.m()) {
+         this.w.e();
       }
    }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.a);
-   }
-
-   public void F() {
-      if (this.J) {
-         this.m();
-         this.a(this.E);
-         this.E();
-         this.aG_();
-         this.J = false;
-      }
+   public static void a(hle $$0) {
+      $$0.a(fve.a);
+      $$0.a(fve.c);
+      $$0.a(gsf.a);
+      e.a($$0);
    }
 
    @Override
    public boolean k() {
-      return !this.J;
+      return false;
    }
 
-   public void a(@Nullable fvh<?> $$0) {
-      if (this.I != null) {
-         this.e(this.I);
-      }
-
-      if ($$0 != null) {
-         this.c($$0);
-         this.I = $$0;
-         this.c();
-      }
+   @Override
+   public boolean aH_() {
+      return false;
    }
 
-   static String a(aww<ali> $$0) {
-      return "stat." + $$0.b().toString().replace(':', '.');
-   }
-
-   class a extends fvh<gah.a.a> {
-      public a(final frd $$0) {
-         super($$0, gah.this.n, gah.this.o - 33 - 58, 33, 14);
-         ObjectArrayList<aww<ali>> $$1 = new ObjectArrayList(awz.i.iterator());
-         $$1.sort(Comparator.comparing($$0x -> hmi.a(gah.a($$0x))));
-         ObjectListIterator var4 = $$1.iterator();
-
-         while (var4.hasNext()) {
-            aww<ali> $$2 = (aww<ali>)var4.next();
-            this.b(new gah.a.a($$2));
-         }
+   @Override
+   protected void aS_() {
+      if (this.u == null) {
+         this.u = this.m.aL().a();
       }
 
-      @Override
-      public int a() {
-         return 280;
+      int $$0 = this.p.a(c);
+      int $$1 = this.n - $$0 - 2;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      if (this.m.K()) {
+         $$3 = this.c($$3, 24);
+      } else {
+         $$3 = this.b($$3, 24);
       }
 
-      class a extends fvh.a<gah.a.a> {
-         private final aww<ali> b;
-         private final xa c;
+      $$3 = this.a($$3, 24);
+      fvs $$4 = this.c(fur.a(20, $$0x -> this.m.a(new gdh(this, this.m.n, this.m.ah())), true));
+      int var10001 = this.n / 2 - 124;
+      $$3 += 36;
+      $$4.c(var10001, $$3);
+      this.c(fun.a(xc.c("menu.options"), $$0x -> this.m.a(new gdk(this, this.m.n))).a(this.n / 2 - 100, $$3, 98, 20).a());
+      this.c(fun.a(xc.c("menu.quit"), $$0x -> this.m.q()).a(this.n / 2 + 2, $$3, 98, 20).a());
+      fvs $$5 = this.c(fur.b(20, $$0x -> this.m.a(new gde(this, this.m.n)), true));
+      $$5.c(this.n / 2 + 104, $$3);
+      this.c(new fvl($$1, this.o - 10, $$0, 10, c, $$0x -> this.m.a(new fzh(this)), this.p));
+      if (this.w == null) {
+         this.w = new foy();
+      }
 
-         a(final aww<ali> $$0) {
-            this.b = $$0;
-            this.c = xa.c(gah.a($$0));
-         }
-
-         private String b() {
-            return this.b.a(gah.this.H.a(this.b));
-         }
-
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$2 + $$5 / 2 - 9 / 2;
-            int $$11 = $$1 % 2 == 0 ? -1 : -4539718;
-            $$0.b(gah.this.p, this.c, $$3 + 2, $$10, $$11);
-            String $$12 = this.b();
-            $$0.b(gah.this.p, $$12, $$3 + $$4 - gah.this.p.b($$12) - 4, $$10, $$11);
-         }
-
-         @Override
-         public xa a() {
-            return xa.a("narrator.select", xa.i().b(this.c).b(wz.v).f(this.b()));
-         }
+      if (this.m()) {
+         this.w.b(this.m, this.n, this.o);
       }
    }
 
-   class b extends fvh<gah.b.a> {
-      private static final int s = 18;
-      private static final int u = 22;
-      private static final int v = 1;
-      private static final int w = 0;
-      private static final int x = -1;
-      private static final int y = 1;
-      private final ali[] z = new ali[]{
-         ali.b("statistics/block_mined"),
-         ali.b("statistics/item_broken"),
-         ali.b("statistics/item_crafted"),
-         ali.b("statistics/item_used"),
-         ali.b("statistics/item_picked_up"),
-         ali.b("statistics/item_dropped")
-      };
-      protected final List<awy<dnc>> a;
-      protected final List<awy<czu>> m;
-      protected final Comparator<gah.b.a> n = new gah.b.b();
-      @Nullable
-      protected awy<?> o;
-      protected int p = -1;
-      protected int q;
-
-      public b(final frd $$0) {
-         super($$0, gah.this.n, gah.this.o - 33 - 58, 33, 22, 22);
-         this.a = Lists.newArrayList();
-         this.a.add(awz.a);
-         this.m = Lists.newArrayList(new awy[]{awz.d, awz.b, awz.c, awz.e, awz.f});
-         Set<czu> $$1 = Sets.newIdentityHashSet();
-
-         for (czu $$2 : mg.g) {
-            boolean $$3 = false;
-
-            for (awy<czu> $$4 : this.m) {
-               if ($$4.a($$2) && gah.this.H.a($$4.b($$2)) > 0) {
-                  $$3 = true;
-               }
-            }
-
-            if ($$3) {
-               $$1.add($$2);
-            }
-         }
-
-         for (dnc $$5 : mg.e) {
-            boolean $$6 = false;
-
-            for (awy<dnc> $$7 : this.a) {
-               if ($$7.a($$5) && gah.this.H.a($$7.b($$5)) > 0) {
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               $$1.add($$5.h());
-            }
-         }
-
-         $$1.remove(dac.a);
-
-         for (czu $$8 : $$1) {
-            this.b(new gah.b.a($$8));
-         }
+   private int a(int $$0, int $$1) {
+      if (ac.aU) {
+         this.c(fun.a(xc.b("Create Test World"), $$0x -> gfg.b(this.m, this)).a(this.n / 2 - 100, $$0 += $$1, 200, 20).a());
       }
 
-      int m(int $$0) {
-         return 75 + 40 * $$0;
-      }
+      return $$0;
+   }
 
-      @Override
-      protected void a(ftx $$0, int $$1, int $$2) {
-         if (!this.c.o.b()) {
-            this.p = -1;
-         }
+   private int b(int $$0, int $$1) {
+      this.c(fun.a(xc.c("menu.singleplayer"), $$0x -> this.m.a(new gfo(this))).a(this.n / 2 - 100, $$0, 200, 20).a());
+      xc $$2 = this.E();
+      boolean $$3 = $$2 == null;
+      fvy $$4 = $$2 != null ? fvy.a($$2) : null;
+      int var6;
+      this.c(fun.a(xc.c("menu.multiplayer"), $$0x -> {
+         gaf $$1x = (gaf)(this.m.n.u ? new gcx(this) : new gcy(this));
+         this.m.a($$1x);
+      }).a(this.n / 2 - 100, var6 = $$0 + $$1, 200, 20).a($$4).a()).j = $$3;
+      this.c(fun.a(xc.c("menu.online"), $$0x -> this.m.a(new fma(this))).a(this.n / 2 - 100, $$0 = var6 + $$1, 200, 20).a($$4).a()).j = $$3;
+      return $$0;
+   }
 
-         for (int $$3 = 0; $$3 < this.z.length; $$3++) {
-            ali $$4 = this.p == $$3 ? gah.c : gah.d;
-            $$0.a(gsl::H, $$4, $$1 + this.m($$3) - 18, $$2 + 1, 18, 18);
-         }
-
-         if (this.o != null) {
-            int $$5 = this.m(this.b(this.o)) - 36;
-            ali $$6 = this.q == 1 ? gah.s : gah.u;
-            $$0.a(gsl::H, $$6, $$1 + $$5, $$2 + 1, 18, 18);
-         }
-
-         for (int $$7 = 0; $$7 < this.z.length; $$7++) {
-            int $$8 = this.p == $$7 ? 1 : 0;
-            $$0.a(gsl::H, this.z[$$7], $$1 + this.m($$7) - 18 + $$8, $$2 + 1 + $$8, 18, 18);
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         boolean $$3 = super.a($$0, $$1, $$2);
-         return !$$3
-               && this.a((int)($$0 - ((double)this.F() + (double)this.g / 2.0 - (double)this.a() / 2.0)), (int)($$1 - (double)this.G()) + (int)this.g() - 4)
-            ? true
-            : $$3;
-      }
-
-      protected boolean a(int $$0, int $$1) {
-         this.p = -1;
-
-         for (int $$2 = 0; $$2 < this.z.length; $$2++) {
-            int $$3 = $$0 - this.m($$2);
-            if ($$3 >= -36 && $$3 <= 0) {
-               this.p = $$2;
-               break;
-            }
-         }
-
-         if (this.p >= 0) {
-            this.a(this.n(this.p));
-            this.c.ak().a(hos.a(awp.Bv, 1.0F));
-            return true;
+   @Nullable
+   private xc E() {
+      if (this.m.F()) {
+         return null;
+      } else if (this.m.I()) {
+         return xc.c("title.multiplayer.disabled.banned.name");
+      } else {
+         BanDetails $$0 = this.m.H();
+         if ($$0 != null) {
+            return $$0.expires() != null ? xc.c("title.multiplayer.disabled.banned.temporary") : xc.c("title.multiplayer.disabled.banned.permanent");
          } else {
-            return false;
+            return xc.c("title.multiplayer.disabled");
          }
       }
+   }
 
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      private awy<?> n(int $$0) {
-         return $$0 < this.a.size() ? this.a.get($$0) : this.m.get($$0 - this.a.size());
-      }
-
-      private int b(awy<?> $$0) {
-         int $$1 = this.a.indexOf($$0);
-         if ($$1 >= 0) {
-            return $$1;
+   private int c(int $$0, int $$1) {
+      boolean $$2 = this.F();
+      this.c(fun.a(xc.c("menu.playdemo"), $$1x -> {
+         if ($$2) {
+            this.m.x().a("Demo_World", () -> this.m.a(this));
          } else {
-            int $$2 = this.m.indexOf($$0);
-            return $$2 >= 0 ? $$2 + this.a.size() : -1;
+            this.m.x().a("Demo_World", MinecraftServer.d, eid.b, ert::a, this);
          }
-      }
+      }).a(this.n / 2 - 100, $$0, 200, 20).a());
+      int var4;
+      this.v = this.c(
+         fun.a(
+               xc.c("menu.resetdemo"),
+               $$0x -> {
+                  ezx $$1x = this.m.m();
 
-      @Override
-      protected void b(ftx $$0, int $$1, int $$2) {
-         if ($$2 >= this.G() && $$2 <= this.I()) {
-            gah.b.a $$3 = this.x();
-            int $$4 = this.u();
-            if ($$3 != null) {
-               if ($$1 < $$4 || $$1 > $$4 + 18) {
-                  return;
-               }
-
-               czu $$5 = $$3.b();
-               $$0.a(gah.this.p, $$5.l(), $$1, $$2, $$5.f().a(kk.G));
-            } else {
-               xa $$6 = null;
-               int $$7 = $$1 - $$4;
-
-               for (int $$8 = 0; $$8 < this.z.length; $$8++) {
-                  int $$9 = this.m($$8);
-                  if ($$7 >= $$9 - 18 && $$7 <= $$9) {
-                     $$6 = this.n($$8).c();
-                     break;
+                  try (ezx.c $$2x = $$1x.e("Demo_World")) {
+                     if ($$2x.m()) {
+                        this.m
+                           .a(
+                              new fzd(
+                                 this::c,
+                                 xc.c("selectWorld.deleteQuestion"),
+                                 xc.a("selectWorld.deleteWarning", MinecraftServer.d.a()),
+                                 xc.c("selectWorld.deleteButton"),
+                                 xb.e
+                              )
+                           );
+                     }
+                  } catch (IOException var8) {
+                     fww.a(this.m, "Demo_World");
+                     a.warn("Failed to access demo world", var8);
                   }
                }
+            )
+            .a(this.n / 2 - 100, var4 = $$0 + $$1, 200, 20)
+            .a()
+      );
+      this.v.j = $$2;
+      return var4;
+   }
 
-               if ($$6 != null) {
-                  $$0.a(gah.this.p, $$6, $$1, $$2);
-               }
-            }
+   private boolean F() {
+      try {
+         boolean var2;
+         try (ezx.c $$0 = this.m.m().e("Demo_World")) {
+            var2 = $$0.m();
          }
+
+         return var2;
+      } catch (IOException var6) {
+         fww.a(this.m, "Demo_World");
+         a.warn("Failed to read demo world data", var6);
+         return false;
+      }
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      if (this.z == 0L && this.y) {
+         this.z = ag.c();
       }
 
-      protected void a(awy<?> $$0) {
-         if ($$0 != this.o) {
-            this.o = $$0;
-            this.q = -1;
-         } else if (this.q == -1) {
-            this.q = 1;
+      float $$4 = 1.0F;
+      if (this.y) {
+         float $$5 = (float)(ag.c() - this.z) / 2000.0F;
+         if ($$5 > 1.0F) {
+            this.y = false;
+            this.x = 1.0F;
          } else {
-            this.o = null;
-            this.q = 0;
+            $$5 = azq.a($$5, 0.0F, 1.0F);
+            $$4 = azq.b($$5, 0.5F, 1.0F, 0.0F, 1.0F);
+            this.x = azq.b($$5, 0.0F, 0.5F, 0.0F, 1.0F);
          }
 
-         this.aI_().sort(this.n);
+         this.a($$4);
       }
 
-      class a extends fvh.a<gah.b.a> {
-         private final czu b;
-
-         a(final czu $$0) {
-            this.b = $$0;
+      this.a($$0, $$3);
+      int $$6 = azq.f($$4 * 255.0F) << 24;
+      if (($$6 & -67108864) != 0) {
+         super.a($$0, $$1, $$2, $$3);
+         this.A.a($$0, this.n, $$4);
+         if (this.u != null && !this.m.n.c().c()) {
+            this.u.a($$0, this.n, this.p, $$6);
          }
 
-         public czu b() {
-            return this.b;
+         String $$7 = "Minecraft " + ac.b().c();
+         if (this.m.K()) {
+            $$7 = $$7 + " Demo";
+         } else {
+            $$7 = $$7 + ("release".equalsIgnoreCase(this.m.j()) ? "" : "/" + this.m.j());
          }
 
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(gsl::H, gah.c, $$3, $$2, 18, 18);
-            $$0.b(this.b.m(), $$3 + 1, $$2 + 1);
-            if (gah.this.F != null) {
-               for (int $$10 = 0; $$10 < gah.this.F.a.size(); $$10++) {
-                  aww<dnc> $$12;
-                  if (this.b instanceof cyg $$11) {
-                     $$12 = gah.this.F.a.get($$10).b($$11.c());
-                  } else {
-                     $$12 = null;
-                  }
-
-                  this.a($$0, $$12, $$3 + b.this.m($$10), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-
-               for (int $$14 = 0; $$14 < gah.this.F.m.size(); $$14++) {
-                  this.a($$0, gah.this.F.m.get($$14).b(this.b), $$3 + b.this.m($$14 + gah.this.F.a.size()), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-            }
+         if (frf.e().a()) {
+            $$7 = $$7 + hmk.a("menu.modded");
          }
 
-         protected void a(ftx $$0, @Nullable aww<?> $$1, int $$2, int $$3, boolean $$4) {
-            xa $$5 = (xa)($$1 == null ? gah.w : xa.b($$1.a(gah.this.H.a($$1))));
-            $$0.b(gah.this.p, $$5, $$2 - gah.this.p.a($$5), $$3, $$4 ? -1 : -4539718);
-         }
-
-         @Override
-         public xa a() {
-            return xa.a("narrator.select", this.b.l());
-         }
-      }
-
-      class b implements Comparator<gah.b.a> {
-         public int a(gah.b.a $$0, gah.b.a $$1) {
-            czu $$2 = $$0.b();
-            czu $$3 = $$1.b();
-            int $$4;
-            int $$5;
-            if (b.this.o == null) {
-               $$4 = 0;
-               $$5 = 0;
-            } else if (b.this.a.contains(b.this.o)) {
-               awy<dnc> $$6 = (awy<dnc>)b.this.o;
-               $$4 = $$2 instanceof cyg ? gah.this.H.a($$6, ((cyg)$$2).c()) : -1;
-               $$5 = $$3 instanceof cyg ? gah.this.H.a($$6, ((cyg)$$3).c()) : -1;
-            } else {
-               awy<czu> $$9 = (awy<czu>)b.this.o;
-               $$4 = gah.this.H.a($$9, $$2);
-               $$5 = gah.this.H.a($$9, $$3);
-            }
-
-            return $$4 == $$5 ? b.this.q * Integer.compare(czu.a($$2), czu.a($$3)) : b.this.q * Integer.compare($$4, $$5);
+         $$0.b(this.p, $$7, 2, this.o - 10, 16777215 | $$6);
+         if (this.m() && $$4 >= 1.0F) {
+            this.w.a($$0, $$1, $$2, $$3);
          }
       }
    }
 
-   class c extends fvh<gah.c.a> {
-      public c(final frd $$0) {
-         super($$0, gah.this.n, gah.this.o - 33 - 58, 33, 9 * 4);
+   private void a(float $$0) {
+      for (fwk $$1 : this.aI_()) {
+         if ($$1 instanceof ful $$2) {
+            $$2.a($$0);
+         }
+      }
+   }
 
-         for (bxc<?> $$1 : mg.f) {
-            if (gah.this.H.a(awz.g.b($$1)) > 0 || gah.this.H.a(awz.h.b($$1)) > 0) {
-               this.b(new gah.c.a($$1));
-            }
+   @Override
+   public void b(ftz $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(ftz $$0, float $$1) {
+      f.a($$0, this.n, this.o, this.x, $$1);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return super.a($$0, $$1, $$2) ? true : this.m() && this.w.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void aJ_() {
+      if (this.w != null) {
+         this.w.aJ_();
+      }
+   }
+
+   @Override
+   public void aK_() {
+      super.aK_();
+      if (this.w != null) {
+         this.w.aK_();
+      }
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         try (ezx.c $$1 = this.m.m().e("Demo_World")) {
+            $$1.k();
+         } catch (IOException var7) {
+            fww.b(this.m, "Demo_World");
+            a.warn("Failed to delete demo world", var7);
          }
       }
 
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      class a extends fvh.a<gah.c.a> {
-         private final xa b;
-         private final xa c;
-         private final xa d;
-         private final boolean e;
-         private final boolean f;
-
-         public a(final bxc<?> $$0) {
-            this.b = $$0.h();
-            int $$1 = gah.this.H.a(awz.g.b($$0));
-            if ($$1 == 0) {
-               this.c = xa.a("stat_type.minecraft.killed.none", this.b);
-               this.e = false;
-            } else {
-               this.c = xa.a("stat_type.minecraft.killed", $$1, this.b);
-               this.e = true;
-            }
-
-            int $$2 = gah.this.H.a(awz.h.b($$0));
-            if ($$2 == 0) {
-               this.d = xa.a("stat_type.minecraft.killed_by.none", this.b);
-               this.f = false;
-            } else {
-               this.d = xa.a("stat_type.minecraft.killed_by", this.b, $$2);
-               this.f = true;
-            }
-         }
-
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(gah.this.p, this.b, $$3 + 2, $$2 + 1, -1);
-            $$0.b(gah.this.p, this.c, $$3 + 2 + 10, $$2 + 1 + 9, this.e ? -4539718 : -8355712);
-            $$0.b(gah.this.p, this.d, $$3 + 2 + 10, $$2 + 1 + 9 * 2, this.f ? -4539718 : -8355712);
-         }
-
-         @Override
-         public xa a() {
-            return xa.a("narrator.select", wz.a(this.c, this.d));
-         }
-      }
+      this.m.a(this);
    }
 }

@@ -1,26 +1,34 @@
-public class hcx extends hcw<hgh, gjr> {
-   private static final ali a = ali.b("textures/entity/sheep/sheep_wool.png");
-   private final gia<hgh> b;
-   private final gia<hgh> c;
+public class hcx<S extends hgd, M extends gic<S> & ggs & gim> extends hcq<S, M> {
+   private static final float a = (float) (-Math.PI / 6);
+   private static final float b = (float) (Math.PI / 2);
 
-   public hcx(haf<hgh, gjr> $$0, gla $$1) {
+   public hcx(hah<S, M> $$0) {
       super($$0);
-      this.b = new gjq($$1.a(gld.cQ));
-      this.c = new gjq($$1.a(gld.cP));
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hgh $$3, float $$4, float $$5) {
-      if (!$$3.c) {
-         gia<hgh> $$6 = $$3.aj ? this.c : this.b;
-         if ($$3.z) {
-            if ($$3.ao) {
-               $$6.a($$3);
-               flr $$7 = $$1.getBuffer(gsl.s(a));
-               $$6.a($$0, $$7, $$2, gzj.a($$3, 0.0F), -16777216);
-            }
+   protected void a(S $$0, hhu $$1, bxn $$2, flq $$3, gsc $$4, int $$5) {
+      if (!$$1.c()) {
+         bus $$6 = $$2 == $$0.e ? bus.a : bus.b;
+         if ($$0.R && $$0.M == $$6 && $$0.H < 1.0E-5F && !$$0.aI.c()) {
+            this.a($$0.aI, $$2, $$3, $$4, $$5);
          } else {
-            a($$6, a, $$0, $$1, $$2, $$3, $$3.a());
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
          }
       }
+   }
+
+   private void a(hhu $$0, bxn $$1, flq $$2, gsc $$3, int $$4) {
+      $$2.a();
+      this.d().e().a($$2);
+      glg $$5 = this.d().b();
+      float $$6 = $$5.e;
+      $$5.e = azq.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$5.a($$2);
+      $$5.e = $$6;
+      hcd.a($$2, hcd.a.a);
+      boolean $$7 = $$1 == bxn.a;
+      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      $$0.a($$2, $$3, $$4, hks.d);
+      $$2.b();
    }
 }

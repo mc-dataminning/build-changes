@@ -1,15 +1,15 @@
-public interface dze extends buk {
-   ffl w_ = dnc.b(16.0, 11.0, 32.0).e().get(0);
-
-   default ffl am_() {
-      return w_;
+public class dze extends dxr {
+   public dze(iw $$0, ebg $$1) {
+      super(dyg.a, $$0, $$1, dfc.b);
    }
 
-   double B();
+   @Override
+   protected xc j() {
+      return xc.c("container.furnace");
+   }
 
-   double C();
-
-   double D();
-
-   boolean E();
+   @Override
+   protected cvs a(int $$0, cry $$1) {
+      return new cwq($$0, $$1, this, this.m);
+   }
 }

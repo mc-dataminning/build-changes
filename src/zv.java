@@ -1,15 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public record zv(List<ama.c> b) implements zh<zn> {
-   public static final yy<ByteBuf, zv> a = yy.a(ama.c, zv::b, zv::new);
+public record zv(Optional<UUID> b) implements zj<zp> {
+   public static final za<vy, zv> a = zj.a(zv::a, zv::new);
 
-   @Override
-   public zj<zv> a() {
-      return zz.h;
+   private zv(vy $$0) {
+      this($$0.b(ka.g));
    }
 
-   public void a(zn $$0) {
+   private void a(vy $$0) {
+      $$0.a(this.b, ka.g);
+   }
+
+   @Override
+   public zl<zv> a() {
+      return aab.f;
+   }
+
+   public void a(zp $$0) {
       $$0.a(this);
    }
 }

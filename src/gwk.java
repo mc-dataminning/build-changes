@@ -1,59 +1,41 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class gwk implements gwd.a {
-   private final frd a;
-   private final Map<Long, Map<iv, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gwk implements gwf.a {
+   private final frf a;
+   private static final int b = 10;
 
-   gwk(frd $$0) {
+   public gwk(frf $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, iv $$1) {
-      Map<iv, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(flo $$0, gsa $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ae();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<iv> $$8 = Sets.newHashSet();
-      Map<iv, Integer> $$9 = Maps.newHashMap();
-      flr $$10 = $$1.getBuffer(gsl.w());
-      Iterator<Entry<Long, Map<iv, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
+      djz $$5 = this.a.s;
+      iw $$6 = iw.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<iv, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<iv, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<iv, Integer> $$16 : $$14.entrySet()) {
-               iv $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ffl $$19 = new ffl(iv.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gst.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+      for (iw $$8 : iw.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dki.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azq.g($$10, 0.9F, 0.9F);
+         long $$12 = jz.e($$8.a());
+         if ($$7.add($$12)) {
+            gwf.a(
+               $$0,
+               $$1,
+               $$5.S().q().a(dki.a, jz.a($$12)),
+               (double)jz.a(jz.b($$12), 8),
+               (double)jz.a(jz.c($$12), 8),
+               (double)jz.a(jz.d($$12), 8),
+               16711680,
+               0.3F
+            );
          }
-      }
 
-      for (Entry<iv, Integer> $$20 : $$9.entrySet()) {
-         iv $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gwd.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+         if ($$9 != 15) {
+            gwf.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
    }
 }

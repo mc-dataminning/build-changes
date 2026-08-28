@@ -1,45 +1,34 @@
-public class hor extends hog {
+public class hor extends hoi {
    private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final crx p;
-   private final cuk q;
-   private final boolean r;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cox r;
 
-   public hor(crx $$0, cuk $$1, boolean $$2) {
-      super($$2 ? awp.px : awp.py, awq.g, hox.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = hox.a.a;
+   public hor(cox $$0) {
+      super(awr.lU, aws.f, hoz.t());
+      this.r = $$0;
+      this.k = hoz.a.a;
       this.i = true;
       this.j = 0;
-      this.d = 0.0F;
    }
 
    @Override
    public boolean s() {
-      return !this.q.ba();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
+      return !this.r.ba();
    }
 
    @Override
    public void q() {
-      if (this.q.dQ() || !this.p.bY() || this.p.dk() != this.q) {
-         this.n();
-      } else if (this.r != this.p.bm()) {
-         this.d = 0.0F;
+      if (!this.r.dQ() && this.r.f() == null) {
+         this.f = (double)((float)this.r.dA());
+         this.g = (double)((float)this.r.dC());
+         this.h = (double)((float)this.r.dG());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
       } else {
-         float $$0 = (float)this.q.dy().i();
-         boolean $$1 = !this.q.cp() && this.q.f() instanceof cuz;
-         if ($$0 >= 0.01F && !$$1) {
-            this.d = azo.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
-         }
+         this.n();
       }
    }
 }

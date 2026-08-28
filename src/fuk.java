@@ -1,160 +1,99 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
+public abstract class fuk extends fug {
+   private static final fwa a = new fwa(alk.b("widget/text_field"), alk.b("widget/text_field_highlighted"));
+   private static final int c = 4;
 
-public class fuk {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final ali[] c = new ali[]{
-      ali.b("boss_bar/pink_background"),
-      ali.b("boss_bar/blue_background"),
-      ali.b("boss_bar/red_background"),
-      ali.b("boss_bar/green_background"),
-      ali.b("boss_bar/yellow_background"),
-      ali.b("boss_bar/purple_background"),
-      ali.b("boss_bar/white_background")
-   };
-   private static final ali[] d = new ali[]{
-      ali.b("boss_bar/pink_progress"),
-      ali.b("boss_bar/blue_progress"),
-      ali.b("boss_bar/red_progress"),
-      ali.b("boss_bar/green_progress"),
-      ali.b("boss_bar/yellow_progress"),
-      ali.b("boss_bar/purple_progress"),
-      ali.b("boss_bar/white_progress")
-   };
-   private static final ali[] e = new ali[]{
-      ali.b("boss_bar/notched_6_background"),
-      ali.b("boss_bar/notched_10_background"),
-      ali.b("boss_bar/notched_12_background"),
-      ali.b("boss_bar/notched_20_background")
-   };
-   private static final ali[] f = new ali[]{
-      ali.b("boss_bar/notched_6_progress"), ali.b("boss_bar/notched_10_progress"), ali.b("boss_bar/notched_12_progress"), ali.b("boss_bar/notched_20_progress")
-   };
-   private final frd g;
-   final Map<UUID, fuz> h = Maps.newLinkedHashMap();
-
-   public fuk(frd $$0) {
-      this.g = $$0;
+   public fuk(int $$0, int $$1, int $$2, int $$3, xc $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(ftx $$0) {
-      if (!this.h.isEmpty()) {
-         brb $$1 = bra.a();
-         $$1.a("bossHealth");
-         int $$2 = $$0.a();
-         int $$3 = 12;
-
-         for (fuz $$4 : this.h.values()) {
-            int $$5 = $$2 / 2 - 91;
-            this.a($$0, $$5, $$3, $$4);
-            xa $$7 = $$4.j();
-            int $$8 = this.g.h.a($$7);
-            int $$9 = $$2 / 2 - $$8 / 2;
-            int $$10 = $$3 - 9;
-            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
-            $$3 += 10 + 9;
-            if ($$3 >= $$0.b() / 3) {
-               break;
-            }
-         }
-
-         $$1.c();
-      }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return super.a($$0, $$1, $$2) || $$3;
    }
 
-   private void a(ftx $$0, int $$1, int $$2, buh $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = azo.b($$3.k(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
-      }
-   }
-
-   private void a(ftx $$0, int $$1, int $$2, buh $$3, int $$4, ali[] $$5, ali[] $$6) {
-      $$0.a(gsl::H, $$5[$$3.l().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.m() != buh.b.a) {
-         $$0.a(gsl::H, $$6[$$3.m().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      }
-   }
-
-   public void a(acf $$0) {
-      $$0.a(new acf.b() {
-         @Override
-         public void a(UUID $$0, xa $$1, float $$2, buh.a $$3, buh.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fuk.this.h.put($$0, new fuz($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fuk.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fuk.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, xa $$1) {
-            fuk.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, buh.a $$1, buh.b $$2) {
-            fuz $$3 = fuk.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fuz $$4 = fuk.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
-   }
-
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (buh $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.g();
+         this.a(this.g() + (double)($$3 ? -1 : 1) * this.o());
+         if ($$5 != this.g()) {
+            return true;
          }
       }
 
-      return false;
+      return super.a($$0, $$1, $$2);
    }
 
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (buh $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
-         }
+   @Override
+   public void b(ftz $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.c($$0);
+         $$0.c(this.F() + 1, this.G() + 1, this.F() + this.g - 1, this.G() + this.h - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.g(), 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.e();
+         this.b($$0);
       }
-
-      return false;
    }
 
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (buh $$0 : this.h.values()) {
-            if ($$0.p()) {
-               return true;
-            }
-         }
-      }
+   protected void b(ftz $$0) {
+      this.a($$0);
+   }
 
-      return false;
+   protected int a() {
+      return 4;
+   }
+
+   protected int b() {
+      return this.a() * 2;
+   }
+
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)(this.H() + 6) && $$1 < (double)this.I();
+   }
+
+   @Override
+   protected int l() {
+      return this.H();
+   }
+
+   @Override
+   protected int n() {
+      return this.c() + this.b();
+   }
+
+   protected void c(ftz $$0) {
+      this.a($$0, this.F(), this.G(), this.A(), this.y());
+   }
+
+   protected void a(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
+      alk $$5 = a.a(this.E(), this.aN_());
+      $$0.a(gsn::H, $$5, $$1, $$2, $$3, $$4);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.g() >= (double)this.G() && (double)$$0 - this.g() <= (double)(this.G() + this.h);
+   }
+
+   protected abstract int c();
+
+   protected abstract void c(ftz var1, int var2, int var3, float var4);
+
+   protected int e() {
+      return this.F() + this.a();
+   }
+
+   protected int p() {
+      return this.G() + this.a();
+   }
+
+   @Override
+   public void a(hqf $$0) {
    }
 }

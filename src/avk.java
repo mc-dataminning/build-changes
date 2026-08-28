@@ -1,15 +1,29 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class avk<T> implements auz {
-   @Override
-   public final CompletableFuture<Void> reload(auz.a $$0, avf $$1, Executor $$2, Executor $$3) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, bra.a()), $$2)
-         .thenCompose($$0::wait)
-         .thenAcceptAsync($$1x -> this.a((T)$$1x, $$1, bra.a()), $$3);
+@FunctionalInterface
+public interface avk {
+   avk b = $$0 -> Optional.empty();
+
+   Optional<avf> getResource(alk var1);
+
+   default avf getResourceOrThrow(alk $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   protected abstract T b(avf var1, brb var2);
+   default InputStream open(alk $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
 
-   protected abstract void a(T var1, avf var2, brb var3);
+   default BufferedReader openAsReader(alk $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static avk fromMap(Map<alk, avf> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

@@ -1,58 +1,29 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
 
-public class hpw implements hpq {
-   private final hpw.a a;
-   private hpq b;
-   private final BufferedInputStream c;
+public interface hpw extends hpv {
+   int a = 8192;
 
-   public hpw(hpw.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new hpw.b(this.c));
+   boolean a(FloatConsumer var1) throws IOException;
+
+   @Override
+   default ByteBuffer a(int $$0) throws IOException {
+      hpu $$1 = new hpu($$0 + 8192);
+
+      while (this.a($$1) && $$1.b() < $$0) {
+      }
+
+      return $$1.a();
    }
 
    @Override
-   public AudioFormat a() {
-      return this.b.a();
-   }
+   default ByteBuffer b() throws IOException {
+      hpu $$0 = new hpu(16384);
 
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new hpw.b(this.c));
-         $$1 = this.b.a($$0);
+      while (this.a($$0)) {
       }
 
-      return $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      hpq create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
-      }
+      return $$0.a();
    }
 }

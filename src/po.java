@@ -1,60 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class po extends pr<cny> {
-   public po(mp $$0, CompletableFuture<jh.a> $$1) {
-      super($$0, mh.aZ, $$1);
+public abstract class po extends pn<czw> {
+   private final CompletableFuture<ps.c<dne>> d;
+   private final Map<axv<dne>, axv<czw>> g = new HashMap<>();
+
+   public po(mq $$0, CompletableFuture<ji.a> $$1, CompletableFuture<ps.c<dne>> $$2) {
+      super($$0, mi.K, $$1, $$0x -> $$0x.e().h());
+      this.d = $$2;
+   }
+
+   public po(mq $$0, CompletableFuture<ji.a> $$1, CompletableFuture<ps.c<czw>> $$2, CompletableFuture<ps.c<dne>> $$3) {
+      super($$0, mi.K, $$1, $$2, $$0x -> $$0x.e().h());
+      this.d = $$3;
+   }
+
+   protected void a(axv<dne> $$0, axv<czw> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(jh.a $$0) {
-      this.b(axn.a)
-         .a(
-            cnz.a,
-            cnz.b,
-            cnz.c,
-            cnz.d,
-            cnz.e,
-            cnz.f,
-            cnz.g,
-            cnz.h,
-            cnz.i,
-            cnz.j,
-            cnz.k,
-            cnz.l,
-            cnz.m,
-            cnz.n,
-            cnz.o,
-            cnz.p,
-            cnz.q,
-            cnz.r,
-            cnz.s,
-            cnz.t,
-            cnz.u,
-            cnz.v,
-            cnz.w,
-            cnz.x,
-            cnz.y,
-            cnz.z,
-            cnz.E,
-            cnz.F,
-            cnz.G,
-            cnz.H,
-            cnz.I,
-            cnz.J,
-            cnz.K,
-            cnz.L,
-            cnz.M,
-            cnz.N,
-            cnz.O,
-            cnz.P,
-            cnz.Q,
-            cnz.R,
-            cnz.S,
-            cnz.T,
-            cnz.U,
-            cnz.V,
-            cnz.W,
-            cnz.X
-         );
+   protected CompletableFuture<ji.a> b() {
+      return super.b().thenCombine(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            axs $$3 = this.c((axv<czw>)$$2);
+            Optional<axs> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (ji.a)$$0;
+      });
    }
 }

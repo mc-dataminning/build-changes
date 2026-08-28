@@ -1,95 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class drq extends dlv {
-   public static final MapCodec<drq> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dla.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.i), kc.b.fieldOf("interactions").forGetter($$0x -> $$0x.b), t())
-            .apply($$0, drq::new)
-   );
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final ece f = ebu.aN;
-   private static final int g = 6;
-   private static final double h = 3.0;
-   private final dla.c i;
+public class drq extends dne implements dup {
+   public static final MapCodec<drq> a = b(drq::new);
+   public static final ebx b = ebw.m;
+   public static final ebx c = ebw.I;
+   private static final fgm d = fgj.a(dne.b(4.0, 7.0, 9.0), dne.b(6.0, 0.0, 7.0));
+   private static final fgm e = d.a(0.0, 0.0625, 0.0).d();
 
    @Override
    public MapCodec<drq> a() {
-      return c;
+      return a;
    }
 
-   public drq(dla.c $$0, kc.a $$1, ebd.d $$2) {
-      super($$2, $$1);
-      this.i = $$0;
-      this.l(this.C.b().b(f, Integer.valueOf(1)));
+   public drq(ebf.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   public boolean d(ebe $$0) {
-      return $$0.c(f) == 3;
-   }
+   public ebg a(ddt $$0) {
+      exq $$1 = $$0.q().b_($$0.a());
 
-   @Override
-   protected boolean a(exn $$0) {
-      return $$0 == exp.c && this.i == dla.c.b;
-   }
-
-   @Override
-   protected double b(ebe $$0) {
-      return (6.0 + (double)$$0.c(f).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, bwt $$3, bxm $$4) {
-      if ($$1 instanceof ars $$5 && $$3.bX() && this.a($$0, $$2, $$3)) {
-         $$3.aF();
-         if ($$3.c($$5, $$2)) {
-            this.e($$0, $$1, $$2);
+      for (jc $$2 : $$0.f()) {
+         if ($$2.o() == jc.a.b) {
+            ebg $$3 = this.m().b(b, Boolean.valueOf($$2 == jc.b));
+            if ($$3.a((dkc)$$0.q(), $$0.a())) {
+               return $$3.b(c, Boolean.valueOf($$1.a() == exr.c));
+            }
          }
       }
+
+      return null;
    }
 
-   private void e(ebe $$0, djx $$1, iv $$2) {
-      if (this.i == dla.c.c) {
-         d(dne.fT.m().b(f, $$0.c(f)), $$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return $$0.c(b) ? e : d;
+   }
+
+   @Override
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      jc $$3 = o($$0).g();
+      return dne.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static jc o(ebg $$0) {
+      return $$0.c(b) ? jc.a : jc.b;
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, exr.c, exr.c.a($$1));
       }
-   }
 
-   public static void d(ebe $$0, djx $$1, iv $$2) {
-      int $$3 = $$0.c(f) - 1;
-      ebe $$4 = $$3 == 0 ? dne.fS.m() : $$0.b(f, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(ege.c, $$2, ege.a.a($$4));
+      return o($$0).g() == $$4 && !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(ebe $$0, djx $$1, iv $$2, dla.c $$3) {
-      if (dnz.a($$1, $$3) && $$0.c(f) != 3 && $$3 == this.i) {
-         ebe $$4 = $$0.a(f);
-         $$1.b($$2, $$4);
-         $$1.a(ege.c, $$2, ege.a.a($$4));
-      }
+   protected exq b_(ebg $$0) {
+      return $$0.c(c) ? exr.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected int a(ebe $$0, djx $$1, iv $$2) {
-      return $$0.c(f);
-   }
-
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(f);
-   }
-
-   @Override
-   protected void a(ebe $$0, djx $$1, iv $$2, exn $$3) {
-      if (!this.d($$0)) {
-         ebe $$4 = $$0.b(f, Integer.valueOf($$0.c(f) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(ege.c, $$2, ege.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
    }
 }

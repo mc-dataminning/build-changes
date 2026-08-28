@@ -1,63 +1,53 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cms extends bwt {
-   public final cmv a;
-   public final String b;
-   private final bww c;
+public class cms {
+   public static final alj<cmr> a = a("pale");
+   public static final alj<cmr> b = a("spotted");
+   public static final alj<cmr> c = a("snowy");
+   public static final alj<cmr> d = a("black");
+   public static final alj<cmr> e = a("ashen");
+   public static final alj<cmr> f = a("rusty");
+   public static final alj<cmr> g = a("woods");
+   public static final alj<cmr> h = a("chestnut");
+   public static final alj<cmr> i = a("striped");
+   public static final alj<cmr> j = a;
 
-   public cms(cmv $$0, String $$1, float $$2, float $$3) {
-      super($$0.an(), $$0.dV());
-      this.c = bww.b($$2, $$3);
-      this.i_();
-      this.a = $$0;
-      this.b = $$1;
+   private static alj<cmr> a(String $$0) {
+      return alj.a(mi.bm, alk.b($$0));
    }
 
-   @Override
-   protected void a(akp.a $$0) {
+   private static void a(qi<cmr> $$0, alj<cmr> $$1, String $$2, alj<dlc> $$3) {
+      a($$0, $$1, $$2, a(jk.a($$0.a(mi.aG).b($$3))));
    }
 
-   @Override
-   protected void a(tz $$0) {
+   private static void a(qi<cmr> $$0, alj<cmr> $$1, String $$2, axv<dlc> $$3) {
+      a($$0, $$1, $$2, a($$0.a(mi.aG).b($$3)));
    }
 
-   @Override
-   protected void b(tz $$0) {
+   private static cug a(jk<dlc> $$0) {
+      return cug.a(new ctz($$0), 1);
    }
 
-   @Override
-   public boolean bF() {
-      return true;
+   private static void a(qi<cmr> $$0, alj<cmr> $$1, String $$2, cug $$3) {
+      alk $$4 = alk.b("entity/wolf/" + $$2);
+      alk $$5 = alk.b("entity/wolf/" + $$2 + "_tame");
+      alk $$6 = alk.b("entity/wolf/" + $$2 + "_angry");
+      $$0.a($$1, new cmr(new cmr.a(new ix($$4), new ix($$5), new ix($$6)), $$3));
    }
 
-   @Nullable
-   @Override
-   public czy dI() {
-      return this.a.dI();
+   public static Optional<? extends jg<cmr>> a(azz $$0, ju $$1, cuf $$2) {
+      return cuc.a($$1.f(mi.bm).c(), jg::a, $$0, $$2);
    }
 
-   @Override
-   public final boolean a(ars $$0, bvi $$1, float $$2) {
-      return this.d($$1) ? false : this.a.a($$0, this, $$1, $$2);
-   }
-
-   @Override
-   public boolean u(bwt $$0) {
-      return this == $$0 || this.a == $$0;
-   }
-
-   @Override
-   public zh<abw> a(arq $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bww a(byg $$0) {
-      return this.c;
-   }
-
-   @Override
-   public boolean dT() {
-      return false;
+   public static void a(qi<cmr> $$0) {
+      a($$0, a, "wolf", cug.a(0));
+      a($$0, b, "wolf_spotted", axf.k);
+      a($$0, c, "wolf_snowy", dlj.G);
+      a($$0, d, "wolf_black", dlj.o);
+      a($$0, e, "wolf_ashen", dlj.r);
+      a($$0, f, "wolf_rusty", axf.i);
+      a($$0, g, "wolf_woods", dlj.i);
+      a($$0, h, "wolf_chestnut", dlj.p);
+      a($$0, i, "wolf_striped", axf.f);
    }
 }

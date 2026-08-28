@@ -1,25 +1,15 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-public record etq(btb<List<etn>> c) implements etn {
-   static MapCodec<etq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(btb.b(Codec.list(etn.b)).fieldOf("groups").forGetter(etq::c)).apply($$0, etq::new));
-
-   @Override
-   public void a(azx $$0, BiConsumer<alh<etl>, alh<etl>> $$1) {
-      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
+public class etq {
+   public static MapCodec<? extends etp> a(jt<MapCodec<? extends etp>> $$0) {
+      jt.a($$0, "random", ett.a);
+      jt.a($$0, "random_group", ets.a);
+      return jt.a($$0, "direct", eto.a);
    }
 
-   @Override
-   public Stream<alh<etl>> a() {
-      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(etn::a);
-   }
-
-   @Override
-   public MapCodec<etq> b() {
-      return a;
+   public static void a(qi<etn> $$0, jg<etn> $$1, List<etp> $$2) {
+      $$2.stream().flatMap(etp::a).map($$0x -> $$0x.a().a()).forEach($$2x -> qp.a($$0, $$2x, new etn($$1, List.of(Pair.of(etl.b($$2x), 1)), etn.a.b)));
    }
 }

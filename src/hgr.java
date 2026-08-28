@@ -1,3 +1,5 @@
-public class hgr extends hep {
-   public final hhs a = new hhs();
+public class hgr extends hfr {
+   public daa a = daa.k;
+   public boolean b;
+   public boolean c;
 }

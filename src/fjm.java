@@ -1,5 +1,8 @@
-public interface fjm {
-   boolean a(String var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fhv
+@fht
+interface fjm {
 }

@@ -1,16 +1,27 @@
-public class hdm extends hcw<hhe, gkt> {
-   private static final ali a = ali.b("textures/entity/wolf/wolf_collar.png");
+public class hdm extends hci<hhe, gku> {
+   private static final alk a = alk.b("textures/entity/wither/wither_armor.png");
+   private final gku b;
 
-   public hdm(haf<hhe, gkt> $$0) {
+   public hdm(hah<hhe, gku> $$0, glc $$1) {
       super($$0);
+      this.b = new gku($$1.a(glf.dV));
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hhe $$3, float $$4, float $$5) {
-      cyw $$6 = $$3.h;
-      if ($$6 != null && !$$3.z) {
-         int $$7 = $$6.d();
-         flr $$8 = $$1.getBuffer(gsl.g(a));
-         this.d().a($$0, $$8, $$2, hkq.d, $$7);
-      }
+   protected boolean a(hhe $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return azq.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected alk a() {
+      return a;
+   }
+
+   protected gku b() {
+      return this.b;
    }
 }

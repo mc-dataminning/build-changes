@@ -1,26 +1,23 @@
-public class hbi extends gyh<ctj, hep> {
-   private static final ali a = ali.b("textures/entity/projectiles/wind_charge.png");
-   private final gkq g;
+public class hbi extends gzq<crr, hhb, gkp> {
+   private static final alk a = alk.b("textures/entity/wandering_trader.png");
 
-   public hbi(gyi.a $$0) {
-      super($$0);
-      this.g = new gkq($$0.a(gld.dS));
+   public hbi(gyk.a $$0) {
+      super($$0, new gkp($$0.a(glf.dO)), 0.5F);
+      this.a(new hcd<>(this, $$0.f()));
+      this.a(new hcc<>(this));
    }
 
-   @Override
-   public void a(hep $$0, flo $$1, gsa $$2, int $$3) {
-      flr $$4 = $$2.getBuffer(gsl.a(a, this.a($$0.u) % 1.0F, 0.0F));
-      this.g.a($$0);
-      this.g.a($$1, $$4, $$3, hkq.d);
-      super.a($$0, $$1, $$2, $$3);
+   public alk a(hhb $$0) {
+      return a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public hhb b() {
+      return new hhb();
    }
 
-   @Override
-   public hep d() {
-      return new hep();
+   public void a(crr $$0, hhb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hfg.a($$0, $$1, this.h);
+      $$1.a = $$0.q() > 0;
    }
 }

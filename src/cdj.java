@@ -1,20 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cdj {
-   public static bzm<bxu> a() {
-      return ccy.a(
-         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$0 -> $$0.group($$0.a(cgw.o), $$0.a(cgw.aA), $$0.a(cgw.az), $$0.c(cgw.p))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<iv> $$7 = $$0.<bxu>a($$3).map(bwt::dv).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        $$1.a(new bzo($$7.get()));
-                        return true;
-                     }
-                  }))
-      );
+public class cdj extends bzn<crc> {
+   private static final int c = 25;
+   private static final int d = 20;
+
+   public cdj() {
+      super(ImmutableMap.of(cgy.az, cgz.a, cgy.p, cgz.b, cgy.aG, cgz.c, cgy.aE, cgz.c), crd.b);
+   }
+
+   protected void a(aru $$0, crc $$1, long $$2) {
+      byw<crc> $$3 = $$1.ec();
+      $$3.a(cgy.aE, bay.a, 25L);
+      $$3.b(cgy.n);
+      bxw $$4 = $$1.ec().c(cgy.az).get();
+      bzp.a($$1, $$4);
+      $$1.b(byi.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(aru $$0, crc $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(aru $$0, crc $$1, long $$2) {
+      if (!$$1.ec().a(cgy.aE) && !$$1.ec().a(cgy.aG)) {
+         $$1.ec().a(cgy.aG, bay.a, (long)(crd.b - 25));
+         $$1.a(awr.CY, 3.0F, 1.0F);
+      }
+   }
+
+   protected void d(aru $$0, crc $$1, long $$2) {
+      if ($$1.c(byi.l)) {
+         $$1.b(byi.a);
+      }
+
+      $$1.ec().c(cgy.az).ifPresent($$1::i);
+      $$1.ec().b(cgy.az);
    }
 }

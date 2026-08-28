@@ -1,51 +1,54 @@
-public class hcr extends hcw<hfu, ghq> {
-   private final gtd a;
+import java.util.List;
+import java.util.function.Function;
 
-   public hcr(haf<hfu, ghq> $$0, gtd $$1) {
+public class hcr<S extends hfr, M extends gic<S>> extends hcy<S, M> {
+   private final alk a;
+   private final hcr.a<S> b;
+   private final hcr.b<S, M> c;
+   private final Function<alk, gsn> d;
+   private final boolean e;
+
+   public hcr(hah<S, M> $$0, alk $$1, hcr.a<S> $$2, hcr.b<S, M> $$3, Function<alk, gsn> $$4, boolean $$5) {
       super($$0);
       this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
    }
 
-   public void a(flo $$0, gsa $$1, int $$2, hfu $$3, float $$4, float $$5) {
-      if (!$$3.aj) {
-         boolean $$6 = $$3.ao && $$3.z;
-         if (!$$3.z || $$6) {
-            ebe $$7 = $$3.a.a();
-            int $$8 = gzj.a($$3, 0.0F);
-            gtn $$9 = this.a.a($$7);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
+   public void a(flq $$0, gsc $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.z || this.e) {
+         if (this.a($$3)) {
+            flt $$6 = $$1.getBuffer(this.d.apply(this.a));
+            float $$7 = this.b.apply($$3, $$3.u);
+            int $$8 = aya.a(azq.d($$7 * 255.0F), 255, 255, 255);
+            this.d().a($$0, $$6, $$2, gzl.a($$3, 0.0F), $$8);
+            this.a();
          }
       }
    }
 
-   private void a(flo $$0, gsa $$1, int $$2, boolean $$3, ebe $$4, int $$5, gtn $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gsl.s(hkz.c)), $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+   private boolean a(S $$0) {
+      List<glg> $$1 = this.c.getPartsToDraw(this.d(), $$0);
+      if ($$1.isEmpty()) {
+         return false;
       } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
+         this.d().f().forEach($$0x -> $$0x.l = true);
+         $$1.forEach($$0x -> $$0x.l = false);
+         return true;
       }
+   }
+
+   private void a() {
+      this.d().f().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<S extends hfr> {
+      float apply(S var1, float var2);
+   }
+
+   public interface b<S extends hfr, M extends gic<S>> {
+      List<glg> getPartsToDraw(M var1, S var2);
    }
 }

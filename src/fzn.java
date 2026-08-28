@@ -1,74 +1,80 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fzn implements AutoCloseable {
-   private static final ali a = ali.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final hlc d;
-   private final ali e;
-   @Nullable
-   private hkn f;
-   private boolean g;
+public class fzn extends gaf {
+   private static final xc a = xc.c("addServer.enterName");
+   private static final xc b = xc.c("addServer.enterIp");
+   private fun c;
+   private final BooleanConsumer d;
+   private final gms s;
+   private fuw u;
+   private fuw v;
+   private final gaf w;
 
-   private fzn(hlc $$0, ali $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fzn a(hlc $$0, String $$1) {
-      return new fzn($$0, ali.b("worlds/" + ag.a($$1, ali::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fzn b(hlc $$0, String $$1) {
-      return new fzn($$0, ali.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(fkg $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new hkn(() -> "Favicon " + this.e, $$0);
-            } else {
-               this.f.a($$0);
-               this.f.b();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public ali b() {
-      return this.f != null ? this.e : a;
+   public fzn(gaf $$0, BooleanConsumer $$1, gms $$2) {
+      super(xc.c("addServer.title"));
+      this.w = $$0;
+      this.d = $$1;
+      this.s = $$2;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void aS_() {
+      this.v = new fuw(this.p, this.n / 2 - 100, 66, 200, 20, xc.c("addServer.enterName"));
+      this.v.a(this.s.a);
+      this.v.b($$0 -> this.E());
+      this.d(this.v);
+      this.u = new fuw(this.p, this.n / 2 - 100, 106, 200, 20, xc.c("addServer.enterIp"));
+      this.u.f(128);
+      this.u.a(this.s.b);
+      this.u.b($$0 -> this.E());
+      this.d(this.u);
+      this.c(
+         fuu.<gms.a>a(gms.a::a)
+            .a(gms.a.values())
+            .a(this.s.b())
+            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xc.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
+      );
+      this.c = this.c(fun.a(xc.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
+      this.c(fun.a(xb.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
+      this.E();
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   protected void aG_() {
+      this.b(this.v);
+   }
+
+   @Override
+   public void a(frf $$0, int $$1, int $$2) {
+      String $$3 = this.u.a();
+      String $$4 = this.v.a();
+      this.b($$0, $$1, $$2);
+      this.u.a($$3);
+      this.v.a($$4);
+   }
+
+   private void m() {
+      this.s.a = this.v.a();
+      this.s.b = this.u.a();
+      this.d.accept(true);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.w);
+   }
+
+   private void E() {
+      this.c.j = gnv.b(this.u.a()) && !this.v.a().isEmpty();
+   }
+
+   @Override
+   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
+      this.v.a($$0, $$1, $$2, $$3);
+      this.u.a($$0, $$1, $$2, $$3);
    }
 }

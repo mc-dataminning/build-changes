@@ -1,48 +1,45 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cfx extends ceq {
-   private final cok a;
-   @Nullable
-   private bxu b;
+public class cfx extends ces {
+   private final bys a;
 
-   public cfx(cok $$0) {
+   public cfx(bys $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(ceq.a.a));
+      this.a(EnumSet.of(ces.a.c, ces.a.a));
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.gu();
    }
 
    @Override
    public boolean b() {
-      bxu $$0 = this.a.f();
-      return this.a.n() > 0 || $$0 != null && this.a.g($$0) < 9.0;
+      boolean $$0 = this.a.gu();
+      if (!$$0 && !this.a.q()) {
+         return false;
+      } else if (this.a.bi()) {
+         return false;
+      } else if (!this.a.aH()) {
+         return false;
+      } else {
+         bxw $$1 = this.a.e();
+         if ($$1 == null) {
+            return true;
+         } else {
+            return this.a.g((bwv)$$1) < 144.0 && $$1.er() != null ? false : $$0;
+         }
+      }
    }
 
    @Override
    public void d() {
       this.a.O().m();
-      this.b = this.a.f();
+      this.a.x(true);
    }
 
    @Override
    public void e() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g(this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.P().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
-      }
+      this.a.x(false);
    }
 }

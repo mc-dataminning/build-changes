@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record bm(cw.c b, cw.c c, Optional<by> d, Optional<Boolean> e, Optional<bn> f) {
+public record bm(cx.c b, cx.c c, Optional<bz> d, Optional<Boolean> e, Optional<bn> f) {
    public static final Codec<bm> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cw.c.d.optionalFieldOf("dealt", cw.c.c).forGetter(bm::a),
-               cw.c.d.optionalFieldOf("taken", cw.c.c).forGetter(bm::b),
-               by.a.optionalFieldOf("source_entity").forGetter(bm::c),
+               cx.c.d.optionalFieldOf("dealt", cx.c.c).forGetter(bm::a),
+               cx.c.d.optionalFieldOf("taken", cx.c.c).forGetter(bm::b),
+               bz.a.optionalFieldOf("source_entity").forGetter(bm::c),
                Codec.BOOL.optionalFieldOf("blocked").forGetter(bm::d),
                bn.a.optionalFieldOf("type").forGetter(bm::e)
             )
             .apply($$0, bm::new)
    );
 
-   public boolean a(art $$0, bvi $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(arv $$0, bvk $$1, float $$2, float $$3, boolean $$4) {
       if (!this.b.d((double)$$2)) {
          return false;
       } else if (!this.c.d((double)$$3)) {
@@ -26,15 +26,15 @@ public record bm(cw.c b, cw.c c, Optional<by> d, Optional<Boolean> e, Optional<b
       }
    }
 
-   public cw.c a() {
+   public cx.c a() {
       return this.b;
    }
 
-   public cw.c b() {
+   public cx.c b() {
       return this.c;
    }
 
-   public Optional<by> c() {
+   public Optional<bz> c() {
       return this.d;
    }
 
@@ -47,9 +47,9 @@ public record bm(cw.c b, cw.c c, Optional<by> d, Optional<Boolean> e, Optional<b
    }
 
    public static class a {
-      private cw.c a = cw.c.c;
-      private cw.c b = cw.c.c;
-      private Optional<by> c = Optional.empty();
+      private cx.c a = cx.c.c;
+      private cx.c b = cx.c.c;
+      private Optional<bz> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
       private Optional<bn> e = Optional.empty();
 
@@ -57,17 +57,17 @@ public record bm(cw.c b, cw.c c, Optional<by> d, Optional<Boolean> e, Optional<b
          return new bm.a();
       }
 
-      public bm.a a(cw.c $$0) {
+      public bm.a a(cx.c $$0) {
          this.a = $$0;
          return this;
       }
 
-      public bm.a b(cw.c $$0) {
+      public bm.a b(cx.c $$0) {
          this.b = $$0;
          return this;
       }
 
-      public bm.a a(by $$0) {
+      public bm.a a(bz $$0) {
          this.c = Optional.of($$0);
          return this;
       }

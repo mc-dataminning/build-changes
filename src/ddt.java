@@ -1,71 +1,77 @@
 import javax.annotation.Nullable;
 
-public class ddt {
-   @Nullable
-   private final crx a;
-   private final buq b;
-   private final ffm c;
-   private final djx d;
-   private final czy e;
+public class ddt extends ddv {
+   private final iw b;
+   protected boolean a = true;
 
-   public ddt(crx $$0, buq $$1, ffm $$2) {
-      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
+   public ddt(crz $$0, bus $$1, daa $$2, ffo $$3) {
+      this($$0.dV(), $$0, $$1, $$2, $$3);
    }
 
-   protected ddt(djx $$0, @Nullable crx $$1, buq $$2, czy $$3, ffm $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   public ddt(ddv $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
    }
 
-   protected final ffm j() {
-      return this.c;
+   protected ddt(djz $$0, @Nullable crz $$1, bus $$2, daa $$3, ffo $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.b().a($$4.c());
+      this.a = $$0.a_($$4.b()).a(this);
    }
 
-   public iv a() {
-      return this.c.b();
+   public static ddt a(ddt $$0, iw $$1, jc $$2) {
+      return new ddt(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new ffo(
+            new ffs((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
-   public jb k() {
-      return this.c.c();
+   @Override
+   public iw a() {
+      return this.a ? super.a() : this.b;
    }
 
-   public ffq l() {
-      return this.c.g();
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public czy n() {
-      return this.e;
-   }
-
-   @Nullable
-   public crx o() {
+   public boolean c() {
       return this.a;
    }
 
-   public buq p() {
-      return this.b;
+   public jc d() {
+      return jc.a(this.o())[0];
    }
 
-   public djx q() {
-      return this.d;
+   public jc e() {
+      return jc.a(this.o(), jc.a.b);
    }
 
-   public jb g() {
-      return this.a == null ? jb.c : this.a.cO();
-   }
+   public jc[] f() {
+      jc[] $$0 = jc.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         jc $$1 = this.k();
+         int $$2 = 0;
 
-   public boolean h() {
-      return this.a != null && this.a.fY();
-   }
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
 
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dL();
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
+      }
    }
 }

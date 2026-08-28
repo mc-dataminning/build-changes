@@ -1,9 +1,11 @@
-public class hfh extends hdt {
-   public boolean b;
-   public boolean c;
-   public bxl d = bxl.b;
-   public cof.a j = cof.a.h;
-   public int k;
-   public int l;
-   public float m;
+public class hfh extends hes {
+   public cme a;
+   public clz h;
+   public daa i;
+
+   public hfh() {
+      this.a = cme.a;
+      this.h = clz.a;
+      this.i = daa.k;
+   }
 }

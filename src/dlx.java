@@ -1,66 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dlx extends dmo {
-   public static final ecc<jb> a = drd.e;
-   public static final ebv b = ebu.u;
-
-   protected dlx(ebd.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(a, jb.c).b(b, Boolean.valueOf(false)));
-   }
+public abstract class dlx extends dne {
+   protected static final int a = 4;
+   private static final fgm c = dne.b(12.0, 4.0, 16.0);
+   private static final fgm d = ag.a(() -> {
+      int $$0 = 4;
+      int $$1 = 3;
+      int $$2 = 2;
+      return fgj.a(fgj.b(), fgj.a(dne.a(16.0, 8.0, 0.0, 3.0), dne.a(8.0, 16.0, 0.0, 3.0), dne.b(12.0, 0.0, 3.0), c), ffw.e);
+   });
+   protected final kd.a b;
 
    @Override
    protected abstract MapCodec<? extends dlx> a();
 
-   @Override
-   protected bur a(ebe $$0, djx $$1, iv $$2, crx $$3, ffm $$4) {
-      if (!$$1.C) {
-         this.a($$1, $$2, $$3);
-      }
-
-      return bur.a;
+   public dlx(ebf.d $$0, kd.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   protected abstract void a(djx var1, iv var2, crx var3);
+   protected double b(ebg $$0) {
+      return 0.0;
+   }
 
-   @Override
-   public ebe a(ddr $$0) {
-      return this.m().b(a, $$0.g().g());
+   protected boolean a(ebg $$0, iw $$1, bwv $$2) {
+      return $$2.dC() < (double)$$1.v() + this.b($$0) && $$2.cR().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected void a(ebe $$0, ars $$1, iv $$2, boolean $$3) {
-      bun.a($$0, $$1, $$2);
+   protected but a(daa $$0, ebg $$1, djz $$2, iw $$3, crz $$4, bus $$5, ffo $$6) {
+      kd $$7 = this.b.b().get($$0.h());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
    @Override
-   protected boolean c_(ebe $$0) {
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return d;
+   }
+
+   @Override
+   protected fgm a(ebg $$0, djd $$1, iw $$2) {
+      return c;
+   }
+
+   @Override
+   protected boolean c_(ebg $$0) {
       return true;
    }
 
    @Override
-   protected int a(ebe $$0, djx $$1, iv $$2) {
-      return cvq.a($$1.c_($$2));
+   protected boolean a(ebg $$0, eyf $$1) {
+      return false;
    }
+
+   public abstract boolean d(ebg var1);
 
    @Override
-   protected ebe a(ebe $$0, dtw $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
+   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      iw $$4 = dtc.a((djz)$$1, $$2);
+      if ($$4 != null) {
+         exp $$5 = dtc.a($$1, $$4);
+         if ($$5 != exr.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
    }
 
-   @Override
-   protected ebe a(ebe $$0, dsf $$1) {
-      return $$0.a($$1.a($$0.c(a)));
+   protected boolean a(exp $$0) {
+      return false;
    }
 
-   @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends dyc> dyd<T> a(djx $$0, dye<T> $$1, dye<? extends dxp> $$2) {
-      return $$0 instanceof ars $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dxp.a($$3, $$2x, $$3x, $$4)) : null;
+   protected void a(ebg $$0, djz $$1, iw $$2, exp $$3) {
    }
 }

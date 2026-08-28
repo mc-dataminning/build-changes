@@ -1,35 +1,48 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface dez<T extends dep<?>> {
-   dez<dfd> a = a("crafting_shaped", new dfd.a());
-   dez<dff> b = a("crafting_shapeless", new dff.a());
-   dez<ddw> c = a("crafting_special_armordye", new def.a<>(ddw::new));
-   dez<ddz> d = a("crafting_special_bookcloning", new def.a<>(ddz::new));
-   dez<dem> e = a("crafting_special_mapcloning", new def.a<>(dem::new));
-   dez<den> f = a("crafting_special_mapextending", new def.a<>(den::new));
-   dez<dei> g = a("crafting_special_firework_rocket", new def.a<>(dei::new));
-   dez<dek> h = a("crafting_special_firework_star", new def.a<>(dek::new));
-   dez<dej> i = a("crafting_special_firework_star_fade", new def.a<>(dej::new));
-   dez<dfq> j = a("crafting_special_tippedarrow", new def.a<>(dfq::new));
-   dez<ddx> k = a("crafting_special_bannerduplicate", new def.a<>(ddx::new));
-   dez<dfg> l = a("crafting_special_shielddecoration", new def.a<>(dfg::new));
-   dez<dfr> m = a("crafting_transmute", new dfr.a());
-   dez<dfb> n = a("crafting_special_repairitem", new def.a<>(dfb::new));
-   dez<dfj> o = a("smelting", new ddv.b<>(dfj::new, 200));
-   dez<ddy> p = a("blasting", new ddv.b<>(ddy::new, 100));
-   dez<dfo> q = a("smoking", new ddv.b<>(dfo::new, 100));
-   dez<dea> r = a("campfire_cooking", new ddv.b<>(dea::new, 100));
-   dez<dfp> s = a("stonecutting", new dfh.b<>(dfp::new));
-   dez<dfm> t = a("smithing_transform", new dfm.a());
-   dez<dfn> u = a("smithing_trim", new dfn.a());
-   dez<deg> v = a("crafting_decorated_pot", new def.a<>(deg::new));
+public class dez {
+   public static final dez a = new dez(ImmutableMultimap.of(), Map.of());
+   private final Multimap<dfc<?>, dew<?>> b;
+   private final Map<alj<der<?>>, dew<?>> c;
 
-   MapCodec<T> a();
+   private dez(Multimap<dfc<?>, dew<?>> $$0, Map<alj<der<?>>, dew<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   @Deprecated
-   yy<wl, T> b();
+   public static dez a(Iterable<dew<?>> $$0) {
+      Builder<dfc<?>, dew<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<alj<der<?>>, dew<?>> $$2 = ImmutableMap.builder();
 
-   static <S extends dez<T>, T extends dep<?>> S a(String $$0, S $$1) {
-      return js.a(mg.r, $$0, $$1);
+      for (dew<?> $$3 : $$0) {
+         $$1.put($$3.b().b(), $$3);
+         $$2.put($$3.a(), $$3);
+      }
+
+      return new dez($$1.build(), $$2.build());
+   }
+
+   public <I extends dex, T extends der<I>> Collection<dew<T>> a(dfc<T> $$0) {
+      return this.b.get($$0);
+   }
+
+   public Collection<dew<?>> a() {
+      return this.c.values();
+   }
+
+   @Nullable
+   public dew<?> a(alj<der<?>> $$0) {
+      return this.c.get($$0);
+   }
+
+   public <I extends dex, T extends der<I>> Stream<dew<T>> a(dfc<T> $$0, I $$1, djz $$2) {
+      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
    }
 }

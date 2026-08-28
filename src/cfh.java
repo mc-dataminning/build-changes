@@ -1,49 +1,55 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cfh extends ceq {
-   private static final cij b = cij.b().a(6.0);
-   public static final int a = 400;
-   private final cka c;
-   private crj d;
-   private int e;
+public class cfh extends ces {
+   private final bye a;
+   @Nullable
+   private bxw b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public cfh(cka $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(ceq.a.a, ceq.a.b));
+   public cfh(bye $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(ces.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.c.dV().V()) {
+      this.b = this.a.f();
+      if (this.b == null) {
          return false;
-      } else if (this.c.dY().a(8000) != 0) {
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         this.d = a(this.c).a(crj.class, b, this.c, this.c.dA(), this.c.dC(), this.c.dG(), this.c.cR().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         ffs $$0 = cip.a(this.a, 16, 7, this.b.dt(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return this.e > 0;
-   }
-
-   @Override
-   public void d() {
-      this.e = this.a(400);
-      this.c.w(true);
+      return !this.a.O().k() && this.b.bJ() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void e() {
-      this.c.w(false);
-      this.d = null;
+      this.b = null;
    }
 
    @Override
-   public void a() {
-      this.c.J().a(this.d, 30.0F, 30.0F);
-      this.e--;
+   public void d() {
+      this.a.O().a(this.c, this.d, this.e, this.f);
    }
 }

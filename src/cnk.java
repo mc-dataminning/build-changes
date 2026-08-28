@@ -1,80 +1,61 @@
-import javax.annotation.Nullable;
+public class cnk extends cna {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final cil f = cil.a().a(150.0);
+   private final cil g;
+   private int h;
 
-public class cnk extends cmx {
-   private boolean b;
-   @Nullable
-   private eyc c;
-   @Nullable
-   private ffq d;
-
-   public cnk(cmv $$0) {
+   public cnk(cmx $$0) {
       super($$0);
+      this.g = cil.a().a(20.0).a(($$1, $$2) -> Math.abs($$1.dC() - $$0.dC()) <= 10.0);
    }
 
    @Override
-   public void a(ars $$0) {
-      if (!this.b && this.c != null) {
-         iv $$1 = $$0.a(ehd.a.f, eki.a(this.a.j()));
-         if (!$$1.a(this.a.dt(), 10.0)) {
-            this.a.t().a(cnl.a);
+   public void a(aru $$0) {
+      this.h++;
+      bxw $$1 = $$0.a(this.g, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+      if ($$1 != null) {
+         if (this.h > 25) {
+            this.a.t().a(cnn.h);
+         } else {
+            ffs $$2 = new ffs($$1.dA() - this.a.dA(), 0.0, $$1.dG() - this.a.dG()).d();
+            ffs $$3 = new ffs((double)azq.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-azq.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
+            float $$4 = (float)$$3.b($$2);
+            float $$5 = (float)(Math.acos((double)$$4) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$5 < 0.0F || $$5 > 10.0F) {
+               double $$6 = $$1.dA() - this.a.c.dA();
+               double $$7 = $$1.dG() - this.a.c.dG();
+               double $$8 = azq.a(azq.d(180.0 - azq.d($$6, $$7) * 180.0F / (float)Math.PI - (double)this.a.dL()), -100.0, 100.0);
+               this.a.bI *= 0.8F;
+               float $$9 = (float)Math.sqrt($$6 * $$6 + $$7 * $$7) + 1.0F;
+               float $$10 = $$9;
+               if ($$9 > 40.0F) {
+                  $$9 = 40.0F;
+               }
+
+               this.a.bI += (float)$$8 * (0.7F / $$9 / $$10);
+               this.a.w(this.a.dL() + this.a.bI);
+            }
          }
-      } else {
-         this.b = false;
-         this.i();
+      } else if (this.h >= 100) {
+         $$1 = $$0.a(f, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+         this.a.t().a(cnn.e);
+         if ($$1 != null) {
+            this.a.t().a(cnn.i);
+            this.a.t().b(cnn.i).a(new ffs($$1.dA(), $$1.dC(), $$1.dG()));
+         }
       }
    }
 
    @Override
    public void c() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
-   }
-
-   private void i() {
-      int $$0 = this.a.n();
-      ffq $$1 = this.a.J(1.0F);
-      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
-      if (this.a.x() != null && this.a.x().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.j();
-   }
-
-   private void j() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            ka $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new ffq((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public ffq f() {
-      return this.d;
+      this.h = 0;
    }
 
    @Override
-   public cnl<cnk> h() {
-      return cnl.e;
+   public cnn<cnk> h() {
+      return cnn.g;
    }
 }

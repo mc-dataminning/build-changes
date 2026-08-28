@@ -1,138 +1,86 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.File;
-import java.net.URI;
-import java.nio.file.Path;
+import java.util.Optional;
 
-public interface wy {
-   Codec<wy> a = wy.a.h.dispatch("action", wy::a, $$0 -> $$0.k);
+public record wy(wz l, wz m) {
+   public static final Codec<wy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(wz.a.fieldOf("chat").forGetter(wy::a), wz.a.fieldOf("narration").forGetter(wy::b)).apply($$0, wy::new)
+   );
+   public static final za<wn, wy> b = za.a(wz.b, wy::a, wz.b, wy::b, wy::new);
+   public static final za<wn, jg<wy>> c = yy.a(mi.aI, b);
+   public static final wz d = wz.a("chat.type.text");
+   public static final alj<wy> e = a("chat");
+   public static final alj<wy> f = a("say_command");
+   public static final alj<wy> g = a("msg_command_incoming");
+   public static final alj<wy> h = a("msg_command_outgoing");
+   public static final alj<wy> i = a("team_msg_command_incoming");
+   public static final alj<wy> j = a("team_msg_command_outgoing");
+   public static final alj<wy> k = a("emote_command");
 
-   wy.a a();
-
-   public static enum a implements bam {
-      a("open_url", true, wy.e.b),
-      b("open_file", false, wy.d.b),
-      c("run_command", true, wy.f.b),
-      d("suggest_command", true, wy.g.b),
-      e("change_page", true, wy.b.b),
-      f("copy_to_clipboard", true, wy.c.b);
-
-      public static final Codec<wy.a> g = bam.a(wy.a::values);
-      public static final Codec<wy.a> h = g.validate(wy.a::a);
-      private final boolean i;
-      private final String j;
-      final MapCodec<? extends wy> k;
-
-      private a(final String $$0, final boolean $$1, final MapCodec<? extends wy> $$2) {
-         this.j = $$0;
-         this.i = $$1;
-         this.k = $$2;
-      }
-
-      public boolean a() {
-         return this.i;
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
-
-      public static DataResult<wy.a> a(wy.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Click event type not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
-      }
+   private static alj<wy> a(String $$0) {
+      return alj.a(mi.aI, alk.b($$0));
    }
 
-   public static record b(int c) implements wy {
-      public static final MapCodec<wy.b> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayw.m.fieldOf("page").forGetter(wy.b::b)).apply($$0, wy.b::new));
+   public static void a(qi<wy> $$0) {
+      $$0.a(e, new wy(d, wz.a("chat.type.text.narrate")));
+      $$0.a(f, new wy(wz.a("chat.type.announcement"), wz.a("chat.type.text.narrate")));
+      $$0.a(g, new wy(wz.b("commands.message.display.incoming"), wz.a("chat.type.text.narrate")));
+      $$0.a(h, new wy(wz.c("commands.message.display.outgoing"), wz.a("chat.type.text.narrate")));
+      $$0.a(i, new wy(wz.d("chat.type.team.text"), wz.a("chat.type.text.narrate")));
+      $$0.a(j, new wy(wz.d("chat.type.team.sent"), wz.a("chat.type.text.narrate")));
+      $$0.a(k, new wy(wz.a("chat.type.emote"), wz.a("chat.type.emote")));
+   }
 
-      @Override
-      public wy.a a() {
-         return wy.a.e;
+   public static wy.a a(alj<wy> $$0, bwv $$1) {
+      return a($$0, $$1.dV().J_(), $$1.m_());
+   }
+
+   public static wy.a a(alj<wy> $$0, ek $$1) {
+      return a($$0, $$1.u(), $$1.b());
+   }
+
+   public static wy.a a(alj<wy> $$0, ju $$1, xc $$2) {
+      jt<wy> $$3 = $$1.f(mi.aI);
+      return new wy.a($$3.b($$0), $$2);
+   }
+
+   public wz a() {
+      return this.l;
+   }
+
+   public wz b() {
+      return this.m;
+   }
+
+   public static record a(jg<wy> b, xc c, Optional<xc> d) {
+      public static final za<wn, wy.a> a = za.a(wy.c, wy.a::a, xe.d, wy.a::b, xe.e, wy.a::c, wy.a::new);
+
+      a(jg<wy> $$0, xc $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      public int b() {
+      public xc a(xc $$0) {
+         return this.b.a().a().a($$0, this);
+      }
+
+      public xc b(xc $$0) {
+         return this.b.a().b().a($$0, this);
+      }
+
+      public wy.a c(xc $$0) {
+         return new wy.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public jg<wy> a() {
+         return this.b;
+      }
+
+      public xc b() {
          return this.c;
       }
-   }
 
-   public static record c(String c) implements wy {
-      public static final MapCodec<wy.c> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("value").forGetter(wy.c::b)).apply($$0, wy.c::new)
-      );
-
-      @Override
-      public wy.a a() {
-         return wy.a.f;
-      }
-
-      public String b() {
-         return this.c;
-      }
-   }
-
-   public static record d(String c) implements wy {
-      public static final MapCodec<wy.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("path").forGetter(wy.d::c)).apply($$0, wy.d::new)
-      );
-
-      public d(File $$0) {
-         this($$0.toString());
-      }
-
-      public d(Path $$0) {
-         this($$0.toFile());
-      }
-
-      public File b() {
-         return new File(this.c);
-      }
-
-      @Override
-      public wy.a a() {
-         return wy.a.b;
-      }
-   }
-
-   public static record e(URI c) implements wy {
-      public static final MapCodec<wy.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayw.D.fieldOf("url").forGetter(wy.e::b)).apply($$0, wy.e::new));
-
-      @Override
-      public wy.a a() {
-         return wy.a.a;
-      }
-
-      public URI b() {
-         return this.c;
-      }
-   }
-
-   public static record f(String c) implements wy {
-      public static final MapCodec<wy.f> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayw.E.fieldOf("command").forGetter(wy.f::b)).apply($$0, wy.f::new));
-
-      @Override
-      public wy.a a() {
-         return wy.a.c;
-      }
-
-      public String b() {
-         return this.c;
-      }
-   }
-
-   public static record g(String c) implements wy {
-      public static final MapCodec<wy.g> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayw.E.fieldOf("command").forGetter(wy.g::b)).apply($$0, wy.g::new));
-
-      @Override
-      public wy.a a() {
-         return wy.a.d;
-      }
-
-      public String b() {
-         return this.c;
+      public Optional<xc> c() {
+         return this.d;
       }
    }
 }

@@ -2,33 +2,26 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ky(Optional<jj<dae>> c) implements dl<dad> {
-   public static final Codec<ky> a = RecordCodecBuilder.create($$0 -> $$0.group(ju.a(mh.aV).optionalFieldOf("song").forGetter(ky::c)).apply($$0, ky::new));
+public record ky(Optional<bg<dco, kx.a>> e, cx.d f) implements dm<dcp> {
+   public static final Codec<ky> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bg.a(kx.a.a).optionalFieldOf("explosions").forGetter(ky::b), cx.d.d.optionalFieldOf("flight_duration", cx.d.c).forGetter(ky::c))
+            .apply($$0, ky::new)
+   );
 
    @Override
-   public kj<dad> a() {
-      return kk.ae;
+   public kk<dcp> a() {
+      return kl.aj;
    }
 
-   public boolean a(dad $$0) {
-      if (!this.c.isPresent()) {
-         return true;
-      } else {
-         boolean $$1 = false;
-
-         for (jf<dae> $$2 : this.c.get()) {
-            Optional<alh<dae>> $$3 = $$2.e();
-            if (!$$3.isEmpty() && $$3.equals($$0.a().a())) {
-               $$1 = true;
-               break;
-            }
-         }
-
-         return $$1;
-      }
+   public boolean a(dcp $$0) {
+      return this.e.isPresent() && !this.e.get().a($$0.b()) ? false : this.f.d($$0.a());
    }
 
-   public static ky b() {
-      return new ky(Optional.empty());
+   public Optional<bg<dco, kx.a>> b() {
+      return this.e;
+   }
+
+   public cx.d c() {
+      return this.f;
    }
 }

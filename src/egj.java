@@ -1,14 +1,34 @@
-import com.mojang.serialization.MapCodec;
+public interface egj {
+   egj a = new egj() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-public interface egj<T extends egi> {
-   egj<ega> a = a("block", new ega.a());
-   egj<egc> b = a("entity", new egc.a());
+      @Override
+      public void a(egi $$0) {
+      }
 
-   MapCodec<T> a();
+      @Override
+      public void b(egi $$0) {
+      }
 
-   yy<? super wl, T> b();
+      @Override
+      public boolean a(jg<egg> $$0, ffs $$1, egg.a $$2, egj.a $$3) {
+         return false;
+      }
+   };
 
-   static <S extends egj<T>, T extends egi> S a(String $$0, S $$1) {
-      return js.a(mg.t, $$0, $$1);
+   boolean a();
+
+   void a(egi var1);
+
+   void b(egi var1);
+
+   boolean a(jg<egg> var1, ffs var2, egg.a var3, egj.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(egi var1, ffs var2);
    }
 }

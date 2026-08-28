@@ -1,4 +1,4 @@
 @FunctionalInterface
-public interface zb<O, T> {
-   void encode(T var1, O var2);
+public interface zb<I, T> {
+   T decode(I var1);
 }

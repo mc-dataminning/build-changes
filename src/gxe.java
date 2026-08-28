@@ -1,23 +1,17 @@
-public class gxe extends gxc<ckw, hds, ggp> {
-   private static final ali a = ali.b("textures/entity/armadillo.png");
+@Deprecated
+public abstract class gxe<T extends bxy, S extends hfr, M extends gic<? super S>> extends gzq<T, S, M> {
+   private final M a;
+   private final M j;
 
-   public gxe(gyi.a $$0) {
-      super($$0, new ggp($$0.a(gld.d)), new ggp($$0.a(gld.e)), 0.4F);
+   public gxe(gyk.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.j = $$2;
    }
 
-   public ali a(hds $$0) {
-      return a;
-   }
-
-   public hds a() {
-      return new hds();
-   }
-
-   public void a(ckw $$0, hds $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-      $$1.d.a($$0.bO);
-      $$1.b.a($$0.bM);
-      $$1.c.a($$0.bN);
+   @Override
+   public void a(S $$0, flq $$1, gsc $$2, int $$3) {
+      this.g = $$0.aj ? this.j : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

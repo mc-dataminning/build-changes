@@ -1,32 +1,22 @@
-public class aws {
-   protected final awt a = new awt();
+public enum aws {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-   public boolean a(cxg $$0) {
-      return this.a.a($$0);
+   private final String k;
+
+   private aws(final String $$0) {
+      this.k = $$0;
    }
 
-   public void a(cxg $$0, boolean $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public boolean b(cxg $$0) {
-      return this.a.b($$0);
-   }
-
-   public void b(cxg $$0, boolean $$1) {
-      this.a.b($$0, $$1);
-   }
-
-   public void a(awt $$0) {
-      this.a.a($$0);
-   }
-
-   public awt a() {
-      return this.a.a();
-   }
-
-   public void a(cxg $$0, boolean $$1, boolean $$2) {
-      this.a.a($$0, $$1);
-      this.a.b($$0, $$2);
+   public String a() {
+      return this.k;
    }
 }

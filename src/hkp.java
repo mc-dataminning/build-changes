@@ -1,36 +1,69 @@
-public final class hkp {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final ali d = ali.b("missingno");
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public static fkg a() {
-      return a(16, 16);
+public class hkp extends hkn implements hko {
+   private static final Logger c = LogUtils.getLogger();
+   @Nullable
+   private fki d;
+
+   public hkp(Supplier<String> $$0, fki $$1) {
+      this.d = $$1;
+      this.a = RenderSystem.getDevice().a($$0, flk.a, this.d.a(), this.d.b(), 1);
+      this.b();
    }
 
-   public static fkg a(int $$0, int $$1) {
-      fkg $$2 = new fkg($$0, $$1, false);
-      int $$3 = -524040;
+   public hkp(String $$0, int $$1, int $$2, boolean $$3) {
+      this.d = new fki($$1, $$2, $$3);
+      this.a = RenderSystem.getDevice().a($$0, flk.a, this.d.a(), this.d.b(), 1);
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
-               $$2.b($$5, $$4, -524040);
-            } else {
-               $$2.b($$5, $$4, -16777216);
-            }
-         }
+   public hkp(Supplier<String> $$0, int $$1, int $$2, boolean $$3) {
+      this.d = new fki($$1, $$2, $$3);
+      this.a = RenderSystem.getDevice().a($$0, flk.a, this.d.a(), this.d.b(), 1);
+   }
+
+   public void b() {
+      if (this.d != null && this.a != null) {
+         RenderSystem.getDevice().b().a(this.a, this.d);
+      } else {
+         c.warn("Trying to upload disposed texture {}", this.a().e());
+      }
+   }
+
+   @Nullable
+   public fki c() {
+      return this.d;
+   }
+
+   public void a(fki $$0) {
+      if (this.d != null) {
+         this.d.close();
       }
 
-      return $$2;
+      this.d = $$0;
    }
 
-   public static hku b() {
-      fkg $$0 = a(16, 16);
-      return new hku(d, new hmo(16, 16), $$0, avh.a);
+   @Override
+   public void close() {
+      if (this.d != null) {
+         this.d.close();
+         this.d = null;
+      }
+
+      super.close();
    }
 
-   public static ali c() {
-      return d;
+   @Override
+   public void a(alk $$0, Path $$1) throws IOException {
+      if (this.d != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.d.a($$3);
+      }
    }
 }

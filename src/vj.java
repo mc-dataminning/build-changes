@@ -1,89 +1,15 @@
-public interface vj extends uv {
-   vj a = new vj() {
-   };
+import java.util.List;
 
-   @Override
-   default uv.b a() {
-      return uv.b.a;
+public record vj(List<String> a, vc<?> b, String c) {
+   public vj(vc<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   @Override
-   default uv.b a(String $$0) {
-      return uv.b.a;
+   public vj(String $$0, vc<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
    }
 
-   @Override
-   default uv.b a(byte $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(short $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(int $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(long $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(float $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(double $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(byte[] $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(int[] $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(long[] $$0) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b a(va<?> $$0, int $$1) {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.a b(va<?> $$0, int $$1) {
-      return uv.a.b;
-   }
-
-   @Override
-   default uv.a a(va<?> $$0) {
-      return uv.a.b;
-   }
-
-   @Override
-   default uv.a a(va<?> $$0, String $$1) {
-      return uv.a.b;
-   }
-
-   @Override
-   default uv.b b() {
-      return uv.b.a;
-   }
-
-   @Override
-   default uv.b b(va<?> $$0) {
-      return uv.b.a;
+   public vj(String $$0, String $$1, vc<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

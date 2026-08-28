@@ -1,49 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dse extends dnc implements dun {
-   public static final MapCodec<dse> a = b(dse::new);
-   public static final ebv b = ebu.I;
+public class dse extends dwb implements dnh {
+   public static final MapCodec<dse> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayy.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, dse::new)
+   );
 
    @Override
    public MapCodec<dse> a() {
-      return a;
+      return f;
    }
 
-   protected dse(ebd.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean b(ebe $$0, ebe $$1, jb $$2) {
-      return $$1.a(dne.ag) && $$2.o() == jb.a.b;
-   }
-
-   @Nullable
-   @Override
-   public ebe a(ddr $$0) {
-      exo $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == exp.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
+   public dse(float $$0, ebf.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public boolean a(dkc $$0, iw $$1, ebg $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
    @Override
-   protected exo b_(ebe $$0) {
-      return $$0.c(b) ? exp.c.a(false) : super.b_($$0);
+   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+      return true;
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b);
+   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
+      $$0.a($$2.e(), dsf.c(), 2);
+   }
+
+   @Override
+   public iw a(iw $$0) {
+      return $$0.e();
    }
 }

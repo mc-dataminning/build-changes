@@ -1,222 +1,312 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dwr extends dnc implements dun {
+public class dwr extends dne {
    public static final MapCodec<dwr> a = b(dwr::new);
-   public static final ebv b = ebu.L;
-   public static final ecc<ecr> c = ebu.Z;
-   public static final ecc<ecr> d = ebu.aa;
-   public static final ecc<ecr> e = ebu.ab;
-   public static final ecc<ecr> f = ebu.ac;
-   public static final Map<jb, ecc<ecr>> g = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jb.c, d, jb.f, c, jb.d, e, jb.e, f)));
-   public static final ebv h = ebu.I;
-   private final Function<ebe, fgk> i;
-   private final Function<ebe, fgk> D;
-   private static final fgk R = dnc.b(2.0, 0.0, 16.0);
-   private static final Map<jb, fgk> S = fgh.c(dnc.b(2.0, 16.0, 0.0, 9.0));
+   public static final ebx b = dsy.f;
+   public static final ebx c = dsy.b;
+   public static final ebx d = dsy.c;
+   public static final ebx e = dsy.d;
+   public static final ebx f = dsy.e;
+   public static final Map<jc, ebx> g = dsy.h.entrySet().stream().filter($$0 -> $$0.getKey() != jc.a).collect(ag.a());
+   private final Function<ebg, fgm> h;
 
    @Override
    public MapCodec<dwr> a() {
       return a;
    }
 
-   public dwr(ebd.d $$0) {
+   public dwr(ebf.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)).b(d, ecr.a).b(c, ecr.a).b(e, ecr.a).b(f, ecr.a).b(h, Boolean.valueOf(false)));
-      this.i = this.a(16.0F, 14.0F);
-      this.D = this.a(24.0F, 24.0F);
+      this.l(
+         this.C
+            .b()
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+            .b(f, Boolean.valueOf(false))
+      );
+      this.h = this.b();
    }
 
-   private Function<ebe, fgk> a(float $$0, float $$1) {
-      fgk $$2 = dnc.b(8.0, 0.0, (double)$$0);
-      int $$3 = 6;
-      Map<jb, fgk> $$4 = fgh.c(dnc.a(6.0, 0.0, (double)$$1, 0.0, 11.0));
-      Map<jb, fgk> $$5 = fgh.c(dnc.a(6.0, 0.0, (double)$$0, 0.0, 11.0));
-      return this.a($$3x -> {
-         fgk $$4x = $$3x.c(b) ? $$2 : fgh.a();
+   private Function<ebg, fgm> b() {
+      Map<jc, fgm> $$0 = fgj.d(dne.c(16.0, 0.0, 1.0));
+      return this.a($$1 -> {
+         fgm $$2 = fgj.a();
 
-         for (Entry<jb, ecc<ecr>> $$5x : g.entrySet()) {
-            $$4x = fgh.a($$4x, switch ((ecr)$$3x.c($$5x.getValue())) {
-               case a -> fgh.a();
-               case b -> (fgk)$$4.get($$5x.getKey());
-               case c -> (fgk)$$5.get($$5x.getKey());
-            });
+         for (Entry<jc, ebx> $$3 : g.entrySet()) {
+            if ($$1.c($$3.getValue())) {
+               $$2 = fgj.a($$2, $$0.get($$3.getKey()));
+            }
          }
 
-         return $$4x;
-      }, new ech[]{h});
+         return $$2.c() ? fgj.b() : $$2;
+      });
    }
 
    @Override
-   protected fgk a(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return this.i.apply($$0);
+   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
+      return this.h.apply($$0);
    }
 
    @Override
-   protected fgk b(ebe $$0, djb $$1, iv $$2, ffv $$3) {
-      return this.D.apply($$0);
+   protected boolean e_(ebg $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(ebe $$0, eyd $$1) {
-      return false;
+   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
+      return this.o(this.e($$0, $$1, $$2));
    }
 
-   private boolean a(ebe $$0, boolean $$1, jb $$2) {
-      dnc $$3 = $$0.b();
-      boolean $$4 = $$3 instanceof dqd && dqd.a($$0, $$2);
-      return $$0.a(axe.N) || !k($$0) && $$1 || $$3 instanceof dri || $$4;
+   private boolean o(ebg $$0) {
+      return this.q($$0) > 0;
    }
 
-   @Override
-   public ebe a(ddr $$0) {
-      dka $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      exo $$3 = $$0.q().b_($$0.a());
-      iv $$4 = $$2.f();
-      iv $$5 = $$2.i();
-      iv $$6 = $$2.g();
-      iv $$7 = $$2.h();
-      iv $$8 = $$2.d();
-      ebe $$9 = $$1.a_($$4);
-      ebe $$10 = $$1.a_($$5);
-      ebe $$11 = $$1.a_($$6);
-      ebe $$12 = $$1.a_($$7);
-      ebe $$13 = $$1.a_($$8);
-      boolean $$14 = this.a($$9, $$9.c($$1, $$4, jb.d), jb.d);
-      boolean $$15 = this.a($$10, $$10.c($$1, $$5, jb.e), jb.e);
-      boolean $$16 = this.a($$11, $$11.c($$1, $$6, jb.c), jb.c);
-      boolean $$17 = this.a($$12, $$12.c($$1, $$7, jb.f), jb.f);
-      ebe $$18 = this.m().b(h, Boolean.valueOf($$3.a() == exp.c));
-      return this.a($$1, $$18, $$8, $$13, $$14, $$15, $$16, $$17);
-   }
+   private int q(ebg $$0) {
+      int $$1 = 0;
 
-   @Override
-   protected ebe a(ebe $$0, dka $$1, dkm $$2, iv $$3, jb $$4, iv $$5, ebe $$6, azx $$7) {
-      if ($$0.c(h)) {
-         $$2.a($$3, exp.c, exp.c.a($$1));
+      for (ebx $$2 : g.values()) {
+         if ($$0.c($$2)) {
+            $$1++;
+         }
       }
 
-      if ($$4 == jb.a) {
+      return $$1;
+   }
+
+   private boolean b(djd $$0, iw $$1, jc $$2) {
+      if ($$2 == jc.a) {
+         return false;
+      } else {
+         iw $$3 = $$1.a($$2);
+         if (a($$0, $$3, $$2)) {
+            return true;
+         } else if ($$2.o() == jc.a.b) {
+            return false;
+         } else {
+            ebx $$4 = g.get($$2);
+            ebg $$5 = $$0.a_($$1.d());
+            return $$5.a(this) && $$5.c($$4);
+         }
+      }
+   }
+
+   public static boolean a(djd $$0, iw $$1, jc $$2) {
+      return dsk.a($$0, $$2, $$1, $$0.a_($$1));
+   }
+
+   private ebg e(ebg $$0, djd $$1, iw $$2) {
+      iw $$3 = $$2.d();
+      if ($$0.c(b)) {
+         $$0 = $$0.b(b, Boolean.valueOf(a($$1, $$3, jc.a)));
+      }
+
+      ebg $$4 = null;
+
+      for (jc $$5 : jc.c.a) {
+         ebx $$6 = a($$5);
+         if ($$0.c($$6)) {
+            boolean $$7 = this.b($$1, $$2, $$5);
+            if (!$$7) {
+               if ($$4 == null) {
+                  $$4 = $$1.a_($$3);
+               }
+
+               $$7 = $$4.a(this) && $$4.c($$6);
+            }
+
+            $$0 = $$0.b($$6, Boolean.valueOf($$7));
+         }
+      }
+
+      return $$0;
+   }
+
+   @Override
+   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
+      if ($$4 == jc.a) {
          return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       } else {
-         return $$4 == jb.b ? this.a($$1, $$0, $$5, $$6) : this.a($$1, $$3, $$0, $$5, $$6, $$4);
+         ebg $$8 = this.e($$0, $$1, $$3);
+         return !this.o($$8) ? dng.a.m() : $$8;
       }
    }
 
-   private static boolean a(ebe $$0, ech<ecr> $$1) {
-      return $$0.c($$1) != ecr.a;
-   }
+   @Override
+   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
+      if ($$1.O().c(djv.Z)) {
+         if ($$3.a(4) == 0) {
+            jc $$4 = jc.b($$3);
+            iw $$5 = $$2.d();
+            if ($$4.o().d() && !$$0.c(a($$4))) {
+               if (this.a($$1, $$2)) {
+                  iw $$6 = $$2.a($$4);
+                  ebg $$7 = $$1.a_($$6);
+                  if ($$7.l()) {
+                     jc $$8 = $$4.h();
+                     jc $$9 = $$4.i();
+                     boolean $$10 = $$0.c(a($$8));
+                     boolean $$11 = $$0.c(a($$9));
+                     iw $$12 = $$6.a($$8);
+                     iw $$13 = $$6.a($$9);
+                     if ($$10 && a($$1, $$12, $$8)) {
+                        $$1.a($$6, this.m().b(a($$8), Boolean.valueOf(true)), 2);
+                     } else if ($$11 && a($$1, $$13, $$9)) {
+                        $$1.a($$6, this.m().b(a($$9), Boolean.valueOf(true)), 2);
+                     } else {
+                        jc $$14 = $$4.g();
+                        if ($$10 && $$1.v($$12) && a($$1, $$2.a($$8), $$14)) {
+                           $$1.a($$12, this.m().b(a($$14), Boolean.valueOf(true)), 2);
+                        } else if ($$11 && $$1.v($$13) && a($$1, $$2.a($$9), $$14)) {
+                           $$1.a($$13, this.m().b(a($$14), Boolean.valueOf(true)), 2);
+                        } else if ((double)$$3.i() < 0.05 && a($$1, $$6.d(), jc.b)) {
+                           $$1.a($$6, this.m().b(b, Boolean.valueOf(true)), 2);
+                        }
+                     }
+                  } else if (a($$1, $$6, $$4)) {
+                     $$1.a($$2, $$0.b(a($$4), Boolean.valueOf(true)), 2);
+                  }
+               }
+            } else {
+               if ($$4 == jc.b && $$2.v() < $$1.ao()) {
+                  if (this.b($$1, $$2, $$4)) {
+                     $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 2);
+                     return;
+                  }
 
-   private static boolean a(fgk $$0, fgk $$1) {
-      return !fgh.c($$1, $$0, ffu.e);
-   }
+                  if ($$1.v($$5)) {
+                     if (!this.a($$1, $$2)) {
+                        return;
+                     }
 
-   private ebe a(dka $$0, ebe $$1, iv $$2, ebe $$3) {
-      boolean $$4 = a($$1, d);
-      boolean $$5 = a($$1, c);
-      boolean $$6 = a($$1, e);
-      boolean $$7 = a($$1, f);
-      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+                     ebg $$15 = $$0;
 
-   private ebe a(dka $$0, iv $$1, ebe $$2, iv $$3, ebe $$4, jb $$5) {
-      jb $$6 = $$5.g();
-      boolean $$7 = $$5 == jb.c ? this.a($$4, $$4.c($$0, $$3, $$6), $$6) : a($$2, d);
-      boolean $$8 = $$5 == jb.f ? this.a($$4, $$4.c($$0, $$3, $$6), $$6) : a($$2, c);
-      boolean $$9 = $$5 == jb.d ? this.a($$4, $$4.c($$0, $$3, $$6), $$6) : a($$2, e);
-      boolean $$10 = $$5 == jb.e ? this.a($$4, $$4.c($$0, $$3, $$6), $$6) : a($$2, f);
-      iv $$11 = $$1.d();
-      ebe $$12 = $$0.a_($$11);
-      return this.a($$0, $$2, $$11, $$12, $$7, $$8, $$9, $$10);
-   }
+                     for (jc $$16 : jc.c.a) {
+                        if ($$3.h() || !a($$1, $$5.a($$16), $$16)) {
+                           $$15 = $$15.b(a($$16), Boolean.valueOf(false));
+                        }
+                     }
 
-   private ebe a(dka $$0, ebe $$1, iv $$2, ebe $$3, boolean $$4, boolean $$5, boolean $$6, boolean $$7) {
-      fgk $$8 = $$3.g($$0, $$2).a(jb.a);
-      ebe $$9 = this.a($$1, $$4, $$5, $$6, $$7, $$8);
-      return $$9.b(b, Boolean.valueOf(this.a($$9, $$3, $$8)));
-   }
+                     if (this.r($$15)) {
+                        $$1.a($$5, $$15, 2);
+                     }
 
-   private boolean a(ebe $$0, ebe $$1, fgk $$2) {
-      boolean $$3 = $$1.b() instanceof dwr && $$1.c(b);
-      if ($$3) {
-         return true;
-      } else {
-         ecr $$4 = $$0.c(d);
-         ecr $$5 = $$0.c(e);
-         ecr $$6 = $$0.c(c);
-         ecr $$7 = $$0.c(f);
-         boolean $$8 = $$5 == ecr.a;
-         boolean $$9 = $$7 == ecr.a;
-         boolean $$10 = $$6 == ecr.a;
-         boolean $$11 = $$4 == ecr.a;
-         boolean $$12 = $$11 && $$8 && $$9 && $$10 || $$11 != $$8 || $$9 != $$10;
-         if ($$12) {
-            return true;
-         } else {
-            boolean $$13 = $$4 == ecr.c && $$5 == ecr.c || $$6 == ecr.c && $$7 == ecr.c;
-            return $$13 ? false : $$1.a(axe.aR) || a($$2, R);
+                     return;
+                  }
+               }
+
+               if ($$2.v() > $$1.K_()) {
+                  iw $$17 = $$2.e();
+                  ebg $$18 = $$1.a_($$17);
+                  if ($$18.l() || $$18.a(this)) {
+                     ebg $$19 = $$18.l() ? this.m() : $$18;
+                     ebg $$20 = this.a($$0, $$19, $$3);
+                     if ($$19 != $$20 && this.r($$20)) {
+                        $$1.a($$17, $$20, 2);
+                     }
+                  }
+               }
+            }
          }
       }
    }
 
-   private ebe a(ebe $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4, fgk $$5) {
-      return $$0.b(d, this.a($$1, $$5, S.get(jb.c)))
-         .b(c, this.a($$2, $$5, S.get(jb.f)))
-         .b(e, this.a($$3, $$5, S.get(jb.d)))
-         .b(f, this.a($$4, $$5, S.get(jb.e)));
-   }
-
-   private ecr a(boolean $$0, fgk $$1, fgk $$2) {
-      if ($$0) {
-         return a($$1, $$2) ? ecr.c : ecr.b;
-      } else {
-         return ecr.a;
+   private ebg a(ebg $$0, ebg $$1, azz $$2) {
+      for (jc $$3 : jc.c.a) {
+         if ($$2.h()) {
+            ebx $$4 = a($$3);
+            if ($$0.c($$4)) {
+               $$1 = $$1.b($$4, Boolean.valueOf(true));
+            }
+         }
       }
+
+      return $$1;
+   }
+
+   private boolean r(ebg $$0) {
+      return $$0.c(c) || $$0.c(d) || $$0.c(e) || $$0.c(f);
+   }
+
+   private boolean a(djd $$0, iw $$1) {
+      int $$2 = 4;
+      Iterable<iw> $$3 = iw.b($$1.u() - 4, $$1.v() - 1, $$1.w() - 4, $$1.u() + 4, $$1.v() + 1, $$1.w() + 4);
+      int $$4 = 5;
+
+      for (iw $$5 : $$3) {
+         if ($$0.a_($$5).a(this)) {
+            if (--$$4 <= 0) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
    @Override
-   protected exo b_(ebe $$0) {
-      return $$0.c(h) ? exp.c.a(false) : super.b_($$0);
+   protected boolean a(ebg $$0, ddt $$1) {
+      ebg $$2 = $$1.q().a_($$1.a());
+      return $$2.a(this) ? this.q($$2) < g.size() : super.a($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public ebg a(ddt $$0) {
+      ebg $$1 = $$0.q().a_($$0.a());
+      boolean $$2 = $$1.a(this);
+      ebg $$3 = $$2 ? $$1 : this.m();
+
+      for (jc $$4 : $$0.f()) {
+         if ($$4 != jc.a) {
+            ebx $$5 = a($$4);
+            boolean $$6 = $$2 && $$1.c($$5);
+            if (!$$6 && this.b($$0.q(), $$0.a(), $$4)) {
+               return $$3.b($$5, Boolean.valueOf(true));
+            }
+         }
+      }
+
+      return $$2 ? $$3 : null;
    }
 
    @Override
-   protected boolean e_(ebe $$0) {
-      return !$$0.c(h);
+   protected void a(ebh.a<dne, ebg> $$0) {
+      $$0.a(b, c, d, e, f);
    }
 
    @Override
-   protected void a(ebf.a<dnc, ebe> $$0) {
-      $$0.a(b, d, c, f, e, h);
-   }
-
-   @Override
-   protected ebe a(ebe $$0, dtw $$1) {
+   protected ebg a(ebg $$0, dty $$1) {
       switch ($$1) {
          case c:
-            return $$0.b(d, $$0.c(e)).b(c, $$0.c(f)).b(e, $$0.c(d)).b(f, $$0.c(c));
+            return $$0.b(c, $$0.c(e)).b(d, $$0.c(f)).b(e, $$0.c(c)).b(f, $$0.c(d));
          case d:
-            return $$0.b(d, $$0.c(c)).b(c, $$0.c(e)).b(e, $$0.c(f)).b(f, $$0.c(d));
+            return $$0.b(c, $$0.c(d)).b(d, $$0.c(e)).b(e, $$0.c(f)).b(f, $$0.c(c));
          case b:
-            return $$0.b(d, $$0.c(f)).b(c, $$0.c(d)).b(e, $$0.c(c)).b(f, $$0.c(e));
+            return $$0.b(c, $$0.c(f)).b(d, $$0.c(c)).b(e, $$0.c(d)).b(f, $$0.c(e));
          default:
             return $$0;
       }
    }
 
    @Override
-   protected ebe a(ebe $$0, dsf $$1) {
+   protected ebg a(ebg $$0, dsh $$1) {
       switch ($$1) {
          case b:
-            return $$0.b(d, $$0.c(e)).b(e, $$0.c(d));
+            return $$0.b(c, $$0.c(e)).b(e, $$0.c(c));
          case c:
-            return $$0.b(c, $$0.c(f)).b(f, $$0.c(c));
+            return $$0.b(d, $$0.c(f)).b(f, $$0.c(d));
          default:
             return super.a($$0, $$1);
       }
+   }
+
+   public static ebx a(jc $$0) {
+      return g.get($$0);
    }
 }

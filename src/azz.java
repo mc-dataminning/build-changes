@@ -1,37 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import io.netty.util.internal.ThreadLocalRandom;
 
-public class azz {
-   public static final Codec<azz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayw.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), ayw.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, azz::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<ali> f;
+public interface azz {
+   @Deprecated
+   double a = 2.297;
 
-   private azz(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   static azz a() {
+      return a(ehu.a());
    }
 
-   public Predicate<String> a() {
-      return this.c;
+   @Deprecated
+   static azz b() {
+      return new ehy(ehu.a());
    }
 
-   public Predicate<String> b() {
-      return this.e;
+   static azz a(long $$0) {
+      return new ehg($$0);
    }
 
-   public Predicate<ali> c() {
-      return this.f;
+   static azz c() {
+      return new ehv(ThreadLocalRandom.current().nextLong());
+   }
+
+   azz d();
+
+   ehs e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default float a(float $$0, float $$1) {
+      return $$0 + $$1 * (this.i() - this.i());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
+      }
+   }
+
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
+      } else {
+         return $$0 + this.a($$1 - $$0);
+      }
    }
 }

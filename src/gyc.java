@@ -1,57 +1,32 @@
-public class gyc extends gyh<cmu, hem> {
-   private static final ali a = ali.b("textures/entity/end_crystal/end_crystal.png");
-   private static final gsl g = gsl.g(a);
-   private final ghx h;
+public class gyc extends gxd<cop, hhh, ghx> {
+   private static final alk a = alk.b("textures/entity/zombie/drowned.png");
 
-   public gyc(gyi.a $$0) {
-      super($$0);
-      this.e = 0.5F;
-      this.h = new ghx($$0.a(gld.aU));
+   public gyc(gyk.a $$0) {
+      super($$0, new ghx($$0.a(glf.aG)), new ghx($$0.a(glf.aH)), new ghx($$0.a(glf.aL)), new ghx($$0.a(glf.aM)), new ghx($$0.a(glf.aI)), new ghx($$0.a(glf.aJ)));
+      this.a(new hcg(this, $$0.f()));
    }
 
-   public void a(hem $$0, flo $$1, gsa $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(0.0F, -0.5F, 0.0F);
-      this.h.a($$0);
-      this.h.a($$1, $$2.getBuffer(g), $$3, hkq.d);
-      $$1.b();
-      ffq $$4 = $$0.b;
-      if ($$4 != null) {
-         float $$5 = a($$0.u);
-         float $$6 = (float)$$4.d;
-         float $$7 = (float)$$4.e;
-         float $$8 = (float)$$4.f;
-         $$1.a($$4);
-         gyd.a(-$$6, -$$7 + $$5, -$$8, $$0.u, $$1, $$2, $$3);
-      }
+   public hhh a() {
+      return new hhh();
+   }
 
+   @Override
+   public alk a(hhh $$0) {
+      return a;
+   }
+
+   protected void a(hhh $$0, flq $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-   }
-
-   public static float a(float $$0) {
-      float $$1 = azo.a($$0 * 0.2F) / 2.0F + 0.5F;
-      $$1 = ($$1 * $$1 + $$1) * 0.4F;
-      return $$1 - 1.4F;
-   }
-
-   public hem a() {
-      return new hem();
-   }
-
-   public void a(cmu $$0, hem $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.u = (float)$$0.a + $$2;
-      $$1.a = $$0.g();
-      iv $$3 = $$0.f();
-      if ($$3 != null) {
-         $$1.b = ffq.b($$3).d($$0.p($$2));
-      } else {
-         $$1.b = null;
+      float $$4 = $$0.G;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.ab;
+         float $$6 = azq.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
       }
    }
 
-   public boolean a(cmu $$0, gvu $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.f() != null;
+   protected giq.a a(cop $$0, bxn $$1) {
+      daa $$2 = $$0.a($$1);
+      return $$0.fy() == $$1 && $$0.gl() && $$2.a(dae.xd) ? giq.a.e : giq.a.a;
    }
 }

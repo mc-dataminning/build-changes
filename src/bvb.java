@@ -1,9 +1,19 @@
-import javax.annotation.Nullable;
+public final class bvb implements buv {
+   private final xc a;
+   private final cxa b;
 
-public interface bvb extends buk {
-   int[] a(jb var1);
+   public bvb(cxa $$0, xc $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
 
-   boolean a(int var1, czy var2, @Nullable jb var3);
+   @Override
+   public xc m_() {
+      return this.a;
+   }
 
-   boolean b(int var1, czy var2, jb var3);
+   @Override
+   public cvs createMenu(int $$0, cry $$1, crz $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
+   }
 }

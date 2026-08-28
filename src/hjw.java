@@ -1,38 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class hjw implements hka {
-   public static final ali a = ali.b("christmas");
-   public static final ali b = ali.b("normal");
-   public static final ali c = ali.b("trapped");
-   public static final ali d = ali.b("ender");
-   private final ghk e;
-   private final hnh f;
-   private final float g;
+public class hjw implements hkg<dxu> {
+   private final guk a;
+   private final cyy b;
 
-   public hjw(ghk $$0, hnh $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public hjw(cyy $$0, guk $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   @Override
-   public void a(czw $$0, flo $$1, gsa $$2, int $$3, int $$4, boolean $$5) {
-      flr $$6 = this.f.a($$2, gsl::d);
-      this.e.a(this.g);
-      this.e.a($$1, $$6, $$3, $$4);
+   @Nullable
+   public dxu a(daa $$0) {
+      return $$0.a(kl.am);
    }
 
-   public static record a(ali b, float c) implements hke.a {
-      public static final MapCodec<hjw.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ali.a.fieldOf("texture").forGetter(hjw.a::b), Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hjw.a::c))
-               .apply($$0, hjw.a::new)
-      );
+   public void a(@Nullable dxu $$0, czy $$1, flq $$2, gsc $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dxu.a));
+   }
 
-      public a(ali $$0) {
-         this($$0, 0.0F);
-      }
+   public static record a(cyy b) implements hkg.a {
+      public static final MapCodec<hjw.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyy.q.fieldOf("color").forGetter(hjw.a::b)).apply($$0, hjw.a::new));
 
       @Override
       public MapCodec<hjw.a> a() {
@@ -40,10 +30,8 @@ public class hjw implements hka {
       }
 
       @Override
-      public hke<?> a(gla $$0) {
-         ghk $$1 = new ghk($$0.a(gld.X));
-         hnh $$2 = gsu.m.a(this.b);
-         return new hjw($$1, $$2, this.c);
+      public hkg<?> a(glc $$0) {
+         return new hjw(this.b, new guk($$0));
       }
    }
 }

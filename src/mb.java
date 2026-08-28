@@ -2,21 +2,16 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class mb implements lw {
-   public static final MapCodec<mb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, mb::new));
-   public static final yy<wl, mb> b = yy.a(yw.h, $$0 -> $$0.c, mb::new);
-   private final int c;
-
-   public mb(int $$0) {
-      this.c = $$0;
-   }
+public record mb(float c) implements lx {
+   public static final MapCodec<mb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.c)).apply($$0, mb::new));
+   public static final za<wn, mb> b = za.a(yy.l, $$0 -> $$0.c, mb::new);
 
    @Override
-   public lx<mb> a() {
-      return ly.aY;
+   public ly<mb> a() {
+      return lz.L;
    }
 
-   public int b() {
+   public float b() {
       return this.c;
    }
 }

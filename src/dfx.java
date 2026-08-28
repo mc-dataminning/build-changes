@@ -1,9 +1,20 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public record dfx(int b) {
-   public static final yy<ByteBuf, dfx> a = yy.a(yw.h, dfx::a, dfx::new);
+public interface dfx {
+   Codec<dfx> d = mh.ax.q().dispatch(dfx::a, dfx.a::a);
+   za<wn, dfx> e = yy.a(mi.ag).b(dfx::a, dfx.a::b);
 
-   public int a() {
-      return this.b;
+   dgd d();
+
+   dgd e();
+
+   dfx.a<? extends dfx> a();
+
+   default boolean a(cvj $$0) {
+      return this.d().a($$0) && this.e().a($$0);
+   }
+
+   public static record a<T extends dfx>(MapCodec<T> a, za<wn, T> b) {
    }
 }

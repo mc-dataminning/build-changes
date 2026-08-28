@@ -1,22 +1,27 @@
-public class hbf extends gzb<cpo, hfh> {
-   private static final ali a = ali.b("textures/entity/illager/vindicator.png");
+public class hbf extends gzq<cpp, hgz, gkn> {
+   private static final alk a = alk.b("textures/entity/illager/vex.png");
+   private static final alk j = alk.b("textures/entity/illager/vex_charging.png");
 
-   public hbf(gyi.a $$0) {
-      super($$0, new gip<>($$0.a(gld.dN)), 0.5F);
-      this.a(new hco<hfh, gip<hfh>>(this) {
-         public void a(flo $$0, gsa $$1, int $$2, hfh $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public hbf(gyk.a $$0) {
+      super($$0, new gkn($$0.a(glf.dK)), 0.3F);
+      this.a(new hcq<>(this));
    }
 
-   public ali a(hfh $$0) {
-      return a;
+   protected int a(cpp $$0, iw $$1) {
+      return 15;
    }
 
-   public hfh b() {
-      return new hfh();
+   public alk a(hgz $$0) {
+      return $$0.a ? j : a;
+   }
+
+   public hgz b() {
+      return new hgz();
+   }
+
+   public void a(cpp $$0, hgz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hdv.a($$0, $$1, this.h);
+      $$1.a = $$0.t();
    }
 }

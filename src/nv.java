@@ -1,61 +1,64 @@
 import java.util.function.BiConsumer;
 
-public record nv(jh.a a) implements nl {
+public record nv(ji.a a) implements nm {
    @Override
-   public void generate(BiConsumer<alh<fam>, fam.a> $$0) {
-      jh.b<dla> $$1 = this.a.e(mh.aG);
+   public void generate(BiConsumer<alj<fao>, fao.a> $$0) {
+      ji.b<dip> $$1 = this.a.e(mi.bl);
+      ji.b<din> $$2 = this.a.e(mi.bk);
+      ji.b<dgn> $$3 = this.a.e(mi.aR);
+      dil $$4 = new dil($$2.b(dio.e), $$1.b(diq.q));
+      dil $$5 = new dil($$2.b(dio.e), $$1.b(diq.r));
       $$0.accept(
-         fad.am,
-         fam.b()
+         faf.ai,
+         fao.b()
             .a(
-               fal.a()
-                  .a(fej.a(1.0F))
-                  .a(fba.a(fad.an).a(10).b(-2))
-                  .a(fba.a(fad.ao).a(5).b(2).a(fdt.a(fah.b.a, by.a.a().a(ce.a(true)))))
-                  .a(fba.a(fad.ap).a(85).b(-1))
-            )
-      );
-      $$0.accept(fad.ap, a());
-      $$0.accept(
-         fad.an,
-         fam.b()
-            .a(
-               fal.a()
-                  .a(fau.a(dne.fF).a(17))
-                  .a(fau.a(dac.qp).a(10).a(fcn.a(feq.a(0.0F, 0.9F))))
-                  .a(fau.a(dac.rt).a(10))
-                  .a(fau.a(dac.sH).a(10))
-                  .a(fau.a(dac.tt).a(10).a(fcs.a(dbv.a)))
-                  .a(fau.a(dac.qg).a(5))
-                  .a(fau.a(dac.sd).a(2).a(fcn.a(feq.a(0.0F, 0.9F))))
-                  .a(fau.a(dac.ph).a(10))
-                  .a(fau.a(dac.qe).a(5))
-                  .a(fau.a(dac.sn).a(1).a(fcm.a(fej.a(10.0F))))
-                  .a(fau.a(dne.gg).a(10))
-                  .a(fau.a(dac.tm).a(10))
-                  .a(fau.a(dne.nF).a(fdo.a(cu.a.a().a(jj.a($$1.b(dlh.y), $$1.b(dlh.z), $$1.b(dlh.A))))).a(10))
+               fan.a()
+                  .a(fel.a(1.0F))
+                  .a(fbc.a(a(dae.qq, dae.qr, $$5, $$3).b()).a(4))
+                  .a(fbc.a(a(dae.qu, dae.qv, $$4, $$3).b()).a(2))
+                  .a(fbc.a(a(dae.qy, dae.qz, $$4, $$3).b()).a(1))
             )
       );
       $$0.accept(
-         fad.ao,
-         fam.b()
+         faf.ak,
+         fao.b()
+            .a(fan.a().a(fel.a(1.0F)).a(fbc.a(faf.ai)))
             .a(
-               fal.a()
-                  .a(fau.a(dac.vW))
-                  .a(fau.a(dac.ou))
-                  .a(fau.a(dac.pj).a(fcn.a(feq.a(0.0F, 0.25F))).a(fbl.a(this.a, fej.a(30.0F))))
-                  .a(fau.a(dac.sd).a(fcn.a(feq.a(0.0F, 0.25F))).a(fbl.a(this.a, fej.a(30.0F))))
-                  .a(fau.a(dac.rF).a(fbl.a(this.a, fej.a(30.0F))))
-                  .a(fau.a(dac.xe))
+               fan.a()
+                  .a(fel.a(1.0F))
+                  .a(faw.a(dae.pP).a(4))
+                  .a(faw.a(dae.pP).a(new fck.a().a($$3.b(dgs.n), fel.a(1.0F))))
+                  .a(faw.a(dae.pP).a(new fck.a().a($$3.b(dgs.q), fel.a(1.0F))))
+                  .a(faw.a(dae.pU))
+            )
+      );
+      $$0.accept(
+         faf.aj,
+         fao.b()
+            .a(fan.a().a(fel.a(1.0F)).a(fbc.a(faf.ai)))
+            .a(
+               fan.a()
+                  .a(fel.a(1.0F))
+                  .a(faw.a(dae.pj).a(2))
+                  .a(faw.a(dae.pj).a(new fck.a().a($$3.b(dgs.y), fel.a(1.0F))))
+                  .a(faw.a(dae.pj).a(new fck.a().a($$3.b(dgs.z), fel.a(1.0F))))
             )
       );
    }
 
-   public static fam.a a() {
-      return fam.b().a(fal.a().a(fau.a(dac.sh).a(60)).a(fau.a(dac.si).a(25)).a(fau.a(dac.sj).a(2)).a(fau.a(dac.sk).a(13)));
-   }
-
-   public jh.a b() {
-      return this.a;
+   public static fao.a a(czw $$0, czw $$1, dil $$2, ji.b<dgn> $$3) {
+      return fao.b()
+         .a(
+            fan.a()
+               .a(fel.a(1.0F))
+               .a(fdx.a(0.5F))
+               .a(faw.a($$0).a(fcf.a(kl.W, $$2)).a(new fck.a().a($$3.b(dgs.a), fel.a(4.0F)).a($$3.b(dgs.e), fel.a(4.0F)).a($$3.b(dgs.b), fel.a(4.0F))))
+         )
+         .a(
+            fan.a()
+               .a(fel.a(1.0F))
+               .a(fdx.a(0.5F))
+               .a(faw.a($$1).a(fcf.a(kl.W, $$2)).a(new fck.a().a($$3.b(dgs.a), fel.a(4.0F)).a($$3.b(dgs.e), fel.a(4.0F)).a($$3.b(dgs.b), fel.a(4.0F))))
+         );
    }
 }

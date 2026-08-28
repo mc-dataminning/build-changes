@@ -1,8 +1,51 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongCollection;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public interface esg {
-   void a(esf var1);
+public class esg extends ezc {
+   private final LongSet b;
+   private final LongSet c;
+   private static final Codec<LongSet> d = Codec.LONG_STREAM.xmap(LongOpenHashSet::toSet, LongCollection::longStream);
+   public static final Codec<esg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(d.fieldOf("All").forGetter($$0x -> $$0x.b), d.fieldOf("Remaining").forGetter($$0x -> $$0x.c)).apply($$0, esg::new)
+   );
 
-   @Nullable
-   esf a(ert var1);
+   public static ezd<esg> a(String $$0) {
+      return new ezd<>($$0, esg::new, a, bbf.o);
+   }
+
+   private esg(LongSet $$0, LongSet $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public esg() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public void a(long $$0) {
+      this.b.add($$0);
+      this.c.add($$0);
+      this.f();
+   }
+
+   public boolean b(long $$0) {
+      return this.b.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void d(long $$0) {
+      if (this.c.remove($$0)) {
+         this.f();
+      }
+   }
+
+   public LongSet a() {
+      return this.b;
+   }
 }

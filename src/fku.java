@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fku<T> {
+   T f();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fht
-@fhr
-interface fku {
+   default void b(T $$0) {
+   }
+
+   void a(T var1);
+
+   default boolean a(fku<?> $$0) {
+      return this.equals($$0);
+   }
 }

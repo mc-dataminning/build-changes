@@ -1,75 +1,145 @@
-public class cur extends cuk {
-   private float b;
-   private float c;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public cur(bxc<?> $$0, djx $$1) {
-      super($$0, $$1);
-   }
+public interface cur extends bum, buv {
+   ffs dt();
+
+   ffn cR();
+
+   @Nullable
+   alj<fao> q();
+
+   void a(@Nullable alj<fao> var1);
+
+   long s();
+
+   void a(long var1);
+
+   jp<daa> t();
+
+   void u();
+
+   djz dV();
+
+   boolean dQ();
 
    @Override
-   public bur a(crx $$0, buq $$1) {
-      if (!$$0.fY() && !this.bZ() && (this.dV().C || $$0.n(this))) {
-         this.c = this.b;
-         if (!this.dV().C) {
-            return (bur)($$0.n(this) ? bur.c : bur.e);
-         } else {
-            return bur.a;
+   default boolean c() {
+      return this.al_();
+   }
+
+   default void a(ua $$0, ji.a $$1) {
+      if (this.q() != null) {
+         $$0.a("LootTable", this.q().a().toString());
+         if (this.s() != 0L) {
+            $$0.a("LootTableSeed", this.s());
          }
       } else {
-         return bur.e;
+         bun.a($$0, this.t(), $$1);
       }
    }
 
-   @Override
-   protected czu o() {
-      return dac.ov;
+   default void b(ua $$0, ji.a $$1) {
+      this.u();
+      alj<fao> $$2 = $$0.<alj<fao>>a("LootTable", fao.a).orElse(null);
+      this.a($$2);
+      this.a($$0.b("LootTableSeed", 0L));
+      if ($$2 == null) {
+         bun.b($$0, this.t(), $$1);
+      }
    }
 
-   @Override
-   public czy dI() {
-      return new czy(dac.ov);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.bZ()) {
-            this.bN();
-         }
-
-         if (this.H() == 0) {
-            this.l(-this.I());
-            this.d(10);
-            this.b(50.0F);
-            this.bB();
+   default void a(bvk $$0, aru $$1, bwv $$2) {
+      if ($$1.O().c(djv.j)) {
+         bup.a($$1, $$2, this);
+         bwv $$3 = $$0.c();
+         if ($$3 != null && $$3.an() == bxe.bT) {
+            cqp.a($$1, (crz)$$3, true);
          }
       }
    }
 
-   @Override
-   public boolean y() {
+   default but b_(crz $$0) {
+      $$0.a(this);
+      return but.a;
+   }
+
+   default void f(@Nullable crz $$0) {
+      MinecraftServer $$1 = this.dV().p();
+      if (this.q() != null && $$1 != null) {
+         fao $$2 = $$1.bc().b(this.q());
+         if ($$0 != null) {
+            aq.Q.a((arv)$$0, this.q());
+         }
+
+         this.a(null);
+         fam.a $$3 = new fam.a((aru)this.dV()).a(fdd.f, this.dt());
+         if ($$0 != null) {
+            $$3.a($$0.eh()).a(fdd.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(fdc.c), this.s());
+      }
+   }
+
+   default void ak_() {
+      this.f(null);
+      this.t().clear();
+   }
+
+   default boolean al_() {
+      for (daa $$0 : this.t()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
       return true;
    }
 
-   @Override
-   public void h() {
-      double $$0 = (double)this.dL();
-      ffq $$1 = this.dt();
-      super.h();
-      double $$2 = ((double)this.dL() - $$0) % 360.0;
-      if (this.dV().C && $$1.f(this.dt()) > 0.01) {
-         this.b += (float)$$2;
-         this.b %= 360.0F;
+   default daa f_(int $$0) {
+      this.f(null);
+      daa $$1 = this.t().get($$0);
+      if ($$1.f()) {
+         return daa.k;
+      } else {
+         this.t().set($$0, daa.k);
+         return $$1;
       }
    }
 
-   @Override
-   protected void a(bwt $$0, bwt.a $$1) {
-      super.a($$0, $$1);
-      if (this.dV().C && $$0 instanceof crx $$2 && $$2.gQ() && b(this.dV())) {
-         float $$3 = (float)azo.e(0.5, (double)this.c, (double)this.b);
-         $$2.w($$2.dL() - ($$3 - this.c));
-         this.c = $$3;
-      }
+   default daa g_(int $$0) {
+      this.f(null);
+      return this.t().get($$0);
+   }
+
+   default daa b(int $$0, int $$1) {
+      this.f(null);
+      return bun.a(this.t(), $$0, $$1);
+   }
+
+   default void c(int $$0, daa $$1) {
+      this.f(null);
+      this.t().set($$0, $$1);
+      $$1.f(this.f_($$1));
+   }
+
+   default byn h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new byn() {
+         @Override
+         public daa a() {
+            return cur.this.g_($$0);
+         }
+
+         @Override
+         public boolean a(daa $$0x) {
+            cur.this.c($$0, $$0);
+            return true;
+         }
+      } : byn.a;
+   }
+
+   default boolean g(crz $$0) {
+      return !this.dQ() && $$0.a(this.cR(), 4.0);
    }
 }

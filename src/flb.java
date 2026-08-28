@@ -1,45 +1,37 @@
-import java.util.Collection;
-import java.util.function.Consumer;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
-public interface flb extends AutoCloseable {
-   void a(fjp var1);
+public interface flb {
+   fld a(flj var1, OptionalInt var2);
 
-   void a(String var1, flh var2);
+   fld a(flj var1, OptionalInt var2, @Nullable flj var3, OptionalDouble var4);
 
-   void a(String var1, int... var2);
+   void a(flj var1, int var2);
 
-   void a(String var1, float... var2);
+   void a(flj var1, int var2, flj var3, double var4);
 
-   void a(String var1, Matrix4f var2);
+   void a(flj var1, double var2);
 
-   void a(flc var1);
+   void a(fii var1, ByteBuffer var2, int var3);
 
-   void a(int var1, int var2, int var3, int var4);
+   fii.a a(fii var1);
 
-   void b();
+   fii.a a(fii var1, int var2, int var3);
 
-   void a(int var1, fig var2);
+   void a(flj var1, fki var2);
 
-   void a(fig var1, fls.b var2);
+   void a(flj var1, fki var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
 
-   void a(int var1, int var2);
+   void a(flj var1, IntBuffer var2, fki.a var3, int var4, int var5, int var6, int var7, int var8);
 
-   void a(Collection<flb.a> var1);
+   void a(flj var1, fii var2, int var3, Runnable var4, int var5);
 
-   void b(int var1, int var2);
+   void a(flj var1, fii var2, int var3, Runnable var4, int var5, int var6, int var7, int var8, int var9);
 
-   @Override
-   void close();
+   void a(flj var1, flj var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
 
-   public static record a(int a, fig b, fig c, fls.b d, int e, int f, @Nullable Consumer<flb.b> g) {
-      public a(int $$0, fig $$1, fig $$2, fls.b $$3, int $$4, int $$5) {
-         this($$0, $$1, $$2, $$3, $$4, $$5, null);
-      }
-   }
-
-   public interface b {
-      void upload(String var1, float... var2);
-   }
+   void a(flj var1);
 }

@@ -1,48 +1,248 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public interface qs {
-   static void a(qh<esh> $$0) {
-      jg<esb> $$1 = $$0.a(mh.be);
-      jg<dla> $$2 = $$0.a(mh.aG);
-      jf.c<esh> $$3 = $$0.a(
-         eru.a,
-         new esh(
-            List.of(esh.a($$1.b(erv.t)), esh.a($$1.b(erv.u)), esh.a($$1.b(erv.v)), esh.a($$1.b(erv.w)), esh.a($$1.b(erv.x))), new esw(34, 8, esx.a, 10387312)
-         )
-      );
-      $$0.a(eru.b, new esh($$1.b(erv.f), new esw(32, 8, esx.a, 14357617)));
-      $$0.a(eru.c, new esh($$1.b(erv.g), new esw(32, 8, esx.a, 14357618)));
-      $$0.a(eru.d, new esh($$1.b(erv.e), new esw(32, 8, esx.a, 14357619)));
-      $$0.a(eru.e, new esh($$1.b(erv.j), new esw(32, 8, esx.a, 14357620)));
-      $$0.a(eru.f, new esh($$1.b(erv.a), new esw(ka.i, esy.c.b, 0.2F, 165745296, Optional.of(new esy.a($$3, 10)), 32, 8, esx.a)));
-      $$0.a(eru.q, new esh($$1.b(erv.F), new esw(24, 8, esx.a, 20083232)));
-      $$0.a(eru.g, new esh($$1.b(erv.l), new esw(32, 5, esx.b, 10387313)));
-      $$0.a(eru.h, new esh($$1.b(erv.d), new esw(80, 20, esx.b, 10387319)));
-      $$0.a(eru.i, new esh($$1.b(erv.r), new esw(new ka(9, 0, 9), esy.c.c, 0.01F, 0, Optional.empty(), 1, 0, esx.a)));
-      $$0.a(eru.j, new esh(List.of(esh.a($$1.b(erv.b)), esh.a($$1.b(erv.c))), new esw(ka.i, esy.c.d, 0.004F, 0, Optional.empty(), 1, 0, esx.a)));
+public class qs {
+   public static final alj<etn> a = qp.a("village/snowy/town_centers");
+   private static final alj<etn> b = qp.a("village/snowy/terminators");
+
+   public static void a(qi<etn> $$0) {
+      jh<erh> $$1 = $$0.a(mi.bb);
+      jg<erh> $$2 = $$1.b(sb.h);
+      jg<erh> $$3 = $$1.b(sb.c);
+      jg<erh> $$4 = $$1.b(sb.d);
+      jh<ewd> $$5 = $$0.a(mi.bc);
+      jg<ewd> $$6 = $$5.b(qq.k);
+      jg<ewd> $$7 = $$5.b(qq.n);
+      jg<ewd> $$8 = $$5.b(qq.c);
+      jh<etn> $$9 = $$0.a(mi.bf);
+      jg<etn> $$10 = $$9.b(qp.a);
+      jg<etn> $$11 = $$9.b(b);
       $$0.a(
-         eru.k,
-         new esh(
-            List.of(
-               esh.a($$1.b(erv.y)),
-               esh.a($$1.b(erv.z)),
-               esh.a($$1.b(erv.A)),
-               esh.a($$1.b(erv.B)),
-               esh.a($$1.b(erv.C)),
-               esh.a($$1.b(erv.D)),
-               esh.a($$1.b(erv.E))
+         a,
+         new etn(
+            $$10,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/town_centers/snowy_meeting_point_1"), 100),
+               Pair.of(etl.a("village/snowy/town_centers/snowy_meeting_point_2"), 50),
+               Pair.of(etl.a("village/snowy/town_centers/snowy_meeting_point_3"), 150),
+               Pair.of(etl.a("village/snowy/zombie/town_centers/snowy_meeting_point_1"), 2),
+               Pair.of(etl.a("village/snowy/zombie/town_centers/snowy_meeting_point_2"), 1),
+               Pair.of(etl.a("village/snowy/zombie/town_centers/snowy_meeting_point_3"), 3)
             ),
-            new esw(40, 15, esx.a, 34222645)
+            etn.a.b
          )
       );
-      $$0.a(eru.l, new esh(List.of(esh.a($$1.b(erv.h)), esh.a($$1.b(erv.i))), new esw(24, 4, esx.a, 165745295)));
-      $$0.a(eru.m, new esh(List.of(esh.a($$1.b(erv.m)), esh.a($$1.b(erv.n))), new esw(20, 8, esx.a, 14357621)));
-      $$0.a(eru.n, new esh(List.of(esh.a($$1.b(erv.o), 2), esh.a($$1.b(erv.s), 3)), new esw(27, 4, esx.a, 30084232)));
-      $$0.a(eru.o, new esh($$1.b(erv.p), new esw(2, 1, esx.a, 14357921)));
-      $$0.a(eru.p, new esh($$1.b(erv.q), new esw(20, 11, esx.b, 10387313)));
-      $$0.a(eru.r, new esh($$1.b(erv.k), new esv(32, 3, 128, $$2.b(axd.o))));
-      $$0.a(eru.s, new esh($$1.b(erv.G), new esw(34, 8, esx.a, 83469867)));
-      $$0.a(eru.t, new esh($$1.b(erv.H), new esw(34, 12, esx.a, 94251327)));
+      qp.a(
+         $$0,
+         "village/snowy/streets",
+         new etn(
+            $$11,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/streets/corner_01", $$6), 2),
+               Pair.of(etl.a("village/snowy/streets/corner_02", $$6), 2),
+               Pair.of(etl.a("village/snowy/streets/corner_03", $$6), 2),
+               Pair.of(etl.a("village/snowy/streets/square_01", $$6), 2),
+               Pair.of(etl.a("village/snowy/streets/straight_01", $$6), 4),
+               Pair.of(etl.a("village/snowy/streets/straight_02", $$6), 4),
+               Pair.of(etl.a("village/snowy/streets/straight_03", $$6), 4),
+               Pair.of(etl.a("village/snowy/streets/straight_04", $$6), 7),
+               Pair.of(etl.a("village/snowy/streets/straight_06", $$6), 4),
+               Pair.of(etl.a("village/snowy/streets/straight_08", $$6), 4),
+               Pair.of(etl.a("village/snowy/streets/crossroad_02", $$6), 1),
+               Pair.of(etl.a("village/snowy/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(etl.a("village/snowy/streets/crossroad_04", $$6), 2),
+                  Pair.of(etl.a("village/snowy/streets/crossroad_05", $$6), 2),
+                  Pair.of(etl.a("village/snowy/streets/crossroad_06", $$6), 2),
+                  Pair.of(etl.a("village/snowy/streets/turn_01", $$6), 3)
+               }
+            ),
+            etn.a.a
+         )
+      );
+      qp.a(
+         $$0,
+         "village/snowy/zombie/streets",
+         new etn(
+            $$11,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/zombie/streets/corner_01", $$6), 2),
+               Pair.of(etl.a("village/snowy/zombie/streets/corner_02", $$6), 2),
+               Pair.of(etl.a("village/snowy/zombie/streets/corner_03", $$6), 2),
+               Pair.of(etl.a("village/snowy/zombie/streets/square_01", $$6), 2),
+               Pair.of(etl.a("village/snowy/zombie/streets/straight_01", $$6), 4),
+               Pair.of(etl.a("village/snowy/zombie/streets/straight_02", $$6), 4),
+               Pair.of(etl.a("village/snowy/zombie/streets/straight_03", $$6), 4),
+               Pair.of(etl.a("village/snowy/zombie/streets/straight_04", $$6), 7),
+               Pair.of(etl.a("village/snowy/zombie/streets/straight_06", $$6), 4),
+               Pair.of(etl.a("village/snowy/zombie/streets/straight_08", $$6), 4),
+               Pair.of(etl.a("village/snowy/zombie/streets/crossroad_02", $$6), 1),
+               Pair.of(etl.a("village/snowy/zombie/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(etl.a("village/snowy/zombie/streets/crossroad_04", $$6), 2),
+                  Pair.of(etl.a("village/snowy/zombie/streets/crossroad_05", $$6), 2),
+                  Pair.of(etl.a("village/snowy/zombie/streets/crossroad_06", $$6), 2),
+                  Pair.of(etl.a("village/snowy/zombie/streets/turn_01", $$6), 3)
+               }
+            ),
+            etn.a.a
+         )
+      );
+      qp.a(
+         $$0,
+         "village/snowy/houses",
+         new etn(
+            $$11,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_1"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_2"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_3"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_4"), 3),
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_5"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_6"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_7"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_small_house_8"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_medium_house_1"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_medium_house_2"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_medium_house_3"), 2),
+               Pair.of(etl.a("village/snowy/houses/snowy_butchers_shop_1"), 2),
+               new Pair[]{
+                  Pair.of(etl.a("village/snowy/houses/snowy_butchers_shop_2"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_tool_smith_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_fletcher_house_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_shepherds_house_1"), 3),
+                  Pair.of(etl.a("village/snowy/houses/snowy_armorer_house_1"), 1),
+                  Pair.of(etl.a("village/snowy/houses/snowy_armorer_house_2"), 1),
+                  Pair.of(etl.a("village/snowy/houses/snowy_fisher_cottage"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_tannery_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_cartographer_house_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_library_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_masons_house_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_masons_house_2"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_weapon_smith_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_temple_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_farm_1", $$7), 3),
+                  Pair.of(etl.a("village/snowy/houses/snowy_farm_2", $$7), 3),
+                  Pair.of(etl.a("village/snowy/houses/snowy_animal_pen_1"), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_animal_pen_2"), 2),
+                  Pair.of(etl.i(), 6)
+               }
+            ),
+            etn.a.b
+         )
+      );
+      qp.a(
+         $$0,
+         "village/snowy/zombie/houses",
+         new etn(
+            $$11,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_1", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_2", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_3", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_4", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_5", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_6", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_7", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_small_house_8", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_medium_house_1", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_medium_house_2", $$8), 2),
+               Pair.of(etl.a("village/snowy/zombie/houses/snowy_medium_house_3", $$8), 1),
+               Pair.of(etl.a("village/snowy/houses/snowy_butchers_shop_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(etl.a("village/snowy/houses/snowy_butchers_shop_2", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_tool_smith_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_fletcher_house_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_shepherds_house_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_armorer_house_1", $$8), 1),
+                  Pair.of(etl.a("village/snowy/houses/snowy_armorer_house_2", $$8), 1),
+                  Pair.of(etl.a("village/snowy/houses/snowy_fisher_cottage", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_tannery_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_cartographer_house_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_library_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_masons_house_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_masons_house_2", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_weapon_smith_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_temple_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_farm_1", $$8), 3),
+                  Pair.of(etl.a("village/snowy/houses/snowy_farm_2", $$8), 3),
+                  Pair.of(etl.a("village/snowy/houses/snowy_animal_pen_1", $$8), 2),
+                  Pair.of(etl.a("village/snowy/houses/snowy_animal_pen_2", $$8), 2),
+                  Pair.of(etl.i(), 6)
+               }
+            ),
+            etn.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new etn(
+            $$10,
+            ImmutableList.of(
+               Pair.of(etl.a("village/plains/terminators/terminator_01", $$6), 1),
+               Pair.of(etl.a("village/plains/terminators/terminator_02", $$6), 1),
+               Pair.of(etl.a("village/plains/terminators/terminator_03", $$6), 1),
+               Pair.of(etl.a("village/plains/terminators/terminator_04", $$6), 1)
+            ),
+            etn.a.a
+         )
+      );
+      qp.a($$0, "village/snowy/trees", new etn($$10, ImmutableList.of(Pair.of(etl.a($$2), 1)), etn.a.b));
+      qp.a(
+         $$0,
+         "village/snowy/decor",
+         new etn(
+            $$10,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/snowy_lamp_post_01"), 4),
+               Pair.of(etl.a("village/snowy/snowy_lamp_post_02"), 4),
+               Pair.of(etl.a("village/snowy/snowy_lamp_post_03"), 1),
+               Pair.of(etl.a($$2), 4),
+               Pair.of(etl.a($$3), 4),
+               Pair.of(etl.a($$4), 1),
+               Pair.of(etl.i(), 9)
+            ),
+            etn.a.b
+         )
+      );
+      qp.a(
+         $$0,
+         "village/snowy/zombie/decor",
+         new etn(
+            $$10,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/snowy_lamp_post_01", $$8), 1),
+               Pair.of(etl.a("village/snowy/snowy_lamp_post_02", $$8), 1),
+               Pair.of(etl.a("village/snowy/snowy_lamp_post_03", $$8), 1),
+               Pair.of(etl.a($$2), 4),
+               Pair.of(etl.a($$3), 4),
+               Pair.of(etl.a($$4), 4),
+               Pair.of(etl.i(), 7)
+            ),
+            etn.a.b
+         )
+      );
+      qp.a(
+         $$0,
+         "village/snowy/villagers",
+         new etn(
+            $$10,
+            ImmutableList.of(
+               Pair.of(etl.a("village/snowy/villagers/nitwit"), 1),
+               Pair.of(etl.a("village/snowy/villagers/baby"), 1),
+               Pair.of(etl.a("village/snowy/villagers/unemployed"), 10)
+            ),
+            etn.a.b
+         )
+      );
+      qp.a(
+         $$0,
+         "village/snowy/zombie/villagers",
+         new etn(
+            $$10,
+            ImmutableList.of(Pair.of(etl.a("village/snowy/zombie/villagers/nitwit"), 1), Pair.of(etl.a("village/snowy/zombie/villagers/unemployed"), 10)),
+            etn.a.b
+         )
+      );
    }
 }

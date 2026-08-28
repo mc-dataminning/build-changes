@@ -1,57 +1,135 @@
-public class cxc extends cxn {
-   private final cxa a;
-   private final crx b;
-   private int g;
-   private final dis h;
+import javax.annotation.Nullable;
 
-   public cxc(crx $$0, dis $$1, cxa $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
+public class cxc implements bum {
+   private final diu b;
+   private final jp<daa> c = jp.a(3, daa.k);
+   @Nullable
+   private div d;
+   private int e;
+   private int f;
+
+   public cxc(diu $$0) {
       this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
    }
 
    @Override
-   public boolean a(czy $$0) {
-      return false;
+   public int b() {
+      return this.c.size();
    }
 
    @Override
-   public czy a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().M());
+   public boolean c() {
+      for (daa $$0 : this.c) {
+         if (!$$0.f()) {
+            return false;
+         }
       }
 
-      return super.a($$0);
+      return true;
    }
 
    @Override
-   protected void a(czy $$0, int $$1) {
-      this.g += $$1;
-      this.c_($$0);
+   public daa a(int $$0) {
+      return this.c.get($$0);
    }
 
    @Override
-   protected void c_(czy $$0) {
-      $$0.a(this.b.dV(), this.b, this.g);
-      this.g = 0;
-   }
-
-   @Override
-   public void a(crx $$0, czy $$1) {
-      this.c_($$1);
-      dit $$2 = this.a.g();
-      if ($$2 != null) {
-         czy $$3 = this.a.a(0);
-         czy $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(awz.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public daa a(int $$0, int $$1) {
+      daa $$2 = this.c.get($$0);
+      if ($$0 == 2 && !$$2.f()) {
+         return bun.a(this.c, $$0, $$2.M());
+      } else {
+         daa $$3 = bun.a(this.c, $$0, $$1);
+         if (!$$3.f() && this.d($$0)) {
+            this.f();
          }
 
-         this.h.s(this.h.t() + $$2.q());
+         return $$3;
       }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public daa b(int $$0) {
+      return bun.a(this.c, $$0);
+   }
+
+   @Override
+   public void a(int $$0, daa $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.f_($$1));
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(crz $$0) {
+      return this.b.x() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.d = null;
+      daa $$0;
+      daa $$1;
+      if (this.c.get(0).f()) {
+         $$0 = this.c.get(1);
+         $$1 = daa.k;
+      } else {
+         $$0 = this.c.get(0);
+         $$1 = this.c.get(1);
+      }
+
+      if ($$0.f()) {
+         this.a(2, daa.k);
+         this.f = 0;
+      } else {
+         diw $$4 = this.b.gv();
+         if (!$$4.isEmpty()) {
+            div $$5 = $$4.a($$0, $$1, this.e);
+            if ($$5 == null || $$5.r()) {
+               this.d = $$5;
+               $$5 = $$4.a($$1, $$0, this.e);
+            }
+
+            if ($$5 != null && !$$5.r()) {
+               this.d = $$5;
+               this.a(2, $$5.h());
+               this.f = $$5.q();
+            } else {
+               this.a(2, daa.k);
+               this.f = 0;
+            }
+         }
+
+         this.b.i(this.a(2));
+      }
+   }
+
+   @Nullable
+   public div g() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.e = $$0;
+      this.f();
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public int h() {
+      return this.f;
    }
 }

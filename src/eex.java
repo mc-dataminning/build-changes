@@ -1,49 +1,293 @@
-import com.mojang.datafixers.DataFixer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.OptionalDynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.function.BiFunction;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eex implements AutoCloseable {
-   private final een a;
-   private final DataFixer b;
-   private final bbd c;
+public class eex<R, P> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "Sections";
+   private final eez d;
+   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
+   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
+   private final Codec<P> g;
+   private final Function<R, P> h;
+   private final BiFunction<P, Runnable, R> i;
+   private final Function<Runnable, R> j;
+   private final ju k;
+   private final eel l;
+   protected final dkb c;
+   private final LongSet m = new LongOpenHashSet();
+   private final Long2ObjectMap<CompletableFuture<Optional<eex.a<P>>>> n = new Long2ObjectOpenHashMap();
+   private final Object o = new Object();
 
-   public eex(eeu $$0, Path $$1, DataFixer $$2, boolean $$3, bbd $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new een($$0, $$1, $$3);
+   public eex(eez $$0, Codec<P> $$1, Function<R, P> $$2, BiFunction<P, Runnable, R> $$3, Function<Runnable, R> $$4, ju $$5, eel $$6, dkb $$7) {
+      this.d = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.c = $$7;
    }
 
-   public CompletableFuture<Optional<tz>> a(djc $$0) {
-      return this.a.a($$0);
+   protected void a(BooleanSupplier $$0) {
+      LongIterator $$1 = this.f.iterator();
+
+      while ($$1.hasNext() && $$0.getAsBoolean()) {
+         dje $$2 = new dje($$1.nextLong());
+         $$1.remove();
+         this.e($$2);
+      }
+
+      this.c();
    }
 
-   public CompletableFuture<Void> a(djc $$0, @Nullable tz $$1) {
-      return this.a.a($$0, $$1);
+   private void c() {
+      synchronized (this.o) {
+         Iterator<Entry<CompletableFuture<Optional<eex.a<P>>>>> $$0 = Long2ObjectMaps.fastIterator(this.n);
+
+         while ($$0.hasNext()) {
+            Entry<CompletableFuture<Optional<eex.a<P>>>> $$1 = $$0.next();
+            Optional<eex.a<P>> $$2 = (Optional<eex.a<P>>)((CompletableFuture)$$1.getValue()).getNow(null);
+            if ($$2 != null) {
+               long $$3 = $$1.getLongKey();
+               this.a(new dje($$3), $$2.orElse(null));
+               $$0.remove();
+               this.m.add($$3);
+            }
+         }
+      }
    }
 
-   public tz a(tz $$0, int $$1) {
-      int $$2 = uo.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
+   public void a() {
+      if (!this.f.isEmpty()) {
+         this.f.forEach($$0 -> this.e(new dje($$0)));
+         this.f.clear();
+      }
    }
 
-   public Dynamic<uy> a(Dynamic<uy> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
+   public boolean b() {
+      return !this.f.isEmpty();
    }
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
+   @Nullable
+   protected Optional<R> c(long $$0) {
+      return (Optional<R>)this.e.get($$0);
+   }
+
+   protected Optional<R> d(long $$0) {
+      if (this.e($$0)) {
+         return Optional.empty();
+      } else {
+         Optional<R> $$1 = this.c($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            this.c(jz.a($$0).r());
+            $$1 = this.c($$0);
+            if ($$1 == null) {
+               throw (IllegalStateException)ag.b(new IllegalStateException());
+            } else {
+               return $$1;
+            }
+         }
+      }
+   }
+
+   protected boolean e(long $$0) {
+      int $$1 = jz.c(jz.c($$0));
+      return this.c.e($$1);
+   }
+
+   protected R f(long $$0) {
+      if (this.e($$0)) {
+         throw (IllegalArgumentException)ag.b(new IllegalArgumentException("sectionPos out of bounds"));
+      } else {
+         Optional<R> $$1 = this.d($$0);
+         if ($$1.isPresent()) {
+            return $$1.get();
+         } else {
+            R $$2 = this.j.apply(() -> this.a($$0));
+            this.e.put($$0, Optional.of($$2));
+            return $$2;
+         }
+      }
+   }
+
+   public CompletableFuture<?> a(dje $$0) {
+      synchronized (this.o) {
+         long $$1 = $$0.a();
+         return this.m.contains($$1) ? CompletableFuture.completedFuture(null) : (CompletableFuture)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
+      }
+   }
+
+   private void c(dje $$0) {
+      long $$1 = $$0.a();
+      CompletableFuture<Optional<eex.a<P>>> $$2;
+      synchronized (this.o) {
+         if (!this.m.add($$1)) {
+            return;
+         }
+
+         $$2 = (CompletableFuture<Optional<eex.a<P>>>)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
+      }
+
+      this.a($$0, $$2.join().orElse(null));
+      synchronized (this.o) {
+         this.n.remove($$1);
+      }
+   }
+
+   private CompletableFuture<Optional<eex.a<P>>> d(dje $$0) {
+      ali<va> $$1 = this.k.a(uo.a);
+      return this.d
+         .a($$0)
+         .thenApplyAsync($$1x -> $$1x.map($$1xx -> eex.a.a(this.g, $$1, $$1xx, this.d, this.c)), ag.h().a("parseSection"))
+         .exceptionally($$1x -> {
+            if ($$1x instanceof CompletionException) {
+               $$1x = $$1x.getCause();
+            }
+
+            if ($$1x instanceof IOException $$2) {
+               a.error("Error reading chunk {} data from disk", $$0, $$2);
+               this.l.a($$2, this.d.a(), $$0);
+               return Optional.empty();
+            } else {
+               throw new CompletionException($$1x);
+            }
+         });
+   }
+
+   private void a(dje $$0, @Nullable eex.a<P> $$1) {
+      if ($$1 == null) {
+         for (int $$2 = this.c.aq(); $$2 <= this.c.ar(); $$2++) {
+            this.e.put(a($$0, $$2), Optional.empty());
+         }
+      } else {
+         boolean $$3 = $$1.b();
+
+         for (int $$4 = this.c.aq(); $$4 <= this.c.ar(); $$4++) {
+            long $$5 = a($$0, $$4);
+            Optional<R> $$6 = Optional.ofNullable($$1.a.get($$4)).map($$1x -> this.i.apply((P)$$1x, () -> this.a($$5)));
+            this.e.put($$5, $$6);
+            $$6.ifPresent($$2 -> {
+               this.b($$5);
+               if ($$3) {
+                  this.a($$5);
+               }
+            });
+         }
+      }
+   }
+
+   private void e(dje $$0) {
+      ali<va> $$1 = this.k.a(uo.a);
+      Dynamic<va> $$2 = this.a($$0, $$1);
+      va $$3 = (va)$$2.getValue();
+      if ($$3 instanceof ua) {
+         this.d.a($$0, (ua)$$3).exceptionally($$1x -> {
+            this.l.b($$1x, this.d.a(), $$0);
+            return null;
+         });
+      } else {
+         a.error("Expected compound tag, got {}", $$3);
+      }
+   }
+
+   private <T> Dynamic<T> a(dje $$0, DynamicOps<T> $$1) {
+      Map<T, T> $$2 = Maps.newHashMap();
+
+      for (int $$3 = this.c.aq(); $$3 <= this.c.ar(); $$3++) {
+         long $$4 = a($$0, $$3);
+         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
+         if ($$5 != null && !$$5.isEmpty()) {
+            DataResult<T> $$6 = this.g.encodeStart($$1, this.h.apply($$5.get()));
+            String $$7 = Integer.toString($$3);
+            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
+         }
+      }
+
+      return new Dynamic(
+         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(ac.b().d().c())))
+      );
+   }
+
+   private static long a(dje $$0, int $$1) {
+      return jz.b($$0.h, $$1, $$0.i);
+   }
+
+   protected void b(long $$0) {
+   }
+
+   protected void a(long $$0) {
+      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
+      if ($$1 != null && !$$1.isEmpty()) {
+         this.f.add(dje.c(jz.b($$0), jz.d($$0)));
+      } else {
+         a.warn("No data for position: {}", jz.a($$0));
+      }
+   }
+
+   static int a(Dynamic<?> $$0) {
+      return $$0.get("DataVersion").asInt(1945);
+   }
+
+   public void b(dje $$0) {
+      if (this.f.remove($$0.a())) {
+         this.e($$0);
+      }
    }
 
    @Override
    public void close() throws IOException {
-      this.a.close();
+      this.d.close();
    }
 
-   public eeu a() {
-      return this.a.a();
+   static record a<T>(Int2ObjectMap<T> a, boolean b) {
+
+      public static <T> eex.a<T> a(Codec<T> $$0, DynamicOps<va> $$1, va $$2, eez $$3, dkb $$4) {
+         Dynamic<va> $$5 = new Dynamic($$1, $$2);
+         int $$6 = eex.a($$5);
+         int $$7 = ac.b().d().c();
+         boolean $$8 = $$6 != $$7;
+         Dynamic<va> $$9 = $$3.a($$5, $$6);
+         OptionalDynamic<va> $$10 = $$9.get("Sections");
+         Int2ObjectMap<T> $$11 = new Int2ObjectOpenHashMap();
+
+         for (int $$12 = $$4.aq(); $$12 <= $$4.ar(); $$12++) {
+            Optional<T> $$13 = $$10.get(Integer.toString($$12)).result().flatMap($$1x -> $$0.parse($$1x).resultOrPartial(eex.a::error));
+            if ($$13.isPresent()) {
+               $$11.put($$12, $$13.get());
+            }
+         }
+
+         return new eex.a<>($$11, $$8);
+      }
    }
 }

@@ -1,220 +1,283 @@
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dye<T extends dyc> {
-   private static final Logger V = LogUtils.getLogger();
-   public static final dye<dzc> a = a("furnace", dzc::new, dne.cO);
-   public static final dye<dyk> b = a("chest", dyk::new, dne.cG);
-   public static final dye<eab> c = a("trapped_chest", eab::new, dne.hw);
-   public static final dye<dza> d = a("ender_chest", dza::new, dne.gf);
-   public static final dye<dzh> e = a("jukebox", dzh::new, dne.ek);
-   public static final dye<dyx> f = a("dispenser", dyx::new, dne.bb);
-   public static final dye<dyy> g = a("dropper", dyy::new, dne.hJ);
-   public static final dye<dzq> h = a(
-      "sign",
-      dzq::new,
-      dne.cP,
-      dne.cQ,
-      dne.cR,
-      dne.cS,
-      dne.cT,
-      dne.cU,
-      dne.cV,
-      dne.cW,
-      dne.dd,
-      dne.de,
-      dne.df,
-      dne.dg,
-      dne.dh,
-      dne.di,
-      dne.dj,
-      dne.dk,
-      dne.pC,
-      dne.pE,
-      dne.pD,
-      dne.pF,
-      dne.cX,
-      dne.dl,
-      dne.cY,
-      dne.dm
-   );
-   public static final dye<dzd> i = a(
-      "hanging_sign",
-      dzd::new,
-      dne.dn,
-      dne.do,
-      dne.dp,
-      dne.dq,
-      dne.dr,
-      dne.ds,
-      dne.dt,
-      dne.du,
-      dne.dv,
-      dne.dw,
-      dne.dx,
-      dne.dy,
-      dne.dz,
-      dne.dA,
-      dne.dB,
-      dne.dC,
-      dne.dD,
-      dne.dE,
-      dne.dF,
-      dne.dG,
-      dne.dI,
-      dne.dJ,
-      dne.dH,
-      dne.dK
-   );
-   public static final dye<dzu> j = a("mob_spawner", dzu::new, dne.cD);
-   public static final dye<dys> k = a("creaking_heart", dys::new, dne.cE);
-   public static final dye<eaz> l = a("piston", eaz::new, dne.ca);
-   public static final dye<dyg> m = a("brewing_stand", dyg::new, dne.fR);
-   public static final dye<dyz> n = a("enchanting_table", dyz::new, dne.fQ);
-   public static final dye<dzz> o = a("end_portal", dzz::new, dne.fW);
-   public static final dye<dxx> p = a("beacon", dxx::new, dne.gn);
-   public static final dye<dzs> q = a(
-      "skull", dzs::new, dne.hf, dne.hg, dne.hn, dne.ho, dne.hp, dne.hq, dne.hj, dne.hk, dne.hh, dne.hi, dne.hl, dne.hm, dne.hr, dne.hs
-   );
-   public static final dye<dyt> r = a("daylight_detector", dyt::new, dne.hA);
-   public static final dye<dzf> s = a("hopper", dzf::new, dne.hD);
-   public static final dye<dyo> t = a("comparator", dyo::new, dne.hz);
-   public static final dye<dxq> u = a(
-      "banner",
-      dxq::new,
-      dne.jl,
-      dne.jm,
-      dne.jn,
-      dne.jo,
-      dne.jp,
-      dne.jq,
-      dne.jr,
-      dne.js,
-      dne.jt,
-      dne.ju,
-      dne.jv,
-      dne.jw,
-      dne.jx,
-      dne.jy,
-      dne.jz,
-      dne.jA,
-      dne.jB,
-      dne.jC,
-      dne.jD,
-      dne.jE,
-      dne.jF,
-      dne.jG,
-      dne.jH,
-      dne.jI,
-      dne.jJ,
-      dne.jK,
-      dne.jL,
-      dne.jM,
-      dne.jN,
-      dne.jO,
-      dne.jP,
-      dne.jQ
-   );
-   public static final dye<dzv> v = a("structure_block", dzv::new, dne.pG);
-   public static final dye<dzy> w = a("end_gateway", dzy::new, dne.ll);
-   public static final dye<dyn> x = a("command_block", dyn::new, dne.gm, dne.ln, dne.lm);
-   public static final dye<dzp> y = a(
-      "shulker_box",
-      dzp::new,
-      dne.lv,
-      dne.lL,
-      dne.lH,
-      dne.lI,
-      dne.lF,
-      dne.lD,
-      dne.lJ,
-      dne.lz,
-      dne.lE,
-      dne.lB,
-      dne.ly,
-      dne.lx,
-      dne.lC,
-      dne.lG,
-      dne.lK,
-      dne.lw,
-      dne.lA
-   );
-   public static final dye<dxy> z = a(
-      "bed", dxy::new, dne.bu, dne.bv, dne.br, dne.bs, dne.bp, dne.bn, dne.bt, dne.bj, dne.bo, dne.bl, dne.bi, dne.bh, dne.bm, dne.bq, dne.bg, dne.bk
-   );
-   public static final dye<dyp> A = a("conduit", dyp::new, dne.nD);
-   public static final dye<dxu> B = a("barrel", dxu::new, dne.oA);
-   public static final dye<dzt> C = a("smoker", dzt::new, dne.oB);
-   public static final dye<dyb> D = a("blast_furnace", dyb::new, dne.oC);
-   public static final dye<dzi> E = a("lectern", dzi::new, dne.oG);
-   public static final dye<dya> F = a("bell", dya::new, dne.oJ);
-   public static final dye<dzg> G = a("jigsaw", dzg::new, dne.pH);
-   public static final dye<dyj> H = a("campfire", dyj::new, dne.oM, dne.oN);
-   public static final dye<dxz> I = a("beehive", dxz::new, dne.pM, dne.pN);
-   public static final dye<dzn> J = a("sculk_sensor", dzn::new, dne.ry);
-   public static final dye<dyi> K = a("calibrated_sculk_sensor", dyi::new, dne.rz);
-   public static final dye<dzm> L = a("sculk_catalyst", dzm::new, dne.rC);
-   public static final dye<dzo> M = a("sculk_shrieker", dzo::new, dne.rD);
-   public static final dye<dym> N = a("chiseled_bookshelf", dym::new, dne.cw);
-   public static final dye<dyh> O = a("brushable_block", dyh::new, dne.M, dne.P);
-   public static final dye<dyu> P = a("decorated_pot", dyu::new, dne.tZ);
-   public static final dye<dyr> Q = a("crafter", dyr::new, dne.ua);
-   public static final dye<eac> R = a("trial_spawner", eac::new, dne.ub);
-   public static final dye<eal> S = a("vault", eal::new, dne.uc);
-   public static final dye<dzw> T = a("test_block", dzw::new, dne.pI);
-   public static final dye<dzx> U = a("test_instance_block", dzx::new, dne.pJ);
-   private static final Set<dye<?>> W = Set.of(x, E, h, i, j, R);
-   private final dye.a<? extends T> X;
-   private final Set<dnc> Y;
-   private final jf.c<dye<?>> Z = mg.j.f(this);
-
+public abstract class dye {
+   private static final Codec<dyg<?>> d = mh.j.q();
+   private static final Logger e = LogUtils.getLogger();
+   private final dyg<?> f;
    @Nullable
-   public static ali a(dye<?> $$0) {
-      return mg.j.b($$0);
+   protected djz n;
+   protected final iw o;
+   protected boolean p;
+   private ebg g;
+   private ki h = ki.a;
+
+   public dye(dyg<?> $$0, iw $$1, ebg $$2) {
+      this.f = $$0;
+      this.o = $$1.j();
+      this.a($$2);
+      this.g = $$2;
    }
 
-   private static <T extends dyc> dye<T> a(String $$0, dye.a<? extends T> $$1, dnc... $$2) {
-      if ($$2.length == 0) {
-         V.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
+   private void a(ebg $$0) {
+      if (!this.b($$0)) {
+         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.o + ", got " + $$0);
       }
-
-      ag.a(bjb.s, $$0);
-      return js.a(mg.j, $$0, new dye<>($$1, Set.of($$2)));
    }
 
-   private dye(dye.a<? extends T> $$0, Set<dnc> $$1) {
-      this.X = $$0;
-      this.Y = $$1;
+   public boolean b(ebg $$0) {
+      return this.f.a($$0);
+   }
+
+   public static iw b(ua $$0) {
+      return new iw($$0.b("x", 0), $$0.b("y", 0), $$0.b("z", 0));
    }
 
    @Nullable
-   public T a(iv $$0, ebe $$1) {
-      return (T)this.X.create($$0, $$1);
+   public djz i() {
+      return this.n;
    }
 
-   public boolean a(ebe $$0) {
-      return this.Y.contains($$0.b());
+   public void a(djz $$0) {
+      this.n = $$0;
+   }
+
+   public boolean l() {
+      return this.n != null;
+   }
+
+   protected void a(ua $$0, ji.a $$1) {
+   }
+
+   public final void c(ua $$0, ji.a $$1) {
+      this.a($$0, $$1);
+      this.h = $$0.<ki>a(dye.a.a, $$1.a(uo.a)).orElse(ki.a);
+   }
+
+   public final void d(ua $$0, ji.a $$1) {
+      this.a($$0, $$1);
+   }
+
+   protected void b(ua $$0, ji.a $$1) {
+   }
+
+   public final ua b(ji.a $$0) {
+      ua $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final ua c(ji.a $$0) {
+      ua $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final ua d(ji.a $$0) {
+      ua $$1 = new ua();
+      this.b($$1, $$0);
+      $$1.a(dye.a.a, $$0.a(uo.a), this.h);
+      return $$1;
+   }
+
+   public final ua e(ji.a $$0) {
+      ua $$1 = new ua();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   public final ua f(ji.a $$0) {
+      ua $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   private void c(ua $$0) {
+      a($$0, this.p());
+   }
+
+   public static void a(ua $$0, dyg<?> $$1) {
+      $$0.a("id", d, $$1);
+   }
+
+   private void d(ua $$0) {
+      this.c($$0);
+      $$0.a("x", this.o.u());
+      $$0.a("y", this.o.v());
+      $$0.a("z", this.o.w());
+   }
+
+   @Nullable
+   public static dye a(iw $$0, ebg $$1, ua $$2, ji.a $$3) {
+      dyg<?> $$4 = $$2.<dyg<?>>a("id", d).orElse(null);
+      if ($$4 == null) {
+         e.error("Skipping block entity with invalid type: {}", $$2.a("id"));
+         return null;
+      } else {
+         dye $$5;
+         try {
+            $$5 = $$4.a($$0, $$1);
+         } catch (Throwable var8) {
+            e.error("Failed to create block entity {}", $$4, var8);
+            return null;
+         }
+
+         if ($$5 == null) {
+            return null;
+         } else {
+            try {
+               $$5.c($$2, $$3);
+               return $$5;
+            } catch (Throwable var7) {
+               e.error("Failed to load data for block entity {}", $$4, var7);
+               return null;
+            }
+         }
+      }
+   }
+
+   public void e() {
+      if (this.n != null) {
+         a(this.n, this.o, this.g);
+      }
+   }
+
+   protected static void a(djz $$0, iw $$1, ebg $$2) {
+      $$0.q($$1);
+      if (!$$2.l()) {
+         $$0.b($$1, $$2.b());
+      }
+   }
+
+   public iw aB_() {
+      return this.o;
+   }
+
+   public ebg m() {
+      return this.g;
+   }
+
+   @Nullable
+   public zj<aby> ay_() {
+      return null;
+   }
+
+   public ua a(ji.a $$0) {
+      return new ua();
+   }
+
+   public boolean n() {
+      return this.p;
+   }
+
+   public void aw_() {
+      this.p = true;
+   }
+
+   public void o() {
+      this.p = false;
+   }
+
+   public void a(iw $$0, ebg $$1) {
+      if (this instanceof bum $$2 && this.n != null) {
+         bup.a(this.n, $$0, $$2);
+      }
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(q $$0) {
+      $$0.a("Name", this::k);
+      if (this.n != null) {
+         q.a($$0, this.n, this.o, this.m());
+         q.a($$0, this.n, this.o, this.n.a_(this.o));
+      }
+   }
+
+   private String k() {
+      return mh.j.b(this.p()) + " // " + this.getClass().getCanonicalName();
+   }
+
+   public dyg<?> p() {
+      return this.f;
    }
 
    @Deprecated
-   public jf.c<dye<?>> a() {
-      return this.Z;
+   public void c(ebg $$0) {
+      this.a($$0);
+      this.g = $$0;
+   }
+
+   protected void a(kg $$0) {
+   }
+
+   public final void a(daa $$0) {
+      this.a($$0.c(), $$0.d());
+   }
+
+   public final void a(ki $$0, kj $$1) {
+      final Set<kk<?>> $$2 = new HashSet<>();
+      $$2.add(kl.aa);
+      $$2.add(kl.aq);
+      final ki $$3 = km.a($$0, $$1);
+      this.a(new kg() {
+         @Nullable
+         @Override
+         public <T> T a(kk<? extends T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
+         }
+
+         @Override
+         public <T> T a(kk<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
+         }
+      });
+      kj $$4 = $$1.a($$2::contains);
+      this.h = $$4.e().a();
+   }
+
+   protected void a(ki.a $$0) {
+   }
+
+   @Deprecated
+   public void a(ua $$0) {
+   }
+
+   public final ki q() {
+      ki.a $$0 = ki.a();
+      $$0.a(this.h);
+      this.a($$0);
+      return $$0.a();
+   }
+
+   public ki r() {
+      return this.h;
+   }
+
+   public void a(ki $$0) {
+      this.h = $$0;
    }
 
    @Nullable
-   public T a(djb $$0, iv $$1) {
-      dyc $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.p() == this ? $$2 : null);
+   public static xc a(@Nullable va $$0, ji.a $$1) {
+      return $$0 == null
+         ? null
+         : (xc)xe.a.parse($$1.a(uo.a), $$0).resultOrPartial($$0x -> e.warn("Failed to parse custom name, discarding: {}", $$0x)).orElse(null);
    }
 
-   public boolean b() {
-      return W.contains(this);
-   }
+   static class a {
+      public static final MapCodec<ki> a = ki.b.optionalFieldOf("components", ki.a);
 
-   @FunctionalInterface
-   interface a<T extends dyc> {
-      T create(iv var1, ebe var2);
+      private a() {
+      }
    }
 }

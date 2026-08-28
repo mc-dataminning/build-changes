@@ -1,27 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cat {
-   private static final int a = 1;
+public class cat extends bzn<bxy> {
+   public cat(int $$0, int $$1) {
+      super(ImmutableMap.of(cgy.o, cgz.a), $$0, $$1);
+   }
 
-   public static bzm<bxu> a(float $$0) {
-      return ccy.a(
-         (Function<ccy.b<bxu>, ? extends App<ccy.c<bxu>, cdb<bxu>>>)($$1 -> $$1.group($$1.a(cgw.o), $$1.c(cgw.n), $$1.b(cgw.t))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bY()) {
-                        return false;
-                     } else {
-                        bwt $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bzw($$8, true));
-                           $$3.a(new cgz(new bzw($$8, false), $$0, 1));
-                        }
+   protected boolean a(aru $$0, bxy $$1, long $$2) {
+      return $$1.ec().c(cgy.o).filter($$1x -> $$1x.a($$1)).isPresent();
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected void b(aru $$0, bxy $$1, long $$2) {
+      $$1.ec().b(cgy.o);
+   }
+
+   protected void c(aru $$0, bxy $$1, long $$2) {
+      $$1.ec().c(cgy.o).ifPresent($$1x -> $$1.J().a($$1x.a()));
    }
 }

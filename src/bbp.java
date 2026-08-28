@@ -1,26 +1,37 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Locale;
 
 public class bbp extends DataFix {
    private final String a;
-   private final Function<String, String> b;
+   private final TypeReference b;
 
-   public bbp(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   public bbp(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a, this.getInputSchema().getType(bjb.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
-                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
-                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
-               }))
-      );
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
+      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
+      return this.a($$0, $$1);
+   }
+
+   private <K> TypeRewriteRule a(TaggedChoiceType<K> $$0, TaggedChoiceType<?> $$1) {
+      if ($$0.getKeyType() != $$1.getKeyType()) {
+         throw new IllegalStateException("Could not inject: key type is not the same");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$1, $$1x -> $$1xx -> {
+               if (!$$1.hasType($$1xx.getFirst())) {
+                  throw new IllegalArgumentException(String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.a, $$1xx.getFirst(), this.b.typeName()));
+               } else {
+                  return $$1xx;
+               }
+            });
+      }
    }
 }

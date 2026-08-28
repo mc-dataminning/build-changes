@@ -1,65 +1,42 @@
 import java.util.EnumSet;
 
-public class cfg extends ceq {
-   private final bxw a;
-   private bxu b;
-   private int c;
+public class cfg extends ces {
+   private final bye a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public cfg(bxw $$0) {
+   public cfg(bye $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(ceq.a.a, ceq.a.b));
+      this.e = $$1;
+      this.a(EnumSet.of(ces.a.a));
    }
 
    @Override
    public boolean b() {
-      bxu $$0 = this.a.f();
-      if ($$0 == null) {
+      if (this.a.ge()) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         ffs $$0 = cip.a(this.a, 16, 7, ffs.c(this.a.gf()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      if (!this.b.bJ()) {
-         return false;
-      } else {
-         return this.a.g((bwt)this.b) > 225.0 ? false : !this.a.O().k() || this.b();
-      }
+      return !this.a.O().k();
    }
 
    @Override
-   public void e() {
-      this.b = null;
-      this.a.O().m();
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.a.J().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
-      double $$1 = this.a.h(this.b.dA(), this.b.dC(), this.b.dG());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.O().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.c(a(this.a), this.b);
-         }
-      }
+   public void d() {
+      this.a.O().a(this.b, this.c, this.d, this.e);
    }
 }

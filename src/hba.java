@@ -1,52 +1,42 @@
-public class hba extends gzo<ckq, hgv, gia<hgv>> {
-   private final gia<hgv> a = this.c();
-   private final gia<hgv> j;
-   private static final ali k = ali.b("textures/entity/fish/tropical_a.png");
-   private static final ali l = ali.b("textures/entity/fish/tropical_b.png");
+public class hba extends gxb<cva, hfv> {
+   private final gtf g;
 
-   public hba(gyi.a $$0) {
-      super($$0, new gki($$0.a(gld.dG)), 0.15F);
-      this.j = new gkj($$0.a(gld.dE));
-      this.a(new hdg(this, $$0.f()));
+   public hba(gyk.a $$0) {
+      super($$0, glf.dA);
+      this.g = $$0.d();
    }
 
-   public ali a(hgv $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
-   }
-
-   public hgv b() {
-      return new hgv();
-   }
-
-   public void a(ckq $$0, hgv $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gC();
-      $$1.b = $$0.gA().d();
-      $$1.c = $$0.gB().d();
-   }
-
-   public void a(hgv $$0, flo $$1, gsa $$2, int $$3) {
-      this.g = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.j;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(hgv $$0) {
-      return $$0.b;
-   }
-
-   protected void a(hgv $$0, flo $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azo.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   protected void a(hfv $$0, ebg $$1, flq $$2, gsc $$3, int $$4) {
+      float $$5 = $$0.n;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = azq.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
       }
+
+      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   }
+
+   public static void a(gtf $$0, ebg $$1, flq $$2, gsc $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = hks.a(hks.a(1.0F), 10);
+      } else {
+         $$6 = hks.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
+   }
+
+   public hfv a() {
+      return new hfv();
+   }
+
+   public void a(cva $$0, hfv $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
    }
 }

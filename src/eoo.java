@@ -1,18 +1,108 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class eoo<P extends eon> {
-   public static final eoo<eom> a = a("mangrove_root_placer", eom.c);
-   private final MapCodec<P> b;
+public class eoo extends eop {
+   public static final int a = 8;
+   public static final int b = 15;
+   public static final MapCodec<eoo> c = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(eon.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, eoo::new)
+   );
+   private final eon h;
 
-   private static <P extends eon> eoo<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.W, $$0, new eoo<>($$1));
+   public eoo(bty $$0, eos $$1, Optional<eom> $$2, eon $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
-   private eoo(MapCodec<P> $$0) {
-      this.b = $$0;
+   @Override
+   public boolean a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, iw $$3, iw $$4, enn $$5) {
+      List<iw> $$6 = Lists.newArrayList();
+      iw.a $$7 = $$3.k();
+
+      while ($$7.v() < $$4.v()) {
+         if (!this.a($$0, $$7)) {
+            return false;
+         }
+
+         $$7.c(jc.b);
+      }
+
+      $$6.add($$4.e());
+
+      for (jc $$8 : jc.c.a) {
+         iw $$9 = $$4.a($$8);
+         List<iw> $$10 = Lists.newArrayList();
+         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
+            return false;
+         }
+
+         $$6.addAll($$10);
+         $$6.add($$4.a($$8));
+      }
+
+      for (iw $$11 : $$6) {
+         this.a($$0, $$1, $$2, $$11, $$5);
+      }
+
+      return true;
    }
 
-   public MapCodec<P> a() {
-      return this.b;
+   private boolean a(dkf $$0, azz $$1, iw $$2, jc $$3, iw $$4, List<iw> $$5, int $$6) {
+      int $$7 = this.h.e();
+      if ($$6 != $$7 && $$5.size() <= $$7) {
+         for (iw $$9 : this.a($$2, $$3, $$1, $$4)) {
+            if (this.a($$0, $$9)) {
+               $$5.add($$9);
+               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected List<iw> a(iw $$0, jc $$1, azz $$2, iw $$3) {
+      iw $$4 = $$0.e();
+      iw $$5 = $$0.a($$1);
+      int $$6 = $$0.k($$3);
+      int $$7 = this.h.d();
+      float $$8 = this.h.f();
+      if ($$6 > $$7 - 3 && $$6 <= $$7) {
+         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
+      } else if ($$6 > $$7) {
+         return List.of($$4);
+      } else if ($$2.i() < $$8) {
+         return List.of($$4);
+      } else {
+         return $$2.h() ? List.of($$5) : List.of($$4);
+      }
+   }
+
+   @Override
+   protected boolean a(dkf $$0, iw $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   }
+
+   @Override
+   protected void a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, iw $$3, enn $$4) {
+      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
+         ebg $$5 = this.h.c().a($$2, $$3);
+         $$1.accept($$3, this.a($$0, $$3, $$5));
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected eoq<?> a() {
+      return eoq.a;
    }
 }

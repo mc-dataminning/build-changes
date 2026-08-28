@@ -1,8 +1,7 @@
-public interface ajb extends ags {
-   @Override
-   default vu b() {
-      return vu.a;
-   }
+public class ajb {
+   public static final zl<aja> a = a("intention");
 
-   void a(aiy var1);
+   private static <T extends zj<ajd>> zl<T> a(String $$0) {
+      return new zl<>(zk.a, alk.b($$0));
+   }
 }

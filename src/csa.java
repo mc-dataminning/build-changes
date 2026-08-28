@@ -1,19 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+public class csa extends bwz {
+   private final crz b;
 
-public record csa(PrivateKey b, csb c, Instant d) {
-   public static final Codec<csa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayl.g.fieldOf("private_key").forGetter(csa::b),
-               csb.c.fieldOf("public_key").forGetter(csa::c),
-               ayw.q.fieldOf("refreshed_after").forGetter(csa::d)
-            )
-            .apply($$0, csa::new)
-   );
+   public csa(crz $$0) {
+      this.b = $$0;
+   }
 
+   @Override
+   public daa a(bxf $$0, daa $$1) {
+      return $$0 == bxf.a ? this.b.gj().b($$1) : super.a($$0, $$1);
+   }
+
+   @Override
+   public daa a(bxf $$0) {
+      return $$0 == bxf.a ? this.b.gj().g() : super.a($$0);
+   }
+
+   @Override
    public boolean a() {
-      return this.d.isBefore(Instant.now());
+      return this.b.gj().g().f() && super.a();
    }
 }

@@ -1,131 +1,72 @@
 import java.util.List;
 
 public class ry {
-   public static final alh<erf> a = rx.a("crimson_fungi");
-   public static final alh<erf> b = rx.a("warped_fungi");
-   public static final alh<erf> c = rx.a("oak_checked");
-   public static final alh<erf> d = rx.a("dark_oak_checked");
-   public static final alh<erf> e = rx.a("pale_oak_checked");
-   public static final alh<erf> f = rx.a("pale_oak_creaking_checked");
-   public static final alh<erf> g = rx.a("birch_checked");
-   public static final alh<erf> h = rx.a("acacia_checked");
-   public static final alh<erf> i = rx.a("spruce_checked");
-   public static final alh<erf> j = rx.a("mangrove_checked");
-   public static final alh<erf> k = rx.a("cherry_checked");
-   public static final alh<erf> l = rx.a("pine_on_snow");
-   public static final alh<erf> m = rx.a("spruce_on_snow");
-   public static final alh<erf> n = rx.a("pine_checked");
-   public static final alh<erf> o = rx.a("jungle_tree");
-   public static final alh<erf> p = rx.a("fancy_oak_checked");
-   public static final alh<erf> q = rx.a("mega_jungle_tree_checked");
-   public static final alh<erf> r = rx.a("mega_spruce_checked");
-   public static final alh<erf> s = rx.a("mega_pine_checked");
-   public static final alh<erf> t = rx.a("tall_mangrove_checked");
-   public static final alh<erf> u = rx.a("jungle_bush");
-   public static final alh<erf> v = rx.a("super_birch_bees_0002");
-   public static final alh<erf> w = rx.a("super_birch_bees");
-   public static final alh<erf> x = rx.a("oak_bees_0002_leaf_litter");
-   public static final alh<erf> y = rx.a("oak_bees_002");
-   public static final alh<erf> z = rx.a("birch_bees_0002");
-   public static final alh<erf> A = rx.a("birch_bees_0002_leaf_litter");
-   public static final alh<erf> B = rx.a("birch_bees_002");
-   public static final alh<erf> C = rx.a("fancy_oak_bees_0002_leaf_litter");
-   public static final alh<erf> D = rx.a("fancy_oak_bees_002");
-   public static final alh<erf> E = rx.a("fancy_oak_bees");
-   public static final alh<erf> F = rx.a("cherry_bees_005");
-   public static final alh<erf> G = rx.a("oak_leaf_litter");
-   public static final alh<erf> H = rx.a("dark_oak_leaf_litter");
-   public static final alh<erf> I = rx.a("birch_leaf_litter");
-   public static final alh<erf> J = rx.a("fancy_oak_leaf_litter");
-   public static final alh<erf> K = rx.a("fallen_oak_tree");
-   public static final alh<erf> L = rx.a("fallen_birch_tree");
-   public static final alh<erf> M = rx.a("fallen_super_birch_tree");
-   public static final alh<erf> N = rx.a("fallen_spruce_tree");
-   public static final alh<erf> O = rx.a("fallen_jungle_tree");
+   public static final erk a = erd.a(ehf.a.e);
+   public static final erk b = erd.a(ehf.a.f);
+   public static final erk c = erd.a(ehf.a.c);
+   public static final erk d = erd.a(ehf.a.a);
+   public static final erk e = erd.a(ehf.a.d);
+   public static final erk f = erc.a(ehz.a(), ehz.b());
+   public static final erk g = erc.a(ehz.b(10), ehz.c(10));
+   public static final erk h = erc.a(ehz.b(8), ehz.c(8));
+   public static final erk i = erc.a(ehz.b(4), ehz.c(4));
+   public static final erk j = erc.a(ehz.a(), ehz.a(256));
 
-   public static void a(qh<erf> $$0) {
-      jg<ejv<?, ?>> $$1 = $$0.a(mh.aL);
-      jf<ejv<?, ?>> $$2 = $$1.b(rn.a);
-      jf<ejv<?, ?>> $$3 = $$1.b(rn.c);
-      jf<ejv<?, ?>> $$4 = $$1.b(rn.g);
-      jf<ejv<?, ?>> $$5 = $$1.b(rn.h);
-      jf<ejv<?, ?>> $$6 = $$1.b(rn.i);
-      jf<ejv<?, ?>> $$7 = $$1.b(rn.k);
-      jf<ejv<?, ?>> $$8 = $$1.b(rn.l);
-      jf<ejv<?, ?>> $$9 = $$1.b(rn.m);
-      jf<ejv<?, ?>> $$10 = $$1.b(rn.n);
-      jf<ejv<?, ?>> $$11 = $$1.b(rn.A);
-      jf<ejv<?, ?>> $$12 = $$1.b(rn.C);
-      jf<ejv<?, ?>> $$13 = $$1.b(rn.o);
-      jf<ejv<?, ?>> $$14 = $$1.b(rn.p);
-      jf<ejv<?, ?>> $$15 = $$1.b(rn.q);
-      jf<ejv<?, ?>> $$16 = $$1.b(rn.s);
-      jf<ejv<?, ?>> $$17 = $$1.b(rn.t);
-      jf<ejv<?, ?>> $$18 = $$1.b(rn.u);
-      jf<ejv<?, ?>> $$19 = $$1.b(rn.B);
-      jf<ejv<?, ?>> $$20 = $$1.b(rn.y);
-      jf<ejv<?, ?>> $$21 = $$1.b(rn.v);
-      jf<ejv<?, ?>> $$22 = $$1.b(rn.w);
-      jf<ejv<?, ?>> $$23 = $$1.b(rn.D);
-      jf<ejv<?, ?>> $$24 = $$1.b(rn.E);
-      jf<ejv<?, ?>> $$25 = $$1.b(rn.G);
-      jf<ejv<?, ?>> $$26 = $$1.b(rn.H);
-      jf<ejv<?, ?>> $$27 = $$1.b(rn.I);
-      jf<ejv<?, ?>> $$28 = $$1.b(rn.K);
-      jf<ejv<?, ?>> $$29 = $$1.b(rn.L);
-      jf<ejv<?, ?>> $$30 = $$1.b(rn.N);
-      jf<ejv<?, ?>> $$31 = $$1.b(rn.O);
-      jf<ejv<?, ?>> $$32 = $$1.b(rn.P);
-      jf<ejv<?, ?>> $$33 = $$1.b(rn.Q);
-      jf<ejv<?, ?>> $$34 = $$1.b(rn.R);
-      jf<ejv<?, ?>> $$35 = $$1.b(rn.S);
-      jf<ejv<?, ?>> $$36 = $$1.b(rn.T);
-      jf<ejv<?, ?>> $$37 = $$1.b(rn.W);
-      jf<ejv<?, ?>> $$38 = $$1.b(rn.X);
-      jf<ejv<?, ?>> $$39 = $$1.b(rn.V);
-      jf<ejv<?, ?>> $$40 = $$1.b(rn.U);
-      rx.a($$0, a, $$2, eqw.a(8), eqt.a());
-      rx.a($$0, b, $$3, eqw.a(8), eqt.a());
-      rx.a($$0, c, $$4, rx.a(dne.z));
-      rx.a($$0, d, $$5, rx.a(dne.F));
-      rx.a($$0, e, $$6, rx.a(dne.G));
-      rx.a($$0, f, $$7, rx.a(dne.G));
-      rx.a($$0, g, $$8, rx.a(dne.B));
-      rx.a($$0, h, $$9, rx.a(dne.D));
-      rx.a($$0, i, $$10, rx.a(dne.A));
-      rx.a($$0, j, $$11, rx.a(dne.H));
-      rx.a($$0, k, $$12, rx.a(dne.E));
-      eik $$41 = eik.a(jb.a.q(), dne.ef, dne.rx);
-      List<eri> $$42 = List.of(eqy.a(jb.b, eik.a(eik.a(dne.rx)), 8), equ.a($$41));
-      rx.a($$0, l, $$13, $$42);
-      rx.a($$0, m, $$10, $$42);
-      rx.a($$0, n, $$13, rx.a(dne.A));
-      rx.a($$0, o, $$14, rx.a(dne.C));
-      rx.a($$0, p, $$15, rx.a(dne.z));
-      rx.a($$0, q, $$16, rx.a(dne.C));
-      rx.a($$0, r, $$17, rx.a(dne.A));
-      rx.a($$0, s, $$18, rx.a(dne.A));
-      rx.a($$0, t, $$19, rx.a(dne.H));
-      rx.a($$0, u, $$20, rx.a(dne.z));
-      rx.a($$0, v, $$21, rx.a(dne.B));
-      rx.a($$0, w, $$22, rx.a(dne.B));
-      rx.a($$0, x, $$23, rx.a(dne.z));
-      rx.a($$0, y, $$24, rx.a(dne.z));
-      rx.a($$0, z, $$25, rx.a(dne.B));
-      rx.a($$0, A, $$26, rx.a(dne.B));
-      rx.a($$0, B, $$27, rx.a(dne.B));
-      rx.a($$0, C, $$28, rx.a(dne.z));
-      rx.a($$0, D, $$29, rx.a(dne.z));
-      rx.a($$0, E, $$30, rx.a(dne.z));
-      rx.a($$0, F, $$31, rx.a(dne.E));
-      rx.a($$0, G, $$32, rx.a(dne.z));
-      rx.a($$0, H, $$33, rx.a(dne.F));
-      rx.a($$0, I, $$34, rx.a(dne.B));
-      rx.a($$0, J, $$35, rx.a(dne.z));
-      rx.a($$0, K, $$36, rx.a(dne.z));
-      rx.a($$0, L, $$37, rx.a(dne.B));
-      rx.a($$0, M, $$37, rx.a(dne.B));
-      rx.a($$0, N, $$39, rx.a(dne.A));
-      rx.a($$0, O, $$40, rx.a(dne.C));
+   public static void a(qi<erh> $$0) {
+      rs.a($$0);
+      rt.a($$0);
+      ru.a($$0);
+      rv.a($$0);
+      rw.a($$0);
+      rx.a($$0);
+      rz.a($$0);
+      sa.a($$0);
+      sb.a($$0);
+   }
+
+   public static alj<erh> a(String $$0) {
+      return alj.a(mi.bb, alk.b($$0));
+   }
+
+   public static void a(qi<erh> $$0, alj<erh> $$1, jg<ejx<?, ?>> $$2, List<erk> $$3) {
+      $$0.a($$1, new erh($$2, List.copyOf($$3)));
+   }
+
+   public static void a(qi<erh> $$0, alj<erh> $$1, jg<ejx<?, ?>> $$2, erk... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static erk a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         btd<bty> $$4 = btd.<bty>b().a(btv.a($$0), (int)$$3 - 1).a(btv.a($$0 + $$2), 1).a();
+         return eqz.a(new buf($$4));
+      }
+   }
+
+   public static erj a() {
+      return eqw.a(eim.c);
+   }
+
+   public static eqw a(dne $$0) {
+      return eqw.a(eim.a($$0.m(), iw.c));
+   }
+
+   public static jg<erh> a(jg<ejx<?, ?>> $$0, erk... $$1) {
+      return jg.a(new erh($$0, List.of($$1)));
+   }
+
+   public static <FC extends emr, F extends ekm<FC>> jg<erh> a(F $$0, FC $$1, erk... $$2) {
+      return a(jg.a(new ejx($$0, $$1)), $$2);
+   }
+
+   public static <FC extends emr, F extends ekm<FC>> jg<erh> a(F $$0, FC $$1) {
+      return a($$0, $$1, eim.c);
+   }
+
+   public static <FC extends emr, F extends ekm<FC>> jg<erh> a(F $$0, FC $$1, eim $$2) {
+      return a($$0, $$1, eqw.a($$2));
    }
 }

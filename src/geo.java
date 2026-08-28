@@ -1,387 +1,64 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class geo extends gad {
-   static final ali a = ali.b("icon/checkmark");
-   private static final xa b = xa.c("gui.chatSelection.title");
-   private static final xa c = xa.c("gui.chatSelection.context");
-   @Nullable
-   private final gad d;
-   private final gnk s;
-   private ful u;
-   private fve v;
-   @Nullable
-   private geo.a w;
-   final gnd.a x;
-   private final Consumer<gnd.a> y;
-   private gen z;
+public class geo extends gen<gnf.a> {
+   private static final xc C = xc.c("gui.chatReport.title");
+   private static final xc D = xc.c("gui.chatReport.select_chat");
+   private fvf E;
+   private fun F;
+   private fun G;
 
-   public geo(@Nullable gad $$0, gnk $$1, gnd.a $$2, Consumer<gnd.a> $$3) {
-      super(b);
-      this.d = $$0;
-      this.s = $$1;
-      this.x = $$2.d();
-      this.y = $$3;
+   private geo(gaf $$0, gnm $$1, gnf.a $$2) {
+      super(C, $$0, $$1, $$2);
+   }
+
+   public geo(gaf $$0, gnm $$1, UUID $$2) {
+      this($$0, $$1, new gnf.a($$2, $$1.a().b()));
+   }
+
+   public geo(gaf $$0, gnm $$1, gnf $$2) {
+      this($$0, $$1, new gnf.a($$2, $$1.a().b()));
    }
 
    @Override
-   protected void aS_() {
-      this.z = new gen(this.s, this::a);
-      this.v = fve.a(this.p, c, this.n - 16);
-      this.w = this.c(new geo.a(this.m, (this.v.a() + 1) * 9));
-      this.c(ful.a(wz.k, $$0 -> this.aP_()).a(this.n / 2 - 155, this.o - 32, 150, 20).a());
-      this.u = this.c(ful.a(wz.d, $$0 -> {
-         this.y.accept(this.x);
-         this.aP_();
-      }).a(this.n / 2 - 155 + 160, this.o - 32, 150, 20).a());
-      this.F();
-      this.m();
-      this.w.a((double)this.w.i());
-   }
-
-   private boolean a(gmz $$0) {
-      return $$0.a(this.x.f());
-   }
-
-   private void m() {
-      int $$0 = this.w.b();
-      this.z.a($$0, this.w);
-   }
-
-   void E() {
-      this.m();
-   }
-
-   void F() {
-      this.u.j = !this.x.a().isEmpty();
+   protected void E() {
+      this.F = this.z.a(fun.a(D, $$0 -> this.m.a(new geq(this, this.y, this.A, $$0x -> {
+            this.A = $$0x;
+            this.G();
+         }))).a(280).a());
+      this.G = fun.a(c, $$0 -> this.m.a(new get(this, this.A.i(), gnl.a, $$0x -> {
+            this.A.a($$0x);
+            this.G();
+         }))).a(280).a();
+      this.z.a(fxx.a(this.p, this.G, b));
+      this.E = this.a(280, 9 * 8, $$0 -> {
+         this.A.a($$0);
+         this.G();
+      });
+      this.z.a(fxx.a(this.p, this.E, d, $$0 -> $$0.e(12)));
    }
 
    @Override
-   public void a(ftx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 10, -1);
-      AbuseReportLimits $$4 = this.s.a().b();
-      int $$5 = this.x.a().size();
-      int $$6 = $$4.maxReportedMessageCount();
-      xa $$7 = xa.a("gui.chatSelection.selected", $$5, $$6);
-      $$0.a(this.p, $$7, this.n / 2, 26, -1);
-      this.v.a($$0, this.n / 2, this.w.c());
+   protected void G() {
+      IntSet $$0 = this.A.a();
+      if ($$0.isEmpty()) {
+         this.F.b(D);
+      } else {
+         this.F.b(xc.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      gnk $$1 = this.A.i();
+      if ($$1 != null) {
+         this.G.b($$1.b());
+      } else {
+         this.G.b(c);
+      }
+
+      super.G();
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.d);
-   }
-
-   @Override
-   public xa i() {
-      return wz.a(super.i(), c);
-   }
-
-   public class a extends fvh<geo.a.b> implements gen.a {
-      @Nullable
-      private geo.a.c m;
-
-      public a(final frd $$1, final int $$2) {
-         super($$1, geo.this.n, geo.this.o - $$2 - 80, 40, 16);
-      }
-
-      @Override
-      public void a(double $$0) {
-         double $$1 = this.g();
-         super.a($$0);
-         if ((float)this.i() > 1.0E-5F && $$0 <= 1.0E-5F && !azo.b($$0, $$1)) {
-            geo.this.E();
-         }
-      }
-
-      @Override
-      public void a(int $$0, gmz.a $$1) {
-         boolean $$2 = $$1.a(geo.this.x.f());
-         gmx $$3 = $$1.h();
-         fqx $$4 = $$3.a($$1.g());
-         geo.a.b $$5 = new geo.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
-         this.c($$5);
-         this.a($$1, $$2);
-      }
-
-      private void a(gmz.a $$0, boolean $$1) {
-         geo.a.b $$2 = new geo.a.e($$0.f(), $$0.d(), $$1);
-         this.c($$2);
-         geo.a.c $$3 = new geo.a.c($$0.e(), $$2);
-         if (this.m != null && this.m.a($$3)) {
-            this.d(this.m.b());
-         }
-
-         this.m = $$3;
-      }
-
-      @Override
-      public void a(xa $$0) {
-         this.c(new geo.a.f());
-         this.c(new geo.a.a($$0));
-         this.c(new geo.a.f());
-         this.m = null;
-      }
-
-      @Override
-      public int a() {
-         return Math.min(350, this.g - 50);
-      }
-
-      public int b() {
-         return azo.e(this.h, this.d);
-      }
-
-      @Override
-      protected void a(ftx $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-         geo.a.b $$9 = this.b($$4);
-         if (this.b($$9)) {
-            boolean $$10 = this.p() == $$9;
-            int $$11 = this.aN_() && $$10 ? -1 : -8355712;
-            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
-         }
-
-         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.x() == $$9, $$3);
-      }
-
-      private boolean b(geo.a.b $$0) {
-         if ($$0.c()) {
-            boolean $$1 = this.p() == $$0;
-            boolean $$2 = this.p() == null;
-            boolean $$3 = this.x() == $$0;
-            return $$1 || $$2 && $$3 && $$0.d();
-         } else {
-            return false;
-         }
-      }
-
-      @Nullable
-      protected geo.a.b c(fyq $$0) {
-         return this.a($$0, geo.a.b::c);
-      }
-
-      public void a(@Nullable geo.a.b $$0) {
-         super.a($$0);
-         geo.a.b $$1 = this.c(fyq.a);
-         if ($$1 == null) {
-            geo.this.E();
-         }
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         geo.a.b $$3 = this.p();
-         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
-
-      public int c() {
-         return this.I() + 9;
-      }
-
-      public class a extends geo.a.b {
-         private final xa b;
-
-         public a(final xa $$1) {
-            this.b = $$1;
-         }
-
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$2 + $$5 / 2;
-            int $$11 = $$3 + $$4 - 8;
-            int $$12 = geo.this.p.a(this.b);
-            int $$13 = ($$3 + $$11 - $$12) / 2;
-            int $$14 = $$10 - 9 / 2;
-            $$0.b(geo.this.p, this.b, $$13, $$14, -6250336);
-         }
-
-         @Override
-         public xa a() {
-            return this.b;
-         }
-      }
-
-      public abstract static class b extends fvh.a<geo.a.b> {
-         @Override
-         public xa a() {
-            return wz.a;
-         }
-
-         public boolean b() {
-            return false;
-         }
-
-         public boolean c() {
-            return false;
-         }
-
-         public boolean d() {
-            return this.c();
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            return this.c();
-         }
-      }
-
-      static record c(UUID a, geo.a.b b) {
-         public boolean a(geo.a.c $$0) {
-            return $$0.a.equals(this.a);
-         }
-      }
-
-      public class d extends geo.a.b {
-         private static final int b = 9;
-         private static final int c = 8;
-         private static final int d = 11;
-         private static final int e = 4;
-         private final int f;
-         private final xf g;
-         private final xa h;
-         @Nullable
-         private final List<aza> i;
-         @Nullable
-         private final fqx.a j;
-         @Nullable
-         private final List<aza> k;
-         private final boolean l;
-         private final boolean m;
-
-         public d(final int $$1, final xa $$2, final xa $$3, @Nullable final fqx $$4, final boolean $$5, final boolean $$6) {
-            this.f = $$1;
-            this.j = y.a($$4, fqx::f);
-            this.k = $$4 != null && $$4.g() != null ? geo.this.p.c($$4.g(), a.this.a()) : null;
-            this.l = $$5;
-            this.m = $$6;
-            xf $$7 = geo.this.p.a($$2, this.e() - geo.this.p.a(wz.u));
-            if ($$2 != $$7) {
-               this.g = xf.a($$7, wz.u);
-               this.i = geo.this.p.c($$2, a.this.a());
-            } else {
-               this.g = $$2;
-               this.i = null;
-            }
-
-            this.h = $$3;
-         }
-
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            if (this.b() && this.l) {
-               this.a($$0, $$2, $$3, $$5);
-            }
-
-            int $$10 = $$3 + this.g();
-            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
-            $$0.b(geo.this.p, tu.a().a(this.g), $$10, $$11, this.l ? -1 : -1593835521);
-            if (this.i != null && $$8) {
-               geo.this.b(this.i);
-            }
-
-            int $$12 = geo.this.p.a(this.g);
-            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
-         }
-
-         private void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-            if (this.j != null) {
-               int $$6 = $$2 + ($$3 - this.j.d) / 2;
-               this.j.a($$0, $$1, $$6);
-               if (this.k != null && $$4 >= $$1 && $$4 <= $$1 + this.j.c && $$5 >= $$6 && $$5 <= $$6 + this.j.d) {
-                  geo.this.b(this.k);
-               }
-            }
-         }
-
-         private void a(ftx $$0, int $$1, int $$2, int $$3) {
-            int $$5 = $$1 + ($$3 - 8) / 2;
-            $$0.a(gsl::H, geo.a, $$2, $$5, 9, 8);
-         }
-
-         private int e() {
-            int $$0 = this.j != null ? this.j.c + 4 : 0;
-            return a.this.a() - this.g() - 4 - $$0;
-         }
-
-         private int g() {
-            return this.m ? 11 : 0;
-         }
-
-         @Override
-         public xa a() {
-            return (xa)(this.b() ? xa.a("narrator.select", this.h) : this.h);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(null);
-            return this.h();
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            return fyn.a($$0) ? this.h() : false;
-         }
-
-         @Override
-         public boolean b() {
-            return geo.this.x.b(this.f);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-
-         @Override
-         public boolean d() {
-            return this.l;
-         }
-
-         private boolean h() {
-            if (this.l) {
-               geo.this.x.a(this.f);
-               geo.this.F();
-               return true;
-            } else {
-               return false;
-            }
-         }
-      }
-
-      public class e extends geo.a.b {
-         private static final int b = 12;
-         private static final int c = 4;
-         private final xa d;
-         private final Supplier<hmc> e;
-         private final boolean f;
-
-         public e(final GameProfile $$1, final xa $$2, final boolean $$3) {
-            this.d = $$2;
-            this.f = $$3;
-            this.e = a.this.c.an().a($$1);
-         }
-
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 - 12 + 4;
-            int $$11 = $$2 + ($$5 - 12) / 2;
-            fvk.a($$0, this.e.get(), $$10, $$11, 12);
-            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
-            $$0.b(geo.this.p, this.d, $$10 + 12 + 4, $$12, this.f ? -1 : -1593835521);
-         }
-      }
-
-      public static class f extends geo.a.b {
-         @Override
-         public void a(ftx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         }
-      }
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
    }
 }

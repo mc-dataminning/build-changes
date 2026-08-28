@@ -1,40 +1,20 @@
-import javax.annotation.Nullable;
+public record acz(xo.a b) implements zj<aby> {
+   public static final za<vy, acz> a = zj.a(acz::a, acz::new);
 
-public class acz implements zh<abw> {
-   public static final yy<vw, acz> a = zh.a(acz::a, acz::new);
-   private final int b;
-   private final byte c;
-
-   public acz(bwt $$0, byte $$1) {
-      this.b = $$0.ao();
-      this.c = $$1;
+   private acz(vy $$0) {
+      this(xo.a.a($$0));
    }
 
-   private acz(vw $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vw $$0) {
-      $$0.q(this.b);
-      $$0.l(this.c);
+   private void a(vy $$0) {
+      xo.a.a($$0, this.b);
    }
 
    @Override
-   public zj<acz> a() {
-      return agp.C;
+   public zl<acz> a() {
+      return agr.A;
    }
 
-   public void a(abw $$0) {
+   public void a(aby $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bwt a(djx $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
-      return this.c;
    }
 }

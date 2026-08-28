@@ -1,13 +1,12 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hib(kt.a<?> b) implements hid {
-   public static final MapCodec<hib> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kt.a("predicate").forGetter(hib::b)).apply($$0, hib::new));
+public record hib() implements hif {
+   public static final MapCodec<hib> a = MapCodec.unit(new hib());
 
    @Override
-   public boolean get(czy $$0, @Nullable gmb $$1, @Nullable bxu $$2, int $$3, czw $$4) {
-      return this.b.b().a($$0);
+   public boolean get(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
+      return $$0.r();
    }
 
    @Override

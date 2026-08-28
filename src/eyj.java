@@ -1,38 +1,37 @@
-public class eyj extends eya {
-   private float m = Float.MAX_VALUE;
-   private eya n;
-   private boolean o;
+import javax.annotation.Nullable;
 
-   public eyj(eya $$0) {
-      super($$0.a, $$0.b, $$0.c);
-   }
+public class eyj {
+   private final djh a;
+   @Nullable
+   private final eyi b;
+   private final iw c;
+   private final iw.a d = new iw.a();
 
-   public eyj(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(float $$0, eya $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   public eyj(djh $$0, bxy $$1) {
+      this.a = $$0;
+      if ($$1.dV() instanceof aru $$2) {
+         this.b = $$2.I();
+      } else {
+         this.b = null;
       }
+
+      this.c = $$1.dv();
    }
 
-   public eya d() {
-      return this.n;
+   public eyh a(int $$0, int $$1, int $$2) {
+      iw $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? eym.b(this.a, $$3) : this.b.a(this.a, $$3);
    }
 
-   public void e() {
-      this.o = true;
+   public ebg a(iw $$0) {
+      return this.a.a_($$0);
    }
 
-   public boolean f() {
-      return this.o;
+   public djh a() {
+      return this.a;
    }
 
-   public static eyj c(vw $$0) {
-      eyj $$1 = new eyj($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   public iw b() {
+      return this.c;
    }
 }

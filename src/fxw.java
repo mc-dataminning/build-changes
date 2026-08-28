@@ -1,163 +1,83 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Consumer;
+public abstract class fxw implements fyc {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class fxw extends fxu {
-   private final fxw.b c;
-   private final List<fxw.a> d = new ArrayList<>();
-   private final fyc e = fyc.i();
-
-   public fxw(int $$0, int $$1, fxw.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public fxw(int $$0, int $$1, int $$2, int $$3, fxw.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
+   public fxw(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
-
-         for (fxw.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
-         }
-
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fxw.a> $$5 = this.d.iterator();
-         fxw.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
-
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fxw.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
-            }
-         }
-
-         int $$9 = this.c.d(this);
-
-         for (fxw.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
-      }
+   public void j(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.F() + ($$0 - this.F());
+         $$1.j($$2);
+      });
+      this.c = $$0;
    }
 
    @Override
-   public void b(Consumer<fyb> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
+   public void k(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.G() + ($$0 - this.G());
+         $$1.k($$2);
+      });
+      this.d = $$0;
    }
 
-   public fyc b() {
-      return this.e.g();
+   @Override
+   public int F() {
+      return this.c;
    }
 
-   public fyc c() {
-      return this.e;
+   @Override
+   public int G() {
+      return this.d;
    }
 
-   public <T extends fyb> T a(T $$0) {
-      return this.a($$0, this.b());
+   @Override
+   public int A() {
+      return this.a;
    }
 
-   public <T extends fyb> T a(T $$0, fyc $$1) {
-      this.d.add(new fxw.a($$0, $$1));
-      return $$0;
+   @Override
+   public int y() {
+      return this.b;
    }
 
-   public <T extends fyb> T a(T $$0, Consumer<fyc> $$1) {
-      return this.a($$0, ag.a(this.b(), $$1));
-   }
+   protected abstract static class a {
+      public final fyd a;
+      public final fye.a b;
 
-   static class a extends fxu.a {
-      protected a(fyb $$0, fyc $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fyb $$0) {
-         return switch (this) {
-            case a -> $$0.A();
-            case b -> $$0.y();
-         };
+      protected a(fyd $$0, fye $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
       }
 
-      int a(fxw.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
+      public int a() {
+         return this.a.y() + this.b.b + this.b.d;
       }
 
-      int b(fyb $$0) {
-         return switch (this) {
-            case a -> $$0.y();
-            case b -> $$0.A();
-         };
+      public int b() {
+         return this.a.A() + this.b.a + this.b.c;
       }
 
-      int b(fxw.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.A() - this.b.c);
+         int $$4 = (int)azq.h(this.b.e, $$2, $$3);
+         this.a.j($$4 + $$0);
       }
 
-      void a(fxw.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
-      }
-
-      void a(fxw.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
-      }
-
-      int c(fyb $$0) {
-         return switch (this) {
-            case a -> $$0.F();
-            case b -> $$0.G();
-         };
-      }
-
-      int d(fyb $$0) {
-         return switch (this) {
-            case a -> $$0.G();
-            case b -> $$0.F();
-         };
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.y() - this.b.d);
+         int $$4 = Math.round(azq.h(this.b.f, $$2, $$3));
+         this.a.k($$4 + $$0);
       }
    }
 }
