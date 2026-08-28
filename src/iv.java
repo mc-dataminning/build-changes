@@ -18,13 +18,13 @@ public class iv<A extends ArgumentType<?>> implements is<A, iv<A>.a> {
       return new iv<>($$0);
    }
 
-   public void a(iv<A>.a $$0, wf $$1) {
+   public void a(iv<A>.a $$0, wi $$1) {
    }
 
    public void a(iv<A>.a $$0, JsonObject $$1) {
    }
 
-   public iv<A>.a a(wf $$0) {
+   public iv<A>.a a(wi $$0) {
       return this.a;
    }
 

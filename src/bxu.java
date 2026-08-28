@@ -1,34 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bxu extends bwt<bvc> {
-   public static final int c = 100;
-   private final bro d;
-   private final awk e;
-
-   public bxu(bro $$0, awk $$1) {
-      super(ImmutableMap.of(cee.n, cef.c, cee.T, cef.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+public class bxu {
+   public static <T extends bve> bwy<bve> a(bup<? extends T> $$0, int $$1, cei<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
    }
 
-   protected boolean a(arn $$0, bvc $$1, long $$2) {
-      return !$$1.aK();
-   }
-
-   protected void b(arn $$0, bvc $$1, long $$2) {
-      $$1.r(true);
-      $$1.b(bvm.g);
-   }
-
-   protected void c(arn $$0, bvc $$1, long $$2) {
-      if ($$1.aK()) {
-         $$1.h($$1.dA().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, awm.g, 2.0F, 1.0F);
-      }
-
-      $$1.r(false);
-      $$1.b(bvm.a);
-      $$1.ed().b(cee.T);
-      $$1.ed().a(cee.S, this.d.a($$0.A));
+   public static <E extends bve, T extends bve> bwy<E> a(bup<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cei<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bve> $$8 = $$2x -> $$0.equals($$2x.ar()) && $$3.test((T)$$2x);
+      return cak.a(
+         (Function<cak.b<E>, ? extends App<cak.c<E>, can<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cei.n), $$6x.c(cei.m), $$6x.b(cei.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     cek $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bve> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bui)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bxi($$5xxxx, true));
+                           $$8x.a(new cel(new bxi($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

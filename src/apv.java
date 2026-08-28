@@ -1,120 +1,107 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class apv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xi.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xi.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xi.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xi.c("commands.whitelist.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.trigger.failed.invalid"));
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a(
-                                 "whitelist"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ex.a("on").executes($$0x -> b((ew)$$0x.getSource()))))
-                        .then(ex.a("off").executes($$0x -> c((ew)$$0x.getSource()))))
-                     .then(ex.a("list").executes($$0x -> d((ew)$$0x.getSource()))))
-                  .then(ex.a("add").then(ex.a("targets", fl.a()).suggests(($$0x, $$1) -> {
-                     avo $$2 = ((ew)$$0x.getSource()).l().ag();
-                     return fb.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gj())).map($$0xx -> $$0xx.gj().getName()), $$1);
-                  }).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"))))))
-               .then(
-                  ex.a("remove")
+         (LiteralArgumentBuilder)ex.a("trigger")
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("objective", fq.a())
+                        .suggests(($$0x, $$1) -> a((ew)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"))))
                      .then(
-                        ex.a("targets", fl.a())
-                           .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().j(), $$1))
-                           .executes($$0x -> b((ew)$$0x.getSource(), fl.a($$0x, "targets")))
-                     )
-               ))
-            .then(ex.a("reload").executes($$0x -> a((ew)$$0x.getSource())))
+                        ex.a("add")
+                           .then(
+                              ex.a("value", IntegerArgumentType.integer())
+                                 .executes(
+                                    $$0x -> a(
+                                          (ew)$$0x.getSource(),
+                                          ((ew)$$0x.getSource()).h(),
+                                          fq.a($$0x, "objective"),
+                                          IntegerArgumentType.getInteger($$0x, "value")
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     ex.a("set")
+                        .then(
+                           ex.a("value", IntegerArgumentType.integer())
+                              .executes(
+                                 $$0x -> b(
+                                       (ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ew $$0) {
-      $$0.l().ag().a();
-      $$0.a(() -> xi.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
-   }
+   public static CompletableFuture<Suggestions> a(ew $$0, SuggestionsBuilder $$1) {
+      fav $$2 = $$0.f();
+      List<String> $$3 = Lists.newArrayList();
+      if ($$2 != null) {
+         faw $$4 = $$0.l().aJ();
 
-   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avw $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            avx $$5 = new avx($$4);
-            $$2.a($$5);
-            $$0.a(() -> xi.a("commands.whitelist.add.success", xi.b($$4.getName())), true);
-            $$3++;
+         for (fao $$5 : $$4.c()) {
+            if ($$5.c() == faz.c) {
+               fas $$6 = $$4.d($$2, $$5);
+               if ($$6 != null && !$$6.b()) {
+                  $$3.add($$5.b());
+               }
+            }
          }
       }
 
-      if ($$3 == 0) {
-         throw c.create();
-      } else {
-         return $$3;
-      }
+      return fb.b($$3, $$1);
    }
 
-   private static int b(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avw $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            avx $$5 = new avx($$4);
-            $$2.b($$5);
-            $$0.a(() -> xi.a("commands.whitelist.remove.success", xi.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
+   private static int a(ew $$0, arr $$1, fao $$2, int $$3) throws CommandSyntaxException {
+      fau $$4 = a($$0.l().aJ(), $$1, $$2);
+      int $$5 = $$4.b($$3);
+      $$0.a(() -> xl.a("commands.trigger.add.success", $$2.g(), $$3), true);
+      return $$5;
    }
 
-   private static int b(ew $$0) throws CommandSyntaxException {
-      avo $$1 = $$0.l().ag();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> xi.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
-      }
+   private static int b(ew $$0, arr $$1, fao $$2, int $$3) throws CommandSyntaxException {
+      fau $$4 = a($$0.l().aJ(), $$1, $$2);
+      $$4.a($$3);
+      $$0.a(() -> xl.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      return $$3;
    }
 
-   private static int c(ew $$0) throws CommandSyntaxException {
-      avo $$1 = $$0.l().ag();
-      if (!$$1.o()) {
+   private static int a(ew $$0, arr $$1, fao $$2) throws CommandSyntaxException {
+      fau $$3 = a($$0.l().aJ(), $$1, $$2);
+      int $$4 = $$3.b(1);
+      $$0.a(() -> xl.a("commands.trigger.simple.success", $$2.g()), true);
+      return $$4;
+   }
+
+   private static fau a(faw $$0, fav $$1, fao $$2) throws CommandSyntaxException {
+      if ($$2.c() != faz.c) {
          throw b.create();
       } else {
-         $$1.a(false);
-         $$0.a(() -> xi.c("commands.whitelist.disabled"), true);
-         return 1;
+         fas $$3 = $$0.d($$1, $$2);
+         if ($$3 != null && !$$3.b()) {
+            fau $$4 = $$0.c($$1, $$2);
+            $$4.f();
+            return $$4;
+         } else {
+            throw a.create();
+         }
       }
-   }
-
-   private static int d(ew $$0) {
-      String[] $$1 = $$0.l().ag().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> xi.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> xi.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
-      }
-
-      return $$1.length;
    }
 }

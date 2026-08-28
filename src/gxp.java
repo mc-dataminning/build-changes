@@ -1,6 +1,6 @@
-import java.io.IOException;
-import java.nio.file.Path;
-
-public interface gxp {
-   void a(ali var1, Path var2) throws IOException;
+public class gxp extends gwb {
+   public float[] a = new float[2];
+   public float[] b = new float[2];
+   public float c;
+   public boolean d;
 }

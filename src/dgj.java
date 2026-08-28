@@ -1,70 +1,101 @@
-public abstract class dgj {
-   public static final alh<dgc> a = a("the_void");
-   public static final alh<dgc> b = a("plains");
-   public static final alh<dgc> c = a("sunflower_plains");
-   public static final alh<dgc> d = a("snowy_plains");
-   public static final alh<dgc> e = a("ice_spikes");
-   public static final alh<dgc> f = a("desert");
-   public static final alh<dgc> g = a("swamp");
-   public static final alh<dgc> h = a("mangrove_swamp");
-   public static final alh<dgc> i = a("forest");
-   public static final alh<dgc> j = a("flower_forest");
-   public static final alh<dgc> k = a("birch_forest");
-   public static final alh<dgc> l = a("dark_forest");
-   public static final alh<dgc> m = a("old_growth_birch_forest");
-   public static final alh<dgc> n = a("old_growth_pine_taiga");
-   public static final alh<dgc> o = a("old_growth_spruce_taiga");
-   public static final alh<dgc> p = a("taiga");
-   public static final alh<dgc> q = a("snowy_taiga");
-   public static final alh<dgc> r = a("savanna");
-   public static final alh<dgc> s = a("savanna_plateau");
-   public static final alh<dgc> t = a("windswept_hills");
-   public static final alh<dgc> u = a("windswept_gravelly_hills");
-   public static final alh<dgc> v = a("windswept_forest");
-   public static final alh<dgc> w = a("windswept_savanna");
-   public static final alh<dgc> x = a("jungle");
-   public static final alh<dgc> y = a("sparse_jungle");
-   public static final alh<dgc> z = a("bamboo_jungle");
-   public static final alh<dgc> A = a("badlands");
-   public static final alh<dgc> B = a("eroded_badlands");
-   public static final alh<dgc> C = a("wooded_badlands");
-   public static final alh<dgc> D = a("meadow");
-   public static final alh<dgc> E = a("cherry_grove");
-   public static final alh<dgc> F = a("grove");
-   public static final alh<dgc> G = a("snowy_slopes");
-   public static final alh<dgc> H = a("frozen_peaks");
-   public static final alh<dgc> I = a("jagged_peaks");
-   public static final alh<dgc> J = a("stony_peaks");
-   public static final alh<dgc> K = a("river");
-   public static final alh<dgc> L = a("frozen_river");
-   public static final alh<dgc> M = a("beach");
-   public static final alh<dgc> N = a("snowy_beach");
-   public static final alh<dgc> O = a("stony_shore");
-   public static final alh<dgc> P = a("warm_ocean");
-   public static final alh<dgc> Q = a("lukewarm_ocean");
-   public static final alh<dgc> R = a("deep_lukewarm_ocean");
-   public static final alh<dgc> S = a("ocean");
-   public static final alh<dgc> T = a("deep_ocean");
-   public static final alh<dgc> U = a("cold_ocean");
-   public static final alh<dgc> V = a("deep_cold_ocean");
-   public static final alh<dgc> W = a("frozen_ocean");
-   public static final alh<dgc> X = a("deep_frozen_ocean");
-   public static final alh<dgc> Y = a("mushroom_fields");
-   public static final alh<dgc> Z = a("dripstone_caves");
-   public static final alh<dgc> aa = a("lush_caves");
-   public static final alh<dgc> ab = a("deep_dark");
-   public static final alh<dgc> ac = a("nether_wastes");
-   public static final alh<dgc> ad = a("warped_forest");
-   public static final alh<dgc> ae = a("crimson_forest");
-   public static final alh<dgc> af = a("soul_sand_valley");
-   public static final alh<dgc> ag = a("basalt_deltas");
-   public static final alh<dgc> ah = a("the_end");
-   public static final alh<dgc> ai = a("end_highlands");
-   public static final alh<dgc> aj = a("end_midlands");
-   public static final alh<dgc> ak = a("small_end_islands");
-   public static final alh<dgc> al = a("end_barrens");
+import com.google.common.hash.Hashing;
 
-   private static alh<dgc> a(String $$0) {
-      return alh.a(lz.aG, ali.b($$0));
+public class dgj {
+   public static final int a = kb.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dgj.a e;
+   private final long f;
+
+   public dgj(dgj.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
+   }
+
+   public dgj a(dgj.a $$0) {
+      return new dgj($$0, this.f);
+   }
+
+   public jq<dgh> a(jh $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
+      }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
+
+   public jq<dgh> a(double $$0, double $$1, double $$2) {
+      int $$3 = kb.a(azn.a($$0));
+      int $$4 = kb.a(azn.a($$1));
+      int $$5 = kb.a(azn.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
+
+   public jq<dgh> b(jh $$0) {
+      int $$1 = kb.a($$0.u());
+      int $$2 = kb.a($$0.v());
+      int $$3 = kb.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public jq<dgh> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = azi.a($$0, (long)$$1);
+      $$7 = azi.a($$7, (long)$$2);
+      $$7 = azi.a($$7, (long)$$3);
+      $$7 = azi.a($$7, (long)$$1);
+      $$7 = azi.a($$7, (long)$$2);
+      $$7 = azi.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = azi.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = azi.a($$7, $$0);
+      double $$10 = b($$7);
+      return azn.k($$6 + $$10) + azn.k($$5 + $$9) + azn.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      jq<dgh> getNoiseBiome(int var1, int var2, int var3);
    }
 }

@@ -1,76 +1,86 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class xh {
-   public static final xi a = xi.i();
-   public static final xi b = xi.c("options.on");
-   public static final xi c = xi.c("options.off");
-   public static final xi d = xi.c("gui.done");
-   public static final xi e = xi.c("gui.cancel");
-   public static final xi f = xi.c("gui.yes");
-   public static final xi g = xi.c("gui.no");
-   public static final xi h = xi.c("gui.ok");
-   public static final xi i = xi.c("gui.proceed");
-   public static final xi j = xi.c("gui.continue");
-   public static final xi k = xi.c("gui.back");
-   public static final xi l = xi.c("gui.toTitle");
-   public static final xi m = xi.c("gui.acknowledge");
-   public static final xi n = xi.c("chat.link.open");
-   public static final xi o = xi.c("gui.copy_link_to_clipboard");
-   public static final xi p = xi.c("menu.disconnect");
-   public static final xi q = xi.c("connect.failed.transfer");
-   public static final xi r = xi.c("connect.failed");
-   public static final xi s = xi.b("\n");
-   public static final xi t = xi.b(". ");
-   public static final xi u = xi.b("...");
-   public static final xi v = a();
+public record xh(xi l, xi m) {
+   public static final Codec<xh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(xi.a.fieldOf("chat").forGetter(xh::a), xi.a.fieldOf("narration").forGetter(xh::b)).apply($$0, xh::new)
+   );
+   public static final zj<ww, xh> b = zj.a(xi.b, xh::a, xi.b, xh::b, xh::new);
+   public static final zj<ww, jq<xh>> c = zh.a(ma.aH, b);
+   public static final xi d = xi.a("chat.type.text");
+   public static final alk<xh> e = a("chat");
+   public static final alk<xh> f = a("say_command");
+   public static final alk<xh> g = a("msg_command_incoming");
+   public static final alk<xh> h = a("msg_command_outgoing");
+   public static final alk<xh> i = a("team_msg_command_incoming");
+   public static final alk<xh> j = a("team_msg_command_outgoing");
+   public static final alk<xh> k = a("emote_command");
 
-   public static xw a() {
-      return xi.b(" ");
+   private static alk<xh> a(String $$0) {
+      return alk.a(ma.aH, all.b($$0));
    }
 
-   public static xw a(long $$0) {
-      return xi.a("gui.days", $$0);
+   public static void a(rb<xh> $$0) {
+      $$0.a(e, new xh(d, xi.a("chat.type.text.narrate")));
+      $$0.a(f, new xh(xi.a("chat.type.announcement"), xi.a("chat.type.text.narrate")));
+      $$0.a(g, new xh(xi.b("commands.message.display.incoming"), xi.a("chat.type.text.narrate")));
+      $$0.a(h, new xh(xi.c("commands.message.display.outgoing"), xi.a("chat.type.text.narrate")));
+      $$0.a(i, new xh(xi.d("chat.type.team.text"), xi.a("chat.type.text.narrate")));
+      $$0.a(j, new xh(xi.d("chat.type.team.sent"), xi.a("chat.type.text.narrate")));
+      $$0.a(k, new xh(xi.a("chat.type.emote"), xi.a("chat.type.emote")));
    }
 
-   public static xw b(long $$0) {
-      return xi.a("gui.hours", $$0);
+   public static xh.a a(alk<xh> $$0, bui $$1) {
+      return a($$0, $$1.dY().H_(), $$1.S_());
    }
 
-   public static xw c(long $$0) {
-      return xi.a("gui.minutes", $$0);
+   public static xh.a a(alk<xh> $$0, ew $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   public static xi a(boolean $$0) {
-      return $$0 ? b : c;
+   public static xh.a a(alk<xh> $$0, ke $$1, xl $$2) {
+      kd<xh> $$3 = $$1.e(ma.aH);
+      return new xh.a($$3.b($$0), $$2);
    }
 
-   public static xw a(xi $$0, boolean $$1) {
-      return xi.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   public xi a() {
+      return this.l;
    }
 
-   public static xw a(xi $$0, xi $$1) {
-      return xi.a("options.generic_value", $$0, $$1);
+   public xi b() {
+      return this.m;
    }
 
-   public static xw a(xi... $$0) {
-      xw $$1 = xi.i();
+   public static record a(jq<xh> b, xl c, Optional<xl> d) {
+      public static final zj<ww, xh.a> a = zj.a(xh.c, xh.a::a, xn.d, xh.a::b, xn.e, xh.a::c, xh.a::new);
 
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(t);
-         }
+      a(jq<xh> $$0, xl $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      return $$1;
-   }
+      public xl a(xl $$0) {
+         return this.b.a().a().a($$0, this);
+      }
 
-   public static xi b(xi... $$0) {
-      return a(Arrays.asList($$0));
-   }
+      public xl b(xl $$0) {
+         return this.b.a().b().a($$0, this);
+      }
 
-   public static xi a(Collection<? extends xi> $$0) {
-      return xl.a($$0, s);
+      public xh.a c(xl $$0) {
+         return new xh.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public jq<xh> a() {
+         return this.b;
+      }
+
+      public xl b() {
+         return this.c;
+      }
+
+      public Optional<xl> c() {
+         return this.d;
+      }
    }
 }

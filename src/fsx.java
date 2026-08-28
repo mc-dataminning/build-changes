@@ -1,33 +1,96 @@
-public class fsx extends flh {
-   private static final ali a = ali.b("widget/page_forward_highlighted");
-   private static final ali b = ali.b("widget/page_forward");
-   private static final ali c = ali.b("widget/page_backward_highlighted");
-   private static final ali d = ali.b("widget/page_backward");
-   private final boolean u;
-   private final boolean v;
+public class fsx {
+   private static final all a = all.b("alt");
+   private static final yi b = yi.a.a(a);
+   private static final fsx c = new fsx();
+   private final azv d = azv.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public fsx(int $$0, int $$1, boolean $$2, flh.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, xh.a, $$3, q);
-      this.u = $$2;
-      this.v = $$4;
+   private fsx() {
    }
 
-   @Override
-   public void b(fku $$0, int $$1, int $$2, float $$3) {
-      ali $$4;
-      if (this.u) {
-         $$4 = this.B() ? a : b;
-      } else {
-         $$4 = this.B() ? c : d;
-      }
-
-      $$0.a(gir::B, $$4, this.D(), this.E(), 23, 13);
+   public static fsx a() {
+      return c;
    }
 
-   @Override
-   public void a(hdf $$0) {
-      if (this.v) {
-         $$0.a(hbv.a(awl.cy, 1.0F));
+   public xq a(flh $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ae.a(this.e, this.d));
       }
+
+      return $$0.b().a(xl.b($$2.toString()).c(b), $$1, yi.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

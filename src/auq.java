@@ -1,4 +1,6 @@
-public interface auq extends avb, AutoCloseable {
-   @Override
-   void close();
+import java.util.function.Consumer;
+
+@FunctionalInterface
+public interface auq {
+   void loadPacks(Consumer<aul> var1);
 }

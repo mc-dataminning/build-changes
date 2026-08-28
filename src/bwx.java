@@ -1,48 +1,101 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bwx extends bwt<cny> {
-   @Nullable
-   private cqa c;
+public abstract class bwx<E extends bve> implements bwy<E> {
+   public static final int a = 60;
+   protected final Map<cei<?>, cej> b;
+   private bwx.a c = bwx.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bwx(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   public bwx(Map<cei<?>, cej> $$0) {
+      this($$0, 60);
    }
 
-   protected boolean a(arn $$0, cny $$1) {
-      jh $$2 = $$1.dx();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && byc.a($$0, $$1, $$2);
+   public bwx(Map<cei<?>, cej> $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   protected boolean a(arn $$0, cny $$1, long $$2) {
-      return this.c != null && !this.c.d();
+   public bwx(Map<cei<?>, cej> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
-   protected void b(arn $$0, cny $$1, long $$2) {
-      this.c = null;
-      $$1.ed().a($$0.ab(), $$0.aa());
+   @Override
+   public bwx.a a() {
+      return this.c;
    }
 
-   protected void c(arn $$0, cny $$1, long $$2) {
-      azs $$3 = $$1.ea();
-      if ($$3.a(100) == 0) {
-         $$1.gz();
+   @Override
+   public final boolean e(arq $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bwx.a.b;
+         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(arq $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(arq $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(arq $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(arq $$0, E $$1, long $$2) {
+      this.c = bwx.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(arq $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(arq $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(arq $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<cei<?>, cej> $$1 : this.b.entrySet()) {
+         cei<?> $$2 = $$1.getKey();
+         cej $$3 = $$1.getValue();
+         if (!$$0.ee().a($$2, $$3)) {
+            return false;
+         }
       }
 
-      if ($$3.a(200) == 0 && byc.a($$0, $$1, $$1.dx())) {
-         cuy $$4 = ae.a(cuy.values(), $$3);
-         int $$5 = $$3.a(3);
-         cwb $$6 = this.a($$4, $$5);
-         cpg.a(new cpb($$1.dX(), $$1, $$1.dC(), $$1.dG(), $$1.dI(), $$6), $$0, $$6);
-      }
+      return true;
    }
 
-   private cwb a(cuy $$0, int $$1) {
-      cwb $$2 = new cwb(cwf.uw);
-      $$2.b(ku.af, new cyr((byte)$$1, List.of(new cyq(cyq.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   public static enum a {
+      a,
+      b;
    }
 }

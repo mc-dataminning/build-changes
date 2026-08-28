@@ -4,29 +4,44 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record exu(Optional<cu> b) implements exn {
-   public static final MapCodec<exu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cu.a.optionalFieldOf("predicate").forGetter(exu::c)).apply($$0, exu::new));
+public record exu(Optional<bw> b, eug.b c) implements exr {
+   public static final MapCodec<exu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(exu::c), eug.b.e.fieldOf("entity").forGetter(exu::d)).apply($$0, exu::new)
+   );
 
    @Override
-   public exo b() {
-      return exp.j;
+   public exs b() {
+      return ext.f;
    }
 
    @Override
-   public Set<ewv<?>> a() {
-      return ImmutableSet.of(ewy.i);
+   public Set<ewz<?>> a() {
+      return ImmutableSet.of(exc.f, this.c.a());
    }
 
-   public boolean a(euc $$0) {
-      cwb $$1 = $$0.c(ewy.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public boolean a(eug $$0) {
+      bui $$1 = $$0.c(this.c.a());
+      ezr $$2 = $$0.c(exc.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static exn.a a(cu.a $$0) {
-      return () -> new exu(Optional.of($$0.b()));
+   public static exr.a a(eug.b $$0) {
+      return a($$0, bw.a.a());
    }
 
-   public Optional<cu> c() {
+   public static exr.a a(eug.b $$0, bw.a $$1) {
+      return () -> new exu(Optional.of($$1.b()), $$0);
+   }
+
+   public static exr.a a(eug.b $$0, bw $$1) {
+      return () -> new exu(Optional.of($$1), $$0);
+   }
+
+   public Optional<bw> c() {
       return this.b;
+   }
+
+   public eug.b d() {
+      return this.c;
    }
 }

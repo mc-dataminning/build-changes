@@ -1,28 +1,37 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-public class aww {
-   protected final Object2IntMap<aws<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+public interface aww {
+   DecimalFormat a = ae.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   aww b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   aww c = $$0 -> a.format((double)$$0 * 0.1);
+   aww d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   aww e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " min" : $$1 + " s";
+      }
+   };
 
-   public aww() {
-      this.a.defaultReturnValue(0);
-   }
-
-   public void b(com $$0, aws<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
-   }
-
-   public void a(com $$0, aws<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
-   }
-
-   public <T> int a(awu<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
-   }
-
-   public int a(aws<?> $$0) {
-      return this.a.getInt($$0);
-   }
+   String format(int var1);
 }

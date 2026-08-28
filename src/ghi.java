@@ -1,36 +1,61 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class ghi extends ghf {
+   private final gha a;
+   private static final int b = 8;
 
-public class ghi implements bpy {
-   private final gid a;
-   private final Set<bpw> b = new ObjectOpenHashSet();
-   private final bqe c = new bqe();
-
-   public ghi(LongSupplier $$0, gid $$1) {
-      this.a = $$1;
-      this.b.add(bqf.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bqf.a());
-      this.b.add(bpw.a("totalChunks", bpv.f, this.a, gid::h));
-      this.b.add(bpw.a("renderedChunks", bpv.f, this.a, gid::j));
-      this.b.add(bpw.a("lastViewDistance", bpv.f, this.a, gid::i));
-      glu $$0 = this.a.g();
-      this.b.add(bpw.a("toUpload", bpv.g, $$0, glu::c));
-      this.b.add(bpw.a("freeBufferCount", bpv.g, $$0, glu::d));
-      this.b.add(bpw.a("toBatchCount", bpv.g, $$0, glu::b));
-      if (fdu.a().isPresent()) {
-         this.b.add(bpw.a("gpuUtilization", bpv.i, fji.Q(), fji::v));
-      }
+   protected ghi(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gha $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$8;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / azn.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
    @Override
-   public Set<bpw> a(Supplier<bok> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public ggj b() {
+      return ggj.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public ggs.a p() {
+      return ggs.a.b;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azn.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements ggi<lw> {
+      private final gha a;
+
+      public a(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghi($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      }
    }
 }

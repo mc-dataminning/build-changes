@@ -1,13 +1,43 @@
-public class grq extends gne<cmk, gxc, gbc<gxc>> {
-   public grq(gok.a $$0) {
-      this($$0, gbl.dm, gbl.ds, gbl.dq, gbl.dr, gbl.dt, gbl.du);
+public class grq extends goz<cla, gxh> {
+   private final gka a;
+
+   public grq(gpa.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public gxc c() {
-      return new gxc();
+   public void a(gxh $$0, fek $$1, gix $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = azn.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
+      }
+
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         grp.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public grq(gok.a $$0, gbk $$1, gbk $$2, gbk $$3, gbk $$4, gbk $$5, gbk $$6) {
-      super($$0, new gbc<>($$0.a($$1)), new gbc<>($$0.a($$2)), new gbc<>($$0.a($$3)), new gbc<>($$0.a($$4)), new gbc<>($$0.a($$5)), new gbc<>($$0.a($$6)));
+   public gxh a() {
+      return new gxh();
+   }
+
+   public void a(cla $$0, gxh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.o() - $$2 + 1.0F;
+      $$1.b = $$0.q();
    }
 }

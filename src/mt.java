@@ -1,91 +1,50 @@
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
 import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
-public class mt implements mf {
-   private final mh d;
-   private final CompletableFuture<js.a> e;
+public class mt implements mg {
+   private static final Logger d = LogUtils.getLogger();
+   private final Path e;
+   private final CompletableFuture<js.a> f;
+   private static final MapCodec<alk<dgh>> g = alk.a(ma.aG).fieldOf("biome");
+   private static final Codec<dgq.c<alk<dgh>>> h = dgq.c.a(g).fieldOf("biomes").codec();
 
-   public mt(mh $$0, CompletableFuture<js.a> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public mt(mi $$0, CompletableFuture<js.a> $$1) {
+      this.e = $$0.a(mi.b.c).resolve("biome_parameters");
+      this.f = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(md $$0) {
-      Path $$1 = this.d.a(mh.b.c).resolve("blocks.json");
-      return this.e
-         .thenCompose(
-            $$2 -> {
-               JsonObject $$3 = new JsonObject();
-               alg<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
-               $$2.d(lz.f)
-                  .c()
-                  .forEach(
-                     $$2x -> {
-                        JsonObject $$3x = new JsonObject();
-                        dvk<die, dvj> $$4x = ((die)$$2x.a()).l();
-                        if (!$$4x.d().isEmpty()) {
-                           JsonObject $$5 = new JsonObject();
+   public CompletableFuture<?> a(me $$0) {
+      return this.f.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         List<CompletableFuture<?>> $$3 = new ArrayList<>();
+         dgv.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
+      });
+   }
 
-                           for (dwm<?> $$6 : $$4x.d()) {
-                              JsonArray $$7 = new JsonArray();
+   private static <E> CompletableFuture<?> a(Path $$0, me $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
+      return $$5.isPresent() ? mg.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
+   }
 
-                              for (Comparable<?> $$8 : $$6.a()) {
-                                 $$7.add(ae.a($$6, $$8));
-                              }
-
-                              $$5.add($$6.f(), $$7);
-                           }
-
-                           $$3x.add("properties", $$5);
-                        }
-
-                        JsonArray $$9 = new JsonArray();
-                        UnmodifiableIterator var13 = $$4x.a().iterator();
-
-                        while (var13.hasNext()) {
-                           dvj $$10 = (dvj)var13.next();
-                           JsonObject $$11 = new JsonObject();
-                           JsonObject $$12 = new JsonObject();
-
-                           for (dwm<?> $$13 : $$4x.d()) {
-                              $$12.addProperty($$13.f(), ae.a($$13, $$10.c($$13)));
-                           }
-
-                           if ($$12.size() > 0) {
-                              $$11.add("properties", $$12);
-                           }
-
-                           $$11.addProperty("id", die.j($$10));
-                           if ($$10 == ((die)$$2x.a()).m()) {
-                              $$11.addProperty("default", true);
-                           }
-
-                           $$9.add($$11);
-                        }
-
-                        $$3x.add("states", $$9);
-                        String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dif.a
-                           .codec()
-                           .encodeStart($$4, (die)$$2x.a())
-                           .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
-                        $$3x.add("definition", $$15);
-                        $$3.add($$14, $$3x);
-                     }
-                  );
-               return mf.a($$0, $$3, $$1);
-            }
-         );
+   private Path a(all $$0) {
+      return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
    }
 
    @Override
    public final String a() {
-      return "Block List";
+      return "Biome Parameters";
    }
 }

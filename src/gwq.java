@@ -1,3 +1,3 @@
-public class gwq extends gtv {
-   public boolean d;
+public class gwq extends gwb {
+   public int a;
 }

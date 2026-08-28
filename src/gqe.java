@@ -1,41 +1,37 @@
-public class gqe extends gnf<chl, gwb, fzv> {
-   private static final ali a = ali.b("textures/entity/rabbit/brown.png");
-   private static final ali b = ali.b("textures/entity/rabbit/white.png");
-   private static final ali k = ali.b("textures/entity/rabbit/black.png");
-   private static final ali l = ali.b("textures/entity/rabbit/gold.png");
-   private static final ali m = ali.b("textures/entity/rabbit/salt.png");
-   private static final ali n = ali.b("textures/entity/rabbit/white_splotched.png");
-   private static final ali o = ali.b("textures/entity/rabbit/toast.png");
-   private static final ali p = ali.b("textures/entity/rabbit/caerbannog.png");
+public class gqe extends gqg<clu, gwz, fzq> {
+   private static final all a = all.b("textures/entity/slime/magmacube.png");
 
-   public gqe(gok.a $$0) {
-      super($$0, new fzv($$0.a(gbl.bX)), new fzv($$0.a(gbl.bY)), 0.3F);
+   public gqe(gpa.a $$0) {
+      super($$0, new fzq($$0.a(gcb.bh)), 0.25F);
    }
 
-   public ali a(gwb $$0) {
-      if ($$0.b) {
-         return o;
-      } else {
-         return switch ($$0.c) {
-            case a -> a;
-            case b -> b;
-            case c -> k;
-            case e -> l;
-            case f -> m;
-            case d -> n;
-            case g -> p;
-         };
-      }
+   protected int a(clu $$0, jh $$1) {
+      return 15;
    }
 
-   public gwb c() {
-      return new gwb();
+   public all a(gwz $$0) {
+      return a;
    }
 
-   public void a(chl $$0, gwb $$1, float $$2) {
+   public gwz c() {
+      return new gwz();
+   }
+
+   public void a(clu $$0, gwz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(n.a($$0.am().getString()));
-      $$1.c = $$0.gu();
+      $$1.a = azn.h($$2, $$0.bY, $$0.bX);
+      $$1.b = $$0.gw();
+   }
+
+   public void a(gwz $$0, fek $$1, gix $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(gwz $$0, fek $$1) {
+      int $$2 = $$0.b;
+      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
+      float $$4 = 1.0F / ($$3 + 1.0F);
+      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
    }
 }

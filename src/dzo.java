@@ -1,15 +1,8 @@
-public interface dzo {
-   dzo a = new dzo() {
-      @Override
-      public void a() {
-      }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-      @Override
-      public void a(bue.c $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bue.c var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dzo {
 }

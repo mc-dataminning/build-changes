@@ -1,39 +1,37 @@
-import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdx<T extends bvc & bvf> extends cby {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class cdx<T extends bve> extends cdv<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cdx(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cdx(cqf $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bve> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      return this.b.dX().ac().b(dex.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.es() != null && this.b.es().ar() == bul.by && this.b.et() > this.d;
+      if (this.j > 0 || !this.e.eb().h()) {
+         return false;
+      } else if (!((cqf)this.e).gM()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
    public void d() {
-      this.d = this.b.et();
-      this.b.af_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bvf)$$0).forEach(bvf::af_);
-      }
-
+      this.j = b(200);
       super.d();
-   }
-
-   private List<? extends bvc> i() {
-      double $$0 = this.b.h(bwi.m);
-      ezi $$1 = ezi.a(this.b.dv()).c($$0, 10.0, $$0);
-      return this.b.dX().a((Class<? extends bvc>)this.b.getClass(), $$1, buj.f);
    }
 }

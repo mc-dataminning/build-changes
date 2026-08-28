@@ -1,110 +1,103 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gct {
-   private final GameProfile a;
-   private final Supplier<gze> b;
-   private dey c = dey.e;
-   private int d;
+   private static final Logger a = LogUtils.getLogger();
+   private final fjx b;
+   private final hei c;
+   private final am d = new am();
+   private final Map<ah, aj> e = new Object2ObjectOpenHashMap();
    @Nullable
-   private xi e;
+   private gct.a f;
    @Nullable
-   private xz f;
-   private ye g;
-   private int h;
+   private ah g;
 
-   public gct(GameProfile $$0, boolean $$1) {
-      this.a = $$0;
-      this.g = b($$1);
-      Supplier<Supplier<gze>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
+   public gct(fjx $$0, hei $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static Supplier<gze> a(GameProfile $$0) {
-      fji $$1 = fji.Q();
-      gzf $$2 = $$1.an();
-      CompletableFuture<gze> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      gze $$5 = gyv.a($$0);
-      return () -> {
-         gze $$3x = $$3.getNow($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
+   public void a(agp $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
+      }
+
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<all, aj> $$1 : $$0.f().entrySet()) {
+         ai $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            aj $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
+
+               Optional<at> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fod($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
+      }
    }
 
-   public GameProfile a() {
-      return this.a;
-   }
-
-   @Nullable
-   public xz b() {
-      return this.f;
-   }
-
-   public ye c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.f != null;
-   }
-
-   protected void a(xz $$0) {
-      this.f = $$0;
-      this.g = $$0.a(coq.b);
-   }
-
-   protected void a(boolean $$0) {
-      this.f = null;
-      this.g = b($$0);
-   }
-
-   private static ye b(boolean $$0) {
-      return $$0 ? ye.c : ye.b;
-   }
-
-   public dey e() {
-      return this.c;
-   }
-
-   protected void a(dey $$0) {
-      this.c = $$0;
-   }
-
-   public int f() {
+   public am a() {
       return this.d;
    }
 
-   protected void a(int $$0) {
-      this.d = $$0;
+   public void a(@Nullable ah $$0, boolean $$1) {
+      gcz $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aij.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
    }
 
-   public gze g() {
-      return this.b.get();
+   public void a(@Nullable gct.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ai $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
    }
 
    @Nullable
-   public fan h() {
-      return fji.Q().s.O().e(this.a().getName());
+   public ah a(all $$0) {
+      ai $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
    }
 
-   public void a(@Nullable xi $$0) {
-      this.e = $$0;
-   }
+   public interface a extends am.a {
+      void a(ai var1, aj var2);
 
-   @Nullable
-   public xi i() {
-      return this.e;
-   }
-
-   public void b(int $$0) {
-      this.h = $$0;
-   }
-
-   public int j() {
-      return this.h;
+      void a(@Nullable ah var1);
    }
 }

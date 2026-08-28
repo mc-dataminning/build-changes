@@ -1,33 +1,19 @@
-public record dbi(cwb a, cwb b, cwb c) implements das {
+public record dbi(cwf a) implements daw {
    @Override
-   public cwb a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+   public cwf a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
    public int a() {
-      return 3;
+      return 1;
    }
 
-   @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cwb c() {
+   public cwf c() {
       return this.a;
-   }
-
-   public cwb d() {
-      return this.b;
-   }
-
-   public cwb e() {
-      return this.c;
    }
 }

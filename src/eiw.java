@@ -1,69 +1,51 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class eiw extends eiq {
+public class eiw extends eiy {
    public static final MapCodec<eiw> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               eiq.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bri.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+               azf.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               eqr.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayw.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
             )
+            .and(b($$0))
             .apply($$0, eiw::new)
    );
-   private final eiq c;
-   private final String d;
-   @Nullable
-   private dwj e;
-   private final bri f;
+   private final azf<Integer> i;
+   private final eqr.a j;
+   private final float k;
+   private final eqr l;
 
-   public eiw(eiq $$0, dwj $$1, bri $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public eiw(eiq $$0, String $$1, bri $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public eiw(azf<Integer> $$0, eqr.a $$1, float $$2, long $$3, eqr.a $$4, float $$5, List<dvo> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = eqr.b(new eci(new ebk($$3)), $$1);
    }
 
    @Override
-   protected eir<?> a() {
-      return eir.g;
+   protected eiv<?> a() {
+      return eiv.e;
    }
 
    @Override
-   public dvj a(azs $$0, jh $$1) {
-      dvj $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         dwj $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
-         }
+   public dvo a(azv $$0, jh $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azn.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dvo> $$4 = Lists.newArrayListWithCapacity($$3);
 
-         this.e = $$3;
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
 
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+      return this.a($$4, $$1, (double)this.e);
    }
 
-   @Nullable
-   private static dwj a(dvj $$0, String $$1) {
-      Collection<dwm<?>> $$2 = $$0.F();
-      Optional<dwj> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dwj).map($$0x -> (dwj)$$0x).findAny();
-      return $$3.orElse(null);
+   protected double a(jh $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

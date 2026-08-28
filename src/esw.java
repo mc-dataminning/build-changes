@@ -1,31 +1,196 @@
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import com.google.common.annotations.VisibleForTesting;
+import io.netty.buffer.ByteBuf;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public abstract class esw {
-   private boolean a;
+public class esw {
+   public static final zj<ByteBuf, esw> a = zh.a(esw::a, esw::i);
+   private static final esw[] b = ae.a(() -> {
+      esw[] $$0 = new esw[48];
+      a(new esw(jm.b, jm.c, esw.a.a), $$0);
+      return $$0;
+   });
+   private final jm c;
+   private final jm d;
+   private final jm e;
+   private final esw.a f;
+   private final int g;
+   private final List<jm> h;
+   private final List<jm> i;
+   private final List<jm> j;
+   private final Map<jm, esw> k = new EnumMap<>(jm.class);
+   private final Map<jm, esw> l = new EnumMap<>(jm.class);
+   private final Map<esw.a, esw> m = new EnumMap<>(esw.a.class);
 
-   public abstract uk a(uk var1, js.a var2);
+   private esw(jm $$0, jm $$1, esw.a $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = b($$0, $$1, $$2);
+      kl $$3 = $$1.q().d($$0.q());
+      jm $$4 = jm.a($$3, null);
+      Objects.requireNonNull($$4);
+      if (this.f == esw.a.b) {
+         this.e = $$4;
+      } else {
+         this.e = $$4.g();
+      }
 
-   public void c() {
-      this.a(true);
+      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
+      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
+      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   public static esw a(jm $$0, jm $$1, esw.a $$2) {
+      return b[b($$0, $$1, $$2)];
    }
 
-   public boolean d() {
-      return this.a;
+   public esw a(jm $$0) {
+      return this.l.get($$0);
    }
 
-   public uk a(js.a $$0) {
-      uk $$1 = new uk();
-      $$1.a("data", this.a(new uk(), $$0));
-      uz.e($$1);
-      this.a(false);
-      return $$1;
+   public esw b(jm $$0) {
+      return this.k.get($$0);
    }
 
-   public static record a<T extends esw>(Supplier<T> a, BiFunction<uk, js.a, T> b, bat c) {
+   public esw c(jm $$0) {
+      return $$0.o() == this.c.o() ? this : this.k.get($$0);
+   }
+
+   public esw d(jm $$0) {
+      esw $$1 = this.b($$0);
+      return this.d == $$1.e ? $$1.a() : $$1;
+   }
+
+   public esw a(esw.a $$0) {
+      return this.m.get($$0);
+   }
+
+   public esw a() {
+      return this.a(this.f.a());
+   }
+
+   public jm b() {
+      return this.d;
+   }
+
+   public jm c() {
+      return this.c;
+   }
+
+   public jm d() {
+      return this.e;
+   }
+
+   public esw.a e() {
+      return this.f;
+   }
+
+   public List<jm> f() {
+      return this.h;
+   }
+
+   public List<jm> g() {
+      return this.i;
+   }
+
+   public List<jm> h() {
+      return this.j;
+   }
+
+   @Override
+   public String toString() {
+      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public static esw a(int $$0) {
+      return b[$$0];
+   }
+
+   public static esw a(azv $$0) {
+      return ae.a(b, $$0);
+   }
+
+   private static esw a(esw $$0, esw[] $$1) {
+      if ($$1[$$0.i()] != null) {
+         return $$1[$$0.i()];
+      } else {
+         $$1[$$0.i()] = $$0;
+
+         for (esw.a $$2 : esw.a.values()) {
+            $$0.m.put($$2, a(new esw($$0.c, $$0.d, $$2), $$1));
+         }
+
+         for (jm $$3 : jm.values()) {
+            jm $$4 = $$0.c;
+            if ($$3 == $$0.c) {
+               $$4 = $$0.d.g();
+            }
+
+            if ($$3 == $$0.c.g()) {
+               $$4 = $$0.d;
+            }
+
+            $$0.k.put($$3, a(new esw($$4, $$3, $$0.f), $$1));
+         }
+
+         for (jm $$5 : jm.values()) {
+            jm $$6 = $$0.d;
+            if ($$5 == $$0.d) {
+               $$6 = $$0.c.g();
+            }
+
+            if ($$5 == $$0.d.g()) {
+               $$6 = $$0.c;
+            }
+
+            $$0.l.put($$5, a(new esw($$5, $$6, $$0.f), $$1));
+         }
+
+         return $$0;
+      }
+   }
+
+   @VisibleForTesting
+   protected static int b(jm $$0, jm $$1, esw.a $$2) {
+      if ($$0.o() == $$1.o()) {
+         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
+      } else {
+         int $$3;
+         if ($$0.o() == jm.a.b) {
+            $$3 = $$1.o() == jm.a.a ? 1 : 0;
+         } else {
+            $$3 = $$1.o() == jm.a.b ? 1 : 0;
+         }
+
+         int $$5 = $$3 << 1 | $$1.f().ordinal();
+         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
+      }
+   }
+
+   public static enum a {
+      a("left"),
+      b("right");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public esw.a a() {
+         return this == a ? b : a;
+      }
+
+      @Override
+      public String toString() {
+         return this.c;
+      }
    }
 }

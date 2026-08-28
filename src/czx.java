@@ -1,70 +1,62 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class czx extends czw {
+   private final jm b;
 
-public class czx extends dag {
-   public czx(dad $$0) {
-      super($$0);
-   }
-
-   public boolean a(dae $$0, dfb $$1) {
-      cwb $$2 = cwb.k;
-      List<cwb> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwb $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axj.bP)) {
-               if (!$$2.f()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.h() instanceof cuz)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.f() && !$$3.isEmpty();
-   }
-
-   public cwb a(dae $$0, js.a $$1) {
-      List<cuz> $$2 = Lists.newArrayList();
-      cwb $$3 = cwb.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwb $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axj.bP)) {
-               if (!$$3.f()) {
-                  return cwb.k;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cuz $$6)) {
-                  return cwb.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? cyp.a($$3, $$2) : cwb.k;
+   public czx(dff $$0, jh $$1, jm $$2, cwf $$3, jm $$4) {
+      super($$0, null, bsg.a, $$3, new ezn(ezr.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public jh a() {
+      return this.j().b();
    }
 
    @Override
-   public dau<?> aq_() {
-      return dau.c;
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jm d() {
+      return jm.a;
+   }
+
+   @Override
+   public jm[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
+         case b:
+            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
+         case c:
+            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
+         case d:
+            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
+         case e:
+            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
+         case f:
+            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
+      }
+   }
+
+   @Override
+   public jm g() {
+      return this.b.o() == jm.a.b ? jm.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

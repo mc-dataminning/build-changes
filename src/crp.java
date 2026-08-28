@@ -1,86 +1,62 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class crp extends ctd {
-   private final int o;
-   private final int p;
-   protected final csg m;
-   protected final ctg n = new ctg();
-
-   public crp(csx<?> $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1);
-      this.o = $$2;
-      this.p = $$3;
-      this.m = new cts(this, $$2, $$3);
-   }
-
-   protected ctl a(com $$0, int $$1, int $$2) {
-      return this.a(new cth($$0, this.m, this.n, 0, $$1, $$2));
-   }
+public record crp(int c, float d, boolean e) implements cym {
+   public static final Codec<crp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayw.l.fieldOf("nutrition").forGetter(crp::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(crp::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(crp::c)
+            )
+            .apply($$0, crp::new)
+   );
+   public static final zj<ww, crp> b = zj.a(zh.h, crp::a, zh.j, crp::b, zh.b, crp::c, crp::new);
 
    @Override
-   protected void d(int $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.o; $$2++) {
-         for (int $$3 = 0; $$3 < this.p; $$3++) {
-            this.a(new ctl(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
-         }
+   public void a(dff $$0, bve $$1, cwf $$2, cyl $$3) {
+      azv $$4 = $$1.eb();
+      $$0.a(null, $$1.dD(), $$1.dF(), $$1.dJ(), $$3.e().a(), awp.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cor $$5) {
+         $$5.gw().a(this);
+         $$0.a(null, $$5.dD(), $$5.dF(), $$5.dJ(), awo.ui, awp.h, 0.5F, azn.b($$4, 0.9F, 1.0F));
       }
    }
 
-   @Override
-   public ctd.a a(boolean $$0, boolean $$1, dar<?> $$2, col $$3) {
-      dar<daf> $$4 = (dar<daf>)$$2;
-      this.l();
+   public int a() {
+      return this.c;
+   }
 
-      ctd.a var7;
-      try {
-         List<ctl> $$5 = this.n();
-         var7 = aku.a(new aku.a<daf>() {
-            @Override
-            public void a(cos $$0) {
-               crp.this.a($$0);
-            }
+   public float b() {
+      return this.d;
+   }
 
-            @Override
-            public void a() {
-               crp.this.n.a();
-               crp.this.m.a();
-            }
+   public boolean c() {
+      return this.e;
+   }
 
-            @Override
-            public boolean a(dar<daf> $$0) {
-               return $$0.b().a(crp.this.m.aC_(), crp.this.q().dX());
-            }
-         }, this.o, this.p, $$5, $$5, $$3, $$4, $$0, $$1);
-      } finally {
-         this.a((dar<daf>)$$2);
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+
+      public crp.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return var7;
-   }
+      public crp.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   @Override
-   protected void l() {
-   }
+      public crp.a a() {
+         this.c = true;
+         return this;
+      }
 
-   protected void a(dar<daf> $$0) {
-   }
-
-   public abstract ctl m();
-
-   public abstract List<ctl> n();
-
-   public int o() {
-      return this.o;
-   }
-
-   public int p() {
-      return this.p;
-   }
-
-   protected abstract com q();
-
-   @Override
-   public void a(cos $$0) {
-      this.m.fillStackedContents($$0);
+      public crp b() {
+         float $$0 = crn.a(this.a, this.b);
+         return new crp(this.a, $$0, this.c);
+      }
    }
 }

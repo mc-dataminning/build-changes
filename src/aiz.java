@@ -1,7 +1,8 @@
-public class aiz {
-   public static final zr<aiy> a = a("intention");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static <T extends zp<ajb>> zr<T> a(String $$0) {
-      return new zr<>(zq.a, ali.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aiz {
 }

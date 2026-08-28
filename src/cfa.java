@@ -1,53 +1,41 @@
+import com.google.common.collect.ImmutableSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class cfa<T extends bva> extends cfk<T> {
-   private final BiPredicate<T, bva> a;
-   private final Predicate<T> b;
-   private final cee<Boolean> c;
-   private final int d;
+public class cfa extends cfo<bve> {
+   private static final int a = 200;
+   private static final int b = 599;
 
-   public cfa(int $$0, BiPredicate<T, bva> $$1, Predicate<T> $$2, cee<Boolean> $$3, int $$4) {
+   public cfa() {
+      this(200);
+   }
+
+   public cfa(int $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
    }
 
    @Override
-   protected void a(arn $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
+   protected void a(arq $$0, bve $$1) {
+      a($$1);
    }
 
    @Override
-   public Set<cee<?>> a() {
-      return Set.of(cee.g);
+   public Set<cei<?>> a() {
+      return ImmutableSet.of(cei.g);
    }
 
-   @Override
-   public void a(T $$0) {
-      Optional<List<bva>> $$1 = $$0.ed().c(cee.g);
+   public static void a(bve $$0) {
+      Optional<List<bve>> $$1 = $$0.ee().c(cei.g);
       if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ar().equals(bup.af));
          if ($$2) {
-            this.b($$0);
+            b($$0);
          }
       }
    }
 
-   public void b(T $$0) {
-      $$0.ed().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.ed().b(this.c);
+   public static void b(bve $$0) {
+      $$0.ee().a(cei.F, true, 599L);
    }
 }

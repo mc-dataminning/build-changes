@@ -1,46 +1,42 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class epg extends epw {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<epg> a = MapCodec.unit(() -> epg.b);
-   public static final epg b = new epg();
+public class epg extends eqa {
+   public static final MapCodec<epg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kf.a(ma.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, epg::new)
+   );
+   private final Optional<ju<dij>> b;
+   private final float c;
 
-   private epg() {
+   public epg(ju<dij> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public epg(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private epg(Optional<ju<dij>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
    }
 
    @Nullable
    @Override
-   public epz.c a(dfe $$0, jh $$1, jh $$2, epz.c $$3, epz.c $$4, epv $$5) {
-      dvj $$6 = $$4.b();
-      if ($$6.a(dig.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
-
-            dvj $$9;
-            try {
-               gq.a $$8 = gq.a($$0.a(lz.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
-
-            return $$9.a(dig.kN) ? null : new epz.c($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
-      }
+   public eqd.c a(dfi $$0, jh $$1, jh $$2, eqd.c $$3, eqd.c $$4, epz $$5) {
+      azv $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected epy<?> a() {
-      return epy.h;
+   protected eqc<?> a() {
+      return eqc.f;
    }
 }

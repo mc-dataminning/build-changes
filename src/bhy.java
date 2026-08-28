@@ -1,50 +1,56 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.function.Function;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class bhy extends DataFix {
-   final String a;
-   final Map<String, String> b;
+public class bhy {
+   public static final TypeReference a = a("level");
+   public static final TypeReference b = a("player");
+   public static final TypeReference c = a("chunk");
+   public static final TypeReference d = a("hotbar");
+   public static final TypeReference e = a("options");
+   public static final TypeReference f = a("structure");
+   public static final TypeReference g = a("stats");
+   public static final TypeReference h = a("saved_data/command_storage");
+   public static final TypeReference i = a("saved_data/chunks");
+   public static final TypeReference j = a("saved_data/map_data");
+   public static final TypeReference k = a("saved_data/idcounts");
+   public static final TypeReference l = a("saved_data/raids");
+   public static final TypeReference m = a("saved_data/random_sequences");
+   public static final TypeReference n = a("saved_data/structure_feature_indices");
+   public static final TypeReference o = a("saved_data/scoreboard");
+   public static final TypeReference p = a("advancements");
+   public static final TypeReference q = a("poi_chunk");
+   public static final TypeReference r = a("entity_chunk");
+   public static final TypeReference s = a("block_entity");
+   public static final TypeReference t = a("item_stack");
+   public static final TypeReference u = a("block_state");
+   public static final TypeReference v = a("flat_block_state");
+   public static final TypeReference w = a("data_components");
+   public static final TypeReference x = a("villager_trade");
+   public static final TypeReference y = a("particle");
+   public static final TypeReference z = a("entity_name");
+   public static final TypeReference A = a("entity_tree");
+   public static final TypeReference B = a("entity");
+   public static final TypeReference C = a("block_name");
+   public static final TypeReference D = a("item_name");
+   public static final TypeReference E = a("game_event_name");
+   public static final TypeReference F = a("untagged_spawner");
+   public static final TypeReference G = a("structure_feature");
+   public static final TypeReference H = a("objective");
+   public static final TypeReference I = a("team");
+   public static final TypeReference J = a("recipe");
+   public static final TypeReference K = a("biome");
+   public static final TypeReference L = a("multi_noise_biome_source_parameter_list");
+   public static final TypeReference M = a("world_gen_settings");
 
-   public bhy(Schema $$0, String $$1, Map<String, String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-   }
+   public static TypeReference a(final String $$0) {
+      return new TypeReference() {
+         public String typeName() {
+            return $$0;
+         }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhu.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = this.a($$0, "Enchantments");
-      return this.a($$0, "StoredEnchantments");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.update(
-         $$1,
-         $$0x -> (Dynamic)$$0x.asStreamOpt()
-               .map(
-                  $$0xx -> $$0xx.map(
-                        $$0xxx -> $$0xxx.update(
-                              "id",
-                              $$1x -> (Dynamic)$$1x.asString()
-                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(bji.a($$1xx), $$1xx)))
-                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
-                           )
-                     )
-               )
-               .map($$0x::createList)
-               .mapOrElse(Function.identity(), $$1x -> $$0x)
-      );
+         @Override
+         public String toString() {
+            return "@" + $$0;
+         }
+      };
    }
 }

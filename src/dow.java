@@ -1,55 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dow extends dhq {
-   public static final MapCodec<dow> a = b(dow::new);
-   public static final dwa b = dvz.E;
-   private final bri c = brf.a(5);
+public enum dow implements baj {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dow> a() {
-      return a;
+   public static final Codec<dow> e = baj.a(dow::values);
+   private final String f;
+   private final h g;
+
+   private dow(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public dow(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+   public dow a(dow $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   @Nullable
-   @Override
-   public dsm a(jh $$0, dvj $$1) {
-      return new dtu($$0, $$1);
+   public h a() {
+      return this.g;
    }
 
-   @Nullable
-   @Override
-   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
-      return $$0.C ? null : a($$2, dso.K, dtu::a);
-   }
-
-   @Override
-   protected dok a_(dvj $$0) {
-      return dok.c;
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, cwb $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   public jm a(jm $$0) {
+      if ($$0.o() == jm.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dow a(azv $$0) {
+      return ae.a(values(), $$0);
+   }
+
+   public static List<dow> b(azv $$0) {
+      return ae.b(values(), $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

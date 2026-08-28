@@ -1,75 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class efw extends eel<ehk> {
-   public efw(Codec<ehk> $$0) {
+public class efw extends eep<ehl> {
+   public efw(Codec<ehl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(een<ehk> $$0) {
-      ehk $$1 = $$0.f();
-      dfy $$2 = $$0.b();
+   public boolean a(eer<ehl> $$0) {
+      ehl $$1 = $$0.f();
+      dgd $$2 = $$0.b();
       jh $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
-         return false;
-      } else {
-         dvj $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
+      dvo $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dkr) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
+
+            dkr.a($$2, $$4, $$3, 2);
          } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
+            $$2.a($$3, $$4, 2);
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 }

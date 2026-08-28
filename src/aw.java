@@ -8,26 +8,26 @@ public class aw extends dy<aw.a> {
       return aw.a.a;
    }
 
-   public void a(aro $$0, dvj $$1, cwb $$2, int $$3) {
+   public void a(arr $$0, dvo $$1, cwf $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bh> b, Optional<jq<die>> c, Optional<cu> d, dj.d e) implements dy.a {
+   public static record a(Optional<bh> b, Optional<jq<dij>> c, Optional<cu> d, dj.d e) implements dy.a {
       public static final Codec<aw.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bw.b.optionalFieldOf("player").forGetter(aw.a::a),
-                  ly.e.r().optionalFieldOf("block").forGetter(aw.a::b),
+                  lz.e.r().optionalFieldOf("block").forGetter(aw.a::b),
                   cu.a.optionalFieldOf("item").forGetter(aw.a::c),
                   dj.d.d.optionalFieldOf("num_bees_inside", dj.d.c).forGetter(aw.a::d)
                )
                .apply($$0, aw.a::new)
       );
 
-      public static ap<aw.a> a(die $$0, cu.a $$1, dj.d $$2) {
+      public static ap<aw.a> a(dij $$0, cu.a $$1, dj.d $$2) {
          return ao.L.a(new aw.a(Optional.empty(), Optional.of($$0.p()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dvj $$0, cwb $$1, int $$2) {
+      public boolean a(dvo $$0, cwf $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class aw extends dy<aw.a> {
          return this.b;
       }
 
-      public Optional<jq<die>> b() {
+      public Optional<jq<dij>> b() {
          return this.c;
       }
 

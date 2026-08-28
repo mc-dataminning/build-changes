@@ -1,44 +1,50 @@
-import javax.annotation.Nullable;
-
-public class clc extends cmc {
-   public clc(bul<? extends clc> $$0, dfb $$1) {
+public abstract class clc extends cqf {
+   protected clc(bup<? extends clc> $$0, dff $$1) {
       super($$0, $$1);
    }
 
-   public static bwh.a q() {
-      return cmc.t().a(bwi.s, 12.0);
+   @Override
+   protected void D() {
+      super.D();
+   }
+
+   public clc.a q() {
+      return clc.a.a;
    }
 
    @Override
-   public boolean E(bue $$0) {
-      if (super.E($$0)) {
-         if ($$0 instanceof bva) {
-            int $$1 = 0;
-            if (this.dX().ak() == bsa.c) {
-               $$1 = 7;
-            } else if (this.dX().ak() == bsa.d) {
-               $$1 = 15;
-            }
+   public boolean c(bve $$0) {
+      return $$0 instanceof cnx && $$0.p_() ? false : super.c($$0);
+   }
 
-            if ($$1 > 0) {
-               ((bva)$$0).b(new btj(btl.s, $$1 * 20, 0), this);
-            }
-         }
-
+   @Override
+   protected boolean t(bui $$0) {
+      if (super.t($$0)) {
          return true;
       } else {
-         return false;
+         return !$$0.ar().a(axh.z) ? false : this.ct() == null && $$0.ct() == null;
       }
    }
 
-   @Nullable
-   @Override
-   public bvt a(dfr $$0, bsb $$1, buk $$2, @Nullable bvt $$3) {
-      return $$3;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
    }
 
-   @Override
-   public ezn l(bue $$0) {
-      return $$0.ds() <= this.ds() ? new ezn(0.0, 0.21875 * (double)this.el(), 0.0) : super.l($$0);
+   protected class b extends ccu {
+      public b(final cqf $$1) {
+         super($$1, false);
+      }
+
+      @Override
+      public boolean b() {
+         return super.b() && clc.this.gM();
+      }
    }
 }

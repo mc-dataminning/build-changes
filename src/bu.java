@@ -18,22 +18,22 @@ public record bu(
             .apply($$0, bu::new)
    );
 
-   public boolean a(bue $$0) {
-      if (this.b.isPresent() && $$0.aK() != this.b.get()) {
+   public boolean a(bui $$0) {
+      if (this.b.isPresent() && $$0.aL() != this.b.get()) {
          return false;
-      } else if (this.c.isPresent() && $$0.bZ() != this.c.get()) {
+      } else if (this.c.isPresent() && $$0.ca() != this.c.get()) {
          return false;
-      } else if (this.d.isPresent() && $$0.cj() != this.d.get()) {
+      } else if (this.d.isPresent() && $$0.ck() != this.d.get()) {
          return false;
-      } else if (this.e.isPresent() && $$0.ck() != this.e.get()) {
+      } else if (this.e.isPresent() && $$0.cl() != this.e.get()) {
          return false;
-      } else if (this.f.isPresent() && $$0.cl() != this.f.get()) {
+      } else if (this.f.isPresent() && $$0.cm() != this.f.get()) {
          return false;
       } else {
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof bva $$1 && ($$1.fL() || $$1 instanceof com $$2 && $$2.gl().b)) {
+               if ($$0 instanceof bve $$1 && ($$1.fM() || $$1 instanceof cor $$2 && $$2.gm().b)) {
                   var10000 = true;
                   break label53;
                }
@@ -47,7 +47,7 @@ public record bu(
             }
          }
 
-         if (this.h.isPresent() && $$0 instanceof bva $$4 && $$4.p_() != this.h.get()) {
+         if (this.h.isPresent() && $$0 instanceof bve $$4 && $$4.p_() != this.h.get()) {
             return false;
          }
 

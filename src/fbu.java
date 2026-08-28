@@ -1,32 +1,26 @@
-import org.lwjgl.openal.AL10;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogListeners;
+import org.slf4j.event.Level;
 
 public class fbu {
-   private float a = 1.0F;
-   private fbv b = fbv.a;
+   private static boolean a;
 
-   public void a(fbv $$0) {
-      this.b = $$0;
-      ezn $$1 = $$0.b();
-      ezn $$2 = $$0.c();
-      ezn $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   public static void a() {
+      if (!a) {
+         TracyClient.load();
+         if (TracyClient.isAvailable()) {
+            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
+            a = true;
+         }
+      }
    }
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
-   }
-
-   public float a() {
-      return this.a;
-   }
-
-   public void b() {
-      this.a(fbv.a);
-   }
-
-   public fbv c() {
-      return this.b;
+   private static int a(Level $$0) {
+      return switch ($$0) {
+         case DEBUG -> 11184810;
+         case WARN -> 16777130;
+         case ERROR -> 16755370;
+         default -> 16777215;
+      };
    }
 }

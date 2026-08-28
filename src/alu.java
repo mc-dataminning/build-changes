@@ -1,13 +1,15 @@
-public final class alu extends RuntimeException {
-   public static final alu a = new alu();
+import java.util.List;
 
-   private alu() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
+public enum alu {
+   a,
+   b,
+   c,
+   d;
 
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
+   private static final List<alu> e = List.of(values());
+   private static final ke.b f = ke.a(lz.az);
+
+   public static jx<alu> a() {
+      return new jx<>(e).a(a, f);
    }
 }

@@ -1,33 +1,24 @@
-public class aec implements zp<ace> {
-   public static final zg<wt, aec> a = zg.a(ze.u, aec::b, ze.a(lz.V), aec::e, xk.d, aec::f, aec::new);
-   private final int b;
-   private final csx<?> c;
-   private final xi d;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public aec(int $$0, csx<?> $$1, xi $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record aec(int b, List<crc.a> c) implements zs<ach> {
+   public static final zj<wi, aec> a = zj.a(zh.h, aec::b, crc.a.a.a(zh.a()), aec::e, aec::new);
 
    @Override
-   public zr<aec> a() {
-      return agt.X;
+   public zu<aec> a() {
+      return agw.T;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bui a(dff $$0) {
+      return $$0.a(this.b);
    }
 
-   public csx<?> e() {
+   public List<crc.a> e() {
       return this.c;
-   }
-
-   public xi f() {
-      return this.d;
    }
 }

@@ -1,32 +1,17 @@
-public class gpm extends gnf<ciy, gvm, fzc> {
-   private static final ali a = ali.b("textures/entity/llama/creamy.png");
-   private static final ali b = ali.b("textures/entity/llama/white.png");
-   private static final ali k = ali.b("textures/entity/llama/brown.png");
-   private static final ali l = ali.b("textures/entity/llama/gray.png");
+public class gpm extends gri<buw> {
+   private static final all a = all.b("textures/entity/squid/glow_squid.png");
 
-   public gpm(gok.a $$0, gbk $$1, gbk $$2) {
-      super($$0, new fzc($$0.a($$1)), new fzc($$0.a($$2)), 0.7F);
-      this.a(new gsr(this, $$0.f(), $$0.h()));
+   public gpm(gpa.a $$0, gbd $$1, gbd $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public ali a(gvm $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> b;
-         case c -> k;
-         case d -> l;
-      };
+   @Override
+   public all a(gxb $$0) {
+      return a;
    }
 
-   public gvm c() {
-      return new gvm();
-   }
-
-   public void a(ciy $$0, gvm $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gH();
-      $$1.b = !$$0.p_() && $$0.t();
-      $$1.c = $$0.ak();
-      $$1.d = $$0.gx();
+   protected int a(buw $$0, jh $$1) {
+      int $$2 = (int)azn.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

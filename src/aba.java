@@ -1,26 +1,16 @@
-public record aba(long c, jh d) implements aas {
-   public static final zg<wf, aba> a = aas.a(aba::a, aba::new);
-   public static final aas.b<aba> b = aas.a("debug/neighbors_update");
+public record aba() implements aav {
+   public static final zj<wi, aba> a = aav.a(aba::a, aba::new);
+   public static final aav.b<aba> b = aav.a("debug/game_test_clear");
 
-   private aba(wf $$0) {
-      this($$0.m(), $$0.e());
+   private aba(wi $$0) {
+      this();
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(wi $$0) {
    }
 
    @Override
-   public aas.b<aba> a() {
+   public aav.b<aba> a() {
       return b;
-   }
-
-   public long b() {
-      return this.c;
-   }
-
-   public jh c() {
-      return this.d;
    }
 }

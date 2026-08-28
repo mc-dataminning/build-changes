@@ -1,78 +1,86 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbx extends cby {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cgr d;
+public class cbx extends ccc {
+   private int a;
+   private final bvm b;
    @Nullable
-   private cgr e;
-   private final double f;
-   private int g;
+   private cor c;
+   private cbl d;
 
-   public cbx(cgr $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public cbx(bvm $$0) {
+      this.b = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else {
-         List<? extends cgr> $$0 = this.d.dX().a((Class<? extends cgr>)this.d.getClass(), this.d.cS().c(8.0, 4.0, 8.0));
-         cgr $$1 = null;
-         double $$2 = Double.MAX_VALUE;
+      List<cqq> $$0 = this.b.dY().a(cqq.class, this.b.cT().g(5.0));
+      boolean $$1 = false;
 
-         for (cgr $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
+      for (cqq $$2 : $$0) {
+         bui $$3 = $$2.cZ();
+         if ($$3 instanceof cor && (azn.e(((cor)$$3).bo) > 0.0F || azn.e(((cor)$$3).bq) > 0.0F)) {
+            $$1 = true;
+            break;
          }
       }
+
+      return this.c != null && (azn.e(this.c.bo) > 0.0F || azn.e(this.c.bq) > 0.0F) || $$1;
+   }
+
+   @Override
+   public boolean U_() {
+      return true;
    }
 
    @Override
    public boolean c() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bM()) {
-         return false;
-      } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
+      return this.c != null && this.c.cb() && (azn.e(this.c.bo) > 0.0F || azn.e(this.c.bq) > 0.0F);
    }
 
    @Override
    public void d() {
-      this.g = 0;
+      for (cqq $$1 : this.b.dY().a(cqq.class, this.b.cT().g(5.0))) {
+         if ($$1.cZ() instanceof cor $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = cbl.a;
    }
 
    @Override
    public void e() {
-      this.e = null;
+      this.c = null;
    }
 
    @Override
    public void a() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.P().a(this.e, this.f);
+      boolean $$0 = azn.e(this.c.bo) > 0.0F || azn.e(this.c.bq) > 0.0F;
+      float $$1 = this.d == cbl.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new ezr((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
+      this.b.a(bvi.a, this.b.dB());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == cbl.a) {
+            jh $$2 = this.c.dy().a(this.c.cQ().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.P().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = cbl.b;
+            }
+         } else if (this.d == cbl.b) {
+            jm $$3 = this.c.cR();
+            jh $$4 = this.c.dy().a($$3, 10);
+            this.b.P().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = cbl.a;
+            }
+         }
       }
    }
 }

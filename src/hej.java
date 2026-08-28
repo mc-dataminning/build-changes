@@ -1,36 +1,51 @@
-import java.util.function.Function;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public enum hej {
-   a("movement", hee::new),
-   b("find_tree", hed::new),
-   c("punch_tree", heg::new),
-   d("open_inventory", hef::new),
-   e("craft_planks", hec::new),
-   f("none", heb::new);
+public abstract class hej {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   private final String g;
-   private final Function<heh, ? extends hei> h;
-
-   private <T extends hei> hej(final String $$0, final Function<heh, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public hei a(heh $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static hej a(String $$0) {
-      for (hej $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(hed $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
       }
 
-      return f;
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
+      }
    }
+
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   }
+
+   public boolean c() {
+      return this.c >= 10;
+   }
+
+   public void d() {
+      this.d = false;
+   }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(hed var1);
 }

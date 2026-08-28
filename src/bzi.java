@@ -1,42 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bzi {
-   private static final int a = 200;
+   private static final float a = 0.3F;
 
-   public static <E extends bvc> bwu<E> a(BiConsumer<E, bva> $$0) {
-      return a($$0x -> false, $$0, true);
-   }
-
-   public static <E extends bvc> bwu<E> a(Predicate<bva> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bvc> bwu<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bvc> bwu<E> a(Predicate<bva> $$0, BiConsumer<E, bva> $$1, boolean $$2) {
-      return cag.a(
-         (Function<cag.b<E>, ? extends App<cag.c<E>, caj<E>>>)($$3 -> $$3.group($$3.b(cee.o), $$3.a(cee.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bva $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bM() && $$9.dX() == $$7.dX() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+   public static byi<bve> a() {
+      return cak.a(
+         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$0 -> $$0.group($$0.a(cei.m), $$0.a(cei.n), $$0.b(cei.e), $$0.b(cei.h), $$0.c(cei.q))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     jp $$9 = $$0.b($$3);
+                     cek $$10 = $$0.b($$4);
+                     if ($$6.E_().a(100) == 0 && $$6.ag() == $$9.a() && $$9.b().a($$7.dw(), 4.0) && $$10.d($$0xxx -> bup.bj.equals($$0xxx.ar()))) {
+                        $$10.a($$1xx -> bup.bj.equals($$1xx.ar()) && $$1xx.g((bui)$$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bxi($$3xx, true));
+                           $$1.a(new cel(new bxi($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
       );
-   }
-
-   private static boolean a(bva $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dX().aa() - $$1.get() > 200L;
    }
 }

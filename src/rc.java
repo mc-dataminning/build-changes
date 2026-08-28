@@ -1,72 +1,65 @@
 public class rc {
-   @Deprecated
-   public static final eqn.a a = new eqn.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final alk<edn<?>> a = a("cave");
+   public static final alk<edn<?>> b = a("cave_extra_underground");
+   public static final alk<edn<?>> c = a("canyon");
+   public static final alk<edn<?>> d = a("nether_cave");
 
-   public static void a(qy<eqn.a> $$0) {
-      a($$0, 0, ebo.a, ebo.b, ebo.c, ebo.d);
-      a($$0, -2, ebo.e, ebo.f, ebo.g, ebo.h);
-      a($$0, ebo.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(ebo.j, a);
-      a($$0, ebo.k, -3, 1.0);
-      a($$0, ebo.l, -7, 1.0);
-      a($$0, ebo.m, -1, 1.0);
-      a($$0, ebo.n, -5, 1.0);
-      a($$0, ebo.o, -7, 1.0, 1.0);
-      a($$0, ebo.p, -8, 1.0);
-      a($$0, ebo.q, -8, 1.0);
-      a($$0, ebo.r, -7, 1.0);
-      a($$0, ebo.s, -8, 1.0);
-      a($$0, ebo.t, -11, 1.0);
-      a($$0, ebo.u, -11, 1.0);
-      a($$0, ebo.v, -7, 1.0);
-      a($$0, ebo.w, -7, 1.0);
-      a($$0, ebo.x, -11, 1.0);
-      a($$0, ebo.y, -8, 1.0);
-      a($$0, ebo.z, -5, 1.0);
-      a($$0, ebo.A, -8, 1.0);
-      a($$0, ebo.B, -7, 0.4, 0.5, 1.0);
-      a($$0, ebo.C, -8, 1.0);
-      a($$0, ebo.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, ebo.E, -8, 1.0);
-      a($$0, ebo.F, -7, 1.0);
-      a($$0, ebo.G, -7, 1.0);
-      a($$0, ebo.H, -5, 1.0);
-      a($$0, ebo.I, -8, 1.0);
-      a($$0, ebo.J, -8, 1.0);
-      a($$0, ebo.K, -7, 1.0);
-      a($$0, ebo.L, -7, 1.0);
-      a($$0, ebo.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.N, -6, 1.0, 1.0, 1.0);
-      a($$0, ebo.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, ebo.P, -8, 1.0);
-      a($$0, ebo.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.R, -8, 1.0);
-      a($$0, ebo.S, -6, 1.0, 1.0, 1.0);
-      a($$0, ebo.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.U, -3, 1.0);
-      a($$0, ebo.V, -6, 1.0, 1.0, 1.0);
-      a($$0, ebo.W, -2, 1.0);
-      a($$0, ebo.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebo.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebo.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebo.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebo.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, ebo.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, ebo.ah, -4, 1.0);
+   private static alk<edn<?>> a(String $$0) {
+      return alk.a(ma.aI, all.b($$0));
    }
 
-   private static void a(qy<eqn.a> $$0, int $$1, alh<eqn.a> $$2, alh<eqn.a> $$3, alh<eqn.a> $$4, alh<eqn.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qy<eqn.a> $$0, alh<eqn.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eqn.a($$2, $$3, $$4));
+   public static void a(rb<edn<?>> $$0) {
+      jr<dij> $$1 = $$0.a(ma.f);
+      $$0.a(
+         a,
+         edp.a
+            .a(
+               new edl(
+                  0.15F,
+                  ekl.a(ecd.b(8), ecd.a(180)),
+                  brr.b(0.1F, 0.9F),
+                  ecd.b(8),
+                  edj.a(false, dil.oS.m()),
+                  $$1.b(axd.bj),
+                  brr.b(0.7F, 1.4F),
+                  brr.b(0.8F, 1.3F),
+                  brr.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         b,
+         edp.a
+            .a(
+               new edl(
+                  0.07F,
+                  ekl.a(ecd.b(8), ecd.a(47)),
+                  brr.b(0.1F, 0.9F),
+                  ecd.b(8),
+                  edj.a(false, dil.gv.m()),
+                  $$1.b(axd.bj),
+                  brr.b(0.7F, 1.4F),
+                  brr.b(0.8F, 1.3F),
+                  brr.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         c,
+         edp.c
+            .a(
+               new edg(
+                  0.01F,
+                  ekl.a(ecd.a(10), ecd.a(67)),
+                  bri.a(3.0F),
+                  ecd.b(8),
+                  edj.a(false, dil.oT.m()),
+                  $$1.b(axd.bj),
+                  brr.b(-0.125F, 0.125F),
+                  new edg.a(brr.b(0.75F, 1.0F), brq.a(0.0F, 6.0F, 2.0F), 3, brr.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
+      );
+      $$0.a(d, edp.b.a(new edl(0.2F, ekl.a(ecd.a(0), ecd.c(1)), bri.a(0.5F), ecd.b(10), $$1.b(axd.bk), bri.a(1.0F), bri.a(1.0F), bri.a(-0.7F))));
    }
 }

@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dng extends dpv {
+public class dng extends dij implements dim {
    public static final MapCodec<dng> a = b(dng::new);
 
    @Override
@@ -8,15 +8,27 @@ public class dng extends dpv {
       return a;
    }
 
-   public dng(dvi.d $$0) {
+   public dng(dvn.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(lr.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      return $$0.a_($$1.d()).l();
+   }
+
+   @Override
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      $$0.H_().a(ma.aJ).flatMap($$0x -> $$0x.a(sa.n)).ifPresent($$3x -> ((eeb)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.d()));
+   }
+
+   @Override
+   public dim.a ar_() {
+      return dim.a.a;
    }
 }

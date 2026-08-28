@@ -1,45 +1,88 @@
-import java.util.Arrays;
+public class gan extends fza<gws> {
+   private final gcc a;
+   private final gcc b;
+   private final gcc c;
+   private final gcc d;
+   private final gcc e;
+   private final gcc f;
+   private final gcc g;
 
-public class gan extends fyk<gwl> {
-   public static final gbv a = gbv.scaling(0.5F);
-   private final gbm[] b = new gbm[8];
-
-   public gan(gbm $$0) {
+   public gan(gcc $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+      this.g = $$0.b("neck");
+      this.a = this.g.b("head");
+      this.b = this.a.b("mouth");
+      this.c = $$0.b("right_hind_leg");
+      this.d = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.f = $$0.b("left_front_leg");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static gci a() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      int $$2 = 16;
+      gcm $$3 = $$1.a("neck", gch.c().a(68, 73).a(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), gce.a(0.0F, -7.0F, 5.5F));
+      gcm $$4 = $$3.a(
+         "head", gch.c().a(0, 0).a(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F).a(0, 0).a(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F), gce.a(0.0F, 16.0F, -17.0F)
+      );
+      $$4.a("right_horn", gch.c().a(74, 55).a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), gce.a(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
+      $$4.a("left_horn", gch.c().a(74, 55).a().a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), gce.a(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
+      $$4.a("mouth", gch.c().a(0, 36).a(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), gce.a(0.0F, -2.0F, 2.0F));
+      $$1.a(
+         "body",
+         gch.c().a(0, 55).a(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F).a(0, 91).a(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
+         gce.a(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("right_hind_leg", gch.c().a(96, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gce.a(-8.0F, -13.0F, 18.0F));
+      $$1.a("left_hind_leg", gch.c().a(96, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gce.a(8.0F, -13.0F, 18.0F));
+      $$1.a("right_front_leg", gch.c().a(64, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gce.a(-8.0F, -13.0F, -5.0F));
+      $$1.a("left_front_leg", gch.c().a(64, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gce.a(8.0F, -13.0F, -5.0F));
+      return gci.a($$0, 128, 128);
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      gbq $$2 = new gbq(0.02F);
-      int $$3 = -16;
-      $$1.a("body", gbr.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), gbo.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      gbr $$5 = gbr.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, gbo.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return gbs.a($$0, 64, 32);
-   }
-
-   public void a(gwl $$0) {
+   public void a(gws $$0) {
       super.a($$0);
-
-      for (gbm $$1 : this.b) {
-         $$1.e = $$0.a;
+      float $$1 = $$0.a;
+      float $$2 = $$0.b;
+      int $$3 = 10;
+      if ($$2 > 0.0F) {
+         float $$4 = azn.e($$2, 10.0F);
+         float $$5 = (1.0F + $$4) * 0.5F;
+         float $$6 = $$5 * $$5 * $$5 * 12.0F;
+         float $$7 = $$6 * azn.a(this.g.e);
+         this.g.d = -6.5F + $$6;
+         this.g.c = -7.0F - $$7;
+         if ($$2 > 5.0F) {
+            this.b.e = azn.a((-4.0F + $$2) / 4.0F) * (float) Math.PI * 0.4F;
+         } else {
+            this.b.e = (float) (Math.PI / 20) * azn.a((float) Math.PI * $$2 / 10.0F);
+         }
+      } else {
+         float $$8 = -1.0F;
+         float $$9 = -1.0F * azn.a(this.g.e);
+         this.g.b = 0.0F;
+         this.g.c = -7.0F - $$9;
+         this.g.d = 5.5F;
+         boolean $$10 = $$1 > 0.0F;
+         this.g.e = $$10 ? 0.21991149F : 0.0F;
+         this.b.e = (float) Math.PI * ($$10 ? 0.05F : 0.01F);
+         if ($$10) {
+            double $$11 = (double)$$1 / 40.0;
+            this.g.b = (float)Math.sin($$11 * 10.0) * 3.0F;
+         } else if ((double)$$0.c > 0.0) {
+            float $$12 = azn.a($$0.c * (float) Math.PI * 0.25F);
+            this.b.e = (float) (Math.PI / 2) * $$12;
+         }
       }
+
+      this.a.e = $$0.V * (float) (Math.PI / 180.0);
+      this.a.f = $$0.U * (float) (Math.PI / 180.0);
+      float $$13 = $$0.X;
+      float $$14 = 0.4F * $$0.Y;
+      this.c.e = azn.b($$13 * 0.6662F) * $$14;
+      this.d.e = azn.b($$13 * 0.6662F + (float) Math.PI) * $$14;
+      this.e.e = azn.b($$13 * 0.6662F + (float) Math.PI) * $$14;
+      this.f.e = azn.b($$13 * 0.6662F) * $$14;
    }
 }

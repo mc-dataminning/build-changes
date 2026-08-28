@@ -1,91 +1,63 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dhf extends din {
-   public static final MapCodec<dhf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alh.a(lz.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               alh.a(lz.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               alh.a(lz.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               t()
-            )
-            .apply($$0, dhf::new)
-   );
-   public static final dwd b = dlz.aF;
-   protected static final float c = 2.0F;
-   private static final Map<jm, fah> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.d,
-         die.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         jm.e,
-         die.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         jm.c,
-         die.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         jm.f,
-         die.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final alh<die> e;
-   private final alh<die> f;
-   private final alh<cvx> g;
+public abstract class dhf extends dhv {
+   public static final dwf a = dwe.w;
+   private final dpl.a b;
 
-   @Override
-   public MapCodec<dhf> a() {
-      return a;
-   }
-
-   protected dhf(alh<die> $$0, alh<die> $$1, alh<cvx> $$2, dvi.d $$3) {
-      super($$3);
-      this.l(this.F.b().b(b, jm.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   public dhf(dpl.a $$0, dvn.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.l(this.F.b().b(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return d.get($$0.c(b));
-   }
+   protected abstract MapCodec<? extends dhf> a();
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<die> $$6 = $$3.H_().e(lz.f).f(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().m().c(dqa.c, Integer.valueOf(7));
+   public dsr a(jh $$0, dvo $$1) {
+      return new duf($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsr> dss<T> a(dff $$0, dvo $$1, dst<T> $$2) {
+      if ($$0.C) {
+         boolean $$3 = $$1.a(dil.gO) || $$1.a(dil.gP) || $$1.a(dil.gQ) || $$1.a(dil.gR);
+         if ($$3) {
+            return a($$2, dst.p, duf::a);
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return null;
+   }
+
+   public dpl.a b() {
+      return this.b;
    }
 
    @Override
-   protected boolean b(dvj $$0, deg $$1, jh $$2) {
-      return $$0.a(dig.cC);
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
    }
 
    @Override
-   public cwb a(dfe $$0, jh $$1, dvj $$2) {
-      return new cwb((dfa)DataFixUtils.orElse($$0.H_().e(lz.K).f(this.g), this));
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   protected dvj a(dvj $$0, dor $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   public dvo a(czw $$0) {
+      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected dvj a(dvj $$0, dna $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
+   protected void a(dvo $$0, dff $$1, jh $$2, dij $$3, @Nullable esw $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

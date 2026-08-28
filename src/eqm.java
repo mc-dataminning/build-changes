@@ -1,15 +1,14 @@
-import java.util.Locale;
+import com.mojang.serialization.MapCodec;
 
-public class eqm {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
-   }
+public interface eqm<P extends eql> {
+   eqm<eqj> a = a("clear", eqj.a);
+   eqm<eqk> b = a("passthrough", eqk.b);
+   eqm<eqi> c = a("append_static", eqi.a);
+   eqm<eqh> d = a("append_loot", eqh.a);
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
-   }
+   MapCodec<P> codec();
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   private static <P extends eql> eqm<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.n, $$0, () -> $$1);
    }
 }

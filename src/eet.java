@@ -1,46 +1,58 @@
 import com.mojang.serialization.Codec;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class eet extends edn {
-   public eet(Codec<egr> $$0) {
+public class eet extends eep<eeu> {
+   public eet(Codec<eeu> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dfc $$0, azs $$1, jh $$2, int $$3, jh.a $$4, egr $$5) {
-      int $$6 = $$5.d;
+   public boolean a(eer<eeu> $$0) {
+      azv $$1 = $$0.d();
+      dgd $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      dow $$4 = dow.a($$1);
+      eeu $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      eqe $$7 = $$2.E().o().aY();
+      eqd $$8 = $$7.a($$5.b.get($$6));
+      eqd $$9 = $$7.a($$5.c.get($$6));
+      del $$10 = new del($$3);
+      elt $$11 = new elt($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.al(), $$10.g() + 16);
+      epz $$12 = new epz().a($$4).a($$11).a($$1);
+      kl $$13 = $$8.a($$4);
+      jh $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).s()) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dvj $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dma.e) && $$19.b(dma.c) && $$19.b(dma.b) && $$19.b(dma.d)) {
-                     $$19 = $$19.b(dma.e, Boolean.valueOf($$15))
-                        .b(dma.c, Boolean.valueOf($$16))
-                        .b(dma.b, Boolean.valueOf($$17))
-                        .b(dma.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
-            }
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(ebj.a.c, $$14.u() + $$16, $$14.w() + $$17));
          }
+      }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
+      jh $$19 = $$8.a($$14.h($$18), dnf.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         return true;
       }
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   private static int a(dgd $$0, elt $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dvo $$3 = $$0.a_($$2x);
+         if ($$3.l() || $$3.a(dil.H) || $$3.a(dil.G)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

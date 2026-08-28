@@ -1,115 +1,48 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class foa extends gxo implements gxp {
-   private static final int d = 256;
-   private final fob e;
-   private final boolean f;
-   private final foa.a g;
+public class foa {
+   private final Consumer<flu> a;
+   private final Consumer<flu> b;
+   @Nullable
+   private fnz c;
+   @Nullable
+   private fqe d;
 
-   public foa(fob $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new foa.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fdb.b.a : fdb.b.d, this.a(), 256, 256);
-      this.e = $$0;
+   public foa(Consumer<flu> $$0, Consumer<flu> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a(avb $$0) {
+   public void a(fqe $$0) {
+      this.d = $$0;
+      fnz $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
    }
 
-   @Override
-   public void close() {
-      this.b();
+   public void a(fnz $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
+
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            fjx.Q().ak().a(hcl.a(awo.Av, 1.0F));
+         }
+      }
    }
 
    @Nullable
-   public fod a(fcb $$0) {
-      if ($$0.c() != this.f) {
-         return null;
-      } else {
-         foa.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
-            this.d();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fod(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
-   }
-
-   @Override
-   public void a(ali $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private foa.a e;
-      @Nullable
-      private foa.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      foa.a a(fcb $$0) {
-         if (this.e != null && this.f != null) {
-            foa.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new foa.a(this.a, this.b, $$2, this.d);
-                  this.f = new foa.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new foa.a(this.a, this.b, this.c, $$3);
-                  this.f = new foa.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
-      }
+   public fnz a() {
+      return this.c;
    }
 }

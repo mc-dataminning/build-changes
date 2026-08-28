@@ -1,30 +1,62 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class eum extends euu {
-   public static final MapCodec<eum> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ali.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eum::new)
-   );
-   private final ali j;
+public class eum {
+   private final azt a;
+   private final exa b;
+   private final Optional<jr.a> c;
+   private final Set<alk<?>> d;
 
-   private eum(ali $$0, int $$1, int $$2, List<exn> $$3, List<evq> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public eum(azt $$0, exa $$1, jr.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public eut a() {
-      return euq.e;
+   public eum(azt $$0, exa $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   public void a(Consumer<cwb> $$0, euc $$1) {
-      $$1.a(this.j, $$0);
+   private eum(azt $$0, exa $$1, Optional<jr.a> $$2, Set<alk<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static euu.a<?> a(ali $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eum($$0, $$1, $$2, $$3, $$4));
+   public eum a(String $$0) {
+      return new eum(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public eum a(String $$0, alk<?> $$1) {
+      Set<alk<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new eum(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(alk<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(euh $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public jr.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public eum a(exa $$0) {
+      return new eum(this.a, $$0, this.c, this.d);
+   }
+
+   public azt c() {
+      return this.a;
    }
 }

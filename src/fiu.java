@@ -1,33 +1,70 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fiu implements azn, bag {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
-
-   public static final Codec<fiu> d = bag.a(fiu::values);
+public class fiu extends fiw {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xl c = xl.c("mco.download.preparing");
+   private final long d;
    private final int e;
-   private final String f;
+   private final frp f;
    private final String g;
 
-   private fiu(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
+   public fiu(long $$0, int $$1, String $$2, frp $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
       this.g = $$2;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public void run() {
+      ffa $$0 = ffa.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            fgp $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new fhm(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (fgw var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (fgv var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new fhn(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
+         }
+      }
    }
 
    @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.g;
+   public xl a() {
+      return c;
    }
 }

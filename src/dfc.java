@@ -1,98 +1,103 @@
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.jetbrains.annotations.Contract;
 
-public interface dfc extends dem, dfi {
+public enum dfc implements baj {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
+
+   public static final dfc e = a;
+   public static final baj.a<dfc> f = baj.a(dfc::values);
+   private static final IntFunction<dfc> g = aye.a(dfc::a, values(), aye.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final xl k;
+   private final xl l;
+
+   private dfc(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = xl.c("selectWorld.gameMode." + $$1);
+      this.l = xl.c("gameMode." + $$1);
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public String b() {
+      return this.j;
+   }
+
    @Override
-   default long aj() {
-      return this.A_().d();
+   public String c() {
+      return this.j;
    }
 
-   long G_();
-
-   fbb<die> R();
-
-   private <T> fbf<T> a(jh $$0, T $$1, int $$2, fbj $$3) {
-      return new fbf<>($$1, $$0, this.A_().c() + (long)$$2, $$3, this.G_());
+   public xl d() {
+      return this.l;
    }
 
-   private <T> fbf<T> a(jh $$0, T $$1, int $$2) {
-      return new fbf<>($$1, $$0, this.A_().c() + (long)$$2, this.G_());
+   public xl e() {
+      return this.k;
    }
 
-   default void a(jh $$0, die $$1, int $$2, fbj $$3) {
-      this.R().a(this.a($$0, $$1, $$2, $$3));
+   public void a(com $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
    }
 
-   default void a(jh $$0, die $$1, int $$2) {
-      this.R().a(this.a($$0, $$1, $$2));
+   public boolean f() {
+      return this == c || this == d;
    }
 
-   fbb<erj> Q();
-
-   default void a(jh $$0, erj $$1, int $$2, fbj $$3) {
-      this.Q().a(this.a($$0, $$1, $$2, $$3));
+   public boolean g() {
+      return this == b;
    }
 
-   default void a(jh $$0, erj $$1, int $$2) {
-      this.Q().a(this.a($$0, $$1, $$2));
+   public boolean h() {
+      return this == a || this == c;
    }
 
-   etm A_();
+   public static dfc a(int $$0) {
+      return g.apply($$0);
+   }
 
-   bsb d_(jh var1);
+   public static dfc a(String $$0) {
+      return a($$0, a);
+   }
 
    @Nullable
-   MinecraftServer o();
-
-   default bsa ak() {
-      return this.A_().q();
+   @Contract("_,!null->!null;_,null->_")
+   public static dfc a(String $$0, @Nullable dfc $$1) {
+      dfc $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
    }
 
-   dxj P();
-
-   @Override
-   default boolean b(int $$0, int $$1) {
-      return this.P().b($$0, $$1);
+   public static int a(@Nullable dfc $$0) {
+      return $$0 != null ? $$0.i : -1;
    }
 
-   azs E_();
-
-   default void b(jh $$0, die $$1) {
-   }
-
-   default void a(jm $$0, jh $$1, jh $$2, dvj $$3, int $$4, int $$5) {
-      esr.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
-   }
-
-   default void a(@Nullable com $$0, jh $$1, awk $$2, awm $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
-   }
-
-   void a(@Nullable com var1, jh var2, awk var3, awm var4, float var5, float var6);
-
-   void a(lp var1, double var2, double var4, double var6, double var8, double var10, double var12);
-
-   void a(@Nullable com var1, int var2, jh var3, int var4);
-
-   default void c(int $$0, jh $$1, int $$2) {
-      this.a(null, $$0, $$1, $$2);
-   }
-
-   void a(jq<eag> var1, ezn var2, eag.a var3);
-
-   default void a(@Nullable bue $$0, jq<eag> $$1, ezn $$2) {
-      this.a($$1, $$2, new eag.a($$0, null));
-   }
-
-   default void a(@Nullable bue $$0, jq<eag> $$1, jh $$2) {
-      this.a($$1, $$2, new eag.a($$0, null));
-   }
-
-   default void a(jq<eag> $$0, jh $$1, eag.a $$2) {
-      this.a($$0, ezn.b($$1), $$2);
-   }
-
-   default void a(alh<eag> $$0, jh $$1, eag.a $$2) {
-      this.a(this.H_().e(lz.G).b($$0), $$1, $$2);
+   @Nullable
+   public static dfc b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

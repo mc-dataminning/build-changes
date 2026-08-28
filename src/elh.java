@@ -1,24 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class elh extends eld {
-   public static final MapCodec<elh> a = ayt.m.fieldOf("chance").xmap(elh::new, $$0 -> $$0.c);
-   private final int c;
-
-   private elh(int $$0) {
-      this.c = $$0;
-   }
-
-   public static elh a(int $$0) {
-      return new elh($$0);
-   }
-
+public abstract class elh extends eli {
    @Override
-   protected boolean a(elc $$0, azs $$1, jh $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public final Stream<jh> a_(elg $$0, azv $$1, jh $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
    }
 
-   @Override
-   public elf<?> b() {
-      return elf.b;
-   }
+   protected abstract boolean a(elg var1, azv var2, jh var3);
 }

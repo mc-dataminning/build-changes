@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fbl<T> {
+   void a(fbj<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fbl {
+   boolean a(jh var1, T var2);
+
+   int a();
 }

@@ -1,19 +1,21 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dcl {
-   Codec<dcl> b = ly.aw.q().dispatch(dcl::a, Function.identity());
+public record dcl(dcd d) implements dcn {
+   public static final MapCodec<dcl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dcd.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dcl::new));
 
-   static MapCodec<? extends dcl> a(kd<MapCodec<? extends dcl>> $$0) {
-      kd.a($$0, "add", dcc.a);
-      kd.a($$0, "all_of", dcd.c.a);
-      kd.a($$0, "multiply", dco.a);
-      kd.a($$0, "remove_binomial", dcq.a);
-      return kd.a($$0, "set", dcv.a);
+   @Override
+   public void a(arq $$0, int $$1, dbv $$2, bui $$3, ezr $$4) {
+      arr $$6 = $$2.c() instanceof arr $$5 ? $$5 : null;
+      $$2.a().a((int)this.d.a($$1), $$0, $$6, $$2.d());
    }
 
-   float a(int var1, azs var2, float var3);
+   @Override
+   public MapCodec<dcl> a() {
+      return a;
+   }
 
-   MapCodec<? extends dcl> a();
+   public dcd b() {
+      return this.d;
+   }
 }

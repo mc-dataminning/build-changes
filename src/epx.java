@@ -1,18 +1,9 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class epx {
-   private final List<epw> a;
+public abstract class epx {
+   public static final Codec<epx> c = lz.m.q().dispatch("predicate_type", epx::a, epy::codec);
 
-   public epx(List<epw> $$0) {
-      this.a = $$0;
-   }
+   public abstract boolean a(dvo var1, azv var2);
 
-   public List<epw> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
-   }
+   protected abstract epy<?> a();
 }

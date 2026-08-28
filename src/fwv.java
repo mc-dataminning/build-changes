@@ -1,110 +1,75 @@
-import com.mojang.authlib.GameProfile;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fwv implements fwq, fwr {
-   private static final ali a = ali.b("spectator/teleport_to_team");
-   private static final xi b = xi.c("spectatorMenu.team_teleport");
-   private static final xi c = xi.c("spectatorMenu.team_teleport.prompt");
-   private final List<fwr> d;
+public class fwv extends frp {
+   private static final Logger d = LogUtils.getLogger();
+   public static final ech a = new ech((long)"test1".hashCode(), true, false);
+   protected final frp b;
+   private flw s;
+   private flw u;
+   private flw v;
+   private flw w;
+   protected fmf c;
+   private fxb x;
 
-   public fwv() {
-      fji $$0 = fji.Q();
-      this.d = a($$0, $$0.s.O());
-   }
-
-   private static List<fwr> a(fji $$0, fas $$1) {
-      return $$1.g().stream().flatMap($$1x -> fwv.a.a($$0, $$1x).stream()).toList();
-   }
-
-   @Override
-   public List<fwr> a() {
-      return this.d;
+   public fwv(frp $$0) {
+      super(xl.c("selectWorld.title"));
+      this.b = $$0;
    }
 
    @Override
-   public xi b() {
-      return c;
+   protected void aS_() {
+      this.c = new fmf(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xl.c("selectWorld.search"));
+      this.c.b($$0 -> this.x.a($$0));
+      this.d(this.c);
+      this.x = this.c(new fxb(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
+      this.u = this.c(flw.a(etv.a, $$0 -> this.x.c().ifPresent(fxb.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
+      this.c(flw.a(xl.c("selectWorld.create"), $$0 -> fwn.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
+      this.v = this.c(flw.a(xl.c("selectWorld.edit"), $$0 -> this.x.c().ifPresent(fxb.c::f)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
+      this.s = this.c(flw.a(xl.c("selectWorld.delete"), $$0 -> this.x.c().ifPresent(fxb.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
+      this.w = this.c(flw.a(xl.c("selectWorld.recreate"), $$0 -> this.x.c().ifPresent(fxb.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
+      this.c(flw.a(xk.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
+      this.a(null);
    }
 
    @Override
-   public void a(fwp $$0) {
-      $$0.a(this);
+   protected void aG_() {
+      this.b(this.c);
    }
 
    @Override
-   public xi aS_() {
-      return b;
+   public void aP_() {
+      this.m.a(this.b);
    }
 
    @Override
-   public void a(fku $$0, float $$1, float $$2) {
-      $$0.a(gir::B, a, 0, 0, 16, 16, axv.a($$2, $$1, $$1, $$1));
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
    }
 
-   @Override
-   public boolean aT_() {
-      return !this.d.isEmpty();
-   }
-
-   static class a implements fwr {
-      private final fan a;
-      private final Supplier<gze> b;
-      private final List<gct> c;
-
-      private a(fan $$0, List<gct> $$1, Supplier<gze> $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
+   public void a(@Nullable etv $$0) {
+      if ($$0 == null) {
+         this.u.b(etv.a);
+         this.u.j = false;
+         this.v.j = false;
+         this.w.j = false;
+         this.s.j = false;
+      } else {
+         this.u.b($$0.t());
+         this.u.j = $$0.u();
+         this.v.j = $$0.w();
+         this.w.j = $$0.x();
+         this.s.j = $$0.y();
       }
+   }
 
-      public static Optional<fwr> a(fji $$0, fan $$1) {
-         List<gct> $$2 = new ArrayList<>();
-
-         for (String $$3 : $$1.g()) {
-            gct $$4 = $$0.L().a($$3);
-            if ($$4 != null && $$4.e() != dey.d) {
-               $$2.add($$4);
-            }
-         }
-
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(azs.a().a($$2.size())).a();
-            Supplier<gze> $$6 = $$0.an().a($$5);
-            return Optional.of(new fwv.a($$1, $$2, $$6));
-         }
-      }
-
-      @Override
-      public void a(fwp $$0) {
-         $$0.a(new fwu(this.c));
-      }
-
-      @Override
-      public xi aS_() {
-         return this.a.c();
-      }
-
-      @Override
-      public void a(fku $$0, float $$1, float $$2) {
-         Integer $$3 = this.a.n().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, axv.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
-         }
-
-         fmg.a($$0, this.b.get(), 2, 2, 12, axv.a($$2, $$1, $$1, $$1));
-      }
-
-      @Override
-      public boolean aT_() {
-         return true;
+   @Override
+   public void j() {
+      if (this.x != null) {
+         this.x.aI_().forEach(fxb.a::close);
       }
    }
 }

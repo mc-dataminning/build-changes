@@ -1,51 +1,49 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dvs implements Predicate<dvj> {
-   public static final Predicate<dvj> a = $$0 -> true;
-   private final dvk<die, dvj> b;
-   private final Map<dwm<?>, Predicate<Object>> c = Maps.newHashMap();
+public class dvs {
+   private final dfi a;
+   private final jh b;
+   private final boolean c;
+   @Nullable
+   private dvo d;
+   @Nullable
+   private dsr e;
+   private boolean f;
 
-   private dvs(dvk<die, dvj> $$0) {
-      this.b = $$0;
+   public dvs(dfi $$0, jh $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
    }
 
-   public static dvs a(die $$0) {
-      return new dvs($$0.l());
-   }
-
-   public boolean a(@Nullable dvj $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dwm<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
+   public dvo a() {
+      if (this.d == null && (this.c || this.a.B(this.b))) {
+         this.d = this.a.a_(this.b);
       }
+
+      return this.d;
    }
 
-   protected <T extends Comparable<T>> boolean a(dvj $$0, dwm<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
-   }
-
-   public <V extends Comparable<V>> dvs a(dwm<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
+   @Nullable
+   public dsr b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
       }
+
+      return this.e;
+   }
+
+   public dfi c() {
+      return this.a;
+   }
+
+   public jh d() {
+      return this.b;
+   }
+
+   public static Predicate<dvs> a(Predicate<dvo> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

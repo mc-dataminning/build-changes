@@ -1,45 +1,33 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Collection;
 
 public class ann {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xi.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xi.b("commands.fillbiome.toobig", $$0, $$1));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xl.b("commands.enchant.failed.entity", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xl.b("commands.enchant.failed.itemless", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("commands.enchant.failed.incompatible", $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("commands.enchant.failed.level", $$0, $$1));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xl.c("commands.enchant.failed"));
 
    public static void a(CommandDispatcher<ew> $$0, es $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("fillbiome").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("enchant").requires($$0x -> $$0x.c(2)))
             .then(
-               ex.a("from", gs.a())
+               ex.a("targets", fj.b())
                   .then(
-                     ex.a("to", gs.a())
+                     ((RequiredArgumentBuilder)ex.a("enchantment", fv.a($$1, ma.aM))
+                           .executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"), fv.g($$0x, "enchantment"), 1)))
                         .then(
-                           ((RequiredArgumentBuilder)ex.a("biome", fv.a($$1, lz.aG))
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), fv.a($$0x, "biome", lz.aG), $$0xx -> true)))
-                              .then(
-                                 ex.a("replace")
-                                    .then(
-                                       ex.a("filter", fz.a($$1, lz.aG))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ew)$$0x.getSource(),
-                                                   gs.a($$0x, "from"),
-                                                   gs.a($$0x, "to"),
-                                                   fv.a($$0x, "biome", lz.aG),
-                                                   fz.a($$0x, "filter", lz.aG)::test
-                                                )
-                                          )
+                           ex.a("level", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a(
+                                       (ew)$$0x.getSource(), fj.b($$0x, "targets"), fv.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
                                     )
                               )
                         )
@@ -48,76 +36,43 @@ public class ann {
       );
    }
 
-   private static int a(int $$0) {
-      return kb.c(kb.a($$0));
-   }
-
-   private static jh a(jh $$0) {
-      return new jh(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   private static dgf a(MutableInt $$0, dxf $$1, elp $$2, jq<dgc> $$3, Predicate<jq<dgc>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = kb.c($$5);
-         int $$10 = kb.c($$6);
-         int $$11 = kb.c($$7);
-         jq<dgc> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
-         }
-      };
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(arn $$0, jh $$1, jh $$2, jq<dgc> $$3) {
-      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
-      });
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(arn $$0, jh $$1, jh $$2, jq<dgc> $$3, Predicate<jq<dgc>> $$4, Consumer<Supplier<xi>> $$5) {
-      jh $$6 = a($$1);
-      jh $$7 = a($$2);
-      elp $$8 = elp.a($$6, $$7);
-      int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.ac().c(dex.z);
-      if ($$9 > $$10) {
-         return Either.right(b.create($$10, $$9));
+   private static int a(ew $$0, Collection<? extends bui> $$1, jq<dbw> $$2, int $$3) throws CommandSyntaxException {
+      dbw $$4 = $$2.a();
+      if ($$3 > $$4.e()) {
+         throw d.create($$3, $$4.e());
       } else {
-         List<dxf> $$11 = new ArrayList<>();
+         int $$5 = 0;
 
-         for (int $$12 = kj.a($$8.j()); $$12 <= kj.a($$8.m()); $$12++) {
-            for (int $$13 = kj.a($$8.h()); $$13 <= kj.a($$8.k()); $$13++) {
-               dxf $$14 = $$0.a($$13, $$12, dyg.n, false);
-               if ($$14 == null) {
-                  return Either.right(a.create());
+         for (bui $$6 : $$1) {
+            if ($$6 instanceof bve) {
+               bve $$7 = (bve)$$6;
+               cwf $$8 = $$7.fc();
+               if (!$$8.f()) {
+                  if ($$4.c($$8) && dby.a(dby.b($$8).a(), $$2)) {
+                     $$8.a($$2, $$3);
+                     $$5++;
+                  } else if ($$1.size() == 1) {
+                     throw c.create($$8.y().getString());
+                  }
+               } else if ($$1.size() == 1) {
+                  throw b.create($$7.am().getString());
                }
-
-               $$11.add($$14);
+            } else if ($$1.size() == 1) {
+               throw a.create($$6.am().getString());
             }
          }
 
-         MutableInt $$15 = new MutableInt(0);
+         if ($$5 == 0) {
+            throw e.create();
+         } else {
+            if ($$1.size() == 1) {
+               $$0.a(() -> xl.a("commands.enchant.success.single", dbw.a($$2, $$3), $$1.iterator().next().S_()), true);
+            } else {
+               $$0.a(() -> xl.a("commands.enchant.success.multiple", dbw.a($$2, $$3), $$1.size()), true);
+            }
 
-         for (dxf $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
-            $$16.a(true);
+            return $$5;
          }
-
-         $$0.l().a.a($$11);
-         $$5.accept(() -> xi.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
-         return Either.left($$15.getValue());
-      }
-   }
-
-   private static int a(ew $$0, jh $$1, jh $$2, jq.c<dgc> $$3, Predicate<jq<dgc>> $$4) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
-      Optional<CommandSyntaxException> $$6 = $$5.right();
-      if ($$6.isPresent()) {
-         throw (CommandSyntaxException)$$6.get();
-      } else {
-         return (Integer)$$5.left().get();
       }
    }
 }

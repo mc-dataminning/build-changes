@@ -1,124 +1,15 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Collection;
+import java.util.Locale;
 
-public class gyr implements gyh {
-   static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<gyr> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ali.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               ayt.a(gyr.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gyr::new)
-   );
-   private final ali d;
-   private final List<gyr.a> e;
-   private final double f;
-   private final double g;
+public class gyr extends RuntimeException {
+   private final Collection<gyq.a> a;
 
-   public gyr(ali $$0, List<gyr.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public gyr(gyq.a $$0, Collection<gyq.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   @Override
-   public void a(avb $$0, gyh.a $$1) {
-      ali $$2 = a.a(this.d);
-      Optional<auz> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gyn $$4 = new gyn($$2, $$3.get(), this.e.size());
-
-         for (gyr.a $$5 : this.e) {
-            $$1.a($$5.b, new gyr.b($$4, $$5, this.f, this.g));
-         }
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public gyj a() {
-      return gyk.d;
-   }
-
-   static record a(ali b, double c, double d, double e, double f) {
-      public static final Codec<gyr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ali.a.fieldOf("sprite").forGetter(gyr.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gyr.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gyr.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gyr.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gyr.a::e)
-               )
-               .apply($$0, gyr.a::new)
-      );
-
-      public ali a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements gyh.b {
-      private final gyn a;
-      private final gyr.a b;
-      private final double c;
-      private final double d;
-
-      b(gyn $$0, gyr.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public gxx a(gyg $$0) {
-         try {
-            fdb $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = azk.a(this.b.c * $$2);
-            int $$5 = azk.a(this.b.d * $$3);
-            int $$6 = azk.a(this.b.e * $$2);
-            int $$7 = azk.a(this.b.f * $$3);
-            fdb $$8 = new fdb(fdb.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gxx(this.b.b, new gzr($$6, $$7), $$8, avd.a);
-         } catch (Exception var16) {
-            gyr.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
-
-         return gxt.a();
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
+   public Collection<gyq.a> a() {
+      return this.a;
    }
 }

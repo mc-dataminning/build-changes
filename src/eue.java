@@ -1,41 +1,69 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public record eue<T>(alh<kd<T>> d, Codec<T> e, eue.a<T> f) {
-   public static final eue<exn> a = new eue<>(lz.bf, exn.e, e());
-   public static final eue<evq> b = new eue<>(lz.be, evs.c, e());
-   public static final eue<euh> c = new eue<>(lz.bd, euh.d, f());
+public interface eue {
+   eud<cyx> a = new eud<cyx>() {
+      @Override
+      public kt<cyx> a() {
+         return ku.al;
+      }
 
-   public void a(eui $$0, alh<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
-   }
+      public Stream<cwf> a(cyx $$0) {
+         return $$0.b();
+      }
 
-   public static Stream<eue<?>> a() {
-      return Stream.of(a, b, c);
-   }
+      public cyx c() {
+         return cyx.a;
+      }
 
-   private static <T extends eud> eue.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+      public cyx a(cyx $$0, Stream<cwf> $$1) {
+         return cyx.a($$1.toList());
+      }
+   };
+   eud<cyj> b = new eud<cyj>() {
+      @Override
+      public kt<cyj> a() {
+         return ku.P;
+      }
 
-   private static eue.a<euh> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+      public cyj c() {
+         return cyj.a;
+      }
 
-   public alh<kd<T>> b() {
-      return this.d;
-   }
+      public Stream<cwf> a(cyj $$0) {
+         return $$0.b();
+      }
 
-   public Codec<T> c() {
-      return this.e;
-   }
+      public cyj a(cyj $$0, Stream<cwf> $$1) {
+         cyj.a $$2 = new cyj.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   eud<cyk> c = new eud<cyk>() {
+      @Override
+      public kt<cyk> a() {
+         return ku.O;
+      }
 
-   public eue.a<T> d() {
-      return this.f;
-   }
+      public cyk c() {
+         return cyk.a;
+      }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(eui var1, alh<T> var2, T var3);
-   }
+      public Stream<cwf> a(cyk $$0) {
+         return $$0.a().stream();
+      }
+
+      public cyk a(cyk $$0, Stream<cwf> $$1) {
+         return cyk.a($$1.toList());
+      }
+   };
+   Map<kt<?>, eud<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eud::a, $$0 -> (eud<?>)$$0));
+   Codec<eud<?>> e = lz.ao.q().comapFlatMap($$0 -> {
+      eud<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, eud::a);
 }

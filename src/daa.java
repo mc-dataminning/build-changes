@@ -1,95 +1,76 @@
-public class daa extends dag {
-   public daa(dad $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public abstract class daa implements dat<dbi> {
+   protected final daz<?> a;
+   protected final dag b;
+   protected final String c;
+   protected final dap d;
+   protected final cwf e;
+   protected final float f;
+   protected final int g;
+   @Nullable
+   private das j;
+
+   public daa(daz<?> $$0, String $$1, dag $$2, dap $$3, cwf $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public boolean a(dae $$0, dfb $$1) {
-      int $$2 = 0;
-      cwb $$3 = cwb.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwb $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(cwf.ub)) {
-               if (!$$3.f()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cwf.ua)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.f() && $$2 > 0;
+   public boolean a(dbi $$0, dff $$1) {
+      return this.d.a($$0.c());
    }
 
-   public cwb a(dae $$0, js.a $$1) {
-      int $$2 = 0;
-      cwb $$3 = cwb.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwb $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(cwf.ub)) {
-               if (!$$3.f()) {
-                  return cwb.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cwf.ua)) {
-                  return cwb.k;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      czj $$6 = $$3.a(ku.T);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         czj $$7 = $$6.b();
-         if ($$7 == null) {
-            return cwb.k;
-         } else {
-            cwb $$8 = $$3.c($$2);
-            $$8.b(ku.T, $$7);
-            return $$8;
-         }
-      } else {
-         return cwb.k;
-      }
-   }
-
-   public jz<cwb> a(dae $$0) {
-      jz<cwb> $$1 = jz.a($$0.a(), cwb.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cwb $$3 = $$0.a($$2);
-         if ($$3.h().l()) {
-            $$1.set($$2, new cwb($$3.h().k()));
-         } else if ($$3.h() instanceof cxx) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public dau<?> aq_() {
-      return dau.d;
+   public cwf a(dbi $$0, js.a $$1) {
+      return this.e.v();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return true;
+   }
+
+   @Override
+   public das a() {
+      if (this.j == null) {
+         this.j = das.a(this.d);
+      }
+
+      return this.j;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public cwf a(js.a $$0) {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public daz<?> e() {
+      return this.a;
+   }
+
+   public dag f() {
+      return this.b;
+   }
+
+   public interface a<T extends daa> {
+      T create(String var1, dag var2, dap var3, cwf var4, float var5, int var6);
    }
 }

@@ -1,213 +1,308 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.util.NoSuchElementException;
+import it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class erf extends LongLinkedOpenHashSet {
-   private final erf.a a;
+public abstract class erf<M extends eqz<M>, S extends erc<M>> implements erb {
+   public static final int a = 15;
+   protected static final int b = 1;
+   protected static final long c = erf.a.a(1);
+   private static final int g = 512;
+   protected static final jm[] d = jm.values();
+   protected final dxw e;
+   protected final S f;
+   private final LongOpenHashSet h = new LongOpenHashSet(512, 0.5F);
+   private final LongArrayFIFOQueue i = new LongArrayFIFOQueue();
+   private final LongArrayFIFOQueue j = new LongArrayFIFOQueue();
+   private static final int k = 2;
+   private final long[] l = new long[2];
+   private final dxv[] m = new dxv[2];
 
-   public erf(int $$0, float $$1) {
-      super($$0, $$1);
-      this.a = new erf.a($$0 / 64, $$1);
+   protected erf(dxw $$0, S $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c();
    }
 
-   public boolean add(long $$0) {
-      return this.a.c($$0);
+   public static boolean a(dvo $$0, dvo $$1) {
+      return $$1 == $$0 ? false : $$1.g() != $$0.g() || $$1.k() != $$0.k() || $$1.j() || $$0.j();
    }
 
-   public boolean rem(long $$0) {
-      return this.a.d($$0);
+   public static int a(dvo $$0, dvo $$1, jm $$2, int $$3) {
+      boolean $$4 = a($$0);
+      boolean $$5 = a($$1);
+      if ($$4 && $$5) {
+         return $$3;
+      } else {
+         fal $$6 = $$4 ? fai.a() : $$0.h();
+         fal $$7 = $$5 ? fai.a() : $$1.h();
+         return fai.b($$6, $$7, $$2) ? 16 : $$3;
+      }
    }
 
-   public long removeFirstLong() {
-      return this.a.a();
+   public static fal a(dvo $$0, jm $$1) {
+      return a($$0) ? fai.a() : $$0.a($$1);
    }
 
-   public int size() {
-      throw new UnsupportedOperationException();
+   protected static boolean a(dvo $$0) {
+      return !$$0.t() || !$$0.j();
    }
 
-   public boolean isEmpty() {
-      return this.a.isEmpty();
+   protected dvo c(jh $$0) {
+      int $$1 = kj.a($$0.u());
+      int $$2 = kj.a($$0.w());
+      dxv $$3 = this.a($$1, $$2);
+      return $$3 == null ? dil.F.m() : $$3.a_($$0);
    }
 
-   protected static class a extends Long2LongLinkedOpenHashMap {
-      private static final int a = azk.f(60000000);
-      private static final int b = azk.f(60000000);
-      private static final int c = 64 - a - b;
-      private static final int d = 0;
-      private static final int e = c;
-      private static final int g = c + b;
-      private static final long h = 3L << g | 3L | 3L << e;
-      private int i = -1;
-      private long j;
-      private final int k;
+   protected int b(dvo $$0) {
+      return Math.max(1, $$0.g());
+   }
 
-      public a(int $$0, float $$1) {
-         super($$0, $$1);
-         this.k = $$0;
-      }
+   protected boolean a(dvo $$0, dvo $$1, jm $$2) {
+      fal $$3 = a($$0, $$2);
+      fal $$4 = a($$1, $$2.g());
+      return fai.b($$3, $$4);
+   }
 
-      static long a(long $$0) {
-         return $$0 & ~h;
-      }
+   @Nullable
+   protected dxv a(int $$0, int $$1) {
+      long $$2 = del.c($$0, $$1);
 
-      static int b(long $$0) {
-         int $$1 = (int)($$0 >>> g & 3L);
-         int $$2 = (int)($$0 >>> 0 & 3L);
-         int $$3 = (int)($$0 >>> e & 3L);
-         return $$1 << 4 | $$3 << 2 | $$2;
-      }
-
-      static long a(long $$0, int $$1) {
-         $$0 |= (long)($$1 >>> 4 & 3) << g;
-         $$0 |= (long)($$1 >>> 2 & 3) << e;
-         return $$0 | (long)($$1 >>> 0 & 3) << 0;
-      }
-
-      public boolean c(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         int $$4;
-         if ($$1 == 0L) {
-            if (this.containsNullKey) {
-               return this.a(this.n, $$3);
-            }
-
-            this.containsNullKey = true;
-            $$4 = this.n;
-         } else {
-            if (this.i != -1 && $$1 == this.j) {
-               return this.a(this.i, $$3);
-            }
-
-            long[] $$5 = this.key;
-            $$4 = (int)HashCommon.mix($$1) & this.mask;
-
-            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
-               if ($$7 == $$1) {
-                  this.i = $$4;
-                  this.j = $$1;
-                  return this.a($$4, $$3);
-               }
-
-               $$4 = $$4 + 1 & this.mask;
-            }
-         }
-
-         this.key[$$4] = $$1;
-         this.value[$$4] = $$3;
-         if (this.size == 0) {
-            this.first = this.last = $$4;
-            this.link[$$4] = -1L;
-         } else {
-            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
-            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
-            this.last = $$4;
-         }
-
-         if (this.size++ >= this.maxFill) {
-            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
-         }
-
-         return false;
-      }
-
-      private boolean a(int $$0, long $$1) {
-         boolean $$2 = (this.value[$$0] & $$1) != 0L;
-         this.value[$$0] = this.value[$$0] | $$1;
-         return $$2;
-      }
-
-      public boolean d(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         if ($$1 == 0L) {
-            return this.containsNullKey ? this.e($$3) : false;
-         } else if (this.i != -1 && $$1 == this.j) {
-            return this.b(this.i, $$3);
-         } else {
-            long[] $$4 = this.key;
-            int $$5 = (int)HashCommon.mix($$1) & this.mask;
-
-            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
-               if ($$1 == $$6) {
-                  this.i = $$5;
-                  this.j = $$1;
-                  return this.b($$5, $$3);
-               }
-
-               $$5 = $$5 + 1 & this.mask;
-            }
-
-            return false;
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         if ($$2 == this.l[$$3]) {
+            return this.m[$$3];
          }
       }
 
-      private boolean e(long $$0) {
-         if ((this.value[this.n] & $$0) == 0L) {
-            return false;
-         } else {
-            this.value[this.n] = this.value[this.n] & ~$$0;
-            if (this.value[this.n] != 0L) {
-               return true;
-            } else {
-               this.containsNullKey = false;
-               this.size--;
-               this.fixPointers(this.n);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
+      dxv $$4 = this.e.c($$0, $$1);
 
-               return true;
-            }
+      for (int $$5 = 1; $$5 > 0; $$5--) {
+         this.l[$$5] = this.l[$$5 - 1];
+         this.m[$$5] = this.m[$$5 - 1];
+      }
+
+      this.l[0] = $$2;
+      this.m[0] = $$4;
+      return $$4;
+   }
+
+   private void c() {
+      Arrays.fill(this.l, del.c);
+      Arrays.fill(this.m, null);
+   }
+
+   @Override
+   public void a(jh $$0) {
+      this.h.add($$0.a());
+   }
+
+   public void a(long $$0, @Nullable dxo $$1) {
+      this.f.a($$0, $$1);
+   }
+
+   public void b(del $$0, boolean $$1) {
+      this.f.c(kj.b($$0.g, $$0.h), $$1);
+   }
+
+   @Override
+   public void a(kj $$0, boolean $$1) {
+      this.f.d($$0.s(), $$1);
+   }
+
+   @Override
+   public void a(del $$0, boolean $$1) {
+      this.f.b(kj.b($$0.g, $$0.h), $$1);
+   }
+
+   @Override
+   public int a() {
+      LongIterator $$0 = this.h.iterator();
+
+      while ($$0.hasNext()) {
+         this.a($$0.nextLong());
+      }
+
+      this.h.clear();
+      this.h.trim(512);
+      int $$1 = 0;
+      $$1 += this.e();
+      $$1 += this.d();
+      this.c();
+      this.f.a(this);
+      this.f.b();
+      return $$1;
+   }
+
+   private int d() {
+      int $$0;
+      for ($$0 = 0; !this.j.isEmpty(); $$0++) {
+         long $$1 = this.j.dequeueLong();
+         long $$2 = this.j.dequeueLong();
+         int $$3 = this.f.e($$1);
+         int $$4 = erf.a.a($$2);
+         if (erf.a.c($$2) && $$3 < $$4) {
+            this.f.a($$1, $$4);
+            $$3 = $$4;
+         }
+
+         if ($$3 == $$4) {
+            this.a($$1, $$2, $$3);
          }
       }
 
-      private boolean b(int $$0, long $$1) {
-         if ((this.value[$$0] & $$1) == 0L) {
-            return false;
-         } else {
-            this.value[$$0] = this.value[$$0] & ~$$1;
-            if (this.value[$$0] != 0L) {
-               return true;
-            } else {
-               this.i = -1;
-               this.size--;
-               this.fixPointers($$0);
-               this.shiftKeys($$0);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
+      return $$0;
+   }
 
-               return true;
-            }
-         }
+   private int e() {
+      int $$0;
+      for ($$0 = 0; !this.i.isEmpty(); $$0++) {
+         long $$1 = this.i.dequeueLong();
+         long $$2 = this.i.dequeueLong();
+         this.a($$1, $$2);
       }
 
-      public long a() {
-         if (this.size == 0) {
-            throw new NoSuchElementException();
-         } else {
-            int $$0 = this.first;
-            long $$1 = this.key[$$0];
-            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
-            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
-            if (this.value[$$0] == 0L) {
-               this.removeFirstLong();
-               this.i = -1;
-            }
+      return $$0;
+   }
 
-            return a($$1, $$2);
-         }
+   protected void b(long $$0, long $$1) {
+      this.i.enqueue($$0);
+      this.i.enqueue($$1);
+   }
+
+   protected void c(long $$0, long $$1) {
+      this.j.enqueue($$0);
+      this.j.enqueue($$1);
+   }
+
+   @Override
+   public boolean K_() {
+      return this.f.a() || !this.h.isEmpty() || !this.i.isEmpty() || !this.j.isEmpty();
+   }
+
+   @Nullable
+   @Override
+   public dxo a(kj $$0) {
+      return this.f.d($$0.s());
+   }
+
+   @Override
+   public int b(jh $$0) {
+      return this.f.a($$0.a());
+   }
+
+   public String b(long $$0) {
+      return this.c($$0).a();
+   }
+
+   public erc.b c(long $$0) {
+      return this.f.l($$0);
+   }
+
+   protected abstract void a(long var1);
+
+   protected abstract void a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, long var3);
+
+   public static class a {
+      private static final int a = 4;
+      private static final int b = 6;
+      private static final long c = 15L;
+      private static final long d = 1008L;
+      private static final long e = 1024L;
+      private static final long f = 2048L;
+
+      public static long a(int $$0, jm $$1) {
+         long $$2 = c(1008L, $$1);
+         return a($$2, $$0);
       }
 
-      protected void rehash(int $$0) {
-         if ($$0 > this.k) {
-            super.rehash($$0);
+      public static long a(int $$0) {
+         return a(1008L, $$0);
+      }
+
+      public static long a(int $$0, boolean $$1) {
+         long $$2 = 1008L;
+         $$2 |= 2048L;
+         if ($$1) {
+            $$2 |= 1024L;
          }
+
+         return a($$2, $$0);
+      }
+
+      public static long a(int $$0, boolean $$1, jm $$2) {
+         long $$3 = c(1008L, $$2);
+         if ($$1) {
+            $$3 |= 1024L;
+         }
+
+         return a($$3, $$0);
+      }
+
+      public static long b(int $$0, boolean $$1, jm $$2) {
+         long $$3 = 0L;
+         if ($$1) {
+            $$3 |= 1024L;
+         }
+
+         $$3 = b($$3, $$2);
+         return a($$3, $$0);
+      }
+
+      public static long a(boolean $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4) {
+         long $$5 = a(0L, 15);
+         if ($$0) {
+            $$5 = b($$5, jm.a);
+         }
+
+         if ($$1) {
+            $$5 = b($$5, jm.c);
+         }
+
+         if ($$2) {
+            $$5 = b($$5, jm.d);
+         }
+
+         if ($$3) {
+            $$5 = b($$5, jm.e);
+         }
+
+         if ($$4) {
+            $$5 = b($$5, jm.f);
+         }
+
+         return $$5;
+      }
+
+      public static int a(long $$0) {
+         return (int)($$0 & 15L);
+      }
+
+      public static boolean b(long $$0) {
+         return ($$0 & 1024L) != 0L;
+      }
+
+      public static boolean c(long $$0) {
+         return ($$0 & 2048L) != 0L;
+      }
+
+      public static boolean a(long $$0, jm $$1) {
+         return ($$0 & 1L << $$1.ordinal() + 4) != 0L;
+      }
+
+      private static long a(long $$0, int $$1) {
+         return $$0 & -16L | (long)$$1 & 15L;
+      }
+
+      private static long b(long $$0, jm $$1) {
+         return $$0 | 1L << $$1.ordinal() + 4;
+      }
+
+      private static long c(long $$0, jm $$1) {
+         return $$0 & ~(1L << $$1.ordinal() + 4);
       }
    }
 }

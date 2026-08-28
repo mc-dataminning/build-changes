@@ -1,327 +1,350 @@
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ebm {
-   public static final float a = -0.50375F;
-   private static final float n = 0.08F;
-   private static final double o = 1.5;
-   private static final double p = 1.5;
-   private static final double q = 1.5625;
-   private static final double r = -0.703125;
-   public static final int b = 64;
-   public static final long c = 4096L;
-   private static final eay s = eaz.a(10.0);
-   private static final eay t = eaz.a();
-   private static final alh<eay> u = a("zero");
-   private static final alh<eay> v = a("y");
-   private static final alh<eay> w = a("shift_x");
-   private static final alh<eay> x = a("shift_z");
-   private static final alh<eay> y = a("overworld/base_3d_noise");
-   private static final alh<eay> z = a("nether/base_3d_noise");
-   private static final alh<eay> A = a("end/base_3d_noise");
-   public static final alh<eay> d = a("overworld/continents");
-   public static final alh<eay> e = a("overworld/erosion");
-   public static final alh<eay> f = a("overworld/ridges");
-   public static final alh<eay> g = a("overworld/ridges_folded");
-   public static final alh<eay> h = a("overworld/offset");
-   public static final alh<eay> i = a("overworld/factor");
-   public static final alh<eay> j = a("overworld/jaggedness");
-   public static final alh<eay> k = a("overworld/depth");
-   private static final alh<eay> B = a("overworld/sloped_cheese");
-   public static final alh<eay> l = a("overworld_large_biomes/continents");
-   public static final alh<eay> m = a("overworld_large_biomes/erosion");
-   private static final alh<eay> C = a("overworld_large_biomes/offset");
-   private static final alh<eay> D = a("overworld_large_biomes/factor");
-   private static final alh<eay> E = a("overworld_large_biomes/jaggedness");
-   private static final alh<eay> F = a("overworld_large_biomes/depth");
-   private static final alh<eay> G = a("overworld_large_biomes/sloped_cheese");
-   private static final alh<eay> H = a("overworld_amplified/offset");
-   private static final alh<eay> I = a("overworld_amplified/factor");
-   private static final alh<eay> J = a("overworld_amplified/jaggedness");
-   private static final alh<eay> K = a("overworld_amplified/depth");
-   private static final alh<eay> L = a("overworld_amplified/sloped_cheese");
-   private static final alh<eay> M = a("end/sloped_cheese");
-   private static final alh<eay> N = a("overworld/caves/spaghetti_roughness_function");
-   private static final alh<eay> O = a("overworld/caves/entrances");
-   private static final alh<eay> P = a("overworld/caves/noodle");
-   private static final alh<eay> Q = a("overworld/caves/pillars");
-   private static final alh<eay> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
-   private static final alh<eay> S = a("overworld/caves/spaghetti_2d");
+public final class ebm extends dxk {
+   public static final MapCodec<ebm> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dgl.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), ebo.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
+            .apply($$0, $$0.stable(ebm::new))
+   );
+   private static final dvo d = dil.a.m();
+   private final jq<ebo> e;
+   private final Supplier<eav.a> f;
 
-   private static alh<eay> a(String $$0) {
-      return alh.a(lz.aK, ali.b($$0));
+   public ebm(dgl $$0, jq<ebo> $$1) {
+      super($$0);
+      this.e = $$1;
+      this.f = Suppliers.memoize(() -> a($$1.a()));
    }
 
-   public static jq<? extends eay> a(qy<eay> $$0) {
-      jr<eqn.a> $$1 = $$0.a(lz.aQ);
-      jr<eay> $$2 = $$0.a(lz.aK);
-      $$0.a(u, eaz.a());
-      int $$3 = dzf.e * 2;
-      int $$4 = dzf.d * 2;
-      $$0.a(v, eaz.a($$3, $$4, (double)$$3, (double)$$4));
-      eay $$5 = a($$0, w, eaz.b(eaz.c(eaz.b($$1.b(ebo.j)))));
-      eay $$6 = a($$0, x, eaz.b(eaz.c(eaz.c($$1.b(ebo.j)))));
-      $$0.a(y, eqk.a(0.25, 0.125, 80.0, 160.0, 8.0));
-      $$0.a(z, eqk.a(0.25, 0.375, 80.0, 60.0, 8.0));
-      $$0.a(A, eqk.a(0.25, 0.25, 80.0, 160.0, 4.0));
-      jq<eay> $$7 = $$0.a(d, eaz.b(eaz.a($$5, $$6, 0.25, $$1.b(ebo.c))));
-      jq<eay> $$8 = $$0.a(e, eaz.b(eaz.a($$5, $$6, 0.25, $$1.b(ebo.d))));
-      eay $$9 = a($$0, f, eaz.b(eaz.a($$5, $$6, 0.25, $$1.b(ebo.i))));
-      $$0.a(g, a($$9));
-      eay $$10 = eaz.b($$1.b(ebo.M), 1500.0, 0.0);
-      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
-      jq<eay> $$11 = $$0.a(l, eaz.b(eaz.a($$5, $$6, 0.25, $$1.b(ebo.g))));
-      jq<eay> $$12 = $$0.a(m, eaz.b(eaz.a($$5, $$6, 0.25, $$1.b(ebo.h))));
-      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
-      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
-      $$0.a(M, eaz.a(eaz.a(0L), a($$2, A)));
-      $$0.a(N, b($$1));
-      $$0.a(R, eaz.d(eaz.a($$1.b(ebo.u), 2.0, 1.0, -0.6, -1.3)));
-      $$0.a(S, f($$2, $$1));
-      $$0.a(O, d($$2, $$1));
-      $$0.a(P, e($$2, $$1));
-      return $$0.a(Q, c($$1));
+   private static eav.a a(ebo $$0) {
+      eav.b $$1 = new eav.b(-54, dil.H.m());
+      int $$2 = $$0.l();
+      eav.b $$3 = new eav.b($$2, $$0.h());
+      eav.b $$4 = new eav.b(dzj.e * 2, dil.a.m());
+      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
    }
 
-   private static void a(
-      qy<eay> $$0, jr<eay> $$1, eay $$2, jq<eay> $$3, jq<eay> $$4, alh<eay> $$5, alh<eay> $$6, alh<eay> $$7, alh<eay> $$8, alh<eay> $$9, boolean $$10
-   ) {
-      eaz.w.a $$11 = new eaz.w.a($$3);
-      eaz.w.a $$12 = new eaz.w.a($$4);
-      eaz.w.a $$13 = new eaz.w.a($$1.b(f));
-      eaz.w.a $$14 = new eaz.w.a($$1.b(g));
-      eay $$15 = a($$0, $$5, a(eaz.a(eaz.a(-0.50375F), eaz.a(rn.a($$11, $$12, $$14, $$10))), eaz.c()));
-      eay $$16 = a($$0, $$6, a(eaz.a(rn.a($$11, $$12, $$13, $$14, $$10)), s));
-      eay $$17 = a($$0, $$8, eaz.a(eaz.a(-64, 320, 1.5, -1.5), $$15));
-      eay $$18 = a($$0, $$7, a(eaz.a(rn.b($$11, $$12, $$13, $$14, $$10)), t));
-      eay $$19 = eaz.b($$18, $$2.g());
-      eay $$20 = b($$16, eaz.a($$17, $$19));
-      $$0.a($$9, eaz.a($$20, a($$1, y)));
+   @Override
+   public CompletableFuture<dxj> a(ebx $$0, ecl $$1, dgb $$2, dxj $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         this.b($$1, $$0, $$2, $$3);
+         return $$3;
+      }, ae.g().a("init_biomes"));
    }
 
-   private static eay a(qy<eay> $$0, alh<eay> $$1, eay $$2) {
-      return new eaz.j($$0.a($$1, $$2));
+   private void b(ecl $$0, ebx $$1, dgb $$2, dxj $$3) {
+      ebn $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
+      dgk $$5 = eax.a($$0.a(this.b), $$3);
+      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
    }
 
-   private static eay a(jr<eay> $$0, alh<eay> $$1) {
-      return new eaz.j($$0.b($$1));
+   private ebn a(dxj $$0, dgb $$1, ecl $$2, ebx $$3) {
+      return ebn.a($$0, $$3, eaw.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
    }
 
-   private static eay a(eay $$0) {
-      return eaz.b(eaz.a(eaz.a($$0.d(), eaz.a(-0.6666666666666666)).d(), eaz.a(-0.3333333333333333)), eaz.a(-3.0));
+   @Override
+   protected MapCodec<? extends dxk> b() {
+      return c;
    }
 
-   public static float a(float $$0) {
-      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
+   public jq<ebo> h() {
+      return this.e;
    }
 
-   private static eay b(jr<eqn.a> $$0) {
-      eay $$1 = eaz.a($$0.b(ebo.z));
-      eay $$2 = eaz.a($$0.b(ebo.A), 0.0, -0.1);
-      return eaz.d(eaz.b($$2, eaz.a($$1.d(), eaz.a(-0.4))));
+   public boolean a(alk<ebo> $$0) {
+      return this.e.a($$0);
    }
 
-   private static eay d(jr<eay> $$0, jr<eqn.a> $$1) {
-      eay $$2 = eaz.d(eaz.b($$1.b(ebo.x), 2.0, 1.0));
-      eay $$3 = eaz.a($$1.b(ebo.y), -0.065, -0.088);
-      eay $$4 = eaz.a($$2, $$1.b(ebo.v), eaz.z.a.a);
-      eay $$5 = eaz.a($$2, $$1.b(ebo.w), eaz.z.a.a);
-      eay $$6 = eaz.a(eaz.d($$4, $$5), $$3).a(-1.0, 1.0);
-      eay $$7 = a($$0, N);
-      eay $$8 = eaz.b($$1.b(ebo.B), 0.75, 0.5);
-      eay $$9 = eaz.a(eaz.a($$8, eaz.a(0.37)), eaz.a(-10, 30, 0.3, 0.0));
-      return eaz.d(eaz.c($$9, eaz.a($$7, $$6)));
+   @Override
+   public int a(int $$0, int $$1, ebj.a $$2, dfh $$3, ebx $$4) {
+      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.I_());
    }
 
-   private static eay e(jr<eay> $$0, jr<eqn.a> $$1) {
-      eay $$2 = a($$0, v);
-      int $$3 = -64;
-      int $$4 = -60;
-      int $$5 = 320;
-      eay $$6 = a($$2, eaz.b($$1.b(ebo.I), 1.0, 1.0), -60, 320, -1);
-      eay $$7 = a($$2, eaz.a($$1.b(ebo.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
-      double $$8 = 2.6666666666666665;
-      eay $$9 = a($$2, eaz.b($$1.b(ebo.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
-      eay $$10 = a($$2, eaz.b($$1.b(ebo.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
-      eay $$11 = eaz.b(eaz.a(1.5), eaz.d($$9.d(), $$10.d()));
-      return eaz.a($$6, -1000000.0, 0.0, eaz.a(64.0), eaz.a($$7, $$11));
+   @Override
+   public dfr a(int $$0, int $$1, dfh $$2, ebx $$3) {
+      MutableObject<dfr> $$4 = new MutableObject();
+      this.a($$2, $$3, $$0, $$1, $$4, null);
+      return (dfr)$$4.getValue();
    }
 
-   private static eay c(jr<eqn.a> $$0) {
-      double $$1 = 25.0;
-      double $$2 = 0.3;
-      eay $$3 = eaz.b($$0.b(ebo.o), 25.0, 0.3);
-      eay $$4 = eaz.a($$0.b(ebo.p), 0.0, -2.0);
-      eay $$5 = eaz.a($$0.b(ebo.q), 0.0, 1.1);
-      eay $$6 = eaz.a(eaz.b($$3, eaz.a(2.0)), $$4);
-      return eaz.d(eaz.b($$6, $$5.f()));
-   }
-
-   private static eay f(jr<eay> $$0, jr<eqn.a> $$1) {
-      eay $$2 = eaz.b($$1.b(ebo.t), 2.0, 1.0);
-      eay $$3 = eaz.a($$2, $$1.b(ebo.r), eaz.z.a.b);
-      eay $$4 = eaz.a($$1.b(ebo.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
-      eay $$5 = a($$0, R);
-      eay $$6 = eaz.a($$4, eaz.a(-64, 320, 8.0, -40.0)).d();
-      eay $$7 = eaz.a($$6, $$5).f();
-      double $$8 = 0.083;
-      eay $$9 = eaz.a($$3, eaz.b(eaz.a(0.083), $$5));
-      return eaz.d($$9, $$7).a(-1.0, 1.0);
-   }
-
-   private static eay a(jr<eay> $$0, jr<eqn.a> $$1, eay $$2) {
-      eay $$3 = a($$0, S);
-      eay $$4 = a($$0, N);
-      eay $$5 = eaz.a($$1.b(ebo.C), 8.0);
-      eay $$6 = eaz.b(eaz.a(4.0), $$5.e());
-      eay $$7 = eaz.a($$1.b(ebo.D), 0.6666666666666666);
-      eay $$8 = eaz.a(eaz.a(eaz.a(0.27), $$7).a(-1.0, 1.0), eaz.a(eaz.a(1.5), eaz.b(eaz.a(-0.64), $$2)).a(0.0, 0.5));
-      eay $$9 = eaz.a($$6, $$8);
-      eay $$10 = eaz.c(eaz.c($$9, a($$0, O)), eaz.a($$3, $$4));
-      eay $$11 = a($$0, Q);
-      eay $$12 = eaz.a($$11, -1000000.0, 0.03, eaz.a(-1000000.0), $$11);
-      return eaz.d($$10, $$12);
-   }
-
-   private static eay b(eay $$0) {
-      eay $$1 = eaz.f($$0);
-      return eaz.b(eaz.a($$1), eaz.a(0.64)).i();
-   }
-
-   protected static ebl a(jr<eay> $$0, jr<eqn.a> $$1, boolean $$2, boolean $$3) {
-      eay $$4 = eaz.a($$1.b(ebo.k), 0.5);
-      eay $$5 = eaz.a($$1.b(ebo.l), 0.67);
-      eay $$6 = eaz.a($$1.b(ebo.n), 0.7142857142857143);
-      eay $$7 = eaz.a($$1.b(ebo.m));
-      eay $$8 = a($$0, w);
-      eay $$9 = a($$0, x);
-      eay $$10 = eaz.a($$8, $$9, 0.25, $$1.b($$2 ? ebo.e : ebo.a));
-      eay $$11 = eaz.a($$8, $$9, 0.25, $$1.b($$2 ? ebo.f : ebo.b));
-      eay $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
-      eay $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
-      eay $$14 = b(eaz.c($$12), $$13);
-      eay $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
-      eay $$16 = eaz.c($$15, eaz.b(eaz.a(5.0), a($$0, O)));
-      eay $$17 = eaz.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
-      eay $$18 = eaz.c(b(a($$3, $$17)), a($$0, P));
-      eay $$19 = a($$0, v);
-      int $$20 = Stream.of(ebp.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-dzf.e * 2);
-      int $$21 = Stream.of(ebp.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-dzf.e * 2);
-      eay $$22 = a($$19, eaz.b($$1.b(ebo.E), 1.5, 1.5), $$20, $$21, 0);
-      float $$23 = 4.0F;
-      eay $$24 = a($$19, eaz.b($$1.b(ebo.F), 4.0, 4.0), $$20, $$21, 0).d();
-      eay $$25 = a($$19, eaz.b($$1.b(ebo.G), 4.0, 4.0), $$20, $$21, 0).d();
-      eay $$26 = eaz.a(eaz.a(-0.08F), eaz.d($$24, $$25));
-      eay $$27 = eaz.a($$1.b(ebo.H));
-      return new ebl(
-         $$4,
-         $$5,
-         $$6,
-         $$7,
-         $$10,
-         $$11,
-         a($$0, $$2 ? l : d),
-         a($$0, $$2 ? m : e),
-         $$13,
-         a($$0, f),
-         a($$3, eaz.a($$14, eaz.a(-0.703125)).a(-64.0, 64.0)),
-         $$18,
-         $$22,
-         $$26,
-         $$27
+   @Override
+   public void a(List<String> $$0, ebx $$1, jh $$2) {
+      DecimalFormat $$3 = new DecimalFormat("0.000");
+      ebp $$4 = $$1.a();
+      ebc.e $$5 = new ebc.e($$2.u(), $$2.v(), $$2.w());
+      double $$6 = $$4.j().a($$5);
+      $$0.add(
+         "NoiseRouter T: "
+            + $$3.format($$4.e().a($$5))
+            + " V: "
+            + $$3.format($$4.f().a($$5))
+            + " C: "
+            + $$3.format($$4.g().a($$5))
+            + " E: "
+            + $$3.format($$4.h().a($$5))
+            + " D: "
+            + $$3.format($$4.i().a($$5))
+            + " W: "
+            + $$3.format($$6)
+            + " PV: "
+            + $$3.format((double)ebq.a((float)$$6))
+            + " AS: "
+            + $$3.format($$4.k().a($$5))
+            + " N: "
+            + $$3.format($$4.l().a($$5))
       );
    }
 
-   private static ebl b(jr<eay> $$0, jr<eqn.a> $$1, eay $$2) {
-      eay $$3 = a($$0, w);
-      eay $$4 = a($$0, x);
-      eay $$5 = eaz.a($$3, $$4, 0.25, $$1.b(ebo.a));
-      eay $$6 = eaz.a($$3, $$4, 0.25, $$1.b(ebo.b));
-      eay $$7 = b($$2);
-      return new ebl(eaz.a(), eaz.a(), eaz.a(), eaz.a(), $$5, $$6, eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), $$7, eaz.a(), eaz.a(), eaz.a());
-   }
-
-   private static eay a(boolean $$0, eay $$1) {
-      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
-   }
-
-   private static eay a(jr<eay> $$0, int $$1, int $$2) {
-      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
-   }
-
-   private static eay a(eay $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
-   }
-
-   protected static ebl a(jr<eay> $$0, jr<eqn.a> $$1) {
-      return b($$0, $$1, a($$0, 0, 128));
-   }
-
-   protected static ebl b(jr<eay> $$0, jr<eqn.a> $$1) {
-      return b($$0, $$1, a($$0, -64, 192));
-   }
-
-   protected static ebl c(jr<eay> $$0, jr<eqn.a> $$1) {
-      return b($$0, $$1, a(a($$0, A), 0, 256));
-   }
-
-   private static eay c(eay $$0) {
-      return a($$0, 0, 128);
-   }
-
-   protected static ebl a(jr<eay> $$0) {
-      eay $$1 = eaz.c(eaz.a(0L));
-      eay $$2 = b(c(a($$0, M)));
-      return new ebl(
-         eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), $$1, eaz.a(), eaz.a(), c(eaz.a($$1, eaz.a(-0.703125))), $$2, eaz.a(), eaz.a(), eaz.a()
-      );
-   }
-
-   protected static ebl a() {
-      return new ebl(eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a(), eaz.a());
-   }
-
-   private static eay a(eay $$0, eay $$1) {
-      eay $$2 = eaz.a(eaz.b(), $$1, $$0);
-      return eaz.b(eaz.c($$2));
-   }
-
-   private static eay b(eay $$0, eay $$1) {
-      eay $$2 = eaz.b($$1, $$0);
-      return eaz.b(eaz.a(4.0), $$2.h());
-   }
-
-   private static eay a(eay $$0, eay $$1, int $$2, int $$3, int $$4) {
-      return eaz.a(eaz.a($$0, (double)$$2, (double)($$3 + 1), $$1, eaz.a((double)$$4)));
-   }
-
-   private static eay a(eay $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
-      eay $$10 = eaz.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
-      eay $$9 = eaz.a($$10, $$5, $$0);
-      eay $$11 = eaz.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
-      return eaz.a($$11, $$8, $$9);
-   }
-
-   protected static final class a {
-      protected static double a(double $$0) {
-         if ($$0 < -0.75) {
-            return 0.5;
-         } else if ($$0 < -0.5) {
-            return 0.75;
-         } else if ($$0 < 0.5) {
-            return 1.0;
+   private OptionalInt a(dfh $$0, ebx $$1, int $$2, int $$3, @Nullable MutableObject<dfr> $$4, @Nullable Predicate<dvo> $$5) {
+      ebr $$6 = this.e.a().f().a($$0);
+      int $$7 = $$6.a();
+      int $$8 = $$6.c();
+      int $$9 = azn.a($$8, $$7);
+      int $$10 = azn.a($$6.d(), $$7);
+      if ($$10 <= 0) {
+         return OptionalInt.empty();
+      } else {
+         dvo[] $$11;
+         if ($$4 == null) {
+            $$11 = null;
          } else {
-            return $$0 < 0.75 ? 2.0 : 3.0;
+            $$11 = new dvo[$$6.d()];
+            $$4.setValue(new dfr($$8, $$11));
+         }
+
+         int $$13 = $$6.b();
+         int $$14 = Math.floorDiv($$2, $$13);
+         int $$15 = Math.floorDiv($$3, $$13);
+         int $$16 = Math.floorMod($$2, $$13);
+         int $$17 = Math.floorMod($$3, $$13);
+         int $$18 = $$14 * $$13;
+         int $$19 = $$15 * $$13;
+         double $$20 = (double)$$16 / (double)$$13;
+         double $$21 = (double)$$17 / (double)$$13;
+         ebn $$22 = new ebn(1, $$1, $$18, $$19, $$6, ebd.b.a, this.e.a(), this.f.get(), ecl.a());
+         $$22.f();
+         $$22.b(0);
+
+         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
+            $$22.b($$23, 0);
+
+            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
+               int $$25 = ($$9 + $$23) * $$7 + $$24;
+               double $$26 = (double)$$24 / (double)$$7;
+               $$22.a($$25, $$26);
+               $$22.b($$2, $$20);
+               $$22.c($$3, $$21);
+               dvo $$27 = $$22.e();
+               dvo $$28 = $$27 == null ? this.e.a().g() : $$27;
+               if ($$11 != null) {
+                  int $$29 = $$23 * $$7 + $$24;
+                  $$11[$$29] = $$28;
+               }
+
+               if ($$5 != null && $$5.test($$28)) {
+                  $$22.g();
+                  return OptionalInt.of($$25 + 1);
+               }
+            }
+         }
+
+         $$22.g();
+         return OptionalInt.empty();
+      }
+   }
+
+   @Override
+   public void a(ary $$0, dgb $$1, ebx $$2, dxj $$3) {
+      if (!ab.a($$3.f())) {
+         ecg $$4 = new ecg(this, $$0);
+         this.a($$3, $$4, $$2, $$1, $$0.F_(), $$0.H_().e(ma.aG), ecl.a($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public void a(dxj $$0, ecg $$1, ebx $$2, dgb $$3, dgj $$4, kd<dgh> $$5, ecl $$6) {
+      ebn $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
+      ebo $$8 = this.e.a();
+      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   }
+
+   @Override
+   public void a(ary $$0, long $$1, ebx $$2, dgj $$3, dgb $$4, dxj $$5) {
+      dgj $$6 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
+      eci $$7 = new eci(new ebk(eby.a()));
+      int $$8 = 8;
+      del $$9 = $$5.f();
+      ebn $$10 = $$5.a($$3x -> this.a($$3x, $$4, ecl.a($$0), $$2));
+      eav $$11 = $$10.i();
+      edk $$12 = new edk(this, $$0.H_(), $$5.y(), $$10, $$2, this.e.a().j());
+      dxi $$13 = ((dyd)$$5).C();
+
+      for (int $$14 = -8; $$14 <= 8; $$14++) {
+         for (int $$15 = -8; $$15 <= 8; $$15++) {
+            del $$16 = new del($$9.g + $$14, $$9.h + $$15);
+            dxj $$17 = $$0.a($$16.g, $$16.h);
+            dgi $$18 = $$17.a(() -> this.a(this.b.getNoiseBiome(kb.a($$16.d()), 0, kb.a($$16.e()), $$2.b())));
+            Iterable<jq<edn<?>>> $$19 = $$18.a();
+            int $$20 = 0;
+
+            for (jq<edn<?>> $$21 : $$19) {
+               edn<?> $$22 = $$21.a();
+               $$7.c($$1 + (long)$$20, $$16.g, $$16.h);
+               if ($$22.a($$7)) {
+                  $$22.a($$12, $$5, $$6::a, $$7, $$11, $$16, $$13);
+               }
+
+               $$20++;
+            }
          }
       }
+   }
 
-      protected static double b(double $$0) {
-         if ($$0 < -0.5) {
-            return 0.75;
-         } else if ($$0 < 0.0) {
-            return 1.0;
-         } else {
-            return $$0 < 0.5 ? 1.5 : 2.0;
+   @Override
+   public CompletableFuture<dxj> a(ecl $$0, ebx $$1, dgb $$2, dxj $$3) {
+      ebr $$4 = this.e.a().f().a($$3.y());
+      int $$5 = $$4.c();
+      int $$6 = azn.a($$5, $$4.a());
+      int $$7 = azn.a($$4.d(), $$4.a());
+      return $$7 <= 0 ? CompletableFuture.completedFuture($$3) : CompletableFuture.supplyAsync(() -> {
+         int $$8 = $$3.f($$7 * $$4.a() - 1 + $$5);
+         int $$9 = $$3.f($$5);
+         Set<dxu> $$10 = Sets.newHashSet();
+
+         for (int $$11 = $$8; $$11 >= $$9; $$11--) {
+            dxu $$12 = $$3.b($$11);
+            $$12.a();
+            $$10.add($$12);
          }
+
+         dxj var20;
+         try {
+            var20 = this.a($$0, $$2, $$1, $$3, $$6, $$7);
+         } finally {
+            for (dxu $$14 : $$10) {
+               $$14.b();
+            }
+         }
+
+         return var20;
+      }, ae.g().a("wgen_fill_noise"));
+   }
+
+   private dxj a(ecl $$0, dgb $$1, ebx $$2, dxj $$3, int $$4, int $$5) {
+      ebn $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
+      ebj $$7 = $$3.a(ebj.a.c);
+      ebj $$8 = $$3.a(ebj.a.a);
+      del $$9 = $$3.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      eav $$12 = $$6.i();
+      $$6.f();
+      jh.a $$13 = new jh.a();
+      int $$14 = $$6.j();
+      int $$15 = $$6.k();
+      int $$16 = 16 / $$14;
+      int $$17 = 16 / $$14;
+
+      for (int $$18 = 0; $$18 < $$16; $$18++) {
+         $$6.b($$18);
+
+         for (int $$19 = 0; $$19 < $$17; $$19++) {
+            int $$20 = $$3.am() - 1;
+            dxu $$21 = $$3.b($$20);
+
+            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
+               $$6.b($$22, $$19);
+
+               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
+                  int $$24 = ($$4 + $$22) * $$15 + $$23;
+                  int $$25 = $$24 & 15;
+                  int $$26 = $$3.f($$24);
+                  if ($$20 != $$26) {
+                     $$20 = $$26;
+                     $$21 = $$3.b($$26);
+                  }
+
+                  double $$27 = (double)$$23 / (double)$$15;
+                  $$6.a($$24, $$27);
+
+                  for (int $$28 = 0; $$28 < $$14; $$28++) {
+                     int $$29 = $$10 + $$18 * $$14 + $$28;
+                     int $$30 = $$29 & 15;
+                     double $$31 = (double)$$28 / (double)$$14;
+                     $$6.b($$29, $$31);
+
+                     for (int $$32 = 0; $$32 < $$14; $$32++) {
+                        int $$33 = $$11 + $$19 * $$14 + $$32;
+                        int $$34 = $$33 & 15;
+                        double $$35 = (double)$$32 / (double)$$14;
+                        $$6.c($$33, $$35);
+                        dvo $$36 = $$6.e();
+                        if ($$36 == null) {
+                           $$36 = this.e.a().g();
+                        }
+
+                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
+                        if ($$36 != d && !ab.a($$3.f())) {
+                           $$21.a($$30, $$25, $$34, $$36, false);
+                           $$7.a($$30, $$24, $$34, $$36);
+                           $$8.a($$30, $$24, $$34, $$36);
+                           if ($$12.a() && !$$36.y().c()) {
+                              $$13.d($$29, $$24, $$33);
+                              $$3.e($$13);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         $$6.h();
+      }
+
+      $$6.g();
+      return $$3;
+   }
+
+   private dvo a(ebn $$0, int $$1, int $$2, int $$3, dvo $$4) {
+      return $$4;
+   }
+
+   @Override
+   public int e() {
+      return this.e.a().f().d();
+   }
+
+   @Override
+   public int f() {
+      return this.e.a().l();
+   }
+
+   @Override
+   public int g() {
+      return this.e.a().f().c();
+   }
+
+   @Override
+   public void a(ary $$0) {
+      if (!this.e.a().a()) {
+         del $$1 = $$0.a();
+         jq<dgh> $$2 = $$0.t($$1.l().h($$0.al()));
+         eci $$3 = new eci(new ebk(eby.a()));
+         $$3.a($$0.C(), $$1.d(), $$1.e());
+         dfq.a($$0, $$2, $$1, $$3);
       }
    }
 }

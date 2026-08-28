@@ -1,57 +1,184 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fvm extends fvf<gdr.a> {
-   private static final int C = 85;
-   private static final int D = 178;
-   private static final xi E = xi.c("gui.abuseReport.skin.title");
-   private flz F;
-   private flh G;
+public class fvm {
+   public static final int a = 20;
+   private static final fnj b = new fnj(all.b("recipe_book/page_forward"), all.b("recipe_book/page_forward_highlighted"));
+   private static final fnj c = new fnj(all.b("recipe_book/page_backward"), all.b("recipe_book/page_backward_highlighted"));
+   private final List<fvo> d = Lists.newArrayListWithCapacity(20);
+   @Nullable
+   private fvo e;
+   private final fvk f;
+   private fjx g;
+   private final List<fvq> h = Lists.newArrayList();
+   private List<fvp> i = ImmutableList.of();
+   private fnc j;
+   private fnc k;
+   private int l;
+   private int m;
+   private awr n;
+   @Nullable
+   private dav<?> o;
+   @Nullable
+   private fvp p;
+   private boolean q;
 
-   private fvm(fra $$0, gdq $$1, gdr.a $$2) {
-      super(E, $$0, $$1, $$2);
+   public fvm(fvs $$0, boolean $$1) {
+      this.f = new fvk($$0, $$1);
+
+      for (int $$2 = 0; $$2 < 20; $$2++) {
+         this.d.add(new fvo($$0));
+      }
    }
 
-   public fvm(fra $$0, gdq $$1, UUID $$2, Supplier<gze> $$3) {
-      this($$0, $$1, new gdr.a($$2, $$3, $$1.a().b()));
-   }
+   public void a(fjx $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.t.j();
 
-   public fvm(fra $$0, gdq $$1, gdr $$2) {
-      this($$0, $$1, new gdr.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void D() {
-      fpa $$0 = this.z.a(fpa.e().a(8));
-      $$0.c().e();
-      $$0.a(new fmh(85, 120, this.m.aS(), this.A.e().a()));
-      fpa $$1 = $$0.a(fpa.d().a(8));
-      this.G = flh.a(c, $$0x -> this.m.a(new fvl(this, this.A.i(), gdp.b, $$0xx -> {
-            this.A.a($$0xx);
-            this.F();
-         }))).a(178).a();
-      $$1.a(fos.a(this.p, this.G, b));
-      this.F = this.a(178, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.F();
-      });
-      $$1.a(fos.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
-   }
-
-   @Override
-   protected void F() {
-      gdo $$0 = this.A.i();
-      if ($$0 != null) {
-         this.G.b($$0.b());
-      } else {
-         this.G.b(c);
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
       }
 
-      super.F();
+      this.j = new fnc($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new fnc($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
+   public void a(fvl $$0) {
+      this.h.remove($$0);
+      this.h.add($$0);
+   }
+
+   public void a(List<fvp> $$0, boolean $$1, boolean $$2) {
+      this.i = $$0;
+      this.q = $$2;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.e();
+   }
+
+   private void e() {
+      int $$0 = 20 * this.m;
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         fvo $$2 = this.d.get($$1);
+         if ($$0 + $$1 < this.i.size()) {
+            fvp $$3 = this.i.get($$0 + $$1);
+            $$2.a($$3, this.q, this);
+            $$2.k = true;
+         } else {
+            $$2.k = false;
+         }
+      }
+
+      this.f();
+   }
+
+   private void f() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
+   }
+
+   public void a(flj $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         xl $$6 = xl.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      }
+
+      this.e = null;
+
+      for (fvo $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.B()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(flj $$0, int $$1, int $$2) {
+      if (this.g.z != null && this.e != null && !this.f.c()) {
+         all $$3 = this.e.e().a(ku.G);
+         $$0.a(this.g.h, this.e.f(), $$1, $$2, $$3);
+      }
+   }
+
+   @Nullable
+   public dav<?> a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fvp b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.e();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.e();
+         return true;
+      } else {
+         for (fvo $$7 : this.d) {
+            if ($$7.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$7.c();
+                  this.p = $$7.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
+                  this.f.a($$7.a(), this.q, $$7.D(), $$7.E(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.y());
+               }
+
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public void a(List<dav<?>> $$0) {
+      for (fvq $$1 : this.h) {
+         $$1.a($$0);
+      }
+   }
+
+   public awr d() {
+      return this.n;
+   }
+
+   protected void a(Consumer<flu> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

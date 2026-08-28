@@ -1,27 +1,51 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class exp {
-   public static final exo a = a("inverted", exk.a);
-   public static final exo b = a("any_of", exb.a);
-   public static final exo c = a("all_of", exa.a);
-   public static final exo d = a("random_chance", exs.a);
-   public static final exo e = a("random_chance_with_enchanted_bonus", ext.a);
-   public static final exo f = a("entity_properties", exq.a);
-   public static final exo g = a("killed_by_player", exr.a);
-   public static final exo h = a("entity_scores", exi.a);
-   public static final exo i = a("block_state_property", exm.a);
-   public static final exo j = a("match_tool", exu.a);
-   public static final exo k = a("table_bonus", exc.a);
-   public static final exo l = a("survives_explosion", exj.a);
-   public static final exo m = a("damage_source_properties", exg.a);
-   public static final exo n = a("location_check", exl.a);
-   public static final exo o = a("weather_check", exx.a);
-   public static final exo p = a("reference", exe.a);
-   public static final exo q = a("time_check", exv.a);
-   public static final exo r = a("value_check", exw.a);
-   public static final exo s = a("enchantment_active_check", exh.a);
+public record exp(Optional<dh> b, jh c) implements exr {
+   private static final MapCodec<jh> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kl::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kl::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kl::w)
+            )
+            .apply($$0, jh::new)
+   );
+   public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dh.a.optionalFieldOf("predicate").forGetter(exp::c), g.forGetter(exp::d)).apply($$0, exp::new)
+   );
 
-   private static exo a(String $$0, MapCodec<? extends exn> $$1) {
-      return kd.a(ly.F, ali.b($$0), new exo($$1));
+   @Override
+   public exs b() {
+      return ext.n;
+   }
+
+   public boolean a(eug $$0) {
+      ezr $$1 = $$0.c(exc.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   }
+
+   @Override
+   public Set<ewz<?>> a() {
+      return Set.of(exc.f);
+   }
+
+   public static exr.a a(dh.a $$0) {
+      return () -> new exp(Optional.of($$0.b()), jh.c);
+   }
+
+   public static exr.a a(dh.a $$0, jh $$1) {
+      return () -> new exp(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<dh> c() {
+      return this.b;
+   }
+
+   public jh d() {
+      return this.c;
    }
 }

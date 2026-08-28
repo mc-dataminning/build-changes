@@ -1,72 +1,55 @@
-public class ghk {
-   public static final xi a = xi.c("quickplay.error.title");
-   private static final xi b = xi.c("quickplay.error.invalid_identifier");
-   private static final xi c = xi.c("quickplay.error.realm_connect");
-   private static final xi d = xi.c("quickplay.error.realm_permission");
-   private static final xi e = xi.c("gui.toTitle");
-   private static final xi f = xi.c("gui.toWorld");
-   private static final xi g = xi.c("gui.toRealms");
+public class ghk extends ghf {
+   private final gha a;
 
-   public static void a(fji $$0, fwy.c $$1, fer $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!bah.h($$3)) {
-         a($$0, $$3);
-      } else if (!bah.h($$4)) {
-         b($$0, $$4);
-      } else if (!bah.h($$5)) {
-         a($$0, $$2, $$5);
-      }
+   ghk(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gha $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
-   private static void a(fji $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         fra $$2 = new fwf(new frc());
-         $$0.a(new fqh($$2, a, b, f));
+   @Override
+   public ggj b() {
+      return ggj.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         $$0.x().a($$1, () -> $$0.a(new frc()));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
       }
    }
 
-   private static void b(fji $$0, String $$1) {
-      gcx $$2 = new gcx($$0);
-      $$2.a();
-      gcw $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new gcw(gzk.a("selectServer.defaultName"), $$1, gcw.c.c);
-         $$2.a($$3, true);
-         $$2.b();
+   public static class a implements ggi<lw> {
+      private final gha a;
+
+      public a(gha $$0) {
+         this.a = $$0;
       }
 
-      gdz $$4 = gdz.a($$1);
-      fpz.a(new ftp(new frc()), $$0, $$4, $$3, true, null);
-   }
-
-   private static void a(fji $$0, fer $$1, String $$2) {
-      long $$3;
-      ffk $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fra $$6 = new fem(new frc());
-         $$0.a(new fqh($$6, a, b, g));
-         return;
-      } catch (fgc var10) {
-         fra $$8 = new frc();
-         $$0.a(new fqh($$8, a, c, e));
-         return;
-      }
-
-      ffi $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fra $$12 = new fem(new frc());
-         $$0.a(new fqh($$12, a, d, g));
-      } else {
-         frc $$13 = new frc();
-         fif $$14 = new fif($$13, $$11);
-         $$0.a(new fgw($$13, $$14));
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghk($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

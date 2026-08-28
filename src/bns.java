@@ -1,31 +1,27 @@
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface bns<S, T> {
-   Optional<T> a(bnr<S> var1);
+public class bns<S> {
+   private final Map<bnq<?>, bnw<S, ?>> a = new HashMap<>();
 
-   static <S, T> bns<S, T> a(bnv<S> $$0, bns.a<S, T> $$1) {
-      return new bns.c<>($$1, $$0);
-   }
-
-   static <S, T> bns<S, T> a(bnv<S> $$0, bns.b<T> $$1) {
-      return new bns.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
-   }
-
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bnr<S> var1, bnt var2);
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bnt var1);
-   }
-
-   public static record c<S, T>(bns.a<S, T> a, bnv<S> b) implements bns<S, T> {
-      @Override
-      public Optional<T> a(bnr<S> $$0) {
-         bnt $$1 = new bnt();
-         return this.b.a($$0, $$1, bnn.a) ? this.a.run($$0, $$1) : Optional.empty();
+   public <T> void a(bnq<T> $$0, bnw<S, T> $$1) {
+      bnw<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
       }
+   }
+
+   public <T> void a(bnq<T> $$0, bnz<S> $$1, bnw.a<S, T> $$2) {
+      this.a($$0, bnw.a($$1, $$2));
+   }
+
+   public <T> void a(bnq<T> $$0, bnz<S> $$1, bnw.b<T> $$2) {
+      this.a($$0, bnw.a($$1, $$2));
+   }
+
+   @Nullable
+   public <T> bnw<S, T> a(bnq<T> $$0) {
+      return (bnw<S, T>)this.a.get($$0);
    }
 }

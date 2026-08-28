@@ -1,198 +1,137 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.epoll.Epoll;
-import io.netty.channel.epoll.EpollEventLoopGroup;
-import io.netty.channel.epoll.EpollServerSocketChannel;
-import io.netty.channel.local.LocalAddress;
-import io.netty.channel.local.LocalServerChannel;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.ServerSocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.timeout.ReadTimeoutHandler;
-import io.netty.util.HashedWheelTimer;
-import io.netty.util.Timeout;
-import io.netty.util.Timer;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketAddress;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.microsoft.aad.msal4j.ClientCredentialFactory;
+import com.microsoft.aad.msal4j.ClientCredentialParameters;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication;
+import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCertificate;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class asp {
-   private static final Logger d = LogUtils.getLogger();
-   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
-      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
-   );
-   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
-      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
-   );
-   final MinecraftServer e;
-   public volatile boolean c;
-   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
-   final List<wc> g = Collections.synchronizedList(Lists.newArrayList());
+public class asp extends asy {
+   private final ConfidentialClientApplication b;
+   private final ClientCredentialParameters c;
+   private final Set<String> d;
+   private final int e;
 
-   public asp(MinecraftServer $$0) {
-      this.e = $$0;
-      this.c = true;
+   private asp(URL $$0, asy.b $$1, asy.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$4;
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
    }
 
-   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
-      synchronized (this.f) {
-         Class<? extends ServerSocketChannel> $$2;
-         EventLoopGroup $$3;
-         if (Epoll.isAvailable() && this.e.p()) {
-            $$2 = EpollServerSocketChannel.class;
-            $$3 = (EventLoopGroup)b.get();
-            d.info("Using epoll channel type");
+   @Nullable
+   public static asy a(String $$0) {
+      JsonObject $$1 = azd.a($$0);
+      URI $$2 = URI.create(azd.i($$1, "apiServer"));
+      String $$3 = azd.i($$1, "apiPath");
+      String $$4 = azd.i($$1, "scope");
+      String $$5 = azd.a($$1, "serverId", "");
+      String $$6 = azd.i($$1, "applicationId");
+      String $$7 = azd.i($$1, "tenantId");
+      String $$8 = azd.a($$1, "roomId", "Java:Chat");
+      String $$9 = azd.i($$1, "certificatePath");
+      String $$10 = azd.a($$1, "certificatePassword", "");
+      int $$11 = azd.a($$1, "hashesToDrop", -1);
+      int $$12 = azd.a($$1, "maxConcurrentRequests", 7);
+      JsonArray $$13 = azd.v($$1, "fullyFilteredEvents");
+      Set<String> $$14 = new HashSet<>();
+      $$13.forEach($$1x -> $$14.add(azd.a($$1x, "filteredEvent")));
+      int $$15 = azd.a($$1, "connectionReadTimeoutMs", 2000);
+
+      URL $$16;
+      try {
+         $$16 = $$2.resolve($$3).toURL();
+      } catch (MalformedURLException var26) {
+         throw new RuntimeException(var26);
+      }
+
+      asy.b $$19 = ($$2x, $$3x) -> {
+         JsonObject $$4x = new JsonObject();
+         $$4x.addProperty("userId", $$2x.getId().toString());
+         $$4x.addProperty("userDisplayName", $$2x.getName());
+         $$4x.addProperty("server", $$5);
+         $$4x.addProperty("room", $$8);
+         $$4x.addProperty("area", "JavaChatRealms");
+         $$4x.addProperty("data", $$3x);
+         $$4x.addProperty("language", "*");
+         return $$4x;
+      };
+      asy.a $$20 = asy.a.select($$11);
+      ExecutorService $$21 = a($$12);
+
+      IClientCertificate $$23;
+      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
+         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
+      } catch (Exception var28) {
+         a.warn("Failed to open certificate file");
+         return null;
+      }
+
+      ConfidentialClientApplication $$27;
+      try {
+         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
+               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
+            .build();
+      } catch (Exception var25) {
+         a.warn("Failed to create confidential client application");
+         return null;
+      }
+
+      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
+      return new asp($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
+   }
+
+   private IAuthenticationResult b() {
+      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
+   }
+
+   @Override
+   protected void a(HttpURLConnection $$0) {
+      IAuthenticationResult $$1 = this.b();
+      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
+   }
+
+   @Override
+   protected asj a(String $$0, asy.a $$1, JsonObject $$2) {
+      JsonObject $$3 = azd.a($$2, "result", null);
+      if ($$3 == null) {
+         return asj.b($$0);
+      } else {
+         boolean $$4 = azd.a($$3, "filtered", true);
+         if (!$$4) {
+            return asj.a($$0);
          } else {
-            $$2 = NioServerSocketChannel.class;
-            $$3 = (EventLoopGroup)a.get();
-            d.info("Using default channel type");
-         }
-
-         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               try {
-                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-               } catch (ChannelException var5) {
+            for (JsonElement $$6 : azd.a($$3, "events", new JsonArray())) {
+               JsonObject $$7 = $$6.getAsJsonObject();
+               String $$8 = azd.a($$7, "id", "");
+               if (this.d.contains($$8)) {
+                  return asj.b($$0);
                }
-
-               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
-               if (asp.this.e.am()) {
-                  $$1.addLast("legacy_query", new asi(asp.this.d()));
-               }
-
-               wc.a($$1, zq.a, false, null);
-               int $$2 = asp.this.e.o();
-               wc $$3 = (wc)($$2 > 0 ? new ws($$2) : new wc(zq.a));
-               asp.this.g.add($$3);
-               $$3.a($$1);
-               $$3.a(new asr(asp.this.e, $$3));
             }
-         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
-      }
-   }
 
-   public SocketAddress a() {
-      ChannelFuture $$0;
-      synchronized (this.f) {
-         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
-            protected void initChannel(Channel $$0) {
-               wc $$1 = new wc(zq.a);
-               $$1.a(new ask(asp.this.e, $$1));
-               asp.this.g.add($$1);
-               ChannelPipeline $$2 = $$0.pipeline();
-               wc.a($$2, zq.a);
-               $$1.a($$2);
-            }
-         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
-         this.f.add($$0);
-      }
-
-      return $$0.channel().localAddress();
-   }
-
-   public void b() {
-      this.c = false;
-
-      for (ChannelFuture $$0 : this.f) {
-         try {
-            $$0.channel().close().sync();
-         } catch (InterruptedException var4) {
-            d.error("Interrupted whilst closing channel");
+            JsonArray $$9 = azd.a($$3, "redactedTextIndex", new JsonArray());
+            return new asj($$0, this.a($$0, $$9, $$1));
          }
       }
    }
 
-   public void c() {
-      synchronized (this.g) {
-         Iterator<wc> $$0 = this.g.iterator();
-
-         while ($$0.hasNext()) {
-            wc $$1 = $$0.next();
-            if (!$$1.j()) {
-               if ($$1.i()) {
-                  try {
-                     $$1.b();
-                  } catch (Exception var7) {
-                     if ($$1.e()) {
-                        throw new z(o.a(var7, "Ticking memory connection"));
-                     }
-
-                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bl()), var7);
-                     xi $$3 = xi.b("Internal server error");
-                     $$1.a(new zy($$3), wp.a(() -> $$1.a($$3)));
-                     $$1.m();
-                  }
-               } else {
-                  $$0.remove();
-                  $$1.n();
-               }
-            }
-         }
-      }
-   }
-
-   public MinecraftServer d() {
+   @Override
+   protected int a() {
       return this.e;
-   }
-
-   public List<wc> e() {
-      return this.g;
-   }
-
-   static class a extends ChannelInboundHandlerAdapter {
-      private static final Timer a = new HashedWheelTimer();
-      private final int b;
-      private final int c;
-      private final List<asp.a.a> d = Lists.newArrayList();
-
-      public a(int $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-         this.a($$0, $$1);
-      }
-
-      private void a(ChannelHandlerContext $$0, Object $$1) {
-         int $$2 = this.b + (int)(Math.random() * (double)this.c);
-         this.d.add(new asp.a.a($$0, $$1));
-         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
-      }
-
-      private void a(Timeout $$0) {
-         asp.a.a $$1 = this.d.remove(0);
-         $$1.a.fireChannelRead($$1.b);
-      }
-
-      static class a {
-         public final ChannelHandlerContext a;
-         public final Object b;
-
-         public a(ChannelHandlerContext $$0, Object $$1) {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
    }
 }

@@ -1,43 +1,15 @@
-import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
-public class asa implements arx {
-   private final arx a;
-   private final bqt b;
-   private boolean c;
+public interface asa {
+   void a(del var1);
 
-   private asa(arx $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = new bqt($$1, "progressListener");
-   }
+   void a(del var1, @Nullable dyk var2);
 
-   public static asa a(arx $$0, Executor $$1) {
-      asa $$2 = new asa($$0, $$1);
-      $$2.a();
-      return $$2;
-   }
+   void a();
 
-   @Override
-   public void a(deh $$0) {
-      this.b.a_(() -> this.a.a($$0));
-   }
+   void b();
 
-   @Override
-   public void a(deh $$0, @Nullable dyg $$1) {
-      if (this.c) {
-         this.b.a_(() -> this.a.a($$0, $$1));
-      }
-   }
-
-   @Override
-   public void a() {
-      this.c = true;
-      this.b.a_(this.a::a);
-   }
-
-   @Override
-   public void b() {
-      this.c = false;
-      this.b.a_(this.a::b);
+   static int a(int $$0) {
+      return 2 * $$0 + 1;
    }
 }

@@ -1,131 +1,268 @@
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.stream.JsonReader;
 import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.JsonOps;
+import java.io.StringReader;
+import java.lang.reflect.Type;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class xl {
-   public static final String a = ", ";
-   public static final xi b = xi.b(", ").a(n.h);
-   public static final xi c = xi.b(", ");
+public interface xl extends Message, xq {
+   yi a();
 
-   public static xw a(xw $$0, yf $$1) {
-      if ($$1.g()) {
-         return $$0;
-      } else {
-         yf $$2 = $$0.a();
-         if ($$2.g()) {
-            return $$0.b($$1);
+   xm b();
+
+   @Override
+   default String getString() {
+      return xq.super.getString();
+   }
+
+   default String a(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      this.a((xq.a)($$2 -> {
+         int $$3 = $$0 - $$1.length();
+         if ($$3 <= 0) {
+            return a;
          } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
+            return Optional.empty();
          }
+      }));
+      return $$1.toString();
+   }
+
+   List<xl> c();
+
+   @Nullable
+   default String d() {
+      if (this.b() instanceof ys $$0 && this.c().isEmpty() && this.a().g()) {
+         return $$0.b();
       }
+
+      return null;
    }
 
-   public static Optional<xw> a(@Nullable ew $$0, Optional<xi> $$1, @Nullable bue $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
+   default xz e() {
+      return xz.a(this.b());
    }
 
-   public static xw a(@Nullable ew $$0, xi $$1, @Nullable bue $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.f();
+   default xz f() {
+      return new xz(this.b(), new ArrayList<>(this.c()), this.a());
+   }
+
+   ayz g();
+
+   @Override
+   default <T> Optional<T> a(xq.b<T> $$0, yi $$1) {
+      yi $$2 = this.a().a($$1);
+      Optional<T> $$3 = this.b().a($$0, $$2);
+      if ($$3.isPresent()) {
+         return $$3;
       } else {
-         xw $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (xi $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         for (xl $$4 : this.c()) {
+            Optional<T> $$5 = $$4.a($$0, $$2);
+            if ($$5.isPresent()) {
+               return $$5;
+            }
          }
 
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+         return Optional.empty();
       }
    }
 
-   private static yf a(@Nullable ew $$0, yf $$1, @Nullable bue $$2, int $$3) throws CommandSyntaxException {
-      xo $$4 = $$1.i();
-      if ($$4 != null) {
-         xi $$5 = $$4.a(xo.a.a);
-         if ($$5 != null) {
-            xo $$6 = new xo(xo.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
+   @Override
+   default <T> Optional<T> a(xq.a<T> $$0) {
+      Optional<T> $$1 = this.b().a($$0);
+      if ($$1.isPresent()) {
+         return $$1;
+      } else {
+         for (xl $$2 : this.c()) {
+            Optional<T> $$3 = $$2.a($$0);
+            if ($$3.isPresent()) {
+               return $$3;
+            }
          }
-      }
 
+         return Optional.empty();
+      }
+   }
+
+   default List<xl> h() {
+      return this.a(yi.a);
+   }
+
+   default List<xl> a(yi $$0) {
+      List<xl> $$1 = Lists.newArrayList();
+      this.a(($$1x, $$2) -> {
+         if (!$$2.isEmpty()) {
+            $$1.add(b($$2).c($$1x));
+         }
+
+         return Optional.empty();
+      }, $$0);
       return $$1;
    }
 
-   public static xi a(Collection<String> $$0) {
-      return a($$0, $$0x -> xi.b($$0x).a(n.k));
-   }
-
-   public static <T extends Comparable<T>> xi a(Collection<T> $$0, Function<T, xi> $$1) {
-      if ($$0.isEmpty()) {
-         return xh.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
-      }
-   }
-
-   public static <T> xi b(Collection<? extends T> $$0, Function<T, xi> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> xw a(Collection<? extends T> $$0, Optional<? extends xi> $$1, Function<T, xi> $$2) {
-      return a($$0, (xi)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static xi a(Collection<? extends xi> $$0, xi $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> xw a(Collection<? extends T> $$0, xi $$1, Function<T, xi> $$2) {
-      if ($$0.isEmpty()) {
-         return xi.i();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).f();
-      } else {
-         xw $$3 = xi.i();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
-            }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
-         }
-
-         return $$3;
-      }
-   }
-
-   public static xw a(xi $$0) {
-      return xi.a("chat.square_brackets", $$0);
-   }
-
-   public static xi a(Message $$0) {
-      return (xi)($$0 instanceof xi ? (xi)$$0 : xi.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable xi $$0) {
-      if ($$0 != null && $$0.b() instanceof yt $$1) {
-         String $$2 = $$1.b();
-         String $$3 = $$1.c();
-         return $$3 != null || uf.a().b($$2);
-      } else {
+   default boolean a(xl $$0) {
+      if (this.equals($$0)) {
          return true;
+      } else {
+         List<xl> $$1 = this.h();
+         List<xl> $$2 = $$0.a(this.a());
+         return Collections.indexOfSubList($$1, $$2) != -1;
       }
    }
 
-   public static xw a(String $$0) {
-      return a((xi)xi.b($$0).a($$1 -> $$1.a(n.k).a(new xg(xg.a.f, $$0)).a(new xo(xo.a.a, xi.c("chat.copy.click"))).a($$0)));
+   static xl a(@Nullable String $$0) {
+      return (xl)($$0 != null ? b($$0) : xk.a);
+   }
+
+   static xz b(String $$0) {
+      return xz.a(ys.a($$0));
+   }
+
+   static xz c(String $$0) {
+      return xz.a(new yw($$0, null, yw.a));
+   }
+
+   static xz a(String $$0, Object... $$1) {
+      return xz.a(new yw($$0, null, $$1));
+   }
+
+   static xz b(String $$0, Object... $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         Object $$3 = $$1[$$2];
+         if (!yw.a($$3) && !($$3 instanceof xl)) {
+            $$1[$$2] = String.valueOf($$3);
+         }
+      }
+
+      return a($$0, $$1);
+   }
+
+   static xz a(String $$0, @Nullable String $$1) {
+      return xz.a(new yw($$0, $$1, yw.a));
+   }
+
+   static xz a(String $$0, @Nullable String $$1, Object... $$2) {
+      return xz.a(new yw($$0, $$1, $$2));
+   }
+
+   static xz i() {
+      return xz.a(ys.c);
+   }
+
+   static xz d(String $$0) {
+      return xz.a(new yp($$0));
+   }
+
+   static xz a(String $$0, boolean $$1, Optional<xl> $$2, yn $$3) {
+      return xz.a(new yr($$0, $$1, $$2, $$3));
+   }
+
+   static xz a(hn $$0, String $$1) {
+      return xz.a(new yt(Either.left($$0), $$1));
+   }
+
+   static xz b(String $$0, String $$1) {
+      return xz.a(new yt(Either.right($$0), $$1));
+   }
+
+   static xz a(hn $$0, Optional<xl> $$1) {
+      return xz.a(new yu($$0, $$1));
+   }
+
+   static xl a(Date $$0) {
+      return b($$0.toString());
+   }
+
+   static xl a(Message $$0) {
+      return (xl)($$0 instanceof xl $$1 ? $$1 : b($$0.getString()));
+   }
+
+   static xl a(UUID $$0) {
+      return b($$0.toString());
+   }
+
+   static xl a(all $$0) {
+      return b($$0.toString());
+   }
+
+   static xl a(del $$0) {
+      return b($$0.toString());
+   }
+
+   static xl a(URI $$0) {
+      return b($$0.toString());
+   }
+
+   public static class a {
+      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
+
+      private a() {
+      }
+
+      static xz b(JsonElement $$0, js.a $$1) {
+         return (xz)xn.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      static JsonElement b(xl $$0, js.a $$1) {
+         return (JsonElement)xn.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      public static String a(xl $$0, js.a $$1) {
+         return a.toJson(b($$0, $$1));
+      }
+
+      @Nullable
+      public static xz a(String $$0, js.a $$1) {
+         JsonElement $$2 = JsonParser.parseString($$0);
+         return $$2 == null ? null : b($$2, $$1);
+      }
+
+      @Nullable
+      public static xz a(@Nullable JsonElement $$0, js.a $$1) {
+         return $$0 == null ? null : b($$0, $$1);
+      }
+
+      @Nullable
+      public static xz b(String $$0, js.a $$1) {
+         JsonReader $$2 = new JsonReader(new StringReader($$0));
+         $$2.setLenient(true);
+         JsonElement $$3 = JsonParser.parseReader($$2);
+         return $$3 == null ? null : b($$3, $$1);
+      }
+   }
+
+   public static class b implements JsonDeserializer<xz>, JsonSerializer<xl> {
+      private final js.a a;
+
+      public b(js.a $$0) {
+         this.a = $$0;
+      }
+
+      public xz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return xl.a.b($$0, this.a);
+      }
+
+      public JsonElement a(xl $$0, Type $$1, JsonSerializationContext $$2) {
+         return xl.a.b($$0, this.a);
+      }
    }
 }

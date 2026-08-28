@@ -1,42 +1,27 @@
-public class gos extends gnf<chb, guw, fyn> {
-   private static final ali a = ali.b("textures/entity/fox/fox.png");
-   private static final ali b = ali.b("textures/entity/fox/fox_sleep.png");
-   private static final ali k = ali.b("textures/entity/fox/snow_fox.png");
-   private static final ali l = ali.b("textures/entity/fox/snow_fox_sleep.png");
+public class gos extends gnu<clj, gxs, fyv> {
+   private static final all a = all.b("textures/entity/zombie/drowned.png");
 
-   public gos(gok.a $$0) {
-      super($$0, new fyn($$0.a(gbl.az)), new fyn($$0.a(gbl.aA)), 0.4F);
-      this.a(new gsk(this, $$0.b()));
+   public gos(gpa.a $$0) {
+      super($$0, new fyv($$0.a(gcb.ai)), new fyv($$0.a(gcb.am)), new fyv($$0.a(gcb.aj)), new fyv($$0.a(gcb.ak)), new fyv($$0.a(gcb.an)), new fyv($$0.a(gcb.ao)));
+      this.a(new gsv(this, $$0.f()));
    }
 
-   protected void a(guw $$0, feb $$1, float $$2, float $$3) {
+   public gxs a() {
+      return new gxs();
+   }
+
+   @Override
+   public all a(gxs $$0) {
+      return a;
+   }
+
+   protected void a(gxs $$0, fek $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.V));
+      float $$4 = $$0.B;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.V;
+         float $$6 = azn.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
       }
-   }
-
-   public ali a(guw $$0) {
-      if ($$0.h == chb.v.a) {
-         return $$0.d ? b : a;
-      } else {
-         return $$0.d ? l : k;
-      }
-   }
-
-   public guw c() {
-      return new guw();
-   }
-
-   public void a(chb $$0, guw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.cj();
-      $$1.b = $$0.K($$2);
-      $$1.d = $$0.fT();
-      $$1.e = $$0.y();
-      $$1.f = $$0.gu();
-      $$1.g = $$0.gv();
-      $$1.h = $$0.t();
    }
 }

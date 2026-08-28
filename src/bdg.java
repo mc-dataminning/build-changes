@@ -1,31 +1,18 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
 
 public class bdg extends DataFix {
+   private static final String a = "minecraft:decorated_pot";
+
    public bdg(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(bhu.t)
-      );
-      return this.fixTypeEverywhereTyped(
-         "EmptyItemInHotbarFix", this.getInputSchema().getType(bhu.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
-                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
-                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
-                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
-                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
-                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
-               }))
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bhy.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bhy.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

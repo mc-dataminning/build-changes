@@ -1,59 +1,19 @@
-public interface dfd {
-   int J_();
+public class dfd {
+   private static int[] a = new int[65536];
 
-   int I_();
-
-   default int al() {
-      return this.I_() + this.J_() - 1;
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   default int am() {
-      return this.ao() - this.an() + 1;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   default int an() {
-      return kj.a(this.I_());
-   }
-
-   default int ao() {
-      return kj.a(this.al());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 >= this.I_() && $$0 <= this.al();
-   }
-
-   default boolean s(jh $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.I_() || $$0 > this.al();
-   }
-
-   default int f(int $$0) {
-      return this.g(kj.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.an();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.an();
-   }
-
-   static dfd e(final int $$0, final int $$1) {
-      return new dfd() {
-         @Override
-         public int J_() {
-            return $$1;
-         }
-
-         @Override
-         public int I_() {
-            return $$0;
-         }
-      };
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

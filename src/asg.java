@@ -1,35 +1,7 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
 
-public record asg(String b, xm c) {
-   public static final asg a = a("");
-
-   public static asg a(String $$0) {
-      return new asg($$0, xm.c);
-   }
-
-   public static asg b(String $$0) {
-      return new asg($$0, xm.b);
-   }
-
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public xm e() {
-      return this.c;
+public record asg(GameProfile a, int b, arc c, boolean d) {
+   public static asg a(GameProfile $$0, boolean $$1) {
+      return new asg($$0, 0, arc.a(), $$1);
    }
 }

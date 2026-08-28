@@ -1,39 +1,41 @@
-public class gqu extends gpq<cme, gwm, gao> {
-   private static final ali a = ali.b("textures/entity/strider/strider.png");
-   private static final ali b = ali.b("textures/entity/strider/strider_cold.png");
-   private static final float k = 0.5F;
+public class gqu extends gnv<chp, gwr, gal> {
+   private static final all a = all.b("textures/entity/rabbit/brown.png");
+   private static final all b = all.b("textures/entity/rabbit/white.png");
+   private static final all k = all.b("textures/entity/rabbit/black.png");
+   private static final all l = all.b("textures/entity/rabbit/gold.png");
+   private static final all m = all.b("textures/entity/rabbit/salt.png");
+   private static final all n = all.b("textures/entity/rabbit/white_splotched.png");
+   private static final all o = all.b("textures/entity/rabbit/toast.png");
+   private static final all p = all.b("textures/entity/rabbit/caerbannog.png");
 
-   public gqu(gok.a $$0) {
-      super($$0, new gao($$0.a(gbl.cF)), 0.5F);
-      this.a(new gsy<>(this, new gao($$0.a(gbl.cG)), ali.b("textures/entity/strider/strider_saddle.png")));
+   public gqu(gpa.a $$0) {
+      super($$0, new gal($$0.a(gcb.bX)), new gal($$0.a(gcb.bY)), 0.3F);
    }
 
-   public ali a(gwm $$0) {
-      return $$0.b ? b : a;
+   public all a(gwr $$0) {
+      if ($$0.b) {
+         return o;
+      } else {
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> b;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
+      }
    }
 
-   protected float b(gwm $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
+   public gwr c() {
+      return new gwr();
    }
 
-   public gwm c() {
-      return new gwm();
-   }
-
-   public void a(cme $$0, gwm $$1, float $$2) {
+   public void a(chp $$0, gwr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.q();
-      $$1.c = $$0.cb();
-   }
-
-   protected void a(gwm $$0, feb $$1) {
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
-   }
-
-   protected boolean c(gwm $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.a = $$0.J($$2);
+      $$1.b = "Toast".equals(n.a($$0.am().getString()));
+      $$1.c = $$0.gv();
    }
 }

@@ -1,54 +1,19 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
 
-public class zs {
-   private static final Logger a = LogUtils.getLogger();
+public interface zs<T extends wr> {
+   zu<? extends zs<T>> a();
 
-   public static <T extends wo> void a(zp<T> $$0, T $$1, arn $$2) throws alu {
-      a($$0, $$1, $$2.o());
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   public static <T extends wo> void a(zp<T> $$0, T $$1, bqs<?> $$2) throws alu {
-      if (!$$2.bx()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof z $$3 && $$3.getCause() instanceof OutOfMemoryError) {
-                     throw a(var4, $$0, $$1);
-                  }
-
-                  $$1.a($$0, var4);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw alu.a;
-      }
+   default boolean d() {
+      return false;
    }
 
-   public static <T extends wo> z a(Exception $$0, zp<T> $$1, T $$2) {
-      if ($$0 instanceof z $$3) {
-         a($$3.a(), $$2, $$1);
-         return $$3;
-      } else {
-         o $$4 = o.a($$0, "Main thread packet handler");
-         a($$4, $$2, $$1);
-         return new z($$4);
-      }
-   }
-
-   public static <T extends wo> void a(o $$0, T $$1, @Nullable zp<T> $$2) {
-      if ($$2 != null) {
-         p $$3 = $$0.a("Incoming Packet");
-         $$3.a("Type", () -> $$2.a().toString());
-         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
-         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
-      }
-
-      $$1.a($$0);
+   static <B extends ByteBuf, T extends zs<?>> zj<B, T> a(zm<B, T> $$0, zk<B, T> $$1) {
+      return zj.a($$0, $$1);
    }
 }

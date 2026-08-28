@@ -1,648 +1,1032 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector2ic;
-
 public class fku {
-   public static final float a = 10000.0F;
-   public static final float b = -10000.0F;
-   private static final int c = 2;
-   private final fji d;
-   private final feb e;
-   private final gih.a f;
-   private final fku.a g = new fku.a();
-   private final fkv h;
-
-   private fku(fji $$0, feb $$1, gih.a $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.h = $$0.aJ();
-   }
-
-   public fku(fji $$0, gih.a $$1) {
-      this($$0, new feb(), $$1);
-   }
-
-   public int a() {
-      return this.d.aO().o();
-   }
-
-   public int b() {
-      return this.d.aO().p();
-   }
-
-   public feb c() {
-      return this.e;
-   }
-
-   public void d() {
-      this.f.b();
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a(gir.F(), $$0, $$1, $$2, $$3);
-   }
-
-   public void a(gir $$0, int $$1, int $$2, int $$3, int $$4) {
-      if ($$2 < $$1) {
-         int $$5 = $$1;
-         $$1 = $$2;
-         $$2 = $$5;
-      }
-
-      this.a($$0, $$1, $$3, $$2 + 1, $$3 + 1, $$4);
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.b(gir.F(), $$0, $$1, $$2, $$3);
-   }
-
-   public void b(gir $$0, int $$1, int $$2, int $$3, int $$4) {
-      if ($$3 < $$2) {
-         int $$5 = $$2;
-         $$2 = $$3;
-         $$3 = $$5;
-      }
-
-      this.a($$0, $$1, $$2 + 1, $$1 + 1, $$3, $$4);
-   }
-
-   public void c(int $$0, int $$1, int $$2, int $$3) {
-      this.a(this.g.a(new fpp($$0, $$1, $$2 - $$0, $$3 - $$1)));
-   }
-
-   public void e() {
-      this.a(this.g.a());
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.g.a($$0, $$1);
-   }
-
-   private void a(@Nullable fpp $$0) {
-      this.d();
-      if ($$0 != null) {
-         fde $$1 = fji.Q().aO();
-         int $$2 = $$1.l();
-         double $$3 = $$1.s();
-         double $$4 = (double)$$0.d() * $$3;
-         double $$5 = (double)$$2 - (double)$$0.c() * $$3;
-         double $$6 = (double)$$0.g() * $$3;
-         double $$7 = (double)$$0.h() * $$3;
-         RenderSystem.enableScissor((int)$$4, (int)$$5, Math.max(0, (int)$$6), Math.max(0, (int)$$7));
-      } else {
-         RenderSystem.disableScissor();
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3, 0, $$4);
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a(gir.F(), $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(gir $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, 0, $$5);
-   }
-
-   public void a(gir $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      Matrix4f $$7 = this.e.c().a();
-      if ($$1 < $$3) {
-         int $$8 = $$1;
-         $$1 = $$3;
-         $$3 = $$8;
-      }
-
-      if ($$2 < $$4) {
-         int $$9 = $$2;
-         $$2 = $$4;
-         $$4 = $$9;
-      }
-
-      fef $$10 = this.f.getBuffer($$0);
-      $$10.a($$7, (float)$$1, (float)$$2, (float)$$5).a($$6);
-      $$10.a($$7, (float)$$1, (float)$$4, (float)$$5).a($$6);
-      $$10.a($$7, (float)$$3, (float)$$4, (float)$$5).a($$6);
-      $$10.a($$7, (float)$$3, (float)$$2, (float)$$5).a($$6);
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, 0, $$4, $$5);
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.a(gir.F(), $$0, $$1, $$2, $$3, $$5, $$6, $$4);
-   }
-
-   public void a(gir $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      fef $$8 = this.f.getBuffer($$0);
-      this.a($$8, $$1, $$2, $$3, $$4, $$7, $$5, $$6);
-   }
-
-   private void a(fef $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      Matrix4f $$8 = this.e.c().a();
-      $$0.a($$8, (float)$$1, (float)$$2, (float)$$5).a($$6);
-      $$0.a($$8, (float)$$1, (float)$$4, (float)$$5).a($$7);
-      $$0.a($$8, (float)$$3, (float)$$4, (float)$$5).a($$7);
-      $$0.a($$8, (float)$$3, (float)$$2, (float)$$5).a($$6);
-   }
-
-   public void b(gir $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Matrix4f $$6 = this.e.c().a();
-      fef $$7 = this.f.getBuffer($$0);
-      $$7.a($$6, (float)$$1, (float)$$2, (float)$$5);
-      $$7.a($$6, (float)$$1, (float)$$4, (float)$$5);
-      $$7.a($$6, (float)$$3, (float)$$4, (float)$$5);
-      $$7.a($$6, (float)$$3, (float)$$2, (float)$$5);
-   }
-
-   public void a(fks $$0, String $$1, int $$2, int $$3, int $$4) {
-      this.b($$0, $$1, $$2 - $$0.b($$1) / 2, $$3, $$4);
-   }
-
-   public void a(fks $$0, xi $$1, int $$2, int $$3, int $$4) {
-      ayw $$5 = $$1.g();
-      this.b($$0, $$5, $$2 - $$0.a($$5) / 2, $$3, $$4);
-   }
-
-   public void a(fks $$0, ayw $$1, int $$2, int $$3, int $$4) {
-      this.b($$0, $$1, $$2 - $$0.a($$1) / 2, $$3, $$4);
-   }
-
-   public int b(fks $$0, @Nullable String $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, true);
-   }
-
-   public int a(fks $$0, @Nullable String $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == null ? 0 : $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, fks.a.a, 0, 15728880, $$0.a());
-   }
-
-   public int b(fks $$0, ayw $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, true);
-   }
-
-   public int a(fks $$0, ayw $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, fks.a.a, 0, 15728880);
-   }
-
-   public int b(fks $$0, xi $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, true);
-   }
-
-   public int a(fks $$0, xi $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return this.a($$0, $$1.g(), $$2, $$3, $$4, $$5);
-   }
-
-   public void a(fks $$0, xn $$1, int $$2, int $$3, int $$4, int $$5) {
-      for (ayw $$6 : $$0.c($$1, $$4)) {
-         this.a($$0, $$6, $$2, $$3, $$5, false);
-         $$3 += 9;
-      }
-   }
-
-   public int a(fks $$0, xi $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = this.d.n.b(0.0F);
-      if ($$6 != 0) {
-         int $$7 = 2;
-         this.a($$2 - 2, $$3 - 2, $$2 + $$4 + 2, $$3 + 9 + 2, axv.a($$6, $$5));
-      }
-
-      return this.a($$0, $$1, $$2, $$3, $$5, true);
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$0 + $$2, $$1 + 1, $$4);
-      this.a($$0, $$1 + $$3 - 1, $$0 + $$2, $$1 + $$3, $$4);
-      this.a($$0, $$1 + 1, $$0 + 1, $$1 + $$3 - 1, $$4);
-      this.a($$0 + $$2 - 1, $$1 + 1, $$0 + $$2, $$1 + $$3 - 1, $$4);
-   }
-
-   public void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, -1);
-   }
-
-   public void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      gyd $$7 = this.h.a($$1);
-      gzw $$8 = this.h.a($$7);
-      if ($$8 instanceof gzw.b) {
-         this.a($$0, $$7, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$8 instanceof gzw.c $$9) {
-         this.a($$0, $$7, $$2, $$3, $$4, $$5, 0, 0, $$9.b(), $$9.c(), $$9.b(), $$9.c(), $$6);
-      } else if ($$8 instanceof gzw.a $$10) {
-         this.a($$0, $$7, $$10, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
-
-   public void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
-      gyd $$10 = this.h.a($$1);
-      gzw $$11 = this.h.a($$10);
-      if ($$11 instanceof gzw.b) {
-         this.a($$0, $$10, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, -1);
-      } else {
-         this.a($$0, $$10, $$6, $$7, $$8, $$9);
-      }
-   }
-
-   public void a(Function<ali, gir> $$0, gyd $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, -1);
-   }
-
-   public void a(Function<ali, gir> $$0, gyd $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      if ($$4 != 0 && $$5 != 0) {
-         this.a($$0, $$1.i(), $$2, $$2 + $$4, $$3, $$3 + $$5, $$1.c(), $$1.d(), $$1.g(), $$1.h(), $$6);
-      }
-   }
-
-   private void a(Function<ali, gir> $$0, gyd $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10) {
-      if ($$8 != 0 && $$9 != 0) {
-         this.a(
-            $$0,
-            $$1.i(),
-            $$6,
-            $$6 + $$8,
-            $$7,
-            $$7 + $$9,
-            $$1.a((float)$$4 / (float)$$2),
-            $$1.a((float)($$4 + $$8) / (float)$$2),
-            $$1.c((float)$$5 / (float)$$3),
-            $$1.c((float)($$5 + $$9) / (float)$$3),
-            $$10
-         );
-      }
-   }
-
-   private void a(Function<ali, gir> $$0, gyd $$1, gzw.a $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      gzw.a.a $$8 = $$2.d();
-      int $$9 = Math.min($$8.a(), $$5 / 2);
-      int $$10 = Math.min($$8.c(), $$5 / 2);
-      int $$11 = Math.min($$8.b(), $$6 / 2);
-      int $$12 = Math.min($$8.d(), $$6 / 2);
-      if ($$5 == $$2.b() && $$6 == $$2.c()) {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$6 == $$2.c()) {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$9, $$6, $$7);
-         this.a($$0, $$2, $$1, $$3 + $$9, $$4, $$5 - $$10 - $$9, $$6, $$9, 0, $$2.b() - $$10 - $$9, $$2.c(), $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), $$2.b() - $$10, 0, $$3 + $$5 - $$10, $$4, $$10, $$6, $$7);
-      } else if ($$5 == $$2.b()) {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$5, $$11, $$7);
-         this.a($$0, $$2, $$1, $$3, $$4 + $$11, $$5, $$6 - $$12 - $$11, 0, $$11, $$2.b(), $$2.c() - $$12 - $$11, $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, $$2.c() - $$12, $$3, $$4 + $$6 - $$12, $$5, $$12, $$7);
-      } else {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$9, $$11, $$7);
-         this.a($$0, $$2, $$1, $$3 + $$9, $$4, $$5 - $$10 - $$9, $$11, $$9, 0, $$2.b() - $$10 - $$9, $$11, $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), $$2.b() - $$10, 0, $$3 + $$5 - $$10, $$4, $$10, $$11, $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, $$2.c() - $$12, $$3, $$4 + $$6 - $$12, $$9, $$12, $$7);
-         this.a($$0, $$2, $$1, $$3 + $$9, $$4 + $$6 - $$12, $$5 - $$10 - $$9, $$12, $$9, $$2.c() - $$12, $$2.b() - $$10 - $$9, $$12, $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), $$2.b() - $$10, $$2.c() - $$12, $$3 + $$5 - $$10, $$4 + $$6 - $$12, $$10, $$12, $$7);
-         this.a($$0, $$2, $$1, $$3, $$4 + $$11, $$9, $$6 - $$12 - $$11, 0, $$11, $$9, $$2.c() - $$12 - $$11, $$2.b(), $$2.c(), $$7);
-         this.a(
-            $$0,
-            $$2,
-            $$1,
-            $$3 + $$9,
-            $$4 + $$11,
-            $$5 - $$10 - $$9,
-            $$6 - $$12 - $$11,
-            $$9,
-            $$11,
-            $$2.b() - $$10 - $$9,
-            $$2.c() - $$12 - $$11,
-            $$2.b(),
-            $$2.c(),
-            $$7
-         );
-         this.a($$0, $$2, $$1, $$3 + $$5 - $$10, $$4 + $$11, $$9, $$6 - $$12 - $$11, $$2.b() - $$10, $$11, $$10, $$2.c() - $$12 - $$11, $$2.b(), $$2.c(), $$7);
-      }
-   }
-
-   private void a(
-      Function<ali, gir> $$0, gzw.a $$1, gyd $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
-      if ($$5 > 0 && $$6 > 0) {
-         if ($$1.e()) {
-            this.a(
-               $$0,
-               $$2.i(),
-               $$3,
-               $$3 + $$5,
-               $$4,
-               $$4 + $$6,
-               $$2.a((float)$$7 / (float)$$11),
-               $$2.a((float)($$7 + $$9) / (float)$$11),
-               $$2.c((float)$$8 / (float)$$12),
-               $$2.c((float)($$8 + $$10) / (float)$$12),
-               $$13
-            );
-         } else {
-            this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-         }
-      }
-   }
-
-   private void a(Function<ali, gir> $$0, gyd $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11, int $$12) {
-      if ($$4 > 0 && $$5 > 0) {
-         if ($$8 > 0 && $$9 > 0) {
-            for (int $$13 = 0; $$13 < $$4; $$13 += $$8) {
-               int $$14 = Math.min($$8, $$4 - $$13);
-
-               for (int $$15 = 0; $$15 < $$5; $$15 += $$9) {
-                  int $$16 = Math.min($$9, $$5 - $$15);
-                  this.a($$0, $$1, $$10, $$11, $$6, $$7, $$2 + $$13, $$3 + $$15, $$14, $$16, $$12);
-               }
-            }
-         } else {
-            throw new IllegalArgumentException("Tiled sprite texture size must be positive, got " + $$8 + "x" + $$9);
-         }
-      }
-   }
-
-   public void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9, int $$10) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$6, $$7, $$8, $$9, $$10);
-   }
-
-   public void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$6, $$7, $$8, $$9);
-   }
-
-   public void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, -1);
-   }
-
-   public void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11, int $$12) {
-      this.a(
-         $$0,
-         $$1,
-         $$2,
-         $$2 + $$6,
-         $$3,
-         $$3 + $$7,
-         ($$4 + 0.0F) / (float)$$10,
-         ($$4 + (float)$$8) / (float)$$10,
-         ($$5 + 0.0F) / (float)$$11,
-         ($$5 + (float)$$9) / (float)$$11,
-         $$12
-      );
-   }
-
-   private void a(Function<ali, gir> $$0, ali $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      gir $$11 = $$0.apply($$1);
-      Matrix4f $$12 = this.e.c().a();
-      fef $$13 = this.f.getBuffer($$11);
-      $$13.a($$12, (float)$$2, (float)$$4, 0.0F).a($$6, $$8).a($$10);
-      $$13.a($$12, (float)$$2, (float)$$5, 0.0F).a($$6, $$9).a($$10);
-      $$13.a($$12, (float)$$3, (float)$$5, 0.0F).a($$7, $$9).a($$10);
-      $$13.a($$12, (float)$$3, (float)$$4, 0.0F).a($$7, $$8).a($$10);
-   }
-
-   public void a(cwb $$0, int $$1, int $$2) {
-      this.a(this.d.t, this.d.s, $$0, $$1, $$2, 0);
-   }
-
-   public void a(cwb $$0, int $$1, int $$2, int $$3) {
-      this.a(this.d.t, this.d.s, $$0, $$1, $$2, $$3);
-   }
-
-   public void a(cwb $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a(this.d.t, this.d.s, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void b(cwb $$0, int $$1, int $$2) {
-      this.b($$0, $$1, $$2, 0);
-   }
-
-   public void b(cwb $$0, int $$1, int $$2, int $$3) {
-      this.a(null, this.d.s, $$0, $$1, $$2, $$3);
-   }
-
-   public void a(bva $$0, cwb $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$0.dX(), $$1, $$2, $$3, $$4);
-   }
-
-   private void a(@Nullable bva $$0, @Nullable dfb $$1, cwb $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, 0);
-   }
-
-   private void a(@Nullable bva $$0, @Nullable dfb $$1, cwb $$2, int $$3, int $$4, int $$5, int $$6) {
-      if (!$$2.f()) {
-         haf $$7 = this.d.as().a($$2, $$1, $$0, $$5);
-         this.e.a();
-         this.e.a((float)($$3 + 8), (float)($$4 + 8), (float)(150 + ($$7.b() ? $$6 : 0)));
-
-         try {
-            this.e.b(16.0F, -16.0F, 16.0F);
-            boolean $$8 = !$$7.c();
-            if ($$8) {
-               this.d();
-               fcx.c();
-            }
-
-            if ($$2.a(cwf.qV)) {
-               this.d.as().a($$2, cvz.g, false, this.e, this.f, 15728880, gxu.d, $$7, $$1, $$0, $$5);
-            } else {
-               this.d.as().a($$2, cvz.g, false, this.e, this.f, 15728880, gxu.d, $$7);
-            }
-
-            this.d();
-            if ($$8) {
-               fcx.d();
-            }
-         } catch (Throwable var12) {
-            o $$10 = o.a(var12, "Rendering item");
-            p $$11 = $$10.a("Item being rendered");
-            $$11.a("Item Type", () -> String.valueOf($$2.h()));
-            $$11.a("Item Components", () -> String.valueOf($$2.a()));
-            $$11.a("Item Foil", () -> String.valueOf($$2.B()));
-            throw new z($$10);
-         }
-
-         this.e.b();
-      }
-   }
-
-   public void a(fks $$0, cwb $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, null);
-   }
-
-   public void a(fks $$0, cwb $$1, int $$2, int $$3, @Nullable String $$4) {
-      if (!$$1.f()) {
-         this.e.a();
-         if ($$1.L() != 1 || $$4 != null) {
-            String $$5 = $$4 == null ? String.valueOf($$1.L()) : $$4;
-            this.e.a(0.0F, 0.0F, 200.0F);
-            this.a($$0, $$5, $$2 + 19 - 2 - $$0.b($$5), $$3 + 6 + 3, 16777215, true);
-         }
-
-         if ($$1.s()) {
-            int $$6 = $$1.t();
-            int $$7 = $$1.u();
-            int $$8 = $$2 + 2;
-            int $$9 = $$3 + 13;
-            this.a(gir.G(), $$8, $$9, $$8 + 13, $$9 + 2, -16777216);
-            this.a(gir.G(), $$8, $$9, $$8 + $$6, $$9 + 1, axv.f($$7));
-         }
-
-         ghd $$10 = this.d.t;
-         float $$11 = $$10 == null ? 0.0F : $$10.gF().a($$1, this.d.av().a(true));
-         if ($$11 > 0.0F) {
-            int $$12 = $$3 + azk.d(16.0F * (1.0F - $$11));
-            int $$13 = $$12 + azk.f(16.0F * $$11);
-            this.a(gir.G(), $$2, $$12, $$2 + 16, $$13, Integer.MAX_VALUE);
-         }
-
-         this.e.b();
-      }
-   }
-
-   public void b(fks $$0, cwb $$1, int $$2, int $$3) {
-      this.a($$0, fra.a(this.d, $$1), $$1.b(), $$2, $$3, $$1.a(ku.G));
-   }
-
-   public void a(fks $$0, List<xi> $$1, Optional<ctv> $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3, $$4, null);
-   }
-
-   public void a(fks $$0, List<xi> $$1, Optional<ctv> $$2, int $$3, int $$4, @Nullable ali $$5) {
-      List<ftj> $$6 = $$1.stream().map(xi::g).map(ftj::a).collect(ae.b());
-      $$2.ifPresent($$1x -> $$6.add($$6.isEmpty() ? 0 : 1, ftj.a($$1x)));
-      this.a($$0, $$6, $$3, $$4, ftl.a, $$5);
-   }
-
-   public void a(fks $$0, xi $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, null);
-   }
-
-   public void a(fks $$0, xi $$1, int $$2, int $$3, @Nullable ali $$4) {
-      this.b($$0, List.of($$1.g()), $$2, $$3, $$4);
-   }
-
-   public void a(fks $$0, List<xi> $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, null);
-   }
-
-   public void a(fks $$0, List<xi> $$1, int $$2, int $$3, @Nullable ali $$4) {
-      this.a($$0, $$1.stream().map(xi::g).map(ftj::a).toList(), $$2, $$3, ftl.a, $$4);
-   }
-
-   public void b(fks $$0, List<? extends ayw> $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3, null);
-   }
-
-   public void b(fks $$0, List<? extends ayw> $$1, int $$2, int $$3, @Nullable ali $$4) {
-      this.a($$0, $$1.stream().map(ftj::a).collect(Collectors.toList()), $$2, $$3, ftl.a, $$4);
-   }
-
-   public void a(fks $$0, List<ayw> $$1, ftk $$2, int $$3, int $$4) {
-      this.a($$0, $$1.stream().map(ftj::a).collect(Collectors.toList()), $$3, $$4, $$2, null);
-   }
-
-   private void a(fks $$0, List<ftj> $$1, int $$2, int $$3, ftk $$4, @Nullable ali $$5) {
-      if (!$$1.isEmpty()) {
-         int $$6 = 0;
-         int $$7 = $$1.size() == 1 ? -2 : 0;
-
-         for (ftj $$8 : $$1) {
-            int $$9 = $$8.b($$0);
-            if ($$9 > $$6) {
-               $$6 = $$9;
-            }
-
-            $$7 += $$8.a($$0);
-         }
-
-         int $$10 = $$6;
-         int $$11 = $$7;
-         Vector2ic $$12 = $$4.a(this.a(), this.b(), $$2, $$3, $$6, $$7);
-         int $$13 = $$12.x();
-         int $$14 = $$12.y();
-         this.e.a();
-         int $$15 = 400;
-         ftn.a(this, $$13, $$14, $$6, $$7, 400, $$5);
-         this.e.a(0.0F, 0.0F, 400.0F);
-         int $$16 = $$14;
-
-         for (int $$17 = 0; $$17 < $$1.size(); $$17++) {
-            ftj $$18 = $$1.get($$17);
-            $$18.a($$0, $$13, $$16, this.e.c().a(), this.f);
-            $$16 += $$18.a($$0) + ($$17 == 0 ? 2 : 0);
-         }
-
-         $$16 = $$14;
-
-         for (int $$19 = 0; $$19 < $$1.size(); $$19++) {
-            ftj $$20 = $$1.get($$19);
-            $$20.a($$0, $$13, $$16, $$10, $$11, this);
-            $$16 += $$20.a($$0) + ($$19 == 0 ? 2 : 0);
-         }
-
-         this.e.b();
-      }
-   }
-
-   public void a(fks $$0, @Nullable yf $$1, int $$2, int $$3) {
-      if ($$1 != null && $$1.i() != null) {
-         xo $$4 = $$1.i();
-         xo.c $$5 = $$4.a(xo.a.b);
-         if ($$5 != null) {
-            this.b($$0, $$5.a(), $$2, $$3);
-         } else {
-            xo.b $$6 = $$4.a(xo.a.c);
-            if ($$6 != null) {
-               if (this.d.n.m) {
-                  this.a($$0, $$6.a(), $$2, $$3);
-               }
-            } else {
-               xi $$7 = $$4.a(xo.a.a);
-               if ($$7 != null) {
-                  this.b($$0, $$0.c($$7, Math.max(this.a() / 2, 200)), $$2, $$3);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(Consumer<gih> $$0) {
-      $$0.accept(this.f);
-      this.f.b();
-   }
-
-   static class a {
-      private final Deque<fpp> a = new ArrayDeque<>();
-
-      public fpp a(fpp $$0) {
-         fpp $$1 = this.a.peekLast();
-         if ($$1 != null) {
-            fpp $$2 = Objects.requireNonNullElse($$0.b($$1), fpp.a());
-            this.a.addLast($$2);
-            return $$2;
-         } else {
-            this.a.addLast($$0);
-            return $$0;
-         }
-      }
-
-      @Nullable
-      public fpp a() {
-         if (this.a.isEmpty()) {
-            throw new IllegalStateException("Scissor stack underflow");
-         } else {
-            this.a.removeLast();
-            return this.a.peekLast();
-         }
-      }
-
-      public boolean a(int $$0, int $$1) {
-         return this.a.isEmpty() ? true : this.a.peek().a($$0, $$1);
-      }
-   }
+   public static final fkm a = fkm.a.a(0.0F)
+      .a("head", new fkl(fkl.d.c, new fkn(0.0F, fko.a(1.2F, 1.2F, 1.2F), fkl.b.a)))
+      .a("head", new fkl(fkl.d.a, new fkn(0.0F, fko.a(0.0F, 1.0F, 1.0F), fkl.b.a)))
+      .b();
+   public static final fkm b = fkm.a.a(8.0F)
+      .a()
+      .a(
+         "nose",
+         new fkl(
+            fkl.d.c,
+            new fkn(0.0F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(0.5417F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(0.5833F, fko.a(1.0, 0.5, 1.0), fkl.b.b),
+            new fkn(0.6667F, fko.a(1.0, 2.5, 1.0), fkl.b.b),
+            new fkn(0.7917F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(0.9167F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(1.0F, fko.a(1.0, 3.0, 1.0), fkl.b.b),
+            new fkn(1.125F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(2.0F, fko.a(1.0, 1.0, 1.0), fkl.b.a)
+         )
+      )
+      .b();
+   public static final fkm c = fkm.a.a(1.0F)
+      .a(
+         "nose",
+         new fkl(
+            fkl.d.c,
+            new fkn(0.0F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(0.0833F, fko.a(1.0, 0.7F, 1.0), fkl.b.b),
+            new fkn(0.125F, fko.a(1.0, 3.0, 1.0), fkl.b.b),
+            new fkn(0.25F, fko.a(1.0, 3.0, 1.0), fkl.b.b),
+            new fkn(0.7083F, fko.a(1.0, 4.0, 1.0), fkl.b.b),
+            new fkn(0.8333F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(1.0F, fko.a(1.0, 1.0, 1.0), fkl.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.125F, fko.b(-5.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.875F, fko.b(-20.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .b();
+   public static final fkm d = fkm.a.a(2.0F)
+      .a()
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5833F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(0.75F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.a(0.0F, 0.0F, -1.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(-7.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.3333F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(-7.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 2.67F, -0.67F), fkl.b.a),
+            new fkn(0.1667F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.3333F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(1.1667F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(1.9167F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 2.67F, -0.67F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(25.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, -0.5F), fkl.b.a),
+            new fkn(0.5833F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 2.22F, 0.78F), fkl.b.a),
+            new fkn(1.3333F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(1.5833F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, -0.5F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.a(0.0F, 0.0F, -1.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(1.75F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(0.1667F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(0.9167F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(1.1667F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(25.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5833F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(25.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 2.22F, 0.78F), fkl.b.a),
+            new fkn(0.3333F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(0.5833F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, -0.5F), fkl.b.a),
+            new fkn(1.5833F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 2.22F, 0.78F), fkl.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(1.0F, 0.0F, -2.5F), fkl.b.a),
+            new fkn(0.5F, fko.b(-1.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(1.0F, 0.0F, 2.5F), fkl.b.a),
+            new fkn(1.5F, fko.b(-1.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(1.0F, 0.0F, -2.5F), fkl.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.2083F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.375F, fko.a(0.0F, -1.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2083F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.a(0.0F, -1.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(7.5F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(0.1667F, fko.b(9.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(0.875F, fko.b(-1.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.25F, fko.b(7.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.75F, fko.b(5.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(2.0F, fko.b(7.5F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.b),
+            new fkn(0.5F, fko.b(0.0F, 0.0F, -7.5F), fkl.b.b),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.b),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, -7.5F), fkl.b.b),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.b),
+            new fkn(0.5F, fko.b(0.0F, 0.0F, 7.5F), fkl.b.b),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.b),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 7.5F), fkl.b.b),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.b)
+         )
+      )
+      .b();
+   public static final fkm e = fkm.a.a(2.0F)
+      .a()
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5833F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(0.75F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.a(0.0F, 0.0F, -1.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(-7.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.3333F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(-7.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 2.67F, -0.67F), fkl.b.a),
+            new fkn(0.1667F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.3333F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(1.1667F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(1.9167F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 2.67F, -0.67F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(25.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, -0.5F), fkl.b.a),
+            new fkn(0.5833F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 2.22F, 0.78F), fkl.b.a),
+            new fkn(1.3333F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(1.5833F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, -0.5F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.a(0.0F, 0.0F, -1.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(1.75F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.1667F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(0.1667F, fko.a(0.0F, 0.0F, 3.0F), fkl.b.a),
+            new fkn(0.9167F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(1.1667F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(25.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.1667F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5833F, fko.b(-35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(25.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 2.22F, 0.78F), fkl.b.a),
+            new fkn(0.3333F, fko.a(0.0F, 4.0F, -1.0F), fkl.b.a),
+            new fkn(0.5833F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.a(0.0F, 0.0F, -2.0F), fkl.b.a),
+            new fkn(1.0F, fko.a(0.0F, 0.0F, -0.5F), fkl.b.a),
+            new fkn(1.5833F, fko.a(0.0F, 0.0F, 2.0F), fkl.b.a),
+            new fkn(2.0F, fko.a(0.0F, 2.22F, 0.78F), fkl.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(2.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5F, fko.b(1.25F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(2.5F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.125F, fko.b(33.61503F, 11.46526F, 9.803F), fkl.b.a),
+            new fkn(0.875F, fko.b(34.71128F, 17.67415F, 14.15251F), fkl.b.a),
+            new fkn(1.125F, fko.b(37.21128F, -17.67415F, -14.15251F), fkl.b.a),
+            new fkn(1.875F, fko.b(38.30529F, -21.62827F, -17.40292F), fkl.b.a),
+            new fkn(2.0F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("head", new fkl(fkl.d.a, new fkn(0.0F, fko.a(0.0F, -2.0F, 0.0F), fkl.b.a), new fkn(2.0F, fko.a(0.0F, -2.0F, 0.0F), fkl.b.a)))
+      .a(
+         "left_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.a),
+            new fkn(0.25F, fko.b(0.0F, 0.0F, -15.0F), fkl.b.a),
+            new fkn(0.5F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.a),
+            new fkn(0.75F, fko.b(0.0F, 0.0F, -15.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, -15.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.a),
+            new fkn(1.75F, fko.b(0.0F, 0.0F, -15.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.a),
+            new fkn(0.25F, fko.b(0.0F, 0.0F, 15.0F), fkl.b.a),
+            new fkn(0.5F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.a),
+            new fkn(0.75F, fko.b(0.0F, 0.0F, 15.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, 15.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.a),
+            new fkn(1.75F, fko.b(0.0F, 0.0F, 15.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.a)
+         )
+      )
+      .a(
+         "nose",
+         new fkl(
+            fkl.d.c,
+            new fkn(0.0F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(0.0833F, fko.a(1.0, 1.5, 1.0), fkl.b.b),
+            new fkn(0.2083F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(0.375F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(0.4583F, fko.a(1.0, 2.5, 1.0), fkl.b.b),
+            new fkn(0.625F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(0.8333F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(0.9167F, fko.a(1.0, 2.5, 1.0), fkl.b.b),
+            new fkn(1.0833F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(1.2917F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(1.3333F, fko.a(1.0, 2.5, 1.0), fkl.b.b),
+            new fkn(1.5F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(1.625F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(1.6667F, fko.a(1.0, 3.5, 1.0), fkl.b.b),
+            new fkn(1.8333F, fko.a(1.0, 1.0, 1.0), fkl.b.b),
+            new fkn(2.0F, fko.a(1.0, 1.0, 1.0), fkl.b.b)
+         )
+      )
+      .b();
+   public static final fkm f = fkm.a.a(8.0F)
+      .a(
+         "body",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5F, fko.b(1.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.b(-5.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.5F, fko.b(2.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.5F, fko.b(2.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(4.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(4.5F, fko.b(2.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(5.6667F, fko.b(5.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(5.8333F, fko.b(-2.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(6.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.a(0.0F, -7.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fkl(
+            fkl.d.c,
+            new fkn(0.0F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(1.5F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(1.5417F, fko.a(1.04F, 0.98F, 1.02F), fkl.b.a),
+            new fkn(1.5833F, fko.a(1.0, 1.0, 1.0), fkl.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.1667F, fko.b(10.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.4167F, fko.b(-10.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.5833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.875F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(2.0833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(2.5F, fko.b(47.5F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(2.6667F, fko.b(38.44F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(2.875F, fko.b(10.95951F, 13.57454F, -14.93501F), fkl.b.b),
+            new fkn(3.2083F, fko.b(47.5F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(3.5833F, fko.b(55.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(3.7917F, fko.b(4.2932F, -16.187F, 10.90042F), fkl.b.b),
+            new fkn(4.125F, fko.b(47.5F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(4.4167F, fko.b(54.71135F, 7.98009F, -5.56662F), fkl.b.b),
+            new fkn(4.5F, fko.b(55.72895F, -6.77684F, 4.46197F), fkl.b.b),
+            new fkn(4.5833F, fko.b(54.71135F, 7.98009F, -5.56662F), fkl.b.b),
+            new fkn(4.6667F, fko.b(55.72895F, -6.77684F, 4.46197F), fkl.b.b),
+            new fkn(4.75F, fko.b(54.71135F, 7.98009F, -5.56662F), fkl.b.b),
+            new fkn(4.8333F, fko.b(55.72895F, -6.77684F, 4.46197F), fkl.b.b),
+            new fkn(5.0F, fko.b(65.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(5.75F, fko.b(65.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(5.9167F, fko.b(-32.5F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(6.25F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.625F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a),
+            new fkn(1.5833F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a),
+            new fkn(1.875F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a),
+            new fkn(2.0833F, fko.a(0.0F, 3.0F, 0.0F), fkl.b.a),
+            new fkn(2.2917F, fko.a(0.0F, 6.0F, 0.0F), fkl.b.a),
+            new fkn(2.6667F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.2083F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a),
+            new fkn(3.5833F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(4.125F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a),
+            new fkn(5.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(5.75F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a),
+            new fkn(6.0F, fko.a(0.0F, 1.5F, 0.0F), fkl.b.a),
+            new fkn(6.25F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, -2.5F), fkl.b.a),
+            new fkn(1.4167F, fko.b(0.0F, 0.0F, -50.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(0.0F, 0.0F, -30.0F), fkl.b.a),
+            new fkn(5.9167F, fko.b(0.0F, 0.0F, -30.0F), fkl.b.a),
+            new fkn(6.0833F, fko.b(0.0F, 0.0F, -65.0F), fkl.b.a),
+            new fkn(6.3333F, fko.b(0.0F, 0.0F, -30.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, 2.5F), fkl.b.a),
+            new fkn(1.4167F, fko.b(0.0F, 0.0F, 50.0F), fkl.b.a),
+            new fkn(1.5833F, fko.b(0.0F, 0.0F, 30.0F), fkl.b.a),
+            new fkn(5.9167F, fko.b(0.0F, 0.0F, 30.0F), fkl.b.a),
+            new fkn(6.0833F, fko.b(0.0F, 0.0F, 65.0F), fkl.b.a),
+            new fkn(6.3333F, fko.b(0.0F, 0.0F, 30.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2083F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.b(0.0F, 0.0F, 90.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2083F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2917F, fko.a(-2.0F, -0.75F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.a(-4.0F, -5.5F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.4167F, fko.b(0.0F, 0.0F, 90.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.25F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.a(-2.0F, -0.75F, 0.0F), fkl.b.a),
+            new fkn(1.4167F, fko.a(-4.0F, -5.5F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 90.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.4167F, fko.a(-2.0F, -0.75F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.a(-4.0F, -5.5F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2083F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.b(0.0F, 0.0F, -90.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2083F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2917F, fko.a(2.0F, -0.75F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.a(4.0F, -5.5F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.4167F, fko.b(0.0F, 0.0F, -90.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.25F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.a(2.0F, -0.75F, 0.0F), fkl.b.a),
+            new fkn(1.4167F, fko.a(4.0F, -5.5F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, -90.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.3333F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.4167F, fko.a(2.0F, -0.75F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.a(4.0F, -5.5F, 0.0F), fkl.b.a)
+         )
+      )
+      .b();
+   public static final fkm g = fkm.a.a(3.0F)
+      .a(
+         "body",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.25F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.b(2.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(-2.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.7083F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.25F, fko.a(0.0F, -7.0F, 0.0F), fkl.b.a),
+            new fkn(0.75F, fko.a(0.0F, -7.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.7083F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.3333F, fko.b(-5.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.7083F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.0F, fko.b(10.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("head", new fkl(fkl.d.a, new fkn(0.0F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a), new fkn(1.375F, fko.a(0.0F, 1.0F, 0.0F), fkl.b.a)))
+      .a(
+         "left_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, -30.0F), fkl.b.a),
+            new fkn(0.9167F, fko.b(0.0F, 0.0F, -30.0F), fkl.b.a),
+            new fkn(1.2083F, fko.b(0.0F, 0.0F, -5.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "right_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 30.0F), fkl.b.a),
+            new fkn(0.9167F, fko.b(0.0F, 0.0F, 30.0F), fkl.b.a),
+            new fkn(1.2083F, fko.b(0.0F, 0.0F, 5.0F), fkl.b.a)
+         )
+      )
+      .a("right_front_leg", new fkl(fkl.d.b, new fkn(0.0F, fko.b(0.0F, 0.0F, 90.0F), fkl.b.b), new fkn(0.4583F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)))
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(-4.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.2083F, fko.a(6.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.4583F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a("right_mid_leg", new fkl(fkl.d.b, new fkn(0.0833F, fko.b(0.0F, 0.0F, 90.0F), fkl.b.b), new fkn(0.5833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)))
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0833F, fko.a(-4.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.3333F, fko.a(6.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.5833F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a("right_hind_leg", new fkl(fkl.d.b, new fkn(0.1667F, fko.b(0.0F, 0.0F, 90.0F), fkl.b.b), new fkn(0.6667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)))
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.1667F, fko.a(-4.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.4167F, fko.a(6.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.6667F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a("left_front_leg", new fkl(fkl.d.b, new fkn(0.0F, fko.b(0.0F, 0.0F, -90.0F), fkl.b.b), new fkn(0.4583F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)))
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0F, fko.a(4.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.2083F, fko.a(-6.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.4583F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a("left_mid_leg", new fkl(fkl.d.b, new fkn(0.0833F, fko.b(0.0F, 0.0F, -90.0F), fkl.b.b), new fkn(0.5833F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)))
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.0833F, fko.a(4.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.3333F, fko.a(-6.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.5833F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a("left_hind_leg", new fkl(fkl.d.b, new fkn(0.1667F, fko.b(0.0F, 0.0F, -90.0F), fkl.b.b), new fkn(0.6667F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)))
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.a,
+            new fkn(0.1667F, fko.a(4.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.4167F, fko.a(-6.0F, -5.5F, 0.0F), fkl.b.b),
+            new fkn(0.6667F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .b();
+   public static final fkm h = fkm.a.a(4.0F)
+      .a(
+         "bone",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(-90.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.5F, fko.b(-98.91F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.9583F, fko.b(-90.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(2.7083F, fko.b(-68.28F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(2.9583F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a(
+         "bone",
+         new fkl(
+            fkl.d.a,
+            new fkn(1.0F, fko.a(0.0F, 20.0F, 17.0F), fkl.b.b),
+            new fkn(1.5F, fko.a(0.0F, 25.19F, 20.37F), fkl.b.b),
+            new fkn(1.9583F, fko.a(0.0F, 20.0F, 17.0F), fkl.b.b),
+            new fkn(2.7083F, fko.a(0.0F, 17.06F, 11.25F), fkl.b.b),
+            new fkn(2.8333F, fko.a(0.0F, 9.85F, 2.2F), fkl.b.b),
+            new fkn(2.9583F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a(
+         "body",
+         new fkl(
+            fkl.d.c,
+            new fkn(1.0F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(1.9583F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(2.9167F, fko.a(1.0, 1.0, 1.0), fkl.b.a),
+            new fkn(3.0F, fko.a(1.05F, 0.95F, 1.05F), fkl.b.a),
+            new fkn(3.0833F, fko.a(1.0, 1.0, 1.0), fkl.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.2917F, fko.b(17.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.9583F, fko.b(-10.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.75F, fko.b(35.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.9167F, fko.b(-30.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0417F, fko.b(7.5F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.125F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fkl(
+            fkl.d.a,
+            new fkn(1.0F, fko.a(0.0F, 7.0F, 19.0F), fkl.b.a),
+            new fkn(1.5F, fko.a(0.0F, 7.0F, 0.0F), fkl.b.a),
+            new fkn(1.9583F, fko.a(0.0F, 7.0F, 0.0F), fkl.b.a),
+            new fkn(2.75F, fko.a(0.0F, 7.0F, 0.0F), fkl.b.a),
+            new fkn(2.9583F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a(
+         "left_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, -5.0F), fkl.b.a),
+            new fkn(1.9583F, fko.b(0.0F, 0.0F, -5.0F), fkl.b.a),
+            new fkn(2.7083F, fko.b(0.0F, 0.0F, -5.0F), fkl.b.a),
+            new fkn(2.9167F, fko.b(0.0F, 0.0F, -90.0F), fkl.b.b),
+            new fkn(3.125F, fko.b(0.0F, 0.0F, -5.0F), fkl.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 5.0F), fkl.b.a),
+            new fkn(1.9583F, fko.b(0.0F, 0.0F, 5.0F), fkl.b.a),
+            new fkn(2.7083F, fko.b(0.0F, 0.0F, 5.0F), fkl.b.a),
+            new fkn(2.9167F, fko.b(0.0F, 0.0F, 90.0F), fkl.b.b),
+            new fkn(3.125F, fko.b(0.0F, 0.0F, 5.0F), fkl.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.25F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.5F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.75F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("right_front_leg", new fkl(fkl.d.a, new fkn(1.0F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a), new fkn(1.5F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)))
+      .a(
+         "right_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.625F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.875F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.125F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.375F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.625F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("right_mid_leg", new fkl(fkl.d.a, new fkn(1.0F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a), new fkn(1.5F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)))
+      .a(
+         "right_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.25F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.5F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("right_hind_leg", new fkl(fkl.d.a, new fkn(1.0F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a), new fkn(1.5F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)))
+      .a(
+         "left_front_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.25F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.5F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.75F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("left_front_leg", new fkl(fkl.d.a, new fkn(1.0F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a), new fkn(1.5F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)))
+      .a(
+         "left_mid_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.375F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.625F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.875F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.125F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.375F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.625F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("left_mid_leg", new fkl(fkl.d.a, new fkn(1.0F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a), new fkn(1.5F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)))
+      .a(
+         "left_hind_leg",
+         new fkl(
+            fkl.d.b,
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.25F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.5F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(1.75F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.0F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.25F, fko.b(-15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(2.5F, fko.b(15.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(3.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a)
+         )
+      )
+      .a("left_hind_leg", new fkl(fkl.d.a, new fkn(1.0F, fko.a(0.0F, 4.0F, 0.0F), fkl.b.a), new fkn(1.5F, fko.a(0.0F, 0.0F, 0.0F), fkl.b.a)))
+      .b();
+   public static final fkm i = fkm.a.a(2.0F)
+      .a()
+      .a(
+         "head",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.a),
+            new fkn(0.5F, fko.b(-32.00206F, 19.3546F, -11.70092F), fkl.b.b),
+            new fkn(1.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.5F, fko.b(-32.00206F, -19.3546F, 11.70092F), fkl.b.b),
+            new fkn(2.0F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.5F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(0.75F, fko.b(0.0F, 0.0F, -67.5F), fkl.b.b),
+            new fkn(0.9583F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.125F, fko.b(0.0F, 0.0F, -67.5F), fkl.b.b),
+            new fkn(1.2917F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fkl(
+            fkl.d.b,
+            new fkn(0.5F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(0.75F, fko.b(0.0F, 0.0F, 67.5F), fkl.b.b),
+            new fkn(0.9583F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b),
+            new fkn(1.125F, fko.b(0.0F, 0.0F, 67.5F), fkl.b.b),
+            new fkn(1.2917F, fko.b(0.0F, 0.0F, 0.0F), fkl.b.b)
+         )
+      )
+      .b();
 }

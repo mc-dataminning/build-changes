@@ -1,38 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dcp(jq<awk> d, brg e, brg f) implements dcj {
-   public static final MapCodec<dcp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               awk.b.fieldOf("sound").forGetter(dcp::b),
-               brg.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dcp::c),
-               brg.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dcp::d)
-            )
-            .apply($$0, dcp::new)
-   );
+public interface dcp {
+   Codec<dcp> b = lz.aw.q().dispatch(dcp::a, Function.identity());
 
-   @Override
-   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
-      azs $$5 = $$3.ea();
-      if (!$$3.bc()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dn(), this.e.a($$5), this.f.a($$5));
-      }
+   static MapCodec<? extends dcp> a(kd<MapCodec<? extends dcp>> $$0) {
+      kd.a($$0, "add", dcg.a);
+      kd.a($$0, "all_of", dch.c.a);
+      kd.a($$0, "multiply", dcs.a);
+      kd.a($$0, "remove_binomial", dcu.a);
+      return kd.a($$0, "set", dcz.a);
    }
 
-   @Override
-   public MapCodec<dcp> a() {
-      return a;
-   }
+   float a(int var1, azv var2, float var3);
 
-   public jq<awk> b() {
-      return this.d;
-   }
-
-   public brg c() {
-      return this.e;
-   }
-
-   public brg d() {
-      return this.f;
-   }
+   MapCodec<? extends dcp> a();
 }

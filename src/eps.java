@@ -1,36 +1,51 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class eps extends epw {
-   public static final MapCodec<eps> a = epo.b.listOf().fieldOf("rules").xmap(eps::new, $$0 -> $$0.b);
-   private final ImmutableList<epo> b;
+public class eps {
+   public static final eqk a = eqk.a;
+   public static final Codec<eps> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               epx.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               epx.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               epq.c.lenientOptionalFieldOf("position_predicate", epp.b).forGetter($$0x -> $$0x.e),
+               dvo.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               eql.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eps::new)
+   );
+   private final epx c;
+   private final epx d;
+   private final epq e;
+   private final dvo f;
+   private final eql g;
 
-   public eps(List<? extends epo> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   public eps(epx $$0, epx $$1, dvo $$2) {
+      this($$0, $$1, epp.b, $$2);
+   }
+
+   public eps(epx $$0, epx $$1, epq $$2, dvo $$3) {
+      this($$0, $$1, $$2, $$3, a);
+   }
+
+   public eps(epx $$0, epx $$1, epq $$2, dvo $$3, eql $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a(dvo $$0, dvo $$1, jh $$2, jh $$3, jh $$4, azv $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
+   }
+
+   public dvo a() {
+      return this.f;
    }
 
    @Nullable
-   @Override
-   public epz.c a(dfe $$0, jh $$1, jh $$2, epz.c $$3, epz.c $$4, epv $$5) {
-      azs $$6 = azs.a(azk.a($$4.a()));
-      dvj $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         epo $$8 = (epo)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new epz.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   protected epy<?> a() {
-      return epy.i;
+   public un a(azv $$0, @Nullable un $$1) {
+      return this.g.a($$0, $$1);
    }
 }

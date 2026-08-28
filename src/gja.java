@@ -1,82 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class gja {
+   public static final all a = all.b("textures/gui/title/background/panorama_overlay.png");
+   private final fjx b;
+   private final gii c;
+   private float d;
 
-public record gja(ali b, ali c, List<gja.a> d, List<gja.b> e, gix f) {
-   public static final Codec<gja> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ali.a.fieldOf("vertex").forGetter(gja::a),
-               ali.a.fieldOf("fragment").forGetter(gja::b),
-               gja.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(gja::c),
-               gja.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gja::d),
-               gix.b.optionalFieldOf("defines", gix.a).forGetter(gja::e)
-            )
-            .apply($$0, gja::new)
-   );
-
-   public ali a() {
-      return this.b;
+   public gja(gii $$0) {
+      this.c = $$0;
+      this.b = fjx.Q();
    }
 
-   public ali b() {
-      return this.c;
+   public void a(flj $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = this.b.av().b();
+      float $$6 = (float)((double)$$5 * this.b.n.t().c());
+      this.d = a(this.d + $$6 * 0.1F, 360.0F);
+      $$0.d();
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      $$0.d();
+      $$0.a(gjh::B, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axy.a($$3));
    }
 
-   public List<gja.a> c() {
-      return this.d;
-   }
-
-   public List<gja.b> d() {
-      return this.e;
-   }
-
-   public gix e() {
-      return this.f;
-   }
-
-   public static record a(String b) {
-      public static final Codec<gja.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gja.a::a)).apply($$0, gja.a::new));
-
-      public String a() {
-         return this.b;
-      }
-   }
-
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<gja.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(gja.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(gja.b::b),
-                     Codec.INT.fieldOf("count").forGetter(gja.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(gja.b::d)
-                  )
-                  .apply($$0, gja.b::new)
-         )
-         .validate(gja.b::a);
-
-      private static DataResult<gja.b> a(gja.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public List<Float> d() {
-         return this.e;
-      }
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

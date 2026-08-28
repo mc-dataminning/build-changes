@@ -1,52 +1,41 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
-public class fio extends fig {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xi c = xi.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+public class fio {
+   private static final xl a = xl.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public fio(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public void run() {
-      fer $$0 = fer.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (fgd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
+   public static xl a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
+      } else {
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return xl.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return xl.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return xl.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return xl.a("mco.time.daysAgo", $$4);
          }
       }
    }
 
-   @Override
-   public xi a() {
-      return c;
+   public static xl a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
+   }
+
+   public static void a(flj $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      fjx $$5 = fjx.Q();
+      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
+      gzu $$7 = $$6 != null ? $$5.an().b($$6.profile()) : gzl.a($$4);
+      fmv.a($$0, $$7, $$1, $$2, $$3);
    }
 }

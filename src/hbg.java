@@ -1,374 +1,120 @@
-import com.google.common.hash.HashCode;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Path;
+import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class hbg {
-   private final hbd a;
-   final hbe b;
-   private final hbf c;
-   private final Runnable d;
-   private hbg.c e;
-   final List<hbg.e> f = new ArrayList<>();
+   static final Logger b = LogUtils.getLogger();
+   public static final String a = "item/";
+   private final Map<all, hbo> c;
+   final hbo d;
+   private final Map<hbj, hbo> e = new HashMap<>();
+   private final Map<all, hbo> f = new HashMap<>();
 
-   public hbg(hbd $$0, hbe $$1, hbf $$2, Runnable $$3, hbg.c $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public hbg(Map<all, hbo> $$0, hbo $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a(hbd.c, $$1);
+      this.f.put(hbd.b, $$1);
    }
 
-   void f() {
-      this.d.run();
-   }
-
-   private void b(UUID $$0) {
-      for (hbg.e $$1 : this.f) {
-         if ($$1.a.equals($$0)) {
-            $$1.a(hbg.d.f);
-         }
-      }
-   }
-
-   public void a(UUID $$0, URL $$1, @Nullable HashCode $$2) {
-      if (this.e == hbg.c.c) {
-         this.b.a($$0, hbe.a.a);
-      } else {
-         this.a($$0, new hbg.e($$0, $$1, $$2));
-      }
-   }
-
-   public void a(UUID $$0, Path $$1) {
-      if (this.e == hbg.c.c) {
-         this.b.a($$0, hbe.a.a);
-      } else {
-         URL $$2;
-         try {
-            $$2 = $$1.toUri().toURL();
-         } catch (MalformedURLException var5) {
-            throw new IllegalStateException("Can't convert path to URL " + $$1, var5);
+   private static Set<hbj> d() {
+      Set<hbj> $$0 = new HashSet<>();
+      lz.g.c().forEach($$1 -> {
+         all $$2 = $$1.a().g().a(ku.i);
+         if ($$2 != null) {
+            $$0.add(hbj.a($$2));
          }
 
-         hbg.e $$5 = new hbg.e($$0, $$2, null);
-         $$5.f = hbg.b.c;
-         $$5.d = $$1;
-         this.a($$0, $$5);
-      }
-   }
-
-   private void a(UUID $$0, hbg.e $$1) {
-      this.b($$0);
-      this.f.add($$1);
-      if (this.e == hbg.c.b) {
-         this.a($$1);
-      }
-
-      this.f();
-   }
-
-   private void a(hbg.e $$0) {
-      this.b.a($$0.a, hbe.b.a);
-      $$0.h = true;
-   }
-
-   @Nullable
-   private hbg.e c(UUID $$0) {
-      for (hbg.e $$1 : this.f) {
-         if (!$$1.a() && $$1.a.equals($$0)) {
-            return $$1;
+         if ($$1.a() instanceof cus $$4) {
+            $$0.add(hbj.a($$4.b()));
+            $$0.add(hbj.a($$4.c()));
          }
-      }
-
-      return null;
+      });
+      $$0.add(gpy.i);
+      $$0.add(gpy.j);
+      return $$0;
    }
 
-   public void a(UUID $$0) {
-      hbg.e $$1 = this.c($$0);
-      if ($$1 != null) {
-         $$1.a(hbg.d.e);
-         this.f();
+   private void a(hbj $$0, hbo $$1) {
+      this.e.put($$0, $$1);
+   }
+
+   public void a(hax.c $$0) {
+      this.f.put(hbn.a, hbn.c);
+      this.f.put(hbn.b, hbn.d);
+      Set<hbj> $$1 = d();
+      $$0.a().forEach(($$1x, $$2) -> {
+         this.a($$1x, $$2.b());
+         $$1.remove($$1x);
+      });
+      this.c.keySet().forEach($$1x -> {
+         if ($$1x.a().startsWith("item/")) {
+            hbj $$2 = hbj.a($$1x.a((UnaryOperator<String>)($$0xx -> $$0xx.substring("item/".length()))));
+            this.a($$2, new hbb($$1x));
+            $$1.remove($$2);
+         }
+      });
+      if (!$$1.isEmpty()) {
+         b.warn("Missing mandatory models: {}", $$1.stream().map($$0x -> "\n\t" + $$0x).collect(Collectors.joining()));
       }
    }
 
    public void a() {
-      for (hbg.e $$0 : this.f) {
-         $$0.a(hbg.d.e);
+      this.e.values().forEach($$0 -> $$0.a(new hbg.a()));
+   }
+
+   public Map<hbj, hbo> b() {
+      return this.e;
+   }
+
+   public Map<all, hbo> c() {
+      return this.f;
+   }
+
+   hbo a(all $$0) {
+      return this.f.computeIfAbsent($$0, this::b);
+   }
+
+   private hbo b(all $$0) {
+      hbo $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         b.warn("Missing block model: '{}'", $$0);
+         return this.d;
+      } else {
+         return $$1;
       }
-
-      this.f();
    }
 
-   public void b() {
-      this.e = hbg.c.b;
+   class a implements hbo.a {
+      private final List<all> b = new ArrayList<>();
+      private final Set<all> c = new HashSet<>();
 
-      for (hbg.e $$0 : this.f) {
-         if (!$$0.h && !$$0.a()) {
-            this.a($$0);
-         }
-      }
-
-      this.f();
-   }
-
-   public void c() {
-      this.e = hbg.c.c;
-
-      for (hbg.e $$0 : this.f) {
-         if (!$$0.h) {
-            $$0.a(hbg.d.c);
-         }
-      }
-
-      this.f();
-   }
-
-   public void d() {
-      this.e = hbg.c.a;
-   }
-
-   public void e() {
-      boolean $$0 = this.h();
-      if (!$$0) {
-         this.i();
-      }
-
-      this.g();
-   }
-
-   private void g() {
-      this.f.removeIf($$0 -> {
-         if ($$0.g != hbg.a.a) {
-            return false;
-         } else if ($$0.e != null) {
-            hbe.a $$1 = $$0.e.g;
-            if ($$1 != null) {
-               this.b.a($$0.a, $$1);
-            }
-
-            return true;
+      @Override
+      public hbo a(all $$0) {
+         if (this.b.contains($$0)) {
+            hbg.b.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return hbg.this.d;
          } else {
-            return false;
-         }
-      });
-   }
-
-   private void a(Collection<hbg.e> $$0, ath.b $$1) {
-      if (!$$1.b().isEmpty()) {
-         for (hbg.e $$2 : this.f) {
-            if ($$2.g != hbg.a.c) {
-               if ($$1.b().contains($$2.a)) {
-                  $$2.a(hbg.d.a);
-               } else {
-                  $$2.a(hbg.d.d);
-               }
+            hbo $$1 = hbg.this.a($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$1.a(this);
+               this.b.remove($$0);
             }
+
+            return $$1;
          }
       }
 
-      for (hbg.e $$3 : $$0) {
-         Path $$4 = $$1.a().get($$3.a);
-         if ($$4 != null) {
-            $$3.f = hbg.b.c;
-            $$3.d = $$4;
-            if (!$$3.a()) {
-               this.b.a($$3.a, hbe.b.b);
-            }
-         }
-      }
-
-      this.f();
-   }
-
-   private boolean h() {
-      List<hbg.e> $$0 = new ArrayList<>();
-      boolean $$1 = false;
-
-      for (hbg.e $$2 : this.f) {
-         if (!$$2.a() && $$2.h) {
-            if ($$2.f != hbg.b.c) {
-               $$1 = true;
-            }
-
-            if ($$2.f == hbg.b.a) {
-               $$2.f = hbg.b.b;
-               $$0.add($$2);
-            }
-         }
-      }
-
-      if (!$$0.isEmpty()) {
-         Map<UUID, ath.c> $$3 = new HashMap<>();
-
-         for (hbg.e $$4 : $$0) {
-            $$3.put($$4.a, new ath.c($$4.b, $$4.c));
-         }
-
-         this.a.a($$3, $$1x -> this.a($$0, $$1x));
-      }
-
-      return $$1;
-   }
-
-   private void i() {
-      boolean $$0 = false;
-      final List<hbg.e> $$1 = new ArrayList<>();
-      final List<hbg.e> $$2 = new ArrayList<>();
-
-      for (hbg.e $$3 : this.f) {
-         if ($$3.g == hbg.a.b) {
-            return;
-         }
-
-         boolean $$4 = $$3.h && $$3.f == hbg.b.c && !$$3.a();
-         if ($$4 && $$3.g == hbg.a.a) {
-            $$1.add($$3);
-            $$0 = true;
-         }
-
-         if ($$3.g == hbg.a.c) {
-            if (!$$4) {
-               $$0 = true;
-               $$2.add($$3);
-            } else {
-               $$1.add($$3);
-            }
-         }
-      }
-
-      if ($$0) {
-         for (hbg.e $$5 : $$1) {
-            if ($$5.g != hbg.a.c) {
-               $$5.g = hbg.a.b;
-            }
-         }
-
-         for (hbg.e $$6 : $$2) {
-            $$6.g = hbg.a.b;
-         }
-
-         this.c.scheduleReload(new hbf.a() {
-            @Override
-            public void a() {
-               for (hbg.e $$0 : $$1) {
-                  $$0.g = hbg.a.c;
-                  if ($$0.e == null) {
-                     hbg.this.b.a($$0.a, hbe.a.b);
-                  }
-               }
-
-               for (hbg.e $$1 : $$2) {
-                  $$1.g = hbg.a.a;
-               }
-
-               hbg.this.f();
-            }
-
-            @Override
-            public void a(boolean $$0) {
-               if (!$$0) {
-                  $$1.clear();
-
-                  for (hbg.e $$1 : hbg.this.f) {
-                     switch ($$1.g) {
-                        case a:
-                           $$1.a(hbg.d.d);
-                           break;
-                        case b:
-                           $$1.g = hbg.a.a;
-                           $$1.a(hbg.d.b);
-                           break;
-                        case c:
-                           $$1.add($$1);
-                     }
-                  }
-
-                  hbg.this.f();
-               } else {
-                  for (hbg.e $$2 : hbg.this.f) {
-                     if ($$2.g == hbg.a.b) {
-                        $$2.g = hbg.a.a;
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public List<hbf.b> b() {
-               return $$1.stream().map($$0 -> new hbf.b($$0.a, $$0.d)).toList();
-            }
-         });
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
-   }
-
-   static enum d {
-      a(hbe.a.d),
-      b(hbe.a.e),
-      c(hbe.a.a),
-      d(hbe.a.c),
-      e(null),
-      f(null);
-
-      @Nullable
-      final hbe.a g;
-
-      private d(@Nullable final hbe.a $$0) {
-         this.g = $$0;
-      }
-   }
-
-   static class e {
-      final UUID a;
-      final URL b;
-      @Nullable
-      final HashCode c;
-      @Nullable
-      Path d;
-      @Nullable
-      hbg.d e;
-      hbg.b f = hbg.b.a;
-      hbg.a g = hbg.a.a;
-      boolean h;
-
-      e(UUID $$0, URL $$1, @Nullable HashCode $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public void a(hbg.d $$0) {
-         if (this.e == null) {
-            this.e = $$0;
-         }
-      }
-
-      public boolean a() {
-         return this.e != null;
+      private String a() {
+         return this.b.stream().map(all::toString).collect(Collectors.joining("->"));
       }
    }
 }

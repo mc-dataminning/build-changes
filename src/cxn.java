@@ -1,41 +1,41 @@
-public class cxn extends cvx {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cxn(cvx.a $$0) {
-      super($$0);
+public class cxn extends cul implements cva {
+   private final awn a;
+
+   public cxn(dij $$0, awn $$1, cwb.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public int a(cwb $$0, bva $$1) {
-      return 1200;
+   public bsh a(czy $$0) {
+      bsh $$1 = super.a($$0);
+      cor $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cur.a($$0.n(), $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public cwd b(cwb $$0) {
-      return cwd.h;
+   protected awn a(dvo $$0) {
+      return this.a;
    }
 
    @Override
-   public bsd a(dfb $$0, com $$1, bsc $$2) {
-      $$1.a(awl.zb, 1.0F, 1.0F);
-      $$1.b(awv.c.b(this));
-      return cwe.a($$0, $$1, $$2);
-   }
+   public boolean a(@Nullable cor $$0, dff $$1, jh $$2, @Nullable ezn $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.d().m(), 3);
+         }
 
-   @Override
-   public cwb a(cwb $$0, dfb $$1, bva $$2) {
-      this.b($$2);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(cwb $$0, dfb $$1, bva $$2, int $$3) {
-      this.b($$2);
-      return true;
-   }
-
-   private void b(bva $$0) {
-      $$0.a(awl.zc, 1.0F, 1.0F);
+         $$1.a($$0, eak.z, $$2);
+         $$1.a($$0, $$2, this.a, awp.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

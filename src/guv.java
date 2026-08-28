@@ -1,3 +1,4 @@
-public class guv extends gun {
-   public ezn a = ezn.c;
+public class guv extends gwb {
+   public float a;
+   public float b;
 }

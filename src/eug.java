@@ -1,146 +1,147 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class eug {
-   public static final Codec<eug> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               euq.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               exn.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               evs.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               eyk.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               eyk.a.fieldOf("bonus_rolls").orElse(eyg.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eug::new)
-   );
-   private final List<eus> b;
-   private final List<exn> c;
-   private final Predicate<euc> d;
-   private final List<evq> e;
-   private final BiFunction<cwb, euc, cwb> f;
-   private final eyj g;
-   private final eyj h;
+   private final euj a;
+   private final azv b;
+   private final jr.a c;
+   private final Set<eug.c<?>> d = Sets.newLinkedHashSet();
 
-   eug(List<eus> $$0, List<exn> $$1, List<evq> $$2, eyj $$3, eyj $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ae.a($$1);
-      this.e = $$2;
-      this.f = evs.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   eug(euj $$0, azv $$1, jr.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private void b(Consumer<cwb> $$0, euc $$1) {
-      azs $$2 = $$1.b();
-      List<eur> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public boolean a(ewz<?> $$0) {
+      return this.a.a($$0);
+   }
 
-      for (eus $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public <T> T b(ewz<T> $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(all $$0, Consumer<cwf> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T c(ewz<T> $$0) {
+      return this.a.d($$0);
+   }
+
+   public boolean a(eug.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(eug.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(eug.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public jr.a a() {
+      return this.c;
+   }
+
+   public azv b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public arq d() {
+      return this.a.a();
+   }
+
+   public static eug.c<eul> a(eul $$0) {
+      return new eug.c<>(eui.c, $$0);
+   }
+
+   public static eug.c<exr> a(exr $$0) {
+      return new eug.c<>(eui.a, $$0);
+   }
+
+   public static eug.c<evu> a(evu $$0) {
+      return new eug.c<>(eui.b, $$0);
+   }
+
+   public static class a {
+      private final euj a;
+      @Nullable
+      private azv b;
+
+      public a(euj $$0) {
+         this.a = $$0;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      public eug.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = azv.a($$0);
+         }
+
+         return this;
+      }
+
+      public eug.a a(azv $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public arq a() {
+         return this.a.a();
+      }
+
+      public eug a(Optional<all> $$0) {
+         arq $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         azv $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new eug(this.a, $$3, $$2.bc().a());
+      }
+   }
+
+   public static enum b implements baj {
+      a("this", exc.a),
+      b("attacker", exc.d),
+      c("direct_attacker", exc.e),
+      d("attacking_player", exc.b);
+
+      public static final baj.a<eug.b> e = baj.a(eug.b::values);
+      private final String f;
+      private final ewz<? extends bui> g;
+
+      private b(final String $$0, final ewz<? extends bui> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public ewz<? extends bui> a() {
+         return this.g;
+      }
+
+      public static eug.b a(String $$0) {
+         eug.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (eur $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
          }
       }
-   }
 
-   public void a(Consumer<cwb> $$0, euc $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cwb> $$2 = evq.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + azk.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 
-   public void a(eui $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static eug.a a() {
-      return new eug.a();
-   }
-
-   public static class a implements evm<eug.a>, exf<eug.a> {
-      private final Builder<eus> a = ImmutableList.builder();
-      private final Builder<exn> b = ImmutableList.builder();
-      private final Builder<evq> c = ImmutableList.builder();
-      private eyj d = eyg.a(1.0F);
-      private eyj e = eyg.a(0.0F);
-
-      public eug.a a(eyj $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eug.a a() {
-         return this;
-      }
-
-      public eug.a b(eyj $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eug.a a(eus.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public eug.a a(exn.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public eug.a a(evq.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public eug b() {
-         return new eug(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   public static record c<T>(eui<T> a, T b) {
    }
 }

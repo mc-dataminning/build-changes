@@ -1,5 +1,3 @@
-public class gwp extends gun {
+public class gwp extends gwb {
    public float a;
-   public float b;
-   public boolean c;
 }

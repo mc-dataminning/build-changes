@@ -1,9 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gue extends gut {
-   private static final ali j = ali.b("textures/entity/cat/tabby.png");
-   public ali a = j;
-   public boolean b;
-   @Nullable
-   public cuy c;
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gue {
 }

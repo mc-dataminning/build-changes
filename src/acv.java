@@ -1,29 +1,20 @@
-public class acv implements zp<ace> {
-   public static final zg<wf, acv> a = zp.a(acv::a, acv::new);
-   private final boolean b;
+public record acv(int b) implements zs<ach> {
+   public static final zj<wi, acv> a = zs.a(acv::a, acv::new);
 
-   public acv(boolean $$0) {
-      this.b = $$0;
+   private acv(wi $$0) {
+      this($$0.l());
    }
 
-   private acv(wf $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(wf $$0) {
-      $$0.a(this.b);
+   private void a(wi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zr<acv> a() {
-      return agt.q;
+   public zu<acv> a() {
+      return agw.n;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

@@ -1,150 +1,122 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class cgg {
+public class cgg implements der {
    private static final Logger a = LogUtils.getLogger();
-   private final Short2ObjectMap<cgf> b = new Short2ObjectOpenHashMap();
-   private final Map<jq<cgh>, Set<cgf>> c = Maps.newHashMap();
-   private final Runnable d;
-   private boolean e;
+   private boolean b;
+   private cgg.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public cgg(Runnable $$0) {
-      this($$0, true, ImmutableList.of());
+   public cgg() {
+      this.c = cgg.a.c;
    }
 
-   cgg(Runnable $$0, boolean $$1, List<cgf> $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      $$2.forEach(this::a);
-   }
-
-   public cgg.a a() {
-      return new cgg.a(this.e, this.b.values().stream().map(cgf::a).toList());
-   }
-
-   public Stream<cgf> a(Predicate<jq<cgh>> $$0, cge.b $$1) {
-      return this.c.entrySet().stream().filter($$1x -> $$0.test((jq<cgh>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
-   }
-
-   public void a(jh $$0, jq<cgh> $$1) {
-      if (this.a(new cgf($$0, $$1, this.d))) {
-         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
-         this.d.run();
-      }
-   }
-
-   private boolean a(cgf $$0) {
-      jh $$1 = $$0.g();
-      jq<cgh> $$2 = $$0.h();
-      short $$3 = kj.b($$1);
-      cgf $$4 = (cgf)this.b.get($$3);
-      if ($$4 != null) {
-         if ($$2.equals($$4.h())) {
-            return false;
+   @Override
+   public int a(arq $$0, boolean $$1, boolean $$2) {
+      if (!$$0.S() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.A.a(10) == 0 ? cgg.a.b : cgg.a.c;
          }
 
-         ae.b("POI data mismatch: already registered at " + $$1);
-      }
+         if (this.c == cgg.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
 
-      this.b.put($$3, $$0);
-      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
-      return true;
-   }
+               this.b = true;
+            }
 
-   public void a(jh $$0) {
-      cgf $$1 = (cgf)this.b.remove(kj.b($$0));
-      if ($$1 == null) {
-         a.error("POI data mismatch: never registered at {}", $$0);
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = cgg.a.c;
+               }
+
+               return 1;
+            }
+         }
       } else {
-         this.c.get($$1.h()).remove($$1);
-         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::h), LogUtils.defer($$1::g));
-         this.d.run();
+         this.c = cgg.a.c;
+         this.b = false;
+         return 0;
       }
    }
 
-   @Deprecated
-   @baq
-   public int b(jh $$0) {
-      return this.e($$0).map(cgf::b).orElse(0);
+   private boolean a(arq $$0) {
+      for (cor $$1 : $$0.x()) {
+         if (!$$1.R_()) {
+            jh $$2 = $$1.dy();
+            if ($$0.c($$2) && !$$0.t($$2).a(axc.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + azn.d(azn.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + azn.d(azn.a($$4) * 32.0F);
+                  if (this.a($$0, new jh(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   public boolean c(jh $$0) {
-      cgf $$1 = (cgf)this.b.get(kj.b($$0));
-      if ($$1 == null) {
-         throw (IllegalStateException)ae.b(new IllegalStateException("POI never registered at " + $$0));
-      } else {
-         boolean $$2 = $$1.d();
-         this.d.run();
-         return $$2;
+   private void b(arq $$0) {
+      ezr $$1 = this.a($$0, new jh(this.f, this.g, this.h));
+      if ($$1 != null) {
+         cmo $$2;
+         try {
+            $$2 = new cmo($$0);
+            $$2.a($$0, $$0.d_($$2.dy()), buo.h, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
       }
    }
 
-   public boolean a(jh $$0, Predicate<jq<cgh>> $$1) {
-      return this.d($$0).filter($$1).isPresent();
-   }
-
-   public Optional<jq<cgh>> d(jh $$0) {
-      return this.e($$0).map(cgf::h);
-   }
-
-   private Optional<cgf> e(jh $$0) {
-      return Optional.ofNullable((cgf)this.b.get(kj.b($$0)));
-   }
-
-   public void a(Consumer<BiConsumer<jh, jq<cgh>>> $$0) {
-      if (!this.e) {
-         Short2ObjectMap<cgf> $$1 = new Short2ObjectOpenHashMap(this.b);
-         this.c();
-         $$0.accept(($$1x, $$2) -> {
-            short $$3 = kj.b($$1x);
-            cgf $$4 = (cgf)$$1.computeIfAbsent($$3, $$2x -> new cgf($$1x, $$2, this.d));
-            this.a($$4);
-         });
-         this.e = true;
-         this.d.run();
-      }
-   }
-
-   private void c() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   boolean b() {
-      return this.e;
-   }
-
-   public static record a(boolean b, List<cgf.a> c) {
-      public static final Codec<cgg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(cgg.a::a), cgf.a.a.listOf().fieldOf("Records").forGetter(cgg.a::b))
-               .apply($$0, cgg.a::new)
-      );
-
-      public cgg a(Runnable $$0) {
-         return new cgg($$0, this.b, this.c.stream().map($$1 -> $$1.a($$0)).toList());
+   @Nullable
+   private ezr a(arq $$0, jh $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.A.a(16) - 8;
+         int $$4 = $$1.w() + $$0.A.a(16) - 8;
+         int $$5 = $$0.a(ebj.a.b, $$3, $$4);
+         jh $$6 = new jh($$3, $$5, $$4);
+         if ($$0.c($$6) && clv.b(bup.bu, $$0, buo.h, $$6, $$0.A)) {
+            return ezr.c($$6);
+         }
       }
 
-      public boolean a() {
-         return this.b;
-      }
+      return null;
+   }
 
-      public List<cgf.a> b() {
-         return this.c;
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

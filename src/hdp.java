@@ -1,59 +1,58 @@
-import com.mojang.logging.LogUtils;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class hdp implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bne d;
-   @Nullable
-   private CompletableFuture<Optional<hdl>> e;
+public class hdp implements hdj {
+   private final hdp.a a;
+   private hdj b;
+   private final BufferedInputStream c;
 
-   private hdp(bne $$0) {
-      this.d = $$0;
-   }
-
-   public static CompletableFuture<Optional<hdp>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bne $$1 = bne.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new hdp($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ae.g());
-   }
-
-   public CompletableFuture<Optional<hdm>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bne.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new hdl($$1, ae.g()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ae.g());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(hdl::a));
+   public hdp(hdp.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new hdp.b(this.c));
    }
 
    @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(hdl::close));
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new hdp.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      hdj create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
       }
    }
 }

@@ -1,18 +1,37 @@
-public class grd extends gnb<civ, guo, fxb<guo>> {
-   private static final ali a = ali.b("textures/entity/horse/horse_zombie.png");
-   private static final ali b = ali.b("textures/entity/horse/horse_skeleton.png");
-   private final ali k;
+public class grd extends gqg<cme, gwz, gay> {
+   public static final all a = all.b("textures/entity/slime/slime.png");
 
-   public grd(gok.a $$0, gbk $$1, gbk $$2, boolean $$3) {
-      super($$0, new fyv($$0.a($$1)), new fyv($$0.a($$2)), 1.0F);
-      this.k = $$3 ? b : a;
+   public grd(gpa.a $$0) {
+      super($$0, new gay($$0.a(gcb.cs)), 0.25F);
+      this.a(new gtr(this, $$0.f()));
    }
 
-   public ali a(guo $$0) {
-      return this.k;
+   public void a(gwz $$0, fek $$1, gix $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public guo c() {
-      return new guo();
+   protected void a(gwz $$0, fek $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   }
+
+   public all a(gwz $$0) {
+      return a;
+   }
+
+   public gwz c() {
+      return new gwz();
+   }
+
+   public void a(cme $$0, gwz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azn.h($$2, $$0.bY, $$0.bX);
+      $$1.b = $$0.gw();
    }
 }

@@ -1,42 +1,213 @@
-public class bwi {
-   public static final jq<bwd> a = a("armor", new bwk("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
-   public static final jq<bwd> b = a("armor_toughness", new bwk("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final jq<bwd> c = a("attack_damage", new bwk("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
-   public static final jq<bwd> d = a("attack_knockback", new bwk("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
-   public static final jq<bwd> e = a("attack_speed", new bwk("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final jq<bwd> f = a("block_break_speed", new bwk("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final jq<bwd> g = a("block_interaction_range", new bwk("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final jq<bwd> h = a("burning_time", new bwk("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(bwd.a.c));
-   public static final jq<bwd> i = a("explosion_knockback_resistance", new bwk("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bwd> j = a("entity_interaction_range", new bwk("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final jq<bwd> k = a("fall_damage_multiplier", new bwk("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bwd.a.c));
-   public static final jq<bwd> l = a("flying_speed", new bwk("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
-   public static final jq<bwd> m = a("follow_range", new bwk("attribute.name.follow_range", 32.0, 0.0, 2048.0));
-   public static final jq<bwd> n = a("gravity", new bwk("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(bwd.a.b));
-   public static final jq<bwd> o = a("jump_strength", new bwk("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final jq<bwd> p = a("knockback_resistance", new bwk("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final jq<bwd> q = a("luck", new bwk("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final jq<bwd> r = a("max_absorption", new bwk("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final jq<bwd> s = a("max_health", new bwk("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final jq<bwd> t = a("mining_efficiency", new bwk("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
-   public static final jq<bwd> u = a("movement_efficiency", new bwk("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bwd> v = a("movement_speed", new bwk("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
-   public static final jq<bwd> w = a("oxygen_bonus", new bwk("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
-   public static final jq<bwd> x = a("safe_fall_distance", new bwk("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final jq<bwd> y = a("scale", new bwk("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(bwd.a.b));
-   public static final jq<bwd> z = a("sneaking_speed", new bwk("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
-   public static final jq<bwd> A = a("spawn_reinforcements", new bwk("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final jq<bwd> B = a("step_height", new bwk("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
-   public static final jq<bwd> C = a("submerged_mining_speed", new bwk("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
-   public static final jq<bwd> D = a("sweeping_damage_ratio", new bwk("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bwd> E = a("tempt_range", new bwk("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
-   public static final jq<bwd> F = a("water_movement_efficiency", new bwk("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private static jq<bwd> a(String $$0, bwd $$1) {
-      return kd.b(ly.s, ali.b($$0), $$1);
+public class bwi {
+   private static final String b = "base";
+   private static final String c = "modifiers";
+   public static final String a = "id";
+   private final jq<bwh> d;
+   private final Map<bwk.a, Map<all, bwk>> e = Maps.newEnumMap(bwk.a.class);
+   private final Map<all, bwk> f = new Object2ObjectArrayMap();
+   private final Map<all, bwk> g = new Object2ObjectArrayMap();
+   private double h;
+   private boolean i = true;
+   private double j;
+   private final Consumer<bwi> k;
+
+   public bwi(jq<bwh> $$0, Consumer<bwi> $$1) {
+      this.d = $$0;
+      this.k = $$1;
+      this.h = $$0.a().a();
    }
 
-   public static jq<bwd> a(kd<bwd> $$0) {
-      return s;
+   public jq<bwh> a() {
+      return this.d;
+   }
+
+   public double b() {
+      return this.h;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.h) {
+         this.h = $$0;
+         this.e();
+      }
+   }
+
+   @VisibleForTesting
+   Map<all, bwk> a(bwk.a $$0) {
+      return this.e.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
+   }
+
+   public Set<bwk> c() {
+      return ImmutableSet.copyOf(this.f.values());
+   }
+
+   public Set<bwk> d() {
+      return ImmutableSet.copyOf(this.g.values());
+   }
+
+   @Nullable
+   public bwk a(all $$0) {
+      return this.f.get($$0);
+   }
+
+   public boolean b(all $$0) {
+      return this.f.get($$0) != null;
+   }
+
+   private void f(bwk $$0) {
+      bwk $$1 = this.f.putIfAbsent($$0.b(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void a(bwk $$0) {
+      bwk $$1 = this.f.put($$0.b(), $$0);
+      if ($$0 != $$1) {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void b(bwk $$0) {
+      this.f($$0);
+   }
+
+   public void c(bwk $$0) {
+      this.c($$0.b());
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void d(bwk $$0) {
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void a(Collection<bwk> $$0) {
+      for (bwk $$1 : $$0) {
+         this.d($$1);
+      }
+   }
+
+   protected void e() {
+      this.i = true;
+      this.k.accept(this);
+   }
+
+   public void e(bwk $$0) {
+      this.c($$0.b());
+   }
+
+   public boolean c(all $$0) {
+      bwk $$1 = this.f.remove($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1.d()).remove($$0);
+         this.g.remove($$0);
+         this.e();
+         return true;
+      }
+   }
+
+   public void f() {
+      for (bwk $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double g() {
+      if (this.i) {
+         this.j = this.i();
+         this.i = false;
+      }
+
+      return this.j;
+   }
+
+   private double i() {
+      double $$0 = this.b();
+
+      for (bwk $$1 : this.b(bwk.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bwk $$3 : this.b(bwk.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bwk $$4 : this.b(bwk.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.d.a().a($$2);
+   }
+
+   private Collection<bwk> b(bwk.a $$0) {
+      return this.e.getOrDefault($$0, Map.of()).values();
+   }
+
+   public void a(bwi $$0) {
+      this.h = $$0.h;
+      this.f.clear();
+      this.f.putAll($$0.f);
+      this.g.clear();
+      this.g.putAll($$0.g);
+      this.e.clear();
+      $$0.e.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends all, ? extends bwk>)$$1));
+      this.e();
+   }
+
+   public un h() {
+      un $$0 = new un();
+      alk<bwh> $$1 = this.d.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("id", $$1.a().toString());
+      $$0.a("base", this.h);
+      if (!this.g.isEmpty()) {
+         ut $$2 = new ut();
+
+         for (bwk $$3 : this.g.values()) {
+            $$2.add($$3.a());
+         }
+
+         $$0.a("modifiers", $$2);
+      }
+
+      return $$0;
+   }
+
+   public void a(un $$0) {
+      this.h = $$0.k("base");
+      if ($$0.b("modifiers", 9)) {
+         ut $$1 = $$0.c("modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bwk $$3 = bwk.a($$1.a($$2));
+            if ($$3 != null) {
+               this.f.put($$3.b(), $$3);
+               this.a($$3.d()).put($$3.b(), $$3);
+               this.g.put($$3.b(), $$3);
+            }
+         }
+      }
+
+      this.e();
    }
 }

@@ -1,36 +1,75 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.util.UUID;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public record yd(int b, UUID c, UUID d) {
-   public static final Codec<yd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayt.l.fieldOf("index").forGetter(yd::b), kk.a.fieldOf("sender").forGetter(yd::c), kk.a.fieldOf("session_id").forGetter(yd::d))
-            .apply($$0, yd::new)
-   );
-
-   public static yd a(UUID $$0) {
-      return a($$0, ae.e);
+public record yd<S>(List<yd.a<S>> a) {
+   public static <S> boolean a(ParseResults<S> $$0) {
+      return !b($$0).a().isEmpty();
    }
 
-   public static yd a(UUID $$0, UUID $$1) {
-      return new yd(0, $$0, $$1);
+   public static <S> yd<S> b(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<yd.a<S>> $$4 = a($$1, $$2);
+
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
+      }
+
+      return new yd<>($$4);
    }
 
-   public void a(azw.a $$0) throws SignatureException {
-      $$0.update(kk.b(this.c));
-      $$0.update(kk.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
-   }
+   private static <S> List<yd.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<yd.a<S>> $$2 = new ArrayList<>();
 
-   public boolean a(yd $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof gd) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new yd.a<>($$4, $$6));
+               }
+            }
+         }
+      }
+
+      return $$2;
    }
 
    @Nullable
-   public yd a() {
-      return this.b == Integer.MAX_VALUE ? null : new yd(this.b + 1, this.c, this.d);
+   public yd.a<S> a(String $$0) {
+      for (yd.a<S> $$1 : this.a) {
+         if ($$0.equals($$1.a())) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
+      }
+
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
+      public String c() {
+         return this.b;
+      }
    }
 }

@@ -1,20 +1,17 @@
-public class hab {
-   public static final hac a = new hac();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public hab(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+public record hab(String b, String c, boolean d) {
+   public static final Codec<hab> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayw.A.fieldOf("region").forGetter(hab::b),
+               ayw.A.fieldOf("name").forGetter(hab::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(hab::d)
+            )
+            .apply($$0, hab::new)
+   );
 
-   public boolean a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+   public xl a() {
+      return xl.b(this.c + " (" + this.b + ")");
    }
 }

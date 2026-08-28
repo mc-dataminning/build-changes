@@ -11,22 +11,22 @@ public interface jq<T> {
 
    boolean b();
 
-   boolean a(ali var1);
+   boolean a(all var1);
 
-   boolean a(alh<T> var1);
+   boolean a(alk<T> var1);
 
-   boolean a(Predicate<alh<T>> var1);
+   boolean a(Predicate<alk<T>> var1);
 
-   boolean a(axq<T> var1);
+   boolean a(axt<T> var1);
 
    @Deprecated
    boolean a(jq<T> var1);
 
-   Stream<axq<T>> c();
+   Stream<axt<T>> c();
 
-   Either<alh<T>, T> d();
+   Either<alk<T>, T> d();
 
-   Optional<alh<T>> e();
+   Optional<alk<T>> e();
 
    jq.b f();
 
@@ -47,17 +47,17 @@ public interface jq<T> {
       }
 
       @Override
-      public boolean a(ali $$0) {
+      public boolean a(all $$0) {
          return false;
       }
 
       @Override
-      public boolean a(alh<T> $$0) {
+      public boolean a(alk<T> $$0) {
          return false;
       }
 
       @Override
-      public boolean a(axq<T> $$0) {
+      public boolean a(axt<T> $$0) {
          return false;
       }
 
@@ -67,17 +67,17 @@ public interface jq<T> {
       }
 
       @Override
-      public boolean a(Predicate<alh<T>> $$0) {
+      public boolean a(Predicate<alk<T>> $$0) {
          return false;
       }
 
       @Override
-      public Either<alh<T>, T> d() {
+      public Either<alk<T>, T> d() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<alh<T>> e() {
+      public Optional<alk<T>> e() {
          return Optional.empty();
       }
 
@@ -97,7 +97,7 @@ public interface jq<T> {
       }
 
       @Override
-      public Stream<axq<T>> c() {
+      public Stream<axt<T>> c() {
          return Stream.of();
       }
    }
@@ -110,21 +110,21 @@ public interface jq<T> {
    public static class c<T> implements jq<T> {
       private final jt<T> a;
       @Nullable
-      private Set<axq<T>> b;
+      private Set<axt<T>> b;
       private final jq.c.a c;
       @Nullable
-      private alh<T> d;
+      private alk<T> d;
       @Nullable
       private T e;
 
-      protected c(jq.c.a $$0, jt<T> $$1, @Nullable alh<T> $$2, @Nullable T $$3) {
+      protected c(jq.c.a $$0, jt<T> $$1, @Nullable alk<T> $$2, @Nullable T $$3) {
          this.a = $$1;
          this.c = $$0;
          this.d = $$2;
          this.e = $$3;
       }
 
-      public static <T> jq.c<T> a(jt<T> $$0, alh<T> $$1) {
+      public static <T> jq.c<T> a(jt<T> $$0, alk<T> $$1) {
          return new jq.c<>(jq.c.a.a, $$0, $$1, null);
       }
 
@@ -133,7 +133,7 @@ public interface jq<T> {
          return new jq.c<>(jq.c.a.b, $$0, null, $$1);
       }
 
-      public alh<T> h() {
+      public alk<T> h() {
          if (this.d == null) {
             throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
          } else {
@@ -151,16 +151,16 @@ public interface jq<T> {
       }
 
       @Override
-      public boolean a(ali $$0) {
+      public boolean a(all $$0) {
          return this.h().a().equals($$0);
       }
 
       @Override
-      public boolean a(alh<T> $$0) {
+      public boolean a(alk<T> $$0) {
          return this.h() == $$0;
       }
 
-      private Set<axq<T>> i() {
+      private Set<axt<T>> i() {
          if (this.b == null) {
             throw new IllegalStateException("Tags not bound");
          } else {
@@ -169,7 +169,7 @@ public interface jq<T> {
       }
 
       @Override
-      public boolean a(axq<T> $$0) {
+      public boolean a(axt<T> $$0) {
          return this.i().contains($$0);
       }
 
@@ -179,7 +179,7 @@ public interface jq<T> {
       }
 
       @Override
-      public boolean a(Predicate<alh<T>> $$0) {
+      public boolean a(Predicate<alk<T>> $$0) {
          return $$0.test(this.h());
       }
 
@@ -189,12 +189,12 @@ public interface jq<T> {
       }
 
       @Override
-      public Either<alh<T>, T> d() {
+      public Either<alk<T>, T> d() {
          return Either.left(this.h());
       }
 
       @Override
-      public Optional<alh<T>> e() {
+      public Optional<alk<T>> e() {
          return Optional.of(this.h());
       }
 
@@ -208,7 +208,7 @@ public interface jq<T> {
          return this.d != null && this.e != null;
       }
 
-      void b(alh<T> $$0) {
+      void b(alk<T> $$0) {
          if (this.d != null && $$0 != this.d) {
             throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
          } else {
@@ -224,12 +224,12 @@ public interface jq<T> {
          }
       }
 
-      void a(Collection<axq<T>> $$0) {
+      void a(Collection<axt<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<axq<T>> c() {
+      public Stream<axt<T>> c() {
          return this.i().stream();
       }
 

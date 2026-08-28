@@ -1,25 +1,25 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public interface dem extends des, dfe, dfg {
-   @Override
-   default <T extends dsm> Optional<T> a(jh $$0, dso<T> $$1) {
-      return dfe.super.a($$0, $$1);
+public class dem {
+   private final ezr a;
+   private final ezr b;
+   private final Predicate<dvo> c;
+
+   public dem(ezr $$0, ezr $$1, Predicate<dvo> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   default List<fah> c(@Nullable bue $$0, ezi $$1) {
-      return des.super.c($$0, $$1);
+   public ezr a() {
+      return this.b;
    }
 
-   @Override
-   default boolean a(@Nullable bue $$0, fah $$1) {
-      return des.super.a($$0, $$1);
+   public ezr b() {
+      return this.a;
    }
 
-   @Override
-   default jh a(ebf.a $$0, jh $$1) {
-      return dfe.super.a($$0, $$1);
+   public Predicate<dvo> c() {
+      return this.c;
    }
 }

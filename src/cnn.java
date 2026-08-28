@@ -1,44 +1,24 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public enum cnn {
-   a(0, awl.BL, awl.BT),
-   b(40, awl.BK, awl.BU),
-   c(80, awl.BM, awl.BU);
-
-   private static final cnn[] d = ae.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final awk f;
-   private final awk g;
-
-   private cnn(final int $$0, final awk $$1, final awk $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public awk b() {
-      return this.f;
-   }
-
-   public awk c() {
-      return this.g;
-   }
-
-   public static cnn a(int $$0) {
-      for (cnn $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+public class cnn<E extends cnf> {
+   public static bwy<bve> a(int $$0) {
+      return cak.a(
+         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$1 -> $$1.group($$1.b(cei.ad), $$1.a(cei.L))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.fd().f()) {
+                        return false;
+                     } else {
+                        Optional<ckz> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
+                        } else {
+                           $$2.b();
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 }

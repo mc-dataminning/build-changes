@@ -1,78 +1,9 @@
-public interface ddf {
-   alh<dda> a = ddg.a("trades/desert_armorer_boots_4");
-   alh<dda> b = ddg.a("trades/desert_armorer_leggings_4");
-   alh<dda> c = ddg.a("trades/desert_armorer_chestplate_4");
-   alh<dda> d = ddg.a("trades/desert_armorer_helmet_4");
-   alh<dda> e = ddg.a("trades/desert_armorer_leggings_5");
-   alh<dda> f = ddg.a("trades/desert_armorer_chestplate_5");
-   alh<dda> g = ddg.a("trades/plains_armorer_boots_4");
-   alh<dda> h = ddg.a("trades/plains_armorer_leggings_4");
-   alh<dda> i = ddg.a("trades/plains_armorer_chestplate_4");
-   alh<dda> j = ddg.a("trades/plains_armorer_helmet_4");
-   alh<dda> k = ddg.a("trades/plains_armorer_boots_5");
-   alh<dda> l = ddg.a("trades/plains_armorer_leggings_5");
-   alh<dda> m = ddg.a("trades/savanna_armorer_boots_4");
-   alh<dda> n = ddg.a("trades/savanna_armorer_leggings_4");
-   alh<dda> o = ddg.a("trades/savanna_armorer_chestplate_4");
-   alh<dda> p = ddg.a("trades/savanna_armorer_helmet_4");
-   alh<dda> q = ddg.a("trades/savanna_armorer_chestplate_5");
-   alh<dda> r = ddg.a("trades/savanna_armorer_helmet_5");
-   alh<dda> s = ddg.a("trades/snow_armorer_boots_4");
-   alh<dda> t = ddg.a("trades/snow_armorer_helmet_4");
-   alh<dda> u = ddg.a("trades/snow_armorer_boots_5");
-   alh<dda> v = ddg.a("trades/snow_armorer_helmet_5");
-   alh<dda> w = ddg.a("trades/jungle_armorer_boots_4");
-   alh<dda> x = ddg.a("trades/jungle_armorer_leggings_4");
-   alh<dda> y = ddg.a("trades/jungle_armorer_chestplate_4");
-   alh<dda> z = ddg.a("trades/jungle_armorer_helmet_4");
-   alh<dda> A = ddg.a("trades/jungle_armorer_boots_5");
-   alh<dda> B = ddg.a("trades/jungle_armorer_helmet_5");
-   alh<dda> C = ddg.a("trades/swamp_armorer_boots_4");
-   alh<dda> D = ddg.a("trades/swamp_armorer_leggings_4");
-   alh<dda> E = ddg.a("trades/swamp_armorer_chestplate_4");
-   alh<dda> F = ddg.a("trades/swamp_armorer_helmet_4");
-   alh<dda> G = ddg.a("trades/swamp_armorer_boots_5");
-   alh<dda> H = ddg.a("trades/swamp_armorer_helmet_5");
-   alh<dda> I = ddg.a("trades/taiga_armorer_leggings_5");
-   alh<dda> J = ddg.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
 
-   static void a(qy<dda> $$0) {
-      jr<dbs> $$1 = $$0.a(lz.aM);
-      $$0.a(a, new dde($$1.b(dbx.h), brf.a(1)));
-      $$0.a(b, new dde($$1.b(dbx.h), brf.a(1)));
-      $$0.a(c, new dde($$1.b(dbx.h), brf.a(1)));
-      $$0.a(d, new dde($$1.b(dbx.h), brf.a(1)));
-      $$0.a(e, new dde($$1.b(dbx.h), brf.a(1)));
-      $$0.a(f, new dde($$1.b(dbx.h), brf.a(1)));
-      $$0.a(g, new dde($$1.b(dbx.a), brf.a(1)));
-      $$0.a(h, new dde($$1.b(dbx.a), brf.a(1)));
-      $$0.a(i, new dde($$1.b(dbx.a), brf.a(1)));
-      $$0.a(j, new dde($$1.b(dbx.a), brf.a(1)));
-      $$0.a(k, new dde($$1.b(dbx.a), brf.a(1)));
-      $$0.a(l, new dde($$1.b(dbx.a), brf.a(1)));
-      $$0.a(m, new dde($$1.b(dbx.k), brf.a(1)));
-      $$0.a(n, new dde($$1.b(dbx.k), brf.a(1)));
-      $$0.a(o, new dde($$1.b(dbx.k), brf.a(1)));
-      $$0.a(p, new dde($$1.b(dbx.k), brf.a(1)));
-      $$0.a(q, new dde($$1.b(dbx.k), brf.a(1)));
-      $$0.a(r, new dde($$1.b(dbx.k), brf.a(1)));
-      $$0.a(s, new dde($$1.b(dbx.j), brf.a(1)));
-      $$0.a(t, new dde($$1.b(dbx.g), brf.a(1)));
-      $$0.a(u, new dde($$1.b(dbx.j), brf.a(1)));
-      $$0.a(v, new dde($$1.b(dbx.g), brf.a(1)));
-      $$0.a(w, new dde($$1.b(dbx.w), brf.a(1)));
-      $$0.a(x, new dde($$1.b(dbx.w), brf.a(1)));
-      $$0.a(y, new dde($$1.b(dbx.w), brf.a(1)));
-      $$0.a(z, new dde($$1.b(dbx.w), brf.a(1)));
-      $$0.a(A, new dde($$1.b(dbx.c), brf.a(1)));
-      $$0.a(B, new dde($$1.b(dbx.e), brf.a(1)));
-      $$0.a(C, new dde($$1.b(dbx.O), brf.a(1)));
-      $$0.a(D, new dde($$1.b(dbx.O), brf.a(1)));
-      $$0.a(E, new dde($$1.b(dbx.O), brf.a(1)));
-      $$0.a(F, new dde($$1.b(dbx.O), brf.a(1)));
-      $$0.a(G, new dde($$1.b(dbx.i), brf.a(1)));
-      $$0.a(H, new dde($$1.b(dbx.f), brf.a(1)));
-      $$0.a(I, new dde($$1.b(dbx.d), brf.a(1)));
-      $$0.a(J, new dde($$1.b(dbx.d), brf.a(1)));
+public interface ddf {
+   static MapCodec<? extends dde> a(kd<MapCodec<? extends dde>> $$0) {
+      kd.a($$0, "by_cost", ddg.b);
+      kd.a($$0, "by_cost_with_difficulty", ddh.c);
+      return kd.a($$0, "single", ddi.b);
    }
 }

@@ -1,25 +1,25 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class enr extends elx {
-   public static final MapCodec<enr> d = a(enr::new);
+record enr(bqp<List<enn>> c) implements enn {
+   static MapCodec<enr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bqp.b(Codec.list(enn.b)).fieldOf("groups").forGetter(enr::c)).apply($$0, enr::new));
 
-   public enr(elx.c $$0) {
-      super($$0);
+   @Override
+   public void a(azv $$0, BiConsumer<alk<enl>, alk<enl>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   public Optional<elx.b> a(elx.a $$0) {
-      return a($$0, ebf.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(emp $$0, elx.a $$1) {
-      jh $$2 = new jh($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new enq.a($$2));
+   public Stream<alk<enl>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(enn::a);
    }
 
    @Override
-   public emg<?> e() {
-      return emg.a;
+   public MapCodec<enr> b() {
+      return a;
    }
 }

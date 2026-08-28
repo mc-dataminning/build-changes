@@ -1,17 +1,27 @@
-public class gte extends gsx<gvy, fzp> {
-   public static final ali a = ali.b("textures/entity/trident_riptide.png");
-   private final gam b;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gte(gqg<gvy, fzp> $$0, gbi $$1) {
+public class gte extends gtn<gvw, fzp> {
+   private static final Map<buf.a, all> a = ImmutableMap.of(
+      buf.a.b,
+      all.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      buf.a.c,
+      all.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      buf.a.d,
+      all.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gte(gqw<gvw, fzp> $$0) {
       super($$0);
-      this.b = new gam($$1.a(gbl.bR));
    }
 
-   public void a(feb $$0, gih $$1, int $$2, gvy $$3, float $$4, float $$5) {
-      if ($$3.ag) {
-         fef $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, gxu.d);
+   public void a(fek $$0, gix $$1, int $$2, gvw $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         buf.a $$6 = $$3.c;
+         if ($$6 != buf.a.a) {
+            all $$7 = a.get($$6);
+            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
+         }
       }
    }
 }

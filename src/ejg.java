@@ -1,60 +1,75 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class ejg extends ejh {
-   public static final MapCodec<ejg> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ejg::new, $$0 -> $$0.b);
-   private final float b;
+public class ejg extends ejl {
+   public static final MapCodec<ejg> a = eiu.a.fieldOf("provider").xmap(ejg::new, $$0 -> $$0.b);
+   private final eiu b;
 
-   @Override
-   protected eji<?> a() {
-      return eji.b;
-   }
-
-   public ejg(float $$0) {
+   public ejg(eiu $$0) {
       this.b = $$0;
    }
 
    @Override
-   public void a(ejh.a $$0) {
-      azs $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, dra.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, dra.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, dra.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, dra.c, $$0);
-            }
-         }
-      });
+   protected ejm<?> a() {
+      return ejm.e;
    }
 
-   private static void a(jh $$0, dwa $$1, ejh.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+   @Override
+   public void a(ejl.a $$0) {
+      List<jh> $$1 = Lists.newArrayList();
+      List<jh> $$2 = $$0.e();
+      List<jh> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
 
-      for (jh var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.h().f());
+            this.a($$0, $$1x.g(2).f());
+            this.a($$0, $$1x.h().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
+            }
+         });
+      }
+   }
+
+   private void a(ejl.a $$0, jh $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(ejl.a $$0, jh $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         jh $$3 = $$1.b($$2);
+         if (eep.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
    }
 }

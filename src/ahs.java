@@ -1,45 +1,30 @@
-public class ahs implements zp<agv> {
-   public static final zg<wf, ahs> a = zp.a(ahs::a, ahs::new);
-   private final jh b;
-   private final int c;
-   private final boolean d;
+import java.util.List;
+import java.util.Optional;
 
-   public ahs(jh $$0, int $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record ahs(int b, List<String> c, Optional<String> d) implements zs<agy> {
+   public static final zj<wi, ahs> a = zj.a(zh.h, ahs::b, zh.b(1024).a(zh.c(100)), ahs::e, zh.b(32).a(zh::a), ahs::f, ahs::new);
 
-   private ahs(wf $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   public ahs(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public zr<ahs> a() {
-      return agt.bC;
+   public zu<ahs> a() {
+      return agw.bz;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
-   }
-
-   public int e() {
+   public List<String> e() {
       return this.c;
    }
 
-   public boolean f() {
+   public Optional<String> f() {
       return this.d;
    }
 }

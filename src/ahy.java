@@ -1,45 +1,61 @@
-public class ahy implements zp<agv> {
-   public static final zg<wf, ahy> a = zp.a(ahy::a, ahy::new);
-   private final int b;
-   private final ali c;
-   private final boolean d;
+public class ahy implements zs<agy> {
+   public static final zj<wi, ahy> a = zs.a(ahy::a, ahy::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public ahy(int $$0, dar<?> $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
+   public ahy(bui $$0) {
+      this.b = $$0.dD();
+      this.c = $$0.dF();
+      this.d = $$0.dJ();
+      this.e = $$0.dO();
+      this.f = $$0.dQ();
    }
 
-   private ahy(wf $$0) {
-      this.b = $$0.x();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
+   private ahy(wi $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(wf $$0) {
-      $$0.f(this.b);
+   private void a(wi $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zr<ahy> a() {
-      return agt.bL;
+   public zu<ahy> a() {
+      return agw.bI;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public ali e() {
+   public double e() {
       return this.c;
    }
 
-   public boolean f() {
+   public double f() {
       return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

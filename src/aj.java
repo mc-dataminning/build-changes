@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 public class aj implements Comparable<aj> {
    private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   private static final Codec<Instant> c = ayt.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Instant> c = ayw.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
    private static final Codec<Map<String, aq>> d = Codec.unboundedMap(Codec.STRING, c)
       .xmap(
          $$0 -> $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0x -> new aq((Instant)$$0x.getValue()))),
@@ -92,12 +92,12 @@ public class aj implements Comparable<aj> {
       return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public void a(wf $$0) {
-      $$0.a(this.e, wf::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(wi $$0) {
+      $$0.a(this.e, wi::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static aj b(wf $$0) {
-      Map<String, aq> $$1 = $$0.a(wf::p, aq::b);
+   public static aj b(wi $$0) {
+      Map<String, aq> $$1 = $$0.a(wi::p, aq::b);
       return new aj($$1);
    }
 
@@ -122,7 +122,7 @@ public class aj implements Comparable<aj> {
    }
 
    @Nullable
-   public xi d() {
+   public xl d() {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -131,7 +131,7 @@ public class aj implements Comparable<aj> {
             return null;
          } else {
             int $$1 = this.h();
-            return xi.a("advancements.progress", $$1, $$0);
+            return xl.a("advancements.progress", $$1, $$0);
          }
       }
    }

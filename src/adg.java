@@ -1,20 +1,33 @@
-public record adg(xu.a b) implements zp<ace> {
-   public static final zg<wf, adg> a = zp.a(adg::a, adg::new);
+import java.util.List;
 
-   private adg(wf $$0) {
-      this(xu.a.a($$0));
+public record adg(adg.a b, List<String> c) implements zs<ach> {
+   public static final zj<wi, adg> a = zs.a(adg::a, adg::new);
+
+   private adg(wi $$0) {
+      this($$0.b(adg.a.class), $$0.a(wi::p));
    }
 
-   private void a(wf $$0) {
-      xu.a.a($$0, this.b);
+   private void a(wi $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wi::a);
    }
 
    @Override
-   public zr<adg> a() {
-      return agt.B;
+   public zu<adg> a() {
+      return agw.y;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
+   }
+
+   public List<String> e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

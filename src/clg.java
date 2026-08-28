@@ -1,61 +1,44 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class clg extends cln {
-   public static final float b = bul.D.l() / bul.Y.l();
-   private static final int e = 1200;
-   private static final int bY = 50;
-   private static final int bZ = 6000;
-   private static final int ca = 2;
-   private static final int cb = 1200;
-
-   public clg(bul<? extends clg> $$0, dfb $$1) {
+public class clg extends cmg {
+   public clg(bup<? extends clg> $$0, dff $$1) {
       super($$0, $$1);
-      this.ga();
-      if (this.d != null) {
-         this.d.c(400);
+   }
+
+   public static bwl.a q() {
+      return cmg.t().a(bwm.s, 12.0);
+   }
+
+   @Override
+   public boolean E(bui $$0) {
+      if (super.E($$0)) {
+         if ($$0 instanceof bve) {
+            int $$1 = 0;
+            if (this.dY().ak() == bse.c) {
+               $$1 = 7;
+            } else if (this.dY().ak() == bse.d) {
+               $$1 = 15;
+            }
+
+            if ($$1 > 0) {
+               ((bve)$$0).b(new btn(btp.s, $$1 * 20, 0), this);
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static bwh.a q() {
-      return cln.gu().a(bwi.v, 0.3F).a(bwi.c, 8.0).a(bwi.s, 80.0);
+   @Nullable
+   @Override
+   public bvx a(dfw $$0, bsf $$1, buo $$2, @Nullable bvx $$3) {
+      return $$3;
    }
 
    @Override
-   public int t() {
-      return 60;
-   }
-
-   @Override
-   protected awk w() {
-      return this.bn() ? awl.hP : awl.hQ;
-   }
-
-   @Override
-   protected awk d(bsu $$0) {
-      return this.bn() ? awl.hV : awl.hW;
-   }
-
-   @Override
-   protected awk o_() {
-      return this.bn() ? awl.hS : awl.hT;
-   }
-
-   @Override
-   protected awk y() {
-      return awl.hU;
-   }
-
-   @Override
-   protected void ac() {
-      super.ac();
-      if ((this.ag + this.as()) % 1200 == 0) {
-         btj $$0 = new btj(btl.d, 6000, 2);
-         List<aro> $$1 = btk.a((arn)this.dX(), this, this.dv(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.g.b(new adl(adl.l, this.bc() ? 0.0F : 1.0F)));
-      }
-
-      if (!this.gg()) {
-         this.a(this.dx(), 16);
-      }
+   public ezr l(bui $$0) {
+      return $$0.dt() <= this.dt() ? new ezr(0.0, 0.21875 * (double)this.em(), 0.0) : super.l($$0);
    }
 }

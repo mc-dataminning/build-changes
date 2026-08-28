@@ -1,44 +1,34 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bxy extends bwt<cny> {
-   private final float c;
+public class bxy extends bwx<bvg> {
+   public static final int c = 100;
+   private final brs d;
+   private final awn e;
 
-   public bxy(float $$0) {
-      super(ImmutableMap.of(cee.m, cef.c, cee.n, cef.c), Integer.MAX_VALUE);
-      this.c = $$0;
+   public bxy(brs $$0, awn $$1) {
+      super(ImmutableMap.of(cei.n, cej.c, cei.T, cej.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   protected boolean a(arn $$0, cny $$1) {
-      com $$2 = $$1.gu();
-      return $$1.bM() && $$2 != null && !$$1.bk() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cd != null;
+   protected boolean a(arq $$0, bvg $$1, long $$2) {
+      return !$$1.aL();
    }
 
-   protected boolean a(arn $$0, cny $$1, long $$2) {
-      return this.a($$0, $$1);
+   protected void b(arq $$0, bvg $$1, long $$2) {
+      $$1.r(true);
+      $$1.b(bvq.g);
    }
 
-   protected void b(arn $$0, cny $$1, long $$2) {
-      this.a($$1);
-   }
+   protected void c(arq $$0, bvg $$1, long $$2) {
+      if ($$1.aL()) {
+         $$1.h($$1.dB().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, awp.g, 2.0F, 1.0F);
+      }
 
-   protected void c(arn $$0, cny $$1, long $$2) {
-      bwc<?> $$3 = $$1.ed();
-      $$3.b(cee.m);
-      $$3.b(cee.n);
-   }
-
-   protected void d(arn $$0, cny $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cny $$0) {
-      bwc<?> $$1 = $$0.ed();
-      $$1.a(cee.m, new ceh(new bxe($$0.gu(), false), this.c, 2));
-      $$1.a(cee.n, new bxe($$0.gu(), true));
+      $$1.r(false);
+      $$1.b(bvq.a);
+      $$1.ee().b(cei.T);
+      $$1.ee().a(cei.S, this.d.a($$0.A));
    }
 }

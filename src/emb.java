@@ -1,441 +1,232 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class emb {
-   private static final Logger a = LogUtils.getLogger();
-   protected static final dvj e = dig.nc.m();
-   protected elp f;
-   @Nullable
-   private jm b;
-   private dna c;
-   private dor d;
-   protected int g;
-   private final emo h;
-   private static final Set<die> i = ImmutableSet.builder()
-      .add(dig.fo)
-      .add(dig.cp)
-      .add(dig.cq)
-      .add(dig.dU)
-      .add(dig.kd)
-      .add(dig.ki)
-      .add(dig.kg)
-      .add(dig.ke)
-      .add(dig.kf)
-      .add(dig.cO)
-      .add(dig.eW)
-      .build();
+   public static final Codec<emb> a = lz.R.q().dispatch(emb::e, emk::codec);
+   public static final Codec<jq<emb>> b = alh.a(ma.aS, a);
+   protected final emb.c c;
 
-   protected emb(emo $$0, int $$1, elp $$2) {
-      this.h = $$0;
-      this.g = $$1;
-      this.f = $$2;
+   public static <S extends emb> RecordCodecBuilder<S, emb.c> a(Instance<S> $$0) {
+      return emb.c.a.forGetter($$0x -> $$0x.c);
    }
 
-   public emb(emo $$0, uk $$1) {
-      this($$0, $$1.h("GD"), (elp)elp.a.parse(uy.a, $$1.c("BB")).getOrThrow($$0x -> new IllegalArgumentException("Invalid boundingbox: " + $$0x)));
-      int $$2 = $$1.h("O");
-      this.a($$2 == -1 ? null : jm.b($$2));
+   public static <S extends emb> MapCodec<S> a(Function<emb.c, S> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
    }
 
-   protected static elp a(int $$0, int $$1, int $$2, jm $$3, int $$4, int $$5, int $$6) {
-      return $$3.o() == jm.a.c
-         ? new elp($$0, $$1, $$2, $$0 + $$4 - 1, $$1 + $$5 - 1, $$2 + $$6 - 1)
-         : new elp($$0, $$1, $$2, $$0 + $$6 - 1, $$1 + $$5 - 1, $$2 + $$4 - 1);
+   protected emb(emb.c $$0) {
+      this.c = $$0;
    }
 
-   protected static jm a(azs $$0) {
-      return jm.c.a.a($$0);
+   public ju<dgh> a() {
+      return this.c.b;
    }
 
-   public final uk a(emn $$0) {
-      uk $$1 = new uk();
-      $$1.a("id", ly.Q.b(this.k()).toString());
-      elp.a.encodeStart(uy.a, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$1.a("BB", $$1x));
-      jm $$2 = this.i();
-      $$1.a("O", $$2 == null ? -1 : $$2.e());
-      $$1.a("GD", this.g);
-      this.a($$0, $$1);
-      return $$1;
+   public Map<bvh, emi> b() {
+      return this.c.c;
    }
 
-   protected abstract void a(emn var1, uk var2);
-
-   public void a(emb $$0, emc $$1, azs $$2) {
+   public ebf.a c() {
+      return this.c.d;
    }
 
-   public abstract void a(dfy var1, dfw var2, dxg var3, azs var4, elp var5, deh var6, jh var7);
-
-   public elp f() {
-      return this.f;
+   public emm d() {
+      return this.c.e;
    }
 
-   public int g() {
-      return this.g;
+   public elt a(elt $$0) {
+      return this.d() != emm.a ? $$0.a(12) : $$0;
    }
 
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public boolean a(deh $$0, int $$1) {
-      int $$2 = $$0.d();
-      int $$3 = $$0.e();
-      return this.f.a($$2 - $$1, $$3 - $$1, $$2 + 15 + $$1, $$3 + 15 + $$1);
-   }
-
-   public jh h() {
-      return new jh(this.f.g());
-   }
-
-   protected jh.a b(int $$0, int $$1, int $$2) {
-      return new jh.a(this.a($$0, $$2), this.b($$1), this.b($$0, $$2));
-   }
-
-   protected int a(int $$0, int $$1) {
-      jm $$2 = this.i();
-      if ($$2 == null) {
-         return $$0;
-      } else {
-         switch ($$2) {
-            case c:
-            case d:
-               return this.f.h() + $$0;
-            case e:
-               return this.f.k() - $$1;
-            case f:
-               return this.f.h() + $$1;
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   protected int b(int $$0) {
-      return this.i() == null ? $$0 : $$0 + this.f.i();
-   }
-
-   protected int b(int $$0, int $$1) {
-      jm $$2 = this.i();
-      if ($$2 == null) {
-         return $$1;
-      } else {
-         switch ($$2) {
-            case c:
-               return this.f.m() - $$1;
-            case d:
-               return this.f.j() + $$1;
-            case e:
-            case f:
-               return this.f.j() + $$0;
-            default:
-               return $$1;
-         }
-      }
-   }
-
-   protected void a(dfy $$0, dvj $$1, int $$2, int $$3, int $$4, elp $$5) {
-      jh $$6 = this.b($$2, $$3, $$4);
-      if ($$5.b($$6)) {
-         if (this.a((dfe)$$0, $$2, $$3, $$4, $$5)) {
-            if (this.c != dna.a) {
-               $$1 = $$1.a(this.c);
-            }
-
-            if (this.d != dor.a) {
-               $$1 = $$1.a(this.d);
-            }
-
-            $$0.a($$6, $$1, 2);
-            erk $$7 = $$0.b_($$6);
-            if (!$$7.c()) {
-               $$0.a($$6, $$7.a(), 0);
-            }
-
-            if (i.contains($$1.b())) {
-               $$0.y($$6).e($$6);
-            }
-         }
-      }
-   }
-
-   protected boolean a(dfe $$0, int $$1, int $$2, int $$3, elp $$4) {
-      return true;
-   }
-
-   protected dvj a(deg $$0, int $$1, int $$2, int $$3, elp $$4) {
-      jh $$5 = this.b($$1, $$2, $$3);
-      return !$$4.b($$5) ? dig.a.m() : $$0.a_($$5);
-   }
-
-   protected boolean b(dfe $$0, int $$1, int $$2, int $$3, elp $$4) {
-      jh $$5 = this.b($$1, $$2 + 1, $$3);
-      return !$$4.b($$5) ? false : $$5.v() < $$0.a(ebf.a.c, $$5.u(), $$5.w());
-   }
-
-   protected void a(dfy $$0, elp $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      for (int $$8 = $$3; $$8 <= $$6; $$8++) {
-         for (int $$9 = $$2; $$9 <= $$5; $$9++) {
-            for (int $$10 = $$4; $$10 <= $$7; $$10++) {
-               this.a($$0, dig.a.m(), $$9, $$8, $$10, $$1);
-            }
-         }
-      }
-   }
-
-   protected void a(dfy $$0, elp $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dvj $$8, dvj $$9, boolean $$10) {
-      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
-         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
-            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
-               if (!$$10 || !this.a((deg)$$0, $$12, $$11, $$13, $$1).l()) {
-                  if ($$11 != $$3 && $$11 != $$6 && $$12 != $$2 && $$12 != $$5 && $$13 != $$4 && $$13 != $$7) {
-                     this.a($$0, $$9, $$12, $$11, $$13, $$1);
-                  } else {
-                     this.a($$0, $$8, $$12, $$11, $$13, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(dfy $$0, elp $$1, elp $$2, dvj $$3, dvj $$4, boolean $$5) {
-      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
-   }
-
-   protected void a(dfy $$0, elp $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, azs $$9, emb.a $$10) {
-      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
-         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
-            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
-               if (!$$8 || !this.a((deg)$$0, $$12, $$11, $$13, $$1).l()) {
-                  $$10.a($$9, $$12, $$11, $$13, $$11 == $$3 || $$11 == $$6 || $$12 == $$2 || $$12 == $$5 || $$13 == $$4 || $$13 == $$7);
-                  this.a($$0, $$10.a(), $$12, $$11, $$13, $$1);
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(dfy $$0, elp $$1, elp $$2, boolean $$3, azs $$4, emb.a $$5) {
-      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
-   }
-
-   protected void a(dfy $$0, elp $$1, azs $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, dvj $$10, dvj $$11, boolean $$12, boolean $$13) {
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$4; $$15 <= $$7; $$15++) {
-            for (int $$16 = $$6; $$16 <= $$9; $$16++) {
-               if (!($$2.i() > $$3) && (!$$12 || !this.a((deg)$$0, $$15, $$14, $$16, $$1).l()) && (!$$13 || this.b($$0, $$15, $$14, $$16, $$1))) {
-                  if ($$14 != $$5 && $$14 != $$8 && $$15 != $$4 && $$15 != $$7 && $$16 != $$6 && $$16 != $$9) {
-                     this.a($$0, $$11, $$15, $$14, $$16, $$1);
-                  } else {
-                     this.a($$0, $$10, $$15, $$14, $$16, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(dfy $$0, elp $$1, azs $$2, float $$3, int $$4, int $$5, int $$6, dvj $$7) {
-      if ($$2.i() < $$3) {
-         this.a($$0, $$7, $$4, $$5, $$6, $$1);
-      }
-   }
-
-   protected void a(dfy $$0, elp $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dvj $$8, boolean $$9) {
-      float $$10 = (float)($$5 - $$2 + 1);
-      float $$11 = (float)($$6 - $$3 + 1);
-      float $$12 = (float)($$7 - $$4 + 1);
-      float $$13 = (float)$$2 + $$10 / 2.0F;
-      float $$14 = (float)$$4 + $$12 / 2.0F;
-
-      for (int $$15 = $$3; $$15 <= $$6; $$15++) {
-         float $$16 = (float)($$15 - $$3) / $$11;
-
-         for (int $$17 = $$2; $$17 <= $$5; $$17++) {
-            float $$18 = ((float)$$17 - $$13) / ($$10 * 0.5F);
-
-            for (int $$19 = $$4; $$19 <= $$7; $$19++) {
-               float $$20 = ((float)$$19 - $$14) / ($$12 * 0.5F);
-               if (!$$9 || !this.a((deg)$$0, $$17, $$15, $$19, $$1).l()) {
-                  float $$21 = $$18 * $$18 + $$16 * $$16 + $$20 * $$20;
-                  if ($$21 <= 1.05F) {
-                     this.a($$0, $$8, $$17, $$15, $$19, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void b(dfy $$0, dvj $$1, int $$2, int $$3, int $$4, elp $$5) {
-      jh.a $$6 = this.b($$2, $$3, $$4);
-      if ($$5.b($$6)) {
-         while (this.a($$0.a_($$6)) && $$6.v() > $$0.I_() + 1) {
-            $$0.a($$6, $$1, 2);
-            $$6.c(jm.a);
-         }
-      }
-   }
-
-   protected boolean a(dvj $$0) {
-      return $$0.l() || $$0.n() || $$0.a(dig.fg) || $$0.a(dig.bw) || $$0.a(dig.bx);
-   }
-
-   protected boolean a(dfy $$0, elp $$1, azs $$2, int $$3, int $$4, int $$5, alh<euh> $$6) {
-      return this.a($$0, $$1, $$2, this.b($$3, $$4, $$5), $$6, null);
-   }
-
-   public static dvj a(deg $$0, jh $$1, dvj $$2) {
-      jm $$3 = null;
-
-      for (jm $$4 : jm.c.a) {
-         jh $$5 = $$1.a($$4);
-         dvj $$6 = $$0.a_($$5);
-         if ($$6.a(dig.cv)) {
-            return $$2;
-         }
-
-         if ($$6.s()) {
-            if ($$3 != null) {
-               $$3 = null;
-               break;
-            }
-
-            $$3 = $$4;
+   public emj a(ke $$0, dxk $$1, dgl $$2, ebx $$3, eqe $$4, long $$5, del $$6, int $$7, dfh $$8, Predicate<jq<dgh>> $$9) {
+      emb.a $$10 = new emb.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
+      Optional<emb.b> $$11 = this.b($$10);
+      if ($$11.isPresent()) {
+         emt $$12 = $$11.get().a();
+         emj $$13 = new emj(this, $$6, $$7, $$12.a());
+         if ($$13.b()) {
+            return $$13;
          }
       }
 
-      if ($$3 != null) {
-         return $$2.b(dlz.aF, $$3.g());
-      } else {
-         jm $$7 = $$2.c(dlz.aF);
-         jh $$8 = $$1.a($$7);
-         if ($$0.a_($$8).s()) {
-            $$7 = $$7.g();
-            $$8 = $$1.a($$7);
-         }
+      return emj.b;
+   }
 
-         if ($$0.a_($$8).s()) {
-            $$7 = $$7.h();
-            $$8 = $$1.a($$7);
-         }
+   protected static Optional<emb.b> a(emb.a $$0, ebj.a $$1, Consumer<emt> $$2) {
+      del $$3 = $$0.h();
+      int $$4 = $$3.b();
+      int $$5 = $$3.c();
+      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
+      return Optional.of(new emb.b(new jh($$4, $$6, $$5), $$2));
+   }
 
-         if ($$0.a_($$8).s()) {
-            $$7 = $$7.g();
-            $$8 = $$1.a($$7);
-         }
+   private static boolean a(emb.b $$0, emb.a $$1) {
+      jh $$2 = $$0.b();
+      return $$1.j.test($$1.b.d().getNoiseBiome(kb.a($$2.u()), kb.a($$2.v()), kb.a($$2.w()), $$1.d.b()));
+   }
 
-         return $$2.b(dlz.aF, $$7);
+   public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, emq $$6) {
+   }
+
+   private static int[] c(emb.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      dxk $$5 = $$0.b();
+      dfh $$6 = $$0.i();
+      ebx $$7 = $$0.d();
+      return new int[]{
+         $$5.c($$1, $$3, ebj.a.a, $$6, $$7),
+         $$5.c($$1, $$3 + $$4, ebj.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3, ebj.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3 + $$4, ebj.a.a, $$6, $$7)
+      };
+   }
+
+   public static int a(emb.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
+      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
+   }
+
+   protected static int a(emb.a $$0, int $$1, int $$2) {
+      del $$3 = $$0.h();
+      int $$4 = $$3.d();
+      int $$5 = $$3.e();
+      return b($$0, $$4, $$5, $$1, $$2);
+   }
+
+   protected static int b(emb.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
+      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
+   }
+
+   @Deprecated
+   protected jh a(emb.a $$0, dow $$1) {
+      int $$2 = 5;
+      int $$3 = 5;
+      if ($$1 == dow.b) {
+         $$2 = -5;
+      } else if ($$1 == dow.c) {
+         $$2 = -5;
+         $$3 = -5;
+      } else if ($$1 == dow.d) {
+         $$3 = -5;
+      }
+
+      del $$4 = $$0.h();
+      int $$5 = $$4.a(7);
+      int $$6 = $$4.b(7);
+      return new jh($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
+   }
+
+   protected abstract Optional<emb.b> a(emb.a var1);
+
+   public Optional<emb.b> b(emb.a $$0) {
+      return this.a($$0).filter($$1 -> a($$1, $$0));
+   }
+
+   public abstract emk<?> e();
+
+   public static record a(ke a, dxk b, dgl c, ebx d, eqe e, eci f, long g, del h, dfh i, Predicate<jq<dgh>> j) {
+
+      public a(ke $$0, dxk $$1, dgl $$2, ebx $$3, eqe $$4, long $$5, del $$6, dfh $$7, Predicate<jq<dgh>> $$8) {
+         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
+      }
+
+      private static eci a(long $$0, del $$1) {
+         eci $$2 = new eci(new ebk(0L));
+         $$2.c($$0, $$1.g, $$1.h);
+         return $$2;
       }
    }
 
-   protected boolean a(dfr $$0, elp $$1, azs $$2, jh $$3, alh<euh> $$4, @Nullable dvj $$5) {
-      if ($$1.b($$3) && !$$0.a_($$3).a(dig.cv)) {
-         if ($$5 == null) {
-            $$5 = a($$0, $$3, dig.cv.m());
-         }
-
-         $$0.a($$3, $$5, 2);
-         dsm $$6 = $$0.c_($$3);
-         if ($$6 instanceof dst) {
-            ((dst)$$6).a($$4, $$2.g());
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean a(dfy $$0, elp $$1, azs $$2, int $$3, int $$4, int $$5, jm $$6, alh<euh> $$7) {
-      jh $$8 = this.b($$3, $$4, $$5);
-      if ($$1.b($$8) && !$$0.a_($$8).a(dig.aU)) {
-         this.a($$0, dig.aU.m().b(dkj.b, $$6), $$3, $$4, $$5, $$1);
-         dsm $$9 = $$0.c_($$8);
-         if ($$9 instanceof dtf) {
-            ((dtf)$$9).a($$7, $$2.g());
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-      this.f.a($$0, $$1, $$2);
-   }
-
-   public static elp a(Stream<emb> $$0) {
-      return elp.b($$0.map(emb::f)::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox without pieces"));
-   }
-
-   @Nullable
-   public static emb a(List<emb> $$0, elp $$1) {
-      for (emb $$2 : $$0) {
-         if ($$2.f().a($$1)) {
-            return $$2;
-         }
+   public static record b(jh a, Either<Consumer<emt>, emt> b) {
+      public b(jh $$0, Consumer<emt> $$1) {
+         this($$0, Either.left($$1));
       }
 
-      return null;
-   }
-
-   @Nullable
-   public jm i() {
-      return this.b;
-   }
-
-   public void a(@Nullable jm $$0) {
-      this.b = $$0;
-      if ($$0 == null) {
-         this.d = dor.a;
-         this.c = dna.a;
-      } else {
-         switch ($$0) {
-            case d:
-               this.c = dna.b;
-               this.d = dor.a;
-               break;
-            case e:
-               this.c = dna.b;
-               this.d = dor.b;
-               break;
-            case f:
-               this.c = dna.a;
-               this.d = dor.b;
-               break;
-            default:
-               this.c = dna.a;
-               this.d = dor.a;
-         }
+      public emt a() {
+         return (emt)this.b.map($$0 -> {
+            emt $$1 = new emt();
+            $$0.accept($$1);
+            return $$1;
+         }, $$0 -> $$0);
       }
-   }
 
-   public dor a() {
-      return this.d;
-   }
-
-   public dna j() {
-      return this.c;
-   }
-
-   public emo k() {
-      return this.h;
-   }
-
-   public abstract static class a {
-      protected dvj a = dig.a.m();
-
-      public abstract void a(azs var1, int var2, int var3, int var4, boolean var5);
-
-      public dvj a() {
+      public jh b() {
          return this.a;
+      }
+
+      public Either<Consumer<emt>, emt> c() {
+         return this.b;
+      }
+   }
+
+   public static record c(ju<dgh> b, Map<bvh, emi> c, ebf.a d, emm e) {
+      static final emb.c f = new emb.c(ju.a(), Map.of(), ebf.a.e, emm.a);
+      public static final MapCodec<emb.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  kf.a(ma.aG).fieldOf("biomes").forGetter(emb.c::a),
+                  Codec.simpleMap(bvh.i, emi.a, baj.a(bvh.values())).fieldOf("spawn_overrides").forGetter(emb.c::b),
+                  ebf.a.l.fieldOf("step").forGetter(emb.c::c),
+                  emm.f.optionalFieldOf("terrain_adaptation", f.e).forGetter(emb.c::d)
+               )
+               .apply($$0, emb.c::new)
+      );
+
+      public c(ju<dgh> $$0) {
+         this($$0, f.c, f.d, f.e);
+      }
+
+      public ju<dgh> a() {
+         return this.b;
+      }
+
+      public Map<bvh, emi> b() {
+         return this.c;
+      }
+
+      public ebf.a c() {
+         return this.d;
+      }
+
+      public emm d() {
+         return this.e;
+      }
+
+      public static class a {
+         private final ju<dgh> a;
+         private Map<bvh, emi> b = emb.c.f.c;
+         private ebf.a c = emb.c.f.d;
+         private emm d = emb.c.f.e;
+
+         public a(ju<dgh> $$0) {
+            this.a = $$0;
+         }
+
+         public emb.c.a a(Map<bvh, emi> $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public emb.c.a a(ebf.a $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public emb.c.a a(emm $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public emb.c a() {
+            return new emb.c(this.a, this.b, this.c, this.d);
+         }
       }
    }
 }

@@ -1,52 +1,65 @@
-public class hcd {
-   public static class a extends hbj {
-      private final ghd n;
+public abstract class hcd extends hbz {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final cgw n;
+   private boolean r;
 
-      protected a(ghd $$0, awk $$1) {
-         super($$1, awm.i, hca.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dS() || !this.n.bp()) {
-            this.n();
-         }
-      }
+   public hcd(cgw $$0, awn $$1, awp $$2) {
+      super($$1, $$2, hcq.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.dD());
+      this.g = (double)((float)$$0.dF());
+      this.h = (double)((float)$$0.dJ());
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public static class b extends hbj {
-      public static final int n = 40;
-      private final ghd o;
-      private int p;
-
-      public b(ghd $$0) {
-         super(awl.z, awm.i, hca.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
+   @Override
+   public void q() {
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         fjx.Q().ak().a((hcr)this.o());
+         this.r = true;
       }
 
-      @Override
-      public void q() {
-         if (!this.o.dS() && this.p >= 0) {
-            if (this.o.bp()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+      if (!this.n.dT() && !this.r) {
+         this.f = (double)((float)this.n.dD());
+         this.g = (double)((float)this.n.dF());
+         this.h = (double)((float)this.n.dJ());
+         float $$1 = (float)this.n.dB().i();
+         if ($$1 >= 0.01F) {
+            this.e = azn.h(azn.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = azn.h(azn.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
          } else {
-            this.n();
+            this.e = 0.0F;
+            this.d = 0.0F;
          }
+      } else {
+         this.n();
       }
    }
+
+   private float u() {
+      return this.n.p_() ? 1.1F : 0.7F;
+   }
+
+   private float v() {
+      return this.n.p_() ? 1.5F : 1.1F;
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public boolean s() {
+      return !this.n.bd();
+   }
+
+   protected abstract hbz o();
+
+   protected abstract boolean p();
 }

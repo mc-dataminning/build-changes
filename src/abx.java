@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface abx extends aal {
+   @Override
+   default wg b() {
+      return wg.e;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface abx {
+   void a(aby var1);
+
+   void a(abz var1);
 }

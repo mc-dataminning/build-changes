@@ -1,25 +1,43 @@
-public class ces extends cfe {
-   public static final float a = 8.0F;
+public class ces extends ceq {
+   private boolean p;
 
-   @Override
-   protected boolean a(bva $$0, bva $$1) {
-      return this.f($$0, $$1) && $$1.bn() && (this.b($$1) || this.e($$0, $$1)) && cfk.c($$0, $$1);
-   }
-
-   private boolean e(bva $$0, bva $$1) {
-      return !$$0.ed().a(cee.U) && $$1.ar().a(axe.j);
-   }
-
-   private boolean b(bva $$0) {
-      return $$0.ar().a(axe.i);
-   }
-
-   private boolean f(bva $$0, bva $$1) {
-      return $$1.g((bue)$$0) <= 64.0;
+   public ces(bvg $$0, dff $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cee<bva> b() {
-      return cee.B;
+   protected ese a(int $$0) {
+      this.p = this.a.ar() == bup.y;
+      this.o = new esi(this.p);
+      return new ese(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bp();
+   }
+
+   @Override
+   protected ezr b() {
+      return new ezr(this.a.dD(), this.a.e(0.5), this.a.dJ());
+   }
+
+   @Override
+   protected double a(ezr $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(ezr $$0, ezr $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(jh $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

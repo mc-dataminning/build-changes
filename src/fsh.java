@@ -1,108 +1,121 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+public class fsh extends ftf<crv> {
+   private static final all G = all.b("container/anvil/text_field");
+   private static final all H = all.b("container/anvil/text_field_disabled");
+   private static final all I = all.b("container/anvil/error");
+   private static final all J = all.b("textures/gui/container/anvil.png");
+   private static final xl K = xl.c("container.repair.expensive");
+   private fmf L;
+   private final cor M;
 
-public abstract class fsh<T extends cro> extends frp<T> {
-   private static final ali G = ali.b("container/inventory/effect_background_large");
-   private static final ali H = ali.b("container/inventory/effect_background_small");
-
-   public fsh(T $$0, col $$1, xi $$2) {
-      super($$0, $$1, $$2);
+   public fsh(crv $$0, coq $$1, xl $$2) {
+      super($$0, $$1, $$2, J);
+      this.M = $$1.k;
+      this.v = 60;
    }
 
    @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
+   protected void F() {
+      int $$0 = (this.n - this.s) / 2;
+      int $$1 = (this.o - this.u) / 2;
+      this.L = new fmf(this.p, $$0 + 62, $$1 + 24, 103, 12, xl.c("container.repair"));
+      this.L.f(false);
+      this.L.g(-1);
+      this.L.h(-1);
+      this.L.d(false);
+      this.L.f(50);
+      this.L.b(this::a);
+      this.L.a("");
+      this.d(this.L);
+      this.L.e(this.z.b(0).h());
    }
 
-   public boolean J() {
-      int $$0 = this.C + this.s + 2;
-      int $$1 = this.n - $$0;
-      return $$1 >= 32;
+   @Override
+   protected void aG_() {
+      this.b(this.L);
    }
 
-   private void c(fku $$0, int $$1, int $$2) {
-      int $$3 = this.C + this.s + 2;
-      int $$4 = this.n - $$3;
-      Collection<btj> $$5 = this.m.t.eD();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
+   @Override
+   public void a(fjx $$0, int $$1, int $$2) {
+      String $$3 = this.L.a();
+      this.b($$0, $$1, $$2);
+      this.L.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.t.s();
+      }
+
+      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      ctp $$1 = this.z.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(ku.g) && $$0.equals($$1.g().y().getString())) {
+            $$2 = "";
          }
 
-         Iterable<btj> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.D;
-            btj $$10 = null;
-
-            for (btj $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
-
-               $$9 += $$7;
-            }
-
-            if ($$10 != null) {
-               List<xi> $$12 = List.of(this.a($$10), btk.a($$10, 1.0F, this.m.s.s().f()));
-               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
-            }
+         if (this.z.a($$2)) {
+            this.m.t.j.b(new aii($$2));
          }
       }
    }
 
-   private void a(fku $$0, int $$1, int $$2, Iterable<btj> $$3, boolean $$4) {
-      int $$5 = this.D;
-
-      for (btj $$6 : $$3) {
-         if ($$4) {
-            $$0.a(gir::B, G, $$1, $$5, 120, 32);
+   @Override
+   protected void b(flj $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.z.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         xl $$5;
+         if ($$3 >= 40 && !this.m.t.gm().d) {
+            $$5 = K;
+            $$4 = 16736352;
+         } else if (!this.z.b(2).h()) {
+            $$5 = null;
          } else {
-            $$0.a(gir::B, H, $$1, $$5, 32, 32);
+            $$5 = xl.a("container.repair.cost", $$3);
+            if (!this.z.b(2).a(this.M)) {
+               $$4 = 16736352;
+            }
          }
 
-         $$5 += $$2;
+         if ($$5 != null) {
+            int $$8 = this.s - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
       }
    }
 
-   private void b(fku $$0, int $$1, int $$2, Iterable<btj> $$3, boolean $$4) {
-      gzc $$5 = this.m.aG();
-      int $$6 = this.D;
+   @Override
+   protected void a(flj $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(gjh::B, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
+   }
 
-      for (btj $$7 : $$3) {
-         jq<bth> $$8 = $$7.c();
-         gyd $$9 = $$5.a($$8);
-         $$0.a(gir::B, $$9, $$1 + ($$4 ? 6 : 7), $$6 + 7, 18, 18);
-         $$6 += $$2;
+   @Override
+   public void d(flj $$0, int $$1, int $$2, float $$3) {
+      this.L.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void c(flj $$0, int $$1, int $$2) {
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.o()).h()) {
+         $$0.a(gjh::B, I, $$1 + 99, $$2 + 45, 28, 21);
       }
    }
 
-   private void a(fku $$0, int $$1, int $$2, Iterable<btj> $$3) {
-      int $$4 = this.D;
-
-      for (btj $$5 : $$3) {
-         xi $$6 = this.a($$5);
-         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         xi $$7 = btk.a($$5, 1.0F, this.m.s.s().f());
-         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
+   @Override
+   public void a(crs $$0, int $$1, cwf $$2) {
+      if ($$1 == 0) {
+         this.L.a($$2.f() ? "" : $$2.y().getString());
+         this.L.e(!$$2.f());
+         this.a(this.L);
       }
-   }
-
-   private xi a(btj $$0) {
-      xw $$1 = $$0.c().a().e().f();
-      if ($$0.e() >= 1 && $$0.e() <= 9) {
-         $$1.b(xh.v).b(xi.c("enchantment.level." + ($$0.e() + 1)));
-      }
-
-      return $$1;
    }
 }

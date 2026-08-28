@@ -1,103 +1,27 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import java.util.Optional;
 
-public enum dey implements bag {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
-
-   public static final dey e = a;
-   public static final bag.a<dey> f = bag.a(dey::values);
-   private static final IntFunction<dey> g = ayb.a(dey::a, values(), ayb.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final xi k;
-   private final xi l;
-
-   private dey(final int $$0, final String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = xi.c("selectWorld.gameMode." + $$1);
-      this.l = xi.c("gameMode." + $$1);
+public class dey {
+   public Optional<Float> a(dex $$0, dek $$1, jh $$2, dvo $$3, ero $$4) {
+      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   public int a() {
-      return this.i;
+   public boolean a(dex $$0, dek $$1, jh $$2, dvo $$3, float $$4) {
+      return true;
    }
 
-   public String b() {
-      return this.j;
+   public boolean a(dex $$0, bui $$1) {
+      return true;
    }
 
-   @Override
-   public String c() {
-      return this.j;
+   public float a(bui $$0) {
+      return 1.0F;
    }
 
-   public xi d() {
-      return this.l;
-   }
-
-   public xi e() {
-      return this.k;
-   }
-
-   public void a(coi $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
-      } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
-      }
-
-      $$0.e = !this.f();
-   }
-
-   public boolean f() {
-      return this == c || this == d;
-   }
-
-   public boolean g() {
-      return this == b;
-   }
-
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static dey a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static dey a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static dey a(String $$0, @Nullable dey $$1) {
-      dey $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable dey $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static dey b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+   public float a(dex $$0, bui $$1, float $$2) {
+      float $$3 = $$0.d() * 2.0F;
+      ezr $$4 = $$0.e();
+      double $$5 = Math.sqrt($$1.f($$4)) / (double)$$3;
+      double $$6 = (1.0 - $$5) * (double)$$2;
+      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
    }
 }

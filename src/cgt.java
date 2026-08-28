@@ -1,90 +1,110 @@
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface cgt {
-   boolean t();
+public abstract class cgt extends cgr {
+   @Nullable
+   private cgt b;
+   private int c = 1;
 
-   void x(boolean var1);
-
-   void k(cwb var1);
-
-   void h(uk var1);
-
-   cwb X_();
-
-   awk y();
-
-   @Deprecated
-   static void a(bvc $$0, cwb $$1) {
-      $$1.b(ku.g, $$0.ao());
-      cyk.a(ku.X, $$1, $$1x -> {
-         if ($$0.gh()) {
-            $$1x.a("NoAI", $$0.gh());
-         }
-
-         if ($$0.bc()) {
-            $$1x.a("Silent", $$0.bc());
-         }
-
-         if ($$0.bd()) {
-            $$1x.a("NoGravity", $$0.bd());
-         }
-
-         if ($$0.co()) {
-            $$1x.a("Glowing", $$0.co());
-         }
-
-         if ($$0.cD()) {
-            $$1x.a("Invulnerable", $$0.cD());
-         }
-
-         $$1x.a("Health", $$0.eG());
-      });
+   public cgt(bup<? extends cgt> $$0, dff $$1) {
+      super($$0, $$1);
    }
 
-   @Deprecated
-   static void a(bvc $$0, uk $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.u($$1.q("NoAI"));
-      }
+   @Override
+   protected void D() {
+      super.D();
+      this.bS.a(5, new cby(this));
+   }
 
-      if ($$1.e("Silent")) {
-         $$0.e($$1.q("Silent"));
-      }
+   @Override
+   public int aj() {
+      return this.gx();
+   }
 
-      if ($$1.e("NoGravity")) {
-         $$0.f($$1.q("NoGravity"));
-      }
+   public int gx() {
+      return super.aj();
+   }
 
-      if ($$1.e("Glowing")) {
-         $$0.j($$1.q("Glowing"));
-      }
+   @Override
+   protected boolean gv() {
+      return !this.gy();
+   }
 
-      if ($$1.e("Invulnerable")) {
-         $$0.n($$1.q("Invulnerable"));
-      }
+   public boolean gy() {
+      return this.b != null && this.b.bN();
+   }
 
-      if ($$1.b("Health", 99)) {
-         $$0.x($$1.j("Health"));
+   public cgt a(cgt $$0) {
+      this.b = $$0;
+      $$0.gE();
+      return $$0;
+   }
+
+   public void gz() {
+      this.b.gF();
+      this.b = null;
+   }
+
+   private void gE() {
+      this.c++;
+   }
+
+   private void gF() {
+      this.c--;
+   }
+
+   public boolean gA() {
+      return this.gB() && this.c < this.gx();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.gB() && this.dY().A.a(200) == 1) {
+         List<? extends cgr> $$0 = this.dY().a((Class<? extends cgr>)this.getClass(), this.cT().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
+         }
       }
    }
 
-   static <T extends bva & cgt> Optional<bsd> a(com $$0, bsc $$1, T $$2) {
-      cwb $$3 = $$0.b($$1);
-      if ($$3.h() == cwf.qA && $$2.bM()) {
-         $$2.a($$2.y(), 1.0F, 1.0F);
-         cwb $$4 = $$2.X_();
-         $$2.k($$4);
-         cwb $$5 = cwe.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         dfb $$6 = $$2.dX();
-         if (!$$6.C) {
-            ao.k.a((aro)$$0, $$4);
-         }
+   public boolean gB() {
+      return this.c > 1;
+   }
 
-         $$2.av();
-         return Optional.of(bsd.a);
+   public boolean gC() {
+      return this.g(this.b) <= 121.0;
+   }
+
+   public void gD() {
+      if (this.gy()) {
+         this.P().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends cgt> $$0) {
+      $$0.limit((long)(this.gx() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
+   @Override
+   public bvx a(dfw $$0, bsf $$1, buo $$2, @Nullable bvx $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3 == null) {
+         $$3 = new cgt.a(this);
       } else {
-         return Optional.empty();
+         this.a(((cgt.a)$$3).a);
+      }
+
+      return $$3;
+   }
+
+   public static class a implements bvx {
+      public final cgt a;
+
+      public a(cgt $$0) {
+         this.a = $$0;
       }
    }
 }

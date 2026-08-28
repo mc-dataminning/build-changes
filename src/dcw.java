@@ -1,54 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dcw(lp d, dcw.a e, dcw.a f, dcw.c g, dcw.c h, brg i) implements dcj {
+public record dcw(dcd d, dcd e, kl f, Optional<ecq> g, eiu h, Optional<jq<eak>> i) implements dcn {
    public static final MapCodec<dcw> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               lr.bf.fieldOf("particle").forGetter(dcw::c),
-               dcw.a.a.fieldOf("horizontal_position").forGetter(dcw::d),
-               dcw.a.a.fieldOf("vertical_position").forGetter(dcw::e),
-               dcw.c.a.fieldOf("horizontal_velocity").forGetter(dcw::f),
-               dcw.c.a.fieldOf("vertical_velocity").forGetter(dcw::g),
-               brg.c.optionalFieldOf("speed", bre.a).forGetter(dcw::h)
+               dcd.b.fieldOf("radius").forGetter(dcw::b),
+               dcd.b.fieldOf("height").forGetter(dcw::c),
+               kl.f.optionalFieldOf("offset", kl.g).forGetter(dcw::d),
+               ecq.b.optionalFieldOf("predicate").forGetter(dcw::e),
+               eiu.a.fieldOf("block_state").forGetter(dcw::f),
+               eak.aj.optionalFieldOf("trigger_game_event").forGetter(dcw::g)
             )
             .apply($$0, dcw::new)
    );
 
-   public static dcw.a a(float $$0) {
-      return new dcw.a(dcw.b.a, $$0, 1.0F);
-   }
-
-   public static dcw.a b() {
-      return new dcw.a(dcw.b.b, 0.0F, 1.0F);
-   }
-
-   public static dcw.c b(float $$0) {
-      return new dcw.c($$0, bre.a);
-   }
-
-   public static dcw.c a(brg $$0) {
-      return new dcw.c(0.0F, $$0);
-   }
-
    @Override
-   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
-      azs $$5 = $$3.ea();
-      ezn $$6 = $$3.ai();
-      float $$7 = $$3.ds();
-      float $$8 = $$3.dt();
-      $$0.a(
-         this.d,
-         this.e.a($$4.a(), $$4.a(), $$7, $$5),
-         this.f.a($$4.b(), $$4.b() + (double)($$8 / 2.0F), $$8, $$5),
-         this.e.a($$4.c(), $$4.c(), $$7, $$5),
-         0,
-         this.g.a($$6.a(), $$5),
-         this.h.a($$6.b(), $$5),
-         this.g.a($$6.c(), $$5),
-         (double)this.i.a($$5)
-      );
+   public void a(arq $$0, int $$1, dbv $$2, bui $$3, ezr $$4) {
+      jh $$5 = jh.a((ka)$$4).a(this.f);
+      azv $$6 = $$3.eb();
+      int $$7 = (int)this.d.a($$1);
+      int $$8 = (int)this.e.a($$1);
+
+      for (jh $$9 : jh.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
+         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azn.h($$7)
+            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
+            && $$0.b($$9, this.h.a($$6, $$9))) {
+            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
+         }
+      }
    }
 
    @Override
@@ -56,106 +36,27 @@ public record dcw(lp d, dcw.a e, dcw.a f, dcw.c g, dcw.c h, brg i) implements dc
       return a;
    }
 
-   public lp c() {
+   public dcd b() {
       return this.d;
    }
 
-   public dcw.a d() {
+   public dcd c() {
       return this.e;
    }
 
-   public dcw.a e() {
+   public kl d() {
       return this.f;
    }
 
-   public dcw.c f() {
+   public Optional<ecq> e() {
       return this.g;
    }
 
-   public dcw.c g() {
+   public eiu f() {
       return this.h;
    }
 
-   public brg h() {
+   public Optional<jq<eak>> g() {
       return this.i;
-   }
-
-   public static record a(dcw.b b, float c, float d) {
-      public static final MapCodec<dcw.a> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     dcw.b.c.fieldOf("type").forGetter(dcw.a::a),
-                     Codec.FLOAT.optionalFieldOf("offset", 0.0F).forGetter(dcw.a::b),
-                     ayt.o.optionalFieldOf("scale", 1.0F).forGetter(dcw.a::c)
-                  )
-                  .apply($$0, dcw.a::new)
-         )
-         .validate(
-            $$0 -> $$0.a() == dcw.b.a && $$0.c() != 1.0F
-                  ? DataResult.error(() -> "Cannot scale an entity position coordinate source")
-                  : DataResult.success($$0)
-         );
-
-      public double a(double $$0, double $$1, float $$2, azs $$3) {
-         return this.b.a($$0, $$1, $$2 * this.d, $$3) + (double)this.c;
-      }
-
-      public dcw.b a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
-   }
-
-   public static enum b implements bag {
-      a("entity_position", ($$0, $$1, $$2, $$3) -> $$0),
-      b("in_bounding_box", ($$0, $$1, $$2, $$3) -> $$1 + ($$3.j() - 0.5) * (double)$$2);
-
-      public static final Codec<dcw.b> c = bag.a(dcw.b::values);
-      private final String d;
-      private final dcw.b.a e;
-
-      private b(final String $$0, final dcw.b.a $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public double a(double $$0, double $$1, float $$2, azs $$3) {
-         return this.e.getCoordinate($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      @FunctionalInterface
-      interface a {
-         double getCoordinate(double var1, double var3, float var5, azs var6);
-      }
-   }
-
-   public static record c(float b, brg c) {
-      public static final MapCodec<dcw.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.optionalFieldOf("movement_scale", 0.0F).forGetter(dcw.c::a), brg.c.optionalFieldOf("base", bre.a).forGetter(dcw.c::b))
-               .apply($$0, dcw.c::new)
-      );
-
-      public double a(double $$0, azs $$1) {
-         return $$0 * (double)this.b + (double)this.c.a($$1);
-      }
-
-      public float a() {
-         return this.b;
-      }
-
-      public brg b() {
-         return this.c;
-      }
    }
 }

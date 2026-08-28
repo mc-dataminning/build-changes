@@ -1,129 +1,57 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class avt<K, V extends avs<K>> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final File c;
-   private final Map<String, V> d = Maps.newHashMap();
+public class avt extends avv<GameProfile> {
+   private final int a;
+   private final boolean b;
 
-   public avt(File $$0) {
-      this.c = $$0;
+   public avt(GameProfile $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public File b() {
-      return this.c;
+   public avt(JsonObject $$0) {
+      super(b($$0));
+      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
+      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
    }
 
-   public void a(V $$0) {
-      this.d.put(this.a($$0.g()), $$0);
+   public int a() {
+      return this.a;
+   }
 
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after adding a user.", var3);
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         $$0.addProperty("level", this.a);
+         $$0.addProperty("bypassesPlayerLimit", this.b);
       }
    }
 
    @Nullable
-   public V b(K $$0) {
-      this.g();
-      return this.d.get(this.a($$0));
-   }
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   public void c(K $$0) {
-      this.d.remove(this.a($$0));
-
-      try {
-         this.e();
-      } catch (IOException var3) {
-         a.warn("Could not save the list after removing a user.", var3);
-      }
-   }
-
-   public void b(avs<K> $$0) {
-      this.c($$0.g());
-   }
-
-   public String[] a() {
-      return this.d.keySet().toArray(new String[0]);
-   }
-
-   public boolean c() {
-      return this.d.size() < 1;
-   }
-
-   protected String a(K $$0) {
-      return $$0.toString();
-   }
-
-   protected boolean d(K $$0) {
-      return this.d.containsKey(this.a($$0));
-   }
-
-   private void g() {
-      List<K> $$0 = Lists.newArrayList();
-
-      for (V $$1 : this.d.values()) {
-         if ($$1.f()) {
-            $$0.add($$1.g());
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
          }
-      }
 
-      for (K $$2 : $$0) {
-         this.d.remove(this.a($$2));
-      }
-   }
-
-   protected abstract avs<K> a(JsonObject var1);
-
-   public Collection<V> d() {
-      return this.d.values();
-   }
-
-   public void e() throws IOException {
-      JsonArray $$0 = new JsonArray();
-      this.d.values().stream().map($$0x -> ae.a(new JsonObject(), $$0x::a)).forEach($$0::add);
-
-      try (BufferedWriter $$1 = Files.newWriter(this.c, StandardCharsets.UTF_8)) {
-         b.toJson($$0, b.newJsonWriter($$1));
-      }
-   }
-
-   public void f() throws IOException {
-      if (this.c.exists()) {
-         try (BufferedReader $$0 = Files.newReader(this.c, StandardCharsets.UTF_8)) {
-            this.d.clear();
-            JsonArray $$1 = (JsonArray)b.fromJson($$0, JsonArray.class);
-            if ($$1 == null) {
-               return;
-            }
-
-            for (JsonElement $$2 : $$1) {
-               JsonObject $$3 = aza.m($$2, "entry");
-               avs<K> $$4 = this.a($$3);
-               if ($$4.g() != null) {
-                  this.d.put(this.a($$4.g()), (V)$$4);
-               }
-            }
-         }
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
       }
    }
 }

@@ -1,20 +1,54 @@
-public class ghb {
-   public cok a = cok.b;
-   public float b;
-   public float c;
-
-   public void a(boolean $$0, float $$1) {
+public class ghb extends ggr {
+   ghb(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gha $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axy.b($$7), (float)axy.c($$7), (float)axy.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
-   public ezm a() {
-      return new ezm(this.b, this.c);
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(jh.a(this.g, this.h, this.i)).l()) {
+            this.k -= 0.0074F;
+         }
+      }
    }
 
-   public boolean b() {
-      return this.c > 1.0E-5F;
+   public static class a implements ggi<lw> {
+      private final gha a;
+
+      public a(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghb($$1, $$2, $$3, $$4, $$5, $$6, $$7, axy.a(255, 204, 31, 102), this.a);
+      }
    }
 
-   public void c() {
-      this.a = new cok(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
+   public static class b implements ggi<lw> {
+      private final gha a;
+
+      public b(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghb($$1, $$2, $$3, $$4, $$5, $$6, $$7, axy.a(255, 255, 255, 255), this.a);
+      }
    }
 }

@@ -1,29 +1,56 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fiw {
-   private final List<xn> a = Lists.newArrayList();
+public abstract class fiw implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   public void a(xn $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public xn a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : xn.a(this.a);
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   public xn b() {
-      xn $$0 = this.a();
-      return $$0 != null ? $$0 : xn.b;
+   public static void a(frp $$0) {
+      fjx $$1 = fjx.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(xl $$0) {
+      this.b();
+      fjx $$1 = fjx.Q();
+      $$1.execute(() -> $$1.a(new fhn($$0, new fev(new frr()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fgv $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(xl.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(fgv $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract xl a();
+
+   public boolean d() {
+      return this.c;
    }
 
    public void c() {
-      this.a.clear();
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

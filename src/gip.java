@@ -1,59 +1,373 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
 public class gip {
-   private final giu a = new giu();
-   private final giv b;
-   private final gih.a c;
-   private final gih.a d;
-   private final gij e;
+   private static final Map<dij, gjh> a = ae.a(Maps.newHashMap(), $$0 -> {
+      gjh $$1 = gjh.s();
+      $$0.put(dil.fI, $$1);
+      gjh $$2 = gjh.d();
+      $$0.put(dil.i, $$2);
+      $$0.put(dil.eW, $$2);
+      $$0.put(dil.eY, $$2);
+      $$0.put(dil.fH, $$2);
+      $$0.put(dil.hc, $$2);
+      $$0.put(dil.eX, $$2);
+      $$0.put(dil.aH, $$2);
+      $$0.put(dil.aE, $$2);
+      $$0.put(dil.aF, $$2);
+      $$0.put(dil.aI, $$2);
+      $$0.put(dil.aJ, $$2);
+      $$0.put(dil.aG, $$2);
+      $$0.put(dil.aK, $$2);
+      $$0.put(dil.aM, $$2);
+      $$0.put(dil.aN, $$2);
+      $$0.put(dil.ac, $$2);
+      $$0.put(dil.aL, $$2);
+      gjh $$3 = gjh.e();
+      $$0.put(dil.x, $$3);
+      $$0.put(dil.y, $$3);
+      $$0.put(dil.z, $$3);
+      $$0.put(dil.A, $$3);
+      $$0.put(dil.B, $$3);
+      $$0.put(dil.C, $$3);
+      $$0.put(dil.D, $$3);
+      $$0.put(dil.aQ, $$3);
+      $$0.put(dil.aZ, $$3);
+      $$0.put(dil.ba, $$3);
+      $$0.put(dil.bb, $$3);
+      $$0.put(dil.bc, $$3);
+      $$0.put(dil.bd, $$3);
+      $$0.put(dil.be, $$3);
+      $$0.put(dil.bf, $$3);
+      $$0.put(dil.bg, $$3);
+      $$0.put(dil.bh, $$3);
+      $$0.put(dil.bi, $$3);
+      $$0.put(dil.bj, $$3);
+      $$0.put(dil.bk, $$3);
+      $$0.put(dil.bl, $$3);
+      $$0.put(dil.bm, $$3);
+      $$0.put(dil.bn, $$3);
+      $$0.put(dil.bo, $$3);
+      $$0.put(dil.bp, $$3);
+      $$0.put(dil.bq, $$3);
+      $$0.put(dil.bs, $$3);
+      $$0.put(dil.bt, $$3);
+      $$0.put(dil.bu, $$3);
+      $$0.put(dil.bv, $$3);
+      $$0.put(dil.bw, $$3);
+      $$0.put(dil.bx, $$3);
+      $$0.put(dil.bR, $$3);
+      $$0.put(dil.bT, $$3);
+      $$0.put(dil.bU, $$3);
+      $$0.put(dil.bV, $$3);
+      $$0.put(dil.bW, $$3);
+      $$0.put(dil.bX, $$3);
+      $$0.put(dil.bY, $$3);
+      $$0.put(dil.bZ, $$3);
+      $$0.put(dil.ca, $$3);
+      $$0.put(dil.cb, $$3);
+      $$0.put(dil.cc, $$3);
+      $$0.put(dil.cd, $$3);
+      $$0.put(dil.ce, $$3);
+      $$0.put(dil.cf, $$3);
+      $$0.put(dil.cg, $$3);
+      $$0.put(dil.cp, $$3);
+      $$0.put(dil.cq, $$3);
+      $$0.put(dil.ea, $$3);
+      $$0.put(dil.eb, $$3);
+      $$0.put(dil.cr, $$3);
+      $$0.put(dil.cs, $$3);
+      $$0.put(dil.ct, $$3);
+      $$0.put(dil.tr, $$3);
+      $$0.put(dil.ts, $$3);
+      $$0.put(dil.cw, $$3);
+      $$0.put(dil.cB, $$3);
+      $$0.put(dil.cN, $$3);
+      $$0.put(dil.cO, $$3);
+      $$0.put(dil.cP, $$3);
+      $$0.put(dil.dy, $$3);
+      $$0.put(dil.dK, $$3);
+      $$0.put(dil.dL, $$3);
+      $$0.put(dil.dQ, $$3);
+      $$0.put(dil.dS, $$3);
+      $$0.put(dil.eh, $$3);
+      $$0.put(dil.ey, $$3);
+      $$0.put(dil.ez, $$3);
+      $$0.put(dil.eA, $$3);
+      $$0.put(dil.eB, $$3);
+      $$0.put(dil.eC, $$3);
+      $$0.put(dil.eD, $$3);
+      $$0.put(dil.eE, $$3);
+      $$0.put(dil.oM, $$3);
+      $$0.put(dil.oN, $$3);
+      $$0.put(dil.eF, $$3);
+      $$0.put(dil.eG, $$3);
+      $$0.put(dil.rU, $$3);
+      $$0.put(dil.rV, $$3);
+      $$0.put(dil.rX, $$3);
+      $$0.put(dil.rW, $$3);
+      $$0.put(dil.rY, $$3);
+      $$0.put(dil.rZ, $$3);
+      $$0.put(dil.sb, $$3);
+      $$0.put(dil.sa, $$3);
+      $$0.put(dil.fb, $$3);
+      $$0.put(dil.fc, $$3);
+      $$0.put(dil.fd, $$3);
+      $$0.put(dil.fe, $$3);
+      $$0.put(dil.ff, $$3);
+      $$0.put(dil.fg, $$3);
+      $$0.put(dil.fm, $$3);
+      $$0.put(dil.fq, $$3);
+      $$0.put(dil.fs, $$3);
+      $$0.put(dil.fC, $$3);
+      $$0.put(dil.fO, $$3);
+      $$0.put(dil.fR, $$3);
+      $$0.put(dil.fT, $$3);
+      $$0.put(dil.fU, $$3);
+      $$0.put(dil.fV, $$3);
+      $$0.put(dil.fW, $$3);
+      $$0.put(dil.fX, $$3);
+      $$0.put(dil.fY, $$3);
+      $$0.put(dil.fZ, $$3);
+      $$0.put(dil.ga, $$3);
+      $$0.put(dil.gb, $$3);
+      $$0.put(dil.gc, $$3);
+      $$0.put(dil.gd, $$3);
+      $$0.put(dil.ge, $$3);
+      $$0.put(dil.gf, $$3);
+      $$0.put(dil.gg, $$3);
+      $$0.put(dil.gh, $$3);
+      $$0.put(dil.gi, $$3);
+      $$0.put(dil.gj, $$3);
+      $$0.put(dil.gk, $$3);
+      $$0.put(dil.gl, $$3);
+      $$0.put(dil.gm, $$3);
+      $$0.put(dil.gn, $$3);
+      $$0.put(dil.go, $$3);
+      $$0.put(dil.gp, $$3);
+      $$0.put(dil.gq, $$3);
+      $$0.put(dil.gr, $$3);
+      $$0.put(dil.gs, $$3);
+      $$0.put(dil.ti, $$3);
+      $$0.put(dil.tj, $$3);
+      $$0.put(dil.fS, $$3);
+      $$0.put(dil.gt, $$3);
+      $$0.put(dil.gu, $$3);
+      $$0.put(dil.gY, $$3);
+      $$0.put(dil.hh, $$3);
+      $$0.put(dil.hY, $$3);
+      $$0.put(dil.iD, $$3);
+      $$0.put(dil.iE, $$3);
+      $$0.put(dil.iF, $$3);
+      $$0.put(dil.iG, $$3);
+      $$0.put(dil.iH, $$3);
+      $$0.put(dil.iI, $$3);
+      $$0.put(dil.kl, $$3);
+      $$0.put(dil.km, $$3);
+      $$0.put(dil.kn, $$3);
+      $$0.put(dil.ko, $$3);
+      $$0.put(dil.kp, $$3);
+      $$0.put(dil.kq, $$3);
+      $$0.put(dil.kr, $$3);
+      $$0.put(dil.ks, $$3);
+      $$0.put(dil.rM, $$3);
+      $$0.put(dil.rN, $$3);
+      $$0.put(dil.rP, $$3);
+      $$0.put(dil.rO, $$3);
+      $$0.put(dil.rQ, $$3);
+      $$0.put(dil.rR, $$3);
+      $$0.put(dil.rT, $$3);
+      $$0.put(dil.rS, $$3);
+      $$0.put(dil.kt, $$3);
+      $$0.put(dil.ku, $$3);
+      $$0.put(dil.kv, $$3);
+      $$0.put(dil.bS, $$3);
+      $$0.put(dil.kA, $$3);
+      $$0.put(dil.kC, $$3);
+      $$0.put(dil.kB, $$3);
+      $$0.put(dil.kD, $$3);
+      $$0.put(dil.mc, $$3);
+      $$0.put(dil.md, $$3);
+      $$0.put(dil.mf, $$3);
+      $$0.put(dil.mr, $$3);
+      $$0.put(dil.ms, $$3);
+      $$0.put(dil.mt, $$3);
+      $$0.put(dil.mu, $$3);
+      $$0.put(dil.mv, $$3);
+      $$0.put(dil.mw, $$3);
+      $$0.put(dil.mx, $$3);
+      $$0.put(dil.my, $$3);
+      $$0.put(dil.mz, $$3);
+      $$0.put(dil.mA, $$3);
+      $$0.put(dil.mB, $$3);
+      $$0.put(dil.mC, $$3);
+      $$0.put(dil.mD, $$3);
+      $$0.put(dil.mE, $$3);
+      $$0.put(dil.mF, $$3);
+      $$0.put(dil.mG, $$3);
+      $$0.put(dil.mH, $$3);
+      $$0.put(dil.mI, $$3);
+      $$0.put(dil.mJ, $$3);
+      $$0.put(dil.mK, $$3);
+      $$0.put(dil.mL, $$3);
+      $$0.put(dil.mM, $$3);
+      $$0.put(dil.mN, $$3);
+      $$0.put(dil.mO, $$3);
+      $$0.put(dil.mP, $$3);
+      $$0.put(dil.mQ, $$3);
+      $$0.put(dil.mR, $$3);
+      $$0.put(dil.mS, $$3);
+      $$0.put(dil.mT, $$3);
+      $$0.put(dil.mU, $$3);
+      $$0.put(dil.mV, $$3);
+      $$0.put(dil.mX, $$3);
+      $$0.put(dil.mY, $$3);
+      $$0.put(dil.mZ, $$3);
+      $$0.put(dil.na, $$3);
+      $$0.put(dil.nS, $$3);
+      $$0.put(dil.oc, $$3);
+      $$0.put(dil.oe, $$3);
+      $$0.put(dil.of, $$3);
+      $$0.put(dil.og, $$3);
+      $$0.put(dil.oh, $$3);
+      $$0.put(dil.oi, $$3);
+      $$0.put(dil.oz, $$3);
+      $$0.put(dil.oA, $$3);
+      $$0.put(dil.oB, $$3);
+      $$0.put(dil.oC, $$3);
+      $$0.put(dil.or, $$3);
+      $$0.put(dil.ox, $$3);
+      $$0.put(dil.oo, $$3);
+      $$0.put(dil.oD, $$3);
+      $$0.put(dil.oq, $$3);
+      $$0.put(dil.pm, $$3);
+      $$0.put(dil.pn, $$3);
+      $$0.put(dil.po, $$3);
+      $$0.put(dil.pp, $$3);
+      $$0.put(dil.oU, $$3);
+      $$0.put(dil.oV, $$3);
+      $$0.put(dil.st, $$3);
+      $$0.put(dil.qy, $$3);
+      $$0.put(dil.qx, $$3);
+      $$0.put(dil.qw, $$3);
+      $$0.put(dil.qv, $$3);
+      $$0.put(dil.ss, $$3);
+      $$0.put(dil.sv, $$3);
+      $$0.put(dil.sw, $$3);
+      $$0.put(dil.sx, $$3);
+      $$0.put(dil.sz, $$3);
+      $$0.put(dil.sy, $$3);
+      $$0.put(dil.sB, $$3);
+      $$0.put(dil.sD, $$3);
+      $$0.put(dil.sE, $$3);
+      $$0.put(dil.sF, $$3);
+      $$0.put(dil.sG, $$3);
+      $$0.put(dil.qQ, $$3);
+      $$0.put(dil.qR, $$3);
+      $$0.put(dil.qT, $$3);
+      $$0.put(dil.qV, $$3);
+      $$0.put(dil.E, $$3);
+      $$0.put(dil.tn, $$3);
+      $$0.put(dil.sc, $$3);
+      $$0.put(dil.sd, $$3);
+      $$0.put(dil.se, $$3);
+      $$0.put(dil.sf, $$3);
+      $$0.put(dil.sg, $$3);
+      $$0.put(dil.sh, $$3);
+      $$0.put(dil.si, $$3);
+      $$0.put(dil.sj, $$3);
+      gjh $$4 = gjh.f();
+      $$0.put(dil.dO, $$4);
+      $$0.put(dil.ed, $$4);
+      $$0.put(dil.ei, $$4);
+      $$0.put(dil.ej, $$4);
+      $$0.put(dil.ek, $$4);
+      $$0.put(dil.el, $$4);
+      $$0.put(dil.em, $$4);
+      $$0.put(dil.en, $$4);
+      $$0.put(dil.eo, $$4);
+      $$0.put(dil.ep, $$4);
+      $$0.put(dil.eq, $$4);
+      $$0.put(dil.er, $$4);
+      $$0.put(dil.es, $$4);
+      $$0.put(dil.et, $$4);
+      $$0.put(dil.eu, $$4);
+      $$0.put(dil.ev, $$4);
+      $$0.put(dil.ew, $$4);
+      $$0.put(dil.ex, $$4);
+      $$0.put(dil.hz, $$4);
+      $$0.put(dil.hA, $$4);
+      $$0.put(dil.hB, $$4);
+      $$0.put(dil.hC, $$4);
+      $$0.put(dil.hD, $$4);
+      $$0.put(dil.hE, $$4);
+      $$0.put(dil.hF, $$4);
+      $$0.put(dil.hG, $$4);
+      $$0.put(dil.hH, $$4);
+      $$0.put(dil.hI, $$4);
+      $$0.put(dil.hJ, $$4);
+      $$0.put(dil.hK, $$4);
+      $$0.put(dil.hL, $$4);
+      $$0.put(dil.hM, $$4);
+      $$0.put(dil.hN, $$4);
+      $$0.put(dil.hO, $$4);
+      $$0.put(dil.hV, $$4);
+      $$0.put(dil.pg, $$4);
+      $$0.put(dil.kI, $$4);
+      $$0.put(dil.nd, $$4);
+      $$0.put(dil.qO, $$4);
+   });
+   private static final Map<ern, gjh> b = ae.a(Maps.newHashMap(), $$0 -> {
+      gjh $$1 = gjh.f();
+      $$0.put(erp.b, $$1);
+      $$0.put(erp.c, $$1);
+   });
+   private static boolean c;
 
-   public gip(int $$0) {
-      this.b = giv.a($$0);
-      SequencedMap<gir, fdy> $$1 = ae.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gjc.h(), this.a.a(gir.c()));
-         $$0x.put(gjc.i(), this.a.a(gir.e()));
-         $$0x.put(gjc.a(), this.a.a(gir.d()));
-         $$0x.put(gjc.j(), this.a.a(gir.f()));
-         a($$0x, gjc.b());
-         a($$0x, gjc.c());
-         a($$0x, gjc.d());
-         a($$0x, gjc.e());
-         a($$0x, gjc.f());
-         $$0x.put(gjc.g(), new fdy(786432));
-         a($$0x, gir.j());
-         a($$0x, gir.l());
-         a($$0x, gir.k());
-         a($$0x, gir.m());
-         a($$0x, gir.i());
-      });
-      this.c = gih.a($$1, new fdy(786432));
-      this.e = new gij(this.c);
-      SequencedMap<gir, fdy> $$2 = ae.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hap.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = gih.a($$2, new fdy(0));
+   public static gjh a(dvo $$0) {
+      dij $$1 = $$0.b();
+      if ($$1 instanceof dms) {
+         return c ? gjh.d() : gjh.c();
+      } else {
+         gjh $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gjh.c();
+      }
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gir, fdy> $$0, gir $$1) {
-      $$0.put($$1, new fdy($$1.M()));
+   public static gjh b(dvo $$0) {
+      dij $$1 = $$0.b();
+      if ($$1 instanceof dms) {
+         return c ? gjh.d() : gjh.c();
+      } else {
+         gjh $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gjh.f() ? gjh.g() : $$2;
+         } else {
+            return gjh.c();
+         }
+      }
    }
 
-   public giu a() {
-      return this.a;
+   public static gjh c(dvo $$0) {
+      gjh $$1 = a($$0);
+      return $$1 == gjh.f() ? gjs.j() : gjs.i();
    }
 
-   public giv b() {
-      return this.b;
+   public static gjh a(cwf $$0) {
+      if ($$0.h() instanceof cul $$2) {
+         dij $$3 = $$2.d();
+         return c($$3.m());
+      } else {
+         return gjs.j();
+      }
    }
 
-   public gih.a c() {
-      return this.c;
+   public static gjh a(ero $$0) {
+      gjh $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gjh.c();
    }
 
-   public gih.a d() {
-      return this.d;
-   }
-
-   public gij e() {
-      return this.e;
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

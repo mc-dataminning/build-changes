@@ -1,61 +1,72 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
+import java.util.EnumSet;
 import java.util.function.Predicate;
 
-public class cbu extends cby {
-   private static final int a = 200;
-   private final cgp b;
-   private int c;
-   private int d;
+public class cbu extends ccc {
+   private static final int a = 40;
+   private static final Predicate<dvo> b = dvx.a(dil.bt);
+   private final bvg c;
+   private final dff d;
+   private int e;
 
-   public cbu(cgp $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(cgp $$0) {
-      return b(200 + $$0.ea().a(200) % 20);
+   public cbu(bvg $$0) {
+      this.c = $$0;
+      this.d = $$0.dY();
+      this.a(EnumSet.of(ccc.a.a, ccc.a.b, ccc.a.c));
    }
 
    @Override
    public boolean b() {
-      if (this.b.gA()) {
-         return false;
-      } else if (this.b.gx()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      if (this.c.eb().a(this.c.p_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<cgp> $$0 = $$0x -> $$0x.gz() || !$$0x.gx();
-         List<? extends cgp> $$1 = this.b.dX().a((Class<? extends cgp>)this.b.getClass(), this.b.cS().c(8.0, 8.0, 8.0), $$0);
-         cgp $$2 = (cgp)DataFixUtils.orElse($$1.stream().filter(cgp::gz).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gx()));
-         return this.b.gx();
+         jh $$0 = this.c.dy();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dil.i);
       }
    }
 
    @Override
-   public boolean c() {
-      return this.b.gx() && this.b.gB();
-   }
-
-   @Override
    public void d() {
-      this.c = 0;
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.P().o();
    }
 
    @Override
    public void e() {
-      this.b.gy();
+      this.e = 0;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gC();
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         jh $$0 = this.c.dy();
+         if (b.test(this.d.a_($$0))) {
+            if (this.d.ac().b(dfb.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.S();
+         } else {
+            jh $$1 = $$0.e();
+            if (this.d.a_($$1).a(dil.i)) {
+               if (this.d.ac().b(dfb.c)) {
+                  this.d.c(2001, $$1, dij.j(dil.i.m()));
+                  this.d.a($$1, dil.j.m(), 2);
+               }
+
+               this.c.S();
+            }
+         }
       }
    }
 }

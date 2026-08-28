@@ -1,61 +1,28 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fpb implements foy {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public enum fpb implements baj {
+   a("bitmap", foy.a.a),
+   b("ttf", fpd.a),
+   c("space", fcl.a.a),
+   d("unihex", fpe.b.a),
+   e("reference", fpc.a);
 
-   public fpb(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
+   public static final Codec<fpb> f = baj.a(fpb::values);
+   private final String g;
+   private final MapCodec<? extends fpa> h;
 
-   public fpb(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static fpb a(int $$0) {
-      return new fpb($$0, 0);
-   }
-
-   public static fpb b(int $$0) {
-      return new fpb(0, $$0);
+   private fpb(final String $$0, final MapCodec<? extends fpa> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public void m(int $$0) {
-      this.a = $$0;
+   public String c() {
+      return this.g;
    }
 
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int D() {
-      return this.a;
-   }
-
-   @Override
-   public int E() {
-      return this.b;
-   }
-
-   @Override
-   public int y() {
-      return this.c;
-   }
-
-   @Override
-   public int w() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<flf> $$0) {
+   public MapCodec<? extends fpa> a() {
+      return this.h;
    }
 }

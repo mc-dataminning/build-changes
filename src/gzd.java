@@ -1,15 +1,46 @@
-public class gzd extends gzh {
-   private static final ali a = ali.b("back");
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-   public gzd(gye $$0) {
-      super($$0, ali.b("textures/atlas/paintings.png"), ali.b("paintings"));
+public class gzd {
+   private final all a;
+   private final avc b;
+   private final AtomicReference<fdk> c = new AtomicReference<>();
+   private final AtomicInteger d;
+
+   public gzd(all $$0, avc $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   public gyd a(ckr $$0) {
-      return this.a($$0.d());
+   public fdk a() throws IOException {
+      fdk $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = fdk.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   public gyd a() {
-      return this.a(a);
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         fdk $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

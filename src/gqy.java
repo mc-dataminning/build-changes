@@ -1,21 +1,25 @@
-public class gqy extends gnj<cow, gwq> {
-   public static final ali a = ali.b("textures/entity/projectiles/arrow.png");
-   public static final ali b = ali.b("textures/entity/projectiles/tipped_arrow.png");
+public class gqy extends gnv<chr, gwv, gaq> {
+   private static final all a = all.b("textures/entity/sheep/sheep.png");
 
-   public gqy(gok.a $$0) {
-      super($$0);
+   public gqy(gpa.a $$0) {
+      super($$0, new gaq($$0.a(gcb.cd)), new gaq($$0.a(gcb.ce)), 0.7F);
+      this.a(new gtp(this, $$0.f()));
    }
 
-   protected ali a(gwq $$0) {
-      return $$0.d ? b : a;
+   public all a(gwv $$0) {
+      return a;
    }
 
-   public gwq a() {
-      return new gwq();
+   public gwv c() {
+      return new gwv();
    }
 
-   public void a(cow $$0, gwq $$1, float $$2) {
+   public void a(chr $$0, gwv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.d = $$0.D() > 0;
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.y();
+      $$1.d = $$0.t();
+      $$1.e = $$0.as();
    }
 }

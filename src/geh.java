@@ -1,59 +1,76 @@
-public class geh extends ggp {
-   private final ggk a;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   protected geh(
-      gci $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      ggk $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.A.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.A.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+public class geh extends gec {
+   final Supplier<gzu> g;
+
+   geh(UUID $$0, Instant $$1, UUID $$2, Supplier<gzu> $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+   }
+
+   public Supplier<gzu> a() {
+      return this.g;
+   }
+
+   public geh c() {
+      geh $$0 = new geh(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      return $$0;
    }
 
    @Override
-   public gft b() {
-      return gft.b;
+   public frp a(frp $$0, geg $$1) {
+      return new fwb($$0, $$1, this);
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a extends gec.a<geh> {
+      public a(geh $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
+      }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+      public a(UUID $$0, Supplier<gzu> $$1, AbuseReportLimits $$2) {
+         super(new geh(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      }
+
+      @Nullable
+      @Override
+      public gec.b c() {
+         if (this.a.e == null) {
+            return gec.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gec.b.d : super.c();
+         }
+      }
+
+      @Override
+      public Either<gec.c, gec.b> a(geg $$0) {
+         gec.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            gzu $$4 = this.a.g.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new gec.c(this.a.a, gef.b, $$6));
+         }
+      }
    }
 }

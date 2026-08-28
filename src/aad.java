@@ -1,15 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public class aad implements zs<zy> {
+   public static final zj<wi, aad> a = zs.a(aad::a, aad::new);
+   private final int b;
 
-public record aad(List<ama.c> b) implements zp<zv> {
-   public static final zg<ByteBuf, aad> a = zg.a(ama.c, aad::b, aad::new);
-
-   @Override
-   public zr<aad> a() {
-      return aah.h;
+   public aad(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(zv $$0) {
+   private aad(wi $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(wi $$0) {
+      $$0.q(this.b);
+   }
+
+   @Override
+   public zu<aad> a() {
+      return aak.e;
+   }
+
+   public void a(zy $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

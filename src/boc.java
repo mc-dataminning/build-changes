@@ -1,22 +1,33 @@
+import com.mojang.brigadier.ImmutableStringReader;
 import com.mojang.brigadier.StringReader;
 import java.util.Optional;
 
-public class boc implements bns<StringReader, vh> {
-   public static final bns<StringReader, vh> a = new boc();
+public abstract class boc<C, V> implements bnw<StringReader, V>, bod {
+   private final bnq<all> b;
+   protected final C a;
 
-   private boc() {
+   protected boc(bnq<all> $$0, C $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public Optional<vh> a(bnr<StringReader> $$0) {
+   public Optional<V> a(bnv<StringReader> $$0) {
       $$0.b().skipWhitespace();
       int $$1 = $$0.c();
-
-      try {
-         return Optional.of(new vi($$0.b()).d());
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
+      Optional<all> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
+         }
+      } else {
+         $$0.a().a($$1, this, all.c.createWithContext((ImmutableStringReader)$$0.b()));
          return Optional.empty();
       }
    }
+
+   protected abstract V a(ImmutableStringReader var1, all var2) throws Exception;
 }

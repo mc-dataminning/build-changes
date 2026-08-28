@@ -1,25 +1,32 @@
-import java.util.Arrays;
+public class fuf extends fuj {
+   private static final xl b = xl.c("multiplayerWarning.header").a(n.r);
+   private static final xl c = xl.c("multiplayerWarning.message");
+   private static final xl d = xl.c("multiplayerWarning.check");
+   private static final xl s = b.f().f("\n").b(c);
+   private final frp u;
 
-public class fuf extends fud {
-   private static final xi a = xi.c("options.sounds.title");
-
-   private static fjl<?>[] a(fjm $$0) {
-      return new fjl[]{$$0.Y(), $$0.Z()};
-   }
-
-   public fuf(fra $$0, fjm $$1) {
-      super($$0, $$1, a);
+   public fuf(frp $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.c.b(awm.a));
-      this.d.a(this.G());
-      this.d.a(this.c.av());
-      this.d.a(a(this.c));
+   protected fpm m() {
+      fpp $$0 = fpp.e().a(8);
+      $$0.a(flw.a(xk.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.ay();
+         }
+
+         this.m.a(new fue(this.u));
+      }).a());
+      $$0.a(flw.a(xk.k, $$0x -> this.aP_()).a());
+      return $$0;
    }
 
-   private fjl<?>[] G() {
-      return Arrays.stream(awm.values()).filter($$0 -> $$0 != awm.a).map($$0 -> this.c.b($$0)).toArray(fjl[]::new);
+   @Override
+   public void aP_() {
+      this.m.a(this.u);
    }
 }

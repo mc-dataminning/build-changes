@@ -1,45 +1,29 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class afj implements zs<ach> {
+   public static final zj<wi, afj> a = zs.a(afj::a, afj::new);
+   private final int b;
 
-public class afj implements zp<ace> {
-   public static final zg<wf, afj> a = zp.a(afj::a, afj::new);
-   private final faj b;
-   private final String c;
-
-   public afj(faj $$0, @Nullable fak $$1) {
+   public afj(int $$0) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
    }
 
-   private afj(wf $$0) {
-      this.b = $$0.a(faj.u);
-      this.c = $$0.p();
+   private afj(wi $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(wf $$0) {
-      $$0.a(faj::a, this.b);
-      $$0.a(this.c);
+   private void a(wi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zr<afj> a() {
-      return agt.aB;
+   public zu<afj> a() {
+      return agw.az;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public faj b() {
+   public int b() {
       return this.b;
-   }
-
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

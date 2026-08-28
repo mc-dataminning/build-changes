@@ -1,107 +1,54 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class aps {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xi.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xi.c("commands.trigger.failed.invalid"));
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)ex.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("objective", fq.a())
-                        .suggests(($$0x, $$1) -> a((ew)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"))))
-                     .then(
-                        ex.a("add")
-                           .then(
-                              ex.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ew)$$0x.getSource(),
-                                          ((ew)$$0x.getSource()).h(),
-                                          fq.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ex.a("set")
-                        .then(
-                           ex.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("set")
+                                    .then(ex.a("day").executes($$0x -> a((ew)$$0x.getSource(), 1000))))
+                                 .then(ex.a("noon").executes($$0x -> a((ew)$$0x.getSource(), 6000))))
+                              .then(ex.a("night").executes($$0x -> a((ew)$$0x.getSource(), 13000))))
+                           .then(ex.a("midnight").executes($$0x -> a((ew)$$0x.getSource(), 18000))))
+                        .then(ex.a("time", gl.a()).executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(ex.a("add").then(ex.a("time", gl.a()).executes($$0x -> b((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("query")
+                        .then(ex.a("daytime").executes($$0x -> c((ew)$$0x.getSource(), a(((ew)$$0x.getSource()).e())))))
+                     .then(ex.a("gametime").executes($$0x -> c((ew)$$0x.getSource(), (int)(((ew)$$0x.getSource()).e().aa() % 2147483647L)))))
+                  .then(ex.a("day").executes($$0x -> c((ew)$$0x.getSource(), (int)(((ew)$$0x.getSource()).e().ab() / 24000L % 2147483647L))))
             )
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ew $$0, SuggestionsBuilder $$1) {
-      far $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         fas $$4 = $$0.l().aJ();
+   private static int a(arq $$0) {
+      return (int)($$0.ab() % 24000L);
+   }
 
-         for (fak $$5 : $$4.c()) {
-            if ($$5.c() == fav.c) {
-               fao $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
+   private static int c(ew $$0, int $$1) {
+      $$0.a(() -> xl.a("commands.time.query", $$1), false);
+      return $$1;
+   }
+
+   public static int a(ew $$0, int $$1) {
+      for (arq $$2 : $$0.l().L()) {
+         $$2.b((long)$$1);
       }
 
-      return fb.b($$3, $$1);
+      $$0.a(() -> xl.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   private static int a(ew $$0, aro $$1, fak $$2, int $$3) throws CommandSyntaxException {
-      faq $$4 = a($$0.l().aJ(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> xi.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
+   public static int b(ew $$0, int $$1) {
+      for (arq $$2 : $$0.l().L()) {
+         $$2.b($$2.ab() + (long)$$1);
+      }
 
-   private static int b(ew $$0, aro $$1, fak $$2, int $$3) throws CommandSyntaxException {
-      faq $$4 = a($$0.l().aJ(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> xi.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      int $$3 = a($$0.e());
+      $$0.a(() -> xl.a("commands.time.set", $$3), true);
       return $$3;
-   }
-
-   private static int a(ew $$0, aro $$1, fak $$2) throws CommandSyntaxException {
-      faq $$3 = a($$0.l().aJ(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> xi.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static faq a(fas $$0, far $$1, fak $$2) throws CommandSyntaxException {
-      if ($$2.c() != fav.c) {
-         throw b.create();
-      } else {
-         fao $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            faq $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
-      }
    }
 }

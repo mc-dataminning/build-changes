@@ -1,20 +1,19 @@
-public class cxp extends cvx {
-   public cxp(cxs $$0, float $$1, float $$2, cvx.a $$3) {
-      super($$0.a($$3, $$1, $$2));
+import javax.annotation.Nullable;
+
+public class cxp extends cug {
+   public cxp(cwb.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dvj $$0, dfb $$1, jh $$2, com $$3) {
-      return !$$3.f();
+   public coy a(dff $$0, cwf $$1, bve $$2, @Nullable cwf $$3) {
+      return new cpq($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public boolean a(cwb $$0, bva $$1, bva $$2) {
-      return true;
-   }
-
-   @Override
-   public void b(cwb $$0, bva $$1, bva $$2) {
-      $$0.a(1, $$2, bum.a);
+   public cpk a(dff $$0, ka $$1, cwf $$2, jm $$3) {
+      cpq $$4 = new cpq($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.d = coy.a.b;
+      return $$4;
    }
 }

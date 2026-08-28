@@ -1,27 +1,56 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class fgr extends hep {
-   protected BooleanConsumer a;
-   private final xi b;
-   private final xi c;
+public class fgr extends fgo {
+   private static final Logger e = LogUtils.getLogger();
+   public List<fgq> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public fgr(BooleanConsumer $$0, xi $$1, xi $$2) {
-      super(fiz.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fgr() {
    }
 
-   @Override
-   public void aR_() {
-      this.c(flh.a(xh.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(flh.a(xh.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   public fgr(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   }
+
+   public static fgr a(String $$0) {
+      fgr $$1 = new fgr();
+      $$1.a = Lists.newArrayList();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(fgq.a($$4.next().getAsJsonObject()));
+            }
+         }
+
+         $$1.b = fik.a("page", $$3, 0);
+         $$1.c = fik.a("size", $$3, 0);
+         $$1.d = fik.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      }
+
+      return $$1;
    }
 }

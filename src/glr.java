@@ -1,66 +1,36 @@
-import javax.annotation.Nullable;
+public class glr implements gli<dtm> {
+   public static final hbc a = new hbc(gys.d, all.b("entity/enchanting_table_book"));
+   private final fyk b;
 
-public class glr implements ded {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final glq[] c;
-   protected final dfb d;
-
-   glr(dfb $$0, int $$1, int $$2, glq[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
+   public glr(glj.a $$0) {
+      this.b = new fyk($$0.a(gcb.A));
    }
 
-   @Override
-   public dvj a_(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w())).b($$0);
-   }
+   public void a(dtm $$0, float $$1, fek $$2, gix $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + azn.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   @Override
-   public erk b_(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w())).b($$0).y();
-   }
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
+      }
 
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
-   }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
 
-   @Override
-   public eqz z_() {
-      return this.d.z_();
-   }
-
-   @Nullable
-   @Override
-   public dsm c_(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w())).a($$0);
-   }
-
-   private glq a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
-   }
-
-   @Override
-   public int a(jh $$0, del $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public int I_() {
-      return this.d.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.d.J_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = azn.h($$1, $$0.c, $$0.b);
+      float $$10 = azn.i($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = azn.i($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = azn.h($$1, $$0.g, $$0.f);
+      this.b.a($$6, azn.a($$10, 0.0F, 1.0F), azn.a($$11, 0.0F, 1.0F), $$12);
+      feo $$13 = a.a($$3, gjh::c);
+      this.b.a($$2, $$13, $$4, $$5);
+      $$2.b();
    }
 }

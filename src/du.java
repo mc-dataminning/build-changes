@@ -11,41 +11,41 @@ public class du extends dy<du.a> {
       return du.a.a;
    }
 
-   public void a(aro $$0, ali $$1, List<cwb> $$2) {
+   public void a(arr $$0, all $$1, List<cwf> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bh> b, ali c, List<cu> d) implements dy.a {
+   public static record a(Optional<bh> b, all c, List<cu> d) implements dy.a {
       public static final Codec<du.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bw.b.optionalFieldOf("player").forGetter(du.a::a),
-                  ali.a.fieldOf("recipe_id").forGetter(du.a::b),
+                  all.a.fieldOf("recipe_id").forGetter(du.a::b),
                   cu.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(du.a::c)
                )
                .apply($$0, du.a::new)
       );
 
-      public static ap<du.a> a(ali $$0, List<cu.a> $$1) {
+      public static ap<du.a> a(all $$0, List<cu.a> $$1) {
          return ao.ac.a(new du.a(Optional.empty(), $$0, $$1.stream().map(cu.a::b).toList()));
       }
 
-      public static ap<du.a> a(ali $$0) {
+      public static ap<du.a> a(all $$0) {
          return ao.ac.a(new du.a(Optional.empty(), $$0, List.of()));
       }
 
-      public static ap<du.a> b(ali $$0) {
+      public static ap<du.a> b(all $$0) {
          return ao.ad.a(new du.a(Optional.empty(), $$0, List.of()));
       }
 
-      boolean b(ali $$0, List<cwb> $$1) {
+      boolean b(all $$0, List<cwf> $$1) {
          if (!$$0.equals(this.c)) {
             return false;
          } else {
-            List<cwb> $$2 = new ArrayList<>($$1);
+            List<cwf> $$2 = new ArrayList<>($$1);
 
             for (cu $$3 : this.d) {
                boolean $$4 = false;
-               Iterator<cwb> $$5 = $$2.iterator();
+               Iterator<cwf> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {
@@ -69,7 +69,7 @@ public class du extends dy<du.a> {
          return this.b;
       }
 
-      public ali b() {
+      public all b() {
          return this.c;
       }
 

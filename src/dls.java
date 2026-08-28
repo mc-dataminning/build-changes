@@ -1,106 +1,72 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public abstract class dls extends dlq implements dih {
-   public static final dwj e = dvz.ax;
-   public static final int f = 25;
-   private final double c;
+public class dls extends dni implements dim, dpk {
+   public static final MapCodec<dls> a = b(dls::new);
+   private static final dwf c = dwe.C;
+   private final dnj d = new dnj(this);
 
-   protected dls(dvi.d $$0, jm $$1, fah $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.l(this.F.b().b(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<dls> a() {
+      return a;
+   }
+
+   public dls(dvn.d $$0) {
+      super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<dvo> b(int $$0) {
+      return $$1 -> dni.q($$1) ? $$0 : 0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dls> a();
-
-   @Override
-   public dvj a(dfc $$0) {
-      return this.m().b(e, Integer.valueOf($$0.E_().a(25)));
+   protected void a(dvp.a<dij, dvo> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   protected boolean f(dvj $$0) {
-      return $$0.c(e) < 25;
-   }
-
-   @Override
-   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         jh $$4 = $$2.a(this.a);
-         if (this.h($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.A));
-         }
-      }
-   }
-
-   protected dvj a(dvj $$0, azs $$1) {
-      return $$0.a(e);
-   }
-
-   public dvj p(dvj $$0) {
-      return $$0.b(e, Integer.valueOf(25));
-   }
-
-   public boolean q(dvj $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dvj a(dvj $$0, dvj $$1) {
-      return $$1;
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, erp.c, erp.c.a($$1));
       }
 
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, erl.c, erl.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().m());
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(e);
+   protected boolean a(dvo $$0, czw $$1) {
+      return !$$1.n().a(cwj.fW) || super.a($$0, $$1);
    }
 
    @Override
-   public boolean b(dfe $$0, jh $$1, dvj $$2) {
-      return this.h($$0.a_($$1.a(this.a)));
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      return jm.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
    }
 
    @Override
-   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
       return true;
    }
 
    @Override
-   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
-      jh $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
-      }
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
    }
 
-   protected abstract int a(azs var1);
-
-   protected abstract boolean h(dvj var1);
+   @Override
+   protected ero b_(dvo $$0) {
+      return $$0.c(c) ? erp.c.a(false) : super.b_($$0);
+   }
 
    @Override
-   protected dls c() {
-      return this;
+   protected boolean e_(dvo $$0) {
+      return $$0.y().c();
+   }
+
+   @Override
+   public dnj c() {
+      return this.d;
    }
 }

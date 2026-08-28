@@ -1,5 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record fwc(fwj.a a, Set<dex.e<dex.a>> b, @Nullable alh<ejy> c) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fwc {
 }

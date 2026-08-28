@@ -1,16 +1,25 @@
-public class gtn extends gsx<gxb, gbb> {
-   private static final ali a = ali.b("textures/entity/wolf/wolf_collar.png");
+public abstract class gtn<S extends gvd, M extends fza<? super S>> {
+   private final gqw<S, M> a;
 
-   public gtn(gqg<gxb, gbb> $$0) {
-      super($$0);
+   public gtn(gqw<S, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(feb $$0, gih $$1, int $$2, gxb $$3, float $$4, float $$5) {
-      cuy $$6 = $$3.h;
-      if ($$6 != null && !$$3.u) {
-         int $$7 = $$6.d();
-         fef $$8 = $$1.getBuffer(gir.f(a));
-         this.d().a($$0, $$8, $$2, gxu.d, $$7);
+   protected static <S extends gwb> void a(fza<S> $$0, all $$1, fek $$2, gix $$3, int $$4, S $$5, int $$6) {
+      if (!$$5.u) {
+         $$0.a($$5);
+         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
+
+   protected static void b(fza<?> $$0, all $$1, fek $$2, gix $$3, int $$4, gwb $$5, int $$6) {
+      feo $$7 = $$3.getBuffer(gjh.f($$1));
+      $$0.a($$2, $$7, $$4, gqb.a($$5, 0.0F), $$6);
+   }
+
+   public M d() {
+      return this.a.e();
+   }
+
+   public abstract void a(fek var1, gix var2, int var3, S var4, float var5, float var6);
 }

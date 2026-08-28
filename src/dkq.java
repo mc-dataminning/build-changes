@@ -1,93 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dkq extends dhq {
-   public static final MapCodec<dkq> a = b(dkq::new);
-   protected static final fah b = die.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   public static final List<jh> c = jh.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(jh::j).toList();
+public class dkq {
+   public static <S extends dsr> dkq.c<S> a(
+      dst<S> $$0, Function<dvo, dkq.a> $$1, Function<dvo, jm> $$2, dwq<jm> $$3, dvo $$4, dfg $$5, jh $$6, BiPredicate<dfg, jh> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dkq.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dkq.b::b;
+      } else {
+         dkq.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dkq.a.a;
+         boolean $$11 = $$9 == dkq.a.b;
+         if ($$10) {
+            return new dkq.c.b<>($$8);
+         } else {
+            jh $$12 = $$6.a($$2.apply($$4));
+            dvo $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dkq.a $$14 = $$1.apply($$13);
+               if ($$14 != dkq.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dkq.b::b;
+                  }
 
-   @Override
-   public MapCodec<dkq> a() {
-      return a;
-   }
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dkq.c.a<>($$16, $$17);
+                  }
+               }
+            }
 
-   protected dkq(dvi.d $$0) {
-      super($$0);
-   }
-
-   public static boolean a(dfb $$0, jh $$1, jh $$2) {
-      return $$0.a_($$1.a((kl)$$2)).a(axa.cx) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axa.cy);
-   }
-
-   @Override
-   protected boolean g_(dvj $$0) {
-      return true;
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return b;
-   }
-
-   @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (jh $$4 : c) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               lr.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
+            return new dkq.c.b<>($$8);
          }
       }
    }
 
-   @Override
-   protected dok a_(dvj $$0) {
-      return dok.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public dsm a(jh $$0, dvj $$1) {
-      return new dth($$0, $$1);
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Nullable
-   @Override
-   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
-      return $$0.C ? a($$2, dso.m, dth::a) : null;
-   }
+   public interface c<S> {
+      <T> T apply(dkq.b<? super S, T> var1);
 
-   @Override
-   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
+      public static final class a<S> implements dkq.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dkq.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
       }
 
-      return bsd.a;
-   }
+      public static final class b<S> implements dkq.c<S> {
+         private final S a;
 
-   @Nullable
-   @Override
-   protected bsf b(dvj $$0, dfb $$1, jh $$2) {
-      dsm $$3 = $$1.c_($$2);
-      if ($$3 instanceof dth) {
-         xi $$4 = ((bsg)$$3).S_();
-         return new bsl(($$2x, $$3x, $$4x) -> new csk($$2x, $$3x, csb.a($$1, $$2)), $$4);
-      } else {
-         return null;
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(dkq.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
       }
-   }
-
-   @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      return false;
    }
 }

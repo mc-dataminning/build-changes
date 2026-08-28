@@ -1,38 +1,27 @@
-public class fgp extends hep {
-   private static final xi a = xi.c("mco.client.incompatible.title").b(-65536);
-   private static final xi b = xi.b(ab.b().c()).b(-65536);
-   private static final xi c = xi.a("mco.client.unsupported.snapshot.version", b);
-   private static final xi B = xi.a("mco.client.outdated.stable.version", b);
-   private final fra C;
-   private final fow D = new fow(this);
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fgp(fra $$0) {
-      super(a);
-      this.C = $$0;
-   }
+public class fgp extends fgo {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   @Override
-   public void aR_() {
-      this.D.a(a, this.p);
-      this.D.c(new fmb(this.D(), this.p).b(true));
-      this.D.b(flh.a(xh.k, $$0 -> this.d()).a(200).a());
-      this.D.a($$1 -> {
-         flf var10000 = this.c($$1);
-      });
-      this.c();
-   }
+   public static fgp a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      fgp $$3 = new fgp();
 
-   @Override
-   protected void c() {
-      this.D.a();
-   }
+      try {
+         $$3.a = fik.b("downloadLink", $$2, "");
+         $$3.b = fik.b("resourcePackUrl", $$2, "");
+         $$3.c = fik.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+      }
 
-   @Override
-   public void d() {
-      this.m.a(this.C);
-   }
-
-   private xi D() {
-      return ab.b().g() ? B : c;
+      return $$3;
    }
 }

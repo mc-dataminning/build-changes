@@ -1,19 +1,7 @@
 import javax.annotation.Nullable;
 
-public class gva extends gvl {
-   public float a;
-   public float b;
-   public ezn c;
+public class gva extends gvd {
+   public boolean a = true;
    @Nullable
-   public ezn d;
-   @Nullable
-   public ezn e;
-   @Nullable
-   public ezn f;
-   public float g;
-   public float h;
-
-   public gva() {
-      this.c = ezn.c;
-   }
+   public ezr b;
 }

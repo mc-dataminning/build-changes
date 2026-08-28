@@ -1,98 +1,29 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bzc<U> implements Iterable<U> {
-   protected final List<bzc.a<U>> a;
-   private final azs b = azs.a();
+public class bzc {
+   private static final int a = 1;
 
-   public bzc() {
-      this.a = Lists.newArrayList();
+   public static bwy<bvg> a(float $$0) {
+      return a($$1 -> $$0);
    }
 
-   private bzc(List<bzc.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
+   public static bwy<bvg> a(Function<bve, Float> $$0) {
+      return cak.a(
+         (Function<cak.b<bvg>, ? extends App<cak.c<bvg>, can<bvg>>>)($$1 -> $$1.group($$1.a(cei.m), $$1.a(cei.n), $$1.b(cei.o), $$1.a(cei.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bve $$9 = $$1.b($$4);
+                     Optional<cek> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && bwz.a($$7, $$9, 1)) {
+                        $$2.b();
+                     } else {
+                        $$3.a(new bxi($$9, true));
+                        $$2.a(new cel(new bxi($$9, false), $$0.apply($$7), 0));
+                     }
 
-   public static <U> Codec<bzc<U>> a(Codec<U> $$0) {
-      return bzc.a.a($$0).listOf().xmap(bzc::new, $$0x -> $$0x.a);
-   }
-
-   public bzc<U> a(U $$0, int $$1) {
-      this.a.add(new bzc.a<>($$0, $$1));
-      return this;
-   }
-
-   public bzc<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bzc.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bzc.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bzc.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bzc.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bzc.a<E>>() {
-            public <T> DataResult<Pair<bzc.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bzc.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(bzc.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+                     return true;
+                  }))
+      );
    }
 }

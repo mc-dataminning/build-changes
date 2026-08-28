@@ -1,57 +1,43 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public abstract class cjq implements cjy {
-   protected final cjo a;
+public class cjq {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final cjq.a[] c = new cjq.a[64];
+   private int d = -1;
 
-   public cjq(cjo $$0) {
-      this.a = $$0;
+   public cjq() {
+      Arrays.fill(this.c, new cjq.a(0.0, 0.0F));
    }
 
-   @Override
-   public boolean a() {
-      return false;
+   public void a(cjq $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
    }
 
-   @Override
-   public void b() {
+   public void a(double $$0, float $$1) {
+      cjq.a $$2 = new cjq.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
+      }
+
+      if (++this.d == 64) {
+         this.d = 0;
+      }
+
+      this.c[this.d] = $$2;
    }
 
-   @Override
-   public void c() {
+   public cjq.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
    }
 
-   @Override
-   public void a(cjn $$0, jh $$1, bsu $$2, @Nullable com $$3) {
+   public cjq.a a(int $$0, float $$1) {
+      cjq.a $$2 = this.a($$0);
+      cjq.a $$3 = this.a($$0 + 1);
+      return new cjq.a(azn.d((double)$$1, $$3.a, $$2.a), azn.i($$1, $$3.b, $$2.b));
    }
 
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public float f() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public ezn g() {
-      return null;
-   }
-
-   @Override
-   public float a(bsu $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dA().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public static record a(double a, float b) {
    }
 }

@@ -1,9 +1,8 @@
-public class gve extends gvl {
+public class gve extends gwb {
    public boolean b;
    public boolean c;
-   public buu d = buu.b;
-   public cky.a e = cky.a.h;
-   public int f;
-   public int g;
-   public float h;
+   public boolean d;
+   public float e;
+   public float f;
+   public float g;
 }

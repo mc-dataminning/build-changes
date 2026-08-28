@@ -1,106 +1,106 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
 
-public class gpw extends gnf<chg, gvt, fzh> {
-   private static final Map<chg.a, ali> a = ae.a(Maps.newEnumMap(chg.a.class), $$0 -> {
-      $$0.put(chg.a.a, ali.b("textures/entity/panda/panda.png"));
-      $$0.put(chg.a.b, ali.b("textures/entity/panda/lazy_panda.png"));
-      $$0.put(chg.a.c, ali.b("textures/entity/panda/worried_panda.png"));
-      $$0.put(chg.a.d, ali.b("textures/entity/panda/playful_panda.png"));
-      $$0.put(chg.a.e, ali.b("textures/entity/panda/brown_panda.png"));
-      $$0.put(chg.a.f, ali.b("textures/entity/panda/weak_panda.png"));
-      $$0.put(chg.a.g, ali.b("textures/entity/panda/aggressive_panda.png"));
-   });
+public class gpw extends goz<ckz, gvy> {
+   private static final float a = 0.15F;
+   private static final float b = 0.0F;
+   private static final float h = 0.0F;
+   private static final float i = 0.09375F;
+   private final gpy j;
+   private final azv k = azv.a();
 
-   public gpw(gok.a $$0) {
-      super($$0, new fzh($$0.a(gbl.bp)), new fzh($$0.a(gbl.bq)), 0.9F);
-      this.a(new gst(this, $$0.b()));
+   public gpw(gpa.a $$0) {
+      super($$0);
+      this.j = $$0.b();
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public ali a(gvt $$0) {
-      return a.getOrDefault($$0.a, a.get(chg.a.a));
+   public gvy a() {
+      return new gvy();
    }
 
-   public gvt c() {
-      return new gvt();
-   }
-
-   public void a(chg $$0, gvt $$1, float $$2) {
+   public void a(ckz $$0, gvy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gI();
-      $$1.b = $$0.q() > 0;
-      $$1.c = $$0.t();
-      $$1.d = $$0.gw();
-      $$1.e = $$0.gv();
-      $$1.f = $$0.gO();
-      $$1.g = $$0.y();
-      $$1.h = $$0.J($$2);
-      $$1.i = $$0.K($$2);
-      $$1.j = $$0.p_() ? 0.0F : $$0.L($$2);
-      $$1.k = $$0.bZ > 0 ? (float)$$0.bZ + $$2 : 0.0F;
+      $$1.p = (float)$$0.o() + $$2;
+      $$1.a = $$0.c;
+      cwf $$3 = $$0.m();
+      $$1.c = $$3.v();
+      $$1.b = this.j.a($$3, $$0.dY(), null, $$0.as());
    }
 
-   protected void a(gvt $$0, feb $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.k > 0.0F) {
-         float $$4 = azk.i($$0.k);
-         int $$5 = azk.d($$0.k);
-         int $$6 = $$5 + 1;
-         float $$7 = 7.0F;
-         float $$8 = $$0.ae ? 0.3F : 0.8F;
-         if ((float)$$5 < 8.0F) {
-            float $$9 = 90.0F * (float)$$5 / 7.0F;
-            float $$10 = 90.0F * (float)$$6 / 7.0F;
-            float $$11 = this.a($$9, $$10, $$6, $$4, 8.0F);
-            $$1.a(0.0F, ($$8 + 0.2F) * ($$11 / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$11));
-         } else if ((float)$$5 < 16.0F) {
-            float $$12 = ((float)$$5 - 8.0F) / 7.0F;
-            float $$13 = 90.0F + 90.0F * $$12;
-            float $$14 = 90.0F + 90.0F * ((float)$$6 - 8.0F) / 7.0F;
-            float $$15 = this.a($$13, $$14, $$6, $$4, 16.0F);
-            $$1.a(0.0F, $$8 + 0.2F + ($$8 - 0.2F) * ($$15 - 90.0F) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$15));
-         } else if ((float)$$5 < 24.0F) {
-            float $$16 = ((float)$$5 - 16.0F) / 7.0F;
-            float $$17 = 180.0F + 90.0F * $$16;
-            float $$18 = 180.0F + 90.0F * ((float)$$6 - 16.0F) / 7.0F;
-            float $$19 = this.a($$17, $$18, $$6, $$4, 24.0F);
-            $$1.a(0.0F, $$8 + $$8 * (270.0F - $$19) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$19));
-         } else if ($$5 < 32) {
-            float $$20 = ((float)$$5 - 24.0F) / 7.0F;
-            float $$21 = 270.0F + 90.0F * $$20;
-            float $$22 = 270.0F + 90.0F * ((float)$$6 - 24.0F) / 7.0F;
-            float $$23 = this.a($$21, $$22, $$6, $$4, 32.0F);
-            $$1.a(0.0F, $$8 * ((360.0F - $$23) / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$23));
-         }
+   public void a(gvy $$0, fek $$1, gix $$2, int $$3) {
+      hav $$4 = $$0.b;
+      if ($$4 != null) {
+         $$1.a();
+         cwf $$5 = $$0.c;
+         this.k.b((long)a($$5));
+         boolean $$6 = $$4.b();
+         float $$7 = 0.25F;
+         float $$8 = azn.a($$0.p / 10.0F + $$0.a) * 0.1F + 0.1F;
+         float $$9 = $$4.f().a(cwd.h).d.y();
+         $$1.a(0.0F, $$8 + 0.25F * $$9, 0.0F);
+         float $$10 = ckz.e($$0.p, $$0.a);
+         $$1.a(a.d.rotation($$10));
+         a(this.j, $$1, $$2, $$3, $$5, $$4, $$6, this.k);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public static int a(cwf $$0) {
+      return $$0.f() ? 187 : cwb.a($$0.h()) + $$0.o();
+   }
+
+   @VisibleForTesting
+   static int a(int $$0) {
+      if ($$0 <= 1) {
+         return 1;
+      } else if ($$0 <= 16) {
+         return 2;
+      } else if ($$0 <= 32) {
+         return 3;
+      } else {
+         return $$0 <= 48 ? 4 : 5;
+      }
+   }
+
+   public static void a(gpy $$0, fek $$1, gix $$2, int $$3, cwf $$4, azv $$5, dff $$6) {
+      hav $$7 = $$0.a($$4, $$6, null, 0);
+      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
+   }
+
+   public static void a(gpy $$0, fek $$1, gix $$2, int $$3, cwf $$4, hav $$5, boolean $$6, azv $$7) {
+      int $$8 = a($$4.L());
+      float $$9 = $$5.f().h.d.x();
+      float $$10 = $$5.f().h.d.y();
+      float $$11 = $$5.f().h.d.z();
+      if (!$$6) {
+         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
+         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
+         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
+         $$1.a($$12, $$13, $$14);
       }
 
-      float $$24 = $$0.h;
-      if ($$24 > 0.0F) {
-         $$1.a(0.0F, 0.8F * $$24, 0.0F);
-         $$1.a(a.b.rotationDegrees(azk.h($$24, $$0.V, $$0.V + 90.0F)));
-         $$1.a(0.0F, -1.0F * $$24, 0.0F);
-         if ($$0.f) {
-            float $$25 = (float)(Math.cos((double)($$0.p * 1.25F)) * Math.PI * 0.05F);
-            $$1.a(a.d.rotationDegrees($$25));
-            if ($$0.ae) {
-               $$1.a(0.0F, 0.8F, 0.55F);
+      for (int $$15 = 0; $$15 < $$8; $$15++) {
+         $$1.a();
+         if ($$15 > 0) {
+            if ($$6) {
+               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               $$1.a($$16, $$17, $$18);
+            } else {
+               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               $$1.a($$19, $$20, 0.0F);
             }
          }
-      }
 
-      float $$26 = $$0.i;
-      if ($$26 > 0.0F) {
-         float $$27 = $$0.ae ? 0.5F : 1.3F;
-         $$1.a(0.0F, $$27 * $$26, 0.0F);
-         $$1.a(a.b.rotationDegrees(azk.h($$26, $$0.V, $$0.V + 180.0F)));
+         $$0.a($$4, cwd.h, false, $$1, $$2, $$3, gyk.d, $$5);
+         $$1.b();
+         if (!$$6) {
+            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
+         }
       }
-   }
-
-   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
-      return (float)$$2 < $$4 ? azk.h($$3, $$0, $$1) : $$0;
    }
 }

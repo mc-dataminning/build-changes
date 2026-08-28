@@ -1,27 +1,33 @@
-public class gse extends gsx<gui, fyd> {
-   private final gpi a;
-
-   public gse(gqg<gui, fyd> $$0, gpi $$1) {
-      super($$0);
-      this.a = $$1;
+public class gse extends gnv<chy, gxr, gbr> {
+   public gse(gpa.a $$0) {
+      super($$0, new gbr($$0.a(gcb.dg)), new gbr($$0.a(gcb.di)), 0.5F);
+      this.a(new guc(this, $$0.f(), $$0.h()));
+      this.a(new gud(this));
    }
 
-   public void a(feb $$0, gih $$1, int $$2, gui $$3, float $$4, float $$5) {
-      cwb $$6 = $$3.aW_();
-      haf $$7 = $$3.b();
-      if ($$7 != null) {
-         $$0.a();
-         float $$8 = 1.0F;
-         float $$9 = -1.0F;
-         float $$10 = azk.e($$3.V) / 60.0F;
-         if ($$3.V < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
-         }
+   protected int a(gxr $$0) {
+      float $$1 = $$0.f;
+      return $$1 == 1.0F ? -1 : axy.a(1.0F, $$1, $$1, $$1);
+   }
 
-         this.a.a($$6, cvz.h, false, $$0, $$1, $$2, gxu.d, $$7);
-         $$0.b();
-      }
+   public all b(gxr $$0) {
+      return $$0.g;
+   }
+
+   public gxr c() {
+      return new gxr();
+   }
+
+   public void a(chy $$0, gxr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.ae_();
+      $$1.b = $$0.y();
+      $$1.c = $$0.gK();
+      $$1.d = $$0.L($$2);
+      $$1.e = $$0.K($$2);
+      $$1.g = $$0.gH();
+      $$1.f = $$0.J($$2);
+      $$1.h = $$0.q() ? $$0.gL() : null;
+      $$1.i = $$0.ak().v();
    }
 }

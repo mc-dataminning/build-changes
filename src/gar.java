@@ -1,26 +1,30 @@
-public class gar extends fyk<gws> {
-   private final gbm a;
+public class gar extends fzv {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final gcc e;
+   private final gcc f;
 
-   public gar(gbm $$0) {
-      super($$0);
-      this.a = $$0.b("tail");
+   public gar(gcc $$0) {
+      super($$0, gjh::c);
+      this.e = $$0.b("plate");
+      this.f = $$0.b("handle");
    }
 
-   public static gbs a(gbq $$0) {
-      gbu $$1 = new gbu();
-      gbw $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", gbr.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), gbo.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", gbr.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gbo.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", gbr.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gbo.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", gbr.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gbo.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", gbr.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gbo.a(0.0F, 20.5F, -3.0F));
-      return gbs.a($$1, 32, 32);
+   public static gci a() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      $$1.a("plate", gch.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gce.a);
+      $$1.a("handle", gch.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gce.a);
+      return gci.a($$0, 64, 64);
    }
 
-   public void a(gws $$0) {
-      super.a($$0);
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * azk.a(0.6F * $$0.p);
+   public gcc b() {
+      return this.e;
+   }
+
+   public gcc c() {
+      return this.f;
    }
 }

@@ -1,112 +1,96 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class ejz {
-   public static final alh<ejy> a = a("classic_flat");
-   public static final alh<ejy> b = a("tunnelers_dream");
-   public static final alh<ejy> c = a("water_world");
-   public static final alh<ejy> d = a("overworld");
-   public static final alh<ejy> e = a("snowy_kingdom");
-   public static final alh<ejy> f = a("bottomless_pit");
-   public static final alh<ejy> g = a("desert");
-   public static final alh<ejy> h = a("redstone_ready");
-   public static final alh<ejy> i = a("the_void");
+public class ejz extends ejx {
+   public static final MapCodec<ejz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  brm.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
+                  brm.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
+                  kf.a(ma.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
+               )
+            )
+            .apply($$0, ejz::new)
+   );
+   private final brm b;
+   private final float h;
+   private final brm i;
+   private final ju<dij> j;
 
-   public static void a(qy<ejy> $$0) {
-      new ejz.a($$0).a();
+   public ejz(int $$0, int $$1, int $$2, brm $$3, float $$4, brm $$5, ju<dij> $$6) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   private static alh<ejy> a(String $$0) {
-      return alh.a(lz.aO, ali.b($$0));
+   @Override
+   protected ejy<?> a() {
+      return ejy.h;
    }
 
-   static class a {
-      private final qy<ejy> a;
+   @Override
+   public List<eif.a> a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, int $$3, jh $$4, ehp $$5) {
+      List<eif.a> $$6 = Lists.newArrayList();
+      jh.a $$7 = new jh.a();
 
-      a(qy<ejy> $$0) {
-         this.a = $$0;
-      }
-
-      private void a(alh<ejy> $$0, dfa $$1, alh<dgc> $$2, Set<alh<emd>> $$3, boolean $$4, boolean $$5, ejx... $$6) {
-         jr<emd> $$7 = this.a.a(lz.aU);
-         jr<elb> $$8 = this.a.a(lz.aR);
-         jr<dgc> $$9 = this.a.a(lz.aG);
-         ju.a<emd> $$10 = ju.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         eka $$11 = new eka(Optional.of($$10), $$9.b($$2), eka.b($$8));
-         if ($$4) {
-            $$11.a();
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         int $$9 = $$4.v() + $$8;
+         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
+            jm $$10 = jm.c.a.a($$2);
+            int $$11 = this.i.a($$2);
+            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
+            int $$13 = this.b.a($$2);
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
          }
 
-         if ($$5) {
-            $$11.b();
+         if ($$8 == $$3 - 1) {
+            $$6.add(new eif.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
          }
-
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
-         }
-
-         this.a.a($$0, new ejy($$1.j().f(), $$11));
       }
 
-      public void a() {
-         this.a(ejz.a, dig.i, dgj.b, ImmutableSet.of(elq.a), false, false, new ejx(1, dig.i), new ejx(2, dig.j), new ejx(1, dig.F));
-         this.a(ejz.b, dig.b, dgj.t, ImmutableSet.of(elq.j, elq.r), true, false, new ejx(1, dig.i), new ejx(5, dig.j), new ejx(230, dig.b), new ejx(1, dig.F));
-         this.a(
-            ejz.c,
-            cwf.qA,
-            dgj.T,
-            ImmutableSet.of(elq.m, elq.l, elq.g),
-            false,
-            false,
-            new ejx(90, dig.G),
-            new ejx(5, dig.L),
-            new ejx(5, dig.j),
-            new ejx(5, dig.b),
-            new ejx(64, dig.sJ),
-            new ejx(1, dig.F)
-         );
-         this.a(
-            ejz.d,
-            dig.bt,
-            dgj.b,
-            ImmutableSet.of(elq.a, elq.j, elq.f, elq.k, elq.r),
-            true,
-            true,
-            new ejx(1, dig.i),
-            new ejx(3, dig.j),
-            new ejx(59, dig.b),
-            new ejx(1, dig.F)
-         );
-         this.a(
-            ejz.e,
-            dig.dN,
-            dgj.d,
-            ImmutableSet.of(elq.a, elq.c),
-            false,
-            false,
-            new ejx(1, dig.dN),
-            new ejx(1, dig.i),
-            new ejx(3, dig.j),
-            new ejx(59, dig.b),
-            new ejx(1, dig.F)
-         );
-         this.a(ejz.f, cwf.pu, dgj.b, ImmutableSet.of(elq.a), false, false, new ejx(1, dig.i), new ejx(3, dig.j), new ejx(2, dig.m));
-         this.a(
-            ejz.g,
-            dig.I,
-            dgj.f,
-            ImmutableSet.of(elq.a, elq.b, elq.j, elq.r),
-            true,
-            false,
-            new ejx(8, dig.I),
-            new ejx(52, dig.aV),
-            new ejx(3, dig.b),
-            new ejx(1, dig.F)
-         );
-         this.a(ejz.h, cwf.lH, dgj.f, ImmutableSet.of(), false, false, new ejx(116, dig.aV), new ejx(3, dig.b), new ejx(1, dig.F));
-         this.a(ejz.i, dig.hW, dgj.a, ImmutableSet.of(), true, false, new ejx(1, dig.a));
+      return $$6;
+   }
+
+   private void a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, int $$3, ehp $$4, List<eif.a> $$5, jh.a $$6, int $$7, jm $$8, int $$9, int $$10) {
+      int $$11 = $$7 + $$9;
+      int $$12 = $$6.u();
+      int $$13 = $$6.w();
+      int $$14 = $$9;
+
+      while ($$14 < $$3 && $$10 > 0) {
+         if ($$14 >= 1) {
+            int $$15 = $$7 + $$14;
+            $$12 += $$8.j();
+            $$13 += $$8.l();
+            $$11 = $$15;
+            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
+               $$11 = $$15 + 1;
+            }
+
+            $$5.add(new eif.a($$6.j(), 0, false));
+         }
+
+         $$14++;
+         $$10--;
       }
+
+      if ($$11 - $$7 > 1) {
+         jh $$16 = new jh($$12, $$11, $$13);
+         $$5.add(new eif.a($$16, 0, false));
+         $$5.add(new eif.a($$16.c(2), 0, false));
+      }
+   }
+
+   @Override
+   protected boolean a(dfl $$0, jh $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

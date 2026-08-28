@@ -1,20 +1,29 @@
-public record ain(short b, cwb c) implements zp<agv> {
-   public static final zg<wt, ain> a = zg.a(ze.e, ain::b, cwb.a(cwb.h), ain::e, ain::new);
+public class ain implements zs<agy> {
+   public static final zj<wi, ain> a = zs.a(ain::a, ain::new);
+   private final int b;
 
-   public ain(int $$0, cwb $$1) {
-      this((short)$$0, $$1);
+   public ain(int $$0) {
+      this.b = $$0;
+   }
+
+   private ain(wi $$0) {
+      this.b = $$0.readShort();
+   }
+
+   private void a(wi $$0) {
+      $$0.m(this.b);
    }
 
    @Override
-   public zr<ain> a() {
-      return agt.bZ;
+   public zu<ain> a() {
+      return agw.bW;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public cwb e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

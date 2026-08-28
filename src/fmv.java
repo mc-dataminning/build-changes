@@ -1,55 +1,35 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
-
 public class fmv {
-   @Nullable
-   private fms a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   public void a(Duration $$0) {
-      this.b = $$0;
+   public static void a(flj $$0, gzu $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   public void a(@Nullable fms $$0) {
-      this.a = $$0;
+   public static void a(flj $$0, gzu $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
    }
 
-   @Nullable
-   public fms a() {
-      return this.a;
-   }
-
-   public void a(boolean $$0, boolean $$1, fpp $$2) {
-      if (this.a == null) {
-         this.d = false;
-      } else {
-         boolean $$3 = $$0 || $$1 && fji.Q().aY().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = ae.c();
-            }
-
-            this.d = $$3;
-         }
-
-         if ($$3 && ae.c() - this.c > this.b.toMillis()) {
-            fra $$4 = fji.Q().z;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
-         }
+   public static void a(flj $$0, all $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(gjh::B, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
       }
    }
 
-   private ftk a(fpp $$0, boolean $$1, boolean $$2) {
-      return (ftk)(!$$1 && $$2 && fji.Q().aY().b() ? new ftf($$0) : new ftm($$0));
-   }
-
-   public void a(fpf $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
+   private static void a(flj $$0, all $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(gjh::B, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

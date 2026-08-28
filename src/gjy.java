@@ -1,96 +1,115 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gjy {
-   public static final gjy a = new gjy(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-   public final Vector3f b;
-   public final Vector3f c;
-   public final Vector3f d;
+   private static final all a = all.b("textures/misc/forcefield.png");
 
-   public gjy(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
-      this.b = new Vector3f($$0);
-      this.c = new Vector3f($$1);
-      this.d = new Vector3f($$2);
-   }
+   public void a(dxe $$0, ezr $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = azn.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         RenderSystem.enableBlend();
+         RenderSystem.enableDepthTest();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+         RenderSystem.setShaderTexture(0, a);
+         RenderSystem.depthMask(fjx.O());
+         int $$12 = $$0.d().a();
+         float $$13 = (float)axy.b($$12) / 255.0F;
+         float $$14 = (float)axy.c($$12) / 255.0F;
+         float $$15 = (float)axy.d($$12) / 255.0F;
+         RenderSystem.setShaderColor($$13, $$14, $$15, (float)$$8);
+         RenderSystem.setShader(gih.h);
+         RenderSystem.polygonOffset(-3.0F, -3.0F);
+         RenderSystem.enablePolygonOffset();
+         RenderSystem.disableCull();
+         float $$16 = (float)(ae.c() % 3000L) / 3000.0F;
+         float $$17 = (float)(-azn.e($$1.e * 0.5));
+         float $$18 = $$17 + $$11;
+         fef $$19 = fem.b().a(fep.c.h, fei.i);
+         double $$20 = Math.max((double)azn.a($$10 - $$2), $$6);
+         double $$21 = Math.min((double)azn.c($$10 + $$2), $$7);
+         float $$22 = (float)(azn.a($$20) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$23 = $$22;
 
-   public void a(boolean $$0, feb $$1) {
-      if (this != a) {
-         float $$2 = this.b.x();
-         float $$3 = this.b.y();
-         float $$4 = this.b.z();
-         if ($$0) {
-            $$3 = -$$3;
-            $$4 = -$$4;
-         }
-
-         int $$5 = $$0 ? -1 : 1;
-         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (this.getClass() != $$0.getClass()) {
-         return false;
-      } else {
-         gjy $$1 = (gjy)$$0;
-         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      $$0 = 31 * $$0 + this.c.hashCode();
-      return 31 * $$0 + this.d.hashCode();
-   }
-
-   protected static class a implements JsonDeserializer<gjy> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
-
-      public gjy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(azk.a($$5.x, -5.0F, 5.0F), azk.a($$5.y, -5.0F, 5.0F), azk.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(azk.a($$6.x, -4.0F, 4.0F), azk.a($$6.y, -4.0F, 4.0F), azk.a($$6.z, -4.0F, 4.0F));
-         return new gjy($$4, $$5, $$6);
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
-         } else {
-            JsonArray $$3 = aza.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
-
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = aza.e($$3.get($$5), $$1 + "[" + $$5 + "]");
-               }
-
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            for (double $$24 = $$20; $$24 < $$21; $$23 += 0.5F) {
+               double $$25 = Math.min(1.0, $$21 - $$24);
+               float $$26 = (float)$$25 * 0.5F;
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$18);
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$18);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$17);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$17);
+               $$24++;
             }
          }
+
+         if ($$9 < $$4 + $$2) {
+            float $$27 = $$22;
+
+            for (double $$28 = $$20; $$28 < $$21; $$27 += 0.5F) {
+               double $$29 = Math.min(1.0, $$21 - $$28);
+               float $$30 = (float)$$29 * 0.5F;
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$17);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$17);
+               $$28++;
+            }
+         }
+
+         $$20 = Math.max((double)azn.a($$9 - $$2), $$4);
+         $$21 = Math.min((double)azn.c($$9 + $$2), $$5);
+         $$22 = (float)(azn.a($$20) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$31 = $$22;
+
+            for (double $$32 = $$20; $$32 < $$21; $$31 += 0.5F) {
+               double $$33 = Math.min(1.0, $$21 - $$32);
+               float $$34 = (float)$$33 * 0.5F;
+               $$19.a((float)($$32 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$17);
+               $$19.a((float)($$32 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$17);
+               $$32++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$35 = $$22;
+
+            for (double $$36 = $$20; $$36 < $$21; $$35 += 0.5F) {
+               double $$37 = Math.min(1.0, $$21 - $$36);
+               float $$38 = (float)$$37 * 0.5F;
+               $$19.a((float)($$36 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), $$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$17);
+               $$19.a((float)($$36 - $$9), $$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$17);
+               $$36++;
+            }
+         }
+
+         fej $$39 = $$19.a();
+         if ($$39 != null) {
+            feg.a($$39);
+         }
+
+         RenderSystem.enableCull();
+         RenderSystem.polygonOffset(0.0F, 0.0F);
+         RenderSystem.disablePolygonOffset();
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+         RenderSystem.depthMask(true);
       }
    }
 }

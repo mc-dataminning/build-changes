@@ -1,27 +1,13 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class epr extends ept {
-   public static final MapCodec<epr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dvj.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, epr::new)
-   );
-   private final dvj b;
-   private final float d;
+public interface epr<P extends epq> {
+   epr<epp> a = a("always_true", epp.a);
+   epr<epm> b = a("linear_pos", epm.a);
+   epr<epb> c = a("axis_aligned_linear_pos", epb.a);
 
-   public epr(dvj $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dvj $$0, azs $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected epu<?> a() {
-      return epu.f;
+   static <P extends epq> epr<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.o, $$0, () -> $$1);
    }
 }

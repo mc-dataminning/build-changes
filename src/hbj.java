@@ -1,17 +1,28 @@
-public abstract class hbj extends hbi implements hcb {
-   private boolean n;
+import java.util.Locale;
 
-   protected hbj(awk $$0, awm $$1, azs $$2) {
-      super($$0, $$1, $$2);
+public record hbj(all b, String c) {
+   public static final String a = "inventory";
+
+   public hbj(all b, String c) {
+      c = a(c);
+      this.b = b;
+      this.c = c;
+   }
+
+   public static hbj a(all $$0) {
+      return new hbj($$0, "inventory");
+   }
+
+   private static String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.c;
    }
 
    @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public String toString() {
+      return this.b + "#" + this.c;
    }
 }

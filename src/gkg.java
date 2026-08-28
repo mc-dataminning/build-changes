@@ -1,59 +1,55 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Splitter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-public class gkg implements gkf {
-   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
-   private final String d;
-   private final String e;
+public record gkg(@Nullable jm b, int c, String d, gki e) {
+   public static final int a = -1;
 
-   public gkg(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   @Nullable
+   public jm a() {
+      return this.b;
    }
 
-   @Override
-   public Predicate<dvj> getPredicate(dvk<die, dvj> $$0) {
-      dwm<?> $$1 = $$0.a(this.d);
-      if ($$1 == null) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
-      } else {
-         String $$2 = this.e;
-         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
-         if ($$3) {
-            $$2 = $$2.substring(1);
-         }
+   public int b() {
+      return this.c;
+   }
 
-         List<String> $$4 = a.splitToList($$2);
-         if ($$4.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
-         } else {
-            Predicate<dvj> $$5;
-            if ($$4.size() == 1) {
-               $$5 = this.a($$0, $$1, $$2);
-            } else {
-               $$5 = ae.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
-            }
+   public String c() {
+      return this.d;
+   }
 
-            return $$3 ? $$5.negate() : $$5;
-         }
+   public gki d() {
+      return this.e;
+   }
+
+   protected static class a implements JsonDeserializer<gkg> {
+      private static final int a = -1;
+
+      public gkg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         jm $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         gki $$7 = (gki)$$2.deserialize($$3, gki.class);
+         return new gkg($$4, $$5, $$6, $$7);
       }
-   }
 
-   private Predicate<dvj> a(dvk<die, dvj> $$0, dwm<?> $$1, String $$2) {
-      Optional<?> $$3 = $$1.b($$2);
-      if ($$3.isEmpty()) {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
-      } else {
-         return $$2x -> $$2x.c($$1).equals($$3.get());
+      protected int a(JsonObject $$0) {
+         return azd.a($$0, "tintindex", -1);
       }
-   }
 
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
+      private String b(JsonObject $$0) {
+         return azd.i($$0, "texture");
+      }
+
+      @Nullable
+      private jm c(JsonObject $$0) {
+         String $$1 = azd.a($$0, "cullface", "");
+         return jm.a($$1);
+      }
    }
 }

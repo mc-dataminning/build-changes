@@ -1,100 +1,80 @@
 import javax.annotation.Nullable;
 
-public class cka extends cjr {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
+public class cka extends cju {
+   private static final cfv b = cfv.a().d();
    @Nullable
-   private btx g;
+   private esc c;
+   @Nullable
+   private ezr d;
 
-   public cka(cjo $$0) {
+   public cka(cjs $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         ezn $$0 = this.a.J(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.d.dC();
-         double $$2 = this.a.d.e(0.5);
-         double $$3 = this.a.d.dI();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.ea().k() / 2.0;
-            double $$6 = $$2 + this.a.ea().k() / 2.0;
-            double $$7 = $$3 + this.a.ea().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dX().a(lr.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
-   }
-
-   @Override
-   public void c() {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gr().a(cke.e);
-         } else {
-            this.a.gr().a(cke.g);
-         }
-      } else if (this.e == 10) {
-         ezn $$0 = new ezn(this.a.d.dC() - this.a.dC(), 0.0, this.a.d.dI() - this.a.dI()).d();
-         float $$1 = 5.0F;
-         double $$2 = this.a.d.dC() + $$0.d * 5.0 / 2.0;
-         double $$3 = this.a.d.dI() + $$0.f * 5.0 / 2.0;
-         double $$4 = this.a.d.e(0.5);
-         double $$5 = $$4;
-         jh.a $$6 = new jh.a($$2, $$4, $$3);
-
-         while (this.a.dX().u($$6)) {
-            if (--$$5 < 0.0) {
-               $$5 = $$4;
-               break;
-            }
-
-            $$6.b($$2, $$5, $$3);
-         }
-
-         $$5 = (double)(azk.a($$5) + 1);
-         this.g = new btx(this.a.dX(), $$2, $$5, $$3);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(lr.h);
-         this.g.a(new btj(btl.g));
-         this.a.dX().b(this.g);
-      }
+   public cki<cka> i() {
+      return cki.c;
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.f++;
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public void e() {
-      if (this.g != null) {
-         this.g.av();
-         this.g = null;
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dD(), this.a.dF(), this.a.dJ());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
       }
    }
 
+   @Nullable
    @Override
-   public cke<cka> i() {
-      return cke.f;
+   public ezr g() {
+      return this.d;
    }
 
-   public void j() {
-      this.f = 0;
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         jh $$1 = this.a.dY().a(ebj.a.f, eeo.a(this.a.q()));
+         cor $$2 = this.a.dY().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            ezr $$3 = new ezr($$2.dD(), 0.0, $$2.dJ()).d();
+            $$4 = this.a.q(-$$3.d * 40.0, 105.0, -$$3.f * 40.0);
+         } else {
+            $$4 = this.a.q(40.0, (double)$$1.v(), 0.0);
+         }
+
+         esa $$6 = new esa($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gs().a(cki.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         kl $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.eb().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new ezr($$1, $$3, $$2);
+      }
    }
 }

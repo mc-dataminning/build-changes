@@ -1,55 +1,73 @@
-public class csx<T extends cro> implements crc {
-   public static final csx<crx> a = a("generic_9x1", crx::a);
-   public static final csx<crx> b = a("generic_9x2", crx::b);
-   public static final csx<crx> c = a("generic_9x3", crx::c);
-   public static final csx<crx> d = a("generic_9x4", crx::d);
-   public static final csx<crx> e = a("generic_9x5", crx::e);
-   public static final csx<crx> f = a("generic_9x6", crx::f);
-   public static final csx<csj> g = a("generic_3x3", csj::new);
-   public static final csx<cse> h = a("crafter_3x3", cse::new);
-   public static final csx<crr> i = a("anvil", crr::new);
-   public static final csx<crt> j = a("beacon", crt::new);
-   public static final csx<cru> k = a("blast_furnace", cru::new);
-   public static final csx<crv> l = a("brewing_stand", crv::new);
-   public static final csx<csh> m = a("crafting", csh::new);
-   public static final csx<csk> n = a("enchantment", csk::new);
-   public static final csx<csm> o = a("furnace", csm::new);
-   public static final csx<cso> p = a("grindstone", cso::new);
-   public static final csx<csp> q = a("hopper", csp::new);
-   public static final csx<csu> r = a("lectern", ($$0, $$1) -> new csu($$0));
-   public static final csx<csv> s = a("loom", csv::new);
-   public static final csx<csz> t = a("merchant", csz::new);
-   public static final csx<cti> u = a("shulker_box", cti::new);
-   public static final csx<cto> v = a("smithing", cto::new);
-   public static final csx<ctp> w = a("smoker", ctp::new);
-   public static final csx<crw> x = a("cartography_table", crw::new);
-   public static final csx<ctr> y = a("stonecutter", ctr::new);
-   private final crf z;
-   private final csx.a<T> A;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private static <T extends cro> csx<T> a(String $$0, csx.a<T> $$1) {
-      return kd.a(ly.p, $$0, new csx<>($$1, crh.h));
+public class csx {
+   private final List<csx.b> a;
+   private final csx.b b;
+
+   csx(List<csx.b> $$0, csx.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(csx.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
    }
 
-   private static <T extends cro> csx<T> a(String $$0, csx.a<T> $$1, crd... $$2) {
-      return kd.a(ly.p, $$0, new csx<>($$1, crh.f.a($$2)));
+   public static csx.a a() {
+      return new csx.a();
    }
 
-   private csx(csx.a<T> $$0, crf $$1) {
-      this.A = $$0;
-      this.z = $$1;
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
    }
 
-   public T a(int $$0, col $$1) {
-      return this.A.create($$0, $$1);
+   public csx.b b(int $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public crf i() {
-      return this.z;
+   public csx.b b() {
+      return this.b;
    }
 
-   interface a<T extends cro> {
-      T create(int var1, col var2);
+   public List<csx.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(csx.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<csx.b> a = new ArrayList<>();
+      private csx.b b = csx.b.e;
+
+      public csx.a a(int $$0, int $$1, int $$2, Predicate<cwf> $$3) {
+         this.a.add(new csx.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public csx.a a(int $$0, int $$1, int $$2) {
+         this.b = new csx.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public csx a() {
+         return new csx(this.a, this.b);
+      }
+   }
+
+   public static record b(int a, int b, int c, Predicate<cwf> d) {
+      static final csx.b e = new csx.b(0, 0, 0, $$0 -> true);
    }
 }

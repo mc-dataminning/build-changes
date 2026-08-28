@@ -1,20 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dry extends drf {
-   public static final MapCodec<dry> b = b(dry::new);
+public class dry extends dlw {
+   public static final MapCodec<dry> c = b(dry::new);
+   public static final fal e = dij.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dry> a() {
-      return b;
+      return c;
    }
 
-   protected dry(dvi.d $$0) {
-      super(dpg.b.d, $$0);
+   public dry(dvn.d $$0) {
+      super($$0, jm.a, e, false);
    }
 
    @Override
-   public void a(dfb $$0, jh $$1, dvj $$2, @Nullable bva $$3, cwb $$4) {
-      drx.a($$0, $$1);
+   protected dlx c() {
+      return (dlx)dil.oz;
    }
 }

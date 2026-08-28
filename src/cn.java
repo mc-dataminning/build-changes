@@ -12,7 +12,7 @@ public record cn(dj.d c, dj.d d) implements dz<Integer> {
       return ku.e;
    }
 
-   public boolean a(cwb $$0, Integer $$1) {
+   public boolean a(cwf $$0, Integer $$1) {
       return !this.c.d($$0.p() - $$1) ? false : this.d.d($$1);
    }
 

@@ -1,6 +1,18 @@
-public interface wu extends wo {
-   @Override
-   default zq a() {
-      return zq.a;
+import io.netty.channel.ChannelHandlerContext;
+
+public interface wu {
+   static void a(ChannelHandlerContext $$0, zs<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new xa.a());
+         $$0.pipeline().remove($$0.name());
+      }
+   }
+
+   static void b(ChannelHandlerContext $$0, zs<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new xa.c());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

@@ -1,32 +1,17 @@
-import java.util.function.UnaryOperator;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Supplier;
 
-public class ok {
-   @Deprecated
-   public static ali a(String $$0) {
-      return ali.b("block/" + $$0);
+public class ok implements Supplier<JsonElement> {
+   private final all a;
+
+   public ok(all $$0) {
+      this.a = $$0;
    }
 
-   public static ali b(String $$0) {
-      return ali.b("item/" + $$0);
-   }
-
-   public static ali a(die $$0, String $$1) {
-      ali $$2 = ly.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
-
-   public static ali a(die $$0) {
-      ali $$1 = ly.e.b($$0);
-      return $$1.f("block/");
-   }
-
-   public static ali a(cvx $$0) {
-      ali $$1 = ly.g.b($$0);
-      return $$1.f("item/");
-   }
-
-   public static ali a(cvx $$0, String $$1) {
-      ali $$2 = ly.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
    }
 }

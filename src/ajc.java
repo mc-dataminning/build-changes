@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class ajc {
+   public static final zu<ajb> a = a("intention");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajc {
+   private static <T extends zs<aje>> zu<T> a(String $$0) {
+      return new zu<>(zt.a, all.b($$0));
+   }
 }

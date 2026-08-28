@@ -1,40 +1,60 @@
-public class cvl extends cvx {
-   public cvl(cvx.a $$0) {
+public class cvl extends cwb implements cxa {
+   public cvl(cwb.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsd a(czu $$0) {
-      com $$1 = $$0.o();
-      dfb $$2 = $$0.q();
-      jh $$3 = $$0.a();
-      dvj $$4 = $$2.a_($$3);
-      if (!dis.i($$4) && !dit.h($$4) && !diu.h($$4)) {
-         jh $$5 = $$3.a($$0.k());
-         if (dhr.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, awl.ja, awm.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-            dvj $$6 = dhr.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, eag.i, $$3);
-            cwb $$7 = $$0.n();
-            if ($$1 instanceof aro) {
-               ao.z.a((aro)$$1, $$5, $$7);
-               $$7.a(1, $$1, bva.d($$0.p()));
-            }
-
-            return bsd.a;
-         } else {
-            return bsd.d;
+   public bsh a(czy $$0) {
+      dff $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvo $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!dix.i($$3) && !diy.h($$3) && !diz.h($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (dhw.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, dhw.a($$1, $$2));
+            $$1.a($$0.o(), eak.i, $$2);
+            $$4 = true;
          }
       } else {
-         $$2.a($$1, $$3, awl.ja, awm.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.b(dvz.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, eag.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bva.d($$0.p()));
-         }
-
-         return bsd.a;
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.b(dwe.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), eak.c, $$2);
+         $$4 = true;
       }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bsh.a;
+      } else {
+         return bsh.d;
+      }
+   }
+
+   private void a(dff $$0, jh $$1) {
+      azv $$2 = $$0.E_();
+      $$0.a(null, $$1, awo.iL, awp.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   }
+
+   @Override
+   public cpk a(dff $$0, ka $$1, cwf $$2, jm $$3) {
+      azv $$4 = $$0.E_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      ezr $$8 = new ezr($$5, $$6, $$7);
+      cpo $$9 = new cpo($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
+      $$9.a($$2);
+      return $$9;
+   }
+
+   @Override
+   public void a(cpk $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public cxa.a b() {
+      return cxa.a.a().a(($$0, $$1) -> dko.a($$0, 1.0, ezr.c)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

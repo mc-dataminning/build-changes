@@ -1,18 +1,34 @@
 import java.util.function.BiConsumer;
 
-public record nr(js.a a) implements nd {
+public record nr(js.a a) implements ne {
    @Override
-   public void generate(BiConsumer<alh<euh>, euh.a> $$0) {
-      $$0.accept(ety.aQ, euh.b().a(eug.a().a(eyg.a(2.0F)).a(eup.a(cwf.dA).a(ewh.a(eyg.a(1.0F)))).a(eup.a(cwf.dB).a(ewh.a(eyg.a(1.0F))))));
-      nf.a.forEach(($$1, $$2) -> $$0.accept(ety.aW.get($$1), euh.b().a(eug.a().a(eyn.a(1.0F, 3.0F)).a(eup.a($$2)))));
-      $$0.accept(ety.aV, euh.b().a(nb.a(ety.aW)));
+   public void generate(BiConsumer<alk<eul>, eul.a> $$0) {
+      js.b<dbw> $$1 = this.a.d(ma.aM);
       $$0.accept(
-         ety.aR,
-         euh.b()
-            .a(eug.a().a(euj.a(euv.a(ety.aS).a(exq.a(euc.b.a, bw.a.a().a(by.j.a(che.a.a)))), euv.a(ety.aT).a(exq.a(euc.b.a, bw.a.a().a(by.j.a(che.a.b)))))))
+         euc.aK,
+         eul.b()
+            .a(
+               euk.a()
+                  .a(eyk.a(1.0F))
+                  .a(eut.a(cwj.qQ).a(5).a(new evj.a().a($$1.b(dcb.l))))
+                  .a(eut.a(cwj.pK).a(8).a(new evj.a().a($$1.b(dcb.l))))
+                  .a(eut.a(cwj.sC).a(8).a(ewr.a(cyf.l)))
+                  .a(eut.a(cwj.vG).a(8).a(ewr.a(cyf.l)))
+                  .a(eut.a(cwj.sC).a(10).a(ewr.a(cyf.a)))
+                  .a(eut.a(cwj.vN).a(10).a(ewl.a(eyr.a(10.0F, 36.0F))))
+                  .a(eut.a(cwj.sw).a(10).a(ewl.a(eyr.a(2.0F, 4.0F))))
+                  .a(eut.a(cwj.pt).a(20).a(ewl.a(eyr.a(3.0F, 9.0F))))
+                  .a(eut.a(cwj.oD).a(20).a(ewl.a(eyr.a(5.0F, 12.0F))))
+                  .a(eut.a(cwj.eE).a(40))
+                  .a(eut.a(cwj.wY).a(40).a(ewl.a(eyr.a(1.0F, 3.0F))))
+                  .a(eut.a(cwj.uo).a(40))
+                  .a(eut.a(cwj.qE).a(40).a(ewl.a(eyr.a(2.0F, 4.0F))))
+                  .a(eut.a(cwj.fo).a(40).a(ewl.a(eyr.a(2.0F, 8.0F))))
+                  .a(eut.a(cwj.uP).a(40).a(ewl.a(eyr.a(2.0F, 8.0F))))
+                  .a(eut.a(cwj.vH).a(40).a(ewl.a(eyr.a(6.0F, 12.0F))))
+                  .a(eut.a(cwj.aj).a(40).a(ewl.a(eyr.a(8.0F, 16.0F))))
+                  .a(eut.a(cwj.wZ).a(40).a(ewl.a(eyr.a(8.0F, 16.0F))))
+            )
       );
-      $$0.accept(ety.aS, euh.b().a(eug.a().a(eyg.a(5.0F)).a(eup.a(cwf.dB))));
-      $$0.accept(ety.aT, euh.b().a(eug.a().a(eyg.a(5.0F)).a(eup.a(cwf.dA))));
-      $$0.accept(ety.aU, euh.b().a(eug.a().a(eyg.a(1.0F)).a(eup.a(cwf.fl))));
    }
 }

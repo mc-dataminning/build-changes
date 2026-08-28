@@ -1,33 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dcj extends dck {
-   Codec<dcj> b = ly.au.q().dispatch(dcj::a, Function.identity());
-
-   static MapCodec<? extends dcj> a(kd<MapCodec<? extends dcj>> $$0) {
-      kd.a($$0, "all_of", dcd.a.a);
-      kd.a($$0, "apply_mob_effect", dce.a);
-      kd.a($$0, "damage_entity", dcf.a);
-      kd.a($$0, "damage_item", dch.a);
-      kd.a($$0, "explode", dcm.a);
-      kd.a($$0, "ignite", dcn.a);
-      kd.a($$0, "play_sound", dcp.a);
-      kd.a($$0, "replace_block", dcr.a);
-      kd.a($$0, "replace_disk", dcs.a);
-      kd.a($$0, "run_function", dct.a);
-      kd.a($$0, "set_block_properties", dcu.a);
-      kd.a($$0, "spawn_particles", dcw.a);
-      return kd.a($$0, "summon_entity", dcx.a);
-   }
-
-   void a(arn var1, int var2, dbr var3, bue var4, ezn var5);
+public record dcj(dcd d, dcd e, jq<bta> f) implements dcn {
+   public static final MapCodec<dcj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dcd.b.fieldOf("min_damage").forGetter(dcj::b), dcd.b.fieldOf("max_damage").forGetter(dcj::c), bta.b.fieldOf("damage_type").forGetter(dcj::d)
+            )
+            .apply($$0, dcj::new)
+   );
 
    @Override
-   default void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public void a(arq $$0, int $$1, dbv $$2, bui $$3, ezr $$4) {
+      float $$5 = azn.b($$3.eb(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new bsy(this.f, $$2.c()), $$5);
    }
 
    @Override
-   MapCodec<? extends dcj> a();
+   public MapCodec<dcj> a() {
+      return a;
+   }
+
+   public dcd b() {
+      return this.d;
+   }
+
+   public dcd c() {
+      return this.e;
+   }
+
+   public jq<bta> d() {
+      return this.f;
+   }
 }

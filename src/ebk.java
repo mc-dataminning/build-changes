@@ -1,117 +1,82 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record ebk(ebn j, dvj k, dvj l, ebl m, ebw.o n, List<dgl.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<ebk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ebn.a.fieldOf("noise").forGetter(ebk::f),
-               dvj.a.fieldOf("default_block").forGetter(ebk::g),
-               dvj.a.fieldOf("default_fluid").forGetter(ebk::h),
-               ebl.a.fieldOf("noise_router").forGetter(ebk::i),
-               ebw.o.b.fieldOf("surface_rule").forGetter(ebk::j),
-               dgl.d.a.listOf().fieldOf("spawn_target").forGetter(ebk::k),
-               Codec.INT.fieldOf("sea_level").forGetter(ebk::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(ebk::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(ebk::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(ebk::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(ebk::n)
-            )
-            .apply($$0, ebk::new)
-   );
-   public static final Codec<jq<ebk>> b = ale.a(lz.aP, a);
-   public static final alh<ebk> c = alh.a(lz.aP, ali.b("overworld"));
-   public static final alh<ebk> d = alh.a(lz.aP, ali.b("large_biomes"));
-   public static final alh<ebk> e = alh.a(lz.aP, ali.b("amplified"));
-   public static final alh<ebk> f = alh.a(lz.aP, ali.b("nether"));
-   public static final alh<ebk> g = alh.a(lz.aP, ali.b("end"));
-   public static final alh<ebk> h = alh.a(lz.aP, ali.b("caves"));
-   public static final alh<ebk> i = alh.a(lz.aP, ali.b("floating_islands"));
+public class ebk implements eay {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final ebl i = new ebl(this);
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
+   public ebk(long $$0) {
+      this.b($$0);
    }
 
-   public boolean b() {
-      return this.r;
+   @Override
+   public azv d() {
+      return new ebk(this.g());
    }
 
-   public boolean c() {
-      return this.s;
+   @Override
+   public ebw e() {
+      return new ebk.a(this.g());
    }
 
-   public ece.a d() {
-      return this.t ? ece.a.a : ece.a.b;
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw bam.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
    }
 
-   public static void a(qy<ebk> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw bam.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
    }
 
-   private static ebk b(qy<?> $$0) {
-      return new ebk(ebn.d, dig.fz.m(), dig.a.m(), ebm.a($$0.a(lz.aK)), rl.c(), List.of(), 0, true, false, false, true);
+   @Override
+   public double k() {
+      return this.i.b();
    }
 
-   private static ebk c(qy<?> $$0) {
-      return new ebk(ebn.c, dig.dV.m(), dig.H.m(), ebm.a($$0.a(lz.aK), $$0.a(lz.aQ)), rl.b(), List.of(), 32, false, false, false, true);
-   }
+   public static class a implements ebw {
+      private final long a;
 
-   private static ebk a(qy<?> $$0, boolean $$1, boolean $$2) {
-      return new ebk(ebn.b, dig.b.m(), dig.G.m(), ebm.a($$0.a(lz.aK), $$0.a(lz.aQ), $$2, $$1), rl.a(), new dgs().a(), 63, false, true, true, false);
-   }
+      public a(long $$0) {
+         this.a = $$0;
+      }
 
-   private static ebk d(qy<?> $$0) {
-      return new ebk(ebn.e, dig.b.m(), dig.G.m(), ebm.b($$0.a(lz.aK), $$0.a(lz.aQ)), rl.a(false, true, true), List.of(), 32, false, false, false, true);
-   }
+      @Override
+      public azv a(int $$0, int $$1, int $$2) {
+         long $$3 = azn.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new ebk($$4);
+      }
 
-   private static ebk e(qy<?> $$0) {
-      return new ebk(ebn.f, dig.b.m(), dig.G.m(), ebm.c($$0.a(lz.aK), $$0.a(lz.aQ)), rl.a(false, false, false), List.of(), -64, false, false, false, true);
-   }
+      @Override
+      public azv a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new ebk((long)$$1 ^ this.a);
+      }
 
-   public static ebk e() {
-      return new ebk(ebn.b, dig.b.m(), dig.a.m(), ebm.a(), rl.d(), List.of(), 63, true, false, false, false);
-   }
+      @Override
+      public azv a(long $$0) {
+         return new ebk($$0);
+      }
 
-   public ebn f() {
-      return this.j;
-   }
-
-   public dvj g() {
-      return this.k;
-   }
-
-   public dvj h() {
-      return this.l;
-   }
-
-   public ebl i() {
-      return this.m;
-   }
-
-   public ebw.o j() {
-      return this.n;
-   }
-
-   public List<dgl.d> k() {
-      return this.o;
-   }
-
-   public int l() {
-      return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

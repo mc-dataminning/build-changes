@@ -1,36 +1,30 @@
-public class gri extends gpq<cnp, gwx, gax> {
-   private static final ali a = ali.b("textures/entity/warden/warden.png");
-   private static final ali b = ali.b("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final ali k = ali.b("textures/entity/warden/warden_heart.png");
-   private static final ali l = ali.b("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final ali m = ali.b("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gri<T extends chu> extends gnv<T, gxb, gbd> {
+   private static final all a = all.b("textures/entity/squid/squid.png");
 
-   public gri(gok.a $$0) {
-      super($$0, new gax($$0.a(gbl.cV)), 0.9F);
-      this.a(new gti(this, b, ($$0x, $$1) -> 1.0F, gax::d));
-      this.a(new gti(this, l, ($$0x, $$1) -> Math.max(0.0F, azk.b($$1 * 0.045F) * 0.25F), gax::h));
-      this.a(new gti(this, m, ($$0x, $$1) -> Math.max(0.0F, azk.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gax::h));
-      this.a(new gti(this, a, ($$0x, $$1) -> $$0x.a, gax::b));
-      this.a(new gti(this, k, ($$0x, $$1) -> $$0x.b, gax::c));
+   public gri(gpa.a $$0, gbd $$1, gbd $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   public ali a(gwx $$0) {
+   public all a(gxb $$0) {
       return a;
    }
 
-   public gwx c() {
-      return new gwx();
+   public gxb c() {
+      return new gxb();
    }
 
-   public void a(cnp $$0, gwx $$1, float $$2) {
+   public void a(T $$0, gxb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.K($$2);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.d);
-      $$1.f.a($$0.e);
-      $$1.g.a($$0.bY);
-      $$1.h.a($$0.bZ);
+      $$1.a = azn.h($$2, $$0.cf, $$0.ce);
+      $$1.b = azn.h($$2, $$0.bZ, $$0.bY);
+      $$1.c = azn.h($$2, $$0.cb, $$0.ca);
+   }
+
+   protected void a(gxb $$0, fek $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.ae ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.ae ? -0.6F : -1.2F, 0.0F);
    }
 }

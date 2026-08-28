@@ -1,3 +1,6 @@
-public class gui extends gvl {
+public class gui extends gwb {
    public boolean a;
+   public boolean b;
+   public float c;
+   public float d;
 }

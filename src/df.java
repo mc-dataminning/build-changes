@@ -19,8 +19,8 @@ public record df(dj.d c, Optional<bw> d) implements bx {
    }
 
    @Override
-   public boolean a(bue $$0, arn $$1, @Nullable ezn $$2) {
-      return !($$0 instanceof buz $$3) ? false : this.c.d($$3.o()) && (this.d.isEmpty() || $$3.q().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(bui $$0, arq $$1, @Nullable ezr $$2) {
+      return !($$0 instanceof bvd $$3) ? false : this.c.d($$3.o()) && (this.d.isEmpty() || $$3.q().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public dj.d b() {

@@ -1,29 +1,29 @@
-public class aii implements zp<agv> {
-   public static final zg<wf, aii> a = zp.a(aii::a, aii::new);
-   private final int b;
+public class aii implements zs<agy> {
+   public static final zj<wi, aii> a = zs.a(aii::a, aii::new);
+   private final String b;
 
-   public aii(int $$0) {
+   public aii(String $$0) {
       this.b = $$0;
    }
 
-   private aii(wf $$0) {
-      this.b = $$0.l();
+   private aii(wi $$0) {
+      this.b = $$0.p();
    }
 
-   private void a(wf $$0) {
-      $$0.c(this.b);
+   private void a(wi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zr<aii> a() {
-      return agt.bU;
+   public zu<aii> a() {
+      return agw.bS;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public String b() {
       return this.b;
    }
 }

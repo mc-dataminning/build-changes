@@ -1,29 +1,32 @@
 import java.util.EnumSet;
 
-public class cdh extends cby {
-   private final cnt a;
+public class cdh extends ccc {
+   private final bwb a;
 
-   public cdh(cnt $$0) {
+   public cdh(bwb $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cby.a.c, cby.a.a));
+      this.a(EnumSet.of(ccc.a.c, ccc.a.a));
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.gv();
    }
 
    @Override
    public boolean b() {
-      if (!this.a.bM()) {
+      if (!this.a.q()) {
          return false;
-      } else if (this.a.bk()) {
+      } else if (this.a.bo()) {
          return false;
-      } else if (!this.a.aK()) {
-         return false;
-      } else if (this.a.U) {
+      } else if (!this.a.aL()) {
          return false;
       } else {
-         com $$0 = this.a.gu();
+         bve $$0 = this.a.T_();
          if ($$0 == null) {
-            return false;
+            return true;
          } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+            return this.a.g((bui)$$0) < 144.0 && $$0.et() != null ? false : this.a.gv();
          }
       }
    }
@@ -31,10 +34,11 @@ public class cdh extends cby {
    @Override
    public void d() {
       this.a.P().o();
+      this.a.y(true);
    }
 
    @Override
    public void e() {
-      this.a.a(null);
+      this.a.y(false);
    }
 }

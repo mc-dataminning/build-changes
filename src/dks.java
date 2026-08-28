@@ -1,94 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
 
-public class dks extends dhq implements dnw {
+public class dks extends dle {
    public static final MapCodec<dks> a = b(dks::new);
-   protected static final fah b = die.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+   protected static final fal b = dij.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dks> a() {
       return a;
    }
 
-   protected dks(dvi.d $$0) {
+   public dks(dvn.d $$0) {
       super($$0);
    }
 
    @Override
-   public dsm a(jh $$0, dvj $$1) {
-      return new duf($$0, $$1);
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
       return b;
    }
 
    @Override
-   protected fah a_(dvj $$0, dfb $$1, jh $$2) {
-      return $$0.f($$1, $$2);
+   protected bsh a(dvo $$0, dff $$1, jh $$2, cor $$3, ezn $$4) {
+      this.e($$0, $$1, $$2);
+      return bsh.a;
    }
 
    @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, bue $$3) {
-      if ($$3.o(false)) {
-         if (!$$1.C && $$1.ag() == dfb.k && $$3 instanceof aro $$4 && !$$4.j) {
-            $$4.q();
+   protected void a_(dvo $$0, dff $$1, jh $$2, cor $$3) {
+      this.e($$0, $$1, $$2);
+   }
+
+   private void e(dvo $$0, dff $$1, jh $$2) {
+      dxe $$3 = $$1.C_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         jh $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.C) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.A.j();
+                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
+                  double $$11 = azn.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
+                  double $$12 = azn.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
+                  double $$13 = azn.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
+                  $$1.a(ls.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
+
             return;
          }
-
-         $$3.a(this, $$2);
       }
    }
 
    @Override
-   public esi a(arn $$0, bue $$1, jh $$2) {
-      alh<dfb> $$3 = $$0.ag() == dfb.k ? dfb.i : dfb.k;
-      arn $$4 = $$0.o().a($$3);
-      if ($$4 == null) {
-         return null;
-      } else {
-         boolean $$5 = $$3 == dfb.k;
-         jh $$6 = $$5 ? arn.a : $$4.W();
-         ezn $$7 = $$6.c();
-         float $$8;
-         Set<bvo> $$9;
-         if ($$5) {
-            eej.a($$4, jh.a((ka)$$7).e(), true);
-            $$8 = jm.e.p();
-            $$9 = bvo.a(bvo.l, Set.of(bvo.e));
-            if ($$1 instanceof aro) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            $$8 = 0.0F;
-            $$9 = bvo.a(bvo.l, bvo.k);
-            if ($$1 instanceof aro $$12) {
-               return $$12.a(false, esi.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
-         }
-
-         return new esi($$4, $$7, ezn.c, $$8, 0.0F, $$9, esi.b.then(esi.c));
-      }
+   protected int b() {
+      return 5;
    }
 
    @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(lr.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public cwb a(dfe $$0, jh $$1, dvj $$2) {
-      return cwb.k;
-   }
-
-   @Override
-   protected boolean a(dvj $$0, erj $$1) {
+   protected boolean a(dvo $$0, esd $$1) {
       return false;
    }
 }

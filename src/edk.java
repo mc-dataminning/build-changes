@@ -1,42 +1,31 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class edk extends edi {
-   public edk(Codec<edh> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(erl.e, erl.c);
+public class edk extends ecg {
+   private final ke a;
+   private final ebn b;
+   private final ebx c;
+   private final eca.o d;
+
+   public edk(ebm $$0, ke $$1, dfh $$2, ebn $$3, ebx $$4, eca.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   protected int a() {
-      return 10;
+   @Deprecated
+   public Optional<dvo> a(Function<jh, jq<dgh>> $$0, dxj $$1, jh $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   @Override
-   protected float a(azs $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   @Deprecated
+   public ke c() {
+      return this.a;
    }
 
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(edg $$0, edh $$1, dxf $$2, Function<jh, jq<dgc>> $$3, dxe $$4, jh.a $$5, jh.a $$6, ear $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dvj $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+   public ebx d() {
+      return this.c;
    }
 }

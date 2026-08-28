@@ -1,57 +1,19 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
 public class fhv {
-   private static final Map<String, fhv.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final ali c = ali.b("textures/gui/presets/isles.png");
+   private static final int a = 8226750;
+   private static final xl b = xl.c("mco.info").b(8226750);
+   private static final xl c = xl.c("mco.warning").b(-65536);
 
-   public static ali a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public static fmy a(frp $$0, xl $$1, Consumer<fmy> $$2) {
+      return new fmy.a($$0, b).a($$1).a(xk.j, $$2).a(xk.e, fmy::aP_).a();
    }
 
-   private static ali b(String $$0, String $$1) {
-      fhv.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         fdb $$3 = a($$1);
-         if ($$3 == null) {
-            ali $$4 = gxt.b();
-            a.put($$0, new fhv.a($$1, $$4));
-            return $$4;
-         } else {
-            ali $$5 = ali.a("realms", "dynamic/" + $$0);
-            fji.Q().aa().a($$5, new gxq($$3));
-            a.put($$0, new fhv.a($$1, $$5));
-            return $$5;
-         }
-      }
+   public static fmy b(frp $$0, xl $$1, Consumer<fmy> $$2) {
+      return new fmy.a($$0, c).a($$1).a(xk.j, $$2).a(xk.e, fmy::aP_).a();
    }
 
-   @Nullable
-   private static fdb a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return fdb.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
-   }
-
-   public static record a(String a, ali b) {
+   public static fmy c(frp $$0, xl $$1, Consumer<fmy> $$2) {
+      return new fmy.a($$0, c).a($$1).a(xk.h, $$2).a();
    }
 }

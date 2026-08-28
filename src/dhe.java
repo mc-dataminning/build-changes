@@ -1,109 +1,84 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dhe extends dkz {
-   public static final MapCodec<dhe> a = b(dhe::new);
-   public static final dwd b = dlz.aF;
-   private static final fah c = die.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final fah d = die.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final fah e = die.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final fah f = die.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final fah g = die.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final fah h = die.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final fah i = die.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final fah j = fae.a(c, d, e, f);
-   private static final fah k = fae.a(c, g, h, i);
-   private static final xi l = xi.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public abstract class dhe extends dhv {
+   public static final dwl<jm> a = dme.aF;
+   public static final dwf b = dwe.r;
 
-   @Override
-   public MapCodec<dhe> a() {
-      return a;
-   }
-
-   public dhe(dvi.d $$0) {
+   protected dhe(dvn.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jm.c));
+      this.l(this.F.b().b(a, jm.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public dvj a(czs $$0) {
-      return this.m().b(b, $$0.g().h());
-   }
+   protected abstract MapCodec<? extends dhe> a();
 
    @Override
-   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+   protected bsh a(dvo $$0, dff $$1, jh $$2, cor $$3, ezn $$4) {
       if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awv.aC);
+         this.a($$1, $$2, $$3);
       }
 
-      return bsd.a;
+      return bsh.a;
+   }
+
+   protected abstract void a(dff var1, jh var2, cor var3);
+
+   @Override
+   public dvo a(czw $$0) {
+      return this.m().b(a, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dvo $$0, dff $$1, jh $$2, dvo $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dsr $$5 = $$1.c_($$2);
+         if ($$5 instanceof dsf) {
+            if ($$1 instanceof arq) {
+               bsd.a($$1, $$2, (dsf)$$5);
+               ((dsf)$$5).a((arq)$$1, ezr.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected boolean c_(dvo $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dvo $$0, dff $$1, jh $$2) {
+      return crs.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dop a_(dvo $$0) {
+      return dop.c;
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dow $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dnf $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(a, b);
    }
 
    @Nullable
-   @Override
-   protected bsf b(dvj $$0, dfb $$1, jh $$2) {
-      return new bsl(($$2x, $$3, $$4) -> new crr($$2x, $$3, csb.a($$1, $$2)), l);
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      jm $$4 = $$0.c(b);
-      return $$4.o() == jm.a.a ? j : k;
-   }
-
-   @Override
-   protected void a(cku $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(dfb $$0, jh $$1, dvj $$2, dvj $$3, cku $$4) {
-      if (!$$4.bc()) {
-         $$0.c(1031, $$1, 0);
-      }
-   }
-
-   @Override
-   public void a(dfb $$0, jh $$1, cku $$2) {
-      if (!$$2.bc()) {
-         $$0.c(1029, $$1, 0);
-      }
-   }
-
-   @Override
-   public bsu a(bue $$0) {
-      return $$0.dY().b($$0);
-   }
-
-   @Nullable
-   public static dvj e(dvj $$0) {
-      if ($$0.a(dig.gS)) {
-         return dig.gT.m().b(b, $$0.c(b));
-      } else {
-         return $$0.a(dig.gT) ? dig.gU.m().b(b, $$0.c(b)) : null;
-      }
-   }
-
-   @Override
-   protected dvj a(dvj $$0, dor $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(dvj $$0, deg $$1, jh $$2) {
-      return $$0.a($$1, $$2).ak;
+   protected static <T extends dsr> dss<T> a(dff $$0, dst<T> $$1, dst<? extends dsf> $$2) {
+      return $$0.C ? null : a($$1, $$2, dsf::a);
    }
 }

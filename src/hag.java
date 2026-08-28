@@ -1,63 +1,71 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public enum hag implements hau {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public class hag implements auc<haf> {
+   public haf b(JsonObject $$0) {
+      Builder<hae> $$1 = ImmutableList.builder();
+      int $$2 = azd.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+      }
 
-   private static final int q = 360;
-   private static final Map<Integer, hag> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hag)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
+      if ($$0.has("frames")) {
+         try {
+            JsonArray $$3 = azd.v($$0, "frames");
 
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               hae $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
+               }
+            }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
+         }
+      }
+
+      int $$8 = azd.a($$0, "width", -1);
+      int $$9 = azd.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
+
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
+
+      boolean $$10 = azd.a($$0, "interpolate", false);
+      return new haf($$1.build(), $$8, $$9, $$2, $$10);
    }
 
-   private hag(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
+   @Nullable
+   private hae a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new hae(azd.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = azd.m($$1, "frames[" + $$0 + "]");
+         int $$3 = azd.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         }
 
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
+         int $$4 = azd.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new hae($$4, $$3);
+      } else {
+         return null;
       }
-
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
-      }
-
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
    }
 
    @Override
-   public j b() {
-      return this.s;
-   }
-
-   public static hag a(int $$0, int $$1) {
-      return r.get(b(azk.b($$0, 360), azk.b($$1, 360)));
-   }
-
-   public h a() {
-      return this.t;
+   public String a() {
+      return "animation";
    }
 }

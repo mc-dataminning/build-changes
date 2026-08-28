@@ -1,30 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ehc(int b, int c, int d, jq<elb> e) implements egp {
+public class ehc implements egt {
    public static final Codec<ehc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayt.m.fieldOf("tries").orElse(128).forGetter(ehc::a),
-               ayt.l.fieldOf("xz_spread").orElse(7).forGetter(ehc::b),
-               ayt.l.fieldOf("y_spread").orElse(3).forGetter(ehc::c),
-               elb.b.fieldOf("feature").forGetter(ehc::d)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, ehc::new)
    );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public jq<elb> d() {
-      return this.e;
+   public ehc(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

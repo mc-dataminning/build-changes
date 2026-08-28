@@ -1,17 +1,44 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gyw extends avg<int[]> {
-   private static final ali a = ali.b("textures/colormap/foliage.png");
+@FunctionalInterface
+public interface gyw {
+   Logger a = LogUtils.getLogger();
 
-   protected int[] a(avb $$0, bon $$1) {
-      try {
-         return gyz.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+   static gyw create(Collection<auc<?>> $$0) {
+      return ($$1, $$2) -> {
+         avg $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         fdk $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fdk.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         haf $$11 = $$3.a(haf.a).orElse(haf.e);
+         hah $$12 = $$11.a($$7.a(), $$7.b());
+         if (azn.c($$7.a(), $$12.a()) && azn.c($$7.b(), $$12.b())) {
+            return new gyn($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   protected void a(int[] $$0, avb $$1, bon $$2) {
-      dev.a($$0);
-   }
+   @Nullable
+   gyn loadSprite(all var1, avc var2);
 }

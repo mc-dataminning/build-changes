@@ -1,544 +1,597 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
-import java.util.HashSet;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class etu implements etv, etw {
-   private static final Logger f = LogUtils.getLogger();
-   public static final String a = "LevelName";
-   protected static final String b = "Player";
-   protected static final String c = "WorldGenSettings";
-   private dff g;
-   private final ecd h;
-   private final etu.a i;
-   private final Lifecycle j;
-   private jh k;
-   private float l;
-   private long m;
-   private long n;
-   @Nullable
-   private final uk o;
-   private final int p;
-   private int q;
-   private boolean r;
-   private int s;
-   private boolean t;
-   private int u;
-   private boolean v;
-   private boolean w;
-   private dxa.c x;
-   private dzi.a y;
-   @Nullable
-   private uk z;
-   private int A;
-   private int B;
-   @Nullable
-   private UUID C;
-   private final Set<String> D;
-   private boolean E;
-   private final Set<String> F;
-   private final eza<MinecraftServer> G;
+public class etu {
+   static final Logger c = LogUtils.getLogger();
+   static final DateTimeFormatter d = etp.a();
+   public static final String a = "Data";
+   private static final PathMatcher e = $$0 -> false;
+   public static final String b = "allowed_symlinks.txt";
+   private static final int f = 104857600;
+   private static final int g = 67108864;
+   private final Path h;
+   private final Path i;
+   final DataFixer j;
+   private final ezh k;
 
-   private etu(
-      @Nullable uk $$0,
-      boolean $$1,
-      jh $$2,
-      float $$3,
-      long $$4,
-      long $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      boolean $$9,
-      int $$10,
-      boolean $$11,
-      boolean $$12,
-      boolean $$13,
-      dxa.c $$14,
-      int $$15,
-      int $$16,
-      @Nullable UUID $$17,
-      Set<String> $$18,
-      Set<String> $$19,
-      eza<MinecraftServer> $$20,
-      @Nullable uk $$21,
-      dzi.a $$22,
-      dff $$23,
-      ecd $$24,
-      etu.a $$25,
-      Lifecycle $$26
-   ) {
-      this.E = $$1;
+   public etu(Path $$0, Path $$1, ezh $$2, DataFixer $$3) {
+      this.j = $$3;
+
+      try {
+         v.c($$0);
+      } catch (IOException var6) {
+         throw new UncheckedIOException(var6);
+      }
+
+      this.h = $$0;
+      this.i = $$1;
       this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.p = $$6;
-      this.q = $$7;
-      this.s = $$8;
-      this.r = $$9;
-      this.u = $$10;
-      this.t = $$11;
-      this.v = $$12;
-      this.w = $$13;
-      this.x = $$14;
-      this.A = $$15;
-      this.B = $$16;
-      this.C = $$17;
-      this.D = $$18;
-      this.F = $$19;
-      this.o = $$0;
-      this.G = $$20;
-      this.z = $$21;
-      this.y = $$22;
-      this.g = $$23;
-      this.h = $$24;
-      this.i = $$25;
-      this.j = $$26;
    }
 
-   public etu(dff $$0, ecd $$1, etu.a $$2, Lifecycle $$3) {
-      this(
-         null,
-         false,
-         jh.c,
-         0.0F,
-         0L,
-         0L,
-         19133,
-         0,
-         0,
-         false,
-         0,
-         false,
-         false,
-         false,
-         dxa.d,
-         0,
-         0,
-         null,
-         Sets.newLinkedHashSet(),
-         new HashSet<>(),
-         new eza<>(eyz.a),
-         null,
-         dzi.a.b,
-         $$0.h(),
-         $$1,
-         $$2,
-         $$3
-      );
+   public static ezh a(Path $$0) {
+      if (Files.exists($$0)) {
+         try {
+            ezh var2;
+            try (BufferedReader $$1 = Files.newBufferedReader($$0)) {
+               var2 = new ezh(ezj.a($$1));
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            c.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", var6);
+         }
+      }
+
+      return new ezh(e);
    }
 
-   public static <T> etu a(Dynamic<T> $$0, dff $$1, etu.a $$2, ecd $$3, Lifecycle $$4) {
-      long $$5 = $$0.get("Time").asLong(0L);
-      return new etu(
-         (uk)$$0.get("Player").flatMap(uk.a::parse).result().orElse(null),
-         $$0.get("WasModded").asBoolean(false),
-         new jh($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
-         $$0.get("SpawnAngle").asFloat(0.0F),
-         $$5,
-         $$0.get("DayTime").asLong($$5),
-         ets.a($$0).a(),
-         $$0.get("clearWeatherTime").asInt(0),
-         $$0.get("rainTime").asInt(0),
-         $$0.get("raining").asBoolean(false),
-         $$0.get("thunderTime").asInt(0),
-         $$0.get("thundering").asBoolean(false),
-         $$0.get("initialized").asBoolean(true),
-         $$0.get("DifficultyLocked").asBoolean(false),
-         dxa.c.a($$0, dxa.d),
-         $$0.get("WanderingTraderSpawnDelay").asInt(0),
-         $$0.get("WanderingTraderSpawnChance").asInt(0),
-         (UUID)$$0.get("WanderingTraderId").read(kk.a).result().orElse(null),
-         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
-         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
-         new eza<>(eyz.a, $$0.get("ScheduledEvents").asStream()),
-         (uk)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
-         $$0.get("DragonFight").read(dzi.a.a).resultOrPartial(f::error).orElse(dzi.a.b),
-         $$1,
-         $$3,
-         $$2,
-         $$4
-      );
+   public static etu b(Path $$0) {
+      ezh $$1 = a($$0.resolve("allowed_symlinks.txt"));
+      return new etu($$0, $$0.resolve("../backups"), $$1, bay.a());
    }
 
-   @Override
-   public uk a(ke $$0, @Nullable uk $$1) {
+   public static dgc a(Dynamic<?> $$0) {
+      return dgc.b.parse($$0).resultOrPartial(c::error).orElse(dgc.c);
+   }
+
+   public static amj.d a(Dynamic<?> $$0, auo $$1, boolean $$2) {
+      return new amj.d($$1, a($$0), $$2, false);
+   }
+
+   public static etr a(Dynamic<?> $$0, dgc $$1, kd<dzk> $$2, js.a $$3) {
+      Dynamic<?> $$4 = alj.a($$0, $$3);
+      Dynamic<?> $$5 = $$4.get("WorldGenSettings").orElseEmptyMap();
+      ecf $$6 = (ecf)ecf.a.parse($$5).getOrThrow();
+      dfj $$7 = dfj.a($$4, $$1);
+      ece.b $$8 = $$6.b().a($$2);
+      Lifecycle $$9 = $$8.a().add($$3.d());
+      ety $$10 = ety.a($$4, $$7, $$8.d(), $$6.a(), $$9);
+      return new etr($$10, $$8);
+   }
+
+   public String a() {
+      return "Anvil";
+   }
+
+   public etu.a b() throws ett {
+      if (!Files.isDirectory(this.h)) {
+         throw new ett(xl.c("selectWorld.load_folder_access"));
+      } else {
+         try {
+            etu.a var3;
+            try (Stream<Path> $$0 = Files.list(this.h)) {
+               List<etu.b> $$1 = $$0.filter($$0x -> Files.isDirectory($$0x))
+                  .map(etu.b::new)
+                  .filter($$0x -> Files.isRegularFile($$0x.b()) || Files.isRegularFile($$0x.c()))
+                  .toList();
+               var3 = new etu.a($$1);
+            }
+
+            return var3;
+         } catch (IOException var6) {
+            throw new ett(xl.c("selectWorld.load_folder_access"));
+         }
+      }
+   }
+
+   public CompletableFuture<List<etv>> a(etu.a $$0) {
+      List<CompletableFuture<etv>> $$1 = new ArrayList<>($$0.a.size());
+
+      for (etu.b $$2 : $$0.a) {
+         $$1.add(CompletableFuture.supplyAsync(() -> {
+            boolean $$1x;
+            try {
+               $$1x = ayt.b($$2.f());
+            } catch (Exception var13) {
+               c.warn("Failed to read {} lock", $$2.f(), var13);
+               return null;
+            }
+
+            try {
+               return this.a($$2, $$1x);
+            } catch (OutOfMemoryError var12) {
+               azl.b();
+               System.gc();
+               String $$5 = "Ran out of memory trying to read summary of world folder \"" + $$2.a() + "\"";
+               c.error(LogUtils.FATAL_MARKER, $$5);
+               OutOfMemoryError $$6 = new OutOfMemoryError("Ran out of memory reading level data");
+               $$6.initCause(var12);
+               o $$7 = o.a($$6, $$5);
+               p $$8 = $$7.a("World details");
+               $$8.a("Folder Name", $$2.a());
+
+               try {
+                  long $$9 = Files.size($$2.b());
+                  $$8.a("level.dat size", $$9);
+               } catch (IOException var11) {
+                  $$8.a("level.dat size", (Throwable)var11);
+               }
+
+               throw new z($$7);
+            }
+         }, ae.g().a("loadLevelSummaries")));
+      }
+
+      return ae.f($$1).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).sorted().toList());
+   }
+
+   private int f() {
+      return 19133;
+   }
+
+   static un c(Path $$0) throws IOException {
+      return va.a($$0, uw.a(104857600L));
+   }
+
+   static Dynamic<?> a(Path $$0, DataFixer $$1) throws IOException {
+      un $$2 = c($$0);
+      un $$3 = $$2.p("Data");
+      int $$4 = vc.b($$3, -1);
+      Dynamic<?> $$5 = bax.a.a($$1, new Dynamic(vb.a, $$3), $$4);
+      $$5 = $$5.update("Player", $$2x -> bax.b.a($$1, $$2x, $$4));
+      return $$5.update("WorldGenSettings", $$2x -> bax.r.a($$1, $$2x, $$4));
+   }
+
+   private etv a(etu.b $$0, boolean $$1) {
+      Path $$2 = $$0.b();
+      if (Files.exists($$2)) {
+         try {
+            if (Files.isSymbolicLink($$2)) {
+               List<ezi> $$3 = this.k.a($$2);
+               if (!$$3.isEmpty()) {
+                  c.warn("{}", ezg.a($$2, $$3));
+                  return new etv.c($$0.a(), $$0.d());
+               }
+            }
+
+            if (e($$2) instanceof un $$5) {
+               un $$6 = $$5.p("Data");
+               int $$7 = vc.b($$6, -1);
+               Dynamic<?> $$8 = bax.a.a(this.j, new Dynamic(vb.a, $$6), $$7);
+               return this.a($$8, $$0, $$1);
+            }
+
+            c.warn("Invalid root tag in {}", $$2);
+         } catch (Exception var9) {
+            c.error("Exception reading {}", $$2, var9);
+         }
+      }
+
+      return new etv.b($$0.a(), $$0.d(), a($$0));
+   }
+
+   private static long a(etu.b $$0) {
+      Instant $$1 = d($$0.b());
       if ($$1 == null) {
-         $$1 = this.o;
+         $$1 = d($$0.c());
       }
 
-      uk $$2 = new uk();
-      this.a($$0, $$2, $$1);
-      return $$2;
-   }
-
-   private void a(ke $$0, uk $$1, @Nullable uk $$2) {
-      $$1.a("ServerBrands", a(this.D));
-      $$1.a("WasModded", this.E);
-      if (!this.F.isEmpty()) {
-         $$1.a("removed_features", a(this.F));
-      }
-
-      uk $$3 = new uk();
-      $$3.a("Name", ab.b().c());
-      $$3.a("Id", ab.b().d().c());
-      $$3.a("Snapshot", !ab.b().g());
-      $$3.a("Series", ab.b().d().b());
-      $$1.a("Version", $$3);
-      uz.e($$1);
-      DynamicOps<vh> $$4 = $$0.a(uy.a);
-      ecb.a($$4, this.h, $$0).resultOrPartial(ae.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
-      $$1.a("GameType", this.g.b().a());
-      $$1.a("SpawnX", this.k.u());
-      $$1.a("SpawnY", this.k.v());
-      $$1.a("SpawnZ", this.k.w());
-      $$1.a("SpawnAngle", this.l);
-      $$1.a("Time", this.m);
-      $$1.a("DayTime", this.n);
-      $$1.a("LastPlayed", ae.e());
-      $$1.a("LevelName", this.g.a());
-      $$1.a("version", 19133);
-      $$1.a("clearWeatherTime", this.q);
-      $$1.a("rainTime", this.s);
-      $$1.a("raining", this.r);
-      $$1.a("thunderTime", this.u);
-      $$1.a("thundering", this.t);
-      $$1.a("hardcore", this.g.c());
-      $$1.a("allowCommands", this.g.e());
-      $$1.a("initialized", this.v);
-      this.x.a($$1);
-      $$1.a("Difficulty", (byte)this.g.d().a());
-      $$1.a("DifficultyLocked", this.w);
-      $$1.a("GameRules", this.g.f().a());
-      $$1.a("DragonFight", (vh)dzi.a.a.encodeStart(uy.a, this.y).getOrThrow());
-      if ($$2 != null) {
-         $$1.a("Player", $$2);
-      }
-
-      dfx.b.encodeStart(uy.a, this.g.g()).ifSuccess($$1x -> $$1.a((uk)$$1x)).ifError($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
-      if (this.z != null) {
-         $$1.a("CustomBossEvents", this.z);
-      }
-
-      $$1.a("ScheduledEvents", this.G.b());
-      $$1.a("WanderingTraderSpawnDelay", this.A);
-      $$1.a("WanderingTraderSpawnChance", this.B);
-      if (this.C != null) {
-         $$1.a("WanderingTraderId", this.C);
-      }
-   }
-
-   private static uq a(Set<String> $$0) {
-      uq $$1 = new uq();
-      $$0.stream().map(vf::a).forEach($$1::add);
-      return $$1;
-   }
-
-   @Override
-   public jh a() {
-      return this.k;
-   }
-
-   @Override
-   public float b() {
-      return this.l;
-   }
-
-   @Override
-   public long c() {
-      return this.m;
-   }
-
-   @Override
-   public long d() {
-      return this.n;
+      return $$1 == null ? -1L : $$1.toEpochMilli();
    }
 
    @Nullable
-   @Override
-   public uk w() {
-      return this.o;
+   static Instant d(Path $$0) {
+      try {
+         return Files.getLastModifiedTime($$0).toInstant();
+      } catch (IOException var2) {
+         return null;
+      }
    }
 
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
+   etv a(Dynamic<?> $$0, etu.b $$1, boolean $$2) {
+      etw $$3 = etw.a($$0);
+      int $$4 = $$3.a();
+      if ($$4 != 19132 && $$4 != 19133) {
+         throw new uz("Unknown data version: " + Integer.toHexString($$4));
+      } else {
+         boolean $$5 = $$4 != this.f();
+         Path $$6 = $$1.d();
+         dgc $$7 = a($$0);
+         dfj $$8 = dfj.a($$0, $$7);
+         crj $$9 = b($$0);
+         boolean $$10 = crl.a($$9);
+         return new etv($$8, $$3, $$1.a(), $$5, $$2, $$10, $$6);
+      }
    }
 
-   @Override
-   public void b(long $$0) {
-      this.n = $$0;
+   private static crj b(Dynamic<?> $$0) {
+      Set<all> $$1 = $$0.get("enabled_features").asStream().flatMap($$0x -> $$0x.asString().result().map(all::c).stream()).collect(Collectors.toSet());
+      return crl.f.a($$1, $$0x -> {
+      });
    }
 
-   @Override
-   public void a(jh $$0, float $$1) {
-      this.k = $$0.j();
-      this.l = $$1;
+   @Nullable
+   private static vk e(Path $$0) throws IOException {
+      vw $$1 = new vw(new vt("Data", un.b, "Player"), new vt("Data", un.b, "WorldGenSettings"));
+      va.a($$0, $$1, uw.a(104857600L));
+      return $$1.d();
    }
 
-   @Override
-   public String e() {
-      return this.g.a();
+   public boolean a(String $$0) {
+      try {
+         Path $$1 = this.c($$0);
+         Files.createDirectory($$1);
+         Files.deleteIfExists($$1);
+         return true;
+      } catch (IOException var3) {
+         return false;
+      }
    }
 
-   @Override
-   public int x() {
-      return this.p;
+   public boolean b(String $$0) {
+      try {
+         return Files.isDirectory(this.c($$0));
+      } catch (InvalidPathException var3) {
+         return false;
+      }
    }
 
-   @Override
-   public int f() {
-      return this.q;
+   public Path c(String $$0) {
+      return this.h.resolve($$0);
    }
 
-   @Override
-   public void a(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public boolean g() {
-      return this.t;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.t = $$0;
-   }
-
-   @Override
-   public int h() {
-      return this.u;
-   }
-
-   @Override
-   public void b(int $$0) {
-      this.u = $$0;
-   }
-
-   @Override
-   public boolean i() {
-      return this.r;
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public int j() {
-      return this.s;
-   }
-
-   @Override
-   public void c(int $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public dey k() {
-      return this.g.b();
-   }
-
-   @Override
-   public void a(dey $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean l() {
-      return this.g.c();
-   }
-
-   @Override
-   public boolean m() {
-      return this.g.e();
-   }
-
-   @Override
-   public boolean n() {
-      return this.v;
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      this.v = $$0;
-   }
-
-   @Override
-   public dex o() {
-      return this.g.f();
-   }
-
-   @Override
-   public dxa.c p() {
-      return this.x;
-   }
-
-   @Override
-   public void a(dxa.c $$0) {
-      this.x = $$0;
-   }
-
-   @Override
-   public bsa q() {
-      return this.g.d();
-   }
-
-   @Override
-   public void a(bsa $$0) {
-      this.g = this.g.a($$0);
-   }
-
-   @Override
-   public boolean r() {
-      return this.w;
-   }
-
-   @Override
-   public void d(boolean $$0) {
-      this.w = $$0;
-   }
-
-   @Override
-   public eza<MinecraftServer> s() {
-      return this.G;
-   }
-
-   @Override
-   public void a(p $$0, dfd $$1) {
-      etv.super.a($$0, $$1);
-      etw.super.a($$0);
-   }
-
-   @Override
-   public ecd y() {
+   public Path c() {
       return this.h;
    }
 
-   @Override
-   public boolean z() {
-      return this.i == etu.a.b;
+   public Path d() {
+      return this.i;
    }
 
-   @Override
-   public boolean A() {
-      return this.i == etu.a.c;
+   public etu.c d(String $$0) throws IOException, ezg {
+      Path $$1 = this.c($$0);
+      List<ezi> $$2 = this.k.a($$1, true);
+      if (!$$2.isEmpty()) {
+         throw new ezg($$1, $$2);
+      } else {
+         return new etu.c($$0, $$1);
+      }
    }
 
-   @Override
-   public Lifecycle B() {
-      return this.j;
+   public etu.c e(String $$0) throws IOException {
+      Path $$1 = this.c($$0);
+      return new etu.c($$0, $$1);
    }
 
-   @Override
-   public dzi.a C() {
-      return this.y;
+   public ezh e() {
+      return this.k;
    }
 
-   @Override
-   public void a(dzi.a $$0) {
-      this.y = $$0;
+   public static record a(List<etu.b> a) implements Iterable<etu.b> {
+
+      public boolean a() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public Iterator<etu.b> iterator() {
+         return this.a.iterator();
+      }
+
+      public List<etu.b> b() {
+         return this.a;
+      }
    }
 
-   @Override
-   public dfx D() {
-      return this.g.g();
+   public static record b(Path a) {
+
+      public String a() {
+         return this.a.getFileName().toString();
+      }
+
+      public Path b() {
+         return this.a(ets.e);
+      }
+
+      public Path c() {
+         return this.a(ets.f);
+      }
+
+      public Path a(LocalDateTime $$0) {
+         return this.a.resolve(ets.e.a() + "_corrupted_" + $$0.format(etu.d));
+      }
+
+      public Path b(LocalDateTime $$0) {
+         return this.a.resolve(ets.e.a() + "_raw_" + $$0.format(etu.d));
+      }
+
+      public Path d() {
+         return this.a(ets.g);
+      }
+
+      public Path e() {
+         return this.a(ets.h);
+      }
+
+      public Path a(ets $$0) {
+         return this.a.resolve($$0.a());
+      }
+
+      public Path f() {
+         return this.a;
+      }
    }
 
-   @Override
-   public void a(dfx $$0) {
-      this.g = this.g.a($$0);
-   }
+   public class c implements AutoCloseable {
+      final ayt b;
+      final etu.b c;
+      private final String d;
+      private final Map<ets, Path> e = Maps.newHashMap();
 
-   @Nullable
-   @Override
-   public uk E() {
-      return this.z;
-   }
+      c(final String $$1, final Path $$2) throws IOException {
+         this.d = $$1;
+         this.c = new etu.b($$2);
+         this.b = ayt.a($$2);
+      }
 
-   @Override
-   public void a(@Nullable uk $$0) {
-      this.z = $$0;
-   }
+      public long a() {
+         try {
+            return Files.getFileStore(this.c.a).getUsableSpace();
+         } catch (Exception var2) {
+            return Long.MAX_VALUE;
+         }
+      }
 
-   @Override
-   public int t() {
-      return this.A;
-   }
+      public boolean b() {
+         return this.a() < 67108864L;
+      }
 
-   @Override
-   public void d(int $$0) {
-      this.A = $$0;
-   }
+      public void c() {
+         try {
+            this.close();
+         } catch (IOException var2) {
+            etu.c.warn("Failed to unlock access to level {}", this.f(), var2);
+         }
+      }
 
-   @Override
-   public int u() {
-      return this.B;
-   }
+      public etu d() {
+         return etu.this;
+      }
 
-   @Override
-   public void e(int $$0) {
-      this.B = $$0;
-   }
+      public etu.b e() {
+         return this.c;
+      }
 
-   @Nullable
-   @Override
-   public UUID v() {
-      return this.C;
-   }
+      public String f() {
+         return this.d;
+      }
 
-   @Override
-   public void a(UUID $$0) {
-      this.C = $$0;
-   }
+      public Path a(ets $$0) {
+         return this.e.computeIfAbsent($$0, this.c::a);
+      }
 
-   @Override
-   public void a(String $$0, boolean $$1) {
-      this.D.add($$0);
-      this.E |= $$1;
-   }
+      public Path a(alk<dff> $$0) {
+         return dzj.a($$0, this.c.f());
+      }
 
-   @Override
-   public boolean F() {
-      return this.E;
-   }
+      private void o() {
+         if (!this.b.a()) {
+            throw new IllegalStateException("Lock is no longer valid");
+         }
+      }
 
-   @Override
-   public Set<String> G() {
-      return ImmutableSet.copyOf(this.D);
-   }
+      public etx g() {
+         this.o();
+         return new etx(this, etu.this.j);
+      }
 
-   @Override
-   public Set<String> H() {
-      return Set.copyOf(this.F);
-   }
+      public etv a(Dynamic<?> $$0) {
+         this.o();
+         return etu.this.a($$0, this.c, false);
+      }
 
-   @Override
-   public etv I() {
-      return this;
-   }
+      public Dynamic<?> h() throws IOException {
+         return this.b(false);
+      }
 
-   @Override
-   public dff J() {
-      return this.g.h();
-   }
+      public Dynamic<?> i() throws IOException {
+         return this.b(true);
+      }
 
-   @Deprecated
-   public static enum a {
-      a,
-      b,
-      c;
+      private Dynamic<?> b(boolean $$0) throws IOException {
+         this.o();
+         return etu.a($$0 ? this.c.c() : this.c.b(), etu.this.j);
+      }
+
+      public void a(ke $$0, eua $$1) {
+         this.a($$0, $$1, null);
+      }
+
+      public void a(ke $$0, eua $$1, @Nullable un $$2) {
+         un $$3 = $$1.a($$0, $$2);
+         un $$4 = new un();
+         $$4.a("Data", $$3);
+         this.a($$4);
+      }
+
+      private void a(un $$0) {
+         Path $$1 = this.c.f();
+
+         try {
+            Path $$2 = Files.createTempFile($$1, "level", ".dat");
+            va.a($$0, $$2);
+            Path $$3 = this.c.c();
+            Path $$4 = this.c.b();
+            ae.a($$4, $$2, $$3);
+         } catch (Exception var6) {
+            etu.c.error("Failed to save level {}", $$1, var6);
+         }
+      }
+
+      public Optional<Path> j() {
+         return !this.b.a() ? Optional.empty() : Optional.of(this.c.d());
+      }
+
+      public void k() throws IOException {
+         this.o();
+         final Path $$0 = this.c.e();
+         etu.c.info("Deleting level {}", this.d);
+
+         for (int $$1 = 1; $$1 <= 5; $$1++) {
+            etu.c.info("Attempt {}...", $$1);
+
+            try {
+               Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
+                  public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) throws IOException {
+                     if (!$$0.equals($$0)) {
+                        etu.c.debug("Deleting {}", $$0);
+                        Files.delete($$0);
+                     }
+
+                     return FileVisitResult.CONTINUE;
+                  }
+
+                  public FileVisitResult a(Path $$0x, @Nullable IOException $$1) throws IOException {
+                     if ($$1 != null) {
+                        throw $$1;
+                     } else {
+                        if ($$0.equals(c.this.c.f())) {
+                           c.this.b.close();
+                           Files.deleteIfExists($$0);
+                        }
+
+                        Files.delete($$0);
+                        return FileVisitResult.CONTINUE;
+                     }
+                  }
+               });
+               break;
+            } catch (IOException var6) {
+               if ($$1 >= 5) {
+                  throw var6;
+               }
+
+               etu.c.warn("Failed to delete {}", this.c.f(), var6);
+
+               try {
+                  Thread.sleep(500L);
+               } catch (InterruptedException var5) {
+               }
+            }
+         }
+      }
+
+      public void a(String $$0) throws IOException {
+         this.a((Consumer<un>)($$1 -> $$1.a("LevelName", $$0.trim())));
+      }
+
+      public void b(String $$0) throws IOException {
+         this.a((Consumer<un>)($$1 -> {
+            $$1.a("LevelName", $$0.trim());
+            $$1.r("Player");
+         }));
+      }
+
+      private void a(Consumer<un> $$0) throws IOException {
+         this.o();
+         un $$1 = etu.c(this.c.b());
+         $$0.accept($$1.p("Data"));
+         this.a($$1);
+      }
+
+      public long l() throws IOException {
+         this.o();
+         String $$0 = LocalDateTime.now().format(etu.d) + "_" + this.d;
+         Path $$1 = etu.this.d();
+
+         try {
+            v.c($$1);
+         } catch (IOException var9) {
+            throw new RuntimeException(var9);
+         }
+
+         Path $$3 = $$1.resolve(v.a($$1, $$0, ".zip"));
+
+         try (final ZipOutputStream $$4 = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream($$3)))) {
+            final Path $$5 = Paths.get(this.d);
+            Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
+               public FileVisitResult a(Path $$0, BasicFileAttributes $$1) throws IOException {
+                  if ($$0.endsWith("session.lock")) {
+                     return FileVisitResult.CONTINUE;
+                  } else {
+                     String $$2 = $$5.resolve(c.this.c.f().relativize($$0)).toString().replace('\\', '/');
+                     ZipEntry $$3 = new ZipEntry($$2);
+                     $$4.putNextEntry($$3);
+                     com.google.common.io.Files.asByteSource($$0.toFile()).copyTo($$4);
+                     $$4.closeEntry();
+                     return FileVisitResult.CONTINUE;
+                  }
+               }
+            });
+         }
+
+         return Files.size($$3);
+      }
+
+      public boolean m() {
+         return Files.exists(this.c.b()) || Files.exists(this.c.c());
+      }
+
+      @Override
+      public void close() throws IOException {
+         this.b.close();
+      }
+
+      public boolean n() {
+         return ae.a(this.c.b(), this.c.c(), this.c.a(LocalDateTime.now()), true);
+      }
+
+      @Nullable
+      public Instant a(boolean $$0) {
+         return etu.d($$0 ? this.c.c() : this.c.b());
+      }
    }
 }

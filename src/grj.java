@@ -1,26 +1,17 @@
-public class grj extends goj<cpw, gun> {
-   private static final ali a = ali.b("textures/entity/projectiles/wind_charge.png");
-   private final gay b;
+public class grj extends gnt<cmh, gwy> {
+   private static final all a = all.b("textures/entity/skeleton/stray.png");
+   private static final all b = all.b("textures/entity/skeleton/stray_overlay.png");
 
-   public grj(gok.a $$0) {
-      super($$0);
-      this.b = new gay($$0.a(gbl.cX));
+   public grj(gpa.a $$0) {
+      super($$0, gcb.cB, gcb.cC, gcb.cD);
+      this.a(new gtq<>(this, $$0.f(), gcb.cE, b));
    }
 
-   @Override
-   public void a(gun $$0, feb $$1, gih $$2, int $$3) {
-      fef $$4 = $$2.getBuffer(gir.a(a, this.a($$0.p) % 1.0F, 0.0F));
-      this.b.a($$0);
-      this.b.a($$1, $$4, $$3, gxu.d);
-      super.a($$0, $$1, $$2, $$3);
+   public all b(gwy $$0) {
+      return a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   @Override
-   public gun b() {
-      return new gun();
+   public gwy c() {
+      return new gwy();
    }
 }

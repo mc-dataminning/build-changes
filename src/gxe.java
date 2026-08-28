@@ -1,3 +1,7 @@
+import javax.annotation.Nullable;
+
 public class gxe extends gvd {
-   public boolean a;
+   @Nullable
+   public hav a;
+   public cwf b = cwf.k;
 }

@@ -1,51 +1,11 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
 
-public class bos implements AutoCloseable {
-   public static final bos a = new bos(null);
-   @Nullable
-   private final bon b;
+public interface bos {
+   long a();
 
-   bos(@Nullable bon $$0) {
-      this.b = $$0;
-   }
+   long b();
 
-   public bos a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
+   long c();
 
-      return this;
-   }
-
-   public bos a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
-      }
-
-      return this;
-   }
-
-   public bos a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   public bos a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
+   Object2LongMap<String> d();
 }

@@ -1,29 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class ehq {
-   public static final Codec<ehq> a = ly.Y.q().dispatch(ehq::b, ehr::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public record ehq(int b, int c, int d) implements egt {
+   public static final Codec<ehq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayw.m.fieldOf("spread_width").forGetter(ehq::a), ayw.m.fieldOf("spread_height").forGetter(ehq::b), ayw.m.fieldOf("max_height").forGetter(ehq::c)
+            )
+            .apply($$0, ehq::new)
+   );
 
-   protected static <S extends ehq> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public int a() {
+      return this.b;
    }
 
-   public ehq(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract ehr<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

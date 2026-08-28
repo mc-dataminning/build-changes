@@ -3,28 +3,43 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class eup extends euu {
-   public static final MapCodec<eup> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ly.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eup::new)
-   );
-   private final jq<cvx> j;
+public abstract class eup extends euw {
+   protected final List<euw> d;
+   private final euo a;
 
-   private eup(jq<cvx> $$0, int $$1, int $$2, List<exn> $$3, List<evq> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected eup(List<euw> $$0, List<exr> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public eut a() {
-      return euq.c;
+   public void a(eum $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract euo a(List<? extends euo> var1);
 
    @Override
-   public void a(Consumer<cwb> $$0, euc $$1) {
-      $$0.accept(new cwb(this.j));
+   public final boolean expand(eug $$0, Consumer<euv> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static euu.a<?> a(dfa $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eup($$0.j().f(), $$1, $$2, $$3, $$4));
+   public static <T extends eup> MapCodec<T> a(eup.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(euu.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends eup> {
+      T create(List<euw> var1, List<exr> var2);
    }
 }

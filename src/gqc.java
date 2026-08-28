@@ -1,20 +1,32 @@
-public class gqc extends gnf<chj, gvz, fzq> {
-   private static final ali a = ali.b("textures/entity/bear/polarbear.png");
+public class gqc extends gnv<cjc, gwc, fzs> {
+   private static final all a = all.b("textures/entity/llama/creamy.png");
+   private static final all b = all.b("textures/entity/llama/white.png");
+   private static final all k = all.b("textures/entity/llama/brown.png");
+   private static final all l = all.b("textures/entity/llama/gray.png");
 
-   public gqc(gok.a $$0) {
-      super($$0, new fzq($$0.a(gbl.bS)), new fzq($$0.a(gbl.bT)), 0.9F);
+   public gqc(gpa.a $$0, gca $$1, gca $$2) {
+      super($$0, new fzs($$0.a($$1)), new fzs($$0.a($$2)), 0.7F);
+      this.a(new gth(this, $$0.f(), $$0.h()));
    }
 
-   public ali a(gvz $$0) {
-      return a;
+   public all a(gwc $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public gvz c() {
-      return new gvz();
+   public gwc c() {
+      return new gwc();
    }
 
-   public void a(chj $$0, gvz $$1, float $$2) {
+   public void a(cjc $$0, gwc $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
+      $$1.a = $$0.gI();
+      $$1.b = !$$0.p_() && $$0.t();
+      $$1.c = $$0.ak();
+      $$1.d = $$0.gy();
    }
 }

@@ -1,111 +1,49 @@
-import javax.annotation.Nullable;
+public class fmm extends flw {
+   private boolean a;
 
-public abstract class fmm extends flh {
-   protected final ali a;
-   protected final int b;
-   protected final int c;
-
-   fmm(int $$0, int $$1, xi $$2, int $$3, int $$4, ali $$5, flh.c $$6, @Nullable flh.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public fmm(int $$0, int $$1, flw.c $$2) {
+      super($$0, $$1, 20, 20, xl.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
-   public static fmm.a a(xi $$0, flh.c $$1, boolean $$2) {
-      return new fmm.a($$0, $$1, $$2);
+   @Override
+   protected xz aO_() {
+      return xk.a(super.aO_(), this.a() ? xl.c("narrator.button.difficulty_lock.locked") : xl.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public static class a {
-      private final xi b;
-      private final flh.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private ali g;
-      private int h;
-      private int i;
-      @Nullable
-      flh.b a;
+   public boolean a() {
+      return this.a;
+   }
 
-      public a(xi $$0, flh.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(flj $$0, int $$1, int $$2, float $$3) {
+      fmm.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? fmm.a.c : fmm.a.f;
+      } else if (this.B()) {
+         $$4 = this.a ? fmm.a.b : fmm.a.e;
+      } else {
+         $$4 = this.a ? fmm.a.a : fmm.a.d;
       }
 
-      public fmm.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
+      $$0.a(gjh::B, $$4.g, this.D(), this.E(), this.g, this.h);
+   }
 
-      public fmm.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   static enum a {
+      a(all.b("widget/locked_button")),
+      b(all.b("widget/locked_button_highlighted")),
+      c(all.b("widget/locked_button_disabled")),
+      d(all.b("widget/unlocked_button")),
+      e(all.b("widget/unlocked_button_highlighted")),
+      f(all.b("widget/unlocked_button_disabled"));
 
-      public fmm.a a(ali $$0, int $$1, int $$2) {
+      final all g;
+
+      private a(final all $$0) {
          this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fmm.a a(flh.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fmm a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fmm)(this.d
-               ? new fmm.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fmm.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
-         }
-      }
-   }
-
-   public static class b extends fmm {
-      protected b(int $$0, int $$1, xi $$2, int $$3, int $$4, ali $$5, flh.c $$6, @Nullable flh.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fku $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() / 2 - this.b / 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(gir::B, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fku $$0, fks $$1, int $$2) {
-      }
-   }
-
-   public static class c extends fmm {
-      protected c(int $$0, int $$1, xi $$2, int $$3, int $$4, ali $$5, flh.c $$6, @Nullable flh.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fku $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() - this.b - 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(gir::B, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fku $$0, fks $$1, int $$2) {
-         int $$3 = this.D() + 2;
-         int $$4 = this.D() + this.y() - this.b - 4;
-         int $$5 = this.D() + this.y() / 2;
-         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
       }
    }
 }

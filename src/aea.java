@@ -1,61 +1,69 @@
-public class aea implements zp<ace> {
-   public static final zg<wf, aea> a = zp.a(aea::a, aea::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public class aea implements zs<ach> {
+   public static final zj<ww, aea> a = zs.a(aea::a, aea::new);
+   private final int b;
+   private final ded c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private final boolean g;
 
-   public aea(bue $$0) {
-      this.b = $$0.dC();
-      this.c = $$0.dE();
-      this.d = $$0.dI();
-      this.e = $$0.dN();
-      this.f = $$0.dP();
+   public aea(int $$0, ded $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private aea(wf $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private aea(ww $$0) {
+      this.b = $$0.x();
+      this.c = ded.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private void a(ww $$0) {
+      $$0.f(this.b);
+      ded.b.encode($$0, this.c);
+      $$0.c(this.d);
+      $$0.c(this.e);
       $$0.a(this.f);
+      $$0.a(this.g);
    }
 
    @Override
-   public zr<aea> a() {
-      return agt.V;
+   public zu<aea> a() {
+      return agw.Q;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
    }
 
-   public double e() {
+   public ded e() {
       return this.c;
    }
 
-   public double f() {
+   public int f() {
       return this.d;
    }
 
-   public float g() {
+   public int g() {
       return this.e;
    }
 
-   public float h() {
+   public boolean h() {
       return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

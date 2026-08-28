@@ -1,30 +1,96 @@
-public class gkx implements gks<dss> {
-   private static final float a = 0.375F;
-   private final gpi b;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gkx(gkt.a $$0) {
-      this.b = $$0.d();
+public class gkx implements gkr {
+   private final List<gkx.d> a;
+
+   gkx(List<gkx.d> $$0) {
+      this.a = $$0;
    }
 
-   public void a(dss $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
-      jm $$6 = $$0.m().c(dis.f);
-      jz<cwb> $$7 = $$0.b();
-      int $$8 = (int)$$0.aB_().a();
+   @Override
+   public Object a(dvo $$0) {
+      IntList $$1 = new IntArrayList();
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cwb $$10 = $$7.get($$9);
-         if ($$10 != cwb.k) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            jm $$11 = jm.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cvz.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+         if (this.a.get($$2).a.test($$0)) {
+            $$1.add($$2);
          }
       }
+
+      record a(gkx a, IntList b) {
+         a(IntList b) {
+            this.b = b;
+         }
+      }
+
+      return new a($$1);
+   }
+
+   @Override
+   public void a(hbo.a $$0) {
+      this.a.forEach($$1 -> $$1.b.a($$0));
+   }
+
+   @Override
+   public hav a(hbe $$0, Function<hbc, gyt> $$1, hbk $$2) {
+      List<hbl.a> $$3 = new ArrayList<>(this.a.size());
+
+      for (gkx.d $$4 : this.a) {
+         hav $$5 = $$4.b.a($$0, $$1, $$2);
+         $$3.add(new hbl.a($$4.a, $$5));
+      }
+
+      return new hbl($$3);
+   }
+
+   public static record b(List<gkz> a) {
+      public gkx a(dvp<dij, dvo> $$0) {
+         List<gkx.d> $$1 = this.a.stream().map($$1x -> new gkx.d($$1x.a($$0), $$1x.a())).toList();
+         return new gkx($$1);
+      }
+
+      public Set<gkq> a() {
+         return this.a.stream().map(gkz::a).collect(Collectors.toSet());
+      }
+
+      public List<gkz> b() {
+         return this.a;
+      }
+   }
+
+   public static class c implements JsonDeserializer<gkx.b> {
+      public gkx.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gkx.b(this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gkz> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gkz> $$2 = new ArrayList<>();
+         if ($$1.isEmpty()) {
+            throw new JsonSyntaxException("Empty selector array");
+         } else {
+            for (JsonElement $$3 : $$1) {
+               $$2.add((gkz)$$0.deserialize($$3, gkz.class));
+            }
+
+            return $$2;
+         }
+      }
+   }
+
+   static record d(Predicate<dvo> a, gkq b) {
    }
 }

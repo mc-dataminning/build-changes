@@ -1,68 +1,53 @@
-import java.util.Optional;
+public class ade implements zs<ach> {
+   public static final zj<ww, ade> a = zs.a(ade::a, ade::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final cwf e;
 
-public record ade(int b, jq<bsw> c, int d, int e, Optional<ezn> f) implements zp<ace> {
-   public static final zg<wt, ade> a = zp.a(ade::a, ade::new);
-
-   public ade(bue $$0, bsu $$1) {
-      this($$0.as(), $$1.l(), $$1.d() != null ? $$1.d().as() : -1, $$1.c() != null ? $$1.c().as() : -1, Optional.ofNullable($$1.j()));
+   public ade(int $$0, int $$1, int $$2, cwf $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3.v();
    }
 
-   private ade(wt $$0) {
-      this($$0.l(), bsw.c.decode($$0), a((wf)$$0), a((wf)$$0), $$0.b($$0x -> new ezn($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+   private ade(ww $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readShort();
+      this.e = cwf.h.decode($$0);
    }
 
-   private static void a(wf $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int a(wf $$0) {
-      return $$0.l() - 1;
-   }
-
-   private void a(wt $$0) {
-      $$0.c(this.b);
-      bsw.c.encode($$0, this.c);
-      a($$0, this.d);
-      a($$0, this.e);
-      $$0.a(this.f, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   private void a(ww $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.m(this.d);
+      cwf.h.encode($$0, this.e);
    }
 
    @Override
-   public zr<ade> a() {
-      return agt.z;
+   public zu<ade> a() {
+      return agw.w;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public bsu a(dfb $$0) {
-      if (this.f.isPresent()) {
-         return new bsu(this.c, this.f.get());
-      } else {
-         bue $$1 = $$0.a(this.d);
-         bue $$2 = $$0.a(this.e);
-         return new bsu(this.c, $$2, $$1);
-      }
+   public int b() {
+      return this.b;
    }
 
-   public jq<bsw> e() {
-      return this.c;
-   }
-
-   public int f() {
+   public int e() {
       return this.d;
    }
 
-   public int g() {
+   public cwf f() {
       return this.e;
    }
 
-   public Optional<ezn> h() {
-      return this.f;
+   public int g() {
+      return this.c;
    }
 }

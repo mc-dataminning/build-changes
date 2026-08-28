@@ -1,125 +1,113 @@
-public class cqv extends cql implements dtm {
-   private boolean c = true;
-   private boolean d = false;
+public abstract class cqv {
+   protected final cqo a;
 
-   public cqv(bul<? extends cqv> $$0, dfb $$1) {
-      super($$0, $$1);
+   protected cqv(cqo $$0) {
+      this.a = $$0;
    }
 
-   public cqv(dfb $$0, double $$1, double $$2, double $$3) {
-      super(bul.aa, $$1, $$2, $$3, $$0);
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.c($$0, $$1, $$2);
+      this.b($$3 % 360.0F);
+      this.a($$4 % 360.0F);
    }
 
-   @Override
-   public cqk.a y() {
-      return cqk.a.f;
+   public double a() {
+      return this.l();
    }
 
-   @Override
-   public dvj A() {
-      return dig.hc.m();
+   public double b() {
+      return this.m();
    }
 
-   @Override
-   public int C() {
-      return 1;
+   public double c() {
+      return this.n();
    }
 
-   @Override
-   public int b() {
-      return 5;
+   public float d() {
+      return this.o();
    }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.J()) {
-         this.s($$4);
-      }
+   public float e() {
+      return this.p();
    }
 
-   public boolean J() {
-      return this.c;
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
 
-   public void s(boolean $$0) {
-      this.c = $$0;
+   public abstract void f();
+
+   public dff g() {
+      return this.a.dY();
    }
 
-   @Override
-   public double K() {
-      return this.dC();
+   public abstract void h();
+
+   public abstract double a(jh var1, dwr var2, double var3);
+
+   public abstract boolean i();
+
+   public ezr j() {
+      return this.a.dB();
    }
 
-   @Override
-   public double L() {
-      return this.dE() + 0.5;
+   public void a(ezr $$0) {
+      this.a.h($$0);
    }
 
-   @Override
-   public double M() {
-      return this.dI();
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean O() {
-      return false;
+   public ezr k() {
+      return this.a.dw();
    }
 
-   @Override
-   public void l() {
-      this.d = false;
-      super.l();
-      this.T();
+   public double l() {
+      return this.a.dD();
    }
 
-   @Override
-   protected double a(jh $$0, dwn $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.T();
-      return $$3;
+   public double m() {
+      return this.a.dF();
    }
 
-   private void T() {
-      if (!this.dX().C && this.bM() && this.J() && !this.d && this.P()) {
-         this.d = true;
-         this.e();
-      }
+   public double n() {
+      return this.a.dJ();
    }
 
-   public boolean P() {
-      if (dtn.a(this.dX(), this)) {
-         return true;
-      } else {
-         for (ckv $$1 : this.dX().a(ckv.class, this.cS().c(0.25, 0.0, 0.25), buj.a)) {
-            if (dtn.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
+   public void b(ezr $$0) {
+      this.a.b($$0);
    }
 
-   @Override
-   protected cvx al_() {
-      return cwf.nQ;
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
    }
 
-   @Override
-   protected void b(uk $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
+   public float o() {
+      return this.a.dQ();
    }
 
-   @Override
-   protected void a(uk $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   public void a(float $$0) {
+      this.a.w($$0);
    }
 
-   @Override
-   public cro a(int $$0, col $$1) {
-      return new csp($$0, $$1, this);
+   public float p() {
+      return this.a.dO();
    }
+
+   public void b(float $$0) {
+      this.a.v($$0);
+   }
+
+   public jm q() {
+      return this.a.cQ();
+   }
+
+   public ezr c(ezr $$0) {
+      return $$0;
+   }
+
+   public abstract double r();
+
+   public abstract double s();
 }

@@ -1,51 +1,33 @@
-import org.jetbrains.annotations.VisibleForTesting;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class aiv {
-   private static final double a = 4096.0;
-   private ezn b = ezn.c;
+public class aiv implements zs<agy> {
+   public static final zj<wi, aiv> a = zs.a(aiv::a, aiv::new);
+   private final UUID b;
 
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
-   }
-
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public ezn a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
-         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
-         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new ezn($$3, $$4, $$5);
-      }
-   }
-
-   public long a(ezn $$0) {
-      return a($$0.d) - a(this.b.d);
-   }
-
-   public long b(ezn $$0) {
-      return a($$0.e) - a(this.b.e);
-   }
-
-   public long c(ezn $$0) {
-      return a($$0.f) - a(this.b.f);
-   }
-
-   public ezn d(ezn $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(ezn $$0) {
+   public aiv(UUID $$0) {
       this.b = $$0;
    }
 
-   public ezn a() {
-      return this.b;
+   private aiv(wi $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(wi $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zu<aiv> a() {
+      return agw.ce;
+   }
+
+   public void a(agy $$0) {
+      $$0.a(this);
+   }
+
+   @Nullable
+   public bui a(arq $$0) {
+      return $$0.a(this.b);
    }
 }

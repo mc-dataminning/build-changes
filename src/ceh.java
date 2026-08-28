@@ -1,35 +1,59 @@
-public class ceh {
-   private final byh a;
-   private final float b;
-   private final int c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public ceh(jh $$0, float $$1, int $$2) {
-      this(new bww($$0), $$1, $$2);
-   }
+public class ceh<T> {
+   private final T a;
+   private long b;
 
-   public ceh(ezn $$0, float $$1, int $$2) {
-      this(new bww(jh.a((ka)$$0)), $$1, $$2);
-   }
-
-   public ceh(bue $$0, float $$1, int $$2) {
-      this(new bxe($$0, false), $$1, $$2);
-   }
-
-   public ceh(byh $$0, float $$1, int $$2) {
+   public ceh(T $$0, long $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public byh a() {
-      return this.a;
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
    }
 
-   public float b() {
+   public static <T> ceh<T> a(T $$0) {
+      return new ceh<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> ceh<T> a(T $$0, long $$1) {
+      return new ceh<>($$0, $$1);
+   }
+
+   public long b() {
       return this.b;
    }
 
-   public int c() {
-      return this.c;
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @bau
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<ceh<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new ceh<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

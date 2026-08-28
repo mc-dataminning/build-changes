@@ -1,180 +1,94 @@
 import com.mojang.logging.LogUtils;
-import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class aui {
-   private static final Logger a = LogUtils.getLogger();
-   private final atl b;
-   private final aui.c c;
-   private final aui.a d;
-   private final atn e;
+public abstract class aui implements auq {
+   private static final Logger c = LogUtils.getLogger();
+   public static final String a = "vanilla";
+   public static final auk b = auk.a("core");
+   private final atr d;
+   private final att e;
+   private final all f;
+   private final ezh g;
+
+   public aui(atr $$0, att $$1, all $$2, ezh $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
+
+   @Override
+   public void loadPacks(Consumer<aul> $$0) {
+      aul $$1 = this.a(this.e);
+      if ($$1 != null) {
+         $$0.accept($$1);
+      }
+
+      this.a($$0);
+   }
 
    @Nullable
-   public static aui a(atl $$0, aui.c $$1, ato $$2, atn $$3) {
-      int $$4 = ab.b().a($$2);
-      aui.a $$5 = a($$0, $$1, $$4);
-      return $$5 != null ? new aui($$0, $$1, $$5, $$3) : null;
-   }
+   protected abstract aul a(atp var1);
 
-   public aui(atl $$0, aui.c $$1, aui.a $$2, atn $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
+   protected abstract xl a(String var1);
 
-   @Nullable
-   public static aui.a a(atl $$0, aui.c $$1, int $$2) {
-      try {
-         aui.a var11;
-         try (atm $$3 = $$1.a($$0)) {
-            aub $$4 = $$3.a(aub.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0.a());
-               return null;
-            }
-
-            ati $$5 = $$3.a(ati.a);
-            crf $$6 = $$5 != null ? $$5.a() : crf.a();
-            azc<Integer> $$7 = a($$0.a(), $$4);
-            auj $$8 = auj.a($$7, $$2);
-            atk $$9 = $$3.a(atk.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new aui.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
-         return null;
-      }
-   }
-
-   private static azc<Integer> a(String $$0, aub $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new azc<>($$2);
-      } else {
-         azc<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new azc<>($$2);
-         } else {
-            return $$3;
-         }
-      }
-   }
-
-   public atl a() {
-      return this.b;
-   }
-
-   public xi b() {
-      return this.b.b();
-   }
-
-   public xi c() {
-      return this.d.a();
-   }
-
-   public xi a(boolean $$0) {
-      return this.b.a($$0, this.d.a);
-   }
-
-   public auj d() {
-      return this.d.b();
-   }
-
-   public crf e() {
-      return this.d.c();
-   }
-
-   public atm f() {
-      return this.c.a(this.b, this.d);
-   }
-
-   public String g() {
-      return this.b.a();
-   }
-
-   public atn h() {
+   public att a() {
       return this.e;
    }
 
-   public boolean i() {
-      return this.e.a();
+   private void a(Consumer<aul> $$0) {
+      Map<String, Function<String, aul>> $$1 = new HashMap<>();
+      this.a($$1::put);
+      $$1.forEach(($$1x, $$2) -> {
+         aul $$3 = $$2.apply($$1x);
+         if ($$3 != null) {
+            $$0.accept($$3);
+         }
+      });
    }
 
-   public boolean j() {
-      return this.e.c();
+   protected void a(BiConsumer<String, Function<String, aul>> $$0) {
+      this.e.a(this.d, this.f, $$1 -> this.a($$1, $$0));
    }
 
-   public aui.b k() {
-      return this.e.b();
-   }
-
-   public aum l() {
-      return this.b.c();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aui $$1) ? false : this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(xi a, auj b, crf c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, atn> $$2, boolean $$3) {
-         aui.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               atn $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.c() || $$6.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               atn $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.c() || $$8.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
+   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, aul>> $$1) {
+      if ($$0 != null && Files.isDirectory($$0)) {
+         try {
+            auj.a($$0, this.g, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
+         } catch (IOException var4) {
+            c.warn("Failed to discover packs in {}", $$0, var4);
          }
       }
-
-      public aui.b a() {
-         return this == a ? b : a;
-      }
    }
 
-   public interface c {
-      atm a(atl var1);
+   private static String a(Path $$0) {
+      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+   }
 
-      atm a(atl var1, aui.a var2);
+   @Nullable
+   protected abstract aul a(String var1, aul.c var2, xl var3);
+
+   protected static aul.c b(final atp $$0) {
+      return new aul.c() {
+         @Override
+         public atp a(ato $$0x) {
+            return $$0;
+         }
+
+         @Override
+         public atp a(ato $$0x, aul.a $$1) {
+            return $$0;
+         }
+      };
    }
 }

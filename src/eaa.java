@@ -1,29 +1,19 @@
-public enum eaa {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private final boolean d;
-   private final boolean e;
+public interface eaa<T extends dzr> {
+   @Nullable
+   T a(int var1);
 
-   private eaa(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   @Nullable
+   T a(UUID var1);
 
-   public boolean a() {
-      return this.e;
-   }
+   Iterable<T> a();
 
-   public boolean b() {
-      return this.d;
-   }
+   <U extends T> void a(dzy<T, U> var1, axz<U> var2);
 
-   public static eaa a(ard $$0) {
-      if ($$0.a(ard.d)) {
-         return c;
-      } else {
-         return $$0.a(ard.b) ? b : a;
-      }
-   }
+   void a(ezm var1, Consumer<T> var2);
+
+   <U extends T> void a(dzy<T, U> var1, ezm var2, axz<U> var3);
 }

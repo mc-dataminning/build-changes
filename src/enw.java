@@ -1,80 +1,352 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class enw {
-   public static final int a = 90;
-   static final ali b = ali.b("igloo/top");
-   private static final ali c = ali.b("igloo/middle");
-   private static final ali d = ali.b("igloo/bottom");
-   static final Map<ali, jh> e = ImmutableMap.of(b, new jh(3, 5, 5), c, new jh(1, 3, 1), d, new jh(3, 6, 7));
-   static final Map<ali, jh> f = ImmutableMap.of(b, jh.c, c, new jh(2, -3, 4), d, new jh(0, -3, -2));
+public class enw extends elz {
+   public static final int h = 21;
+   public static final int i = 21;
+   private final boolean[] j = new boolean[4];
+   private final List<jh> k = new ArrayList<>();
+   private jh l = jh.c;
 
-   public static void a(eqa $$0, jh $$1, dor $$2, emc $$3, azs $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new enw.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new enw.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new enw.a($$0, b, $$1, $$2, 0));
+   public enw(azv $$0, int $$1, int $$2) {
+      super(ems.L, $$1, 64, $$2, 21, 15, 21, a($$0));
    }
 
-   public static class a extends emh {
-      public a(eqa $$0, ali $$1, jh $$2, dor $$3, int $$4) {
-         super(emo.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
-      }
+   public enw(un $$0) {
+      super(ems.L, $$0);
+      this.j[0] = $$0.q("hasPlacedChest0");
+      this.j[1] = $$0.q("hasPlacedChest1");
+      this.j[2] = $$0.q("hasPlacedChest2");
+      this.j[3] = $$0.q("hasPlacedChest3");
+   }
 
-      public a(eqa $$0, uk $$1) {
-         super(emo.I, $$1, $$0, $$1x -> a(dor.valueOf($$1.l("Rot")), $$1x));
-      }
+   @Override
+   protected void a(emr $$0, un $$1) {
+      super.a($$0, $$1);
+      $$1.a("hasPlacedChest0", this.j[0]);
+      $$1.a("hasPlacedChest1", this.j[1]);
+      $$1.a("hasPlacedChest2", this.j[2]);
+      $$1.a("hasPlacedChest3", this.j[3]);
+   }
 
-      private static epv a(dor $$0, ali $$1) {
-         return new epv().a($$0).a(dna.a).a(enw.e.get($$1)).a(epa.b).a(epj.a);
-      }
+   @Override
+   public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
+      if (this.a($$0, -$$3.a(3))) {
+         this.a($$0, $$4, 0, -4, 0, this.a - 1, 0, this.c - 1, dil.aV.m(), dil.aV.m(), false);
 
-      private static jh a(ali $$0, jh $$1, int $$2) {
-         return $$1.a(enw.f.get($$0)).c($$2);
-      }
-
-      @Override
-      protected void a(emn $$0, uk $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, jh $$1, dfr $$2, azs $$3, elp $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, dig.a.m(), 3);
-            dsm $$5 = $$2.c_($$1.e());
-            if ($$5 instanceof dst) {
-               ((dst)$$5).a(ety.B, $$3.g());
-            }
+         for (int $$7 = 1; $$7 <= 9; $$7++) {
+            this.a($$0, $$4, $$7, $$7, $$7, this.a - 1 - $$7, $$7, this.c - 1 - $$7, dil.aV.m(), dil.aV.m(), false);
+            this.a($$0, $$4, $$7 + 1, $$7, $$7 + 1, this.a - 2 - $$7, $$7, this.c - 2 - $$7, dil.a.m(), dil.a.m(), false);
          }
-      }
 
-      @Override
-      public void a(dfy $$0, dfw $$1, dxg $$2, azs $$3, elp $$4, deh $$5, jh $$6) {
-         ali $$7 = ali.a(this.a);
-         epv $$8 = a(this.c.d(), $$7);
-         jh $$9 = enw.f.get($$7);
-         jh $$10 = this.d.a((kl)epz.a($$8, new jh(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(ebf.a.a, $$10.u(), $$10.w());
-         jh $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(enw.b)) {
-            jh $$13 = this.d.a((kl)epz.a($$8, new jh(3, 0, 5)));
-            dvj $$14 = $$0.a_($$13.e());
-            if (!$$14.l() && !$$14.a(dig.cO)) {
-               $$0.a($$13, dig.dP.m(), 3);
+         for (int $$8 = 0; $$8 < this.a; $$8++) {
+            for (int $$9 = 0; $$9 < this.c; $$9++) {
+               int $$10 = -5;
+               this.b($$0, dil.aV.m(), $$8, -5, $$9, $$4);
             }
          }
 
-         this.d = $$12;
+         dvo $$11 = dil.fD.m().b(dqd.b, jm.c);
+         dvo $$12 = dil.fD.m().b(dqd.b, jm.d);
+         dvo $$13 = dil.fD.m().b(dqd.b, jm.f);
+         dvo $$14 = dil.fD.m().b(dqd.b, jm.e);
+         this.a($$0, $$4, 0, 0, 0, 4, 9, 4, dil.aV.m(), dil.a.m(), false);
+         this.a($$0, $$4, 1, 10, 1, 3, 10, 3, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$11, 2, 10, 0, $$4);
+         this.a($$0, $$12, 2, 10, 4, $$4);
+         this.a($$0, $$13, 0, 10, 2, $$4);
+         this.a($$0, $$14, 4, 10, 2, $$4);
+         this.a($$0, $$4, this.a - 5, 0, 0, this.a - 1, 9, 4, dil.aV.m(), dil.a.m(), false);
+         this.a($$0, $$4, this.a - 4, 10, 1, this.a - 2, 10, 3, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$11, this.a - 3, 10, 0, $$4);
+         this.a($$0, $$12, this.a - 3, 10, 4, $$4);
+         this.a($$0, $$13, this.a - 5, 10, 2, $$4);
+         this.a($$0, $$14, this.a - 1, 10, 2, $$4);
+         this.a($$0, $$4, 8, 0, 0, 12, 4, 4, dil.aV.m(), dil.a.m(), false);
+         this.a($$0, $$4, 9, 1, 0, 11, 3, 4, dil.a.m(), dil.a.m(), false);
+         this.a($$0, dil.aX.m(), 9, 1, 1, $$4);
+         this.a($$0, dil.aX.m(), 9, 2, 1, $$4);
+         this.a($$0, dil.aX.m(), 9, 3, 1, $$4);
+         this.a($$0, dil.aX.m(), 10, 3, 1, $$4);
+         this.a($$0, dil.aX.m(), 11, 3, 1, $$4);
+         this.a($$0, dil.aX.m(), 11, 2, 1, $$4);
+         this.a($$0, dil.aX.m(), 11, 1, 1, $$4);
+         this.a($$0, $$4, 4, 1, 1, 8, 3, 3, dil.aV.m(), dil.a.m(), false);
+         this.a($$0, $$4, 4, 1, 2, 8, 2, 2, dil.a.m(), dil.a.m(), false);
+         this.a($$0, $$4, 12, 1, 1, 16, 3, 3, dil.aV.m(), dil.a.m(), false);
+         this.a($$0, $$4, 12, 1, 2, 16, 2, 2, dil.a.m(), dil.a.m(), false);
+         this.a($$0, $$4, 5, 4, 5, this.a - 6, 4, this.c - 6, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, 9, 4, 9, 11, 4, 11, dil.a.m(), dil.a.m(), false);
+         this.a($$0, $$4, 8, 1, 8, 8, 3, 8, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, $$4, 12, 1, 8, 12, 3, 8, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, $$4, 8, 1, 12, 8, 3, 12, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, $$4, 12, 1, 12, 12, 3, 12, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, $$4, 1, 1, 5, 4, 4, 11, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, this.a - 5, 1, 5, this.a - 2, 4, 11, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, 6, 7, 9, 6, 7, 11, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, this.a - 7, 7, 9, this.a - 7, 7, 11, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, 5, 5, 9, 5, 7, 11, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, $$4, this.a - 6, 5, 9, this.a - 6, 7, 11, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, dil.a.m(), 5, 5, 10, $$4);
+         this.a($$0, dil.a.m(), 5, 6, 10, $$4);
+         this.a($$0, dil.a.m(), 6, 6, 10, $$4);
+         this.a($$0, dil.a.m(), this.a - 6, 5, 10, $$4);
+         this.a($$0, dil.a.m(), this.a - 6, 6, 10, $$4);
+         this.a($$0, dil.a.m(), this.a - 7, 6, 10, $$4);
+         this.a($$0, $$4, 2, 4, 4, 2, 6, 4, dil.a.m(), dil.a.m(), false);
+         this.a($$0, $$4, this.a - 3, 4, 4, this.a - 3, 6, 4, dil.a.m(), dil.a.m(), false);
+         this.a($$0, $$11, 2, 4, 5, $$4);
+         this.a($$0, $$11, 2, 3, 4, $$4);
+         this.a($$0, $$11, this.a - 3, 4, 5, $$4);
+         this.a($$0, $$11, this.a - 3, 3, 4, $$4);
+         this.a($$0, $$4, 1, 1, 3, 2, 2, 3, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, this.a - 3, 1, 3, this.a - 2, 2, 3, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, dil.aV.m(), 1, 1, 2, $$4);
+         this.a($$0, dil.aV.m(), this.a - 2, 1, 2, $$4);
+         this.a($$0, dil.jF.m(), 1, 2, 2, $$4);
+         this.a($$0, dil.jF.m(), this.a - 2, 2, 2, $$4);
+         this.a($$0, $$14, 2, 1, 2, $$4);
+         this.a($$0, $$13, this.a - 3, 1, 2, $$4);
+         this.a($$0, $$4, 4, 3, 5, 4, 3, 17, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, this.a - 5, 3, 5, this.a - 5, 3, 17, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, 3, 1, 5, 4, 2, 16, dil.a.m(), dil.a.m(), false);
+         this.a($$0, $$4, this.a - 6, 1, 5, this.a - 5, 2, 16, dil.a.m(), dil.a.m(), false);
+
+         for (int $$15 = 5; $$15 <= 17; $$15 += 2) {
+            this.a($$0, dil.aX.m(), 4, 1, $$15, $$4);
+            this.a($$0, dil.aW.m(), 4, 2, $$15, $$4);
+            this.a($$0, dil.aX.m(), this.a - 5, 1, $$15, $$4);
+            this.a($$0, dil.aW.m(), this.a - 5, 2, $$15, $$4);
+         }
+
+         this.a($$0, dil.hk.m(), 10, 0, 7, $$4);
+         this.a($$0, dil.hk.m(), 10, 0, 8, $$4);
+         this.a($$0, dil.hk.m(), 9, 0, 9, $$4);
+         this.a($$0, dil.hk.m(), 11, 0, 9, $$4);
+         this.a($$0, dil.hk.m(), 8, 0, 10, $$4);
+         this.a($$0, dil.hk.m(), 12, 0, 10, $$4);
+         this.a($$0, dil.hk.m(), 7, 0, 10, $$4);
+         this.a($$0, dil.hk.m(), 13, 0, 10, $$4);
+         this.a($$0, dil.hk.m(), 9, 0, 11, $$4);
+         this.a($$0, dil.hk.m(), 11, 0, 11, $$4);
+         this.a($$0, dil.hk.m(), 10, 0, 12, $$4);
+         this.a($$0, dil.hk.m(), 10, 0, 13, $$4);
+         this.a($$0, dil.hu.m(), 10, 0, 10, $$4);
+
+         for (int $$16 = 0; $$16 <= this.a - 1; $$16 += this.a - 1) {
+            this.a($$0, dil.aX.m(), $$16, 2, 1, $$4);
+            this.a($$0, dil.hk.m(), $$16, 2, 2, $$4);
+            this.a($$0, dil.aX.m(), $$16, 2, 3, $$4);
+            this.a($$0, dil.aX.m(), $$16, 3, 1, $$4);
+            this.a($$0, dil.hk.m(), $$16, 3, 2, $$4);
+            this.a($$0, dil.aX.m(), $$16, 3, 3, $$4);
+            this.a($$0, dil.hk.m(), $$16, 4, 1, $$4);
+            this.a($$0, dil.aW.m(), $$16, 4, 2, $$4);
+            this.a($$0, dil.hk.m(), $$16, 4, 3, $$4);
+            this.a($$0, dil.aX.m(), $$16, 5, 1, $$4);
+            this.a($$0, dil.hk.m(), $$16, 5, 2, $$4);
+            this.a($$0, dil.aX.m(), $$16, 5, 3, $$4);
+            this.a($$0, dil.hk.m(), $$16, 6, 1, $$4);
+            this.a($$0, dil.aW.m(), $$16, 6, 2, $$4);
+            this.a($$0, dil.hk.m(), $$16, 6, 3, $$4);
+            this.a($$0, dil.hk.m(), $$16, 7, 1, $$4);
+            this.a($$0, dil.hk.m(), $$16, 7, 2, $$4);
+            this.a($$0, dil.hk.m(), $$16, 7, 3, $$4);
+            this.a($$0, dil.aX.m(), $$16, 8, 1, $$4);
+            this.a($$0, dil.aX.m(), $$16, 8, 2, $$4);
+            this.a($$0, dil.aX.m(), $$16, 8, 3, $$4);
+         }
+
+         for (int $$17 = 2; $$17 <= this.a - 3; $$17 += this.a - 3 - 2) {
+            this.a($$0, dil.aX.m(), $$17 - 1, 2, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17, 2, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17 + 1, 2, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17 - 1, 3, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17, 3, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17 + 1, 3, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17 - 1, 4, 0, $$4);
+            this.a($$0, dil.aW.m(), $$17, 4, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17 + 1, 4, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17 - 1, 5, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17, 5, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17 + 1, 5, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17 - 1, 6, 0, $$4);
+            this.a($$0, dil.aW.m(), $$17, 6, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17 + 1, 6, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17 - 1, 7, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17, 7, 0, $$4);
+            this.a($$0, dil.hk.m(), $$17 + 1, 7, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17 - 1, 8, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17, 8, 0, $$4);
+            this.a($$0, dil.aX.m(), $$17 + 1, 8, 0, $$4);
+         }
+
+         this.a($$0, $$4, 8, 4, 0, 12, 6, 0, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, dil.a.m(), 8, 6, 0, $$4);
+         this.a($$0, dil.a.m(), 12, 6, 0, $$4);
+         this.a($$0, dil.hk.m(), 9, 5, 0, $$4);
+         this.a($$0, dil.aW.m(), 10, 5, 0, $$4);
+         this.a($$0, dil.hk.m(), 11, 5, 0, $$4);
+         this.a($$0, $$4, 8, -14, 8, 12, -11, 12, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, $$4, 8, -10, 8, 12, -10, 12, dil.aW.m(), dil.aW.m(), false);
+         this.a($$0, $$4, 8, -9, 8, 12, -9, 12, dil.aX.m(), dil.aX.m(), false);
+         this.a($$0, $$4, 8, -8, 8, 12, -1, 12, dil.aV.m(), dil.aV.m(), false);
+         this.a($$0, $$4, 9, -11, 9, 11, -1, 11, dil.a.m(), dil.a.m(), false);
+         this.a($$0, dil.dx.m(), 10, -11, 10, $$4);
+         this.a($$0, $$4, 9, -13, 9, 11, -13, 11, dil.ck.m(), dil.a.m(), false);
+         this.a($$0, dil.a.m(), 8, -11, 10, $$4);
+         this.a($$0, dil.a.m(), 8, -10, 10, $$4);
+         this.a($$0, dil.aW.m(), 7, -10, 10, $$4);
+         this.a($$0, dil.aX.m(), 7, -11, 10, $$4);
+         this.a($$0, dil.a.m(), 12, -11, 10, $$4);
+         this.a($$0, dil.a.m(), 12, -10, 10, $$4);
+         this.a($$0, dil.aW.m(), 13, -10, 10, $$4);
+         this.a($$0, dil.aX.m(), 13, -11, 10, $$4);
+         this.a($$0, dil.a.m(), 10, -11, 8, $$4);
+         this.a($$0, dil.a.m(), 10, -10, 8, $$4);
+         this.a($$0, dil.aW.m(), 10, -10, 7, $$4);
+         this.a($$0, dil.aX.m(), 10, -11, 7, $$4);
+         this.a($$0, dil.a.m(), 10, -11, 12, $$4);
+         this.a($$0, dil.a.m(), 10, -10, 12, $$4);
+         this.a($$0, dil.aW.m(), 10, -10, 13, $$4);
+         this.a($$0, dil.aX.m(), 10, -11, 13, $$4);
+
+         for (jm $$18 : jm.c.a) {
+            if (!this.j[$$18.e()]) {
+               int $$19 = $$18.j() * 2;
+               int $$20 = $$18.l() * 2;
+               this.j[$$18.e()] = this.a($$0, $$4, $$3, 10 + $$19, -11, 10 + $$20, euc.y);
+            }
+         }
+
+         this.a($$0, $$4);
       }
+   }
+
+   private void a(dgd $$0, elt $$1) {
+      jh $$2 = new jh(16, -4, 13);
+      this.a($$2, $$0, $$1);
+      this.b($$2, $$0, $$1);
+   }
+
+   private void a(jh $$0, dgd $$1, elt $$2) {
+      int $$3 = $$0.u();
+      int $$4 = $$0.v();
+      int $$5 = $$0.w();
+      dvo $$6 = dil.fD.m();
+      this.a($$1, $$6.a(dow.d), 13, -1, 17, $$2);
+      this.a($$1, $$6.a(dow.d), 14, -2, 17, $$2);
+      this.a($$1, $$6.a(dow.d), 15, -3, 17, $$2);
+      dvo $$7 = dil.I.m();
+      dvo $$8 = dil.aV.m();
+      boolean $$9 = $$1.E_().h();
+      this.a($$1, $$7, $$3 - 4, $$4 + 4, $$5 + 4, $$2);
+      this.a($$1, $$7, $$3 - 3, $$4 + 4, $$5 + 4, $$2);
+      this.a($$1, $$7, $$3 - 2, $$4 + 4, $$5 + 4, $$2);
+      this.a($$1, $$7, $$3 - 1, $$4 + 4, $$5 + 4, $$2);
+      this.a($$1, $$7, $$3, $$4 + 4, $$5 + 4, $$2);
+      this.a($$1, $$7, $$3 - 2, $$4 + 3, $$5 + 4, $$2);
+      this.a($$1, $$9 ? $$7 : $$8, $$3 - 1, $$4 + 3, $$5 + 4, $$2);
+      this.a($$1, !$$9 ? $$7 : $$8, $$3, $$4 + 3, $$5 + 4, $$2);
+      this.a($$1, $$7, $$3 - 1, $$4 + 2, $$5 + 4, $$2);
+      this.a($$1, $$8, $$3, $$4 + 2, $$5 + 4, $$2);
+      this.a($$1, $$7, $$3, $$4 + 1, $$5 + 4, $$2);
+   }
+
+   private void b(jh $$0, dgd $$1, elt $$2) {
+      int $$3 = $$0.u();
+      int $$4 = $$0.v();
+      int $$5 = $$0.w();
+      dvo $$6 = dil.aX.m();
+      dvo $$7 = dil.aW.m();
+      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 - 3, $$3 - 3, $$4 + 1, $$5 + 2, $$6, $$6, true);
+      this.a($$1, $$2, $$3 + 3, $$4 + 1, $$5 - 3, $$3 + 3, $$4 + 1, $$5 + 2, $$6, $$6, true);
+      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 - 3, $$3 + 3, $$4 + 1, $$5 - 2, $$6, $$6, true);
+      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 + 3, $$3 + 3, $$4 + 1, $$5 + 3, $$6, $$6, true);
+      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 - 3, $$3 - 3, $$4 + 2, $$5 + 2, $$7, $$7, true);
+      this.a($$1, $$2, $$3 + 3, $$4 + 2, $$5 - 3, $$3 + 3, $$4 + 2, $$5 + 2, $$7, $$7, true);
+      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 - 3, $$3 + 3, $$4 + 2, $$5 - 2, $$7, $$7, true);
+      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 + 3, $$3 + 3, $$4 + 2, $$5 + 3, $$7, $$7, true);
+      this.a($$1, $$2, $$3 - 3, -1, $$5 - 3, $$3 - 3, -1, $$5 + 2, $$6, $$6, true);
+      this.a($$1, $$2, $$3 + 3, -1, $$5 - 3, $$3 + 3, -1, $$5 + 2, $$6, $$6, true);
+      this.a($$1, $$2, $$3 - 3, -1, $$5 - 3, $$3 + 3, -1, $$5 - 2, $$6, $$6, true);
+      this.a($$1, $$2, $$3 - 3, -1, $$5 + 3, $$3 + 3, -1, $$5 + 3, $$6, $$6, true);
+      this.a($$3 - 2, $$4 + 1, $$5 - 2, $$3 + 2, $$4 + 3, $$5 + 2);
+      this.a($$1, $$2, $$3 - 2, $$4 + 4, $$5 - 2, $$3 + 2, $$5 + 2);
+      dvo $$8 = dil.hk.m();
+      dvo $$9 = dil.hu.m();
+      this.a($$1, $$9, $$3, $$4, $$5, $$2);
+      this.a($$1, $$8, $$3 + 1, $$4, $$5 - 1, $$2);
+      this.a($$1, $$8, $$3 + 1, $$4, $$5 + 1, $$2);
+      this.a($$1, $$8, $$3 - 1, $$4, $$5 - 1, $$2);
+      this.a($$1, $$8, $$3 - 1, $$4, $$5 + 1, $$2);
+      this.a($$1, $$8, $$3 + 2, $$4, $$5, $$2);
+      this.a($$1, $$8, $$3 - 2, $$4, $$5, $$2);
+      this.a($$1, $$8, $$3, $$4, $$5 + 2, $$2);
+      this.a($$1, $$8, $$3, $$4, $$5 - 2, $$2);
+      this.a($$1, $$8, $$3 + 3, $$4, $$5, $$2);
+      this.c($$3 + 3, $$4 + 1, $$5);
+      this.c($$3 + 3, $$4 + 2, $$5);
+      this.a($$1, $$6, $$3 + 4, $$4 + 1, $$5, $$2);
+      this.a($$1, $$7, $$3 + 4, $$4 + 2, $$5, $$2);
+      this.a($$1, $$8, $$3 - 3, $$4, $$5, $$2);
+      this.c($$3 - 3, $$4 + 1, $$5);
+      this.c($$3 - 3, $$4 + 2, $$5);
+      this.a($$1, $$6, $$3 - 4, $$4 + 1, $$5, $$2);
+      this.a($$1, $$7, $$3 - 4, $$4 + 2, $$5, $$2);
+      this.a($$1, $$8, $$3, $$4, $$5 + 3, $$2);
+      this.c($$3, $$4 + 1, $$5 + 3);
+      this.c($$3, $$4 + 2, $$5 + 3);
+      this.a($$1, $$8, $$3, $$4, $$5 - 3, $$2);
+      this.c($$3, $$4 + 1, $$5 - 3);
+      this.c($$3, $$4 + 2, $$5 - 3);
+      this.a($$1, $$6, $$3, $$4 + 1, $$5 - 4, $$2);
+      this.a($$1, $$7, $$3, -2, $$5 - 4, $$2);
+   }
+
+   private void c(int $$0, int $$1, int $$2) {
+      jh $$3 = this.b($$0, $$1, $$2);
+      this.k.add($$3);
+   }
+
+   private void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = $$1; $$6 <= $$4; $$6++) {
+         for (int $$7 = $$0; $$7 <= $$3; $$7++) {
+            for (int $$8 = $$2; $$8 <= $$5; $$8++) {
+               this.c($$7, $$6, $$8);
+            }
+         }
+      }
+   }
+
+   private void a(dgd $$0, int $$1, int $$2, int $$3, elt $$4) {
+      if ($$0.E_().i() < 0.33F) {
+         dvo $$5 = dil.aV.m();
+         this.a($$0, $$5, $$1, $$2, $$3, $$4);
+      } else {
+         dvo $$6 = dil.I.m();
+         this.a($$0, $$6, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   private void a(dgd $$0, elt $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (int $$7 = $$2; $$7 <= $$5; $$7++) {
+         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
+            this.a($$0, $$7, $$3, $$8, $$1);
+         }
+      }
+
+      azv $$9 = azv.a($$0.C()).e().a(this.b($$2, $$3, $$4));
+      int $$10 = $$9.a($$2, $$5);
+      int $$11 = $$9.a($$4, $$6);
+      this.l = new jh(this.a($$10, $$11), this.b($$3), this.b($$10, $$11));
+   }
+
+   public List<jh> b() {
+      return this.k;
+   }
+
+   public jh c() {
+      return this.l;
    }
 }

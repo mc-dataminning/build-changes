@@ -1,200 +1,162 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class gdb {
-   private static final xi a = xi.c("chat.validation_error").a(n.m, n.u);
-   private final fji b;
-   private final Deque<gdb.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+public class gdb implements fb {
+   private final gcz a;
+   private final fjx b;
+   private int c = -1;
+   @Nullable
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
 
-   public gdb(fji $$0) {
-      this.b = $$0;
+   public gdb(gcz $$0, fjx $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a() {
-      if (this.d != 0L) {
-         if (ae.c() >= this.e + this.d) {
-            gdb.a $$0 = this.c.poll();
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
-            }
-         }
-      }
-   }
-
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(gdb.a::a);
-         this.c.clear();
+      for (gdj $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
       }
 
-      this.d = $$1;
+      return $$0;
    }
 
-   public void b() {
-      this.c.remove().a();
-   }
-
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(gdb.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(xu $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ae.c() < this.e + this.d;
-   }
-
-   private void a(@Nullable xu $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new gdb.a($$0, $$1));
+   @Override
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
       } else {
-         $$1.getAsBoolean();
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
       }
    }
 
-   public void a(xy $$0, GameProfile $$1, xe.a $$2) {
-      boolean $$3 = this.b.n.ai().c();
-      xy $$4 = $$3 ? $$0.a() : $$0;
-      xi $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         gcj $$7 = this.b.L();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.w != null && this.b.w.d() == ezp.a.c ? Collections.singleton(((ezo)this.b.w).a().cJ()) : Collections.emptyList());
    }
 
-   public void a(UUID $$0, xe.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            xi $$2 = $$1.a(a);
-            this.b.m.d().a($$2, null, fjc.d());
-            this.e = ae.c();
-            return true;
-         }
-      });
+   @Override
+   public Collection<String> r() {
+      return this.a.z().f();
    }
 
-   public void a(xi $$0, xe.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         xi $$3 = $$1.a($$0);
-         this.b.m.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ae.c();
-         return true;
-      });
+   @Override
+   public Stream<all> s() {
+      return this.b.ak().d().stream();
    }
 
-   private boolean a(xe.a $$0, xy $$1, xi $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      gdd $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         fjc $$7 = $$6.a($$1);
-         xu $$8 = $$1.l();
-         xm $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.m.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            xi $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.m.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
-         }
+   @Override
+   public Stream<all> t() {
+      return this.a.j().g();
+   }
 
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ae.c();
-         return true;
+   @Override
+   public boolean c(int $$0) {
+      ght $$1 = this.b.t;
+      return $$1 != null ? $$1.l($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(alk<? extends kd<?>> $$0, fb.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().a($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
+      }
+
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new ahl($$1, $$0.getInput()));
+      return this.d;
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
+
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
+
+   @Override
+   public Collection<fb.b> B() {
+      ezp $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == ezp.a.b) {
+         jh $$1 = ((ezn)$$0).b();
+         return Collections.singleton(new fb.b(a($$1.u()), a($$1.v()), a($$1.w())));
       } else {
-         return false;
+         return fb.super.B();
       }
    }
 
-   private void a(xe.a $$0, xi $$1) {
-      this.b.aZ().a($$0.b($$1));
-   }
-
-   private gdd a(xy $$0, xi $$1, Instant $$2) {
-      return this.a($$0.g()) ? gdd.a : gdd.a($$0, $$1, $$2);
-   }
-
-   private void a(xy $$0, xe.a $$1, GameProfile $$2, gdd $$3) {
-      gdc $$4 = this.b.bb().b();
-      $$4.a(gdf.a($$2, $$0, $$3));
-   }
-
-   private void a(xi $$0, Instant $$1) {
-      gdc $$2 = this.b.bb().b();
-      $$2.a(gdf.a($$0, $$1));
-   }
-
-   public void a(xi $$0, boolean $$1) {
-      if (!this.b.n.ag().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.m.a($$0, false);
-         } else {
-            this.b.m.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aZ().b($$0);
-      }
-   }
-
-   private UUID a(xi $$0) {
-      String $$1 = baf.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ae.e : this.b.aN().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.t != null) {
-         UUID $$1 = this.b.t.gj().getId();
-         return $$1.equals($$0);
+   @Override
+   public Collection<fb.b> C() {
+      ezp $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == ezp.a.b) {
+         ezr $$1 = $$0.g();
+         return Collections.singleton(new fb.b(a($$1.d), a($$1.e), a($$1.f)));
       } else {
-         return false;
+         return fb.super.C();
       }
    }
 
-   static record a(@Nullable xu a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
+   @Override
+   public Set<alk<dff>> u() {
+      return this.a.u();
+   }
 
-      @Nullable
-      public xu b() {
-         return this.a;
-      }
+   @Override
+   public ke v() {
+      return this.a.v();
+   }
 
-      public BooleanSupplier c() {
-         return this.b;
+   @Override
+   public crj w() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(adg.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
       }
    }
 }

@@ -1,26 +1,20 @@
-import java.util.Optional;
+public record adj(xx.a b) implements zs<ach> {
+   public static final zj<wi, adj> a = zs.a(adj::a, adj::new);
 
-public record adj(ezn b, Optional<ezn> c, lp d, jq<awk> e) implements zp<ace> {
-   public static final zg<wt, adj> a = zg.a(ezn.b, adj::b, ezn.b.a(ze::a), adj::e, lr.bg, adj::f, awk.d, adj::g, adj::new);
+   private adj(wi $$0) {
+      this(xx.a.a($$0));
+   }
+
+   private void a(wi $$0) {
+      xx.a.a($$0, this.b);
+   }
 
    @Override
-   public zr<adj> a() {
-      return agt.E;
+   public zu<adj> a() {
+      return agw.B;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
-   }
-
-   public Optional<ezn> e() {
-      return this.c;
-   }
-
-   public lp f() {
-      return this.d;
-   }
-
-   public jq<awk> g() {
-      return this.e;
    }
 }

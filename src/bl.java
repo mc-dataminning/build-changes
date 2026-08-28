@@ -5,10 +5,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bl(List<eg<bsw>> b, Optional<bw> c, Optional<bw> d, Optional<Boolean> e) {
+public record bl(List<eg<bta>> b, Optional<bw> c, Optional<bw> d, Optional<Boolean> e) {
    public static final Codec<bl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eg.a(lz.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bl::a),
+               eg.a(ma.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bl::a),
                bw.a.optionalFieldOf("direct_entity").forGetter(bl::b),
                bw.a.optionalFieldOf("source_entity").forGetter(bl::c),
                Codec.BOOL.optionalFieldOf("is_direct").forGetter(bl::d)
@@ -16,12 +16,12 @@ public record bl(List<eg<bsw>> b, Optional<bw> c, Optional<bw> d, Optional<Boole
             .apply($$0, bl::new)
    );
 
-   public boolean a(aro $$0, bsu $$1) {
-      return this.a($$0.B(), $$0.dv(), $$1);
+   public boolean a(arr $$0, bsy $$1) {
+      return this.a($$0.B(), $$0.dw(), $$1);
    }
 
-   public boolean a(arn $$0, ezn $$1, bsu $$2) {
-      for (eg<bsw> $$3 : this.b) {
+   public boolean a(arq $$0, ezr $$1, bsy $$2) {
+      for (eg<bta> $$3 : this.b) {
          if (!$$3.a($$2.l())) {
             return false;
          }
@@ -34,7 +34,7 @@ public record bl(List<eg<bsw>> b, Optional<bw> c, Optional<bw> d, Optional<Boole
       }
    }
 
-   public List<eg<bsw>> a() {
+   public List<eg<bta>> a() {
       return this.b;
    }
 
@@ -51,7 +51,7 @@ public record bl(List<eg<bsw>> b, Optional<bw> c, Optional<bw> d, Optional<Boole
    }
 
    public static class a {
-      private final Builder<eg<bsw>> a = ImmutableList.builder();
+      private final Builder<eg<bta>> a = ImmutableList.builder();
       private Optional<bw> b = Optional.empty();
       private Optional<bw> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
@@ -60,7 +60,7 @@ public record bl(List<eg<bsw>> b, Optional<bw> c, Optional<bw> d, Optional<Boole
          return new bl.a();
       }
 
-      public bl.a a(eg<bsw> $$0) {
+      public bl.a a(eg<bta> $$0) {
          this.a.add($$0);
          return this;
       }

@@ -1,17 +1,45 @@
-import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class haz extends haj {
-   private final bql<haf> b;
+public abstract class haz implements hav {
+   protected final hav a;
 
-   public haz(bql<haf> $$0) {
-      super($$0.e().getFirst().b());
-      this.b = $$0;
+   public haz(hav $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public List<gjo> a(@Nullable dvj $$0, @Nullable jm $$1, azs $$2) {
-      return this.b.a($$2).map($$3 -> $$3.a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public List<gke> a(@Nullable dvo $$0, @Nullable jm $$1, azv $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.a.d();
+   }
+
+   @Override
+   public gyt e() {
+      return this.a.e();
+   }
+
+   @Override
+   public gkp f() {
+      return this.a.f();
    }
 }

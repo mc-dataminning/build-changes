@@ -1,50 +1,38 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class hai implements haf {
-   private final gjz a;
-   private final gyd b;
-   private final boolean c;
+public class hai {
+   public static final haj a = new haj();
+   public static final String b = "villager";
+   private final hai.a c;
 
-   public hai(gjz $$0, gyd $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public hai(hai.a $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public List<gjo> a(@Nullable dvj $$0, @Nullable jm $$1, azs $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
+   public hai.a a() {
       return this.c;
    }
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   @Override
-   public gyd e() {
-      return this.b;
-   }
+      private static final Map<String, hai.a> d = Arrays.stream(values()).collect(Collectors.toMap(hai.a::a, $$0 -> (hai.a)$$0));
+      private final String e;
 
-   @Override
-   public gjz f() {
-      return this.a;
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static hai.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

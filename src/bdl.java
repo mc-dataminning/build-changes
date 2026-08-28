@@ -1,30 +1,21 @@
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class bdl extends bif {
-   public bdl(Schema $$0, boolean $$1) {
-      super("EntityCatSplitFix", $$0, $$1);
+public class bdl extends DataFix {
+   public bdl(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals("minecraft:ocelot", $$0)) {
-         int $$2 = $$1.get("CatType").asInt(0);
-         if ($$2 == 0) {
-            String $$3 = $$1.get("Owner").asString("");
-            String $$4 = $$1.get("OwnerUUID").asString("");
-            if ($$3.length() > 0 || $$4.length() > 0) {
-               $$1.set("Trusting", $$1.createBoolean(true));
-            }
-         } else if ($$2 > 0 && $$2 < 4) {
-            $$1 = $$1.set("CatType", $$1.createInt($$2));
-            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
-            return Pair.of("minecraft:cat", $$1);
-         }
-      }
-
-      return Pair.of($$0, $$1);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhy.x);
+      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
+         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
+         String $$2 = bjm.a($$1.get("id").asString("minecraft:air"));
+         int $$3 = $$1.get("count").asInt(0);
+         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
+      });
    }
 }

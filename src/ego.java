@@ -1,32 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class ego implements egp {
-   public static final Codec<ego> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jh.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ego::new)
-   );
-   private final Optional<jh> b;
-   private final boolean c;
+public class ego implements egt {
+   public static final Codec<ego> a = brm.b(0, 256).fieldOf("count").xmap(ego::new, ego::a).codec();
+   private final brm b;
 
-   private ego(Optional<jh> $$0, boolean $$1) {
+   public ego(int $$0) {
+      this.b = brj.a($$0);
+   }
+
+   public ego(brm $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   public static ego a(jh $$0, boolean $$1) {
-      return new ego(Optional.of($$0), $$1);
-   }
-
-   public static ego a() {
-      return new ego(Optional.empty(), false);
-   }
-
-   public Optional<jh> b() {
+   public brm a() {
       return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
    }
 }

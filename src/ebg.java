@@ -1,82 +1,38 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ebg implements eau {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final ebh i = new ebh(this);
+public class ebg {
+   public final eiu a;
+   public final eiu b;
+   public final eiu c;
+   public final eiu d;
+   public final eiu e;
+   public final List<dvo> f;
+   public final axt<dij> g;
+   public final axt<dij> h;
+   public static final Codec<ebg> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eiu.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               eiu.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               eiu.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               eiu.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               eiu.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               ayw.a(dvo.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               axt.b(ma.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               axt.b(ma.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, ebg::new)
+   );
 
-   public ebg(long $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public azs d() {
-      return new ebg(this.g());
-   }
-
-   @Override
-   public ebs e() {
-      return new ebg.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw baj.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw baj.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements ebs {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public azs a(int $$0, int $$1, int $$2) {
-         long $$3 = azk.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new ebg($$4);
-      }
-
-      @Override
-      public azs a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new ebg((long)$$1 ^ this.a);
-      }
-
-      @Override
-      public azs a(long $$0) {
-         return new ebg($$0);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   public ebg(eiu $$0, eiu $$1, eiu $$2, eiu $$3, eiu $$4, List<dvo> $$5, axt<dij> $$6, axt<dij> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

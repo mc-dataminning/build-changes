@@ -4,36 +4,67 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class ejr extends ejq {
-   public static final MapCodec<ejr> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejr::new));
+public class ejr extends ejx {
+   public static final MapCodec<ejr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejr::new));
 
    public ejr(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
-   protected eju<?> a() {
-      return eju.d;
+   protected ejy<?> a() {
+      return ejy.e;
    }
 
    @Override
-   public List<eib.a> a(dfh $$0, BiConsumer<jh, dvj> $$1, azs $$2, int $$3, jh $$4, ehl $$5) {
-      List<eib.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public List<eif.a> a(dfl $$0, BiConsumer<jh, dvo> $$1, azv $$2, int $$3, jh $$4, ehp $$5) {
+      List<eif.a> $$6 = Lists.newArrayList();
+      jh $$7 = $$4.e();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.i(), $$5);
+      a($$0, $$1, $$2, $$7.g(), $$5);
+      a($$0, $$1, $$2, $$7.g().i(), $$5);
+      jm $$8 = jm.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + azk.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + azk.a($$8) * (float)$$11);
-            jh $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
          }
 
-         $$6.add(new eib.a($$4.b($$9, $$7, $$10), -2, false));
+         int $$18 = $$12 + $$17;
+         jh $$19 = new jh($$14, $$18, $$15);
+         if (egb.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.i(), $$5);
+            this.b($$0, $$1, $$2, $$19.g(), $$5);
+            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
+         }
+      }
+
+      $$6.add(new eif.a(new jh($$14, $$16, $$15), 0, true));
+
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new jh($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new eif.a(new jh($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
+         }
       }
 
       return $$6;

@@ -1,103 +1,97 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.SequencedMap;
+import javax.annotation.Nullable;
 
-public record gix(Map<String, String> c, Set<String> d) {
-   public static final gix a = new gix(Map.of(), Set.of());
-   public static final Codec<gix> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gix::d),
-               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gix::e)
-            )
-            .apply($$0, gix::new)
-   );
-
-   public static gix.a a() {
-      return new gix.a();
+public interface gix {
+   static gix.a a(feh $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   public gix a(gix $$0) {
-      if (this.c()) {
-         return $$0;
-      } else if ($$0.c()) {
-         return this;
-      } else {
-         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
-         $$1.putAll(this.c);
-         $$1.putAll($$0.c);
-         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
-         $$2.addAll(this.d);
-         $$2.addAll($$0.d);
-         return new gix($$1.buildKeepingLast(), $$2.build());
-      }
+   static gix.a a(SequencedMap<gjh, feh> $$0, feh $$1) {
+      return new gix.a($$1, $$0);
    }
 
-   public String b() {
-      StringBuilder $$0 = new StringBuilder();
+   feo getBuffer(gjh var1);
 
-      for (Entry<String, String> $$1 : this.c.entrySet()) {
-         String $$2 = $$1.getKey();
-         String $$3 = $$1.getValue();
-         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+   public static class a implements gix {
+      protected final feh a;
+      protected final SequencedMap<gjh, feh> b;
+      protected final Map<gjh, fef> c = new HashMap<>();
+      @Nullable
+      protected gjh d;
+
+      protected a(feh $$0, SequencedMap<gjh, feh> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      for (String $$4 : this.d) {
-         $$0.append("#define ").append($$4).append('\n');
-      }
+      @Override
+      public feo getBuffer(gjh $$0) {
+         fef $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.S()) {
+            this.a($$0, $$1);
+            $$1 = null;
+         }
 
-      return $$0.toString();
-   }
-
-   public boolean c() {
-      return this.c.isEmpty() && this.d.isEmpty();
-   }
-
-   public Map<String, String> d() {
-      return this.c;
-   }
-
-   public Set<String> e() {
-      return this.d;
-   }
-
-   public static class a {
-      private final Builder<String, String> a = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
-
-      a() {
-      }
-
-      public gix.a a(String $$0, String $$1) {
-         if ($$1.isBlank()) {
-            throw new IllegalArgumentException("Cannot define empty string");
+         if ($$1 != null) {
+            return $$1;
          } else {
-            this.a.put($$0, b($$1));
-            return this;
+            feh $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new fef($$2, $$0.O(), $$0.N());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
+               }
+
+               $$1 = new fef(this.a, $$0.O(), $$0.N());
+               this.d = $$0;
+            }
+
+            this.c.put($$0, $$1);
+            return $$1;
          }
       }
 
-      private static String b(String $$0) {
-         return $$0.replaceAll("\n", "\\\\\n");
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
+         }
       }
 
-      public gix.a a(String $$0, float $$1) {
-         this.a.put($$0, String.valueOf($$1));
-         return this;
+      public void b() {
+         this.a();
+
+         for (gjh $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
       }
 
-      public gix.a a(String $$0) {
-         this.b.add($$0);
-         return this;
+      public void a(gjh $$0) {
+         fef $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
       }
 
-      public gix a() {
-         return new gix(this.a.build(), this.b.build());
+      private void a(gjh $$0, fef $$1) {
+         fej $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.T()) {
+               feh $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getVertexSorting());
+            }
+
+            $$0.a($$2);
+         }
+
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
       }
    }
 }

@@ -1,256 +1,137 @@
-import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class ftp extends fra {
-   public static final int a = 308;
-   public static final int b = 100;
-   public static final int c = 74;
-   public static final int d = 64;
-   private static final Logger u = LogUtils.getLogger();
-   private final gcy v = new gcy();
-   private final fra w;
-   protected ftt s;
-   private gcx x;
-   private flh y;
-   private flh z;
-   private flh A;
-   private gcw B;
-   private hcq.b C;
+public class ftp extends ftf<cts> {
+   private static final all G = all.b("container/smithing/error");
+   private static final all H = all.b("item/empty_slot_smithing_template_armor_trim");
+   private static final all I = all.b("item/empty_slot_smithing_template_netherite_upgrade");
+   private static final xl J = xl.c("container.upgrade.missing_template_tooltip");
+   private static final xl K = xl.c("container.upgrade.error_tooltip");
+   private static final List<all> L = List.of(H, I);
+   private static final int M = 44;
+   private static final int N = 15;
+   private static final int O = 28;
+   private static final int P = 21;
+   private static final int Q = 65;
+   private static final int R = 46;
+   private static final int S = 115;
+   private static final int T = 210;
+   private static final int U = 25;
+   private static final Vector3f V = new Vector3f();
+   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int X = 25;
+   private static final int Y = 75;
+   private static final int Z = 141;
+   private final fsu aa = new fsu(0);
+   private final fsu ab = new fsu(1);
+   private final fsu ac = new fsu(2);
    @Nullable
-   private hcq.a D;
-   private boolean E;
+   private cko ad;
 
-   public ftp(fra $$0) {
-      super(xi.c("multiplayer.title"));
-      this.w = $$0;
+   public ftp(cts $$0, coq $$1, xl $$2) {
+      super($$0, $$1, $$2, all.b("textures/gui/container/smithing.png"));
+      this.v = 44;
+      this.w = 15;
    }
 
    @Override
-   protected void aR_() {
-      if (this.E) {
-         this.s.a(this.n, this.o - 64 - 32, 0, 32);
-      } else {
-         this.E = true;
-         this.x = new gcx(this.m);
-         this.x.a();
-         this.C = new hcq.b();
+   protected void F() {
+      this.ad = new cko(this.m.s, 0.0, 0.0, 0.0);
+      this.ad.b(true);
+      this.ad.a(true);
+      this.ad.aX = 210.0F;
+      this.ad.w(25.0F);
+      this.ad.aZ = this.ad.dO();
+      this.ad.ba = this.ad.dO();
+      this.b(this.z.b(3).g());
+   }
 
-         try {
-            this.D = new hcq.a(this.C);
-            this.D.start();
-         } catch (Exception var8) {
-            u.warn("Unable to start LAN server detection: {}", var8.getMessage());
+   @Override
+   public void D() {
+      super.D();
+      Optional<cxl> $$0 = this.G();
+      this.aa.a(L);
+      this.ab.a($$0.map(cxl::d).orElse(List.of()));
+      this.ac.a($$0.map(cxl::p).orElse(List.of()));
+   }
+
+   private Optional<cxl> G() {
+      cwf $$0 = this.z.b(0).g();
+      return !$$0.f() && $$0.h() instanceof cxl $$1 ? Optional.of($$1) : Optional.empty();
+   }
+
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(flj $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.aa.a(this.z, $$0, $$1, this.C, this.D);
+      this.ab.a(this.z, $$0, $$1, this.C, this.D);
+      this.ac.a(this.z, $$0, $$1, this.C, this.D);
+      fte.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
+   }
+
+   @Override
+   public void a(crs $$0, int $$1, cwf $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
+      }
+   }
+
+   private void b(cwf $$0) {
+      if (this.ad != null) {
+         for (buq $$1 : buq.i) {
+            this.ad.a($$1, cwf.k);
          }
 
-         this.s = new ftt(this, this.m, this.n, this.o - 64 - 32, 32, 36);
-         this.s.a(this.x);
+         if (!$$0.f()) {
+            ddr $$2 = $$0.a(ku.D);
+            buq $$3 = $$2 != null ? $$2.a() : buq.b;
+            this.ad.a($$3, $$0.v());
+         }
+      }
+   }
+
+   @Override
+   protected void c(flj $$0, int $$1, int $$2) {
+      if (this.J()) {
+         $$0.a(gjh::B, G, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
+
+   private void d(flj $$0, int $$1, int $$2) {
+      Optional<xl> $$3 = Optional.empty();
+      if (this.J() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(K);
       }
 
-      this.c(this.s);
-      this.z = this.c(flh.a(xi.c("selectServer.select"), $$0 -> this.m()).a(100).a());
-      flh $$1 = this.c(flh.a(xi.c("selectServer.direct"), $$0 -> {
-         this.B = new gcw(gzk.a("selectServer.defaultName"), "", gcw.c.c);
-         this.m.a(new fqg(this, this::h, this.B));
-      }).a(100).a());
-      flh $$2 = this.c(flh.a(xi.c("selectServer.add"), $$0 -> {
-         this.B = new gcw(gzk.a("selectServer.defaultName"), "", gcw.c.c);
-         this.m.a(new fqi(this, this::g, this.B));
-      }).a(100).a());
-      this.y = this.c(flh.a(xi.c("selectServer.edit"), $$0 -> {
-         ftt.a $$1x = this.s.h();
-         if ($$1x instanceof ftt.d) {
-            gcw $$2x = ((ftt.d)$$1x).c();
-            this.B = new gcw($$2x.a, $$2x.b, gcw.c.c);
-            this.B.b($$2x);
-            this.m.a(new fqi(this, this::f, this.B));
-         }
-      }).a(74).a());
-      this.A = this.c(flh.a(xi.c("selectServer.delete"), $$0 -> {
-         ftt.a $$1x = this.s.h();
-         if ($$1x instanceof ftt.d) {
-            String $$2x = ((ftt.d)$$1x).c().a;
-            if ($$2x != null) {
-               xi $$3x = xi.c("selectServer.deleteQuestion");
-               xi $$4x = xi.a("selectServer.deleteWarning", $$2x);
-               xi $$5x = xi.c("selectServer.deleteButton");
-               xi $$6x = xh.e;
-               this.m.a(new fpy(this::c, $$3x, $$4x, $$5x, $$6x));
+      if (this.B != null) {
+         cwf $$4 = this.z.b(0).g();
+         cwf $$5 = this.B.g();
+         if ($$4.f()) {
+            if (this.B.d == 0) {
+               $$3 = Optional.of(J);
+            }
+         } else if ($$4.h() instanceof cxl $$6 && $$5.f()) {
+            if (this.B.d == 1) {
+               $$3 = Optional.of($$6.b());
+            } else if (this.B.d == 2) {
+               $$3 = Optional.of($$6.c());
             }
          }
-      }).a(74).a());
-      flh $$3 = this.c(flh.a(xi.c("selectServer.refresh"), $$0 -> this.G()).a(74).a());
-      flh $$4 = this.c(flh.a(xh.k, $$0 -> this.d()).a(74).a());
-      fpa $$5 = fpa.d();
-      fot $$6 = $$5.a(new fot(308, 20, fot.b.a));
-      $$6.a(this.z);
-      $$6.a($$1);
-      $$6.a($$2);
-      $$5.a(fpb.b(4));
-      fot $$7 = $$5.a(new fot(308, 20, fot.b.a));
-      $$7.a(this.y);
-      $$7.a(this.A);
-      $$7.a($$3);
-      $$7.a($$4);
-      $$5.a();
-      fou.a($$5, 0, this.o - 64, this.n, 64);
-      this.D();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.w);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      List<hcp> $$0 = this.C.a();
-      if ($$0 != null) {
-         this.s.a($$0);
       }
 
-      this.v.a();
+      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
    }
 
-   @Override
-   public void j() {
-      if (this.D != null) {
-         this.D.interrupt();
-         this.D = null;
-      }
-
-      this.v.b();
-      this.s.c();
-   }
-
-   private void G() {
-      this.m.a(new ftp(this.w));
-   }
-
-   private void c(boolean $$0) {
-      ftt.a $$1 = this.s.h();
-      if ($$0 && $$1 instanceof ftt.d) {
-         this.x.a(((ftt.d)$$1).c());
-         this.x.b();
-         this.s.a(null);
-         this.s.a(this.x);
-      }
-
-      this.m.a(this);
-   }
-
-   private void f(boolean $$0) {
-      ftt.a $$1 = this.s.h();
-      if ($$0 && $$1 instanceof ftt.d) {
-         gcw $$2 = ((ftt.d)$$1).c();
-         $$2.a = this.B.a;
-         $$2.b = this.B.b;
-         $$2.b(this.B);
-         this.x.b();
-         this.s.a(this.x);
-      }
-
-      this.m.a(this);
-   }
-
-   private void g(boolean $$0) {
-      if ($$0) {
-         gcw $$1 = this.x.b(this.B.b);
-         if ($$1 != null) {
-            $$1.a(this.B);
-            this.x.b();
-         } else {
-            this.x.a(this.B, false);
-            this.x.b();
-         }
-
-         this.s.a(null);
-         this.s.a(this.x);
-      }
-
-      this.m.a(this);
-   }
-
-   private void h(boolean $$0) {
-      if ($$0) {
-         gcw $$1 = this.x.a(this.B.b);
-         if ($$1 == null) {
-            this.x.a(this.B, true);
-            this.x.b();
-            this.a(this.B);
-         } else {
-            this.a($$1);
-         }
-      } else {
-         this.m.a(this);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 294) {
-         this.G();
-         return true;
-      } else if (this.s.h() != null) {
-         if (fpk.a($$0)) {
-            this.m();
-            return true;
-         } else {
-            return this.s.a($$0, $$1, $$2);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-   }
-
-   public void m() {
-      ftt.a $$0 = this.s.h();
-      if ($$0 instanceof ftt.d) {
-         this.a(((ftt.d)$$0).c());
-      } else if ($$0 instanceof ftt.c) {
-         hcp $$1 = ((ftt.c)$$0).b();
-         this.a(new gcw($$1.a(), $$1.b(), gcw.c.a));
-      }
-   }
-
-   private void a(gcw $$0) {
-      fpz.a(this, this.m, gdz.a($$0.b), $$0, false, null);
-   }
-
-   public void a(ftt.a $$0) {
-      this.s.a($$0);
-      this.D();
-   }
-
-   protected void D() {
-      this.z.j = false;
-      this.y.j = false;
-      this.A.j = false;
-      ftt.a $$0 = this.s.h();
-      if ($$0 != null && !($$0 instanceof ftt.b)) {
-         this.z.j = true;
-         if ($$0 instanceof ftt.d) {
-            this.y.j = true;
-            this.A.j = true;
-         }
-      }
-   }
-
-   public gcy E() {
-      return this.v;
-   }
-
-   public gcx F() {
-      return this.x;
+   private boolean J() {
+      return this.z.b(0).h() && this.z.b(1).h() && this.z.b(2).h() && !this.z.b(this.z.o()).h();
    }
 }

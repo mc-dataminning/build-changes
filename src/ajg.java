@@ -1,55 +1,16 @@
-import java.security.PublicKey;
-
-public class ajg implements zp<ajd> {
-   public static final zg<wf, ajg> a = zp.a(ajg::a, ajg::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public ajg(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   private ajg(wf $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
-   }
-
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-   }
-
+public interface ajg extends acb {
    @Override
-   public zr<ajg> a() {
-      return ajj.c;
+   default wg b() {
+      return wg.d;
    }
 
-   public void a(ajd $$0) {
-      $$0.a(this);
-   }
+   void a(aji var1);
 
-   public String b() {
-      return this.b;
-   }
+   void a(ajl var1);
 
-   public PublicKey e() throws ayj {
-      return ayi.a(this.c);
-   }
+   void a(ajk var1);
 
-   public byte[] f() {
-      return this.d;
-   }
+   void a(ajj var1);
 
-   public boolean g() {
-      return this.e;
-   }
+   void a(ajh var1);
 }

@@ -1,16 +1,45 @@
-import com.google.common.collect.Streams;
-import java.util.function.Predicate;
+public class gke {
+   protected final int[] a;
+   protected final int b;
+   protected final jm c;
+   protected final gyt d;
+   private final boolean e;
+   private final int f;
 
-public class gke implements gkf {
-   public static final String a = "AND";
-   private final Iterable<? extends gkf> d;
-
-   public gke(Iterable<? extends gkf> $$0) {
-      this.d = $$0;
+   public gke(int[] $$0, int $$1, jm $$2, gyt $$3, boolean $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public Predicate<dvj> getPredicate(dvk<die, dvj> $$0) {
-      return ae.a(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
+   public gyt a() {
+      return this.d;
+   }
+
+   public int[] b() {
+      return this.a;
+   }
+
+   public boolean c() {
+      return this.b != -1;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   public jm e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.f;
    }
 }

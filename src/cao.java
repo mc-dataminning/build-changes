@@ -1,17 +1,8 @@
-import com.google.common.collect.ImmutableMap;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cao extends bwt<bva> {
-   public cao() {
-      super(ImmutableMap.of());
-   }
-
-   @Override
-   protected boolean a(arn $$0, bva $$1) {
-      return $$1.ca();
-   }
-
-   @Override
-   protected void d(arn $$0, bva $$1, long $$2) {
-      $$1.ap();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cao {
 }

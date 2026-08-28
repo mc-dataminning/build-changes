@@ -1,39 +1,33 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class ftm extends flw {
+   private static final all a = all.b("widget/page_forward_highlighted");
+   private static final all b = all.b("widget/page_forward");
+   private static final all c = all.b("widget/page_backward_highlighted");
+   private static final all d = all.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-public class ftm implements ftk {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final fpp e;
-
-   public ftm(fpp $$0) {
-      this.e = $$0;
+   public ftm(int $$0, int $$1, boolean $$2, flw.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xk.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
+   public void b(flj $$0, int $$1, int $$2, float $$3) {
+      all $$4;
+      if (this.u) {
+         $$4 = this.B() ? a : b;
       } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
+         $$4 = this.B() ? c : d;
       }
 
-      return $$6;
+      $$0.a(gjh::B, $$4, this.D(), this.E(), 23, 13);
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(azk.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   @Override
+   public void a(hdv $$0) {
+      if (this.v) {
+         $$0.a(hcl.a(awo.cy, 1.0F));
+      }
    }
 }

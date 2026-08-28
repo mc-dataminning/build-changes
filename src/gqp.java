@@ -1,23 +1,21 @@
-public class gqp extends gpq<chp, gvl, gak> {
-   private static final ali a = ali.b("textures/entity/snow_golem.png");
+public class gqp extends gnv<chm, gwm, gaa> {
+   private static final all a = all.b("textures/entity/pig/pig.png");
 
-   public gqp(gok.a $$0) {
-      super($$0, new gak($$0.a(gbl.cw)), 0.5F);
-      this.a(new gtc(this, $$0.d(), $$0.b()));
+   public gqp(gpa.a $$0) {
+      super($$0, new gaa($$0.a(gcb.bt)), new gaa($$0.a(gcb.bu)), 0.7F);
+      this.a(new gto<>(this, new gaa($$0.a(gcb.bv)), new gaa($$0.a(gcb.bw)), all.b("textures/entity/pig/pig_saddle.png")));
    }
 
-   @Override
-   public ali b(gvl $$0) {
+   public all a(gwm $$0) {
       return a;
    }
 
-   public gvl c() {
-      return new gvl();
+   public gwm c() {
+      return new gwm();
    }
 
-   public void a(chp $$0, gvl $$1, float $$2) {
+   public void a(chm $$0, gwm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.ao = $$0.t() ? new cwb(cwf.fl) : cwb.k;
-      $$1.an = this.i.a($$1.ao, $$0, cvz.f);
+      $$1.a = $$0.i();
    }
 }

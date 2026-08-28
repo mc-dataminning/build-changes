@@ -1,41 +1,62 @@
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fvj extends fvf<gdl.a> {
-   private static final xi C = xi.c("gui.abuseReport.name.title");
-   private static final xi D = xi.c("gui.abuseReport.name.comment_box_label");
-   @Nullable
-   private flz E;
+public class fvj {
+   private final Reference2ObjectMap<ctp, fvj.a> a = new Reference2ObjectArrayMap();
+   private final fvs b;
 
-   private fvj(fra $$0, gdq $$1, gdl.a $$2) {
-      super(C, $$0, $$1, $$2);
+   public fvj(fvs $$0) {
+      this.b = $$0;
    }
 
-   public fvj(fra $$0, gdq $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new gdl.a($$2, $$3, $$1.a().b()));
+   public void a() {
+      this.a.clear();
    }
 
-   public fvj(fra $$0, gdq $$1, gdl $$2) {
-      this($$0, $$1, new gdl.a($$2, $$1.a().b()));
+   public void a(cwf $$0, ctp $$1) {
+      this.a.put($$1, new fvj.a(List.of($$0), true));
    }
 
-   @Override
-   protected void D() {
-      xi $$0 = xi.b(this.A.e().a()).a(n.o);
-      this.z.a(new fmo(xi.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
-      this.E = this.a(280, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.F();
+   public void a(List<cwf> $$0, ctp $$1) {
+      this.a.put($$1, new fvj.a($$0, false));
+   }
+
+   public void a(flj $$0, fjx $$1, int $$2, int $$3, boolean $$4) {
+      this.a.forEach(($$5, $$6) -> {
+         int $$7 = $$5.e + $$2;
+         int $$8 = $$5.f + $$3;
+         if ($$6.b && $$4) {
+            $$0.a($$7 - 4, $$8 - 4, $$7 + 20, $$8 + 20, 822018048);
+         } else {
+            $$0.a($$7, $$8, $$7 + 16, $$8 + 16, 822018048);
+         }
+
+         cwf $$9 = $$6.a(this.b.currentIndex());
+         $$0.b($$9, $$7, $$8);
+         $$0.a(gjh.J(), $$7, $$8, $$7 + 16, $$8 + 16, 822083583);
+         if ($$6.b) {
+            $$0.a($$1.h, $$9, $$7, $$8);
+         }
       });
-      this.z.a(fos.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (super.b($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
+   public void a(flj $$0, fjx $$1, int $$2, int $$3, @Nullable ctp $$4) {
+      if ($$4 != null) {
+         fvj.a $$5 = (fvj.a)this.a.get($$4);
+         if ($$5 != null) {
+            cwf $$6 = $$5.a(this.b.currentIndex());
+            $$0.a($$1.h, frp.a($$1, $$6), $$2, $$3, $$6.a(ku.G));
+         }
+      }
+   }
+
+   static record a(List<cwf> a, boolean b) {
+
+      public cwf a(int $$0) {
+         int $$1 = this.a.size();
+         return $$1 == 0 ? cwf.k : this.a.get($$0 % $$1);
       }
    }
 }

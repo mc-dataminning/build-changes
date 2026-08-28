@@ -1,23 +1,29 @@
-import java.util.List;
-import java.util.UUID;
+public class aek implements zs<ach> {
+   public static final zj<wi, aek> a = zs.a(aek::a, aek::new);
+   private final int b;
 
-public record aek(List<UUID> b) implements zp<ace> {
-   public static final zg<wf, aek> a = zp.a(aek::a, aek::new);
-
-   private aek(wf $$0) {
-      this($$0.a(kk.g));
+   public aek(bsv $$0) {
+      this($$0.b());
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b, kk.g);
+   public aek(int $$0) {
+      this.b = $$0;
+   }
+
+   private aek(wi $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wi $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zr<aek> a() {
-      return agt.af;
+   public zu<aek> a() {
+      return agw.ac;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 }

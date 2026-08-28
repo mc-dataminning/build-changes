@@ -1,41 +1,37 @@
-public class bxd implements bwu<bva> {
-   private final int a;
-   private final int b;
-   private bwt.a c = bwt.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-   public bxd(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bxd extends bwx<bve> {
+   private final cei<Integer> c;
+
+   public bxd(cei<Integer> $$0) {
+      super(ImmutableMap.of($$0, cej.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(bve $$0) {
+      return $$0.ee().c(this.c);
    }
 
    @Override
-   public bwt.a a() {
-      return this.c;
+   protected boolean a(long $$0) {
+      return false;
    }
 
    @Override
-   public final boolean e(arn $$0, bva $$1, long $$2) {
-      this.c = bwt.a.b;
-      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(arq $$0, bve $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
    @Override
-   public final void f(arn $$0, bva $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
+   protected void c(arq $$0, bve $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.ee().a(this.c, $$3.get() - 1);
    }
 
    @Override
-   public final void g(arn $$0, bva $$1, long $$2) {
-      this.c = bwt.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void b(arq $$0, bve $$1, long $$2) {
+      $$1.ee().b(this.c);
    }
 }

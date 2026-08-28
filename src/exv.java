@@ -1,61 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record exv(Optional<Long> b, eub c) implements exn {
-   public static final MapCodec<exv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(exv::c), eub.a.fieldOf("value").forGetter(exv::d)).apply($$0, exv::new)
-   );
+public class exv implements exr {
+   private static final exv b = new exv();
+   public static final MapCodec<exv> a = MapCodec.unit(b);
 
-   @Override
-   public exo b() {
-      return exp.q;
+   private exv() {
    }
 
    @Override
-   public Set<ewv<?>> a() {
-      return this.c.a();
+   public exs b() {
+      return ext.g;
    }
 
-   public boolean a(euc $$0) {
-      arn $$1 = $$0.d();
-      long $$2 = $$1.ab();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public Set<ewz<?>> a() {
+      return ImmutableSet.of(exc.b);
    }
 
-   public static exv.a a(eub $$0) {
-      return new exv.a($$0);
+   public boolean a(eug $$0) {
+      return $$0.a(exc.b);
    }
 
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public eub d() {
-      return this.c;
-   }
-
-   public static class a implements exn.a {
-      private Optional<Long> a = Optional.empty();
-      private final eub b;
-
-      public a(eub $$0) {
-         this.b = $$0;
-      }
-
-      public exv.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public exv a() {
-         return new exv(this.a, this.b);
-      }
+   public static exr.a c() {
+      return () -> b;
    }
 }

@@ -1,63 +1,44 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dos extends din implements dih {
-   public static final MapCodec<dos> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(duy.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dos::new)
-   );
-   public static final dwj f = dvz.aU;
-   protected static final float g = 6.0F;
-   protected static final fah h = die.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final duy i;
+public abstract class dos extends dkm {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final fal h = dij.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fal i = dij.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final fal j = dij.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<? extends dos> a() {
-      return e;
-   }
-
-   protected dos(duy $$0, dvi.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
+   protected dos(dvn.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return h;
-   }
+   protected abstract MapCodec<? extends dos> a();
 
    @Override
-   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
-
-   public void a(arn $$0, jh $$1, dvj $$2, azs $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
-      } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
       }
    }
 
    @Override
-   public boolean b(dfe $$0, jh $$1, dvj $$2) {
-      return true;
+   protected dvo a(dvo $$0, dow $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
-      return (double)$$0.A.i() < 0.45;
+   protected dvo a(dvo $$0, dnf $$1) {
+      return $$0.b(a, $$1.b($$0.c(a)));
    }
 
    @Override
-   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(f);
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
    }
 }

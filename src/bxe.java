@@ -1,44 +1,34 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public class bxe implements byh {
-   private final bue a;
-   private final boolean b;
+public class bxe extends bwx<cip> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-   public bxe(bue $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bxe() {
+      super(ImmutableMap.of(cei.m, cej.b), 100);
    }
 
-   @Override
-   public ezn a() {
-      return this.b ? this.a.dv().b(0.0, (double)this.a.cT(), 0.0) : this.a.dv();
+   protected boolean a(arq $$0, cip $$1) {
+      return $$1.ay() == bvq.a;
    }
 
-   @Override
-   public jh b() {
-      return this.a.dx();
+   protected boolean a(arq $$0, cip $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public boolean a(bva $$0) {
-      if (this.a instanceof bva $$1) {
-         if (!$$1.bM()) {
-            return false;
-         } else {
-            Optional<ceg> $$3 = $$0.ed().c(cee.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   protected void b(arq $$0, cip $$1, long $$2) {
+      if (!$$1.bp()) {
+         $$1.b(bvq.i);
+         this.e = 0;
       }
    }
 
-   public bue c() {
-      return this.a;
+   protected void c(arq $$0, cip $$1, long $$2) {
+      $$1.b(bvq.a);
    }
 
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   protected void d(arq $$0, cip $$1, long $$2) {
+      this.e++;
    }
 }

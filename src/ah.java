@@ -1,8 +1,8 @@
 import java.util.List;
 
-public record ah(ali c, ag d) {
-   public static final zg<wt, ah> a = zg.a(ali.b, ah::a, ag.b, ah::b, ah::new);
-   public static final zg<wt, List<ah>> b = a.a(ze.a());
+public record ah(all c, ag d) {
+   public static final zj<ww, ah> a = zj.a(all.b, ah::a, ag.b, ah::b, ah::new);
+   public static final zj<ww, List<ah>> b = a.a(zh.a());
 
    @Override
    public boolean equals(Object $$0) {
@@ -27,7 +27,7 @@ public record ah(ali c, ag d) {
       return this.c.toString();
    }
 
-   public ali a() {
+   public all a() {
       return this.c;
    }
 

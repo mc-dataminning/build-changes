@@ -1,50 +1,110 @@
-public class gle implements gks<dvf> {
-   private final gjk a;
+import java.util.List;
 
-   public gle(gkt.a $$0) {
-      this.a = $$0.b();
+public class gle implements gli<dsm> {
+   public static final all a = all.b("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
+
+   public gle(glj.a $$0) {
    }
 
-   public void a(dvf $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
-      dfb $$6 = $$0.i();
-      if ($$6 != null) {
-         jh $$7 = $$0.aB_().a($$0.f().g());
-         dvj $$8 = $$0.j();
-         if (!$$8.l()) {
-            gjm.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(dig.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.b(dvd.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.d() && !$$0.b()) {
-               dwl $$9 = $$8.a(dig.br) ? dwl.b : dwl.a;
-               dvj $$10 = dig.bz.m().b(dvd.c, $$9).b(dvd.a, $$8.c(dvc.a));
-               $$10 = $$10.b(dvd.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               jh $$11 = $$7.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.b(dvc.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
+   public void a(dsm $$0, float $$1, fek $$2, gix $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().aa();
+      List<dsm.a> $$7 = $$0.b();
+      int $$8 = 0;
 
-            $$2.b();
-            gjm.b();
-         }
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dsm.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
    }
 
-   private void a(jh $$0, dvj $$1, feb $$2, gih $$3, dfb $$4, boolean $$5, int $$6) {
-      gir $$7 = ghz.b($$1);
-      fef $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azs.a(), $$1.b($$0), $$6);
+   private static void a(fek $$0, gix $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
+   }
+
+   public static void a(fek $$0, gix $$1, all $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = azn.i($$13 * 0.2F - (float)azn.d($$13 * 0.1F));
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$15 = 0.0F;
+      float $$18 = 0.0F;
+      float $$19 = -$$9;
+      float $$20 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 1.0F;
+      float $$25 = -1.0F + $$14;
+      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
+      a($$0, $$1.getBuffer(gjh.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+      $$15 = -$$10;
+      float $$28 = -$$10;
+      $$18 = -$$10;
+      $$19 = -$$10;
+      $$23 = 0.0F;
+      $$24 = 1.0F;
+      $$25 = -1.0F + $$14;
+      $$26 = (float)$$7 * $$4 + $$25;
+      a($$0, $$1.getBuffer(gjh.e($$2, true)), axy.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+   }
+
+   private static void a(
+      fek $$0,
+      feo $$1,
+      int $$2,
+      int $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      fek.a $$17 = $$0.c();
+      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
+   }
+
+   private static void a(
+      fek.a $$0, feo $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
+   ) {
+      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
+      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
+      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
+      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
+   }
+
+   private static void a(fek.a $$0, feo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(gyk.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
+   }
+
+   public boolean a(dsm $$0) {
+      return true;
    }
 
    @Override
-   public int aU_() {
-      return 68;
+   public int aV_() {
+      return 256;
+   }
+
+   public boolean a(dsm $$0, ezr $$1) {
+      return ezr.b($$0.aB_()).d(1.0, 0.0, 1.0).a((ka)$$1.d(1.0, 0.0, 1.0), (double)this.aV_());
    }
 }

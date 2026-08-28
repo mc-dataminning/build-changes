@@ -1,66 +1,41 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fih extends fig {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xi c = xi.c("mco.configure.world.opening");
-   private final ffi d;
-   private final fra e;
-   private final boolean f;
-   private final fji g;
-
-   public fih(ffi $$0, fra $$1, boolean $$2, fji $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public void run() {
-      fer $$0 = fer.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fgq) {
-                     ((fgq)this.e).f();
-                  }
-
-                  this.d.e = ffi.c.b;
-                  if (this.f) {
-                     fem.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (fgd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
+public interface fih {
+   fih a = new fih() {
+      @Override
+      public long a() {
+         return 1L;
       }
-   }
 
-   @Override
-   public xi a() {
-      return c;
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static fih a(final int $$0) {
+      return new fih() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

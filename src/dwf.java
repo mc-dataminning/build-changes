@@ -1,28 +1,38 @@
-public enum dwf implements bag {
-   a(jm.a),
-   b(jm.b);
+import java.util.List;
+import java.util.Optional;
 
-   private final jm c;
+public final class dwf extends dwq<Boolean> {
+   private static final List<Boolean> a = List.of(true, false);
+   private static final int b = 0;
+   private static final int c = 1;
 
-   private dwf(final jm $$0) {
-      this.c = $$0;
-   }
-
-   public jm a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private dwf(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
+   public List<Boolean> a() {
+      return a;
    }
 
-   public dwf b() {
-      return this == a ? b : a;
+   public static dwf a(String $$0) {
+      return new dwf($$0);
+   }
+
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return switch ($$0) {
+         case "true" -> Optional.of(true);
+         case "false" -> Optional.of(false);
+         default -> Optional.empty();
+      };
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   public int b(Boolean $$0) {
+      return $$0 ? 0 : 1;
    }
 }

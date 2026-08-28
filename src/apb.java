@@ -1,39 +1,60 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class apb {
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ew)$$0x.getSource(), Collections.singleton(((ew)$$0x.getSource()).h()), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
-                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("pos", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), 0.0F)))
-                        .then(ex.a("angle", fc.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), fc.a($$0x, "angle"))))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ex.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)ex.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)ex.a("uuid", gm.a())
+                                       .then(
+                                          ex.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(gm.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gm.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(ex.a("pop").then(ex.a("uuid", gm.a()).executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "uuid")))))
       );
    }
 
-   private static int a(ew $$0, Collection<aro> $$1, jh $$2, float $$3) {
-      alh<dfb> $$4 = $$0.e().ag();
+   private static void a(ew $$0, zs<?> $$1) {
+      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
+   }
 
-      for (aro $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
+   private static int a(ew $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      aaf $$6 = new aaf($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
+   }
 
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> xi.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().S_()), true);
-      } else {
-         $$0.a(() -> xi.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int a(ew $$0, UUID $$1) {
+      aae $$2 = new aae(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

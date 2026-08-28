@@ -1,49 +1,76 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface dap<T extends das> {
-   Codec<dap<?>> h = ly.r.q().dispatch(dap::aq_, dau::a);
-   zg<wt, dap<?>> i = ze.a(lz.ae).b(dap::aq_, dau::b);
+public final class dap implements Predicate<cwf> {
+   public static final zj<ww, dap> a = zh.c(ma.K).a(dap::new, $$0 -> $$0.e);
+   public static final zj<ww, Optional<dap>> b = zh.c(ma.K)
+      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dap((ju<cwb>)$$0)), $$0 -> $$0.<ju.a<cwb>>map($$0x -> $$0x.e).orElse(ju.a()));
+   public static final Codec<ju<cwb>> c = alf.a(ma.K, cwf.a, false);
+   public static final Codec<dap> d = ayw.b(c).xmap(dap::new, $$0 -> $$0.e);
+   private final ju<cwb> e;
+   @Nullable
+   private List<jq<cwb>> f;
 
-   boolean a(T var1, dfb var2);
+   private dap(ju<cwb> $$0) {
+      $$0.d().ifRight($$0x -> {
+         if ($$0x.isEmpty()) {
+            throw new UnsupportedOperationException("Ingredients can't be empty");
+         } else if ($$0x.contains(cwj.a.f())) {
+            throw new UnsupportedOperationException("Ingredient can't contain air");
+         }
+      });
+      this.e = $$0;
+   }
 
-   cwb a(T var1, js.a var2);
+   public static boolean a(Optional<dap> $$0, cwf $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
+   }
 
-   boolean a(int var1, int var2);
+   public List<jq<cwb>> a() {
+      if (this.f == null) {
+         this.f = ImmutableList.copyOf(this.e);
+      }
 
-   cwb a(js.a var1);
+      return this.f;
+   }
 
-   default jz<cwb> a(T $$0) {
-      jz<cwb> $$1 = jz.a($$0.a(), cwb.k);
+   public boolean a(cwf $$0) {
+      List<jq<cwb>> $$1 = this.a();
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cvx $$3 = $$0.a($$2).h();
-         if ($$3.l()) {
-            $$1.set($$2, new cwb($$3.k()));
+         if ($$0.a($$1.get($$2))) {
+            return true;
          }
       }
 
-      return $$1;
-   }
-
-   default boolean ap_() {
       return false;
    }
 
-   default boolean h() {
-      return true;
+   @Override
+   public boolean equals(Object $$0) {
+      return $$0 instanceof dap $$1 ? Objects.equals(this.e, $$1.e) : false;
    }
 
-   default String c() {
-      return "";
+   public static dap a(dfe $$0) {
+      return new dap(ju.a($$0.j().f()));
    }
 
-   default cwb g() {
-      return new cwb(dig.cA);
+   public static dap a(dfe... $$0) {
+      return a(Arrays.stream($$0));
    }
 
-   dau<?> aq_();
+   public static dap a(Stream<? extends dfe> $$0) {
+      return new dap(ju.a($$0.map($$0x -> $$0x.j().f()).toList()));
+   }
 
-   dav<?> e();
-
-   dao a();
+   public static dap a(ju<cwb> $$0) {
+      return new dap($$0);
+   }
 }

@@ -1,57 +1,29 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Optional;
 
-public class ema extends esw {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
+public abstract class ema extends emb {
+   private final ema.a d;
+   private final int e;
+   private final int f;
 
-   public static esw.a<ema> a() {
-      return new esw.a<>(ema::new, ema::b, bat.o);
-   }
-
-   private ema(LongSet $$0, LongSet $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public ema() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static ema b(uk $$0, js.a $$1) {
-      return new ema(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   protected ema(ema.a $$0, int $$1, int $$2, emb.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public uk a(uk $$0, js.a $$1) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
+   public Optional<emb.b> a(emb.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, ebj.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-      this.c();
+   private void a(emt $$0, emb.a $$1) {
+      del $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
    }
 
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      if (this.d.remove($$0)) {
-         this.c();
-      }
-   }
-
-   public LongSet b() {
-      return this.c;
+   @FunctionalInterface
+   protected interface a {
+      emf construct(eci var1, int var2, int var3);
    }
 }

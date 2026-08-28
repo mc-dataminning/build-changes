@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gn implements Predicate<dvn> {
-   private final dvj a;
-   private final Set<dwm<?>> b;
+public class gn implements Predicate<dvs> {
+   private final dvo a;
+   private final Set<dwq<?>> b;
    @Nullable
-   private final uk c;
+   private final un c;
 
-   public gn(dvj $$0, Set<dwm<?>> $$1, @Nullable uk $$2) {
+   public gn(dvo $$0, Set<dwq<?>> $$1, @Nullable un $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dvj a() {
+   public dvo a() {
       return this.a;
    }
 
-   public Set<dwm<?>> b() {
+   public Set<dwq<?>> b() {
       return this.b;
    }
 
-   public boolean a(dvn $$0) {
-      dvj $$1 = $$0.a();
+   public boolean a(dvs $$0) {
+      dvo $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dwm<?> $$2 : this.b) {
+         for (dwq<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class gn implements Predicate<dvn> {
          if (this.c == null) {
             return true;
          } else {
-            dsm $$3 = $$0.b();
-            return $$3 != null && uz.a(this.c, $$3.b($$0.c().H_()), true);
+            dsr $$3 = $$0.b();
+            return $$3 != null && vc.a(this.c, $$3.b($$0.c().H_()), true);
          }
       }
    }
 
-   public boolean a(arn $$0, jh $$1) {
-      return this.a(new dvn($$0, $$1, false));
+   public boolean a(arq $$0, jh $$1) {
+      return this.a(new dvs($$0, $$1, false));
    }
 
-   public boolean a(arn $$0, jh $$1, int $$2) {
-      dvj $$3 = die.b(this.a, $$0, $$1);
+   public boolean a(arq $$0, jh $$1, int $$2) {
+      dvo $$3 = dij.b(this.a, $$0, $$1);
       if ($$3.l()) {
          $$3 = this.a;
       }
@@ -56,7 +56,7 @@ public class gn implements Predicate<dvn> {
          return false;
       } else {
          if (this.c != null) {
-            dsm $$4 = $$0.c_($$1);
+            dsr $$4 = $$0.c_($$1);
             if ($$4 != null) {
                $$4.c(this.c, $$0.H_());
             }

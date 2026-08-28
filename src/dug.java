@@ -1,9 +1,20 @@
-public interface dug {
-   void a();
+public class dug extends dsf {
+   public dug(jh $$0, dvo $$1) {
+      super(dst.B, $$0, $$1, daz.d);
+   }
 
-   boolean b();
+   @Override
+   protected xl j() {
+      return xl.c("container.smoker");
+   }
 
-   jh c();
+   @Override
+   protected int a(dto $$0, cwf $$1) {
+      return super.a($$0, $$1) / 2;
+   }
 
-   String d();
+   @Override
+   protected crs a(int $$0, coq $$1) {
+      return new ctt($$0, $$1, this, this.n);
+   }
 }

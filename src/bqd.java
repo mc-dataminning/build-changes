@@ -1,13 +1,5 @@
+import java.util.List;
+
 public interface bqd {
-   void a();
-
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bon f();
-
-   void d();
+   List<bqa> bw();
 }

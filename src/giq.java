@@ -1,580 +1,532 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import org.apache.commons.lang3.tuple.Triple;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
 import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
 
-public abstract class giq {
-   private static final float aU = 2.4414062E-4F;
-   public static final double a = 8.0;
-   protected final String b;
-   private final Runnable aV;
-   private final Runnable aW;
-   protected static final giq.p c = new giq.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
-   });
-   protected static final giq.p d = new giq.p("additive_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final giq.p e = new giq.p("lightning_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final giq.p f = new giq.p(
-      "glint_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final giq.p g = new giq.p(
-      "crumbling_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final giq.p h = new giq.p(
-      "translucent_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final giq.p i = new giq.p("vignette_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final giq.p j = new giq.p(
-      "crosshair_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ZERO
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final giq.p k = new giq.p("mojang_logo_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final giq.p l = new giq.p(
-      "nausea_overlay_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final giq.m m = new giq.m();
-   protected static final giq.m n = new giq.m(ghr.f);
-   protected static final giq.m o = new giq.m(ghr.d);
-   protected static final giq.m p = new giq.m(ghr.h);
-   protected static final giq.m q = new giq.m(ghr.g);
-   protected static final giq.m r = new giq.m(ghr.e);
-   protected static final giq.m s = new giq.m(ghr.i);
-   protected static final giq.m t = new giq.m(ghr.j);
-   protected static final giq.m u = new giq.m(ghr.k);
-   protected static final giq.m v = new giq.m(ghr.l);
-   protected static final giq.m w = new giq.m(ghr.m);
-   protected static final giq.m x = new giq.m(ghr.n);
-   protected static final giq.m y = new giq.m(ghr.o);
-   protected static final giq.m z = new giq.m(ghr.p);
-   protected static final giq.m A = new giq.m(ghr.q);
-   protected static final giq.m B = new giq.m(ghr.r);
-   protected static final giq.m C = new giq.m(ghr.s);
-   protected static final giq.m D = new giq.m(ghr.t);
-   protected static final giq.m E = new giq.m(ghr.u);
-   protected static final giq.m F = new giq.m(ghr.v);
-   protected static final giq.m G = new giq.m(ghr.w);
-   protected static final giq.m H = new giq.m(ghr.x);
-   protected static final giq.m I = new giq.m(ghr.y);
-   protected static final giq.m J = new giq.m(ghr.z);
-   protected static final giq.m K = new giq.m(ghr.A);
-   protected static final giq.m L = new giq.m(ghr.B);
-   protected static final giq.m M = new giq.m(ghr.C);
-   protected static final giq.m N = new giq.m(ghr.D);
-   protected static final giq.m O = new giq.m(ghr.E);
-   protected static final giq.m P = new giq.m(ghr.F);
-   protected static final giq.m Q = new giq.m(ghr.G);
-   protected static final giq.m R = new giq.m(ghr.H);
-   protected static final giq.m S = new giq.m(ghr.I);
-   protected static final giq.m T = new giq.m(ghr.J);
-   protected static final giq.m U = new giq.m(ghr.K);
-   protected static final giq.m V = new giq.m(ghr.X);
-   protected static final giq.m W = new giq.m(ghr.L);
-   protected static final giq.m X = new giq.m(ghr.M);
-   protected static final giq.m Y = new giq.m(ghr.N);
-   protected static final giq.m Z = new giq.m(ghr.O);
-   protected static final giq.m aa = new giq.m(ghr.P);
-   protected static final giq.m ab = new giq.m(ghr.Q);
-   protected static final giq.m ac = new giq.m(ghr.R);
-   protected static final giq.m ad = new giq.m(ghr.S);
-   protected static final giq.m ae = new giq.m(ghr.T);
-   protected static final giq.m af = new giq.m(ghr.U);
-   protected static final giq.m ag = new giq.m(ghr.V);
-   protected static final giq.m ah = new giq.m(ghr.W);
-   protected static final giq.m ai = new giq.m(ghr.Y);
-   protected static final giq.m aj = new giq.m(ghr.Z);
-   protected static final giq.m ak = new giq.m(ghr.aa);
-   protected static final giq.m al = new giq.m(ghr.ab);
-   protected static final giq.m am = new giq.m(ghr.ac);
-   protected static final giq.n an = new giq.n(gyc.d, ban.b, true);
-   protected static final giq.n ao = new giq.n(gyc.d, ban.b, false);
-   protected static final giq.e ap = new giq.e();
-   protected static final giq.o aq = new giq.o("default_texturing", () -> {
-   }, () -> {
-   });
-   protected static final giq.o ar = new giq.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
-   protected static final giq.o as = new giq.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
-   protected static final giq.g at = new giq.g(true);
-   protected static final giq.g au = new giq.g(false);
-   protected static final giq.l av = new giq.l(true);
-   protected static final giq.l aw = new giq.l(false);
-   protected static final giq.c ax = new giq.c(true);
-   protected static final giq.c ay = new giq.c(false);
-   protected static final giq.d az = new giq.d("always", 519);
-   protected static final giq.d aA = new giq.d("==", 514);
-   protected static final giq.d aB = new giq.d("<=", 515);
-   protected static final giq.d aC = new giq.d(">", 516);
-   protected static final giq.q aD = new giq.q(true, true);
-   protected static final giq.q aE = new giq.q(true, false);
-   protected static final giq.q aF = new giq.q(false, true);
-   protected static final giq.f aG = new giq.f("no_layering", () -> {
-   }, () -> {
-   });
-   protected static final giq.f aH = new giq.f("polygon_offset_layering", () -> {
-      RenderSystem.polygonOffset(-1.0F, -10.0F);
-      RenderSystem.enablePolygonOffset();
-   }, () -> {
-      RenderSystem.polygonOffset(0.0F, 0.0F);
-      RenderSystem.disablePolygonOffset();
-   });
-   protected static final giq.f aI = new giq.f("view_offset_z_layering", () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.pushMatrix();
-      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
-   }, () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.popMatrix();
-   });
-   protected static final giq.f aJ = new giq.f("view_offset_z_layering_forward", () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.pushMatrix();
-      $$0.scale(1.0002441F, 1.0002441F, 1.0002441F);
-   }, () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.popMatrix();
-   });
-   protected static final giq.k aK = new giq.k("main_target", () -> fji.Q().h().a(false), () -> {
-   });
-   protected static final giq.k aL = new giq.k("outline_target", () -> fji.Q().f.q().a(false), () -> fji.Q().h().a(false));
-   protected static final giq.k aM = new giq.k("translucent_target", () -> {
-      fcl $$0 = fji.Q().f.r();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         fji.Q().h().a(false);
-      }
-   }, () -> fji.Q().h().a(false));
-   protected static final giq.k aN = new giq.k("particles_target", () -> {
-      fcl $$0 = fji.Q().f.t();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         fji.Q().h().a(false);
-      }
-   }, () -> fji.Q().h().a(false));
-   protected static final giq.k aO = new giq.k("weather_target", () -> {
-      fcl $$0 = fji.Q().f.u();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         fji.Q().h().a(false);
-      }
-   }, () -> fji.Q().h().a(false));
-   protected static final giq.k aP = new giq.k("clouds_target", () -> {
-      fcl $$0 = fji.Q().f.v();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         fji.Q().h().a(false);
-      }
-   }, () -> fji.Q().h().a(false));
-   protected static final giq.k aQ = new giq.k("item_entity_target", () -> {
-      fcl $$0 = fji.Q().f.s();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         fji.Q().h().a(false);
-      }
-   }, () -> fji.Q().h().a(false));
-   protected static final giq.h aR = new giq.h(OptionalDouble.of(1.0));
-   protected static final giq.b aS = new giq.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
-   });
-   protected static final giq.b aT = new giq.b("or_reverse", () -> {
-      RenderSystem.enableColorLogicOp();
-      RenderSystem.logicOp(GlStateManager.h.n);
-   }, () -> RenderSystem.disableColorLogicOp());
+public class giq {
+   private static final gjh a = gjh.t(all.b("textures/map/map_background.png"));
+   private static final gjh b = gjh.t(all.b("textures/map/map_background_checkerboard.png"));
+   private static final float c = -0.4F;
+   private static final float d = 0.2F;
+   private static final float e = -0.2F;
+   private static final float f = -0.6F;
+   private static final float g = 0.56F;
+   private static final float h = -0.52F;
+   private static final float i = -0.72F;
+   private static final float j = 45.0F;
+   private static final float k = -80.0F;
+   private static final float l = -20.0F;
+   private static final float m = -20.0F;
+   private static final float n = 10.0F;
+   private static final float o = 90.0F;
+   private static final float p = 30.0F;
+   private static final float q = 0.6F;
+   private static final float r = -0.5F;
+   private static final float s = 0.0F;
+   private static final double t = 27.0;
+   private static final float u = 0.8F;
+   private static final float v = 0.1F;
+   private static final float w = -0.3F;
+   private static final float x = 0.4F;
+   private static final float y = -0.4F;
+   private static final float z = 70.0F;
+   private static final float A = -20.0F;
+   private static final float B = -0.6F;
+   private static final float C = 0.8F;
+   private static final float D = 0.8F;
+   private static final float E = -0.75F;
+   private static final float F = -0.9F;
+   private static final float G = 45.0F;
+   private static final float H = -1.0F;
+   private static final float I = 3.6F;
+   private static final float J = 3.5F;
+   private static final float K = 5.6F;
+   private static final int L = 200;
+   private static final int M = -135;
+   private static final int N = 120;
+   private static final float O = -0.4F;
+   private static final float P = -0.2F;
+   private static final float Q = 0.0F;
+   private static final float R = 0.04F;
+   private static final float S = -0.72F;
+   private static final float T = -1.2F;
+   private static final float U = -0.5F;
+   private static final float V = 45.0F;
+   private static final float W = -85.0F;
+   private static final float X = 45.0F;
+   private static final float Y = 92.0F;
+   private static final float Z = -41.0F;
+   private static final float aa = 0.3F;
+   private static final float ab = -1.1F;
+   private static final float ac = 0.45F;
+   private static final float ad = 20.0F;
+   private static final float ae = 0.38F;
+   private static final float af = -0.5F;
+   private static final float ag = -0.5F;
+   private static final float ah = 0.0F;
+   private static final float ai = 0.0078125F;
+   private static final int aj = 7;
+   private static final int ak = 128;
+   private static final int al = 128;
+   private static final float am = 0.0F;
+   private static final float an = 0.0F;
+   private static final float ao = 0.04F;
+   private static final float ap = 0.0F;
+   private static final float aq = 0.004F;
+   private static final float ar = 0.0F;
+   private static final float as = 0.2F;
+   private static final float at = 0.1F;
+   private final fjx au;
+   private final gyc av = new gyc();
+   private cwf aw = cwf.k;
+   private cwf ax = cwf.k;
+   private float ay;
+   private float az;
+   private float aA;
+   private float aB;
+   private final goy aC;
+   private final gpy aD;
 
-   public giq(String $$0, Runnable $$1, Runnable $$2) {
-      this.b = $$0;
-      this.aV = $$1;
-      this.aW = $$2;
+   public giq(fjx $$0, goy $$1, gpy $$2) {
+      this.au = $$0;
+      this.aC = $$1;
+      this.aD = $$2;
+   }
+
+   public void a(bve $$0, cwf $$1, cwd $$2, boolean $$3, fek $$4, gix $$5, int $$6) {
+      if (!$$1.f()) {
+         this.aD.a($$0, $$1, $$2, $$3, $$4, $$5, $$0.dY(), $$6, gyk.d, $$0.as() + $$2.ordinal());
+      }
+   }
+
+   private float a(float $$0) {
+      float $$1 = 1.0F - $$0 / 45.0F + 0.1F;
+      $$1 = azn.a($$1, 0.0F, 1.0F);
+      return -azn.b($$1 * (float) Math.PI) * 0.5F + 0.5F;
+   }
+
+   private void a(fek $$0, gix $$1, int $$2, buy $$3) {
+      gug $$4 = (gug)this.aC.<ghq>a(this.au.t);
+      $$0.a();
+      float $$5 = $$3 == buy.b ? 1.0F : -1.0F;
+      $$0.a(a.d.rotationDegrees(92.0F));
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.a(a.f.rotationDegrees($$5 * -41.0F));
+      $$0.a($$5 * 0.3F, -1.1F, 0.45F);
+      all $$6 = this.au.t.b().a();
+      if ($$3 == buy.b) {
+         $$4.a($$0, $$1, $$2, $$6, this.au.t.a(cos.d));
+      } else {
+         $$4.b($$0, $$1, $$2, $$6, this.au.t.a(cos.c));
+      }
+
+      $$0.b();
+   }
+
+   private void a(fek $$0, gix $$1, int $$2, float $$3, buy $$4, float $$5, cwf $$6) {
+      float $$7 = $$4 == buy.b ? 1.0F : -1.0F;
+      $$0.a($$7 * 0.125F, -0.125F, 0.0F);
+      if (!this.au.t.cr()) {
+         $$0.a();
+         $$0.a(a.f.rotationDegrees($$7 * 10.0F));
+         this.a($$0, $$1, $$2, $$3, $$5, $$4);
+         $$0.b();
+      }
+
+      $$0.a();
+      $$0.a($$7 * 0.51F, -0.08F + $$3 * -1.2F, -0.75F);
+      float $$8 = azn.c($$5);
+      float $$9 = azn.a($$8 * (float) Math.PI);
+      float $$10 = -0.5F * $$9;
+      float $$11 = 0.4F * azn.a($$8 * (float) (Math.PI * 2));
+      float $$12 = -0.3F * azn.a($$5 * (float) Math.PI);
+      $$0.a($$7 * $$10, $$11 - 0.3F * $$9, $$12);
+      $$0.a(a.b.rotationDegrees($$9 * -45.0F));
+      $$0.a(a.d.rotationDegrees($$7 * $$9 * -30.0F));
+      this.a($$0, $$1, $$2, $$6);
+      $$0.b();
+   }
+
+   private void a(fek $$0, gix $$1, int $$2, float $$3, float $$4, float $$5) {
+      float $$6 = azn.c($$5);
+      float $$7 = -0.2F * azn.a($$5 * (float) Math.PI);
+      float $$8 = -0.4F * azn.a($$6 * (float) Math.PI);
+      $$0.a(0.0F, -$$7 / 2.0F, $$8);
+      float $$9 = this.a($$3);
+      $$0.a(0.0F, 0.04F + $$4 * -1.2F + $$9 * -0.5F, -0.72F);
+      $$0.a(a.b.rotationDegrees($$9 * -85.0F));
+      if (!this.au.t.cr()) {
+         $$0.a();
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$1, $$2, buy.b);
+         this.a($$0, $$1, $$2, buy.a);
+         $$0.b();
+      }
+
+      float $$10 = azn.a($$6 * (float) Math.PI);
+      $$0.a(a.b.rotationDegrees($$10 * 20.0F));
+      $$0.b(2.0F, 2.0F, 2.0F);
+      this.a($$0, $$1, $$2, this.aw);
+   }
+
+   private void a(fek $$0, gix $$1, int $$2, cwf $$3) {
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.a(a.f.rotationDegrees(180.0F));
+      $$0.b(0.38F, 0.38F, 0.38F);
+      $$0.a(-0.5F, -0.5F, 0.0F);
+      $$0.b(0.0078125F, 0.0078125F, 0.0078125F);
+      etg $$4 = $$3.a(ku.L);
+      eti $$5 = cws.a($$4, this.au.s);
+      feo $$6 = $$1.getBuffer($$5 == null ? a : b);
+      Matrix4f $$7 = $$0.c().a();
+      $$6.a($$7, -7.0F, 135.0F, 0.0F).a(-1).a(0.0F, 1.0F).c($$2);
+      $$6.a($$7, 135.0F, 135.0F, 0.0F).a(-1).a(1.0F, 1.0F).c($$2);
+      $$6.a($$7, 135.0F, -7.0F, 0.0F).a(-1).a(1.0F, 0.0F).c($$2);
+      $$6.a($$7, -7.0F, -7.0F, 0.0F).a(-1).a(0.0F, 0.0F).c($$2);
+      if ($$5 != null) {
+         giw $$8 = this.au.at();
+         $$8.a($$4, $$5, this.av);
+         $$8.a(this.av, $$0, $$1, false, $$2);
+      }
+   }
+
+   private void a(fek $$0, gix $$1, int $$2, float $$3, float $$4, buy $$5) {
+      boolean $$6 = $$5 != buy.a;
+      float $$7 = $$6 ? 1.0F : -1.0F;
+      float $$8 = azn.c($$4);
+      float $$9 = -0.3F * azn.a($$8 * (float) Math.PI);
+      float $$10 = 0.4F * azn.a($$8 * (float) (Math.PI * 2));
+      float $$11 = -0.4F * azn.a($$4 * (float) Math.PI);
+      $$0.a($$7 * ($$9 + 0.64000005F), $$10 + -0.6F + $$3 * -0.6F, $$11 + -0.71999997F);
+      $$0.a(a.d.rotationDegrees($$7 * 45.0F));
+      float $$12 = azn.a($$4 * $$4 * (float) Math.PI);
+      float $$13 = azn.a($$8 * (float) Math.PI);
+      $$0.a(a.d.rotationDegrees($$7 * $$13 * 70.0F));
+      $$0.a(a.f.rotationDegrees($$7 * $$12 * -20.0F));
+      ghq $$14 = this.au.t;
+      $$0.a($$7 * -1.0F, 3.6F, 3.5F);
+      $$0.a(a.f.rotationDegrees($$7 * 120.0F));
+      $$0.a(a.b.rotationDegrees(200.0F));
+      $$0.a(a.d.rotationDegrees($$7 * -135.0F));
+      $$0.a($$7 * 5.6F, 0.0F, 0.0F);
+      gug $$15 = (gug)this.aC.<ghq>a($$14);
+      all $$16 = $$14.b().a();
+      if ($$6) {
+         $$15.a($$0, $$1, $$2, $$16, $$14.a(cos.d));
+      } else {
+         $$15.b($$0, $$1, $$2, $$16, $$14.a(cos.c));
+      }
+   }
+
+   private void a(fek $$0, float $$1, buy $$2, cwf $$3, cor $$4) {
+      float $$5 = (float)$$4.fF() - $$1 + 1.0F;
+      float $$6 = $$5 / (float)$$3.a((bve)$$4);
+      if ($$6 < 0.8F) {
+         float $$7 = azn.e(azn.b($$5 / 4.0F * (float) Math.PI) * 0.1F);
+         $$0.a(0.0F, $$7, 0.0F);
+      }
+
+      float $$8 = 1.0F - (float)Math.pow((double)$$6, 27.0);
+      int $$9 = $$2 == buy.b ? 1 : -1;
+      $$0.a($$8 * 0.6F * (float)$$9, $$8 * -0.5F, $$8 * 0.0F);
+      $$0.a(a.d.rotationDegrees((float)$$9 * $$8 * 90.0F));
+      $$0.a(a.b.rotationDegrees($$8 * 10.0F));
+      $$0.a(a.f.rotationDegrees((float)$$9 * $$8 * 30.0F));
+   }
+
+   private void a(fek $$0, float $$1, buy $$2, cwf $$3, cor $$4, float $$5) {
+      this.b($$0, $$2, $$5);
+      float $$6 = (float)($$4.fF() % 10);
+      float $$7 = $$6 - $$1 + 1.0F;
+      float $$8 = 1.0F - $$7 / 10.0F;
+      float $$9 = -90.0F;
+      float $$10 = 60.0F;
+      float $$11 = 150.0F;
+      float $$12 = -15.0F;
+      int $$13 = 2;
+      float $$14 = -15.0F + 75.0F * azn.b($$8 * 2.0F * (float) Math.PI);
+      if ($$2 != buy.b) {
+         $$0.a(0.1, 0.83, 0.35);
+         $$0.a(a.b.rotationDegrees(-80.0F));
+         $$0.a(a.d.rotationDegrees(-90.0F));
+         $$0.a(a.b.rotationDegrees($$14));
+         $$0.a(-0.3, 0.22, 0.35);
+      } else {
+         $$0.a(-0.25, 0.22, 0.35);
+         $$0.a(a.b.rotationDegrees(-80.0F));
+         $$0.a(a.d.rotationDegrees(90.0F));
+         $$0.a(a.f.rotationDegrees(0.0F));
+         $$0.a(a.b.rotationDegrees($$14));
+      }
+   }
+
+   private void a(fek $$0, buy $$1, float $$2) {
+      int $$3 = $$1 == buy.b ? 1 : -1;
+      float $$4 = azn.a($$2 * $$2 * (float) Math.PI);
+      $$0.a(a.d.rotationDegrees((float)$$3 * (45.0F + $$4 * -20.0F)));
+      float $$5 = azn.a(azn.c($$2) * (float) Math.PI);
+      $$0.a(a.f.rotationDegrees((float)$$3 * $$5 * -20.0F));
+      $$0.a(a.b.rotationDegrees($$5 * -80.0F));
+      $$0.a(a.d.rotationDegrees((float)$$3 * -45.0F));
+   }
+
+   private void b(fek $$0, buy $$1, float $$2) {
+      int $$3 = $$1 == buy.b ? 1 : -1;
+      $$0.a((float)$$3 * 0.56F, -0.52F + $$2 * -0.6F, -0.72F);
+   }
+
+   public void a(float $$0, fek $$1, gix.a $$2, ght $$3, int $$4) {
+      float $$5 = $$3.D($$0);
+      bsg $$6 = (bsg)MoreObjects.firstNonNull($$3.aJ, bsg.a);
+      float $$7 = $$3.j($$0);
+      giq.a $$8 = a($$3);
+      float $$9 = azn.h($$0, $$3.cE, $$3.cC);
+      float $$10 = azn.h($$0, $$3.cD, $$3.cB);
+      $$1.a(a.b.rotationDegrees(($$3.h($$0) - $$9) * 0.1F));
+      $$1.a(a.d.rotationDegrees(($$3.i($$0) - $$10) * 0.1F));
+      if ($$8.d) {
+         float $$11 = $$6 == bsg.a ? $$5 : 0.0F;
+         float $$12 = 1.0F - azn.h($$0, this.az, this.ay);
+         this.a($$3, $$0, $$7, bsg.a, $$11, this.aw, $$12, $$1, $$2, $$4);
+      }
+
+      if ($$8.e) {
+         float $$13 = $$6 == bsg.b ? $$5 : 0.0F;
+         float $$14 = 1.0F - azn.h($$0, this.aB, this.aA);
+         this.a($$3, $$0, $$7, bsg.b, $$13, this.ax, $$14, $$1, $$2, $$4);
+      }
+
+      $$2.b();
+   }
+
+   @VisibleForTesting
+   static giq.a a(ght $$0) {
+      cwf $$1 = $$0.fc();
+      cwf $$2 = $$0.fd();
+      boolean $$3 = $$1.a(cwj.ow) || $$2.a(cwj.ow);
+      boolean $$4 = $$1.a(cwj.wn) || $$2.a(cwj.wn);
+      if (!$$3 && !$$4) {
+         return giq.a.a;
+      } else if ($$0.fC()) {
+         return b($$0);
+      } else {
+         return a($$1) ? giq.a.b : giq.a.a;
+      }
+   }
+
+   private static giq.a b(ght $$0) {
+      cwf $$1 = $$0.fE();
+      bsg $$2 = $$0.fD();
+      if (!$$1.a(cwj.ow) && !$$1.a(cwj.wn)) {
+         return $$2 == bsg.a && a($$0.fd()) ? giq.a.b : giq.a.a;
+      } else {
+         return giq.a.a($$2);
+      }
+   }
+
+   private static boolean a(cwf $$0) {
+      return $$0.a(cwj.wn) && cuw.g($$0);
+   }
+
+   private void a(ghq $$0, float $$1, float $$2, bsg $$3, float $$4, cwf $$5, float $$6, fek $$7, gix $$8, int $$9) {
+      if (!$$0.gK()) {
+         boolean $$10 = $$3 == bsg.a;
+         buy $$11 = $$10 ? $$0.fB() : $$0.fB().e();
+         $$7.a();
+         if ($$5.f()) {
+            if ($$10 && !$$0.cr()) {
+               this.a($$7, $$8, $$9, $$6, $$4, $$11);
+            }
+         } else if ($$5.b(ku.L)) {
+            if ($$10 && this.ax.f()) {
+               this.a($$7, $$8, $$9, $$2, $$6, $$4);
+            } else {
+               this.a($$7, $$8, $$9, $$6, $$11, $$4, $$5);
+            }
+         } else if ($$5.a(cwj.wn)) {
+            boolean $$12 = cuw.g($$5);
+            boolean $$13 = $$11 == buy.b;
+            int $$14 = $$13 ? 1 : -1;
+            if ($$0.fC() && $$0.fF() > 0 && $$0.fD() == $$3) {
+               this.b($$7, $$11, $$6);
+               $$7.a((float)$$14 * -0.4785682F, -0.094387F, 0.05731531F);
+               $$7.a(a.b.rotationDegrees(-11.935F));
+               $$7.a(a.d.rotationDegrees((float)$$14 * 65.3F));
+               $$7.a(a.f.rotationDegrees((float)$$14 * -9.785F));
+               float $$15 = (float)$$5.a((bve)$$0) - ((float)$$0.fF() - $$1 + 1.0F);
+               float $$16 = $$15 / (float)cuw.b($$5, $$0);
+               if ($$16 > 1.0F) {
+                  $$16 = 1.0F;
+               }
+
+               if ($$16 > 0.1F) {
+                  float $$17 = azn.a(($$15 - 0.1F) * 1.3F);
+                  float $$18 = $$16 - 0.1F;
+                  float $$19 = $$17 * $$18;
+                  $$7.a($$19 * 0.0F, $$19 * 0.004F, $$19 * 0.0F);
+               }
+
+               $$7.a($$16 * 0.0F, $$16 * 0.0F, $$16 * 0.04F);
+               $$7.b(1.0F, 1.0F, 1.0F + $$16 * 0.2F);
+               $$7.a(a.c.rotationDegrees((float)$$14 * 45.0F));
+            } else {
+               float $$20 = -0.4F * azn.a(azn.c($$4) * (float) Math.PI);
+               float $$21 = 0.2F * azn.a(azn.c($$4) * (float) (Math.PI * 2));
+               float $$22 = -0.2F * azn.a($$4 * (float) Math.PI);
+               $$7.a((float)$$14 * $$20, $$21, $$22);
+               this.b($$7, $$11, $$6);
+               this.a($$7, $$11, $$4);
+               if ($$12 && $$4 < 0.001F && $$10) {
+                  $$7.a((float)$$14 * -0.641864F, 0.0F, 0.0F);
+                  $$7.a(a.d.rotationDegrees((float)$$14 * 10.0F));
+               }
+            }
+
+            this.a($$0, $$5, $$13 ? cwd.e : cwd.d, !$$13, $$7, $$8, $$9);
+         } else {
+            boolean $$23 = $$11 == buy.b;
+            if ($$0.fC() && $$0.fF() > 0 && $$0.fD() == $$3) {
+               int $$24 = $$23 ? 1 : -1;
+               switch ($$5.w()) {
+                  case a:
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case b:
+                  case c:
+                     this.a($$7, $$1, $$11, $$5, $$0);
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case d:
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case e:
+                     this.b($$7, $$11, $$6);
+                     $$7.a((float)$$24 * -0.2785682F, 0.18344387F, 0.15731531F);
+                     $$7.a(a.b.rotationDegrees(-13.935F));
+                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
+                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
+                     float $$25 = (float)$$5.a((bve)$$0) - ((float)$$0.fF() - $$1 + 1.0F);
+                     float $$26 = $$25 / 20.0F;
+                     $$26 = ($$26 * $$26 + $$26 * 2.0F) / 3.0F;
+                     if ($$26 > 1.0F) {
+                        $$26 = 1.0F;
+                     }
+
+                     if ($$26 > 0.1F) {
+                        float $$27 = azn.a(($$25 - 0.1F) * 1.3F);
+                        float $$28 = $$26 - 0.1F;
+                        float $$29 = $$27 * $$28;
+                        $$7.a($$29 * 0.0F, $$29 * 0.004F, $$29 * 0.0F);
+                     }
+
+                     $$7.a($$26 * 0.0F, $$26 * 0.0F, $$26 * 0.04F);
+                     $$7.b(1.0F, 1.0F, 1.0F + $$26 * 0.2F);
+                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
+                     break;
+                  case f:
+                     this.b($$7, $$11, $$6);
+                     $$7.a((float)$$24 * -0.5F, 0.7F, 0.1F);
+                     $$7.a(a.b.rotationDegrees(-55.0F));
+                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
+                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
+                     float $$30 = (float)$$5.a((bve)$$0) - ((float)$$0.fF() - $$1 + 1.0F);
+                     float $$31 = $$30 / 10.0F;
+                     if ($$31 > 1.0F) {
+                        $$31 = 1.0F;
+                     }
+
+                     if ($$31 > 0.1F) {
+                        float $$32 = azn.a(($$30 - 0.1F) * 1.3F);
+                        float $$33 = $$31 - 0.1F;
+                        float $$34 = $$32 * $$33;
+                        $$7.a($$34 * 0.0F, $$34 * 0.004F, $$34 * 0.0F);
+                     }
+
+                     $$7.a(0.0F, 0.0F, $$31 * 0.2F);
+                     $$7.b(1.0F, 1.0F, 1.0F + $$31 * 0.2F);
+                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
+                     break;
+                  case j:
+                     this.a($$7, $$1, $$11, $$5, $$0, $$6);
+               }
+            } else if ($$0.fy()) {
+               this.b($$7, $$11, $$6);
+               int $$35 = $$23 ? 1 : -1;
+               $$7.a((float)$$35 * -0.4F, 0.8F, 0.3F);
+               $$7.a(a.d.rotationDegrees((float)$$35 * 65.0F));
+               $$7.a(a.f.rotationDegrees((float)$$35 * -85.0F));
+            } else {
+               float $$36 = -0.4F * azn.a(azn.c($$4) * (float) Math.PI);
+               float $$37 = 0.2F * azn.a(azn.c($$4) * (float) (Math.PI * 2));
+               float $$38 = -0.2F * azn.a($$4 * (float) Math.PI);
+               int $$39 = $$23 ? 1 : -1;
+               $$7.a((float)$$39 * $$36, $$37, $$38);
+               this.b($$7, $$11, $$6);
+               this.a($$7, $$11, $$4);
+            }
+
+            this.a($$0, $$5, $$23 ? cwd.e : cwd.d, !$$23, $$7, $$8, $$9);
+         }
+
+         $$7.b();
+      }
    }
 
    public void a() {
-      this.aV.run();
-   }
-
-   public void b() {
-      this.aW.run();
-   }
-
-   @Override
-   public String toString() {
-      return this.b;
-   }
-
-   private static void a(float $$0) {
-      long $$1 = (long)((double)ae.c() * fji.Q().n.ao().c() * 8.0);
-      float $$2 = (float)($$1 % 110000L) / 110000.0F;
-      float $$3 = (float)($$1 % 30000L) / 30000.0F;
-      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
-      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
-      RenderSystem.setTextureMatrix($$4);
-   }
-
-   static class a extends giq {
-      private final boolean aU;
-
-      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
-         super($$0, $$1, $$2);
-         this.aU = $$3;
+      this.az = this.ay;
+      this.aB = this.aA;
+      ght $$0 = this.au.t;
+      cwf $$1 = $$0.fc();
+      cwf $$2 = $$0.fd();
+      if (cwf.a(this.aw, $$1)) {
+         this.aw = $$1;
       }
 
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "]";
+      if (cwf.a(this.ax, $$2)) {
+         this.ax = $$2;
+      }
+
+      if ($$0.C()) {
+         this.ay = azn.a(this.ay - 0.4F, 0.0F, 1.0F);
+         this.aA = azn.a(this.aA - 0.4F, 0.0F, 1.0F);
+      } else {
+         float $$3 = $$0.H(1.0F);
+         this.ay = this.ay + azn.a((this.aw == $$1 ? $$3 * $$3 * $$3 : 0.0F) - this.ay, -0.4F, 0.4F);
+         this.aA = this.aA + azn.a((float)(this.ax == $$2 ? 1 : 0) - this.aA, -0.4F, 0.4F);
+      }
+
+      if (this.ay < 0.1F) {
+         this.aw = $$1;
+      }
+
+      if (this.aA < 0.1F) {
+         this.ax = $$2;
       }
    }
 
-   protected static class b extends giq {
-      public b(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
+   public void a(bsg $$0) {
+      if ($$0 == bsg.a) {
+         this.ay = 0.0F;
+      } else {
+         this.aA = 0.0F;
       }
    }
 
-   protected static class c extends giq.a {
-      public c(boolean $$0) {
-         super("cull", () -> {
-            if (!$$0) {
-               RenderSystem.disableCull();
-            }
-         }, () -> {
-            if (!$$0) {
-               RenderSystem.enableCull();
-            }
-         }, $$0);
-      }
-   }
+   @VisibleForTesting
+   static enum a {
+      a(true, true),
+      b(true, false),
+      c(false, true);
 
-   protected static class d extends giq {
-      private final String aU;
+      final boolean d;
+      final boolean e;
 
-      public d(String $$0, int $$1) {
-         super("depth_test", () -> {
-            if ($$1 != 519) {
-               RenderSystem.enableDepthTest();
-               RenderSystem.depthFunc($$1);
-            }
-         }, () -> {
-            if ($$1 != 519) {
-               RenderSystem.disableDepthTest();
-               RenderSystem.depthFunc(515);
-            }
-         });
-         this.aU = $$0;
+      private a(final boolean $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "]";
-      }
-   }
-
-   protected static class e extends giq {
-      public e(Runnable $$0, Runnable $$1) {
-         super("texture", $$0, $$1);
-      }
-
-      e() {
-         super("texture", () -> {
-         }, () -> {
-         });
-      }
-
-      protected Optional<ali> c() {
-         return Optional.empty();
-      }
-   }
-
-   protected static class f extends giq {
-      public f(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class g extends giq.a {
-      public g(boolean $$0) {
-         super("lightmap", () -> {
-            if ($$0) {
-               fji.Q().j.l().c();
-            }
-         }, () -> {
-            if ($$0) {
-               fji.Q().j.l().b();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class h extends giq {
-      private final OptionalDouble aU;
-
-      public h(OptionalDouble $$0) {
-         super("line_width", () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               if ($$0.isPresent()) {
-                  RenderSystem.lineWidth((float)$$0.getAsDouble());
-               } else {
-                  RenderSystem.lineWidth(Math.max(2.5F, (float)fji.Q().aO().k() / 1920.0F * 2.5F));
-               }
-            }
-         }, () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               RenderSystem.lineWidth(1.0F);
-            }
-         });
-         this.aU = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + (this.aU.isPresent() ? this.aU.getAsDouble() : "window_scale") + "]";
-      }
-   }
-
-   protected static class i extends giq.e {
-      private final Optional<ali> aU;
-
-      i(ImmutableList<Triple<ali, Boolean, Boolean>> $$0) {
-         super(() -> {
-            int $$1 = 0;
-            UnmodifiableIterator var2 = $$0.iterator();
-
-            while (var2.hasNext()) {
-               Triple<ali, Boolean, Boolean> $$2 = (Triple<ali, Boolean, Boolean>)var2.next();
-               gye $$3 = fji.Q().aa();
-               $$3.a((ali)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
-               RenderSystem.setShaderTexture($$1++, (ali)$$2.getLeft());
-            }
-         }, () -> {
-         });
-         this.aU = $$0.stream().findFirst().map(Triple::getLeft);
-      }
-
-      @Override
-      protected Optional<ali> c() {
-         return this.aU;
-      }
-
-      public static giq.i.a d() {
-         return new giq.i.a();
-      }
-
-      public static final class a {
-         private final Builder<Triple<ali, Boolean, Boolean>> a = new Builder();
-
-         public giq.i.a a(ali $$0, boolean $$1, boolean $$2) {
-            this.a.add(Triple.of($$0, $$1, $$2));
-            return this;
-         }
-
-         public giq.i a() {
-            return new giq.i(this.a.build());
-         }
-      }
-   }
-
-   protected static final class j extends giq.o {
-      public j(float $$0, float $$1) {
-         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
-      }
-   }
-
-   protected static class k extends giq {
-      public k(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class l extends giq.a {
-      public l(boolean $$0) {
-         super("overlay", () -> {
-            if ($$0) {
-               fji.Q().j.m().a();
-            }
-         }, () -> {
-            if ($$0) {
-               fji.Q().j.m().b();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class m extends giq {
-      private final Optional<giz> aU;
-
-      public m(giz $$0) {
-         super("shader", () -> RenderSystem.setShader($$0), () -> {
-         });
-         this.aU = Optional.of($$0);
-      }
-
-      public m() {
-         super("shader", RenderSystem::clearShader, () -> {
-         });
-         this.aU = Optional.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "]";
-      }
-   }
-
-   protected static class n extends giq.e {
-      private final Optional<ali> aU;
-      private final ban aV;
-      private final boolean aW;
-
-      public n(ali $$0, ban $$1, boolean $$2) {
-         super(() -> {
-            gye $$3 = fji.Q().aa();
-            gxo $$4 = $$3.a($$0);
-            $$4.a($$1.a($$4.c()), $$2);
-            RenderSystem.setShaderTexture(0, $$0);
-         }, () -> {
-         });
-         this.aU = Optional.of($$0);
-         this.aV = $$1;
-         this.aW = $$2;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "(blur=" + this.aV + ", mipmap=" + this.aW + ")]";
-      }
-
-      @Override
-      protected Optional<ali> c() {
-         return this.aU;
-      }
-   }
-
-   protected static class o extends giq {
-      public o(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class p extends giq {
-      public p(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class q extends giq {
-      private final boolean aU;
-      private final boolean aV;
-
-      public q(boolean $$0, boolean $$1) {
-         super("write_mask_state", () -> {
-            if (!$$1) {
-               RenderSystem.depthMask($$1);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask($$0, $$0, $$0, $$0);
-            }
-         }, () -> {
-            if (!$$1) {
-               RenderSystem.depthMask(true);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask(true, true, true, true);
-            }
-         });
-         this.aU = $$0;
-         this.aV = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[writeColor=" + this.aU + ", writeDepth=" + this.aV + "]";
+      public static giq.a a(bsg $$0) {
+         return $$0 == bsg.a ? b : c;
       }
    }
 }

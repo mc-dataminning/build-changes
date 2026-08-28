@@ -1,120 +1,64 @@
-public abstract class fld extends flf {
-   private static final ali a = ali.b("widget/slider");
-   private static final ali d = ali.b("widget/slider_highlighted");
-   private static final ali e = ali.b("widget/slider_handle");
-   private static final ali f = ali.b("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public fld(int $$0, int $$1, int $$2, int $$3, xi $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-   }
+public class fld {
+   private static final int a = -1;
+   private final jw<flc> b = new jw<>(32);
 
-   private ali c() {
-      return this.aM_() && !this.o ? d : a;
-   }
-
-   private ali e() {
-      return !this.i && !this.o ? e : f;
-   }
-
-   @Override
-   protected xw aO_() {
-      return xi.a("gui.narrate.slider", this.z());
-   }
-
-   @Override
-   public void a(fpf $$0) {
-      $$0.a(fpe.a, this.aO_());
-      if (this.j) {
-         if (this.aM_()) {
-            $$0.a(fpe.d, xi.c("narration.slider.usage.focused"));
+   public static fld a(fkz $$0) {
+      fld $$1 = new fld();
+      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : cyt.a($$0x, -6265536), cwj.pz, cwj.pA, cwj.pB, cwj.pC, cwj.vb);
+      $$1.a(($$0x, $$1x) -> $$1x != 1 ? -1 : cyt.a($$0x, 0), cwj.os);
+      $$1.a(($$0x, $$1x) -> dfd.a(0.5, 1.0), dil.iH, dil.iI);
+      $$1.a(($$0x, $$1x) -> {
+         if ($$1x != 1) {
+            return -1;
          } else {
-            $$0.a(fpe.d, xi.c("narration.slider.usage.hovered"));
-         }
-      }
-   }
+            cyu $$2x = $$0x.a(ku.ae);
+            IntList $$3 = $$2x != null ? $$2x.b() : IntList.of();
+            int $$4 = $$3.size();
+            if ($$4 == 0) {
+               return -7697782;
+            } else if ($$4 == 1) {
+               return axy.f($$3.getInt(0));
+            } else {
+               int $$5 = 0;
+               int $$6 = 0;
+               int $$7 = 0;
 
-   @Override
-   public void b(fku $$0, int $$1, int $$2, float $$3) {
-      fji $$4 = fji.Q();
-      $$0.a(gir::B, this.c(), this.D(), this.E(), this.y(), this.w(), axv.a(this.l));
-      $$0.a(gir::B, this.e(), this.D() + (int)(this.c * (double)(this.g - 8)), this.E(), 8, this.w(), axv.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | azk.f(this.l * 255.0F) << 24);
-   }
+               for (int $$8 = 0; $$8 < $$4; $$8++) {
+                  int $$9 = $$3.getInt($$8);
+                  $$5 += axy.b($$9);
+                  $$6 += axy.c($$9);
+                  $$7 += axy.d($$9);
+               }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         fjf $$1 = fji.Q().aY();
-         if ($$1 == fjf.b || $$1 == fjf.d) {
-            this.o = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fpk.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
-               return true;
+               return axy.a($$5 / $$4, $$6 / $$4, $$7 / $$4);
             }
          }
+      }, cwj.uN);
+      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : axy.f($$0x.a(ku.Q, cye.a).b()), cwj.sC, cwj.vG, cwj.vJ, cwj.vI);
 
-         return false;
-      }
-   }
-
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.D() + 4)) / (double)(this.g - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = azk.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
+      for (cxo $$2 : cxo.b()) {
+         $$1.a(($$1x, $$2x) -> axy.f($$2.a($$2x)), $$2);
       }
 
-      this.b();
+      $$1.a(($$1x, $$2x) -> {
+         dvo $$3 = ((cul)$$1x.h()).d().m();
+         return $$0.a($$3, null, null, $$2x);
+      }, dil.i, dil.bt, dil.bu, dil.ff, dil.aE, dil.aF, dil.aG, dil.aH, dil.aI, dil.aK, dil.fm);
+      $$1.a(($$0x, $$1x) -> dez.d(), dil.aL);
+      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : axy.f($$0x.a(ku.K, czb.c).a()), cwj.sl);
+      return $$1;
    }
 
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
+   public int a(cwf $$0, int $$1) {
+      flc $$2 = this.b.a(lz.g.a($$0.h()));
+      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
    }
 
-   @Override
-   public void a(hdf $$0) {
+   public void a(flc $$0, dfe... $$1) {
+      for (dfe $$2 : $$1) {
+         this.b.a($$0, cwb.a($$2.j()));
+      }
    }
-
-   @Override
-   public void a_(double $$0, double $$1) {
-      super.a(fji.Q().ak());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

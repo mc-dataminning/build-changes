@@ -1,138 +1,96 @@
-import com.google.gson.JsonObject;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ffn extends ffv {
-   public final boolean a;
-   public final boolean b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final int f;
-   public final int g;
-   private final String m;
-   public final String h;
-   public final ffi.a i;
-   public long j;
+public class ffn {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 20;
+   private final ffa c = ffa.a();
+   private final Path d;
+   private final fgg e;
+   private final fkk f;
+   private final long g;
+   private final int h;
+   private final ffo i;
+   private volatile boolean j;
    @Nullable
-   public String k;
-   public boolean l;
-   private static final boolean n = false;
-   private static final boolean o = true;
-   private static final boolean p = true;
-   private static final int q = 0;
-   private static final boolean r = false;
-   private static final int s = 2;
-   private static final int t = 0;
-   private static final String u = "";
-   private static final String v = "";
-   private static final ffi.a w = ffi.a.a;
-   private static final long x = -1L;
-   private static final String y = null;
+   private fey k;
 
-   public ffn(boolean $$0, boolean $$1, int $$2, boolean $$3, int $$4, int $$5, boolean $$6, String $$7, String $$8, ffi.a $$9) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.e = $$6;
-      this.m = $$7;
-      this.h = $$8;
-      this.i = $$9;
+   public ffn(Path $$0, fgg $$1, fkk $$2, long $$3, int $$4, ffo $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 
-   public static ffn a() {
-      return new ffn(true, true, 0, false, 2, 0, false, "", "", w);
+   public CompletableFuture<?> a() {
+      return CompletableFuture.runAsync(() -> {
+         File $$0 = null;
+
+         try {
+            fgn $$1 = this.c();
+            $$0 = ffm.a(this.d, () -> this.j);
+            this.i.d();
+            fey $$2 = new fey($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
+            this.k = $$2;
+            fie $$3 = $$2.a();
+            String $$4 = $$3.a();
+            if ($$4 != null) {
+               throw new ffj($$4);
+            }
+
+            fiq.b(this.g);
+            this.c.a(this.g, this.h, this.e);
+         } catch (IOException var11) {
+            throw new ffj(var11.getMessage());
+         } catch (fgv var12) {
+            throw new ffj(var12.a.b());
+         } catch (CancellationException | InterruptedException var13) {
+            throw new ffh();
+         } finally {
+            if ($$0 != null) {
+               b.debug("Deleting file {}", $$0.getAbsolutePath());
+               $$0.delete();
+            }
+         }
+      }, ae.g());
    }
 
-   public static ffn b() {
-      ffn $$0 = a();
-      $$0.a(true);
-      return $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.l = $$0;
-   }
-
-   public static ffn a(JsonObject $$0) {
-      ffn $$1 = new ffn(
-         fhs.a("pvp", $$0, true),
-         fhs.a("spawnMonsters", $$0, true),
-         fhs.a("spawnProtection", $$0, 0),
-         fhs.a("commandBlocks", $$0, false),
-         fhs.a("difficulty", $$0, 2),
-         fhs.a("gameMode", $$0, 0),
-         fhs.a("forceGameMode", $$0, false),
-         fhs.a("slotName", $$0, ""),
-         fhs.a("version", $$0, ""),
-         ffi.d(fhs.a("compatibility", $$0, ffi.a.a.name()))
-      );
-      $$1.j = fhs.a("worldTemplateId", $$0, -1L);
-      $$1.k = fhs.b("worldTemplateImage", $$0, y);
-      return $$1;
-   }
-
-   public String a(int $$0) {
-      if (bah.h(this.m)) {
-         return this.l ? gzk.a("mco.configure.world.slot.empty") : this.b($$0);
-      } else {
-         return this.m;
+   public void b() {
+      this.j = true;
+      if (this.k != null) {
+         this.k.b();
+         this.k = null;
       }
    }
 
-   public String b(int $$0) {
-      return gzk.a("mco.configure.world.slot", $$0);
-   }
+   private fgn c() throws fgv, InterruptedException {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         try {
+            fgn $$1 = this.c.i(this.g);
+            if (this.j) {
+               throw new ffh();
+            }
 
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
+            if ($$1 != null) {
+               if (!$$1.c()) {
+                  throw new ffl();
+               }
+
+               return $$1;
+            }
+         } catch (fgw var3) {
+            Thread.sleep((long)var3.c * 1000L);
+         }
       }
 
-      if (!this.b) {
-         $$0.addProperty("spawnMonsters", this.b);
-      }
-
-      if (this.c != 0) {
-         $$0.addProperty("spawnProtection", this.c);
-      }
-
-      if (this.d) {
-         $$0.addProperty("commandBlocks", this.d);
-      }
-
-      if (this.f != 2) {
-         $$0.addProperty("difficulty", this.f);
-      }
-
-      if (this.g != 0) {
-         $$0.addProperty("gameMode", this.g);
-      }
-
-      if (this.e) {
-         $$0.addProperty("forceGameMode", this.e);
-      }
-
-      if (!Objects.equals(this.m, "")) {
-         $$0.addProperty("slotName", this.m);
-      }
-
-      if (!Objects.equals(this.h, "")) {
-         $$0.addProperty("version", this.h);
-      }
-
-      if (this.i != w) {
-         $$0.addProperty("compatibility", this.i.name());
-      }
-
-      return $$0.toString();
-   }
-
-   public ffn d() {
-      return new ffn(this.a, this.b, this.c, this.d, this.f, this.g, this.e, this.m, this.h, this.i);
+      throw new ffl();
    }
 }

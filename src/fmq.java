@@ -1,66 +1,69 @@
-public class fmq extends flf {
-   private static final fmu a = new fmu(
-      ali.b("widget/tab_selected"), ali.b("widget/tab"), ali.b("widget/tab_selected_highlighted"), ali.b("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fnl m;
-   private final fnk n;
+import java.util.OptionalInt;
 
-   public fmq(fnl $$0, fnk $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+public class fmq extends flt {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final bad<fmq.a, fmp> c;
+   private boolean d = false;
+
+   public fmq(xl $$0, flh $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public fmq(int $$0, int $$1, xl $$2, flh $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ae.a($$1x -> $$1x.c.isPresent() ? fmp.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fmp.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
+
+   public fmq c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public fmq d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fmq e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fmq b(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
    @Override
-   public void b(fku $$0, int $$1, int $$2, float $$3) {
-      $$0.a(gir::B, a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
-      fks $$4 = fji.Q().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
-         this.b($$0, $$4, $$5);
+   public int y() {
+      return this.c.a(this.c()).b();
+   }
+
+   @Override
+   public int w() {
+      return this.c.a(this.c()).a() * 9;
+   }
+
+   @Override
+   public void b(flj $$0, int $$1, int $$2, float $$3) {
+      fmp $$4 = this.c.a(this.c());
+      int $$5 = this.D();
+      int $$6 = this.E();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.y() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   protected void a(fku $$0, int $$1, int $$2, int $$3, int $$4) {
-      fra.a($$0, fra.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   private fmq.a c() {
+      return new fmq.a(this.z(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   public void a(fku $$0, fks $$1, int $$2) {
-      int $$3 = this.D() + 1;
-      int $$4 = this.E() + (this.b() ? 0 : 3);
-      int $$5 = this.D() + this.y() - 1;
-      int $$6 = this.E() + this.w();
-      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
-   }
-
-   private void b(fku $$0, fks $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
-      int $$4 = this.D() + (this.y() - $$3) / 2;
-      int $$5 = this.E() + this.w() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(fpf $$0) {
-      $$0.a(fpe.a, xi.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(hdf $$0) {
-   }
-
-   public fnk a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+   static record a(xl a, int b, OptionalInt c) {
    }
 }

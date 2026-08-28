@@ -1,639 +1,485 @@
-public class fka {
-   public static final fjx a = fjx.a.a(0.5F)
-      .a("body", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.1667F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)))
-      .a(
-         "body",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, 5.0F, 0.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(0.0F, 6.0F, -1.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 6.0F, -1.0F), fjw.b.a),
-            new fjy(0.375F, fjz.a(0.0F, -1.0F, -1.0F), fjw.b.a)
-         )
-      )
-      .a("tail", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.1667F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)))
-      .a(
-         "tail",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(0.0F, 0.0F, -2.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 0.0F, -2.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.b(17.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(-72.5F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, -1.0F, 0.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(0.0F, 2.0F, 1.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 2.0F, 1.0F), fjw.b.a),
-            new fjy(0.2917F, fjz.a(0.0F, 2.0F, 6.0F), fjw.b.a),
-            new fjy(0.375F, fjz.a(0.0F, 2.0F, 7.0F), fjw.b.a)
-         )
-      )
-      .a("right_hind_leg", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.1667F, fjz.b(-35.0F, 0.0F, 0.0F), fjw.b.a)))
-      .a(
-         "right_hind_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, 5.0F, -2.0F), fjw.b.a),
-            new fjy(0.1875F, fjz.a(0.0F, 8.0F, -3.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(0.0F, 8.0F, -2.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 8.0F, -2.0F), fjw.b.a),
-            new fjy(0.375F, fjz.a(1.0F, 3.0F, -6.0F), fjw.b.a)
-         )
-      )
-      .a("left_hind_leg", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.1667F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.a)))
-      .a(
-         "left_hind_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, 5.0F, -2.0F), fjw.b.a),
-            new fjy(0.1875F, fjz.a(0.0F, 8.0F, -3.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(0.0F, 8.0F, -2.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 8.0F, -2.0F), fjw.b.a),
-            new fjy(0.375F, fjz.a(-1.0F, 3.0F, -6.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.b(-27.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.b(-32.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(-85.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, 5.0F, 0.0F), fjw.b.a),
-            new fjy(0.1875F, fjz.a(-0.5F, 11.5F, 0.5F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(-1.0F, 9.0F, -1.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(-1.0F, 9.0F, -1.0F), fjw.b.a),
-            new fjy(0.375F, fjz.a(-1.0F, 2.0F, 3.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.b(-12.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.b(-35.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(-85.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, 5.0F, 0.0F), fjw.b.a),
-            new fjy(0.1875F, fjz.a(0.5F, 11.5F, 0.5F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(1.0F, 9.0F, -1.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(1.0F, 9.0F, -1.0F), fjw.b.a),
-            new fjy(0.375F, fjz.a(1.0F, 2.0F, 3.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "cube",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.4167F, fjz.b(-2.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.4583F, fjz.b(5.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "cube",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 3.0F, 0.0F), fjw.b.a),
-            new fjy(0.1667F, fjz.a(0.0F, 8.0F, 0.0F), fjw.b.a),
-            new fjy(0.2083F, fjz.a(0.0F, 7.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 7.0F, 0.0F), fjw.b.a),
-            new fjy(0.375F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.4167F, fjz.a(0.0F, 1.0F, 0.0F), fjw.b.a),
-            new fjy(0.4583F, fjz.a(0.0F, 0.6F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .b();
-   public static final fjx b = fjx.a.a(1.4583F)
-      .a()
-      .a(
-         "body",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.25F, fjz.b(0.0F, 0.0F, 4.6F), fjw.b.b),
-            new fjy(0.2917F, fjz.b(0.0F, 0.0F, 6.81F), fjw.b.b),
-            new fjy(0.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.7083F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.9583F, fjz.b(0.0F, 0.0F, -4.6F), fjw.b.b),
-            new fjy(1.0F, fjz.b(0.0F, 0.0F, -6.89F), fjw.b.b),
-            new fjy(1.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.4583F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "body",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.25F, fjz.a(0.0F, -0.2F, 0.0F), fjw.b.b),
-            new fjy(0.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.7083F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.9583F, fjz.a(0.0F, -0.2F, 0.0F), fjw.b.b),
-            new fjy(1.25F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.4583F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "tail",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.b(-9.17F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.75F, fjz.b(5.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.2083F, fjz.b(-8.24F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.75F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.0F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.2917F, fjz.b(-20.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(0.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.0F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(1.2917F, fjz.a(0.0F, 1.0F, -0.18F), fjw.b.a),
-            new fjy(1.4583F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5417F, fjz.b(-20.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.7083F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.9583F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.2083F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, -0.25F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(0.5417F, fjz.a(0.0F, 1.0F, -0.18F), fjw.b.a),
-            new fjy(0.7083F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.9583F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(1.2083F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.a(0.0F, 0.0F, -0.25F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.2917F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5417F, fjz.b(-20.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.7083F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.9583F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.2083F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, -0.25F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(0.5417F, fjz.a(0.0F, 1.0F, -0.18F), fjw.b.a),
-            new fjy(0.7083F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.9583F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(1.2083F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.a(0.0F, 0.0F, -0.25F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.75F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.0F, fjz.b(50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.2917F, fjz.b(-20.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(0.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.0F, fjz.a(0.0F, 0.0F, -0.5F), fjw.b.a),
-            new fjy(1.2917F, fjz.a(0.0F, 1.0F, -0.18F), fjw.b.a),
-            new fjy(1.4583F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(0.0F, 0.0F, -2.5F), fjw.b.a),
-            new fjy(0.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.7083F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.0F, fjz.b(0.0F, 0.0F, 2.5F), fjw.b.a),
-            new fjy(1.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.4583F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .b();
-   public static final fjx c = fjx.a.a(2.5F)
-      .a(
-         "head",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(-70.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.15F, fjz.b(-65.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.4F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.7F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.9F, fjz.b(-7.5F, 0.0F, 45.0F), fjw.b.b),
-            new fjy(1.15F, fjz.b(-7.5F, 0.0F, 45.0F), fjw.b.a),
-            new fjy(1.3F, fjz.b(-0.8639F, -1.4959F, -39.1287F), fjw.b.b),
-            new fjy(1.6F, fjz.b(-0.8639F, -1.4959F, -39.1287F), fjw.b.a),
-            new fjy(1.75F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.8F, fjz.b(-25.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.85F, fjz.b(-70.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 1.0F, 7.0F), fjw.b.a),
-            new fjy(0.05F, fjz.a(0.0F, 1.0F, 4.0F), fjw.b.a),
-            new fjy(0.15F, fjz.a(0.0F, 1.0F, 4.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 1.0F, 5.0F), fjw.b.a),
-            new fjy(0.35F, fjz.a(0.0F, 1.0F, 0.2F), fjw.b.a),
-            new fjy(0.4F, fjz.a(0.0F, 1.0F, 0.2F), fjw.b.a),
-            new fjy(0.5F, fjz.a(0.0F, 2.1F, 1.2F), fjw.b.a),
-            new fjy(0.6F, fjz.a(0.0F, 1.1F, 0.2F), fjw.b.a),
-            new fjy(0.7F, fjz.a(0.0F, 1.1F, 0.2F), fjw.b.a),
-            new fjy(1.75F, fjz.a(0.0F, 1.1F, 0.2F), fjw.b.a),
-            new fjy(1.8F, fjz.a(0.0F, 0.1F, 0.2F), fjw.b.a),
-            new fjy(1.95F, fjz.a(0.0F, 0.1F, 5.2F), fjw.b.a),
-            new fjy(2.0F, fjz.a(0.0F, 0.1F, 7.2F), fjw.b.a),
-            new fjy(2.15F, fjz.a(0.0F, 0.1F, 8.2F), fjw.b.a),
-            new fjy(2.3F, fjz.a(0.0F, 0.1F, 5.2F), fjw.b.a)
-         )
-      )
-      .a("right_hind_leg", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 3.0F, -2.0F), fjw.b.a)))
-      .a("left_hind_leg", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 3.0F, -2.0F), fjw.b.a)))
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5833F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.8333F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.0F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.75F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.8F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.95F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(-1.0F, 2.0F, 2.0F), fjw.b.a),
-            new fjy(0.5833F, fjz.a(-1.0F, 2.0F, 2.0F), fjw.b.b),
-            new fjy(0.6667F, fjz.a(-1.0F, 2.0F, -2.0F), fjw.b.b),
-            new fjy(0.8333F, fjz.a(-1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(1.0F, fjz.a(-1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(1.75F, fjz.a(-1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(1.95F, fjz.a(-1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(2.0F, fjz.a(-1.0F, 2.0F, 3.0F), fjw.b.b),
-            new fjy(2.15F, fjz.a(-1.0F, 3.0F, 4.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.6667F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.8333F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.0F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.75F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.8F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.95F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(1.0F, 2.0F, 2.0F), fjw.b.a),
-            new fjy(0.6667F, fjz.a(1.0F, 2.0F, 2.0F), fjw.b.b),
-            new fjy(0.75F, fjz.a(1.0F, 2.0F, -2.0F), fjw.b.b),
-            new fjy(0.8333F, fjz.a(1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(1.0F, fjz.a(1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(1.75F, fjz.a(1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(1.95F, fjz.a(1.0F, 2.0F, -1.0F), fjw.b.b),
-            new fjy(2.0F, fjz.a(1.0F, 2.0F, 3.0F), fjw.b.b),
-            new fjy(2.15F, fjz.a(1.0F, 3.0F, 4.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "cube",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.35F, fjz.b(15.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.b(-7.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.6F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.05F, fjz.b(-17.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.15F, fjz.b(-25.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.3F, fjz.b(12.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "cube",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.25F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.35F, fjz.a(0.0F, 1.6F, 0.0F), fjw.b.a),
-            new fjy(0.5F, fjz.a(0.0F, 0.5F, 0.0F), fjw.b.a),
-            new fjy(0.6F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.05F, fjz.a(0.0F, 1.2F, 0.0F), fjw.b.a),
-            new fjy(2.15F, fjz.a(0.0F, 1.7F, 0.0F), fjw.b.a),
-            new fjy(2.25F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(2.3F, fjz.a(0.0F, 1.3F, 0.0F), fjw.b.a),
-            new fjy(2.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .b();
-   public static final fjx d = fjx.a.a(1.5F)
-      .a(
-         "head",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.1F, fjz.b(-50.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.15F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.4F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.65F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.7F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.85F, fjz.b(-2.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.9F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.95F, fjz.b(-7.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.05F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.1F, fjz.b(7.5F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 1.0F, 5.0F), fjw.b.a),
-            new fjy(0.05F, fjz.a(0.0F, 1.0F, 0.2F), fjw.b.a),
-            new fjy(0.1F, fjz.a(0.0F, 1.0F, 0.2F), fjw.b.a),
-            new fjy(0.15F, fjz.a(0.0F, 2.1F, 1.2F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 1.03F, 0.13F), fjw.b.a),
-            new fjy(0.4F, fjz.a(0.0F, 1.03F, 0.13F), fjw.b.a),
-            new fjy(0.65F, fjz.a(0.0F, 1.03F, 0.13F), fjw.b.a),
-            new fjy(0.7F, fjz.a(0.0F, 1.1F, 0.2F), fjw.b.a),
-            new fjy(0.75F, fjz.a(0.0F, 4.1F, 2.2F), fjw.b.a),
-            new fjy(0.85F, fjz.a(0.0F, 5.1F, 3.2F), fjw.b.a),
-            new fjy(0.9F, fjz.a(0.0F, 0.1F, 0.2F), fjw.b.a),
-            new fjy(0.95F, fjz.a(0.0F, 0.9F, -0.8F), fjw.b.a),
-            new fjy(1.05F, fjz.a(0.0F, 0.9F, 0.0F), fjw.b.a),
-            new fjy(1.1F, fjz.a(0.0F, 2.6F, 0.2F), fjw.b.a),
-            new fjy(1.15F, fjz.a(0.0F, 2.4F, 0.2F), fjw.b.a),
-            new fjy(1.2F, fjz.a(0.0F, 0.0F, 0.2F), fjw.b.a),
-            new fjy(1.25F, fjz.a(0.0F, 0.0F, 0.2F), fjw.b.a),
-            new fjy(1.3F, fjz.a(0.0F, 0.0F, 0.2F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(1.1F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.3F, fjz.b(0.0F, 0.0F, 30.0F), fjw.b.a),
-            new fjy(1.4F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.45F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_hind_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(1.1F, fjz.a(0.0F, 3.0F, -2.0F), fjw.b.a),
-            new fjy(1.2F, fjz.a(0.0F, 8.0F, -2.0F), fjw.b.a),
-            new fjy(1.3F, fjz.a(-1.0F, 3.0F, 0.0F), fjw.b.a),
-            new fjy(1.4F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.45F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(1.1F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.3F, fjz.b(0.0F, 0.0F, -30.0F), fjw.b.a),
-            new fjy(1.4F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.45F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_hind_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(1.1F, fjz.a(0.0F, 3.0F, -2.0F), fjw.b.a),
-            new fjy(1.2F, fjz.a(0.0F, 8.0F, -2.0F), fjw.b.a),
-            new fjy(1.3F, fjz.a(1.0F, 3.0F, 0.0F), fjw.b.a),
-            new fjy(1.35F, fjz.a(1.0F, 3.0F, 0.0F), fjw.b.a),
-            new fjy(1.4F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.45F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.05F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.25F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.55F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.6F, fjz.b(-92.5F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.1F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.3F, fjz.b(0.0F, 0.0F, 30.0F), fjw.b.b),
-            new fjy(1.4F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.45F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "right_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(-1.0F, 2.0F, 2.0F), fjw.b.a),
-            new fjy(0.05F, fjz.a(-1.0F, 2.0F, 2.0F), fjw.b.b),
-            new fjy(0.25F, fjz.a(-1.0F, 2.0F, -1.0F), fjw.b.a),
-            new fjy(0.55F, fjz.a(-1.0F, 2.0F, -1.0F), fjw.b.a),
-            new fjy(0.7F, fjz.a(-1.0F, 2.0F, 2.63F), fjw.b.b),
-            new fjy(1.1F, fjz.a(-1.0F, 2.0F, 2.0F), fjw.b.a),
-            new fjy(1.2F, fjz.a(-1.0F, 7.0F, 2.0F), fjw.b.a),
-            new fjy(1.3F, fjz.a(-1.0F, 3.0F, 0.0F), fjw.b.a),
-            new fjy(1.4F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.45F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.05F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(0.25F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.55F, fjz.b(-45.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.6F, fjz.b(-87.5F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.1F, fjz.b(-90.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.3F, fjz.b(0.0F, 0.0F, -30.0F), fjw.b.b),
-            new fjy(1.4F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.45F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "left_front_leg",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(1.0F, 2.0F, 2.0F), fjw.b.b),
-            new fjy(0.05F, fjz.a(1.0F, 2.0F, 2.0F), fjw.b.b),
-            new fjy(0.15F, fjz.a(1.0F, 2.0F, 0.0F), fjw.b.b),
-            new fjy(0.25F, fjz.a(1.0F, 2.0F, -1.0F), fjw.b.a),
-            new fjy(0.55F, fjz.a(1.0F, 2.0F, -1.0F), fjw.b.a),
-            new fjy(0.7F, fjz.a(1.0F, 2.0F, 1.88F), fjw.b.b),
-            new fjy(0.75F, fjz.a(1.0F, 2.0F, 2.67F), fjw.b.b),
-            new fjy(1.1F, fjz.a(1.0F, 2.0F, 2.0F), fjw.b.b),
-            new fjy(1.2F, fjz.a(1.0F, 8.0F, 2.0F), fjw.b.b),
-            new fjy(1.25F, fjz.a(1.06F, 5.06F, 1.0F), fjw.b.b),
-            new fjy(1.3F, fjz.a(1.0F, 3.0F, 0.0F), fjw.b.b),
-            new fjy(1.4F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.b),
-            new fjy(1.45F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.b)
-         )
-      )
-      .a(
-         "cube",
-         new fjw(
-            fjw.d.b,
-            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.05F, fjz.b(15.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.15F, fjz.b(-7.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.7F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.75F, fjz.b(-17.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.85F, fjz.b(-25.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.9F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.95F, fjz.b(12.5F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.05F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.1F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "cube",
-         new fjw(
-            fjw.d.a,
-            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.05F, fjz.a(0.0F, 1.6F, 0.0F), fjw.b.a),
-            new fjy(0.15F, fjz.a(0.0F, 0.5F, 0.0F), fjw.b.a),
-            new fjy(0.25F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.7F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.75F, fjz.a(0.0F, 1.2F, 0.0F), fjw.b.a),
-            new fjy(0.85F, fjz.a(0.0F, 1.7F, 0.0F), fjw.b.a),
-            new fjy(0.9F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(0.95F, fjz.a(0.0F, 1.3F, 0.0F), fjw.b.a),
-            new fjy(1.05F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.2F, fjz.a(0.0F, 5.0F, 0.0F), fjw.b.a),
-            new fjy(1.25F, fjz.a(0.0F, 8.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.a(0.0F, 1.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fjw(
-            fjw.d.a,
-            new fjy(1.1F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
-            new fjy(1.2F, fjz.a(0.0F, 4.0F, 0.0F), fjw.b.a),
-            new fjy(1.25F, fjz.a(0.0F, 5.0F, 0.0F), fjw.b.a),
-            new fjy(1.3F, fjz.a(0.0F, 4.0F, 0.0F), fjw.b.a),
-            new fjy(1.4F, fjz.a(0.0F, -1.0F, 0.0F), fjw.b.a),
-            new fjy(1.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
-         )
-      )
-      .b();
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.DoubleFunction;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public final class fka<T> {
+   private static final Logger c = LogUtils.getLogger();
+   public static final fka.e<Boolean> a = new fka.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
+   public static final fka.b<Boolean> b = ($$0, $$1) -> $$1 ? xk.b : xk.c;
+   private final fka.l<T> d;
+   final Function<T, xl> e;
+   private final fka.n<T> f;
+   private final Codec<T> g;
+   private final T h;
+   private final Consumer<T> i;
+   final xl j;
+   T k;
+
+   public static fka<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
+      return a($$0, a(), $$1, $$2);
+   }
+
+   public static fka<Boolean> a(String $$0, boolean $$1) {
+      return a($$0, a(), $$1, $$0x -> {
+      });
+   }
+
+   public static fka<Boolean> a(String $$0, fka.l<Boolean> $$1, boolean $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
+   }
+
+   public static fka<Boolean> a(String $$0, fka.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
+      return a($$0, $$1, b, $$2, $$3);
+   }
+
+   public static fka<Boolean> a(String $$0, fka.l<Boolean> $$1, fka.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
+      return new fka<>($$0, $$1, $$2, a, $$3, $$4);
+   }
+
+   public fka(String $$0, fka.l<T> $$1, fka.b<T> $$2, fka.n<T> $$3, T $$4, Consumer<T> $$5) {
+      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   }
+
+   public fka(String $$0, fka.l<T> $$1, fka.b<T> $$2, fka.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
+      this.j = xl.c($$0);
+      this.d = $$1;
+      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.k = this.h;
+   }
+
+   public static <T> fka.l<T> a() {
+      return $$0 -> null;
+   }
+
+   public static <T> fka.l<T> a(xl $$0) {
+      return $$1 -> fnh.a($$0);
+   }
+
+   public static <T extends azq> fka.b<T> b() {
+      return ($$0, $$1) -> $$1.d();
+   }
+
+   public flu a(fkb $$0) {
+      return this.a($$0, 0, 0, 150);
+   }
+
+   public flu a(fkb $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, $$0x -> {
+      });
+   }
+
+   public flu a(fkb $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
+      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
+   }
+
+   public T c() {
+      return this.k;
+   }
+
+   public Codec<T> d() {
+      return this.g;
+   }
+
+   @Override
+   public String toString() {
+      return this.j.getString();
+   }
+
+   public void a(T $$0) {
+      T $$1 = this.f.a($$0).orElseGet(() -> {
+         c.error("Illegal option value " + $$0 + " for " + this.j);
+         return this.h;
+      });
+      if (!fjx.Q().r()) {
+         this.k = $$1;
+      } else {
+         if (!Objects.equals(this.k, $$1)) {
+            this.k = $$1;
+            this.i.accept(this.k);
+         }
+      }
+   }
+
+   public fka.n<T> e() {
+      return this.f;
+   }
+
+   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, fka.d.a<T> d, Codec<T> e) implements fka.d<T> {
+      @Override
+      public fmd.c<T> a() {
+         return fmd.c.a(this.c, this.a, this.b);
+      }
+
+      @Override
+      public Optional<T> a(T $$0) {
+         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      public List<T> c() {
+         return this.b;
+      }
+
+      public BooleanSupplier d() {
+         return this.c;
+      }
+
+      @Override
+      public fka.d.a<T> e() {
+         return this.d;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.e;
+      }
+   }
+
+   public interface b<T> {
+      xl toString(xl var1, T var2);
+   }
+
+   public static record c(int a, IntSupplier b, int c) implements fka.g, fka.j<Integer> {
+      public Optional<Integer> a(Integer $$0) {
+         return Optional.of(azn.a($$0, this.d(), this.b()));
+      }
+
+      @Override
+      public int b() {
+         return this.b.getAsInt();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.INT
+            .validate(
+               $$0 -> {
+                  int $$1 = this.c + 1;
+                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
+                     ? DataResult.success($$0)
+                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+               }
+            );
+      }
+
+      @Override
+      public boolean c() {
+         return true;
+      }
+
+      @Override
+      public fmd.c<Integer> a() {
+         return fmd.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      public IntSupplier g() {
+         return this.b;
+      }
+
+      public int h() {
+         return this.c;
+      }
+   }
+
+   interface d<T> extends fka.n<T> {
+      fmd.c<T> a();
+
+      default fka.d.a<T> e() {
+         return fka::a;
+      }
+
+      @Override
+      default Function<fka<T>, flu> a(fka.l<T> $$0, fkb $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> fmd.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
+               this.e().set($$6, (T)$$4xx);
+               $$1.ay();
+               $$5.accept((T)$$4xx);
+            });
+      }
+
+      public interface a<T> {
+         void set(fka<T> var1, T var2);
+      }
+   }
+
+   public static record e<T>(List<T> a, Codec<T> b) implements fka.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public fmd.c<T> a() {
+         return fmd.c.a(this.a);
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.b;
+      }
+   }
+
+   public static record f(int a, int b, boolean c) implements fka.g {
+      public f(int $$0, int $$1) {
+         this($$0, $$1, true);
+      }
+
+      public Optional<Integer> a(Integer $$0) {
+         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.intRange(this.a, this.b + 1);
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      @Override
+      public boolean aQ_() {
+         return this.c;
+      }
+   }
+
+   interface g extends fka.k<Integer> {
+      int d();
+
+      int b();
+
+      default double b(Integer $$0) {
+         if ($$0 == this.d()) {
+            return 0.0;
+         } else {
+            return $$0 == this.b() ? 1.0 : azn.b((double)$$0.intValue() + 0.5, (double)this.d(), (double)this.b() + 1.0, 0.0, 1.0);
+         }
+      }
+
+      default Integer a(double $$0) {
+         if ($$0 >= 1.0) {
+            $$0 = 0.99999F;
+         }
+
+         return azn.a(azn.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b() + 1.0));
+      }
+
+      default <R> fka.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
+         return new fka.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return g.this.b($$1.applyAsInt($$0));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(g.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
+            }
+         };
+      }
+   }
+
+   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements fka.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public fmd.c<T> a() {
+         return fmd.c.a(this.a.get());
+      }
+
+      public Supplier<List<T>> b() {
+         return this.a;
+      }
+
+      public Function<T, Optional<T>> c() {
+         return this.b;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.c;
+      }
+   }
+
+   public static final class i<N> extends flp {
+      private final fka<N> d;
+      private final fka.k<N> e;
+      private final fka.l<N> f;
+      private final Consumer<N> m;
+      @Nullable
+      private Long n;
+      private final boolean o;
+
+      i(fkb $$0, int $$1, int $$2, int $$3, int $$4, fka<N> $$5, fka.k<N> $$6, fka.l<N> $$7, Consumer<N> $$8, boolean $$9) {
+         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$7;
+         this.m = $$8;
+         this.o = $$9;
+         this.b();
+      }
+
+      @Override
+      protected void b() {
+         this.b(this.d.e.apply(this.e.b(this.c)));
+         this.a(this.f.apply(this.e.b(this.c)));
+      }
+
+      @Override
+      protected void a() {
+         if (this.o) {
+            this.c();
+         } else {
+            this.n = ae.c() + 600L;
+         }
+      }
+
+      public void c() {
+         N $$0 = this.e.b(this.c);
+         if (!Objects.equals($$0, this.d.c())) {
+            this.d.a($$0);
+            this.m.accept(this.d.c());
+         }
+      }
+
+      @Override
+      public void b(flj $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         if (this.n != null && ae.c() >= this.n) {
+            this.n = null;
+            this.c();
+         }
+      }
+   }
+
+   interface j<T> extends fka.d<T>, fka.k<T> {
+      boolean c();
+
+      @Override
+      default Function<fka<T>, flu> a(fka.l<T> $$0, fkb $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return this.c() ? fka.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : fka.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   interface k<T> extends fka.n<T> {
+      double b(T var1);
+
+      T b(double var1);
+
+      default boolean aQ_() {
+         return true;
+      }
+
+      @Override
+      default Function<fka<T>, flu> a(fka.l<T> $$0, fkb $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> new fka.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aQ_());
+      }
+   }
+
+   @FunctionalInterface
+   public interface l<T> {
+      @Nullable
+      fnh apply(T var1);
+   }
+
+   public static enum m implements fka.k<Double> {
+      a;
+
+      public Optional<Double> a(Double $$0) {
+         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      public double b(Double $$0) {
+         return $$0;
+      }
+
+      public Double a(double $$0) {
+         return $$0;
+      }
+
+      public <R> fka.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
+         return new fka.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(m.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
+            }
+         };
+      }
+
+      @Override
+      public Codec<Double> f() {
+         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
+      }
+   }
+
+   interface n<T> {
+      Function<fka<T>, flu> a(fka.l<T> var1, fkb var2, int var3, int var4, int var5, Consumer<T> var6);
+
+      Optional<T> a(T var1);
+
+      Codec<T> f();
+   }
 }

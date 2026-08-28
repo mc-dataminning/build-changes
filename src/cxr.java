@@ -1,28 +1,41 @@
-import java.util.List;
+public class cxr extends cwb {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cxr extends cuc {
-   public cxr(cvx.a $$0) {
+   public cxr(cwb.a $$0) {
       super($$0);
    }
 
    @Override
-   public cwb o() {
-      cwb $$0 = super.o();
-      $$0.b(ku.Q, new cya(cyb.C));
+   public int a(cwf $$0, bve $$1) {
+      return 1200;
+   }
+
+   @Override
+   public cwh b(cwf $$0) {
+      return cwh.h;
+   }
+
+   @Override
+   public bsh a(dff $$0, cor $$1, bsg $$2) {
+      $$1.a(awo.zb, 1.0F, 1.0F);
+      $$1.b(awy.c.b(this));
+      return cwi.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cwf a(cwf $$0, dff $$1, bve $$2) {
+      this.b($$2);
       return $$0;
    }
 
    @Override
-   public void a(cwb $$0, cvx.b $$1, List<xi> $$2, cxt $$3) {
-      cya $$4 = $$0.a(ku.Q);
-      if ($$4 != null) {
-         $$4.a($$2::add, 0.125F, $$1.b());
-      }
+   public boolean a(cwf $$0, dff $$1, bve $$2, int $$3) {
+      this.b($$2);
+      return true;
    }
 
-   @Override
-   public xi a(cwb $$0) {
-      cya $$1 = $$0.a(ku.Q);
-      return $$1 != null ? $$1.a(this.k + ".effect.") : super.a($$0);
+   private void b(bve $$0) {
+      $$0.a(awo.zc, 1.0F, 1.0F);
    }
 }

@@ -1,314 +1,265 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
+import org.joml.Vector3f;
 
-public class gjt implements hay {
-   private static final Logger g = LogUtils.getLogger();
-   private static final gjv h = new gjv();
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gjt.class, new gjt.a())
-      .registerTypeAdapter(gjp.class, new gjp.a())
-      .registerTypeAdapter(gjq.class, new gjq.a())
-      .registerTypeAdapter(gjs.class, new gjs.a())
-      .registerTypeAdapter(gjy.class, new gjy.a())
-      .registerTypeAdapter(gjz.class, new gjz.a())
-      .registerTypeAdapter(gjx.class, new gjx.a())
-      .create();
-   private static final char i = '#';
-   public static final String b = "particle";
-   private static final boolean j = true;
-   private final List<gjp> k;
-   @Nullable
-   private final gjt.b l;
-   @Nullable
-   private final Boolean m;
-   private final gjz n;
-   private final List<gjx> o;
-   public String c = "";
-   @VisibleForTesting
-   protected final Map<String, Either<ham, String>> d;
-   @Nullable
-   protected gjt e;
-   @Nullable
-   protected ali f;
+public class gjt implements AutoCloseable {
+   private static final all a = all.b("textures/environment/sun.png");
+   private static final all b = all.b("textures/environment/moon_phases.png");
+   private static final all c = all.b("textures/environment/end_sky.png");
+   private static final float d = 512.0F;
+   private final fen e = this.a();
+   private final fen f = this.b();
+   private final fen g = this.c();
 
-   public static gjt a(Reader $$0) {
-      return aza.a(a, $$0, gjt.class);
+   private fen a() {
+      fen $$0 = new fen(fce.b);
+      $$0.a();
+      $$0.a(this.a(fem.b()));
+      fen.b();
+      return $$0;
    }
 
-   public gjt(@Nullable ali $$0, List<gjp> $$1, Map<String, Either<ham, String>> $$2, @Nullable Boolean $$3, @Nullable gjt.b $$4, gjz $$5, List<gjx> $$6) {
-      this.k = $$1;
-      this.m = $$3;
-      this.l = $$4;
-      this.d = $$2;
-      this.f = $$0;
-      this.n = $$5;
-      this.o = $$6;
+   private fen b() {
+      fen $$0 = new fen(fce.b);
+      $$0.a();
+      $$0.a(this.a(fem.b(), 16.0F));
+      fen.b();
+      return $$0;
    }
 
-   public List<gjp> a() {
-      return this.k.isEmpty() && this.e != null ? this.e.a() : this.k;
+   private fen c() {
+      fen $$0 = new fen(fce.b);
+      $$0.a();
+      $$0.a(this.a(fem.b(), -16.0F));
+      fen.b();
+      return $$0;
    }
 
-   public boolean b() {
-      if (this.m != null) {
-         return this.m;
-      } else {
-         return this.e != null ? this.e.b() : true;
+   private fej a(fem $$0) {
+      azv $$1 = azv.a(10842L);
+      int $$2 = 1500;
+      float $$3 = 100.0F;
+      fef $$4 = $$0.a(fep.c.h, fei.e);
+
+      for (int $$5 = 0; $$5 < 1500; $$5++) {
+         float $$6 = $$1.i() * 2.0F - 1.0F;
+         float $$7 = $$1.i() * 2.0F - 1.0F;
+         float $$8 = $$1.i() * 2.0F - 1.0F;
+         float $$9 = 0.15F + $$1.i() * 0.1F;
+         float $$10 = azn.k($$6, $$7, $$8);
+         if (!($$10 <= 0.010000001F) && !($$10 >= 1.0F)) {
+            Vector3f $$11 = new Vector3f($$6, $$7, $$8).normalize(100.0F);
+            float $$12 = (float)($$1.j() * (float) Math.PI * 2.0);
+            Matrix3f $$13 = new Matrix3f().rotateTowards(new Vector3f($$11).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$12);
+            $$4.a(new Vector3f($$9, -$$9, 0.0F).mul($$13).add($$11));
+            $$4.a(new Vector3f($$9, $$9, 0.0F).mul($$13).add($$11));
+            $$4.a(new Vector3f(-$$9, $$9, 0.0F).mul($$13).add($$11));
+            $$4.a(new Vector3f(-$$9, -$$9, 0.0F).mul($$13).add($$11));
+         }
       }
+
+      return $$4.b();
    }
 
-   public gjt.b c() {
-      if (this.l != null) {
-         return this.l;
-      } else {
-         return this.e != null ? this.e.c() : gjt.b.b;
+   private fej a(fem $$0, float $$1) {
+      float $$2 = Math.signum($$1) * 512.0F;
+      fef $$3 = $$0.a(fep.c.g, fei.e);
+      $$3.a(0.0F, $$1, 0.0F);
+
+      for (int $$4 = -180; $$4 <= 180; $$4 += 45) {
+         $$3.a($$2 * azn.b((float)$$4 * (float) (Math.PI / 180.0)), $$1, 512.0F * azn.a((float)$$4 * (float) (Math.PI / 180.0)));
       }
+
+      return $$3.b();
    }
 
-   public boolean d() {
-      return this.f == null || this.e != null && this.e.d();
+   public void a(float $$0, float $$1, float $$2) {
+      RenderSystem.depthMask(false);
+      RenderSystem.setShader(gih.d);
+      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
+      this.f.a();
+      this.f.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      fen.b();
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.depthMask(true);
    }
 
-   public List<gjx> e() {
-      return this.o;
+   public void a(fek $$0) {
+      RenderSystem.depthMask(false);
+      RenderSystem.setShader(gih.d);
+      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
+      $$0.a();
+      $$0.a(0.0F, 12.0F, 0.0F);
+      this.g.a();
+      this.g.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      fen.b();
+      $$0.b();
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.depthMask(true);
+   }
+
+   public void a(fek $$0, fem $$1, float $$2, int $$3, float $$4, float $$5, gil $$6) {
+      $$0.a();
+      $$0.a(a.d.rotationDegrees(-90.0F));
+      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
+      this.a($$4, $$1, $$0);
+      this.a($$3, $$4, $$1, $$0);
+      if ($$5 > 0.0F) {
+         this.a($$6, $$5, $$0);
+      }
+
+      $$0.b();
+   }
+
+   private void a(float $$0, fem $$1, fek $$2) {
+      float $$3 = 30.0F;
+      float $$4 = 100.0F;
+      fef $$5 = $$1.a(fep.c.h, fei.i);
+      Matrix4f $$6 = $$2.c().a();
+      RenderSystem.depthMask(false);
+      RenderSystem.overlayBlendFunc();
+      RenderSystem.setShader(gih.h);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$0);
+      RenderSystem.setShaderTexture(0, a);
+      RenderSystem.enableBlend();
+      $$5.a($$6, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F);
+      $$5.a($$6, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F);
+      $$5.a($$6, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F);
+      $$5.a($$6, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F);
+      feg.a($$5.b());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.depthMask(true);
+   }
+
+   private void a(int $$0, float $$1, fem $$2, fek $$3) {
+      float $$4 = 20.0F;
+      int $$5 = $$0 % 4;
+      int $$6 = $$0 / 4 % 2;
+      float $$7 = (float)($$5 + 0) / 4.0F;
+      float $$8 = (float)($$6 + 0) / 2.0F;
+      float $$9 = (float)($$5 + 1) / 4.0F;
+      float $$10 = (float)($$6 + 1) / 2.0F;
+      float $$11 = 100.0F;
+      fef $$12 = $$2.a(fep.c.h, fei.i);
+      RenderSystem.depthMask(false);
+      RenderSystem.overlayBlendFunc();
+      RenderSystem.setShader(gih.h);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$1);
+      RenderSystem.setShaderTexture(0, b);
+      RenderSystem.enableBlend();
+      Matrix4f $$13 = $$3.c().a();
+      $$12.a($$13, -20.0F, -100.0F, 20.0F).a($$9, $$10);
+      $$12.a($$13, 20.0F, -100.0F, 20.0F).a($$7, $$10);
+      $$12.a($$13, 20.0F, -100.0F, -20.0F).a($$7, $$8);
+      $$12.a($$13, -20.0F, -100.0F, -20.0F).a($$9, $$8);
+      feg.a($$12.b());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.depthMask(true);
+   }
+
+   private void a(gil $$0, float $$1, fek $$2) {
+      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
+      $$3.pushMatrix();
+      $$3.mul($$2.c().a());
+      RenderSystem.depthMask(false);
+      RenderSystem.overlayBlendFunc();
+      RenderSystem.setShader(gih.d);
+      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderFog(gil.a);
+      this.e.a();
+      this.e.a($$3, RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      fen.b();
+      RenderSystem.setShaderFog($$0);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.depthMask(true);
+      $$3.popMatrix();
+   }
+
+   public void a(fek $$0, fem $$1, float $$2, int $$3) {
+      RenderSystem.setShader(gih.e);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      $$0.a();
+      $$0.a(a.b.rotationDegrees(90.0F));
+      float $$4 = azn.a($$2) < 0.0F ? 180.0F : 0.0F;
+      $$0.a(a.f.rotationDegrees($$4));
+      $$0.a(a.f.rotationDegrees(90.0F));
+      Matrix4f $$5 = $$0.c().a();
+      fef $$6 = $$1.a(fep.c.g, fei.f);
+      float $$7 = axy.h(axy.a($$3));
+      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
+      int $$8 = axy.g($$3);
+      int $$9 = 16;
+
+      for (int $$10 = 0; $$10 <= 16; $$10++) {
+         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
+         float $$12 = azn.a($$11);
+         float $$13 = azn.b($$11);
+         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
+      }
+
+      feg.a($$6.b());
+      $$0.b();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+   }
+
+   public void b(fek $$0) {
+      RenderSystem.enableBlend();
+      RenderSystem.depthMask(false);
+      RenderSystem.setShader(gih.i);
+      RenderSystem.setShaderTexture(0, c);
+      fem $$1 = fem.b();
+
+      for (int $$2 = 0; $$2 < 6; $$2++) {
+         $$0.a();
+         if ($$2 == 1) {
+            $$0.a(a.b.rotationDegrees(90.0F));
+         }
+
+         if ($$2 == 2) {
+            $$0.a(a.b.rotationDegrees(-90.0F));
+         }
+
+         if ($$2 == 3) {
+            $$0.a(a.b.rotationDegrees(180.0F));
+         }
+
+         if ($$2 == 4) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         if ($$2 == 5) {
+            $$0.a(a.f.rotationDegrees(-90.0F));
+         }
+
+         Matrix4f $$3 = $$0.c().a();
+         fef $$4 = $$1.a(fep.c.h, fei.j);
+         $$4.a($$3, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
+         $$4.a($$3, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
+         $$4.a($$3, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
+         $$4.a($$3, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
+         feg.a($$4.b());
+         $$0.b();
+      }
+
+      RenderSystem.depthMask(true);
+      RenderSystem.disableBlend();
    }
 
    @Override
-   public void a(hay.a $$0) {
-      if (this.f != null) {
-         if (!($$0.a(this.f) instanceof gjt $$2)) {
-            throw new IllegalStateException("BlockModel parent has to be a block model.");
-         }
-
-         this.e = $$2;
-      }
-   }
-
-   @Override
-   public haf a(hao $$0, Function<ham, gyd> $$1, hau $$2) {
-      return this.a($$1, $$2, true);
-   }
-
-   public haf a(Function<ham, gyd> $$0, hau $$1, boolean $$2) {
-      gyd $$3 = $$0.apply(this.b("particle"));
-      if (this.f() == hax.d) {
-         return new hai(this.g(), $$3, this.c().a());
-      } else {
-         haw.a $$4 = new haw.a(this, $$2).a($$3);
-
-         for (gjp $$5 : this.a()) {
-            for (jm $$6 : $$5.c.keySet()) {
-               gjq $$7 = $$5.c.get($$6);
-               gyd $$8 = $$0.apply(this.b($$7.c()));
-               if ($$7.a() == null) {
-                  $$4.a(a($$5, $$7, $$8, $$6, $$1));
-               } else {
-                  $$4.a(jm.a($$1.b().c(), $$7.a()), a($$5, $$7, $$8, $$6, $$1));
-               }
-            }
-         }
-
-         return $$4.b();
-      }
-   }
-
-   private static gjo a(gjp $$0, gjq $$1, gyd $$2, jm $$3, hau $$4) {
-      return h.a($$0.a, $$0.b, $$1, $$2, $$3, $$4, $$0.d, $$0.e, $$0.f);
-   }
-
-   public boolean a(String $$0) {
-      return !gxt.b().equals(this.b($$0).b());
-   }
-
-   public ham b(String $$0) {
-      if (d($$0)) {
-         $$0 = $$0.substring(1);
-      }
-
-      List<String> $$1 = Lists.newArrayList();
-
-      while (true) {
-         Either<ham, String> $$2 = this.c($$0);
-         Optional<ham> $$3 = $$2.left();
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
-
-         $$0 = (String)$$2.right().get();
-         if ($$1.contains($$0)) {
-            g.warn("Unable to resolve texture due to reference chain {}->{} in {}", new Object[]{Joiner.on("->").join($$1), $$0, this.c});
-            return new ham(gyc.d, gxt.b());
-         }
-
-         $$1.add($$0);
-      }
-   }
-
-   private Either<ham, String> c(String $$0) {
-      for (gjt $$1 = this; $$1 != null; $$1 = $$1.e) {
-         Either<ham, String> $$2 = $$1.d.get($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      return Either.left(new ham(gyc.d, gxt.b()));
-   }
-
-   static boolean d(String $$0) {
-      return $$0.charAt(0) == '#';
-   }
-
-   public gjt f() {
-      return this.e == null ? this : this.e.f();
-   }
-
-   public gjz g() {
-      gjy $$0 = this.a(cvz.b);
-      gjy $$1 = this.a(cvz.c);
-      gjy $$2 = this.a(cvz.d);
-      gjy $$3 = this.a(cvz.e);
-      gjy $$4 = this.a(cvz.f);
-      gjy $$5 = this.a(cvz.g);
-      gjy $$6 = this.a(cvz.h);
-      gjy $$7 = this.a(cvz.i);
-      return new gjz($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   private gjy a(cvz $$0) {
-      return this.e != null && !this.n.b($$0) ? this.e.a($$0) : this.n.a($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   public static class a implements JsonDeserializer<gjt> {
-      public gjt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         List<gjp> $$4 = this.b($$2, $$3);
-         String $$5 = this.c($$3);
-         Map<String, Either<ham, String>> $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         gjz $$8 = gjz.a;
-         if ($$3.has("display")) {
-            JsonObject $$9 = aza.u($$3, "display");
-            $$8 = (gjz)$$2.deserialize($$9, gjz.class);
-         }
-
-         List<gjx> $$10 = this.a($$2, $$3);
-         gjt.b $$11 = null;
-         if ($$3.has("gui_light")) {
-            $$11 = gjt.b.a(aza.i($$3, "gui_light"));
-         }
-
-         ali $$12 = $$5.isEmpty() ? null : ali.a($$5);
-         return new gjt($$12, $$4, $$6, $$7, $$11, $$8, $$10);
-      }
-
-      protected List<gjx> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gjx> $$2 = Lists.newArrayList();
-         if ($$1.has("overrides")) {
-            for (JsonElement $$4 : aza.v($$1, "overrides")) {
-               $$2.add((gjx)$$0.deserialize($$4, gjx.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      private Map<String, Either<ham, String>> b(JsonObject $$0) {
-         ali $$1 = gyc.d;
-         Map<String, Either<ham, String>> $$2 = Maps.newHashMap();
-         if ($$0.has("textures")) {
-            JsonObject $$3 = aza.u($$0, "textures");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), a($$1, $$4.getValue().getAsString()));
-            }
-         }
-
-         return $$2;
-      }
-
-      private static Either<ham, String> a(ali $$0, String $$1) {
-         if (gjt.d($$1)) {
-            return Either.right($$1.substring(1));
-         } else {
-            ali $$2 = ali.c($$1);
-            if ($$2 == null) {
-               throw new JsonParseException($$1 + " is not valid resource location");
-            } else {
-               return Either.left(new ham($$0, $$2));
-            }
-         }
-      }
-
-      private String c(JsonObject $$0) {
-         return aza.a($$0, "parent", "");
-      }
-
-      @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? aza.k($$0, "ambientocclusion") : null;
-      }
-
-      protected List<gjp> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gjp> $$2 = Lists.newArrayList();
-         if ($$1.has("elements")) {
-            for (JsonElement $$3 : aza.v($$1, "elements")) {
-               $$2.add((gjp)$$0.deserialize($$3, gjp.class));
-            }
-         }
-
-         return $$2;
-      }
-   }
-
-   public static enum b {
-      a("front"),
-      b("side");
-
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static gjt.b a(String $$0) {
-         for (gjt.b $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
-      }
-
-      public boolean a() {
-         return this == b;
-      }
+   public void close() {
+      this.e.close();
+      this.f.close();
+      this.g.close();
    }
 }

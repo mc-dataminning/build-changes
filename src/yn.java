@@ -1,10 +1,18 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class yn {
-   static Function<String, Supplier<xi>> a = $$0 -> () -> xi.b($$0);
+public interface yn {
+   MapCodec<yn> c = xn.a(new yn.a[]{yo.b, ym.b, yv.b}, yn.a::a, yn::a, "source");
 
-   public static void a(Function<String, Supplier<xi>> $$0) {
-      a = $$0;
+   Stream<un> a(ew var1) throws CommandSyntaxException;
+
+   yn.a<?> a();
+
+   public static record a<T extends yn>(MapCodec<T> a, String b) implements baj {
+      @Override
+      public String c() {
+         return this.b;
+      }
    }
 }

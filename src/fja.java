@@ -1,39 +1,59 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fja implements azn {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public abstract class fja extends fiw {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final xl d;
+   private final Runnable e;
 
-   private static final IntFunction<fja> d = ayb.a(fja::b, values(), ayb.a.b);
-   private final int e;
-   private final String f;
+   public fja(long $$0, xl $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private fja(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected abstract void a(ffa var1, long var2) throws fgv;
+
+   @Override
+   public void run() {
+      ffa $$0 = ffa.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (fgw var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
    }
 
    @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.f;
-   }
-
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static fja a(int $$0) {
-      return d.apply($$0);
+   public xl a() {
+      return this.d;
    }
 }

@@ -1,37 +1,24 @@
-import com.mojang.serialization.Codec;
+public interface ddk {
+   alk<dde> a = a("mob_spawn_equipment");
+   alk<dde> b = a("pillager_spawn_crossbow");
+   alk<dde> c = a("raid/pillager_post_wave_3");
+   alk<dde> d = a("raid/pillager_post_wave_5");
+   alk<dde> e = a("raid/vindicator");
+   alk<dde> f = a("raid/vindicator_post_wave_5");
+   alk<dde> g = a("enderman_loot_drop");
 
-public enum ddk implements bag {
-   a(bum.f, 11, "helmet"),
-   b(bum.e, 16, "chestplate"),
-   c(bum.d, 15, "leggings"),
-   d(bum.c, 13, "boots"),
-   e(bum.g, 16, "body");
-
-   public static final Codec<ddk> f = bag.b(ddk::values);
-   private final bum g;
-   private final String h;
-   private final int i;
-
-   private ddk(final bum $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
+   static void a(rb<dde> $$0) {
+      jr<dbw> $$1 = $$0.a(ma.aM);
+      $$0.a(a, new ddh($$1.b(axg.l), 5, 17));
+      $$0.a(b, new ddi($$1.b(dcb.K), brj.a(1)));
+      $$0.a(c, new ddi($$1.b(dcb.J), brj.a(1)));
+      $$0.a(d, new ddi($$1.b(dcb.J), brj.a(2)));
+      $$0.a(e, new ddi($$1.b(dcb.n), brj.a(1)));
+      $$0.a(f, new ddi($$1.b(dcb.n), brj.a(2)));
+      $$0.a(g, new ddi($$1.b(dcb.v), brj.a(1)));
    }
 
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public bum a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   static alk<dde> a(String $$0) {
+      return alk.a(ma.aN, all.b($$0));
    }
 }

@@ -1,64 +1,102 @@
-public class fqn extends fpw {
-   private flh c;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-   public fqn() {
-      super("");
+public class fqn extends frp {
+   private static final int d = 20;
+   private final xl s;
+   private fmp u = fmp.a;
+   protected xl a;
+   protected xl b;
+   private int v;
+   protected final BooleanConsumer c;
+   private final List<flw> w = Lists.newArrayList();
+
+   public fqn(BooleanConsumer $$0, xl $$1, xl $$2) {
+      this($$0, $$1, $$2, xk.f, xk.g);
+   }
+
+   public fqn(BooleanConsumer $$0, xl $$1, xl $$2, xl $$3, xl $$4) {
+      super($$1);
+      this.c = $$0;
+      this.s = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      this.c = flh.a(xi.c("multiplayer.stopSleeping"), $$0 -> this.D()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+   public xl i() {
+      return xk.a(super.i(), this.s);
    }
 
    @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+   protected void aS_() {
+      super.aS_();
+      this.u = fmp.a(this.p, this.s, this.n - 50);
+      int $$0 = azn.a(this.D() + this.E() + 20, this.o / 6 + 96, this.o - 24);
+      this.w.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(flw.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(flw.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(flw $$0) {
+      this.w.add(this.c($$0));
+   }
+
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.u.a($$0, this.n / 2, this.D());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.E()) / 2;
+      return azn.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int D() {
+      return this.m() + 20;
+   }
+
+   private int E() {
+      return this.u.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.v = $$0;
+
+      for (flw $$1 : this.w) {
+         $$1.j = false;
       }
    }
 
    @Override
-   public void d() {
-      this.D();
+   public void e() {
+      super.e();
+      if (--this.v == 0) {
+         for (flw $$0 : this.w) {
+            $$0.j = true;
+         }
+      }
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   public boolean aH_() {
+      return false;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.D();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
+         this.c.accept(false);
          return true;
-      } else if ($$0 != 257 && $$0 != 335) {
+      } else {
          return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.m.d().d();
-         return true;
-      }
-   }
-
-   private void D() {
-      gcj $$0 = this.m.t.j;
-      $$0.b(new aib(this.m.t, aib.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new fpw(this.b.a()));
       }
    }
 }

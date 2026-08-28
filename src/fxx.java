@@ -1,7 +1,3 @@
-public class fxx extends fym<gue> {
-   public static final gbv a = gbv.scaling(0.8F);
-
-   public fxx(gbm $$0) {
-      super($$0);
-   }
+public interface fxx {
+   void a(buy var1, fek var2);
 }

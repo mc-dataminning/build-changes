@@ -1,36 +1,36 @@
-public record aet(agq e, byte f) implements zp<ace> {
-   public static final zg<wt, aet> a = zp.a(aet::a, aet::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   private aet(wt $$0) {
-      this(new agq($$0), $$0.readByte());
+public class aet implements zs<ach> {
+   public static final zj<wi, aet> a = zs.a(aet::a, aet::new);
+   private final IntList b;
+
+   public aet(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(wt $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
+   public aet(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aet(wi $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(wi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zr<aet> a() {
-      return agt.am;
+   public zu<aet> a() {
+      return agw.ak;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
-   }
-
-   public agq b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public IntList b() {
+      return this.b;
    }
 }

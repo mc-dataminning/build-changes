@@ -1,38 +1,14 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface dzu<B, T extends B> {
-   static <B, T extends B> dzu<B, T> a(final Class<T> $$0) {
-      return new dzu<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public interface dzu<T> extends AutoCloseable {
+   CompletableFuture<dzp<T>> a(del var1);
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   void a(dzp<T> var1);
+
+   void a(boolean var1);
+
+   @Override
+   default void close() throws IOException {
    }
-
-   static <B, T extends B> dzu<B, T> b(final Class<T> $$0) {
-      return new dzu<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
-
-   @Nullable
-   T a(B var1);
-
-   Class<? extends B> a();
 }

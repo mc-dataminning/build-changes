@@ -1,19 +1,22 @@
-public class grw extends gsx<guc, fxv> {
-   private static final ali a = ali.b("textures/entity/breeze/breeze_wind.png");
-   private final fxv b;
+public class grw extends gpt<cmk, gvu> {
+   private static final all a = all.b("textures/entity/illager/vindicator.png");
 
-   public grw(gok.a $$0, gqg<guc, fxv> $$1) {
-      super($$1);
-      this.b = new fxv($$0.a(gbl.C));
+   public grw(gpa.a $$0) {
+      super($$0, new fzo<>($$0.a(gcb.cU)), 0.5F);
+      this.a(new gtg<gvu, fzo<gvu>>(this, $$0.b()) {
+         public void a(fek $$0, gix $$1, int $$2, gvu $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public void a(feb $$0, gih $$1, int $$2, guc $$3, float $$4, float $$5) {
-      fef $$6 = $$1.getBuffer(gir.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gnq.a(this.b, this.b.d()).a($$0, $$6, $$2, gxu.d);
+   public all a(gvu $$0) {
+      return a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public gvu c() {
+      return new gvu();
    }
 }

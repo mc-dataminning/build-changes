@@ -1,68 +1,110 @@
-public final class ebp {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private ebp() {
+public record ebp(ebc b, ebc c, ebc d, ebc e, ebc f, ebc g, ebc h, ebc i, ebc j, ebc k, ebc l, ebc m, ebc n, ebc o, ebc p) {
+   public static final Codec<ebp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", ebp::a),
+               a("fluid_level_floodedness", ebp::b),
+               a("fluid_level_spread", ebp::c),
+               a("lava", ebp::d),
+               a("temperature", ebp::e),
+               a("vegetation", ebp::f),
+               a("continents", ebp::g),
+               a("erosion", ebp::h),
+               a("depth", ebp::i),
+               a("ridges", ebp::j),
+               a("initial_density_without_jaggedness", ebp::k),
+               a("final_density", ebp::l),
+               a("vein_toggle", ebp::m),
+               a("vein_ridged", ebp::n),
+               a("vein_gap", ebp::o)
+            )
+            .apply($$0, ebp::new)
+   );
+
+   private static RecordCodecBuilder<ebp, ebc> a(String $$0, Function<ebp, ebc> $$1) {
+      return ebc.d.fieldOf($$0).forGetter($$1);
    }
 
-   protected static ebj.c a(eay $$0, eay $$1, eay $$2, ebs $$3) {
-      dvj $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         ebp.a $$8 = $$6 > 0.0 ? ebp.a.a : ebp.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = azk.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azs $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = azk.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   public ebp a(ebc.f $$0) {
+      return new ebp(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   protected static enum a {
-      a(dig.ra.m(), dig.tg.m(), dig.c.m(), 0, 50),
-      b(dig.Q.m(), dig.tf.m(), dig.qz.m(), -60, -8);
+   public ebc a() {
+      return this.b;
+   }
 
-      final dvj e;
-      final dvj f;
-      final dvj g;
-      protected final int c;
-      protected final int d;
+   public ebc b() {
+      return this.c;
+   }
 
-      private a(final dvj $$0, final dvj $$1, final dvj $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public ebc c() {
+      return this.d;
+   }
+
+   public ebc d() {
+      return this.e;
+   }
+
+   public ebc e() {
+      return this.f;
+   }
+
+   public ebc f() {
+      return this.g;
+   }
+
+   public ebc g() {
+      return this.h;
+   }
+
+   public ebc h() {
+      return this.i;
+   }
+
+   public ebc i() {
+      return this.j;
+   }
+
+   public ebc j() {
+      return this.k;
+   }
+
+   public ebc k() {
+      return this.l;
+   }
+
+   public ebc l() {
+      return this.m;
+   }
+
+   public ebc m() {
+      return this.n;
+   }
+
+   public ebc n() {
+      return this.o;
+   }
+
+   public ebc o() {
+      return this.p;
    }
 }

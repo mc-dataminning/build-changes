@@ -1,8 +1,10 @@
-public class gwk extends gvl {
-   public boolean a;
-   public final btw b = new btw();
-   public final btw c = new btw();
-   public final btw d = new btw();
-   public final btw e = new btw();
-   public final btw f = new btw();
+public class gwk extends gwb {
+   public chl.b a;
+   public float b;
+   public fzy.a c;
+
+   public gwk() {
+      this.a = chl.b.a;
+      this.c = fzy.a.a;
+   }
 }

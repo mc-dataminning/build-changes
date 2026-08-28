@@ -1,23 +1,20 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Set;
+public interface ffo {
+   ffe b();
 
-public class ffo extends ffv implements ffp {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
-   @SerializedName("experiments")
-   private final Set<String> e;
+   void d();
 
-   public ffo(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   static ffo f() {
+      return new ffo() {
+         private final ffe a = new ffe();
+
+         @Override
+         public ffe b() {
+            return this.a;
+         }
+
+         @Override
+         public void d() {
+         }
+      };
    }
 }

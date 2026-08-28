@@ -1,56 +1,125 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class auo extends auf {
-   private static final aub c = new aub(xi.c("dataPack.vanilla.description"), ab.b().a(ato.b), Optional.empty());
-   private static final ati d = new ati(crh.i);
-   private static final ate e = ate.a(aub.b, c, ati.a, d);
-   private static final atl f = new atl("vanilla", xi.c("dataPack.vanilla.name"), aum.c, Optional.of(b));
-   private static final atn g = new atn(false, aui.b.b, false);
-   private static final atn h = new atn(false, aui.b.a, false);
-   private static final ali i = ali.b("datapacks");
+public class auo {
+   private final Set<auq> a;
+   private Map<String, aul> b = ImmutableMap.of();
+   private List<aul> c = ImmutableList.of();
 
-   public auo(ezd $$0) {
-      super(ato.b, b(), i, $$0);
+   public auo(auq... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   private static atl a(String $$0, xi $$1) {
-      return new atl($$0, $$1, aum.d, Optional.of(auh.a($$0)));
+   public static String a(Collection<aul> $$0) {
+      return $$0.stream().map($$0x -> $$0x.g() + ($$0x.d().a() ? "" : " (incompatible)")).collect(Collectors.joining(", "));
    }
 
-   @VisibleForTesting
-   public static atq b() {
-      return new atr().a(e).a("minecraft").b().a().a(f);
+   public void a() {
+      List<String> $$0 = this.c.stream().map(aul::g).collect(ImmutableList.toImmutableList());
+      this.b = this.i();
+      this.c = this.c($$0);
    }
 
-   @Override
-   protected xi a(String $$0) {
-      return xi.b($$0);
+   private Map<String, aul> i() {
+      Map<String, aul> $$0 = Maps.newTreeMap();
+
+      for (auq $$1 : this.a) {
+         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
+   }
+
+   public boolean b() {
+      List<aul> $$0 = this.c(List.of());
+      return !this.c.equals($$0);
+   }
+
+   public void b(Collection<String> $$0) {
+      this.c = this.c($$0);
+   }
+
+   public boolean a(String $$0) {
+      aul $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<aul> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      aul $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<aul> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<aul> c(Collection<String> $$0) {
+      List<aul> $$1 = this.d($$0).collect(ae.b());
+
+      for (aul $$2 : this.b.values()) {
+         if ($$2.i() && !$$1.contains($$2)) {
+            $$2.k().a($$1, $$2, aul::h, false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<aul> d(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> c() {
+      return this.b.keySet();
+   }
+
+   public Collection<aul> d() {
+      return this.b.values();
+   }
+
+   public Collection<String> e() {
+      return this.c.stream().map(aul::g).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public crj f() {
+      return this.g().stream().map(aul::e).reduce(crj::c).orElse(crj.a());
+   }
+
+   public Collection<aul> g() {
+      return this.c;
    }
 
    @Nullable
-   @Override
-   protected aui a(atm $$0) {
-      return aui.a(f, b($$0), ato.b, g);
+   public aul c(String $$0) {
+      return this.b.get($$0);
    }
 
-   @Nullable
-   @Override
-   protected aui a(String $$0, aui.c $$1, xi $$2) {
-      return aui.a(a($$0, $$2), $$1, ato.b, h);
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public static aul a(Path $$0, ezd $$1) {
-      return new aul(new auo($$1), new aug($$0, ato.b, aum.e, $$1));
-   }
-
-   public static aul c() {
-      return new aul(new auo(new ezd($$0 -> true)));
-   }
-
-   public static aul a(etq.c $$0) {
-      return a($$0.a(eto.j), $$0.d().e());
+   public List<atp> h() {
+      return this.c.stream().map(aul::f).collect(ImmutableList.toImmutableList());
    }
 }

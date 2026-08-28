@@ -1,23 +1,27 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fua extends fud {
-   private static final xi a = xi.c("options.mouse_settings.title");
+public class fua implements ftz {
+   public static final ftz a = new fua();
 
-   private static fjl<?>[] a(fjm $$0) {
-      return new fjl[]{$$0.d(), $$0.T(), $$0.G(), $$0.U(), $$0.ab()};
-   }
-
-   public fua(fra $$0, fjm $$1) {
-      super($$0, $$1, a);
+   private fua() {
    }
 
    @Override
-   protected void m() {
-      if (fcw.a()) {
-         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.H())).toArray(fjl[]::new));
-      } else {
-         this.d.a(a(this.c));
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
+   }
+
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
       }
    }
 }

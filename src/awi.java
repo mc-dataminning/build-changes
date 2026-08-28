@@ -1,41 +1,146 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class awi {
-   public static final Codec<awi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awk.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, awi::new)
-   );
-   private final jq<awk> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+public class awi extends awg {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 3;
+   private static final int f = 2;
+   private static final int g = 0;
+   private static final int h = 2;
+   private static final int i = -1;
+   private boolean j;
+   private final Socket k;
+   private final byte[] l = new byte[1460];
+   private final String m;
+   private final amc n;
 
-   public awi(jq<awk> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   awi(amc $$0, String $$1, Socket $$2) {
+      super("RCON Client " + $$2.getInetAddress());
+      this.n = $$0;
+      this.k = $$2;
+
+      try {
+         this.k.setSoTimeout(0);
+      } catch (Exception var5) {
+         this.a = false;
+      }
+
+      this.m = $$1;
    }
 
-   public jq<awk> a() {
-      return this.b;
+   @Override
+   public void run() {
+      try {
+         try {
+            while (this.a) {
+               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
+               int $$1 = $$0.read(this.l, 0, 1460);
+               if (10 > $$1) {
+                  return;
+               }
+
+               int $$2 = 0;
+               int $$3 = awd.b(this.l, 0, $$1);
+               if ($$3 != $$1 - 4) {
+                  return;
+               }
+
+               $$2 += 4;
+               int $$4 = awd.b(this.l, $$2, $$1);
+               $$2 += 4;
+               int $$5 = awd.a(this.l, $$2);
+               $$2 += 4;
+               switch ($$5) {
+                  case 2:
+                     if (this.j) {
+                        String $$7 = awd.a(this.l, $$2, $$1);
+
+                        try {
+                           this.a($$4, this.n.a($$7));
+                        } catch (Exception var15) {
+                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
+                        }
+                        break;
+                     }
+
+                     this.d();
+                     break;
+                  case 3:
+                     String $$6 = awd.a(this.l, $$2, $$1);
+                     $$2 += $$6.length();
+                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
+                        this.j = true;
+                        this.a($$4, 2, "");
+                        break;
+                     }
+
+                     this.j = false;
+                     this.d();
+                     break;
+                  default:
+                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
+               }
+            }
+
+            return;
+         } catch (IOException var16) {
+         } catch (Exception var17) {
+            d.error("Exception whilst parsing RCON input", var17);
+         }
+      } finally {
+         this.e();
+         d.info("Thread {} shutting down", this.b);
+         this.a = false;
+      }
    }
 
-   public int b() {
-      return this.c;
+   private void a(int $$0, int $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
+      DataOutputStream $$4 = new DataOutputStream($$3);
+      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
+      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
+      $$4.writeInt(Integer.reverseBytes($$0));
+      $$4.writeInt(Integer.reverseBytes($$1));
+      $$4.write($$5);
+      $$4.write(0);
+      $$4.write(0);
+      this.k.getOutputStream().write($$3.toByteArray());
    }
 
-   public int c() {
-      return this.d;
+   private void d() throws IOException {
+      this.a(-1, 2, "");
    }
 
-   public boolean d() {
-      return this.e;
+   private void a(int $$0, String $$1) throws IOException {
+      int $$2 = $$1.length();
+
+      do {
+         int $$3 = 4096 <= $$2 ? 4096 : $$2;
+         this.a($$0, 0, $$1.substring(0, $$3));
+         $$1 = $$1.substring($$3);
+         $$2 = $$1.length();
+      } while (0 != $$2);
+   }
+
+   @Override
+   public void b() {
+      this.a = false;
+      this.e();
+      super.b();
+   }
+
+   private void e() {
+      try {
+         this.k.close();
+      } catch (IOException var2) {
+         d.warn("Failed to close socket", var2);
+      }
    }
 }

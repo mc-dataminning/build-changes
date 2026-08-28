@@ -1,29 +1,29 @@
-public class acy implements zp<ace> {
-   public static final zg<wf, acy> a = zp.a(acy::a, acy::new);
-   private final int b;
+public class acy implements zs<ach> {
+   public static final zj<wi, acy> a = zs.a(acy::a, acy::new);
+   private final boolean b;
 
-   public acy(int $$0) {
+   public acy(boolean $$0) {
       this.b = $$0;
    }
 
-   private acy(wf $$0) {
-      this.b = $$0.x();
+   private acy(wi $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(wf $$0) {
-      $$0.f(this.b);
+   private void a(wi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zr<acy> a() {
-      return agt.t;
+   public zu<acy> a() {
+      return agw.q;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
    }
 }

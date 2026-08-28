@@ -1,95 +1,82 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class dte {
-   public static final alh<dtd> a = a("blank");
-   public static final alh<dtd> b = a("angler");
-   public static final alh<dtd> c = a("archer");
-   public static final alh<dtd> d = a("arms_up");
-   public static final alh<dtd> e = a("blade");
-   public static final alh<dtd> f = a("brewer");
-   public static final alh<dtd> g = a("burn");
-   public static final alh<dtd> h = a("danger");
-   public static final alh<dtd> i = a("explorer");
-   public static final alh<dtd> j = a("flow");
-   public static final alh<dtd> k = a("friend");
-   public static final alh<dtd> l = a("guster");
-   public static final alh<dtd> m = a("heart");
-   public static final alh<dtd> n = a("heartbreak");
-   public static final alh<dtd> o = a("howl");
-   public static final alh<dtd> p = a("miner");
-   public static final alh<dtd> q = a("mourner");
-   public static final alh<dtd> r = a("plenty");
-   public static final alh<dtd> s = a("prize");
-   public static final alh<dtd> t = a("scrape");
-   public static final alh<dtd> u = a("sheaf");
-   public static final alh<dtd> v = a("shelter");
-   public static final alh<dtd> w = a("skull");
-   public static final alh<dtd> x = a("snort");
-   private static final Map<cvx, alh<dtd>> y = Map.ofEntries(
-      Map.entry(cwf.qM, a),
-      Map.entry(cwf.xR, b),
-      Map.entry(cwf.xS, c),
-      Map.entry(cwf.xT, d),
-      Map.entry(cwf.xU, e),
-      Map.entry(cwf.xV, f),
-      Map.entry(cwf.xW, g),
-      Map.entry(cwf.xX, h),
-      Map.entry(cwf.xY, i),
-      Map.entry(cwf.xZ, j),
-      Map.entry(cwf.ya, k),
-      Map.entry(cwf.yb, l),
-      Map.entry(cwf.yc, m),
-      Map.entry(cwf.yd, n),
-      Map.entry(cwf.ye, o),
-      Map.entry(cwf.yf, p),
-      Map.entry(cwf.yg, q),
-      Map.entry(cwf.yh, r),
-      Map.entry(cwf.yi, s),
-      Map.entry(cwf.yj, t),
-      Map.entry(cwf.yk, u),
-      Map.entry(cwf.yl, v),
-      Map.entry(cwf.ym, w),
-      Map.entry(cwf.yn, x)
-   );
+public abstract class dte {
+   private static final int a = 5;
+   private int b;
+   private double c;
 
-   @Nullable
-   public static alh<dtd> a(cvx $$0) {
-      return y.get($$0);
+   protected abstract void a(dff var1, jh var2, dvo var3);
+
+   protected abstract void b(dff var1, jh var2, dvo var3);
+
+   protected abstract void a(dff var1, jh var2, dvo var3, int var4, int var5);
+
+   protected abstract boolean a(cor var1);
+
+   public void a(cor $$0, dff $$1, jh $$2, dvo $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, eak.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gM(), this.c);
    }
 
-   private static alh<dtd> a(String $$0) {
-      return alh.a(lz.ax, ali.b($$0));
+   public void b(cor $$0, dff $$1, jh $$2, dvo $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, eak.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   public static dtd a(kd<dtd> $$0) {
-      a($$0, b, "angler_pottery_pattern");
-      a($$0, c, "archer_pottery_pattern");
-      a($$0, d, "arms_up_pottery_pattern");
-      a($$0, e, "blade_pottery_pattern");
-      a($$0, f, "brewer_pottery_pattern");
-      a($$0, g, "burn_pottery_pattern");
-      a($$0, h, "danger_pottery_pattern");
-      a($$0, i, "explorer_pottery_pattern");
-      a($$0, j, "flow_pottery_pattern");
-      a($$0, k, "friend_pottery_pattern");
-      a($$0, l, "guster_pottery_pattern");
-      a($$0, m, "heart_pottery_pattern");
-      a($$0, n, "heartbreak_pottery_pattern");
-      a($$0, o, "howl_pottery_pattern");
-      a($$0, p, "miner_pottery_pattern");
-      a($$0, q, "mourner_pottery_pattern");
-      a($$0, r, "plenty_pottery_pattern");
-      a($$0, s, "prize_pottery_pattern");
-      a($$0, t, "scrape_pottery_pattern");
-      a($$0, u, "sheaf_pottery_pattern");
-      a($$0, v, "shelter_pottery_pattern");
-      a($$0, w, "skull_pottery_pattern");
-      a($$0, x, "snort_pottery_pattern");
-      return a($$0, a, "decorated_pot_side");
+   private List<cor> a(dff $$0, jh $$1) {
+      double $$2 = this.c + 4.0;
+      ezm $$3 = new ezm($$1).g($$2);
+      return $$0.a(dzy.a(cor.class), $$3, this::a);
    }
 
-   private static dtd a(kd<dtd> $$0, alh<dtd> $$1, String $$2) {
-      return kd.a($$0, $$1, new dtd(ali.b($$2)));
+   public void c(dff $$0, jh $$1, dvo $$2) {
+      List<cor> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (cor $$4 : $$3) {
+         this.c = Math.max($$4.gM(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, eak.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, eak.j, $$1);
+         }
+
+         this.b = $$5;
+      }
+
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   private static void d(dff $$0, jh $$1, dvo $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

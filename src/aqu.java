@@ -1,113 +1,309 @@
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.BitSet;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
 
-public interface aqu<T> {
-   static <T> aqu<T> a(T $$0) {
-      return new aqu.b<>($$0);
+public class aqu extends ari {
+   public static final aqx<dxt> a = aqx.a("Unloaded level chunk");
+   private static final CompletableFuture<aqx<dxt>> e = CompletableFuture.completedFuture(a);
+   private final dfh f;
+   private volatile CompletableFuture<aqx<dxt>> g = e;
+   private volatile CompletableFuture<aqx<dxt>> h = e;
+   private volatile CompletableFuture<aqx<dxt>> i = e;
+   private int j;
+   private int k;
+   private int l;
+   private boolean m;
+   private final ShortSet[] n;
+   private final BitSet o = new BitSet();
+   private final BitSet p = new BitSet();
+   private final erd q;
+   private final aqu.a r;
+   private final aqu.b s;
+   private boolean t;
+   private CompletableFuture<?> u = CompletableFuture.completedFuture(null);
+   private CompletableFuture<?> v = CompletableFuture.completedFuture(null);
+   private CompletableFuture<?> w = CompletableFuture.completedFuture(null);
+
+   public aqu(del $$0, int $$1, dfh $$2, erd $$3, aqu.a $$4, aqu.b $$5) {
+      super($$0);
+      this.f = $$2;
+      this.q = $$3;
+      this.r = $$4;
+      this.s = $$5;
+      this.j = aqv.b + 1;
+      this.k = this.j;
+      this.l = this.j;
+      this.a($$1);
+      this.n = new ShortSet[$$2.am()];
    }
 
-   static <T> aqu<T> a(String $$0) {
-      return a(() -> $$0);
+   public CompletableFuture<aqx<dxt>> a() {
+      return this.h;
    }
 
-   static <T> aqu<T> a(Supplier<String> $$0) {
-      return new aqu.a<>($$0);
+   public CompletableFuture<aqx<dxt>> b() {
+      return this.i;
    }
 
-   boolean a();
+   public CompletableFuture<aqx<dxt>> c() {
+      return this.g;
+   }
 
    @Nullable
-   T b(@Nullable T var1);
-
-   @Nullable
-   static <R> R a(aqu<? extends R> $$0, @Nullable R $$1) {
-      R $$2 = (R)$$0.b(null);
-      return $$2 != null ? $$2 : $$1;
+   public dxt d() {
+      return this.a().getNow(a).b(null);
    }
 
    @Nullable
-   String b();
+   public dxt e() {
+      return !this.v.isDone() ? null : this.d();
+   }
 
-   aqu<T> a(Consumer<T> var1);
+   public CompletableFuture<?> f() {
+      return this.v;
+   }
 
-   <R> aqu<R> a(Function<T, R> var1);
+   public void a(CompletableFuture<?> $$0) {
+      if (this.v.isDone()) {
+         this.v = $$0;
+      } else {
+         this.v = this.v.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
+      }
+   }
 
-   <E extends Throwable> T b(Supplier<E> var1) throws E;
+   public CompletableFuture<?> g() {
+      return this.w;
+   }
 
-   public static record a<T>(Supplier<String> a) implements aqu<T> {
-      @Override
-      public boolean a() {
+   public boolean h() {
+      return this.w.isDone();
+   }
+
+   @Override
+   protected void b(CompletableFuture<?> $$0) {
+      if (this.w.isDone()) {
+         this.w = $$0;
+      } else {
+         this.w = this.w.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
+      }
+   }
+
+   public boolean a(jh $$0) {
+      dxt $$1 = this.d();
+      if ($$1 == null) {
          return false;
-      }
+      } else {
+         boolean $$2 = this.m;
+         int $$3 = this.f.f($$0.v());
+         if (this.n[$$3] == null) {
+            this.m = true;
+            this.n[$$3] = new ShortOpenHashSet();
+         }
 
-      @Nullable
-      @Override
-      public T b(@Nullable T $$0) {
-         return $$0;
-      }
-
-      @Override
-      public String b() {
-         return this.a.get();
-      }
-
-      @Override
-      public aqu<T> a(Consumer<T> $$0) {
-         return this;
-      }
-
-      @Override
-      public <R> aqu<R> a(Function<T, R> $$0) {
-         return new aqu.a(this.a);
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         throw $$0.get();
-      }
-
-      public Supplier<String> c() {
-         return this.a;
+         this.n[$$3].add(kj.b($$0));
+         return !$$2;
       }
    }
 
-   public static record b<T>(T a) implements aqu<T> {
-      @Override
-      public boolean a() {
-         return true;
+   public boolean a(dfo $$0, int $$1) {
+      dxj $$2 = this.b(dyk.k);
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a(true);
+         dxt $$3 = this.d();
+         if ($$3 == null) {
+            return false;
+         } else {
+            int $$4 = this.q.d();
+            int $$5 = this.q.e();
+            if ($$1 >= $$4 && $$1 <= $$5) {
+               BitSet $$6 = $$0 == dfo.a ? this.p : this.o;
+               int $$7 = $$1 - $$4;
+               if (!$$6.get($$7)) {
+                  $$6.set($$7);
+                  return true;
+               } else {
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         }
+      }
+   }
+
+   public void a(dxt $$0) {
+      if (this.m || !this.p.isEmpty() || !this.o.isEmpty()) {
+         dff $$1 = $$0.E();
+         if (!this.p.isEmpty() || !this.o.isEmpty()) {
+            List<arr> $$2 = this.s.a(this.d, true);
+            if (!$$2.isEmpty()) {
+               adw $$3 = new adw($$0.f(), this.q, this.p, this.o);
+               this.a($$2, $$3);
+            }
+
+            this.p.clear();
+            this.o.clear();
+         }
+
+         if (this.m) {
+            List<arr> $$4 = this.s.a(this.d, false);
+
+            for (int $$5 = 0; $$5 < this.n.length; $$5++) {
+               ShortSet $$6 = this.n[$$5];
+               if ($$6 != null) {
+                  this.n[$$5] = null;
+                  if (!$$4.isEmpty()) {
+                     int $$7 = this.f.h($$5);
+                     kj $$8 = kj.a($$0.f(), $$7);
+                     if ($$6.size() == 1) {
+                        jh $$9 = $$8.g($$6.iterator().nextShort());
+                        dvo $$10 = $$1.a_($$9);
+                        this.a($$4, new acq($$9, $$10));
+                        this.a($$4, $$1, $$9, $$10);
+                     } else {
+                        dxu $$11 = $$0.b($$5);
+                        aey $$12 = new aey($$8, $$6, $$11);
+                        this.a($$4, $$12);
+                        $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
+                     }
+                  }
+               }
+            }
+
+            this.m = false;
+         }
+      }
+   }
+
+   private void a(List<arr> $$0, dff $$1, jh $$2, dvo $$3) {
+      if ($$3.x()) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
+   private void a(List<arr> $$0, dff $$1, jh $$2) {
+      dsr $$3 = $$1.c_($$2);
+      if ($$3 != null) {
+         zs<?> $$4 = $$3.ay_();
+         if ($$4 != null) {
+            this.a($$0, $$4);
+         }
+      }
+   }
+
+   private void a(List<arr> $$0, zs<?> $$1) {
+      $$0.forEach($$1x -> $$1x.g.b($$1));
+   }
+
+   @Override
+   public int i() {
+      return this.k;
+   }
+
+   @Override
+   public int j() {
+      return this.l;
+   }
+
+   private void b(int $$0) {
+      this.l = $$0;
+   }
+
+   public void a(int $$0) {
+      this.k = $$0;
+   }
+
+   private void a(aqw $$0, CompletableFuture<aqx<dxt>> $$1, Executor $$2, arg $$3) {
+      this.u.cancel(false);
+      CompletableFuture<Void> $$4 = new CompletableFuture<>();
+      $$4.thenRunAsync(() -> $$0.a(this.d, $$3), $$2);
+      this.u = $$4;
+      $$1.thenAccept($$1x -> $$1x.a($$1xx -> $$4.complete(null)));
+   }
+
+   private void a(aqw $$0, arg $$1) {
+      this.u.cancel(false);
+      $$0.a(this.d, $$1);
+   }
+
+   protected void a(aqw $$0, Executor $$1) {
+      arg $$2 = aqv.c(this.j);
+      arg $$3 = aqv.c(this.k);
+      boolean $$4 = $$2.a(arg.b);
+      boolean $$5 = $$3.a(arg.b);
+      this.t |= $$5;
+      if (!$$4 && $$5) {
+         this.g = $$0.c(this);
+         this.a($$0, this.g, $$1, arg.b);
+         this.b(this.g);
       }
 
-      @Override
-      public T b(@Nullable T $$0) {
-         return this.a;
+      if ($$4 && !$$5) {
+         this.g.complete(a);
+         this.g = e;
       }
 
-      @Nullable
-      @Override
-      public String b() {
-         return null;
+      boolean $$6 = $$2.a(arg.c);
+      boolean $$7 = $$3.a(arg.c);
+      if (!$$6 && $$7) {
+         this.h = $$0.b(this);
+         this.a($$0, this.h, $$1, arg.c);
+         this.b(this.h);
       }
 
-      @Override
-      public aqu<T> a(Consumer<T> $$0) {
-         $$0.accept(this.a);
-         return this;
+      if ($$6 && !$$7) {
+         this.h.complete(a);
+         this.h = e;
       }
 
-      @Override
-      public <R> aqu<R> a(Function<T, R> $$0) {
-         return new aqu.b<>($$0.apply(this.a));
+      boolean $$8 = $$2.a(arg.d);
+      boolean $$9 = $$3.a(arg.d);
+      if (!$$8 && $$9) {
+         if (this.i != e) {
+            throw (IllegalStateException)ae.b(new IllegalStateException());
+         }
+
+         this.i = $$0.a(this);
+         this.a($$0, this.i, $$1, arg.d);
+         this.b(this.i);
       }
 
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         return this.a;
+      if ($$8 && !$$9) {
+         this.i.complete(a);
+         this.i = e;
       }
 
-      public T c() {
-         return this.a;
+      if (!$$3.a($$2)) {
+         this.a($$0, $$3);
       }
+
+      this.r.onLevelChange(this.d, this::j, this.k, this::b);
+      this.j = this.k;
+   }
+
+   public boolean k() {
+      return this.t;
+   }
+
+   public void l() {
+      this.t = aqv.c(this.k).a(arg.b);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onLevelChange(del var1, IntSupplier var2, int var3, IntConsumer var4);
+   }
+
+   public interface b {
+      List<arr> a(del var1, boolean var2);
    }
 }

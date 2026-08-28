@@ -1,66 +1,29 @@
-import java.util.List;
+import java.util.Locale;
 
-public class fno implements fnr {
-   private static final ali e = ali.b("toast/advancement");
-   public static final int a = 5000;
-   private final ah f;
-   private boolean g;
-   private fnr.a h = fnr.a.b;
+public class fno extends fnl {
+   private static final int f = 500;
 
-   public fno(ah $$0) {
-      this.f = $$0;
+   public fno(flh $$0, bnf $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fnr.a a() {
-      return this.h;
+   protected void d(flj $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
    @Override
-   public void a(fns $$0, long $$1) {
-      at $$2 = this.f.b().c().orElse(null);
-      if ($$2 == null) {
-         this.h = fnr.a.b;
-      } else {
-         if (!this.g && $$1 > 0L) {
-            this.g = true;
-            if ($$2.e() == an.b) {
-               $$0.c().ak().a(hbv.a(awl.AB, 1.0F, 1.0F));
-            }
-         }
-
-         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fnr.a.b : fnr.a.a;
-      }
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
    }
 
    @Override
-   public void a(fku $$0, fks $$1, long $$2) {
-      at $$3 = this.f.b().c().orElse(null);
-      $$0.a(gir::B, e, 0, 0, this.b(), this.c());
-      if ($$3 != null) {
-         List<ayw> $$4 = $$1.c($$3.a(), 125);
-         int $$5 = $$3.e() == an.b ? -30465 : -256;
-         if ($$4.size() == 1) {
-            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
-            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = azk.d(azk.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = azk.d(azk.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
+   }
 
-               for (ayw $$11 : $$4) {
-                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
-      }
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

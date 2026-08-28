@@ -1,42 +1,15 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.List;
 
-public class vt extends vp {
-   private final Deque<vr> a = new ArrayDeque<>();
-
-   public vt(vq... $$0) {
-      vr $$1 = vr.a();
-
-      for (vq $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+public record vt(List<String> a, vm<?> b, String c) {
+   public vt(vm<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   @Override
-   public ve.a a(vj<?> $$0, String $$1) {
-      vr $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return ve.a.b;
-      } else {
-         if ($$0 == uk.b) {
-            vr $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
+   public vt(String $$0, vm<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
    }
 
-   @Override
-   public ve.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
-
-      return super.b();
+   public vt(String $$0, String $$1, vm<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

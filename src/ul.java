@@ -2,37 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ul extends va {
-   private static final int c = 16;
-   public static final ul a = new ul(0.0);
-   public static final vj<ul> b = new vj.a<ul>() {
-      public ul a(DataInput $$0, ut $$1) throws IOException {
+public class ul extends vd {
+   private static final int w = 9;
+   public static final vm<ul> a = new vm.a<ul>() {
+      public ul a(DataInput $$0, uw $$1) throws IOException {
          return ul.a(d($$0, $$1));
       }
 
       @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
+      public vh.b a(DataInput $$0, vh $$1, uw $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static double d(DataInput $$0, ut $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
+      private static byte d(DataInput $$0, uw $$1) throws IOException {
+         $$1.b(9L);
+         return $$0.readByte();
       }
 
       @Override
       public int c() {
-         return 8;
+         return 1;
       }
 
       @Override
       public String a() {
-         return "DOUBLE";
+         return "BYTE";
       }
 
       @Override
       public String b() {
-         return "TAG_Double";
+         return "TAG_Byte";
       }
 
       @Override
@@ -40,34 +39,40 @@ public class ul extends va {
          return true;
       }
    };
-   private final double w;
+   public static final ul b = a((byte)0);
+   public static final ul c = a((byte)1);
+   private final byte x;
 
-   private ul(double $$0) {
-      this.w = $$0;
+   ul(byte $$0) {
+      this.x = $$0;
    }
 
-   public static ul a(double $$0) {
-      return $$0 == 0.0 ? a : new ul($$0);
+   public static ul a(byte $$0) {
+      return ul.a.a[128 + $$0];
+   }
+
+   public static ul a(boolean $$0) {
+      return $$0 ? c : b;
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+      $$0.writeByte(this.x);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 9;
    }
 
    @Override
    public byte b() {
-      return 6;
+      return 1;
    }
 
    @Override
-   public vj<ul> c() {
-      return b;
+   public vm<ul> c() {
+      return a;
    }
 
    public ul e() {
@@ -76,57 +81,69 @@ public class ul extends va {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ul && this.w == ((ul)$$0).w;
+      return this == $$0 ? true : $$0 instanceof ul && this.x == ((ul)$$0).x;
    }
 
    @Override
    public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
+      return this.x;
    }
 
    @Override
-   public void a(vl $$0) {
+   public void a(vo $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)Math.floor(this.w);
+      return (long)this.x;
    }
 
    @Override
    public int g() {
-      return azk.a(this.w);
+      return this.x;
    }
 
    @Override
    public short h() {
-      return (short)(azk.a(this.w) & 65535);
+      return (short)this.x;
    }
 
    @Override
    public byte i() {
-      return (byte)(azk.a(this.w) & 0xFF);
+      return this.x;
    }
 
    @Override
    public double j() {
-      return this.w;
+      return (double)this.x;
    }
 
    @Override
    public float k() {
-      return (float)this.w;
+      return (float)this.x;
    }
 
    @Override
    public Number l() {
-      return this.w;
+      return this.x;
    }
 
    @Override
-   public ve.b a(ve $$0) {
-      return $$0.a(this.w);
+   public vh.b a(vh $$0) {
+      return $$0.a(this.x);
+   }
+
+   static class a {
+      static final ul[] a = new ul[256];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ul((byte)($$0 - 128));
+         }
+      }
    }
 }

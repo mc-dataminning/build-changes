@@ -1,77 +1,64 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbk extends cby {
-   private static final cfr d = cfr.b().a(8.0).d();
-   protected final cgr a;
-   private final Class<? extends cgr> e;
-   protected final dfb b;
+public class cbk extends ccc {
+   private final chy a;
    @Nullable
-   protected cgr c;
-   private int f;
-   private final double g;
+   private cor b;
+   private final dff c;
+   private final float d;
+   private int e;
+   private final cfv f;
 
-   public cbk(cgr $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cgr>)$$0.getClass());
-   }
-
-   public cbk(cgr $$0, double $$1, Class<? extends cgr> $$2) {
+   public cbk(chy $$0, float $$1) {
       this.a = $$0;
-      this.b = $$0.dX();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(cby.a.a, cby.a.b));
+      this.c = $$0.dY();
+      this.d = $$1;
+      this.f = cfv.b().a((double)$$1);
+      this.a(EnumSet.of(ccc.a.b));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gE()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
-      }
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean c() {
-      return this.c.bM() && this.c.gE() && this.f < 60 && !this.c.gr();
+      if (!this.b.bN()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.A(true);
+      this.e = this.a(40 + this.a.eb().a(40));
    }
 
    @Override
    public void e() {
-      this.c = null;
-      this.f = 0;
+      this.a.A(false);
+      this.b = null;
    }
 
    @Override
    public void a() {
-      this.a.K().a(this.c, 10.0F, (float)this.a.ad());
-      this.a.P().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
-      }
+      this.a.K().a(this.b.dD(), this.b.dH(), this.b.dJ(), 10.0F, (float)this.a.ad());
+      this.e--;
    }
 
-   @Nullable
-   private cgr h() {
-      List<? extends cgr> $$0 = this.b.a(this.e, d, this.a, this.a.cS().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cgr $$2 = null;
-
-      for (cgr $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gr() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
+   private boolean a(cor $$0) {
+      for (bsg $$1 : bsg.values()) {
+         cwf $$2 = $$0.b($$1);
+         if ($$2.a(cwj.rQ) || this.a.l($$2)) {
+            return true;
          }
       }
 
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((arn)this.b, this.c);
+      return false;
    }
 }

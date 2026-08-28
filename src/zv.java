@@ -1,23 +1,54 @@
-public interface zv extends aby {
-   void a(zz var1);
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   void a(aaa var1);
+public class zv {
+   private static final Logger a = LogUtils.getLogger();
 
-   void a(zw var1);
+   public static <T extends wr> void a(zs<T> $$0, T $$1, arq $$2) throws alx {
+      a($$0, $$1, $$2.o());
+   }
 
-   void a(zy var1);
+   public static <T extends wr> void a(zs<T> $$0, T $$1, bqw<?> $$2) throws alx {
+      if (!$$2.bx()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var4) {
+                  if (var4 instanceof z $$3 && $$3.getCause() instanceof OutOfMemoryError) {
+                     throw a(var4, $$0, $$1);
+                  }
 
-   void a(aac var1);
+                  $$1.a($$0, var4);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw alx.a;
+      }
+   }
 
-   void a(aab var1);
+   public static <T extends wr> z a(Exception $$0, zs<T> $$1, T $$2) {
+      if ($$0 instanceof z $$3) {
+         a($$3.a(), $$2, $$1);
+         return $$3;
+      } else {
+         o $$4 = o.a($$0, "Main thread packet handler");
+         a($$4, $$2, $$1);
+         return new z($$4);
+      }
+   }
 
-   void a(aag var1);
+   public static <T extends wr> void a(o $$0, T $$1, @Nullable zs<T> $$2) {
+      if ($$2 != null) {
+         p $$3 = $$0.a("Incoming Packet");
+         $$3.a("Type", () -> $$2.a().toString());
+         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
+         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
+      }
 
-   void a(aae var1);
-
-   void a(aaf var1);
-
-   void a(zx var1);
-
-   void a(aad var1);
+      $$1.a($$0);
+   }
 }

@@ -1,137 +1,160 @@
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
+import com.mojang.authlib.GameProfile;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import javax.annotation.Nullable;
 
-public class asm extends asv {
-   private final ConfidentialClientApplication b;
-   private final ClientCredentialParameters c;
-   private final Set<String> d;
-   private final int e;
+public class asm extends asy {
+   private static final String b = "v1/chat";
+   final URL c;
+   final asm.a d;
+   final URL e;
+   final asm.a f;
+   private final String g;
 
-   private asm(URL $$0, asv.b $$1, asv.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$4;
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   private asm(URL $$0, asy.b $$1, URL $$2, asm.a $$3, URL $$4, asm.a $$5, String $$6, asy.a $$7, ExecutorService $$8) {
+      super($$0, $$1, $$7, $$8);
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
    @Nullable
-   public static asv a(String $$0) {
-      JsonObject $$1 = aza.a($$0);
-      URI $$2 = URI.create(aza.i($$1, "apiServer"));
-      String $$3 = aza.i($$1, "apiPath");
-      String $$4 = aza.i($$1, "scope");
-      String $$5 = aza.a($$1, "serverId", "");
-      String $$6 = aza.i($$1, "applicationId");
-      String $$7 = aza.i($$1, "tenantId");
-      String $$8 = aza.a($$1, "roomId", "Java:Chat");
-      String $$9 = aza.i($$1, "certificatePath");
-      String $$10 = aza.a($$1, "certificatePassword", "");
-      int $$11 = aza.a($$1, "hashesToDrop", -1);
-      int $$12 = aza.a($$1, "maxConcurrentRequests", 7);
-      JsonArray $$13 = aza.v($$1, "fullyFilteredEvents");
-      Set<String> $$14 = new HashSet<>();
-      $$13.forEach($$1x -> $$14.add(aza.a($$1x, "filteredEvent")));
-      int $$15 = aza.a($$1, "connectionReadTimeoutMs", 2000);
-
-      URL $$16;
+   public static asy a(String $$0) {
       try {
-         $$16 = $$2.resolve($$3).toURL();
-      } catch (MalformedURLException var26) {
-         throw new RuntimeException(var26);
-      }
+         JsonObject $$1 = azd.a($$0);
+         URI $$2 = new URI(azd.i($$1, "apiServer"));
+         String $$3 = azd.i($$1, "apiKey");
+         if ($$3.isEmpty()) {
+            throw new IllegalArgumentException("Missing API key");
+         } else {
+            int $$4 = azd.a($$1, "ruleId", 1);
+            String $$5 = azd.a($$1, "serverId", "");
+            String $$6 = azd.a($$1, "roomId", "Java:Chat");
+            int $$7 = azd.a($$1, "hashesToDrop", -1);
+            int $$8 = azd.a($$1, "maxConcurrentRequests", 7);
+            JsonObject $$9 = azd.a($$1, "endpoints", null);
+            String $$10 = a($$9, "chat", "v1/chat");
+            boolean $$11 = $$10.equals("v1/chat");
+            URL $$12 = $$2.resolve("/" + $$10).toURL();
+            URL $$13 = a($$2, $$9, "join", "v1/join");
+            URL $$14 = a($$2, $$9, "leave", "v1/leave");
+            asm.a $$15 = $$2x -> {
+               JsonObject $$3x = new JsonObject();
+               $$3x.addProperty("server", $$5);
+               $$3x.addProperty("room", $$6);
+               $$3x.addProperty("user_id", $$2x.getId().toString());
+               $$3x.addProperty("user_display_name", $$2x.getName());
+               return $$3x;
+            };
+            asy.b $$16;
+            if ($$11) {
+               $$16 = ($$3x, $$4x) -> {
+                  JsonObject $$5x = new JsonObject();
+                  $$5x.addProperty("rule", $$4);
+                  $$5x.addProperty("server", $$5);
+                  $$5x.addProperty("room", $$6);
+                  $$5x.addProperty("player", $$3x.getId().toString());
+                  $$5x.addProperty("player_display_name", $$3x.getName());
+                  $$5x.addProperty("text", $$4x);
+                  $$5x.addProperty("language", "*");
+                  return $$5x;
+               };
+            } else {
+               String $$17 = String.valueOf($$4);
+               $$16 = ($$3x, $$4x) -> {
+                  JsonObject $$5x = new JsonObject();
+                  $$5x.addProperty("rule_id", $$17);
+                  $$5x.addProperty("category", $$5);
+                  $$5x.addProperty("subcategory", $$6);
+                  $$5x.addProperty("user_id", $$3x.getId().toString());
+                  $$5x.addProperty("user_display_name", $$3x.getName());
+                  $$5x.addProperty("text", $$4x);
+                  $$5x.addProperty("language", "*");
+                  return $$5x;
+               };
+            }
 
-      asv.b $$19 = ($$2x, $$3x) -> {
-         JsonObject $$4x = new JsonObject();
-         $$4x.addProperty("userId", $$2x.getId().toString());
-         $$4x.addProperty("userDisplayName", $$2x.getName());
-         $$4x.addProperty("server", $$5);
-         $$4x.addProperty("room", $$8);
-         $$4x.addProperty("area", "JavaChatRealms");
-         $$4x.addProperty("data", $$3x);
-         $$4x.addProperty("language", "*");
-         return $$4x;
-      };
-      asv.a $$20 = asv.a.select($$11);
-      ExecutorService $$21 = a($$12);
-
-      IClientCertificate $$23;
-      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
-         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
-      } catch (Exception var28) {
-         a.warn("Failed to open certificate file");
+            asy.a $$19 = asy.a.select($$7);
+            ExecutorService $$20 = a($$8);
+            String $$21 = Base64.getEncoder().encodeToString($$3.getBytes(StandardCharsets.US_ASCII));
+            return new asm($$12, $$16, $$13, $$15, $$14, $$15, $$21, $$19, $$20);
+         }
+      } catch (Exception var20) {
+         a.warn("Failed to parse chat filter config {}", $$0, var20);
          return null;
       }
-
-      ConfidentialClientApplication $$27;
-      try {
-         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
-               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
-            .build();
-      } catch (Exception var25) {
-         a.warn("Failed to create confidential client application");
-         return null;
-      }
-
-      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
-      return new asm($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
    }
 
-   private IAuthenticationResult b() {
-      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
+   @Override
+   public asz a(GameProfile $$0) {
+      return new asy.c($$0) {
+         @Override
+         public void a() {
+            asm.this.a(this.b, asm.this.c, asm.this.d, this.c);
+         }
+
+         @Override
+         public void b() {
+            asm.this.a(this.b, asm.this.e, asm.this.f, this.c);
+         }
+      };
+   }
+
+   void a(GameProfile $$0, URL $$1, asm.a $$2, Executor $$3) {
+      $$3.execute(() -> {
+         JsonObject $$3x = $$2.encode($$0);
+
+         try {
+            this.b($$3x, $$1);
+         } catch (Exception var6) {
+            a.warn("Failed to send join/leave packet to {} for player {}", new Object[]{$$1, $$0, var6});
+         }
+      });
+   }
+
+   private void b(JsonObject $$0, URL $$1) throws IOException {
+      HttpURLConnection $$2 = this.a($$0, $$1);
+
+      try (InputStream $$3 = $$2.getInputStream()) {
+         this.a($$3);
+      }
    }
 
    @Override
    protected void a(HttpURLConnection $$0) {
-      IAuthenticationResult $$1 = this.b();
-      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
+      $$0.setRequestProperty("Authorization", "Basic " + this.g);
    }
 
    @Override
-   protected asg a(String $$0, asv.a $$1, JsonObject $$2) {
-      JsonObject $$3 = aza.a($$2, "result", null);
-      if ($$3 == null) {
-         return asg.b($$0);
+   protected asj a(String $$0, asy.a $$1, JsonObject $$2) {
+      boolean $$3 = azd.a($$2, "response", false);
+      if ($$3) {
+         return asj.a($$0);
       } else {
-         boolean $$4 = aza.a($$3, "filtered", true);
-         if (!$$4) {
-            return asg.a($$0);
+         String $$4 = azd.a($$2, "hashed", null);
+         if ($$4 == null) {
+            return asj.b($$0);
          } else {
-            for (JsonElement $$6 : aza.a($$3, "events", new JsonArray())) {
-               JsonObject $$7 = $$6.getAsJsonObject();
-               String $$8 = aza.a($$7, "id", "");
-               if (this.d.contains($$8)) {
-                  return asg.b($$0);
-               }
-            }
-
-            JsonArray $$9 = aza.a($$3, "redactedTextIndex", new JsonArray());
-            return new asg($$0, this.a($$0, $$9, $$1));
+            JsonArray $$5 = azd.v($$2, "hashes");
+            xp $$6 = this.a($$0, $$5, $$1);
+            return new asj($$0, $$6);
          }
       }
    }
 
-   @Override
-   protected int a() {
-      return this.e;
+   @FunctionalInterface
+   interface a {
+      JsonObject encode(GameProfile var1);
    }
 }

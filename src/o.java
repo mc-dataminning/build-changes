@@ -215,7 +215,7 @@ public class o {
    }
 
    public static void g() {
-      azi.a();
+      azl.a();
       new o("Don't panic!", new Throwable()).a(y.a);
    }
 }

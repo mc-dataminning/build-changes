@@ -1,47 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.jtracy.TracyClient;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class boq {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bok f = boj.a;
+public final class boq {
+   private static final ThreadLocal<bov> a = ThreadLocal.withInitial(bov::new);
+   private static final ThreadLocal<bor> b = new ThreadLocal<>();
+   private static final AtomicInteger c = new AtomicInteger();
 
-   public boq(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+   private boq() {
    }
 
-   public bon a() {
-      this.f = new bof(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   public static boq.a a(bor $$0) {
+      b($$0);
+      return boq::b;
    }
 
-   public void b() {
-      if (this.f != boj.a) {
-         bol $$0 = this.f.d();
-         this.f = boj.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ae.f() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
+   private static void b(bor $$0) {
+      if (b.get() != null) {
+         throw new IllegalStateException("Profiler is already active");
+      } else {
+         bor $$1 = c($$0);
+         b.set($$1);
+         c.incrementAndGet();
+         $$1.a();
       }
    }
 
-   @Nullable
-   public static boq a(String $$0) {
-      return null;
+   private static void b() {
+      bor $$0 = b.get();
+      if ($$0 == null) {
+         throw new IllegalStateException("Profiler was not active");
+      } else {
+         b.remove();
+         c.decrementAndGet();
+         $$0.b();
+      }
    }
 
-   public static bon a(bon $$0, @Nullable boq $$1) {
-      return $$1 != null ? bon.a($$1.a(), $$0) : $$0;
+   private static bor c(bor $$0) {
+      return bor.a(c(), $$0);
+   }
+
+   public static bor a() {
+      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), boq::c);
+   }
+
+   private static bor c() {
+      return (bor)(TracyClient.isAvailable() ? a.get() : bon.a);
+   }
+
+   public interface a extends AutoCloseable {
+      @Override
+      void close();
    }
 }

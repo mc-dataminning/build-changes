@@ -1,60 +1,45 @@
-import javax.annotation.Nullable;
+public class aig implements zs<agy> {
+   public static final zj<wi, aig> a = zs.a(aig::a, aig::new);
+   private final cti b;
+   private final boolean c;
+   private final boolean d;
 
-public class aig implements zp<agv> {
-   public static final zg<wf, aig> a = zp.a(aig::a, aig::new);
-   private final aig.a b;
-   @Nullable
-   private final ali c;
-
-   public aig(aig.a $$0, @Nullable ali $$1) {
+   public aig(cti $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public static aig a(ah $$0) {
-      return new aig(aig.a.a, $$0.a());
+   private aig(wi $$0) {
+      this.b = $$0.b(cti.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   public static aig b() {
-      return new aig(aig.a.b, null);
-   }
-
-   private aig(wf $$0) {
-      this.b = $$0.b(aig.a.class);
-      if (this.b == aig.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(wf $$0) {
+   private void a(wi $$0) {
       $$0.a(this.b);
-      if (this.b == aig.a.a) {
-         $$0.a(this.c);
-      }
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zr<aig> a() {
-      return agt.bT;
+   public zu<aig> a() {
+      return agw.bQ;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public aig.a e() {
+   public cti b() {
       return this.b;
    }
 
-   @Nullable
-   public ali f() {
+   public boolean e() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean f() {
+      return this.d;
    }
 }

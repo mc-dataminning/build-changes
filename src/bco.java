@@ -1,48 +1,26 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Arrays;
+import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 public class bco extends DataFix {
    public bco(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
+         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
+         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
+      } else {
+         return $$0;
+      }
+   }
+
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhu.c);
-      OpticFinder<?> $$1 = $$0.findField("Level");
-      return this.fixTypeEverywhereTyped("Leaves fix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> {
-               Optional<IntStream> $$1xx = $$0xxx.get("Biomes").asIntStreamOpt().result();
-               if ($$1xx.isEmpty()) {
-                  return $$0xxx;
-               } else {
-                  int[] $$2 = $$1xx.get().toArray();
-                  if ($$2.length != 256) {
-                     return $$0xxx;
-                  } else {
-                     int[] $$3 = new int[1024];
-
-                     for (int $$4 = 0; $$4 < 4; $$4++) {
-                        for (int $$5 = 0; $$5 < 4; $$5++) {
-                           int $$6 = ($$5 << 2) + 2;
-                           int $$7 = ($$4 << 2) + 2;
-                           int $$8 = $$7 << 4 | $$6;
-                           $$3[$$4 << 2 | $$5] = $$2[$$8];
-                        }
-                     }
-
-                     for (int $$9 = 1; $$9 < 64; $$9++) {
-                        System.arraycopy($$3, 0, $$3, $$9 * 16, 16);
-                     }
-
-                     return $$0xxx.set("Biomes", $$0xxx.createIntList(Arrays.stream($$3)));
-                  }
-               }
-            })));
+      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bhy.u), $$0 -> $$0.update(DSL.remainderFinder(), bco::a));
    }
 }

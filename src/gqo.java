@@ -1,29 +1,33 @@
-public class gqo extends gnf<cji, gwk, gaj> {
-   private static final ali a = ali.b("textures/entity/sniffer/sniffer.png");
+public class gqo extends gqg<clx, gwl, fzz> {
+   private static final all a = all.b("textures/entity/phantom.png");
 
-   public gqo(gok.a $$0) {
-      super($$0, new gaj($$0.a(gbl.cu)), new gaj($$0.a(gbl.cv)), 1.1F);
+   public gqo(gpa.a $$0) {
+      super($$0, new fzz($$0.a(gcb.bs)), 0.75F);
+      this.a(new gtl(this));
    }
 
-   public ali a(gwk $$0) {
+   public all a(gwl $$0) {
       return a;
    }
 
-   public gwk c() {
-      return new gwk();
+   public gwl c() {
+      return new gwl();
    }
 
-   public void a(cji $$0, gwk $$1, float $$2) {
+   public void a(clx $$0, gwl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.ca);
-      $$1.d.a($$0.cd);
-      $$1.e.a($$0.bY);
-      $$1.f.a($$0.bZ);
+      $$1.a = (float)$$0.t() + $$1.p;
+      $$1.b = $$0.q();
    }
 
-   protected ezi a(cji $$0) {
-      return super.a($$0).g(0.6F);
+   protected void a(gwl $$0, fek $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(gwl $$0, fek $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.V));
    }
 }

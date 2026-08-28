@@ -1,158 +1,178 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
 
-public class fqq extends fqu {
-   public static final ali a = ali.b("textures/gui/title/mojangstudios.png");
-   private static final int d = axv.a(255, 239, 50, 61);
-   private static final int e = axv.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> fji.Q().n.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long b = 1000L;
-   public static final long c = 500L;
-   private final fji m;
-   private final auw n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class fqq extends frp {
+   static final all b = all.b("container/slot");
+   private static final int c = 18;
+   private static final int d = 20;
+   private static final int s = 1;
+   private static final int u = 1;
+   private static final int v = 2;
+   private static final int w = 2;
+   protected final fwn a;
+   private final Consumer<eke> x;
+   eke y;
+   private xl z;
+   private xl A;
+   private fqq.a B;
+   private flw C;
 
-   public fqq(fji $$0, auw $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
+   public fqq(fwn $$0, Consumer<eke> $$1, eke $$2) {
+      super(xl.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.x = $$1;
+      this.y = $$2;
    }
 
-   public static void a(fji $$0) {
-      $$0.aa().a(a, new fqq.a());
+   public eke l() {
+      return this.y;
    }
 
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public void a(eke $$0) {
+      this.y = $$0;
    }
 
    @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ae.c();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
-
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.z != null) {
-            this.m.z.a($$0, 0, 0, $$3);
+   protected void aS_() {
+      this.z = xl.c("createWorld.customize.flat.tile");
+      this.A = xl.c("createWorld.customize.flat.height");
+      this.B = this.c(new fqq.a());
+      this.C = this.c(flw.a(xl.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.D()) {
+            List<ekb> $$1 = this.y.e();
+            int $$2 = this.B.aI_().indexOf(this.B.h());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.B.a($$1.isEmpty() ? null : this.B.aI_().get(Math.min($$2, $$1.size() - 1)));
+            this.y.g();
+            this.B.c();
+            this.m();
          }
-
-         int $$9 = azk.f((1.0F - azk.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(gir.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - azk.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.z != null && $$8 < 1.0F) {
-            this.m.z.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = azk.c(azk.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(gir.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = azk.a($$8, 0.0F, 1.0F);
-      } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      int $$24 = axv.a($$10);
-      $$0.a($$0x -> gir.K(), a, $$18 - $$23, $$19 - $$21, -0.0625F, 0.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      $$0.a($$0x -> gir.K(), a, $$18, $$19 - $$21, 0.0625F, 60.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      int $$25 = (int)((double)$$0.b() * 0.8325);
-      float $$26 = this.n.b();
-      this.q = azk.a(this.q * 0.95F + $$26 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$25 - 5, $$4 / 2 + $$23, $$25 + 5, 1.0F - azk.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var24) {
-            this.o.accept(Optional.of(var24));
-         }
-
-         this.r = ae.c();
-         if (this.m.z != null) {
-            this.m.z.b(this.m, $$0.a(), $$0.b());
-         }
-      }
+      }).a(this.n / 2 - 155, this.o - 52, 150, 20).a());
+      this.c(flw.a(xl.c("createWorld.customize.presets"), $$0 -> {
+         this.m.a(new frl(this));
+         this.y.g();
+         this.m();
+      }).a(this.n / 2 + 5, this.o - 52, 150, 20).a());
+      this.c(flw.a(xk.d, $$0 -> {
+         this.x.accept(this.y);
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
+      this.c(flw.a(xk.e, $$0 -> {
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      this.y.g();
+      this.m();
    }
 
-   private void a(fku $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = azk.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = axv.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   void m() {
+      this.C.j = this.D();
+   }
+
+   private boolean D() {
+      return this.B.h() != null;
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public void aP_() {
+      this.m.a(this.a);
    }
 
-   static class a extends gxw {
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+      int $$4 = this.n / 2 - 92 - 16;
+      $$0.b(this.p, this.z, $$4, 32, 16777215);
+      $$0.b(this.p, this.A, $$4 + 2 + 213 - this.p.a(this.A), 32, 16777215);
+   }
+
+   class a extends fms<fqq.a.a> {
       public a() {
-         super(fqq.a);
+         super(fqq.this.m, fqq.this.n, fqq.this.o - 103, 43, 24);
+
+         for (int $$0 = 0; $$0 < fqq.this.y.e().size(); $$0++) {
+            this.b(new fqq.a.a());
+         }
       }
 
-      @Override
-      protected gxw.a b(avb $$0) {
-         atq $$1 = fji.Q().ae();
-         aus<InputStream> $$2 = $$1.a(ato.a, fqq.a);
-         if ($$2 == null) {
-            return new gxw.a(new FileNotFoundException(fqq.a.toString()));
-         } else {
-            try {
-               gxw.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new gxw.a(new hab(true, true), fdb.a($$3));
-               }
+      public void a(@Nullable fqq.a.a $$0) {
+         super.a($$0);
+         fqq.this.m();
+      }
 
-               return var5;
-            } catch (IOException var9) {
-               return new gxw.a(var9);
+      public void c() {
+         int $$0 = this.aI_().indexOf(this.h());
+         this.k();
+
+         for (int $$1 = 0; $$1 < fqq.this.y.e().size(); $$1++) {
+            this.b(new fqq.a.a());
+         }
+
+         List<fqq.a.a> $$2 = this.aI_();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
+
+      class a extends fms.a<fqq.a.a> {
+         @Override
+         public void a(flj $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            ekb $$10 = fqq.this.y.e().get(fqq.this.y.e().size() - $$1 - 1);
+            dvo $$11 = $$10.b();
+            cwf $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(fqq.this.p, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            xl $$13;
+            if ($$1 == 0) {
+               $$13 = xl.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == fqq.this.y.e().size() - 1) {
+               $$13 = xl.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = xl.a("createWorld.customize.flat.layer", $$10.a());
             }
+
+            $$0.a(fqq.this.p, $$13, $$3 + 2 + 213 - fqq.this.p.a($$13), $$2 + 3, 16777215, false);
+         }
+
+         private cwf a(dvo $$0) {
+            cwb $$1 = $$0.b().j();
+            if ($$1 == cwj.a) {
+               if ($$0.a(dil.G)) {
+                  $$1 = cwj.qA;
+               } else if ($$0.a(dil.H)) {
+                  $$1 = cwj.qB;
+               }
+            }
+
+            return new cwf($$1);
+         }
+
+         @Override
+         public xl a() {
+            ekb $$0 = fqq.this.y.e().get(fqq.this.y.e().size() - a.this.aI_().indexOf(this) - 1);
+            cwf $$1 = this.a($$0.b());
+            return (xl)(!$$1.f() ? xl.a("narrator.select", $$1.y()) : xk.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void a(flj $$0, int $$1, int $$2, cwf $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.f()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(flj $$0, int $$1, int $$2) {
+            $$0.a(gjh::B, fqq.b, $$1, $$2, 18, 18);
          }
       }
    }

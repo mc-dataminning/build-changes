@@ -1,233 +1,148 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fhb extends hep {
-   static final Logger a = LogUtils.getLogger();
-   private static final xi b = xi.c("mco.configure.world.players.title");
-   static final xi c = xi.c("mco.question");
-   private static final int B = 8;
-   final fow C = new fow(this);
-   private final fgq D;
-   final ffi E;
+public class fhb extends flw {
+   private static final all u = all.b("widget/slot_frame");
+   private static final all v = all.b("icon/checkmark");
+   public static final all a = all.b("textures/gui/realms/empty_frame.png");
+   public static final all b = all.b("textures/gui/title/background/panorama_0.png");
+   public static final all c = all.b("textures/gui/title/background/panorama_2.png");
+   public static final all d = all.b("textures/gui/title/background/panorama_3.png");
+   private static final xl w = xl.c("mco.configure.world.slot.tooltip.active");
+   private static final xl x = xl.c("mco.configure.world.slot.tooltip.minigame");
+   private static final xl y = xl.c("mco.configure.world.slot.tooltip");
+   static final xl z = xl.c("mco.worldSlot.minigame");
+   private final int A;
    @Nullable
-   private fhb.b F;
-   boolean G;
+   private fhb.b B;
 
-   public fhb(fgq $$0, ffi $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public fhb(int $$0, int $$1, int $$2, int $$3, int $$4, flw.c $$5) {
+      super($$0, $$1, $$2, $$3, xk.a, $$5, q);
+      this.A = $$4;
    }
 
-   @Override
-   public void aR_() {
-      this.C.a(b, this.p);
-      this.F = this.C.c(new fhb.b());
-      this.D();
-      fpa $$0 = this.C.b(fpa.e().a(8));
-      $$0.a(flh.a(xi.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fgv(this.D, this, this.E))).a());
-      $$0.a(flh.a(xh.k, $$0x -> this.d()).a());
-      this.C.a($$1 -> {
-         flf var10000 = this.c($$1);
-      });
-      this.c();
+   @Nullable
+   public fhb.b a() {
+      return this.B;
    }
 
-   @Override
-   protected void c() {
-      this.C.a();
-      if (this.F != null) {
-         this.F.a(this.n, this.C);
+   public void a(fgb $$0) {
+      this.B = new fhb.b($$0, this.A);
+      this.a(this.B, $$0.o);
+   }
+
+   private void a(fhb.b $$0, @Nullable String $$1) {
+      xl $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(fnh.a($$2));
       }
-   }
 
-   void D() {
-      if (this.F != null) {
-         this.F.aI_().clear();
-
-         for (ffe $$0 : this.E.h) {
-            this.F.aI_().add(new fhb.a($$0));
-         }
+      xz $$3 = xl.b($$0.e);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(xk.v).f($$1);
       }
+
+      this.b($$3);
    }
 
-   @Override
-   public void d() {
-      this.E();
-   }
-
-   private void E() {
-      if (this.G) {
-         this.m.a(this.D.g());
+   static fhb.a a(fgb $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != fgb.c.c) {
+         return fhb.a.c;
       } else {
-         this.m.a(this.D);
+         return $$1 || $$2 && $$0.j ? fhb.a.a : fhb.a.b;
       }
    }
 
-   class a extends fln.a<fhb.a> {
-      private static final xi b = xi.c("mco.configure.world.invites.normal.tooltip");
-      private static final xi c = xi.c("mco.configure.world.invites.ops.tooltip");
-      private static final xi d = xi.c("mco.configure.world.invites.remove.tooltip");
-      private static final ali e = ali.b("player_list/make_operator");
-      private static final ali f = ali.b("player_list/remove_operator");
-      private static final ali g = ali.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final ffe j;
-      private final flh k;
-      private final flh l;
-      private final flh m;
-
-      public a(final ffe $$0) {
-         this.j = $$0;
-         int $$1 = fhb.this.E.h.indexOf(this.j);
-         this.l = fmm.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fhb.this.p.a(b))
-            .a($$1x -> xh.a(xi.a("mco.invited.player.narration", $$0.a()), (xi)$$1x.get(), xi.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fmm.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fhb.this.p.a(c))
-            .a($$1x -> xh.a(xi.a("mco.invited.player.narration", $$0.a()), (xi)$$1x.get(), xi.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fmm.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fhb.this.p.a(d))
-            .a($$1x -> xh.a(xi.a("mco.invited.player.narration", $$0.a()), (xi)$$1x.get()))
-            .a();
-         this.c();
-      }
-
-      private void a(int $$0) {
-         fer $$1 = fer.a();
-         UUID $$2 = fhb.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fhb.this.E.a, $$2));
-         } catch (fgc var5) {
-            fhb.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fer $$1 = fer.a();
-         UUID $$2 = fhb.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fhb.this.E.a, $$2));
-         } catch (fgc var5) {
-            fhb.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fhb.this.E.h.size()) {
-            ffe $$1 = fhb.this.E.h.get($$0);
-            fgr $$2 = new fgr($$2x -> {
-               if ($$2x) {
-                  fer $$3 = fer.a();
-
-                  try {
-                     $$3.a(fhb.this.E.a, $$1.b());
-                  } catch (fgc var6) {
-                     fhb.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fhb.this.E.h.remove($$0);
-                  fhb.this.D();
-               }
-
-               fhb.this.G = true;
-               fhb.this.m.a(fhb.this);
-            }, fhb.c, xi.a("mco.configure.world.uninvite.player", $$1.a()));
-            fhb.this.m.a($$2);
-         }
-      }
-
-      private void a(ffa $$0) {
-         for (ffe $$1 : fhb.this.E.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private flh d() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fne> aI_() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public List<? extends fpd> b() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
+   @Override
+   public void b(flj $$0, int $$1, int $$2, float $$3) {
+      if (this.B != null) {
+         int $$4 = this.D();
+         int $$5 = this.E();
+         boolean $$6 = this.B();
+         all $$7;
+         if (this.B.b) {
+            $$7 = fin.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.B.a) {
+            $$7 = a;
+         } else if (this.B.i != null && this.B.h != -1L) {
+            $$7 = fin.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.A == 1) {
+            $$7 = b;
+         } else if (this.A == 2) {
+            $$7 = c;
+         } else if (this.A == 3) {
+            $$7 = d;
          } else {
-            $$10 = -1;
+            $$7 = a;
          }
 
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fhw.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(fhb.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.y();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.d().y() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
+         int $$14 = -1;
+         if (this.B.d) {
+            $$14 = axy.a(1.0F, 0.56F, 0.56F, 0.56F);
+         }
+
+         $$0.a(gjh::B, $$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$14);
+         if ($$6 && this.B.c != fhb.a.a) {
+            $$0.a(gjh::B, u, $$4, $$5, 80, 80);
+         } else if (this.B.d) {
+            $$0.a(gjh::B, u, $$4, $$5, 80, 80, axy.a(1.0F, 0.8F, 0.8F, 0.8F));
+         } else {
+            $$0.a(gjh::B, u, $$4, $$5, 80, 80, axy.a(1.0F, 0.56F, 0.56F, 0.56F));
+         }
+
+         if (this.B.d) {
+            $$0.a(gjh::B, v, $$4 + 67, $$5 + 4, 9, 8);
+         }
+
+         flh $$15 = fjx.Q().h;
+         $$0.a($$15, this.B.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, fev.a(this.B.f, this.B.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
       }
    }
 
-   class b extends fln<fhb.a> {
-      private static final int m = 36;
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 
-      public b() {
-         super(fji.Q(), fhb.this.n, fhb.this.C.d(), fhb.this.C.c(), 36);
-         this.a(true, (int)(9.0F * 1.5F));
-      }
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final fgb.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final fhb.a c;
 
-      @Override
-      protected void a(fku $$0, int $$1, int $$2) {
-         String $$3 = fhb.this.E.h != null ? Integer.toString(fhb.this.E.h.size()) : "0";
-         xi $$4 = xi.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.a(fhb.this.p, $$4, $$1 + this.b() / 2 - fhb.this.p.a($$4) / 2, $$2, -1, false);
-      }
+      public b(fgb $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.i();
+            this.e = fhb.z.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = fgb.a.a;
+         } else {
+            fgg $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && !$$0.i();
+            this.e = $$2.a($$1);
+            this.h = $$2.k;
+            this.i = $$2.l;
+            this.a = $$2.m;
+            this.f = $$2.i;
+            this.g = $$2.j;
+         }
 
-      @Override
-      public int a() {
-         return this.l() * this.d + this.f;
-      }
-
-      @Override
-      public int b() {
-         return 300;
+         this.c = fhb.a($$0, this.d, this.b);
       }
    }
 }

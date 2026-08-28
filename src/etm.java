@@ -1,30 +1,30 @@
-import java.util.Locale;
+public class etm {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-public interface etm {
-   jh a();
+   public etm(int $$0) {
+      this($$0, a);
+   }
 
-   float b();
+   public etm(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   long c();
+   public boolean a() {
+      return !this.c.equals(a);
+   }
 
-   long d();
+   public String b() {
+      return this.c;
+   }
 
-   boolean g();
+   public int c() {
+      return this.b;
+   }
 
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   dex o();
-
-   bsa q();
-
-   boolean r();
-
-   default void a(p $$0, dfd $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public boolean a(etm $$0) {
+      return this.b().equals($$0.b());
    }
 }

@@ -1,67 +1,33 @@
-public record gbo(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
-   public static final gbo a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+public class gbo extends fza<gvd> {
+   private static final int a = 16;
+   private final gcc b;
+   private final gcc c;
+   private final gcc d;
 
-   public static gbo a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   public gbo(gcc $$0) {
+      super($$0, gjh::i);
+      this.b = $$0.b("bone");
+      this.d = this.b.b("wind");
+      this.c = this.b.b("wind_charge");
    }
 
-   public static gbo b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   public static gci a() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      gcm $$2 = $$1.a("bone", gch.c(), gce.a(0.0F, 0.0F, 0.0F));
+      $$2.a(
+         "wind",
+         gch.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new gcg(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new gcg(0.0F)),
+         gce.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+      );
+      $$2.a("wind_charge", gch.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new gcg(0.0F)), gce.a(0.0F, 0.0F, 0.0F));
+      return gci.a($$0, 64, 32);
    }
 
-   public static gbo a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new gbo($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
-   }
-
-   public gbo c(float $$0, float $$1, float $$2) {
-      return new gbo(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
-   }
-
-   public gbo a(float $$0) {
-      return new gbo(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
-   }
-
-   public gbo b(float $$0) {
-      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
-   }
-
-   public gbo d(float $$0, float $$1, float $$2) {
-      return new gbo(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public float h() {
-      return this.i;
-   }
-
-   public float i() {
-      return this.j;
+   @Override
+   public void a(gvd $$0) {
+      super.a($$0);
+      this.c.f = -$$0.p * 16.0F * (float) (Math.PI / 180.0);
+      this.d.f = $$0.p * 16.0F * (float) (Math.PI / 180.0);
    }
 }

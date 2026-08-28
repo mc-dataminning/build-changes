@@ -1,40 +1,25 @@
-import javax.annotation.Nullable;
+public record adi(long[] b, bnc c) implements zs<ach> {
+   public static final zj<wi, adi> a = zs.a(adi::a, adi::new);
 
-public class adi implements zp<ace> {
-   public static final zg<wf, adi> a = zp.a(adi::a, adi::new);
-   private final int b;
-   private final byte c;
-
-   public adi(bue $$0, byte $$1) {
-      this.b = $$0.as();
-      this.c = $$1;
+   private adi(wi $$0) {
+      this($$0.d(), $$0.b(bnc.class));
    }
 
-   private adi(wf $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(wf $$0) {
-      $$0.q(this.b);
-      $$0.l(this.c);
+   private void a(wi $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zr<adi> a() {
-      return agt.D;
+   public zu<adi> a() {
+      return agw.A;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bue a(dfb $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
+   public bnc e() {
       return this.c;
    }
 }

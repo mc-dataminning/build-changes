@@ -1,21 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egv extends egh {
-   public static final Codec<egv> c = RecordCodecBuilder.create(
+public class egv implements egt {
+   public static final Codec<egv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eiq.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               ayt.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               ayt.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+               eiu.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               eiu.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, egv::new)
    );
+   public final eiu b;
+   public final eiu c;
    public final int d;
-   public final int e;
 
-   public egv(eiq $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public egv(eiu $$0, eiu $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

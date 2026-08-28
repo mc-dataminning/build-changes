@@ -1,5 +1,8 @@
-public class cua extends cvx {
-   public cua(ddi $$0, ddk $$1, cvx.a $$2) {
-      super($$0.a($$2, $$1));
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@u
+@w
+interface cua {
 }

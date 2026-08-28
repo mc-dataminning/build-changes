@@ -1,32 +1,48 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-public record eyq(String b) implements eys {
-   public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eyq::c)).apply($$0, eyq::new));
+public record eyq(all b, fo.g c) implements eyn {
+   public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(all.a.fieldOf("storage").forGetter(eyq::c), fo.g.a.fieldOf("path").forGetter(eyq::d)).apply($$0, eyq::new)
+   );
 
-   public static eys a(String $$0) {
-      return new eyq($$0);
+   @Override
+   public eym b() {
+      return eyo.f;
+   }
+
+   private Optional<vd> c(eug $$0) {
+      un $$1 = $$0.d().o().aK().a(this.b);
+
+      try {
+         List<vk> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof vd $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public eyr a() {
-      return eyt.b;
+   public float b(eug $$0) {
+      return this.c($$0).map(vd::k).orElse(0.0F);
    }
 
    @Override
-   public far a(euc $$0) {
-      return far.c(this.b);
+   public int a(eug $$0) {
+      return this.c($$0).map(vd::g).orElse(0);
    }
 
-   @Override
-   public Set<ewv<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
+   public all c() {
       return this.b;
+   }
+
+   public fo.g d() {
+      return this.c;
    }
 }

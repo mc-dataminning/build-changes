@@ -1,28 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class byy {
-   private static final int a = 1;
+   private static final int a = 300;
 
-   public static bwu<bvc> a(float $$0) {
-      return a($$1 -> $$0);
-   }
+   public static bwy<bve> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return cak.a(
+         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$3x -> $$3x.group($$3x.b(cei.C), $$3x.b(cei.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        jh $$11 = $$3x.<jp>b($$4).b();
+                        if ($$11.a($$7.dy(), (double)$$1)) {
+                           $$3.increment();
+                        }
 
-   public static bwu<bvc> a(Function<bva, Float> $$0) {
-      return cag.a(
-         (Function<cag.b<bvc>, ? extends App<cag.c<bvc>, caj<bvc>>>)($$1 -> $$1.group($$1.a(cee.m), $$1.a(cee.n), $$1.b(cee.o), $$1.a(cee.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bva $$9 = $$1.b($$4);
-                     Optional<ceg> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bwv.a($$7, $$9, 1)) {
-                        $$2.b();
+                        return true;
                      } else {
-                        $$3.a(new bxe($$9, true));
-                        $$2.a(new ceh(new bxe($$9, false), $$0.apply($$7), 0));
+                        $$5.b();
+                        $$4.b();
+                        $$7.ee().a($$6.ab(), $$6.aa());
+                        $$3.setValue(0);
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

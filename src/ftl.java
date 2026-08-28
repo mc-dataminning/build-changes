@@ -1,27 +1,30 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class ftl extends fsd {
+   private final def u;
 
-public class ftl implements ftk {
-   public static final ftk a = new ftl();
-
-   private ftl() {
+   public ftl(def $$0) {
+      this.u = $$0;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   public def m() {
+      return this.u;
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   @Override
+   int D() {
+      return 150;
+   }
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
+   @Override
+   protected void aS_() {
+      super.aS_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(def $$0) {
+      if ($$0 instanceof cqx.a $$1) {
+         this.m.L().b(new aip($$1.h().as(), this.a.a(), $$0.p()));
       }
    }
 }

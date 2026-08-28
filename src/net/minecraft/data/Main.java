@@ -35,71 +35,72 @@ public class Main {
          boolean $$16 = $$13 || $$11.has($$5);
          boolean $$17 = $$13 || $$11.has($$6);
          boolean $$18 = $$13 || $$11.has($$7);
-         me $$19 = a($$12, $$11.valuesOf($$10).stream().map($$0x -> Paths.get($$0x)).collect(Collectors.toList()), $$14, $$15, $$16, $$17, $$18, ab.b(), true);
+         mf $$19 = a($$12, $$11.valuesOf($$10).stream().map($$0x -> Paths.get($$0x)).collect(Collectors.toList()), $$14, $$15, $$16, $$17, $$18, ab.b(), true);
          $$19.a();
       } else {
          $$1.printHelpOn(System.out);
       }
    }
 
-   private static <T extends mf> mf.a<T> a(BiFunction<mh, CompletableFuture<js.a>, T> $$0, CompletableFuture<js.a> $$1) {
+   private static <T extends mg> mg.a<T> a(BiFunction<mi, CompletableFuture<js.a>, T> $$0, CompletableFuture<js.a> $$1) {
       return $$2 -> $$0.apply($$2, $$1);
    }
 
-   public static me a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, af $$7, boolean $$8) {
-      me $$9 = new me($$0, $$7, $$8);
-      me.a $$10 = $$9.a($$2 || $$3);
-      $$10.a($$1x -> new pp($$1x, $$1).a(new pq()));
-      CompletableFuture<js.a> $$11 = CompletableFuture.supplyAsync(pl::a, ae.g());
-      me.a $$12 = $$9.a($$2);
-      $$12.a(ny::new);
-      $$12.a(nw::new);
-      me.a $$13 = $$9.a($$3);
-      $$13.a(a(pi::new, $$11));
-      $$13.a(a(ml::a, $$11));
-      $$13.a(a(np::a, $$11));
-      $$13.a(a(pg.a::new, $$11));
-      qh<die> $$14 = $$13.a(a(qk::new, $$11));
-      qh<cvx> $$15 = $$13.a($$2x -> new qm($$2x, $$11, $$14.c()));
-      qh<dgc> $$16 = $$13.a(a(pt::new, $$11));
-      qh<dsc> $$17 = $$13.a(a(ps::new, $$11));
-      qh<elx> $$18 = $$13.a(a(qg::new, $$11));
-      $$13.a(a(pu::new, $$11));
-      $$13.a(a(pv::new, $$11));
+   public static mf a(Path $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6, af $$7, boolean $$8) {
+      mf $$9 = new mf($$0, $$7, $$8);
+      mf.a $$10 = $$9.a($$2 || $$3);
+      $$10.a($$1x -> new pr($$1x, $$1).a(new ps()));
+      CompletableFuture<js.a> $$11 = CompletableFuture.supplyAsync(pn::a, ae.g());
+      mf.a $$12 = $$9.a($$2);
+      $$12.a(nz::new);
+      $$12.a(nx::new);
+      mf.a $$13 = $$9.a($$3);
+      $$13.a(a(pk::new, $$11));
+      $$13.a(a(mm::a, $$11));
+      $$13.a(a(nq::a, $$11));
+      $$13.a(a(pi.a::new, $$11));
+      qk<dij> $$14 = $$13.a(a(qn::new, $$11));
+      qk<cwb> $$15 = $$13.a($$2x -> new qp($$2x, $$11, $$14.c()));
+      qk<dgh> $$16 = $$13.a(a(pv::new, $$11));
+      qk<dsh> $$17 = $$13.a(a(pu::new, $$11));
+      qk<emb> $$18 = $$13.a(a(qj::new, $$11));
       $$13.a(a(px::new, $$11));
       $$13.a(a(py::new, $$11));
-      $$13.a(a(pz::new, $$11));
       $$13.a(a(qa::new, $$11));
       $$13.a(a(qb::new, $$11));
+      $$13.a(a(qc::new, $$11));
+      $$13.a(a(qd::new, $$11));
       $$13.a(a(qe::new, $$11));
-      $$13.a(a(qf::new, $$11));
-      $$13.a(a(qn::new, $$11));
-      $$13.a(a(ql::new, $$11));
+      $$13.a(a(qh::new, $$11));
+      $$13.a(a(qi::new, $$11));
+      $$13.a(a(qq::new, $$11));
+      $$13.a(a(qo::new, $$11));
       $$13 = $$9.a($$4);
-      $$13.a($$1x -> new pn($$1x, $$1));
+      $$13.a($$1x -> new pp($$1x, $$1));
       $$13 = $$9.a($$5);
-      $$13.a(a(ms::new, $$11));
-      $$13.a(a(mw::new, $$11));
       $$13.a(a(mt::new, $$11));
+      $$13.a(a(mx::new, $$11));
       $$13.a(a(mu::new, $$11));
+      $$13.a(a(mv::new, $$11));
+      $$13.a(mz::new);
       $$13.a(my::new);
-      $$13.a(mx::new);
-      $$13.a(mv::new);
+      $$13.a(mw::new);
       $$13 = $$9.a($$3, "bundle");
-      $$13.a(a(pf.a::new, $$11));
-      $$13.a($$0x -> nt.a($$0x, xi.c("dataPack.bundle.description"), crf.a(crh.b)));
-      CompletableFuture<kg.g> $$22 = pk.a($$11);
+      $$13.a(a(ph.a::new, $$11));
+      $$13.a($$3x -> new pw($$3x, $$11, $$15.c(), $$14.c()));
+      $$13.a($$0x -> nu.a($$0x, xl.c("dataPack.bundle.description"), crj.a(crl.b)));
+      CompletableFuture<kg.g> $$22 = pm.a($$11);
       CompletableFuture<js.a> $$23 = $$22.thenApply(kg.g::b);
-      me.a $$24 = $$9.a($$3, "trade_rebalance");
-      $$24.a(a(pi::new, $$23));
-      $$24.a($$0x -> nt.a($$0x, xi.c("dataPack.trade_rebalance.description"), crf.a(crh.c)));
-      $$24.a(a(nh::a, $$11));
-      $$24.a(a(qj::new, $$11));
-      $$24.a(a(qi::new, $$11));
+      mf.a $$24 = $$9.a($$3, "trade_rebalance");
+      $$24.a(a(pk::new, $$23));
+      $$24.a($$0x -> nu.a($$0x, xl.c("dataPack.trade_rebalance.description"), crj.a(crl.c)));
+      $$24.a(a(ni::a, $$11));
+      $$24.a(a(qm::new, $$11));
+      $$24.a(a(ql::new, $$11));
       $$13 = $$9.a($$3, "redstone_experiments");
-      $$13.a($$0x -> nt.a($$0x, xi.c("dataPack.redstone_experiments.description"), crf.a(crh.d)));
+      $$13.a($$0x -> nu.a($$0x, xl.c("dataPack.redstone_experiments.description"), crj.a(crl.d)));
       $$13 = $$9.a($$3, "minecart_improvements");
-      $$13.a($$0x -> nt.a($$0x, xi.c("dataPack.minecart_improvements.description"), crf.a(crh.e)));
+      $$13.a($$0x -> nu.a($$0x, xl.c("dataPack.minecart_improvements.description"), crj.a(crl.e)));
       return $$9;
    }
 }

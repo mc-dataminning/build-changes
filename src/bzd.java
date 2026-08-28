@@ -1,81 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public class bzd extends bwt<bva> {
-   public static final int c = 100;
-   private long d;
+public class bzd {
+   public static byi<coc> a(cei<jp> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return cak.a(
+         (Function<cak.b<coc>, ? extends App<cak.c<coc>, can<coc>>>)($$5 -> $$5.group($$5.a(cei.E), $$5.c(cei.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     jp $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ag() && (!$$13.isPresent() || $$9.aa() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dy()) > $$3) {
+                           ezr $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public bzd() {
-      super(ImmutableMap.of(cee.b, cef.a, cee.I, cef.c));
-   }
+                           while ($$14 == null || jh.a((ka)$$14).k($$10.dy()) > $$3) {
+                              $$14 = cfz.a($$10, 15, 7, ezr.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   @Override
-   protected boolean a(arn $$0, bva $$1) {
-      if ($$1.ca()) {
-         return false;
-      } else {
-         bwc<?> $$2 = $$1.ed();
-         jp $$3 = $$2.c(cee.b).get();
-         if ($$0.ag() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(cee.I);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.aa() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
+                           $$7.a(new cel($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dy()) > $$2) {
+                           $$7.a(new cel($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-            dvj $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dv(), 2.0) && $$6.a(axa.S) && !$$6.c(dhx.c);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(arn $$0, bva $$1, long $$2) {
-      Optional<jp> $$3 = $$1.ed().c(cee.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jh $$4 = $$3.get().b();
-         return $$1.ed().c(cqe.e) && $$1.dE() > (double)$$4.v() + 0.4 && $$4.a($$1.dv(), 1.14);
-      }
-   }
-
-   @Override
-   protected void d(arn $$0, bva $$1, long $$2) {
-      if ($$2 > this.d) {
-         bwc<?> $$3 = $$1.ed();
-         if ($$3.a(cee.v)) {
-            Set<jp> $$4 = $$3.c(cee.v).get();
-            Optional<List<bva>> $$5;
-            if ($$3.a(cee.g)) {
-               $$5 = $$3.c(cee.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bxr.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.ed().c(cee.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(arn $$0, bva $$1, long $$2) {
-      if ($$1.fT()) {
-         $$1.fU();
-         this.d = $$2 + 40L;
-      }
+                     return true;
+                  }))
+      );
    }
 }

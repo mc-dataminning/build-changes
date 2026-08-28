@@ -1,125 +1,42 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-
 public class bwm {
-   public static final int a = 48;
+   public static final jq<bwh> a = a("armor", new bwo("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
+   public static final jq<bwh> b = a("armor_toughness", new bwo("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final jq<bwh> c = a("attack_damage", new bwo("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
+   public static final jq<bwh> d = a("attack_knockback", new bwo("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
+   public static final jq<bwh> e = a("attack_speed", new bwo("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final jq<bwh> f = a("block_break_speed", new bwo("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final jq<bwh> g = a("block_interaction_range", new bwo("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final jq<bwh> h = a("burning_time", new bwo("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(bwh.a.c));
+   public static final jq<bwh> i = a("explosion_knockback_resistance", new bwo("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
+   public static final jq<bwh> j = a("entity_interaction_range", new bwo("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final jq<bwh> k = a("fall_damage_multiplier", new bwo("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bwh.a.c));
+   public static final jq<bwh> l = a("flying_speed", new bwo("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
+   public static final jq<bwh> m = a("follow_range", new bwo("attribute.name.follow_range", 32.0, 0.0, 2048.0));
+   public static final jq<bwh> n = a("gravity", new bwo("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(bwh.a.b));
+   public static final jq<bwh> o = a("jump_strength", new bwo("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final jq<bwh> p = a("knockback_resistance", new bwo("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final jq<bwh> q = a("luck", new bwo("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final jq<bwh> r = a("max_absorption", new bwo("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final jq<bwh> s = a("max_health", new bwo("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final jq<bwh> t = a("mining_efficiency", new bwo("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
+   public static final jq<bwh> u = a("movement_efficiency", new bwo("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
+   public static final jq<bwh> v = a("movement_speed", new bwo("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
+   public static final jq<bwh> w = a("oxygen_bonus", new bwo("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
+   public static final jq<bwh> x = a("safe_fall_distance", new bwo("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final jq<bwh> y = a("scale", new bwo("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(bwh.a.b));
+   public static final jq<bwh> z = a("sneaking_speed", new bwo("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
+   public static final jq<bwh> A = a("spawn_reinforcements", new bwo("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final jq<bwh> B = a("step_height", new bwo("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
+   public static final jq<bwh> C = a("submerged_mining_speed", new bwo("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
+   public static final jq<bwh> D = a("sweeping_damage_ratio", new bwo("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
+   public static final jq<bwh> E = a("tempt_range", new bwo("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
+   public static final jq<bwh> F = a("water_movement_efficiency", new bwo("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
 
-   public static bwu<bvi> a(Predicate<jq<cgh>> $$0, cee<jp> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   private static jq<bwh> a(String $$0, bwh $$1) {
+      return kd.b(lz.s, all.b($$0), $$1);
    }
 
-   public static bwu<bvi> a(Predicate<jq<cgh>> $$0, cee<jp> $$1, cee<jp> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bwm.a> $$8 = new Long2ObjectOpenHashMap();
-      bye<bvi> $$9 = cag.a(
-         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.p_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.aa() + (long)$$6xx.A.a(20));
-                     return false;
-                  } else if ($$6xx.aa() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
-                     cge $$9x = $$6xx.y();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bwm.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<jh> $$10 = $$2xxxx -> {
-                        bwm.a $$3xxxx = (bwm.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<jq<cgh>, jh>> $$11 = $$9x.c($$0, $$10, $$7x.dx(), 48, cge.b.a).limit(5L).collect(Collectors.toSet());
-                     ery $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        jh $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(jp.a($$6xx.ag(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           ags.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<jq<cgh>, jh> $$14 : $$11) {
-                           $$8.computeIfAbsent(((jh)$$14.getSecond()).a(), $$2xxxx -> new bwm.a($$6xx.A, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : cag.a((Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
-   }
-
-   @Nullable
-   public static ery a(bvc $$0, Set<Pair<jq<cgh>, jh>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<jh> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<jq<cgh>, jh> $$4 : $$1) {
-            $$3 = Math.max($$3, ((cgh)((jq)$$4.getFirst()).a()).c());
-            $$2.add((jh)$$4.getSecond());
-         }
-
-         return $$0.P().a($$2, $$3);
-      }
-   }
-
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final azs d;
-      private long e;
-      private long f;
-      private int g;
-
-      a(azs $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
-
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
-
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public static jq<bwh> a(kd<bwh> $$0) {
+      return s;
    }
 }

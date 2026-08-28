@@ -1,34 +1,23 @@
-public class goq extends goj<cpb, guu> {
-   private final gpi a;
+public class goq<T extends ciy> extends gnr<T, guz, fyu> {
+   public static final all a = all.b("textures/entity/horse/donkey.png");
+   public static final all b = all.b("textures/entity/horse/mule.png");
+   private final all k;
 
-   public goq(gok.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+   public goq(gpa.a $$0, float $$1, gca $$2, gca $$3, boolean $$4) {
+      super($$0, new fyu($$0.a($$2)), new fyu($$0.a($$3)), $$1);
+      this.k = $$4 ? b : a;
    }
 
-   public void a(guu $$0, feb $$1, gih $$2, int $$3) {
-      $$1.a();
-      $$1.a(this.e.b());
-      if ($$0.a) {
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.d.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(90.0F));
-      }
-
-      this.a.a($$0.c, cvz.h, false, $$1, $$2, $$3, gxu.d, $$0.b);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public all a(guz $$0) {
+      return this.k;
    }
 
-   public guu a() {
-      return new guu();
+   public guz a() {
+      return new guz();
    }
 
-   public void a(cpb $$0, guu $$1, float $$2) {
+   public void a(T $$0, guz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.o();
-      cwb $$3 = $$0.m();
-      $$1.c = $$3.v();
-      $$1.b = !$$3.f() ? this.a.a($$3, $$0.dX(), null, $$0.as()) : null;
+      $$1.a = $$0.t();
    }
 }

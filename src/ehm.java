@@ -1,23 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record ehm(int b, int c, int d) implements egp {
-   public static final Codec<ehm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayt.m.fieldOf("spread_width").forGetter(ehm::a), ayt.m.fieldOf("spread_height").forGetter(ehm::b), ayt.m.fieldOf("max_height").forGetter(ehm::c)
-            )
-            .apply($$0, ehm::new)
-   );
+public class ehm implements egt {
+   public static final Codec<ehm> a = ayw.b(elf.c).fieldOf("features").xmap(ehm::new, $$0 -> $$0.b).codec();
+   public final ju<elf> b;
 
-   public int a() {
-      return this.b;
+   public ehm(ju<elf> $$0) {
+      this.b = $$0;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   @Override
+   public Stream<eeb<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

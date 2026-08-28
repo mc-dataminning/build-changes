@@ -1,45 +1,37 @@
-public class fxy extends fzf {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final gbm d;
-   private final gbm e;
-
-   public fxy(gbm $$0) {
-      super($$0, gir::c);
-      this.d = $$0.b("lid");
-      this.e = $$0.b("lock");
+public class fxy extends fzn<guk> {
+   public fxy(gcc $$0) {
+      super($$0);
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("bottom", gbr.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gbo.a);
-      $$1.a("lid", gbr.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gbo.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gbr.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gbo.a(0.0F, 9.0F, 1.0F));
-      return gbs.a($$0, 64, 64);
+   public static gci a(gcg $$0) {
+      gck $$1 = fzn.a($$0, 0.0F);
+      gcm $$2 = $$1.a();
+      gcm $$3 = $$2.a("head", gch.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gce.a(0.0F, 1.0F, 0.0F));
+      $$3.a("hat", gch.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), gce.a);
+      $$2.a("right_leg", gch.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gce.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", gch.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gce.a(1.9F, 11.0F, 0.0F));
+      return gci.a($$1, 64, 32);
    }
 
-   public static gbs b() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("bottom", gbr.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gbo.a);
-      $$1.a("lid", gbr.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gbo.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gbr.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gbo.a(0.0F, 9.0F, 1.0F));
-      return gbs.a($$0, 64, 64);
-   }
-
-   public static gbs c() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("bottom", gbr.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gbo.a);
-      $$1.a("lid", gbr.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gbo.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gbr.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gbo.a(0.0F, 9.0F, 1.0F));
-      return gbs.a($$0, 64, 64);
-   }
-
-   public void a(float $$0) {
-      this.d.e = -($$0 * (float) (Math.PI / 2));
-      this.e.e = this.d.e;
+   public void a(guk $$0) {
+      super.a($$0);
+      this.o.e = (float) (Math.PI / 180.0) * $$0.g.b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.g.c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.g.d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.h.d();
+      this.s.e = (float) (Math.PI / 180.0) * $$0.i.b();
+      this.s.f = (float) (Math.PI / 180.0) * $$0.i.c();
+      this.s.g = (float) (Math.PI / 180.0) * $$0.i.d();
+      this.r.e = (float) (Math.PI / 180.0) * $$0.j.b();
+      this.r.f = (float) (Math.PI / 180.0) * $$0.j.c();
+      this.r.g = (float) (Math.PI / 180.0) * $$0.j.d();
+      this.u.e = (float) (Math.PI / 180.0) * $$0.k.b();
+      this.u.f = (float) (Math.PI / 180.0) * $$0.k.c();
+      this.u.g = (float) (Math.PI / 180.0) * $$0.k.d();
+      this.t.e = (float) (Math.PI / 180.0) * $$0.l.b();
+      this.t.f = (float) (Math.PI / 180.0) * $$0.l.c();
+      this.t.g = (float) (Math.PI / 180.0) * $$0.l.d();
    }
 }

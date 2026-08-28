@@ -1,66 +1,24 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public enum faj implements bag {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
+public class faj extends fal {
+   private final fal b;
+   private final jm.a c;
+   private static final DoubleList d = new ezx(1);
 
-   public static final bag.a<faj> t = bag.a(faj::values);
-   public static final IntFunction<faj> u = ayb.a(faj::a, values(), ayb.a.a);
-   private final int v;
-   private final String w;
-
-   private faj(final int $$0, final String $$1) {
-      this.v = $$0;
-      this.w = $$1;
+   public faj(fal $$0, jm.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int a() {
-      return this.v;
+   private static faa a(faa $$0, jm.a $$1, int $$2) {
+      return new fak(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
    @Override
-   public String c() {
-      return this.w;
-   }
-
-   @Nullable
-   public static faj a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   public DoubleList a(jm.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

@@ -1,72 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Locale;
 
-public class ems extends emu {
-   public static final MapCodec<ems> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(ems::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(ems::b),
-                     emt.c.optionalFieldOf("spread_type", emt.a).forGetter(ems::c)
-                  )
-               )
-               .apply($$0, ems::new)
-      )
-      .validate(ems::a);
-   private final int c;
-   private final int d;
-   private final emt e;
+public interface ems {
+   ems a = a(eof.a::new, "MSCorridor");
+   ems b = a(eof.b::new, "MSCrossing");
+   ems c = a(eof.d::new, "MSRoom");
+   ems d = a(eof.e::new, "MSStairs");
+   ems e = a(eoh.a::new, "NeBCr");
+   ems f = a(eoh.b::new, "NeBEF");
+   ems g = a(eoh.c::new, "NeBS");
+   ems h = a(eoh.d::new, "NeCCS");
+   ems i = a(eoh.e::new, "NeCTB");
+   ems j = a(eoh.f::new, "NeCE");
+   ems k = a(eoh.g::new, "NeSCSC");
+   ems l = a(eoh.h::new, "NeSCLT");
+   ems m = a(eoh.i::new, "NeSC");
+   ems n = a(eoh.j::new, "NeSCRT");
+   ems o = a(eoh.k::new, "NeCSR");
+   ems p = a(eoh.l::new, "NeMT");
+   ems q = a(eoh.o::new, "NeRC");
+   ems r = a(eoh.p::new, "NeSR");
+   ems s = a(eoh.q::new, "NeStart");
+   ems t = a(eot.a::new, "SHCC");
+   ems u = a(eot.b::new, "SHFC");
+   ems v = a(eot.c::new, "SH5C");
+   ems w = a(eot.d::new, "SHLT");
+   ems x = a(eot.e::new, "SHLi");
+   ems y = a(eot.g::new, "SHPR");
+   ems z = a(eot.h::new, "SHPH");
+   ems A = a(eot.i::new, "SHRT");
+   ems B = a(eot.j::new, "SHRC");
+   ems C = a(eot.l::new, "SHSD");
+   ems D = a(eot.m::new, "SHStart");
+   ems E = a(eot.n::new, "SHS");
+   ems F = a(eot.o::new, "SHSSD");
+   ems G = a(eod::new, "TeJP");
+   ems H = a(eon.a::a, "ORP");
+   ems I = a(eoa.a::new, "Iglu");
+   ems J = a(eop::new, "RUPO");
+   ems K = a(eov::new, "TeSH");
+   ems L = a(enw::new, "TeDP");
+   ems M = a(eol.h::new, "OMB");
+   ems N = a(eol.j::new, "OMCR");
+   ems O = a(eol.k::new, "OMDXR");
+   ems P = a(eol.l::new, "OMDXYR");
+   ems Q = a(eol.m::new, "OMDYR");
+   ems R = a(eol.n::new, "OMDYZR");
+   ems S = a(eol.o::new, "OMDZR");
+   ems T = a(eol.p::new, "OMEntry");
+   ems U = a(eol.q::new, "OMPenthouse");
+   ems V = a(eol.s::new, "OMSimple");
+   ems W = a(eol.t::new, "OMSimpleT");
+   ems X = a(eol.u::new, "OMWR");
+   ems Y = a(eny.a::new, "ECP");
+   ems Z = a(eox.i::new, "WMP");
+   ems aa = a(enu.a::new, "BTP");
+   ems ab = a(eor.a::new, "Shipwreck");
+   ems ac = a(eoj.a::new, "NeFos");
+   ems ad = a(elx::new, "jigsaw");
 
-   private static DataResult<ems> a(ems $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   emf load(emr var1, un var2);
+
+   private static ems a(ems $$0, String $$1) {
+      return kd.a(lz.Q, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   public ems(kl $$0, emu.c $$1, float $$2, int $$3, Optional<emu.a> $$4, int $$5, int $$6, emt $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   private static ems a(ems.a $$0, String $$1) {
+      return a((ems)$$0, $$1);
    }
 
-   public ems(int $$0, int $$1, emt $$2, int $$3) {
-      this(kl.g, emu.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   private static ems a(ems.b $$0, String $$1) {
+      return a((ems)$$0, $$1);
    }
 
-   public int a() {
-      return this.c;
+   public interface a extends ems {
+      emf load(un var1);
+
+      @Override
+      default emf load(emr $$0, un $$1) {
+         return this.load($$1);
+      }
    }
 
-   public int b() {
-      return this.d;
-   }
+   public interface b extends ems {
+      emf load(eqe var1, un var2);
 
-   public emt c() {
-      return this.e;
-   }
-
-   public deh a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      ece $$5 = new ece(new ebg(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new deh($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(dxh $$0, int $$1, int $$2) {
-      deh $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.g == $$1 && $$3.h == $$2;
-   }
-
-   @Override
-   public emv<?> e() {
-      return emv.a;
+      @Override
+      default emf load(emr $$0, un $$1) {
+         return this.load($$0.c(), $$1);
+      }
    }
 }

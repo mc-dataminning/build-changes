@@ -2,17 +2,24 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
+import java.util.SequencedMap;
 import java.util.function.Supplier;
 
-public class bmo extends Schema {
+public class bmo extends bjm {
    public bmo(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "ZombieVillager", $$1x -> DSL.optionalFields("Offers", DSL.optionalFields("Recipes", DSL.list(bhu.x.in($$0))), bjj.a($$0)));
-      $$0.register($$1, "Husk", () -> bjj.a($$0));
+   public static SequencedMap<String, Supplier<TypeTemplate>> a(Schema $$0) {
+      SequencedMap<String, Supplier<TypeTemplate>> $$1 = bmj.a($$0);
+      $$1.remove("minecraft:food");
+      $$1.put("minecraft:use_remainder", () -> bhy.t.in($$0));
+      $$1.put("minecraft:equippable", () -> DSL.optionalFields("allowed_entities", DSL.or(bhy.z.in($$0), DSL.list(bhy.z.in($$0)))));
       return $$1;
+   }
+
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bhy.w, () -> DSL.optionalFieldsLazy(a($$0)));
    }
 }

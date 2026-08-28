@@ -1,49 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class doh extends die {
+public class doh extends dij {
    public static final MapCodec<doh> a = b(doh::new);
-   public static final dwa b = doi.d;
 
    @Override
    public MapCodec<doh> a() {
       return a;
    }
 
-   public doh(dvi.d $$0) {
+   protected doh(dvn.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dvj a(czs $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.C($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
-            }
-         }
+   protected bsh a(cwf $$0, dvo $$1, dff $$2, jh $$3, cor $$4, bsg $$5, ezn $$6) {
+      if (!$$0.a(cwj.sm)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return bsh.a;
+      } else {
+         jm $$7 = $$6.c();
+         jm $$8 = $$7.o() == jm.a.b ? $$4.cQ().g() : $$7;
+         $$2.a(null, $$3, awo.uV, awp.e, 1.0F, 1.0F);
+         $$2.a($$3, dil.ee.m().b(djd.b, $$8), 11);
+         ckz $$9 = new ckz(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cwf(cwj.sp, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bve.d($$5));
+         $$2.a($$4, eak.M, $$3);
+         $$4.b(awy.c.b(cwj.sm));
+         return bsh.a;
       }
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if ($$0.c(b) && !$$1.C($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
-      }
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
    }
 }

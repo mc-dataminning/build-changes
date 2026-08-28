@@ -1,43 +1,51 @@
-import java.util.List;
+public class gti extends gtn<gwg, fyr> {
+   private final gka a;
 
-public class gti extends gsx<gwx, gax> {
-   private final ali a;
-   private final gti.a b;
-   private final gti.b c;
-
-   public gti(gqg<gwx, gax> $$0, ali $$1, gti.a $$2, gti.b $$3) {
+   public gti(gqw<gwg, fyr> $$0, gka $$1) {
       super($$0);
       this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
-   public void a(feb $$0, gih $$1, int $$2, gwx $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         this.a();
-         fef $$6 = $$1.getBuffer(gir.j(this.a));
-         float $$7 = this.b.apply($$3, $$3.p);
-         int $$8 = axv.a(azk.d($$7 * 255.0F), 255, 255, 255);
-         this.d().a($$0, $$6, $$2, gpl.a($$3, 0.0F), $$8);
-         this.b();
+   public void a(fek $$0, gix $$1, int $$2, gwg $$3, float $$4, float $$5) {
+      if (!$$3.ae) {
+         boolean $$6 = $$3.aj && $$3.u;
+         if (!$$3.u || $$6) {
+            dvo $$7 = $$3.a.a();
+            int $$8 = gqb.a($$3, 0.0F);
+            hav $$9 = this.a.a($$7);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            this.d().b().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+         }
       }
    }
 
-   private void a() {
-      List<gbm> $$0 = this.c.getPartsToDraw(this.d());
-      this.d().f().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.d().f().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a {
-      float apply(gwx var1, float var2);
-   }
-
-   public interface b {
-      List<gbm> getPartsToDraw(gax var1);
+   private void a(fek $$0, gix $$1, int $$2, boolean $$3, dvo $$4, int $$5, hav $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(gjh.r(gys.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

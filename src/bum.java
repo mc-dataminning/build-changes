@@ -1,88 +1,60 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-
-public enum bum implements bag {
-   a(bum.a.a, 0, 0, "mainhand"),
-   b(bum.a.a, 1, 5, "offhand"),
-   c(bum.a.b, 0, 1, 1, "feet"),
-   d(bum.a.b, 1, 1, 2, "legs"),
-   e(bum.a.b, 2, 1, 3, "chest"),
-   f(bum.a.b, 3, 1, 4, "head"),
-   g(bum.a.c, 0, 1, 6, "body");
-
-   public static final int h = 0;
-   public static final List<bum> i = List.of(values());
-   public static final IntFunction<bum> j = ayb.a($$0 -> $$0.p, values(), ayb.a.a);
-   public static final bag.a<bum> k = bag.a(bum::values);
-   public static final zg<ByteBuf, bum> l = ze.a(j, $$0 -> $$0.p);
-   private final bum.a m;
-   private final int n;
-   private final int o;
-   private final int p;
-   private final String q;
-
-   private bum(final bum.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-   }
-
-   private bum(final bum.a $$0, final int $$1, final int $$2, final String $$3) {
-      this($$0, $$1, 0, $$2, $$3);
-   }
-
-   public bum.a a() {
-      return this.m;
-   }
-
-   public int b() {
-      return this.n;
-   }
-
-   public int a(int $$0) {
-      return $$0 + this.n;
-   }
-
-   public cwb a(cwb $$0) {
-      return this.o > 0 ? $$0.a(this.o) : $$0;
-   }
-
-   public int d() {
-      return this.p;
-   }
-
-   public int b(int $$0) {
-      return this.p + $$0;
-   }
-
-   public String e() {
-      return this.q;
-   }
-
-   public boolean f() {
-      return this.m == bum.a.b || this.m == bum.a.c;
-   }
-
-   @Override
-   public String c() {
-      return this.q;
-   }
-
-   public static bum a(String $$0) {
-      bum $$1 = k.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
+public class bum {
+   public static final byte a = 1;
+   public static final byte b = 3;
+   public static final byte c = 4;
+   public static final byte d = 5;
+   public static final byte e = 6;
+   public static final byte f = 7;
+   public static final byte g = 8;
+   public static final byte h = 9;
+   public static final byte i = 10;
+   public static final byte j = 11;
+   public static final byte k = 12;
+   public static final byte l = 13;
+   public static final byte m = 14;
+   public static final byte n = 15;
+   public static final byte o = 16;
+   public static final byte p = 17;
+   public static final byte q = 18;
+   public static final byte r = 19;
+   public static final byte s = 20;
+   public static final byte t = 21;
+   public static final byte u = 22;
+   public static final byte v = 23;
+   public static final byte w = 24;
+   public static final byte x = 25;
+   public static final byte y = 26;
+   public static final byte z = 27;
+   public static final byte A = 28;
+   public static final byte B = 29;
+   public static final byte C = 30;
+   public static final byte D = 31;
+   public static final byte E = 32;
+   public static final byte F = 34;
+   public static final byte G = 35;
+   public static final byte H = 38;
+   public static final byte I = 39;
+   public static final byte J = 40;
+   public static final byte K = 41;
+   public static final byte L = 42;
+   public static final byte M = 45;
+   public static final byte N = 46;
+   public static final byte O = 47;
+   public static final byte P = 48;
+   public static final byte Q = 49;
+   public static final byte R = 50;
+   public static final byte S = 51;
+   public static final byte T = 52;
+   public static final byte U = 53;
+   public static final byte V = 54;
+   public static final byte W = 55;
+   public static final byte X = 56;
+   public static final byte Y = 58;
+   public static final byte Z = 59;
+   public static final byte aa = 60;
+   public static final byte ab = 61;
+   public static final byte ac = 62;
+   public static final byte ad = 63;
+   public static final byte ae = 64;
+   public static final byte af = 65;
 }

@@ -1,32 +1,39 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
 
-public enum ceb implements bag {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class ceb<T extends bvg & bvj> extends ccc {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<ceb> n = bag.a(ceb::values);
-
-   private ceb(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public ceb(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      return this.b.dY().ac().b(dfb.O) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.et() != null && this.b.et().ar() == bup.by && this.b.eu() > this.d;
+   }
+
+   @Override
+   public void d() {
+      this.d = this.b.eu();
+      this.b.af_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bvj)$$0).forEach(bvj::af_);
+      }
+
+      super.d();
+   }
+
+   private List<? extends bvg> i() {
+      double $$0 = this.b.h(bwm.m);
+      ezm $$1 = ezm.a(this.b.dw()).c($$0, 10.0, $$0);
+      return this.b.dY().a((Class<? extends bvg>)this.b.getClass(), $$1, bun.f);
    }
 }

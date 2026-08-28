@@ -1,14 +1,46 @@
-public class gta<S extends gwi, M extends fyk<S>> extends gsx<S, M> {
-   private final gaf<S> a;
-   private final ali b;
+public class gta extends gtn<gvm, fzd> {
+   private final gpy a;
 
-   public gta(gqg<S, M> $$0, gbi $$1, gbk $$2, ali $$3) {
+   public gta(gqw<gvm, fzd> $$0, gpy $$1) {
       super($$0);
-      this.b = $$3;
-      this.a = new gaf<>($$1.a($$2));
+      this.a = $$1;
    }
 
-   public void a(feb $$0, gih $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public void a(fek $$0, gix $$1, int $$2, gvm $$3, float $$4, float $$5) {
+      hav $$6 = $$3.b();
+      cwf $$7 = $$3.aX_();
+      if ($$6 != null && !$$7.f()) {
+         boolean $$8 = $$3.d;
+         boolean $$9 = $$3.ae;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$9) {
+            float $$10 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
+         }
+
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.ae) {
+            if ($$8) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$8) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$8) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         this.a.a($$7, cwd.h, false, $$0, $$1, $$2, gyk.d, $$6);
+         $$0.b();
+      }
    }
 }

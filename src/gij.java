@@ -1,81 +1,132 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 
-public class gij implements gih {
-   private final gih.a a;
-   private final gih.a b = gih.a(new fdy(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+public abstract class gij {
+   private static final Object2ObjectMap<all, gij> a = ae.a(new Object2ObjectArrayMap(), $$0 -> {
+      gij.c $$1 = new gij.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dzh.e, $$1);
+      $$0.put(dzh.f, new gij.b());
+      $$0.put(dzh.g, new gij.a());
+   });
+   private final float b;
+   private final boolean c;
+   private final gij.d d;
+   private final boolean e;
+   private final boolean f;
 
-   public gij(gih.a $$0) {
-      this.a = $$0;
+   public gij(float $$0, boolean $$1, gij.d $$2, boolean $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   @Override
-   public fef getBuffer(gir $$0) {
-      if ($$0.Q()) {
-         fef $$1 = this.b.getBuffer($$0);
-         return new gij.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fef $$2 = this.a.getBuffer($$0);
-         Optional<gir> $$3 = $$0.P();
-         if ($$3.isPresent()) {
-            fef $$4 = this.b.getBuffer($$3.get());
-            gij.a $$5 = new gij.a($$4, this.c, this.d, this.e, this.f);
-            return fei.a($$5, $$2);
-         } else {
-            return $$2;
-         }
+   public static gij a(dzj $$0) {
+      return (gij)a.get($$0.r());
+   }
+
+   public boolean a(float $$0) {
+      return false;
+   }
+
+   public int b(float $$0) {
+      return 0;
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public abstract ezr a(ezr var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public gij.d c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public static class a extends gij {
+      public a() {
+         super(Float.NaN, false, gij.d.c, true, false);
+      }
+
+      @Override
+      public ezr a(ezr $$0, float $$1) {
+         return $$0.c(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static class b extends gij {
+      public b() {
+         super(Float.NaN, true, gij.d.a, false, true);
+      }
+
+      @Override
+      public ezr a(ezr $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
    }
 
-   public void a() {
-      this.b.b();
+   public static class c extends gij {
+      public static final int a = 192;
+      private static final float b = 0.4F;
+
+      public c() {
+         super(192.0F, true, gij.d.b, false, false);
+      }
+
+      @Override
+      public boolean a(float $$0) {
+         float $$1 = azn.b($$0 * (float) (Math.PI * 2));
+         return $$1 >= -0.4F && $$1 <= 0.4F;
+      }
+
+      @Override
+      public int b(float $$0) {
+         float $$1 = azn.b($$0 * (float) (Math.PI * 2));
+         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
+         float $$3 = azn.l(1.0F - (1.0F - azn.a($$2 * (float) Math.PI)) * 0.99F);
+         return axy.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
+      }
+
+      @Override
+      public ezr a(ezr $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
    }
 
-   static record a(fef a, int b) implements fef {
-      public a(fef $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, axv.a($$4, $$1, $$2, $$3));
-      }
-
-      @Override
-      public fef a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
-
-      @Override
-      public fef a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fef a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fef a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fef b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fef b(float $$0, float $$1, float $$2) {
-         return this;
-      }
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

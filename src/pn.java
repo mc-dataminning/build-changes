@@ -1,100 +1,64 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.mojang.logging.LogUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class pn implements mf {
-   private static final Logger d = LogUtils.getLogger();
-   private final Iterable<Path> e;
-   private final mh f;
+public class pn {
+   private static final kg a = new kg()
+      .a(ma.aL, re::a)
+      .a(ma.aI, rc::a)
+      .a(ma.aJ, sc::a)
+      .a(ma.aR, sr::a)
+      .a(ma.aS, rn::a)
+      .a(ma.aU, rm::a)
+      .a(ma.aT, rj::a)
+      .a(ma.aV, ri::a)
+      .a(ma.aG, ru::a)
+      .a(ma.ba, dgw::a)
+      .a(ma.aQ, rf::a)
+      .a(ma.aK, ebq::a)
+      .a(ma.aP, ebo::a)
+      .a(ma.aZ, elr::a)
+      .a(ma.aO, ekd::a)
+      .a(ma.aH, xh::a)
+      .a(ma.aY, ddx::a)
+      .a(ma.aX, ddv::a)
+      .a(ma.aF, dus::a)
+      .a(ma.m, cia::a)
+      .a(ma.X, ckw::a)
+      .a(ma.s, btb::a)
+      .a(ma.d, dsj::a)
+      .a(ma.aM, dcb::a)
+      .a(ma.aN, ddk::a)
+      .a(ma.L, cwn::a)
+      .a(ma.I, cwa::a);
 
-   public pn(mh $$0, Collection<Path> $$1) {
-      this.e = $$1;
-      this.f = $$0;
+   private static void a(js.a $$0) {
+      a($$0.d(ma.aR), $$0.d(ma.aG));
    }
 
-   @Override
-   public CompletableFuture<?> a(md $$0) {
-      Path $$1 = this.f.a();
-      List<CompletableFuture<?>> $$2 = new ArrayList<>();
-
-      for (Path $$3 : this.e) {
-         $$2.add(
-            CompletableFuture.<CompletableFuture>supplyAsync(
-                  () -> {
-                     try {
-                        CompletableFuture var4;
-                        try (Stream<Path> $$3x = Files.walk($$3)) {
-                           var4 = CompletableFuture.allOf(
-                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
-                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ae.h()))
-                                 .toArray(CompletableFuture[]::new)
-                           );
-                        }
-
-                        return var4;
-                     } catch (IOException var8) {
-                        d.error("Failed to read structure input directory", var8);
-                        return CompletableFuture.completedFuture(null);
-                     }
-                  },
-                  ae.g().a("NbtToSnbt")
-               )
-               .thenCompose($$0x -> $$0x)
-         );
-      }
-
-      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
+   public static void a(jr<elf> $$0, js<dgh> $$1) {
+      $$1.c().forEach($$1x -> {
+         all $$2 = $$1x.h().a();
+         List<ju<elf>> $$3 = ((dgh)$$1x.a()).d().c();
+         $$3.stream().flatMap(ju::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
+               jq.c<elf> $$3xx = $$0.b($$2xx);
+               if (!a($$3xx.a())) {
+                  ae.b("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
+               }
+            }).ifRight($$1xxx -> {
+               if (!a($$1xxx)) {
+                  ae.b("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
+               }
+            }));
+      });
    }
 
-   @Override
-   public final String a() {
-      return "NBT -> SNBT";
+   private static boolean a(elf $$0) {
+      return $$0.c().contains(ekt.a());
    }
 
-   private static String a(Path $$0, Path $$1) {
-      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
-      return $$2.substring(0, $$2.length() - ".nbt".length());
-   }
-
-   @Nullable
-   public static Path a(md $$0, Path $$1, String $$2, Path $$3) {
-      try {
-         Path var7;
-         try (
-            InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new ayu($$4);
-         ) {
-            Path $$6 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$6, uz.a(ux.a($$5, ut.a())));
-            d.info("Converted {} from NBT to SNBT", $$2);
-            var7 = $$6;
-         }
-
-         return var7;
-      } catch (IOException var12) {
-         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
-         return null;
-      }
-   }
-
-   public static void a(md $$0, Path $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
-      $$4.write(10);
-      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
+   public static js.a a() {
+      ke.b $$0 = ke.a(lz.az);
+      js.a $$1 = a.a($$0);
+      a($$1);
+      return $$1;
    }
 }

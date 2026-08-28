@@ -1,44 +1,45 @@
-import java.util.List;
+public class afs implements zs<ach> {
+   public static final zj<wi, afs> a = zs.a(afs::a, afs::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-public class afs implements zp<ace> {
-   public static final zg<wf, afs> a = zp.a(afs::a, afs::new);
-   private final int b;
-   private final int[] c;
-
-   public afs(bue $$0) {
-      this.b = $$0.as();
-      List<bue> $$1 = $$0.da();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).as();
-      }
+   public afs(float $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afs(wf $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
+   private afs(wi $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(wf $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(wi $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zr<afs> a() {
-      return agt.aK;
+   public zu<afs> a() {
+      return agw.aH;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public float b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

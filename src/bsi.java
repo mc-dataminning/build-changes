@@ -1,171 +1,30 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class bsi extends esw {
-   private static final Logger a = LogUtils.getLogger();
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<ali, bsh> f = new Object2ObjectOpenHashMap();
+public record bsi(String d) {
+   public static final bsi a = new bsi("");
+   public static final Codec<bsi> b = Codec.STRING.xmap(bsi::new, bsi::a);
+   public static final String c = "Lock";
 
-   public static esw.a<bsi> a(long $$0) {
-      return new esw.a<>(() -> new bsi($$0), ($$1, $$2) -> a($$0, $$1), bat.m);
+   public boolean a(cwf $$0) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         xl $$1 = $$0.a(ku.g);
+         return $$1 != null && this.d.equals($$1.getString());
+      }
    }
 
-   public bsi(long $$0) {
-      this.b = $$0;
+   public void a(un $$0) {
+      if (!this.d.isEmpty()) {
+         $$0.a("Lock", this.d);
+      }
    }
 
-   public azs a(ali $$0) {
-      azs $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new bsi.a($$1);
+   public static bsi b(un $$0) {
+      return $$0.b("Lock", 8) ? new bsi($$0.l("Lock")) : a;
    }
 
-   private bsh c(ali $$0) {
-      return this.b($$0, this.c, this.d, this.e);
-   }
-
-   private bsh b(ali $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new bsh($$4, $$3 ? Optional.of($$0) : Optional.empty());
-   }
-
-   public void a(BiConsumer<ali, bsh> $$0) {
-      this.f.forEach($$0);
-   }
-
-   public void a(int $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   @Override
-   public uk a(uk $$0, js.a $$1) {
-      $$0.a("salt", this.c);
-      $$0.a("include_world_seed", this.d);
-      $$0.a("include_sequence_id", this.e);
-      uk $$2 = new uk();
-      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (vh)bsh.a.encodeStart(uy.a, $$2x).result().orElseThrow()));
-      $$0.a("sequences", $$2);
-      return $$0;
-   }
-
-   private static boolean a(uk $$0, String $$1, boolean $$2) {
-      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
-   }
-
-   public static bsi a(long $$0, uk $$1) {
-      bsi $$2 = new bsi($$0);
-      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      uk $$3 = $$1.p("sequences");
-
-      for (String $$5 : $$3.e()) {
-         try {
-            bsh $$6 = (bsh)((Pair)bsh.a.decode(uy.a, $$3.c($$5)).result().get()).getFirst();
-            $$2.f.put(ali.a($$5), $$6);
-         } catch (Exception var9) {
-            a.error("Failed to load random sequence {}", $$5, var9);
-         }
-      }
-
-      return $$2;
-   }
-
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
-      return $$0;
-   }
-
-   public void b(ali $$0) {
-      this.f.put($$0, this.c($$0));
-   }
-
-   public void a(ali $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements azs {
-      private final azs c;
-
-      a(final azs $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public azs d() {
-         bsi.this.c();
-         return this.c.d();
-      }
-
-      @Override
-      public ebs e() {
-         bsi.this.c();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         bsi.this.c();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         bsi.this.c();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         bsi.this.c();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         bsi.this.c();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         bsi.this.c();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         bsi.this.c();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         bsi.this.c();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         bsi.this.c();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return $$0 instanceof bsi.a $$1 ? this.c.equals($$1.c) : false;
-         }
-      }
+   public String a() {
+      return this.d;
    }
 }

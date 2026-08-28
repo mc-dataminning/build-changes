@@ -1,125 +1,61 @@
-enum frh {
-   a(
-      new frh.a(ali.b("advancements/tab_above_left_selected"), ali.b("advancements/tab_above_middle_selected"), ali.b("advancements/tab_above_right_selected")),
-      new frh.a(ali.b("advancements/tab_above_left"), ali.b("advancements/tab_above_middle"), ali.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new frh.a(ali.b("advancements/tab_below_left_selected"), ali.b("advancements/tab_below_middle_selected"), ali.b("advancements/tab_below_right_selected")),
-      new frh.a(ali.b("advancements/tab_below_left"), ali.b("advancements/tab_below_middle"), ali.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new frh.a(ali.b("advancements/tab_left_top_selected"), ali.b("advancements/tab_left_middle_selected"), ali.b("advancements/tab_left_bottom_selected")),
-      new frh.a(ali.b("advancements/tab_left_top"), ali.b("advancements/tab_left_middle"), ali.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new frh.a(ali.b("advancements/tab_right_top_selected"), ali.b("advancements/tab_right_middle_selected"), ali.b("advancements/tab_right_bottom_selected")),
-      new frh.a(ali.b("advancements/tab_right_top"), ali.b("advancements/tab_right_middle"), ali.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import java.net.URI;
 
-   private final frh.a e;
-   private final frh.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class frh extends frp {
+   private static final xl a = xl.c("symlink_warning.title.world").a(n.r);
+   private static final xl b = xl.a("symlink_warning.message.world", xl.a(ayj.p));
+   private static final xl c = xl.c("symlink_warning.title.pack").a(n.r);
+   private static final xl d = xl.a("symlink_warning.message.pack", xl.a(ayj.p));
+   private final xl s;
+   private final URI u;
+   private final Runnable v;
+   private final fpk w = new fpk().b(10);
 
-   private frh(final frh.a $$0, final frh.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public frh(xl $$0, xl $$1, URI $$2, Runnable $$3) {
+      super($$0);
+      this.s = $$1;
+      this.u = $$2;
+      this.v = $$3;
    }
 
-   public int a() {
-      return this.i;
+   public static frp a(Runnable $$0) {
+      return new frh(a, b, ayj.p, $$0);
    }
 
-   public void a(fku $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      frh.a $$5 = $$3 ? this.e : this.f;
-      ali $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
-      } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a(gir::B, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
+   public static frp b(Runnable $$0) {
+      return new frh(c, d, ayj.p, $$0);
    }
 
-   public void a(fku $$0, int $$1, int $$2, int $$3, cwb $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
+   @Override
+   protected void aS_() {
+      super.aS_();
+      this.w.c().b();
+      fpk.b $$0 = this.w.d(1);
+      $$0.a(new fnd(this.l, this.p));
+      $$0.a(new fmq(this.s, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      fpk $$2 = new fpk().a(5);
+      fpk.b $$3 = $$2.d(3);
+      $$3.a(flw.a(xk.n, $$0x -> ae.m().a(this.u)).b(120, 20).a());
+      $$3.a(flw.a(xk.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
+      $$3.a(flw.a(xk.k, $$0x -> this.aP_()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.w.a(this::c);
    }
 
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
+   @Override
+   protected void c() {
+      this.w.a();
+      fpj.a(this.w, this.H());
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
+   @Override
+   public xl i() {
+      return xk.a(super.i(), this.s);
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
-
-   static record a(ali a, ali b, ali c) {
+   @Override
+   public void aP_() {
+      this.v.run();
    }
 }

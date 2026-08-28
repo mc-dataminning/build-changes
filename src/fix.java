@@ -1,38 +1,66 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fix {
-   private final gcj a;
-   private int b = -1;
-   @Nullable
-   private Consumer<uk> c;
+public class fix extends fiw {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xl c = xl.c("mco.configure.world.opening");
+   private final fgb d;
+   private final frp e;
+   private final boolean f;
+   private final fjx g;
 
-   public fix(gcj $$0) {
-      this.a = $$0;
+   public fix(fgb $$0, frp $$1, boolean $$2, fjx $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public boolean a(int $$0, @Nullable uk $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void run() {
+      ffa $$0 = ffa.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fhj) {
+                     ((fhj)this.e).f();
+                  }
+
+                  this.d.e = fgb.c.b;
+                  if (this.f) {
+                     fev.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (fgw var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to open server", var5);
+            this.a(var5);
+         }
       }
    }
 
-   private int a(Consumer<uk> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<uk> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahq($$2, $$0));
-   }
-
-   public void a(jh $$0, Consumer<uk> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agy($$2, $$0));
+   @Override
+   public xl a() {
+      return c;
    }
 }

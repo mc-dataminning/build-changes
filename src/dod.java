@@ -1,165 +1,120 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dod extends dht {
-   public static final MapCodec<dod> d = b(dod::new);
-   public static final dwh<dwn> e = dvz.ag;
+public class dod extends dij implements diq {
+   public static final MapCodec<dod> a = b(dod::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final fal f = fai.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dod> a() {
-      return d;
+      return a;
    }
 
-   protected dod(dvi.d $$0) {
-      super(false, $$0);
-      this.l(this.F.b().b(e, dwn.a).b(c, Boolean.valueOf(false)));
+   public dod(dvn.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3) {
-      if ($$3.m().p() && new doe($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
+   protected boolean b(dvo $$0, dvo $$1, jm $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dvo $$0, dff $$1, jh $$2, bui $$3) {
+      if (!($$3 instanceof bve) || $$3.dz().a(this)) {
+         $$3.a($$0, new ezr(0.9F, 1.5, 0.9F));
+         if ($$1.C) {
+            azv $$4 = $$1.E_();
+            boolean $$5 = $$3.ab != $$3.dD() || $$3.ad != $$3.dJ();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  ls.aK,
+                  $$3.dD(),
+                  (double)($$2.v() + 1),
+                  $$3.dJ(),
+                  (double)(azn.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(azn.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
+         }
+      }
+
+      $$3.q(true);
+      if (!$$1.C) {
+         if ($$3.ca() && ($$1.ac().b(dfb.c) || $$3 instanceof cor) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
+
+         $$3.c(false);
       }
    }
 
    @Override
-   public dwm<dwn> c() {
-      return e;
+   public void a(dff $$0, dvo $$1, jh $$2, bui $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof bve $$5) {
+         bve.a $$7 = $$5.eQ();
+         awn $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
    }
 
    @Override
-   protected dvj a(dvj $$0, dor $$1) {
-      dwn $$2 = $$0.c(e);
+   protected fal b(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      if ($$3 instanceof fab $$4) {
+         bui $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.aa > 2.5F) {
+               return f;
+            }
 
-      return $$0.b(e, switch ($$1) {
-         case c -> {
-            switch ($$2) {
-               case a:
-                  yield dwn.a;
-               case b:
-                  yield dwn.b;
-               case c:
-                  yield dwn.d;
-               case d:
-                  yield dwn.c;
-               case e:
-                  yield dwn.f;
-               case f:
-                  yield dwn.e;
-               case g:
-                  yield dwn.i;
-               case h:
-                  yield dwn.j;
-               case i:
-                  yield dwn.g;
-               case j:
-                  yield dwn.h;
-               default:
-                  throw new MatchException(null, null);
+            boolean $$6 = $$5 instanceof cky;
+            if ($$6 || a($$5) && $$3.a(fai.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
             }
          }
-         case d -> {
-            switch ($$2) {
-               case a:
-                  yield dwn.b;
-               case b:
-                  yield dwn.a;
-               case c:
-                  yield dwn.e;
-               case d:
-                  yield dwn.f;
-               case e:
-                  yield dwn.d;
-               case f:
-                  yield dwn.c;
-               case g:
-                  yield dwn.j;
-               case h:
-                  yield dwn.g;
-               case i:
-                  yield dwn.h;
-               case j:
-                  yield dwn.i;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case b -> {
-            switch ($$2) {
-               case a:
-                  yield dwn.b;
-               case b:
-                  yield dwn.a;
-               case c:
-                  yield dwn.f;
-               case d:
-                  yield dwn.e;
-               case e:
-                  yield dwn.c;
-               case f:
-                  yield dwn.d;
-               case g:
-                  yield dwn.h;
-               case h:
-                  yield dwn.i;
-               case i:
-                  yield dwn.j;
-               case j:
-                  yield dwn.g;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> $$2;
-      });
-   }
-
-   @Override
-   protected dvj a(dvj $$0, dna $$1) {
-      dwn $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.b(e, dwn.f);
-               case f:
-                  return $$0.b(e, dwn.e);
-               case g:
-                  return $$0.b(e, dwn.j);
-               case h:
-                  return $$0.b(e, dwn.i);
-               case i:
-                  return $$0.b(e, dwn.h);
-               case j:
-                  return $$0.b(e, dwn.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.b(e, dwn.d);
-               case d:
-                  return $$0.b(e, dwn.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.b(e, dwn.h);
-               case h:
-                  return $$0.b(e, dwn.g);
-               case i:
-                  return $$0.b(e, dwn.j);
-               case j:
-                  return $$0.b(e, dwn.i);
-            }
       }
 
-      return super.a($$0, $$1);
+      return fai.a();
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(e, c);
+   protected fal c(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return fai.a();
+   }
+
+   public static boolean a(bui $$0) {
+      if ($$0.ar().a(axh.h)) {
+         return true;
+      } else {
+         return $$0 instanceof bve ? ((bve)$$0).a(buq.c).a(cwj.pC) : false;
+      }
+   }
+
+   @Override
+   public cwf a(@Nullable cor $$0, dfg $$1, jh $$2, dvo $$3) {
+      $$1.a($$2, dil.a.m(), 11);
+      if (!$$1.y_()) {
+         $$1.c(2001, $$2, dij.j($$3));
+      }
+
+      return new cwf(cwj.qC);
+   }
+
+   @Override
+   public Optional<awn> at_() {
+      return Optional.of(awo.dm);
+   }
+
+   @Override
+   protected boolean a(dvo $$0, esd $$1) {
+      return true;
    }
 }

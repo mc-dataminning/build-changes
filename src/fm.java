@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class fm extends gg<ebf.a> {
-   private static final Codec<ebf.a> a = bag.a(fm::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class fm extends gg<ebj.a> {
+   private static final Codec<ebj.a> a = baj.a(fm::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static ebf.a[] b() {
-      return Arrays.stream(ebf.a.values()).filter(ebf.a::d).toArray(ebf.a[]::new);
+   private static ebj.a[] b() {
+      return Arrays.stream(ebj.a.values()).filter(ebj.a::d).toArray(ebj.a[]::new);
    }
 
    private fm() {
@@ -18,8 +18,8 @@ public class fm extends gg<ebf.a> {
       return new fm();
    }
 
-   public static ebf.a a(CommandContext<ew> $$0, String $$1) {
-      return (ebf.a)$$0.getArgument($$1, ebf.a.class);
+   public static ebj.a a(CommandContext<ew> $$0, String $$1) {
+      return (ebj.a)$$0.getArgument($$1, ebj.a.class);
    }
 
    @Override

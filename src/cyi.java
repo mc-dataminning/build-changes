@@ -1,3 +1,7 @@
-public interface cyi {
-   void a(dfb var1, bva var2, cwb var3, cyh var4);
+import java.util.List;
+
+public interface cyi<T, C> {
+   List<asi<T>> a();
+
+   C a(List<asi<T>> var1);
 }

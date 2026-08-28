@@ -1,20 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egf {
-   public static final Codec<egf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(elb.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, egf::new)
-   );
-   public final jq<elb> b;
-   public final float c;
-
-   public egf(jq<elb> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class egf extends eep<eha> {
+   public egf(Codec<eha> $$0) {
+      super($$0);
    }
 
-   public boolean a(dfy $$0, dxg $$1, azs $$2, jh $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(eer<eha> $$0) {
+      dgd $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (jm $$3 : jm.values()) {
+            if ($$3 != jm.a && drf.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dil.ff.m().b(drf.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

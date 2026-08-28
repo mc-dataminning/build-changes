@@ -1,7 +1,7 @@
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bpp(String a, String b, String c) {
+public record bpp(double a, double b, double c) {
    public static bpp a(RecordedEvent $$0) {
-      return new bpp($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
+      return new bpp((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

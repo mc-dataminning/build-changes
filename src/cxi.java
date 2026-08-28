@@ -1,23 +1,59 @@
-public class cxi extends cvx implements cww {
-   public cxi(cvx.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+
+public class cxi extends cuy {
+   protected static final Map<dij, dvo> a = Maps.newHashMap(
+      new Builder()
+         .put(dil.i, dil.kE.m())
+         .put(dil.j, dil.kE.m())
+         .put(dil.l, dil.kE.m())
+         .put(dil.k, dil.kE.m())
+         .put(dil.fl, dil.kE.m())
+         .put(dil.sH, dil.kE.m())
+         .build()
+   );
+
+   public cxi(cxw $$0, float $$1, float $$2, cwb.a $$3) {
+      super($$0, axd.bE, $$1, $$2, $$3);
    }
 
    @Override
-   public bsd a(dfb $$0, com $$1, bsc $$2) {
-      cwb $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dC(), $$1.dE(), $$1.dI(), awl.yE, awm.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arn $$4) {
-         cpg.a(cpl::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
+   public bsh a(czy $$0) {
+      dff $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvo $$3 = $$1.a_($$2);
+      if ($$0.k() == jm.a) {
+         return bsh.e;
+      } else {
+         cor $$4 = $$0.o();
+         dvo $$5 = a.get($$3.b());
+         dvo $$6 = null;
+         if ($$5 != null && $$1.a_($$2.d()).l()) {
+            $$1.a($$4, $$2, awo.wJ, awp.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof dix && $$3.c(dix.c)) {
+            if (!$$1.y_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
+
+            dix.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.b(dix.c, Boolean.valueOf(false));
+         }
+
+         if ($$6 != null) {
+            if (!$$1.C) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(eak.c, $$2, eak.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, bve.d($$0.p()));
+               }
+            }
+
+            return bsh.a;
+         } else {
+            return bsh.e;
+         }
       }
-
-      $$1.b(awv.c.b(this));
-      $$3.a(1, $$1);
-      return bsd.a;
-   }
-
-   @Override
-   public cpg a(dfb $$0, ka $$1, cwb $$2, jm $$3) {
-      return new cpl($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

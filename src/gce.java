@@ -1,263 +1,67 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public record gce(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final gce a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public class gce extends dxj {
-   static final Logger a = LogUtils.getLogger();
-   private final dxp b;
-   private final eqz c;
-   volatile gce.a d;
-   final gci e;
-
-   public gce(gci $$0, int $$1) {
-      this.e = $$0;
-      this.b = new dxl($$0, new deh(0, 0), $$0.H_().e(lz.aG).b(dgj.b));
-      this.c = new eqz(this, true, $$0.D_().g());
-      this.d = new gce.a(b($$1));
+   public static gce a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   @Override
-   public eqz p() {
+   public static gce b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   }
+
+   public static gce a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new gce($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
+   }
+
+   public gce c(float $$0, float $$1, float $$2) {
+      return new gce(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
+   }
+
+   public gce a(float $$0) {
+      return new gce(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
+   }
+
+   public gce b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
+   }
+
+   public gce d(float $$0, float $$1, float $$2) {
+      return new gce(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
       return this.c;
    }
 
-   private static boolean a(@Nullable dxp $$0, int $$1, int $$2) {
-      if ($$0 == null) {
-         return false;
-      } else {
-         deh $$3 = $$0.f();
-         return $$3.g == $$1 && $$3.h == $$2;
-      }
+   public float c() {
+      return this.d;
    }
 
-   public void a(deh $$0) {
-      if (this.d.b($$0.g, $$0.h)) {
-         int $$1 = this.d.a($$0.g, $$0.h);
-         dxp $$2 = this.d.a($$1);
-         if (a($$2, $$0.g, $$0.h)) {
-            this.d.b($$1, $$2);
-         }
-      }
-   }
-
-   @Nullable
-   public dxp b(int $$0, int $$1, dyg $$2, boolean $$3) {
-      if (this.d.b($$0, $$1)) {
-         dxp $$4 = this.d.a(this.d.a($$0, $$1));
-         if (a($$4, $$0, $$1)) {
-            return $$4;
-         }
-      }
-
-      return $$3 ? this.b : null;
-   }
-
-   @Override
-   public deg q() {
+   public float d() {
       return this.e;
    }
 
-   public void a(int $$0, int $$1, wf $$2) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-      } else {
-         int $$3 = this.d.a($$0, $$1);
-         dxp $$4 = this.d.b.get($$3);
-         if (!a($$4, $$0, $$1)) {
-            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
-         } else {
-            $$4.a($$2);
-         }
-      }
+   public float e() {
+      return this.f;
    }
 
-   @Nullable
-   public dxp a(int $$0, int $$1, wf $$2, uk $$3, Consumer<adp.b> $$4) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-         return null;
-      } else {
-         int $$5 = this.d.a($$0, $$1);
-         dxp $$6 = this.d.b.get($$5);
-         deh $$7 = new deh($$0, $$1);
-         if (!a($$6, $$0, $$1)) {
-            $$6 = new dxp(this.e, $$7);
-            $$6.a($$2, $$3, $$4);
-            this.d.a($$5, $$6);
-         } else {
-            $$6.a($$2, $$3, $$4);
-         }
-
-         this.e.a($$7);
-         return $$6;
-      }
+   public float f() {
+      return this.g;
    }
 
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
+   public float g() {
+      return this.h;
    }
 
-   public void d(int $$0, int $$1) {
-      this.d.f = $$0;
-      this.d.g = $$1;
+   public float h() {
+      return this.i;
    }
 
-   public void a(int $$0) {
-      int $$1 = this.d.d;
-      int $$2 = b($$0);
-      if ($$1 != $$2) {
-         gce.a $$3 = new gce.a($$2);
-         $$3.f = this.d.f;
-         $$3.g = this.d.g;
-
-         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
-            dxp $$5 = this.d.b.get($$4);
-            if ($$5 != null) {
-               deh $$6 = $$5.f();
-               if ($$3.b($$6.g, $$6.h)) {
-                  $$3.a($$3.a($$6.g, $$6.h), $$5);
-               }
-            }
-         }
-
-         this.d = $$3;
-      }
-   }
-
-   private static int b(int $$0) {
-      return Math.max(2, $$0) + 3;
-   }
-
-   @Override
-   public String e() {
-      return this.d.b.length() + ", " + this.j();
-   }
-
-   @Override
-   public int j() {
-      return this.d.h;
-   }
-
-   @Override
-   public void a(dfk $$0, kj $$1) {
-      fji.Q().f.b($$1.a(), $$1.b(), $$1.c());
-   }
-
-   public LongOpenHashSet a() {
-      return this.d.c;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      this.d.a($$0, $$1, $$2, $$3);
-   }
-
-   final class a {
-      final AtomicReferenceArray<dxp> b;
-      final LongOpenHashSet c = new LongOpenHashSet();
-      final int d;
-      private final int e;
-      volatile int f;
-      volatile int g;
-      int h;
-
-      a(final int $$0) {
-         this.d = $$0;
-         this.e = $$0 * 2 + 1;
-         this.b = new AtomicReferenceArray<>(this.e * this.e);
-      }
-
-      int a(int $$0, int $$1) {
-         return Math.floorMod($$1, this.e) * this.e + Math.floorMod($$0, this.e);
-      }
-
-      void a(int $$0, @Nullable dxp $$1) {
-         dxp $$2 = this.b.getAndSet($$0, $$1);
-         if ($$2 != null) {
-            this.h--;
-            this.a($$2);
-            gce.this.e.a($$2);
-         }
-
-         if ($$1 != null) {
-            this.h++;
-            this.b($$1);
-         }
-      }
-
-      void b(int $$0, dxp $$1) {
-         if (this.b.compareAndSet($$0, $$1, null)) {
-            this.h--;
-            this.a($$1);
-         }
-
-         gce.this.e.a($$1);
-      }
-
-      public void a(int $$0, int $$1, int $$2, boolean $$3) {
-         if (this.b($$0, $$2)) {
-            long $$4 = kj.b($$0, $$1, $$2);
-            if ($$3) {
-               this.c.add($$4);
-            } else if (this.c.remove($$4)) {
-               gce.this.e.d($$4);
-            }
-         }
-      }
-
-      private void a(dxp $$0) {
-         dxq[] $$1 = $$0.d();
-
-         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-            deh $$3 = $$0.f();
-            this.c.remove(kj.b($$3.g, $$0.h($$2), $$3.h));
-         }
-      }
-
-      private void b(dxp $$0) {
-         dxq[] $$1 = $$0.d();
-
-         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-            dxq $$3 = $$1[$$2];
-            if ($$3.c()) {
-               deh $$4 = $$0.f();
-               this.c.add(kj.b($$4.g, $$0.h($$2), $$4.h));
-            }
-         }
-      }
-
-      boolean b(int $$0, int $$1) {
-         return Math.abs($$0 - this.f) <= this.d && Math.abs($$1 - this.g) <= this.d;
-      }
-
-      @Nullable
-      protected dxp a(int $$0) {
-         return this.b.get($$0);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
-            int $$2 = gce.this.d.d;
-
-            for (int $$3 = this.g - $$2; $$3 <= this.g + $$2; $$3++) {
-               for (int $$4 = this.f - $$2; $$4 <= this.f + $$2; $$4++) {
-                  dxp $$5 = gce.this.d.b.get(gce.this.d.a($$4, $$3));
-                  if ($$5 != null) {
-                     deh $$6 = $$5.f();
-                     $$1.write(($$6.g + "\t" + $$6.h + "\t" + $$5.B() + "\n").getBytes(StandardCharsets.UTF_8));
-                  }
-               }
-            }
-         } catch (IOException var10) {
-            gce.a.error("Failed to dump chunks to file {}", $$0, var10);
-         }
-      }
+   public float i() {
+      return this.j;
    }
 }

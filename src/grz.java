@@ -1,20 +1,26 @@
-public class grz extends gsx<gue, fxx> {
-   private static final ali a = ali.b("textures/entity/cat/cat_collar.png");
-   private final fxx b;
-   private final fxx c;
+public class grz extends goz<cqa, gvd> {
+   private static final all a = all.b("textures/entity/projectiles/wind_charge.png");
+   private final gbo b;
 
-   public grz(gqg<gue, fxx> $$0, gbi $$1) {
+   public grz(gpa.a $$0) {
       super($$0);
-      this.b = new fxx($$1.a(gbl.F));
-      this.c = new fxx($$1.a(gbl.G));
+      this.b = new gbo($$0.a(gcb.cX));
    }
 
-   public void a(feb $$0, gih $$1, int $$2, gue $$3, float $$4, float $$5) {
-      cuy $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         fxx $$8 = $$3.ae ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
-      }
+   @Override
+   public void a(gvd $$0, fek $$1, gix $$2, int $$3) {
+      feo $$4 = $$2.getBuffer(gjh.a(a, this.a($$0.p) % 1.0F, 0.0F));
+      this.b.a($$0);
+      this.b.a($$1, $$4, $$3, gyk.d);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   @Override
+   public gvd b() {
+      return new gvd();
    }
 }

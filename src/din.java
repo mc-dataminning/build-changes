@@ -1,35 +1,83 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class din extends die {
-   protected din(dvi.d $$0) {
+public class din extends dhv {
+   public static final MapCodec<din> a = b(din::new);
+   public static final dwf[] b = new dwf[]{dwe.k, dwe.l, dwe.m};
+   protected static final fal c = fai.a(dij.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dij.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+
+   @Override
+   public MapCodec<din> a() {
+      return a;
+   }
+
+   public din(dvn.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends din> a();
-
-   protected boolean b(dvj $$0, deg $$1, jh $$2) {
-      return $$0.a(axa.ag) || $$0.a(dig.cC);
+   protected dop a_(dvo $$0) {
+      return dop.c;
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      return !$$0.a($$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dsr a(jh $$0, dvo $$1) {
+      return new dsu($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsr> dss<T> a(dff $$0, dvo $$1, dst<T> $$2) {
+      return $$0.C ? null : a($$2, dst.l, dsu::a);
    }
 
    @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return this.b($$1.a_($$3), $$1, $$3);
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return c;
    }
 
    @Override
-   protected boolean e_(dvj $$0) {
-      return $$0.y().c();
+   protected bsh a(dvo $$0, dff $$1, jh $$2, cor $$3, ezn $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dsu $$5) {
+         $$3.a($$5);
+         $$3.a(awy.aa);
+      }
+
+      return bsh.a;
    }
 
    @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      return $$1 == erz.c && !this.aH ? true : super.a($$0, $$1);
+   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(ls.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   protected void a(dvo $$0, dff $$1, jh $$2, dvo $$3, boolean $$4) {
+      bsd.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean c_(dvo $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dvo $$0, dff $$1, jh $$2) {
+      return crs.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
    }
 }

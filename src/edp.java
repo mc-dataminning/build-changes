@@ -1,118 +1,174 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class edp extends eel<egj> {
-   private static final ImmutableList<die> a = ImmutableList.of(dig.H, dig.F, dig.kJ, dig.dW, dig.fn, dig.fo, dig.fp, dig.fq, dig.cv, dig.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int ao = 15;
+public abstract class edp<C extends edi> {
+   public static final edp<edl> a = a("cave", new edm(edl.a));
+   public static final edp<edl> b = a("nether_cave", new edo(edl.a));
+   public static final edp<edg> c = a("canyon", new edh(edg.a));
+   protected static final dvo d = dil.a.m();
+   protected static final dvo e = dil.nc.m();
+   protected static final ero f = erp.c.g();
+   protected static final ero g = erp.e.g();
+   protected Set<ern> h = ImmutableSet.of(erp.c);
+   private final MapCodec<edn<C>> i;
 
-   public edp(Codec<egj> $$0) {
-      super($$0);
+   private static <C extends edi, F extends edp<C>> F a(String $$0, F $$1) {
+      return kd.a(lz.N, $$0, $$1);
    }
 
-   @Override
-   public boolean a(een<egj> $$0) {
-      int $$1 = $$0.c().f();
-      jh $$2 = $$0.e();
-      dfy $$3 = $$0.b();
-      azs $$4 = $$0.d();
-      egj $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.k())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
-
-         for (jh $$11 : jh.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
-         }
-
-         return $$10;
-      }
+   public edp(Codec<C> $$0) {
+      this.i = $$0.fieldOf("config").xmap(this::a, edn::b);
    }
 
-   private boolean a(dfc $$0, int $$1, jh $$2, int $$3, int $$4) {
-      boolean $$5 = false;
+   public edn<C> a(C $$0) {
+      return new edn<>(this, $$0);
+   }
 
-      for (jh $$6 : jh.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         jh $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
+   public MapCodec<edn<C>> c() {
+      return this.i;
+   }
 
-            for (jh.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (jh)$$10)) {
-                  this.a($$0, $$10, dig.dY.m());
-                  $$10.c(jm.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(dig.dY)) {
-                     break;
+   public int d() {
+      return 4;
+   }
+
+   protected boolean a(
+      edk $$0, C $$1, dxj $$2, Function<jh, jq<dgh>> $$3, eav $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dxi $$10, edp.a $$11
+   ) {
+      del $$12 = $$2.f();
+      double $$13 = (double)$$12.b();
+      double $$14 = (double)$$12.c();
+      double $$15 = 16.0 + $$8 * 2.0;
+      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
+         int $$16 = $$12.d();
+         int $$17 = $$12.e();
+         int $$18 = Math.max(azn.a($$5 - $$8) - $$16 - 1, 0);
+         int $$19 = Math.min(azn.a($$5 + $$8) - $$16, 15);
+         int $$20 = Math.max(azn.a($$6 - $$9) - 1, $$0.a() + 1);
+         int $$21 = $$2.x() ? 0 : 7;
+         int $$22 = Math.min(azn.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
+         int $$23 = Math.max(azn.a($$7 - $$8) - $$17 - 1, 0);
+         int $$24 = Math.min(azn.a($$7 + $$8) - $$17, 15);
+         boolean $$25 = false;
+         jh.a $$26 = new jh.a();
+         jh.a $$27 = new jh.a();
+
+         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
+            int $$29 = $$12.a($$28);
+            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
+
+            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
+               int $$32 = $$12.b($$31);
+               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
+               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
+                  MutableBoolean $$34 = new MutableBoolean(false);
+
+                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
+                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
+                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
+                        $$10.a($$28, $$35, $$31);
+                        $$26.d($$29, $$35, $$32);
+                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
+                     }
                   }
-
-                  $$10.c(jm.b);
                }
             }
          }
-      }
 
-      return $$5;
+         return $$25;
+      } else {
+         return false;
+      }
    }
 
-   @Nullable
-   private static jh a(dfc $$0, int $$1, jh.a $$2, int $$3) {
-      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(jm.a);
+   protected boolean a(edk $$0, C $$1, dxj $$2, Function<jh, jq<dgh>> $$3, dxi $$4, jh.a $$5, jh.a $$6, eav $$7, MutableBoolean $$8) {
+      dvo $$9 = $$2.a_($$5);
+      if ($$9.a(dil.i) || $$9.a(dil.fl)) {
+         $$8.setTrue();
       }
 
-      return null;
-   }
-
-   private static boolean a(dfc $$0, int $$1, jh.a $$2) {
-      if (!a($$0, $$1, (jh)$$2)) {
+      if (!this.a($$1, $$9) && !b($$1)) {
          return false;
       } else {
-         dvj $$3 = $$0.a_($$2.c(jm.a));
-         $$2.c(jm.b);
-         return !$$3.l() && !a.contains($$3.b());
+         dvo $$10 = this.a($$0, $$1, $$5, $$7);
+         if ($$10 == null) {
+            return false;
+         } else {
+            $$2.a($$5, $$10, false);
+            if ($$7.a() && !$$10.y().c()) {
+               $$2.e($$5);
+            }
+
+            if ($$8.isTrue()) {
+               $$6.a($$5, jm.a);
+               if ($$2.a_($$6).a(dil.j)) {
+                  $$0.a($$3, $$2, $$6, !$$10.y().c()).ifPresent($$2x -> {
+                     $$2.a($$6, $$2x, false);
+                     if (!$$2x.y().c()) {
+                        $$2.e($$6);
+                     }
+                  });
+               }
+            }
+
+            return true;
+         }
       }
    }
 
    @Nullable
-   private static jh a(dfc $$0, jh.a $$1, int $$2) {
-      while ($$1.v() <= $$0.al() && $$2 > 0) {
-         $$2--;
-         dvj $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
+   private dvo a(edk $$0, C $$1, jh $$2, eav $$3) {
+      if ($$2.v() <= $$1.g.a($$0)) {
+         return g.g();
+      } else {
+         dvo $$4 = $$3.a(new ebc.e($$2.u(), $$2.v(), $$2.w()), 0.0);
+         if ($$4 == null) {
+            return b($$1) ? $$1.h.e() : null;
+         } else {
+            return b($$1) ? b($$1, $$4) : $$4;
          }
-
-         if ($$3.l()) {
-            return $$1;
-         }
-
-         $$1.c(jm.b);
       }
-
-      return null;
    }
 
-   private static boolean a(dfc $$0, int $$1, jh $$2) {
-      dvj $$3 = $$0.a_($$2);
-      return $$3.l() || $$3.a(dig.H) && $$2.v() <= $$1;
+   private static dvo b(edi $$0, dvo $$1) {
+      if ($$1.a(dil.a)) {
+         return $$0.h.b();
+      } else if ($$1.a(dil.G)) {
+         dvo $$2 = $$0.h.c();
+         return $$2.b(dwe.C) ? $$2.b(dwe.C, Boolean.valueOf(true)) : $$2;
+      } else {
+         return $$1.a(dil.H) ? $$0.h.d() : $$1;
+      }
+   }
+
+   public abstract boolean a(edk var1, C var2, dxj var3, Function<jh, jq<dgh>> var4, azv var5, eav var6, del var7, dxi var8);
+
+   public abstract boolean a(C var1, azv var2);
+
+   protected boolean a(C $$0, dvo $$1) {
+      return $$1.a($$0.i);
+   }
+
+   protected static boolean a(del $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
+      double $$6 = (double)$$0.b();
+      double $$7 = (double)$$0.c();
+      double $$8 = $$1 - $$6;
+      double $$9 = $$2 - $$7;
+      double $$10 = (double)($$4 - $$3);
+      double $$11 = (double)($$5 + 2.0F + 16.0F);
+      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
+   }
+
+   private static boolean b(edi $$0) {
+      return $$0.h.a();
+   }
+
+   public interface a {
+      boolean shouldSkip(edk var1, double var2, double var4, double var6, int var8);
    }
 }

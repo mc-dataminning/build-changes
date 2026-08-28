@@ -1,36 +1,23 @@
-public class grf extends gpq<cny, gww, gaw> {
-   private static final ali b = ali.b("textures/entity/villager/villager.png");
-   public static final gsc.a a = new gsc.a(-0.1171875F, -0.07421875F, 1.0F);
+public class grf extends gqg<cht, gwb, gba> {
+   private static final all a = all.b("textures/entity/snow_golem.png");
 
-   public grf(gok.a $$0) {
-      super($$0, new gaw($$0.a(gbl.cT)), 0.5F);
-      this.a(new gsc<>(this, $$0.f(), a, $$0.b()));
-      this.a(new gth<>(this, $$0.e(), "villager"));
-      this.a(new gsb<>(this, $$0.b()));
+   public grf(gpa.a $$0) {
+      super($$0, new gba($$0.a(gcb.cw)), 0.5F);
+      this.a(new gts(this, $$0.d(), $$0.b()));
    }
 
-   protected void a(gww $$0, feb $$1) {
-      super.a($$0, $$1);
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
+   @Override
+   public all b(gwb $$0) {
+      return a;
    }
 
-   public ali a(gww $$0) {
-      return b;
+   public gwb c() {
+      return new gwb();
    }
 
-   protected float b(gww $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
-   }
-
-   public gww c() {
-      return new gww();
-   }
-
-   public void a(cny $$0, gww $$1, float $$2) {
+   public void a(cht $$0, gwb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q() > 0;
-      $$1.b = $$0.gE();
+      $$1.ao = $$0.t() ? new cwf(cwj.fl) : cwf.k;
+      $$1.an = this.i.a($$1.ao, $$0, cwd.f);
    }
 }

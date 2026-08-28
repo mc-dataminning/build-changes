@@ -1,35 +1,61 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public abstract class qd extends qc<cvx> {
-   private final CompletableFuture<qh.c<die>> d;
-   private final Map<axq<die>, axq<cvx>> g = new HashMap<>();
+public class qd extends qk<eak> {
+   @VisibleForTesting
+   static final List<alk<eak>> d = List.of(
+      eak.b.h(),
+      eak.c.h(),
+      eak.d.h(),
+      eak.f.h(),
+      eak.g.h(),
+      eak.h.h(),
+      eak.i.h(),
+      eak.a.h(),
+      eak.e.h(),
+      eak.j.h(),
+      eak.k.h(),
+      eak.l.h(),
+      eak.m.h(),
+      eak.n.h(),
+      eak.o.h(),
+      eak.p.h(),
+      eak.q.h(),
+      eak.r.h(),
+      eak.s.h(),
+      eak.t.h(),
+      eak.u.h(),
+      eak.v.h(),
+      eak.w.h(),
+      eak.y.h(),
+      eak.z.h(),
+      eak.A.h(),
+      eak.B.h(),
+      eak.C.h(),
+      eak.G.h(),
+      eak.H.h(),
+      eak.I.h(),
+      eak.J.h(),
+      eak.K.h(),
+      eak.M.h(),
+      eak.O.h(),
+      eak.P.h(),
+      eak.Q.h(),
+      eak.R.h(),
+      eak.S.h()
+   );
 
-   public qd(mh $$0, CompletableFuture<js.a> $$1, CompletableFuture<qh.c<die>> $$2) {
-      super($$0, lz.K, $$1, $$0x -> $$0x.f().h());
-      this.d = $$2;
-   }
-
-   public qd(mh $$0, CompletableFuture<js.a> $$1, CompletableFuture<qh.c<cvx>> $$2, CompletableFuture<qh.c<die>> $$3) {
-      super($$0, lz.K, $$1, $$2, $$0x -> $$0x.f().h());
-      this.d = $$3;
-   }
-
-   protected void a(axq<die> $$0, axq<cvx> $$1) {
-      this.g.put($$0, $$1);
+   public qd(mi $$0, CompletableFuture<js.a> $$1) {
+      super($$0, ma.G, $$1);
    }
 
    @Override
-   protected CompletableFuture<js.a> b() {
-      return super.b().thenCombine(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            axn $$3 = this.c((axq<cvx>)$$2);
-            Optional<axn> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (js.a)$$0;
-      });
+   protected void a(js.a $$0) {
+      this.b(axk.a).a(d).a(eat.f_).a(eak.x.h());
+      this.b(axk.c).a(eak.L.h());
+      this.b(axk.b).a(d).a(eat.f_).a(eak.N.h()).b(axk.c);
+      this.b(axk.d).a(eak.A.h(), eak.K.h(), eak.P.h(), eak.Q.h(), eak.D.h(), eak.C.h());
+      this.b(axk.e).a(eak.H.h());
    }
 }

@@ -1,30 +1,44 @@
-import java.util.Optional;
+import java.util.List;
 
-public record afv(String b, String c, int d, Optional<xi> e, Optional<yy> f) implements zp<ace> {
-   public static final zg<wt, afv> a = zg.a(ze.m, afv::b, ze.m, afv::e, ze.h, afv::f, xk.e, afv::g, za.d, afv::h, afv::new);
+public class afv implements zs<ach> {
+   public static final zj<wi, afv> a = zs.a(afv::a, afv::new);
+   private final int b;
+   private final int[] c;
 
-   @Override
-   public zr<afv> a() {
-      return agt.aM;
+   public afv(bui $$0) {
+      this.b = $$0.as();
+      List<bui> $$1 = $$0.db();
+      this.c = new int[$$1.size()];
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c[$$2] = $$1.get($$2).as();
+      }
    }
 
-   public void a(ace $$0) {
+   private afv(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.c();
+   }
+
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zu<afv> a() {
+      return agw.aK;
+   }
+
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public String e() {
+   public int[] b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<xi> g() {
-      return this.e;
-   }
-
-   public Optional<yy> h() {
-      return this.f;
+   public int e() {
+      return this.b;
    }
 }

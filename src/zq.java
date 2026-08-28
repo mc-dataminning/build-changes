@@ -1,18 +1,14 @@
-public enum zq {
-   a("serverbound"),
-   b("clientbound");
+public abstract class zq<T extends wr> implements zs<T> {
+   private final Iterable<zs<? super T>> a;
 
-   private final String c;
-
-   private zq(final String $$0) {
-      this.c = $$0;
+   protected zq(Iterable<zs<? super T>> $$0) {
+      this.a = $$0;
    }
 
-   public zq a() {
-      return this == b ? a : b;
+   public final Iterable<zs<? super T>> b() {
+      return this.a;
    }
 
-   public String b() {
-      return this.c;
-   }
+   @Override
+   public abstract zu<? extends zq<T>> a();
 }

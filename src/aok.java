@@ -1,56 +1,84 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class aok {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xi.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xi.b("commands.publish.alreadyPublished", $$0));
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("commands.perf.alreadyRunning"));
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ew)$$0x.getSource(), azb.a(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ew)$$0x.getSource(), azb.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("gamemode", fk.a())
-                           .executes($$0x -> a((ew)$$0x.getSource(), azb.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fk.a($$0x, "gamemode"))))
-                        .then(
-                           ex.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (ew)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       fk.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(ex.a("start").executes($$0x -> a((ew)$$0x.getSource()))))
+            .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource())))
       );
    }
 
-   private static int a(ew $$0, int $$1, boolean $$2, @Nullable dey $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().S());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
-         throw a.create();
+   private static int a(ew $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aT()) {
+         throw c.create();
       } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
+         Consumer<bop> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> xl.c("commands.perf.started"), false);
+         return 0;
       }
    }
 
-   public static xw a(int $$0) {
-      xi $$1 = xl.a(String.valueOf($$0));
-      return xi.a("commands.publish.started", $$1);
+   private static int b(ew $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aT()) {
+         throw b.create();
+      } else {
+         $$1.aV();
+         return 0;
+      }
+   }
+
+   private static void a(ew $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ae.f(), $$2.aZ().e(), ab.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bql.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(xl.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (ayy $$7 = new ayy(bql.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> xl.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ew $$0, bop $$1) {
+      if ($$1 != bol.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)bap.a;
+         $$0.a(() -> xl.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+      }
    }
 }

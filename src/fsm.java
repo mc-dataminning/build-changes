@@ -1,30 +1,48 @@
-import org.joml.Vector3f;
+public class fsm extends fse<crz> {
+   private static final all G = all.b("container/brewing_stand/fuel_length");
+   private static final all H = all.b("container/brewing_stand/brew_progress");
+   private static final all I = all.b("container/brewing_stand/bubbles");
+   private static final all J = all.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-public class fsm extends frr {
-   public static final float c = 4.5F;
-   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int s = 16;
-   private static final int u = 16;
-   private final ali v = ali.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
-
-   public fsm(dty $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, xi.c("hanging_sign.edit"));
+   public fsm(crz $$0, coq $$1, xl $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fku $$0, dvj $$1) {
-      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
+   protected void aS_() {
+      super.aS_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   protected void c(fku $$0) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(gir::B, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected Vector3f m() {
-      return d;
+   protected void a(flj $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gjh::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azn.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(gjh::B, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(gjh::B, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(gjh::B, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

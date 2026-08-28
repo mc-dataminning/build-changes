@@ -1,61 +1,55 @@
-public class ggw extends ggp {
-   protected ggw(gci $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class ggw extends ggn {
+   private final gha b;
+   protected boolean a;
+
+   ggw(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gha $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
-   public gft b() {
-      return gft.b;
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
+
+   @Override
+   public ggj b() {
+      return ggj.c;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         jh $$0 = jh.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).g(this.c, $$0).b(jm.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a(this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
-      }
+      super.a();
+      this.b(this.b);
    }
 
-   public static class a implements gfs<lv> {
-      private final ggk a;
+   public static class a implements ggi<lw> {
+      private final gha a;
 
-      public a(ggk $$0) {
+      public a(gha $$0) {
          this.a = $$0;
       }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggw $$8 = new ggw($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggw $$8 = new ggw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements ggi<lw> {
+      private final gha a;
+
+      public b(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggw $$8 = new ggw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
          return $$8;
       }
    }

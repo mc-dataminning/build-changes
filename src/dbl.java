@@ -1,15 +1,33 @@
-public class dbl extends czw {
-   public dbl(String $$0, dac $$1, dal $$2, cwb $$3, float $$4, int $$5) {
-      super(dav.d, $$0, $$1, $$2, $$3, $$4, $$5);
+public record dbl(cwf a, cwf b, cwf c) implements daw {
+   @Override
+   public cwf a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
    @Override
-   public cwb g() {
-      return new cwb(dig.nV);
+   public int a() {
+      return 3;
    }
 
    @Override
-   public dau<?> aq_() {
-      return dau.q;
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
+   }
+
+   public cwf c() {
+      return this.a;
+   }
+
+   public cwf d() {
+      return this.b;
+   }
+
+   public cwf e() {
+      return this.c;
    }
 }

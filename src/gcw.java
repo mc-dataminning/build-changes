@@ -1,169 +1,106 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gcw {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public xi c;
-   public xi d;
+public class gcw extends gcv implements abp, wz {
+   private static final Logger l = LogUtils.getLogger();
+   private final GameProfile m;
+   private crj n;
+   private final ke.b o;
+   private final gdl p = new gdl();
    @Nullable
-   public akf.b e;
-   public long f;
-   public int g = ab.b().e();
-   public xi h = xi.b(ab.b().c());
-   public List<xi> i = Collections.emptyList();
-   private gcw.a l = gcw.a.c;
+   private gde q;
    @Nullable
-   private byte[] m;
-   private gcw.c n;
-   private gcw.b o = gcw.b.a;
+   protected flx.b k;
 
-   public gcw(String $$0, String $$1, gcw.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   public gcw(fjx $$0, wf $$1, gdc $$2) {
+      super($$0, $$1, $$2);
+      this.m = $$2.a();
+      this.o = $$2.c();
+      this.n = $$2.d();
+      this.k = $$2.i();
    }
 
-   public uk a() {
-      uk $$0 = new uk();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
+
+   @Override
+   protected void a(aav $$0) {
+      this.b($$0);
+   }
+
+   private void b(aav $$0) {
+      l.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(abr $$0) {
+      zv.a($$0, this, this.a);
+      this.p.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(aaj $$0) {
+      zv.a($$0, this, this.a);
+      this.p.a($$0.b());
+   }
+
+   @Override
+   public void a(abu $$0) {
+      this.n = crl.f.a($$0.b());
+   }
+
+   @Override
+   public void a(abt $$0) {
+      zv.a($$0, this, this.a);
+      if (this.q == null) {
+         this.q = new gde();
       }
 
-      if (this.l == gcw.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == gcw.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
+      List<auk> $$1 = this.q.a($$0.b());
+      this.b(new abz($$1));
    }
 
-   public gcw.a b() {
-      return this.l;
+   @Override
+   public void a(abs $$0) {
+      this.k = null;
    }
 
-   public void a(gcw.a $$0) {
-      this.l = $$0;
-   }
-
-   public static gcw a(uk $$0) {
-      gcw $$1 = new gcw($$0.l("name"), $$0.l("ip"), gcw.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 99)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(gcw.a.a);
-         } else {
-            $$1.a(gcw.a.b);
-         }
+   private <T> T a(Function<avh, T> $$0) {
+      if (this.q == null) {
+         return $$0.apply(avh.b);
       } else {
-         $$1.a(gcw.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == gcw.c.a;
-   }
-
-   public boolean e() {
-      return this.n == gcw.c.b;
-   }
-
-   public gcw.c f() {
-      return this.n;
-   }
-
-   public void a(gcw $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(gcw $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public gcw.b g() {
-      return this.o;
-   }
-
-   public void a(gcw.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            azp $$1 = azp.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
+         Object var3;
+         try (aut $$1 = this.q.a()) {
+            var3 = $$0.apply($$1);
          }
-      }
 
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final xi d;
-
-      private a(final String $$0) {
-         this.d = xi.c("addServer.resourcePack." + $$0);
-      }
-
-      public xi a() {
-         return this.d;
+         return (T)var3;
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   @Override
+   public void a(abq $$0) {
+      zv.a($$0, this, this.a);
+      ke.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
+      this.b.a(agx.b.a(ww.a($$1)), new gcz(this.a, this.b, new gdc(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
+      this.b.a(aby.a);
+      this.b.a(agx.a.a(ww.a($$1)));
    }
 
-   public static enum c {
-      a,
-      b,
-      c;
+   @Override
+   public void d() {
+      this.e();
+   }
+
+   @Override
+   public void a(wh $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

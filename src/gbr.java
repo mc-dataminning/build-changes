@@ -1,83 +1,111 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.Set;
 
-public class gbr {
-   private static final Set<jm> a = EnumSet.allOf(jm.class);
-   private final List<gbp> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
+public class gbr extends fza<gxr> {
+   public static final gcl a = new fyc(Set.of("head"));
+   private static final String b = "real_head";
+   private static final String c = "upper_body";
+   private static final String d = "real_tail";
+   private final gcc e;
+   private final gcc f;
+   private final gcc g;
+   private final gcc i;
+   private final gcc j;
+   private final gcc k;
+   private final gcc l;
+   private final gcc m;
+   private final gcc n;
+   private final gcc o;
+   private static final int p = 8;
 
-   public gbr a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public gbr(gcc $$0) {
+      super($$0);
+      this.e = $$0.b("head");
+      this.f = this.e.b("real_head");
+      this.g = $$0.b("body");
+      this.o = $$0.b("upper_body");
+      this.i = $$0.b("right_hind_leg");
+      this.j = $$0.b("left_hind_leg");
+      this.k = $$0.b("right_front_leg");
+      this.l = $$0.b("left_front_leg");
+      this.m = $$0.b("tail");
+      this.n = this.m.b("real_tail");
    }
 
-   public gbr a() {
-      return this.a(true);
+   public static gck a(gcg $$0) {
+      gck $$1 = new gck();
+      gcm $$2 = $$1.a();
+      float $$3 = 13.5F;
+      gcm $$4 = $$2.a("head", gch.c(), gce.a(-1.0F, 13.5F, -7.0F));
+      $$4.a(
+         "real_head",
+         gch.c()
+            .a(0, 0)
+            .a(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F, $$0)
+            .a(16, 14)
+            .a(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
+            .a(16, 14)
+            .a(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
+            .a(0, 10)
+            .a(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F, $$0),
+         gce.a
+      );
+      $$2.a("body", gch.c().a(18, 14).a(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F, $$0), gce.a(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("upper_body", gch.c().a(21, 0).a(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F, $$0), gce.a(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gch $$5 = gch.c().a(0, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0);
+      $$2.a("right_hind_leg", $$5, gce.a(-2.5F, 16.0F, 7.0F));
+      $$2.a("left_hind_leg", $$5, gce.a(0.5F, 16.0F, 7.0F));
+      $$2.a("right_front_leg", $$5, gce.a(-2.5F, 16.0F, -4.0F));
+      $$2.a("left_front_leg", $$5, gce.a(0.5F, 16.0F, -4.0F));
+      gcm $$6 = $$2.a("tail", gch.c(), gce.a(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F));
+      $$6.a("real_tail", gch.c().a(9, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0), gce.a);
+      return $$1;
    }
 
-   public gbr a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
+   public void a(gxr $$0) {
+      super.a($$0);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      if ($$0.a) {
+         this.m.f = 0.0F;
+      } else {
+         this.m.f = azn.b($$1 * 0.6662F) * 1.4F * $$2;
+      }
 
-   public gbr a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, gbq $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new gbp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
+      if ($$0.b) {
+         float $$3 = $$0.ab;
+         this.o.c += 2.0F * $$3;
+         this.o.e = (float) (Math.PI * 2.0 / 5.0);
+         this.o.f = 0.0F;
+         this.g.c += 4.0F * $$3;
+         this.g.d -= 2.0F * $$3;
+         this.g.e = (float) (Math.PI / 4);
+         this.m.c += 9.0F * $$3;
+         this.m.d -= 2.0F * $$3;
+         this.i.c += 6.7F * $$3;
+         this.i.d -= 5.0F * $$3;
+         this.i.e = (float) (Math.PI * 3.0 / 2.0);
+         this.j.c += 6.7F * $$3;
+         this.j.d -= 5.0F * $$3;
+         this.j.e = (float) (Math.PI * 3.0 / 2.0);
+         this.k.e = 5.811947F;
+         this.k.b += 0.01F * $$3;
+         this.k.c += 1.0F * $$3;
+         this.l.e = 5.811947F;
+         this.l.b -= 0.01F * $$3;
+         this.l.c += 1.0F * $$3;
+      } else {
+         this.i.e = azn.b($$1 * 0.6662F) * 1.4F * $$2;
+         this.j.e = azn.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+         this.k.e = azn.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+         this.l.e = azn.b($$1 * 0.6662F) * 1.4F * $$2;
+      }
 
-   public gbr a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new gbp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, gbq.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gbr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new gbp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gbq.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gbr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<jm> $$6) {
-      this.b.add(new gbp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gbq.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public gbr a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new gbp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, gbq.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gbr a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, gbq $$7) {
-      this.b.add(new gbp($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gbr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new gbp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gbq.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public gbr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gbq $$6, float $$7, float $$8) {
-      this.b.add(new gbp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public gbr a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gbq $$6) {
-      this.b.add(new gbp(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<gbp> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static gbr c() {
-      return new gbr();
+      this.f.g = $$0.d + $$0.a(0.0F);
+      this.o.g = $$0.a(-0.08F);
+      this.g.g = $$0.a(-0.16F);
+      this.n.g = $$0.a(-0.2F);
+      this.e.e = $$0.V * (float) (Math.PI / 180.0);
+      this.e.f = $$0.U * (float) (Math.PI / 180.0);
+      this.m.e = $$0.c;
    }
 }

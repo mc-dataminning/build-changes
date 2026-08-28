@@ -1,61 +1,59 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class ewo extends evp {
-   private static final Codec<List<ewo.b>> b = ewo.b.a.listOf().validate($$0 -> {
-      Set<jq<bth>> $$1 = new ObjectOpenHashSet();
-
-      for (ewo.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   });
+public class ewo extends evt {
    public static final MapCodec<ewo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, ewo::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  xn.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  evs.a(256).forGetter($$0x -> $$0x.c),
+                  eug.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ewo::new)
    );
-   private final List<ewo.b> c;
+   private final List<xl> b;
+   private final evs c;
+   private final Optional<eug.b> d;
 
-   ewo(List<exn> $$0, List<ewo.b> $$1) {
+   public ewo(List<exr> $$0, List<xl> $$1, evs $$2, Optional<eug.b> $$3) {
       super($$0);
-      this.c = $$1;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public evr<ewo> b() {
-      return evs.r;
+   public evv<ewo> b() {
+      return evw.A;
    }
 
    @Override
-   public Set<ewv<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<ewz<?>> a() {
+      return this.d.<Set<ewz<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cwb a(cwb $$0, euc $$1) {
-      if ($$0.a(cwf.vY) && !this.c.isEmpty()) {
-         ewo.b $$2 = ae.a(this.c, $$1.b());
-         jq<bth> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
+   public cwf a(cwf $$0, eug $$1) {
+      $$0.a(ku.j, cyy.a, $$1x -> new cyy(this.a($$1x, $$1)));
+      return $$0;
+   }
 
-         czc.a $$5 = new czc.a($$3, $$4);
-         $$0.a(ku.R, czc.a, $$5, czc::a);
-         return $$0;
+   private List<xl> a(@Nullable cyy $$0, eug $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
       } else {
-         return $$0;
+         UnaryOperator<xl> $$2 = ewp.a($$1, this.d.orElse(null));
+         List<xl> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
       }
    }
 
@@ -63,35 +61,33 @@ public class ewo extends evp {
       return new ewo.a();
    }
 
-   public static class a extends evp.a<ewo.a> {
-      private final Builder<ewo.b> a = ImmutableList.builder();
+   public static class a extends evt.a<ewo.a> {
+      private Optional<eug.b> a = Optional.empty();
+      private final Builder<xl> b = ImmutableList.builder();
+      private evs c = evs.a.b;
+
+      public ewo.a a(evs $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ewo.a a(eug.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ewo.a a(xl $$0) {
+         this.b.add($$0);
+         return this;
+      }
 
       protected ewo.a a() {
          return this;
       }
 
-      public ewo.a a(jq<bth> $$0, eyj $$1) {
-         this.a.add(new ewo.b($$0, $$1));
-         return this;
-      }
-
       @Override
-      public evq b() {
-         return new ewo(this.g(), this.a.build());
-      }
-   }
-
-   static record b(jq<bth> b, eyj c) {
-      public static final Codec<ewo.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bth.a.fieldOf("type").forGetter(ewo.b::a), eyk.a.fieldOf("duration").forGetter(ewo.b::b)).apply($$0, ewo.b::new)
-      );
-
-      public jq<bth> a() {
-         return this.b;
-      }
-
-      public eyj b() {
-         return this.c;
+      public evu b() {
+         return new ewo(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

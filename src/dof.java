@@ -1,97 +1,253 @@
 import com.mojang.serialization.MapCodec;
 
-public class dof extends die {
-   public static final MapCodec<dof> a = b(dof::new);
-   public static final dwa b = doi.d;
+public class dof extends dhy {
+   public static final MapCodec<dof> d = b(dof::new);
+   public static final dwl<dwr> e = dwe.ah;
+   public static final dwf f = dwe.w;
 
    @Override
    public MapCodec<dof> a() {
-      return a;
+      return d;
    }
 
-   public dof(dvi.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+   protected dof(dvn.d $$0) {
+      super(true, $$0);
+      this.l(this.F.b().b(e, dwr.a).b(f, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
    }
 
-   @Override
-   protected void a_(dvj $$0, dfb $$1, jh $$2, com $$3) {
-      e($$0, $$1, $$2);
-      super.a_($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dfb $$0, jh $$1, dvj $$2, bue $$3) {
-      if (!$$3.cf()) {
-         e($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected bsd a(cwb $$0, dvj $$1, dfb $$2, jh $$3, com $$4, bsc $$5, ezj $$6) {
-      if ($$2.C) {
-         a($$2, $$3);
+   protected boolean a(dff $$0, jh $$1, dvo $$2, boolean $$3, int $$4) {
+      if ($$4 >= 8) {
+         return false;
       } else {
-         e($$1, $$2, $$3);
+         int $$5 = $$1.u();
+         int $$6 = $$1.v();
+         int $$7 = $$1.w();
+         boolean $$8 = true;
+         dwr $$9 = $$2.c(e);
+         switch ($$9) {
+            case a:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+               }
+               break;
+            case b:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+               }
+               break;
+            case c:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dwr.b;
+               break;
+            case d:
+               if ($$3) {
+                  $$5--;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$5++;
+               }
+
+               $$9 = dwr.b;
+               break;
+            case e:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dwr.a;
+               break;
+            case f:
+               if ($$3) {
+                  $$7++;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$7--;
+               }
+
+               $$9 = dwr.a;
+         }
+
+         return this.a($$0, new jh($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new jh($$5, $$6 - 1, $$7), $$3, $$4, $$9);
       }
-
-      return (bsd)($$0.h() instanceof cuh && new czs($$4, $$5, $$0, $$6).b() ? bsd.e : bsd.a);
    }
 
-   private static void e(dvj $$0, dfb $$1, jh $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   @Override
-   protected boolean f(dvj $$0) {
-      return $$0.c(b);
-   }
-
-   @Override
-   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, cwb $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bro.a(1, 5));
-      }
-   }
-
-   @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(dfb $$0, jh $$1) {
-      double $$2 = 0.5625;
-      azs $$3 = $$0.A;
-
-      for (jm $$4 : jm.values()) {
-         jh $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).s()) {
-            jm.a $$6 = $$4.o();
-            double $$7 = $$6 == jm.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == jm.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == jm.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(lm.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+   protected boolean a(dff $$0, jh $$1, boolean $$2, int $$3, dwr $$4) {
+      dvo $$5 = $$0.a_($$1);
+      if (!$$5.a(this)) {
+         return false;
+      } else {
+         dwr $$6 = $$5.c(e);
+         if ($$4 != dwr.b || $$6 != dwr.a && $$6 != dwr.e && $$6 != dwr.f) {
+            if ($$4 != dwr.a || $$6 != dwr.b && $$6 != dwr.c && $$6 != dwr.d) {
+               if (!$$5.c(f)) {
+                  return false;
+               } else {
+                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
+               }
+            } else {
+               return false;
+            }
+         } else {
+            return false;
          }
       }
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
+   protected void a(dvo $$0, dff $$1, jh $$2, dij $$3) {
+      boolean $$4 = $$0.c(f);
+      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
+      if ($$5 != $$4) {
+         $$1.a($$2, $$0.b(f, Boolean.valueOf($$5)), 3);
+         $$1.a($$2.e(), this);
+         if ($$0.c(e).b()) {
+            $$1.a($$2.d(), this);
+         }
+      }
+   }
+
+   @Override
+   public dwq<dwr> c() {
+      return e;
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dow $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dwr)$$0.c(e)) {
+               case c:
+                  return $$0.b(e, dwr.d);
+               case d:
+                  return $$0.b(e, dwr.c);
+               case e:
+                  return $$0.b(e, dwr.f);
+               case f:
+                  return $$0.b(e, dwr.e);
+               case g:
+                  return $$0.b(e, dwr.i);
+               case h:
+                  return $$0.b(e, dwr.j);
+               case i:
+                  return $$0.b(e, dwr.g);
+               case j:
+                  return $$0.b(e, dwr.h);
+            }
+         case d:
+            switch ((dwr)$$0.c(e)) {
+               case a:
+                  return $$0.b(e, dwr.b);
+               case b:
+                  return $$0.b(e, dwr.a);
+               case c:
+                  return $$0.b(e, dwr.e);
+               case d:
+                  return $$0.b(e, dwr.f);
+               case e:
+                  return $$0.b(e, dwr.d);
+               case f:
+                  return $$0.b(e, dwr.c);
+               case g:
+                  return $$0.b(e, dwr.j);
+               case h:
+                  return $$0.b(e, dwr.g);
+               case i:
+                  return $$0.b(e, dwr.h);
+               case j:
+                  return $$0.b(e, dwr.i);
+            }
+         case b:
+            switch ((dwr)$$0.c(e)) {
+               case a:
+                  return $$0.b(e, dwr.b);
+               case b:
+                  return $$0.b(e, dwr.a);
+               case c:
+                  return $$0.b(e, dwr.f);
+               case d:
+                  return $$0.b(e, dwr.e);
+               case e:
+                  return $$0.b(e, dwr.c);
+               case f:
+                  return $$0.b(e, dwr.d);
+               case g:
+                  return $$0.b(e, dwr.h);
+               case h:
+                  return $$0.b(e, dwr.i);
+               case i:
+                  return $$0.b(e, dwr.j);
+               case j:
+                  return $$0.b(e, dwr.g);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dnf $$1) {
+      dwr $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(e, dwr.f);
+               case f:
+                  return $$0.b(e, dwr.e);
+               case g:
+                  return $$0.b(e, dwr.j);
+               case h:
+                  return $$0.b(e, dwr.i);
+               case i:
+                  return $$0.b(e, dwr.h);
+               case j:
+                  return $$0.b(e, dwr.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(e, dwr.d);
+               case d:
+                  return $$0.b(e, dwr.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(e, dwr.h);
+               case h:
+                  return $$0.b(e, dwr.g);
+               case i:
+                  return $$0.b(e, dwr.j);
+               case j:
+                  return $$0.b(e, dwr.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(e, f, c);
    }
 }

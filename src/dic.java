@@ -1,114 +1,304 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class dic extends dlz implements dih, dpf {
-   public static final MapCodec<dic> a = b(dic::new);
-   private static final dwa f = dvz.C;
-   private static final int g = 6;
-   protected static final fah b = die.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final fah c = die.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final fah d = die.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final fah e = die.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
+public class dic extends dme implements dlb {
+   public static final MapCodec<dic> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvc.q.fieldOf("color").forGetter(dic::b), t()).apply($$0, dic::new));
+   public static final dwl<dwb> b = dwe.bb;
+   public static final dwf c = dwe.t;
+   protected static final int d = 9;
+   protected static final fal e = dij.a(0.0, 3.0, 0.0, 16.0, 9.0, 16.0);
+   private static final int n = 3;
+   protected static final fal f = dij.a(0.0, 0.0, 0.0, 3.0, 3.0, 3.0);
+   protected static final fal g = dij.a(0.0, 0.0, 13.0, 3.0, 3.0, 16.0);
+   protected static final fal h = dij.a(13.0, 0.0, 0.0, 16.0, 3.0, 3.0);
+   protected static final fal i = dij.a(13.0, 0.0, 13.0, 16.0, 3.0, 16.0);
+   protected static final fal j = fai.a(e, f, h);
+   protected static final fal k = fai.a(e, g, i);
+   protected static final fal l = fai.a(e, f, g);
+   protected static final fal m = fai.a(e, h, i);
+   private final cvc o;
 
    @Override
    public MapCodec<dic> a() {
       return a;
    }
 
-   protected dic(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(f, Boolean.valueOf(false)).b(aF, jm.c));
+   public dic(cvc $$0, dvn.d $$1) {
+      super($$1);
+      this.o = $$0;
+      this.l(this.F.b().b(b, dwb.b).b(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   public static jm a(dek $$0, jh $$1) {
+      dvo $$2 = $$0.a_($$1);
+      return $$2.b() instanceof dic ? $$2.c(aF) : null;
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      switch ((jm)$$0.c(aF)) {
-         case d:
-            return c;
-         case c:
-         default:
-            return b;
-         case e:
-            return e;
-         case f:
-            return d;
+   protected bsh a(dvo $$0, dff $$1, jh $$2, cor $$3, ezn $$4) {
+      if ($$1.C) {
+         return bsh.b;
+      } else {
+         if ($$0.c(b) != dwb.a) {
+            $$2 = $$2.a($$0.c(aF));
+            $$0 = $$1.a_($$2);
+            if (!$$0.a(this)) {
+               return bsh.c;
+            }
+         }
+
+         if (!a($$1)) {
+            $$1.a($$2, false);
+            jh $$5 = $$2.a($$0.c(aF).g());
+            if ($$1.a_($$5).a(this)) {
+               $$1.a($$5, false);
+            }
+
+            ezr $$6 = $$2.b();
+            $$1.a(null, $$1.ai().a($$6), null, $$6, 5.0F, true, dff.a.b);
+            return bsh.b;
+         } else if ($$0.c(c)) {
+            if (!this.a($$1, $$2)) {
+               $$3.a(xl.c("block.minecraft.bed.occupied"), true);
+            }
+
+            return bsh.b;
+         } else {
+            $$3.a($$2).ifLeft($$1x -> {
+               if ($$1x.a() != null) {
+                  $$3.a($$1x.a(), true);
+               }
+            });
+            return bsh.b;
+         }
       }
    }
 
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(f, aF);
+   public static boolean a(dff $$0) {
+      return $$0.D_().l();
    }
 
-   @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(f) ? erl.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      dvj $$4 = $$1.a_($$3);
-      dvj $$5 = $$1.a_($$2.d());
-      return ($$4.a(this) || $$4.a(axa.bz)) && ($$5.a(this) || $$5.a(dig.sD));
-   }
-
-   protected static boolean a(dfc $$0, jh $$1, erk $$2, jm $$3) {
-      dvj $$4 = dig.sE.m().b(f, Boolean.valueOf($$2.a(erl.c))).b(aF, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if (($$1 == jm.a || $$1 == jm.b) && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$0.c(f)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   public boolean b(dfe $$0, jh $$1, dvj $$2) {
-      Optional<jh> $$3 = l.a($$0, $$1, $$2.b(), jm.b, dig.sD);
-      if ($$3.isEmpty()) {
+   private boolean a(dff $$0, jh $$1) {
+      List<coc> $$2 = $$0.a(coc.class, new ezm($$1), bve::fU);
+      if ($$2.isEmpty()) {
          return false;
       } else {
-         jh $$4 = $$3.get().d();
-         dvj $$5 = $$0.a_($$4);
-         return dib.a($$0, $$4, $$5);
+         $$2.get(0).fV();
+         return true;
       }
    }
 
    @Override
-   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
-      return true;
+   public void a(dff $$0, dvo $$1, jh $$2, bui $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4 * 0.5F);
    }
 
    @Override
-   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
-      Optional<jh> $$4 = l.a($$0, $$2, $$3.b(), jm.b, dig.sD);
-      if (!$$4.isEmpty()) {
-         jh $$5 = $$4.get();
-         jh $$6 = $$5.d();
-         jm $$7 = $$3.c(aF);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         dib.a($$0, $$6, $$0.b_($$6), $$7);
+   public void a(dek $$0, bui $$1) {
+      if ($$1.ch()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bui $$0) {
+      ezr $$1 = $$0.dB();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bve ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * 0.66F * $$2, $$1.f);
       }
    }
 
    @Override
-   public cwb a(dfe $$0, jh $$1, dvj $$2) {
-      return new cwb(dig.sD);
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      if ($$4 == a($$0.c(b), $$0.c(aF))) {
+         return $$6.a(this) && $$6.c(b) != $$0.c(b) ? $$0.b(c, $$6.c(c)) : dil.a.m();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   private static jm a(dwb $$0, jm $$1) {
+      return $$0 == dwb.b ? $$1 : $$1.g();
+   }
+
+   @Override
+   public dvo a(dff $$0, jh $$1, dvo $$2, cor $$3) {
+      if (!$$0.C && $$3.f()) {
+         dwb $$4 = $$2.c(b);
+         if ($$4 == dwb.b) {
+            jh $$5 = $$1.a(a($$4, $$2.c(aF)));
+            dvo $$6 = $$0.a_($$5);
+            if ($$6.a(this) && $$6.c(b) == dwb.a) {
+               $$0.a($$5, dil.a.m(), 35);
+               $$0.a($$3, 2001, $$5, dij.j($$6));
+            }
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dvo a(czw $$0) {
+      jm $$1 = $$0.g();
+      jh $$2 = $$0.a();
+      jh $$3 = $$2.a($$1);
+      dff $$4 = $$0.q();
+      return $$4.a_($$3).a($$0) && $$4.C_().a($$3) ? this.m().b(aF, $$1) : null;
+   }
+
+   @Override
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      jm $$4 = h($$0).g();
+      switch ($$4) {
+         case c:
+            return j;
+         case d:
+            return k;
+         case e:
+            return l;
+         default:
+            return m;
+      }
+   }
+
+   public static jm h(dvo $$0) {
+      jm $$1 = $$0.c(aF);
+      return $$0.c(b) == dwb.a ? $$1.g() : $$1;
+   }
+
+   public static dkq.a i(dvo $$0) {
+      dwb $$1 = $$0.c(b);
+      return $$1 == dwb.a ? dkq.a.b : dkq.a.c;
+   }
+
+   private static boolean b(dek $$0, jh $$1) {
+      return $$0.a_($$1.e()).b() instanceof dic;
+   }
+
+   public static Optional<ezr> a(bup<?> $$0, deo $$1, jh $$2, jm $$3, float $$4) {
+      jm $$5 = $$3.h();
+      jm $$6 = $$5.a($$4) ? $$5.g() : $$5;
+      if (b($$1, $$2)) {
+         return a($$0, $$1, $$2, $$3, $$6);
+      } else {
+         int[][] $$7 = a($$3, $$6);
+         Optional<ezr> $$8 = a($$0, $$1, $$2, $$7, true);
+         return $$8.isPresent() ? $$8 : a($$0, $$1, $$2, $$7, false);
+      }
+   }
+
+   private static Optional<ezr> a(bup<?> $$0, deo $$1, jh $$2, jm $$3, jm $$4) {
+      int[][] $$5 = b($$3, $$4);
+      Optional<ezr> $$6 = a($$0, $$1, $$2, $$5, true);
+      if ($$6.isPresent()) {
+         return $$6;
+      } else {
+         jh $$7 = $$2.e();
+         Optional<ezr> $$8 = a($$0, $$1, $$7, $$5, true);
+         if ($$8.isPresent()) {
+            return $$8;
+         } else {
+            int[][] $$9 = a($$3);
+            Optional<ezr> $$10 = a($$0, $$1, $$2, $$9, true);
+            if ($$10.isPresent()) {
+               return $$10;
+            } else {
+               Optional<ezr> $$11 = a($$0, $$1, $$2, $$5, false);
+               if ($$11.isPresent()) {
+                  return $$11;
+               } else {
+                  Optional<ezr> $$12 = a($$0, $$1, $$7, $$5, false);
+                  return $$12.isPresent() ? $$12 : a($$0, $$1, $$2, $$9, false);
+               }
+            }
+         }
+      }
+   }
+
+   private static Optional<ezr> a(bup<?> $$0, deo $$1, jh $$2, int[][] $$3, boolean $$4) {
+      jh.a $$5 = new jh.a();
+
+      for (int[] $$6 : $$3) {
+         $$5.d($$2.u() + $$6[0], $$2.v(), $$2.w() + $$6[1]);
+         ezr $$7 = cqt.a($$0, $$1, $$5, $$4);
+         if ($$7 != null) {
+            return Optional.of($$7);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   protected dop a_(dvo $$0) {
+      return dop.b;
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(aF, b, c);
+   }
+
+   @Override
+   public dsr a(jh $$0, dvo $$1) {
+      return new dsn($$0, $$1, this.o);
+   }
+
+   @Override
+   public void a(dff $$0, jh $$1, dvo $$2, @Nullable bve $$3, cwf $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$0.C) {
+         jh $$5 = $$1.a($$2.c(aF));
+         $$0.a($$5, $$2.b(b, dwb.a), 3);
+         $$0.b($$1, dil.a);
+         $$2.a($$0, $$1, 3);
+      }
+   }
+
+   public cvc b() {
+      return this.o;
+   }
+
+   @Override
+   protected long a(dvo $$0, jh $$1) {
+      jh $$2 = $$1.a($$0.c(aF), $$0.c(b) == dwb.a ? 0 : 1);
+      return azn.b($$2.u(), $$1.v(), $$2.w());
+   }
+
+   @Override
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
+   }
+
+   private static int[][] a(jm $$0, jm $$1) {
+      return (int[][])ArrayUtils.addAll(b($$0, $$1), a($$0));
+   }
+
+   private static int[][] b(jm $$0, jm $$1) {
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$1.j() - $$0.j(), $$1.l() - $$0.l()},
+         {$$1.j() - $$0.j() * 2, $$1.l() - $$0.l() * 2},
+         {-$$0.j() * 2, -$$0.l() * 2},
+         {-$$1.j() - $$0.j() * 2, -$$1.l() - $$0.l() * 2},
+         {-$$1.j() - $$0.j(), -$$1.l() - $$0.l()},
+         {-$$1.j(), -$$1.l()},
+         {-$$1.j() + $$0.j(), -$$1.l() + $$0.l()},
+         {$$0.j(), $$0.l()},
+         {$$1.j() + $$0.j(), $$1.l() + $$0.l()}
+      };
+   }
+
+   private static int[][] a(jm $$0) {
+      return new int[][]{{0, 0}, {-$$0.j(), -$$0.l()}};
    }
 }

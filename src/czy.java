@@ -1,90 +1,71 @@
-public class czy extends dag {
-   public czy(dad $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class czy {
+   @Nullable
+   private final cor a;
+   private final bsg b;
+   private final ezn c;
+   private final dff d;
+   private final cwf e;
+
+   public czy(cor $$0, bsg $$1, ezn $$2) {
+      this($$0.dY(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(dae $$0, dfb $$1) {
-      cuy $$2 = null;
-      cwb $$3 = null;
-      cwb $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-         cwb $$6 = $$0.a($$5);
-         if (!$$6.f()) {
-            cvx $$7 = $$6.h();
-            if (!($$7 instanceof cue)) {
-               return false;
-            }
-
-            cue $$8 = (cue)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(ku.ai, dsd.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
+   protected czy(dff $$0, @Nullable cor $$1, bsg $$2, cwf $$3, ezn $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cwb a(dae $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cwb $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(ku.ai, dsd.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cwb.k;
+   protected final ezn j() {
+      return this.c;
    }
 
-   public jz<cwb> a(dae $$0) {
-      jz<cwb> $$1 = jz.a($$0.a(), cwb.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cwb $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            if ($$3.h().l()) {
-               $$1.set($$2, new cwb($$3.h().k()));
-            } else if (!$$3.a(ku.ai, dsd.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+   public jh a() {
+      return this.c.b();
    }
 
-   @Override
-   public dau<?> aq_() {
-      return dau.k;
+   public jm k() {
+      return this.c.c();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public ezr l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cwf n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cor o() {
+      return this.a;
+   }
+
+   public bsg p() {
+      return this.b;
+   }
+
+   public dff q() {
+      return this.d;
+   }
+
+   public jm g() {
+      return this.a == null ? jm.c : this.a.cQ();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.gb();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dO();
    }
 }

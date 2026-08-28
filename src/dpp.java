@@ -1,33 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpp extends dhr {
-   public static final MapCodec<dpp> c = b(dpp::new);
+public class dpp extends dkd {
+   public static final MapCodec<dpp> b = b(dpp::new);
+   private static final xl c = xl.c("container.upgrade");
 
    @Override
    public MapCodec<dpp> a() {
-      return c;
+      return b;
    }
 
-   public dpp(dvi.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      return this.a($$0, $$3, $$4) ? this.m() : dig.a.m();
+   protected dpp(dvn.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      return o($$1.a_($$2.e()));
-   }
-
-   public static boolean o(dvj $$0) {
-      return $$0.a(axa.aU);
+   protected bsj b(dvo $$0, dff $$1, jh $$2) {
+      return new bsp(($$2x, $$3, $$4) -> new cts($$2x, $$3, csf.a($$1, $$2)), c);
    }
 
    @Override
-   protected boolean g(dvj $$0) {
-      return true;
+   protected bsh a(dvo $$0, dff $$1, jh $$2, cor $$3, ezn $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awy.aF);
+      }
+
+      return bsh.a;
    }
 }

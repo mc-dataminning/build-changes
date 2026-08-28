@@ -1,63 +1,47 @@
-public class fyz extends fyk<gvg> {
-   private final gbm a;
-   private final gbm b;
-   private final gbm c;
-   private final gbm d;
-   private final gbm e;
+public class fyz extends fza<gvd> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final gcc[] d = new gcc[4];
 
-   public fyz(gbm $$0) {
+   public fyz(gcc $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = $$0.b("right_arm");
-      this.c = $$0.b("left_arm");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("head", gbr.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), gbo.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         gbr.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new gbq(0.5F)),
-         gbo.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", gbr.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gbo.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", gbr.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gbo.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", gbr.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gbo.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", gbr.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gbo.a(5.0F, 11.0F, 0.0F));
-      return gbs.a($$0, 128, 128);
+   private static String a(int $$0) {
+      return "segment" + $$0;
    }
 
-   public void a(gvg $$0) {
-      super.a($$0);
-      float $$1 = $$0.a;
-      float $$2 = $$0.Y;
-      float $$3 = $$0.X;
-      if ($$1 > 0.0F) {
-         this.b.e = -2.0F + 1.5F * azk.e($$1, 10.0F);
-         this.c.e = -2.0F + 1.5F * azk.e($$1, 10.0F);
-      } else {
-         int $$4 = $$0.b;
-         if ($$4 > 0) {
-            this.b.e = -0.8F + 0.025F * azk.e((float)$$4, 70.0F);
-            this.c.e = 0.0F;
-         } else {
-            this.b.e = (-0.2F + 1.5F * azk.e($$3, 13.0F)) * $$2;
-            this.c.e = (-0.2F - 1.5F * azk.e($$3, 13.0F)) * $$2;
+   public static gci a() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      float $$2 = -3.5F;
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            gch.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            gce.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
          }
       }
 
-      this.a.f = $$0.U * (float) (Math.PI / 180.0);
-      this.a.e = $$0.V * (float) (Math.PI / 180.0);
-      this.d.e = -1.5F * azk.e($$3, 13.0F) * $$2;
-      this.e.e = 1.5F * azk.e($$3, 13.0F) * $$2;
-      this.d.f = 0.0F;
-      this.e.f = 0.0F;
+      return gci.a($$0, 64, 32);
    }
 
-   public gbm b() {
-      return this.b;
+   @Override
+   public void a(gvd $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         this.d[$$1].f = azn.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
+         this.d[$$1].b = azn.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
+      }
    }
 }

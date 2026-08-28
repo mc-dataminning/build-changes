@@ -1,44 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.stream.Stream;
 
-public class eeb extends edz {
-   public eeb(Codec<egw> $$0) {
-      super($$0);
+public record eeb<FC extends egt, F extends eep<FC>>(F d, FC e) {
+   public static final Codec<eeb<?, ?>> a = lz.O.q().dispatch($$0 -> $$0.d, eep::a);
+   public static final Codec<jq<eeb<?, ?>>> b = alh.a(ma.aJ, a);
+   public static final Codec<ju<eeb<?, ?>>> c = kf.a(ma.aJ, a);
+
+   public boolean a(dgd $$0, dxk $$1, azv $$2, jh $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<eeb<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   protected boolean a(dfc $$0, azs $$1, jh $$2, dvj $$3) {
-      jh.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
+   public F b() {
+      return this.d;
+   }
 
-         $$4.c(jm.b);
-      }
-
-      jh $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<jm> $$9 = jm.c.a.c($$1);
-
-      for (jm $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(jm.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
+   public FC c() {
+      return this.e;
    }
 }

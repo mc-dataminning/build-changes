@@ -1,73 +1,66 @@
-import org.joml.Matrix4f;
+import java.util.List;
 
-public class fod {
-   private final fob a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class fod implements fog {
+   private static final all e = all.b("toast/advancement");
+   public static final int a = 5000;
+   private final ah f;
+   private boolean g;
+   private fog.a h = fog.a.b;
 
-   public fod(fob $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public fod(ah $$0) {
+      this.f = $$0;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fef $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      float $$10 = $$1 + this.f;
-      float $$11 = $$1 + this.g;
-      float $$12 = $$2 + this.h;
-      float $$13 = $$2 + this.i;
-      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
-      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).c($$9);
-      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).c($$9);
-      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).c($$9);
-      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).c($$9);
+   @Override
+   public fog.a a() {
+      return this.h;
    }
 
-   public void a(fod.a $$0, Matrix4f $$1, fef $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).c($$3);
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).c($$3);
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).c($$3);
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).c($$3);
+   @Override
+   public void a(foh $$0, long $$1) {
+      at $$2 = this.f.b().c().orElse(null);
+      if ($$2 == null) {
+         this.h = fog.a.b;
+      } else {
+         if (!this.g && $$1 > 0L) {
+            this.g = true;
+            if ($$2.e() == an.b) {
+               $$0.c().ak().a(hcl.a(awo.AB, 1.0F, 1.0F));
+            }
+         }
+
+         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fog.a.b : fog.a.a;
+      }
    }
 
-   public gir a(fks.a $$0) {
-      return this.a.a($$0);
-   }
+   @Override
+   public void a(flj $$0, flh $$1, long $$2) {
+      at $$3 = this.f.b().c().orElse(null);
+      $$0.a(gjh::B, e, 0, 0, this.b(), this.c());
+      if ($$3 != null) {
+         List<ayz> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == an.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = azn.d(azn.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = azn.d(azn.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
 
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
+               for (ayz $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
 
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+         $$0.b($$3.c(), 8, 8);
       }
    }
 }

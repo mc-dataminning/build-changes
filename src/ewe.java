@@ -1,52 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
 
-public class ewe extends evp {
+public class ewe extends evt {
    public static final MapCodec<ewe> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  cyq.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cyq.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cyq.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  alk.a(ma.bd).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  lz.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, ewe::new)
    );
-   public static final cyq b = new cyq(cyq.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cyq.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final alk<eul> b;
+   private final long c;
+   private final jq<dst<?>> d;
 
-   public ewe(List<exn> $$0, Optional<cyq.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private ewe(List<exr> $$0, alk<eul> $$1, long $$2, jq<dst<?>> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   protected cwb a(cwb $$0, euc $$1) {
-      $$0.a(ku.ae, b, this::a);
-      return $$0;
-   }
-
-   private cyq a(cyq $$0) {
-      return new cyq(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public evv<ewe> b() {
+      return evw.y;
    }
 
    @Override
-   public evr<ewe> b() {
-      return evs.L;
+   public cwf a(cwf $$0, eug $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         $$0.b(ku.ap, new czf(this.b, this.c));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(eum $$0) {
+      super.a($$0);
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else {
+         if ($$0.a().c(this.b).isEmpty()) {
+            $$0.b("Missing loot table used for container: " + this.b.a());
+         }
+      }
+   }
+
+   public static evt.a<?> a(dst<?> $$0, alk<eul> $$1) {
+      return a($$2 -> new ewe($$2, $$1, 0L, $$0.a()));
+   }
+
+   public static evt.a<?> a(dst<?> $$0, alk<eul> $$1, long $$2) {
+      return a($$3 -> new ewe($$3, $$1, $$2, $$0.a()));
    }
 }

@@ -1,21 +1,27 @@
-public class grs extends gpb<cmm, gxe, gbe> {
-   private static final ali a = ali.b("textures/entity/piglin/zombified_piglin.png");
+public class grs extends gnv<chw, gxj, gbj> {
+   private static final all a = all.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public grs(gok.a $$0, gbk $$1, gbk $$2, gbk $$3, gbk $$4, gbk $$5, gbk $$6) {
-      super($$0, new gbe($$0.a($$1)), new gbe($$0.a($$2)), 0.5F, gqa.a);
-      this.a(new gsn<>(this, new fyw($$0.a($$3)), new fyw($$0.a($$4)), new fyw($$0.a($$5)), new fyw($$0.a($$5)), $$0.h()));
+   public grs(gpa.a $$0) {
+      super($$0, new gbj($$0.a(gcb.cQ)), new gbj($$0.a(gcb.cR)), 0.7F);
    }
 
-   public ali a(gxe $$0) {
-      return a;
+   protected float a(gxj $$0) {
+      float $$1 = super.g($$0);
+      return $$0.ae ? $$1 * 0.83F : $$1;
    }
 
-   public gxe c() {
-      return new gxe();
+   public gxj c() {
+      return new gxj();
    }
 
-   public void a(cmm $$0, gxe $$1, float $$2) {
+   public void a(chw $$0, gxj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gj();
+      $$1.a = !$$0.bl() && $$0.aL();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.p_() && $$0.q();
+   }
+
+   public all b(gxj $$0) {
+      return a;
    }
 }

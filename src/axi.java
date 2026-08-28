@@ -1,9 +1,10 @@
-public interface axi {
-   axq<cvu> a = a("regular_goat_horns");
-   axq<cvu> b = a("screaming_goat_horns");
-   axq<cvu> c = a("goat_horns");
+public class axi {
+   public static final axt<ekc> a = a("visible");
 
-   private static axq<cvu> a(String $$0) {
-      return axq.a(lz.I, ali.b($$0));
+   private axi() {
+   }
+
+   private static axt<ekc> a(String $$0) {
+      return axt.a(ma.aO, all.b($$0));
    }
 }

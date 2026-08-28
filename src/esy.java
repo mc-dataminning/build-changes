@@ -1,42 +1,39 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record esy(jq<esz> b, byte c, byte d, byte e, Optional<xi> f) {
-   public static final zg<wt, esy> a = zg.a(esz.c, esy::c, ze.c, esy::d, ze.c, esy::e, ze.c, esy::f, xk.c, esy::g, esy::new);
+public abstract class esy {
+   protected final dol a;
 
-   public esy(jq<esz> b, byte c, byte d, byte e, Optional<xi> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   protected esy(dol $$0) {
+      this.a = $$0;
    }
 
-   public ali a() {
-      return this.b.a().b();
+   public abstract void a(dff var1, jh var2, dvo var3, @Nullable esw var4, boolean var5);
+
+   protected int a(dff $$0, jh $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public boolean b() {
-      return this.b.a().c();
+   protected int a(jh $$0, dvo $$1) {
+      return $$1.a(this.a) ? $$1.c(dol.f) : 0;
    }
 
-   public jq<esz> c() {
-      return this.b;
-   }
+   protected int b(dff $$0, jh $$1) {
+      int $$2 = 0;
 
-   public byte d() {
-      return this.c;
-   }
+      for (jm $$3 : jm.c.a) {
+         jh $$4 = $$1.a($$3);
+         dvo $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         jh $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            jh $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            jh $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
+         }
+      }
 
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<xi> g() {
-      return this.f;
+      return Math.max(0, $$2 - 1);
    }
 }

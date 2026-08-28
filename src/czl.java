@@ -1,54 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record czl(List<btj> c, float f) implements czn {
-   public static final MapCodec<czl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(btj.d.listOf().fieldOf("effects").forGetter(czl::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(czl::c))
-            .apply($$0, czl::new)
-   );
-   public static final zg<wt, czl> b = zg.a(btj.e.a(ze.a()), czl::b, ze.j, czl::c, czl::new);
+public record czl(cwf c) {
+   public static final Codec<czl> a = cwf.b.xmap(czl::new, czl::a);
+   public static final zj<ww, czl> b = zj.a(cwf.i, czl::a, czl::new);
 
-   public czl(btj $$0, float $$1) {
-      this(List.of($$0), $$1);
-   }
-
-   public czl(List<btj> $$0) {
-      this($$0, 1.0F);
-   }
-
-   public czl(btj $$0) {
-      this($$0, 1.0F);
-   }
-
-   @Override
-   public czn.a<czl> a() {
-      return czn.a.a;
-   }
-
-   @Override
-   public boolean a(dfb $$0, cwb $$1, bva $$2) {
-      if ($$2.ea().i() >= this.f) {
-         return false;
+   public cwf a(bve $$0, cwf $$1, int $$2) {
+      boolean $$3 = $$0.fY();
+      cwf $$4 = this.c.v();
+      if ($$3) {
+         return $$1;
+      } else if ($$1.L() >= $$2) {
+         return $$1;
+      } else if ($$1.f()) {
+         return $$4;
       } else {
-         boolean $$3 = false;
-
-         for (btj $$4 : this.c) {
-            if ($$2.a(new btj($$4))) {
-               $$3 = true;
-            }
+         if (!$$0.dY().y_() && $$0 instanceof cor $$5 && !$$5.gl().f($$4)) {
+            $$5.a($$4, false);
          }
 
-         return $$3;
+         return $$1;
       }
    }
 
-   public List<btj> b() {
-      return this.c;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         czl $$1 = (czl)$$0;
+         return cwf.a(this.c, $$1.c);
+      } else {
+         return false;
+      }
    }
 
-   public float c() {
-      return this.f;
+   @Override
+   public int hashCode() {
+      return cwf.a(this.c);
+   }
+
+   public cwf a() {
+      return this.c;
    }
 }

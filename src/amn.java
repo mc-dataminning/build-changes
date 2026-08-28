@@ -1,141 +1,166 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
-import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
+import java.util.UUID;
 
-public class amn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
-   private volatile boolean f;
-   @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
+public class amn extends arn {
+   private final all h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
 
-   public amn(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public amn(all $$0, xl $$1) {
+      super($$1, brx.a.g, brx.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
-      }
-
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
+   public all a() {
+      return this.h;
    }
 
+   @Override
+   public void a(arr $$0) {
+      super.a($$0);
+      this.i.add($$0.cI());
+   }
+
+   public void a(UUID $$0) {
+      this.i.add($$0);
+   }
+
+   @Override
+   public void b(arr $$0) {
+      super.b($$0);
+      this.i.remove($$0.cI());
+   }
+
+   @Override
    public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-      this.h = null;
+      super.b();
+      this.i.clear();
    }
 
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
+   public int c() {
+      return this.j;
+   }
 
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
+   public int d() {
+      return this.k;
+   }
 
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(azn.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
 
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(azn.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final xl e() {
+      return xo.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new xr(xr.a.a, xl.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<arr> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<arr> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (arr $$5 : $$0) {
+            if ($$5.cI().equals($$3)) {
+               $$4 = true;
+               break;
             }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
          }
 
-         if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
+         if (!$$4) {
+            $$1.add($$3);
+         }
+      }
+
+      for (arr $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.i) {
+            if ($$6.cI().equals($$8)) {
+               $$7 = true;
+               break;
             }
          }
-      }
-   }
 
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
-         } else {
-            a.warn("Unknown message type '{}'", $$2);
+         if (!$$7) {
+            $$2.add($$6);
          }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
       }
-   }
 
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.d, $$0x.b.e, $$0x.b.f, $$0x.c.j, $$0x.c.i)
-               )
-         );
-   }
-
-   private Optional<amn.a> b(Scanner $$0) {
-      alh<dfb> $$1 = (alh<dfb>)amw.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new amn.a($$1, new ezn((double)$$2, (double)$$3, (double)$$4), new ezm($$6, $$5)));
-      }
-   }
-
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<aro> $$1 = this.e.ag().t();
-         if (!$$1.isEmpty()) {
-            aro $$2 = $$1.get(0);
-            arn $$3 = this.e.J();
-            ew $$4 = new ew($$2, ezn.a($$3.W()), ezm.a, $$3, 4, "", xh.a, this.e, $$2);
-            ex $$5 = this.e.aG();
-            $$5.a($$4, $$0);
+      for (UUID $$9 : $$1) {
+         for (arr $$10 : this.g()) {
+            if ($$10.cI().equals($$9)) {
+               this.b($$10);
+               break;
+            }
          }
-      });
+
+         this.i.remove($$9);
+      }
+
+      for (arr $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
    }
 
-   static record a(alh<dfb> a, ezn b, ezm c) {
+   public un a(js.a $$0) {
+      un $$1 = new un();
+      $$1.a("Name", xl.a.a(this.a, $$0));
+      $$1.a("Visible", this.f());
+      $$1.a("Value", this.j);
+      $$1.a("Max", this.k);
+      $$1.a("Color", this.k().b());
+      $$1.a("Overlay", this.l().a());
+      $$1.a("DarkenScreen", this.m());
+      $$1.a("PlayBossMusic", this.n());
+      $$1.a("CreateWorldFog", this.o());
+      ut $$2 = new ut();
+
+      for (UUID $$3 : this.i) {
+         $$2.add(vc.a($$3));
+      }
+
+      $$1.a("Players", $$2);
+      return $$1;
+   }
+
+   public static amn a(un $$0, all $$1, js.a $$2) {
+      amn $$3 = new amn($$1, xl.a.a($$0.l("Name"), $$2));
+      $$3.d($$0.q("Visible"));
+      $$3.a($$0.h("Value"));
+      $$3.b($$0.h("Max"));
+      $$3.a(brx.a.a($$0.l("Color")));
+      $$3.a(brx.b.a($$0.l("Overlay")));
+      $$3.a($$0.q("DarkenScreen"));
+      $$3.b($$0.q("PlayBossMusic"));
+      $$3.c($$0.q("CreateWorldFog"));
+
+      for (vk $$5 : $$0.c("Players", 11)) {
+         $$3.a(vc.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public void c(arr $$0) {
+      if (this.i.contains($$0.cI())) {
+         this.a($$0);
+      }
+   }
+
+   public void d(arr $$0) {
+      super.b($$0);
    }
 }

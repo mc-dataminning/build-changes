@@ -1,53 +1,90 @@
-public class gkp implements gks<dsi> {
-   private final fzf a;
-   private final fzf b;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public gkp(gkt.a $$0) {
-      this.a = new fzf.a($$0.a(gbl.p), gir::c);
-      this.b = new fzf.a($$0.a(gbl.o), gir::c);
+public class gkp {
+   public static final gkp a = new gkp();
+   public final gko b;
+   public final gko c;
+   public final gko d;
+   public final gko e;
+   public final gko f;
+   public final gko g;
+   public final gko h;
+   public final gko i;
+
+   private gkp() {
+      this(gko.a, gko.a, gko.a, gko.a, gko.a, gko.a, gko.a, gko.a);
    }
 
-   public static gbs b() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("main", gbr.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gbo.a);
-      $$1.a("left_leg", gbr.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gbo.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", gbr.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gbo.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return gbs.a($$0, 64, 64);
+   public gkp(gkp $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
    }
 
-   public static gbs c() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("main", gbr.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gbo.a);
-      $$1.a("left_leg", gbr.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gbo.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", gbr.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gbo.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return gbs.a($$0, 64, 64);
+   public gkp(gko $$0, gko $$1, gko $$2, gko $$3, gko $$4, gko $$5, gko $$6, gko $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public void a(dsi $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
-      ham $$6 = gjc.r[$$0.c().a()];
-      dfb $$7 = $$0.i();
-      if ($$7 != null) {
-         dvj $$8 = $$0.m();
-         dkl.c<? extends dsi> $$9 = dkl.a(dso.y, dhx::i, dhx::h, djh.c, $$8, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new gkv<>()).get($$4);
-         this.a($$2, $$3, $$8.c(dhx.b) == dvw.a ? this.a : this.b, $$8.c(dhx.aF), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, jm.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, jm.d, $$6, $$4, $$5, true);
+   public gko a(cwd $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gko.a;
+      };
+   }
+
+   public boolean b(cwd $$0) {
+      return this.a($$0) != gko.a;
+   }
+
+   protected static class a implements JsonDeserializer<gkp> {
+      public gkp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gko $$4 = this.a($$2, $$3, cwd.c);
+         gko $$5 = this.a($$2, $$3, cwd.b);
+         if ($$5 == gko.a) {
+            $$5 = $$4;
+         }
+
+         gko $$6 = this.a($$2, $$3, cwd.e);
+         gko $$7 = this.a($$2, $$3, cwd.d);
+         if ($$7 == gko.a) {
+            $$7 = $$6;
+         }
+
+         gko $$8 = this.a($$2, $$3, cwd.f);
+         gko $$9 = this.a($$2, $$3, cwd.g);
+         gko $$10 = this.a($$2, $$3, cwd.h);
+         gko $$11 = this.a($$2, $$3, cwd.i);
+         return new gkp($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
-   }
 
-   private void a(feb $$0, gih $$1, fzf $$2, jm $$3, ham $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      fef $$8 = $$4.a($$1, gir::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+      private gko a(JsonDeserializationContext $$0, JsonObject $$1, cwd $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gko)$$0.deserialize($$1.get($$3), gko.class) : gko.a;
+      }
    }
 }

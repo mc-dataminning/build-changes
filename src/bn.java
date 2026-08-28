@@ -29,7 +29,7 @@ public record bn(dj.c b, dj.c c, dj.c d, dj.c e, dj.c f) {
       float $$6 = (float)($$0 - $$3);
       float $$7 = (float)($$1 - $$4);
       float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)azk.e($$6)) || !this.c.d((double)azk.e($$7)) || !this.d.d((double)azk.e($$8))) {
+      if (!this.b.d((double)azn.e($$6)) || !this.c.d((double)azn.e($$7)) || !this.d.d((double)azn.e($$8))) {
          return false;
       } else {
          return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));

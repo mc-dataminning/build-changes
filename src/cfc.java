@@ -1,24 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class cfc extends cfk<bvc> {
-   private static final long b = 32L;
-   private static final long c = 16L;
-   public static final int a = 32;
-
+public class cfc extends cfo<bve> {
    @Override
-   public Set<cee<?>> a() {
-      return ImmutableSet.of(cee.L);
+   public Set<cei<?>> a() {
+      return ImmutableSet.of(cei.x, cei.y);
    }
 
-   protected void a(arn $$0, bvc $$1) {
-      bwc<?> $$2 = $$1.ed();
-      List<ckv> $$3 = $$0.a(ckv.class, $$1.cS().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<ckv> $$4 = $$3.stream().filter($$1x -> $$1.i($$1x.m())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::G).findFirst();
-      $$2.a(cee.L, $$4);
+   @Override
+   protected void a(arq $$0, bve $$1) {
+      bwg<?> $$2 = $$1.ee();
+      bsy $$3 = $$1.eJ();
+      if ($$3 != null) {
+         $$2.a(cei.x, $$1.eJ());
+         bui $$4 = $$3.d();
+         if ($$4 instanceof bve) {
+            $$2.a(cei.y, (bve)$$4);
+         }
+      } else {
+         $$2.b(cei.x);
+      }
+
+      $$2.c(cei.y).ifPresent($$2x -> {
+         if (!$$2x.bN() || $$2x.dY() != $$0) {
+            $$2.b(cei.y);
+         }
+      });
    }
 }

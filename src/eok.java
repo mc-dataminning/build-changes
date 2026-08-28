@@ -1,63 +1,48 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eok extends elx {
+public class eok extends emb {
    public static final MapCodec<eok> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               eok.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eok::new)
+      $$0 -> $$0.group(a($$0), eki.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eok::new)
    );
-   public final eok.a e;
-   public final float f;
-   public final float g;
+   public final eki e;
 
-   public eok(elx.c $$0, eok.a $$1, float $$2, float $$3) {
+   public eok(emb.c $$0, eki $$1) {
       super($$0);
       this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
-   public Optional<elx.b> a(elx.a $$0) {
-      return a($$0, ebf.a.c, $$1 -> this.a($$1, $$0));
-   }
+   public Optional<emb.b> a(emb.a $$0) {
+      eci $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      ecg $$5 = new ecg($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      dfr $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      jh.a $$8 = new jh.a($$2, $$6, $$3);
 
-   private void a(emp $$0, elx.a $$1) {
-      jh $$2 = new jh($$1.h().d(), 90, $$1.h().e());
-      dor $$3 = dor.a($$1.f());
-      eoj.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+      while ($$6 > $$4) {
+         dvo $$9 = $$7.a($$6);
+         dvo $$10 = $$7.a(--$$6);
+         if ($$9.l() && ($$10.a(dil.dW) || $$10.c(deu.a, $$8.q($$6), jm.b))) {
+            break;
+         }
+      }
+
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         jh $$11 = new jh($$2, $$6, $$3);
+         return Optional.of(new emb.b($$11, (Consumer<emt>)($$3x -> eoj.a($$0.e(), $$3x, $$1, $$11))));
+      }
    }
 
    @Override
-   public emg<?> e() {
-      return emg.k;
-   }
-
-   public static enum a implements bag {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<eok.a> c = bag.a(eok.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public emk<?> e() {
+      return emk.i;
    }
 }

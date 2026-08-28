@@ -1,36 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class ewg extends evp {
-   public static final MapCodec<ewg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axq.b(lz.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, ewg::new)
-   );
-   private final axq<cvu> b;
+public class ewg extends evt {
+   static final MapCodec<ewg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eyo.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, ewg::new));
+   private final eyn b;
 
-   private ewg(List<exn> $$0, axq<cvu> $$1) {
+   private ewg(List<exr> $$0, eyn $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public evr<ewg> b() {
-      return evs.G;
+   public Set<ewz<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cwb a(cwb $$0, euc $$1) {
-      kd<cvu> $$2 = $$1.d().H_().e(lz.I);
-      Optional<jq<cvu>> $$3 = $$2.a(this.b, $$1.b());
-      if ($$3.isPresent()) {
-         $$0.b(ku.Z, $$3.get());
-      }
-
-      return $$0;
+   public evv<ewg> b() {
+      return evw.R;
    }
 
-   public static evp.a<?> a(axq<cvu> $$0) {
-      return a($$1 -> new ewg($$1, $$0));
+   @Override
+   public cwf a(cwf $$0, eug $$1) {
+      $$0.b(ku.p, new cyp(this.b.a($$1)));
+      return $$0;
    }
 }

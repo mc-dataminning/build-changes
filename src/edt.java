@@ -1,45 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class edt extends eel<egh> {
-   public edt(Codec<egh> $$0) {
+public class edt extends eep<egn> {
+   private static final ImmutableList<dij> a = ImmutableList.of(dil.H, dil.F, dil.kJ, dil.dW, dil.fn, dil.fo, dil.fp, dil.fq, dil.cv, dil.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int ao = 15;
+
+   public edt(Codec<egn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(een<egh> $$0) {
-      jh $$1 = $$0.e();
-      dfy $$2 = $$0.b();
-      azs $$3 = $$0.d();
-      egh $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
+   public boolean a(eer<egn> $$0) {
+      int $$1 = $$0.c().f();
+      jh $$2 = $$0.e();
+      dgd $$3 = $$0.b();
+      azv $$4 = $$0.d();
+      egn $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.k())) {
          return false;
       } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-         for (jh $$7 : jh.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+         for (jh $$11 : jh.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
             }
          }
 
-         return true;
+         return $$10;
       }
    }
 
-   private boolean a(dfc $$0, jh $$1, azs $$2) {
-      jh $$3 = $$1.e();
-      dvj $$4 = $$0.a_($$3);
-      return $$4.a(dig.kE) ? $$2.h() : $$4.c($$0, $$3, jm.b);
+   private boolean a(dfg $$0, int $$1, jh $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (jh $$6 : jh.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         jh $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (jh.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (jh)$$10)) {
+                  this.a($$0, $$10, dil.dY.m());
+                  $$10.c(jm.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(dil.dY)) {
+                     break;
+                  }
+
+                  $$10.c(jm.b);
+               }
+            }
+         }
+      }
+
+      return $$5;
    }
 
-   private void a(dfc $$0, jh $$1, azs $$2, egh $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+   @Nullable
+   private static jh a(dfg $$0, int $$1, jh.a $$2, int $$3) {
+      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(jm.a);
       }
+
+      return null;
+   }
+
+   private static boolean a(dfg $$0, int $$1, jh.a $$2) {
+      if (!a($$0, $$1, (jh)$$2)) {
+         return false;
+      } else {
+         dvo $$3 = $$0.a_($$2.c(jm.a));
+         $$2.c(jm.b);
+         return !$$3.l() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static jh a(dfg $$0, jh.a $$1, int $$2) {
+      while ($$1.v() <= $$0.al() && $$2 > 0) {
+         $$2--;
+         dvo $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.l()) {
+            return $$1;
+         }
+
+         $$1.c(jm.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dfg $$0, int $$1, jh $$2) {
+      dvo $$3 = $$0.a_($$2);
+      return $$3.l() || $$3.a(dil.H) && $$2.v() <= $$1;
    }
 }

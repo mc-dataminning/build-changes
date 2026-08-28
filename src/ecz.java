@@ -1,19 +1,20 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-record ecz(kl e) implements ecm {
-   public static MapCodec<ecz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kl.f.optionalFieldOf("offset", kl.g).forGetter(ecz::g)).apply($$0, ecz::new));
+class ecz extends edb {
+   public static final MapCodec<ecz> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ecz::new));
+
+   public ecz(kl $$0) {
+      super($$0);
+   }
 
    @Override
-   public ecn<?> a() {
-      return ecn.m;
+   protected boolean a(dvo $$0) {
+      return $$0.v();
    }
 
-   public boolean a(dfy $$0, jh $$1) {
-      return $$0.a(null, fae.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   public kl g() {
-      return this.e;
+   @Override
+   public ecr<?> a() {
+      return ecr.f;
    }
 }

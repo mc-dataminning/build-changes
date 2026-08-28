@@ -1,34 +1,38 @@
-public class gpf extends gpq<chd, gvg, fyz> {
-   private static final ali a = ali.b("textures/entity/iron_golem/iron_golem.png");
+public class gpf extends goz<cky, gvi> {
+   private final gka a;
 
-   public gpf(gok.a $$0) {
-      super($$0, new fyz($$0.a(gbl.ba)), 0.7F);
-      this.a(new gso(this));
-      this.a(new gsp(this, $$0.d()));
+   public gpf(gpa.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public ali a(gvg $$0) {
-      return a;
+   public boolean a(cky $$0, gmo $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.q() != $$0.dY().a_($$0.dy());
    }
 
-   public gvg c() {
-      return new gvg();
-   }
-
-   public void a(chd $$0, gvg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.y() > 0.0F ? (float)$$0.y() - $$2 : 0.0F;
-      $$1.b = $$0.gu();
-      $$1.c = $$0.t();
-   }
-
-   protected void a(gvg $$0, feb $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.Y < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.X + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+   public void a(gvi $$0, fek $$1, gix $$2, int $$3) {
+      dvo $$4 = $$0.c;
+      if ($$4.o() == dop.c) {
+         $$1.a();
+         $$1.a(-0.5, 0.0, -0.5);
+         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gip.b($$4)), false, azv.a(), $$4.b($$0.a), gyk.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
+   }
+
+   public gvi a() {
+      return new gvi();
+   }
+
+   public void a(cky $$0, gvi $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      jh $$3 = jh.a($$0.dD(), $$0.cT().e, $$0.dJ());
+      $$1.a = $$0.m();
+      $$1.b = $$3;
+      $$1.c = $$0.q();
+      $$1.d = $$0.dY().t($$3);
+      $$1.e = $$0.dY();
    }
 }

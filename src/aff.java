@@ -1,37 +1,29 @@
-public class aff implements zp<ace> {
-   public static final zg<wf, aff> a = zp.a(aff::a, aff::new);
+public class aff implements zs<ach> {
+   public static final zj<wi, aff> a = zs.a(aff::a, aff::new);
    private final int b;
-   private final int c;
 
-   public aff(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aff(dxe $$0) {
+      this.b = $$0.q();
    }
 
-   private aff(wf $$0) {
+   private aff(wi $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
    }
 
-   private void a(wf $$0) {
+   private void a(wi $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zr<aff> a() {
-      return agt.ay;
+   public zu<aff> a() {
+      return agw.av;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

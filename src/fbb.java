@@ -1,3 +1,8 @@
-public interface fbb<T> extends fbh<T> {
-   boolean b(jh var1, T var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fbb {
 }

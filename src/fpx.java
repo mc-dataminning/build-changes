@@ -1,109 +1,88 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public class fpx extends fpy {
-   private static final xi d = xi.c("chat.copy");
-   private static final xi s = xi.c("chat.link.warning");
-   private final String u;
-   private final boolean v;
+public class fpx {
+   int a;
+   final Map<fpx.a, fpx.b> b = Maps.newTreeMap(Comparator.<fpx.a, fpt>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   public fpx(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), xi.b($$1), $$1, $$2 ? xh.e : xh.g, $$2);
+   public void a(Consumer<fpu> $$0) {
+      this.a++;
+      $$0.accept(new fpx.c(0));
    }
 
-   public fpx(BooleanConsumer $$0, xi $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xh.e : xh.g, $$3);
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   public fpx(BooleanConsumer $$0, xi $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
-   }
+   static class a {
+      final fpt a;
+      final int b;
 
-   public fpx(BooleanConsumer $$0, xi $$1, xi $$2, URI $$3, xi $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
-   }
-
-   public fpx(BooleanConsumer $$0, xi $$1, xi $$2, String $$3, xi $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (xi)($$5 ? xi.c("chat.link.open") : xh.f);
-      this.b = $$4;
-      this.v = !$$5;
-      this.u = $$3;
-   }
-
-   protected static xw a(boolean $$0, String $$1) {
-      return c($$0).b(xh.v).b(xi.b($$1));
-   }
-
-   protected static xw c(boolean $$0) {
-      return xi.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
-   }
-
-   @Override
-   protected void a(int $$0) {
-      this.c(flh.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(flh.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(flh.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void l() {
-      this.m.p.a(this.u);
-   }
-
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      a(fpt $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public static void a(fra $$0, String $$1, boolean $$2) {
-      fji $$3 = fji.Q();
-      $$3.a(new fpx($$3x -> {
-         if ($$3x) {
-            ae.m().a($$1);
+   static class b {
+      fpw<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fpw.a;
+         this.b = -1;
+      }
+
+      public fpx.b a(int $$0, fpw<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
          }
 
-         $$3.a($$0);
-      }, $$1, $$2));
+         this.b = $$0;
+         return this;
+      }
    }
 
-   public static void a(fra $$0, URI $$1, boolean $$2) {
-      fji $$3 = fji.Q();
-      $$3.a(new fpx($$3x -> {
-         if ($$3x) {
-            ae.m().a($$1);
-         }
+   class c implements fpu {
+      private final int b;
 
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
-   }
+      c(final int $$0) {
+         this.b = $$0;
+      }
 
-   public static void a(fra $$0, URI $$1) {
-      a($$0, $$1, true);
-   }
+      @Override
+      public void a(fpt $$0, fpw<?> $$1) {
+         fpx.this.b.computeIfAbsent(new fpx.a($$0, this.b), $$0x -> new fpx.b()).a(fpx.this.a, $$1);
+      }
 
-   public static void a(fra $$0, String $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static flh.c b(fra $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static flh.c b(fra $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static flh.c b(fra $$0, String $$1) {
-      return b($$0, $$1, true);
-   }
-
-   public static flh.c b(fra $$0, URI $$1) {
-      return b($$0, $$1, true);
+      @Override
+      public fpu a() {
+         return fpx.this.new c(this.b + 1);
+      }
    }
 }

@@ -1,52 +1,158 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public class aop {
-   public static <T extends ey<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.random.error.range_too_large"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.random.error.range_too_small"));
+
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aop.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new aop.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aop.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("random").then(a("value", false))).then(a("roll", true)))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("reset").requires($$0x -> $$0x.c(2)))
+                     .then(
+                        ((LiteralArgumentBuilder)ex.a("*").executes($$0x -> a((ew)$$0x.getSource())))
+                           .then(
+                              ((RequiredArgumentBuilder)ex.a("seed", IntegerArgumentType.integer())
+                                    .executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                                 .then(
+                                    ((RequiredArgumentBuilder)ex.a("includeWorldSeed", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ew)$$0x.getSource(),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   true
+                                                )
+                                          ))
+                                       .then(
+                                          ex.a("includeSequenceId", BoolArgumentType.bool())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      IntegerArgumentType.getInteger($$0x, "seed"),
+                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                   )
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("sequence", fx.a()).suggests(aop::a).executes($$0x -> a((ew)$$0x.getSource(), fx.c($$0x, "sequence"))))
+                        .then(
+                           ((RequiredArgumentBuilder)ex.a("seed", IntegerArgumentType.integer())
+                                 .executes($$0x -> a((ew)$$0x.getSource(), fx.c($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              .then(
+                                 ((RequiredArgumentBuilder)ex.a("includeWorldSeed", BoolArgumentType.bool())
+                                       .executes(
+                                          $$0x -> a(
+                                                (ew)$$0x.getSource(),
+                                                fx.c($$0x, "sequence"),
+                                                IntegerArgumentType.getInteger($$0x, "seed"),
+                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                true
+                                             )
+                                       ))
+                                    .then(
+                                       ex.a("includeSequenceId", BoolArgumentType.bool())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ew)$$0x.getSource(),
+                                                   fx.c($$0x, "sequence"),
+                                                   IntegerArgumentType.getInteger($$0x, "seed"),
+                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   static class a<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         $$0.p().onFailure();
-         hy $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
+   private static LiteralArgumentBuilder<ew> a(String $$0, boolean $$1) {
+      return (LiteralArgumentBuilder<ew>)ex.a($$0)
+         .then(
+            ((RequiredArgumentBuilder)ex.a("range", fu.a()).executes($$1x -> a((ew)$$1x.getSource(), fu.b.a($$1x, "range"), null, $$1)))
+               .then(
+                  ((RequiredArgumentBuilder)ex.a("sequence", fx.a()).suggests(aop::a).requires($$0x -> $$0x.c(2)))
+                     .executes($$1x -> a((ew)$$1x.getSource(), fu.b.a($$1x, "range"), fx.c($$1x, "sequence"), $$1))
+               )
+         );
    }
 
-   static class b<T extends ey<T>> implements hu.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hr $$3, hx<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(ih.a());
-            }
+   private static CompletableFuture<Suggestions> a(CommandContext<ew> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList();
+      ((ew)$$0.getSource()).e().M().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
+      return fb.b($$2, $$1);
+   }
+
+   private static int a(ew $$0, dj.d $$1, @Nullable all $$2, boolean $$3) throws CommandSyntaxException {
+      azv $$4;
+      if ($$2 != null) {
+         $$4 = $$0.e().a($$2);
+      } else {
+         $$4 = $$0.e().E_();
+      }
+
+      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
+      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
+      long $$8 = (long)$$7 - (long)$$6;
+      if ($$8 == 0L) {
+         throw b.create();
+      } else if ($$8 >= 2147483647L) {
+         throw a.create();
+      } else {
+         int $$9 = azn.b($$4, $$6, $$7);
+         if ($$3) {
+            $$0.l().ag().a(xl.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
          } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new ic.a<>($$6, $$5, $$3.d(), $$0, $$1));
+            $$0.a(() -> xl.a("commands.random.sample.success", $$9), false);
          }
+
+         return $$9;
       }
    }
 
-   static class c<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hy $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
-      }
+   private static int a(ew $$0, all $$1) throws CommandSyntaxException {
+      $$0.e().M().b($$1);
+      $$0.a(() -> xl.a("commands.random.reset.success", xl.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(ew $$0, all $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
+      $$0.e().M().a($$1, $$2, $$3, $$4);
+      $$0.a(() -> xl.a("commands.random.reset.success", xl.a($$1)), false);
+      return 1;
+   }
+
+   private static int a(ew $$0) {
+      int $$1 = $$0.e().M().a();
+      $$0.a(() -> xl.a("commands.random.reset.all.success", $$1), false);
+      return $$1;
+   }
+
+   private static int a(ew $$0, int $$1, boolean $$2, boolean $$3) {
+      bsm $$4 = $$0.e().M();
+      $$4.a($$1, $$2, $$3);
+      int $$5 = $$4.a();
+      $$0.a(() -> xl.a("commands.random.reset.all.success", $$5), false);
+      return $$5;
    }
 }

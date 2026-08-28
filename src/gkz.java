@@ -1,103 +1,66 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class gkz implements gks<dsy> {
-   public static final ham a = new ham(gyc.d, ali.b("entity/conduit/base"));
-   public static final ham b = new ham(gyc.d, ali.b("entity/conduit/cage"));
-   public static final ham c = new ham(gyc.d, ali.b("entity/conduit/wind"));
-   public static final ham d = new ham(gyc.d, ali.b("entity/conduit/wind_vertical"));
-   public static final ham e = new ham(gyc.d, ali.b("entity/conduit/open_eye"));
-   public static final ham f = new ham(gyc.d, ali.b("entity/conduit/closed_eye"));
-   private final gbm g;
-   private final gbm h;
-   private final gbm i;
-   private final gbm j;
-   private final gkr k;
+public class gkz {
+   private final gkv a;
+   private final gkq b;
 
-   public gkz(gkt.a $$0) {
-      this.k = $$0.a();
-      this.g = $$0.a(gbl.R);
-      this.h = $$0.a(gbl.T);
-      this.i = $$0.a(gbl.S);
-      this.j = $$0.a(gbl.Q);
+   public gkz(gkv $$0, gkq $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static gbs b() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("eye", gbr.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new gbq(0.01F)), gbo.a);
-      return gbs.a($$0, 16, 16);
+   public gkq a() {
+      return this.b;
    }
 
-   public static gbs c() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("wind", gbr.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gbo.a);
-      return gbs.a($$0, 64, 32);
+   public Predicate<dvo> a(dvp<dij, dvo> $$0) {
+      return this.a.getPredicate($$0);
    }
 
-   public static gbs d() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("shell", gbr.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gbo.a);
-      return gbs.a($$0, 32, 16);
-   }
+   public static class a implements JsonDeserializer<gkz> {
+      public gkz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gkz(this.b($$3), (gkq)$$2.deserialize($$3.get("apply"), gkq.class));
+      }
 
-   public static gbs e() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("shell", gbr.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gbo.a);
-      return gbs.a($$0, 32, 16);
-   }
+      private gkv b(JsonObject $$0) {
+         return $$0.has("when") ? a(azd.u($$0, "when")) : gkv.b;
+      }
 
-   public void a(dsy $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      if (!$$0.c()) {
-         float $$7 = $$0.a(0.0F);
-         fef $$8 = a.a($$3, gir::c);
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
-         this.i.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      } else {
-         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
-         float $$10 = azk.a($$6 * 0.1F) / 2.0F + 0.5F;
-         $$10 = $$10 * $$10 + $$10;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
-         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
-         this.j.a($$2, b.a($$3, gir::f), $$4, $$5);
-         $$2.b();
-         int $$12 = $$0.a / 66 % 3;
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         if ($$12 == 1) {
-            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
-         } else if ($$12 == 2) {
-            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+      @VisibleForTesting
+      static gkv a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gkv> $$2 = Streams.stream(azd.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gky($$2);
+            } else if ($$0.has("AND")) {
+               List<gkv> $$3 = Streams.stream(azd.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gku($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gku($$1.stream().map(gkz.a::a).collect(Collectors.toList()));
          }
+      }
 
-         fef $$13 = ($$12 == 1 ? d : c).a($$3, gir::f);
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.b(0.875F, 0.875F, 0.875F);
-         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         fir $$14 = this.k.b;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         $$2.b(0.5F, 0.5F, 0.5F);
-         float $$15 = -$$14.e();
-         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
-         float $$16 = 1.3333334F;
-         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
-         this.g.a($$2, ($$0.d() ? e : f).a($$3, gir::f), $$4, $$5);
-         $$2.b();
+      private static gkv a(Entry<String, JsonElement> $$0) {
+         return new gkw($$0.getKey(), $$0.getValue().getAsString());
       }
    }
 }

@@ -1,374 +1,250 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
-public class giy extends avg<giy.c> implements AutoCloseable {
-   static final Logger d = LogUtils.getLogger();
-   public static final String a = "shaders";
-   public static final String b = "shaders/include/";
-   private static final alb e = alb.a("shaders");
-   private static final alb f = alb.a("post_effect");
-   public static final int c = 32768;
-   final gye g;
-   private final Consumer<Exception> h;
-   private giy.a i = new giy.a(giy.c.a);
+public class giy {
+   private final giy.b a;
+   final jh b;
 
-   public giy(gye $$0, Consumer<Exception> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public giy(kj $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 * 2 + 1;
+      int $$5 = azn.c($$4);
+      int $$6 = $$1 * 16;
+      jh $$7 = $$0.j();
+      this.b = $$0.k();
+      int $$8 = $$7.u() - $$6;
+      int $$9 = $$8 + $$5 * 16 - 1;
+      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
+      int $$11 = $$10 + $$5 * 16 - 1;
+      int $$12 = $$7.w() - $$6;
+      int $$13 = $$12 + $$5 * 16 - 1;
+      this.a = new giy.b(new elt($$8, $$10, $$12, $$9, $$11, $$13));
    }
 
-   protected giy.c a(avb $$0, bon $$1) {
-      Builder<ali, gja> $$2 = ImmutableMap.builder();
-      Builder<giy.e, String> $$3 = ImmutableMap.builder();
-      Map<ali, auz> $$4 = $$0.b("shaders", $$0x -> a($$0x) || b($$0x));
+   public boolean a(gmk.b $$0) {
+      return this.a.a($$0);
+   }
 
-      for (Entry<ali, auz> $$5 : $$4.entrySet()) {
-         ali $$6 = $$5.getKey();
-         fdq.a $$7 = fdq.a.a($$6);
-         if ($$7 != null) {
-            a($$6, $$5.getValue(), $$7, $$4, $$3);
-         } else if (a($$6)) {
-            a($$6, $$5.getValue(), $$2);
-         }
+   public void a(giy.e $$0, gmo $$1, int $$2) {
+      this.a.a($$0, false, $$1, 0, $$2, true);
+   }
+
+   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
+      int $$7 = this.b.u();
+      int $$8 = this.b.v();
+      int $$9 = this.b.w();
+      return (double)$$7 > $$0 - (double)$$6
+         && (double)$$7 < $$3 + (double)$$6
+         && (double)$$8 > $$1 - (double)$$6
+         && (double)$$8 < $$4 + (double)$$6
+         && (double)$$9 > $$2 - (double)$$6
+         && (double)$$9 < $$5 + (double)$$6;
+   }
+
+   static enum a {
+      a(4, 2, 1),
+      b(4, 1, 2),
+      c(2, 4, 1),
+      d(1, 4, 2),
+      e(2, 1, 4),
+      f(1, 2, 4);
+
+      final int g;
+      final int h;
+      final int i;
+
+      private a(final int $$0, final int $$1, final int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      Builder<ali, gim> $$8 = ImmutableMap.builder();
-
-      for (Entry<ali, auz> $$9 : f.a($$0).entrySet()) {
-         b($$9.getKey(), $$9.getValue(), $$8);
-      }
-
-      return new giy.c($$2.build(), $$3.build(), $$8.build());
-   }
-
-   private static void a(ali $$0, auz $$1, fdq.a $$2, Map<ali, auz> $$3, Builder<giy.e, String> $$4) {
-      ali $$5 = $$2.c().b($$0);
-      fdh $$6 = a($$3, $$0);
-
-      try (Reader $$7 = $$1.e()) {
-         String $$8 = IOUtils.toString($$7);
-         $$4.put(new giy.e($$5, $$2), String.join("", $$6.a($$8)));
-      } catch (IOException var12) {
-         d.error("Failed to load shader source at {}", $$0, var12);
-      }
-   }
-
-   private static fdh a(final Map<ali, auz> $$0, ali $$1) {
-      final ali $$2 = $$1.a(v::b);
-      return new fdh() {
-         private final Set<ali> c = new ObjectArraySet();
-
-         @Override
-         public String a(boolean $$0x, String $$1) {
-            ali $$2;
-            try {
-               if ($$0) {
-                  $$2 = $$2.a((UnaryOperator<String>)($$1x -> v.c($$1x + $$1)));
-               } else {
-                  $$2 = ali.a($$1).f("shaders/include/");
-               }
-            } catch (aa var8) {
-               giy.d.error("Malformed GLSL import {}: {}", $$1, var8.getMessage());
-               return "#error " + var8.getMessage();
-            }
-
-            if (!this.c.add($$2)) {
-               return null;
-            } else {
-               try {
-                  String var5;
-                  try (Reader $$6 = $$0.get($$2).e()) {
-                     var5 = IOUtils.toString($$6);
-                  }
-
-                  return var5;
-               } catch (IOException var10) {
-                  giy.d.error("Could not open GLSL import {}: {}", $$2, var10.getMessage());
-                  return "#error " + var10.getMessage();
-               }
-            }
-         }
-      };
-   }
-
-   private static void a(ali $$0, auz $$1, Builder<ali, gja> $$2) {
-      ali $$3 = e.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         gja $$6 = (gja)gja.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-         $$2.put($$3, $$6);
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse shader config at {}", $$0, var9);
-      }
-   }
-
-   private static void b(ali $$0, auz $$1, Builder<ali, gim> $$2) {
-      ali $$3 = f.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         $$2.put($$3, (gim)gim.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new));
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse post chain at {}", $$0, var9);
-      }
-   }
-
-   private static boolean a(ali $$0) {
-      return $$0.a().endsWith(".json");
-   }
-
-   private static boolean b(ali $$0) {
-      return fdq.a.a($$0) != null || $$0.a().endsWith(".glsl");
-   }
-
-   protected void a(giy.c $$0, avb $$1, bon $$2) {
-      giy.a $$3 = new giy.a($$0);
-      Map<giz, giy.b> $$4 = new HashMap<>();
-
-      for (giz $$5 : ghr.a()) {
-         try {
-            $$3.c.put($$5, Optional.of($$3.b($$5)));
-         } catch (giy.b var9) {
-            $$4.put($$5, var9);
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         $$3.close();
-         throw new RuntimeException(
-            "Failed to load required shader programs:\n"
-               + $$4.entrySet().stream().map($$0x -> " - " + $$0x.getKey() + ": " + ((giy.b)$$0x.getValue()).getMessage()).collect(Collectors.joining("\n"))
-         );
-      } else {
-         this.i.close();
-         this.i = $$3;
-      }
-   }
-
-   @Override
-   public String c() {
-      return "Shader Loader";
-   }
-
-   public void a(ave $$0, giz... $$1) throws IOException, giy.b {
-      for (giz $$2 : $$1) {
-         auz $$3 = $$0.getResourceOrThrow(e.a($$2.a()));
-
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = JsonParser.parseReader($$4);
-            gja $$6 = (gja)gja.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-            gix $$7 = $$6.e().a($$2.c());
-            fdq $$8 = this.a($$0, $$6.a(), fdq.a.a, $$7);
-            fdq $$9 = this.a($$0, $$6.b(), fdq.a.b, $$7);
-            ghq $$10 = a($$2, $$6, $$8, $$9);
-            this.i.c.put($$2, Optional.of($$10));
-         }
-      }
-   }
-
-   private fdq a(ave $$0, ali $$1, fdq.a $$2, gix $$3) throws IOException, giy.b {
-      ali $$4 = $$2.c().a($$1);
-
-      fdq var10;
-      try (Reader $$5 = $$0.getResourceOrThrow($$4).e()) {
-         String $$6 = IOUtils.toString($$5);
-         String $$7 = fdh.a($$6, $$3);
-         fdq $$8 = fdq.a($$1, $$2, $$7);
-         this.i.d.put(new giy.d($$1, $$2, $$3), $$8);
-         var10 = $$8;
-      }
-
-      return var10;
-   }
-
-   @Nullable
-   public ghq a(giz $$0) {
-      try {
-         return this.i.a($$0);
-      } catch (giy.b var3) {
-         d.error("Failed to load shader program: {}", $$0, var3);
-         this.i.c.put($$0, Optional.empty());
-         this.h.accept(var3);
-         return null;
-      }
-   }
-
-   public ghq b(giz $$0) throws giy.b {
-      ghq $$1 = this.i.a($$0);
-      if ($$1 == null) {
-         throw new giy.b("Shader '" + $$0 + "' could not be found");
-      } else {
-         return $$1;
-      }
-   }
-
-   static ghq a(giz $$0, gja $$1, fdq $$2, fdq $$3) throws giy.b {
-      ghq $$4 = ghq.a($$2, $$3, $$0.b());
-      $$4.a($$1.d(), $$1.c());
-      return $$4;
-   }
-
-   @Nullable
-   public gil a(ali $$0, Set<ali> $$1) {
-      try {
-         return this.i.a($$0, $$1);
-      } catch (giy.b var4) {
-         d.error("Failed to load post chain: {}", $$0, var4);
-         this.i.e.put($$0, Optional.empty());
-         this.h.accept(var4);
-         return null;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.i.close();
-   }
-
-   class a implements AutoCloseable {
-      private final giy.c b;
-      final Map<giz, Optional<ghq>> c = new HashMap<>();
-      final Map<giy.d, fdq> d = new HashMap<>();
-      final Map<ali, Optional<gil>> e = new HashMap<>();
-
-      a(final giy.c $$0) {
-         this.b = $$0;
-      }
-
-      @Nullable
-      public ghq a(giz $$0) throws giy.b {
-         Optional<ghq> $$1 = this.c.get($$0);
-         if ($$1 != null) {
-            return $$1.orElse(null);
+      public static giy.a a(int $$0, int $$1, int $$2) {
+         if ($$0 > $$1 && $$0 > $$2) {
+            return $$1 > $$2 ? a : b;
+         } else if ($$1 > $$0 && $$1 > $$2) {
+            return $$0 > $$2 ? c : d;
          } else {
-            ghq $$2 = this.b($$0);
-            this.c.put($$0, Optional.of($$2));
-            return $$2;
+            return $$0 > $$1 ? e : f;
          }
       }
+   }
 
-      ghq b(giz $$0) throws giy.b {
-         gja $$1 = this.b.b.get($$0.a());
-         if ($$1 == null) {
-            throw new giy.b("Could not find program with id: " + $$0.a());
+   class b implements giy.d {
+      private final giy.d[] b = new giy.d[8];
+      private final elt c;
+      private final int d;
+      private final int e;
+      private final int f;
+      private final giy.a g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
+
+      public b(final elt $$0) {
+         this.c = $$0;
+         this.d = this.c.h() + this.c.d() / 2;
+         this.e = this.c.i() + this.c.e() / 2;
+         this.f = this.c.j() + this.c.f() / 2;
+         int $$1 = giy.this.b.u() - this.d;
+         int $$2 = giy.this.b.v() - this.e;
+         int $$3 = giy.this.b.w() - this.f;
+         this.g = giy.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
+         this.h = $$1 < 0;
+         this.i = $$2 < 0;
+         this.j = $$3 < 0;
+      }
+
+      public boolean a(gmk.b $$0) {
+         boolean $$1 = $$0.f().u() - this.d < 0;
+         boolean $$2 = $$0.f().v() - this.e < 0;
+         boolean $$3 = $$0.f().w() - this.f < 0;
+         boolean $$4 = $$1 != this.h;
+         boolean $$5 = $$2 != this.i;
+         boolean $$6 = $$3 != this.j;
+         int $$7 = a(this.g, $$4, $$5, $$6);
+         if (this.c()) {
+            boolean $$8 = this.b[$$7] != null;
+            this.b[$$7] = giy.this.new c($$0);
+            return !$$8;
+         } else if (this.b[$$7] != null) {
+            giy.b $$9 = (giy.b)this.b[$$7];
+            return $$9.a($$0);
          } else {
-            gix $$2 = $$1.e().a($$0.c());
-            fdq $$3 = this.a($$1.a(), fdq.a.a, $$2);
-            fdq $$4 = this.a($$1.b(), fdq.a.b, $$2);
-            return giy.a($$0, $$1, $$3, $$4);
+            elt $$10 = this.a($$1, $$2, $$3);
+            giy.b $$11 = giy.this.new b($$10);
+            this.b[$$7] = $$11;
+            return $$11.a($$0);
          }
       }
 
-      private fdq a(ali $$0, fdq.a $$1, gix $$2) throws giy.b {
-         giy.d $$3 = new giy.d($$0, $$1, $$2);
-         fdq $$4 = this.d.get($$3);
-         if ($$4 == null) {
-            $$4 = this.a($$3);
-            this.d.put($$3, $$4);
+      private static int a(giy.a $$0, boolean $$1, boolean $$2, boolean $$3) {
+         int $$4 = 0;
+         if ($$1) {
+            $$4 += $$0.g;
+         }
+
+         if ($$2) {
+            $$4 += $$0.h;
+         }
+
+         if ($$3) {
+            $$4 += $$0.i;
          }
 
          return $$4;
       }
 
-      private fdq a(giy.d $$0) throws giy.b {
-         String $$1 = this.b.c.get(new giy.e($$0.a, $$0.b));
-         if ($$1 == null) {
-            throw new giy.b("Could not find shader: " + $$0);
+      private boolean c() {
+         return this.c.d() == 32;
+      }
+
+      private elt a(boolean $$0, boolean $$1, boolean $$2) {
+         int $$3;
+         int $$4;
+         if ($$0) {
+            $$3 = this.c.h();
+            $$4 = this.d - 1;
          } else {
-            String $$2 = fdh.a($$1, $$0.c);
-            return fdq.a($$0.a, $$0.b, $$2);
+            $$3 = this.d;
+            $$4 = this.c.k();
+         }
+
+         int $$7;
+         int $$8;
+         if ($$1) {
+            $$7 = this.c.i();
+            $$8 = this.e - 1;
+         } else {
+            $$7 = this.e;
+            $$8 = this.c.l();
+         }
+
+         int $$11;
+         int $$12;
+         if ($$2) {
+            $$11 = this.c.j();
+            $$12 = this.f - 1;
+         } else {
+            $$11 = this.f;
+            $$12 = this.c.m();
+         }
+
+         return new elt($$3, $$7, $$11, $$4, $$8, $$12);
+      }
+
+      @Override
+      public void a(giy.e $$0, boolean $$1, gmo $$2, int $$3, int $$4, boolean $$5) {
+         boolean $$6 = $$1;
+         if (!$$1) {
+            int $$7 = $$2.a(this.c);
+            $$1 = $$7 == -2;
+            $$6 = $$7 == -2 || $$7 == -1;
+         }
+
+         if ($$6) {
+            $$5 = $$5
+               && giy.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+
+            for (giy.d $$8 : this.b) {
+               if ($$8 != null) {
+                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
+               }
+            }
          }
       }
 
       @Nullable
-      public gil a(ali $$0, Set<ali> $$1) throws giy.b {
-         Optional<gil> $$2 = this.e.get($$0);
-         if ($$2 != null) {
-            return $$2.orElse(null);
-         } else {
-            gil $$3 = this.b($$0, $$1);
-            this.e.put($$0, Optional.of($$3));
-            return $$3;
-         }
+      @Override
+      public gmk.b a() {
+         return null;
       }
 
-      private gil b(ali $$0, Set<ali> $$1) throws giy.b {
-         gim $$2 = this.b.d.get($$0);
-         if ($$2 == null) {
-            throw new giy.b("Could not find post chain with id: " + $$0);
-         } else {
-            return gil.a($$2, giy.this.g, giy.this, $$1);
+      @Override
+      public ezm b() {
+         return new ezm(
+            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
+         );
+      }
+   }
+
+   final class c implements giy.d {
+      private final gmk.b b;
+
+      c(final gmk.b $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(giy.e $$0, boolean $$1, gmo $$2, int $$3, int $$4, boolean $$5) {
+         ezm $$6 = this.b.b();
+         if ($$1 || $$2.a(this.a().b())) {
+            $$5 = $$5 && giy.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
+            $$0.visit(this, $$1, $$3, $$5);
          }
       }
 
       @Override
-      public void close() {
-         RenderSystem.assertOnRenderThread();
-         this.c.values().forEach($$0 -> $$0.ifPresent(ghq::close));
-         this.d.values().forEach(fdq::close);
-         this.c.clear();
-         this.d.clear();
-         this.e.clear();
-      }
-   }
-
-   public static class b extends Exception {
-      public b(String $$0) {
-         super($$0);
-      }
-   }
-
-   public static record c(Map<ali, gja> b, Map<giy.e, String> c, Map<ali, gim> d) {
-      public static final giy.c a = new giy.c(Map.of(), Map.of(), Map.of());
-
-      public Map<ali, gja> a() {
+      public gmk.b a() {
          return this.b;
       }
 
-      public Map<giy.e, String> b() {
-         return this.c;
-      }
-
-      public Map<ali, gim> c() {
-         return this.d;
+      @Override
+      public ezm b() {
+         return this.b.b();
       }
    }
 
-   static record d(ali a, fdq.a b, gix c) {
+   public interface d {
+      void a(giy.e var1, boolean var2, gmo var3, int var4, int var5, boolean var6);
 
-      @Override
-      public String toString() {
-         String $$0 = this.a + " (" + this.b + ")";
-         return !this.c.c() ? $$0 + " with " + this.c : $$0;
-      }
+      @Nullable
+      gmk.b a();
+
+      ezm b();
    }
 
-   static record e(ali a, fdq.a b) {
-      @Override
-      public String toString() {
-         return this.a + " (" + this.b + ")";
-      }
+   @FunctionalInterface
+   public interface e {
+      void visit(giy.d var1, boolean var2, int var3, boolean var4);
    }
 }

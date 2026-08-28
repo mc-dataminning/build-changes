@@ -1,166 +1,67 @@
 import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Locale;
 import java.util.Map;
-import java.util.UUID;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class bbh extends DataFix {
-   private static final Map<UUID, String> a = ImmutableMap.builder()
-      .put(UUID.fromString("736565d2-e1a7-403d-a3f8-1aeb3e302542"), "minecraft:creative_mode_block_range")
-      .put(UUID.fromString("98491ef6-97b1-4584-ae82-71a8cc85cf73"), "minecraft:creative_mode_entity_range")
-      .put(UUID.fromString("91AEAA56-376B-4498-935B-2F7F68070635"), "minecraft:effect.speed")
-      .put(UUID.fromString("7107DE5E-7CE8-4030-940E-514C1F160890"), "minecraft:effect.slowness")
-      .put(UUID.fromString("AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3"), "minecraft:effect.haste")
-      .put(UUID.fromString("55FCED67-E92A-486E-9800-B47F202C4386"), "minecraft:effect.mining_fatigue")
-      .put(UUID.fromString("648D7064-6A60-4F59-8ABE-C2C23A6DD7A9"), "minecraft:effect.strength")
-      .put(UUID.fromString("C0105BF3-AEF8-46B0-9EBC-92943757CCBE"), "minecraft:effect.jump_boost")
-      .put(UUID.fromString("22653B89-116E-49DC-9B6B-9971489B5BE5"), "minecraft:effect.weakness")
-      .put(UUID.fromString("5D6F0BA2-1186-46AC-B896-C61C5CEE99CC"), "minecraft:effect.health_boost")
-      .put(UUID.fromString("EAE29CF0-701E-4ED6-883A-96F798F3DAB5"), "minecraft:effect.absorption")
-      .put(UUID.fromString("03C3C89D-7037-4B42-869F-B146BCB64D2E"), "minecraft:effect.luck")
-      .put(UUID.fromString("CC5AF142-2BD2-4215-B636-2605AED11727"), "minecraft:effect.unluck")
-      .put(UUID.fromString("6555be74-63b3-41f1-a245-77833b3c2562"), "minecraft:evil")
-      .put(UUID.fromString("1eaf83ff-7207-4596-b37a-d7a07b3ec4ce"), "minecraft:powder_snow")
-      .put(UUID.fromString("662A6B8D-DA3E-4C1C-8813-96EA6097278D"), "minecraft:sprinting")
-      .put(UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0"), "minecraft:attacking")
-      .put(UUID.fromString("766bfa64-11f3-11ea-8d71-362b9e155667"), "minecraft:baby")
-      .put(UUID.fromString("7E0292F2-9434-48D5-A29F-9583AF7DF27F"), "minecraft:covered")
-      .put(UUID.fromString("9e362924-01de-4ddd-a2b2-d0f7a405a174"), "minecraft:suffocating")
-      .put(UUID.fromString("5CD17E52-A79A-43D3-A529-90FDE04B181E"), "minecraft:drinking")
-      .put(UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836"), "minecraft:baby")
-      .put(UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718"), "minecraft:attacking")
-      .put(UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), "minecraft:armor.boots")
-      .put(UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), "minecraft:armor.leggings")
-      .put(UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), "minecraft:armor.chestplate")
-      .put(UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150"), "minecraft:armor.helmet")
-      .put(UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"), "minecraft:armor.body")
-      .put(UUID.fromString("b572ecd2-ac0c-4071-abde-9594af072a37"), "minecraft:enchantment.fire_protection")
-      .put(UUID.fromString("40a9968f-5c66-4e2f-b7f4-2ec2f4b3e450"), "minecraft:enchantment.blast_protection")
-      .put(UUID.fromString("07a65791-f64d-4e79-86c7-f83932f007ec"), "minecraft:enchantment.respiration")
-      .put(UUID.fromString("60b1b7db-fffd-4ad0-817c-d6c6a93d8a45"), "minecraft:enchantment.aqua_affinity")
-      .put(UUID.fromString("11dc269a-4476-46c0-aff3-9e17d7eb6801"), "minecraft:enchantment.depth_strider")
-      .put(UUID.fromString("87f46a96-686f-4796-b035-22e16ee9e038"), "minecraft:enchantment.soul_speed")
-      .put(UUID.fromString("b9716dbd-50df-4080-850e-70347d24e687"), "minecraft:enchantment.soul_speed")
-      .put(UUID.fromString("92437d00-c3a7-4f2e-8f6c-1f21585d5dd0"), "minecraft:enchantment.swift_sneak")
-      .put(UUID.fromString("5d3d087b-debe-4037-b53e-d84f3ff51f17"), "minecraft:enchantment.sweeping_edge")
-      .put(UUID.fromString("3ceb37c0-db62-46b5-bd02-785457b01d96"), "minecraft:enchantment.efficiency")
-      .put(UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF"), "minecraft:base_attack_damage")
-      .put(UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3"), "minecraft:base_attack_speed")
+public class bbh extends bbi {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:recipes/brewing/speckled_melon", "minecraft:recipes/brewing/glistering_melon_slice")
+      .put("minecraft:recipes/building_blocks/black_stained_hardened_clay", "minecraft:recipes/building_blocks/black_terracotta")
+      .put("minecraft:recipes/building_blocks/blue_stained_hardened_clay", "minecraft:recipes/building_blocks/blue_terracotta")
+      .put("minecraft:recipes/building_blocks/brown_stained_hardened_clay", "minecraft:recipes/building_blocks/brown_terracotta")
+      .put("minecraft:recipes/building_blocks/cyan_stained_hardened_clay", "minecraft:recipes/building_blocks/cyan_terracotta")
+      .put("minecraft:recipes/building_blocks/gray_stained_hardened_clay", "minecraft:recipes/building_blocks/gray_terracotta")
+      .put("minecraft:recipes/building_blocks/green_stained_hardened_clay", "minecraft:recipes/building_blocks/green_terracotta")
+      .put("minecraft:recipes/building_blocks/light_blue_stained_hardened_clay", "minecraft:recipes/building_blocks/light_blue_terracotta")
+      .put("minecraft:recipes/building_blocks/light_gray_stained_hardened_clay", "minecraft:recipes/building_blocks/light_gray_terracotta")
+      .put("minecraft:recipes/building_blocks/lime_stained_hardened_clay", "minecraft:recipes/building_blocks/lime_terracotta")
+      .put("minecraft:recipes/building_blocks/magenta_stained_hardened_clay", "minecraft:recipes/building_blocks/magenta_terracotta")
+      .put("minecraft:recipes/building_blocks/orange_stained_hardened_clay", "minecraft:recipes/building_blocks/orange_terracotta")
+      .put("minecraft:recipes/building_blocks/pink_stained_hardened_clay", "minecraft:recipes/building_blocks/pink_terracotta")
+      .put("minecraft:recipes/building_blocks/purple_stained_hardened_clay", "minecraft:recipes/building_blocks/purple_terracotta")
+      .put("minecraft:recipes/building_blocks/red_stained_hardened_clay", "minecraft:recipes/building_blocks/red_terracotta")
+      .put("minecraft:recipes/building_blocks/white_stained_hardened_clay", "minecraft:recipes/building_blocks/white_terracotta")
+      .put("minecraft:recipes/building_blocks/yellow_stained_hardened_clay", "minecraft:recipes/building_blocks/yellow_terracotta")
+      .put("minecraft:recipes/building_blocks/acacia_wooden_slab", "minecraft:recipes/building_blocks/acacia_slab")
+      .put("minecraft:recipes/building_blocks/birch_wooden_slab", "minecraft:recipes/building_blocks/birch_slab")
+      .put("minecraft:recipes/building_blocks/dark_oak_wooden_slab", "minecraft:recipes/building_blocks/dark_oak_slab")
+      .put("minecraft:recipes/building_blocks/jungle_wooden_slab", "minecraft:recipes/building_blocks/jungle_slab")
+      .put("minecraft:recipes/building_blocks/oak_wooden_slab", "minecraft:recipes/building_blocks/oak_slab")
+      .put("minecraft:recipes/building_blocks/spruce_wooden_slab", "minecraft:recipes/building_blocks/spruce_slab")
+      .put("minecraft:recipes/building_blocks/brick_block", "minecraft:recipes/building_blocks/bricks")
+      .put("minecraft:recipes/building_blocks/chiseled_stonebrick", "minecraft:recipes/building_blocks/chiseled_stone_bricks")
+      .put("minecraft:recipes/building_blocks/end_bricks", "minecraft:recipes/building_blocks/end_stone_bricks")
+      .put("minecraft:recipes/building_blocks/lit_pumpkin", "minecraft:recipes/building_blocks/jack_o_lantern")
+      .put("minecraft:recipes/building_blocks/magma", "minecraft:recipes/building_blocks/magma_block")
+      .put("minecraft:recipes/building_blocks/melon_block", "minecraft:recipes/building_blocks/melon")
+      .put("minecraft:recipes/building_blocks/mossy_stonebrick", "minecraft:recipes/building_blocks/mossy_stone_bricks")
+      .put("minecraft:recipes/building_blocks/nether_brick", "minecraft:recipes/building_blocks/nether_bricks")
+      .put("minecraft:recipes/building_blocks/pillar_quartz_block", "minecraft:recipes/building_blocks/quartz_pillar")
+      .put("minecraft:recipes/building_blocks/red_nether_brick", "minecraft:recipes/building_blocks/red_nether_bricks")
+      .put("minecraft:recipes/building_blocks/snow", "minecraft:recipes/building_blocks/snow_block")
+      .put("minecraft:recipes/building_blocks/smooth_red_sandstone", "minecraft:recipes/building_blocks/cut_red_sandstone")
+      .put("minecraft:recipes/building_blocks/smooth_sandstone", "minecraft:recipes/building_blocks/cut_sandstone")
+      .put("minecraft:recipes/building_blocks/stonebrick", "minecraft:recipes/building_blocks/stone_bricks")
+      .put("minecraft:recipes/building_blocks/stone_stairs", "minecraft:recipes/building_blocks/cobblestone_stairs")
+      .put("minecraft:recipes/building_blocks/string_to_wool", "minecraft:recipes/building_blocks/white_wool_from_string")
+      .put("minecraft:recipes/decorations/fence", "minecraft:recipes/decorations/oak_fence")
+      .put("minecraft:recipes/decorations/purple_shulker_box", "minecraft:recipes/decorations/shulker_box")
+      .put("minecraft:recipes/decorations/slime", "minecraft:recipes/decorations/slime_block")
+      .put("minecraft:recipes/decorations/snow_layer", "minecraft:recipes/decorations/snow")
+      .put("minecraft:recipes/misc/bone_meal_from_block", "minecraft:recipes/misc/bone_meal_from_bone_block")
+      .put("minecraft:recipes/misc/bone_meal_from_bone", "minecraft:recipes/misc/bone_meal")
+      .put("minecraft:recipes/misc/gold_ingot_from_block", "minecraft:recipes/misc/gold_ingot_from_gold_block")
+      .put("minecraft:recipes/misc/iron_ingot_from_block", "minecraft:recipes/misc/iron_ingot_from_iron_block")
+      .put("minecraft:recipes/redstone/fence_gate", "minecraft:recipes/redstone/oak_fence_gate")
+      .put("minecraft:recipes/redstone/noteblock", "minecraft:recipes/redstone/note_block")
+      .put("minecraft:recipes/redstone/trapdoor", "minecraft:recipes/redstone/oak_trapdoor")
+      .put("minecraft:recipes/redstone/wooden_button", "minecraft:recipes/redstone/oak_button")
+      .put("minecraft:recipes/redstone/wooden_door", "minecraft:recipes/redstone/oak_door")
+      .put("minecraft:recipes/redstone/wooden_pressure_plate", "minecraft:recipes/redstone/oak_pressure_plate")
+      .put("minecraft:recipes/transportation/boat", "minecraft:recipes/transportation/oak_boat")
+      .put("minecraft:recipes/transportation/golden_rail", "minecraft:recipes/transportation/powered_rail")
       .build();
-   private static final Map<String, String> b = Map.of(
-      "Random spawn bonus",
-      "minecraft:random_spawn_bonus",
-      "Random zombie-spawn bonus",
-      "minecraft:zombie_random_spawn_bonus",
-      "Leader zombie bonus",
-      "minecraft:leader_zombie_bonus",
-      "Zombie reinforcement callee charge",
-      "minecraft:reinforcement_callee_charge",
-      "Zombie reinforcement caller charge",
-      "minecraft:reinforcement_caller_charge"
-   );
 
-   public bbh(Schema $$0) {
-      super($$0, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhu.t);
-      OpticFinder<?> $$1 = $$0.findField("components");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("AttributeIdFix (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), bbh::b))),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("AttributeIdFix (Entity)", this.getInputSchema().getType(bhu.B), bbh::a),
-            this.fixTypeEverywhereTyped("AttributeIdFix (Player)", this.getInputSchema().getType(bhu.b), bbh::a)
-         }
-      );
-   }
-
-   private static Stream<Dynamic<?>> a(Stream<?> $$0) {
-      return b((Stream<Dynamic<?>>)$$0);
-   }
-
-   private static Stream<Dynamic<?>> b(Stream<Dynamic<?>> $$0) {
-      Map<String, Dynamic<?>> $$1 = new Object2ObjectArrayMap();
-      $$0.forEach($$1x -> {
-         UUID $$2 = a($$1x.get("uuid").asIntStream().toArray());
-         String $$3 = $$1x.get("name").asString("");
-         String $$4 = $$2 != null ? a.get($$2) : null;
-         String $$5 = b.get($$3);
-         if ($$4 != null) {
-            $$1x = $$1x.set("id", $$1x.createString($$4));
-            $$1.put($$4, $$1x.remove("uuid").remove("name"));
-         } else if ($$5 != null) {
-            Dynamic<?> $$6 = $$1.get($$5);
-            if ($$6 == null) {
-               $$1x = $$1x.set("id", $$1x.createString($$5));
-               $$1.put($$5, $$1x.remove("uuid").remove("name"));
-            } else {
-               double $$7 = $$6.get("amount").asDouble(0.0);
-               double $$8 = $$1x.get("amount").asDouble(0.0);
-               $$1.put($$5, $$6.set("amount", $$1x.createDouble($$7 + $$8)));
-            }
-         } else {
-            String $$9 = "minecraft:" + ($$2 != null ? $$2.toString().toLowerCase(Locale.ROOT) : "unknown");
-            $$1x = $$1x.set("id", $$1x.createString($$9));
-            $$1.put($$9, $$1x.remove("uuid").remove("name"));
-         }
-      });
-      return $$1.values().stream();
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameField("UUID", "uuid").renameField("Name", "name").renameField("Amount", "amount").renameAndFixField("Operation", "operation", $$0x -> {
-         return $$0x.createString(switch ($$0x.asInt(0)) {
-            case 0 -> "add_value";
-            case 1 -> "add_multiplied_base";
-            case 2 -> "add_multiplied_total";
-            default -> "invalid";
-         });
-      });
-   }
-
-   private static Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update(
-         "minecraft:attribute_modifiers",
-         $$0x -> $$0x.update("modifiers", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asStreamOpt().result().map(bbh::a).map($$0xx::createList), $$0xx))
-      );
-   }
-
-   private static Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.renameField("Name", "id")
-         .renameField("Base", "base")
-         .renameAndFixField(
-            "Modifiers",
-            "modifiers",
-            $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().result().map($$0xx -> $$0xx.map(bbh::a)).map(bbh::a).map($$0::createList), $$1)
-         );
-   }
-
-   private static Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.renameAndFixField(
-               "Attributes",
-               "attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map(bbh::c)).map($$0xx::createList), $$0xx)
-            )
-      );
-   }
-
-   @Nullable
-   public static UUID a(int[] $$0) {
-      return $$0.length != 4 ? null : new UUID((long)$$0[0] << 32 | (long)$$0[1] & 4294967295L, (long)$$0[2] << 32 | (long)$$0[3] & 4294967295L);
+   public bbh(Schema $$0, boolean $$1) {
+      super($$0, $$1, "AdvancementsFix", $$0x -> a.getOrDefault($$0x, $$0x));
    }
 }

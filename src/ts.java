@@ -1,29 +1,20 @@
-public record ts(int a, boolean b) {
-   private static final ts c = new ts(1, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public static ts a() {
-      return c;
+public class ts implements uf {
+   private static final Logger a = LogUtils.getLogger();
+
+   @Override
+   public void a(ti $$0) {
+      String $$1 = $$0.d().x();
+      if ($$0.r()) {
+         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ae.c($$0.n())});
+      } else {
+         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ae.c($$0.n())});
+      }
    }
 
-   public boolean b() {
-      return this.a < 1;
-   }
-
-   public boolean a(int $$0, int $$1) {
-      boolean $$2 = $$0 != $$1;
-      boolean $$3 = this.b() || $$0 < this.a;
-      return $$3 && (!$$2 || !this.b);
-   }
-
-   public boolean c() {
-      return this.a != 1;
-   }
-
-   public int d() {
-      return this.a;
-   }
-
-   public boolean e() {
-      return this.b;
+   @Override
+   public void b(ti $$0) {
    }
 }

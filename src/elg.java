@@ -1,42 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class elg extends ele {
-   public static final MapCodec<elg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bri.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bri.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, elg::new)
-   );
-   private final bri c;
-   private final bri d;
+public class elg extends ecg {
+   private final dgd a;
+   private final dxk b;
+   private final Optional<elf> c;
 
-   public static elg a(bri $$0, bri $$1) {
-      return new elg($$0, $$1);
+   public elg(dgd $$0, dxk $$1, Optional<elf> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static elg a(bri $$0) {
-      return new elg(brf.a(0), $$0);
+   public int a(ebj.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public static elg b(bri $$0) {
-      return new elg($$0, brf.a(0));
+   public dxi a(del $$0) {
+      return ((dyd)this.a.a($$0.g, $$0.h)).C();
    }
 
-   private elg(bri $$0, bri $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public dvo a(jh $$0) {
+      return this.a.a_($$0);
    }
 
-   @Override
-   public Stream<jh> a_(elc $$0, azs $$1, jh $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new jh($$3, $$4, $$5));
+   public int c() {
+      return this.a.I_();
    }
 
-   @Override
-   public elf<?> b() {
-      return elf.n;
+   public dgd d() {
+      return this.a;
+   }
+
+   public Optional<elf> e() {
+      return this.c;
+   }
+
+   public dxk f() {
+      return this.b;
    }
 }

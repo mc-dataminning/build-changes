@@ -1,20 +1,31 @@
-public record ake(akf b) implements zp<akd> {
-   public static final zg<wf, ake> a = zp.a(ake::a, ake::new);
+import io.netty.buffer.ByteBuf;
 
-   private ake(wf $$0) {
-      this($$0.a(akf.a));
+public class ake implements zs<akd> {
+   public static final zj<ByteBuf, ake> a = zs.a(ake::a, ake::new);
+   private final long b;
+
+   public ake(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(wf $$0) {
-      $$0.a(akf.a, this.b);
+   private ake(ByteBuf $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(ByteBuf $$0) {
+      $$0.writeLong(this.b);
    }
 
    @Override
-   public zr<ake> a() {
-      return aki.a;
+   public zu<ake> a() {
+      return akc.b;
    }
 
    public void a(akd $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

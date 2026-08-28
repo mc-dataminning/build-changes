@@ -1,245 +1,168 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.net.URI;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class frk extends fra implements gcd.a {
-   private static final ali x = ali.b("textures/gui/advancements/window.png");
-   public static final int a = 252;
-   public static final int b = 140;
-   private static final int y = 9;
-   private static final int z = 18;
-   public static final int c = 234;
-   public static final int d = 113;
-   private static final int A = 8;
-   private static final int B = 6;
-   private static final int C = 256;
-   private static final int D = 256;
-   public static final int s = 16;
-   public static final int u = 16;
-   public static final int v = 14;
-   public static final int w = 7;
-   private static final double E = 16.0;
-   private static final xi F = xi.c("advancements.sad_label");
-   private static final xi G = xi.c("advancements.empty");
-   private static final xi H = xi.c("gui.advancements");
-   private final fow I = new fow(this);
+public class frk extends frp {
+   private static final all a = all.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final xl v = xl.c("menu.returnToGame");
+   private static final xl w = xl.c("gui.advancements");
+   private static final xl x = xl.c("gui.stats");
+   private static final xl y = xl.c("menu.sendFeedback");
+   private static final xl z = xl.c("menu.reportBugs");
+   private static final xl A = xl.c("menu.feedback");
+   private static final xl B = xl.c("menu.server_links");
+   private static final xl C = xl.c("menu.options");
+   private static final xl D = xl.c("menu.shareToLan");
+   private static final xl E = xl.c("menu.playerReporting");
+   private static final xl F = xl.c("menu.returnToMenu");
+   private static final xl G = xl.c("menu.savingLevel");
+   private static final xl H = xl.c("menu.game");
+   private static final xl I = xl.c("menu.paused");
+   private final boolean J;
    @Nullable
-   private final fra J;
-   private final gcd K;
-   private final Map<ah, frg> L = Maps.newLinkedHashMap();
-   @Nullable
-   private frg M;
-   private boolean N;
+   private flw K;
 
-   public frk(gcd $$0) {
-      this($$0, null);
+   public frk(boolean $$0) {
+      super($$0 ? H : I);
+      this.J = $$0;
    }
 
-   public frk(gcd $$0, @Nullable fra $$1) {
-      super(H);
-      this.K = $$0;
-      this.J = $$1;
+   public boolean m() {
+      return this.J;
    }
 
    @Override
-   protected void aR_() {
-      this.I.a(H, this.p);
-      this.L.clear();
-      this.M = null;
-      this.K.a(this);
-      if (this.M == null && !this.L.isEmpty()) {
-         frg $$0 = this.L.values().iterator().next();
-         this.K.a($$0.c().b(), true);
-      } else {
-         this.K.a(this.M == null ? null : this.M.c().b(), true);
+   protected void aS_() {
+      if (this.J) {
+         this.D();
       }
 
-      this.I.b(flh.a(xh.d, $$0x -> this.d()).a(200).a());
-      this.I.a($$1 -> {
-         flf var10000 = this.c($$1);
-      });
-      this.c();
+      this.c(new fnd(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
    }
 
-   @Override
-   protected void c() {
-      this.I.a();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.J);
-   }
-
-   @Override
-   public void j() {
-      this.K.a(null);
-      gcj $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(aig.b());
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         int $$3 = (this.n - 252) / 2;
-         int $$4 = (this.o - 140) / 2;
-
-         for (frg $$5 : this.L.values()) {
-            if ($$5.a($$3, $$4, $$0, $$1)) {
-               this.K.a($$5.c().b(), true);
-               break;
-            }
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.m.n.R.a($$0, $$1)) {
+   private void D() {
+      fpk $$0 = new fpk();
+      $$0.c().a(4, 4, 4, 0);
+      fpk.b $$1 = $$0.d(2);
+      $$1.a(flw.a(v, $$0x -> {
          this.m.a(null);
          this.m.o.i();
-         return true;
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new frz(this.m.t.j.p(), this)));
+      $$1.a(this.a(x, () -> new frt(this, this.m.t.i())));
+      amd $$2 = this.m.t.j.E();
+      if ($$2.a()) {
+         a(this, $$1);
       } else {
-         return super.a($$0, $$1, $$2);
+         $$1.a(this.a(A, () -> new frk.a(this)));
+         $$1.a(this.a(B, () -> new fug(this, $$2)));
+      }
+
+      $$1.a(this.a(C, () -> new fur(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new frq(this)));
+      } else {
+         $$1.a(this.a(E, () -> new fwg(this)));
+      }
+
+      xl $$3 = this.m.T() ? F : xk.p;
+      this.K = $$1.a(flw.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.bb().a(this.m, this, this::E, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fpj.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   static void a(frp $$0, fpk.b $$1) {
+      $$1.a(a($$0, y, ab.b().g() ? ayj.i : ayj.h));
+      $$1.a(a($$0, z, ayj.j)).j = !ab.b().d().a();
+   }
+
+   private void E() {
+      boolean $$0 = this.m.T();
+      gdm $$1 = this.m.S();
+      this.m.s.Z();
+      if ($$0) {
+         this.m.b(new fra(G));
+      } else {
+         this.m.y();
+      }
+
+      frr $$2 = new frr();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fev($$2));
+      } else {
+         this.m.a(new fue($$2));
       }
    }
 
    @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      super.e();
+   }
+
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 252) / 2;
-      int $$5 = (this.o - 140) / 2;
-      this.b($$0, $$1, $$2, $$4, $$5);
-      this.a($$0, $$4, $$5);
-      this.c($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if ($$2 != 0) {
-         this.N = false;
-         return false;
-      } else {
-         if (!this.N) {
-            this.N = true;
-         } else if (this.M != null) {
-            this.M.a($$3, $$4);
-         }
-
-         return true;
+      if (this.J && this.m != null && this.m.bb().c() && this.K != null) {
+         $$0.a(gjh::B, a, this.K.D() + this.K.y() - 17, this.K.E() + 3, 15, 15);
       }
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.M != null) {
-         this.M.a($$2 * 16.0, $$3 * 16.0);
-         return true;
-      } else {
-         return false;
+   public void b(flj $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   private void b(fku $$0, int $$1, int $$2, int $$3, int $$4) {
-      frg $$5 = this.M;
-      if ($$5 == null) {
-         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
-         int $$6 = $$3 + 9 + 117;
-         $$0.a(this.p, G, $$6, $$4 + 18 + 56 - 9 / 2, -1);
-         $$0.a(this.p, F, $$6, $$4 + 18 + 113 - 9, -1);
-      } else {
-         $$5.b($$0, $$3 + 9, $$4 + 18);
-      }
+   private flw a(xl $$0, Supplier<frp> $$1) {
+      return flw.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
    }
 
-   public void a(fku $$0, int $$1, int $$2) {
-      $$0.a(gir::B, x, $$1, $$2, 0.0F, 0.0F, 252, 140, 256, 256);
-      if (this.L.size() > 1) {
-         for (frg $$3 : this.L.values()) {
-            $$3.a($$0, $$1, $$2, $$3 == this.M);
-         }
+   private static flw a(frp $$0, xl $$1, URI $$2) {
+      return flw.a($$1, fqm.b($$0, $$2)).a(98).a();
+   }
 
-         for (frg $$4 : this.L.values()) {
-            $$4.a($$0, $$1, $$2);
-         }
+   static class a extends frp {
+      private static final xl b = xl.c("menu.feedback.title");
+      public final frp a;
+      private final fpl c = new fpl(this);
+
+      protected a(frp $$0) {
+         super(b);
+         this.a = $$0;
       }
 
-      $$0.a(this.p, this.M != null ? this.M.d() : H, $$1 + 8, $$2 + 6, 4210752, false);
-   }
-
-   private void c(fku $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.M != null) {
-         $$0.c().a();
-         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
-         this.M.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
-         $$0.c().b();
+      @Override
+      protected void aS_() {
+         this.c.a(b, this.p);
+         fpk $$0 = this.c.c(new fpk());
+         $$0.c().a(4, 4, 4, 0);
+         fpk.b $$1 = $$0.d(2);
+         frk.a(this, $$1);
+         this.c.b(flw.a(xk.k, $$0x -> this.aP_()).a(200).a());
+         this.c.a(this::c);
+         this.c();
       }
 
-      if (this.L.size() > 1) {
-         for (frg $$5 : this.L.values()) {
-            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
-               $$0.a(this.p, $$5.d(), $$1, $$2);
-            }
-         }
+      @Override
+      protected void c() {
+         this.c.a();
       }
-   }
 
-   @Override
-   public void a(ai $$0) {
-      frg $$1 = frg.a(this.m, this, this.L.size(), $$0);
-      if ($$1 != null) {
-         this.L.put($$0.b(), $$1);
+      @Override
+      public void aP_() {
+         this.m.a(this.a);
       }
-   }
-
-   @Override
-   public void b(ai $$0) {
-   }
-
-   @Override
-   public void c(ai $$0) {
-      frg $$1 = this.f($$0);
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void d(ai $$0) {
-   }
-
-   @Override
-   public void a(ai $$0, aj $$1) {
-      fri $$2 = this.e($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public void a(@Nullable ah $$0) {
-      this.M = this.L.get($$0);
-   }
-
-   @Override
-   public void a() {
-      this.L.clear();
-      this.M = null;
-   }
-
-   @Nullable
-   public fri e(ai $$0) {
-      frg $$1 = this.f($$0);
-      return $$1 == null ? null : $$1.a($$0.b());
-   }
-
-   @Nullable
-   private frg f(ai $$0) {
-      ai $$1 = $$0.d();
-      return this.L.get($$1.b());
    }
 }

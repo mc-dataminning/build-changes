@@ -1,16 +1,25 @@
-class bts extends bth {
-   protected bts(bti $$0, int $$1) {
-      super($$0, $$1, lr.y);
+class bts extends btl {
+   protected bts(btm $$0, int $$1, lq $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(bva $$0, int $$1, bue.c $$2) {
-      if ($$2 == bue.c.a && $$0.dX() instanceof arn $$3) {
-         double $$4 = $$0.dC();
-         double $$5 = $$0.dE() + (double)($$0.dt() / 2.0F);
-         double $$6 = $$0.dI();
-         float $$7 = 3.0F + $$0.ea().i() * 2.0F;
-         $$3.a($$0, null, cpw.e, $$4, $$5, $$6, $$7, false, dfb.a.e, lr.A, lr.z, awl.cQ);
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(bve $$0, int $$1) {
+      if ($$0 instanceof arr $$2 && !$$0.R_()) {
+         arq $$3 = $$2.B();
+         jh $$4 = $$2.ah();
+         if ($$4 != null) {
+            $$3.z().a($$2, $$4);
+            $$2.ag();
+            return false;
+         }
       }
+
+      return true;
    }
 }

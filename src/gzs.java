@@ -1,38 +1,9 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-public class gzs {
-   public static final gzt a = new gzt();
-   public static final String b = "villager";
-   private final gzs.a c;
-
-   public gzs(gzs.a $$0) {
-      this.c = $$0;
+public class gzs extends gzx {
+   public gzs(gyu $$0) {
+      super($$0, all.b("textures/atlas/mob_effects.png"), all.b("mob_effects"));
    }
 
-   public gzs.a a() {
-      return this.c;
-   }
-
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gzs.a> d = Arrays.stream(values()).collect(Collectors.toMap(gzs.a::a, $$0 -> (gzs.a)$$0));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      public static gzs.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+   public gyt a(jq<btl> $$0) {
+      return this.a($$0.e().map(alk::a).orElseGet(gyj::b));
    }
 }

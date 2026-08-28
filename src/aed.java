@@ -1,37 +1,61 @@
-public class aed implements zp<ace> {
-   public static final zg<wf, aed> a = zp.a(aed::a, aed::new);
-   private final jh b;
-   private final boolean c;
+public class aed implements zs<ach> {
+   public static final zj<wi, aed> a = zs.a(aed::a, aed::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public aed(jh $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aed(bui $$0) {
+      this.b = $$0.dD();
+      this.c = $$0.dF();
+      this.d = $$0.dJ();
+      this.e = $$0.dO();
+      this.f = $$0.dQ();
    }
 
-   private aed(wf $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private aed(wi $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(wf $$0) {
+   private void a(wi $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zr<aed> a() {
-      return agt.Y;
+   public zu<aed> a() {
+      return agw.V;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
+   public double b() {
       return this.b;
    }
 
-   public boolean e() {
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

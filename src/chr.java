@@ -1,258 +1,256 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.IntFunction;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class chr extends cgp implements bwa<chr.b> {
-   public static final String b = "BucketVariantTag";
-   private static final akl<Integer> d = akp.a(chr.class, akn.b);
-   public static final List<chr.d> c = List.of(
-      new chr.d(chr.b.h, cuy.b, cuy.h),
-      new chr.d(chr.b.g, cuy.h, cuy.h),
-      new chr.d(chr.b.g, cuy.h, cuy.l),
-      new chr.d(chr.b.l, cuy.a, cuy.h),
-      new chr.d(chr.b.b, cuy.l, cuy.h),
-      new chr.d(chr.b.a, cuy.b, cuy.a),
-      new chr.d(chr.b.f, cuy.g, cuy.d),
-      new chr.d(chr.b.j, cuy.k, cuy.e),
-      new chr.d(chr.b.l, cuy.a, cuy.o),
-      new chr.d(chr.b.f, cuy.a, cuy.e),
-      new chr.d(chr.b.i, cuy.a, cuy.h),
-      new chr.d(chr.b.l, cuy.a, cuy.b),
-      new chr.d(chr.b.d, cuy.j, cuy.g),
-      new chr.d(chr.b.e, cuy.f, cuy.d),
-      new chr.d(chr.b.k, cuy.o, cuy.a),
-      new chr.d(chr.b.c, cuy.h, cuy.o),
-      new chr.d(chr.b.j, cuy.o, cuy.a),
-      new chr.d(chr.b.g, cuy.a, cuy.e),
-      new chr.d(chr.b.a, cuy.o, cuy.a),
-      new chr.d(chr.b.b, cuy.h, cuy.a),
-      new chr.d(chr.b.d, cuy.j, cuy.e),
-      new chr.d(chr.b.g, cuy.e, cuy.e)
-   );
-   private boolean bY = true;
+public class chr extends cgv implements bvv {
+   private static final int bY = 40;
+   private static final ako<Byte> bZ = aks.a(chr.class, akq.a);
+   private static final Map<cvc, Integer> ca = Maps.newEnumMap(Arrays.stream(cvc.values()).collect(Collectors.toMap($$0 -> (cvc)$$0, chr::c)));
+   private int cc;
+   private cbu cd;
 
-   public chr(bul<? extends chr> $$0, dfb $$1) {
+   private static int c(cvc $$0) {
+      if ($$0 == cvc.a) {
+         return -1644826;
+      } else {
+         int $$1 = $$0.d();
+         float $$2 = 0.75F;
+         return axy.a(255, azn.d((float)axy.b($$1) * 0.75F), azn.d((float)axy.c($$1) * 0.75F), azn.d((float)axy.d($$1) * 0.75F));
+      }
+   }
+
+   public static int a(cvc $$0) {
+      return ca.get($$0);
+   }
+
+   public chr(bup<? extends chr> $$0, dff $$1) {
       super($$0, $$1);
    }
 
-   public static String b(int $$0) {
-      return "entity.minecraft.tropical_fish.predefined." + $$0;
-   }
-
-   static int a(chr.b $$0, cuy $$1, cuy $$2) {
-      return $$0.b() & 65535 | ($$1.a() & 0xFF) << 16 | ($$2.a() & 0xFF) << 24;
-   }
-
-   public static cuy c(int $$0) {
-      return cuy.a($$0 >> 16 & 0xFF);
-   }
-
-   public static cuy s(int $$0) {
-      return cuy.a($$0 >> 24 & 0xFF);
-   }
-
-   public static chr.b t(int $$0) {
-      return chr.b.a($$0 & 65535);
+   @Override
+   protected void D() {
+      this.cd = new cbu(this);
+      this.bS.a(0, new cbw(this));
+      this.bS.a(1, new ccv(this, 1.25));
+      this.bS.a(2, new cbo(this, 1.0));
+      this.bS.a(3, new cdk(this, 1.1, $$0 -> $$0.a(axm.ag), false));
+      this.bS.a(4, new ccb(this, 1.1));
+      this.bS.a(5, this.cd);
+      this.bS.a(6, new cdp(this, 1.0));
+      this.bS.a(7, new cck(this, cor.class, 6.0F));
+      this.bS.a(8, new ccx(this));
    }
 
    @Override
-   protected void a(akp.a $$0) {
+   public boolean l(cwf $$0) {
+      return $$0.a(axm.ag);
+   }
+
+   @Override
+   protected void ac() {
+      this.cc = this.cd.h();
+      super.ac();
+   }
+
+   @Override
+   public void n_() {
+      if (this.dY().C) {
+         this.cc = Math.max(0, this.cc - 1);
+      }
+
+      super.n_();
+   }
+
+   public static bwl.a q() {
+      return cgv.gA().a(bwm.s, 8.0).a(bwm.v, 0.23F);
+   }
+
+   @Override
+   protected void a(aks.a $$0) {
       super.a($$0);
-      $$0.a(d, 0);
+      $$0.a(bZ, (byte)0);
    }
 
    @Override
-   public void b(uk $$0) {
+   public void b(byte $$0) {
+      if ($$0 == 10) {
+         this.cc = 40;
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public float J(float $$0) {
+      if (this.cc <= 0) {
+         return 0.0F;
+      } else if (this.cc >= 4 && this.cc <= 36) {
+         return 1.0F;
+      } else {
+         return this.cc < 4 ? ((float)this.cc - $$0) / 4.0F : -((float)(this.cc - 40) - $$0) / 4.0F;
+      }
+   }
+
+   public float K(float $$0) {
+      if (this.cc > 4 && this.cc <= 36) {
+         float $$1 = ((float)(this.cc - 4) - $$0) / 32.0F;
+         return (float) (Math.PI / 5) + 0.21991149F * azn.a($$1 * 28.7F);
+      } else {
+         return this.cc > 0 ? (float) (Math.PI / 5) : this.dQ() * (float) (Math.PI / 180.0);
+      }
+   }
+
+   @Override
+   public bsh b(cor $$0, bsg $$1) {
+      cwf $$2 = $$0.b($$1);
+      if ($$2.a(cwj.sm)) {
+         if (!this.dY().C && this.a()) {
+            this.a(awp.h, $$2);
+            this.a(eak.M, $$0);
+            $$2.a(1, $$0, d($$1));
+            return bsh.b;
+         } else {
+            return bsh.c;
+         }
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(awp $$0, cwf $$1) {
+      this.dY().a(null, this, awo.wA, $$0, 1.0F, 1.0F);
+      this.a(euc.aV, $$1, $$0x -> {
+         for (int $$1x = 0; $$1x < $$0x.L(); $$1x++) {
+            ckz $$2 = this.a($$0x.c(1), 1.0F);
+            if ($$2 != null) {
+               $$2.h($$2.dB().b((double)((this.af.i() - this.af.i()) * 0.1F), (double)(this.af.i() * 0.05F), (double)((this.af.i() - this.af.i()) * 0.1F)));
+            }
+         }
+      });
+      this.x(true);
+   }
+
+   @Override
+   public boolean a() {
+      return this.bN() && !this.y() && !this.p_();
+   }
+
+   @Override
+   public void b(un $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gG());
+      $$0.a("Sheared", this.y());
+      $$0.a("Color", (byte)this.t().a());
    }
 
    @Override
-   public void a(uk $$0) {
+   public void a(un $$0) {
       super.a($$0);
-      this.v($$0.h("Variant"));
-   }
-
-   private void v(int $$0) {
-      this.am.a(d, $$0);
+      this.x($$0.q("Sheared"));
+      this.b(cvc.a($$0.f("Color")));
    }
 
    @Override
-   public boolean r(int $$0) {
-      return !this.bY;
-   }
-
-   private int gG() {
-      return this.am.a(d);
-   }
-
-   public cuy gD() {
-      return c(this.gG());
-   }
-
-   public cuy gE() {
-      return s(this.gG());
-   }
-
-   public chr.b gF() {
-      return t(this.gG());
-   }
-
-   public void a(chr.b $$0) {
-      int $$1 = this.gG();
-      cuy $$2 = c($$1);
-      cuy $$3 = s($$1);
-      this.v(a($$0, $$2, $$3));
+   protected awn w() {
+      return awo.wx;
    }
 
    @Override
-   public void k(cwb $$0) {
-      super.k($$0);
-      cyk.a(ku.X, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gG()));
+   protected awn d(bsy $$0) {
+      return awo.wz;
    }
 
    @Override
-   public cwb X_() {
-      return new cwb(cwf.qJ);
+   protected awn o_() {
+      return awo.wy;
    }
 
    @Override
-   protected awk w() {
-      return awl.zQ;
+   protected void b(jh $$0, dvo $$1) {
+      this.a(awo.wB, 0.15F, 1.0F);
+   }
+
+   public cvc t() {
+      return cvc.a(this.am.a(bZ) & 15);
+   }
+
+   public void b(cvc $$0) {
+      byte $$1 = this.am.a(bZ);
+      this.am.a(bZ, (byte)($$1 & 240 | $$0.a() & 15));
+   }
+
+   public boolean y() {
+      return (this.am.a(bZ) & 16) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.am.a(bZ);
+      if ($$0) {
+         this.am.a(bZ, (byte)($$1 | 16));
+      } else {
+         this.am.a(bZ, (byte)($$1 & -17));
+      }
+   }
+
+   public static cvc a(azv $$0) {
+      int $$1 = $$0.a(100);
+      if ($$1 < 5) {
+         return cvc.p;
+      } else if ($$1 < 10) {
+         return cvc.h;
+      } else if ($$1 < 15) {
+         return cvc.i;
+      } else if ($$1 < 18) {
+         return cvc.m;
+      } else {
+         return $$0.a(500) == 0 ? cvc.g : cvc.a;
+      }
+   }
+
+   @Nullable
+   public chr b(arq $$0, btz $$1) {
+      chr $$2 = bup.aJ.a($$0, buo.e);
+      if ($$2 != null) {
+         $$2.b(this.a(this, (chr)$$1));
+      }
+
+      return $$2;
    }
 
    @Override
-   protected awk o_() {
-      return awl.zR;
-   }
-
-   @Override
-   protected awk d(bsu $$0) {
-      return awl.zT;
-   }
-
-   @Override
-   protected awk gv() {
-      return awl.zS;
-   }
-
-   @Override
-   public void h(uk $$0) {
-      super.h($$0);
-      if ($$0.b("BucketVariantTag", 3)) {
-         this.v($$0.h("BucketVariantTag"));
+   public void S() {
+      super.S();
+      this.x(false);
+      if (this.p_()) {
+         this.b_(60);
       }
    }
 
    @Nullable
    @Override
-   public bvt a(dfr $$0, bsb $$1, buk $$2, @Nullable bvt $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azs $$4 = $$0.E_();
-      chr.d $$6;
-      if ($$3 instanceof chr.c $$5) {
-         $$6 = $$5.b;
-      } else if ((double)$$4.i() < 0.9) {
-         $$6 = ae.a(c, $$4);
-         $$3 = new chr.c(this, $$6);
-      } else {
-         this.bY = false;
-         chr.b[] $$8 = chr.b.values();
-         cuy[] $$9 = cuy.values();
-         chr.b $$10 = ae.a($$8, $$4);
-         cuy $$11 = ae.a($$9, $$4);
-         cuy $$12 = ae.a($$9, $$4);
-         $$6 = new chr.d($$10, $$11, $$12);
-      }
-
-      this.v($$6.a());
-      return $$3;
+   public bvx a(dfw $$0, bsf $$1, buo $$2, @Nullable bvx $$3) {
+      this.b(a($$0.E_()));
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static boolean b(bul<chr> $$0, dfc $$1, buk $$2, jh $$3, azs $$4) {
-      return $$1.b_($$3.e()).a(axg.a) && $$1.a_($$3.d()).a(dig.G) && ($$1.t($$3).a(awz.an) || cht.c($$0, $$1, $$2, $$3, $$4));
+   private cvc a(cgv $$0, cgv $$1) {
+      cvc $$2 = ((chr)$$0).t();
+      cvc $$3 = ((chr)$$1).t();
+      dai $$4 = a($$2, $$3);
+      return this.dY()
+         .r()
+         .a(daz.a, $$4, this.dY())
+         .map($$1x -> ((daj)$$1x.b()).a($$4, this.dY().H_()))
+         .map(cwf::h)
+         .filter(cvd.class::isInstance)
+         .map(cvd.class::cast)
+         .map(cvd::b)
+         .orElseGet(() -> this.dY().A.h() ? $$2 : $$3);
    }
 
-   public static enum a {
-      a(0),
-      b(1);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
-   }
-
-   public static enum b implements bag {
-      a("kob", chr.a.a, 0),
-      b("sunstreak", chr.a.a, 1),
-      c("snooper", chr.a.a, 2),
-      d("dasher", chr.a.a, 3),
-      e("brinely", chr.a.a, 4),
-      f("spotty", chr.a.a, 5),
-      g("flopper", chr.a.b, 0),
-      h("stripey", chr.a.b, 1),
-      i("glitter", chr.a.b, 2),
-      j("blockfish", chr.a.b, 3),
-      k("betty", chr.a.b, 4),
-      l("clayfish", chr.a.b, 5);
-
-      public static final Codec<chr.b> m = bag.a(chr.b::values);
-      private static final IntFunction<chr.b> n = ayb.a(chr.b::b, values(), a);
-      private final String o;
-      private final xi p;
-      private final chr.a q;
-      private final int r;
-
-      private b(final String $$0, final chr.a $$1, final int $$2) {
-         this.o = $$0;
-         this.q = $$1;
-         this.r = $$1.c | $$2 << 8;
-         this.p = xi.c("entity.minecraft.tropical_fish.type." + this.o);
-      }
-
-      public static chr.b a(int $$0) {
-         return n.apply($$0);
-      }
-
-      public chr.a a() {
-         return this.q;
-      }
-
-      public int b() {
-         return this.r;
-      }
-
-      @Override
-      public String c() {
-         return this.o;
-      }
-
-      public xi d() {
-         return this.p;
-      }
-   }
-
-   static class c extends cgp.a {
-      final chr.d b;
-
-      c(chr $$0, chr.d $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-   }
-
-   public static record d(chr.b b, cuy c, cuy d) {
-      public static final Codec<chr.d> a = Codec.INT.xmap(chr.d::new, chr.d::a);
-
-      public d(int $$0) {
-         this(chr.t($$0), chr.c($$0), chr.s($$0));
-      }
-
-      public int a() {
-         return chr.a(this.b, this.c, this.d);
-      }
+   private static dai a(cvc $$0, cvc $$1) {
+      return dai.a(2, 1, List.of(new cwf(cvd.a($$0)), new cwf(cvd.a($$1))));
    }
 }

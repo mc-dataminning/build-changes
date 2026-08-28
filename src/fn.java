@@ -13,49 +13,49 @@ import net.minecraft.server.MinecraftServer;
 
 public class fn implements gd<fn.a> {
    private static final Collection<String> a = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
-   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xi.b("argument.message.too_long", $$0, $$1));
+   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("argument.message.too_long", $$0, $$1));
 
    public static fn a() {
       return new fn();
    }
 
-   public static xi a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+   public static xl a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       fn.a $$2 = (fn.a)$$0.getArgument($$1, fn.a.class);
       return $$2.a((ew)$$0.getSource());
    }
 
-   public static void a(CommandContext<ew> $$0, String $$1, Consumer<xy> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<ew> $$0, String $$1, Consumer<yb> $$2) throws CommandSyntaxException {
       fn.a $$3 = (fn.a)$$0.getArgument($$1, fn.a.class);
       ew $$4 = (ew)$$0.getSource();
-      xi $$5 = $$3.a($$4);
+      xl $$5 = $$3.a($$4);
       eu $$6 = $$4.n();
-      xy $$7 = $$6.a($$1);
+      yb $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, xy.a($$3.a).a($$5));
+         b($$2, $$4, yb.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<xy> $$0, ew $$1, xy $$2) {
+   private static void a(Consumer<yb> $$0, ew $$1, yb $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<asg> $$4 = a($$1, $$2);
-      xi $$5 = $$3.bk().decorate($$1.i(), $$2.d());
+      CompletableFuture<asj> $$4 = a($$1, $$2);
+      xl $$5 = $$3.bk().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
-         xy $$4x = $$2.a($$5).a($$3x.e());
+         yb $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<xy> $$0, ew $$1, xy $$2) {
-      xd $$3 = $$1.l().bk();
-      xi $$4 = $$3.decorate($$1.i(), $$2.d());
+   private static void b(Consumer<yb> $$0, ew $$1, yb $$2) {
+      xg $$3 = $$1.l().bk();
+      xl $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<asg> a(ew $$0, xy $$1) {
-      aro $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cH()) ? $$2.aa().a($$1.c()) : CompletableFuture.completedFuture(asg.a($$1.c()));
+   private static CompletableFuture<asj> a(ew $$0, yb $$1) {
+      arr $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cI()) ? $$2.aa().a($$1.c()) : CompletableFuture.completedFuture(asj.a($$1.c()));
    }
 
    public fn.a a(StringReader $$0) throws CommandSyntaxException {
@@ -72,17 +72,17 @@ public class fn implements gd<fn.a> {
 
    public static record a(String a, fn.b[] b) {
 
-      xi a(ew $$0) throws CommandSyntaxException {
+      xl a(ew $$0) throws CommandSyntaxException {
          return this.a($$0, hm.a($$0));
       }
 
-      public xi a(ew $$0, boolean $$1) throws CommandSyntaxException {
+      public xl a(ew $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            xw $$2 = xi.b(this.a.substring(0, this.b[0].a()));
+            xz $$2 = xl.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (fn.b $$4 : this.b) {
-               xi $$5 = $$4.a($$0);
+               xl $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -97,7 +97,7 @@ public class fn implements gd<fn.a> {
 
             return $$2;
          } else {
-            return xi.b(this.a);
+            return xl.b(this.a);
          }
       }
 
@@ -148,7 +148,7 @@ public class fn implements gd<fn.a> {
    }
 
    public static record b(int a, int b, hl c) {
-      public xi a(ew $$0) throws CommandSyntaxException {
+      public xl a(ew $$0) throws CommandSyntaxException {
          return hl.a(this.c.b($$0));
       }
    }

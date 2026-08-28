@@ -1,14 +1,52 @@
-public abstract class gna<T extends bvc & cmx> extends gnf<T, gvb, fyu> {
-   public gna(gok.a $$0, gbk $$1, gbk $$2, float $$3) {
-      super($$0, new fyu($$0.a($$1)), new fyu($$0.a($$2)), $$3);
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
+
+public class gna implements gmx.a {
+   private static final int a = 160;
+   private final fjx b;
+   private final Int2ObjectMap<gna.a> c = new Int2ObjectOpenHashMap();
+
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public gvb a() {
-      return new gvb();
+   public void a(int $$0, jh $$1, List<abb.a> $$2) {
+      this.c.put($$0, new gna.a($$1, $$2));
    }
 
-   public void a(T $$0, gvb $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gu();
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public gna(fjx $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
+      fjg $$5 = this.b.j.k();
+      jh $$6 = jh.a($$5.b().d, 0.0, $$5.b().f);
+      ObjectIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         gna.a $$7 = (gna.a)var11.next();
+         jh $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               abb.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               gmx.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
+      }
+   }
+
+   static record a(jh a, List<abb.a> b) {
    }
 }

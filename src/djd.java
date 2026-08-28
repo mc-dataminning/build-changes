@@ -1,129 +1,130 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class djd extends dpe {
-   public static final MapCodec<djd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dww.a.fieldOf("wood_type").forGetter(dpe::d), t()).apply($$0, djd::new));
-   public static final dwj b = dvz.ba;
-   public static final dwa c = dvz.a;
-   protected static final float d = 5.0F;
-   protected static final fah e = die.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final Map<Integer, fah> i = Maps.newHashMap(
-      ImmutableMap.of(
-         0,
-         die.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         4,
-         die.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
-         8,
-         die.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
-         12,
-         die.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
-      )
-   );
+public class djd extends dme {
+   public static final MapCodec<djd> a = b(djd::new);
+   public static final dwl<jm> b = dme.aF;
+   @Nullable
+   private dvt c;
+   @Nullable
+   private dvt d;
+   @Nullable
+   private dvt e;
+   @Nullable
+   private dvt f;
+   private static final Predicate<dvo> g = $$0 -> $$0 != null && ($$0.a(dil.ee) || $$0.a(dil.ef));
 
    @Override
-   public MapCodec<djd> a() {
+   public MapCodec<? extends djd> a() {
       return a;
    }
 
-   public djd(dww $$0, dvi.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
+   protected djd(dvn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jm.c));
    }
 
    @Override
-   protected bsd a(cwb $$0, dvj $$1, dfb $$2, jh $$3, com $$4, bsc $$5, ezj $$6) {
-      if ($$2.c_($$3) instanceof dty $$7 && this.a($$4, $$6, $$7, $$0)) {
-         return bsd.e;
+   protected void b(dvo $$0, dff $$1, jh $$2, dvo $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private boolean a(com $$0, ezj $$1, dty $$2, cwb $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.h() instanceof cvq && $$1.c().equals(jm.a);
+   public boolean a(dfi $$0, jh $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
    }
 
-   @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      return $$1.a_($$2.d()).a($$1, $$2.d(), jm.a, dqf.b);
-   }
-
-   @Override
-   public dvj a(czs $$0) {
-      dfb $$1 = $$0.q();
-      erk $$2 = $$1.b_($$0.a());
-      jh $$3 = $$0.a().d();
-      dvj $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(axa.aB);
-      jm $$6 = jm.a((double)$$0.i());
-      boolean $$7 = !die.a($$4.g($$1, $$3), jm.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(drd.b)) {
-            jm $$8 = $$4.c(drd.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<jm> $$9 = dwp.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
+   private void a(dff $$0, jh $$1) {
+      dvt.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         cht $$3 = bup.aS.a($$0, buo.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dvt.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            chh $$5 = bup.af.a($$0, buo.k);
+            if ($$5 != null) {
+               $$5.y(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
             }
          }
       }
+   }
 
-      int $$10 = !$$7 ? dwp.a($$6.g()) : dwp.a($$0.i() + 180.0F);
-      return this.m().b(c, Boolean.valueOf($$7)).b(b, Integer.valueOf($$10)).b(f, Boolean.valueOf($$2.a() == erl.c));
+   private static void a(dff $$0, dvt.b $$1, bui $$2, jh $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (arr $$4 : $$0.a(arr.class, $$2.cT().g(5.0))) {
+         ao.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(dff $$0, dvt.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dvs $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dil.a.m(), 2);
+            $$0.c(2001, $$4.d(), dij.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(dff $$0, dvt.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dvs $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), dil.a);
+         }
+      }
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      fah $$4 = i.get($$0.c(b));
-      return $$4 == null ? e : $$4;
+   public dvo a(czw $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected fah b_(dvj $$0, deg $$1, jh $$2) {
-      return this.a($$0, $$1, $$2, ezs.a());
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      return $$1 == jm.b && !this.a($$0, $$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private dvt b() {
+      if (this.c == null) {
+         this.c = dvu.a().a(" ", "#", "#").a('#', dvs.a(dvx.a(dil.dP))).b();
+      }
+
+      return this.c;
    }
 
-   @Override
-   public float h(dvj $$0) {
-      return dwp.b($$0.c(b));
+   private dvt q() {
+      if (this.d == null) {
+         this.d = dvu.a().a("^", "#", "#").a('^', dvs.a(g)).a('#', dvs.a(dvx.a(dil.dP))).b();
+      }
+
+      return this.d;
    }
 
-   @Override
-   protected dvj a(dvj $$0, dor $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   private dvt r() {
+      if (this.e == null) {
+         this.e = dvu.a().a("~ ~", "###", "~#~").a('#', dvs.a(dvx.a(dil.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.e;
    }
 
-   @Override
-   protected dvj a(dvj $$0, dna $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
+   private dvt y() {
+      if (this.f == null) {
+         this.f = dvu.a().a("~^~", "###", "~#~").a('^', dvs.a(g)).a('#', dvs.a(dvx.a(dil.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
 
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b, c, f);
-   }
-
-   @Override
-   public dsm a(jh $$0, dvj $$1) {
-      return new dtl($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
-      return a($$2, dso.i, dty::a);
+      return this.f;
    }
 }

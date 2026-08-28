@@ -1,52 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class dlw extends die implements dpf {
-   public static final MapCodec<dlw> a = b(dlw::new);
-   private static final fah c = die.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   public static final dwa b = dvz.C;
-
-   public dlw(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+public abstract class dlw extends dlv implements dim {
+   protected dlw(dvn.d $$0, jm $$1, fal $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public MapCodec<dlw> a() {
-      return a;
+   protected abstract MapCodec<? extends dlw> a();
+
+   protected dvo a(dvo $$0, dvo $$1) {
+      return $$1;
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      dlx $$8 = this.c();
+      if ($$4 == this.a && !$$6.a(this) && !$$6.a($$8)) {
+         return this.a($$0, $$8.b($$7));
+      } else {
+         if (this.b) {
+            $$2.a($$3, erp.c, erp.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 
    @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(b) ? erl.c.a(false) : super.b_($$0);
+   public cwf a(dfi $$0, jh $$1, dvo $$2) {
+      return new cwf(this.c());
    }
 
    @Override
-   public dvj a(czs $$0) {
-      erk $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.b(erl.c)));
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      Optional<jh> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return c;
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return true;
    }
 
    @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      return false;
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      Optional<jh> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dvo $$5 = $$0.a_($$4.get());
+         ((dlx)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<jh> a(dek $$0, jh $$1, dij $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dvo $$0, czw $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
+   }
+
+   @Override
+   protected dij b() {
+      return this;
    }
 }

@@ -1,8 +1,13 @@
-public class gxd extends gxc implements gwv {
-   public cnz c = new cnz(cod.c, cob.b, 1);
+import javax.annotation.Nullable;
+
+public class gxd extends gux {
+   @Nullable
+   public bug.l.e a;
+   @Nullable
+   public bug.l.b f;
 
    @Override
-   public cnz a() {
-      return this.c;
+   public boolean a() {
+      return this.a != null;
    }
 }

@@ -1,160 +1,128 @@
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ckw extends bue implements bvz {
-   private static final akl<Integer> b = akp.a(ckw.class, akn.b);
-   private static final akl<dvj> c = akp.a(ckw.class, akn.i);
-   private static final int d = 80;
-   private static final float e = 4.0F;
-   private static final String f = "block_state";
-   private static final String g = "fuse";
-   private static final String h = "explosion_power";
-   private static final deu i = new deu() {
-      @Override
-      public boolean a(det $$0, deg $$1, jh $$2, dvj $$3, float $$4) {
-         return $$3.a(dig.ed) ? false : super.a($$0, $$1, $$2, $$3, $$4);
-      }
+public class ckw {
+   public static final alk<ckv> a = a("kebab");
+   public static final alk<ckv> b = a("aztec");
+   public static final alk<ckv> c = a("alban");
+   public static final alk<ckv> d = a("aztec2");
+   public static final alk<ckv> e = a("bomb");
+   public static final alk<ckv> f = a("plant");
+   public static final alk<ckv> g = a("wasteland");
+   public static final alk<ckv> h = a("pool");
+   public static final alk<ckv> i = a("courbet");
+   public static final alk<ckv> j = a("sea");
+   public static final alk<ckv> k = a("sunset");
+   public static final alk<ckv> l = a("creebet");
+   public static final alk<ckv> m = a("wanderer");
+   public static final alk<ckv> n = a("graham");
+   public static final alk<ckv> o = a("match");
+   public static final alk<ckv> p = a("bust");
+   public static final alk<ckv> q = a("stage");
+   public static final alk<ckv> r = a("void");
+   public static final alk<ckv> s = a("skull_and_roses");
+   public static final alk<ckv> t = a("wither");
+   public static final alk<ckv> u = a("fighters");
+   public static final alk<ckv> v = a("pointer");
+   public static final alk<ckv> w = a("pigscene");
+   public static final alk<ckv> x = a("burning_skull");
+   public static final alk<ckv> y = a("skeleton");
+   public static final alk<ckv> z = a("donkey_kong");
+   public static final alk<ckv> A = a("earth");
+   public static final alk<ckv> B = a("wind");
+   public static final alk<ckv> C = a("water");
+   public static final alk<ckv> D = a("fire");
+   public static final alk<ckv> E = a("baroque");
+   public static final alk<ckv> F = a("humble");
+   public static final alk<ckv> G = a("meditative");
+   public static final alk<ckv> H = a("prairie_ride");
+   public static final alk<ckv> I = a("unpacked");
+   public static final alk<ckv> J = a("backyard");
+   public static final alk<ckv> K = a("bouquet");
+   public static final alk<ckv> L = a("cavebird");
+   public static final alk<ckv> M = a("changing");
+   public static final alk<ckv> N = a("cotan");
+   public static final alk<ckv> O = a("endboss");
+   public static final alk<ckv> P = a("fern");
+   public static final alk<ckv> Q = a("finding");
+   public static final alk<ckv> R = a("lowmist");
+   public static final alk<ckv> S = a("orb");
+   public static final alk<ckv> T = a("owlemons");
+   public static final alk<ckv> U = a("passage");
+   public static final alk<ckv> V = a("pond");
+   public static final alk<ckv> W = a("sunflowers");
+   public static final alk<ckv> X = a("tides");
 
-      @Override
-      public Optional<Float> a(det $$0, deg $$1, jh $$2, dvj $$3, erk $$4) {
-         return $$3.a(dig.ed) ? Optional.empty() : super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   };
-   @Nullable
-   private bva j;
-   private boolean k;
-   private float l = 4.0F;
-
-   public ckw(bul<? extends ckw> $$0, dfb $$1) {
-      super($$0, $$1);
-      this.J = true;
+   public static void a(rb<ckv> $$0) {
+      a($$0, a, 1, 1);
+      a($$0, b, 1, 1);
+      a($$0, c, 1, 1);
+      a($$0, d, 1, 1);
+      a($$0, e, 1, 1);
+      a($$0, f, 1, 1);
+      a($$0, g, 1, 1);
+      a($$0, h, 2, 1);
+      a($$0, i, 2, 1);
+      a($$0, j, 2, 1);
+      a($$0, k, 2, 1);
+      a($$0, l, 2, 1);
+      a($$0, m, 1, 2);
+      a($$0, n, 1, 2);
+      a($$0, o, 2, 2);
+      a($$0, p, 2, 2);
+      a($$0, q, 2, 2);
+      a($$0, r, 2, 2);
+      a($$0, s, 2, 2);
+      a($$0, t, 2, 2, false);
+      a($$0, u, 4, 2);
+      a($$0, v, 4, 4);
+      a($$0, w, 4, 4);
+      a($$0, x, 4, 4);
+      a($$0, y, 4, 3);
+      a($$0, A, 2, 2, false);
+      a($$0, B, 2, 2, false);
+      a($$0, C, 2, 2, false);
+      a($$0, D, 2, 2, false);
+      a($$0, z, 4, 3);
+      a($$0, E, 2, 2);
+      a($$0, F, 2, 2);
+      a($$0, G, 1, 1);
+      a($$0, H, 1, 2);
+      a($$0, I, 4, 4);
+      a($$0, J, 3, 4);
+      a($$0, K, 3, 3);
+      a($$0, L, 3, 3);
+      a($$0, M, 4, 2);
+      a($$0, N, 3, 3);
+      a($$0, O, 3, 3);
+      a($$0, P, 3, 3);
+      a($$0, Q, 4, 2);
+      a($$0, R, 4, 2);
+      a($$0, S, 4, 4);
+      a($$0, T, 3, 3);
+      a($$0, U, 4, 2);
+      a($$0, V, 3, 4);
+      a($$0, W, 3, 3);
+      a($$0, X, 3, 3);
    }
 
-   public ckw(dfb $$0, double $$1, double $$2, double $$3, @Nullable bva $$4) {
-      this(bul.bc, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.A.j() * (float) (Math.PI * 2);
-      this.n(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.L = $$1;
-      this.M = $$2;
-      this.N = $$3;
-      this.j = $$4;
+   private static void a(rb<ckv> $$0, alk<ckv> $$1, int $$2, int $$3) {
+      a($$0, $$1, $$2, $$3, true);
    }
 
-   @Override
-   protected void a(akp.a $$0) {
-      $$0.a(b, 80);
-      $$0.a(c, dig.ck.m());
+   private static void a(rb<ckv> $$0, alk<ckv> $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(
+         $$1,
+         new ckv(
+            $$2,
+            $$3,
+            $$1.a(),
+            Optional.of(xl.c($$1.a().c("painting", "title")).a(n.o)),
+            $$4 ? Optional.of(xl.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
+         )
+      );
    }
 
-   @Override
-   protected bue.b bh() {
-      return bue.b.a;
-   }
-
-   @Override
-   public boolean bI() {
-      return !this.dS();
-   }
-
-   @Override
-   protected double be() {
-      return 0.04;
-   }
-
-   @Override
-   public void l() {
-      this.bX();
-      this.bg();
-      this.a(bve.a, this.dA());
-      this.aL();
-      this.h(this.dA().c(0.98));
-      if (this.aK()) {
-         this.h(this.dA().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.o() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.av();
-         if (!this.dX().C) {
-            this.t();
-         }
-      } else {
-         this.br();
-         if (this.dX().C) {
-            this.dX().a(lr.ae, this.dC(), this.dE() + 0.5, this.dI(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   private void t() {
-      this.dX().a(this, det.a(this.dX(), this), this.k ? i : null, this.dC(), this.e(0.0625), this.dI(), this.l, false, dfb.a.d);
-   }
-
-   @Override
-   protected void b(uk $$0) {
-      $$0.a("fuse", (short)this.o());
-      $$0.a("block_state", uz.a(this.q()));
-      if (this.l != 4.0F) {
-         $$0.a("explosion_power", this.l);
-      }
-   }
-
-   @Override
-   protected void a(uk $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(uz.a(this.dX().a(lz.f), $$0.p("block_state")));
-      }
-
-      if ($$0.b("explosion_power", 99)) {
-         this.l = azk.a($$0.j("explosion_power"), 0.0F, 128.0F);
-      }
-   }
-
-   @Nullable
-   public bva m() {
-      return this.j;
-   }
-
-   @Override
-   public void x(bue $$0) {
-      super.x($$0);
-      if ($$0 instanceof ckw $$1) {
-         this.j = $$1.j;
-      }
-   }
-
-   public void b(int $$0) {
-      this.am.a(b, $$0);
-   }
-
-   public int o() {
-      return this.am.a(b);
-   }
-
-   public void c(dvj $$0) {
-      this.am.a(c, $$0);
-   }
-
-   public dvj q() {
-      return this.am.a(c);
-   }
-
-   private void a(boolean $$0) {
-      this.k = $$0;
-   }
-
-   @Nullable
-   @Override
-   public bue b(esi $$0) {
-      bue $$1 = super.b($$0);
-      if ($$1 instanceof ckw $$2) {
-         $$2.a(true);
-      }
-
-      return $$1;
+   private static alk<ckv> a(String $$0) {
+      return alk.a(ma.X, all.b($$0));
    }
 }

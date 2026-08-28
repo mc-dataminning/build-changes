@@ -1,29 +1,18 @@
-public enum fpm {
-   a,
-   b;
+import java.util.function.Consumer;
 
-   public fpm a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public interface fpm extends fpn {
+   void b(Consumer<fpn> var1);
+
+   @Override
+   default void a(Consumer<flu> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   public fpn b() {
-      return switch (this) {
-         case a -> fpn.d;
-         case b -> fpn.b;
-      };
-   }
-
-   public fpn c() {
-      return switch (this) {
-         case a -> fpn.c;
-         case b -> fpn.a;
-      };
-   }
-
-   public fpn a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof fpm $$1) {
+            $$1.a();
+         }
+      });
    }
 }

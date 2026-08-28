@@ -1,62 +1,33 @@
-public class czt extends czs {
-   private final jm b;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public czt(dfb $$0, jh $$1, jm $$2, cwb $$3, jm $$4) {
-      super($$0, null, bsc.a, $$3, new ezj(ezn.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record czt(ju<btl> c) implements czr {
+   public static final MapCodec<czt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.a(ma.W).fieldOf("effects").forGetter(czt::b)).apply($$0, czt::new));
+   public static final zj<ww, czt> b = zj.a(zh.c(ma.W), czt::b, czt::new);
+
+   public czt(jq<btl> $$0) {
+      this(ju.a($$0));
    }
 
    @Override
-   public jh a() {
-      return this.j().b();
+   public czr.a<czt> a() {
+      return czr.a.b;
    }
 
    @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
+   public boolean a(dff $$0, cwf $$1, bve $$2) {
+      boolean $$3 = false;
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public jm d() {
-      return jm.a;
-   }
-
-   @Override
-   public jm[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
-         case b:
-            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
-         case c:
-            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
-         case d:
-            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
-         case e:
-            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
-         case f:
-            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
+      for (jq<btl> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
       }
+
+      return $$3;
    }
 
-   @Override
-   public jm g() {
-      return this.b.o() == jm.a.b ? jm.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public ju<btl> b() {
+      return this.c;
    }
 }

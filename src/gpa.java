@@ -1,35 +1,72 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+@FunctionalInterface
+public interface gpa<T extends bui> {
+   goz<T, ?> create(gpa.a var1);
 
-public final class gpa extends gnb<cix, gvc, fyv> {
-   private static final Map<cje, ali> a = ae.a(Maps.newEnumMap(cje.class), $$0 -> {
-      $$0.put(cje.a, ali.b("textures/entity/horse/horse_white.png"));
-      $$0.put(cje.b, ali.b("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cje.c, ali.b("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cje.d, ali.b("textures/entity/horse/horse_brown.png"));
-      $$0.put(cje.e, ali.b("textures/entity/horse/horse_black.png"));
-      $$0.put(cje.f, ali.b("textures/entity/horse/horse_gray.png"));
-      $$0.put(cje.g, ali.b("textures/entity/horse/horse_darkbrown.png"));
-   });
+   public static class a {
+      private final goy a;
+      private final gpy b;
+      private final giw c;
+      private final gka d;
+      private final ave e;
+      private final gby f;
+      private final hba g;
+      private final flh h;
+      private final gsy i;
 
-   public gpa(gok.a $$0) {
-      super($$0, new fyv($$0.a(gbl.aP)), new fyv($$0.a(gbl.aQ)), 1.1F);
-      this.a(new gsm(this));
-      this.a(new gsl(this, $$0.f(), $$0.h()));
-   }
+      public a(goy $$0, gpy $$1, giw $$2, gka $$3, ave $$4, gby $$5, hba $$6, flh $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new gsy($$6, this.i().a(gjs.g));
+      }
 
-   public ali a(gvc $$0) {
-      return a.get($$0.a);
-   }
+      public goy a() {
+         return this.a;
+      }
 
-   public gvc c() {
-      return new gvc();
-   }
+      public gpy b() {
+         return this.b;
+      }
 
-   public void a(cix $$0, gvc $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
-      $$1.i = $$0.ak().v();
+      public giw c() {
+         return this.c;
+      }
+
+      public gka d() {
+         return this.d;
+      }
+
+      public ave e() {
+         return this.e;
+      }
+
+      public gby f() {
+         return this.f;
+      }
+
+      public hba g() {
+         return this.g;
+      }
+
+      public gsy h() {
+         return this.i;
+      }
+
+      public hbi i() {
+         return this.d.a().a();
+      }
+
+      public gcc a(gca $$0) {
+         return this.f.a($$0);
+      }
+
+      public flh j() {
+         return this.h;
+      }
    }
 }

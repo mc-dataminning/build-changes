@@ -1,20 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dco(dbz c) implements dcl {
-   public static final MapCodec<dco> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbz.b.fieldOf("factor").forGetter(dco::b)).apply($$0, dco::new));
+public interface dco {
+   Codec<dco> c = lz.av.q().dispatch(dco::a, Function.identity());
 
-   @Override
-   public float a(int $$0, azs $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   static MapCodec<? extends dco> b(kd<MapCodec<? extends dco>> $$0) {
+      kd.a($$0, "all_of", dch.b.a);
+      kd.a($$0, "apply_mob_effect", dci.a);
+      kd.a($$0, "attribute", dcm.a);
+      kd.a($$0, "damage_entity", dcj.a);
+      kd.a($$0, "damage_item", dcl.a);
+      kd.a($$0, "explode", dcq.a);
+      kd.a($$0, "ignite", dcr.a);
+      kd.a($$0, "play_sound", dct.a);
+      kd.a($$0, "replace_block", dcv.a);
+      kd.a($$0, "replace_disk", dcw.a);
+      kd.a($$0, "run_function", dcx.a);
+      kd.a($$0, "set_block_properties", dcy.a);
+      kd.a($$0, "spawn_particles", dda.a);
+      return kd.a($$0, "summon_entity", ddb.a);
    }
 
-   @Override
-   public MapCodec<dco> a() {
-      return a;
+   void a(arq var1, int var2, dbv var3, bui var4, ezr var5, boolean var6);
+
+   default void a(dbv $$0, bui $$1, ezr $$2, int $$3) {
    }
 
-   public dbz b() {
-      return this.c;
-   }
+   MapCodec<? extends dco> a();
 }

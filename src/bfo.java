@@ -2,33 +2,49 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.Set;
 
-public abstract class bfo extends DataFix {
-   private final String a;
-   private final String b;
-   private final String c;
+public class bfo extends DataFix {
+   private final Set<String> a;
 
-   public bfo(Schema $$0, String $$1, String $$2) {
-      this($$0, $$1, $$2, $$2);
+   public bfo(Schema $$0, boolean $$1, Set<String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
-   public bfo(Schema $$0, String $$1, String $$2, String $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhy.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhy.D.typeName(), bjm.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && this.a.contains($$4.get().getSecond())) {
+            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
+            if ($$5.isPresent()) {
+               Typed<?> $$6 = (Typed<?>)$$5.get();
+               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
+               if ($$7.isPresent()) {
+                  Optional<? extends Dynamic<?>> $$8 = $$6.write().result();
+                  Dynamic<?> $$9 = (Dynamic<?>)($$8.isPresent() ? $$8.get() : (Dynamic)$$6.get(DSL.remainderFinder()));
+                  Dynamic<?> $$10 = $$9.remove("BlockEntityTag");
+                  Optional<? extends Pair<? extends Typed<?>, ?>> $$11 = $$2.type().readTyped($$10).result();
+                  if ($$11.isEmpty()) {
+                     return $$3x;
+                  }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhu.t);
-      OpticFinder<?> $$1 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped(
-         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))
-      );
-   }
+                  return $$3x.set($$2, (Typed)$$11.get().getFirst());
+               }
+            }
+         }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+         return $$3x;
+      });
+   }
 }

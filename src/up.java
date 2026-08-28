@@ -2,36 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class up extends va {
-   private static final int b = 12;
-   public static final vj<up> a = new vj.a<up>() {
-      public up a(DataInput $$0, ut $$1) throws IOException {
-         return up.a(d($$0, $$1));
+public class up implements vk {
+   private static final int c = 8;
+   public static final vm<up> a = new vm<up>() {
+      public up a(DataInput $$0, uw $$1) {
+         $$1.b(8L);
+         return up.b;
       }
 
       @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static int d(DataInput $$0, ut $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readInt();
+      public vh.b a(DataInput $$0, vh $$1, uw $$2) {
+         $$2.b(8L);
+         return $$1.a();
       }
 
       @Override
-      public int c() {
-         return 4;
+      public void a(DataInput $$0, int $$1, uw $$2) {
+      }
+
+      @Override
+      public void b(DataInput $$0, uw $$1) {
       }
 
       @Override
       public String a() {
-         return "INT";
+         return "END";
       }
 
       @Override
       public String b() {
-         return "TAG_Int";
+         return "TAG_End";
       }
 
       @Override
@@ -39,34 +39,33 @@ public class up extends va {
          return true;
       }
    };
-   private final int c;
+   public static final up b = new up();
 
-   up(int $$0) {
-      this.c = $$0;
-   }
-
-   public static up a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? up.a.a[$$0 - -128] : new up($$0);
+   private up() {
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 8;
    }
 
    @Override
    public byte b() {
-      return 3;
+      return 0;
    }
 
    @Override
-   public vj<up> c() {
+   public vm<up> c() {
       return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
    }
 
    public up e() {
@@ -74,72 +73,12 @@ public class up extends va {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof up && this.c == ((up)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c;
-   }
-
-   @Override
-   public void a(vl $$0) {
+   public void a(vo $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return (long)this.c;
-   }
-
-   @Override
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public short h() {
-      return (short)(this.c & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(this.c & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public ve.b a(ve $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final up[] a = new up[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new up(-128 + $$0);
-         }
-      }
+   public vh.b a(vh $$0) {
+      return $$0.a();
    }
 }

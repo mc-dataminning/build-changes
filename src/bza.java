@@ -1,22 +1,26 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bza {
-   public static bye<bva> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
-
-   public static bye<bva> a(Predicate<bva> $$0, Function<bva, Float> $$1, int $$2) {
-      return cag.a(
-         (Function<cag.b<bva>, ? extends App<cag.c<bva>, caj<bva>>>)($$3 -> $$3.group($$3.c(cee.m), $$3.b(cee.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
+   public static bwy<bve> a() {
+      return cak.a((Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$0 -> $$0.a((can<bve>)(($$0x, $$1, $$2) -> {
+            if ($$0x.A.a(20) != 0) {
+               return false;
+            } else {
+               bwg<?> $$3 = $$1.ee();
+               cqe $$4 = $$0x.d($$1.dy());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(cqi.h);
+                     $$3.a(cqi.h);
                   } else {
-                     $$4.a(new ceh($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
+                     $$3.b(cqi.i);
+                     $$3.a(cqi.i);
                   }
-               }))
-      );
+               }
+
+               return true;
+            }
+         }))));
    }
 }

@@ -1,61 +1,62 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class cod {
-   public static final cod a = a("desert");
-   public static final cod b = a("jungle");
-   public static final cod c = a("plains");
-   public static final cod d = a("savanna");
-   public static final cod e = a("snow");
-   public static final cod f = a("swamp");
-   public static final cod g = a("taiga");
-   private final String h;
-   private static final Map<alh<dgc>, cod> i = ae.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dgj.A, a);
-      $$0.put(dgj.f, a);
-      $$0.put(dgj.B, a);
-      $$0.put(dgj.C, a);
-      $$0.put(dgj.z, b);
-      $$0.put(dgj.x, b);
-      $$0.put(dgj.y, b);
-      $$0.put(dgj.s, d);
-      $$0.put(dgj.r, d);
-      $$0.put(dgj.w, d);
-      $$0.put(dgj.X, e);
-      $$0.put(dgj.W, e);
-      $$0.put(dgj.L, e);
-      $$0.put(dgj.e, e);
-      $$0.put(dgj.N, e);
-      $$0.put(dgj.q, e);
-      $$0.put(dgj.d, e);
-      $$0.put(dgj.F, e);
-      $$0.put(dgj.G, e);
-      $$0.put(dgj.H, e);
-      $$0.put(dgj.I, e);
-      $$0.put(dgj.g, f);
-      $$0.put(dgj.h, f);
-      $$0.put(dgj.o, g);
-      $$0.put(dgj.n, g);
-      $$0.put(dgj.u, g);
-      $$0.put(dgj.t, g);
-      $$0.put(dgj.p, g);
-      $$0.put(dgj.v, g);
-   });
+public class cod {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cod> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               lz.w.q().fieldOf("type").orElseGet(() -> coh.c).forGetter($$0x -> $$0x.f),
+               lz.x.q().fieldOf("profession").orElseGet(() -> cof.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cod::new)
+   );
+   public static final zj<ww, cod> d = zj.a(zh.a(ma.aw), $$0 -> $$0.f, zh.a(ma.av), $$0 -> $$0.g, zh.h, $$0 -> $$0.h, cod::new);
+   private final coh f;
+   private final cof g;
+   private final int h;
 
-   private cod(String $$0) {
-      this.h = $$0;
+   public cod(coh $$0, cof $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   @Override
-   public String toString() {
+   public coh a() {
+      return this.f;
+   }
+
+   public cof b() {
+      return this.g;
+   }
+
+   public int c() {
       return this.h;
    }
 
-   private static cod a(String $$0) {
-      return kd.a(ly.w, ali.b($$0), new cod($$0));
+   public cod a(coh $$0) {
+      return new cod($$0, this.g, this.h);
    }
 
-   public static cod a(jq<dgc> $$0) {
-      return $$0.e().map(i::get).orElse(c);
+   public cod a(cof $$0) {
+      return new cod(this.f, $$0, this.h);
+   }
+
+   public cod a(int $$0) {
+      return new cod(this.f, this.g, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

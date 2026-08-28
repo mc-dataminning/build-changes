@@ -1,38 +1,39 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class ewq extends evp {
-   public static final Codec<xi> a = xk.a.validate($$0 -> czj.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<ewq> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(czj.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), evo.a.forGetter($$0x -> $$0x.d))).apply($$0, ewq::new)
-   );
-   private final List<asf<xi>> c;
-   private final evo d;
+public class ewq extends evt {
+   static final MapCodec<ewq> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eyo.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, ewq::new));
+   private final eyn b;
 
-   protected ewq(List<exn> $$0, List<asf<xi>> $$1, evo $$2) {
+   private ewq(List<exr> $$0, eyn $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   protected cwb a(cwb $$0, euc $$1) {
-      $$0.a(ku.T, czj.a, this::a);
+   public Set<ewz<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public evv<ewq> b() {
+      return evw.Q;
+   }
+
+   @Override
+   public cwf a(cwf $$0, eug $$1) {
+      int $$2 = azn.a(this.b.a($$1), 0, 4);
+      $$0.b(ku.aa, new czd($$2));
       return $$0;
    }
 
-   @VisibleForTesting
-   public czj a(czj $$0) {
-      List<asf<xi>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
+   public eyn c() {
+      return this.b;
    }
 
-   @Override
-   public evr<ewq> b() {
-      return evs.N;
+   public static evt.a<?> a(eyn $$0) {
+      return a($$1 -> new ewq($$1, $$0));
    }
 }

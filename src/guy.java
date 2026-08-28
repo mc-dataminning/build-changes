@@ -1,3 +1,3 @@
-public class guy extends gvl {
+public class guy extends gwb {
    public boolean a;
 }

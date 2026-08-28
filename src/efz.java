@@ -1,56 +1,172 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
-public class efz extends eel<ehn> {
+public class efz extends eep<ehn> {
+   public static final int a = 10;
+   private static final int b = 42;
+   private static final LoadingCache<Long, List<efz.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new efz.b());
+
    public efz(Codec<ehn> $$0) {
       super($$0);
    }
 
+   public static List<efz.a> a(dgd $$0) {
+      azv $$1 = azv.a($$0.C());
+      long $$2 = $$1.g() & 65535L;
+      return (List<efz.a>)c.getUnchecked($$2);
+   }
+
    @Override
-   public boolean a(een<ehn> $$0) {
-      dfy $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      ehn $$3 = $$0.f();
-      azs $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
+   public boolean a(eer<ehn> $$0) {
+      ehn $$1 = $$0.f();
+      dgd $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      jh $$4 = $$0.e();
+      List<efz.a> $$5 = $$1.b();
       if ($$5.isEmpty()) {
-         return false;
-      } else {
-         jh $$6 = $$2.h($$5.getAsInt());
-         kl $$7 = new kl($$3.c, $$3.c, $$3.c);
-         elp $$8 = elp.a($$6.b($$7), $$6.a($$7));
-         return jh.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dig.kJ.m(), 2);
-            return 1;
-         }).sum() > 0;
+         $$5 = a($$2);
       }
+
+      for (efz.a $$6 : $$5) {
+         if ($$6.a($$4)) {
+            this.a($$2, $$3, $$1, $$6);
+         }
+      }
+
+      return true;
    }
 
-   private static OptionalInt a(dfy $$0, jh $$1, ehn $$2) {
-      Predicate<dvj> $$3 = $$0x -> $$0x.a(dig.G);
-      Predicate<dvj> $$4 = $$0x -> !$$0x.a(dig.G);
-      Optional<eav> $$5 = eav.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(eav::c).orElseGet(OptionalInt::empty);
-   }
+   private void a(dfw $$0, azv $$1, ehn $$2, efz.a $$3) {
+      int $$4 = $$3.c();
 
-   private boolean b(dfy $$0, jh $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (jm $$2 : jm.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+      for (jh $$5 : jh.c(new jh($$3.a() - $$4, $$0.I_(), $$3.b() - $$4), new jh($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
+         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
+            this.a($$0, $$5, dil.co.m());
+         } else if ($$5.v() > 65) {
+            this.a($$0, $$5, dil.a.m());
+         }
+      }
+
+      if ($$3.e()) {
+         int $$6 = -2;
+         int $$7 = 2;
+         int $$8 = 3;
+         jh.a $$9 = new jh.a();
+
+         for (int $$10 = -2; $$10 <= 2; $$10++) {
+            for (int $$11 = -2; $$11 <= 2; $$11++) {
+               for (int $$12 = 0; $$12 <= 3; $$12++) {
+                  boolean $$13 = azn.a($$10) == 2;
+                  boolean $$14 = azn.a($$11) == 2;
+                  boolean $$15 = $$12 == 3;
+                  if ($$13 || $$14 || $$15) {
+                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
+                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
+                     dvo $$18 = dil.eW
+                        .m()
+                        .b(dmj.a, Boolean.valueOf($$16 && $$11 != -2))
+                        .b(dmj.c, Boolean.valueOf($$16 && $$11 != 2))
+                        .b(dmj.d, Boolean.valueOf($$17 && $$10 != -2))
+                        .b(dmj.b, Boolean.valueOf($$17 && $$10 != 2));
+                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
+                  }
+               }
             }
          }
+      }
 
-         return true;
-      } else {
-         return false;
+      cjr $$19 = bup.E.a($$0.E(), buo.d);
+      if ($$19 != null) {
+         $$19.a($$2.c());
+         $$19.n($$2.a());
+         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
+         $$0.b($$19);
+         jh $$20 = $$19.dy();
+         this.a($$0, $$20.e(), dil.F.m());
+         this.a($$0, $$20, dli.a($$0, $$20));
       }
    }
 
-   private boolean a(dfc $$0, jh $$1) {
-      dvj $$2 = $$0.a_($$1);
-      return $$2.a(dig.G) || $$2.l();
+   public static class a {
+      public static final Codec<efz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
+                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
+                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, efz.a::new)
+      );
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final boolean f;
+      private final ezm g;
+
+      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = new ezm((double)($$0 - $$2), (double)dzj.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)dzj.d, (double)($$1 + $$2));
+      }
+
+      public boolean a(jh $$0) {
+         return kj.a($$0.u()) == kj.a(this.b) && kj.a($$0.w()) == kj.a(this.c);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public ezm f() {
+         return this.g;
+      }
+   }
+
+   static class b extends CacheLoader<Long, List<efz.a>> {
+      public List<efz.a> a(Long $$0) {
+         IntArrayList $$1 = ae.a(IntStream.range(0, 10), azv.a($$0));
+         List<efz.a> $$2 = Lists.newArrayList();
+
+         for (int $$3 = 0; $$3 < 10; $$3++) {
+            int $$4 = azn.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$5 = azn.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$6 = $$1.get($$3);
+            int $$7 = 2 + $$6 / 3;
+            int $$8 = 76 + $$6 * 3;
+            boolean $$9 = $$6 == 1 || $$6 == 2;
+            $$2.add(new efz.a($$4, $$5, $$7, $$8, $$9));
+         }
+
+         return $$2;
+      }
    }
 }

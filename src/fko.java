@@ -1,64 +1,49 @@
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
 public class fko {
-   private static final int a = -1;
-   private final jw<fkn> b = new jw<>(32);
+   public static void a(fzv $$0, fkm $$1, long $$2, float $$3, Vector3f $$4) {
+      float $$5 = a($$1, $$2);
 
-   public static fko a(fkk $$0) {
-      fko $$1 = new fko();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : cyp.a($$0x, -6265536), cwf.pz, cwf.pA, cwf.pB, cwf.pC, cwf.uL);
-      $$1.a(($$0x, $$1x) -> $$1x != 1 ? -1 : cyp.a($$0x, 0), cwf.os);
-      $$1.a(($$0x, $$1x) -> dez.a(0.5, 1.0), dig.iH, dig.iI);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
-         } else {
-            cyq $$2x = $$0x.a(ku.ae);
-            IntList $$3 = $$2x != null ? $$2x.b() : IntList.of();
-            int $$4 = $$3.size();
-            if ($$4 == 0) {
-               return -7697782;
-            } else if ($$4 == 1) {
-               return axv.f($$3.getInt(0));
-            } else {
-               int $$5 = 0;
-               int $$6 = 0;
-               int $$7 = 0;
-
-               for (int $$8 = 0; $$8 < $$4; $$8++) {
-                  int $$9 = $$3.getInt($$8);
-                  $$5 += axv.b($$9);
-                  $$6 += axv.c($$9);
-                  $$7 += axv.d($$9);
+      for (Entry<String, List<fkl>> $$6 : $$1.c().entrySet()) {
+         Optional<gcc> $$7 = $$0.a($$6.getKey());
+         List<fkl> $$8 = $$6.getValue();
+         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
+               fkn[] $$5x = $$4xx.b();
+               int $$6x = Math.max(0, azn.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
+               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
+               fkn $$8x = $$5x[$$6x];
+               fkn $$9 = $$5x[$$7x];
+               float $$10 = $$5 - $$8x.a();
+               float $$11;
+               if ($$7x != $$6x) {
+                  $$11 = azn.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
+               } else {
+                  $$11 = 0.0F;
                }
 
-               return axv.a($$5 / $$4, $$6 / $$4, $$7 / $$4);
-            }
-         }
-      }, cwf.ux);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : axv.f($$0x.a(ku.Q, cya.a).b()), cwf.sm, cwf.vq, cwf.vt, cwf.vs);
-
-      for (cxk $$2 : cxk.b()) {
-         $$1.a(($$1x, $$2x) -> axv.f($$2.a($$2x)), $$2);
+               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
+               $$4xx.a().apply($$4x, $$4);
+            }));
       }
-
-      $$1.a(($$1x, $$2x) -> {
-         dvj $$3 = ((cuh)$$1x.h()).d().m();
-         return $$0.a($$3, null, null, $$2x);
-      }, dig.i, dig.bt, dig.bu, dig.ff, dig.aE, dig.aF, dig.aG, dig.aH, dig.aI, dig.aK, dig.fm);
-      $$1.a(($$0x, $$1x) -> dev.d(), dig.aL);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : axv.f($$0x.a(ku.K, cyx.c).a()), cwf.rV);
-      return $$1;
    }
 
-   public int a(cwb $$0, int $$1) {
-      fkn $$2 = this.b.a(ly.g.a($$0.h()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
+   private static float a(fkm $$0, long $$1) {
+      float $$2 = (float)$$1 / 1000.0F;
+      return $$0.b() ? $$2 % $$0.a() : $$2;
    }
 
-   public void a(fkn $$0, dfa... $$1) {
-      for (dfa $$2 : $$1) {
-         this.b.a($$0, cvx.a($$2.j()));
-      }
+   public static Vector3f a(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0, -$$1, $$2);
+   }
+
+   public static Vector3f b(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
+   }
+
+   public static Vector3f a(double $$0, double $$1, double $$2) {
+      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
    }
 }

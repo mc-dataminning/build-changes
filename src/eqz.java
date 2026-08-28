@@ -1,160 +1,77 @@
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public class eqz implements erc {
-   public static final int b = 1;
-   public static final eqz c = new eqz();
-   protected final dfd d;
+public abstract class eqz<M extends eqz<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dxo[] d = new dxo[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dxo> a;
+
+   protected eqz(Long2ObjectOpenHashMap<dxo> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
+   }
+
+   public abstract M b();
+
+   public dxo a(long $$0) {
+      dxo $$1 = ((dxo)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
+   }
+
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
+   }
+
    @Nullable
-   private final erb<?, ?> a;
-   @Nullable
-   private final erb<?, ?> e;
-
-   public eqz(dxs $$0, boolean $$1, boolean $$2) {
-      this.d = $$0.q();
-      this.a = $$1 ? new eqs($$0) : null;
-      this.e = $$2 ? new erd($$0) : null;
-   }
-
-   private eqz() {
-      this.d = dfd.e(0, 0);
-      this.a = null;
-      this.e = null;
-   }
-
-   @Override
-   public void a(jh $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
+   public dxo c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
       }
 
-      if (this.e != null) {
-         this.e.a($$0);
-      }
-   }
-
-   @Override
-   public boolean K_() {
-      return this.e != null && this.e.K_() ? true : this.a != null && this.a.K_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.e != null) {
-         $$0 += this.e.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(kj $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(deh $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(deh $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0);
-      }
-   }
-
-   public eqx a(dfk $$0) {
-      if ($$0 == dfk.b) {
-         return (eqx)(this.a == null ? eqx.a.a : this.a);
+      dxo $$2 = (dxo)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
       } else {
-         return (eqx)(this.e == null ? eqx.a.a : this.e);
-      }
-   }
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
 
-   public String a(dfk $$0, kj $$1) {
-      if ($$0 == dfk.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
+            this.c[0] = $$0;
+            this.d[0] = $$2;
          }
-      } else if (this.e != null) {
-         return this.e.b($$1.s());
-      }
 
-      return "n/a";
-   }
-
-   public eqy.b b(dfk $$0, kj $$1) {
-      if ($$0 == dfk.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.e != null) {
-         return this.e.c($$1.s());
-      }
-
-      return eqy.b.a;
-   }
-
-   public void a(dfk $$0, kj $$1, @Nullable dxk $$2) {
-      if ($$0 == dfk.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.e != null) {
-         this.e.a($$1.s(), $$2);
+         return $$2;
       }
    }
 
-   public void b(deh $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
+   @Nullable
+   public dxo d(long $$0) {
+      return (dxo)this.a.remove($$0);
+   }
+
+   public void a(long $$0, dxo $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
       }
-
-      if (this.e != null) {
-         this.e.b($$0, $$1);
-      }
    }
 
-   public int a(jh $$0, int $$1) {
-      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(long $$0) {
-      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
-   }
-
-   public int c() {
-      return this.d.am() + 2;
-   }
-
-   public int d() {
-      return this.d.an() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
+   public void d() {
+      this.e = false;
    }
 }

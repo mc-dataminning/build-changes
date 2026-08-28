@@ -1,25 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dfx extends dek {
+   jm[] D = jm.values();
 
-public record dfx(deo d, crf e) {
-   public static final String a = "enabled_features";
-   public static final Codec<dfx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               deo.b.lenientOptionalFieldOf("DataPacks", deo.a).forGetter(dfx::a), crh.g.lenientOptionalFieldOf("enabled_features", crh.i).forGetter(dfx::b)
-            )
-            .apply($$0, dfx::new)
-   );
-   public static final dfx c = new dfx(deo.a, crh.i);
-
-   public dfx a(crf $$0) {
-      return new dfx(this.d, this.e.c($$0));
+   default int a(jh $$0, jm $$1) {
+      return this.a_($$0).b(this, $$0, $$1);
    }
 
-   public deo a() {
-      return this.d;
+   default int e_(jh $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.e(), jm.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.d(), jm.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.f(), jm.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.g(), jm.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.h(), jm.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.i(), jm.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public crf b() {
-      return this.e;
+   default int a(jh $$0, jm $$1, boolean $$2) {
+      dvo $$3 = this.a_($$0);
+      if ($$2) {
+         return dkl.n($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(dil.ha)) {
+         return 15;
+      } else if ($$3.a(dil.cw)) {
+         return $$3.c(dol.f);
+      } else {
+         return $$3.p() ? this.a($$0, $$1) : 0;
+      }
+   }
+
+   default boolean b(jh $$0, jm $$1) {
+      return this.c($$0, $$1) > 0;
+   }
+
+   default int c(jh $$0, jm $$1) {
+      dvo $$2 = this.a_($$0);
+      int $$3 = $$2.a(this, $$0, $$1);
+      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(jh $$0) {
+      if (this.c($$0.e(), jm.a) > 0) {
+         return true;
+      } else if (this.c($$0.d(), jm.b) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jm.c) > 0) {
+         return true;
+      } else if (this.c($$0.g(), jm.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.h(), jm.e) > 0 ? true : this.c($$0.i(), jm.f) > 0;
+      }
+   }
+
+   default int D(jh $$0) {
+      int $$1 = 0;
+
+      for (jm $$2 : D) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
    }
 }

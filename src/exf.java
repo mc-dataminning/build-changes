@@ -1,17 +1,36 @@
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface exf<T extends exf<T>> {
-   T b(exn.a var1);
+public class exf extends exh {
+   public static final MapCodec<exf> a = a(exf::new);
 
-   default <E> T a_(Iterable<E> $$0, Function<E, exn.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   exf(List<exr> $$0) {
+      super($$0, ae.b($$0));
    }
 
-   T d();
+   @Override
+   public exs b() {
+      return ext.b;
+   }
+
+   public static exf.a a(exr.a... $$0) {
+      return new exf.a($$0);
+   }
+
+   public static class a extends exh.a {
+      public a(exr.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public exf.a or(exr.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected exr a(List<exr> $$0) {
+         return new exf($$0);
+      }
+   }
 }

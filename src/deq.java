@@ -1,31 +1,25 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public enum deq implements deg {
-   a;
-
-   @Nullable
+public interface deq extends dew, dfi, dfk {
    @Override
-   public dsm c_(jh $$0) {
-      return null;
+   default <T extends dsr> Optional<T> a(jh $$0, dst<T> $$1) {
+      return dfi.super.a($$0, $$1);
    }
 
    @Override
-   public dvj a_(jh $$0) {
-      return dig.a.m();
+   default List<fal> c(@Nullable bui $$0, ezm $$1) {
+      return dew.super.c($$0, $$1);
    }
 
    @Override
-   public erk b_(jh $$0) {
-      return erl.a.g();
+   default boolean a(@Nullable bui $$0, fal $$1) {
+      return dew.super.a($$0, $$1);
    }
 
    @Override
-   public int I_() {
-      return 0;
-   }
-
-   @Override
-   public int J_() {
-      return 0;
+   default jh a(ebj.a $$0, jh $$1) {
+      return dfi.super.a($$0, $$1);
    }
 }

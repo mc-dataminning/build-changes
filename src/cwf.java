@@ -1,1415 +1,978 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult.Error;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public class cwf {
-   public static final cvx a = a(dig.a, cty::new);
-   public static final cvx b = a(dig.b);
-   public static final cvx c = a(dig.c);
-   public static final cvx d = a(dig.d);
-   public static final cvx e = a(dig.e);
-   public static final cvx f = a(dig.f);
-   public static final cvx g = a(dig.g);
-   public static final cvx h = a(dig.h);
-   public static final cvx i = a(dig.sJ);
-   public static final cvx j = a(dig.sK);
-   public static final cvx k = a(dig.sO);
-   public static final cvx l = a(dig.qN);
-   public static final cvx m = a(dig.qz);
-   public static final cvx n = a(dig.qA);
-   public static final cvx o = a(dig.qB);
-   public static final cvx p = a(dig.qC);
-   public static final cvx q = a(dig.qH);
-   public static final cvx r = a(dig.qD);
-   public static final cvx s = a(dig.qE);
-   public static final cvx t = a(dig.qF);
-   public static final cvx u = a(dig.qG);
-   public static final cvx v = a(dig.qI);
-   public static final cvx w = a(dig.qJ);
-   public static final cvx x = a(dig.qK);
-   public static final cvx y = a(dig.qL);
-   public static final cvx z = a(dig.qM);
-   public static final cvx A = a(dig.su);
-   public static final cvx B = a(dig.i);
-   public static final cvx C = a(dig.j);
-   public static final cvx D = a(dig.k);
-   public static final cvx E = a(dig.l);
-   public static final cvx F = a(dig.sH);
-   public static final cvx G = a(dig.sI);
-   public static final cvx H = a(dig.ow);
-   public static final cvx I = a(dig.on);
-   public static final cvx J = a(dig.m);
-   public static final cvx K = a(dig.n);
-   public static final cvx L = a(dig.o);
-   public static final cvx M = a(dig.p);
-   public static final cvx N = a(dig.q);
-   public static final cvx O = a(dig.r);
-   public static final cvx P = a(dig.s);
-   public static final cvx Q = a(dig.t);
-   public static final cvx R = a(dig.u);
-   public static final cvx S = a(dig.v);
-   public static final cvx T = a(dig.oE);
-   public static final cvx U = a(dig.oF);
-   public static final cvx V = a(dig.w);
-   public static final cvx W = a(dig.x);
-   public static final cvx X = a(dig.y);
-   public static final cvx Y = a(dig.z);
-   public static final cvx Z = a(dig.A);
-   public static final cvx aa = a(dig.B);
-   public static final cvx ab = a(dig.C);
-   public static final cvx ac = a(dig.D);
-   public static final cvx ad = a(dig.E);
-   public static final cvx ae = a(dig.F);
-   public static final cvx af = a(dig.I);
-   public static final cvx ag = a(dig.J);
-   public static final cvx ah = a(dig.M);
-   public static final cvx ai = a(dig.K);
-   public static final cvx aj = a(dig.L);
-   public static final cvx ak = a(dig.R);
-   public static final cvx al = a(dig.S);
-   public static final cvx am = a(dig.P);
-   public static final cvx an = a(dig.Q);
-   public static final cvx ao = a(dig.ra);
-   public static final cvx ap = a(dig.rb);
-   public static final cvx aq = a(dig.N);
-   public static final cvx ar = a(dig.O);
-   public static final cvx as = a(dig.dI);
-   public static final cvx at = a(dig.dJ);
-   public static final cvx au = a(dig.fE);
-   public static final cvx av = a(dig.fF);
-   public static final cvx aw = a(dig.aR);
-   public static final cvx ax = a(dig.aS);
-   public static final cvx ay = a(dig.cx);
-   public static final cvx az = a(dig.cy);
-   public static final cvx aA = a(dig.T);
-   public static final cvx aB = a(dig.hb);
-   public static final cvx aC = a(dig.pj, new cvx.a().a());
-   public static final cvx aD = a(dig.iB);
-   public static final cvx aE = a(dig.tf);
-   public static final cvx aF = a(dig.tg);
-   public static final cvx aG = a(dig.th);
-   public static final cvx aH = a(dig.tt, new cvx.a().a(cwy.d));
-   public static final cvx aI = a(dig.qt);
-   public static final cvx aJ = a(dig.qu);
-   public static final cvx aK = a(dig.ci);
-   public static final cvx aL = a(dig.qW);
-   public static final cvx aM = a(dig.ch);
-   public static final cvx aN = a(dig.cz);
-   public static final cvx aO = a(dig.pi, new cvx.a().a());
-   public static final cvx aP = a(dig.qX);
-   public static final cvx aQ = a(dig.qY);
-   public static final cvx aR = a(dig.qZ);
-   public static final cvx aS = a(dig.rj);
-   public static final cvx aT = a(dig.ri);
-   public static final cvx aU = a(dig.rh);
-   public static final cvx aV = a(dig.rg);
-   public static final cvx aW = a(dig.rf);
-   public static final cvx aX = a(dig.re);
-   public static final cvx aY = a(dig.rd);
-   public static final cvx aZ = a(dig.rc);
-   public static final cvx ba = a(dig.rr);
-   public static final cvx bb = a(dig.rq);
-   public static final cvx bc = a(dig.rp);
-   public static final cvx bd = a(dig.ro);
-   public static final cvx be = a(dig.rv);
-   public static final cvx bf = a(dig.ru);
-   public static final cvx bg = a(dig.rt);
-   public static final cvx bh = a(dig.rs);
-   public static final cvx bi = a(dig.rw);
-   public static final cvx bj = a(dig.ry);
-   public static final cvx bk = a(dig.rx);
-   public static final cvx bl = a(dig.rz);
-   public static final cvx bm = a(dig.rn);
-   public static final cvx bn = a(dig.rm);
-   public static final cvx bo = a(dig.rl);
-   public static final cvx bp = a(dig.rk);
-   public static final cvx bq = a(dig.rD);
-   public static final cvx br = a(dig.rC);
-   public static final cvx bs = a(dig.rB);
-   public static final cvx bt = a(dig.rA);
-   public static final cvx bu = a(dig.rH);
-   public static final cvx bv = a(dig.rG);
-   public static final cvx bw = a(dig.rF);
-   public static final cvx bx = a(dig.rE);
-   public static final cvx by = a(dig.rL);
-   public static final cvx bz = a(dig.rK);
-   public static final cvx bA = a(dig.rJ);
-   public static final cvx bB = a(dig.rI);
-   public static final cvx bC = a(dig.U);
-   public static final cvx bD = a(dig.V);
-   public static final cvx bE = a(dig.W);
-   public static final cvx bF = a(dig.X);
-   public static final cvx bG = a(dig.Y);
-   public static final cvx bH = a(dig.Z);
-   public static final cvx bI = a(dig.aa);
-   public static final cvx bJ = a(dig.ab);
-   public static final cvx bK = a(dig.ac);
-   public static final cvx bL = a(dig.ad);
-   public static final cvx bM = a(dig.os);
-   public static final cvx bN = a(dig.oj);
-   public static final cvx bO = a(dig.ae);
-   public static final cvx bP = a(dig.al);
-   public static final cvx bQ = a(dig.af);
-   public static final cvx bR = a(dig.ag);
-   public static final cvx bS = a(dig.ah);
-   public static final cvx bT = a(dig.ai);
-   public static final cvx bU = a(dig.aj);
-   public static final cvx bV = a(dig.ak);
-   public static final cvx bW = a(dig.am);
-   public static final cvx bX = a(dig.ot);
-   public static final cvx bY = a(dig.ok);
-   public static final cvx bZ = a(dig.aw);
-   public static final cvx ca = a(dig.ax);
-   public static final cvx cb = a(dig.ay);
-   public static final cvx cc = a(dig.az);
-   public static final cvx cd = a(dig.aA);
-   public static final cvx ce = a(dig.aB);
-   public static final cvx cf = a(dig.aC);
-   public static final cvx cg = a(dig.aD);
-   public static final cvx ch = a(dig.ov);
-   public static final cvx ci = a(dig.om);
-   public static final cvx cj = a(dig.an);
-   public static final cvx ck = a(dig.ao);
-   public static final cvx cl = a(dig.ap);
-   public static final cvx cm = a(dig.aq);
-   public static final cvx cn = a(dig.ar);
-   public static final cvx co = a(dig.as);
-   public static final cvx cp = a(dig.at);
-   public static final cvx cq = a(dig.au);
-   public static final cvx cr = a(dig.av);
-   public static final cvx cs = a(dig.ou);
-   public static final cvx ct = a(dig.ol);
-   public static final cvx cu = a(dig.aE);
-   public static final cvx cv = a(dig.aF);
-   public static final cvx cw = a(dig.aG);
-   public static final cvx cx = a(dig.aH);
-   public static final cvx cy = a(dig.aI);
-   public static final cvx cz = a(dig.aJ);
-   public static final cvx cA = a(dig.aK);
-   public static final cvx cB = a(dig.aL);
-   public static final cvx cC = a(dig.aM);
-   public static final cvx cD = a(dig.aN);
-   public static final cvx cE = a(dig.aO);
-   public static final cvx cF = a(dig.aP);
-   public static final cvx cG = a(dig.aQ);
-   public static final cvx cH = a(dig.qO);
-   public static final cvx cI = a(dig.aT);
-   public static final cvx cJ = a(dig.aV);
-   public static final cvx cK = a(dig.aW);
-   public static final cvx cL = a(dig.aX);
-   public static final cvx cM = a(dig.bs);
-   public static final cvx cN = a(dig.bt);
-   public static final cvx cO = a(dig.bu);
-   public static final cvx cP = a(dig.sy);
-   public static final cvx cQ = a(dig.sz);
-   public static final cvx cR = a(dig.bv);
-   public static final cvx cS = a(dig.bw);
-   public static final cvx cT = a(dig.mV);
-   public static final cvx cU = a(dig.bA);
-   public static final cvx cV = a(dig.bB);
-   public static final cvx cW = a(dig.bC);
-   public static final cvx cX = a(dig.bD);
-   public static final cvx cY = a(dig.bE);
-   public static final cvx cZ = a(dig.bF);
-   public static final cvx da = a(dig.bG);
-   public static final cvx db = a(dig.bH);
-   public static final cvx dc = a(dig.bI);
-   public static final cvx dd = a(dig.bJ);
-   public static final cvx de = a(dig.bK);
-   public static final cvx df = a(dig.bL);
-   public static final cvx dg = a(dig.bM);
-   public static final cvx dh = a(dig.bN);
-   public static final cvx di = a(dig.bO);
-   public static final cvx dj = a(dig.bP);
-   public static final cvx dk = a(dig.bR);
-   public static final cvx dl = a(dig.bT);
-   public static final cvx dm = a(dig.bU);
-   public static final cvx dn = a(dig.bV);
-   public static final cvx do = a(dig.bW);
-   public static final cvx dp = a(dig.bX);
-   public static final cvx dq = a(dig.bY);
-   public static final cvx dr = a(dig.bZ);
-   public static final cvx ds = a(dig.ca);
-   public static final cvx dt = a(dig.cb);
-   public static final cvx du = a(dig.cc);
-   public static final cvx dv = a(dig.ce);
-   public static final cvx dw = a(dig.cd);
-   public static final cvx dx = a(dig.bS);
-   public static final cvx dy = a(dig.kC);
-   public static final cvx dz = a(dig.sx);
-   public static final cvx dA = a(dig.cf);
-   public static final cvx dB = a(dig.cg);
-   public static final cvx dC = a(dig.ox);
-   public static final cvx dD = a(dig.oo);
-   public static final cvx dE = a(dig.oD);
-   public static final cvx dF = a(dig.oq);
-   public static final cvx dG = a(dig.or);
-   public static final cvx dH = a(dig.oz);
-   public static final cvx dI = a(dig.oB);
-   public static final cvx dJ = a(dig.dS);
-   public static final cvx dK = a(dig.mc);
-   public static final cvx dL = a(dig.sA);
-   public static final cvx dM = a(dig.sB);
-   public static final cvx dN = a(dig.sC);
-   public static final cvx dO = a(dig.sG);
-   public static final cvx dP = a(dig.sD, dig.sE);
-   public static final cvx dQ = a(dig.sF, cux::new);
-   public static final cvx dR = a(dig.mZ);
-   public static final cvx dS = a(dig.jt);
-   public static final cvx dT = a(dig.ju);
-   public static final cvx dU = a(dig.jv);
-   public static final cvx dV = a(dig.jw);
-   public static final cvx dW = a(dig.jx);
-   public static final cvx dX = a(dig.jy);
-   public static final cvx dY = a(dig.jz);
-   public static final cvx dZ = a(dig.jA);
-   public static final cvx ea = a(dig.jB);
-   public static final cvx eb = a(dig.jC);
-   public static final cvx ec = a(dig.oG);
-   public static final cvx ed = a(dig.oH);
-   public static final cvx ee = a(dig.jD);
-   public static final cvx ef = a(dig.jE);
-   public static final cvx eg = a(dig.jF);
-   public static final cvx eh = a(dig.jG);
-   public static final cvx ei = a(dig.jH);
-   public static final cvx ej = a(dig.jI);
-   public static final cvx ek = a(dig.jJ);
-   public static final cvx el = a(dig.jK);
-   public static final cvx em = a(dig.jL);
-   public static final cvx en = a(dig.jM);
-   public static final cvx eo = a(dig.jN);
-   public static final cvx ep = a(dig.jO);
-   public static final cvx eq = a(dig.jP);
-   public static final cvx er = a(dig.jQ);
-   public static final cvx es = a(dig.if);
-   public static final cvx et = a(dig.ig);
-   public static final cvx eu = a(dig.ih);
-   public static final cvx ev = a(dig.jT);
-   public static final cvx ew = a(dig.jU);
-   public static final cvx ex = a(dig.jS);
-   public static final cvx ey = a(dig.jR);
-   public static final cvx ez = a(dig.cj);
-   public static final cvx eA = a(dig.cl);
-   public static final cvx eB = a(dig.cm, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx eC = a(dig.tp, new cvx.a().a(ku.ak, dts.a));
-   public static final cvx eD = a(dig.cn);
-   public static final cvx eE = a(dig.co);
-   public static final cvx eF = a(dig.cp, ($$0, $$1) -> new cxo($$0, dig.cq, jm.a, $$1));
-   public static final cvx eG = a(dig.kt);
-   public static final cvx eH = a(dig.ku);
-   public static final cvx eI = a(dig.kv);
-   public static final cvx eJ = a(dig.kw);
-   public static final cvx eK = a(dig.kx);
-   public static final cvx eL = a(dig.ky);
-   public static final cvx eM = a(dig.ct);
-   public static final cvx eN = a(dig.cv, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx eO = a(dig.cA);
-   public static final cvx eP = a(dig.cC);
-   public static final cvx eQ = a(dig.cD, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx eR = a(dig.cO);
-   public static final cvx eS = a(dig.cQ);
-   public static final cvx eT = a(dig.dN);
-   public static final cvx eU = a(dig.dO);
-   public static final cvx eV = a(dig.dP);
-   public static final cvx eW = a(dig.dQ);
-   public static final cvx eX = a(dig.dR);
-   public static final cvx eY = a(dig.dT);
-   public static final cvx eZ = a(dig.dU);
-   public static final cvx fa = a(dig.kd);
-   public static final cvx fb = a(dig.ke);
-   public static final cvx fc = a(dig.kf);
-   public static final cvx fd = a(dig.kg);
-   public static final cvx fe = a(dig.kh);
-   public static final cvx ff = a(dig.ki);
-   public static final cvx fg = a(dig.kj);
-   public static final cvx fh = a(dig.kk);
-   public static final cvx fi = a(dig.oK);
-   public static final cvx fj = a(dig.oL);
-   public static final cvx fk = a(dig.eZ);
-   public static final cvx fl = a(dig.ee, $$0 -> $$0.b(bum.f));
-   public static final cvx fm = a(dig.ef);
-   public static final cvx fn = a(dig.dV);
-   public static final cvx fo = a(dig.dW);
-   public static final cvx fp = a(dig.dX);
-   public static final cvx fq = a(dig.dY);
-   public static final cvx fr = a(dig.dZ);
-   public static final cvx fs = a(dig.te);
-   public static final cvx ft = a(dig.ea, ($$0, $$1) -> new cxo($$0, dig.eb, jm.a, $$1));
-   public static final cvx fu = a(dig.ec);
-   public static final cvx fv = a(dig.eN);
-   public static final cvx fw = a(dig.eO);
-   public static final cvx fx = a(dig.eP);
-   public static final cvx fy = a(dig.eQ);
-   public static final cvx fz = a(dig.eR);
-   public static final cvx fA = a(dig.eS);
-   public static final cvx fB = a(dig.td);
-   public static final cvx fC = a(dig.eH);
-   public static final cvx fD = a(dig.eI);
-   public static final cvx fE = a(dig.eJ);
-   public static final cvx fF = a(dig.eK);
-   public static final cvx fG = a(dig.eL);
-   public static final cvx fH = a(dig.eM);
-   public static final cvx fI = a(dig.sW);
-   public static final cvx fJ = a(dig.tb);
-   public static final cvx fK = a(dig.sS);
-   public static final cvx fL = a(dig.tc);
-   public static final cvx fM = a(dig.ta);
-   public static final cvx fN = a(dig.to);
-   public static final cvx fO = a(dig.eT);
-   public static final cvx fP = a(dig.eU);
-   public static final cvx fQ = a(dig.eV);
-   public static final cvx fR = a(dig.eW);
-   public static final cvx fS = a(dig.eX);
-   public static final cvx fT = a(dig.eY);
-   public static final cvx fU = a(dig.fa);
-   public static final cvx fV = a(dig.ff);
-   public static final cvx fW = a(dig.fg);
-   public static final cvx fX = a(dig.fi);
-   public static final cvx fY = a(dig.fj);
-   public static final cvx fZ = a(dig.fk);
-   public static final cvx ga = a(dig.fl);
-   public static final cvx gb = a(dig.fm, cwt::new);
-   public static final cvx gc = a(dig.fn);
-   public static final cvx gd = a(dig.pJ);
-   public static final cvx ge = a(dig.pI);
-   public static final cvx gf = a(dig.fo);
-   public static final cvx gg = a(dig.fp);
-   public static final cvx gh = a(dig.qS);
-   public static final cvx gi = a(dig.qT);
-   public static final cvx gj = a(dig.qU);
-   public static final cvx gk = a(dig.qV);
-   public static final cvx gl = a(dig.fr);
-   public static final cvx gm = a(dig.fy);
-   public static final cvx gn = a(dig.fz);
-   public static final cvx go = a(dig.kz);
-   public static final cvx gp = a(dig.fA, new cvx.a().a(cwy.d));
-   public static final cvx gq = a(dig.fD);
-   public static final cvx gr = a(dig.fG);
-   public static final cvx gs = a(dig.fJ);
-   public static final cvx gt = a(dig.cu);
-   public static final cvx gu = a(dig.fK);
-   public static final cvx gv = a(dig.fL);
-   public static final cvx gw = a(dig.fM);
-   public static final cvx gx = a(dig.hP);
-   public static final cvx gy = a(dig.hQ);
-   public static final cvx gz = a(dig.hR);
-   public static final cvx gA = a(dig.hS);
-   public static final cvx gB = a(dig.hT);
-   public static final cvx gC = a(dig.hU);
-   public static final cvx gD = a(dig.oQ);
-   public static final cvx gE = a(dig.oR);
-   public static final cvx gF = a(dig.fN, cvn::new, new cvx.a().a(cwy.d));
-   public static final cvx gG = a(dig.fO, new cvx.a().a(cwy.c));
-   public static final cvx gH = a(dig.fP);
-   public static final cvx gI = a(dig.fQ);
-   public static final cvx gJ = a(dig.nF);
-   public static final cvx gK = a(dig.nG);
-   public static final cvx gL = a(dig.nH);
-   public static final cvx gM = a(dig.nI);
-   public static final cvx gN = a(dig.nJ);
-   public static final cvx gO = a(dig.nK);
-   public static final cvx gP = a(dig.nL);
-   public static final cvx gQ = a(dig.nM);
-   public static final cvx gR = a(dig.nN);
-   public static final cvx gS = a(dig.nO);
-   public static final cvx gT = a(dig.nP);
-   public static final cvx gU = a(dig.nQ);
-   public static final cvx gV = a(dig.nR);
-   public static final cvx gW = a(dig.pt);
-   public static final cvx gX = a(dig.pH);
-   public static final cvx gY = a(dig.pB);
-   public static final cvx gZ = a(dig.sN);
-   public static final cvx ha = a(dig.sR);
-   public static final cvx hb = a(dig.sZ);
-   public static final cvx hc = a(dig.sV);
-   public static final cvx hd = a(dig.gS);
-   public static final cvx he = a(dig.gT);
-   public static final cvx hf = a(dig.gU);
-   public static final cvx hg = a(dig.he);
-   public static final cvx hh = a(dig.hd);
-   public static final cvx hi = a(dig.pK);
-   public static final cvx hj = a(dig.hf);
-   public static final cvx hk = a(dig.hg);
-   public static final cvx hl = a(dig.hj);
-   public static final cvx hm = a(dig.hk);
-   public static final cvx hn = a(dig.hl);
-   public static final cvx ho = a(dig.hm);
-   public static final cvx hp = a(dig.hn);
-   public static final cvx hq = a(dig.ho);
-   public static final cvx hr = a(dig.hp);
-   public static final cvx hs = a(dig.hq);
-   public static final cvx ht = a(dig.hr);
-   public static final cvx hu = a(dig.hs);
-   public static final cvx hv = a(dig.ht);
-   public static final cvx hw = a(dig.hu);
-   public static final cvx hx = a(dig.hv);
-   public static final cvx hy = a(dig.hw);
-   public static final cvx hz = a(dig.hx);
-   public static final cvx hA = a(dig.hy);
-   public static final cvx hB = a(dig.hW, new cvx.a().a(cwy.d));
-   public static final cvx hC = a(dig.hX, new cvx.a().a(cwy.d));
-   public static final cvx hD = a(dig.ij);
-   public static final cvx hE = a(dig.ik, $$0 -> $$0.a(ku.D, ddn.a(cuy.a)));
-   public static final cvx hF = a(dig.il, $$0 -> $$0.a(ku.D, ddn.a(cuy.b)));
-   public static final cvx hG = a(dig.im, $$0 -> $$0.a(ku.D, ddn.a(cuy.c)));
-   public static final cvx hH = a(dig.in, $$0 -> $$0.a(ku.D, ddn.a(cuy.d)));
-   public static final cvx hI = a(dig.io, $$0 -> $$0.a(ku.D, ddn.a(cuy.e)));
-   public static final cvx hJ = a(dig.ip, $$0 -> $$0.a(ku.D, ddn.a(cuy.f)));
-   public static final cvx hK = a(dig.iq, $$0 -> $$0.a(ku.D, ddn.a(cuy.g)));
-   public static final cvx hL = a(dig.ir, $$0 -> $$0.a(ku.D, ddn.a(cuy.h)));
-   public static final cvx hM = a(dig.is, $$0 -> $$0.a(ku.D, ddn.a(cuy.i)));
-   public static final cvx hN = a(dig.it, $$0 -> $$0.a(ku.D, ddn.a(cuy.j)));
-   public static final cvx hO = a(dig.iu, $$0 -> $$0.a(ku.D, ddn.a(cuy.k)));
-   public static final cvx hP = a(dig.iv, $$0 -> $$0.a(ku.D, ddn.a(cuy.l)));
-   public static final cvx hQ = a(dig.iw, $$0 -> $$0.a(ku.D, ddn.a(cuy.m)));
-   public static final cvx hR = a(dig.ix, $$0 -> $$0.a(ku.D, ddn.a(cuy.n)));
-   public static final cvx hS = a(dig.iy, $$0 -> $$0.a(ku.D, ddn.a(cuy.o)));
-   public static final cvx hT = a(dig.iz, $$0 -> $$0.a(ku.D, ddn.a(cuy.p)));
-   public static final cvx hU = a(dig.iA);
-   public static final cvx hV = a(dig.iC);
-   public static final cvx hW = a(dig.kE);
-   public static final cvx hX = a(dig.iD, cux::new);
-   public static final cvx hY = a(dig.iE, cux::new);
-   public static final cvx hZ = a(dig.iF, cux::new);
-   public static final cvx ia = a(dig.iG, cux::new);
-   public static final cvx ib = a(dig.iH, cux::new);
-   public static final cvx ic = a(dig.iI, cux::new);
-   public static final cvx id = a(dig.ei);
-   public static final cvx ie = a(dig.ej);
-   public static final cvx if = a(dig.ek);
-   public static final cvx ig = a(dig.el);
-   public static final cvx ih = a(dig.em);
-   public static final cvx ii = a(dig.en);
-   public static final cvx ij = a(dig.eo);
-   public static final cvx ik = a(dig.ep);
-   public static final cvx il = a(dig.eq);
-   public static final cvx im = a(dig.er);
-   public static final cvx in = a(dig.es);
-   public static final cvx io = a(dig.et);
-   public static final cvx ip = a(dig.eu);
-   public static final cvx iq = a(dig.ev);
-   public static final cvx ir = a(dig.ew);
-   public static final cvx is = a(dig.ex);
-   public static final cvx it = a(dig.hz);
-   public static final cvx iu = a(dig.hA);
-   public static final cvx iv = a(dig.hB);
-   public static final cvx iw = a(dig.hC);
-   public static final cvx ix = a(dig.hD);
-   public static final cvx iy = a(dig.hE);
-   public static final cvx iz = a(dig.hF);
-   public static final cvx iA = a(dig.hG);
-   public static final cvx iB = a(dig.hH);
-   public static final cvx iC = a(dig.hI);
-   public static final cvx iD = a(dig.hJ);
-   public static final cvx iE = a(dig.hK);
-   public static final cvx iF = a(dig.hL);
-   public static final cvx iG = a(dig.hM);
-   public static final cvx iH = a(dig.hN);
-   public static final cvx iI = a(dig.hO);
-   public static final cvx iJ = a(dig.hZ);
-   public static final cvx iK = a(dig.ia);
-   public static final cvx iL = a(dig.ib);
-   public static final cvx iM = a(dig.ic);
-   public static final cvx iN = a(dig.id);
-   public static final cvx iO = a(dig.ie);
-   public static final cvx iP = a(dig.ii);
-   public static final cvx iQ = a(dig.jp);
-   public static final cvx iR = a(dig.jq);
-   public static final cvx iS = a(dig.jr);
-   public static final cvx iT = a(dig.js);
-   public static final cvx iU = a(dig.kG, cvn::new, new cvx.a().a(cwy.d));
-   public static final cvx iV = a(dig.kH, cvn::new, new cvx.a().a(cwy.d));
-   public static final cvx iW = a(dig.kJ);
-   public static final cvx iX = a(dig.kK);
-   public static final cvx iY = a(dig.op);
-   public static final cvx iZ = a(dig.kL);
-   public static final cvx ja = a(dig.kM);
-   public static final cvx jb = a(dig.kN, new cvx.a().a(cwy.d));
-   public static final cvx jc = a(dig.kP, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jd = a(dig.kQ, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx je = a(dig.kR, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jf = a(dig.kS, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jg = a(dig.kT, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jh = a(dig.kU, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx ji = a(dig.kV, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jj = a(dig.kW, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jk = a(dig.kX, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jl = a(dig.kY, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jm = a(dig.kZ, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jn = a(dig.la, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jo = a(dig.lb, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jp = a(dig.lc, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jq = a(dig.ld, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jr = a(dig.le, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx js = a(dig.lf, new cvx.a().a(1).a(ku.al, cyt.a));
-   public static final cvx jt = a(dig.lg);
-   public static final cvx ju = a(dig.lh);
-   public static final cvx jv = a(dig.li);
-   public static final cvx jw = a(dig.lj);
-   public static final cvx jx = a(dig.lk);
-   public static final cvx jy = a(dig.ll);
-   public static final cvx jz = a(dig.lm);
-   public static final cvx jA = a(dig.ln);
-   public static final cvx jB = a(dig.lo);
-   public static final cvx jC = a(dig.lp);
-   public static final cvx jD = a(dig.lq);
-   public static final cvx jE = a(dig.lr);
-   public static final cvx jF = a(dig.ls);
-   public static final cvx jG = a(dig.lt);
-   public static final cvx jH = a(dig.lu);
-   public static final cvx jI = a(dig.lv);
-   public static final cvx jJ = a(dig.lw);
-   public static final cvx jK = a(dig.lx);
-   public static final cvx jL = a(dig.ly);
-   public static final cvx jM = a(dig.lz);
-   public static final cvx jN = a(dig.lA);
-   public static final cvx jO = a(dig.lB);
-   public static final cvx jP = a(dig.lC);
-   public static final cvx jQ = a(dig.lD);
-   public static final cvx jR = a(dig.lE);
-   public static final cvx jS = a(dig.lF);
-   public static final cvx jT = a(dig.lG);
-   public static final cvx jU = a(dig.lH);
-   public static final cvx jV = a(dig.lI);
-   public static final cvx jW = a(dig.lJ);
-   public static final cvx jX = a(dig.lK);
-   public static final cvx jY = a(dig.lL);
-   public static final cvx jZ = a(dig.lM);
-   public static final cvx ka = a(dig.lN);
-   public static final cvx kb = a(dig.lO);
-   public static final cvx kc = a(dig.lP);
-   public static final cvx kd = a(dig.lQ);
-   public static final cvx ke = a(dig.lR);
-   public static final cvx kf = a(dig.lS);
-   public static final cvx kg = a(dig.lT);
-   public static final cvx kh = a(dig.lU);
-   public static final cvx ki = a(dig.lV);
-   public static final cvx kj = a(dig.lW);
-   public static final cvx kk = a(dig.lX);
-   public static final cvx kl = a(dig.lY);
-   public static final cvx km = a(dig.lZ);
-   public static final cvx kn = a(dig.ma);
-   public static final cvx ko = a(dig.mb);
-   public static final cvx kp = a(dig.mf);
-   public static final cvx kq = a(dig.mg, $$0 -> $$0.a(cwy.b));
-   public static final cvx kr = a(dig.mh);
-   public static final cvx ks = a(dig.mi);
-   public static final cvx kt = a(dig.mj);
-   public static final cvx ku = a(dig.mk);
-   public static final cvx kv = a(dig.ml);
-   public static final cvx kw = a(dig.mm);
-   public static final cvx kx = a(dig.mn);
-   public static final cvx ky = a(dig.mo);
-   public static final cvx kz = a(dig.mp);
-   public static final cvx kA = a(dig.mq);
-   public static final cvx kB = a(dig.mw);
-   public static final cvx kC = a(dig.mx);
-   public static final cvx kD = a(dig.my);
-   public static final cvx kE = a(dig.mz);
-   public static final cvx kF = a(dig.mA);
-   public static final cvx kG = a(dig.ms);
-   public static final cvx kH = a(dig.mt);
-   public static final cvx kI = a(dig.mu);
-   public static final cvx kJ = a(dig.mv);
-   public static final cvx kK = a(dig.mr);
-   public static final cvx kL = a(dig.mG, ($$0, $$1) -> new cxo($$0, dig.mQ, jm.a, $$1));
-   public static final cvx kM = a(dig.mH, ($$0, $$1) -> new cxo($$0, dig.mR, jm.a, $$1));
-   public static final cvx kN = a(dig.mI, ($$0, $$1) -> new cxo($$0, dig.mS, jm.a, $$1));
-   public static final cvx kO = a(dig.mJ, ($$0, $$1) -> new cxo($$0, dig.mT, jm.a, $$1));
-   public static final cvx kP = a(dig.mK, ($$0, $$1) -> new cxo($$0, dig.mU, jm.a, $$1));
-   public static final cvx kQ = a(dig.mB, ($$0, $$1) -> new cxo($$0, dig.mL, jm.a, $$1));
-   public static final cvx kR = a(dig.mC, ($$0, $$1) -> new cxo($$0, dig.mM, jm.a, $$1));
-   public static final cvx kS = a(dig.mD, ($$0, $$1) -> new cxo($$0, dig.mN, jm.a, $$1));
-   public static final cvx kT = a(dig.mE, ($$0, $$1) -> new cxo($$0, dig.mO, jm.a, $$1));
-   public static final cvx kU = a(dig.mF, ($$0, $$1) -> new cxo($$0, dig.mP, jm.a, $$1));
-   public static final cvx kV = a(dig.mW);
-   public static final cvx kW = a(dig.mX, new cvx.a().a(cwy.b));
-   public static final cvx kX = a(dig.ne);
-   public static final cvx kY = a(dig.nf);
-   public static final cvx kZ = a(dig.ng);
-   public static final cvx la = a(dig.nh);
-   public static final cvx lb = a(dig.ni);
-   public static final cvx lc = a(dig.nj);
-   public static final cvx ld = a(dig.nk);
-   public static final cvx le = a(dig.nl);
-   public static final cvx lf = a(dig.nm);
-   public static final cvx lg = a(dig.nn);
-   public static final cvx lh = a(dig.no);
-   public static final cvx li = a(dig.np);
-   public static final cvx lj = a(dig.nq);
-   public static final cvx lk = a(dig.nr);
-   public static final cvx ll = a(dig.sL);
-   public static final cvx lm = a(dig.sP);
-   public static final cvx ln = a(dig.sX);
-   public static final cvx lo = a(dig.sT);
-   public static final cvx lp = a(dig.ns);
-   public static final cvx lq = a(dig.nt);
-   public static final cvx lr = a(dig.nu);
-   public static final cvx ls = a(dig.nv);
-   public static final cvx lt = a(dig.nw);
-   public static final cvx lu = a(dig.nx);
-   public static final cvx lv = a(dig.ny);
-   public static final cvx lw = a(dig.nz);
-   public static final cvx lx = a(dig.nA);
-   public static final cvx ly = a(dig.nB);
-   public static final cvx lz = a(dig.nC);
-   public static final cvx lA = a(dig.nD);
-   public static final cvx lB = a(dig.nE);
-   public static final cvx lC = a(dig.sM);
-   public static final cvx lD = a(dig.sQ);
-   public static final cvx lE = a(dig.sY);
-   public static final cvx lF = a(dig.sU);
-   public static final cvx lG = a(dig.nS, cxa::new);
-   public static final cvx lH = a("redstone", b(dig.cw));
-   public static final cvx lI = a(dig.dK, ($$0, $$1) -> new cxo($$0, dig.dL, jm.a, $$1));
-   public static final cvx lJ = a(dig.ha);
-   public static final cvx lK = a(dig.eh);
-   public static final cvx lL = a(dig.gY);
-   public static final cvx lM = a(dig.by);
-   public static final cvx lN = a(dig.br);
-   public static final cvx lO = a(dig.hV);
-   public static final cvx lP = a(dig.pg);
-   public static final cvx lQ = a(dig.kO);
-   public static final cvx lR = a(dig.hc, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx lS = a(dig.aU, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx lT = a(dig.hi, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx lU = a(dig.oa);
-   public static final cvx lV = a(dig.pd);
-   public static final cvx lW = a(dig.dw);
-   public static final cvx lX = a(dig.ss);
-   public static final cvx lY = a(dig.gZ);
-   public static final cvx lZ = a(dig.qQ);
-   public static final cvx ma = a(dig.qR);
-   public static final cvx mb = a(dig.fH);
-   public static final cvx mc = a(dig.gV, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx md = a(dig.ck);
-   public static final cvx me = a(dig.fB);
-   public static final cvx mf = a(dig.aY);
-   public static final cvx mg = a(dig.dM);
-   public static final cvx mh = a(dig.pG);
-   public static final cvx mi = a(dig.gv);
-   public static final cvx mj = a(dig.gw);
-   public static final cvx mk = a(dig.gx);
-   public static final cvx ml = a(dig.gy);
-   public static final cvx mm = a(dig.gz);
-   public static final cvx mn = a(dig.gA);
-   public static final cvx mo = a(dig.gB);
-   public static final cvx mp = a(dig.gC);
-   public static final cvx mq = a(dig.gD);
-   public static final cvx mr = a(dig.oS);
-   public static final cvx ms = a(dig.oT);
-   public static final cvx mt = a(dig.dx);
-   public static final cvx mu = a(dig.pF);
-   public static final cvx mv = a(dig.gW);
-   public static final cvx mw = a(dig.gX);
-   public static final cvx mx = a(dig.dz);
-   public static final cvx my = a(dig.dA);
-   public static final cvx mz = a(dig.dB);
-   public static final cvx mA = a(dig.dC);
-   public static final cvx mB = a(dig.dD);
-   public static final cvx mC = a(dig.dE);
-   public static final cvx mD = a(dig.dF);
-   public static final cvx mE = a(dig.dG);
-   public static final cvx mF = a(dig.dH);
-   public static final cvx mG = a(dig.oI);
-   public static final cvx mH = a(dig.oJ);
-   public static final cvx mI = a(dig.dy, cux::new);
-   public static final cvx mJ = a(dig.cN, cux::new);
-   public static final cvx mK = a(dig.kl, cux::new);
-   public static final cvx mL = a(dig.km, cux::new);
-   public static final cvx mM = a(dig.kn, cux::new);
-   public static final cvx mN = a(dig.ko, cux::new);
-   public static final cvx mO = a(dig.kp, cux::new);
-   public static final cvx mP = a(dig.kq, cux::new);
-   public static final cvx mQ = a(dig.kr, cux::new);
-   public static final cvx mR = a(dig.ks, cux::new);
-   public static final cvx mS = a(dig.oU, cux::new);
-   public static final cvx mT = a(dig.oV, cux::new);
-   public static final cvx mU = a(dig.rM, cux::new);
-   public static final cvx mV = a(dig.rN, cux::new);
-   public static final cvx mW = a(dig.rP, cux::new);
-   public static final cvx mX = a(dig.rO, cux::new);
-   public static final cvx mY = a(dig.rQ, cux::new);
-   public static final cvx mZ = a(dig.rR, cux::new);
-   public static final cvx na = a(dig.rT, cux::new);
-   public static final cvx nb = a(dig.rS, cux::new);
-   public static final cvx nc = a(dig.hY);
-   public static final cvx nd = a(dig.ey);
-   public static final cvx ne = a(dig.ez);
-   public static final cvx nf = a(dig.eA);
-   public static final cvx ng = a(dig.eB);
-   public static final cvx nh = a(dig.eC);
-   public static final cvx ni = a(dig.eD);
-   public static final cvx nj = a(dig.eE);
-   public static final cvx nk = a(dig.eF);
-   public static final cvx nl = a(dig.eG);
-   public static final cvx nm = a(dig.oM);
-   public static final cvx nn = a(dig.oN);
-   public static final cvx no = a(dig.rU);
-   public static final cvx np = a(dig.rV);
-   public static final cvx nq = a(dig.rX);
-   public static final cvx nr = a(dig.rW);
-   public static final cvx ns = a(dig.rY);
-   public static final cvx nt = a(dig.rZ);
-   public static final cvx nu = a(dig.sb);
-   public static final cvx nv = a(dig.sa);
-   public static final cvx nw = a(dig.fh);
-   public static final cvx nx = a(dig.jV);
-   public static final cvx ny = a(dig.jW);
-   public static final cvx nz = a(dig.jX);
-   public static final cvx nA = a(dig.jY);
-   public static final cvx nB = a(dig.jZ);
-   public static final cvx nC = a(dig.ka);
-   public static final cvx nD = a(dig.kb);
-   public static final cvx nE = a(dig.kc);
-   public static final cvx nF = a(dig.oO);
-   public static final cvx nG = a(dig.oP);
-   public static final cvx nH = a(dig.bp);
-   public static final cvx nI = a(dig.bq);
-   public static final cvx nJ = a(dig.cP);
-   public static final cvx nK = a(dig.hh);
-   public static final cvx nL = a("saddle", cwz::new, new cvx.a().a(1));
-   public static final cvx nM = a("minecart", $$0 -> new cwp(cqk.a.a, $$0), new cvx.a().a(1));
-   public static final cvx nN = a("chest_minecart", $$0 -> new cwp(cqk.a.b, $$0), new cvx.a().a(1));
-   public static final cvx nO = a("furnace_minecart", $$0 -> new cwp(cqk.a.c, $$0), new cvx.a().a(1));
-   public static final cvx nP = a("tnt_minecart", $$0 -> new cwp(cqk.a.d, $$0), new cvx.a().a(1));
-   public static final cvx nQ = a("hopper_minecart", $$0 -> new cwp(cqk.a.f, $$0), new cvx.a().a(1));
-   public static final cvx nR = a("carrot_on_a_stick", $$0 -> new cvm<>(bul.az, 7, $$0), new cvx.a().b(25));
-   public static final cvx nS = a("warped_fungus_on_a_stick", $$0 -> new cvm<>(bul.aZ, 1, $$0), new cvx.a().b(100));
-   public static final cvx nT = a("phantom_membrane");
-   public static final cvx nU = a("elytra", new cvx.a().b(432).a(cwy.d).a(ku.F, bap.a).a(ku.D, ddn.a(bum.e).a(awl.ar).a(ddm.i).c(false).a()).c(nT));
-   public static final cvx nV = a("oak_boat", $$0 -> new cui(false, cqm.b.a, $$0), new cvx.a().a(1));
-   public static final cvx nW = a("oak_chest_boat", $$0 -> new cui(true, cqm.b.a, $$0), new cvx.a().a(1));
-   public static final cvx nX = a("spruce_boat", $$0 -> new cui(false, cqm.b.b, $$0), new cvx.a().a(1));
-   public static final cvx nY = a("spruce_chest_boat", $$0 -> new cui(true, cqm.b.b, $$0), new cvx.a().a(1));
-   public static final cvx nZ = a("birch_boat", $$0 -> new cui(false, cqm.b.c, $$0), new cvx.a().a(1));
-   public static final cvx oa = a("birch_chest_boat", $$0 -> new cui(true, cqm.b.c, $$0), new cvx.a().a(1));
-   public static final cvx ob = a("jungle_boat", $$0 -> new cui(false, cqm.b.d, $$0), new cvx.a().a(1));
-   public static final cvx oc = a("jungle_chest_boat", $$0 -> new cui(true, cqm.b.d, $$0), new cvx.a().a(1));
-   public static final cvx od = a("acacia_boat", $$0 -> new cui(false, cqm.b.e, $$0), new cvx.a().a(1));
-   public static final cvx oe = a("acacia_chest_boat", $$0 -> new cui(true, cqm.b.e, $$0), new cvx.a().a(1));
-   public static final cvx of = a("cherry_boat", $$0 -> new cui(false, cqm.b.f, $$0), new cvx.a().a(1));
-   public static final cvx og = a("cherry_chest_boat", $$0 -> new cui(true, cqm.b.f, $$0), new cvx.a().a(1));
-   public static final cvx oh = a("dark_oak_boat", $$0 -> new cui(false, cqm.b.g, $$0), new cvx.a().a(1));
-   public static final cvx oi = a("dark_oak_chest_boat", $$0 -> new cui(true, cqm.b.g, $$0), new cvx.a().a(1));
-   public static final cvx oj = a("mangrove_boat", $$0 -> new cui(false, cqm.b.h, $$0), new cvx.a().a(1));
-   public static final cvx ok = a("mangrove_chest_boat", $$0 -> new cui(true, cqm.b.h, $$0), new cvx.a().a(1));
-   public static final cvx ol = a("bamboo_raft", $$0 -> new cui(false, cqm.b.i, $$0), new cvx.a().a(1));
-   public static final cvx om = a("bamboo_chest_raft", $$0 -> new cui(true, cqm.b.i, $$0), new cvx.a().a(1));
-   public static final cvx on = a(dig.pa, cvn::new, new cvx.a().a(cwy.d));
-   public static final cvx oo = a(dig.pb, cvn::new, new cvx.a().a(cwy.d));
-   public static final cvx op = a("turtle_helmet", $$0 -> new cua(ddj.f, ddk.a, $$0));
-   public static final cvx oq = a("turtle_scute");
-   public static final cvx or = a("armadillo_scute");
-   public static final cvx os = a("wolf_armor", $$0 -> new ctz(ddj.h, ctz.a.b, $$0));
-   public static final cvx ot = a("flint_and_steel", cvl::new, new cvx.a().b(64));
-   public static final cvx ou = a("bowl");
-   public static final cvx ov = a("apple", new cvx.a().a(crm.a));
-   public static final cvx ow = a("bow", cul::new, new cvx.a().b(384).c(1));
-   public static final cvx ox = a("arrow", cuc::new);
-   public static final cvx oy = a("coal");
-   public static final cvx oz = a("charcoal");
-   public static final cvx oA = a("diamond");
-   public static final cvx oB = a("emerald");
-   public static final cvx oC = a("lapis_lazuli");
-   public static final cvx oD = a("quartz");
-   public static final cvx oE = a("amethyst_shard");
-   public static final cvx oF = a("raw_iron");
-   public static final cvx oG = a("iron_ingot");
-   public static final cvx oH = a("raw_copper");
-   public static final cvx oI = a("copper_ingot");
-   public static final cvx oJ = a("raw_gold");
-   public static final cvx oK = a("gold_ingot");
-   public static final cvx oL = a("netherite_ingot", new cvx.a().a());
-   public static final cvx oM = a("netherite_scrap", new cvx.a().a());
-   public static final cvx oN = a("wooden_sword", $$0 -> new cxp(cxs.a, 3.0F, -2.4F, $$0));
-   public static final cvx oO = a("wooden_shovel", $$0 -> new cxe(cxs.a, 1.5F, -3.0F, $$0));
-   public static final cvx oP = a("wooden_pickaxe", $$0 -> new cws(cxs.a, 1.0F, -2.8F, $$0));
-   public static final cvx oQ = a("wooden_axe", $$0 -> new cud(cxs.a, 6.0F, -3.2F, $$0));
-   public static final cvx oR = a("wooden_hoe", $$0 -> new cvr(cxs.a, 0.0F, -3.0F, $$0));
-   public static final cvx oS = a("stone_sword", $$0 -> new cxp(cxs.b, 3.0F, -2.4F, $$0));
-   public static final cvx oT = a("stone_shovel", $$0 -> new cxe(cxs.b, 1.5F, -3.0F, $$0));
-   public static final cvx oU = a("stone_pickaxe", $$0 -> new cws(cxs.b, 1.0F, -2.8F, $$0));
-   public static final cvx oV = a("stone_axe", $$0 -> new cud(cxs.b, 7.0F, -3.2F, $$0));
-   public static final cvx oW = a("stone_hoe", $$0 -> new cvr(cxs.b, -1.0F, -2.0F, $$0));
-   public static final cvx oX = a("golden_sword", $$0 -> new cxp(cxs.e, 3.0F, -2.4F, $$0));
-   public static final cvx oY = a("golden_shovel", $$0 -> new cxe(cxs.e, 1.5F, -3.0F, $$0));
-   public static final cvx oZ = a("golden_pickaxe", $$0 -> new cws(cxs.e, 1.0F, -2.8F, $$0));
-   public static final cvx pa = a("golden_axe", $$0 -> new cud(cxs.e, 6.0F, -3.0F, $$0));
-   public static final cvx pb = a("golden_hoe", $$0 -> new cvr(cxs.e, 0.0F, -3.0F, $$0));
-   public static final cvx pc = a("iron_sword", $$0 -> new cxp(cxs.c, 3.0F, -2.4F, $$0));
-   public static final cvx pd = a("iron_shovel", $$0 -> new cxe(cxs.c, 1.5F, -3.0F, $$0));
-   public static final cvx pe = a("iron_pickaxe", $$0 -> new cws(cxs.c, 1.0F, -2.8F, $$0));
-   public static final cvx pf = a("iron_axe", $$0 -> new cud(cxs.c, 6.0F, -3.1F, $$0));
-   public static final cvx pg = a("iron_hoe", $$0 -> new cvr(cxs.c, -2.0F, -1.0F, $$0));
-   public static final cvx ph = a("diamond_sword", $$0 -> new cxp(cxs.d, 3.0F, -2.4F, $$0));
-   public static final cvx pi = a("diamond_shovel", $$0 -> new cxe(cxs.d, 1.5F, -3.0F, $$0));
-   public static final cvx pj = a("diamond_pickaxe", $$0 -> new cws(cxs.d, 1.0F, -2.8F, $$0));
-   public static final cvx pk = a("diamond_axe", $$0 -> new cud(cxs.d, 5.0F, -3.0F, $$0));
-   public static final cvx pl = a("diamond_hoe", $$0 -> new cvr(cxs.d, -3.0F, 0.0F, $$0));
-   public static final cvx pm = a("netherite_sword", $$0 -> new cxp(cxs.f, 3.0F, -2.4F, $$0), new cvx.a().a());
-   public static final cvx pn = a("netherite_shovel", $$0 -> new cxe(cxs.f, 1.5F, -3.0F, $$0), new cvx.a().a());
-   public static final cvx po = a("netherite_pickaxe", $$0 -> new cws(cxs.f, 1.0F, -2.8F, $$0), new cvx.a().a());
-   public static final cvx pp = a("netherite_axe", $$0 -> new cud(cxs.f, 5.0F, -3.0F, $$0), new cvx.a().a());
-   public static final cvx pq = a("netherite_hoe", $$0 -> new cvr(cxs.f, -4.0F, 0.0F, $$0), new cvx.a().a());
-   public static final cvx pr = a("stick");
-   public static final cvx ps = a("mushroom_stew", new cvx.a().a(1).a(crm.y).a(ou));
-   public static final cvx pt = a("string", b(dig.fI));
-   public static final cvx pu = a("feather");
-   public static final cvx pv = a("gunpowder");
-   public static final cvx pw = a("wheat_seeds", b(dig.cB));
-   public static final cvx px = a("wheat");
-   public static final cvx py = a("bread", new cvx.a().a(crm.f));
-   public static final cvx pz = a("leather_helmet", $$0 -> new cua(ddj.a, ddk.a, $$0));
-   public static final cvx pA = a("leather_chestplate", $$0 -> new cua(ddj.a, ddk.b, $$0));
-   public static final cvx pB = a("leather_leggings", $$0 -> new cua(ddj.a, ddk.c, $$0));
-   public static final cvx pC = a("leather_boots", $$0 -> new cua(ddj.a, ddk.d, $$0));
-   public static final cvx pD = a("chainmail_helmet", $$0 -> new cua(ddj.b, ddk.a, $$0), new cvx.a().a(cwy.b));
-   public static final cvx pE = a("chainmail_chestplate", $$0 -> new cua(ddj.b, ddk.b, $$0), new cvx.a().a(cwy.b));
-   public static final cvx pF = a("chainmail_leggings", $$0 -> new cua(ddj.b, ddk.c, $$0), new cvx.a().a(cwy.b));
-   public static final cvx pG = a("chainmail_boots", $$0 -> new cua(ddj.b, ddk.d, $$0), new cvx.a().a(cwy.b));
-   public static final cvx pH = a("iron_helmet", $$0 -> new cua(ddj.c, ddk.a, $$0));
-   public static final cvx pI = a("iron_chestplate", $$0 -> new cua(ddj.c, ddk.b, $$0));
-   public static final cvx pJ = a("iron_leggings", $$0 -> new cua(ddj.c, ddk.c, $$0));
-   public static final cvx pK = a("iron_boots", $$0 -> new cua(ddj.c, ddk.d, $$0));
-   public static final cvx pL = a("diamond_helmet", $$0 -> new cua(ddj.e, ddk.a, $$0));
-   public static final cvx pM = a("diamond_chestplate", $$0 -> new cua(ddj.e, ddk.b, $$0));
-   public static final cvx pN = a("diamond_leggings", $$0 -> new cua(ddj.e, ddk.c, $$0));
-   public static final cvx pO = a("diamond_boots", $$0 -> new cua(ddj.e, ddk.d, $$0));
-   public static final cvx pP = a("golden_helmet", $$0 -> new cua(ddj.d, ddk.a, $$0));
-   public static final cvx pQ = a("golden_chestplate", $$0 -> new cua(ddj.d, ddk.b, $$0));
-   public static final cvx pR = a("golden_leggings", $$0 -> new cua(ddj.d, ddk.c, $$0));
-   public static final cvx pS = a("golden_boots", $$0 -> new cua(ddj.d, ddk.d, $$0));
-   public static final cvx pT = a("netherite_helmet", $$0 -> new cua(ddj.g, ddk.a, $$0), new cvx.a().a());
-   public static final cvx pU = a("netherite_chestplate", $$0 -> new cua(ddj.g, ddk.b, $$0), new cvx.a().a());
-   public static final cvx pV = a("netherite_leggings", $$0 -> new cua(ddj.g, ddk.c, $$0), new cvx.a().a());
-   public static final cvx pW = a("netherite_boots", $$0 -> new cua(ddj.g, ddk.d, $$0), new cvx.a().a());
-   public static final cvx pX = a("flint");
-   public static final cvx pY = a("porkchop", new cvx.a().a(crm.B));
-   public static final cvx pZ = a("cooked_porkchop", new cvx.a().a(crm.o));
-   public static final cvx qa = a("painting", $$0 -> new cvp(bul.av, $$0));
-   public static final cvx qb = a("golden_apple", new cvx.a().a(crm.u, cyj.h));
-   public static final cvx qc = a("enchanted_golden_apple", new cvx.a().a(cwy.c).a(crm.t, cyj.g).a(ku.u, true));
-   public static final cvx qd = a(dig.cE, ($$0, $$1) -> new cxg($$0, dig.cR, $$1), new cvx.a().a(16));
-   public static final cvx qe = a(dig.cF, ($$0, $$1) -> new cxg($$0, dig.cS, $$1), new cvx.a().a(16));
-   public static final cvx qf = a(dig.cG, ($$0, $$1) -> new cxg($$0, dig.cT, $$1), new cvx.a().a(16));
-   public static final cvx qg = a(dig.cJ, ($$0, $$1) -> new cxg($$0, dig.cW, $$1), new cvx.a().a(16));
-   public static final cvx qh = a(dig.cH, ($$0, $$1) -> new cxg($$0, dig.cU, $$1), new cvx.a().a(16));
-   public static final cvx qi = a(dig.cI, ($$0, $$1) -> new cxg($$0, dig.cV, $$1), new cvx.a().a(16));
-   public static final cvx qj = a(dig.cK, ($$0, $$1) -> new cxg($$0, dig.cX, $$1), new cvx.a().a(16));
-   public static final cvx qk = a(dig.cL, ($$0, $$1) -> new cxg($$0, dig.cY, $$1), new cvx.a().a(16));
-   public static final cvx ql = a(dig.cM, ($$0, $$1) -> new cxg($$0, dig.cZ, $$1), new cvx.a().a(16));
-   public static final cvx qm = a(dig.oW, ($$0, $$1) -> new cxg($$0, dig.oY, $$1), new cvx.a().a(16));
-   public static final cvx qn = a(dig.oX, ($$0, $$1) -> new cxg($$0, dig.oZ, $$1), new cvx.a().a(16));
-   public static final cvx qo = a(dig.da, ($$0, $$1) -> new cvq($$0, dig.dl, $$1), new cvx.a().a(16));
-   public static final cvx qp = a(dig.db, ($$0, $$1) -> new cvq($$0, dig.dm, $$1), new cvx.a().a(16));
-   public static final cvx qq = a(dig.dc, ($$0, $$1) -> new cvq($$0, dig.dn, $$1), new cvx.a().a(16));
-   public static final cvx qr = a(dig.df, ($$0, $$1) -> new cvq($$0, dig.dq, $$1), new cvx.a().a(16));
-   public static final cvx qs = a(dig.dd, ($$0, $$1) -> new cvq($$0, dig.do, $$1), new cvx.a().a(16));
-   public static final cvx qt = a(dig.de, ($$0, $$1) -> new cvq($$0, dig.dp, $$1), new cvx.a().a(16));
-   public static final cvx qu = a(dig.dg, ($$0, $$1) -> new cvq($$0, dig.dr, $$1), new cvx.a().a(16));
-   public static final cvx qv = a(dig.dj, ($$0, $$1) -> new cvq($$0, dig.ds, $$1), new cvx.a().a(16));
-   public static final cvx qw = a(dig.dk, ($$0, $$1) -> new cvq($$0, dig.dv, $$1), new cvx.a().a(16));
-   public static final cvx qx = a(dig.dh, ($$0, $$1) -> new cvq($$0, dig.dt, $$1), new cvx.a().a(16));
-   public static final cvx qy = a(dig.di, ($$0, $$1) -> new cvq($$0, dig.du, $$1), new cvx.a().a(16));
-   public static final cvx qz = a("bucket", $$0 -> new cun(erl.a, $$0), new cvx.a().a(16));
-   public static final cvx qA = a("water_bucket", $$0 -> new cun(erl.c, $$0), new cvx.a().b(qz).a(1));
-   public static final cvx qB = a("lava_bucket", $$0 -> new cun(erl.e, $$0), new cvx.a().b(qz).a(1));
-   public static final cvx qC = a("powder_snow_bucket", $$0 -> new cxj(dig.qP, awl.dg, $$0), new cvx.a().a(1).c());
-   public static final cvx qD = a("snowball", cxi::new, new cvx.a().a(16));
-   public static final cvx qE = a("leather");
-   public static final cvx qF = a("milk_bucket", new cvx.a().b(qz).a(ku.x, cyj.m).a(qz).a(1));
-   public static final cvx qG = a("pufferfish_bucket", $$0 -> new cwq(bul.aF, erl.c, awl.de, $$0), new cvx.a().a(1).a(ku.X, cyk.a));
-   public static final cvx qH = a("salmon_bucket", $$0 -> new cwq(bul.aI, erl.c, awl.de, $$0), new cvx.a().a(1).a(ku.X, cyk.a));
-   public static final cvx qI = a("cod_bucket", $$0 -> new cwq(bul.u, erl.c, awl.de, $$0), new cvx.a().a(1).a(ku.X, cyk.a));
-   public static final cvx qJ = a("tropical_fish_bucket", $$0 -> new cwq(bul.bg, erl.c, awl.de, $$0), new cvx.a().a(1).a(ku.X, cyk.a));
-   public static final cvx qK = a("axolotl_bucket", $$0 -> new cwq(bul.f, erl.c, awl.dd, $$0), new cvx.a().a(1).a(ku.X, cyk.a));
-   public static final cvx qL = a("tadpole_bucket", $$0 -> new cwq(bul.ba, erl.c, awl.dh, $$0), new cvx.a().a(1).a(ku.X, cyk.a));
-   public static final cvx qM = a("brick");
-   public static final cvx qN = a("clay_ball");
-   public static final cvx qO = a(dig.me);
-   public static final cvx qP = a("paper");
-   public static final cvx qQ = a("book", new cvx.a().c(1));
-   public static final cvx qR = a("slime_ball");
-   public static final cvx qS = a("egg", cva::new, new cvx.a().a(16));
-   public static final cvx qT = a("compass", cup::new);
-   public static final cvx qU = a("recovery_compass", new cvx.a().a(cwy.b));
-   public static final cvx qV = a(
-      "bundle", $$0 -> new cuo(ali.b("bundle_open_front"), ali.b("bundle_open_back"), $$0), new cvx.a().a(1).a(crh.b).a(ku.P, cyf.a)
+public final class cwf implements kp {
+   public static final Codec<jq<cwb>> a = lz.g
+      .r()
+      .validate($$0 -> $$0.a(cwj.a.f()) ? DataResult.error(() -> "Item must not be minecraft:air") : DataResult.success($$0));
+   public static final Codec<cwf> b = Codec.lazyInitialized(
+      () -> RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     a.fieldOf("id").forGetter(cwf::i),
+                     ayw.a(1, 99).fieldOf("count").orElse(1).forGetter(cwf::L),
+                     kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.q.g())
+                  )
+                  .apply($$0, cwf::new)
+         )
    );
-   public static final cvx qW = a("fishing_rod", cvk::new, new cvx.a().b(64).c(1));
-   public static final cvx qX = a("clock");
-   public static final cvx qY = a("spyglass", cxn::new, new cvx.a().a(1).a(ali.b("spyglass_in_hand")));
-   public static final cvx qZ = a("glowstone_dust");
-   public static final cvx ra = a("cod", new cvx.a().a(crm.j));
-   public static final cvx rb = a("salmon", new cvx.a().a(crm.I));
-   public static final cvx rc = a("tropical_fish", new cvx.a().a(crm.N));
-   public static final cvx rd = a("pufferfish", new cvx.a().a(crm.D, cyj.j));
-   public static final cvx re = a("cooked_cod", new cvx.a().a(crm.m));
-   public static final cvx rf = a("cooked_salmon", new cvx.a().a(crm.q));
-   public static final cvx rg = a("ink_sac", cvt::new);
-   public static final cvx rh = a("glow_ink_sac", cvo::new);
-   public static final cvx ri = a("cocoa_beans", b(dig.fC));
-   public static final cvx rj = a("white_dye", $$0 -> new cuz(cuy.a, $$0));
-   public static final cvx rk = a("orange_dye", $$0 -> new cuz(cuy.b, $$0));
-   public static final cvx rl = a("magenta_dye", $$0 -> new cuz(cuy.c, $$0));
-   public static final cvx rm = a("light_blue_dye", $$0 -> new cuz(cuy.d, $$0));
-   public static final cvx rn = a("yellow_dye", $$0 -> new cuz(cuy.e, $$0));
-   public static final cvx ro = a("lime_dye", $$0 -> new cuz(cuy.f, $$0));
-   public static final cvx rp = a("pink_dye", $$0 -> new cuz(cuy.g, $$0));
-   public static final cvx rq = a("gray_dye", $$0 -> new cuz(cuy.h, $$0));
-   public static final cvx rr = a("light_gray_dye", $$0 -> new cuz(cuy.i, $$0));
-   public static final cvx rs = a("cyan_dye", $$0 -> new cuz(cuy.j, $$0));
-   public static final cvx rt = a("purple_dye", $$0 -> new cuz(cuy.k, $$0));
-   public static final cvx ru = a("blue_dye", $$0 -> new cuz(cuy.l, $$0));
-   public static final cvx rv = a("brown_dye", $$0 -> new cuz(cuy.m, $$0));
-   public static final cvx rw = a("green_dye", $$0 -> new cuz(cuy.n, $$0));
-   public static final cvx rx = a("red_dye", $$0 -> new cuz(cuy.o, $$0));
-   public static final cvx ry = a("black_dye", $$0 -> new cuz(cuy.p, $$0));
-   public static final cvx rz = a("bone_meal", cuj::new);
-   public static final cvx rA = a("bone");
-   public static final cvx rB = a("sugar");
-   public static final cvx rC = a(dig.eg, new cvx.a().a(1));
-   public static final cvx rD = a(dig.aZ, cug::new, new cvx.a().a(1));
-   public static final cvx rE = a(dig.ba, cug::new, new cvx.a().a(1));
-   public static final cvx rF = a(dig.bb, cug::new, new cvx.a().a(1));
-   public static final cvx rG = a(dig.bc, cug::new, new cvx.a().a(1));
-   public static final cvx rH = a(dig.bd, cug::new, new cvx.a().a(1));
-   public static final cvx rI = a(dig.be, cug::new, new cvx.a().a(1));
-   public static final cvx rJ = a(dig.bf, cug::new, new cvx.a().a(1));
-   public static final cvx rK = a(dig.bg, cug::new, new cvx.a().a(1));
-   public static final cvx rL = a(dig.bh, cug::new, new cvx.a().a(1));
-   public static final cvx rM = a(dig.bi, cug::new, new cvx.a().a(1));
-   public static final cvx rN = a(dig.bj, cug::new, new cvx.a().a(1));
-   public static final cvx rO = a(dig.bk, cug::new, new cvx.a().a(1));
-   public static final cvx rP = a(dig.bl, cug::new, new cvx.a().a(1));
-   public static final cvx rQ = a(dig.bm, cug::new, new cvx.a().a(1));
-   public static final cvx rR = a(dig.bn, cug::new, new cvx.a().a(1));
-   public static final cvx rS = a(dig.bo, cug::new, new cvx.a().a(1));
-   public static final cvx rT = a("cookie", new cvx.a().a(crm.r));
-   public static final cvx rU = a(dig.tq, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx rV = a("filled_map", cwo::new, new cvx.a().a(ku.K, cyx.c).a(ku.M, cyw.a));
-   public static final cvx rW = a("shears", cxc::new, new cvx.a().b(238).a(ku.B, cxc.b()));
-   public static final cvx rX = a("melon_slice", new cvx.a().a(crm.x));
-   public static final cvx rY = a("dried_kelp", new cvx.a().a(crm.s, cyj.e));
-   public static final cvx rZ = a(akx.a, b(dig.fd));
-   public static final cvx sa = a(akx.b, b(dig.fe));
-   public static final cvx sb = a("beef", new cvx.a().a(crm.c));
-   public static final cvx sc = a("cooked_beef", new cvx.a().a(crm.k));
-   public static final cvx sd = a("chicken", new cvx.a().a(crm.h, cyj.f));
-   public static final cvx se = a("cooked_chicken", new cvx.a().a(crm.l));
-   public static final cvx sf = a("rotten_flesh", new cvx.a().a(crm.H, cyj.k));
-   public static final cvx sg = a("ender_pearl", cvf::new, new cvx.a().a(16).a(1.0F));
-   public static final cvx sh = a("blaze_rod");
-   public static final cvx si = a("ghast_tear");
-   public static final cvx sj = a("gold_nugget");
-   public static final cvx sk = a("nether_wart", b(dig.fq));
-   public static final cvx sl = a("glass_bottle", cuk::new);
-   public static final cvx sm = a("potion", cwv::new, new cvx.a().a(1).a(ku.Q, cya.a).a(ku.x, cyj.b).a(sl));
-   public static final cvx sn = a("spider_eye", new cvx.a().a(crm.J, cyj.l));
-   public static final cvx so = a("fermented_spider_eye");
-   public static final cvx sp = a("blaze_powder");
-   public static final cvx sq = a("magma_cream");
-   public static final cvx sr = a(dig.fs, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx ss = a(dig.ft, dig.fu, dig.fv, dig.fw);
-   public static final cvx st = a("ender_eye", cve::new);
-   public static final cvx su = a("glistering_melon_slice");
-   public static final cvx sv = a("armadillo_spawn_egg", $$0 -> new cxk(bul.c, 11366765, 8538184, $$0));
-   public static final cvx sw = a("allay_spawn_egg", $$0 -> new cxk(bul.a, 56063, 44543, $$0));
-   public static final cvx sx = a("axolotl_spawn_egg", $$0 -> new cxk(bul.f, 16499171, 10890612, $$0));
-   public static final cvx sy = a("bat_spawn_egg", $$0 -> new cxk(bul.g, 4996656, 986895, $$0));
-   public static final cvx sz = a("bee_spawn_egg", $$0 -> new cxk(bul.h, 15582019, 4400155, $$0));
-   public static final cvx sA = a("blaze_spawn_egg", $$0 -> new cxk(bul.i, 16167425, 16775294, $$0));
-   public static final cvx sB = a("bogged_spawn_egg", $$0 -> new cxk(bul.l, 9084018, 3231003, $$0));
-   public static final cvx sC = a("breeze_spawn_egg", $$0 -> new cxk(bul.m, 11506911, 9529055, $$0));
-   public static final cvx sD = a("cat_spawn_egg", $$0 -> new cxk(bul.p, 15714446, 9794134, $$0));
-   public static final cvx sE = a("camel_spawn_egg", $$0 -> new cxk(bul.o, 16565097, 13341495, $$0));
-   public static final cvx sF = a("cave_spider_spawn_egg", $$0 -> new cxk(bul.q, 803406, 11013646, $$0));
-   public static final cvx sG = a("chicken_spawn_egg", $$0 -> new cxk(bul.t, 10592673, 16711680, $$0));
-   public static final cvx sH = a("cod_spawn_egg", $$0 -> new cxk(bul.u, 12691306, 15058059, $$0));
-   public static final cvx sI = a("cow_spawn_egg", $$0 -> new cxk(bul.w, 4470310, 10592673, $$0));
-   public static final cvx sJ = a("creeper_spawn_egg", $$0 -> new cxk(bul.x, 894731, 0, $$0));
-   public static final cvx sK = a("dolphin_spawn_egg", $$0 -> new cxk(bul.y, 2243405, 16382457, $$0));
-   public static final cvx sL = a("donkey_spawn_egg", $$0 -> new cxk(bul.z, 5457209, 8811878, $$0));
-   public static final cvx sM = a("drowned_spawn_egg", $$0 -> new cxk(bul.B, 9433559, 7969893, $$0));
-   public static final cvx sN = a("elder_guardian_spawn_egg", $$0 -> new cxk(bul.D, 13552826, 7632531, $$0));
-   public static final cvx sO = a("ender_dragon_spawn_egg", $$0 -> new cxk(bul.F, 1842204, 14711290, $$0));
-   public static final cvx sP = a("enderman_spawn_egg", $$0 -> new cxk(bul.H, 1447446, 0, $$0));
-   public static final cvx sQ = a("endermite_spawn_egg", $$0 -> new cxk(bul.I, 1447446, 7237230, $$0));
-   public static final cvx sR = a("evoker_spawn_egg", $$0 -> new cxk(bul.J, 9804699, 1973274, $$0));
-   public static final cvx sS = a("fox_spawn_egg", $$0 -> new cxk(bul.Q, 14005919, 13396256, $$0));
-   public static final cvx sT = a("frog_spawn_egg", $$0 -> new cxk(bul.R, 13661252, 16762748, $$0));
-   public static final cvx sU = a("ghast_spawn_egg", $$0 -> new cxk(bul.T, 16382457, 12369084, $$0));
-   public static final cvx sV = a("glow_squid_spawn_egg", $$0 -> new cxk(bul.W, 611926, 8778172, $$0));
-   public static final cvx sW = a("goat_spawn_egg", $$0 -> new cxk(bul.X, 10851452, 5589310, $$0));
-   public static final cvx sX = a("guardian_spawn_egg", $$0 -> new cxk(bul.Y, 5931634, 15826224, $$0));
-   public static final cvx sY = a("hoglin_spawn_egg", $$0 -> new cxk(bul.Z, 13004373, 6251620, $$0));
-   public static final cvx sZ = a("horse_spawn_egg", $$0 -> new cxk(bul.ab, 12623485, 15656192, $$0));
-   public static final cvx ta = a("husk_spawn_egg", $$0 -> new cxk(bul.ac, 7958625, 15125652, $$0));
-   public static final cvx tb = a("iron_golem_spawn_egg", $$0 -> new cxk(bul.af, 14405058, 7643954, $$0));
-   public static final cvx tc = a("llama_spawn_egg", $$0 -> new cxk(bul.an, 12623485, 10051392, $$0));
-   public static final cvx td = a("magma_cube_spawn_egg", $$0 -> new cxk(bul.ap, 3407872, 16579584, $$0));
-   public static final cvx te = a("mooshroom_spawn_egg", $$0 -> new cxk(bul.as, 10489616, 12040119, $$0));
-   public static final cvx tf = a("mule_spawn_egg", $$0 -> new cxk(bul.at, 1769984, 5321501, $$0));
-   public static final cvx tg = a("ocelot_spawn_egg", $$0 -> new cxk(bul.au, 15720061, 5653556, $$0));
-   public static final cvx th = a("panda_spawn_egg", $$0 -> new cxk(bul.aw, 15198183, 1776418, $$0));
-   public static final cvx ti = a("parrot_spawn_egg", $$0 -> new cxk(bul.ax, 894731, 16711680, $$0));
-   public static final cvx tj = a("phantom_spawn_egg", $$0 -> new cxk(bul.ay, 4411786, 8978176, $$0));
-   public static final cvx tk = a("pig_spawn_egg", $$0 -> new cxk(bul.az, 15771042, 14377823, $$0));
-   public static final cvx tl = a("piglin_spawn_egg", $$0 -> new cxk(bul.aA, 10051392, 16380836, $$0));
-   public static final cvx tm = a("piglin_brute_spawn_egg", $$0 -> new cxk(bul.aB, 5843472, 16380836, $$0));
-   public static final cvx tn = a("pillager_spawn_egg", $$0 -> new cxk(bul.aC, 5451574, 9804699, $$0));
-   public static final cvx to = a("polar_bear_spawn_egg", $$0 -> new cxk(bul.aD, 15658718, 14014157, $$0));
-   public static final cvx tp = a("pufferfish_spawn_egg", $$0 -> new cxk(bul.aF, 16167425, 3654642, $$0));
-   public static final cvx tq = a("rabbit_spawn_egg", $$0 -> new cxk(bul.aG, 10051392, 7555121, $$0));
-   public static final cvx tr = a("ravager_spawn_egg", $$0 -> new cxk(bul.aH, 7697520, 5984329, $$0));
-   public static final cvx ts = a("salmon_spawn_egg", $$0 -> new cxk(bul.aI, 10489616, 951412, $$0));
-   public static final cvx tt = a("sheep_spawn_egg", $$0 -> new cxk(bul.aJ, 15198183, 16758197, $$0));
-   public static final cvx tu = a("shulker_spawn_egg", $$0 -> new cxk(bul.aK, 9725844, 5060690, $$0));
-   public static final cvx tv = a("silverfish_spawn_egg", $$0 -> new cxk(bul.aM, 7237230, 3158064, $$0));
-   public static final cvx tw = a("skeleton_spawn_egg", $$0 -> new cxk(bul.aN, 12698049, 4802889, $$0));
-   public static final cvx tx = a("skeleton_horse_spawn_egg", $$0 -> new cxk(bul.aO, 6842447, 15066584, $$0));
-   public static final cvx ty = a("slime_spawn_egg", $$0 -> new cxk(bul.aP, 5349438, 8306542, $$0));
-   public static final cvx tz = a("sniffer_spawn_egg", $$0 -> new cxk(bul.aR, 8855049, 2468720, $$0));
-   public static final cvx tA = a("snow_golem_spawn_egg", $$0 -> new cxk(bul.aS, 14283506, 8496292, $$0));
-   public static final cvx tB = a("spider_spawn_egg", $$0 -> new cxk(bul.aW, 3419431, 11013646, $$0));
-   public static final cvx tC = a("squid_spawn_egg", $$0 -> new cxk(bul.aX, 2243405, 7375001, $$0));
-   public static final cvx tD = a("stray_spawn_egg", $$0 -> new cxk(bul.aY, 6387319, 14543594, $$0));
-   public static final cvx tE = a("strider_spawn_egg", $$0 -> new cxk(bul.aZ, 10236982, 5065037, $$0));
-   public static final cvx tF = a("tadpole_spawn_egg", $$0 -> new cxk(bul.ba, 7164733, 1444352, $$0));
-   public static final cvx tG = a("trader_llama_spawn_egg", $$0 -> new cxk(bul.be, 15377456, 4547222, $$0));
-   public static final cvx tH = a("tropical_fish_spawn_egg", $$0 -> new cxk(bul.bg, 15690005, 16775663, $$0));
-   public static final cvx tI = a("turtle_spawn_egg", $$0 -> new cxk(bul.bh, 15198183, 44975, $$0));
-   public static final cvx tJ = a("vex_spawn_egg", $$0 -> new cxk(bul.bi, 8032420, 15265265, $$0));
-   public static final cvx tK = a("villager_spawn_egg", $$0 -> new cxk(bul.bj, 5651507, 12422002, $$0));
-   public static final cvx tL = a("vindicator_spawn_egg", $$0 -> new cxk(bul.bk, 9804699, 2580065, $$0));
-   public static final cvx tM = a("wandering_trader_spawn_egg", $$0 -> new cxk(bul.bl, 4547222, 15377456, $$0));
-   public static final cvx tN = a("warden_spawn_egg", $$0 -> new cxk(bul.bm, 1001033, 3790560, $$0));
-   public static final cvx tO = a("witch_spawn_egg", $$0 -> new cxk(bul.bo, 3407872, 5349438, $$0));
-   public static final cvx tP = a("wither_spawn_egg", $$0 -> new cxk(bul.bp, 1315860, 5075616, $$0));
-   public static final cvx tQ = a("wither_skeleton_spawn_egg", $$0 -> new cxk(bul.bq, 1315860, 4672845, $$0));
-   public static final cvx tR = a("wolf_spawn_egg", $$0 -> new cxk(bul.bs, 14144467, 13545366, $$0));
-   public static final cvx tS = a("zoglin_spawn_egg", $$0 -> new cxk(bul.bt, 13004373, 15132390, $$0));
-   public static final cvx tT = a("zombie_spawn_egg", $$0 -> new cxk(bul.bu, 44975, 7969893, $$0));
-   public static final cvx tU = a("zombie_horse_spawn_egg", $$0 -> new cxk(bul.bv, 3232308, 9945732, $$0));
-   public static final cvx tV = a("zombie_villager_spawn_egg", $$0 -> new cxk(bul.bw, 5651507, 7969893, $$0));
-   public static final cvx tW = a("zombified_piglin_spawn_egg", $$0 -> new cxk(bul.bx, 15373203, 5009705, $$0));
-   public static final cvx tX = a("experience_bottle", cvg::new, new cvx.a().a(cwy.b).a(ku.u, true));
-   public static final cvx tY = a("fire_charge", cvh::new);
-   public static final cvx tZ = a("wind_charge", cxv::new, new cvx.a().a(0.5F));
-   public static final cvx ua = a("writable_book", cxw::new, new cvx.a().a(1).a(ku.S, czi.a));
-   public static final cvx ub = a("written_book", cxx::new, new cvx.a().a(16).a(ku.u, true));
-   public static final cvx uc = a("breeze_rod");
-   public static final cvx ud = a("mace", cwn::new, new cvx.a().a(cwy.d).b(500).a(ku.B, cwn.c()).c(uc).a(cwn.b()).c(15));
-   public static final cvx ue = a("item_frame", $$0 -> new cwa(bul.ai, $$0));
-   public static final cvx uf = a("glow_item_frame", $$0 -> new cwa(bul.V, $$0));
-   public static final cvx ug = a(dig.fR);
-   public static final cvx uh = a("carrot", b(dig.gt), new cvx.a().a(crm.g));
-   public static final cvx ui = a("potato", b(dig.gu), new cvx.a().a(crm.C));
-   public static final cvx uj = a("baked_potato", new cvx.a().a(crm.b));
-   public static final cvx uk = a("poisonous_potato", new cvx.a().a(crm.A, cyj.i));
-   public static final cvx ul = a("map", cvc::new);
-   public static final cvx um = a("golden_carrot", new cvx.a().a(crm.v));
-   public static final cvx un = a(dig.gE, ($$0, $$1) -> new cxo($$0, dig.gF, jm.a, $$1), new cvx.a().a(cwy.b).b(bum.f));
-   public static final cvx uo = a(dig.gG, ($$0, $$1) -> new cxo($$0, dig.gH, jm.a, $$1), new cvx.a().a(cwy.c).b(bum.f));
-   public static final cvx up = a(dig.gK, ($$0, $$1) -> new cwu($$0, dig.gL, $$1), new cvx.a().a(cwy.b).b(bum.f));
-   public static final cvx uq = a(dig.gI, ($$0, $$1) -> new cxo($$0, dig.gJ, jm.a, $$1), new cvx.a().a(cwy.b).b(bum.f));
-   public static final cvx ur = a(dig.gM, ($$0, $$1) -> new cxo($$0, dig.gN, jm.a, $$1), new cvx.a().a(cwy.b).b(bum.f));
-   public static final cvx us = a(dig.gO, ($$0, $$1) -> new cxo($$0, dig.gP, jm.a, $$1), new cvx.a().a(cwy.d).b(bum.f));
-   public static final cvx ut = a(dig.gQ, ($$0, $$1) -> new cxo($$0, dig.gR, jm.a, $$1), new cvx.a().a(cwy.b).b(bum.f));
-   public static final cvx uu = a("nether_star", new cvx.a().a(cwy.c).a(ku.u, true).a(ku.A, new cym(axc.l)));
-   public static final cvx uv = a("pumpkin_pie", new cvx.a().a(crm.E));
-   public static final cvx uw = a("firework_rocket", cvi::new, new cvx.a().a(ku.af, new cyr(1, List.of())));
-   public static final cvx ux = a("firework_star", cvj::new);
-   public static final cvx uy = a("enchanted_book", new cvx.a().a(1).a(cwy.b).a(ku.I, dby.a).a(ku.u, true));
-   public static final cvx uz = a("nether_brick");
-   public static final cvx uA = a("prismarine_shard");
-   public static final cvx uB = a("prismarine_crystals");
-   public static final cvx uC = a("rabbit", new cvx.a().a(crm.F));
-   public static final cvx uD = a("cooked_rabbit", new cvx.a().a(crm.p));
-   public static final cvx uE = a("rabbit_stew", new cvx.a().a(1).a(crm.G).a(ou));
-   public static final cvx uF = a("rabbit_foot");
-   public static final cvx uG = a("rabbit_hide");
-   public static final cvx uH = a("armor_stand", cub::new, new cvx.a().a(16));
-   public static final cvx uI = a("iron_horse_armor", $$0 -> new ctz(ddj.c, ctz.a.a, $$0), new cvx.a().a(1));
-   public static final cvx uJ = a("golden_horse_armor", $$0 -> new ctz(ddj.d, ctz.a.a, $$0), new cvx.a().a(1));
-   public static final cvx uK = a("diamond_horse_armor", $$0 -> new ctz(ddj.e, ctz.a.a, $$0), new cvx.a().a(1));
-   public static final cvx uL = a("leather_horse_armor", $$0 -> new ctz(ddj.a, ctz.a.a, $$0), new cvx.a().a(1));
-   public static final cvx uM = a("lead", cwl::new);
-   public static final cvx uN = a("name_tag", cwr::new);
-   public static final cvx uO = a("command_block_minecart", $$0 -> new cwp(cqk.a.g, $$0), new cvx.a().a(1).a(cwy.d));
-   public static final cvx uP = a("mutton", new cvx.a().a(crm.z));
-   public static final cvx uQ = a("cooked_mutton", new cvx.a().a(crm.n));
-   public static final cvx uR = a(dig.iJ, ($$0, $$1) -> new cue($$0, dig.iZ, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uS = a(dig.iK, ($$0, $$1) -> new cue($$0, dig.ja, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uT = a(dig.iL, ($$0, $$1) -> new cue($$0, dig.jb, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uU = a(dig.iM, ($$0, $$1) -> new cue($$0, dig.jc, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uV = a(dig.iN, ($$0, $$1) -> new cue($$0, dig.jd, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uW = a(dig.iO, ($$0, $$1) -> new cue($$0, dig.je, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uX = a(dig.iP, ($$0, $$1) -> new cue($$0, dig.jf, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uY = a(dig.iQ, ($$0, $$1) -> new cue($$0, dig.jg, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx uZ = a(dig.iR, ($$0, $$1) -> new cue($$0, dig.jh, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx va = a(dig.iS, ($$0, $$1) -> new cue($$0, dig.ji, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx vb = a(dig.iT, ($$0, $$1) -> new cue($$0, dig.jj, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx vc = a(dig.iU, ($$0, $$1) -> new cue($$0, dig.jk, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx vd = a(dig.iV, ($$0, $$1) -> new cue($$0, dig.jl, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx ve = a(dig.iW, ($$0, $$1) -> new cue($$0, dig.jm, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx vf = a(dig.iX, ($$0, $$1) -> new cue($$0, dig.jn, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx vg = a(dig.iY, ($$0, $$1) -> new cue($$0, dig.jo, $$1), new cvx.a().a(16).a(ku.ai, dsd.a));
-   public static final cvx vh = a("end_crystal", cvd::new, new cvx.a().a(ku.u, true));
-   public static final cvx vi = a("chorus_fruit", new cvx.a().a(crm.i, cyj.n).a(1.0F));
-   public static final cvx vj = a("popped_chorus_fruit");
-   public static final cvx vk = a("torchflower_seeds", b(dig.kA));
-   public static final cvx vl = a("pitcher_pod", b(dig.kB));
-   public static final cvx vm = a("beetroot", new cvx.a().a(crm.d));
-   public static final cvx vn = a("beetroot_seeds", b(dig.kD));
-   public static final cvx vo = a("beetroot_soup", new cvx.a().a(1).a(crm.e).a(ou));
-   public static final cvx vp = a("dragon_breath", new cvx.a().b(sl).a(cwy.b));
-   public static final cvx vq = a("splash_potion", cxm::new, new cvx.a().a(1).a(ku.Q, cya.a));
-   public static final cvx vr = a("spectral_arrow", cxl::new);
-   public static final cvx vs = a("tipped_arrow", cxr::new, new cvx.a().a(ku.Q, cya.a));
-   public static final cvx vt = a("lingering_potion", cwm::new, new cvx.a().a(1).a(ku.Q, cya.a));
-   public static final cvx vu = a("shield", cxd::new, new cvx.a().b(336).a(ku.ai, dsd.a).a(axj.bb).b(bum.b));
-   public static final cvx vv = a("totem_of_undying", new cvx.a().a(1).a(cwy.b).a(ku.H, cyn.c));
-   public static final cvx vw = a("shulker_shell");
-   public static final cvx vx = a("iron_nugget");
-   public static final cvx vy = a("knowledge_book", cwk::new, new cvx.a().a(1).a(cwy.d).a(ku.ac, List.of()));
-   public static final cvx vz = a("debug_stick", cut::new, new cvx.a().a(1).a(cwy.d).a(ku.V, cyo.a).a(ku.u, true));
-   public static final cvx vA = a("music_disc_13", new cvx.a().a(1).a(cwy.b).a(cwj.a));
-   public static final cvx vB = a("music_disc_cat", new cvx.a().a(1).a(cwy.b).a(cwj.b));
-   public static final cvx vC = a("music_disc_blocks", new cvx.a().a(1).a(cwy.b).a(cwj.c));
-   public static final cvx vD = a("music_disc_chirp", new cvx.a().a(1).a(cwy.b).a(cwj.d));
-   public static final cvx vE = a("music_disc_creator", new cvx.a().a(1).a(cwy.c).a(cwj.r));
-   public static final cvx vF = a("music_disc_creator_music_box", new cvx.a().a(1).a(cwy.b).a(cwj.s));
-   public static final cvx vG = a("music_disc_far", new cvx.a().a(1).a(cwy.b).a(cwj.e));
-   public static final cvx vH = a("music_disc_mall", new cvx.a().a(1).a(cwy.b).a(cwj.f));
-   public static final cvx vI = a("music_disc_mellohi", new cvx.a().a(1).a(cwy.b).a(cwj.g));
-   public static final cvx vJ = a("music_disc_stal", new cvx.a().a(1).a(cwy.b).a(cwj.h));
-   public static final cvx vK = a("music_disc_strad", new cvx.a().a(1).a(cwy.b).a(cwj.i));
-   public static final cvx vL = a("music_disc_ward", new cvx.a().a(1).a(cwy.b).a(cwj.j));
-   public static final cvx vM = a("music_disc_11", new cvx.a().a(1).a(cwy.b).a(cwj.k));
-   public static final cvx vN = a("music_disc_wait", new cvx.a().a(1).a(cwy.b).a(cwj.l));
-   public static final cvx vO = a("music_disc_otherside", new cvx.a().a(1).a(cwy.c).a(cwj.n));
-   public static final cvx vP = a("music_disc_relic", new cvx.a().a(1).a(cwy.b).a(cwj.p));
-   public static final cvx vQ = a("music_disc_5", new cvx.a().a(1).a(cwy.b).a(cwj.o));
-   public static final cvx vR = a("music_disc_pigstep", new cvx.a().a(1).a(cwy.c).a(cwj.m));
-   public static final cvx vS = a("music_disc_precipice", new cvx.a().a(1).a(cwy.b).a(cwj.q));
-   public static final cvx vT = a("disc_fragment_5", cuv::new, new cvx.a().a(cwy.b));
-   public static final cvx vU = a("trident", cxu::new, new cvx.a().a(cwy.c).b(250).a(cxu.c()).a(ku.B, cxu.d()).c(1).a(ali.b("trident_in_hand")));
-   public static final cvx vV = a("nautilus_shell", new cvx.a().a(cwy.b));
-   public static final cvx vW = a("heart_of_the_sea", new cvx.a().a(cwy.b));
-   public static final cvx vX = a("crossbow", cus::new, new cvx.a().a(1).b(465).a(ku.O, cyg.a).c(1));
-   public static final cvx vY = a("suspicious_stew", new cvx.a().a(1).a(crm.K).a(ku.R, czc.a).a(ou));
-   public static final cvx vZ = a(dig.nT);
-   public static final cvx wa = a("flower_banner_pattern", $$0 -> new cuf(awy.b, $$0), new cvx.a().a(1));
-   public static final cvx wb = a("creeper_banner_pattern", $$0 -> new cuf(awy.c, $$0), new cvx.a().a(1).a(cwy.b));
-   public static final cvx wc = a("skull_banner_pattern", $$0 -> new cuf(awy.d, $$0), new cvx.a().a(1).a(cwy.c));
-   public static final cvx wd = a("mojang_banner_pattern", $$0 -> new cuf(awy.e, $$0), new cvx.a().a(1).a(cwy.c));
-   public static final cvx we = a("globe_banner_pattern", $$0 -> new cuf(awy.f, $$0), new cvx.a().a(1));
-   public static final cvx wf = a("piglin_banner_pattern", $$0 -> new cuf(awy.g, $$0), new cvx.a().a(1).a(cwy.b));
-   public static final cvx wg = a("flow_banner_pattern", $$0 -> new cuf(awy.h, $$0), new cvx.a().a(1).a(cwy.c));
-   public static final cvx wh = a("guster_banner_pattern", $$0 -> new cuf(awy.i, $$0), new cvx.a().a(1).a(cwy.c));
-   public static final cvx wi = a("field_masoned_banner_pattern", $$0 -> new cuf(awy.j, $$0), new cvx.a().a(1));
-   public static final cvx wj = a("bordure_indented_banner_pattern", $$0 -> new cuf(awy.k, $$0), new cvx.a().a(1));
-   public static final cvx wk = a("goat_horn", $$0 -> new cvv(axi.c, $$0), new cvx.a().a(cwy.b).a(1));
-   public static final cvx wl = a(dig.pc);
-   public static final cvx wm = a(dig.nU, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx wn = a(dig.nV, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx wo = a(dig.nW, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx wp = a(dig.nX);
-   public static final cvx wq = a(dig.nY);
-   public static final cvx wr = a(dig.nZ);
-   public static final cvx ws = a(dig.ob);
-   public static final cvx wt = a(dig.oc);
-   public static final cvx wu = a(dig.od);
-   public static final cvx wv = a(dig.oe);
-   public static final cvx ww = a(dig.of);
-   public static final cvx wx = a("sweet_berries", b(dig.oi), new cvx.a().a(crm.L));
-   public static final cvx wy = a("glow_berries", b(dig.sv), new cvx.a().a(crm.M));
-   public static final cvx wz = a(dig.og, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx wA = a(dig.oh, $$0 -> $$0.a(ku.al, cyt.a));
-   public static final cvx wB = a(dig.oy);
-   public static final cvx wC = a("honeycomb", cvs::new);
-   public static final cvx wD = a(dig.pe, new cvx.a().a(ku.an, List.of()));
-   public static final cvx wE = a(dig.pf, new cvx.a().a(ku.an, List.of()));
-   public static final cvx wF = a("honey_bottle", new cvx.a().b(sl).a(crm.w, cyj.c).a(sl).a(16));
-   public static final cvx wG = a(dig.ph);
-   public static final cvx wH = a(dig.pq);
-   public static final cvx wI = a(dig.pk);
-   public static final cvx wJ = a(dig.pr);
-   public static final cvx wK = a(dig.pu);
-   public static final cvx wL = a(dig.ps);
-   public static final cvx wM = a(dig.pC);
-   public static final cvx wN = a(dig.pv);
-   public static final cvx wO = a(dig.pE);
-   public static final cvx wP = a(dig.pD);
-   public static final cvx wQ = a(dig.py);
-   public static final cvx wR = a(dig.pw);
-   public static final cvx wS = a(dig.pz);
-   public static final cvx wT = a(dig.pA);
-   public static final cvx wU = a(dig.px);
-   public static final cvx wV = a(dig.pl);
-   public static final cvx wW = a(dig.pL);
-   public static final cvx wX = a(dig.pM);
-   public static final cvx wY = a(dig.pN);
-   public static final cvx wZ = a(dig.pO);
-   public static final cvx xa = a(dig.pP);
-   public static final cvx xb = a(dig.pQ);
-   public static final cvx xc = a(dig.pR);
-   public static final cvx xd = a(dig.pS);
-   public static final cvx xe = a(dig.pT);
-   public static final cvx xf = a(dig.pU);
-   public static final cvx xg = a(dig.pV);
-   public static final cvx xh = a(dig.pW);
-   public static final cvx xi = a(dig.pX);
-   public static final cvx xj = a(dig.pY);
-   public static final cvx xk = a(dig.pZ);
-   public static final cvx xl = a(dig.qa);
-   public static final cvx xm = a(dig.qb);
-   public static final cvx xn = a(dig.qy);
-   public static final cvx xo = a(dig.qx);
-   public static final cvx xp = a(dig.qw);
-   public static final cvx xq = a(dig.qv);
-   public static final cvx xr = a(dig.st);
-   public static final cvx xs = a(dig.tk);
-   public static final cvx xt = a(dig.tl);
-   public static final cvx xu = a(dig.tm);
-   public static final cvx xv = a(dig.tn, cwt::new);
-   public static final cvx xw = a("echo_shard", new cvx.a().a(cwy.b));
-   public static final cvx xx = a("brush", cum::new, new cvx.a().b(64));
-   public static final cvx xy = a("netherite_upgrade_smithing_template", cxh::b, new cvx.a().a(cwy.b));
-   public static final cvx xz = a("sentry_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xA = a("dune_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xB = a("coast_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xC = a("wild_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xD = a("ward_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.c));
-   public static final cvx xE = a("eye_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.c));
-   public static final cvx xF = a("vex_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.c));
-   public static final cvx xG = a("tide_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xH = a("snout_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xI = a("rib_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xJ = a("spire_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.c));
-   public static final cvx xK = a("wayfinder_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xL = a("shaper_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xM = a("silence_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.d));
-   public static final cvx xN = a("raiser_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xO = a("host_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xP = a("flow_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xQ = a("bolt_armor_trim_smithing_template", cxh::a, new cvx.a().a(cwy.b));
-   public static final cvx xR = a("angler_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xS = a("archer_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xT = a("arms_up_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xU = a("blade_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xV = a("brewer_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xW = a("burn_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xX = a("danger_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xY = a("explorer_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx xZ = a("flow_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx ya = a("friend_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yb = a("guster_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yc = a("heart_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yd = a("heartbreak_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx ye = a("howl_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yf = a("miner_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yg = a("mourner_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yh = a("plenty_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yi = a("prize_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yj = a("scrape_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yk = a("sheaf_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yl = a("shelter_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx ym = a("skull_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yn = a("snort_pottery_sherd", new cvx.a().a(cwy.b));
-   public static final cvx yo = a(dig.sc);
-   public static final cvx yp = a(dig.sd);
-   public static final cvx yq = a(dig.se);
-   public static final cvx yr = a(dig.sf);
-   public static final cvx ys = a(dig.sg);
-   public static final cvx yt = a(dig.sh);
-   public static final cvx yu = a(dig.si);
-   public static final cvx yv = a(dig.sj);
-   public static final cvx yw = a(dig.sk);
-   public static final cvx yx = a(dig.sl);
-   public static final cvx yy = a(dig.sm);
-   public static final cvx yz = a(dig.sn);
-   public static final cvx yA = a(dig.so);
-   public static final cvx yB = a(dig.sp);
-   public static final cvx yC = a(dig.sq);
-   public static final cvx yD = a(dig.sr);
-   public static final cvx yE = a(dig.tr);
-   public static final cvx yF = a("trial_key");
-   public static final cvx yG = a("ominous_trial_key");
-   public static final cvx yH = a(dig.ts);
-   public static final cvx yI = a("ominous_bottle", new cvx.a().a(cwy.b).a(ku.x, cyj.d).a(ku.aa, new cyz(0)));
+   public static final Codec<cwf> c = Codec.lazyInitialized(
+      () -> RecordCodecBuilder.create(
+            $$0 -> $$0.group(a.fieldOf("id").forGetter(cwf::i), kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.q.g()))
+                  .apply($$0, ($$0x, $$1) -> new cwf($$0x, 1, $$1))
+         )
+   );
+   public static final Codec<cwf> d = b.validate(cwf::c);
+   public static final Codec<cwf> e = c.validate(cwf::c);
+   public static final Codec<cwf> f = ayw.f(b).xmap($$0 -> $$0.orElse(cwf.k), $$0 -> $$0.f() ? Optional.empty() : Optional.of($$0));
+   public static final Codec<cwf> g = a.xmap(cwf::new, cwf::i);
+   public static final zj<ww, cwf> h = new zj<ww, cwf>() {
+      private static final zj<ww, jq<cwb>> a = zh.b(ma.K);
 
-   private static Function<cvx.a, cvx> b(die $$0) {
-      return $$1 -> new cuh($$0, $$1.c());
-   }
-
-   private static alh<cvx> b(String $$0) {
-      return alh.a(lz.K, ali.b($$0));
-   }
-
-   private static alh<cvx> a(alh<die> $$0) {
-      return alh.a(lz.K, $$0.a());
-   }
-
-   public static cvx a(die $$0) {
-      return a($$0, cuh::new);
-   }
-
-   public static cvx a(die $$0, cvx.a $$1) {
-      return a($$0, cuh::new, $$1);
-   }
-
-   public static cvx a(die $$0, UnaryOperator<cvx.a> $$1) {
-      return a($$0, ($$1x, $$2) -> new cuh($$1x, $$1.apply($$2)));
-   }
-
-   public static cvx a(die $$0, die... $$1) {
-      cvx $$2 = a($$0);
-
-      for (die $$3 : $$1) {
-         cvx.e.put($$3, $$2);
+      public cwf a(ww $$0) {
+         int $$1 = $$0.l();
+         if ($$1 <= 0) {
+            return cwf.k;
+         } else {
+            jq<cwb> $$2 = a.decode($$0);
+            kr $$3 = kr.c.decode($$0);
+            return new cwf($$2, $$1, $$3);
+         }
       }
 
+      public void a(ww $$0, cwf $$1) {
+         if ($$1.f()) {
+            $$0.c(0);
+         } else {
+            $$0.c($$1.L());
+            a.encode($$0, $$1.i());
+            kr.c.encode($$0, $$1.q.g());
+         }
+      }
+   };
+   public static final zj<ww, cwf> i = new zj<ww, cwf>() {
+      public cwf a(ww $$0) {
+         cwf $$1 = cwf.h.decode($$0);
+         if ($$1.f()) {
+            throw new DecoderException("Empty ItemStack not allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      public void a(ww $$0, cwf $$1) {
+         if ($$1.f()) {
+            throw new EncoderException("Empty ItemStack not allowed");
+         } else {
+            cwf.h.encode($$0, $$1);
+         }
+      }
+   };
+   public static final zj<ww, List<cwf>> j = h.a(zh.a(jz::a));
+   private static final Logger l = LogUtils.getLogger();
+   public static final cwf k = new cwf((Void)null);
+   private static final xl m = xl.c("item.disabled").a(n.m);
+   private int n;
+   private int o;
+   @Deprecated
+   @Nullable
+   private final cwb p;
+   final kv q;
+   @Nullable
+   private bui r;
+
+   private static DataResult<cwf> c(cwf $$0) {
+      DataResult<bat> $$1 = a($$0.a());
+      if ($$1.isError()) {
+         return $$1.map($$1x -> $$0);
+      } else {
+         return $$0.L() > $$0.k()
+            ? DataResult.error(() -> "Item stack with stack size of " + $$0.L() + " was larger than maximum: " + $$0.k())
+            : DataResult.success($$0);
+      }
+   }
+
+   public static zj<ww, cwf> a(final zj<ww, cwf> $$0) {
+      return new zj<ww, cwf>() {
+         public cwf a(ww $$0x) {
+            cwf $$1 = $$0.decode($$0);
+            if (!$$1.f()) {
+               alj<bat> $$2 = $$0.H().a(azp.a);
+               cwf.b.encodeStart($$2, $$1).getOrThrow(DecoderException::new);
+            }
+
+            return $$1;
+         }
+
+         public void a(ww $$0x, cwf $$1) {
+            $$0.encode($$0, $$1);
+         }
+      };
+   }
+
+   public Optional<ctz> b() {
+      return this.h().k(this);
+   }
+
+   @Override
+   public kq a() {
+      return (kq)(!this.f() ? this.q : kq.a);
+   }
+
+   public void c() {
+      this.q.f();
+   }
+
+   public kq d() {
+      return !this.f() ? this.h().g() : kq.a;
+   }
+
+   public kr e() {
+      return !this.f() ? this.q.g() : kr.a;
+   }
+
+   public cwf(dfe $$0) {
+      this($$0, 1);
+   }
+
+   public cwf(jq<cwb> $$0) {
+      this($$0.a(), 1);
+   }
+
+   public cwf(jq<cwb> $$0, int $$1, kr $$2) {
+      this($$0.a(), $$1, kv.a($$0.a().g(), $$2));
+   }
+
+   public cwf(jq<cwb> $$0, int $$1) {
+      this($$0.a(), $$1);
+   }
+
+   public cwf(dfe $$0, int $$1) {
+      this($$0, $$1, new kv($$0.j().g()));
+   }
+
+   private cwf(dfe $$0, int $$1, kv $$2) {
+      this.p = $$0.j();
+      this.n = $$1;
+      this.q = $$2;
+      this.h().l(this);
+   }
+
+   private cwf(@Nullable Void $$0) {
+      this.p = null;
+      this.q = new kv(kq.a);
+   }
+
+   public static DataResult<bat> a(kq $$0) {
+      if ($$0.b(ku.d) && $$0.a(ku.c, 1) > 1) {
+         return DataResult.error(() -> "Item cannot be both damageable and stackable");
+      } else {
+         cyx $$1 = $$0.a(ku.al, cyx.a);
+
+         for (cwf $$2 : $$1.d()) {
+            int $$3 = $$2.L();
+            int $$4 = $$2.k();
+            if ($$3 > $$4) {
+               return DataResult.error(() -> "Item stack with count of " + $$3 + " was larger than maximum: " + $$4);
+            }
+         }
+
+         return DataResult.success(bat.a);
+      }
+   }
+
+   public static Optional<cwf> a(js.a $$0, vk $$1) {
+      return b.parse($$0.a(vb.a), $$1).resultOrPartial($$0x -> l.error("Tried to load invalid item: '{}'", $$0x));
+   }
+
+   public static cwf a(js.a $$0, un $$1) {
+      return $$1.g() ? k : a($$0, (vk)$$1).orElse(k);
+   }
+
+   public boolean f() {
+      return this == k || this.p == cwj.a || this.n <= 0;
+   }
+
+   public boolean a(crj $$0) {
+      return this.f() || this.h().a($$0);
+   }
+
+   public cwf a(int $$0) {
+      int $$1 = Math.min($$0, this.L());
+      cwf $$2 = this.c($$1);
+      this.h($$1);
       return $$2;
    }
 
-   public static cvx a(die $$0, BiFunction<die, cvx.a, cvx> $$1) {
-      return a($$0, $$1, new cvx.a());
+   public cwf g() {
+      if (this.f()) {
+         return k;
+      } else {
+         cwf $$0 = this.v();
+         this.e(0);
+         return $$0;
+      }
    }
 
-   public static cvx a(die $$0, BiFunction<die, cvx.a, cvx> $$1, cvx.a $$2) {
-      return a(a($$0.p().h()), $$2x -> $$1.apply($$0, $$2x), $$2.b());
+   public cwb h() {
+      return this.f() ? cwj.a : this.p;
    }
 
-   public static cvx a(String $$0, Function<cvx.a, cvx> $$1) {
-      return a(b($$0), $$1, new cvx.a());
+   public jq<cwb> i() {
+      return this.h().f();
    }
 
-   public static cvx a(String $$0, Function<cvx.a, cvx> $$1, cvx.a $$2) {
-      return a(b($$0), $$1, $$2);
+   public boolean a(axt<cwb> $$0) {
+      return this.h().f().a($$0);
    }
 
-   public static cvx a(String $$0, cvx.a $$1) {
-      return a(b($$0), cvx::new, $$1);
+   public boolean a(cwb $$0) {
+      return this.h() == $$0;
    }
 
-   public static cvx a(String $$0) {
-      return a(b($$0), cvx::new, new cvx.a());
+   public boolean a(Predicate<jq<cwb>> $$0) {
+      return $$0.test(this.h().f());
    }
 
-   public static cvx a(alh<cvx> $$0, Function<cvx.a, cvx> $$1) {
-      return a($$0, $$1, new cvx.a());
+   public boolean a(jq<cwb> $$0) {
+      return this.h().f() == $$0;
    }
 
-   public static cvx a(alh<cvx> $$0, Function<cvx.a, cvx> $$1, cvx.a $$2) {
-      cvx $$3 = $$1.apply($$2.b($$0));
-      if ($$3 instanceof cuh $$4) {
-         $$4.a(cvx.e, $$3);
+   public boolean a(ju<cwb> $$0) {
+      return $$0.a(this.i());
+   }
+
+   public Stream<axt<cwb>> j() {
+      return this.h().f().c();
+   }
+
+   public bsh a(czy $$0) {
+      cor $$1 = $$0.o();
+      jh $$2 = $$0.a();
+      if ($$1 != null && !$$1.gm().e && !this.a(new dvs($$0.q(), $$2, false))) {
+         return bsh.e;
+      } else {
+         cwb $$3 = this.h();
+         bsh $$4 = $$3.a($$0);
+         if ($$1 != null && $$4 instanceof bsh.d $$5 && $$5.c()) {
+            $$1.b(awy.c.b($$3));
+         }
+
+         return $$4;
+      }
+   }
+
+   public float a(dvo $$0) {
+      return this.h().a(this, $$0);
+   }
+
+   public bsh a(dff $$0, cor $$1, bsg $$2) {
+      cwf $$3 = this.v();
+      boolean $$4 = this.a((bve)$$1) <= 0;
+      bsh $$5 = this.h().a($$0, $$1, $$2);
+      return (bsh)($$4 && $$5 instanceof bsh.d $$6 ? $$6.a($$6.d() == null ? this.a($$1, $$3) : $$6.d().a($$1, $$3)) : $$5);
+   }
+
+   public cwf a(dff $$0, bve $$1) {
+      cwf $$2 = this.v();
+      cwf $$3 = this.h().a(this, $$0, $$1);
+      return $$3.a($$1, $$2);
+   }
+
+   private cwf a(bve $$0, cwf $$1) {
+      czl $$2 = $$1.a(ku.y);
+      czk $$3 = $$1.a(ku.z);
+      int $$4 = $$1.L();
+      cwf $$5 = this;
+      if ($$2 != null) {
+         $$5 = $$2.a($$0, this, $$4);
       }
 
-      return kd.a(ly.g, $$0, $$3);
+      if ($$3 != null) {
+         $$3.a($$1, $$0);
+      }
+
+      return $$5;
+   }
+
+   public vk b(js.a $$0, vk $$1) {
+      if (this.f()) {
+         throw new IllegalStateException("Cannot encode empty ItemStack");
+      } else {
+         return (vk)b.encode(this, $$0.a(vb.a), $$1).getOrThrow();
+      }
+   }
+
+   public vk a(js.a $$0) {
+      if (this.f()) {
+         throw new IllegalStateException("Cannot encode empty ItemStack");
+      } else {
+         return (vk)b.encodeStart($$0.a(vb.a), this).getOrThrow();
+      }
+   }
+
+   public vk b(js.a $$0) {
+      return (vk)(this.f() ? new un() : this.b($$0, new un()));
+   }
+
+   public int k() {
+      return this.a(ku.c, Integer.valueOf(1));
+   }
+
+   public boolean l() {
+      return this.k() > 1 && (!this.m() || !this.n());
+   }
+
+   public boolean m() {
+      return this.b(ku.d) && !this.b(ku.f) && this.b(ku.e);
+   }
+
+   public boolean n() {
+      return this.m() && this.o() > 0;
+   }
+
+   public int o() {
+      return azn.a(this.a(ku.e, Integer.valueOf(0)), 0, this.p());
+   }
+
+   public void b(int $$0) {
+      this.b(ku.e, Integer.valueOf(azn.a($$0, 0, this.p())));
+   }
+
+   public int p() {
+      return this.a(ku.d, Integer.valueOf(0));
+   }
+
+   public boolean q() {
+      return this.m() && this.o() >= this.p();
+   }
+
+   public boolean r() {
+      return this.m() && this.o() >= this.p() - 1;
+   }
+
+   public void a(int $$0, arq $$1, @Nullable arr $$2, Consumer<cwb> $$3) {
+      int $$4 = this.a($$0, $$1, $$2);
+      if ($$4 > 0) {
+         this.a(this.o() + $$4, $$2, $$3);
+      }
+   }
+
+   private int a(int $$0, arq $$1, @Nullable arr $$2) {
+      if (!this.m()) {
+         return 0;
+      } else if ($$2 != null && $$2.fY()) {
+         return 0;
+      } else {
+         return $$0 > 0 ? dby.a($$1, this, $$0) : $$0;
+      }
+   }
+
+   private void a(int $$0, @Nullable arr $$1, Consumer<cwb> $$2) {
+      if ($$1 != null) {
+         ao.u.a($$1, this, $$0);
+      }
+
+      this.b($$0);
+      if (this.q()) {
+         cwb $$3 = this.h();
+         this.h(1);
+         $$2.accept($$3);
+      }
+   }
+
+   public void a(int $$0, cor $$1) {
+      if ($$1 instanceof arr $$2) {
+         int $$3 = this.a($$0, $$2.B(), $$2);
+         if ($$3 <= 0) {
+            return;
+         }
+
+         int $$4 = Math.min(this.o() + $$3, this.p() - 1);
+         this.a($$4, $$2, $$0x -> {
+         });
+      }
+   }
+
+   public void a(int $$0, bve $$1, buq $$2) {
+      if ($$1.dY() instanceof arq $$3) {
+         this.a($$0, $$3, $$1 instanceof arr $$4 ? $$4 : null, $$2x -> $$1.a($$2x, $$2));
+      }
+   }
+
+   public cwf a(int $$0, dfe $$1, bve $$2, buq $$3) {
+      this.a($$0, $$2, $$3);
+      if (this.f()) {
+         cwf $$4 = this.b($$1, 1);
+         if ($$4.m()) {
+            $$4.b(0);
+         }
+
+         return $$4;
+      } else {
+         return this;
+      }
+   }
+
+   public boolean s() {
+      return this.h().d(this);
+   }
+
+   public int t() {
+      return this.h().e(this);
+   }
+
+   public int u() {
+      return this.h().f(this);
+   }
+
+   public boolean a(ctp $$0, csc $$1, cor $$2) {
+      return this.h().a(this, $$0, $$1, $$2);
+   }
+
+   public boolean a(cwf $$0, ctp $$1, csc $$2, cor $$3, bvw $$4) {
+      return this.h().a(this, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public boolean a(bve $$0, bve $$1) {
+      cwb $$2 = this.h();
+      if ($$2.a(this, $$0, $$1)) {
+         if ($$1 instanceof cor $$3) {
+            $$3.b(awy.c.b($$2));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void b(bve $$0, bve $$1) {
+      this.h().b(this, $$0, $$1);
+   }
+
+   public void a(dff $$0, dvo $$1, jh $$2, cor $$3) {
+      cwb $$4 = this.h();
+      if ($$4.a(this, $$0, $$1, $$2, $$3)) {
+         $$3.b(awy.c.b($$4));
+      }
+   }
+
+   public boolean b(dvo $$0) {
+      return this.h().b(this, $$0);
+   }
+
+   public bsh a(cor $$0, bve $$1, bsg $$2) {
+      return this.h().a(this, $$0, $$1, $$2);
+   }
+
+   public cwf v() {
+      if (this.f()) {
+         return k;
+      } else {
+         cwf $$0 = new cwf(this.h(), this.n, this.q.h());
+         $$0.d(this.K());
+         return $$0;
+      }
+   }
+
+   public cwf c(int $$0) {
+      if (this.f()) {
+         return k;
+      } else {
+         cwf $$1 = this.v();
+         $$1.e($$0);
+         return $$1;
+      }
+   }
+
+   public cwf a(dfe $$0) {
+      return this.a($$0, this.L());
+   }
+
+   public cwf a(dfe $$0, int $$1) {
+      return this.f() ? k : this.b($$0, $$1);
+   }
+
+   private cwf b(dfe $$0, int $$1) {
+      return new cwf($$0.j().f(), $$1, this.q.g());
+   }
+
+   public static boolean a(cwf $$0, cwf $$1) {
+      if ($$0 == $$1) {
+         return true;
+      } else {
+         return $$0.L() != $$1.L() ? false : c($$0, $$1);
+      }
+   }
+
+   @Deprecated
+   public static boolean a(List<cwf> $$0, List<cwf> $$1) {
+      if ($$0.size() != $$1.size()) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+            if (!a($$0.get($$2), $$1.get($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public static boolean b(cwf $$0, cwf $$1) {
+      return $$0.a($$1.h());
+   }
+
+   public static boolean c(cwf $$0, cwf $$1) {
+      if (!$$0.a($$1.h())) {
+         return false;
+      } else {
+         return $$0.f() && $$1.f() ? true : Objects.equals($$0.q, $$1.q);
+      }
+   }
+
+   public static MapCodec<cwf> a(String $$0) {
+      return b.lenientOptionalFieldOf($$0).xmap($$0x -> $$0x.orElse(k), $$0x -> $$0x.f() ? Optional.empty() : Optional.of($$0x));
+   }
+
+   public static int a(@Nullable cwf $$0) {
+      if ($$0 != null) {
+         int $$1 = 31 + $$0.h().hashCode();
+         return 31 * $$1 + $$0.a().hashCode();
+      } else {
+         return 0;
+      }
+   }
+
+   @Deprecated
+   public static int a(List<cwf> $$0) {
+      int $$1 = 0;
+
+      for (cwf $$2 : $$0) {
+         $$1 = $$1 * 31 + a($$2);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public String toString() {
+      return this.L() + " " + this.h();
+   }
+
+   public void a(dff $$0, bui $$1, int $$2, boolean $$3) {
+      if (this.o > 0) {
+         this.o--;
+      }
+
+      if (this.h() != null) {
+         this.h().a(this, $$0, $$1, $$2, $$3);
+      }
+   }
+
+   public void a(dff $$0, cor $$1, int $$2) {
+      $$1.a(awy.b.b(this.h()), $$2);
+      this.h().a(this, $$0, $$1);
+   }
+
+   public void a(dff $$0) {
+      this.h().a(this, $$0);
+   }
+
+   public int a(bve $$0) {
+      return this.h().a(this, $$0);
+   }
+
+   public cwh w() {
+      return this.h().b(this);
+   }
+
+   public void a(dff $$0, bve $$1, int $$2) {
+      cwf $$3 = this.v();
+      if (this.h().a(this, $$0, $$1, $$2)) {
+         cwf $$4 = this.a($$1, $$3);
+         if ($$4 != this) {
+            $$1.a($$1.fD(), $$4);
+         }
+      }
+   }
+
+   public boolean x() {
+      return this.h().d_(this);
+   }
+
+   @Nullable
+   public <T> T b(kt<? super T> $$0, @Nullable T $$1) {
+      return this.q.b($$0, $$1);
+   }
+
+   @Nullable
+   public <T, U> T a(kt<T> $$0, T $$1, U $$2, BiFunction<T, U, T> $$3) {
+      return this.b($$0, $$3.apply(this.a($$0, $$1), $$2));
+   }
+
+   @Nullable
+   public <T> T a(kt<T> $$0, T $$1, UnaryOperator<T> $$2) {
+      T $$3 = this.a($$0, $$1);
+      return this.b($$0, $$2.apply($$3));
+   }
+
+   @Nullable
+   public <T> T c(kt<? extends T> $$0) {
+      return this.q.d($$0);
+   }
+
+   public void a(kr $$0) {
+      kr $$1 = this.q.g();
+      this.q.a($$0);
+      Optional<Error<cwf>> $$2 = c(this).error();
+      if ($$2.isPresent()) {
+         l.error("Failed to apply component patch '{}' to item: '{}'", $$0, $$2.get().message());
+         this.q.b($$1);
+      } else {
+         this.h().l(this);
+      }
+   }
+
+   public void b(kr $$0) {
+      this.q.a($$0);
+      this.h().l(this);
+   }
+
+   public void b(kq $$0) {
+      this.q.a($$0);
+      this.h().l(this);
+   }
+
+   public xl y() {
+      xl $$0 = this.a(ku.g);
+      if ($$0 != null) {
+         return $$0;
+      } else {
+         czn $$1 = this.a(ku.T);
+         if ($$1 != null) {
+            String $$2 = $$1.d().a();
+            if (!bak.h($$2)) {
+               return xl.b($$2);
+            }
+         }
+
+         return this.z();
+      }
+   }
+
+   public xl z() {
+      return this.h().a(this);
+   }
+
+   public xl A() {
+      xz $$0 = xl.i().b(this.y()).a(this.C().a());
+      if (this.b(ku.g)) {
+         $$0.a(n.u);
+      }
+
+      return $$0;
+   }
+
+   private <T extends czi> void a(kt<T> $$0, cwb.b $$1, Consumer<xl> $$2, cxx $$3) {
+      T $$4 = (T)this.a($$0);
+      if ($$4 != null) {
+         $$4.a($$1, $$2, $$3);
+      }
+   }
+
+   public List<xl> a(cwb.b $$0, @Nullable cor $$1, cxx $$2) {
+      if (!$$2.b() && this.b(ku.r)) {
+         return List.of();
+      } else {
+         List<xl> $$3 = Lists.newArrayList();
+         $$3.add(this.A());
+         if (!$$2.a() && !this.b(ku.g)) {
+            etg $$4 = this.a(ku.L);
+            if ($$4 != null) {
+               $$3.add(cws.a($$4));
+            }
+         }
+
+         Consumer<xl> $$5 = $$3::add;
+         if (!this.b(ku.q)) {
+            this.h().a(this, $$0, $$3, $$2);
+         }
+
+         this.a(ku.ab, $$0, $$5, $$2);
+         this.a(ku.U, $$0, $$5, $$2);
+         this.a(ku.I, $$0, $$5, $$2);
+         this.a(ku.l, $$0, $$5, $$2);
+         this.a(ku.J, $$0, $$5, $$2);
+         this.a(ku.j, $$0, $$5, $$2);
+         this.a($$5, $$1);
+         this.a(ku.f, $$0, $$5, $$2);
+         this.a(ku.aa, $$0, $$5, $$2);
+         this.a(ku.R, $$0, $$5, $$2);
+         cub $$6 = this.a(ku.n);
+         if ($$6 != null && $$6.a()) {
+            $$5.accept(xk.a);
+            $$5.accept(cub.c);
+            $$6.a($$5);
+         }
+
+         cub $$7 = this.a(ku.m);
+         if ($$7 != null && $$7.a()) {
+            $$5.accept(xk.a);
+            $$5.accept(cub.d);
+            $$7.a($$5);
+         }
+
+         if ($$2.a()) {
+            if (this.n()) {
+               $$3.add(xl.a("item.durability", this.p() - this.o(), this.p()));
+            }
+
+            $$3.add(xl.b(lz.g.b(this.h()).toString()).a(n.i));
+            int $$8 = this.q.d();
+            if ($$8 > 0) {
+               $$3.add(xl.a("item.components", $$8).a(n.i));
+            }
+         }
+
+         if ($$1 != null && !this.h().a($$1.dY().J())) {
+            $$3.add(m);
+         }
+
+         return $$3;
+      }
+   }
+
+   private void a(Consumer<xl> $$0, @Nullable cor $$1) {
+      cyw $$2 = this.a(ku.o, cyw.a);
+      if ($$2.c()) {
+         for (bur $$3 : bur.values()) {
+            MutableBoolean $$4 = new MutableBoolean(true);
+            this.a($$3, ($$4x, $$5) -> {
+               if ($$4.isTrue()) {
+                  $$0.accept(xk.a);
+                  $$0.accept(xl.c("item.modifiers." + $$3.c()).a(n.h));
+                  $$4.setFalse();
+               }
+
+               this.a($$0, $$1, $$4x, $$5);
+            });
+         }
+      }
+   }
+
+   private void a(Consumer<xl> $$0, @Nullable cor $$1, jq<bwh> $$2, bwk $$3) {
+      double $$4 = $$3.c();
+      boolean $$5 = false;
+      if ($$1 != null) {
+         if ($$3.a(cwb.f)) {
+            $$4 += $$1.i(bwm.c);
+            $$5 = true;
+         } else if ($$3.a(cwb.g)) {
+            $$4 += $$1.i(bwm.e);
+            $$5 = true;
+         }
+      }
+
+      double $$6;
+      if ($$3.d() == bwk.a.b || $$3.d() == bwk.a.c) {
+         $$6 = $$4 * 100.0;
+      } else if ($$2.a(bwm.p)) {
+         $$6 = $$4 * 10.0;
+      } else {
+         $$6 = $$4;
+      }
+
+      if ($$5) {
+         $$0.accept(xk.a().b(xl.a("attribute.modifier.equals." + $$3.d().a(), cyw.d.format($$6), xl.c($$2.a().c()))).a(n.c));
+      } else if ($$4 > 0.0) {
+         $$0.accept(xl.a("attribute.modifier.plus." + $$3.d().a(), cyw.d.format($$6), xl.c($$2.a().c())).a($$2.a().b(true)));
+      } else if ($$4 < 0.0) {
+         $$0.accept(xl.a("attribute.modifier.take." + $$3.d().a(), cyw.d.format(-$$6), xl.c($$2.a().c())).a($$2.a().b(false)));
+      }
+   }
+
+   public boolean B() {
+      Boolean $$0 = this.a(ku.u);
+      return $$0 != null ? $$0 : this.h().c_(this);
+   }
+
+   public cxc C() {
+      cxc $$0 = this.a(ku.k, cxc.a);
+      if (!this.E()) {
+         return $$0;
+      } else {
+         return switch ($$0) {
+            case a, b -> cxc.c;
+            case c -> cxc.d;
+            default -> $$0;
+         };
+      }
+   }
+
+   public boolean D() {
+      if (!this.b(ku.C)) {
+         return false;
+      } else {
+         dcc $$0 = this.a(ku.l);
+         return $$0 != null && $$0.d();
+      }
+   }
+
+   public void a(jq<dbw> $$0, int $$1) {
+      dby.a(this, $$2 -> $$2.b($$0, $$1));
+   }
+
+   public boolean E() {
+      return !this.a(ku.l, dcc.a).d();
+   }
+
+   public dcc F() {
+      return this.a(ku.l, dcc.a);
+   }
+
+   public boolean G() {
+      return this.r instanceof cks;
+   }
+
+   public void a(@Nullable bui $$0) {
+      if (!this.f()) {
+         this.r = $$0;
+      }
+   }
+
+   @Nullable
+   public cks H() {
+      return this.r instanceof cks ? (cks)this.I() : null;
+   }
+
+   @Nullable
+   public bui I() {
+      return !this.f() ? this.r : null;
+   }
+
+   public void a(bur $$0, BiConsumer<jq<bwh>, bwk> $$1) {
+      cyw $$2 = this.a(ku.o, cyw.a);
+      $$2.a($$0, $$1);
+      dby.a(this, $$0, $$1);
+   }
+
+   public void a(buq $$0, BiConsumer<jq<bwh>, bwk> $$1) {
+      cyw $$2 = this.a(ku.o, cyw.a);
+      $$2.a($$0, $$1);
+      dby.a(this, $$0, $$1);
+   }
+
+   public xl J() {
+      xz $$0 = xl.i().b(this.y());
+      if (this.b(ku.g)) {
+         $$0.a(n.u);
+      }
+
+      xz $$1 = xo.a((xl)$$0);
+      if (!this.f()) {
+         $$1.a(this.C().a()).a($$0x -> $$0x.a(new xr(xr.a.b, new xr.c(this))));
+      }
+
+      return $$1;
+   }
+
+   public boolean a(dvs $$0) {
+      cub $$1 = this.a(ku.m);
+      return $$1 != null && $$1.a($$0);
+   }
+
+   public boolean b(dvs $$0) {
+      cub $$1 = this.a(ku.n);
+      return $$1 != null && $$1.a($$0);
+   }
+
+   public int K() {
+      return this.o;
+   }
+
+   public void d(int $$0) {
+      this.o = $$0;
+   }
+
+   public int L() {
+      return this.f() ? 0 : this.n;
+   }
+
+   public void e(int $$0) {
+      this.n = $$0;
+   }
+
+   public void f(int $$0) {
+      if (!this.f() && this.L() > $$0) {
+         this.e($$0);
+      }
+   }
+
+   public void g(int $$0) {
+      this.e(this.L() + $$0);
+   }
+
+   public void h(int $$0) {
+      this.g(-$$0);
+   }
+
+   public void a(int $$0, @Nullable bve $$1) {
+      if ($$1 == null || !$$1.fY()) {
+         this.h($$0);
+      }
+   }
+
+   public cwf b(int $$0, @Nullable bve $$1) {
+      cwf $$2 = this.c($$0);
+      this.a($$0, $$1);
+      return $$2;
+   }
+
+   public void b(dff $$0, bve $$1, int $$2) {
+      cyl $$3 = this.a(ku.x);
+      if ($$3 != null && $$3.a($$2)) {
+         $$3.a($$1.eb(), $$1, this, 5);
+      }
+
+      this.h().a($$0, $$1, this, $$2);
+   }
+
+   public void a(ckz $$0) {
+      this.h().a($$0);
+   }
+
+   public awn M() {
+      return this.h().a();
+   }
+
+   public boolean a(bsy $$0) {
+      cyq $$1 = this.a(ku.A);
+      return $$1 == null || !$$1.a($$0);
+   }
+
+   public boolean b(cwf $$0) {
+      dce $$1 = this.a(ku.E);
+      return $$1 != null && $$1.a($$0);
    }
 }

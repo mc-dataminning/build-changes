@@ -1,69 +1,43 @@
-public class sl {
-   public static final alh<elb> a = so.a("ice_spike");
-   public static final alh<elb> b = so.a("ice_patch");
-   public static final alh<elb> c = so.a("forest_rock");
-   public static final alh<elb> d = so.a("iceberg_packed");
-   public static final alh<elb> e = so.a("iceberg_blue");
-   public static final alh<elb> f = so.a("blue_ice");
-   public static final alh<elb> g = so.a("lake_lava_underground");
-   public static final alh<elb> h = so.a("lake_lava_surface");
-   public static final alh<elb> i = so.a("disk_clay");
-   public static final alh<elb> j = so.a("disk_gravel");
-   public static final alh<elb> k = so.a("disk_sand");
-   public static final alh<elb> l = so.a("disk_grass");
-   public static final alh<elb> m = so.a("freeze_top_layer");
-   public static final alh<elb> n = so.a("void_start_platform");
-   public static final alh<elb> o = so.a("desert_well");
-   public static final alh<elb> p = so.a("spring_lava");
-   public static final alh<elb> q = so.a("spring_lava_frozen");
-   public static final alh<elb> r = so.a("spring_water");
+import java.util.List;
 
-   public static void a(qy<elb> $$0) {
-      jr<edx<?, ?>> $$1 = $$0.a(lz.aJ);
-      jq<edx<?, ?>> $$2 = $$1.b(sa.a);
-      jq<edx<?, ?>> $$3 = $$1.b(sa.b);
-      jq<edx<?, ?>> $$4 = $$1.b(sa.c);
-      jq<edx<?, ?>> $$5 = $$1.b(sa.d);
-      jq<edx<?, ?>> $$6 = $$1.b(sa.e);
-      jq<edx<?, ?>> $$7 = $$1.b(sa.f);
-      jq<edx<?, ?>> $$8 = $$1.b(sa.g);
-      jq<edx<?, ?>> $$9 = $$1.b(sa.h);
-      jq<edx<?, ?>> $$10 = $$1.b(sa.i);
-      jq<edx<?, ?>> $$11 = $$1.b(sa.j);
-      jq<edx<?, ?>> $$12 = $$1.b(sa.l);
-      jq<edx<?, ?>> $$13 = $$1.b(sa.k);
-      jq<edx<?, ?>> $$14 = $$1.b(sa.n);
-      jq<edx<?, ?>> $$15 = $$1.b(sa.o);
-      jq<edx<?, ?>> $$16 = $$1.b(sa.p);
-      jq<edx<?, ?>> $$17 = $$1.b(sa.q);
-      jq<edx<?, ?>> $$18 = $$1.b(sa.r);
-      so.a($$0, a, $$2, ekt.a(3), eky.a(), so.a, ekp.a());
-      so.a($$0, b, $$3, ekt.a(2), eky.a(), so.a, elg.a(brf.a(-1)), ekq.a(ecm.a(dig.dP)), ekp.a());
-      so.a($$0, c, $$4, ekt.a(2), eky.a(), so.a, ekp.a());
-      so.a($$0, e, $$6, elh.a(200), eky.a(), ekp.a());
-      so.a($$0, d, $$5, elh.a(16), eky.a(), ekp.a());
-      so.a($$0, f, $$7, ekt.a(bro.a(0, 19)), eky.a(), ekw.a(ebz.a(30), ebz.a(61)), ekp.a());
-      so.a(
-         $$0,
-         g,
-         $$8,
-         elh.a(9),
-         eky.a(),
-         ekw.a(ekh.a(ebz.a(0), ebz.b())),
-         eku.a(jm.a, ecm.a(ecm.a(ecm.c), ecm.d(new jh(0, -5, 0))), 32),
-         elj.a(ebf.a.c, Integer.MIN_VALUE, -5),
-         ekp.a()
-      );
-      so.a($$0, h, $$8, elh.a(200), eky.a(), so.c, ekp.a());
-      so.a($$0, i, $$9, eky.a(), so.b, ekq.a(ecm.a(erl.c)), ekp.a());
-      so.a($$0, j, $$10, eky.a(), so.b, ekq.a(ecm.a(erl.c)), ekp.a());
-      so.a($$0, k, $$11, ekt.a(3), eky.a(), so.b, ekq.a(ecm.a(erl.c)), ekp.a());
-      so.a($$0, l, $$12, ekt.a(1), eky.a(), so.b, elg.a(brf.a(-1)), ekq.a(ecm.a(dig.sI)), ekp.a());
-      so.a($$0, m, $$13, ekp.a());
-      so.a($$0, n, $$14, ekp.a());
-      so.a($$0, o, $$15, elh.a(1000), eky.a(), so.a, ekp.a());
-      so.a($$0, p, $$16, ekt.a(20), eky.a(), ekw.a(eki.a(ebz.a(), ebz.c(8), 8)), ekp.a());
-      so.a($$0, q, $$17, ekt.a(20), eky.a(), ekw.a(eki.a(ebz.a(), ebz.c(8), 8)), ekp.a());
-      so.a($$0, r, $$18, ekt.a(25), eky.a(), ekw.a(ebz.a(), ebz.a(192)), ekp.a());
+public class sl {
+   public static final alk<elf> a = sr.a("seagrass_warm");
+   public static final alk<elf> b = sr.a("seagrass_normal");
+   public static final alk<elf> c = sr.a("seagrass_cold");
+   public static final alk<elf> d = sr.a("seagrass_river");
+   public static final alk<elf> e = sr.a("seagrass_swamp");
+   public static final alk<elf> f = sr.a("seagrass_deep_warm");
+   public static final alk<elf> g = sr.a("seagrass_deep");
+   public static final alk<elf> h = sr.a("seagrass_deep_cold");
+   public static final alk<elf> i = sr.a("sea_pickle");
+   public static final alk<elf> j = sr.a("kelp_cold");
+   public static final alk<elf> k = sr.a("kelp_warm");
+   public static final alk<elf> l = sr.a("warm_ocean_vegetation");
+
+   private static List<eli> a(int $$0) {
+      return List.of(elc.a(), sr.b, ekx.a($$0), ekt.a());
+   }
+
+   public static void a(rb<elf> $$0) {
+      jr<eeb<?, ?>> $$1 = $$0.a(ma.aJ);
+      jq.c<eeb<?, ?>> $$2 = $$1.b(rz.a);
+      jq.c<eeb<?, ?>> $$3 = $$1.b(rz.b);
+      jq.c<eeb<?, ?>> $$4 = $$1.b(rz.c);
+      jq.c<eeb<?, ?>> $$5 = $$1.b(rz.d);
+      jq.c<eeb<?, ?>> $$6 = $$1.b(rz.e);
+      jq.c<eeb<?, ?>> $$7 = $$1.b(rz.f);
+      jq.c<eeb<?, ?>> $$8 = $$1.b(rz.g);
+      sr.a($$0, a, $$2, a(80));
+      sr.a($$0, b, $$2, a(48));
+      sr.a($$0, c, $$2, a(32));
+      sr.a($$0, d, $$3, a(48));
+      sr.a($$0, e, $$4, a(64));
+      sr.a($$0, f, $$5, a(80));
+      sr.a($$0, g, $$5, a(48));
+      sr.a($$0, h, $$5, a(40));
+      sr.a($$0, i, $$6, ell.a(16), elc.a(), sr.b, ekt.a());
+      sr.a($$0, j, $$7, eld.a(120, 80.0, 0.0), elc.a(), sr.b, ekt.a());
+      sr.a($$0, k, $$7, eld.a(80, 80.0, 0.0), elc.a(), sr.b, ekt.a());
+      sr.a($$0, l, $$8, eld.a(20, 400.0, 0.0), elc.a(), sr.b, ekt.a());
    }
 }

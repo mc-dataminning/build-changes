@@ -1,17 +1,47 @@
-public class ecc {
-   private final int a;
-   private final int b;
+import java.util.concurrent.atomic.AtomicLong;
 
-   public ecc(dxg $$0, dfd $$1) {
-      this.a = Math.max($$1.I_(), $$0.g());
-      this.b = Math.min($$1.J_(), $$0.e());
+@Deprecated
+public class ecc implements eay {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final ebl i = new ebl(this);
+
+   public ecc(long $$0) {
+      this.b($$0);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public azv d() {
+      return new ecc(this.g());
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public ebw e() {
+      return new ebk.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

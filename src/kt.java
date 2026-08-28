@@ -5,9 +5,9 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 public interface kt<T> {
-   Codec<kt<?>> a = Codec.lazyInitialized(() -> ly.ao.q());
-   zg<wt, kt<?>> b = zg.a($$0 -> ze.a(lz.az));
-   Codec<kt<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + ly.ao.b($$0)) : DataResult.success($$0));
+   Codec<kt<?>> a = Codec.lazyInitialized(() -> lz.ao.q());
+   zj<ww, kt<?>> b = zj.a($$0 -> zh.a(ma.az));
+   Codec<kt<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + lz.ao.b($$0)) : DataResult.success($$0));
    Codec<Map<kt<?>, Object>> d = Codec.dispatchedMap(c, kt::c);
 
    static <T> kt.a<T> a() {
@@ -30,13 +30,13 @@ public interface kt<T> {
       return this.b() == null;
    }
 
-   zg<? super wt, T> e();
+   zj<? super ww, T> e();
 
    public static class a<T> {
       @Nullable
       private Codec<T> a;
       @Nullable
-      private zg<? super wt, T> b;
+      private zj<? super ww, T> b;
       private boolean c;
 
       public kt.a<T> a(Codec<T> $$0) {
@@ -44,7 +44,7 @@ public interface kt<T> {
          return this;
       }
 
-      public kt.a<T> a(zg<? super wt, T> $$0) {
+      public kt.a<T> a(zj<? super ww, T> $$0) {
          this.b = $$0;
          return this;
       }
@@ -55,7 +55,7 @@ public interface kt<T> {
       }
 
       public kt<T> b() {
-         zg<? super wt, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> ze.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
+         zj<? super ww, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zh.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
          Codec<T> $$1 = this.c && this.a != null ? ku.a.a(this.a) : this.a;
          return new kt.a.a<>($$1, $$0);
       }
@@ -63,9 +63,9 @@ public interface kt<T> {
       static class a<T> implements kt<T> {
          @Nullable
          private final Codec<T> e;
-         private final zg<? super wt, T> f;
+         private final zj<? super ww, T> f;
 
-         a(@Nullable Codec<T> $$0, zg<? super wt, T> $$1) {
+         a(@Nullable Codec<T> $$0, zj<? super ww, T> $$1) {
             this.e = $$0;
             this.f = $$1;
          }
@@ -77,13 +77,13 @@ public interface kt<T> {
          }
 
          @Override
-         public zg<? super wt, T> e() {
+         public zj<? super ww, T> e() {
             return this.f;
          }
 
          @Override
          public String toString() {
-            return ae.a((kd<kt.a.a<T>>)ly.ao, this);
+            return ae.a((kd<kt.a.a<T>>)lz.ao, this);
          }
       }
    }

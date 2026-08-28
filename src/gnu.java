@@ -1,21 +1,22 @@
-public class gnu extends gnf<cgw, guf, fxz> {
-   private static final ali a = ali.b("textures/entity/chicken.png");
+public abstract class gnu<T extends cmo, S extends gxs, M extends gbs<S>> extends gpr<T, S, M> {
+   private static final all a = all.b("textures/entity/zombie/zombie.png");
 
-   public gnu(gok.a $$0) {
-      super($$0, new fxz($$0.a(gbl.M)), new fxz($$0.a(gbl.N)), 0.3F);
+   protected gnu(gpa.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new gtd<>(this, $$3, $$4, $$5, $$6, $$0.h()));
    }
 
-   public ali a(guf $$0) {
+   public all a(S $$0) {
       return a;
    }
 
-   public guf a() {
-      return new guf();
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gk();
+      $$1.b = $$0.gz();
    }
 
-   public void a(cgw $$0, guf $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = azk.h($$2, $$0.cc, $$0.bY);
-      $$1.b = azk.h($$2, $$0.ca, $$0.bZ);
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

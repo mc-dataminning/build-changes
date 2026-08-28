@@ -23,15 +23,15 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class jy<T> implements km<T> {
-   private final alh<? extends kd<T>> b;
+   private final alk<? extends kd<T>> b;
    private final ObjectList<jq.c<T>> c = new ObjectArrayList(256);
    private final Reference2IntMap<T> d = ae.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
-   private final Map<ali, jq.c<T>> e = new HashMap<>();
-   private final Map<alh<T>, jq.c<T>> f = new HashMap<>();
+   private final Map<all, jq.c<T>> e = new HashMap<>();
+   private final Map<alk<T>, jq.c<T>> f = new HashMap<>();
    private final Map<T, jq.c<T>> g = new IdentityHashMap<>();
-   private final Map<alh<T>, kc> h = new IdentityHashMap<>();
+   private final Map<alk<T>, kc> h = new IdentityHashMap<>();
    private Lifecycle i;
-   private final Map<axq<T>, ju.c<T>> j = new IdentityHashMap<>();
+   private final Map<axt<T>, ju.c<T>> j = new IdentityHashMap<>();
    jy.a<T> k = jy.a.a();
    private boolean l;
    @Nullable
@@ -42,11 +42,11 @@ public class jy<T> implements km<T> {
       return this.l();
    }
 
-   public jy(alh<? extends kd<T>> $$0, Lifecycle $$1) {
+   public jy(alk<? extends kd<T>> $$0, Lifecycle $$1) {
       this($$0, $$1, false);
    }
 
-   public jy(alh<? extends kd<T>> $$0, Lifecycle $$1, boolean $$2) {
+   public jy(alk<? extends kd<T>> $$0, Lifecycle $$1, boolean $$2) {
       this.b = $$0;
       this.i = $$1;
       if ($$2) {
@@ -55,7 +55,7 @@ public class jy<T> implements km<T> {
    }
 
    @Override
-   public alh<? extends kd<T>> g() {
+   public alk<? extends kd<T>> g() {
       return this.b;
    }
 
@@ -70,14 +70,14 @@ public class jy<T> implements km<T> {
       }
    }
 
-   private void h(alh<T> $$0) {
+   private void h(alk<T> $$0) {
       if (this.l) {
          throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
       }
    }
 
    @Override
-   public jq.c<T> a(alh<T> $$0, T $$1, kc $$2) {
+   public jq.c<T> a(alk<T> $$0, T $$1, kc $$2) {
       this.h($$0);
       Objects.requireNonNull($$0);
       Objects.requireNonNull($$1);
@@ -112,13 +112,13 @@ public class jy<T> implements km<T> {
 
    @Nullable
    @Override
-   public ali b(T $$0) {
+   public all b(T $$0) {
       jq.c<T> $$1 = this.g.get($$0);
       return $$1 != null ? $$1.h().a() : null;
    }
 
    @Override
-   public Optional<alh<T>> d(T $$0) {
+   public Optional<alk<T>> d(T $$0) {
       return Optional.ofNullable(this.g.get($$0)).map(jq.c::h);
    }
 
@@ -129,7 +129,7 @@ public class jy<T> implements km<T> {
 
    @Nullable
    @Override
-   public T c(@Nullable alh<T> $$0) {
+   public T c(@Nullable alk<T> $$0) {
       return a(this.f.get($$0));
    }
 
@@ -145,12 +145,12 @@ public class jy<T> implements km<T> {
    }
 
    @Override
-   public Optional<jq.c<T>> c(ali $$0) {
+   public Optional<jq.c<T>> c(all $$0) {
       return Optional.ofNullable(this.e.get($$0));
    }
 
    @Override
-   public Optional<jq.c<T>> a(alh<T> $$0) {
+   public Optional<jq.c<T>> a(alk<T> $$0) {
       return Optional.ofNullable(this.f.get($$0));
    }
 
@@ -165,7 +165,7 @@ public class jy<T> implements km<T> {
       return (jq<T>)($$1 != null ? $$1 : jq.a($$0));
    }
 
-   jq.c<T> i(alh<T> $$0) {
+   jq.c<T> i(alk<T> $$0) {
       return this.f.computeIfAbsent($$0, $$0x -> {
          if (this.m != null) {
             throw new IllegalStateException("This registry can't create new holders without value");
@@ -182,7 +182,7 @@ public class jy<T> implements km<T> {
    }
 
    @Override
-   public Optional<kc> d(alh<T> $$0) {
+   public Optional<kc> d(alk<T> $$0) {
       return Optional.ofNullable(this.h.get($$0));
    }
 
@@ -198,7 +198,7 @@ public class jy<T> implements km<T> {
 
    @Nullable
    @Override
-   public T a(@Nullable ali $$0) {
+   public T a(@Nullable all $$0) {
       jq.c<T> $$1 = this.e.get($$0);
       return a($$1);
    }
@@ -209,17 +209,17 @@ public class jy<T> implements km<T> {
    }
 
    @Override
-   public Set<ali> i() {
+   public Set<all> i() {
       return Collections.unmodifiableSet(this.e.keySet());
    }
 
    @Override
-   public Set<alh<T>> j() {
+   public Set<alk<T>> j() {
       return Collections.unmodifiableSet(this.f.keySet());
    }
 
    @Override
-   public Set<Entry<alh<T>, T>> k() {
+   public Set<Entry<alk<T>, T>> k() {
       return Collections.unmodifiableSet(Maps.transformValues(this.f, jq::a).entrySet());
    }
 
@@ -233,11 +233,11 @@ public class jy<T> implements km<T> {
       return this.k.c();
    }
 
-   ju.c<T> d(axq<T> $$0) {
+   ju.c<T> d(axt<T> $$0) {
       return this.j.computeIfAbsent($$0, this::e);
    }
 
-   private ju.c<T> e(axq<T> $$0) {
+   private ju.c<T> e(axt<T> $$0) {
       return new ju.c<>(this, $$0);
    }
 
@@ -247,17 +247,17 @@ public class jy<T> implements km<T> {
    }
 
    @Override
-   public Optional<jq.c<T>> a(azs $$0) {
+   public Optional<jq.c<T>> a(azv $$0) {
       return ae.b(this.c, $$0);
    }
 
    @Override
-   public boolean d(ali $$0) {
+   public boolean d(all $$0) {
       return this.e.containsKey($$0);
    }
 
    @Override
-   public boolean e(alh<T> $$0) {
+   public boolean e(alk<T> $$0) {
       return this.f.containsKey($$0);
    }
 
@@ -268,7 +268,7 @@ public class jy<T> implements km<T> {
       } else {
          this.l = true;
          this.g.forEach(($$0x, $$1x) -> $$1x.b($$0x));
-         List<ali> $$0 = this.f.entrySet().stream().filter($$0x -> !((jq.c)$$0x.getValue()).b()).map($$0x -> ((alh)$$0x.getKey()).a()).sorted().toList();
+         List<all> $$0 = this.f.entrySet().stream().filter($$0x -> !((jq.c)$$0x.getValue()).b()).map($$0x -> ((alk)$$0x.getKey()).a()).sorted().toList();
          if (!$$0.isEmpty()) {
             throw new IllegalStateException("Unbound values in registry " + this.g() + ": " + $$0);
          } else {
@@ -283,7 +283,7 @@ public class jy<T> implements km<T> {
             if (this.k.b()) {
                throw new IllegalStateException("Tags already present before freezing");
             } else {
-               List<ali> $$1 = this.j.entrySet().stream().filter($$0x -> !((ju.c)$$0x.getValue()).c()).map($$0x -> ((axq)$$0x.getKey()).b()).sorted().toList();
+               List<all> $$1 = this.j.entrySet().stream().filter($$0x -> !((ju.c)$$0x.getValue()).c()).map($$0x -> ((axt)$$0x.getKey()).b()).sorted().toList();
                if (!$$1.isEmpty()) {
                   throw new IllegalStateException("Unbound tags in registry " + this.g() + ": " + $$1);
                } else {
@@ -307,11 +307,11 @@ public class jy<T> implements km<T> {
    }
 
    @Override
-   public Optional<ju.c<T>> a(axq<T> $$0) {
+   public Optional<ju.c<T>> a(axt<T> $$0) {
       return this.k.a($$0);
    }
 
-   private jq.c<T> a(axq<T> $$0, jq<T> $$1) {
+   private jq.c<T> a(axt<T> $$0, jq<T> $$1) {
       if (!$$1.a(this)) {
          throw new IllegalStateException("Can't create named set " + $$0 + " containing value " + $$1 + " from outside registry " + this);
       } else if ($$1 instanceof jq.c) {
@@ -322,18 +322,18 @@ public class jy<T> implements km<T> {
    }
 
    @Override
-   public void a(axq<T> $$0, List<jq<T>> $$1) {
+   public void a(axt<T> $$0, List<jq<T>> $$1) {
       this.b();
       this.d($$0).b($$1);
    }
 
    void u() {
-      Map<jq.c<T>, List<axq<T>>> $$0 = new IdentityHashMap<>();
+      Map<jq.c<T>, List<axt<T>>> $$0 = new IdentityHashMap<>();
       this.f.values().forEach($$1 -> $$0.put((jq.c<T>)$$1, new ArrayList<>()));
       this.k.a(($$1, $$2) -> {
          for (jq<T> $$3 : $$2) {
-            jq.c<T> $$4 = this.a((axq<T>)$$1, $$3);
-            $$0.get($$4).add((axq<T>)$$1);
+            jq.c<T> $$4 = this.a((axt<T>)$$1, $$3);
+            $$0.get($$4).add((axt<T>)$$1);
          }
       });
       $$0.forEach(jq.c::a);
@@ -349,34 +349,34 @@ public class jy<T> implements km<T> {
       this.b();
       return new jr<T>() {
          @Override
-         public Optional<jq.c<T>> a(alh<T> $$0) {
+         public Optional<jq.c<T>> a(alk<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public jq.c<T> b(alh<T> $$0) {
+         public jq.c<T> b(alk<T> $$0) {
             return jy.this.i($$0);
          }
 
          @Override
-         public Optional<ju.c<T>> a(axq<T> $$0) {
+         public Optional<ju.c<T>> a(axt<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public ju.c<T> b(axq<T> $$0) {
+         public ju.c<T> b(axt<T> $$0) {
             return jy.this.d($$0);
          }
       };
    }
 
    @Override
-   public kd.a<T> a(axr.b<T> $$0) {
+   public kd.a<T> a(axu.b<T> $$0) {
       if (!this.l) {
          throw new IllegalStateException("Invalid method used for tag loading");
       } else {
-         Builder<axq<T>, ju.c<T>> $$1 = ImmutableMap.builder();
-         final Map<axq<T>, List<jq<T>>> $$2 = new HashMap<>();
+         Builder<axt<T>, ju.c<T>> $$1 = ImmutableMap.builder();
+         final Map<axt<T>, List<jq<T>>> $$2 = new HashMap<>();
          $$0.b().forEach(($$2x, $$3x) -> {
             ju.c<T> $$4x = this.j.get($$2x);
             if ($$4x == null) {
@@ -386,7 +386,7 @@ public class jy<T> implements km<T> {
             $$1.put($$2x, $$4x);
             $$2.put($$2x, List.copyOf($$3x));
          });
-         final ImmutableMap<axq<T>, ju.c<T>> $$3 = $$1.build();
+         final ImmutableMap<axt<T>, ju.c<T>> $$3 = $$1.build();
          final js.b<T> $$4 = new js.b.a<T>() {
             @Override
             public js.b<T> a() {
@@ -394,7 +394,7 @@ public class jy<T> implements km<T> {
             }
 
             @Override
-            public Optional<ju.c<T>> a(axq<T> $$0) {
+            public Optional<ju.c<T>> a(axt<T> $$0) {
                return Optional.ofNullable((ju.c<T>)$$3.get($$0));
             }
 
@@ -405,7 +405,7 @@ public class jy<T> implements km<T> {
          };
          return new kd.a<T>() {
             @Override
-            public alh<? extends kd<? extends T>> a() {
+            public alk<? extends kd<? extends T>> a() {
                return jy.this.g();
             }
 
@@ -436,12 +436,12 @@ public class jy<T> implements km<T> {
             }
 
             @Override
-            public Optional<ju.c<T>> a(axq<T> $$0) {
+            public Optional<ju.c<T>> a(axt<T> $$0) {
                throw new IllegalStateException("Tags not bound, trying to access " + $$0);
             }
 
             @Override
-            public void a(BiConsumer<? super axq<T>, ? super ju.c<T>> $$0) {
+            public void a(BiConsumer<? super axt<T>, ? super ju.c<T>> $$0) {
                throw new IllegalStateException("Tags not bound");
             }
 
@@ -452,7 +452,7 @@ public class jy<T> implements km<T> {
          };
       }
 
-      static <T> jy.a<T> a(final Map<axq<T>, ju.c<T>> $$0) {
+      static <T> jy.a<T> a(final Map<axt<T>, ju.c<T>> $$0) {
          return new jy.a<T>() {
             @Override
             public boolean b() {
@@ -460,12 +460,12 @@ public class jy<T> implements km<T> {
             }
 
             @Override
-            public Optional<ju.c<T>> a(axq<T> $$0x) {
+            public Optional<ju.c<T>> a(axt<T> $$0x) {
                return Optional.ofNullable($$0.get($$0));
             }
 
             @Override
-            public void a(BiConsumer<? super axq<T>, ? super ju.c<T>> $$0x) {
+            public void a(BiConsumer<? super axt<T>, ? super ju.c<T>> $$0x) {
                $$0.forEach($$0);
             }
 
@@ -478,9 +478,9 @@ public class jy<T> implements km<T> {
 
       boolean b();
 
-      Optional<ju.c<T>> a(axq<T> var1);
+      Optional<ju.c<T>> a(axt<T> var1);
 
-      void a(BiConsumer<? super axq<T>, ? super ju.c<T>> var1);
+      void a(BiConsumer<? super axt<T>, ? super ju.c<T>> var1);
 
       Stream<ju.c<T>> c();
    }

@@ -1,23 +1,24 @@
-public enum dwg implements bag {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum dwg implements baj {
+   a("single"),
+   b("left"),
+   c("right");
 
-   private final String f;
+   private final String d;
 
    private dwg(final String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
+   }
+
+   public dwg a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

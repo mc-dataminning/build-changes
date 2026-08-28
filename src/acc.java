@@ -1,28 +1,20 @@
-import javax.annotation.Nullable;
+public record acc(all b) implements zs<acb> {
+   public static final zj<wi, acc> a = zs.a(acc::a, acc::new);
 
-public record acc(ali b, @Nullable byte[] c) implements zp<acb> {
-   public static final zg<wf, acc> a = zp.a(acc::a, acc::new);
-
-   private acc(wf $$0) {
-      this($$0.q(), $$0.c(aae.b));
+   private acc(wi $$0) {
+      this($$0.q());
    }
 
-   private void a(wf $$0) {
+   private void a(wi $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, aae.b);
    }
 
    @Override
-   public zr<acc> a() {
-      return aca.b;
+   public zu<acc> a() {
+      return acd.a;
    }
 
    public void a(acb $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
    }
 }

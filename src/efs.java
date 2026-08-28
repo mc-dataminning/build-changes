@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class efs extends eel<ehh> {
-   public efs(Codec<ehh> $$0) {
+public class efs extends eep<ehb> {
+   private static final int a = 7;
+
+   efs(Codec<ehb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(een<ehh> $$0) {
-      ehh $$1 = $$0.f();
-      dfy $$2 = $$0.b();
-      jh $$3 = $$0.e();
-      dvj $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dkm) {
-            if (!$$2.u($$3.d())) {
-               return false;
+   public boolean a(eer<ehb> $$0) {
+      dgd $$1 = $$0.b();
+      azv $$2 = $$0.d();
+      ehb $$3 = $$0.f();
+      jh $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      jh.a $$6 = new jh.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dvo $$8 = $$1.a_($$6);
+
+         for (ehb.a $$9 : $$3.b) {
+            if (efk.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
-
-            dkm.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
+   }
+
+   private void a(jh.a $$0, azv $$1, jh $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azv $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

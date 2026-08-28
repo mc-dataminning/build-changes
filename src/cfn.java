@@ -1,28 +1,38 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class cfn extends cfk<bva> {
-   @Override
-   public Set<cee<?>> a() {
-      return ImmutableSet.of(cee.i);
+public class cfn {
+   private final bvg a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public cfn(bvg $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(arn $$0, bva $$1) {
-      $$1.ed().a(cee.i, this.a($$1));
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   private List<bva> a(bva $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
+   public boolean a(bui $$0) {
+      int $$1 = $$0.as();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         bor $$2 = boq.a();
+         $$2.a("hasLineOfSight");
+         boolean $$3 = this.a.G($$0);
+         $$2.c();
+         if ($$3) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(bva $$0) {
-      return $$0.ar() == bul.bj && $$0.p_();
-   }
-
-   private ceg c(bva $$0) {
-      return $$0.ed().c(cee.h).orElse(ceg.a());
+         return $$3;
+      }
    }
 }

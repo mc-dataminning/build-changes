@@ -1,106 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
 
-public class dms extends don implements dpf {
+public class dms extends dij implements dpk {
    public static final MapCodec<dms> b = b(dms::new);
-   public static final dwa c = dvz.C;
-   public static final dwa d = dvz.w;
-   private static final int k = 8;
-   public static final int e = 128;
-   private static final int l = 200;
+   public static final int c = 7;
+   public static final dwn d = dwe.aC;
+   public static final dwf e = dwe.v;
+   public static final dwf f = dwe.C;
+   private static final int a = 1;
 
    @Override
-   public MapCodec<dms> a() {
+   public MapCodec<? extends dms> a() {
       return b;
    }
 
-   public dms(dvi.d $$0) {
+   public dms(dvn.d $$0) {
       super($$0);
-      this.l(this.F.b().b(a, jm.b).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+      this.l(this.F.b().b(d, Integer.valueOf(7)).b(e, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dvj a(czs $$0) {
-      erk $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == erl.c;
-      return this.m().b(a, $$0.k()).b(c, Boolean.valueOf($$2));
+   protected fal b_(dvo $$0, dek $$1, jh $$2) {
+      return fai.a();
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean f(dvo $$0) {
+      return $$0.c(d) == 7 && !$$0.c(e);
    }
 
    @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(c) ? erl.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected int a(dvj $$0, deg $$1, jh $$2, jm $$3) {
-      return $$0.c(d) ? 15 : 0;
-   }
-
-   @Override
-   protected int b(dvj $$0, deg $$1, jh $$2, jm $$3) {
-      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   public void e(dvj $$0, dfb $$1, jh $$2) {
-      $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 3);
-      this.f($$0, $$1, $$2);
-      $$1.a($$2, this, 8);
-      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
-   }
-
-   private void f(dvj $$0, dfb $$1, jh $$2) {
-      jm $$3 = $$0.c(a).g();
-      $$1.a($$2.a($$3), this, eso.a($$1, $$3, null));
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 3);
-      this.f($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      if ($$1.ad() && (long)$$1.A.a(200) <= $$1.aa() % 200L && $$2.v() == $$1.a(ebf.a.b, $$2.u(), $$2.w()) - 1) {
-         azo.a($$0.c(a).o(), $$1, $$2, 0.125, lr.aT, bro.a(1, 2));
+   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
+      if (this.o($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
       }
    }
 
-   @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d)) {
-            this.f($$0, $$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   protected boolean o(dvo $$0) {
+      return !$$0.c(e) && $$0.c(d) == 7;
    }
 
    @Override
-   protected void b(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d) && !$$1.R().a($$2, this)) {
-            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 18);
+   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   protected int i_(dvo $$0) {
+      return 1;
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      if ($$0.c(f)) {
+         $$2.a($$3, erp.c, erp.c.a($$1));
+      }
+
+      int $$8 = r($$6) + 1;
+      if ($$8 != 1 || $$0.c(d) != $$8) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static dvo a(dvo $$0, dfg $$1, jh $$2) {
+      int $$3 = 7;
+      jh.a $$4 = new jh.a();
+
+      for (jm $$5 : jm.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
          }
       }
+
+      return $$0.b(d, Integer.valueOf($$3));
+   }
+
+   private static int r(dvo $$0) {
+      return q($$0).orElse(7);
+   }
+
+   public static OptionalInt q(dvo $$0) {
+      if ($$0.a(axd.u)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+      }
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(a, d, c);
+   protected ero b_(dvo $$0) {
+      return $$0.c(f) ? erp.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected boolean f_(dvj $$0) {
-      return true;
+   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
+      if ($$1.r($$2.d())) {
+         if ($$3.a(15) == 1) {
+            jh $$4 = $$2.e();
+            dvo $$5 = $$1.a_($$4);
+            if (!$$5.t() || !$$5.c($$1, $$4, jm.b)) {
+               azr.a($$1, $$2, $$3, ls.l);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(d, e, f);
+   }
+
+   @Override
+   public dvo a(czw $$0) {
+      ero $$1 = $$0.q().b_($$0.a());
+      dvo $$2 = this.m().b(e, Boolean.valueOf(true)).b(f, Boolean.valueOf($$1.a() == erp.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

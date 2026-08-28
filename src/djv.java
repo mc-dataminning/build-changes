@@ -1,50 +1,71 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djv extends dho {
-   public static final MapCodec<djv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(djt.a.forGetter($$0x -> $$0x.e), t()).apply($$0, djv::new));
-   private final die e;
-   protected static final float b = 6.0F;
-   protected static final fah c = die.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public class djv extends dle {
+   public static final MapCodec<djv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lz.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, djv::new)
+   );
+   private final dij b;
 
    @Override
    public MapCodec<djv> a() {
       return a;
    }
 
-   protected djv(die $$0, dvi.d $$1) {
+   public djv(dij $$0, dvn.d $$1) {
       super($$1);
-      this.e = $$0;
+      this.b = $$0;
    }
 
    @Override
-   protected void b(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
-      this.a($$0, (dfc)$$1, $$2);
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.e.m().b(d, Boolean.valueOf(false)), 2);
+   public void a(dff $$0, jh $$1, dvo $$2, dvo $$3, cky $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.m(), 3);
       }
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$1 == jm.a && !$$0.a($$3, $$4)) {
-         return dig.a.m();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, erl.c, erl.c.a($$3));
+   public dvo a(czw $$0) {
+      dek $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvo $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   }
+
+   private static boolean a(dek $$0, jh $$1, dvo $$2) {
+      return o($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(dek $$0, jh $$1) {
+      boolean $$2 = false;
+      jh.a $$3 = $$1.k();
+
+      for (jm $$4 : jm.values()) {
+         dvo $$5 = $$0.a_($$3);
+         if ($$4 != jm.a || o($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+
+      return $$2;
+   }
+
+   private static boolean o(dvo $$0) {
+      return $$0.y().a(axj.a);
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return c;
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public int b(dvo $$0, dek $$1, jh $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

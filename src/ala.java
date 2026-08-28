@@ -1,8 +1,8 @@
-@FunctionalInterface
-public interface ala<T, V> {
-   V get(alh<T> var1);
+public class ala {
+   public static final alk<cwb> a = a("pumpkin_seeds");
+   public static final alk<cwb> b = a("melon_seeds");
 
-   static <T, V> ala<T, V> fixed(V $$0) {
-      return $$1 -> $$0;
+   private static alk<cwb> a(String $$0) {
+      return alk.a(ma.K, all.b($$0));
    }
 }

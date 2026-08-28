@@ -1,44 +1,55 @@
-public abstract class bur extends bvc {
-   protected bur(bul<? extends bur> $$0, dfb $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+
+public enum bur implements baj {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", buq.a),
+   c(2, "offhand", buq.b),
+   d(3, "hand", $$0 -> $$0.a() == buq.a.a),
+   e(4, "feet", buq.c),
+   f(5, "legs", buq.d),
+   g(6, "chest", buq.e),
+   h(7, "head", buq.f),
+   i(8, "armor", buq::f),
+   j(9, "body", buq.g);
+
+   public static final IntFunction<bur> k = aye.a($$0 -> $$0.n, values(), aye.a.a);
+   public static final Codec<bur> l = baj.a(bur::values);
+   public static final zj<ByteBuf, bur> m = zh.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<buq> p;
+
+   private bur(final int $$0, final String $$1, final Predicate<buq> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
+   }
+
+   private bur(final int $$0, final String $$1, final buq $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
+   }
+
+   public static bur a(buq $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dvj $$2, jh $$3) {
+   public String c() {
+      return this.o;
    }
 
-   @Override
-   public void a_(ezn $$0) {
-      if (this.dj()) {
-         if (this.bk()) {
-            this.a(0.02F, $$0);
-            this.a(bve.a, this.dA());
-            this.h(this.dA().c(0.8F));
-         } else if (this.by()) {
-            this.a(0.02F, $$0);
-            this.a(bve.a, this.dA());
-            this.h(this.dA().c(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aK()) {
-               $$1 = this.dX().a_(this.aR()).b().g() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aK()) {
-               $$1 = this.dX().a_(this.aR()).b().g() * 0.91F;
-            }
-
-            this.a(this.aK() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bve.a, this.dA());
-            this.h(this.dA().c((double)$$1));
-         }
-      }
-   }
-
-   @Override
-   public boolean q_() {
-      return false;
+   public boolean b(buq $$0) {
+      return this.p.test($$0);
    }
 }

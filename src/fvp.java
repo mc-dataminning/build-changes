@@ -1,78 +1,115 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 
 public class fvp {
-   private final fji a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+   private final ke a;
+   private final List<dav<?>> b;
+   private final boolean c;
+   private final Set<dav<?>> d = Sets.newHashSet();
+   private final Set<dav<?>> e = Sets.newHashSet();
+   private final Set<dav<?>> f = Sets.newHashSet();
 
-   public fvp(fji $$0, UserApiService $$1) {
+   public fvp(ke $$0, List<dav<?>> $$1) {
       this.a = $$0;
-      this.c = $$1;
-   }
-
-   public void a(UUID $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(UUID $$0) {
-      this.b.remove($$0);
-   }
-
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
-   }
-
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ae.h());
-   }
-
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
       } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+         this.c = a($$0, $$1);
       }
    }
 
-   public Set<UUID> c() {
+   private static boolean a(ke $$0, List<dav<?>> $$1) {
+      int $$2 = $$1.size();
+      cwf $$3 = $$1.get(0).b().a($$0);
+
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         cwf $$5 = $$1.get($$4).b().a($$0);
+         if (!cwf.c($$3, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public ke a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(awr $$0) {
+      for (dav<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
+         }
+      }
+   }
+
+   public void a(cow $$0, int $$1, int $$2, awr $$3) {
+      for (dav<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
+   }
+
+   public boolean a(dav<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean c() {
+      return !this.d.isEmpty();
+   }
+
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<dav<?>> e() {
       return this.b;
    }
 
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ae.e);
+   public List<dav<?>> a(fvp.a $$0) {
+      Predicate<dav<?>> $$1 = switch ($$0) {
+         case a -> this.e::contains;
+         case b -> this.d::contains;
+         case c -> $$0x -> this.e.contains($$0x) && !this.d.contains($$0x);
+      };
+      List<dav<?>> $$2 = new ArrayList<>();
+
+      for (dav<?> $$3 : this.b) {
+         if ($$1.test($$3)) {
+            $$2.add($$3);
+         }
+      }
+
+      return $$2;
    }
 
-   public void a(gct $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.z instanceof fvr $$2) {
-         $$2.a($$0);
-      }
+   public boolean f() {
+      return this.c;
    }
 
-   public void f(UUID $$0) {
-      if (this.a.z instanceof fvr $$1) {
-         $$1.a($$0);
-      }
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

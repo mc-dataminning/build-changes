@@ -1,25 +1,80 @@
-public class ggj extends ggw {
-   ggj(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
-   }
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   public static class a implements gfs<lv> {
-      private final ggk a;
-
-      public a(ggk $$0) {
-         this.a = $$0;
+public interface ggj {
+   ggj a = new ggj() {
+      @Override
+      public fef a(fem $$0, gyu $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gih.c);
+         RenderSystem.setShaderTexture(0, gys.d);
+         return $$0.a(fep.c.h, fei.d);
       }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggj $$8 = new ggj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
       }
-   }
+   };
+   ggj b = new ggj() {
+      @Override
+      public fef a(fem $$0, gyu $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gih.c);
+         RenderSystem.setShaderTexture(0, gys.e);
+         return $$0.a(fep.c.h, fei.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   ggj c = new ggj() {
+      @Override
+      public fef a(fem $$0, gyu $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gih.c);
+         RenderSystem.setShaderTexture(0, gys.e);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         return $$0.a(fep.c.h, fei.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   ggj d = new ggj() {
+      @Override
+      public fef a(fem $$0, gyu $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+         return $$0.a(fep.c.h, fei.d);
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   ggj e = new ggj() {
+      @Nullable
+      @Override
+      public fef a(fem $$0, gyu $$1) {
+         return null;
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   @Nullable
+   fef a(fem var1, gyu var2);
 }

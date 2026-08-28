@@ -1,91 +1,65 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class aqv implements aqr.a, AutoCloseable {
-   public static final int a = 4;
-   private static final Logger c = LogUtils.getLogger();
-   private final aqw d;
-   private final bqy<Runnable> e;
-   private final bqv f;
-   protected boolean b;
+public class aqv {
+   private static final int c = 33;
+   private static final int d = 32;
+   private static final int e = 31;
+   private static final dyn f = dyj.a.a(dyk.n);
+   public static final int a = f.c().c();
+   public static final int b = 33 + a;
 
-   public aqv(bqy<Runnable> $$0, Executor $$1) {
-      this.d = new aqw($$0.x_() + "_queue");
-      this.e = $$0;
-      this.f = new bqv(4, $$1, "dispatcher");
-      this.b = true;
-   }
-
-   public boolean a() {
-      return this.f.c() || this.d.b();
-   }
-
-   @Override
-   public void onLevelChange(deh $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.f.a_(new bqx.c(0, () -> {
-         int $$4 = $$1.getAsInt();
-         this.d.a($$4, $$0, $$2);
-         $$3.accept($$2);
-      }));
-   }
-
-   public void a(long $$0, Runnable $$1, boolean $$2) {
-      this.f.a_(new bqx.c(1, () -> {
-         this.d.a($$0, $$2);
-         this.a($$0);
-         if (this.b) {
-            this.b = false;
-            this.b();
-         }
-
-         $$1.run();
-      }));
-   }
-
-   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
-      this.f.a_(new bqx.c(2, () -> {
-         int $$3 = $$2.getAsInt();
-         this.d.a($$0, $$1, $$3);
-         if (this.b) {
-            this.b = false;
-            this.b();
-         }
-      }));
-   }
-
-   protected void b() {
-      this.f.a_(new bqx.c(3, () -> {
-         aqw.a $$0 = this.c();
-         if ($$0 == null) {
-            this.b = true;
-         } else {
-            this.a($$0);
-         }
-      }));
-   }
-
-   protected void a(aqw.a $$0) {
-      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
-            $$0x.run();
-            $$1.complete(bap.a);
-         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
-   }
-
-   protected void a(long $$0) {
+   @Nullable
+   public static dyk a(int $$0) {
+      return a($$0 - 33, null);
    }
 
    @Nullable
-   protected aqw.a c() {
-      return this.d.a();
+   @Contract("_,!null->!null;_,_->_")
+   public static dyk a(int $$0, @Nullable dyk $$1) {
+      if ($$0 > a) {
+         return $$1;
+      } else {
+         return $$0 <= 0 ? dyk.n : f.c().a($$0);
+      }
    }
 
-   @Override
-   public void close() {
-      this.e.close();
+   public static dyk b(int $$0) {
+      return a($$0, dyk.c);
+   }
+
+   public static int a(dyk $$0) {
+      return 33 + f.a($$0);
+   }
+
+   public static arg c(int $$0) {
+      if ($$0 <= 31) {
+         return arg.d;
+      } else if ($$0 <= 32) {
+         return arg.c;
+      } else {
+         return $$0 <= 33 ? arg.b : arg.a;
+      }
+   }
+
+   public static int a(arg $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 <= 31;
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 <= 32;
+   }
+
+   public static boolean f(int $$0) {
+      return $$0 <= b;
    }
 }

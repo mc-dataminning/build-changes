@@ -1,50 +1,51 @@
-@FunctionalInterface
-public interface gkt<T extends dsm> {
-   gks<T> create(gkt.a var1);
+import com.google.common.base.Splitter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public static class a {
-      private final gkr a;
-      private final gjk b;
-      private final gpi c;
-      private final goi d;
-      private final gbi e;
-      private final fks f;
+public class gkt {
+   private static final Splitter a = Splitter.on(',');
+   private static final Splitter b = Splitter.on('=').limit(2);
 
-      public a(gkr $$0, gjk $$1, gpi $$2, goi $$3, gbi $$4, fks $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
+   public static <O, S extends dvq<O, S>> Predicate<dvq<O, S>> a(dvp<O, S> $$0, String $$1) {
+      Map<dwq<?>, Comparable<?>> $$2 = new HashMap<>();
+
+      for (String $$3 : a.split($$1)) {
+         Iterator<String> $$4 = b.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            dwq<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((dwq<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
+               }
+
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
+            }
+         }
       }
 
-      public gkr a() {
-         return this.a;
-      }
+      return $$1x -> {
+         for (Entry<dwq<?>, Comparable<?>> $$2x : $$2.entrySet()) {
+            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
+               return false;
+            }
+         }
 
-      public gjk b() {
-         return this.b;
-      }
+         return true;
+      };
+   }
 
-      public goi c() {
-         return this.d;
-      }
-
-      public gpi d() {
-         return this.c;
-      }
-
-      public gbi e() {
-         return this.e;
-      }
-
-      public gbm a(gbk $$0) {
-         return this.e.a($$0);
-      }
-
-      public fks f() {
-         return this.f;
-      }
+   @Nullable
+   private static <T extends Comparable<T>> T a(dwq<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
    }
 }

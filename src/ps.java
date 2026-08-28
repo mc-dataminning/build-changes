@@ -1,56 +1,25 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ps extends qh<dsc> {
-   public ps(mh $$0, CompletableFuture<js.a> $$1) {
-      super($$0, lz.d, $$1);
-   }
+public class ps implements pr.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = atr.b.a() + "/minecraft/structure/";
 
    @Override
-   protected void a(js.a $$0) {
-      this.b(awy.a)
-         .a(
-            dse.b,
-            dse.c,
-            dse.d,
-            dse.e,
-            dse.f,
-            dse.g,
-            dse.h,
-            dse.i,
-            dse.j,
-            dse.k,
-            dse.l,
-            dse.m,
-            dse.n,
-            dse.o,
-            dse.p,
-            dse.q,
-            dse.r,
-            dse.s,
-            dse.t,
-            dse.u,
-            dse.v,
-            dse.w,
-            dse.x,
-            dse.y,
-            dse.z,
-            dse.A,
-            dse.B,
-            dse.C,
-            dse.D,
-            dse.E,
-            dse.G,
-            dse.H
-         );
-      this.b(awy.b).a(dse.M);
-      this.b(awy.c).a(dse.K);
-      this.b(awy.d).a(dse.L);
-      this.b(awy.e).a(dse.N);
-      this.b(awy.f).a(dse.J);
-      this.b(awy.g).a(dse.O);
-      this.b(awy.h).a(dse.P);
-      this.b(awy.i).a(dse.Q);
-      this.b(awy.j).a(dse.I);
-      this.b(awy.k).a(dse.F);
+   public un apply(String $$0, un $$1) {
+      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+   }
+
+   public static un a(String $$0, un $$1) {
+      eqd $$2 = new eqd();
+      int $$3 = vc.b($$1, 500);
+      int $$4 = 4053;
+      if ($$3 < 4053) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4053, $$0});
+      }
+
+      un $$5 = bax.f.a(bay.a(), $$1, $$3);
+      $$2.a(lz.e, $$5);
+      return $$2.a(new un());
    }
 }

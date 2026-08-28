@@ -8,11 +8,11 @@ public class av extends dy<av.a> {
       return av.a.a;
    }
 
-   public void a(aro $$0, jh $$1, cwb $$2) {
-      arn $$3 = $$0.B();
-      dvj $$4 = $$3.a_($$1);
-      euf $$5 = new euf.a($$3).a(ewy.f, $$1.b()).a(ewy.a, $$0).a(ewy.g, $$4).a(ewy.i, $$2).a(ewx.o);
-      euc $$6 = new euc.a($$5).a(Optional.empty());
+   public void a(arr $$0, jh $$1, cwf $$2) {
+      arq $$3 = $$0.B();
+      dvo $$4 = $$3.a_($$1);
+      euj $$5 = new euj.a($$3).a(exc.f, $$1.b()).a(exc.a, $$0).a(exc.g, $$4).a(exc.i, $$2).a(exb.o);
+      eug $$6 = new eug.a($$5).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$6));
    }
 
@@ -21,14 +21,14 @@ public class av extends dy<av.a> {
          $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(av.a::a), bh.a.optionalFieldOf("location").forGetter(av.a::b)).apply($$0, av.a::new)
       );
 
-      public boolean a(euc $$0) {
+      public boolean a(eug $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bi $$0) {
          dy.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, ewx.o, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, exb.o, ".location"));
       }
 
       @Override

@@ -1,20 +1,33 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class ffr extends ffv {
-   public String a;
-   public long b;
-   public long c;
+public class ffr extends fgo {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ffq> a;
 
-   public static ffr a(JsonObject $$0) {
-      ffr $$1 = new ffr();
+   public static ffr a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      ffr $$2 = new ffr();
+      $$2.a = Lists.newArrayList();
 
       try {
-         $$1.a = fhs.b("profileUuid", $$0, null);
-         $$1.b = fhs.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fhs.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(ffq.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 }

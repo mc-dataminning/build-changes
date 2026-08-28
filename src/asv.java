@@ -1,257 +1,231 @@
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.common.primitives.Ints;
 import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.security.PrivateKey;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-public abstract class asv implements AutoCloseable {
-   protected static final Logger a = LogUtils.getLogger();
-   private static final AtomicInteger b = new AtomicInteger(1);
-   private static final ThreadFactory c = $$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Chat-Filter-Worker-" + b.getAndIncrement());
-      return $$1;
-   };
-   private final URL d;
-   private final asv.b e;
-   final asv.a f;
-   final ExecutorService g;
-
-   protected static ExecutorService a(int $$0) {
-      return Executors.newFixedThreadPool($$0, c);
-   }
-
-   protected asv(URL $$0, asv.b $$1, asv.a $$2, ExecutorService $$3) {
-      this.f = $$2;
-      this.g = $$3;
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   protected static URL a(URI $$0, @Nullable JsonObject $$1, String $$2, String $$3) throws MalformedURLException {
-      String $$4 = a($$1, $$2, $$3);
-      return $$0.resolve("/" + $$4).toURL();
-   }
-
-   protected static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
-      return $$0 != null ? aza.a($$0, $$1, $$2) : $$2;
-   }
-
+public class asv implements ajo, wz {
+   private static final AtomicInteger b = new AtomicInteger(0);
+   static final Logger c = LogUtils.getLogger();
+   private static final int d = 600;
+   private final byte[] e;
+   final MinecraftServer f;
+   final wf g;
+   private volatile asv.a h = asv.a.a;
+   private int i;
    @Nullable
-   public static asv a(aqg $$0) {
-      String $$1 = $$0.R;
-      if (bah.h($$1)) {
-         return null;
-      } else {
-         return switch ($$0.S) {
-            case 0 -> asj.a($$1);
-            case 1 -> asm.a($$1);
-            default -> {
-               a.warn("Could not create text filter - unsupported text filtering version used");
-               yield null;
-            }
-         };
+   String j;
+   @Nullable
+   private GameProfile k;
+   private final String l = "";
+   private final boolean m;
+
+   public asv(MinecraftServer $$0, wf $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.e = Ints.toByteArray(azv.a().f());
+      this.m = $$2;
+   }
+
+   @Override
+   public void d() {
+      if (this.h == asv.a.e) {
+         this.c(Objects.requireNonNull(this.k));
       }
-   }
 
-   protected CompletableFuture<asg> a(GameProfile $$0, String $$1, asv.a $$2, Executor $$3) {
-      return $$1.isEmpty() ? CompletableFuture.completedFuture(asg.a) : CompletableFuture.supplyAsync(() -> {
-         JsonObject $$3x = this.e.encode($$0, $$1);
+      if (this.h == asv.a.f && !this.a(Objects.requireNonNull(this.k))) {
+         this.d(this.k);
+      }
 
-         try {
-            JsonObject $$4 = this.b($$3x, this.d);
-            return this.a($$1, $$2, $$4);
-         } catch (Exception var6) {
-            a.warn("Failed to validate message '{}'", $$1, var6);
-            return asg.b($$1);
-         }
-      }, $$3);
-   }
-
-   protected abstract asg a(String var1, asv.a var2, JsonObject var3);
-
-   protected xm a(String $$0, JsonArray $$1, asv.a $$2) {
-      if ($$1.isEmpty()) {
-         return xm.c;
-      } else if ($$2.shouldIgnore($$0, $$1.size())) {
-         return xm.b;
-      } else {
-         xm $$3 = new xm($$0.length());
-
-         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-            $$3.a($$1.get($$4).getAsInt());
-         }
-
-         return $$3;
+      if (this.i++ == 600) {
+         this.a(xl.c("multiplayer.disconnect.slow_login"));
       }
    }
 
    @Override
-   public void close() {
-      this.g.shutdownNow();
+   public boolean c() {
+      return this.g.i();
    }
 
-   protected void a(InputStream $$0) throws IOException {
-      byte[] $$1 = new byte[1024];
-
-      while ($$0.read($$1) != -1) {
-      }
-   }
-
-   private JsonObject b(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.a($$0, $$1);
-
-      JsonObject var5;
-      try (InputStream $$3 = $$2.getInputStream()) {
-         if ($$2.getResponseCode() == 204) {
-            return new JsonObject();
-         }
-
-         try {
-            var5 = Streams.parse(new JsonReader(new InputStreamReader($$3, StandardCharsets.UTF_8))).getAsJsonObject();
-         } finally {
-            this.a($$3);
-         }
-      }
-
-      return var5;
-   }
-
-   protected HttpURLConnection a(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.a($$1);
-      this.a($$2);
-      OutputStreamWriter $$3 = new OutputStreamWriter($$2.getOutputStream(), StandardCharsets.UTF_8);
-
+   public void a(xl $$0) {
       try {
-         JsonWriter $$4 = new JsonWriter($$3);
-
-         try {
-            Streams.write($$0, $$4);
-         } catch (Throwable var10) {
-            try {
-               $$4.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-
-            throw var10;
-         }
-
-         $$4.close();
-      } catch (Throwable var11) {
-         try {
-            $$3.close();
-         } catch (Throwable var8) {
-            var11.addSuppressed(var8);
-         }
-
-         throw var11;
+         c.info("Disconnecting {}: {}", this.e(), $$0.getString());
+         this.g.a(new ajk($$0));
+         this.g.a($$0);
+      } catch (Exception var3) {
+         c.error("Error whilst disconnecting player", var3);
       }
+   }
 
-      $$3.close();
-      int $$5 = $$2.getResponseCode();
-      if ($$5 >= 200 && $$5 < 300) {
-         return $$2;
+   private boolean a(GameProfile $$0) {
+      return this.f.ag().a($$0.getId()) != null;
+   }
+
+   @Override
+   public void a(wh $$0) {
+      c.info("{} lost connection: {}", this.e(), $$0.a().getString());
+   }
+
+   @Override
+   public String e() {
+      String $$0 = this.g.a(this.f.bl());
+      return this.j != null ? this.j + " (" + $$0 + ")" : $$0;
+   }
+
+   @Override
+   public void a(ajq $$0) {
+      Validate.validState(this.h == asv.a.a, "Unexpected hello packet", new Object[0]);
+      Validate.validState(bak.f($$0.b()), "Invalid characters in username", new Object[0]);
+      this.j = $$0.b();
+      GameProfile $$1 = this.f.T();
+      if ($$1 != null && this.j.equalsIgnoreCase($$1.getName())) {
+         this.b($$1);
       } else {
-         throw new asv.d($$5 + " " + $$2.getResponseMessage());
+         if (this.f.aa() && !this.g.e()) {
+            this.h = asv.a.b;
+            this.g.a(new aji("", this.f.R().getPublic().getEncoded(), this.e, true));
+         } else {
+            this.b(kk.b(this.j));
+         }
       }
    }
 
-   protected abstract void a(HttpURLConnection var1);
-
-   protected int a() {
-      return 2000;
+   void b(GameProfile $$0) {
+      this.k = $$0;
+      this.h = asv.a.e;
    }
 
-   protected HttpURLConnection a(URL $$0) throws IOException {
-      HttpURLConnection $$1 = (HttpURLConnection)$$0.openConnection();
-      $$1.setConnectTimeout(15000);
-      $$1.setReadTimeout(this.a());
-      $$1.setUseCaches(false);
-      $$1.setDoOutput(true);
-      $$1.setDoInput(true);
-      $$1.setRequestMethod("POST");
-      $$1.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-      $$1.setRequestProperty("Accept", "application/json");
-      $$1.setRequestProperty("User-Agent", "Minecraft server" + ab.b().c());
-      return $$1;
-   }
+   private void c(GameProfile $$0) {
+      avr $$1 = this.f.ag();
+      xl $$2 = $$1.a(this.g.d(), $$0);
+      if ($$2 != null) {
+         this.a($$2);
+      } else {
+         if (this.f.az() >= 0 && !this.g.e()) {
+            this.g.a(new ajj(this.f.az()), ws.a(() -> this.g.a(this.f.az(), true)));
+         }
 
-   public asw a(GameProfile $$0) {
-      return new asv.c($$0);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      asv.a a = ($$0, $$1) -> false;
-      asv.a b = ($$0, $$1) -> $$0.length() == $$1;
-
-      static asv.a ignoreOverThreshold(int $$0) {
-         return ($$1, $$2) -> $$2 >= $$0;
-      }
-
-      static asv.a select(int $$0) {
-         return switch ($$0) {
-            case -1 -> a;
-            case 0 -> b;
-            default -> ignoreOverThreshold($$0);
-         };
-      }
-
-      boolean shouldIgnore(String var1, int var2);
-   }
-
-   @FunctionalInterface
-   protected interface b {
-      JsonObject encode(GameProfile var1, String var2);
-   }
-
-   protected class c implements asw {
-      protected final GameProfile b;
-      protected final Executor c;
-
-      protected c(final GameProfile $$1) {
-         this.b = $$1;
-         bqt $$2 = new bqt(asv.this.g, "chat stream for " + $$1.getName());
-         this.c = $$2::a_;
-      }
-
-      @Override
-      public CompletableFuture<List<asg>> a(List<String> $$0) {
-         List<CompletableFuture<asg>> $$1 = $$0.stream().map($$0x -> asv.this.a(this.b, $$0x, asv.this.f, this.c)).collect(ImmutableList.toImmutableList());
-         return ae.e($$1).exceptionally($$0x -> ImmutableList.of());
-      }
-
-      @Override
-      public CompletableFuture<asg> a(String $$0) {
-         return asv.this.a(this.b, $$0, asv.this.f, this.c);
+         boolean $$3 = $$1.e($$0);
+         if ($$3) {
+            this.h = asv.a.f;
+         } else {
+            this.d($$0);
+         }
       }
    }
 
-   protected static class d extends RuntimeException {
-      protected d(String $$0) {
-         super($$0);
+   private void d(GameProfile $$0) {
+      this.h = asv.a.g;
+      this.g.a(new ajl($$0));
+   }
+
+   @Override
+   public void a(ajr $$0) {
+      Validate.validState(this.h == asv.a.b, "Unexpected key packet", new Object[0]);
+
+      final String $$5;
+      try {
+         PrivateKey $$1 = this.f.R().getPrivate();
+         if (!$$0.a(this.e, $$1)) {
+            throw new IllegalStateException("Protocol error");
+         }
+
+         SecretKey $$2 = $$0.a($$1);
+         Cipher $$3 = ayl.a(2, $$2);
+         Cipher $$4 = ayl.a(1, $$2);
+         $$5 = new BigInteger(ayl.a("", this.f.R().getPublic(), $$2)).toString(16);
+         this.h = asv.a.c;
+         this.g.a($$3, $$4);
+      } catch (aym var7) {
+         throw new IllegalStateException("Protocol error", var7);
       }
+
+      Thread $$8 = new Thread("User Authenticator #" + b.incrementAndGet()) {
+         @Override
+         public void run() {
+            String $$0 = Objects.requireNonNull(asv.this.j, "Player name not initialized");
+
+            try {
+               ProfileResult $$1 = asv.this.f.aq().hasJoinedServer($$0, $$5, this.a());
+               if ($$1 != null) {
+                  GameProfile $$2 = $$1.profile();
+                  asv.c.info("UUID of player {} is {}", $$2.getName(), $$2.getId());
+                  asv.this.b($$2);
+               } else if (asv.this.f.U()) {
+                  asv.c.warn("Failed to verify username but will let them in anyway!");
+                  asv.this.b(kk.b($$0));
+               } else {
+                  asv.this.a(xl.c("multiplayer.disconnect.unverified_username"));
+                  asv.c.error("Username '{}' tried to join with an invalid session", $$0);
+               }
+            } catch (AuthenticationUnavailableException var4) {
+               if (asv.this.f.U()) {
+                  asv.c.warn("Authentication servers are down but will let them in anyway!");
+                  asv.this.b(kk.b($$0));
+               } else {
+                  asv.this.a(xl.c("multiplayer.disconnect.authservers_down"));
+                  asv.c.error("Couldn't verify username because servers are unavailable");
+               }
+            }
+         }
+
+         @Nullable
+         private InetAddress a() {
+            SocketAddress $$0 = asv.this.g.d();
+            return asv.this.f.ab() && $$0 instanceof InetSocketAddress ? ((InetSocketAddress)$$0).getAddress() : null;
+         }
+      };
+      $$8.setUncaughtExceptionHandler(new r(c));
+      $$8.start();
+   }
+
+   @Override
+   public void a(ajp $$0) {
+      this.a(asq.c);
+   }
+
+   @Override
+   public void a(ajs $$0) {
+      Validate.validState(this.h == asv.a.g, "Unexpected login acknowledgement packet", new Object[0]);
+      this.g.a(abw.d);
+      asg $$1 = asg.a(Objects.requireNonNull(this.k), this.m);
+      asr $$2 = new asr(this.f, this.g, $$1);
+      this.g.a(abw.b, $$2);
+      $$2.l();
+      this.h = asv.a.h;
+   }
+
+   @Override
+   public void a(o $$0, p $$1) {
+      $$1.a("Login phase", () -> this.h.toString());
+   }
+
+   @Override
+   public void a(acf $$0) {
+      this.a(asq.c);
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
    }
 }

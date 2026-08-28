@@ -1,75 +1,44 @@
-import javax.annotation.Nullable;
-
-public sealed interface bsd permits bsd.d, bsd.a, bsd.c, bsd.f {
-   bsd.d a = new bsd.d(bsd.e.b, bsd.b.b);
-   bsd.d b = new bsd.d(bsd.e.c, bsd.b.b);
-   bsd.d c = new bsd.d(bsd.e.a, bsd.b.b);
-   bsd.a d = new bsd.a();
-   bsd.c e = new bsd.c();
-   bsd.f f = new bsd.f();
-
-   default boolean a() {
-      return false;
+public class bsd {
+   public static void a(dff $$0, jh $$1, bsa $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public static record a() implements bsd {
+   public static void a(dff $$0, bui $$1, bsa $$2) {
+      a($$0, $$1.dD(), $$1.dF(), $$1.dJ(), $$2);
    }
 
-   public static record b(boolean c, @Nullable cwb d) {
-      static bsd.b a = new bsd.b(false, null);
-      static bsd.b b = new bsd.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public cwb b() {
-         return this.d;
+   private static void a(dff $$0, double $$1, double $$2, double $$3, bsa $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   public static record c() implements bsd {
+   public static void a(dff $$0, jh $$1, jz<cwf> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   public static record d(bsd.e g, bsd.b h) implements bsd {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   public static void a(dff $$0, double $$1, double $$2, double $$3, cwf $$4) {
+      double $$5 = (double)bup.ag.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
 
-      public bsd.d a(cwb $$0) {
-         return new bsd.d(this.g, new bsd.b(true, $$0));
-      }
-
-      public bsd.d b() {
-         return new bsd.d(this.g, bsd.b.a);
-      }
-
-      public boolean c() {
-         return this.h.c;
-      }
-
-      @Nullable
-      public cwb d() {
-         return this.h.d;
-      }
-
-      public bsd.e e() {
-         return this.g;
-      }
-
-      public bsd.b f() {
-         return this.h;
+      while (!$$4.f()) {
+         ckz $$11 = new ckz($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
       }
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
-   }
-
-   public static record f() implements bsd {
+   public static void a(dvo $$0, dvo $$1, dff $$2, jh $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bsa $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

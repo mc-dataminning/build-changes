@@ -1,19 +1,37 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public class aex implements zs<ach> {
+   public static final zj<wi, aex> a = zs.a(aex::a, aex::new);
+   private final int b;
+   private final byte c;
 
-public record aex(xi b, Optional<byte[]> c) implements zp<ace> {
-   public static final zg<ByteBuf, aex> a = zg.a(xk.f, aex::b, ze.l.a(ze::a), aex::e, aex::new);
-
-   @Override
-   public zr<aex> a() {
-      return agt.aq;
+   public aex(bui $$0, byte $$1) {
+      this.b = $$0.as();
+      this.c = $$1;
    }
 
-   public void a(ace $$0) {
+   private aex(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
+   }
+
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
+   }
+
+   @Override
+   public zu<aex> a() {
+      return agw.an;
+   }
+
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   public bui a(dff $$0) {
+      return $$0.a(this.b);
+   }
+
+   public float b() {
+      return azn.a(this.c);
    }
 }

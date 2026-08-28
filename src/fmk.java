@@ -1,3 +1,31 @@
-public interface fmk {
-   void a(fku var1, int var2, int var3, float var4);
+import java.util.UUID;
+
+public class fmk extends brx {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
+
+   public fmk(UUID $$0, xl $$1, float $$2, brx.a $$3, brx.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ae.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
+   }
+
+   @Override
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ae.c();
+   }
+
+   @Override
+   public float j() {
+      long $$0 = ae.c() - this.i;
+      float $$1 = azn.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return azn.h($$1, this.b, this.h);
+   }
 }

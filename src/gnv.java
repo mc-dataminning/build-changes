@@ -1,27 +1,17 @@
-public class gnv extends gpq<cgx, gvl, fya> {
-   private static final ali a = ali.b("textures/entity/fish/cod.png");
+@Deprecated
+public abstract class gnv<T extends bvg, S extends gwb, M extends fza<? super S>> extends gqg<T, S, M> {
+   private final M a;
+   private final M b;
 
-   public gnv(gok.a $$0) {
-      super($$0, new fya($$0.a(gbl.O)), 0.3F);
+   public gnv(gpa.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    @Override
-   public ali b(gvl $$0) {
-      return a;
-   }
-
-   public gvl a() {
-      return new gvl();
-   }
-
-   @Override
-   protected void a(gvl $$0, feb $$1, float $$2, float $$3) {
+   public void a(S $$0, fek $$1, gix $$2, int $$3) {
+      this.h = $$0.ae ? this.b : this.a;
       super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azk.a(0.6F * $$0.p);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.af) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
    }
 }

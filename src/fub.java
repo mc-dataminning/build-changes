@@ -1,58 +1,39 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fub extends fud {
-   private static final xi a = xi.c("options.online.title");
-   @Nullable
-   private fjl<Unit> u;
+public class fub implements ftz {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final fqe e;
 
-   public fub(fra $$0, fjm $$1) {
-      super($$0, $$1, a);
+   public fub(fqe $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      if (this.u != null) {
-         flf $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fjl<?>[] a(fjm $$0, fji $$1) {
-      List<fjl<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.V());
-      $$2.add($$0.W());
-      fjl<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            bsa $$1x = $$0x.ak();
-            return new fjl<>(
-               "options.difficulty.online",
-               fjl.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fjl.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
       }
 
-      return $$2.toArray(new fjl[0]);
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
+      } else {
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
+      }
+
+      return $$6;
    }
 
-   @Override
-   protected void m() {
-      this.d.a(this.a(this.c, this.m));
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(azn.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

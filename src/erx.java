@@ -1,91 +1,100 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public abstract class erx {
-   protected esd a;
-   protected bvc b;
-   protected final Int2ObjectMap<erw> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+public class erx extends esk {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   public void a(dfo $$0, bvc $$1) {
-      this.a = new esd($$0, $$1);
-      this.b = $$1;
-      this.c.clear();
-      this.d = azk.d($$1.ds() + 1.0F);
-      this.e = azk.d($$1.dt() + 1.0F);
-      this.f = azk.d($$1.ds() + 1.0F);
+   public erx(boolean $$0) {
+      this.l = $$0;
    }
 
+   @Override
+   public void a(dfs $$0, bvg $$1) {
+      super.a($$0, $$1);
+      $$1.a(esf.j, 0.0F);
+      this.m = $$1.a(esf.c);
+      $$1.a(esf.c, 6.0F);
+      this.n = $$1.a(esf.k);
+      $$1.a(esf.k, 4.0F);
+   }
+
+   @Override
    public void b() {
-      this.a = null;
-      this.b = null;
+      this.b.a(esf.c, this.m);
+      this.b.a(esf.k, this.n);
+      super.b();
    }
 
-   protected erw b(jh $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   @Override
+   public esa a() {
+      return !this.b.bl() ? super.a() : this.c(new jh(azn.a(this.b.cT().a), azn.a(this.b.cT().b + 0.5), azn.a(this.b.cT().c)));
    }
 
-   protected erw c(int $$0, int $$1, int $$2) {
-      return (erw)this.c.computeIfAbsent(erw.b($$0, $$1, $$2), $$3 -> new erw($$0, $$1, $$2));
+   @Override
+   public esj a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1 + 0.5, $$2);
    }
 
-   public abstract erw a();
+   @Override
+   public int a(esa[] $$0, esa $$1) {
+      int $$2 = super.a($$0, $$1);
+      esf $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
+      esf $$4 = this.b($$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != esf.w) {
+         $$5 = azn.d(Math.max(1.0F, this.b.dS()));
+      } else {
+         $$5 = 0;
+      }
 
-   public abstract esf a(double var1, double var3, double var5);
+      double $$7 = this.d(new jh($$1.a, $$1.b, $$1.c));
+      esa $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jm.b, $$4);
+      esa $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jm.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
 
-   protected esf b(double $$0, double $$1, double $$2) {
-      return new esf(this.c(azk.a($$0), azk.a($$1), azk.a($$2)));
+      if (this.b($$9, $$1) && $$4 != esf.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         esa $$11 = $$0[$$10];
+         if ($$11.l == esf.j && this.l && $$11.b < this.b.dY().N() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
    }
 
-   public abstract int a(erw[] var1, erw var2);
-
-   public abstract esb a(esd var1, int var2, int var3, int var4, bvc var5);
-
-   public abstract esb a(esd var1, int var2, int var3, int var4);
-
-   public esb a(bvc $$0, jh $$1) {
-      return this.a(new esd($$0.dX(), $$0), $$1.u(), $$1.v(), $$1.w());
+   private boolean b(@Nullable esa $$0, esa $$1) {
+      return this.a($$0, $$1) && $$0.l == esf.j;
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   @Override
+   protected boolean c() {
+      return true;
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
-   }
+   @Override
+   public esf a(esh $$0, int $$1, int $$2, int $$3) {
+      esf $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == esf.j) {
+         jh.a $$5 = new jh.a();
 
-   public void c(boolean $$0) {
-      this.i = $$0;
-   }
+         for (jm $$6 : jm.values()) {
+            $$5.d($$1, $$2, $$3).c($$6);
+            esf $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
+            if ($$7 == esf.a) {
+               return esf.k;
+            }
+         }
 
-   public void d(boolean $$0) {
-      this.j = $$0;
-   }
-
-   public boolean d() {
-      return this.g;
-   }
-
-   public boolean e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public boolean g() {
-      return this.j;
-   }
-
-   public static boolean a(dvj $$0) {
-      return $$0.a(axa.aL) || $$0.a(dig.H) || $$0.a(dig.kJ) || dis.h($$0) || $$0.a(dig.fv);
+         return esf.j;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 }

@@ -1,37 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bsh {
-   public static final Codec<bsh> a = RecordCodecBuilder.create($$0 -> $$0.group(ecg.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bsh::new));
-   private final ecg b;
+public sealed interface bsh permits bsh.d, bsh.a, bsh.c, bsh.f {
+   bsh.d a = new bsh.d(bsh.e.b, bsh.b.b);
+   bsh.d b = new bsh.d(bsh.e.c, bsh.b.b);
+   bsh.d c = new bsh.d(bsh.e.a, bsh.b.b);
+   bsh.a d = new bsh.a();
+   bsh.c e = new bsh.c();
+   bsh.f f = new bsh.f();
 
-   public bsh(ecg $$0) {
-      this.b = $$0;
+   default boolean a() {
+      return false;
    }
 
-   public bsh(long $$0, ali $$1) {
-      this(a($$0, Optional.of($$1)));
+   public static record a() implements bsh {
    }
 
-   public bsh(long $$0, Optional<ali> $$1) {
-      this(a($$0, $$1));
-   }
+   public static record b(boolean c, @Nullable cwf d) {
+      static bsh.b a = new bsh.b(false, null);
+      static bsh.b b = new bsh.b(true, null);
 
-   private static ecg a(long $$0, Optional<ali> $$1) {
-      ebu.a $$2 = ebu.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+      public boolean a() {
+         return this.c;
       }
 
-      return new ecg($$2.a());
+      @Nullable
+      public cwf b() {
+         return this.d;
+      }
    }
 
-   public static ebu.a a(ali $$0) {
-      return ebu.a($$0.toString());
+   public static record c() implements bsh {
    }
 
-   public azs a() {
-      return this.b;
+   public static record d(bsh.e g, bsh.b h) implements bsh {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      public bsh.d a(cwf $$0) {
+         return new bsh.d(this.g, new bsh.b(true, $$0));
+      }
+
+      public bsh.d b() {
+         return new bsh.d(this.g, bsh.b.a);
+      }
+
+      public boolean c() {
+         return this.h.c;
+      }
+
+      @Nullable
+      public cwf d() {
+         return this.h.d;
+      }
+
+      public bsh.e e() {
+         return this.g;
+      }
+
+      public bsh.b f() {
+         return this.h;
+      }
+   }
+
+   public static enum e {
+      a,
+      b,
+      c;
+   }
+
+   public static record f() implements bsh {
    }
 }

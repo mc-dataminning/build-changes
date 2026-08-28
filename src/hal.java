@@ -1,44 +1,14 @@
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hal implements hay {
-   private final ali a;
-   private List<gjx> b = List.of();
+public record hal(ham d) {
+   public static final hal a = new hal(ham.b);
+   public static final Codec<hal> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ham.a.optionalFieldOf("scaling", ham.b).forGetter(hal::a)).apply($$0, hal::new)
+   );
+   public static final aud<hal> c = aud.a("gui", b);
 
-   public hal(ali $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(hay.a $$0) {
-      if ($$0.a(this.a) instanceof gjt $$2) {
-         this.b = $$2.e();
-         this.b.forEach($$1 -> $$0.a($$1.a()));
-      }
-   }
-
-   @Override
-   public haf a(hao $$0, Function<ham, gyd> $$1, hau $$2) {
-      haf $$3 = $$0.a(this.a, $$2);
-      if (this.b.isEmpty()) {
-         return $$3;
-      } else {
-         gjn $$4 = new gjn($$0, this.b);
-         return new hal.a($$3, $$4);
-      }
-   }
-
-   static class a extends haj {
-      private final gjn b;
-
-      public a(haf $$0, gjn $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      public gjn g() {
-         return this.b;
-      }
+   public ham a() {
+      return this.d;
    }
 }

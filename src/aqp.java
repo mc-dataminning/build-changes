@@ -1,60 +1,25 @@
-public class aqp implements Comparable<aqp> {
-   private final int a;
-   private final jh b;
-   private int c;
-   private int d;
+import java.util.Vector;
+import javax.swing.JList;
+import net.minecraft.server.MinecraftServer;
 
-   public aqp(int $$0, jh $$1) {
+public class aqp extends JList<String> {
+   private final MinecraftServer a;
+   private int b;
+
+   public aqp(MinecraftServer $$0) {
       this.a = $$0;
-      this.b = $$1;
+      $$0.b(this::a);
    }
 
-   public int a() {
-      return this.a;
-   }
+   public void a() {
+      if (this.b++ % 20 == 0) {
+         Vector<String> $$0 = new Vector<>();
 
-   public jh b() {
-      return this.b;
-   }
+         for (int $$1 = 0; $$1 < this.a.ag().t().size(); $$1++) {
+            $$0.add(this.a.ag().t().get($$1).gk().getName());
+         }
 
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
+         this.setListData($$0);
       }
-
-      this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aqp $$1 = (aqp)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
-   }
-
-   public int a(aqp $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

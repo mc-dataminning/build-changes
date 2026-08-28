@@ -1,44 +1,130 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record xz(UUID a, coq b) {
-   public ye a(Duration $$0) {
-      return new ye.a(this.b.a(), () -> this.b.b().a($$0));
+public class xz implements xl {
+   private final xm c;
+   private final List<xl> d;
+   private yi e;
+   private ayz f = ayz.a;
+   @Nullable
+   private ui g;
+
+   xz(xm $$0, List<xl> $$1, yi $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public yc.b a(UUID $$0) {
-      return new yc($$0, this.a).a(this.b);
+   public static xz a(xm $$0) {
+      return new xz($$0, Lists.newArrayList(), yi.a);
    }
 
-   public xz.a a() {
-      return new xz.a(this.a, this.b.b());
+   @Override
+   public xm b() {
+      return this.c;
    }
 
-   public boolean b() {
-      return this.b.b().a();
+   @Override
+   public List<xl> c() {
+      return this.d;
    }
 
-   public UUID c() {
-      return this.a;
+   public xz b(yi $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   public coq d() {
-      return this.b;
+   @Override
+   public yi a() {
+      return this.e;
    }
 
-   public static record a(UUID a, coq.a b) {
-      public static xz.a a(wf $$0) {
-         return new xz.a($$0.n(), new coq.a($$0));
+   public xz f(String $$0) {
+      return $$0.isEmpty() ? this : this.b(xl.b($$0));
+   }
+
+   public xz b(xl $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public xz a(UnaryOperator<yi> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public xz c(yi $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public xz a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public xz a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public xz b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public ayz g() {
+      ui $$0 = ui.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
       }
 
-      public static void a(wf $$0, xz.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof xz $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
       }
 
-      public xz a(GameProfile $$0, azx $$1) throws coq.b {
-         return new xz(this.a, coq.a($$1, $$0.getId(), this.b));
-      }
+      return $$0.toString();
    }
 }

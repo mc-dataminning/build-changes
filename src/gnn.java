@@ -1,20 +1,44 @@
-public class gnn extends gpq<cla, gvl, fxr> {
-   private static final ali a = ali.b("textures/entity/blaze.png");
+public class gnn implements gmx.a {
+   private final fjx a;
 
-   public gnn(gok.a $$0) {
-      super($$0, new fxr($$0.a(gbl.u)), 0.5F);
-   }
-
-   protected int a(cla $$0, jh $$1) {
-      return 15;
+   public gnn(fjx $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public ali b(gvl $$0) {
-      return a;
-   }
+   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = this.a.t.dy();
+      dfi $$6 = this.a.t.dY();
 
-   public gvl a() {
-      return new gvl();
+      for (jh $$7 : jh.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         ero $$8 = $$6.b_($$7);
+         if ($$8.a(axj.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gmx.a(
+               $$0,
+               $$1,
+               new ezm(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (jh $$10 : jh.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         ero $$11 = $$6.b_($$10);
+         if ($$11.a(axj.a)) {
+            gmx.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

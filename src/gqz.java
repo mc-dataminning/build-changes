@@ -1,42 +1,42 @@
-public class gqz extends gnc<cqx, gvp> {
-   private final gjk b;
+public class gqz extends goz<cpn, gww> {
+   private static final all a = all.b("textures/entity/shulker/spark.png");
+   private static final gjh b = gjh.i(a);
+   private final gas h;
 
-   public gqz(gok.a $$0) {
-      super($$0, gbl.cI);
-      this.b = $$0.d();
+   public gqz(gpa.a $$0) {
+      super($$0);
+      this.h = new gas($$0.a(gcb.ck));
    }
 
-   protected void a(gvp $$0, dvj $$1, feb $$2, gih $$3, int $$4) {
-      float $$5 = $$0.C;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azk.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   protected int a(cpn $$0, jh $$1) {
+      return 15;
    }
 
-   public static void a(gjk $$0, dvj $$1, feb $$2, gih $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gxu.a(gxu.a(1.0F), 10);
-      } else {
-         $$6 = gxu.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public void a(gww $$0, fek $$1, gix $$2, int $$3) {
+      $$1.a();
+      float $$4 = $$0.p;
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees(azn.a($$4 * 0.1F) * 180.0F));
+      $$1.a(a.b.rotationDegrees(azn.b($$4 * 0.1F) * 180.0F));
+      $$1.a(a.f.rotationDegrees(azn.a($$4 * 0.15F) * 360.0F));
+      $$1.b(-0.5F, -0.5F, 0.5F);
+      this.h.a($$0);
+      feo $$5 = $$2.getBuffer(this.h.a(a));
+      this.h.a($$1, $$5, $$3, gyk.d);
+      $$1.b(1.5F, 1.5F, 1.5F);
+      feo $$6 = $$2.getBuffer(b);
+      this.h.a($$1, $$6, $$3, gyk.d, 654311423);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gvp a() {
-      return new gvp();
+   public gww a() {
+      return new gww();
    }
 
-   public void a(cqx $$0, gvp $$1, float $$2) {
+   public void a(cpn $$0, gww $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.C = $$0.F() > -1 ? (float)$$0.F() - $$2 + 1.0F : -1.0F;
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.j($$2);
    }
 }

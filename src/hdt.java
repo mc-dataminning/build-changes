@@ -1,51 +1,59 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+import java.util.concurrent.locks.LockSupport;
 
-public abstract class hdt {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+public class hdt extends bqw<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
+
+   public hdt() {
+      super("Sound executor");
+   }
+
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
+   }
+
+   @Override
+   public Runnable f(Runnable $$0) {
+      return $$0;
+   }
+
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread ay() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.b(() -> this.b);
+      }
+   }
+
+   @Override
+   protected void A() {
+      LockSupport.park("waiting for tasks");
+   }
 
    public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
-   }
+      this.b = true;
+      this.a.interrupt();
 
-   public void a(hdn $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
       }
 
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
-      }
+      this.bz();
+      this.b = false;
+      this.a = this.b();
    }
-
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(hdn var1);
 }

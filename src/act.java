@@ -1,18 +1,14 @@
-import io.netty.buffer.ByteBuf;
-
-public class act implements zp<ace> {
-   public static final act a = new act();
-   public static final zg<ByteBuf, act> b = zg.a(a);
-
-   private act() {
+public class act extends zq<ach> {
+   public act(Iterable<zs<? super ach>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zr<act> a() {
-      return agt.o;
+   public zu<act> a() {
+      return agw.a;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 }

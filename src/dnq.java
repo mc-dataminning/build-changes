@@ -1,89 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiFunction;
 
-public class dnq extends din implements dih {
+public class dnq extends dij implements dim {
    public static final MapCodec<dnq> a = b(dnq::new);
-   public static final int b = 1;
-   public static final int c = 4;
-   public static final dwd d = dvz.R;
-   public static final dwj e = dvz.S;
-   private static final BiFunction<jm, Integer, fah> f = ae.a(
-      ($$0, $$1) -> {
-         fah[] $$2 = new fah[]{
-            die.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
-            die.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
-            die.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
-            die.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
-         };
-         fah $$3 = fae.a();
-
-         for (int $$4 = 0; $$4 < $$1; $$4++) {
-            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
-            $$3 = fae.a($$3, $$2[$$5]);
-         }
-
-         return $$3.b();
-      }
-   );
 
    @Override
    public MapCodec<dnq> a() {
       return a;
    }
 
-   protected dnq(dvi.d $$0) {
+   public dnq(dvn.d $$0) {
       super($$0);
-      this.l(this.F.b().b(d, jm.c).b(e, Integer.valueOf(1)));
    }
 
    @Override
-   public dvj a(dvj $$0, dor $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   public dvj a(dvj $$0, dna $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   public boolean a(dvj $$0, czs $$1) {
-      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return f.apply($$0.c(d), $$0.c(e));
-   }
-
-   @Override
-   public dvj a(czs $$0) {
-      dvj $$1 = $$0.q().a_($$0.a());
-      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.m().b(d, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(d, e);
-   }
-
-   @Override
-   public boolean b(dfe $$0, jh $$1, dvj $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
-      int $$4 = $$3.c(e);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
       } else {
-         a($$0, $$2, new cwb(this));
+         for (jh $$3 : jh.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(axd.aN)) {
+               return true;
+            }
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (jh $$6 : jh.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         dvo $$7 = $$0.a_($$6);
+         if ($$7.a(dil.on)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(dil.ow)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dil.on.m() : dil.ow.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dil.on.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dil.ow.m(), 3);
+      }
+   }
+
+   @Override
+   public dim.a ar_() {
+      return dim.a.a;
    }
 }

@@ -1,46 +1,38 @@
-public interface cmx {
-   int o_ = 10;
-   float p_ = 0.2F;
+import java.util.Map;
 
-   int gu();
-
-   static boolean a(bva $$0, bva $$1) {
-      float $$2 = (float)$$0.h(bwi.c);
-      float $$3;
-      if (!$$0.p_() && (int)$$2 > 0) {
-         $$3 = $$2 / 2.0F + (float)$$0.dX().A.a((int)$$2);
-      } else {
-         $$3 = $$2;
-      }
-
-      bsu $$5 = $$0.dY().b($$0);
-      boolean $$6 = $$1.a($$5, $$3);
-      if ($$6) {
-         if ($$0.dX() instanceof arn $$7) {
-            dbu.a($$7, (bue)$$1, $$5);
-         }
-
-         if (!$$0.p_()) {
-            b($$0, $$1);
-         }
-      }
-
-      return $$6;
+public class cmx extends bwx<cmr> {
+   public cmx() {
+      super(Map.of(cei.o, cej.a, cei.m, cej.b, cei.aU, cej.b, cei.aV, cej.b));
    }
 
-   static void b(bva $$0, bva $$1) {
-      double $$2 = $$0.h(bwi.d);
-      double $$3 = $$1.h(bwi.p);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dC() - $$0.dC();
-         double $$6 = $$1.dI() - $$0.dI();
-         float $$7 = (float)($$0.dX().A.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dX().A.i() * 0.5F + 0.2F);
-         ezn $$9 = new ezn($$5, 0.0, $$6).d().c($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dX().A.i() * 0.5;
-         $$1.j($$9.d, $$10, $$9.f);
-         $$1.U = true;
+   protected boolean a(arq $$0, cmr $$1) {
+      return $$1.aL() && !$$1.bl() && $$1.ay() == bvq.a;
+   }
+
+   protected void a(arq $$0, cmr $$1, long $$2) {
+      bve $$3 = $$1.ee().c(cei.o).orElse(null);
+      if ($$3 != null) {
+         boolean $$4 = $$1.k($$3.dw());
+         ezr $$5 = null;
+         if ($$4) {
+            ezr $$6 = cfz.a($$1, 5, 5, $$3.dw());
+            if ($$6 != null && cmt.a($$1, $$6) && $$3.i($$6.d, $$6.e, $$6.f) > $$3.g($$1)) {
+               $$5 = $$6;
+            }
+         }
+
+         if ($$5 == null) {
+            $$5 = $$1.eb().h() ? cmt.a($$3, $$1.eb()) : a($$1, $$3);
+         }
+
+         $$1.ee().a(cei.m, new cel(jh.a((ka)$$5), 0.6F, 1));
       }
+   }
+
+   private static ezr a(cmr $$0, bve $$1) {
+      ezr $$2 = $$1.dw().d($$0.dw());
+      double $$3 = $$2.g() - azn.d($$0.eb().j(), 8.0, 4.0);
+      ezr $$4 = $$2.d().d($$3, $$3, $$3);
+      return $$0.dw().e($$4);
    }
 }

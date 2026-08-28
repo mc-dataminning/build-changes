@@ -1,31 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxp {
-   public static bwu<bvi> a(float $$0) {
-      return cag.a(
-         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$1 -> $$1.group($$1.c(cee.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dx())) {
-                           return false;
-                        } else {
-                           jh $$5 = $$3.dx();
-                           List<jh> $$6 = jh.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(jh::j).collect(ae.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new ceh($$2x, $$0, 0)));
-                           return true;
-                        }
-                     }
-               ))
-      );
+public class bxp extends bwx<coc> {
+   private static final int d = 1200;
+   final float c;
+
+   public bxp(float $$0) {
+      super(ImmutableMap.of(cei.d, cej.a), 1200);
+      this.c = $$0;
+   }
+
+   protected boolean a(arq $$0, coc $$1) {
+      return $$1.ee().g().map($$0x -> $$0x == cqi.b || $$0x == cqi.c || $$0x == cqi.d).orElse(true);
+   }
+
+   protected boolean a(arq $$0, coc $$1, long $$2) {
+      return $$1.ee().a(cei.d);
+   }
+
+   protected void b(arq $$0, coc $$1, long $$2) {
+      bwz.a($$1, $$1.ee().c(cei.d).get().b(), this.c, 1);
+   }
+
+   protected void c(arq $$0, coc $$1, long $$2) {
+      Optional<jp> $$3 = $$1.ee().c(cei.d);
+      $$3.ifPresent($$1x -> {
+         jh $$2x = $$1x.b();
+         arq $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            cgi $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            agv.c($$0, $$2x);
+         }
+      });
+      $$1.ee().b(cei.d);
    }
 }

@@ -1,73 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public abstract class edn extends eel<egr> {
-   public edn(Codec<egr> $$0) {
-      super($$0);
+public record edn<WC extends edi>(edp<WC> d, WC e) {
+   public static final Codec<edn<?>> a = lz.N.q().dispatch($$0 -> $$0.d, edp::c);
+   public static final Codec<jq<edn<?>>> b = alh.a(ma.aI, a);
+   public static final Codec<ju<edn<?>>> c = kf.a(ma.aI, a);
+
+   public boolean a(azv $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   protected void a(dfc $$0, azs $$1, jh $$2, egr $$3, int $$4, jh.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(jm.b, $$6);
-         if (!$$0.a_($$5).s()) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
+   public boolean a(edk $$0, dxj $$1, Function<jh, jq<dgh>> $$2, azv $$3, eav $$4, del $$5, dxi $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   protected int a(azs $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
+   public edp<WC> a() {
+      return this.d;
    }
 
-   protected boolean a(dfc $$0, jh $$1, int $$2, jh.a $$3, egr $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 <= $$0.al()) {
-         dvj $$6 = $$0.a_($$1.e());
-         if (!b($$6) && !$$6.a(axa.bb)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dvj $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.l() && !$$11.a(axa.P)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+   public WC b() {
+      return this.e;
    }
-
-   @Override
-   public boolean a(een<egr> $$0) {
-      dfy $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      azs $$3 = $$0.d();
-      egr $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      jh.a $$6 = new jh.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
-   }
-
-   protected abstract int a(int var1, int var2, int var3, int var4);
-
-   protected abstract void a(dfc var1, azs var2, jh var3, int var4, jh.a var5, egr var6);
 }

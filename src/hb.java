@@ -13,15 +13,15 @@ public class hb implements gu {
    }
 
    @Override
-   public ezn a(ew $$0) {
-      ezn $$1 = $$0.d();
-      return new ezn(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public ezr a(ew $$0) {
+      ezr $$1 = $$0.d();
+      return new ezr(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
    }
 
    @Override
-   public ezm b(ew $$0) {
-      ezm $$1 = $$0.k();
-      return new ezm((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public ezq b(ew $$0) {
+      ezq $$1 = $$0.k();
+      return new ezq((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,12 +96,8 @@ public class hb implements gu {
       return new hb(new ha(false, $$0), new ha(false, $$1), new ha(false, $$2));
    }
 
-   public static hb a(ezm $$0) {
+   public static hb a(ezq $$0) {
       return new hb(new ha(false, (double)$$0.i), new ha(false, (double)$$0.j), new ha(true, 0.0));
-   }
-
-   public static hb d() {
-      return new hb(new ha(true, 0.0), new ha(true, 0.0), new ha(true, 0.0));
    }
 
    @Override

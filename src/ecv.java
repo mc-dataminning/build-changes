@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class ecv extends ecx {
-   public static final MapCodec<ecv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ecv::new));
+public class ecv extends edb {
+   final axt<dij> a;
+   public static final MapCodec<ecv> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axt.a(ma.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, ecv::new)
+   );
 
-   public ecv(kl $$0) {
+   protected ecv(kl $$0, axt<dij> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dvj $$0) {
-      return $$0.v();
+   protected boolean a(dvo $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public ecn<?> a() {
-      return ecn.f;
+   public ecr<?> a() {
+      return ecr.b;
    }
 }

@@ -1,56 +1,20 @@
-public class ggv extends ggp {
-   private float a;
-
-   ggv(gci $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+public class ggv extends gfx {
+   protected ggv(gcy $$0, double $$1, double $$2, double $$3, double $$4, gha $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   @Override
-   public gft b() {
-      return gft.b;
-   }
+   public static class a implements ggi<lw> {
+      private final gha a;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * azk.b(this.a));
-         this.l = this.l + (double)(0.6F * azk.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(axg.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
-      }
-   }
-
-   public static class a implements gfs<lv> {
-      private final ggk a;
-
-      public a(ggk $$0) {
+      public a(gha $$0) {
          this.a = $$0;
       }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggv $$8 = new ggv($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ggv($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

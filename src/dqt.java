@@ -1,49 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqt extends dhq {
-   public static final MapCodec<dqt> a = b(dqt::new);
-   public static final dwh<dup> b = dvz.by;
-   public static final dwa c = dvz.bA;
-
-   @Override
-   public MapCodec<dqt> a() {
-      return a;
-   }
-
-   public dqt(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dup.a).b(c, Boolean.valueOf(false)));
-   }
+public class dqt extends dhz {
+   protected static final MapCodec<lw> c = lz.i
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof lw $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dqt> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dqt::new));
+   protected final lw e;
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b, c);
+   public MapCodec<? extends dqt> a() {
+      return d;
+   }
+
+   protected dqt(lw $$0, dvn.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected dok a_(dvj $$0) {
-      return dok.c;
-   }
-
-   @Nullable
-   @Override
-   public dsm a(jh $$0, dvj $$1) {
-      return new dui($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
-      return $$0 instanceof arn $$3
-         ? a($$2, dso.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dvz.bA).orElse(false)))
-         : a($$2, dso.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dvz.bA).orElse(false)));
-   }
-
-   @Override
-   public void a(cwb $$0, cvx.b $$1, List<xi> $$2, cxt $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dfv.a($$0, $$2, "spawn_data");
+   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(ls.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

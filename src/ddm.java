@@ -1,46 +1,25 @@
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
 
-public interface ddm {
-   ali a = ali.b("leather");
-   ali b = ali.b("chainmail");
-   ali c = ali.b("iron");
-   ali d = ali.b("gold");
-   ali e = ali.b("diamond");
-   ali f = ali.b("turtle_scute");
-   ali g = ali.b("netherite");
-   ali h = ali.b("armadillo_scute");
-   ali i = ali.b("elytra");
-   Map<cuy, ali> j = ae.a(cuy.class, $$0 -> ali.b($$0.c() + "_carpet"));
-   ali k = ali.b("trader_llama");
+public record ddm(int a, Map<ddo, Integer> b, int c, jq<awn> d, float e, float f, axt<cwb> g, all h) {
+   public cwb.a a(cwb.a $$0, ddo $$1) {
+      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(ku.D, ddr.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
+   }
 
-   static void a(BiConsumer<ali, ddl> $$0) {
-      $$0.accept(a, ddl.a().a(ali.b("leather"), true).a(ali.b("leather_overlay"), false).a(ddl.d.e, ddl.c.a(ali.b("leather"), true)).a());
-      $$0.accept(b, a("chainmail"));
-      $$0.accept(c, b("iron"));
-      $$0.accept(d, b("gold"));
-      $$0.accept(e, b("diamond"));
-      $$0.accept(f, ddl.a().b(ali.b("turtle_scute"), false).a());
-      $$0.accept(g, a("netherite"));
-      $$0.accept(h, ddl.a().a(ddl.d.d, ddl.c.b(ali.b("armadillo_scute"), false)).a(ddl.d.d, ddl.c.b(ali.b("armadillo_scute_overlay"), true)).a());
-      $$0.accept(i, ddl.a().a(ddl.d.c, new ddl.c(ali.b("elytra"), Optional.empty(), true)).a());
+   public cwb.a a(cwb.a $$0, ju<bup<?>> $$1) {
+      return $$0.b(ddo.e.a(this.a)).a(this.a(ddo.e)).a(this.g).a(ku.D, ddr.a(buq.g).a(this.d).a(this.h).a($$1).a());
+   }
 
-      for (Entry<cuy, ali> $$1 : j.entrySet()) {
-         cuy $$2 = $$1.getKey();
-         ali $$3 = $$1.getValue();
-         $$0.accept($$3, ddl.a().a(ddl.d.f, new ddl.c(ali.b($$2.c()))).a());
+   private cyw a(ddo $$0) {
+      int $$1 = this.b.getOrDefault($$0, 0);
+      cyw.a $$2 = cyw.a();
+      bur $$3 = bur.a($$0.a());
+      all $$4 = all.b("armor." + $$0.b());
+      $$2.a(bwm.a, new bwk($$4, (double)$$1, bwk.a.a), $$3);
+      $$2.a(bwm.b, new bwk($$4, (double)this.e, bwk.a.a), $$3);
+      if (this.f > 0.0F) {
+         $$2.a(bwm.p, new bwk($$4, (double)this.f, bwk.a.a), $$3);
       }
 
-      $$0.accept(k, ddl.a().a(ddl.d.f, new ddl.c(ali.b("trader_llama"))).a());
-   }
-
-   private static ddl a(String $$0) {
-      return ddl.a().a(ali.b($$0)).a();
-   }
-
-   private static ddl b(String $$0) {
-      return ddl.a().a(ali.b($$0)).a(ddl.d.e, ddl.c.a(ali.b($$0), false)).a();
+      return $$2.a();
    }
 }

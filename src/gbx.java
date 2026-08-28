@@ -1,22 +1,8 @@
-public class gbx {
-   private final float a;
-   private final float b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public gbx(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public float a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gbx {
 }

@@ -1,95 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
 public class bwh {
-   private final Map<jq<bwd>, bwe> a;
+   public static final Codec<jq<bwh>> a = lz.s.r();
+   public static final zj<ww, jq<bwh>> b = zh.b(ma.c);
+   private final double c;
+   private boolean d;
+   private final String e;
+   private bwh.a f = bwh.a.a;
 
-   bwh(Map<jq<bwd>, bwe> $$0) {
-      this.a = $$0;
+   protected bwh(String $$0, double $$1) {
+      this.c = $$1;
+      this.e = $$0;
    }
 
-   private bwe d(jq<bwd> $$0) {
-      bwe $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
-      }
+   public double a() {
+      return this.c;
    }
 
-   public double a(jq<bwd> $$0) {
-      return this.d($$0).g();
+   public boolean b() {
+      return this.d;
    }
 
-   public double b(jq<bwd> $$0) {
-      return this.d($$0).b();
+   public bwh a(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   public double a(jq<bwd> $$0, ali $$1) {
-      bwg $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.c();
-      }
+   public bwh a(bwh.a $$0) {
+      this.f = $$0;
+      return this;
    }
 
-   @Nullable
-   public bwe a(Consumer<bwe> $$0, jq<bwd> $$1) {
-      bwe $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bwe $$3 = new bwe($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
+   public double a(double $$0) {
+      return $$0;
    }
 
-   public static bwh.a a() {
-      return new bwh.a();
+   public String c() {
+      return this.e;
    }
 
-   public boolean c(jq<bwd> $$0) {
-      return this.a.containsKey($$0);
+   public n b(boolean $$0) {
+      return this.f.a($$0);
    }
 
-   public boolean b(jq<bwd> $$0, ali $$1) {
-      bwe $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
+   public static enum a {
+      a,
+      b,
+      c;
 
-   public static class a {
-      private final Builder<jq<bwd>, bwe> a = ImmutableMap.builder();
-      private boolean b;
-
-      private bwe b(jq<bwd> $$0) {
-         bwe $$1 = new bwe($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
-      }
-
-      public bwh.a a(jq<bwd> $$0) {
-         this.b($$0);
-         return this;
-      }
-
-      public bwh.a a(jq<bwd> $$0, double $$1) {
-         bwe $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bwh a() {
-         this.b = true;
-         return new bwh(this.a.buildKeepingLast());
+      public n a(boolean $$0) {
+         return switch (this) {
+            case a -> $$0 ? n.j : n.m;
+            case b -> n.h;
+            case c -> $$0 ? n.m : n.j;
+         };
       }
    }
 }

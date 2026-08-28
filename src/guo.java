@@ -1,8 +1,7 @@
-public class guo extends gvl {
-   public boolean b;
+public class guo extends gwb {
+   public float a;
+   public boolean b = true;
    public boolean c;
    public boolean d;
-   public float e;
-   public float f;
-   public float g;
+   public boolean e;
 }

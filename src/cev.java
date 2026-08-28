@@ -1,22 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class cev extends cfe {
-   public static final float a = 10.0F;
-
+public class cev extends cfo<btz> {
    @Override
-   protected boolean a(bva $$0, bva $$1) {
-      return !$$0.ed().a(cee.U) && cfk.c($$0, $$1) && cil.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   public Set<cei<?>> a() {
+      return ImmutableSet.of(cei.K, cei.h);
    }
 
-   private boolean e(bva $$0, bva $$1) {
-      List<UUID> $$2 = $$0.ed().c(cee.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cH());
+   protected void a(arq $$0, btz $$1) {
+      $$1.ee().c(cei.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   @Override
-   protected cee<bva> b() {
-      return cee.B;
+   private void a(btz $$0, cek $$1) {
+      Optional<btz> $$2 = $$1.a($$1x -> $$1x.ar() == $$0.ar() && !$$1x.p_()).map(btz.class::cast);
+      $$0.ee().a(cei.K, $$2);
    }
 }

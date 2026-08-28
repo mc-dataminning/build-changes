@@ -1,24 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class ecs extends ecx {
-   private final ju<die> e;
-   public static final MapCodec<ecs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kf.a(lz.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, ecs::new)
-   );
+abstract class ecs implements ecq {
+   protected final List<ecq> e;
 
-   public ecs(kl $$0, ju<die> $$1) {
-      super($$0);
-      this.e = $$1;
+   protected ecs(List<ecq> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(dvj $$0) {
-      return $$0.a(this.e);
-   }
-
-   @Override
-   public ecn<?> a() {
-      return ecn.a;
+   public static <T extends ecs> MapCodec<T> a(Function<List<ecq>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ecq.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

@@ -1,154 +1,220 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Optional;
 
 public class aol {
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xl.c("commands.place.feature.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("commands.place.jigsaw.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xl.c("commands.place.structure.failed"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xl.b("commands.place.template.invalid", $$0));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xl.c("commands.place.template.failed"));
+   private static final SuggestionProvider<ew> f = ($$0, $$1) -> {
+      eqe $$2 = ((ew)$$0.getSource()).e().q();
+      return fb.a($$2.a(), $$1);
+   };
+
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a(
-                                    "raid"
-                                 )
-                                 .requires($$0x -> $$0x.c(3)))
-                              .then(
-                                 ex.a("start")
-                                    .then(
-                                       ex.a("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes($$0x -> b((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
-                                    )
-                              ))
-                           .then(ex.a("stop").executes($$0x -> c((ew)$$0x.getSource()))))
-                        .then(ex.a("check").executes($$0x -> d((ew)$$0x.getSource()))))
-                     .then(ex.a("sound").then(ex.a("type", ff.a($$1)).executes($$0x -> a((ew)$$0x.getSource(), ff.a($$0x, "type"))))))
-                  .then(ex.a("spawnleader").executes($$0x -> b((ew)$$0x.getSource()))))
-               .then(
-                  ex.a("setomen")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("place")
+                        .requires($$0x -> $$0x.c(2)))
                      .then(
-                        ex.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                        ex.a("feature")
+                           .then(
+                              ((RequiredArgumentBuilder)ex.a("feature", fw.a(ma.aJ))
+                                    .executes($$0x -> a((ew)$$0x.getSource(), fw.a($$0x, "feature"), jh.a((ka)((ew)$$0x.getSource()).d()))))
+                                 .then(ex.a("pos", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), fw.a($$0x, "feature"), gs.a($$0x, "pos"))))
+                           )
+                     ))
+                  .then(
+                     ex.a("jigsaw")
+                        .then(
+                           ex.a("pool", fw.a(ma.aV))
+                              .then(
+                                 ex.a("target", fx.a())
+                                    .then(
+                                       ((RequiredArgumentBuilder)ex.a("max_depth", IntegerArgumentType.integer(1, 20))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      fw.c($$0x, "pool"),
+                                                      fx.c($$0x, "target"),
+                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                      jh.a((ka)((ew)$$0x.getSource()).d())
+                                                   )
+                                             ))
+                                          .then(
+                                             ex.a("position", gs.a())
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ew)$$0x.getSource(),
+                                                         fw.c($$0x, "pool"),
+                                                         fx.c($$0x, "target"),
+                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                         gs.a($$0x, "position")
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  ))
+               .then(
+                  ex.a("structure")
+                     .then(
+                        ((RequiredArgumentBuilder)ex.a("structure", fw.a(ma.aS))
+                              .executes($$0x -> b((ew)$$0x.getSource(), fw.b($$0x, "structure"), jh.a((ka)((ew)$$0x.getSource()).d()))))
+                           .then(ex.a("pos", gs.a()).executes($$0x -> b((ew)$$0x.getSource(), fw.b($$0x, "structure"), gs.a($$0x, "pos"))))
                      )
                ))
-            .then(ex.a("glow").executes($$0x -> a((ew)$$0x.getSource())))
+            .then(
+               ex.a("template")
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("template", fx.a())
+                           .suggests(f)
+                           .executes($$0x -> a((ew)$$0x.getSource(), fx.c($$0x, "template"), jh.a((ka)((ew)$$0x.getSource()).d()), dow.a, dnf.a, 1.0F, 0)))
+                        .then(
+                           ((RequiredArgumentBuilder)ex.a("pos", gs.a())
+                                 .executes($$0x -> a((ew)$$0x.getSource(), fx.c($$0x, "template"), gs.a($$0x, "pos"), dow.a, dnf.a, 1.0F, 0)))
+                              .then(
+                                 ((RequiredArgumentBuilder)ex.a("rotation", gk.a())
+                                       .executes(
+                                          $$0x -> a((ew)$$0x.getSource(), fx.c($$0x, "template"), gs.a($$0x, "pos"), gk.a($$0x, "rotation"), dnf.a, 1.0F, 0)
+                                       ))
+                                    .then(
+                                       ((RequiredArgumentBuilder)ex.a("mirror", gj.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      fx.c($$0x, "template"),
+                                                      gs.a($$0x, "pos"),
+                                                      gk.a($$0x, "rotation"),
+                                                      gj.a($$0x, "mirror"),
+                                                      1.0F,
+                                                      0
+                                                   )
+                                             ))
+                                          .then(
+                                             ((RequiredArgumentBuilder)ex.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ew)$$0x.getSource(),
+                                                            fx.c($$0x, "template"),
+                                                            gs.a($$0x, "pos"),
+                                                            gk.a($$0x, "rotation"),
+                                                            gj.a($$0x, "mirror"),
+                                                            FloatArgumentType.getFloat($$0x, "integrity"),
+                                                            0
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ex.a("seed", IntegerArgumentType.integer())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ew)$$0x.getSource(),
+                                                               fx.c($$0x, "template"),
+                                                               gs.a($$0x, "pos"),
+                                                               gk.a($$0x, "rotation"),
+                                                               gj.a($$0x, "mirror"),
+                                                               FloatArgumentType.getFloat($$0x, "integrity"),
+                                                               IntegerArgumentType.getInteger($$0x, "seed")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ew $$0) throws CommandSyntaxException {
-      cqa $$1 = a($$0.h());
-      if ($$1 != null) {
-         for (cqb $$3 : $$1.h()) {
-            $$3.a(new btj(btl.x, 1000, 1));
-         }
+   public static int a(ew $$0, jq.c<eeb<?, ?>> $$1, jh $$2) throws CommandSyntaxException {
+      arq $$3 = $$0.e();
+      eeb<?, ?> $$4 = $$1.a();
+      del $$5 = new del($$2);
+      a($$3, new del($$5.g - 1, $$5.h - 1), new del($$5.g + 1, $$5.h + 1));
+      if (!$$4.a($$3, $$3.l().g(), $$3.E_(), $$2)) {
+         throw a.create();
+      } else {
+         String $$6 = $$1.h().a().toString();
+         $$0.a(() -> xl.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
       }
-
-      return 1;
    }
 
-   private static int a(ew $$0, int $$1) throws CommandSyntaxException {
-      cqa $$2 = a($$0.h());
-      if ($$2 != null) {
-         int $$3 = $$2.l();
-         if ($$1 > $$3) {
-            $$0.b(xi.b("Sorry, the max raid omen level you can set is " + $$3));
+   public static int a(ew $$0, jq<enl> $$1, all $$2, int $$3, jh $$4) throws CommandSyntaxException {
+      arq $$5 = $$0.e();
+      del $$6 = new del($$4);
+      a($$5, $$6, $$6);
+      if (!enf.a($$5, $$1, $$2, $$3, $$4, false)) {
+         throw b.create();
+      } else {
+         $$0.a(() -> xl.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
+         return 1;
+      }
+   }
+
+   public static int b(ew $$0, jq.c<emb> $$1, jh $$2) throws CommandSyntaxException {
+      arq $$3 = $$0.e();
+      emb $$4 = $$1.a();
+      dxk $$5 = $$3.l().g();
+      emj $$6 = $$4.a($$0.v(), $$5, $$5.d(), $$3.l().i(), $$3.q(), $$3.C(), new del($$2), 0, $$3, $$0x -> true);
+      if (!$$6.b()) {
+         throw c.create();
+      } else {
+         elt $$7 = $$6.a();
+         del $$8 = new del(kj.a($$7.h()), kj.a($$7.j()));
+         del $$9 = new del(kj.a($$7.k()), kj.a($$7.m()));
+         a($$3, $$8, $$9);
+         del.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.E_(), new elt($$3x.d(), $$3.I_(), $$3x.e(), $$3x.f(), $$3.al() + 1, $$3x.g()), $$3x));
+         String $$10 = $$1.h().a().toString();
+         $$0.a(() -> xl.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(ew $$0, all $$1, jh $$2, dow $$3, dnf $$4, float $$5, int $$6) throws CommandSyntaxException {
+      arq $$7 = $$0.e();
+      eqe $$8 = $$7.q();
+
+      Optional<eqd> $$9;
+      try {
+         $$9 = $$8.b($$1);
+      } catch (aa var13) {
+         throw d.create($$1);
+      }
+
+      if ($$9.isEmpty()) {
+         throw d.create($$1);
+      } else {
+         eqd $$12 = $$9.get();
+         a($$7, new del($$2), new del($$2.a($$12.a())));
+         epz $$13 = new epz().a($$4).a($$3);
+         if ($$5 < 1.0F) {
+            $$13.b().a(new epg($$5)).a(dui.b((long)$$6));
+         }
+
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dui.b((long)$$6), 2);
+         if (!$$14) {
+            throw e.create();
          } else {
-            int $$4 = $$2.m();
-            $$2.a($$1);
-            $$0.a(() -> xi.b("Changed village's raid omen level from " + $$4 + " to " + $$1), false);
+            $$0.a(() -> xl.a("commands.place.template.success", xl.a($$1), $$2.u(), $$2.v(), $$2.w()), true);
+            return 1;
          }
-      } else {
-         $$0.b(xi.b("No raid found here"));
-      }
-
-      return 1;
-   }
-
-   private static int b(ew $$0) {
-      $$0.a(() -> xi.b("Spawned a raid captain"), false);
-      cqb $$1 = bul.aC.a($$0.e(), buk.n);
-      if ($$1 == null) {
-         $$0.b(xi.b("Pillager failed to spawn"));
-         return 0;
-      } else {
-         $$1.x(true);
-         $$1.a(bum.f, cqa.a($$0.v().e(lz.d)));
-         $$1.a_($$0.d().d, $$0.d().e, $$0.d().f);
-         $$1.a($$0.e(), $$0.e().d_(jh.a((ka)$$0.d())), buk.n, null);
-         $$0.e().a_($$1);
-         return 1;
       }
    }
 
-   private static int a(ew $$0, @Nullable xi $$1) {
-      if ($$1 != null && $$1.getString().equals("local")) {
-         arn $$2 = $$0.e();
-         ezn $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.d, $$3.e, $$3.f, awl.vb, awm.g, 2.0F, 1.0F, $$2.A.g());
+   private static void a(arq $$0, del $$1, del $$2) throws CommandSyntaxException {
+      if (del.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+         throw gs.a.create();
       }
-
-      return 1;
-   }
-
-   private static int b(ew $$0, int $$1) throws CommandSyntaxException {
-      aro $$2 = $$0.h();
-      jh $$3 = $$2.dx();
-      if ($$2.B().e($$3)) {
-         $$0.b(xi.b("Raid already started close by"));
-         return -1;
-      } else {
-         cqc $$4 = $$2.B().z();
-         cqa $$5 = $$4.a($$2, $$2.dx());
-         if ($$5 != null) {
-            $$5.a($$1);
-            $$4.c();
-            $$0.a(() -> xi.b("Created a raid in your local village"), false);
-         } else {
-            $$0.b(xi.b("Failed to create a raid in your local village"));
-         }
-
-         return 1;
-      }
-   }
-
-   private static int c(ew $$0) throws CommandSyntaxException {
-      aro $$1 = $$0.h();
-      jh $$2 = $$1.dx();
-      cqa $$3 = $$1.B().d($$2);
-      if ($$3 != null) {
-         $$3.n();
-         $$0.a(() -> xi.b("Stopped raid"), false);
-         return 1;
-      } else {
-         $$0.b(xi.b("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int d(ew $$0) throws CommandSyntaxException {
-      cqa $$1 = a($$0.h());
-      if ($$1 != null) {
-         StringBuilder $$2 = new StringBuilder();
-         $$2.append("Found a started raid! ");
-         $$0.a(() -> xi.b($$2.toString()), false);
-         StringBuilder $$3 = new StringBuilder();
-         $$3.append("Num groups spawned: ");
-         $$3.append($$1.k());
-         $$3.append(" Raid omen level: ");
-         $$3.append($$1.m());
-         $$3.append(" Num mobs: ");
-         $$3.append($$1.r());
-         $$3.append(" Raid health: ");
-         $$3.append($$1.q());
-         $$3.append(" / ");
-         $$3.append($$1.g());
-         $$0.a(() -> xi.b($$3.toString()), false);
-         return 1;
-      } else {
-         $$0.b(xi.b("Found no started raids"));
-         return 0;
-      }
-   }
-
-   @Nullable
-   private static cqa a(aro $$0) {
-      return $$0.B().d($$0.dx());
    }
 }

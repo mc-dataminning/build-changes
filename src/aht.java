@@ -1,29 +1,37 @@
-public class aht implements zp<agv> {
-   public static final zg<wf, aht> a = zp.a(aht::a, aht::new);
-   private final boolean b;
+public class aht implements zs<agy> {
+   public static final zj<wi, aht> a = zs.a(aht::a, aht::new);
+   private final int b;
+   private final int c;
 
-   public aht(boolean $$0) {
+   public aht(int $$0, int $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private aht(wf $$0) {
-      this.b = $$0.readBoolean();
+   private aht(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b);
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zr<aht> a() {
-      return agt.bD;
+   public zu<aht> a() {
+      return agw.bA;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

@@ -1,26 +1,99 @@
-public class ghc extends ghb {
-   private final fjm d;
+import java.util.Optional;
 
-   public ghc(fjm $$0) {
-      this.d = $$0;
+public class ghc extends ghf {
+   ghc(gcy $$0, gha $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+   ghc(gcy $$0, gha $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
    @Override
-   public void a(boolean $$0, float $$1) {
-      this.a = new cok(this.d.v.e(), this.d.x.e(), this.d.w.e(), this.d.y.e(), this.d.z.e(), this.d.A.e(), this.d.B.e());
-      this.c = a(this.a.a(), this.a.b());
-      this.b = a(this.a.c(), this.a.d());
-      if ($$0) {
-         this.b *= $$1;
-         this.c *= $$1;
+   public ggj b() {
+      return ggj.b;
+   }
+
+   public static class a implements ggi<lw> {
+      private final gha a;
+
+      public a(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azv $$8 = $$1.A;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         ghc $$12 = new ghc($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
+   }
+
+   public static class b implements ggi<lw> {
+      private final gha a;
+
+      public b(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghc $$8 = new ghc($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<lp> o() {
+               return Optional.of(lp.a);
+            }
+         };
+         $$8.t = azn.b($$1.A, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
+   }
+
+   public static class c implements ggi<lw> {
+      private final gha a;
+
+      public c(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghc $$8 = new ghc($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements ggi<lw> {
+      private final gha a;
+
+      public d(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.A.i() * -1.9 * (double)$$1.A.i() * 0.1;
+         ghc $$9 = new ghc($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
       }
    }
 }

@@ -1,248 +1,125 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+enum frw {
+   a(
+      new frw.a(all.b("advancements/tab_above_left_selected"), all.b("advancements/tab_above_middle_selected"), all.b("advancements/tab_above_right_selected")),
+      new frw.a(all.b("advancements/tab_above_left"), all.b("advancements/tab_above_middle"), all.b("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new frw.a(all.b("advancements/tab_below_left_selected"), all.b("advancements/tab_below_middle_selected"), all.b("advancements/tab_below_right_selected")),
+      new frw.a(all.b("advancements/tab_below_left"), all.b("advancements/tab_below_middle"), all.b("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new frw.a(all.b("advancements/tab_left_top_selected"), all.b("advancements/tab_left_middle_selected"), all.b("advancements/tab_left_bottom_selected")),
+      new frw.a(all.b("advancements/tab_left_top"), all.b("advancements/tab_left_middle"), all.b("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new frw.a(all.b("advancements/tab_right_top_selected"), all.b("advancements/tab_right_middle_selected"), all.b("advancements/tab_right_bottom_selected")),
+      new frw.a(all.b("advancements/tab_right_top"), all.b("advancements/tab_right_middle"), all.b("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-public class frw extends fra {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   private static final int y = 256;
-   private static final int z = 256;
-   public static final frw.a d = new frw.a(List.of());
-   public static final ali s = ali.b("textures/gui/book.png");
-   protected static final int u = 114;
-   protected static final int v = 128;
-   protected static final int w = 192;
-   protected static final int x = 192;
-   private frw.a A;
-   private int B;
-   private List<ayw> C = Collections.emptyList();
-   private int D = -1;
-   private xi E = xh.a;
-   private fsx F;
-   private fsx G;
-   private final boolean H;
+   private final frw.a e;
+   private final frw.a f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public frw(frw.a $$0) {
-      this($$0, true);
+   private frw(final frw.a $$0, final frw.a $$1, final int $$2, final int $$3, final int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   public frw() {
-      this(d, false);
+   public int a() {
+      return this.i;
    }
 
-   private frw(frw.a $$0, boolean $$1) {
-      super(fiz.a);
-      this.A = $$0;
-      this.H = $$1;
-   }
-
-   public void a(frw.a $$0) {
-      this.A = $$0;
-      this.B = azk.a(this.B, 0, $$0.a());
-      this.K();
-      this.D = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = azk.a($$0, 0, this.A.a() - 1);
-      if ($$1 != this.B) {
-         this.B = $$1;
-         this.K();
-         this.D = -1;
-         return true;
+   public void a(flj $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      frw.a $$5 = $$3 ? this.e : this.f;
+      all $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
       } else {
-         return false;
+         $$6 = $$5.b();
+      }
+
+      $$0.a(gjh::B, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
+   }
+
+   public void a(flj $$0, int $$1, int $$2, int $$3, cwf $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
+   }
+
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
    }
 
-   protected boolean b(int $$0) {
-      return this.a($$0);
-   }
-
-   @Override
-   protected void aR_() {
-      this.m();
-      this.D();
-   }
-
-   protected void m() {
-      this.c(flh.a(xh.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 200, 20).a());
-   }
-
-   protected void D() {
-      int $$0 = (this.n - 192) / 2;
-      int $$1 = 2;
-      this.F = this.c(new fsx($$0 + 116, 159, true, $$0x -> this.G(), this.H));
-      this.G = this.c(new fsx($$0 + 43, 159, false, $$0x -> this.F(), this.H));
-      this.K();
-   }
-
-   private int E() {
-      return this.A.a();
-   }
-
-   protected void F() {
-      if (this.B > 0) {
-         this.B--;
-      }
-
-      this.K();
-   }
-
-   protected void G() {
-      if (this.B < this.E() - 1) {
-         this.B++;
-      }
-
-      this.K();
-   }
-
-   private void K() {
-      this.F.k = this.B < this.E() - 1;
-      this.G.k = this.B > 0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 266:
-               this.G.b();
-               return true;
-            case 267:
-               this.F.b();
-               return true;
-            default:
-               return false;
-         }
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
    }
 
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 192) / 2;
-      int $$5 = 2;
-      if (this.D != this.B) {
-         xn $$6 = this.A.a(this.B);
-         this.C = this.p.c($$6, 114);
-         this.E = xi.a("book.pageIndicator", this.B + 1, Math.max(this.E(), 1));
-      }
-
-      this.D = this.B;
-      int $$7 = this.p.a(this.E);
-      $$0.a(this.p, this.E, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.C.size());
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         ayw $$10 = this.C.get($$9);
-         $$0.a(this.p, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      yf $$11 = this.b((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.p, $$11, $$1, $$2);
-      }
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
    }
 
-   @Override
-   public void b(fku $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-      $$0.a(gir::B, s, (this.n - 192) / 2, 2, 0.0F, 0.0F, 192, 192, 256, 256);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         yf $$3 = this.b($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(yf $$0) {
-      xg $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == xg.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == xg.a.c) {
-            this.J();
-         }
-
-         return $$4;
-      }
-   }
-
-   protected void J() {
-      this.m.a(null);
-   }
-
-   @Nullable
-   public yf b(double $$0, double $$1) {
-      if (this.C.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = azk.a($$0 - (double)((this.n - 192) / 2) - 36.0);
-         int $$3 = azk.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.C.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.C.size()) {
-                  ayw $$6 = this.C.get($$5);
-                  return this.m.h.b().a($$6, $$2);
-               } else {
-                  return null;
-               }
-            } else {
-               return null;
-            }
-         } else {
-            return null;
-         }
-      }
-   }
-
-   public static record a(List<xi> a) {
-      public int a() {
-         return this.a.size();
-      }
-
-      public xn a(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a.get($$0) : xn.b;
-      }
-
-      @Nullable
-      public static frw.a a(cwb $$0) {
-         boolean $$1 = fji.Q().aU();
-         czj $$2 = $$0.a(ku.T);
-         if ($$2 != null) {
-            return new frw.a($$2.a($$1));
-         } else {
-            czi $$3 = $$0.a(ku.S);
-            return $$3 != null ? new frw.a($$3.a($$1).map(xi::b).toList()) : null;
-         }
-      }
-
-      public List<xi> b() {
-         return this.a;
-      }
+   static record a(all a, all b, all c) {
    }
 }

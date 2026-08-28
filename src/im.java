@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface im<T> {
-   ali a();
+   all a();
 
    List<ia<T>> b();
 }

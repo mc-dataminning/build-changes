@@ -5,122 +5,58 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
 
-public class evi extends evp {
-   public static final axq<elx> a = axm.l;
-   public static final jq<esz> b = eta.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<evi> f = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axq.a(lz.aS).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  esz.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, evi::new)
+public class evi extends evt {
+   public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(evi.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, evi::new)
    );
-   private final axq<elx> h;
-   private final jq<esz> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final evi.a b;
 
-   evi(List<exn> $$0, axq<elx> $$1, jq<esz> $$2, byte $$3, int $$4, boolean $$5) {
+   private evi(List<exr> $$0, evi.a $$1) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.b = $$1;
    }
 
    @Override
-   public evr<evi> b() {
-      return evs.q;
+   public evv<evi> b() {
+      return evw.s;
    }
 
    @Override
-   public Set<ewv<?>> a() {
-      return ImmutableSet.of(ewy.f);
+   public Set<ewz<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
    @Override
-   public cwb a(cwb $$0, euc $$1) {
-      if (!$$0.a(cwf.ul)) {
-         return $$0;
-      } else {
-         ezn $$2 = $$1.c(ewy.f);
-         if ($$2 != null) {
-            arn $$3 = $$1.d();
-            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
-            if ($$4 != null) {
-               cwb $$5 = cwo.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cwo.a($$3, $$5);
-               ete.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
-         }
-
-         return $$0;
+   public cwf a(cwf $$0, eug $$1) {
+      if ($$1.c(this.b.g) instanceof bsk $$3) {
+         $$0.b(ku.g, $$3.ao());
       }
+
+      return $$0;
    }
 
-   public static evi.a c() {
-      return new evi.a();
+   public static evt.a<?> a(evi.a $$0) {
+      return a($$1 -> new evi($$1, $$0));
    }
 
-   public static class a extends evp.a<evi.a> {
-      private axq<elx> a;
-      private jq<esz> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static enum a implements baj {
+      a("this", exc.a),
+      b("attacking_entity", exc.d),
+      c("last_damage_player", exc.b),
+      d("block_entity", exc.h);
 
-      public a() {
-         this.a = evi.a;
-         this.b = evi.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
-      }
+      public static final Codec<evi.a> e = baj.a(evi.a::values);
+      private final String f;
+      final ewz<?> g;
 
-      protected evi.a a() {
-         return this;
-      }
-
-      public evi.a a(axq<elx> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public evi.a a(jq<esz> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public evi.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public evi.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public evi.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
+      private a(final String $$0, final ewz<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public evq b() {
-         return new evi(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public String c() {
+         return this.f;
       }
    }
 }

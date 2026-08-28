@@ -1,24 +1,21 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public record dct(ali d) implements dcj {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<dct> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.a.fieldOf("function").forGetter(dct::b)).apply($$0, dct::new));
+public record dct(jq<awn> d, brk e, brk f) implements dcn {
+   public static final MapCodec<dct> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               awn.b.fieldOf("sound").forGetter(dct::b),
+               brk.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dct::c),
+               brk.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dct::d)
+            )
+            .apply($$0, dct::new)
+   );
 
    @Override
-   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
-      MinecraftServer $$5 = $$0.o();
-      alx $$6 = $$5.aE();
-      Optional<ik<ew>> $$7 = $$6.a(this.d);
-      if ($$7.isPresent()) {
-         ew $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bV());
-         $$6.a($$7.get(), $$8);
-      } else {
-         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+   public void a(arq $$0, int $$1, dbv $$2, bui $$3, ezr $$4) {
+      azv $$5 = $$3.eb();
+      if (!$$3.bd()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.do(), this.e.a($$5), this.f.a($$5));
       }
    }
 
@@ -27,7 +24,15 @@ public record dct(ali d) implements dcj {
       return a;
    }
 
-   public ali b() {
+   public jq<awn> b() {
       return this.d;
+   }
+
+   public brk c() {
+      return this.e;
+   }
+
+   public brk d() {
+      return this.f;
    }
 }

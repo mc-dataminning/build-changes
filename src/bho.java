@@ -1,24 +1,28 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
 import java.util.Optional;
 
-public class bho extends bgq {
+public class bho extends bgt {
    public bho(Schema $$0) {
-      super($$0, true, "PrimedTnt BlockState fixer", bhu.B, "minecraft:tnt");
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
-      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
+      super($$0, false, "PlayerHeadBlockProfileFix", bhy.s, "minecraft:skull");
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b(c($$0));
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
+      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
+      if ($$3.isEmpty()) {
+         return $$0;
+      } else {
+         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
+         return $$0.set("profile", bft.a($$3.get()));
+      }
    }
 }

@@ -1,100 +1,91 @@
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class oz implements ot {
-   private final ou b;
-   private final dac c;
-   private final cvx d;
-   private final dal e;
-   private final float f;
-   private final int g;
-   private final Map<String, ap<?>> h = new LinkedHashMap<>();
+public class oz implements ou {
+   private final jr<cwb> b;
+   private final ov c;
+   private final cwf d;
+   private final List<dap> e = new ArrayList<>();
+   private final Map<String, ap<?>> f = new LinkedHashMap<>();
    @Nullable
-   private String i;
-   private final czw.a<?> j;
+   private String g;
 
-   private oz(ou $$0, dac $$1, dfa $$2, dal $$3, float $$4, int $$5, czw.a<?> $$6) {
+   private oz(jr<cwb> $$0, ov $$1, cwf $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.j();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+      this.d = $$2;
    }
 
-   public static <T extends czw> oz a(dal $$0, ou $$1, dfa $$2, float $$3, int $$4, dau<T> $$5, czw.a<T> $$6) {
-      return new oz($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   public static oz a(jr<cwb> $$0, ov $$1, cwf $$2) {
+      return new oz($$0, $$1, $$2);
    }
 
-   public static oz a(dal $$0, ou $$1, dfa $$2, float $$3, int $$4) {
-      return new oz($$1, dac.a, $$2, $$0, $$3, $$4, dab::new);
+   public static oz a(jr<cwb> $$0, ov $$1, dfe $$2) {
+      return a($$0, $$1, $$2, 1);
    }
 
-   public static oz b(dal $$0, ou $$1, dfa $$2, float $$3, int $$4) {
-      return new oz($$1, c($$2), $$2, $$0, $$3, $$4, czz::new);
+   public static oz a(jr<cwb> $$0, ov $$1, dfe $$2, int $$3) {
+      return new oz($$0, $$1, $$2.j().o().c($$3));
    }
 
-   public static oz c(dal $$0, ou $$1, dfa $$2, float $$3, int $$4) {
-      return new oz($$1, b($$2), $$2, $$0, $$3, $$4, dbg::new);
+   public oz a(axt<cwb> $$0) {
+      return this.a(dap.a(this.b.b($$0)));
    }
 
-   public static oz d(dal $$0, ou $$1, dfa $$2, float $$3, int $$4) {
-      return new oz($$1, dac.a, $$2, $$0, $$3, $$4, dbl::new);
+   public oz b(dfe $$0) {
+      return this.a($$0, 1);
+   }
+
+   public oz a(dfe $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(dap.a($$0));
+      }
+
+      return this;
+   }
+
+   public oz a(dap $$0) {
+      return this.a($$0, 1);
+   }
+
+   public oz a(dap $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
    }
 
    public oz b(String $$0, ap<?> $$1) {
-      this.h.put($$0, $$1);
+      this.f.put($$0, $$1);
       return this;
    }
 
    public oz b(@Nullable String $$0) {
-      this.i = $$0;
+      this.g = $$0;
       return this;
    }
 
    @Override
-   public cvx a() {
-      return this.d;
+   public cwb a() {
+      return this.d.h();
    }
 
    @Override
-   public void a(ov $$0, ali $$1) {
+   public void a(ow $$0, all $$1) {
       this.a($$1);
       ag.a $$2 = $$0.a().a("has_the_recipe", dv.a($$1)).a(al.a.a($$1)).a(ak.a.b);
-      this.h.forEach($$2::a);
-      czw $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cwb(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.f("recipes/" + this.b.a() + "/")));
+      this.f.forEach($$2::a);
+      dbd $$3 = new dbd(Objects.requireNonNullElse(this.g, ""), ou.a(this.c), this.d, this.e);
+      $$0.a($$1, $$3, $$2.b($$1.f("recipes/" + this.c.a() + "/")));
    }
 
-   private static dac b(dfa $$0) {
-      if ($$0.j().g().b(ku.w)) {
-         return dac.a;
-      } else {
-         return $$0.j() instanceof cuh ? dac.b : dac.c;
-      }
-   }
-
-   private static dac c(dfa $$0) {
-      return $$0.j() instanceof cuh ? dac.b : dac.c;
-   }
-
-   private static dac a(dau<? extends czw> $$0, dfa $$1) {
-      if ($$0 == dau.o) {
-         return b($$1);
-      } else if ($$0 == dau.p) {
-         return c($$1);
-      } else if ($$0 != dau.q && $$0 != dau.r) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return dac.a;
-      }
-   }
-
-   private void a(ali $$0) {
-      if (this.h.isEmpty()) {
+   private void a(all $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }

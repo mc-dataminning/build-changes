@@ -1,36 +1,34 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class hci extends hbz {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final clr r;
 
-public class hci<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public hci(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public hci(clr $$0) {
+      super(awo.lr, awp.f, hcq.t());
+      this.r = $$0;
+      this.k = hcq.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   protected T computeNext() {
-      boolean $$0 = !this.a.hasNext();
-      boolean $$1 = !this.b.hasNext();
-      if ($$0 && $$1) {
-         return (T)this.endOfData();
-      } else if ($$0) {
-         return (T)this.b.next();
-      } else if ($$1) {
-         return (T)this.a.next();
-      } else {
-         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$2 == 0) {
-            this.b.next();
-         }
+   @Override
+   public boolean s() {
+      return !this.r.bd();
+   }
 
-         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
+   @Override
+   public void q() {
+      if (!this.r.dT() && this.r.m() == null) {
+         this.f = (double)((float)this.r.dD());
+         this.g = (double)((float)this.r.dF());
+         this.h = (double)((float)this.r.dJ());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
    }
 }

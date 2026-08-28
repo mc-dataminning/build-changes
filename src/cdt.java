@@ -1,37 +1,42 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cdt<T extends bva> extends cdr<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class cdt extends cec {
+   private final chh a;
+   @Nullable
+   private bve b;
+   private final cfv c = cfv.a().a(64.0);
 
-   public cdt(cqb $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bva> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   public cdt(chh $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(ccc.a.d));
    }
 
    @Override
    public boolean b() {
-      if (this.j > 0 || !this.e.ea().h()) {
-         return false;
-      } else if (!((cqb)this.e).gL()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
+      ezm $$0 = this.a.cT().c(10.0, 8.0, 10.0);
+      List<? extends bve> $$1 = this.a.dY().a(coc.class, this.c, this.a, $$0);
+      List<cor> $$2 = this.a.dY().a(this.c, this.a, $$0);
+
+      for (bve $$3 : $$1) {
+         coc $$4 = (coc)$$3;
+
+         for (cor $$5 : $$2) {
+            int $$6 = $$4.f($$5);
+            if ($$6 <= -100) {
+               this.b = $$5;
+            }
+         }
       }
+
+      return this.b == null ? false : !(this.b instanceof cor) || !this.b.R_() && !((cor)this.b).f();
    }
 
    @Override
    public void d() {
-      this.j = b(200);
+      this.a.h(this.b);
       super.d();
    }
 }

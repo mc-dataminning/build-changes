@@ -1,71 +1,39 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+public class fzf extends fza<gvo> {
+   private final gcc[] a = new gcc[9];
 
-public abstract class fzf {
-   private static final Vector3f a = new Vector3f();
-   protected final gbm v;
-   protected final Function<ali, gir> w;
-   private final List<gbm> b;
+   public fzf(gcc $$0) {
+      super($$0);
 
-   public fzf(gbm $$0, Function<ali, gir> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
-   }
-
-   public final gir a(ali $$0) {
-      return this.w.apply($$0);
-   }
-
-   public final void a(feb $$0, fef $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public final void a(feb $$0, fef $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
-   }
-
-   public final gbm e() {
-      return this.v;
-   }
-
-   public Optional<gbm> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<gbm> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (gbm $$0 : this.b) {
-         $$0.c();
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1] = $$0.b(a($$1));
       }
    }
 
-   protected void a(btw $$0, fjx $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   protected void a(fjx $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fjz.a(this, $$0, $$5, $$6, a);
+   public static gci a() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      $$1.a("body", gch.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gce.a(0.0F, 17.6F, 0.0F));
+      azv $$2 = azv.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), gch.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gce.a($$4, 24.6F, $$5));
+      }
+
+      return gci.a($$0, 64, 32).a(gcl.scaling(4.5F));
    }
 
-   protected void a(btw $$0, fjx $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fjz.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
-   }
+   public void a(gvo $$0) {
+      super.a($$0);
 
-   protected void a(fjx $$0) {
-      fjz.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends fzf {
-      public a(gbm $$0, Function<ali, gir> $$1) {
-         super($$0, $$1);
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1].e = 0.2F * azn.a($$0.p * 0.3F + (float)$$1) + 0.4F;
       }
    }
 }

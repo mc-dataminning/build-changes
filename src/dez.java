@@ -10,10 +10,22 @@ public class dez {
       int $$2 = (int)((1.0 - $$0) * 255.0);
       int $$3 = (int)((1.0 - $$1) * 255.0);
       int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
    public static int a() {
-      return a(0.5, 1.0);
+      return -10380959;
+   }
+
+   public static int b() {
+      return -8345771;
+   }
+
+   public static int c() {
+      return -12012264;
+   }
+
+   public static int d() {
+      return -7158200;
    }
 }

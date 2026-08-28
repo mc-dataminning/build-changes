@@ -1,73 +1,158 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class feq {
-   public static List<ffq> a(feq.a... $$0) {
-      for (feq.a $$1 : $$0) {
-         a($$1.j);
+public record feq(int i, int j, feq.a k, feq.b l, int m) {
+   public static final int a = 32;
+   private static final feq[] n = new feq[32];
+   private static final List<feq> o = new ArrayList<>(32);
+   public static final feq b = a(0, 0, feq.a.a, feq.b.a, 3);
+   public static final feq c = a(1, 0, feq.a.b, feq.b.c, 4);
+   public static final feq d = a(2, 0, feq.a.a, feq.b.d, 2);
+   public static final feq e = d;
+   public static final feq f = a(3, 1, feq.a.e, feq.b.d, 2);
+   public static final feq g = a(4, 2, feq.a.e, feq.b.d, 2);
+   public static final feq h = a(5, 0, feq.a.c, feq.b.b, 3);
+
+   public feq(int i, int j, feq.a k, feq.b l, int m) {
+      if (i < 0 || i >= n.length) {
+         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
+      } else if (!this.a(j, l)) {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      } else {
+         this.i = i;
+         this.j = j;
+         this.k = k;
+         this.l = l;
+         this.m = m;
       }
-
-      List<ffq> $$2 = Lists.newArrayList();
-
-      for (feq.a $$3 : $$0) {
-         $$2.add(new ffq($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(ffq::a));
-      return $$2;
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   public static feq a(int $$0, int $$1, feq.a $$2, feq.b $$3, int $$4) {
+      feq $$5 = new feq($$0, $$1, $$2, $$3, $$4);
+      if (n[$$0] != null) {
+         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
+      } else {
+         n[$$0] = $$5;
+         o.add($$5);
+         return $$5;
+      }
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+   private boolean a(int $$0, feq.b $$1) {
+      return $$0 == 0 || $$1 == feq.b.d;
+   }
+
+   @Override
+   public String toString() {
+      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+   }
+
+   public int a() {
+      return 1 << this.i;
+   }
+
+   public int b() {
+      return this.k.a() * this.m;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   }
+
+   @Nullable
+   public static feq a(int $$0) {
+      return n[$$0];
+   }
+
+   public static Stream<feq> b(int $$0) {
+      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
+   }
+
+   public int c() {
+      return this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public feq.a e() {
+      return this.k;
+   }
+
+   public feq.b f() {
+      return this.l;
+   }
+
+   public int g() {
+      return this.m;
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(final int $$0, final String $$1, final int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public int b() {
+         return this.j;
+      }
+
+      @Override
+      public String toString() {
+         return this.i;
+      }
+   }
+
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
          }
+      }),
+      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
+
+      private final String f;
+      final feq.b.a g;
+
+      private b(final String $$0, final feq.b.a $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      return (int)((double)$$2 / 5.0);
-   }
+      @Override
+      public String toString() {
+         return this.f;
+      }
 
-   private static long b() {
-      return ae.c();
-   }
-
-   public static List<ffq> a() {
-      return a(feq.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+      @FunctionalInterface
+      interface a {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
       }
    }
 }

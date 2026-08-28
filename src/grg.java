@@ -1,22 +1,16 @@
-public class grg extends gpd<cmg, gve> {
-   private static final ali a = ali.b("textures/entity/illager/vindicator.png");
+public class grg extends gnz<cpq, gul> {
+   public static final all a = all.b("textures/entity/projectiles/spectral_arrow.png");
 
-   public grg(gok.a $$0) {
-      super($$0, new fyy<>($$0.a(gbl.cU)), 0.5F);
-      this.a(new gsq<gve, fyy<gve>>(this, $$0.b()) {
-         public void a(feb $$0, gih $$1, int $$2, gve $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public grg(gpa.a $$0) {
+      super($$0);
    }
 
-   public ali a(gve $$0) {
+   @Override
+   protected all a(gul $$0) {
       return a;
    }
 
-   public gve c() {
-      return new gve();
+   public gul a() {
+      return new gul();
    }
 }

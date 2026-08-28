@@ -5,10 +5,10 @@ import java.util.Optional;
 public class at {
    public static final Codec<at> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cwb.d.fieldOf("icon").forGetter(at::c),
-               xk.a.fieldOf("title").forGetter(at::a),
-               xk.a.fieldOf("description").forGetter(at::b),
-               ali.a.optionalFieldOf("background").forGetter(at::d),
+               cwf.d.fieldOf("icon").forGetter(at::c),
+               xn.a.fieldOf("title").forGetter(at::a),
+               xn.a.fieldOf("description").forGetter(at::b),
+               all.a.optionalFieldOf("background").forGetter(at::d),
                an.d.optionalFieldOf("frame", an.a).forGetter(at::e),
                Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(at::h),
                Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(at::i),
@@ -16,11 +16,11 @@ public class at {
             )
             .apply($$0, at::new)
    );
-   public static final zg<wt, at> b = zg.a(at::a, at::b);
-   private final xi c;
-   private final xi d;
-   private final cwb e;
-   private final Optional<ali> f;
+   public static final zj<ww, at> b = zj.a(at::a, at::b);
+   private final xl c;
+   private final xl d;
+   private final cwf e;
+   private final Optional<all> f;
    private final an g;
    private final boolean h;
    private final boolean i;
@@ -28,7 +28,7 @@ public class at {
    private float k;
    private float l;
 
-   public at(cwb $$0, xi $$1, xi $$2, Optional<ali> $$3, an $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public at(cwf $$0, xl $$1, xl $$2, Optional<all> $$3, an $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -44,19 +44,19 @@ public class at {
       this.l = $$1;
    }
 
-   public xi a() {
+   public xl a() {
       return this.c;
    }
 
-   public xi b() {
+   public xl b() {
       return this.d;
    }
 
-   public cwb c() {
+   public cwf c() {
       return this.e;
    }
 
-   public Optional<ali> d() {
+   public Optional<all> d() {
       return this.f;
    }
 
@@ -84,10 +84,10 @@ public class at {
       return this.j;
    }
 
-   private void a(wt $$0) {
-      xk.d.encode($$0, this.c);
-      xk.d.encode($$0, this.d);
-      cwb.i.encode($$0, this.e);
+   private void a(ww $$0) {
+      xn.d.encode($$0, this.c);
+      xn.d.encode($$0, this.d);
+      cwf.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -108,13 +108,13 @@ public class at {
       $$0.a(this.l);
    }
 
-   private static at b(wt $$0) {
-      xi $$1 = xk.d.decode($$0);
-      xi $$2 = xk.d.decode($$0);
-      cwb $$3 = cwb.i.decode($$0);
+   private static at b(ww $$0) {
+      xl $$1 = xn.d.decode($$0);
+      xl $$2 = xn.d.decode($$0);
+      cwf $$3 = cwf.i.decode($$0);
       an $$4 = $$0.b(an.class);
       int $$5 = $$0.readInt();
-      Optional<ali> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
+      Optional<all> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();
       boolean $$7 = ($$5 & 2) != 0;
       boolean $$8 = ($$5 & 4) != 0;
       at $$9 = new at($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);

@@ -1,51 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
-public enum fjp {
-   a(new cwb(cwf.qT)),
-   b(new cwb(dig.cj)),
-   c(new cwb(cwf.lH)),
-   d(new cwb(cwf.pf), new cwb(cwf.oX)),
-   e(new cwb(cwf.qB), new cwb(cwf.ov)),
-   f(new cwb(cwf.qT)),
-   g(new cwb(cwf.pY)),
-   h(new cwb(dig.b)),
-   i(new cwb(cwf.qB), new cwb(cwf.oB)),
-   j(new cwb(cwf.qT)),
-   k(new cwb(dig.dI)),
-   l(new cwb(cwf.pd), new cwb(cwf.pR)),
-   m(new cwb(cwf.qT)),
-   n(new cwb(cwf.pY)),
-   o(new cwb(cwf.fF)),
-   p(new cwb(cwf.pU)),
-   q(new cwb(cwf.pY)),
-   r(new cwb(cwf.hB));
+public enum fjp implements azq {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   public static final List<fjp> s = ImmutableList.of(m, n);
-   public static final List<fjp> t = ImmutableList.of(j, k, l);
-   public static final List<fjp> u = ImmutableList.of(f, g, h, i);
-   public static final List<fjp> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<fjp, List<fjp>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cwb> x;
+   private static final IntFunction<fjp> d = aye.a(fjp::b, values(), aye.a.b);
+   private final int e;
+   private final String f;
 
-   private fjp(final cwb... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   private fjp(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static List<fjp> a(cte $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
       };
    }
 
-   public List<cwb> a() {
-      return this.x;
+   public static fjp a(int $$0) {
+      return d.apply($$0);
    }
 }

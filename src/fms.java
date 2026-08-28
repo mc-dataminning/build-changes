@@ -1,47 +1,62 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fms implements fpg {
-   private static final int a = 170;
-   private final xi b;
-   @Nullable
-   private List<ayw> c;
-   @Nullable
-   private uf d;
-   @Nullable
-   private final xi e;
+public abstract class fms<E extends fms.a<E>> extends flr<E> {
+   private static final xl a = xl.c("narration.selection.usage");
 
-   private fms(xi $$0, @Nullable xi $$1) {
-      this.b = $$0;
-      this.e = $$1;
+   public fms(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static fms a(xi $$0, @Nullable xi $$1) {
-      return new fms($$0, $$1);
-   }
+   @Nullable
+   @Override
+   public flg a(fqa $$0) {
+      if (this.l() == 0) {
+         return null;
+      } else if (this.aM_() && $$0 instanceof fqa.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? flg.a(this, flg.a($$2)) : null;
+      } else if (!this.aM_()) {
+         E $$3 = this.h();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
 
-   public static fms a(xi $$0) {
-      return new fms($$0, $$0);
+         return $$3 == null ? null : flg.a(this, flg.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public void b(fpf $$0) {
-      if (this.e != null) {
-         $$0.a(fpe.c, this.e);
+   public void a(fpu $$0) {
+      E $$1 = this.v();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.h();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aM_()) {
+         $$0.a(fpt.d, a);
       }
    }
 
-   public List<ayw> a(fji $$0) {
-      uf $$1 = uf.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
+   public abstract static class a<E extends fms.a<E>> extends flr.a<E> implements fpv {
+      public abstract xl a();
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
       }
 
-      return this.c;
-   }
-
-   public static List<ayw> a(fji $$0, xi $$1) {
-      return $$0.h.c($$1, 170);
+      @Override
+      public void b(fpu $$0) {
+         $$0.a(fpt.a, this.a());
+      }
    }
 }

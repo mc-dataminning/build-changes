@@ -1,36 +1,35 @@
-import javax.annotation.Nullable;
+public class fmn {
+   public static final all a = all.b("textures/gui/title/minecraft.png");
+   public static final all b = all.b("textures/gui/title/minceraft.png");
+   public static final all c = all.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azv.a().i() < 1.0E-4;
+   private final boolean o;
 
-public class fmn extends flf {
-   @Nullable
-   protected fmu a;
-   protected boolean b;
-
-   public fmn(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, xh.a);
-      this.b = $$4;
+   public fmn(boolean $$0) {
+      this.o = $$0;
    }
 
-   public void a(fmu $$0) {
-      this.a = $$0;
+   public void a(flj $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(fpf $$0) {
-      this.c($$0);
-   }
-
-   @Override
-   public void b(fku $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         $$0.a(gir::B, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
-      }
+   public void a(flj $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axy.a($$5);
+      $$0.a(gjh::B, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(gjh::B, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

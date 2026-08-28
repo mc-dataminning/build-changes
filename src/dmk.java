@@ -1,76 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmk extends die implements dpf {
+public class dmk extends dij implements dlb, dlq {
    public static final MapCodec<dmk> a = b(dmk::new);
-   public static final dwa b = dvz.j;
-   public static final dwa c = dvz.C;
-   protected static final fah d = fae.a(die.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), die.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final fah e = fae.a(die.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), die.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+   public static final dwl<jo> b = dwe.T;
 
    @Override
    public MapCodec<dmk> a() {
       return a;
    }
 
-   public dmk(dvi.d $$0) {
+   protected dmk(dvn.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, jo.k));
    }
 
-   @Nullable
    @Override
-   public dvj a(czs $$0) {
-      erk $$1 = $$0.q().b_($$0.a());
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(b);
+   }
 
-      for (jm $$2 : $$0.f()) {
-         if ($$2.o() == jm.a.b) {
-            dvj $$3 = this.m().b(b, Boolean.valueOf($$2 == jm.b));
-            if ($$3.a((dfe)$$0.q(), $$0.a())) {
-               return $$3.b(c, Boolean.valueOf($$1.a() == erl.c));
-            }
-         }
+   @Override
+   protected dvo a(dvo $$0, dow $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dnf $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public dvo a(czw $$0) {
+      jm $$1 = $$0.k();
+      jm $$2;
+      if ($$1.o() == jm.a.b) {
+         $$2 = $$0.g().g();
+      } else {
+         $$2 = jm.b;
       }
 
-      return null;
+      return this.m().b(b, jo.a($$1, $$2));
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return $$0.c(b) ? e : d;
+   public dsr a(jh $$0, dvo $$1) {
+      return new dtt($$0, $$1);
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      jm $$3 = o($$0).g();
-      return die.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static jm o(dvj $$0) {
-      return $$0.c(b) ? jm.a : jm.b;
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
+   protected bsh a(dvo $$0, dff $$1, jh $$2, cor $$3, ezn $$4) {
+      dsr $$5 = $$1.c_($$2);
+      if ($$5 instanceof dtt && $$3.gJ()) {
+         $$3.a((dtt)$$5);
+         return bsh.a;
+      } else {
+         return bsh.e;
       }
-
-      return o($$0).g() == $$1 && !$$0.a($$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(c) ? erl.c.a(false) : super.b_($$0);
+   public static boolean a(eqd.c $$0, eqd.c $$1) {
+      jm $$2 = o($$0.b());
+      jm $$3 = o($$1.b());
+      jm $$4 = p($$0.b());
+      jm $$5 = p($$1.b());
+      dtt.a $$6 = dtt.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dtt.a.b : dtt.a.a);
+      boolean $$7 = $$6 == dtt.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      return false;
+   public static jm o(dvo $$0) {
+      return $$0.c(b).a();
+   }
+
+   public static jm p(dvo $$0) {
+      return $$0.c(b).b();
    }
 }

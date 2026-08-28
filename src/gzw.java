@@ -1,131 +1,56 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public interface gzw {
-   Codec<gzw> a = gzw.d.d.dispatch(gzw::a, gzw.d::a);
-   gzw b = new gzw.b();
+public class gzw extends avj<List<String>> {
+   private static final all a = all.b("texts/splashes.txt");
+   private static final azv b = azv.a();
+   private final List<String> c = Lists.newArrayList();
+   private final fkk d;
 
-   gzw.d a();
+   public gzw(fkk $$0) {
+      this.d = $$0;
+   }
 
-   public static record a(int d, int e, gzw.a.a f, boolean g) implements gzw {
-      public static final MapCodec<gzw.a> c = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ayt.m.fieldOf("width").forGetter(gzw.a::b),
-                     ayt.m.fieldOf("height").forGetter(gzw.a::c),
-                     gzw.a.a.g.fieldOf("border").forGetter(gzw.a::d),
-                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(gzw.a::e)
-                  )
-                  .apply($$0, gzw.a::new)
-         )
-         .validate(gzw.a::a);
-
-      private static DataResult<gzw.a> a(gzw.a $$0) {
-         gzw.a.a $$1 = $$0.d();
-         if ($$1.a() + $$1.c() >= $$0.b()) {
-            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
-         } else {
-            return $$1.b() + $$1.d() >= $$0.c()
-               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
-               : DataResult.success($$0);
+   protected List<String> a(ave $$0, bor $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = fjx.Q().ac().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
          }
-      }
 
-      @Override
-      public gzw.d a() {
-         return gzw.d.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-
-      public gzw.a.a d() {
-         return this.f;
-      }
-
-      public boolean e() {
-         return this.g;
-      }
-
-      public static record a(int a, int b, int c, int d) {
-         private static final Codec<gzw.a.a> e = ayt.m.flatComapMap($$0 -> new gzw.a.a($$0, $$0, $$0, $$0), $$0 -> {
-            OptionalInt $$1 = $$0.e();
-            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-         });
-         private static final Codec<gzw.a.a> f = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     ayt.l.fieldOf("left").forGetter(gzw.a.a::a),
-                     ayt.l.fieldOf("top").forGetter(gzw.a.a::b),
-                     ayt.l.fieldOf("right").forGetter(gzw.a.a::c),
-                     ayt.l.fieldOf("bottom").forGetter(gzw.a.a::d)
-                  )
-                  .apply($$0, gzw.a.a::new)
-         );
-         static final Codec<gzw.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
-
-         private OptionalInt e() {
-            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
-         }
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
       }
    }
 
-   public static record b() implements gzw {
-      public static final MapCodec<gzw.b> c = MapCodec.unit(gzw.b::new);
-
-      @Override
-      public gzw.d a() {
-         return gzw.d.a;
-      }
+   protected void a(List<String> $$0, ave $$1, bor $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
    }
 
-   public static record c(int d, int e) implements gzw {
-      public static final MapCodec<gzw.c> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayt.m.fieldOf("width").forGetter(gzw.c::b), ayt.m.fieldOf("height").forGetter(gzw.c::c)).apply($$0, gzw.c::new)
-      );
-
-      @Override
-      public gzw.d a() {
-         return gzw.d.b;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static enum d implements bag {
-      a("stretch", gzw.b.c),
-      b("tile", gzw.c.c),
-      c("nine_slice", gzw.a.c);
-
-      public static final Codec<gzw.d> d = bag.a(gzw.d::values);
-      private final String e;
-      private final MapCodec<? extends gzw> f;
-
-      private d(final String $$0, final MapCodec<? extends gzw> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public MapCodec<? extends gzw> a() {
-         return this.f;
+   @Nullable
+   public fna a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return fna.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return fna.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return fna.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new fna(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fna(this.c.get(b.a(this.c.size())));
       }
    }
 }

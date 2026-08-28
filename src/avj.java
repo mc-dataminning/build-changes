@@ -1,80 +1,13 @@
-import com.google.gson.JsonObject;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public abstract class avj<T> extends avs<T> {
-   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   public static final String b = "forever";
-   protected final Date c;
-   protected final String d;
-   @Nullable
-   protected final Date e;
-   protected final String f;
-
-   public avj(@Nullable T $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0);
-      this.c = $$1 == null ? new Date() : $$1;
-      this.d = $$2 == null ? "(Unknown)" : $$2;
-      this.e = $$3;
-      this.f = $$4 == null ? "Banned by an operator." : $$4;
-   }
-
-   protected avj(@Nullable T $$0, JsonObject $$1) {
-      super($$0);
-
-      Date $$2;
-      try {
-         $$2 = $$1.has("created") ? a.parse($$1.get("created").getAsString()) : new Date();
-      } catch (ParseException var7) {
-         $$2 = new Date();
-      }
-
-      this.c = $$2;
-      this.d = $$1.has("source") ? $$1.get("source").getAsString() : "(Unknown)";
-
-      Date $$5;
-      try {
-         $$5 = $$1.has("expires") ? a.parse($$1.get("expires").getAsString()) : null;
-      } catch (ParseException var6) {
-         $$5 = null;
-      }
-
-      this.e = $$5;
-      this.f = $$1.has("reason") ? $$1.get("reason").getAsString() : "Banned by an operator.";
-   }
-
-   public Date a() {
-      return this.c;
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public Date c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   public abstract xi e();
-
+public abstract class avj<T> implements auy {
    @Override
-   boolean f() {
-      return this.e == null ? false : this.e.before(new Date());
+   public final CompletableFuture<Void> a(auy.a $$0, ave $$1, Executor $$2, Executor $$3) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, boq.a()), $$2).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a((T)$$1x, $$1, boq.a()), $$3);
    }
 
-   @Override
-   protected void a(JsonObject $$0) {
-      $$0.addProperty("created", a.format(this.c));
-      $$0.addProperty("source", this.d);
-      $$0.addProperty("expires", this.e == null ? "forever" : a.format(this.e));
-      $$0.addProperty("reason", this.f);
-   }
+   protected abstract T b(ave var1, bor var2);
+
+   protected abstract void a(T var1, ave var2, bor var3);
 }

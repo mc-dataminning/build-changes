@@ -1,22 +1,21 @@
-public class gox extends gnf<cir, guz, fyr> {
-   private static final ali a = ali.b("textures/entity/goat/goat.png");
+public class gox extends gqg<clm, gwb, fyz> {
+   private static final all a = all.b("textures/entity/endermite.png");
 
-   public gox(gok.a $$0) {
-      super($$0, new fyr($$0.a(gbl.aJ)), new fyr($$0.a(gbl.aK)), 0.7F);
+   public gox(gpa.a $$0) {
+      super($$0, new fyz($$0.a(gcb.au)), 0.3F);
    }
 
-   public ali a(guz $$0) {
+   @Override
+   protected float aW_() {
+      return 180.0F;
+   }
+
+   @Override
+   public all b(gwb $$0) {
       return a;
    }
 
-   public guz c() {
-      return new guz();
-   }
-
-   public void a(cir $$0, guz $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gu();
-      $$1.b = $$0.gv();
-      $$1.c = $$0.gH();
+   public gwb c() {
+      return new gwb();
    }
 }

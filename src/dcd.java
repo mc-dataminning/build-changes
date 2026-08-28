@@ -1,88 +1,187 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
 
 public interface dcd {
-   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
-      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
+   Codec<dcd> a = lz.at.q().dispatch(dcd::a, $$0 -> $$0);
+   Codec<dcd> b = Codec.either(dcd.b.c, a)
+      .xmap($$0 -> (dcd)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> $$0 instanceof dcd.b $$1 ? Either.left($$1) : Either.right($$0));
+
+   static MapCodec<? extends dcd> a(kd<MapCodec<? extends dcd>> $$0) {
+      kd.a($$0, "clamped", dcd.a.c);
+      kd.a($$0, "fraction", dcd.c.c);
+      kd.a($$0, "levels_squared", dcd.d.c);
+      kd.a($$0, "linear", dcd.e.c);
+      return kd.a($$0, "lookup", dcd.f.c);
    }
 
-   static dcd.a a(dcj... $$0) {
-      return new dcd.a(List.of($$0));
+   static dcd.b a(float $$0) {
+      return new dcd.b($$0);
    }
 
-   static dcd.b a(dck... $$0) {
-      return new dcd.b(List.of($$0));
+   static dcd.e a(float $$0, float $$1) {
+      return new dcd.e($$0, $$1);
    }
 
-   static dcd.c a(dcl... $$0) {
-      return new dcd.c(List.of($$0));
+   static dcd.e b(float $$0) {
+      return a($$0, $$0);
    }
 
-   public static record a(List<dcj> d) implements dcj {
-      public static final MapCodec<dcd.a> a = dcd.a(dcj.b, dcd.a::new, dcd.a::b);
+   static dcd.f a(List<Float> $$0, dcd $$1) {
+      return new dcd.f($$0, $$1);
+   }
+
+   float a(int var1);
+
+   MapCodec<? extends dcd> a();
+
+   public static record a(dcd d, float e, float f) implements dcd {
+      public static final MapCodec<dcd.a> c = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     dcd.b.fieldOf("value").forGetter(dcd.a::b), Codec.FLOAT.fieldOf("min").forGetter(dcd.a::c), Codec.FLOAT.fieldOf("max").forGetter(dcd.a::d)
+                  )
+                  .apply($$0, dcd.a::new)
+         )
+         .validate($$0 -> $$0.f <= $$0.e ? DataResult.error(() -> "Max must be larger than min, min: " + $$0.e + ", max: " + $$0.f) : DataResult.success($$0));
 
       @Override
-      public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
-         for (dcj $$5 : this.d) {
-            $$5.a($$0, $$1, $$2, $$3, $$4);
-         }
+      public float a(int $$0) {
+         return azn.a(this.d.a($$0), this.e, this.f);
       }
 
       @Override
       public MapCodec<dcd.a> a() {
-         return a;
+         return c;
       }
 
-      public List<dcj> b() {
+      public dcd b() {
          return this.d;
+      }
+
+      public float c() {
+         return this.e;
+      }
+
+      public float d() {
+         return this.f;
       }
    }
 
-   public static record b(List<dck> b) implements dck {
-      public static final MapCodec<dcd.b> a = dcd.a(dck.c, dcd.b::new, dcd.b::b);
+   public static record b(float e) implements dcd {
+      public static final Codec<dcd.b> c = Codec.FLOAT.xmap(dcd.b::new, dcd.b::b);
+      public static final MapCodec<dcd.b> d = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(dcd.b::b)).apply($$0, dcd.b::new)
+      );
 
       @Override
-      public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4, boolean $$5) {
-         for (dck $$6 : this.b) {
-            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
-
-      @Override
-      public void a(dbr $$0, bue $$1, ezn $$2, int $$3) {
-         for (dck $$4 : this.b) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
+      public float a(int $$0) {
+         return this.e;
       }
 
       @Override
       public MapCodec<dcd.b> a() {
-         return a;
+         return d;
+      }
+
+      public float b() {
+         return this.e;
       }
    }
 
-   public static record c(List<dcl> c) implements dcl {
-      public static final MapCodec<dcd.c> a = dcd.a(dcl.b, dcd.c::new, dcd.c::b);
+   public static record c(dcd d, dcd e) implements dcd {
+      public static final MapCodec<dcd.c> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(dcd.b.fieldOf("numerator").forGetter(dcd.c::b), dcd.b.fieldOf("denominator").forGetter(dcd.c::c)).apply($$0, dcd.c::new)
+      );
 
       @Override
-      public float a(int $$0, azs $$1, float $$2) {
-         for (dcl $$3 : this.c) {
-            $$2 = $$3.a($$0, $$1, $$2);
-         }
-
-         return $$2;
+      public float a(int $$0) {
+         float $$1 = this.e.a($$0);
+         return $$1 == 0.0F ? 0.0F : this.d.a($$0) / $$1;
       }
 
       @Override
       public MapCodec<dcd.c> a() {
-         return a;
+         return c;
       }
 
-      public List<dcl> b() {
-         return this.c;
+      public dcd b() {
+         return this.d;
+      }
+
+      public dcd c() {
+         return this.e;
+      }
+   }
+
+   public static record d(float d) implements dcd {
+      public static final MapCodec<dcd.d> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("added").forGetter(dcd.d::b)).apply($$0, dcd.d::new)
+      );
+
+      @Override
+      public float a(int $$0) {
+         return (float)azn.h($$0) + this.d;
+      }
+
+      @Override
+      public MapCodec<dcd.d> a() {
+         return c;
+      }
+
+      public float b() {
+         return this.d;
+      }
+   }
+
+   public static record e(float d, float e) implements dcd {
+      public static final MapCodec<dcd.e> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("base").forGetter(dcd.e::b), Codec.FLOAT.fieldOf("per_level_above_first").forGetter(dcd.e::c))
+               .apply($$0, dcd.e::new)
+      );
+
+      @Override
+      public float a(int $$0) {
+         return this.d + this.e * (float)($$0 - 1);
+      }
+
+      @Override
+      public MapCodec<dcd.e> a() {
+         return c;
+      }
+
+      public float b() {
+         return this.d;
+      }
+
+      public float c() {
+         return this.e;
+      }
+   }
+
+   public static record f(List<Float> d, dcd e) implements dcd {
+      public static final MapCodec<dcd.f> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.listOf().fieldOf("values").forGetter(dcd.f::b), dcd.b.fieldOf("fallback").forGetter(dcd.f::c)).apply($$0, dcd.f::new)
+      );
+
+      @Override
+      public float a(int $$0) {
+         return $$0 <= this.d.size() ? this.d.get($$0 - 1) : this.e.a($$0);
+      }
+
+      @Override
+      public MapCodec<dcd.f> a() {
+         return c;
+      }
+
+      public List<Float> b() {
+         return this.d;
+      }
+
+      public dcd c() {
+         return this.e;
       }
    }
 }

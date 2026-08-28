@@ -1,4 +1,4 @@
-public class gvf extends gve {
-   public ezn[] a = new ezn[0];
-   public boolean i;
+public class gvf extends gvd {
+   public float a;
+   public float b;
 }

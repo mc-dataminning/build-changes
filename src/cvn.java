@@ -1,14 +1,15 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cvn extends cuh {
-   public cvn(die $$0, cvx.a $$1) {
-      super($$0, $$1);
+public class cvn extends cwb {
+   public cvn(cwb.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   protected dvj c(czs $$0) {
-      com $$1 = $$0.o();
-      return $$1 != null && !$$1.gH() ? null : super.c($$0);
+   public void a(cwf $$0, cwb.b $$1, List<xl> $$2, cxx $$3) {
+      cyu $$4 = $$0.a(ku.ae);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
+      }
    }
 }

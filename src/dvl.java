@@ -1,157 +1,185 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class dvl<O, S> {
-   public static final String b = "Name";
-   public static final String c = "Properties";
-   private static final Function<Entry<dwm<?>, Comparable<?>>, String> a = new Function<Entry<dwm<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dwm<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
+public class dvl {
+   public static final int a = 12;
+   private final dff b;
+   private final jh c;
+   private final boolean d;
+   private final jh e;
+   private final jm f;
+   private final List<jh> g = Lists.newArrayList();
+   private final List<jh> h = Lists.newArrayList();
+   private final jm i;
+
+   public dvl(dff $$0, jh $$1, jm $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.i = $$2;
+      this.d = $$3;
+      if ($$3) {
+         this.f = $$2;
+         this.e = $$1.a($$2);
+      } else {
+         this.f = $$2.g();
+         this.e = $$1.a($$2, 2);
+      }
+   }
+
+   public boolean a() {
+      this.g.clear();
+      this.h.clear();
+      dvo $$0 = this.b.a_(this.e);
+      if (!dvh.a($$0, this.b, this.e, this.f, false, this.i)) {
+         if (this.d && $$0.r() == ert.b) {
+            this.h.add(this.e);
+            return true;
          } else {
-            dwm<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
+            return false;
          }
-      }
-
-      private <T extends Comparable<T>> String a(dwm<T> $$0, Comparable<?> $$1) {
-         return $$0.b((T)$$1);
-      }
-   };
-   protected final O d;
-   private final Reference2ObjectArrayMap<dwm<?>, Comparable<?>> f;
-   private Map<dwm<?>, S[]> g;
-   protected final MapCodec<S> e;
-
-   protected dvl(O $$0, Reference2ObjectArrayMap<dwm<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.d = $$0;
-      this.f = $$1;
-      this.e = $$2;
-   }
-
-   public <T extends Comparable<T>> S a(dwm<T> $$0) {
-      return this.b($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(List<T> $$0, T $$1) {
-      int $$2 = $$0.indexOf($$1) + 1;
-      return $$2 == $$0.size() ? $$0.getFirst() : $$0.get($$2);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.d);
-      if (!this.G().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
-   }
-
-   public Collection<dwm<?>> F() {
-      return Collections.unmodifiableCollection(this.f.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dwm<T> $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dwm<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
+      } else if (!this.a(this.e, this.f)) {
+         return false;
       } else {
-         return $$0.g().cast($$1);
+         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+            jh $$2 = this.g.get($$1);
+            if (a(this.b.a_($$2)) && !this.a($$2)) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   public <T extends Comparable<T>> Optional<T> d(dwm<T> $$0) {
-      return Optional.ofNullable(this.e($$0));
+   private static boolean a(dvo $$0) {
+      return $$0.a(dil.hV) || $$0.a(dil.pg);
    }
 
-   public <T extends Comparable<T>> T a(dwm<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.e($$0), $$1);
-   }
-
-   @Nullable
-   public <T extends Comparable<T>> T e(dwm<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      return $$1 == null ? null : $$0.g().cast($$1);
-   }
-
-   public <T extends Comparable<T>, V extends T> S b(dwm<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
+   private static boolean a(dvo $$0, dvo $$1) {
+      if ($$0.a(dil.pg) && $$1.a(dil.hV)) {
+         return false;
       } else {
-         return this.a($$0, $$1, $$2);
+         return $$0.a(dil.hV) && $$1.a(dil.pg) ? false : a($$0) || a($$1);
       }
    }
 
-   public <T extends Comparable<T>, V extends T> S c(dwm<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      return (S)($$2 == null ? this : this.a($$0, $$1, $$2));
-   }
-
-   private <T extends Comparable<T>, V extends T> S a(dwm<T> $$0, V $$1, Comparable<?> $$2) {
-      if ($$2.equals($$1)) {
-         return (S)this;
+   private boolean a(jh $$0, jm $$1) {
+      dvo $$2 = this.b.a_($$0);
+      if ($$2.l()) {
+         return true;
+      } else if (!dvh.a($$2, this.b, $$0, this.f, false, $$1)) {
+         return true;
+      } else if ($$0.equals(this.c)) {
+         return true;
+      } else if (this.g.contains($$0)) {
+         return true;
       } else {
-         int $$3 = $$0.a((T)$$1);
-         if ($$3 < 0) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
+         int $$3 = 1;
+         if ($$3 + this.g.size() > 12) {
+            return false;
          } else {
-            return (S)this.g.get($$0)[$$3];
+            while (a($$2)) {
+               jh $$4 = $$0.a(this.f.g(), $$3);
+               dvo $$5 = $$2;
+               $$2 = this.b.a_($$4);
+               if ($$2.l() || !a($$5, $$2) || !dvh.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
+                  break;
+               }
+
+               if (++$$3 + this.g.size() > 12) {
+                  return false;
+               }
+            }
+
+            int $$6 = 0;
+
+            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
+               this.g.add($$0.a(this.f.g(), $$7));
+               $$6++;
+            }
+
+            int $$8 = 1;
+
+            while (true) {
+               jh $$9 = $$0.a(this.f, $$8);
+               int $$10 = this.g.indexOf($$9);
+               if ($$10 > -1) {
+                  this.a($$6, $$10);
+
+                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
+                     jh $$12 = this.g.get($$11);
+                     if (a(this.b.a_($$12)) && !this.a($$12)) {
+                        return false;
+                     }
+                  }
+
+                  return true;
+               }
+
+               $$2 = this.b.a_($$9);
+               if ($$2.l()) {
+                  return true;
+               }
+
+               if (!dvh.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
+                  return false;
+               }
+
+               if ($$2.r() == ert.b) {
+                  this.h.add($$9);
+                  return true;
+               }
+
+               if (this.g.size() >= 12) {
+                  return false;
+               }
+
+               this.g.add($$9);
+               $$6++;
+               $$8++;
+            }
          }
       }
    }
 
-   public void a(Map<Map<dwm<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Map<dwm<?>, S[]> $$1 = new Reference2ObjectArrayMap(this.f.size());
-         ObjectIterator var3 = this.f.entrySet().iterator();
+   private void a(int $$0, int $$1) {
+      List<jh> $$2 = Lists.newArrayList();
+      List<jh> $$3 = Lists.newArrayList();
+      List<jh> $$4 = Lists.newArrayList();
+      $$2.addAll(this.g.subList(0, $$1));
+      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
+      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
+      this.g.clear();
+      this.g.addAll($$2);
+      this.g.addAll($$3);
+      this.g.addAll($$4);
+   }
 
-         while (var3.hasNext()) {
-            Entry<dwm<?>, Comparable<?>> $$2 = (Entry<dwm<?>, Comparable<?>>)var3.next();
-            dwm<?> $$3 = $$2.getKey();
-            $$1.put($$3, $$3.a().stream().map($$2x -> $$0.get(this.d($$3, $$2x))).toArray());
+   private boolean a(jh $$0) {
+      dvo $$1 = this.b.a_($$0);
+
+      for (jm $$2 : jm.values()) {
+         if ($$2.o() != this.f.o()) {
+            jh $$3 = $$0.a($$2);
+            dvo $$4 = this.b.a_($$3);
+            if (a($$4, $$1) && !this.a($$3, $$2)) {
+               return false;
+            }
          }
-
-         this.g = $$1;
       }
+
+      return true;
    }
 
-   private Map<dwm<?>, Comparable<?>> d(dwm<?> $$0, Comparable<?> $$1) {
-      Map<dwm<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
-
-   public Map<dwm<?>, Comparable<?>> G() {
+   public jm b() {
       return this.f;
    }
 
-   protected static <O, S extends dvl<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
+   public List<jh> c() {
+      return this.g;
+   }
+
+   public List<jh> d() {
+      return this.h;
    }
 }

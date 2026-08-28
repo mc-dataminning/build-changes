@@ -1,54 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dkz extends die implements dky {
-   public dkz(dvi.d $$0) {
+public class dkz extends dos {
+   public static final MapCodec<dkz> b = b(dkz::new);
+
+   @Override
+   public MapCodec<dkz> a() {
+      return b;
+   }
+
+   protected dkz(dvn.d $$0) {
       super($$0);
+      this.l(this.F.b().b(a, jm.b));
    }
 
    @Override
-   protected abstract MapCodec<? extends dkz> a();
-
-   @Override
-   protected void b(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   public dvo a(czw $$0) {
+      jm $$1 = $$0.k();
+      dvo $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.I_()) {
-         cku $$4 = cku.a($$1, $$2, $$0);
-         this.a($$4);
+   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
+      jm $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(ls.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
    }
 
-   protected void a(cku $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(dvj $$0) {
-      return $$0.l() || $$0.a(axa.aL) || $$0.n() || $$0.v();
-   }
-
    @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      if ($$3.a(16) == 0) {
-         jh $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            azo.a($$1, $$2, $$3, new lj(lr.C, $$0));
-         }
-      }
-   }
-
-   public int b(dvj $$0, deg $$1, jh $$2) {
-      return -16777216;
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(a);
    }
 }

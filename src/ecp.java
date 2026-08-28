@@ -1,26 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ecp implements ecm {
-   private final kl e;
-   private final jm f;
-   public static final MapCodec<ecp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.e), jm.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, ecp::new)
-   );
+class ecp extends ecs {
+   public static final MapCodec<ecp> a = a(ecp::new);
 
-   public ecp(kl $$0, jm $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ecp(List<ecq> $$0) {
+      super($$0);
    }
 
-   public boolean a(dfy $$0, jh $$1) {
-      jh $$2 = $$1.a(this.e);
-      return $$0.a_($$2).c($$0, $$2, this.f);
+   public boolean a(dgd $$0, jh $$1) {
+      for (ecq $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public ecn<?> a() {
-      return ecn.d;
+   public ecr<?> a() {
+      return ecr.i;
    }
 }

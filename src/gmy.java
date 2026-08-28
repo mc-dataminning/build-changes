@@ -1,45 +1,151 @@
 import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 
-public class gmy implements gmh.a {
-   private final List<jh> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class gmy implements gmx.a {
+   private final fjx a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gmy.a> d = Lists.newArrayList();
+   private final List<gmy.b> e = Lists.newArrayList();
 
-   public void a(jh $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public gmy(fjx $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(feb $$0, gih $$1, double $$2, double $$3, double $$4) {
-      fef $$5 = $$1.getBuffer(gir.A());
+   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
+      dff $$5 = this.a.s;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         ezr $$6 = new ezr($$2, 0.0, $$4);
+         this.d.removeIf(gmy.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         feo $$7 = $$1.getBuffer(gjh.y());
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         jh $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gjb.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+         for (gmy.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gmx.a($$0, $$7, fai.a(new ezm($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
+
+         feo $$9 = $$1.getBuffer(gjh.A());
+
+         for (gmy.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gjr.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (gmy.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gmx.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gmx.a($$0, $$1, jh.a((ka)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (gmy.a $$12 : this.d) {
+            ezr $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.d - 0.2F;
+            double $$16 = $$13.e - 0.2F;
+            double $$17 = $$13.f - 0.2F;
+            double $$18 = $$13.d + 0.2F;
+            double $$19 = $$13.e + 0.2F + 0.5;
+            double $$20 = $$13.f + 0.2F;
+            a($$0, $$1, new ezm($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gmx.a($$0, $$1, $$12.b.a().toString(), $$13.d, $$13.e + 0.85F, $$13.f, -7564911, 0.0075F);
+         }
+      }
+   }
+
+   private static void a(fek $$0, gix $$1, ezm $$2, float $$3, float $$4, float $$5, float $$6) {
+      fjg $$7 = fjx.Q().j.k();
+      if ($$7.h()) {
+         ezr $$8 = $$7.b().e();
+         gmx.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(alk<eak> $$0, ezr $$1) {
+      this.d.add(new gmy.a(ae.c(), $$0, $$1));
+   }
+
+   public void a(eao $$0, int $$1) {
+      this.e.add(new gmy.b($$0, $$1));
+   }
+
+   static record a(long a, alk<eak> b, ezr c) {
+
+      public boolean a() {
+         return ae.c() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public alk<eak> c() {
+         return this.b;
+      }
+
+      public ezr d() {
+         return this.c;
+      }
+   }
+
+   static class b implements eam {
+      public final eao a;
+      public final int b;
+
+      public b(eao $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(dff $$0, ezr $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<ezr> a(dff $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public eao a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(arq $$0, jq<eak> $$1, eak.a $$2, ezr $$3) {
+         return false;
       }
    }
 }

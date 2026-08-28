@@ -1,29 +1,27 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public class exr implements exn {
-   private static final exr b = new exr();
-   public static final MapCodec<exr> a = MapCodec.unit(b);
+public interface exr extends euh, Predicate<eug> {
+   Codec<exr> d = lz.F.q().dispatch("condition", exr::b, exs::a);
+   Codec<exr> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, exe.b));
+   Codec<jq<exr>> f = alh.a(ma.bf, e);
 
-   private exr() {
-   }
+   exs b();
 
-   @Override
-   public exo b() {
-      return exp.g;
-   }
+   @FunctionalInterface
+   public interface a {
+      exr build();
 
-   @Override
-   public Set<ewv<?>> a() {
-      return ImmutableSet.of(ewy.b);
-   }
+      default exr.a invert() {
+         return exo.a(this);
+      }
 
-   public boolean a(euc $$0) {
-      return $$0.a(ewy.b);
-   }
+      default exf.a or(exr.a $$0) {
+         return exf.a(this, $$0);
+      }
 
-   public static exn.a c() {
-      return () -> b;
+      default exe.a and(exr.a $$0) {
+         return exe.a(this, $$0);
+      }
    }
 }

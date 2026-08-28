@@ -1,245 +1,103 @@
-import com.mojang.serialization.Codec;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class dgi {
-   public static final Codec<dgi> a = RecordCodecBuilder.create(
+   private static final Logger c = LogUtils.getLogger();
+   public static final dgi a = new dgi(ju.a(), List.of());
+   public static final MapCodec<dgi> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               dgi.b.d.optionalFieldOf("grass_color_modifier", dgi.b.a).forGetter($$0x -> $$0x.h),
-               dgb.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               awk.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               dga.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               dfz.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               awi.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+               edn.c.promotePartial(ae.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               elf.d.promotePartial(ae.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dgi::new)
    );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final dgi.b h;
-   private final Optional<dgb> i;
-   private final Optional<jq<awk>> j;
-   private final Optional<dga> k;
-   private final Optional<dfz> l;
-   private final Optional<awi> m;
+   private final ju<edn<?>> d;
+   private final List<ju<elf>> e;
+   private final Supplier<List<eeb<?, ?>>> f;
+   private final Supplier<Set<elf>> g;
 
-   dgi(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      dgi.b $$6,
-      Optional<dgb> $$7,
-      Optional<jq<awk>> $$8,
-      Optional<dga> $$9,
-      Optional<dfz> $$10,
-      Optional<awi> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   dgi(ju<edn<?>> $$0, List<ju<elf>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ju::a).map(jq::a).flatMap(elf::a).filter($$0xx -> $$0xx.b() == eep.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ju::a).map(jq::a).collect(Collectors.toSet()));
    }
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   public Iterable<jq<edn<?>>> a() {
       return this.d;
    }
 
-   public int d() {
+   public List<eeb<?, ?>> b() {
+      return this.f.get();
+   }
+
+   public List<ju<elf>> c() {
       return this.e;
    }
 
-   public Optional<Integer> e() {
-      return this.f;
+   public boolean a(elf $$0) {
+      return this.g.get().contains($$0);
    }
 
-   public Optional<Integer> f() {
-      return this.g;
+   public static class a extends dgi.b {
+      private final jr<elf> a;
+      private final jr<edn<?>> b;
+
+      public a(jr<elf> $$0, jr<edn<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dgi.a a(ebf.a $$0, alk<elf> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dgi.a a(alk<edn<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
    }
 
-   public dgi.b g() {
-      return this.h;
-   }
+   public static class b {
+      private final List<jq<edn<?>>> a = new ArrayList<>();
+      private final List<List<jq<elf>>> b = new ArrayList<>();
 
-   public Optional<dgb> h() {
-      return this.i;
-   }
+      public dgi.b a(ebf.a $$0, jq<elf> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
 
-   public Optional<jq<awk>> i() {
-      return this.j;
-   }
-
-   public Optional<dga> j() {
-      return this.k;
-   }
-
-   public Optional<dfz> k() {
-      return this.l;
-   }
-
-   public Optional<awi> l() {
-      return this.m;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private dgi.b g = dgi.b.a;
-      private Optional<dgb> h = Optional.empty();
-      private Optional<jq<awk>> i = Optional.empty();
-      private Optional<dga> j = Optional.empty();
-      private Optional<dfz> k = Optional.empty();
-      private Optional<awi> l = Optional.empty();
-
-      public dgi.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
+      public dgi.b a(int $$0, jq<elf> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
          return this;
       }
 
-      public dgi.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
+      public dgi.b a(jq<edn<?>> $$0) {
+         this.a.add($$0);
          return this;
       }
 
-      public dgi.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dgi.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dgi.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public dgi.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public dgi.a a(dgi.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public dgi.a a(dgb $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public dgi.a a(jq<awk> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public dgi.a a(dga $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public dgi.a a(dfz $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public dgi.a a(@Nullable awi $$0) {
-         this.l = Optional.ofNullable($$0);
-         return this;
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
       }
 
       public dgi a() {
-         return new dgi(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
-      }
-   }
-
-   public static enum b implements bag {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = dgc.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
-
-      private final String e;
-      public static final Codec<dgi.b> d = bag.a(dgi.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+         return new dgi(ju.a(this.a), this.b.stream().map(ju::a).collect(ImmutableList.toImmutableList()));
       }
    }
 }

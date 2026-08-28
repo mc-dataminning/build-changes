@@ -1,209 +1,56 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.math.Fraction;
+public class cyf {
+   public static final jq<cyc> a = a("water", new cyc("water"));
+   public static final jq<cyc> b = a("mundane", new cyc("mundane"));
+   public static final jq<cyc> c = a("thick", new cyc("thick"));
+   public static final jq<cyc> d = a("awkward", new cyc("awkward"));
+   public static final jq<cyc> e = a("night_vision", new cyc("night_vision", new btn(btp.p, 3600)));
+   public static final jq<cyc> f = a("long_night_vision", new cyc("night_vision", new btn(btp.p, 9600)));
+   public static final jq<cyc> g = a("invisibility", new cyc("invisibility", new btn(btp.n, 3600)));
+   public static final jq<cyc> h = a("long_invisibility", new cyc("invisibility", new btn(btp.n, 9600)));
+   public static final jq<cyc> i = a("leaping", new cyc("leaping", new btn(btp.h, 3600)));
+   public static final jq<cyc> j = a("long_leaping", new cyc("leaping", new btn(btp.h, 9600)));
+   public static final jq<cyc> k = a("strong_leaping", new cyc("leaping", new btn(btp.h, 1800, 1)));
+   public static final jq<cyc> l = a("fire_resistance", new cyc("fire_resistance", new btn(btp.l, 3600)));
+   public static final jq<cyc> m = a("long_fire_resistance", new cyc("fire_resistance", new btn(btp.l, 9600)));
+   public static final jq<cyc> n = a("swiftness", new cyc("swiftness", new btn(btp.a, 3600)));
+   public static final jq<cyc> o = a("long_swiftness", new cyc("swiftness", new btn(btp.a, 9600)));
+   public static final jq<cyc> p = a("strong_swiftness", new cyc("swiftness", new btn(btp.a, 1800, 1)));
+   public static final jq<cyc> q = a("slowness", new cyc("slowness", new btn(btp.b, 1800)));
+   public static final jq<cyc> r = a("long_slowness", new cyc("slowness", new btn(btp.b, 4800)));
+   public static final jq<cyc> s = a("strong_slowness", new cyc("slowness", new btn(btp.b, 400, 3)));
+   public static final jq<cyc> t = a("turtle_master", new cyc("turtle_master", new btn(btp.b, 400, 3), new btn(btp.k, 400, 2)));
+   public static final jq<cyc> u = a("long_turtle_master", new cyc("turtle_master", new btn(btp.b, 800, 3), new btn(btp.k, 800, 2)));
+   public static final jq<cyc> v = a("strong_turtle_master", new cyc("turtle_master", new btn(btp.b, 400, 5), new btn(btp.k, 400, 3)));
+   public static final jq<cyc> w = a("water_breathing", new cyc("water_breathing", new btn(btp.m, 3600)));
+   public static final jq<cyc> x = a("long_water_breathing", new cyc("water_breathing", new btn(btp.m, 9600)));
+   public static final jq<cyc> y = a("healing", new cyc("healing", new btn(btp.f, 1)));
+   public static final jq<cyc> z = a("strong_healing", new cyc("healing", new btn(btp.f, 1, 1)));
+   public static final jq<cyc> A = a("harming", new cyc("harming", new btn(btp.g, 1)));
+   public static final jq<cyc> B = a("strong_harming", new cyc("harming", new btn(btp.g, 1, 1)));
+   public static final jq<cyc> C = a("poison", new cyc("poison", new btn(btp.s, 900)));
+   public static final jq<cyc> D = a("long_poison", new cyc("poison", new btn(btp.s, 1800)));
+   public static final jq<cyc> E = a("strong_poison", new cyc("poison", new btn(btp.s, 432, 1)));
+   public static final jq<cyc> F = a("regeneration", new cyc("regeneration", new btn(btp.j, 900)));
+   public static final jq<cyc> G = a("long_regeneration", new cyc("regeneration", new btn(btp.j, 1800)));
+   public static final jq<cyc> H = a("strong_regeneration", new cyc("regeneration", new btn(btp.j, 450, 1)));
+   public static final jq<cyc> I = a("strength", new cyc("strength", new btn(btp.e, 3600)));
+   public static final jq<cyc> J = a("long_strength", new cyc("strength", new btn(btp.e, 9600)));
+   public static final jq<cyc> K = a("strong_strength", new cyc("strength", new btn(btp.e, 1800, 1)));
+   public static final jq<cyc> L = a("weakness", new cyc("weakness", new btn(btp.r, 1800)));
+   public static final jq<cyc> M = a("long_weakness", new cyc("weakness", new btn(btp.r, 4800)));
+   public static final jq<cyc> N = a("luck", new cyc("luck", new btn(btp.z, 6000)));
+   public static final jq<cyc> O = a("slow_falling", new cyc("slow_falling", new btn(btp.B, 1800)));
+   public static final jq<cyc> P = a("long_slow_falling", new cyc("slow_falling", new btn(btp.B, 4800)));
+   public static final jq<cyc> Q = a("wind_charged", new cyc("wind_charged", new btn(btp.J, 3600)));
+   public static final jq<cyc> R = a("weaving", new cyc("weaving", new btn(btp.K, 3600)));
+   public static final jq<cyc> S = a("oozing", new cyc("oozing", new btn(btp.L, 3600)));
+   public static final jq<cyc> T = a("infested", new cyc("infested", new btn(btp.M, 3600)));
 
-public final class cyf implements ctv {
-   public static final cyf a = new cyf(List.of());
-   public static final Codec<cyf> b = cwb.b.listOf().xmap(cyf::new, $$0 -> $$0.g);
-   public static final zg<wt, cyf> c = cwb.i.a(ze.a()).a(cyf::new, $$0 -> $$0.g);
-   private static final Fraction e = Fraction.getFraction(1, 16);
-   private static final int f = -1;
-   public static final int d = -1;
-   final List<cwb> g;
-   final Fraction h;
-   final int i;
-
-   cyf(List<cwb> $$0, Fraction $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+   private static jq<cyc> a(String $$0, cyc $$1) {
+      return kd.b(lz.h, all.b($$0), $$1);
    }
 
-   public cyf(List<cwb> $$0) {
-      this($$0, a($$0), -1);
-   }
-
-   private static Fraction a(List<cwb> $$0) {
-      Fraction $$1 = Fraction.ZERO;
-
-      for (cwb $$2 : $$0) {
-         $$1 = $$1.add(b($$2).multiplyBy(Fraction.getFraction($$2.L(), 1)));
-      }
-
-      return $$1;
-   }
-
-   static Fraction b(cwb $$0) {
-      cyf $$1 = $$0.a(ku.P);
-      if ($$1 != null) {
-         return e.add($$1.f());
-      } else {
-         List<dsj.c> $$2 = $$0.a(ku.an, List.of());
-         return !$$2.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, $$0.k());
-      }
-   }
-
-   public static boolean a(cwb $$0) {
-      return !$$0.f() && $$0.h().e();
-   }
-
-   public int a() {
-      int $$0 = this.e();
-      int $$1 = $$0 > 12 ? 11 : 12;
-      int $$2 = $$0 % 4;
-      int $$3 = $$2 == 0 ? 0 : 4 - $$2;
-      return Math.min($$0, $$1 - $$3);
-   }
-
-   public cwb a(int $$0) {
-      return this.g.get($$0);
-   }
-
-   public Stream<cwb> b() {
-      return this.g.stream().map(cwb::v);
-   }
-
-   public Iterable<cwb> c() {
-      return this.g;
-   }
-
-   public Iterable<cwb> d() {
-      return Lists.transform(this.g, cwb::v);
-   }
-
-   public int e() {
-      return this.g.size();
-   }
-
-   public Fraction f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.g.isEmpty();
-   }
-
-   public int h() {
-      return this.i;
-   }
-
-   public boolean i() {
-      return this.i != -1;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cyf $$1) ? false : this.h.equals($$1.h) && cwb.a(this.g, $$1.g);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cwb.a(this.g);
-   }
-
-   @Override
-   public String toString() {
-      return "BundleContents" + this.g;
-   }
-
-   public static class a {
-      private final List<cwb> a;
-      private Fraction b;
-      private int c;
-
-      public a(cyf $$0) {
-         this.a = new ArrayList<>($$0.g);
-         this.b = $$0.h;
-         this.c = $$0.i;
-      }
-
-      public cyf.a a() {
-         this.a.clear();
-         this.b = Fraction.ZERO;
-         this.c = -1;
-         return this;
-      }
-
-      private int b(cwb $$0) {
-         if (!$$0.l()) {
-            return -1;
-         } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (cwb.c(this.a.get($$1), $$0)) {
-                  return $$1;
-               }
-            }
-
-            return -1;
-         }
-      }
-
-      private int c(cwb $$0) {
-         Fraction $$1 = Fraction.ONE.subtract(this.b);
-         return Math.max($$1.divideBy(cyf.b($$0)).intValue(), 0);
-      }
-
-      public int a(cwb $$0) {
-         if (!cyf.a($$0)) {
-            return 0;
-         } else {
-            int $$1 = Math.min($$0.L(), this.c($$0));
-            if ($$1 == 0) {
-               return 0;
-            } else {
-               this.b = this.b.add(cyf.b($$0).multiplyBy(Fraction.getFraction($$1, 1)));
-               int $$2 = this.b($$0);
-               if ($$2 != -1) {
-                  cwb $$3 = this.a.remove($$2);
-                  cwb $$4 = $$3.c($$3.L() + $$1);
-                  $$0.h($$1);
-                  this.a.add(0, $$4);
-               } else {
-                  this.a.add(0, $$0.a($$1));
-               }
-
-               return $$1;
-            }
-         }
-      }
-
-      public int a(ctl $$0, com $$1) {
-         cwb $$2 = $$0.g();
-         int $$3 = this.c($$2);
-         return cyf.a($$2) ? this.a($$0.b($$2.L(), $$3, $$1)) : 0;
-      }
-
-      public void a(int $$0) {
-         this.c = this.c != $$0 && $$0 < this.a.size() ? $$0 : -1;
-      }
-
-      @Nullable
-      public cwb b() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            int $$0 = this.c != -1 && this.c < this.a.size() ? this.c : 0;
-            cwb $$1 = this.a.remove($$0).v();
-            this.b = this.b.subtract(cyf.b($$1).multiplyBy(Fraction.getFraction($$1.L(), 1)));
-            this.a(-1);
-            return $$1;
-         }
-      }
-
-      public Fraction c() {
-         return this.b;
-      }
-
-      public cyf d() {
-         return new cyf(List.copyOf(this.a), this.b, this.c);
-      }
+   public static jq<cyc> a(kd<cyc> $$0) {
+      return a;
    }
 }

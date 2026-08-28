@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drp extends dpy implements drj {
-   public static final MapCodec<drp> J = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(drj.a.e.fieldOf("weathering_state").forGetter(djf::c), dvj.a.fieldOf("base_state").forGetter($$0x -> $$0x.I), t()).apply($$0, drp::new)
+public class drp extends djx implements dro {
+   public static final MapCodec<drp> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dro.a.e.fieldOf("weathering_state").forGetter(drp::q), t()).apply($$0, drp::new)
    );
-   private final drj.a K;
+   private final dro.a e;
 
    @Override
-   public MapCodec<drp> a() {
-      return J;
+   protected MapCodec<drp> a() {
+      return d;
    }
 
-   public drp(drj.a $$0, dvj $$1, dvi.d $$2) {
-      super($$1, $$2);
-      this.K = $$0;
+   public drp(dro.a $$0, dvn.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
+   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean f(dvj $$0) {
-      return drj.c($$0.b()).isPresent();
+   protected boolean f(dvo $$0) {
+      return dro.c($$0.b()).isPresent();
    }
 
-   public drj.a q() {
-      return this.K;
+   public dro.a q() {
+      return this.e;
    }
 }

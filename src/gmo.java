@@ -1,59 +1,112 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import org.joml.FrustumIntersection;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gmo implements gmh.a {
-   private final fji a;
-   private final Map<Long, Map<jh, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gmo {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   gmo(fji $$0) {
-      this.a = $$0;
+   public gmo(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   public void a(long $$0, jh $$1) {
-      Map<jh, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   public gmo(gmo $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
    }
 
-   @Override
-   public void a(feb $$0, gih $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.aa();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<jh> $$8 = Sets.newHashSet();
-      Map<jh, Integer> $$9 = Maps.newHashMap();
-      fef $$10 = $$1.getBuffer(gir.y());
-      Iterator<Entry<Long, Map<jh, Integer>>> $$11 = this.b.entrySet().iterator();
+   public gmo a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<jh, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<jh, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<jh, Integer> $$16 : $$14.entrySet()) {
-               jh $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ezi $$19 = new ezi(jh.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gjb.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
-         }
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
       }
 
-      for (Entry<jh, Integer> $$20 : $$9.entrySet()) {
-         jh $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gmh.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      return this;
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
+
+   public boolean a(ezm $$0) {
+      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+      return $$1 == -2 || $$1 == -1;
+   }
+
+   public int a(elt $$0) {
+      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
+   }
+
+   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public Vector4f[] a() {
+      Vector4f[] $$0 = new Vector4f[]{
+         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
+      };
+      Matrix4f $$1 = this.c.invert(new Matrix4f());
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         $$1.transform($$0[$$2]);
+         $$0[$$2].div($$0[$$2].w());
       }
+
+      return $$0;
+   }
+
+   public double b() {
+      return this.e;
+   }
+
+   public double c() {
+      return this.f;
+   }
+
+   public double d() {
+      return this.g;
    }
 }

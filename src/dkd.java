@@ -1,26 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkd extends din {
+public class dkd extends dij {
    public static final MapCodec<dkd> a = b(dkd::new);
-   protected static final float b = 6.0F;
-   protected static final fah c = die.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   private static final xl b = xl.c("container.crafting");
 
    @Override
-   public MapCodec<dkd> a() {
+   public MapCodec<? extends dkd> a() {
       return a;
    }
 
-   protected dkd(dvi.d $$0) {
+   protected dkd(dvn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return c;
+   protected bsh a(dvo $$0, dff $$1, jh $$2, cor $$3, ezn $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awy.an);
+      }
+
+      return bsh.a;
    }
 
    @Override
-   protected boolean b(dvj $$0, deg $$1, jh $$2) {
-      return $$0.a(axa.cn);
+   protected bsj b(dvo $$0, dff $$1, jh $$2) {
+      return new bsp(($$2x, $$3, $$4) -> new csl($$2x, $$3, csf.a($$1, $$2)), b);
    }
 }

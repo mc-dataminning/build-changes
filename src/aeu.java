@@ -1,37 +1,23 @@
-public class aeu implements zp<ace> {
-   public static final zg<wf, aeu> a = zp.a(aeu::a, aeu::new);
-   private final int b;
-   private final byte c;
+import javax.annotation.Nullable;
 
-   public aeu(bue $$0, byte $$1) {
-      this.b = $$0.as();
-      this.c = $$1;
-   }
-
-   private aeu(wf $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(wf $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
-   }
+public record aeu(int b, jq<btl> c) implements zs<ach> {
+   public static final zj<ww, aeu> a = zj.a(zh.h, aeu::b, btl.b, aeu::e, aeu::new);
 
    @Override
-   public zr<aeu> a() {
-      return agt.an;
+   public zu<aeu> a() {
+      return agw.al;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public bue a(dfb $$0) {
+   @Nullable
+   public bui a(dff $$0) {
       return $$0.a(this.b);
    }
 
-   public float b() {
-      return azk.a(this.c);
+   public jq<btl> e() {
+      return this.c;
    }
 }

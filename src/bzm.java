@@ -1,32 +1,42 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bzm {
-   public static bwu<cny> a(cee<List<jp>> $$0, float $$1, int $$2, int $$3, cee<jp> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return cag.a(
-         (Function<cag.b<cny>, ? extends App<cag.c<cny>, caj<cny>>>)($$6 -> $$6.group($$6.a(cee.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<jp> $$11 = $$6.b($$6x);
-                     jp $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        jp $$13 = $$11.get($$8.E_().a($$11.size()));
-                        if ($$13 != null && $$8.ag() == $$13.a() && $$12.b().a($$9.dv(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new ceh($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
+   private static final int a = 200;
 
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
+   public static <E extends bvg> bwy<E> a(BiConsumer<E, bve> $$0) {
+      return a($$0x -> false, $$0, true);
+   }
+
+   public static <E extends bvg> bwy<E> a(Predicate<bve> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends bvg> bwy<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends bvg> bwy<E> a(Predicate<bve> $$0, BiConsumer<E, bve> $$1, boolean $$2) {
+      return cak.a(
+         (Function<cak.b<E>, ? extends App<cak.c<E>, can<E>>>)($$3 -> $$3.group($$3.b(cei.o), $$3.a(cei.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bve $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bN() && $$9.dY() == $$7.dY() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(bve $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dY().aa() - $$1.get() > 200L;
    }
 }

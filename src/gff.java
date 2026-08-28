@@ -1,43 +1,83 @@
-public class gff extends gfn {
-   private final double a;
-   private final int b;
-
-   gff(gci $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
+public class gff extends ghf {
+   gff(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azn.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(lr.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-         }
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
+   }
+
+   @Override
+   public ggj b() {
+      return ggj.b;
+   }
+
+   public static class a implements ggi<lw> {
+      private final gha a;
+
+      public a(gha $$0) {
+         this.a = $$0;
       }
 
-      if (this.s++ == this.t) {
-         this.k();
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gff $$8 = new gff($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 
-   public static class a implements gfs<lv> {
-      private final double a;
-      private final int b;
-      private final int c;
+   public static class b implements ggi<lw> {
+      private final gha a;
 
-      public a(double $$0, int $$1, int $$2) {
+      public b(gha $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gff($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gff $$8 = new gff($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements ggi<lw> {
+      private final gha a;
+
+      public c(gha $$0) {
+         this.a = $$0;
+      }
+
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gff $$8 = new gff($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

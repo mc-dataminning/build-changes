@@ -1,98 +1,124 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public class dao {
-   public static final dao a = new dao(List.of(), List.of());
-   private final List<cor.a<jq<cvx>>> b;
-   private final List<Optional<dao.a>> c;
+public class dao extends dak {
+   private static final Map<cwb, cyu.a> a = Map.of(
+      cwj.uo,
+      cyu.a.b,
+      cwj.pu,
+      cyu.a.e,
+      cwj.sz,
+      cyu.a.c,
+      cwj.uD,
+      cyu.a.d,
+      cwj.uE,
+      cyu.a.d,
+      cwj.uH,
+      cyu.a.d,
+      cwj.uF,
+      cyu.a.d,
+      cwj.uI,
+      cyu.a.d,
+      cwj.uG,
+      cyu.a.d,
+      cwj.uJ,
+      cyu.a.d
+   );
+   private static final dap b = dap.a(cwj.oA);
+   private static final dap c = dap.a(cwj.rp);
+   private static final dap d = dap.a(cwj.pv);
 
-   private dao(List<cor.a<jq<cvx>>> $$0, List<Optional<dao.a>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dao(dah $$0) {
+      super($$0);
    }
 
-   private static cor.a<jq<cvx>> c(List<cwb> $$0) {
-      return cos.a($$0.stream().map(cwb::i));
-   }
+   public boolean a(dai $$0, dff $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
 
-   private static List<cwb> b(dal $$0) {
-      return $$0.a().stream().map(cwb::new).toList();
-   }
+      for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+         cwf $$8 = $$0.a($$7);
+         if (!$$8.f()) {
+            if (a.containsKey($$8.h())) {
+               if ($$4) {
+                  return false;
+               }
 
-   public static dao a(dal $$0) {
-      List<cwb> $$1 = b($$0);
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cor.a<jq<cvx>> $$2 = c($$1);
-         dao.a $$3 = new dao.a($$1, 0);
-         return new dao(List.of($$2), List.of(Optional.of($$3)));
-      }
-   }
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
 
-   public static dao a(List<Optional<dal>> $$0) {
-      int $$1 = $$0.size();
-      List<cor.a<jq<cvx>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dao.a>> $$3 = new ArrayList<>($$1);
-      int $$4 = 0;
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
 
-      for (Optional<dal> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            List<cwb> $$6 = b($$5.get());
-            if ($$6.isEmpty()) {
-               return a;
+               $$5 = true;
+            } else if (d.a($$8)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else {
+               if (!($$8.h() instanceof cvd)) {
+                  return false;
+               }
+
+               $$3 = true;
             }
-
-            $$2.add(c($$6));
-            $$3.add(Optional.of(new dao.a($$6, $$4++)));
-         } else {
-            $$3.add(Optional.empty());
          }
       }
 
-      return new dao($$2, $$3);
+      return $$2 && $$3;
    }
 
-   public static dao b(List<dal> $$0) {
-      int $$1 = $$0.size();
-      List<cor.a<jq<cvx>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dao.a>> $$3 = new ArrayList<>($$1);
+   public cwf a(dai $$0, js.a $$1) {
+      cyu.a $$2 = cyu.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         dal $$5 = $$0.get($$4);
-         List<cwb> $$6 = b($$5);
-         if ($$6.isEmpty()) {
-            return a;
-         }
-
-         $$2.add(c($$6));
-         $$3.add(Optional.of(new dao.a($$6, $$4)));
-      }
-
-      return new dao($$2, $$3);
-   }
-
-   public List<Optional<dao.a>> a() {
-      return this.c;
-   }
-
-   public List<cor.a<jq<cvx>>> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c.isEmpty();
-   }
-
-   public static record a(List<cwb> a, int b) {
-      public a(List<cwb> a, int b) {
-         if (a.isEmpty()) {
-            throw new IllegalArgumentException("Possible items list must be not empty");
-         } else {
-            this.a = a;
-            this.b = b;
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cwf $$7 = $$0.a($$6);
+         if (!$$7.f()) {
+            cyu.a $$8 = a.get($$7.h());
+            if ($$8 != null) {
+               $$2 = $$8;
+            } else if (c.a($$7)) {
+               $$3 = true;
+            } else if (b.a($$7)) {
+               $$4 = true;
+            } else if ($$7.h() instanceof cvd) {
+               $$5.add(((cvd)$$7.h()).b().f());
+            }
          }
       }
+
+      cwf $$9 = new cwf(cwj.uN);
+      $$9.b(ku.ae, new cyu($$2, $$5, IntList.of(), $$4, $$3));
+      return $$9;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cwf a(js.a $$0) {
+      return new cwf(cwj.uN);
+   }
+
+   @Override
+   public day<?> aq_() {
+      return day.h;
    }
 }

@@ -1,52 +1,56 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.function.Predicate;
 
-public class egd extends ega {
-   public egd(Codec<eho> $$0) {
+public class egd extends eep<ehr> {
+   public egd(Codec<ehr> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<jh> a(dfy $$0, eho $$1, azs $$2, jh $$3, Predicate<dvj> $$4, int $$5, int $$6) {
-      Set<jh> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<jh> $$8 = new HashSet<>();
-      jh.a $$9 = new jh.a();
-
-      for (jh $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
+   public boolean a(eer<ehr> $$0) {
+      dgd $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      ehr $$3 = $$0.f();
+      azv $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         jh $$6 = $$2.h($$5.getAsInt());
+         kl $$7 = new kl($$3.c, $$3.c, $$3.c);
+         elt $$8 = elt.a($$6.b($$7), $$6.a($$7));
+         return jh.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dil.kJ.m(), 2);
+            return 1;
+         }).sum() > 0;
       }
-
-      for (jh $$11 : $$8) {
-         $$0.a($$11, dig.G.m(), 2);
-      }
-
-      return $$8;
    }
 
-   private static boolean a(dfy $$0, Set<jh> $$1, jh $$2, jh.a $$3) {
-      return a($$0, $$2, $$3, jm.c) || a($$0, $$2, $$3, jm.f) || a($$0, $$2, $$3, jm.d) || a($$0, $$2, $$3, jm.e) || a($$0, $$2, $$3, jm.a);
+   private static OptionalInt a(dgd $$0, jh $$1, ehr $$2) {
+      Predicate<dvo> $$3 = $$0x -> $$0x.a(dil.G);
+      Predicate<dvo> $$4 = $$0x -> !$$0x.a(dil.G);
+      Optional<eaz> $$5 = eaz.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(eaz::c).orElseGet(OptionalInt::empty);
    }
 
-   private static boolean a(dfy $$0, jh $$1, jh.a $$2, jm $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).c($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(dfy $$0, eho $$1, dxg $$2, azs $$3, jh $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
-         dvj $$5 = $$0.a_($$4);
-         if ($$5.b(dvz.C) && !$$5.c(dvz.C)) {
-            $$0.a($$4, $$5.b(dvz.C, Boolean.valueOf(true)), 2);
+   private boolean b(dgd $$0, jh $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
+         for (jm $$2 : jm.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
          }
 
          return true;
       } else {
          return false;
       }
+   }
+
+   private boolean a(dfg $$0, jh $$1) {
+      dvo $$2 = $$0.a_($$1);
+      return $$2.a(dil.G) || $$2.l();
    }
 }

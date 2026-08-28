@@ -1,29 +1,37 @@
-public class afc implements zp<ace> {
-   public static final zg<wf, afc> a = zp.a(afc::a, afc::new);
-   private final int b;
+public class afc implements zs<ach> {
+   public static final zj<wi, afc> a = zs.a(afc::a, afc::new);
+   private final double b;
+   private final double c;
 
-   public afc(dxa $$0) {
-      this.b = $$0.q();
+   public afc(dxe $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private afc(wf $$0) {
-      this.b = $$0.l();
+   private afc(wi $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(wf $$0) {
-      $$0.c(this.b);
+   private void a(wi $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zr<afc> a() {
-      return agt.av;
+   public zu<afc> a() {
+      return agw.as;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
+      return this.c;
+   }
+
+   public double e() {
       return this.b;
    }
 }

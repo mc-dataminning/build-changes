@@ -1,28 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehk implements egp {
+public record ehk(int b, int c, int d, int e, int f, brm g, float h) implements egt {
    public static final Codec<ehk> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               erk.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               kf.a(lz.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ehk::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ehk::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ehk::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ehk::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ehk::f),
+               brm.c.fieldOf("extra_rare_growths").forGetter(ehk::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ehk::h)
             )
             .apply($$0, ehk::new)
    );
-   public final erk b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final ju<die> f;
 
-   public ehk(erk $$0, boolean $$1, int $$2, int $$3, ju<die> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

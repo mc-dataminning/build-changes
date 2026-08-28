@@ -1,13 +1,8 @@
-import javax.annotation.Nullable;
-
-public class gvj extends gun {
-   public jm a = jm.c;
-   public cwb b = cwb.k;
-   public int c;
+public class gvj extends gwb {
    public boolean d;
-   @Nullable
-   public haf e;
-   @Nullable
-   public etc f;
-   public final gxm g = new gxm();
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

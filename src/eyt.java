@@ -1,16 +1,31 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eyt {
-   private static final Codec<eys> d = ly.I.q().dispatch(eys::a, eyr::a);
-   public static final Codec<eys> a = Codec.lazyInitialized(
-      () -> Codec.either(eyp.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eyp $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final eyr b = a("fixed", eyq.a);
-   public static final eyr c = a("context", eyp.a);
+public record eyt(eug.b c) implements eyw {
+   public static final MapCodec<eyt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eug.b.e.fieldOf("target").forGetter(eyt::c)).apply($$0, eyt::new));
+   public static final Codec<eyt> b = eug.b.e.xmap(eyt::new, eyt::c);
 
-   private static eyr a(String $$0, MapCodec<? extends eys> $$1) {
-      return kd.a(ly.I, ali.b($$0), new eyr($$1));
+   public static eyw a(eug.b $$0) {
+      return new eyt($$0);
+   }
+
+   @Override
+   public eyv a() {
+      return eyx.c;
+   }
+
+   @Nullable
+   @Override
+   public fav a(eug $$0) {
+      return $$0.c(this.c.a());
+   }
+
+   @Override
+   public Set<ewz<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

@@ -1,20 +1,29 @@
-public record aha(int b) implements zp<agv> {
-   public static final zg<wf, aha> a = zp.a(aha::a, aha::new);
+public class aha implements zs<agy> {
+   public static final zj<wi, aha> a = zs.a(aha::a, aha::new);
+   private final int b;
 
-   private aha(wf $$0) {
-      this($$0.l());
+   public aha(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wf $$0) {
+   private aha(wi $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wi $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zr<aha> a() {
-      return agt.bk;
+   public zu<aha> a() {
+      return agw.bg;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

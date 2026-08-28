@@ -1,34 +1,49 @@
-public class cpr extends cpn {
-   public cpr(bul<? extends cpr> $$0, dfb $$1) {
+public abstract class cpr extends cps implements cph {
+   private static final ako<cwf> b = aks.a(cpr.class, akq.h);
+
+   public cpr(bup<? extends cpr> $$0, dff $$1) {
       super($$0, $$1);
    }
 
-   public cpr(dfb $$0, bva $$1, cwb $$2) {
-      super(bul.L, $$1, $$0, $$2);
+   public cpr(bup<? extends cpr> $$0, double $$1, double $$2, double $$3, dff $$4, cwf $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a($$5);
    }
 
-   public cpr(dfb $$0, double $$1, double $$2, double $$3, cwb $$4) {
-      super(bul.L, $$1, $$2, $$3, $$0, $$4);
+   public cpr(bup<? extends cpr> $$0, bve $$1, dff $$2, cwf $$3) {
+      this($$0, $$1.dD(), $$1.dH() - 0.1F, $$1.dJ(), $$2, $$3);
+      this.c($$1);
+   }
+
+   public void a(cwf $$0) {
+      this.aw().a(b, $$0.c(1));
+   }
+
+   protected abstract cwb o();
+
+   @Override
+   public cwf m() {
+      return this.aw().a(b);
    }
 
    @Override
-   protected cvx o() {
-      return cwf.tX;
+   protected void a(aks.a $$0) {
+      $$0.a(b, new cwf(this.o()));
    }
 
    @Override
-   protected double be() {
-      return 0.07;
+   public void b(un $$0) {
+      super.b($$0);
+      $$0.a("Item", this.m().a(this.ea()));
    }
 
    @Override
-   protected void a(ezl $$0) {
+   public void a(un $$0) {
       super.a($$0);
-      if (this.dX() instanceof arn) {
-         this.dX().c(2002, this.dx(), cya.c(cyb.a));
-         int $$1 = 3 + this.dX().A.a(5) + this.dX().A.a(5);
-         buq.a((arn)this.dX(), this.dv(), $$1);
-         this.av();
+      if ($$0.b("Item", 10)) {
+         this.a(cwf.a(this.ea(), (vk)$$0.p("Item")).orElseGet(() -> new cwf(this.o())));
+      } else {
+         this.a(new cwf(this.o()));
       }
    }
 }

@@ -1,90 +1,21 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
-
-public class fdu {
-   private int a;
-
-   public static Optional<fdu> a() {
-      return fdu.b.a;
+public record fdu(int a, int b, boolean c) implements fdv<fcu> {
+   public fcu a() {
+      return new fcv(this.a, this.b, this.c);
    }
 
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
+   public void a(fcu $$0) {
+      $$0.a();
    }
 
-   public fdu.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         fdu.a $$0 = new fdu.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+   public int b() {
+      return this.a;
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+   public int c() {
+      return this.b;
    }
 
-   static class b {
-      static final Optional<fdu> a = Optional.ofNullable(a());
-
-      private b() {
-      }
-
-      @Nullable
-      private static fdu a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fdu();
-      }
+   public boolean d() {
+      return this.c;
    }
 }

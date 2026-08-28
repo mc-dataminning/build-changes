@@ -1,7 +1,12 @@
-import javax.annotation.Nullable;
+public class gum extends gwb {
+   public cih.e a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
 
-public class gum extends gvd {
-   public boolean a;
-   @Nullable
-   public dvj b;
+   public gum() {
+      this.a = cih.e.a;
+      this.d = 1.0F;
+   }
 }

@@ -1,42 +1,48 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public record adw(etc b, byte c, boolean d, Optional<List<esy>> e, Optional<ete.c> f) implements zp<ace> {
-   public static final zg<wt, adw> a = zg.a(etc.b, adw::b, ze.c, adw::e, ze.b, adw::f, esy.a.a(ze.a()).a(ze::a), adw::g, ete.c.a, adw::h, adw::new);
+public class adw implements zs<ach> {
+   public static final zj<wi, adw> a = zs.a(adw::a, adw::new);
+   private final int b;
+   private final int c;
+   private final adx d;
 
-   public adw(etc $$0, byte $$1, boolean $$2, @Nullable Collection<esy> $$3, @Nullable ete.c $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   public adw(del $$0, erd $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.g;
+      this.c = $$0.h;
+      this.d = new adx($$0, $$1, $$2, $$3);
+   }
+
+   private adw(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adx($$0, this.b, this.c);
+   }
+
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public zr<adw> a() {
-      return agt.P;
+   public zu<adw> a() {
+      return agw.N;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public void a(ete $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
+   public int b() {
+      return this.b;
    }
 
-   public byte e() {
+   public int e() {
       return this.c;
    }
 
-   public boolean f() {
+   public adx f() {
       return this.d;
-   }
-
-   public Optional<List<esy>> g() {
-      return this.e;
-   }
-
-   public Optional<ete.c> h() {
-      return this.f;
    }
 }

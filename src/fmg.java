@@ -1,35 +1,72 @@
-public class fmg {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+public class fmg extends flq {
+   private final flh a;
+   private final fmq b;
 
-   public static void a(fku $$0, gze $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, -1);
+   public fmg(int $$0, int $$1, int $$2, int $$3, xl $$4, flh $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fmq($$4, $$5).d(this.y() - this.b());
    }
 
-   public static void a(fku $$0, gze $$1, int $$2, int $$3, int $$4, int $$5) {
-      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
+   public fmg a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
-   public static void a(fku $$0, ali $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
-      int $$8 = 8 + ($$6 ? 8 : 0);
-      int $$9 = 8 * ($$6 ? -1 : 1);
-      $$0.a(gir::B, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
+   @Override
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.y() - this.b());
+   }
+
+   @Override
+   protected int h() {
+      return this.b.w();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(flj $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aM_()) {
+         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
       }
    }
 
-   private static void a(fku $$0, ali $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
-      int $$7 = 8 + ($$5 ? 8 : 0);
-      int $$8 = 8 * ($$5 ? -1 : 1);
-      $$0.a(gir::B, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
+   @Override
+   public void b(flj $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(flj $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fpu $$0) {
+      $$0.a(fpt.a, this.z());
    }
 }

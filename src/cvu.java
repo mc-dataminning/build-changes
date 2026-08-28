@@ -1,33 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cvu(jq<awk> e, float f, float g, xi h) {
-   public static final Codec<cvu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awk.b.fieldOf("sound_event").forGetter(cvu::a),
-               ayt.o.fieldOf("use_duration").forGetter(cvu::b),
-               ayt.o.fieldOf("range").forGetter(cvu::c),
-               xk.a.fieldOf("description").forGetter(cvu::d)
-            )
-            .apply($$0, cvu::new)
-   );
-   public static final zg<wt, cvu> b = zg.a(awk.d, cvu::a, ze.j, cvu::b, ze.j, cvu::c, xk.b, cvu::d, cvu::new);
-   public static final Codec<jq<cvu>> c = ale.a(lz.I, a);
-   public static final zg<wt, jq<cvu>> d = ze.a(lz.I, b);
-
-   public jq<awk> a() {
-      return this.e;
+public class cvu extends cxk {
+   public cvu(dij $$0, dij $$1, cwb.a $$2) {
+      super($$2, $$0, $$1, jm.b);
    }
 
-   public float b() {
-      return this.f;
-   }
+   @Override
+   protected boolean a(dfi $$0, dvo $$1, jh $$2) {
+      if ($$1.b() instanceof dri $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
 
-   public float c() {
-      return this.g;
-   }
-
-   public xi d() {
-      return this.h;
+      return super.a($$0, $$1, $$2);
    }
 }

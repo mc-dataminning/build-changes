@@ -1,65 +1,85 @@
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public record exm(jq<die> b, Optional<ee> c) implements exn {
+public record exm(Map<String, euf> b, eug.b c) implements exr {
    public static final MapCodec<exm> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ly.e.r().fieldOf("block").forGetter(exm::c), ee.a.optionalFieldOf("properties").forGetter(exm::d)).apply($$0, exm::new)
-      )
-      .validate(exm::a);
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, euf.a).fieldOf("scores").forGetter(exm::c), eug.b.e.fieldOf("entity").forGetter(exm::d))
+            .apply($$0, exm::new)
+   );
 
-   private static DataResult<exm> a(exm $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public exs b() {
+      return ext.h;
    }
 
    @Override
-   public exo b() {
-      return exp.i;
+   public Set<ewz<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   @Override
-   public Set<ewv<?>> a() {
-      return Set.of(ewy.g);
+   public boolean a(eug $$0) {
+      bui $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         faw $$2 = $$0.d().f();
+
+         for (Entry<String, euf> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public boolean a(euc $$0) {
-      dvj $$1 = $$0.c(ewy.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   protected boolean a(eug $$0, bui $$1, faw $$2, String $$3, euf $$4) {
+      fao $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         fas $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
    }
 
-   public static exm.a a(die $$0) {
+   public static exm.a a(eug.b $$0) {
       return new exm.a($$0);
    }
 
-   public jq<die> c() {
+   public Map<String, euf> c() {
       return this.b;
    }
 
-   public Optional<ee> d() {
+   public eug.b d() {
       return this.c;
    }
 
-   public static class a implements exn.a {
-      private final jq<die> a;
-      private Optional<ee> b = Optional.empty();
+   public static class a implements exr.a {
+      private final Builder<String, euf> a = ImmutableMap.builder();
+      private final eug.b b;
 
-      public a(die $$0) {
-         this.a = $$0.p();
+      public a(eug.b $$0) {
+         this.b = $$0;
       }
 
-      public exm.a a(ee.a $$0) {
-         this.b = $$0.b();
+      public exm.a a(String $$0, euf $$1) {
+         this.a.put($$0, $$1);
          return this;
       }
 
       @Override
-      public exn build() {
-         return new exm(this.a, this.b);
+      public exr build() {
+         return new exm(this.a.build(), this.b);
       }
    }
 }

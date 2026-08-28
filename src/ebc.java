@@ -1,38 +1,105 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ebc {
-   public final eiq a;
-   public final eiq b;
-   public final eiq c;
-   public final eiq d;
-   public final eiq e;
-   public final List<dvj> f;
-   public final axq<die> g;
-   public final axq<die> h;
-   public static final Codec<ebc> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eiq.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               eiq.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               eiq.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               eiq.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               eiq.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayt.a(dvj.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axq.b(lz.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axq.b(lz.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ebc::new)
-   );
+public interface ebc {
+   Codec<ebc> b = ebd.b;
+   Codec<jq<ebc>> c = alh.a(ma.aK, b);
+   Codec<ebc> d = c.xmap(ebd.j::new, $$0 -> (jq)($$0 instanceof ebd.j $$1 ? $$1.j() : new jq.a<>($$0)));
 
-   public ebc(eiq $$0, eiq $$1, eiq $$2, eiq $$3, eiq $$4, List<dvj> $$5, axq<die> $$6, axq<die> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   double a(ebc.b var1);
+
+   void a(double[] var1, ebc.a var2);
+
+   ebc a(ebc.f var1);
+
+   double a();
+
+   double b();
+
+   azg<? extends ebc> c();
+
+   default ebc a(double $$0, double $$1) {
+      return new ebd.g(this, $$0, $$1);
+   }
+
+   default ebc d() {
+      return ebd.a(this, ebd.k.a.a);
+   }
+
+   default ebc e() {
+      return ebd.a(this, ebd.k.a.b);
+   }
+
+   default ebc f() {
+      return ebd.a(this, ebd.k.a.c);
+   }
+
+   default ebc g() {
+      return ebd.a(this, ebd.k.a.d);
+   }
+
+   default ebc h() {
+      return ebd.a(this, ebd.k.a.e);
+   }
+
+   default ebc i() {
+      return ebd.a(this, ebd.k.a.f);
+   }
+
+   public interface a {
+      ebc.b a(int var1);
+
+      void a(double[] var1, ebc var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default ecl d() {
+         return ecl.a();
+      }
+   }
+
+   public static record c(jq<eqr.a> b, @Nullable eqr c) {
+      public static final Codec<ebc.c> a = eqr.a.b.xmap($$0 -> new ebc.c($$0, null), ebc.c::b);
+
+      public c(jq<eqr.a> $$0) {
+         this($$0, null);
+      }
+
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
+   }
+
+   public interface d extends ebc {
+      @Override
+      default void a(double[] $$0, ebc.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default ebc a(ebc.f $$0) {
+         return $$0.apply(this);
+      }
+   }
+
+   public static record e(int a, int b, int c) implements ebc.b {
+   }
+
+   public interface f {
+      ebc apply(ebc var1);
+
+      default ebc.c a(ebc.c $$0) {
+         return $$0;
+      }
    }
 }

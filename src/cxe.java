@@ -1,59 +1,60 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cxe extends cuu {
-   protected static final Map<die, dvj> a = Maps.newHashMap(
-      new Builder()
-         .put(dig.i, dig.kE.m())
-         .put(dig.j, dig.kE.m())
-         .put(dig.l, dig.kE.m())
-         .put(dig.k, dig.kE.m())
-         .put(dig.fl, dig.kE.m())
-         .put(dig.sH, dig.kE.m())
-         .build()
-   );
+public class cxe extends cul {
+   public cxe(dij $$0, cwb.a $$1) {
+      super($$0, $$1);
+   }
 
-   public cxe(cxs $$0, float $$1, float $$2, cvx.a $$3) {
-      super($$0, axa.bE, $$1, $$2, $$3);
+   @Nullable
+   @Override
+   public czw b(czw $$0) {
+      jh $$1 = $$0.a();
+      dff $$2 = $$0.q();
+      dvo $$3 = $$2.a_($$1);
+      dij $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return doy.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         jm $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == jm.b ? $$0.g() : jm.b;
+         }
+
+         int $$7 = 0;
+         jh.a $$8 = $$1.k().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               cor $$9 = $$0.o();
+               int $$10 = $$2.al();
+               if ($$9 instanceof arr && $$8.v() > $$10) {
+                  ((arr)$$9).b(xl.a("build.tooHigh", $$10).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return czw.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public bsd a(czu $$0) {
-      dfb $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dvj $$3 = $$1.a_($$2);
-      if ($$0.k() == jm.a) {
-         return bsd.e;
-      } else {
-         com $$4 = $$0.o();
-         dvj $$5 = a.get($$3.b());
-         dvj $$6 = null;
-         if ($$5 != null && $$1.a_($$2.d()).l()) {
-            $$1.a($$4, $$2, awl.wJ, awm.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dis && $$3.c(dis.c)) {
-            if (!$$1.y_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            dis.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.b(dis.c, Boolean.valueOf(false));
-         }
-
-         if ($$6 != null) {
-            if (!$$1.C) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(eag.c, $$2, eag.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bva.d($$0.p()));
-               }
-            }
-
-            return bsd.a;
-         } else {
-            return bsd.e;
-         }
-      }
+   protected boolean c() {
+      return false;
    }
 }

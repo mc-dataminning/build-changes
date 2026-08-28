@@ -1,26 +1,44 @@
-public interface elq {
-   alh<emd> a = a("villages");
-   alh<emd> b = a("desert_pyramids");
-   alh<emd> c = a("igloos");
-   alh<emd> d = a("jungle_temples");
-   alh<emd> e = a("swamp_huts");
-   alh<emd> f = a("pillager_outposts");
-   alh<emd> g = a("ocean_monuments");
-   alh<emd> h = a("woodland_mansions");
-   alh<emd> i = a("buried_treasures");
-   alh<emd> j = a("mineshafts");
-   alh<emd> k = a("ruined_portals");
-   alh<emd> l = a("shipwrecks");
-   alh<emd> m = a("ocean_ruins");
-   alh<emd> n = a("nether_complexes");
-   alh<emd> o = a("nether_fossils");
-   alh<emd> p = a("end_cities");
-   alh<emd> q = a("ancient_cities");
-   alh<emd> r = a("strongholds");
-   alh<emd> s = a("trail_ruins");
-   alh<emd> t = a("trial_chambers");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-   private static alh<emd> a(String $$0) {
-      return alh.a(lz.aU, ali.b($$0));
+public class elq {
+   public static final Codec<elq> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(alk.a(ma.bc), dzk.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, elq::new)
+      )
+      .validate(elq::a);
+   public static final Codec<jq<elq>> b = alh.a(ma.aZ, a);
+   private final Map<alk<dzk>, dzk> c;
+
+   public elq(Map<alk<dzk>, dzk> $$0) {
+      this.c = $$0;
+   }
+
+   private ImmutableMap<alk<dzk>, dzk> c() {
+      Builder<alk<dzk>, dzk> $$0 = ImmutableMap.builder();
+      ece.a(this.c.keySet().stream()).forEach($$1 -> {
+         dzk $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
+   }
+
+   public ece a() {
+      return new ece(this.c());
+   }
+
+   public Optional<dzk> b() {
+      return Optional.ofNullable(this.c.get(dzk.b));
+   }
+
+   private static DataResult<elq> a(elq $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

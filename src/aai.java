@@ -1,11 +1,25 @@
-public interface aai extends acb {
-   void a(aal var1);
+public record aai(String b, int c) implements zs<zy> {
+   public static final zj<wi, aai> a = zs.a(aai::a, aai::new);
 
-   void a(aam var1);
+   private aai(wi $$0) {
+      this($$0.p(), $$0.l());
+   }
 
-   void a(aak var1);
+   private void a(wi $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
 
-   void a(aan var1);
+   @Override
+   public zu<aai> a() {
+      return aak.j;
+   }
 
-   void a(aaj var1);
+   public void a(zy $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
 }

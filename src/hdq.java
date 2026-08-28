@@ -1,165 +1,62 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record hdq<T>(String F, String G, Codec<T> H, hdq.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final hdq<String> a = b("user_id", "userId");
-   public static final hdq<String> b = b("client_id", "clientId");
-   public static final hdq<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final hdq<String> d = b("game_version", "buildDisplayName");
-   public static final hdq<String> e = b("operating_system", "buildPlatform");
-   public static final hdq<String> f = b("platform", "platform");
-   public static final hdq<Boolean> g = a("client_modded", "clientModded");
-   public static final hdq<String> h = b("launcher_name", "launcherName");
-   public static final hdq<UUID> i = e("world_session_id", "worldSessionId");
-   public static final hdq<Boolean> j = a("server_modded", "serverModded");
-   public static final hdq<hdq.c> k = a("server_type", "serverType", hdq.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final hdq<Boolean> l = a("opt_in", "isOptional");
-   public static final hdq<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ayt.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final hdq<hdq.b> n = a("game_mode", "playerGameMode", hdq.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final hdq<String> o = b("realms_map_content", "realmsMapContent");
-   public static final hdq<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final hdq<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final hdq<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final hdq<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final hdq<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final hdq<Integer> u = c("number_of_samples", "numSamples");
-   public static final hdq<Integer> v = c("render_distance", "renderDistance");
-   public static final hdq<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final hdq<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final hdq<Boolean> y = a("new_world", "newWorld");
-   public static final hdq<hdu.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final hdq<hdu.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final hdq<hdu.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final hdq<hdu.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final hdq<String> D = b("advancement_id", "advancementId");
-   public static final hdq<Long> E = d("advancement_game_time", "advancementGameTime");
+public class hdq {
+   private static final int a = 100;
+   private final azv b = azv.a();
+   private final fjx c;
+   @Nullable
+   private hcq d;
+   private int e = 100;
 
-   public static <T> hdq<T> a(String $$0, String $$1, Codec<T> $$2, hdq.a<T> $$3) {
-      return new hdq<>($$0, $$1, $$2, $$3);
+   public hdq(fjx $$0) {
+      this.c = $$0;
    }
 
-   public static hdq<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
-   }
+   public void a() {
+      awl $$0 = this.c.al();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ak().b(this.d);
+            this.e = azn.a(this.b, 0, $$0.b() / 2);
+         }
 
-   public static hdq<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
-   }
+         if (!this.c.ak().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, azn.a(this.b, $$0.b(), $$0.c()));
+         }
+      }
 
-   public static hdq<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hdq<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hdq<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, kk.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static hdq<hdu.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hdu.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static hdq<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(hdr $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
       }
    }
 
-   public xw a() {
-      return xi.c("telemetry.property." + this.F + ".title");
-   }
-
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
-   }
-
-   public String b() {
-      return this.F;
-   }
-
-   public String c() {
-      return this.G;
-   }
-
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public hdq.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements bag {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<hdq.b> f = bag.a(hdq.b::values);
-      private final String g;
-      private final int h;
-
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public void a(awl $$0) {
+      this.d = hcl.a($$0.a().a());
+      if (this.d.b() != hdv.b) {
+         this.c.ak().a(this.d);
       }
 
-      public int a() {
-         return this.h;
-      }
+      this.e = Integer.MAX_VALUE;
+   }
 
-      @Override
-      public String c() {
-         return this.g;
+   public void b(awl $$0) {
+      if (this.c($$0)) {
+         this.b();
       }
    }
 
-   public static enum c implements bag {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<hdq.c> d = bag.a(hdq.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
       }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+      this.e += 100;
+   }
+
+   public boolean c(awl $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

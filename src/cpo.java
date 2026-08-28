@@ -1,77 +1,57 @@
-public abstract class cpo extends cpg {
-   private static final float b = 12.25F;
-
-   protected cpo(bul<? extends cpo> $$0, dfb $$1) {
+public class cpo extends cpe {
+   public cpo(bup<? extends cpo> $$0, dff $$1) {
       super($$0, $$1);
    }
 
-   protected cpo(bul<? extends cpo> $$0, double $$1, double $$2, double $$3, dfb $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public cpo(dff $$0, bve $$1, ezr $$2) {
+      super(bup.aQ, $$1, $$2, $$0);
+   }
+
+   public cpo(dff $$0, double $$1, double $$2, double $$3, ezr $$4) {
+      super(bup.aQ, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public boolean a(double $$0) {
-      if (this.ag < 2 && $$0 < 12.25) {
-         return false;
-      } else {
-         double $$1 = this.cS().a() * 4.0;
-         if (Double.isNaN($$1)) {
-            $$1 = 4.0;
+   protected void a(ezo $$0) {
+      super.a($$0);
+      if (this.dY() instanceof arq $$1) {
+         bui var7 = $$0.a();
+         bui $$4 = this.s();
+         int $$5 = var7.aI();
+         var7.d(5.0F);
+         bsy $$6 = this.dZ().a((cpe)this, $$4);
+         if (!var7.a($$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            dby.a($$1, var7, $$6);
          }
-
-         $$1 *= 64.0;
-         return $$0 < $$1 * $$1;
       }
    }
 
    @Override
-   public boolean o(boolean $$0) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      ezl $$0 = cpi.a(this, this::b);
-      ezn $$1;
-      if ($$0.d() != ezl.a.a) {
-         $$1 = $$0.g();
-      } else {
-         $$1 = this.dv().e(this.dA());
-      }
-
-      this.b($$1);
-      this.F();
-      this.aL();
-      super.l();
-      if ($$0.d() != ezl.a.a && this.bM()) {
-         this.b($$0);
-      }
-
-      this.o();
-      this.bg();
-   }
-
-   private void o() {
-      ezn $$0 = this.dA();
-      ezn $$1 = this.dv();
-      float $$4;
-      if (this.bk()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dX().a(lr.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+   protected void a(ezn $$0) {
+      super.a($$0);
+      if (!this.dY().C) {
+         bui $$1 = this.s();
+         if (!($$1 instanceof bvg) || this.dY().ac().b(dfb.c)) {
+            jh $$2 = $$0.b().a($$0.c());
+            if (this.dY().u($$2)) {
+               this.dY().b($$2, dhw.a(this.dY(), $$2));
+            }
          }
-
-         $$4 = 0.8F;
-      } else {
-         $$4 = 0.99F;
       }
-
-      this.h($$0.c((double)$$4));
    }
 
    @Override
-   protected double be() {
-      return 0.03;
+   protected void a(ezp $$0) {
+      super.a($$0);
+      if (!this.dY().C) {
+         this.av();
+      }
+   }
+
+   @Override
+   public boolean a(bsy $$0, float $$1) {
+      return false;
    }
 }

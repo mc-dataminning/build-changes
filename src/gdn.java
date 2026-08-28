@@ -1,67 +1,166 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gdn(String a, @Nullable gdn.a b) {
-   public static gdn a() {
-      return a(null);
+public class gdn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bqx b = new bqx(ae.g(), "server-list-io");
+   private static final int c = 16;
+   private final fjx d;
+   private final List<gdm> e = Lists.newArrayList();
+   private final List<gdm> f = Lists.newArrayList();
+
+   public gdn(fjx $$0) {
+      this.d = $$0;
    }
 
-   public static gdn a(String $$0) {
-      return a(new gdn.a.b($$0));
-   }
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         un $$0 = va.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-   public static gdn a(ffi $$0) {
-      return a(new gdn.a.a($$0));
-   }
+         ut $$1 = $$0.c("servers", 10);
 
-   public static gdn a(@Nullable gdn.a $$0) {
-      return new gdn(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof gdn.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof gdn.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w37a");
-      if (fji.e().a()) {
-         $$0.append(" (modded)");
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            un $$3 = $$1.a($$2);
+            gdm $$4 = gdm.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
-
-      return $$0.toString();
    }
 
-   public String e() {
-      return this.a;
+   public void b() {
+      try {
+         ut $$0 = new ut();
+
+         for (gdm $$1 : this.e) {
+            un $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (gdm $$3 : this.f) {
+            un $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         un $$5 = new un();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         va.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ae.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
+   }
+
+   public gdm a(int $$0) {
+      return this.e.get($$0);
    }
 
    @Nullable
-   public gdn.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements gdn.a {
-         public a(ffi $$0) {
-            this($$0.a, $$0.n);
+   public gdm a(String $$0) {
+      for (gdm $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
          }
       }
 
-      public static record b(String a) implements gdn.a {
+      for (gdm $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
       }
+
+      return null;
+   }
+
+   @Nullable
+   public gdm b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         gdm $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(gdm $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(gdm $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      gdm $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, gdm $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(gdm $$0, List<gdm> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         gdm $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(gdm $$0) {
+      b.a_(() -> {
+         gdn $$1 = new gdn(fjx.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

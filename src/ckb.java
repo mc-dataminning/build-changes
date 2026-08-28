@@ -1,61 +1,69 @@
-public class ckb extends cjr {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cfr f = cfr.a().a(150.0);
-   private final cfr g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public ckb(cjo $$0) {
+public class ckb extends cju {
+   @Nullable
+   private ezr b;
+
+   public ckb(cjs $$0) {
       super($$0);
-      this.g = cfr.a().a(20.0).a($$1 -> Math.abs($$1.dE() - $$0.dE()) <= 10.0);
    }
 
    @Override
-   public void c() {
-      this.h++;
-      bva $$0 = this.a.dX().a(this.g, this.a, this.a.dC(), this.a.dE(), this.a.dI());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.gr().a(cke.h);
-         } else {
-            ezn $$1 = new ezn($$0.dC() - this.a.dC(), 0.0, $$0.dI() - this.a.dI()).d();
-            ezn $$2 = new ezn((double)azk.a(this.a.dN() * (float) (Math.PI / 180.0)), 0.0, (double)(-azk.b(this.a.dN() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.dC() - this.a.d.dC();
-               double $$6 = $$0.dI() - this.a.d.dI();
-               double $$7 = azk.a(azk.d(180.0 - azk.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dN()), -100.0, 100.0);
-               this.a.ca *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
+   public void b() {
+      ezr $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.d.dD();
+      double $$2 = this.a.d.e(0.5);
+      double $$3 = this.a.d.dJ();
 
-               this.a.ca += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.v(this.a.dN() + this.a.ca);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dX().a(f, this.a, this.a.dC(), this.a.dE(), this.a.dI());
-         this.a.gr().a(cke.e);
-         if ($$0 != null) {
-            this.a.gr().a(cke.i);
-            this.a.gr().b(cke.i).a(new ezn($$0.dC(), $$0.dE(), $$0.dI()));
-         }
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azv $$5 = this.a.eb();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         ezr $$9 = this.a.dB();
+         this.a.dY().a(ls.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
-   public void d() {
-      this.h = 0;
+   public void c() {
+      if (this.b == null) {
+         this.b = ezr.c(this.a.dY().a(ebj.a.f, eeo.a(this.a.q())));
+      }
+
+      if (this.b.c(this.a.dD(), this.a.dF(), this.a.dJ()) < 1.0) {
+         this.a.gs().b(cki.f).j();
+         this.a.gs().a(cki.g);
+      }
    }
 
    @Override
-   public cke<ckb> i() {
-      return cke.g;
+   public float f() {
+      return 1.5F;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dB().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public ezr g() {
+      return this.b;
+   }
+
+   @Override
+   public cki<ckb> i() {
+      return cki.d;
    }
 }

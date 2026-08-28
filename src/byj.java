@@ -1,92 +1,85 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.kinds.App;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
 
-public class byj extends bwt<cir> {
-   public static final int c = 200;
-   public static final float d = 1.65F;
-   private final Function<cir, bro> e;
-   private final cfr f;
-   private final float g;
-   private final ToDoubleFunction<cir> h;
-   private ezn i;
-   private final Function<cir, awk> j;
-   private final Function<cir, awk> k;
+public class byj {
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
 
-   public byj(Function<cir, bro> $$0, cfr $$1, float $$2, ToDoubleFunction<cir> $$3, Function<cir, awk> $$4, Function<cir, awk> $$5) {
-      super(ImmutableMap.of(cee.V, cef.b, cee.W, cef.a), 200);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.i = ezn.c;
+   public static bwy<bvm> a() {
+      return cak.a(
+         (Function<cak.b<bvm>, ? extends App<cak.c<bvm>, can<bvm>>>)($$0 -> $$0.group($$0.b(cei.i), $$0.c(cei.m), $$0.a(cei.n), $$0.a(cei.q))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.E_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bve> $$8 = $$0.b($$1);
+                        Optional<bve> $$9 = $$8.stream().filter($$1xx -> a((bve)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bve> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              ezr $$11 = cgc.a($$6, 20, 8);
+                              if ($$11 != null && $$5.c(jh.a((ka)$$11))) {
+                                 $$2.a(new cel($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 
-   protected boolean a(arn $$0, cir $$1) {
-      return $$1.ed().a(cee.W);
+   private static void a(cal<?, bve> $$0, cal<?, byl> $$1, cal<?, cel> $$2, bve $$3) {
+      $$0.a($$3);
+      $$1.a(new bxi($$3, true));
+      $$2.a(new cel(new bxi($$3, false), 0.6F, 1));
    }
 
-   protected boolean a(arn $$0, cir $$1, long $$2) {
-      return $$1.ed().a(cee.W);
+   private static Optional<bve> a(List<bve> $$0) {
+      Map<bve, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
    }
 
-   protected void b(arn $$0, cir $$1, long $$2) {
-      jh $$3 = $$1.dx();
-      bwc<?> $$4 = $$1.ed();
-      ezn $$5 = $$4.c(cee.W).get();
-      this.i = new ezn((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
-      $$4.a(cee.m, new ceh($$5, this.g, 0));
+   private static Map<bve, Integer> b(List<bve> $$0) {
+      Map<bve, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(byj::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
    }
 
-   protected void c(arn $$0, cir $$1, long $$2) {
-      List<bva> $$3 = $$0.a(bva.class, this.f, $$1, $$1.cS());
-      bwc<?> $$4 = $$1.ed();
-      if (!$$3.isEmpty()) {
-         bva $$5 = $$3.get(0);
-         bsu $$6 = $$0.ai().c((bva)$$1);
-         if ($$5.a($$6, (float)$$1.h(bwi.c))) {
-            dbu.a($$0, (bue)$$5, $$6);
-         }
-
-         int $$7 = $$1.b(btl.a) ? $$1.c(btl.a).e() + 1 : 0;
-         int $$8 = $$1.b(btl.b) ? $$1.c(btl.b).e() + 1 : 0;
-         float $$9 = 0.25F * (float)($$7 - $$8);
-         float $$10 = azk.a($$1.fr() * 1.65F, 0.2F, 3.0F) + $$9;
-         float $$11 = $$5.f($$0.ai().b((bva)$$1)) ? 0.5F : 1.0F;
-         $$5.p((double)($$11 * $$10) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
-         this.b($$0, $$1);
-         $$0.a(null, $$1, this.j.apply($$1), awm.g, 1.0F, 1.0F);
-      } else if (this.c($$0, $$1)) {
-         $$0.a(null, $$1, this.j.apply($$1), awm.g, 1.0F, 1.0F);
-         boolean $$12 = $$1.gw();
-         if ($$12) {
-            $$0.a(null, $$1, this.k.apply($$1), awm.g, 1.0F, 1.0F);
-         }
-
-         this.b($$0, $$1);
-      } else {
-         Optional<ceh> $$13 = $$4.c(cee.m);
-         Optional<ezn> $$14 = $$4.c(cee.W);
-         boolean $$15 = $$13.isEmpty() || $$14.isEmpty() || $$13.get().a().a().a($$14.get(), 0.25);
-         if ($$15) {
-            this.b($$0, $$1);
-         }
-      }
+   private static bve a(bve $$0) {
+      return $$0.ee().c(cei.q).get();
    }
 
-   private boolean c(arn $$0, cir $$1) {
-      ezn $$2 = $$1.dA().d(1.0, 0.0, 1.0).d();
-      jh $$3 = jh.a((ka)$$1.dv().e($$2));
-      return $$0.a_($$3).a(axa.co) || $$0.a_($$3.d()).a(axa.co);
+   private static boolean b(bve $$0) {
+      return $$0.ee().c(cei.q).isPresent();
    }
 
-   protected void b(arn $$0, cir $$1) {
-      $$0.a($$1, (byte)59);
-      $$1.ed().a(cee.V, this.e.apply($$1).a($$0.A));
-      $$1.ed().b(cee.W);
+   private static boolean a(bve $$0, bve $$1) {
+      return $$1.ee().c(cei.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

@@ -1,270 +1,173 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
+import java.util.Map;
 
-public class csv extends cro {
-   private static final int m = -1;
-   private static final int n = 4;
-   private static final int o = 31;
-   private static final int p = 31;
-   private static final int q = 40;
-   private final csb r;
-   final csi s = csi.a();
-   private List<jq<dsc>> t = List.of();
-   Runnable u = () -> {
-   };
-   private final jr<dsc> v;
-   final ctl w;
-   final ctl x;
-   private final ctl y;
-   private final ctl z;
-   long A;
-   private final brw B = new bsk(3) {
-      @Override
-      public void e() {
-         super.e();
-         csv.this.a(this);
-         csv.this.u.run();
+public class csv extends crt {
+   public static final int o = 0;
+   public static final int p = 0;
+   private static final int I = 2;
+   private static final int J = 2;
+   public static final int q = 1;
+   public static final int r = 4;
+   public static final int s = 5;
+   public static final int t = 5;
+   public static final int u = 4;
+   public static final int v = 9;
+   public static final int w = 9;
+   public static final int x = 36;
+   public static final int y = 36;
+   public static final int z = 45;
+   public static final int A = 45;
+   public static final all B = all.b("textures/atlas/blocks.png");
+   public static final all C = all.b("item/empty_armor_slot_helmet");
+   public static final all D = all.b("item/empty_armor_slot_chestplate");
+   public static final all E = all.b("item/empty_armor_slot_leggings");
+   public static final all F = all.b("item/empty_armor_slot_boots");
+   public static final all G = all.b("item/empty_armor_slot_shield");
+   private static final Map<buq, all> K = Map.of(buq.c, F, buq.d, E, buq.e, D, buq.f, C);
+   private static final buq[] L = new buq[]{buq.f, buq.e, buq.d, buq.c};
+   public final boolean H;
+   private final cor M;
+
+   public csv(coq $$0, boolean $$1, final cor $$2) {
+      super(null, 0, 2, 2);
+      this.H = $$1;
+      this.M = $$2;
+      this.a($$2, 154, 28);
+      this.d(98, 18);
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         buq $$4 = L[$$3];
+         all $$5 = K.get($$4);
+         this.a(new crw($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
       }
-   };
-   private final brw C = new bsk(1) {
-      @Override
-      public void e() {
-         super.e();
-         csv.this.u.run();
-      }
-   };
 
-   public csv(int $$0, col $$1) {
-      this($$0, $$1, csb.a);
-   }
-
-   public csv(int $$0, col $$1, final csb $$2) {
-      super(csx.s, $$0);
-      this.r = $$2;
-      this.w = this.a(new ctl(this.B, 0, 13, 26) {
+      this.c($$0, 8, 84);
+      this.a(new ctp($$0, 40, 77, 62) {
          @Override
-         public boolean a(cwb $$0) {
-            return $$0.h() instanceof cue;
-         }
-      });
-      this.x = this.a(new ctl(this.B, 1, 33, 26) {
-         @Override
-         public boolean a(cwb $$0) {
-            return $$0.h() instanceof cuz;
-         }
-      });
-      this.y = this.a(new ctl(this.B, 2, 23, 45) {
-         @Override
-         public boolean a(cwb $$0) {
-            return $$0.h() instanceof cuf;
-         }
-      });
-      this.z = this.a(new ctl(this.C, 0, 143, 57) {
-         @Override
-         public boolean a(cwb $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(com $$0, cwb $$1) {
-            csv.this.w.a(1);
-            csv.this.x.a(1);
-            if (!csv.this.w.h() || !csv.this.x.h()) {
-               csv.this.s.a(-1);
-            }
-
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.aa();
-               if (csv.this.A != $$2xx) {
-                  $$0x.a(null, $$1x, awl.Ax, awm.e, 1.0F, 1.0F);
-                  csv.this.A = $$2xx;
-               }
-            });
+         public void a(cwf $$0, cwf $$1) {
+            $$2.a(buq.b, $$1, $$0);
             super.a($$0, $$1);
          }
+
+         @Override
+         public Pair<all, all> b() {
+            return Pair.of(csv.B, csv.G);
+         }
       });
-      this.c($$1, 8, 84);
-      this.a(this.s);
-      this.v = $$1.k.dZ().e(lz.d);
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
    }
 
    @Override
-   public boolean b(com $$0) {
-      return a(this.r, $$0, dig.nT);
+   public void a(bsa $$0) {
+      csl.a(this, this.M.dY(), this.M, this.m, this.n, null);
    }
 
    @Override
-   public boolean a(com $$0, int $$1) {
-      if ($$1 >= 0 && $$1 < this.t.size()) {
-         this.s.a($$1);
-         this.a(this.t.get($$1));
-         return true;
-      } else {
-         return false;
+   public void a(cor $$0) {
+      super.a($$0);
+      this.n.a();
+      if (!$$0.dY().C) {
+         this.a($$0, this.m);
       }
    }
 
-   private List<jq<dsc>> c(cwb $$0) {
-      if ($$0.f()) {
-         return this.v.a(awy.a).<List<jq<dsc>>>map(ImmutableList::copyOf).orElse(ImmutableList.of());
-      } else {
-         return $$0.h() instanceof cuf $$1 ? this.v.a($$1.b()).<List<jq<dsc>>>map(ImmutableList::copyOf).orElse(ImmutableList.of()) : List.of();
-      }
-   }
-
-   private boolean e(int $$0) {
-      return $$0 >= 0 && $$0 < this.t.size();
+   @Override
+   public boolean b(cor $$0) {
+      return true;
    }
 
    @Override
-   public void a(brw $$0) {
-      cwb $$1 = this.w.g();
-      cwb $$2 = this.x.g();
-      cwb $$3 = this.y.g();
-      if (!$$1.f() && !$$2.f()) {
-         int $$4 = this.s.b();
-         boolean $$5 = this.e($$4);
-         List<jq<dsc>> $$6 = this.t;
-         this.t = this.c($$3);
-         jq<dsc> $$7;
-         if (this.t.size() == 1) {
-            this.s.a(0);
-            $$7 = this.t.get(0);
-         } else if (!$$5) {
-            this.s.a(-1);
-            $$7 = null;
-         } else {
-            jq<dsc> $$9 = $$6.get($$4);
-            int $$10 = this.t.indexOf($$9);
-            if ($$10 != -1) {
-               $$7 = $$9;
-               this.s.a($$10);
-            } else {
-               $$7 = null;
-               this.s.a(-1);
-            }
-         }
-
-         if ($$7 != null) {
-            dsd $$13 = $$1.a(ku.ai, dsd.a);
-            boolean $$14 = $$13.b().size() >= 6;
-            if ($$14) {
-               this.s.a(-1);
-               this.z.f(cwb.k);
-            } else {
-               this.a($$7);
-            }
-         } else {
-            this.z.f(cwb.k);
-         }
-
-         this.d();
-      } else {
-         this.z.f(cwb.k);
-         this.t = List.of();
-         this.s.a(-1);
-      }
-   }
-
-   public List<jq<dsc>> l() {
-      return this.t;
-   }
-
-   public int m() {
-      return this.s.b();
-   }
-
-   public void a(Runnable $$0) {
-      this.u = $$0;
-   }
-
-   @Override
-   public cwb b(com $$0, int $$1) {
-      cwb $$2 = cwb.k;
-      ctl $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cwb $$4 = $$3.g();
+   public cwf b(cor $$0, int $$1) {
+      cwf $$2 = cwf.k;
+      ctp $$3 = this.k.get($$1);
+      if ($$3.h()) {
+         cwf $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 == this.z.d) {
-            if (!this.a($$4, 4, 40, true)) {
-               return cwb.k;
+         buq $$5 = $$0.f($$2);
+         if ($$1 == 0) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cwf.k;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 != this.x.d && $$1 != this.w.d && $$1 != this.y.d) {
-            if ($$4.h() instanceof cue) {
-               if (!this.a($$4, this.w.d, this.w.d + 1, false)) {
-                  return cwb.k;
-               }
-            } else if ($$4.h() instanceof cuz) {
-               if (!this.a($$4, this.x.d, this.x.d + 1, false)) {
-                  return cwb.k;
-               }
-            } else if ($$4.h() instanceof cuf) {
-               if (!this.a($$4, this.y.d, this.y.d + 1, false)) {
-                  return cwb.k;
-               }
-            } else if ($$1 >= 4 && $$1 < 31) {
-               if (!this.a($$4, 31, 40, false)) {
-                  return cwb.k;
-               }
-            } else if ($$1 >= 31 && $$1 < 40 && !this.a($$4, 4, 31, false)) {
-               return cwb.k;
+         } else if ($$1 >= 1 && $$1 < 5) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cwf.k;
             }
-         } else if (!this.a($$4, 4, 40, false)) {
-            return cwb.k;
+         } else if ($$1 >= 5 && $$1 < 9) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cwf.k;
+            }
+         } else if ($$5.a() == buq.a.b && !this.k.get(8 - $$5.b()).h()) {
+            int $$6 = 8 - $$5.b();
+            if (!this.a($$4, $$6, $$6 + 1, false)) {
+               return cwf.k;
+            }
+         } else if ($$5 == buq.b && !this.k.get(45).h()) {
+            if (!this.a($$4, 45, 46, false)) {
+               return cwf.k;
+            }
+         } else if ($$1 >= 9 && $$1 < 36) {
+            if (!this.a($$4, 36, 45, false)) {
+               return cwf.k;
+            }
+         } else if ($$1 >= 36 && $$1 < 45) {
+            if (!this.a($$4, 9, 36, false)) {
+               return cwf.k;
+            }
+         } else if (!this.a($$4, 9, 45, false)) {
+            return cwf.k;
          }
 
          if ($$4.f()) {
-            $$3.e(cwb.k);
+            $$3.a(cwf.k, $$2);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cwb.k;
+            return cwf.k;
          }
 
          $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
+         }
       }
 
       return $$2;
    }
 
    @Override
-   public void a(com $$0) {
-      super.a($$0);
-      this.r.a(($$1, $$2) -> this.a($$0, this.B));
+   public boolean a(cwf $$0, ctp $$1) {
+      return $$1.c != this.n && super.a($$0, $$1);
    }
 
-   private void a(jq<dsc> $$0) {
-      cwb $$1 = this.w.g();
-      cwb $$2 = this.x.g();
-      cwb $$3 = cwb.k;
-      if (!$$1.f() && !$$2.f()) {
-         $$3 = $$1.c(1);
-         cuy $$4 = ((cuz)$$2.h()).b();
-         $$3.a(ku.ai, dsd.a, $$2x -> new dsd.a().a($$2x).a($$0, $$4).a());
-      }
-
-      if (!cwb.a($$3, this.z.g())) {
-         this.z.f($$3);
-      }
+   @Override
+   public ctp m() {
+      return this.k.get(0);
    }
 
-   public ctl n() {
-      return this.w;
+   @Override
+   public List<ctp> n() {
+      return this.k.subList(1, 5);
    }
 
-   public ctl o() {
-      return this.x;
+   public csk r() {
+      return this.m;
    }
 
-   public ctl p() {
-      return this.y;
+   @Override
+   public cti ao_() {
+      return cti.a;
    }
 
-   public ctl q() {
-      return this.z;
+   @Override
+   protected cor q() {
+      return this.M;
    }
 }

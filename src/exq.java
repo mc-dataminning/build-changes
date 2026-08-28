@@ -1,47 +1,65 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record exq(Optional<bw> b, euc.b c) implements exn {
+public record exq(jq<dij> b, Optional<ee> c) implements exr {
    public static final MapCodec<exq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(exq::c), euc.b.e.fieldOf("entity").forGetter(exq::d)).apply($$0, exq::new)
-   );
+         $$0 -> $$0.group(lz.e.r().fieldOf("block").forGetter(exq::c), ee.a.optionalFieldOf("properties").forGetter(exq::d)).apply($$0, exq::new)
+      )
+      .validate(exq::a);
 
-   @Override
-   public exo b() {
-      return exp.f;
+   private static DataResult<exq> a(exq $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
    }
 
    @Override
-   public Set<ewv<?>> a() {
-      return ImmutableSet.of(ewy.f, this.c.a());
+   public exs b() {
+      return ext.i;
    }
 
-   public boolean a(euc $$0) {
-      bue $$1 = $$0.c(this.c.a());
-      ezn $$2 = $$0.c(ewy.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public Set<ewz<?>> a() {
+      return Set.of(exc.g);
    }
 
-   public static exn.a a(euc.b $$0) {
-      return a($$0, bw.a.a());
+   public boolean a(eug $$0) {
+      dvo $$1 = $$0.c(exc.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
    }
 
-   public static exn.a a(euc.b $$0, bw.a $$1) {
-      return () -> new exq(Optional.of($$1.b()), $$0);
+   public static exq.a a(dij $$0) {
+      return new exq.a($$0);
    }
 
-   public static exn.a a(euc.b $$0, bw $$1) {
-      return () -> new exq(Optional.of($$1), $$0);
-   }
-
-   public Optional<bw> c() {
+   public jq<dij> c() {
       return this.b;
    }
 
-   public euc.b d() {
+   public Optional<ee> d() {
       return this.c;
+   }
+
+   public static class a implements exr.a {
+      private final jq<dij> a;
+      private Optional<ee> b = Optional.empty();
+
+      public a(dij $$0) {
+         this.a = $$0.p();
+      }
+
+      public exq.a a(ee.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      @Override
+      public exr build() {
+         return new exq(this.a, this.b);
+      }
    }
 }

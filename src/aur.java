@@ -1,343 +1,56 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aur implements avb {
-   static final Logger c = LogUtils.getLogger();
-   protected final List<aur.d> a = Lists.newArrayList();
-   private final ato d;
-   private final String e;
+public class aur extends aui {
+   private static final aue c = new aue(xl.c("dataPack.vanilla.description"), ab.b().a(atr.b), Optional.empty());
+   private static final atl d = new atl(crl.i);
+   private static final ath e = ath.a(aue.b, c, atl.a, d);
+   private static final ato f = new ato("vanilla", xl.c("dataPack.vanilla.name"), aup.c, Optional.of(b));
+   private static final atq g = new atq(false, aul.b.b, false);
+   private static final atq h = new atq(false, aul.b.a, false);
+   private static final all i = all.b("datapacks");
 
-   public aur(ato $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public aur(ezh $$0) {
+      super(atr.b, b(), i, $$0);
    }
 
-   public void a(atm $$0) {
-      this.a($$0.b(), $$0, null);
+   private static ato a(String $$0, xl $$1) {
+      return new ato($$0, $$1, aup.d, Optional.of(auk.a($$0)));
    }
 
-   public void a(atm $$0, Predicate<ali> $$1) {
-      this.a($$0.b(), $$0, $$1);
-   }
-
-   public void a(String $$0, Predicate<ali> $$1) {
-      this.a($$0, null, $$1);
-   }
-
-   private void a(String $$0, @Nullable atm $$1, @Nullable Predicate<ali> $$2) {
-      this.a.add(new aur.d($$0, $$1, $$2));
+   @VisibleForTesting
+   public static att b() {
+      return new atu().a(e).a("minecraft").b().a().a(f);
    }
 
    @Override
-   public Set<String> a() {
-      return ImmutableSet.of(this.e);
+   protected xl a(String $$0) {
+      return xl.b($$0);
    }
 
+   @Nullable
    @Override
-   public Optional<auz> getResource(ali $$0) {
-      for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
-         aur.d $$2 = this.a.get($$1);
-         atm $$3 = $$2.b;
-         if ($$3 != null) {
-            aus<InputStream> $$4 = $$3.a(this.d, $$0);
-            if ($$4 != null) {
-               aus<avd> $$5 = this.a($$0, $$1);
-               return Optional.of(a($$3, $$0, $$4, $$5));
-            }
-         }
-
-         if ($$2.a($$0)) {
-            c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$2.a);
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
+   protected aul a(atp $$0) {
+      return aul.a(f, b($$0), atr.b, g);
    }
 
-   private static auz a(atm $$0, ali $$1, aus<InputStream> $$2, aus<avd> $$3) {
-      return new auz($$0, a($$1, $$0, $$2), $$3);
-   }
-
-   private static aus<InputStream> a(ali $$0, atm $$1, aus<InputStream> $$2) {
-      return c.isDebugEnabled() ? () -> new aur.c($$2.get(), $$0, $$1.b()) : $$2;
-   }
-
+   @Nullable
    @Override
-   public List<auz> a(ali $$0) {
-      ali $$1 = d($$0);
-      List<auz> $$2 = new ArrayList<>();
-      boolean $$3 = false;
-      String $$4 = null;
-
-      for (int $$5 = this.a.size() - 1; $$5 >= 0; $$5--) {
-         aur.d $$6 = this.a.get($$5);
-         atm $$7 = $$6.b;
-         if ($$7 != null) {
-            aus<InputStream> $$8 = $$7.a(this.d, $$0);
-            if ($$8 != null) {
-               aus<avd> $$9;
-               if ($$3) {
-                  $$9 = avd.b;
-               } else {
-                  $$9 = () -> {
-                     aus<InputStream> $$2x = $$7.a(this.d, $$1);
-                     return $$2x != null ? b($$2x) : avd.a;
-                  };
-               }
-
-               $$2.add(new auz($$7, $$8, $$9));
-            }
-         }
-
-         if ($$6.a($$0)) {
-            $$4 = $$6.a;
-            break;
-         }
-
-         if ($$6.a($$1)) {
-            $$3 = true;
-         }
-      }
-
-      if ($$2.isEmpty() && $$4 != null) {
-         c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$4);
-      }
-
-      return Lists.reverse($$2);
+   protected aul a(String $$0, aul.c $$1, xl $$2) {
+      return aul.a(a($$0, $$2), $$1, atr.b, h);
    }
 
-   private static boolean b(ali $$0) {
-      return $$0.a().endsWith(".mcmeta");
+   public static auo a(Path $$0, ezh $$1) {
+      return new auo(new aur($$1), new auj($$0, atr.b, aup.e, $$1));
    }
 
-   private static ali c(ali $$0) {
-      String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
-      return $$0.e($$1);
+   public static auo c() {
+      return new auo(new aur(new ezh($$0 -> true)));
    }
 
-   static ali d(ali $$0) {
-      return $$0.e($$0.a() + ".mcmeta");
-   }
-
-   @Override
-   public Map<ali, auz> b(String $$0, Predicate<ali> $$1) {
-      record a(atm a, aus<InputStream> b, int c) {
-      }
-
-      Map<ali, a> $$2 = new HashMap<>();
-      Map<ali, a> $$3 = new HashMap<>();
-      int $$4 = this.a.size();
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         aur.d $$6 = this.a.get($$5);
-         $$6.a($$2.keySet());
-         $$6.a($$3.keySet());
-         atm $$7 = $$6.b;
-         if ($$7 != null) {
-            int $$8 = $$5;
-            $$7.a(this.d, this.e, $$0, ($$5x, $$6x) -> {
-               if (b($$5x)) {
-                  if ($$1.test(c($$5x))) {
-                     $$3.put($$5x, new a($$7, $$6x, $$8));
-                  }
-               } else if ($$1.test($$5x)) {
-                  $$2.put($$5x, new a($$7, $$6x, $$8));
-               }
-            });
-         }
-      }
-
-      Map<ali, auz> $$9 = Maps.newTreeMap();
-      $$2.forEach(($$2x, $$3x) -> {
-         ali $$4x = d($$2x);
-         a $$5x = $$3.get($$4x);
-         aus<avd> $$6x;
-         if ($$5x != null && $$5x.c >= $$3x.c) {
-            $$6x = a($$5x.b);
-         } else {
-            $$6x = avd.b;
-         }
-
-         $$9.put($$2x, a($$3x.a, $$2x, $$3x.b, $$6x));
-      });
-      return $$9;
-   }
-
-   private aus<avd> a(ali $$0, int $$1) {
-      return () -> {
-         ali $$2 = d($$0);
-
-         for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
-            aur.d $$4 = this.a.get($$3);
-            atm $$5 = $$4.b;
-            if ($$5 != null) {
-               aus<InputStream> $$6 = $$5.a(this.d, $$2);
-               if ($$6 != null) {
-                  return b($$6);
-               }
-            }
-
-            if ($$4.a($$2)) {
-               break;
-            }
-         }
-
-         return avd.a;
-      };
-   }
-
-   private static aus<avd> a(aus<InputStream> $$0) {
-      return () -> b($$0);
-   }
-
-   private static avd b(aus<InputStream> $$0) throws IOException {
-      avd var2;
-      try (InputStream $$1 = $$0.get()) {
-         var2 = avd.a($$1);
-      }
-
-      return var2;
-   }
-
-   private static void a(aur.d $$0, Map<ali, aur.b> $$1) {
-      for (aur.b $$2 : $$1.values()) {
-         if ($$0.a($$2.a)) {
-            $$2.c.clear();
-         } else if ($$0.a($$2.b())) {
-            $$2.d.clear();
-         }
-      }
-   }
-
-   private void a(aur.d $$0, String $$1, Predicate<ali> $$2, Map<ali, aur.b> $$3) {
-      atm $$4 = $$0.b;
-      if ($$4 != null) {
-         $$4.a(this.d, this.e, $$1, ($$3x, $$4x) -> {
-            if (b($$3x)) {
-               ali $$5 = c($$3x);
-               if (!$$2.test($$5)) {
-                  return;
-               }
-
-               $$3.computeIfAbsent($$5, aur.b::new).d.put($$4, $$4x);
-            } else {
-               if (!$$2.test($$3x)) {
-                  return;
-               }
-
-               $$3.computeIfAbsent($$3x, aur.b::new).c.add(new aur.e($$4, $$4x));
-            }
-         });
-      }
-   }
-
-   @Override
-   public Map<ali, List<auz>> c(String $$0, Predicate<ali> $$1) {
-      Map<ali, aur.b> $$2 = Maps.newHashMap();
-
-      for (aur.d $$3 : this.a) {
-         a($$3, $$2);
-         this.a($$3, $$0, $$1, $$2);
-      }
-
-      TreeMap<ali, List<auz>> $$4 = Maps.newTreeMap();
-
-      for (aur.b $$5 : $$2.values()) {
-         if (!$$5.c.isEmpty()) {
-            List<auz> $$6 = new ArrayList<>();
-
-            for (aur.e $$7 : $$5.c) {
-               atm $$8 = $$7.a;
-               aus<InputStream> $$9 = $$5.d.get($$8);
-               aus<avd> $$10 = $$9 != null ? a($$9) : avd.b;
-               $$6.add(a($$8, $$5.a, $$7.b, $$10));
-            }
-
-            $$4.put($$5.a, $$6);
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   public Stream<atm> b() {
-      return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
-   }
-
-   static record b(ali a, ali b, List<aur.e> c, Map<atm, aus<InputStream>> d) {
-
-      b(ali $$0) {
-         this($$0, aur.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
-      }
-   }
-
-   static class c extends FilterInputStream {
-      private final Supplier<String> a;
-      private boolean b;
-
-      public c(InputStream $$0, ali $$1, String $$2) {
-         super($$0);
-         Exception $$3 = new Exception("Stacktrace");
-         this.a = () -> {
-            StringWriter $$3x = new StringWriter();
-            $$3.printStackTrace(new PrintWriter($$3x));
-            return "Leaked resource: '" + $$1 + "' loaded from pack: '" + $$2 + "'\n" + $$3x;
-         };
-      }
-
-      @Override
-      public void close() throws IOException {
-         super.close();
-         this.b = true;
-      }
-
-      @Override
-      protected void finalize() throws Throwable {
-         if (!this.b) {
-            aur.c.warn("{}", this.a.get());
-         }
-
-         super.finalize();
-      }
-   }
-
-   static record d(String a, @Nullable atm b, @Nullable Predicate<ali> c) {
-
-      public void a(Collection<ali> $$0) {
-         if (this.c != null) {
-            $$0.removeIf(this.c);
-         }
-      }
-
-      public boolean a(ali $$0) {
-         return this.c != null && this.c.test($$0);
-      }
-   }
-
-   static record e(atm a, aus<InputStream> b) {
+   public static auo a(etu.c $$0) {
+      return a($$0.a(ets.j), $$0.d().e());
    }
 }

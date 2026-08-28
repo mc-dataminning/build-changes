@@ -1,102 +1,93 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class evf extends evp {
-   private static final Logger b = LogUtils.getLogger();
+public class evf extends evt {
    public static final MapCodec<evf> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  kf.a(lz.aM).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
+                  lz.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dwq::f).toList())
                )
             )
             .apply($$0, evf::new)
    );
-   private final Optional<ju<dbs>> c;
-   private final boolean d;
+   private final jq<dij> b;
+   private final Set<dwq<?>> c;
 
-   evf(List<exn> $$0, Optional<ju<dbs>> $$1, boolean $$2) {
+   evf(List<exr> $$0, jq<dij> $$1, Set<dwq<?>> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private evf(List<exr> $$0, jq<dij> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public evr<evf> b() {
-      return evs.h;
+   public evv<evf> b() {
+      return evw.D;
    }
 
    @Override
-   public cwb a(cwb $$0, euc $$1) {
-      azs $$2 = $$1.b();
-      boolean $$3 = $$0.a(cwf.qQ);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jq<dbs>> $$5 = this.c
-         .<Stream<jq<dbs>>>map(ju::a)
-         .orElseGet(() -> $$1.d().H_().e(lz.aM).c().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((dbs)$$2x.a()).c($$0));
-      List<jq<dbs>> $$6 = $$5.toList();
-      Optional<jq<dbs>> $$7 = ae.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
+   public Set<ewz<?>> a() {
+      return ImmutableSet.of(exc.g);
    }
 
-   private static cwb a(cwb $$0, jq<dbs> $$1, azs $$2) {
-      int $$3 = azk.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cwf.qQ)) {
-         $$0 = new cwb(cwf.uy);
+   @Override
+   protected cwf a(cwf $$0, eug $$1) {
+      dvo $$2 = $$1.c(exc.g);
+      if ($$2 != null) {
+         $$0.a(ku.am, cyh.a, $$1x -> {
+            for (dwq<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static evf.a c() {
-      return new evf.a();
+   public static evf.a a(dij $$0) {
+      return new evf.a($$0);
    }
 
-   public static evf.a a(js.a $$0) {
-      return c().a($$0.d(lz.aM).b(axd.n));
-   }
+   public static class a extends evt.a<evf.a> {
+      private final jq<dij> a;
+      private final Builder<dwq<?>> b = ImmutableSet.builder();
 
-   public static class a extends evp.a<evf.a> {
-      private Optional<ju<dbs>> a = Optional.empty();
-      private boolean b = true;
+      a(dij $$0) {
+         this.a = $$0.p();
+      }
+
+      public evf.a a(dwq<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
 
       protected evf.a a() {
          return this;
       }
 
-      public evf.a a(jq<dbs> $$0) {
-         this.a = Optional.of(ju.a($$0));
-         return this;
-      }
-
-      public evf.a a(ju<dbs> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public evf.a e() {
-         this.b = false;
-         return this;
-      }
-
       @Override
-      public evq b() {
-         return new evf(this.g(), this.a, this.b);
+      public evu b() {
+         return new evf(this.g(), this.a, this.b.build());
       }
    }
 }

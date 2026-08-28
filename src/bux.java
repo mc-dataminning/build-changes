@@ -1,3 +1,3 @@
 public interface bux {
-   boolean a();
+   void b(cor var1);
 }

@@ -1,31 +1,17 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cnk {
-   public static bwu<bva> a(int $$0, int $$1) {
-      return cag.a(
-         (Function<cag.b<bva>, ? extends App<cag.c<bva>, caj<bva>>>)($$2 -> $$2.group($$2.b(cee.ad), $$2.b(cee.L), $$2.a(cee.ae), $$2.a(cee.af))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.fc().f()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
-
-                        return true;
+   public static bwy<bve> a() {
+      return cak.a(
+         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$0 -> $$0.group($$0.b(cei.o), $$0.a(cei.ah))
+               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                     bve $$6 = $$0.b($$1);
+                     if ($$6.ar() == bup.Z && $$6.eI()) {
+                        $$2.a(true, (long)cng.d.a($$4.dY().A));
                      }
+
+                     return true;
                   }))
       );
    }

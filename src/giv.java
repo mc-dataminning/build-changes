@@ -1,63 +1,141 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import org.joml.Vector3f;
 
-public class giv {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<giu> b;
-   private volatile int c;
+public class giv implements AutoCloseable {
+   public static final int a = 15728880;
+   public static final int b = 15728640;
+   public static final int c = 240;
+   private static final int d = 16;
+   private final fcv e;
+   private boolean f;
+   private float g;
+   private final gin h;
+   private final fjx i;
 
-   private giv(List<giu> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   public giv(gin $$0, fjx $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.e = new fcv(16, 16, false);
+      this.e.a(9729);
+      this.e.a(1.0F, 1.0F, 1.0F, 1.0F);
+      this.e.f();
    }
 
-   public static giv a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / giu.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<giu> $$3 = new ArrayList<>($$2);
+   @Override
+   public void close() {
+      this.e.a();
+   }
 
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new giu());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+   public void a() {
+      this.g = this.g + (float)((Math.random() - Math.random()) * Math.random() * Math.random() * 0.1);
+      this.g *= 0.9F;
+      this.f = true;
+   }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
+   public void b() {
+      RenderSystem.setShaderTexture(2, 0);
+   }
+
+   public void c() {
+      RenderSystem.setShaderTexture(2, this.e.g());
+   }
+
+   private float b(float $$0) {
+      btn $$1 = this.i.t.c(btp.G);
+      return $$1 != null ? $$1.a(this.i.t, $$0) : 0.0F;
+   }
+
+   private float a(bve $$0, float $$1, float $$2) {
+      float $$3 = 0.45F * $$1;
+      return Math.max(0.0F, azn.b(((float)$$0.ag - $$2) * (float) Math.PI * 0.025F) * $$3);
+   }
+
+   public void a(float $$0) {
+      if (this.f) {
+         this.f = false;
+         bor $$1 = boq.a();
+         $$1.a("lightTex");
+         gcy $$2 = this.i.s;
+         if ($$2 != null) {
+            float $$3 = $$2.g(1.0F);
+            float $$4;
+            if ($$2.i() > 0) {
+               $$4 = 1.0F;
+            } else {
+               $$4 = $$3 * 0.95F + 0.05F;
+            }
+
+            float $$6 = this.i.n.an().c().floatValue();
+            float $$7 = this.b($$0) * $$6;
+            float $$8 = this.a(this.i.t, $$7, $$0) * $$6;
+            float $$9 = this.i.t.E();
+            float $$10;
+            if (this.i.t.b(btp.p)) {
+               $$10 = gin.a(this.i.t, $$0);
+            } else if ($$9 > 0.0F && this.i.t.b(btp.C)) {
+               $$10 = $$9;
+            } else {
+               $$10 = 0.0F;
+            }
+
+            Vector3f $$13 = new Vector3f($$3, $$3, 1.0F).lerp(new Vector3f(1.0F, 1.0F, 1.0F), 0.35F);
+            float $$14 = this.g + 1.5F;
+            float $$15 = $$2.D_().s();
+            boolean $$16 = $$2.c().d();
+            float $$17 = this.i.n.ar().c().floatValue();
+            gig $$18 = Objects.requireNonNull(RenderSystem.setShader(gih.b), "Lightmap shader not loaded");
+            $$18.b("AmbientLightFactor").a($$15);
+            $$18.b("SkyFactor").a($$4);
+            $$18.b("BlockFactor").a($$14);
+            $$18.b("UseBrightLightmap").a($$16 ? 1 : 0);
+            $$18.b("SkyLightColor").a($$13);
+            $$18.b("NightVisionFactor").a($$10);
+            $$18.b("DarknessScale").a($$8);
+            $$18.b("DarkenWorldFactor").a(this.h.c($$0));
+            $$18.b("BrightnessFactor").a(Math.max(0.0F, $$17 - $$7));
+            this.e.a(true);
+            fef $$19 = RenderSystem.renderThreadTesselator().a(fep.c.h, fei.a);
+            $$19.a(0.0F, 0.0F, 0.0F);
+            $$19.a(1.0F, 0.0F, 0.0F);
+            $$19.a(1.0F, 1.0F, 0.0F);
+            $$19.a(0.0F, 1.0F, 0.0F);
+            feg.a($$19.b());
+            this.e.e();
+            $$1.c();
          }
       }
-
-      return new giv($$3);
    }
 
-   @Nullable
-   public giu a() {
-      giu $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
+   public static float a(dzj $$0, int $$1) {
+      return a($$0.s(), $$1);
+   }
+
+   public static float a(float $$0, int $$1) {
+      float $$2 = (float)$$1 / 15.0F;
+      float $$3 = $$2 / (4.0F - 3.0F * $$2);
+      return azn.h($$0, $$3, 1.0F);
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 << 4 | $$1 << 20;
+   }
+
+   public static int a(int $$0) {
+      return $$0 >>> 4 & 15;
+   }
+
+   public static int b(int $$0) {
+      return $$0 >>> 20 & 15;
+   }
+
+   public static int b(int $$0, int $$1) {
+      if ($$1 == 0) {
          return $$0;
       } else {
-         return null;
+         int $$2 = Math.max(b($$0), $$1);
+         int $$3 = Math.max(a($$0), $$1);
+         return a($$3, $$2);
       }
-   }
-
-   public void a(giu $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
-   }
-
-   public boolean b() {
-      return this.b.isEmpty();
-   }
-
-   public int c() {
-      return this.c;
    }
 }

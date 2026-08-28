@@ -1,31 +1,19 @@
-public class dev {
-   private static int[] a = new int[65536];
+import java.util.Optional;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public class dev extends dey {
+   private final bui a;
+
+   public dev(bui $$0) {
+      this.a = $$0;
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   @Override
+   public Optional<Float> a(dex $$0, dek $$1, jh $$2, dvo $$3, ero $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public static int a() {
-      return -10380959;
-   }
-
-   public static int b() {
-      return -8345771;
-   }
-
-   public static int c() {
-      return -12012264;
-   }
-
-   public static int d() {
-      return -7158200;
+   @Override
+   public boolean a(dex $$0, dek $$1, jh $$2, dvo $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

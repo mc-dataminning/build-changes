@@ -15,10 +15,10 @@ import javax.annotation.Nullable;
 
 public class go implements ArgumentType<go.b> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final js<die> b;
+   private final js<dij> b;
 
    public go(es $$0) {
-      this.b = $$0.d(lz.f);
+      this.b = $$0.d(ma.f);
    }
 
    public static go a(es $$0) {
@@ -29,12 +29,12 @@ public class go implements ArgumentType<go.b> {
       return a(this.b, $$0);
    }
 
-   public static go.b a(js<die> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static go.b a(js<dij> $$0, StringReader $$1) throws CommandSyntaxException {
       return (go.b)gq.b($$0, $$1, true).map($$0x -> new go.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new go.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   public static Predicate<dvn> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<dvn>)$$0.getArgument($$1, go.b.class);
+   public static Predicate<dvs> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dvs>)$$0.getArgument($$1, go.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -46,23 +46,23 @@ public class go implements ArgumentType<go.b> {
    }
 
    static class a implements go.b {
-      private final dvj a;
-      private final Set<dwm<?>> b;
+      private final dvo a;
+      private final Set<dwq<?>> b;
       @Nullable
-      private final uk c;
+      private final un c;
 
-      public a(dvj $$0, Set<dwm<?>> $$1, @Nullable uk $$2) {
+      public a(dvo $$0, Set<dwq<?>> $$1, @Nullable un $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public boolean a(dvn $$0) {
-         dvj $$1 = $$0.a();
+      public boolean a(dvs $$0) {
+         dvo $$1 = $$0.a();
          if (!$$1.a(this.a.b())) {
             return false;
          } else {
-            for (dwm<?> $$2 : this.b) {
+            for (dwq<?> $$2 : this.b) {
                if ($$1.c($$2) != this.a.c($$2)) {
                   return false;
                }
@@ -71,8 +71,8 @@ public class go implements ArgumentType<go.b> {
             if (this.c == null) {
                return true;
             } else {
-               dsm $$3 = $$0.b();
-               return $$3 != null && uz.a(this.c, $$3.b($$0.c().H_()), true);
+               dsr $$3 = $$0.b();
+               return $$3 != null && vc.a(this.c, $$3.b($$0.c().H_()), true);
             }
          }
       }
@@ -83,29 +83,29 @@ public class go implements ArgumentType<go.b> {
       }
    }
 
-   public interface b extends Predicate<dvn> {
+   public interface b extends Predicate<dvs> {
       boolean a();
    }
 
    static class c implements go.b {
-      private final ju<die> a;
+      private final ju<dij> a;
       @Nullable
-      private final uk b;
+      private final un b;
       private final Map<String, String> c;
 
-      c(ju<die> $$0, Map<String, String> $$1, @Nullable uk $$2) {
+      c(ju<dij> $$0, Map<String, String> $$1, @Nullable un $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
       }
 
-      public boolean a(dvn $$0) {
-         dvj $$1 = $$0.a();
+      public boolean a(dvs $$0) {
+         dvo $$1 = $$0.a();
          if (!$$1.a(this.a)) {
             return false;
          } else {
             for (Entry<String, String> $$2 : this.c.entrySet()) {
-               dwm<?> $$3 = $$1.b().l().a($$2.getKey());
+               dwq<?> $$3 = $$1.b().l().a($$2.getKey());
                if ($$3 == null) {
                   return false;
                }
@@ -123,8 +123,8 @@ public class go implements ArgumentType<go.b> {
             if (this.b == null) {
                return true;
             } else {
-               dsm $$5 = $$0.b();
-               return $$5 != null && uz.a(this.b, $$5.b($$0.c().H_()), true);
+               dsr $$5 = $$0.b();
+               return $$5 != null && vc.a(this.b, $$5.b($$0.c().H_()), true);
             }
          }
       }

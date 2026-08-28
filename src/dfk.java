@@ -1,4 +1,2 @@
-public enum dfk {
-   a,
-   b;
+public interface dfk extends dfl, dfn {
 }

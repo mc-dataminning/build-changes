@@ -1,29 +1,25 @@
-public class aik implements zp<agv> {
-   public static final zg<wf, aik> a = zp.a(aik::a, aik::new);
-   private final int b;
+public record aik(int b, int c) implements zs<agy> {
+   public static final zj<wi, aik> a = zs.a(aik::a, aik::new);
 
-   public aik(int $$0) {
-      this.b = $$0;
+   private aik(wi $$0) {
+      this($$0.l(), $$0.l());
    }
 
-   private aik(wf $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(wf $$0) {
-      $$0.m(this.b);
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zr<aik> a() {
-      return agt.bW;
+   public zu<aik> a() {
+      return agw.bi;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

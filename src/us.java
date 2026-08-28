@@ -2,36 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class us extends va {
-   private static final int b = 16;
-   public static final vj<us> a = new vj.a<us>() {
-      public us a(DataInput $$0, ut $$1) throws IOException {
+public class us extends vd {
+   private static final int b = 12;
+   public static final vm<us> a = new vm.a<us>() {
+      public us a(DataInput $$0, uw $$1) throws IOException {
          return us.a(d($$0, $$1));
       }
 
       @Override
-      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
+      public vh.b a(DataInput $$0, vh $$1, uw $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static long d(DataInput $$0, ut $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readLong();
+      private static int d(DataInput $$0, uw $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readInt();
       }
 
       @Override
       public int c() {
-         return 8;
+         return 4;
       }
 
       @Override
       public String a() {
-         return "LONG";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Long";
+         return "TAG_Int";
       }
 
       @Override
@@ -39,33 +39,33 @@ public class us extends va {
          return true;
       }
    };
-   private final long c;
+   private final int c;
 
-   us(long $$0) {
+   us(int $$0) {
       this.c = $$0;
    }
 
-   public static us a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? us.a.a[(int)$$0 - -128] : new us($$0);
+   public static us a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? us.a.a[$$0 - -128] : new us($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
+      $$0.writeInt(this.c);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 4;
+      return 3;
    }
 
    @Override
-   public vj<us> c() {
+   public vm<us> c() {
       return a;
    }
 
@@ -80,32 +80,32 @@ public class us extends va {
 
    @Override
    public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
+      return this.c;
    }
 
    @Override
-   public void a(vl $$0) {
+   public void a(vo $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return this.c;
+      return (long)this.c;
    }
 
    @Override
    public int g() {
-      return (int)(this.c & -1L);
+      return this.c;
    }
 
    @Override
    public short h() {
-      return (short)((int)(this.c & 65535L));
+      return (short)(this.c & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)((int)(this.c & 255L));
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
@@ -124,7 +124,7 @@ public class us extends va {
    }
 
    @Override
-   public ve.b a(ve $$0) {
+   public vh.b a(vh $$0) {
       return $$0.a(this.c);
    }
 
@@ -138,7 +138,7 @@ public class us extends va {
 
       static {
          for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new us((long)(-128 + $$0));
+            a[$$0] = new us(-128 + $$0);
          }
       }
    }

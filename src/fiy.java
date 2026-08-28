@@ -1,120 +1,36 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public interface fiy {
-   fiy a = new fiy.a(0.0F);
-   fiy b = new fiy.a(1.0F);
+public class fiy extends fiw {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xl c = xl.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   float a();
+   public fiy(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   float a(boolean var1);
+   @Override
+   public void run() {
+      ffa $$0 = ffa.a();
 
-   float b();
-
-   public static class a implements fiy {
-      private final float c;
-
-      a(float $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         return this.c;
-      }
-
-      @Override
-      public float b() {
-         return this.c;
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fgv var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
       }
    }
 
-   public static class b implements fiy {
-      private float c;
-      private float d;
-      private float e;
-      private float f;
-      private long g;
-      private long h;
-      private final float i;
-      private final FloatUnaryOperator j;
-      private boolean k;
-      private boolean l;
-
-      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
-         this.i = 1000.0F / $$0;
-         this.h = this.g = $$1;
-         this.j = $$2;
-      }
-
-      public int a(long $$0, boolean $$1) {
-         this.b($$0);
-         return $$1 ? this.a($$0) : 0;
-      }
-
-      private int a(long $$0) {
-         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
-         this.g = $$0;
-         this.d = this.d + this.c;
-         int $$1 = (int)this.d;
-         this.d -= (float)$$1;
-         return $$1;
-      }
-
-      private void b(long $$0) {
-         this.e = (float)($$0 - this.h) / this.i;
-         this.h = $$0;
-      }
-
-      public void b(boolean $$0) {
-         if ($$0) {
-            this.c();
-         } else {
-            this.d();
-         }
-      }
-
-      private void c() {
-         if (!this.k) {
-            this.f = this.d;
-         }
-
-         this.k = true;
-      }
-
-      private void d() {
-         if (this.k) {
-            this.d = this.f;
-         }
-
-         this.k = false;
-      }
-
-      public void c(boolean $$0) {
-         this.l = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         if (!$$0 && this.l) {
-            return 1.0F;
-         } else {
-            return this.k ? this.f : this.d;
-         }
-      }
-
-      @Override
-      public float b() {
-         return this.e > 7.0F ? 0.5F : this.e;
-      }
+   @Override
+   public xl a() {
+      return c;
    }
 }

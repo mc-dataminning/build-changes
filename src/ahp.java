@@ -1,30 +1,29 @@
-import java.util.List;
-import java.util.Optional;
+public class ahp implements zs<agy> {
+   public static final zj<wi, ahp> a = zs.a(ahp::a, ahp::new);
+   private final int b;
 
-public record ahp(int b, List<String> c, Optional<String> d) implements zp<agv> {
-   public static final zg<wf, ahp> a = zg.a(ze.h, ahp::b, ze.b(1024).a(ze.c(100)), ahp::e, ze.b(32).a(ze::a), ahp::f, ahp::new);
+   public ahp(int $$0) {
+      this.b = $$0;
+   }
 
-   public ahp(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private ahp(wi $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(wi $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public zr<ahp> a() {
-      return agt.bz;
+   public zu<ahp> a() {
+      return agw.bw;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
-   }
-
-   public Optional<String> f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

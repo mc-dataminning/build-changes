@@ -1,59 +1,77 @@
-import javax.annotation.concurrent.Immutable;
+import java.util.List;
+import java.util.function.Predicate;
 
-@Immutable
 public class bsb {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bsa d;
-   private final float e;
+   public static final String a = "Items";
 
-   public bsb(bsa $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public static cwf a(List<cwf> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cwf.k;
    }
 
-   public bsa a() {
-      return this.d;
+   public static cwf a(List<cwf> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cwf.k) : cwf.k;
    }
 
-   public float b() {
-      return this.e;
+   public static un a(un $$0, jz<cwf> $$1, js.a $$2) {
+      return a($$0, $$1, true, $$2);
    }
 
-   public boolean c() {
-      return this.e >= (float)bsa.d.ordinal();
+   public static un a(un $$0, jz<cwf> $$1, boolean $$2, js.a $$3) {
+      ut $$4 = new ut();
+
+      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
+         cwf $$6 = $$1.get($$5);
+         if (!$$6.f()) {
+            un $$7 = new un();
+            $$7.a("Slot", (byte)$$5);
+            $$4.add($$6.b($$3, $$7));
+         }
+      }
+
+      if (!$$4.isEmpty() || $$2) {
+         $$0.a("Items", $$4);
+      }
+
+      return $$0;
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
-   }
+   public static void b(un $$0, jz<cwf> $$1, js.a $$2) {
+      ut $$3 = $$0.c("Items", 10);
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         un $$5 = $$3.a($$4);
+         int $$6 = $$5.f("Slot") & 255;
+         if ($$6 >= 0 && $$6 < $$1.size()) {
+            $$1.set($$6, cwf.a($$2, (vk)$$5).orElse(cwf.k));
+         }
       }
    }
 
-   private float a(bsa $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bsa.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bsa.d;
-         float $$5 = 0.75F;
-         float $$6 = azk.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += azk.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += azk.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bsa.b) {
-            $$7 *= 0.5F;
+   public static int a(bsa $$0, Predicate<cwf> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cwf $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.f()) {
+            $$0.a($$5, cwf.k);
          }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
+         $$4 += $$7;
+      }
+
+      return $$4;
+   }
+
+   public static int a(cwf $$0, Predicate<cwf> $$1, int $$2, boolean $$3) {
+      if ($$0.f() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.L();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
+         $$0.h($$4);
+         return $$4;
       }
    }
 }

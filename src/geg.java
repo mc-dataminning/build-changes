@@ -1,49 +1,73 @@
-public class geg extends ggp {
-   private final ggk a;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   geg(gci $$0, double $$1, double $$2, double $$3, double $$4, ggk $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public final class geg {
+   private static final int a = 1024;
+   private final gdx b;
+   private final ged c;
+   private final gds d;
+   @Nullable
+   private gec e;
+
+   public geg(gdx $$0, ged $$1, gds $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   public static geg a(ged $$0, UserApiService $$1) {
+      gds $$2 = new gds(1024);
+      gdx $$3 = gdx.a($$0, $$1);
+      return new geg($$3, $$0, $$2);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public void a(fjx $$0, frp $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gec $$4 = this.e.b();
+         $$0.a(
+            new fqn(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               xl.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               xl.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               xl.c("gui.abuseReport.draft.edit"),
+               xl.c("gui.abuseReport.draft.discard")
+            )
+         );
       } else {
-         this.b(this.a);
+         $$2.run();
       }
    }
 
-   @Override
-   public gft b() {
-      return gft.b;
+   public gdx a() {
+      return this.b;
    }
 
-   public static class a implements gfs<lv> {
-      private final ggk a;
+   public gds b() {
+      return this.d;
+   }
 
-      public a(ggk $$0) {
-         this.a = $$0;
-      }
+   public boolean a(ged $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new geg($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   public void a(@Nullable gec $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

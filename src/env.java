@@ -1,31 +1,25 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class env extends elx {
+public class env extends emb {
    public static final MapCodec<env> d = a(env::new);
 
-   public env(elx.c $$0) {
+   public env(emb.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<elx.b> a(elx.a $$0) {
-      dor $$1 = dor.a($$0.f());
-      jh $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new elx.b($$2, (Consumer<emp>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public Optional<emb.b> a(emb.a $$0) {
+      return a($$0, ebj.a.c, $$1 -> a($$1, $$0));
    }
 
-   private void a(emp $$0, jh $$1, dor $$2, elx.a $$3) {
-      List<emb> $$4 = Lists.newArrayList();
-      enu.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   private static void a(emt $$0, emb.a $$1) {
+      jh $$2 = new jh($$1.h().a(9), 90, $$1.h().b(9));
+      $$0.a(new enu.a($$2));
    }
 
    @Override
-   public emg<?> e() {
-      return emg.c;
+   public emk<?> e() {
+      return emk.a;
    }
 }

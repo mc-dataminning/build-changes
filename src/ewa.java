@@ -3,61 +3,61 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class ewa extends evp {
+public class ewa extends evt {
    public static final MapCodec<ewa> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  alh.a(lz.bd).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  ly.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(dsi.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, ewa::new)
    );
-   private final alh<euh> b;
-   private final long c;
-   private final jq<dso<?>> d;
+   private final dsi b;
+   private final boolean c;
 
-   private ewa(List<exn> $$0, alh<euh> $$1, long $$2, jq<dso<?>> $$3) {
+   ewa(List<exr> $$0, dsi $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public evr<ewa> b() {
-      return evs.y;
-   }
-
-   @Override
-   public cwb a(cwb $$0, euc $$1) {
-      if ($$0.f()) {
-         return $$0;
+   protected cwf a(cwf $$0, eug $$1) {
+      if (this.c) {
+         $$0.a(ku.ai, dsi.a, this.b, ($$0x, $$1x) -> new dsi.a().a($$0x).a($$1x).a());
       } else {
-         $$0.b(ku.ap, new czb(this.b, this.c));
-         return $$0;
+         $$0.b(ku.ai, this.b);
       }
+
+      return $$0;
    }
 
    @Override
-   public void a(eui $$0) {
-      super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
+   public evv<ewa> b() {
+      return evw.E;
+   }
+
+   public static ewa.a a(boolean $$0) {
+      return new ewa.a($$0);
+   }
+
+   public static class a extends evt.a<ewa.a> {
+      private final dsi.a a = new dsi.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
       }
-   }
 
-   public static evp.a<?> a(dso<?> $$0, alh<euh> $$1) {
-      return a($$2 -> new ewa($$2, $$1, 0L, $$0.a()));
-   }
+      protected ewa.a a() {
+         return this;
+      }
 
-   public static evp.a<?> a(dso<?> $$0, alh<euh> $$1, long $$2) {
-      return a($$3 -> new ewa($$3, $$1, $$2, $$0.a()));
+      @Override
+      public evu b() {
+         return new ewa(this.g(), this.a.a(), this.b);
+      }
+
+      public ewa.a a(jq<dsh> $$0, cvc $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

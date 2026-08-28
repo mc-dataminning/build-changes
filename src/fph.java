@@ -1,46 +1,20 @@
-import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class fph<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fph<?> a = new fph<>(bap.a, ($$0, $$1) -> {
-   });
+public class fph {
+   private static final int a = 4;
 
-   private fph(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private fph() {
    }
 
-   public static fph<?> a(String $$0) {
-      return new fph<>($$0, Consumer::accept);
+   public static fpm a(flh $$0, fpn $$1, xl $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public static fph<?> a(xi $$0) {
-      return new fph<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static fph<?> a(List<xi> $$0) {
-      return new fph<>($$0, ($$1, $$2) -> $$0.stream().map(xi::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fph<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public static fpm a(flh $$0, fpn $$1, xl $$2, Consumer<fpo> $$3) {
+      fpp $$4 = fpp.d().a(4);
+      $$4.a(new fnd($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

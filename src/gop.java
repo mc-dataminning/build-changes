@@ -1,38 +1,21 @@
-public class gop extends goj<cku, gus> {
-   private final gjk a;
+public class gop extends gnv<chd, guy, fyt> {
+   private static final all a = all.b("textures/entity/dolphin.png");
 
-   public gop(gok.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
+   public gop(gpa.a $$0) {
+      super($$0, new fyt($$0.a(gcb.ab)), new fyt($$0.a(gcb.ac)), 0.7F);
+      this.a(new gsu(this, $$0.b()));
    }
 
-   public boolean a(cku $$0, gly $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.q() != $$0.dX().a_($$0.dx());
+   public all a(guy $$0) {
+      return a;
    }
 
-   public void a(gus $$0, feb $$1, gih $$2, int $$3) {
-      dvj $$4 = $$0.c;
-      if ($$4.o() == dok.c) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(ghz.b($$4)), false, azs.a(), $$4.b($$0.a), gxu.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public guy a() {
+      return new guy();
    }
 
-   public gus a() {
-      return new gus();
-   }
-
-   public void a(cku $$0, gus $$1, float $$2) {
+   public void a(chd $$0, guy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      jh $$3 = jh.a($$0.dC(), $$0.cS().e, $$0.dI());
-      $$1.a = $$0.m();
-      $$1.b = $$3;
-      $$1.c = $$0.q();
-      $$1.d = $$0.dX().t($$3);
-      $$1.e = $$0.dX();
+      $$1.a = $$0.dB().j() > 1.0E-7;
    }
 }

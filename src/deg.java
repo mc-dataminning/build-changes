@@ -1,228 +1,263 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import com.mojang.logging.LogUtils;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface deg extends dfd {
-   int g = 16;
+public abstract class deg {
+   public static final String b = "SpawnData";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int c = 1;
+   private int d = 20;
+   private bqp<dfz> e = bqp.b();
+   @Nullable
+   private dfz f;
+   private double g;
+   private double h;
+   private int i = 200;
+   private int j = 800;
+   private int k = 4;
+   @Nullable
+   private bui l;
+   private int m = 6;
+   private int n = 16;
+   private int o = 4;
+
+   public void a(bup<?> $$0, @Nullable dff $$1, azv $$2, jh $$3) {
+      this.a($$1, $$2, $$3).a().a("id", lz.f.b($$0).toString());
+   }
+
+   private boolean c(dff $$0, jh $$1) {
+      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
+   }
+
+   public void a(dff $$0, jh $$1) {
+      if (!this.c($$0, $$1)) {
+         this.h = this.g;
+      } else if (this.l != null) {
+         azv $$2 = $$0.E_();
+         double $$3 = (double)$$1.u() + $$2.j();
+         double $$4 = (double)$$1.v() + $$2.j();
+         double $$5 = (double)$$1.w() + $$2.j();
+         $$0.a(ls.ae, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         $$0.a(ls.F, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         this.h = this.g;
+         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
+      }
+   }
+
+   public void a(arq $$0, jh $$1) {
+      if (this.c($$0, $$1)) {
+         if (this.d == -1) {
+            this.d($$0, $$1);
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         } else {
+            boolean $$2 = false;
+            azv $$3 = $$0.E_();
+            dfz $$4 = this.a($$0, $$3, $$1);
+
+            for (int $$5 = 0; $$5 < this.k; $$5++) {
+               un $$6 = $$4.a();
+               Optional<bup<?>> $$7 = bup.a($$6);
+               if ($$7.isEmpty()) {
+                  this.d($$0, $$1);
+                  return;
+               }
+
+               ut $$8 = $$6.c("Pos", 6);
+               int $$9 = $$8.size();
+               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
+               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
+                  jh $$13 = jh.a($$10, $$11, $$12);
+                  if ($$4.b().isPresent()) {
+                     if (!$$7.get().f().d() && $$0.ak() == bse.a) {
+                        continue;
+                     }
+
+                     dfz.a $$14 = $$4.b().get();
+                     if (!$$14.a($$13, $$0)) {
+                        continue;
+                     }
+                  } else if (!bwa.a($$7.get(), $$0, buo.c, $$13, $$0.E_())) {
+                     continue;
+                  }
+
+                  bui $$15 = bup.a($$6, $$0, buo.c, $$3x -> {
+                     $$3x.b($$10, $$11, $$12, $$3x.dO(), $$3x.dQ());
+                     return $$3x;
+                  });
+                  if ($$15 == null) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  int $$16 = $$0.a(
+                        dzy.b($$15.getClass()),
+                        new ezm((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                           .g((double)this.o),
+                        bun.f
+                     )
+                     .size();
+                  if ($$16 >= this.m) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$15.b($$15.dD(), $$15.dF(), $$15.dJ(), $$3.i() * 360.0F, 0.0F);
+                  if ($$15 instanceof bvg $$17) {
+                     if ($$4.b().isEmpty() && !$$17.a($$0, buo.c) || !$$17.a($$0)) {
+                        continue;
+                     }
+
+                     boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
+                     if ($$18) {
+                        ((bvg)$$15).a($$0, $$0.d_($$15.dy()), buo.c, null);
+                     }
+
+                     $$4.c().ifPresent($$17::a);
+                  }
+
+                  if (!$$0.e($$15)) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$0.c(2004, $$1, 0);
+                  $$0.a($$15, eak.t, $$13);
+                  if ($$15 instanceof bvg) {
+                     ((bvg)$$15).V();
+                  }
+
+                  $$2 = true;
+               }
+            }
+
+            if ($$2) {
+               this.d($$0, $$1);
+            }
+         }
+      }
+   }
+
+   private void d(dff $$0, jh $$1) {
+      azv $$2 = $$0.A;
+      if (this.j <= this.i) {
+         this.d = this.i;
+      } else {
+         this.d = this.i + $$2.a(this.j - this.i);
+      }
+
+      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (dfz)$$2x.b()));
+      this.a($$0, $$1, 1);
+   }
+
+   public void a(@Nullable dff $$0, jh $$1, un $$2) {
+      this.d = $$2.g("Delay");
+      boolean $$3 = $$2.b("SpawnData", 10);
+      if ($$3) {
+         dfz $$4 = dfz.b.parse(vb.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(dfz::new);
+         this.a($$0, $$1, $$4);
+      }
+
+      boolean $$5 = $$2.b("SpawnPotentials", 9);
+      if ($$5) {
+         ut $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = dfz.c.parse(vb.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bqp::b);
+      } else {
+         this.e = bqp.a(this.f != null ? this.f : new dfz());
+      }
+
+      if ($$2.b("MinSpawnDelay", 99)) {
+         this.i = $$2.g("MinSpawnDelay");
+         this.j = $$2.g("MaxSpawnDelay");
+         this.k = $$2.g("SpawnCount");
+      }
+
+      if ($$2.b("MaxNearbyEntities", 99)) {
+         this.m = $$2.g("MaxNearbyEntities");
+         this.n = $$2.g("RequiredPlayerRange");
+      }
+
+      if ($$2.b("SpawnRange", 99)) {
+         this.o = $$2.g("SpawnRange");
+      }
+
+      this.l = null;
+   }
+
+   public un a(un $$0) {
+      $$0.a("Delay", (short)this.d);
+      $$0.a("MinSpawnDelay", (short)this.i);
+      $$0.a("MaxSpawnDelay", (short)this.j);
+      $$0.a("SpawnCount", (short)this.k);
+      $$0.a("MaxNearbyEntities", (short)this.m);
+      $$0.a("RequiredPlayerRange", (short)this.n);
+      $$0.a("SpawnRange", (short)this.o);
+      if (this.f != null) {
+         $$0.a("SpawnData", (vk)dfz.b.encodeStart(vb.a, this.f).getOrThrow($$0x -> new IllegalStateException("Invalid SpawnData: " + $$0x)));
+      }
+
+      $$0.a("SpawnPotentials", (vk)dfz.c.encodeStart(vb.a, this.e).getOrThrow());
+      return $$0;
+   }
 
    @Nullable
-   dsm c_(jh var1);
+   public bui b(dff $$0, jh $$1) {
+      if (this.l == null) {
+         un $$2 = this.a($$0, $$0.E_(), $$1).a();
+         if (!$$2.b("id", 8)) {
+            return null;
+         }
 
-   default <T extends dsm> Optional<T> a(jh $$0, dso<T> $$1) {
-      dsm $$2 = this.c_($$0);
-      return $$2 != null && $$2.q() == $$1 ? Optional.of((T)$$2) : Optional.empty();
-   }
-
-   dvj a_(jh var1);
-
-   erk b_(jh var1);
-
-   default int i(jh $$0) {
-      return this.a_($$0).k();
-   }
-
-   default Stream<dvj> a(ezi $$0) {
-      return jh.b($$0).map(this::a_);
-   }
-
-   default ezj a(dei $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dvj $$2 = this.a_($$1);
-         ezn $$3 = $$0x.b().d($$0x.a());
-         return $$0x.c().test($$2) ? new ezj($$0x.a(), jm.a($$3.d, $$3.e, $$3.f), jh.a((ka)$$0x.a()), false) : null;
-      }, $$0x -> {
-         ezn $$1 = $$0x.b().d($$0x.a());
-         return ezj.a($$0x.a(), jm.a($$1.d, $$1.e, $$1.f), jh.a((ka)$$0x.a()));
-      });
-   }
-
-   default ezj a(dej $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dvj $$2 = this.a_($$1);
-         erk $$3 = this.b_($$1);
-         ezn $$4 = $$0x.b();
-         ezn $$5 = $$0x.a();
-         fah $$6 = $$0x.a($$2, this, $$1);
-         ezj $$7 = this.a($$4, $$5, $$1, $$6, $$2);
-         fah $$8 = $$0x.a($$3, this, $$1);
-         ezj $$9 = $$8.a($$4, $$5, $$1);
-         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.g());
-         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.g());
-         return $$10 <= $$11 ? $$7 : $$9;
-      }, $$0x -> {
-         ezn $$1 = $$0x.b().d($$0x.a());
-         return ezj.a($$0x.a(), jm.a($$1.d, $$1.e, $$1.f), jh.a((ka)$$0x.a()));
-      });
-   }
-
-   @Nullable
-   default ezj a(ezn $$0, ezn $$1, jh $$2, fah $$3, dvj $$4) {
-      ezj $$5 = $$3.a($$0, $$1, $$2);
-      if ($$5 != null) {
-         ezj $$6 = $$4.i(this, $$2).a($$0, $$1, $$2);
-         if ($$6 != null && $$6.g().d($$0).h() < $$5.g().d($$0).h()) {
-            return $$5.a($$6.c());
+         this.l = bup.a($$2, $$0, buo.c, Function.identity());
+         if ($$2.f() == 1 && this.l instanceof bvg) {
          }
       }
 
-      return $$5;
+      return this.l;
    }
 
-   default double a(fah $$0, Supplier<fah> $$1) {
-      if (!$$0.c()) {
-         return $$0.c(jm.a.b);
+   public boolean a(dff $$0, int $$1) {
+      if ($$1 == 1) {
+         if ($$0.C) {
+            this.d = this.i;
+         }
+
+         return true;
       } else {
-         double $$2 = $$1.get().c(jm.a.b);
-         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
+         return false;
       }
    }
 
-   default double j(jh $$0) {
-      return this.a(this.a_($$0).g(this, $$0), () -> {
-         jh $$1 = $$0.e();
-         return this.a_($$1).g(this, $$1);
-      });
+   protected void a(@Nullable dff $$0, jh $$1, dfz $$2) {
+      this.f = $$2;
    }
 
-   static <T, C> T a(ezn $$0, ezn $$1, C $$2, BiFunction<C, jh, T> $$3, Function<C, T> $$4) {
-      if ($$0.equals($$1)) {
-         return $$4.apply($$2);
+   private dfz a(@Nullable dff $$0, azv $$1, jh $$2) {
+      if (this.f != null) {
+         return this.f;
       } else {
-         double $$5 = azk.d(-1.0E-7, $$1.d, $$0.d);
-         double $$6 = azk.d(-1.0E-7, $$1.e, $$0.e);
-         double $$7 = azk.d(-1.0E-7, $$1.f, $$0.f);
-         double $$8 = azk.d(-1.0E-7, $$0.d, $$1.d);
-         double $$9 = azk.d(-1.0E-7, $$0.e, $$1.e);
-         double $$10 = azk.d(-1.0E-7, $$0.f, $$1.f);
-         int $$11 = azk.a($$8);
-         int $$12 = azk.a($$9);
-         int $$13 = azk.a($$10);
-         jh.a $$14 = new jh.a($$11, $$12, $$13);
-         T $$15 = $$3.apply($$2, $$14);
-         if ($$15 != null) {
-            return $$15;
-         } else {
-            double $$16 = $$5 - $$8;
-            double $$17 = $$6 - $$9;
-            double $$18 = $$7 - $$10;
-            int $$19 = azk.j($$16);
-            int $$20 = azk.j($$17);
-            int $$21 = azk.j($$18);
-            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
-            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
-            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
-            double $$25 = $$22 * ($$19 > 0 ? 1.0 - azk.e($$8) : azk.e($$8));
-            double $$26 = $$23 * ($$20 > 0 ? 1.0 - azk.e($$9) : azk.e($$9));
-            double $$27 = $$24 * ($$21 > 0 ? 1.0 - azk.e($$10) : azk.e($$10));
-
-            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
-               if ($$25 < $$26) {
-                  if ($$25 < $$27) {
-                     $$11 += $$19;
-                     $$25 += $$22;
-                  } else {
-                     $$13 += $$21;
-                     $$27 += $$24;
-                  }
-               } else if ($$26 < $$27) {
-                  $$12 += $$20;
-                  $$26 += $$23;
-               } else {
-                  $$13 += $$21;
-                  $$27 += $$24;
-               }
-
-               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
-               if ($$28 != null) {
-                  return $$28;
-               }
-            }
-
-            return $$4.apply($$2);
-         }
+         this.a($$0, $$2, this.e.b($$1).map(bqr.b::b).orElseGet(dfz::new));
+         return this.f;
       }
    }
 
-   static Iterable<jh> a(ezn $$0, ezn $$1, ezi $$2) {
-      ezn $$3 = $$1.d($$0);
-      Iterable<jh> $$4 = jh.a($$2);
-      if ($$3.h() < (double)azk.l(0.99999F)) {
-         return $$4;
-      } else {
-         Set<jh> $$5 = new ObjectOpenHashSet();
+   public abstract void a(dff var1, jh var2, int var3);
 
-         for (jh $$6 : $$4) {
-            $$5.add($$6.j());
-         }
-
-         ezn $$7 = $$3.d().c(1.0E-7);
-         ezn $$8 = $$2.h().e($$7);
-         ezn $$9 = $$2.h().d($$3).d($$7);
-         a($$5, $$9, $$8, $$2);
-         return $$5;
-      }
+   public double a() {
+      return this.g;
    }
 
-   private static void a(Set<jh> $$0, ezn $$1, ezn $$2, ezi $$3) {
-      ezn $$4 = $$2.d($$1);
-      int $$5 = azk.a($$1.d);
-      int $$6 = azk.a($$1.e);
-      int $$7 = azk.a($$1.f);
-      int $$8 = azk.j($$4.d);
-      int $$9 = azk.j($$4.e);
-      int $$10 = azk.j($$4.f);
-      double $$11 = $$8 == 0 ? Double.MAX_VALUE : (double)$$8 / $$4.d;
-      double $$12 = $$9 == 0 ? Double.MAX_VALUE : (double)$$9 / $$4.e;
-      double $$13 = $$10 == 0 ? Double.MAX_VALUE : (double)$$10 / $$4.f;
-      double $$14 = $$11 * ($$8 > 0 ? 1.0 - azk.e($$1.d) : azk.e($$1.d));
-      double $$15 = $$12 * ($$9 > 0 ? 1.0 - azk.e($$1.e) : azk.e($$1.e));
-      double $$16 = $$13 * ($$10 > 0 ? 1.0 - azk.e($$1.f) : azk.e($$1.f));
-      int $$17 = 0;
-
-      while ($$14 <= 1.0 || $$15 <= 1.0 || $$16 <= 1.0) {
-         if ($$14 < $$15) {
-            if ($$14 < $$16) {
-               $$5 += $$8;
-               $$14 += $$11;
-            } else {
-               $$7 += $$10;
-               $$16 += $$13;
-            }
-         } else if ($$15 < $$16) {
-            $$6 += $$9;
-            $$15 += $$12;
-         } else {
-            $$7 += $$10;
-            $$16 += $$13;
-         }
-
-         if ($$17++ > 16) {
-            break;
-         }
-
-         Optional<ezn> $$18 = ezi.a((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1), $$1, $$2);
-         if (!$$18.isEmpty()) {
-            ezn $$19 = $$18.get();
-            double $$20 = azk.a($$19.d, (double)$$5 + 1.0E-5F, (double)$$5 + 1.0 - 1.0E-5F);
-            double $$21 = azk.a($$19.e, (double)$$6 + 1.0E-5F, (double)$$6 + 1.0 - 1.0E-5F);
-            double $$22 = azk.a($$19.f, (double)$$7 + 1.0E-5F, (double)$$7 + 1.0 - 1.0E-5F);
-            int $$23 = azk.a($$20 + $$3.b());
-            int $$24 = azk.a($$21 + $$3.c());
-            int $$25 = azk.a($$22 + $$3.d());
-
-            for (int $$26 = $$5; $$26 <= $$23; $$26++) {
-               for (int $$27 = $$6; $$27 <= $$24; $$27++) {
-                  for (int $$28 = $$7; $$28 <= $$25; $$28++) {
-                     $$0.add(new jh($$26, $$27, $$28));
-                  }
-               }
-            }
-         }
-      }
+   public double b() {
+      return this.h;
    }
 }

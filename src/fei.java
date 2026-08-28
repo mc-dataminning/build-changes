@@ -1,142 +1,15 @@
-import java.util.function.Consumer;
-
 public class fei {
-   public static fef a() {
-      throw new IllegalArgumentException();
-   }
-
-   public static fef a(fef $$0) {
-      return $$0;
-   }
-
-   public static fef a(fef $$0, fef $$1) {
-      return new fei.a($$0, $$1);
-   }
-
-   public static fef a(fef... $$0) {
-      return new fei.b($$0);
-   }
-
-   static class a implements fef {
-      private final fef a;
-      private final fef b;
-
-      public a(fef $$0, fef $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public fef a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fef a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fef a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fef a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fef b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fef b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   static record b(fef[] a) implements fef {
-      b(fef[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
-
-         this.a = a;
-      }
-
-      private void a(Consumer<fef> $$0) {
-         for (fef $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
-
-      @Override
-      public fef a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public fef a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public fef a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fef a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fef b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fef b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
-      }
-   }
+   public static final fep a = fep.a().a("Position", feq.b).a();
+   public static final fep b = fep.a().a("Position", feq.b).a("Color", feq.c).a("UV0", feq.d).a("UV2", feq.g).a("Normal", feq.h).a(1).a();
+   public static final fep c = fep.a().a("Position", feq.b).a("Color", feq.c).a("UV0", feq.d).a("UV1", feq.f).a("UV2", feq.g).a("Normal", feq.h).a(1).a();
+   public static final fep d = fep.a().a("Position", feq.b).a("UV0", feq.d).a("Color", feq.c).a("UV2", feq.g).a();
+   public static final fep e = fep.a().a("Position", feq.b).a();
+   public static final fep f = fep.a().a("Position", feq.b).a("Color", feq.c).a();
+   public static final fep g = fep.a().a("Position", feq.b).a("Color", feq.c).a("Normal", feq.h).a(1).a();
+   public static final fep h = fep.a().a("Position", feq.b).a("Color", feq.c).a("UV2", feq.g).a();
+   public static final fep i = fep.a().a("Position", feq.b).a("UV0", feq.d).a();
+   public static final fep j = fep.a().a("Position", feq.b).a("UV0", feq.d).a("Color", feq.c).a();
+   public static final fep k = fep.a().a("Position", feq.b).a("Color", feq.c).a("UV0", feq.d).a("UV2", feq.g).a();
+   public static final fep l = fep.a().a("Position", feq.b).a("UV0", feq.d).a("UV2", feq.g).a("Color", feq.c).a();
+   public static final fep m = fep.a().a("Position", feq.b).a("UV0", feq.d).a("Color", feq.c).a("Normal", feq.h).a(1).a();
 }

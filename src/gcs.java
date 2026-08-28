@@ -1,17 +1,25 @@
 public class gcs {
-   private final gcj a;
-   private final bmx b;
-
-   public gcs(gcj $$0, bmx $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ae.d();
 
    public void a() {
-      this.a.b(new akb(ae.c()));
+      this.e = ae.d();
    }
 
-   public void a(ajy $$0) {
-      this.b.a(ae.c() - $$0.b());
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ae.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = azn.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
+      }
+   }
+
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

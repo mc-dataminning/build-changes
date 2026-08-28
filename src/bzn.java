@@ -1,28 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bzn extends bwt<bvc> {
-   private final float c;
-
-   public bzn(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static boolean a(bvc $$0) {
-      return $$0.bk() && $$0.b(axg.a) > $$0.dr() || $$0.by();
-   }
-
-   protected boolean a(arn $$0, bvc $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(arn $$0, bvc $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arn $$0, bvc $$1, long $$2) {
-      if ($$1.ea().i() < this.c) {
-         $$1.O().a();
-      }
+public class bzn {
+   public static bwy<bve> a() {
+      return cak.a(
+         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$0 -> $$0.group($$0.b(cei.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof bve $$1xx ? $$1xx : null)
+                           .filter(bve::eI)
+                           .filter($$1xx -> $$1xx.ar() != bup.by || $$2.ac().b(dfb.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
+                     }
+               ))
+      );
    }
 }

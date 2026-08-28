@@ -1,2 +1,4 @@
-public record ctu(cyf a) implements ctv {
+@FunctionalInterface
+public interface ctu {
+   void fillStackedContents(cow var1);
 }

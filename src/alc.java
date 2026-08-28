@@ -1,90 +1,184 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.ListBuilder.Builder;
+import com.mojang.serialization.RecordBuilder.MapBuilder;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class alc<E> implements Codec<ju<E>> {
-   private final alh<? extends kd<E>> a;
-   private final Codec<jq<E>> b;
-   private final Codec<List<jq<E>>> c;
-   private final Codec<Either<axq<E>, List<jq<E>>>> d;
+public abstract class alc<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   private static <E> Codec<List<jq<E>>> a(Codec<jq<E>> $$0, boolean $$1) {
-      Codec<List<jq<E>>> $$2 = $$0.listOf().validate(ayt.b(jq::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((jq)$$0x.get(0)) : Either.left($$0x));
-   }
-
-   public static <E> Codec<ju<E>> a(alh<? extends kd<E>> $$0, Codec<jq<E>> $$1, boolean $$2) {
-      return new alc<>($$0, $$1, $$2);
-   }
-
-   private alc(alh<? extends kd<E>> $$0, Codec<jq<E>> $$1, boolean $$2) {
+   protected alc(DynamicOps<T> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(axq.b($$0), this.c);
    }
 
-   public <T> DataResult<Pair<ju<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof alg<T> $$2) {
-         Optional<jr<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            jr<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).flatMap($$1x -> {
-               DataResult<ju<E>> $$2x = (DataResult<ju<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(ju.a($$0xx)));
-               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
-            });
-         }
-      }
-
-      return this.a($$0, $$1);
+   public T empty() {
+      return (T)this.a.empty();
    }
 
-   private static <E> DataResult<ju<E>> a(jr<E> $$0, axq<E> $$1) {
-      return $$0.a($$1)
-         .<DataResult<ju<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
+   public T emptyMap() {
+      return (T)this.a.emptyMap();
    }
 
-   public <T> DataResult<T> a(ju<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof alg<T> $$3) {
-         Optional<jt<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
-            }
-
-            return this.d.encode($$0.d().mapRight(List::copyOf), $$1, $$2);
-         }
-      }
-
-      return this.b($$0, $$1, $$2);
+   public T emptyList() {
+      return (T)this.a.emptyList();
    }
 
-   private <T> DataResult<Pair<ju<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<jq.a<E>> $$1x = new ArrayList<>();
-
-         for (jq<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof jq.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
-            }
-
-            $$1x.add($$3);
-         }
-
-         return DataResult.success(new Pair(ju.a($$1x), $$0x.getSecond()));
-      });
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)this.a.convertTo($$0, $$1);
    }
 
-   private <T> DataResult<T> b(ju<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
+   }
+
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
+   }
+
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
+   }
+
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
+   }
+
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
+   }
+
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
+   }
+
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
+   }
+
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
+   }
+
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
+   }
+
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
+   }
+
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
+   }
+
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
+   }
+
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, Map<T, T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<T> mergeToPrimitive(T $$0, T $$1) {
+      return this.a.mergeToPrimitive($$0, $$1);
+   }
+
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Map<T, T> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
+   }
+
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
+   }
+
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
+   }
+
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
+   }
+
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
+   }
+
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
+   }
+
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
+   }
+
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
+   }
+
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
+
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new Builder(this);
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new MapBuilder(this);
    }
 }

@@ -1,26 +1,50 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public abstract class ftf<T extends csw> extends fse<T> implements csg {
+   private final all G;
 
-public class ftf implements ftk {
-   private final fpp a;
+   public ftf(T $$0, coq $$1, xl $$2, all $$3) {
+      super($$0, $$1, $$2);
+      this.G = $$3;
+   }
 
-   public ftf(fpp $$0) {
-      this.a = $$0;
+   protected void F() {
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
+   protected void aS_() {
+      super.aS_();
+      this.F();
+      this.z.a(this);
+   }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
+   @Override
+   public void j() {
+      super.j();
+      this.z.b(this);
+   }
 
-      return $$6;
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(flj $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(flj $$0, float $$1, int $$2, int $$3) {
+      $$0.a(gjh::B, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.c($$0, this.C, this.D);
+   }
+
+   protected abstract void c(flj var1, int var2, int var3);
+
+   @Override
+   public void a(crs $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(crs $$0, int $$1, cwf $$2) {
    }
 }

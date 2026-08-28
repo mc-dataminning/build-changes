@@ -1,105 +1,55 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+public interface eay extends azv {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public interface eay {
-   Codec<eay> b = eaz.b;
-   Codec<jq<eay>> c = ale.a(lz.aK, b);
-   Codec<eay> d = c.xmap(eaz.j::new, $$0 -> (jq)($$0 instanceof eaz.j $$1 ? $$1.j() : new jq.a<>($$0)));
+   int c(int var1);
 
-   double a(eay.b var1);
-
-   void a(double[] var1, eay.a var2);
-
-   eay a(eay.f var1);
-
-   double a();
-
-   double b();
-
-   azd<? extends eay> c();
-
-   default eay a(double $$0, double $$1) {
-      return new eaz.g(this, $$0, $$1);
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   default eay d() {
-      return eaz.a(this, eaz.k.a.a);
-   }
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
 
-   default eay e() {
-      return eaz.a(this, eaz.k.a.b);
-   }
-
-   default eay f() {
-      return eaz.a(this, eaz.k.a.c);
-   }
-
-   default eay g() {
-      return eaz.a(this, eaz.k.a.d);
-   }
-
-   default eay h() {
-      return eaz.a(this, eaz.k.a.e);
-   }
-
-   default eay i() {
-      return eaz.a(this, eaz.k.a.f);
-   }
-
-   public interface a {
-      eay.b a(int var1);
-
-      void a(double[] var1, eay var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default ech d() {
-         return ech.a();
+         return $$2;
       }
    }
 
-   public static record c(jq<eqn.a> b, @Nullable eqn c) {
-      public static final Codec<eay.c> a = eqn.a.b.xmap($$0 -> new eay.c($$0, null), eay.c::b);
-
-      public c(jq<eqn.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
    }
 
-   public interface d extends eay {
-      @Override
-      default void a(double[] $$0, eay.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default eay a(eay.f $$0) {
-         return $$0.apply(this);
-      }
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
    }
 
-   public static record e(int a, int b, int c) implements eay.b {
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
    }
 
-   public interface f {
-      eay apply(eay var1);
-
-      default eay.c a(eay.c $$0) {
-         return $$0;
-      }
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

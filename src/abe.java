@@ -1,26 +1,31 @@
-public record abe(jh c, int d) implements aas {
-   public static final zg<wf, abe> a = aas.a(abe::a, abe::new);
-   public static final aas.b<abe> b = aas.a("debug/poi_ticket_count");
+public record abe(int c, esc d, float e) implements aav {
+   public static final zj<wi, abe> a = aav.a(abe::a, abe::new);
+   public static final aav.b<abe> b = aav.a("debug/path");
 
-   private abe(wf $$0) {
-      this($$0.e(), $$0.readInt());
+   private abe(wi $$0) {
+      this($$0.readInt(), esc.b($$0), $$0.readFloat());
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
+   private void a(wi $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aas.b<abe> a() {
+   public aav.b<abe> a() {
       return b;
    }
 
-   public jh b() {
+   public int b() {
       return this.c;
    }
 
-   public int c() {
+   public esc c() {
       return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

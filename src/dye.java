@@ -1,54 +1,89 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import java.util.Locale;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public final class dye {
-   private final ImmutableList<dyg> a;
-   private final int[] b;
+public class dye<T> implements dxz<T> {
+   private final jv<T> a;
+   @Nullable
+   private T b;
+   private final dya<T> c;
 
-   public dye(ImmutableList<dyg> $$0) {
+   public dye(jv<T> $$0, dya<T> $$1, List<T> $$2) {
       this.a = $$0;
-      int $$1 = $$0.isEmpty() ? 0 : ((dyg)$$0.getFirst()).b() + 1;
-      this.b = new int[$$1];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         dyg $$3 = (dyg)$$0.get($$2);
-         int $$4 = $$3.b();
-
-         for (int $$5 = 0; $$5 <= $$4; $$5++) {
-            this.b[$$5] = $$2;
-         }
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
    }
 
-   @VisibleForTesting
-   public ImmutableList<dyg> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.a.size();
-   }
-
-   public int a(dyg $$0) {
-      int $$1 = $$0.b();
-      if ($$1 >= this.b.length) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
-      } else {
-         return this.b[$$1];
-      }
-   }
-
-   public int c() {
-      return Math.max(0, this.a.size() - 1);
-   }
-
-   public dyg a(int $$0) {
-      return (dyg)this.a.get($$0);
+   public static <A> dxz<A> a(int $$0, jv<A> $$1, dya<A> $$2, List<A> $$3) {
+      return new dye<>($$1, $$2, $$3);
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(wi $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(wi $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return xc.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dxz<T> a(dya<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

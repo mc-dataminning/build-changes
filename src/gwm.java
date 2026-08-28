@@ -1,7 +1,5 @@
-public class gwm extends gvl implements gwd {
+public class gwm extends gwb implements gwt {
    public boolean a;
-   public boolean b;
-   public boolean c;
 
    @Override
    public boolean c() {

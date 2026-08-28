@@ -1,57 +1,73 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
 
-public class efh extends eel<egy> {
+public class efh extends eep<egy> {
    public efh(Codec<egy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(een<egy> $$0) {
-      dfc $$1 = $$0.b();
+   public boolean a(eer<egy> $$0) {
+      dgd $$1 = $$0.b();
       jh $$2 = $$0.e();
-      azs $$3 = $$0.d();
+      azv $$3 = $$0.d();
       egy $$4 = $$0.f();
-      Optional<jm> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         jh $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && eeg.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         eeg.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+         List<jm> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            jh.a $$6 = $$2.k();
 
-   private static Optional<jm> a(dfc $$0, jh $$1, azs $$2) {
-      boolean $$3 = eeg.b($$0.a_($$1.d()));
-      boolean $$4 = eeg.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? jm.a : jm.b);
-      } else if ($$3) {
-         return Optional.of(jm.a);
-      } else {
-         return $$4 ? Optional.of(jm.b) : Optional.empty();
-      }
-   }
+            for (jm $$7 : $$5) {
+               $$6.g($$2);
+               List<jm> $$8 = $$4.a($$3, $$7.g());
 
-   private static void a(dfc $$0, azs $$1, jh $$2, egy $$3) {
-      eeg.c($$0, $$2);
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dvo $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
 
-      for (jm $$4 : jm.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            jh $$5 = $$2.a($$4);
-            eeg.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               jh $$6 = $$5.a(jm.b($$1));
-               eeg.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  jh $$7 = $$6.a(jm.b($$1));
-                  eeg.c($$0, $$7);
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
                }
             }
+
+            return false;
          }
       }
+   }
+
+   public static boolean a(dgd $$0, jh $$1, dvo $$2, egy $$3, azv $$4, List<jm> $$5) {
+      jh.a $$6 = $$1.k();
+
+      for (jm $$7 : $$5) {
+         dvo $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dvo $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean c(dvo $$0) {
+      return $$0.l() || $$0.a(dil.G);
    }
 }

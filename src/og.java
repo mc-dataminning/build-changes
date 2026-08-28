@@ -1,22 +1,47 @@
-import com.google.gson.JsonPrimitive;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class og {
-   public static final oh<og.a> a = new oh<>("x", $$0 -> new JsonPrimitive($$0.e));
-   public static final oh<og.a> b = new oh<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final oh<ali> c = new oh<>("model", $$0 -> new JsonPrimitive($$0.toString()));
-   public static final oh<Boolean> d = new oh<>("uvlock", JsonPrimitive::new);
-   public static final oh<Integer> e = new oh<>("weight", JsonPrimitive::new);
+public class og implements Supplier<JsonElement> {
+   private final Map<oi<?>, oi<?>.a> a = Maps.newLinkedHashMap();
 
-   public static enum a {
-      a(0),
-      b(90),
-      c(180),
-      d(270);
+   public <T> og a(oi<T> $$0, T $$1) {
+      oi<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
+      } else {
+         return this;
+      }
+   }
 
-      final int e;
+   public static og a() {
+      return new og();
+   }
 
-      private a(final int $$0) {
-         this.e = $$0;
+   public static og a(og $$0, og $$1) {
+      og $$2 = new og();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
+   }
+
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
+   }
+
+   public static JsonElement a(List<og> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
       }
    }
 }

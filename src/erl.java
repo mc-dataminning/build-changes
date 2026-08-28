@@ -1,24 +1,61 @@
-import com.google.common.collect.UnmodifiableIterator;
-
-public class erl {
-   public static final erj a = a("empty", new erh());
-   public static final eri b = a("flowing_water", new erq.a());
-   public static final eri c = a("water", new erq.b());
-   public static final eri d = a("flowing_lava", new ern.a());
-   public static final eri e = a("lava", new ern.b());
-
-   private static <T extends erj> T a(String $$0, T $$1) {
-      return kd.a(ly.c, $$0, $$1);
+public class erl extends ern {
+   @Override
+   public cwb a() {
+      return cwj.a;
    }
 
-   static {
-      for (erj $$0 : ly.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   @Override
+   public boolean a(ero $$0, dek $$1, jh $$2, ern $$3, jm $$4) {
+      return true;
+   }
 
-         while (var2.hasNext()) {
-            erk $$1 = (erk)var2.next();
-            erj.c.b($$1);
-         }
-      }
+   @Override
+   public ezr a(dek $$0, jh $$1, ero $$2) {
+      return ezr.c;
+   }
+
+   @Override
+   public int a(dfi $$0) {
+      return 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(ero $$0, dek $$1, jh $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(ero $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected dvo b(ero $$0) {
+      return dil.a.m();
+   }
+
+   @Override
+   public boolean c(ero $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(ero $$0) {
+      return 0;
+   }
+
+   @Override
+   public fal b(ero $$0, dek $$1, jh $$2) {
+      return fai.a();
    }
 }

@@ -1,37 +1,33 @@
-public class aib implements zp<agv> {
-   public static final zg<wf, aib> a = zp.a(aib::a, aib::new);
+public class aib implements zs<agy> {
+   public static final zj<wi, aib> a = zs.a(aib::a, aib::new);
    private final int b;
-   private final aib.a c;
-   private final int d;
+   private final all c;
+   private final boolean d;
 
-   public aib(bue $$0, aib.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public aib(bue $$0, aib.a $$1, int $$2) {
-      this.b = $$0.as();
-      this.c = $$1;
+   public aib(int $$0, dav<?> $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1.a();
       this.d = $$2;
    }
 
-   private aib(wf $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(aib.a.class);
-      this.d = $$0.l();
+   private aib(wi $$0) {
+      this.b = $$0.x();
+      this.c = $$0.q();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wf $$0) {
-      $$0.c(this.b);
+   private void a(wi $$0) {
+      $$0.f(this.b);
       $$0.a(this.c);
-      $$0.c(this.d);
+      $$0.a(this.d);
    }
 
    @Override
-   public zr<aib> a() {
-      return agt.bO;
+   public zu<aib> a() {
+      return agw.bL;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
@@ -39,23 +35,11 @@ public class aib implements zp<agv> {
       return this.b;
    }
 
-   public aib.a e() {
+   public all e() {
       return this.c;
    }
 
-   public int f() {
+   public boolean f() {
       return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

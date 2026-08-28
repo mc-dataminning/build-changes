@@ -1,71 +1,125 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class djq extends dkz {
-   public static final MapCodec<djq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ly.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, djq::new)
-   );
-   private final die b;
+public class djq extends dme implements dim {
+   public static final MapCodec<djq> a = b(djq::new);
+   public static final int b = 2;
+   public static final dwn c = dwe.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final fal[] m = new fal[]{
+      dij.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dij.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dij.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final fal[] n = new fal[]{
+      dij.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dij.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dij.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final fal[] o = new fal[]{
+      dij.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dij.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dij.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final fal[] G = new fal[]{
+      dij.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dij.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dij.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<djq> a() {
       return a;
    }
 
-   public djq(die $$0, dvi.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public djq(dvn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(aF, jm.c).b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dfb $$0, jh $$1, dvj $$2, dvj $$3, cku $$4) {
-      if (a($$0, $$1, $$3)) {
-         $$0.a($$1, this.b.m(), 3);
+   protected boolean f(dvo $$0) {
+      return $$0.c(c) < 2;
+   }
+
+   @Override
+   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
+      if ($$1.A.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
+         }
       }
    }
 
    @Override
-   public dvj a(czs $$0) {
-      deg $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dvj $$3 = $$1.a_($$2);
-      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
+      dvo $$3 = $$1.a_($$2.a($$0.c(aF)));
+      return $$3.a(axd.A);
    }
 
-   private static boolean a(deg $$0, jh $$1, dvj $$2) {
-      return o($$2) || a($$0, $$1);
+   @Override
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      int $$4 = $$0.c(c);
+      switch ((jm)$$0.c(aF)) {
+         case d:
+            return G[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
    }
 
-   private static boolean a(deg $$0, jh $$1) {
-      boolean $$2 = false;
-      jh.a $$3 = $$1.k();
+   @Nullable
+   @Override
+   public dvo a(czw $$0) {
+      dvo $$1 = this.m();
+      dfi $$2 = $$0.q();
+      jh $$3 = $$0.a();
 
-      for (jm $$4 : jm.values()) {
-         dvj $$5 = $$0.a_($$3);
-         if ($$4 != jm.a || o($$5)) {
-            $$3.a($$1, $$4);
-            $$5 = $$0.a_($$3);
-            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
-               $$2 = true;
-               break;
+      for (jm $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.b(aF, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
       }
 
-      return $$2;
-   }
-
-   private static boolean o(dvj $$0) {
-      return $$0.y().a(axg.a);
+      return null;
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      return a($$3, $$4) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      return $$4 == $$0.c(aF) && !$$0.a($$1, $$3) ? dil.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public int b(dvj $$0, deg $$1, jh $$2) {
-      return $$0.a($$1, $$2).ak;
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(aF, c);
+   }
+
+   @Override
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
    }
 }

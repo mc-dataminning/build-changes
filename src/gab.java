@@ -1,30 +1,27 @@
-public class gab extends fzf {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final gbm e;
-   private final gbm f;
+public class gab extends gax {
+   private final gcc a;
+   private final gcc b;
+   private final gcc c;
 
-   public gab(gbm $$0) {
-      super($$0, gir::c);
-      this.e = $$0.b("plate");
-      this.f = $$0.b("handle");
+   public gab(gcc $$0) {
+      super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("plate", gbr.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gbo.a);
-      $$1.a("handle", gbr.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gbo.a);
-      return gbs.a($$0, 64, 64);
+   public static gck a() {
+      gck $$0 = new gck();
+      gac.a(gcg.a, $$0);
+      return $$0;
    }
 
-   public gbm b() {
-      return this.e;
-   }
-
-   public gbm c() {
-      return this.f;
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
    }
 }

@@ -1,139 +1,261 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryStack;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 
-public interface fef {
-   fef a(float var1, float var2, float var3);
+public class fef implements feo {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final feh d;
+   private long e = -1L;
+   private int f;
+   private final fep g;
+   private final fep.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   fef a(int var1, int var2, int var3, int var4);
-
-   fef a(float var1, float var2);
-
-   fef a(int var1, int var2);
-
-   fef b(int var1, int var2);
-
-   fef b(float var1, float var2, float var3);
-
-   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a($$0, $$1, $$2);
-      this.a($$3);
-      this.a($$4, $$5);
-      this.b($$6);
-      this.c($$7);
-      this.b($$8, $$9, $$10);
-   }
-
-   default fef a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
-
-   default fef a(int $$0) {
-      return this.a(axv.b($$0), axv.c($$0), axv.d($$0), axv.a($$0));
-   }
-
-   default fef d(int $$0) {
-      return this.a(axv.c($$0, -1));
-   }
-
-   default fef c(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default fef b(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(feb.a $$0, gjo $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(feb.a $$0, gjo $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      int[] $$10 = $$1.b();
-      kl $$11 = $$1.e().q();
-      Matrix4f $$12 = $$0.a();
-      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
-      int $$14 = 8;
-      int $$15 = $$10.length / 8;
-      int $$16 = (int)($$6 * 255.0F);
-      int $$17 = $$1.g();
-      MemoryStack $$18 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$19 = $$18.malloc(fdz.b.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$15; $$21++) {
-            $$20.clear();
-            $$20.put($$10, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255);
-               float $$26 = (float)($$19.get(13) & 255);
-               float $$27 = (float)($$19.get(14) & 255);
-               $$28 = $$25 * $$2[$$21] * $$3;
-               $$29 = $$26 * $$2[$$21] * $$4;
-               $$30 = $$27 * $$2[$$21] * $$5;
-            } else {
-               $$28 = $$2[$$21] * $$3 * 255.0F;
-               $$29 = $$2[$$21] * $$4 * 255.0F;
-               $$30 = $$2[$$21] * $$5 * 255.0F;
-            }
-
-            int $$34 = axv.a($$16, (int)$$28, (int)$$29, (int)$$30);
-            int $$35 = gif.b($$7[$$21], $$17);
-            float $$36 = $$19.getFloat(16);
-            float $$37 = $$19.getFloat(20);
-            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
-            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
-         }
-      } catch (Throwable var35) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var34) {
-               var35.addSuppressed(var34);
-            }
-         }
-
-         throw var35;
-      }
-
-      if ($$18 != null) {
-         $$18.close();
+   public fef(feh $$0, fep.c $$1, fep $$2) {
+      if (!$$2.b(feq.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
+      } else {
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~feq.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fei.c;
+         boolean $$4 = $$2 == fei.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
    }
 
-   default fef a(Vector3f $$0) {
-      return this.a($$0.x(), $$0.y(), $$0.z());
+   @Nullable
+   public fej a() {
+      this.c();
+      this.f();
+      fej $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
+      return $$0;
    }
 
-   default fef a(feb.a $$0, Vector3f $$1) {
-      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
+   public fej b() {
+      fej $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
+      }
    }
 
-   default fef a(feb.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
+      }
    }
 
-   default fef a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   @Nullable
+   private fej d() {
+      if (this.f == 0) {
+         return null;
+      } else {
+         feh.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
+         } else {
+            int $$1 = this.h.a(this.f);
+            fep.b $$2 = fep.b.a(this.f);
+            return new fej($$0, new fej.a(this.g, this.f, $$1, this.h, $$2));
+         }
+      }
    }
 
-   default fef b(feb.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.b($$4.x(), $$4.y(), $$4.z());
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
    }
 
-   default fef b(feb.a $$0, Vector3f $$1) {
-      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
+   private long a(feq $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
+      }
+   }
+
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = feq.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fep.c.a || this.h == fep.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
+   }
+
+   private static void a(long $$0, int $$1) {
+      int $$2 = axy.i($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
+
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
+      }
+   }
+
+   @Override
+   public feo a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[feq.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
+   }
+
+   @Override
+   public feo a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(feq.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
+      }
+
+      return this;
+   }
+
+   @Override
+   public feo a(int $$0) {
+      long $$1 = this.a(feq.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public feo a(float $$0, float $$1) {
+      long $$2 = this.a(feq.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public feo a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, feq.f);
+   }
+
+   @Override
+   public feo b(int $$0) {
+      long $$1 = this.a(feq.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public feo b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, feq.g);
+   }
+
+   @Override
+   public feo c(int $$0) {
+      long $$1 = this.a(feq.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private feo a(short $$0, short $$1, feq $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public feo b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(feq.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(azn.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
+         }
+
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         feo.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
    }
 }

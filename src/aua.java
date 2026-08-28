@@ -1,28 +1,29 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Map;
 
-public interface aua<T> extends atz<T> {
-   JsonObject a(T var1);
+interface aua {
+   aua a = new aua() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+   };
+   aua b = new aua() {
+      @Override
+      public String toString() {
+         return "relative";
+      }
+   };
 
-   static <T> aua<T> a(final String $$0, final Codec<T> $$1) {
-      return new aua<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   public static record a(Map<String, atx> c) implements aua {
+      public Map<String, atx> a() {
+         return this.c;
+      }
+   }
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(JsonParseException::new);
-         }
-
-         @Override
-         public JsonObject a(T $$0x) {
-            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IllegalArgumentException::new)).getAsJsonObject();
-         }
-      };
+   public static record b(Path c) implements aua {
+      public Path a() {
+         return this.c;
+      }
    }
 }

@@ -1,24 +1,26 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class ect extends ecx {
-   private final ju<erj> e;
+public class ect implements ecq {
+   private final kl e;
+   private final jm f;
    public static final MapCodec<ect> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kf.a(lz.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, ect::new)
+      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.e), jm.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, ect::new)
    );
 
-   public ect(kl $$0, ju<erj> $$1) {
-      super($$0);
-      this.e = $$1;
+   public ect(kl $$0, jm $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(dgd $$0, jh $$1) {
+      jh $$2 = $$1.a(this.e);
+      return $$0.a_($$2).c($$0, $$2, this.f);
    }
 
    @Override
-   protected boolean a(dvj $$0) {
-      return $$0.y().a(this.e);
-   }
-
-   @Override
-   public ecn<?> a() {
-      return ecn.c;
+   public ecr<?> a() {
+      return ecr.d;
    }
 }

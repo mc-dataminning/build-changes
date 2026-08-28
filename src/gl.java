@@ -15,8 +15,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class gl implements ArgumentType<Integer> {
    private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xi.c("argument.time.invalid_unit"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xi.b("argument.time.tick_count_too_low", $$1, $$0));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xl.c("argument.time.invalid_unit"));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xl.b("argument.time.tick_count_too_low", $$1, $$0));
    private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
    final int e;
 
@@ -72,11 +72,11 @@ public class gl implements ArgumentType<Integer> {
    }
 
    public static class a implements is<gl, gl.a.a> {
-      public void a(gl.a.a $$0, wf $$1) {
+      public void a(gl.a.a $$0, wi $$1) {
          $$1.q($$0.b);
       }
 
-      public gl.a.a a(wf $$0) {
+      public gl.a.a a(wi $$0) {
          int $$1 = $$0.readInt();
          return new gl.a.a($$1);
       }

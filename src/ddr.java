@@ -1,45 +1,144 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ddr {
-   public static final alh<ddq> a = a("quartz");
-   public static final alh<ddq> b = a("iron");
-   public static final alh<ddq> c = a("netherite");
-   public static final alh<ddq> d = a("redstone");
-   public static final alh<ddq> e = a("copper");
-   public static final alh<ddq> f = a("gold");
-   public static final alh<ddq> g = a("emerald");
-   public static final alh<ddq> h = a("diamond");
-   public static final alh<ddq> i = a("lapis");
-   public static final alh<ddq> j = a("amethyst");
+public record ddr(buq c, jq<awn> d, Optional<all> e, Optional<ju<bup<?>>> f, boolean g, boolean h, boolean i) {
+   public static final Codec<ddr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               buq.k.fieldOf("slot").forGetter(ddr::a),
+               awn.b.optionalFieldOf("equip_sound", awo.as).forGetter(ddr::b),
+               all.a.optionalFieldOf("model").forGetter(ddr::c),
+               kf.a(ma.z).optionalFieldOf("allowed_entities").forGetter(ddr::d),
+               Codec.BOOL.optionalFieldOf("dispensable", true).forGetter(ddr::e),
+               Codec.BOOL.optionalFieldOf("swappable", true).forGetter(ddr::f),
+               Codec.BOOL.optionalFieldOf("damage_on_hurt", true).forGetter(ddr::g)
+            )
+            .apply($$0, ddr::new)
+   );
+   public static final zj<ww, ddr> b = zj.a(
+      buq.l, ddr::a, awn.d, ddr::b, all.b.a(zh::a), ddr::c, zh.c(ma.z).a(zh::a), ddr::d, zh.b, ddr::e, zh.b, ddr::f, zh.b, ddr::g, ddr::new
+   );
 
-   public static void a(qy<ddq> $$0) {
-      a($$0, a, cwf.oD, yf.a.a(14931140), 0.1F);
-      a($$0, b, cwf.oG, yf.a.a(15527148), 0.2F, Map.of(ddm.c, "iron_darker"));
-      a($$0, c, cwf.oL, yf.a.a(6445145), 0.3F, Map.of(ddm.g, "netherite_darker"));
-      a($$0, d, cwf.lH, yf.a.a(9901575), 0.4F);
-      a($$0, e, cwf.oI, yf.a.a(11823181), 0.5F);
-      a($$0, f, cwf.oK, yf.a.a(14594349), 0.6F, Map.of(ddm.d, "gold_darker"));
-      a($$0, g, cwf.oB, yf.a.a(1155126), 0.7F);
-      a($$0, h, cwf.oA, yf.a.a(7269586), 0.8F, Map.of(ddm.e, "diamond_darker"));
-      a($$0, i, cwf.oC, yf.a.a(4288151), 0.9F);
-      a($$0, j, cwf.oE, yf.a.a(10116294), 1.0F);
+   public static ddr a(cvc $$0) {
+      return a(buq.g).a(awo.of).a(ddq.j.get($$0)).a(bup.an, bup.be).a();
    }
 
-   public static Optional<jq.c<ddq>> a(js.a $$0, cwb $$1) {
-      return $$0.d(lz.aX).c().filter($$1x -> $$1.a(((ddq)$$1x.a()).b())).findFirst();
+   public static ddr.a a(buq $$0) {
+      return new ddr.a($$0);
    }
 
-   private static void a(qy<ddq> $$0, alh<ddq> $$1, cvx $$2, yf $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   public bsh a(cwf $$0, cor $$1) {
+      if (!$$1.e(this.c)) {
+         return bsh.e;
+      } else {
+         cwf $$2 = $$1.a(this.c);
+         if ((!dby.a($$2, dbx.E) || $$1.f()) && !cwf.c($$0, $$2)) {
+            if (!$$1.dY().y_()) {
+               $$1.b(awy.c.b($$0.h()));
+            }
+
+            if ($$0.L() <= 1) {
+               cwf $$3 = $$2.f() ? $$0 : $$2.g();
+               cwf $$4 = $$1.f() ? $$0.v() : $$0.g();
+               $$1.a(this.c, $$4);
+               return bsh.a.a($$3);
+            } else {
+               cwf $$5 = $$2.g();
+               cwf $$6 = $$0.b(1, $$1);
+               $$1.a(this.c, $$6);
+               if (!$$1.gl().f($$5)) {
+                  $$1.a($$5, false);
+               }
+
+               return bsh.a.a($$0);
+            }
+         } else {
+            return bsh.d;
+         }
+      }
    }
 
-   private static void a(qy<ddq> $$0, alh<ddq> $$1, cvx $$2, yf $$3, float $$4, Map<ali, String> $$5) {
-      ddq $$6 = ddq.a($$1.a().a(), $$2, $$4, xi.c(ae.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   public boolean a(bup<?> $$0) {
+      return this.f.isEmpty() || this.f.get().a($$0.r());
    }
 
-   private static alh<ddq> a(String $$0) {
-      return alh.a(lz.aX, ali.b($$0));
+   public buq a() {
+      return this.c;
+   }
+
+   public jq<awn> b() {
+      return this.d;
+   }
+
+   public Optional<all> c() {
+      return this.e;
+   }
+
+   public Optional<ju<bup<?>>> d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public static class a {
+      private final buq a;
+      private jq<awn> b = awo.as;
+      private Optional<all> c = Optional.empty();
+      private Optional<ju<bup<?>>> d = Optional.empty();
+      private boolean e = true;
+      private boolean f = true;
+      private boolean g = true;
+
+      a(buq $$0) {
+         this.a = $$0;
+      }
+
+      public ddr.a a(jq<awn> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public ddr.a a(all $$0) {
+         this.c = Optional.of($$0);
+         return this;
+      }
+
+      public ddr.a a(bup<?>... $$0) {
+         return this.a(ju.a(bup::r, $$0));
+      }
+
+      public ddr.a a(ju<bup<?>> $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public ddr.a a(boolean $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ddr.a b(boolean $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public ddr.a c(boolean $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public ddr a() {
+         return new ddr(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
+      }
    }
 }

@@ -1,72 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public abstract class dho extends die implements dpf {
-   public static final dwa d = dvz.C;
-   private static final fah a = die.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected dho(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(d, Boolean.valueOf(true)));
-   }
+public class dho extends dha {
+   public static final MapCodec<dho> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvc.q.fieldOf("color").forGetter(dha::b), t()).apply($$0, dho::new));
+   public static final dwn b = dwe.ba;
+   private static final Map<cvc, dij> c = Maps.newHashMap();
+   private static final fal d = dij.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
-   protected abstract MapCodec<? extends dho> a();
-
-   protected void a(dvj $$0, dfc $$1, jh $$2) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.E_().a(40));
-      }
-   }
-
-   protected static boolean d(dvj $$0, deg $$1, jh $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (jm $$3 : jm.values()) {
-            if ($$1.b_($$2.a($$3)).a(axg.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dvj a(czs $$0) {
-      erk $$1 = $$0.q().b_($$0.a());
-      return this.m().b(d, Boolean.valueOf($$1.a(axg.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+   public MapCodec<dho> a() {
       return a;
    }
 
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
-      }
-
-      return $$1 == jm.a && !this.a($$0, (dfe)$$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dho(cvc $$0, dvn.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, jm.b);
+   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(d);
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return d;
    }
 
    @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(d) ? erl.c.a(false) : super.b_($$0);
+   public dvo a(czw $$0) {
+      return this.m().b(b, Integer.valueOf(dwt.a($$0.i() + 180.0F)));
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      return $$4 == jm.a && !$$0.a($$1, $$3) ? dil.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dow $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dnf $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(b);
+   }
+
+   public static dij a(cvc $$0) {
+      return c.getOrDefault($$0, dil.iJ);
    }
 }

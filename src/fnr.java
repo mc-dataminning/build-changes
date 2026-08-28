@@ -1,42 +1,36 @@
-public interface fnr {
-   Object b = new Object();
-   int c = 160;
-   int d = 32;
+import javax.annotation.Nullable;
 
-   fnr.a a();
+public abstract class fnr implements fns {
+   @Nullable
+   private fnt a;
+   private boolean b;
 
-   void a(fns var1, long var2);
-
-   void a(fku var1, fks var2, long var3);
-
-   default Object f() {
-      return b;
+   @Override
+   public final boolean aK_() {
+      return this.b;
    }
 
-   default int b() {
-      return 160;
+   @Override
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
-   default int c() {
-      return 32;
+   @Nullable
+   @Override
+   public fnt aL_() {
+      return this.a;
    }
 
-   default int g() {
-      return azk.e(this.c(), 32);
-   }
-
-   public static enum a {
-      a(awl.AC),
-      b(awl.AD);
-
-      private final awk c;
-
-      private a(final awk $$0) {
-         this.c = $$0;
+   @Override
+   public void a(@Nullable fnt $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
 
-      public void a(hdf $$0) {
-         $$0.a(hbv.a(this.c, 1.0F, 1.0F));
+      if ($$0 != null) {
+         $$0.a(true);
       }
+
+      this.a = $$0;
    }
 }

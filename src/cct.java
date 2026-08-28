@@ -1,42 +1,49 @@
 import java.util.EnumSet;
 
-public class cct extends cby {
-   private final bvc a;
-   private double b;
-   private double c;
-   private int d;
+public class cct extends ccc {
+   private static final cfv b = cfv.b().a(6.0);
+   public static final int a = 400;
+   private final chh c;
+   private coc d;
+   private int e;
 
-   public cct(bvc $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cby.a.a, cby.a.b));
+   public cct(chh $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(ccc.a.a, ccc.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.ea().i() < 0.02F;
+      if (!this.c.dY().S()) {
+         return false;
+      } else if (this.c.eb().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dY().a(coc.class, b, this.c, this.c.dD(), this.c.dF(), this.c.dJ(), this.c.cT().c(6.0, 2.0, 6.0));
+         return this.d != null;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.d >= 0;
+      return this.e > 0;
    }
 
    @Override
    public void d() {
-      double $$0 = (Math.PI * 2) * this.a.ea().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ea().a(20);
+      this.e = this.a(400);
+      this.c.x(true);
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public void e() {
+      this.c.x(false);
+      this.d = null;
    }
 
    @Override
    public void a() {
-      this.d--;
-      this.a.K().a(this.a.dC() + this.b, this.a.dG(), this.a.dI() + this.c);
+      this.c.K().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

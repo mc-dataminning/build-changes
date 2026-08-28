@@ -1,26 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cdl extends ccv {
-   public static final float i = 0.001F;
-   protected final float j;
+public class cdl extends ccc {
+   private final cnx a;
 
-   public cdl(bvi $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cdl(cnx $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccc.a.c, ccc.a.a));
    }
 
-   public cdl(bvi $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected ezn h() {
-      if (this.b.bn()) {
-         ezn $$0 = cfy.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean b() {
+      if (!this.a.bN()) {
+         return false;
+      } else if (this.a.bl()) {
+         return false;
+      } else if (!this.a.aL()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
       } else {
-         return this.b.ea().i() >= this.j ? cfy.a(this.b, 10, 7) : super.h();
+         cor $$0 = this.a.gv();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
       }
+   }
+
+   @Override
+   public void d() {
+      this.a.P().o();
+   }
+
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

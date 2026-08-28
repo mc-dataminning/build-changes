@@ -1,50 +1,41 @@
-import javax.annotation.Nullable;
-
-public class cen extends cel {
-   @Nullable
-   private jh p;
-
-   public cen(bvc $$0, dfb $$1) {
+public class cen extends ceq {
+   public cen(bvg $$0, dff $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public ery a(jh $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   protected ese a(int $$0) {
+      this.o = new erx(false);
+      this.o.a(true);
+      return new ese(this.o, $$0);
    }
 
    @Override
-   public ery a(bue $$0, int $$1) {
-      this.p = $$0.dx();
-      return super.a($$0, $$1);
+   protected boolean a() {
+      return true;
    }
 
    @Override
-   public boolean a(bue $$0, double $$1) {
-      ery $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dx();
-         this.d = $$1;
-         return true;
-      }
+   protected ezr b() {
+      return new ezr(this.a.dD(), this.a.e(0.5), this.a.dJ());
    }
 
    @Override
-   public void c() {
-      if (!this.m()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dv(), (double)this.a.ds())
-               && (!(this.a.dE() > (double)this.p.v()) || !jh.a((double)this.p.u(), this.a.dE(), (double)this.p.w()).a(this.a.dv(), (double)this.a.ds()))) {
-               this.a.M().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   protected double a(ezr $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(ezr $$0, ezr $$1) {
+      return this.a.bp() ? a(this.a, $$0, $$1, false) : false;
+   }
+
+   @Override
+   public boolean a(jh $$0) {
+      return !this.b.a_($$0.e()).l();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

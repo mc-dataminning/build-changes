@@ -3,35 +3,35 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cj(Optional<be<cys.b, cj.a>> c) implements dz<cys> {
+public record cj(Optional<be<cyw.b, cj.a>> c) implements dz<cyw> {
    public static final Codec<cj> a = RecordCodecBuilder.create($$0 -> $$0.group(be.a(cj.a.a).optionalFieldOf("modifiers").forGetter(cj::b)).apply($$0, cj::new));
 
    @Override
-   public kt<cys> a() {
+   public kt<cyw> a() {
       return ku.o;
    }
 
-   public boolean a(cwb $$0, cys $$1) {
+   public boolean a(cwf $$0, cyw $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public Optional<be<cys.b, cj.a>> b() {
+   public Optional<be<cyw.b, cj.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<ju<bwd>> b, Optional<ali> c, dj.c d, Optional<bwg.a> e, Optional<bun> f) implements Predicate<cys.b> {
+   public static record a(Optional<ju<bwh>> b, Optional<all> c, dj.c d, Optional<bwk.a> e, Optional<bur> f) implements Predicate<cyw.b> {
       public static final Codec<cj.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  kf.a(lz.c).optionalFieldOf("attribute").forGetter(cj.a::a),
-                  ali.a.optionalFieldOf("id").forGetter(cj.a::b),
+                  kf.a(ma.c).optionalFieldOf("attribute").forGetter(cj.a::a),
+                  all.a.optionalFieldOf("id").forGetter(cj.a::b),
                   dj.c.d.optionalFieldOf("amount", dj.c.c).forGetter(cj.a::c),
-                  bwg.a.f.optionalFieldOf("operation").forGetter(cj.a::d),
-                  bun.l.optionalFieldOf("slot").forGetter(cj.a::e)
+                  bwk.a.f.optionalFieldOf("operation").forGetter(cj.a::d),
+                  bur.l.optionalFieldOf("slot").forGetter(cj.a::e)
                )
                .apply($$0, cj.a::new)
       );
 
-      public boolean a(cys.b $$0) {
+      public boolean a(cyw.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
@@ -43,11 +43,11 @@ public record cj(Optional<be<cys.b, cj.a>> c) implements dz<cys> {
          }
       }
 
-      public Optional<ju<bwd>> a() {
+      public Optional<ju<bwh>> a() {
          return this.b;
       }
 
-      public Optional<ali> b() {
+      public Optional<all> b() {
          return this.c;
       }
 
@@ -55,11 +55,11 @@ public record cj(Optional<be<cys.b, cj.a>> c) implements dz<cys> {
          return this.d;
       }
 
-      public Optional<bwg.a> d() {
+      public Optional<bwk.a> d() {
          return this.e;
       }
 
-      public Optional<bun> e() {
+      public Optional<bur> e() {
          return this.f;
       }
    }

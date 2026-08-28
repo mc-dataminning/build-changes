@@ -1,5 +1,3 @@
-public record ajt(ali a) implements ajr {
-   @Override
-   public void a(wf $$0) {
-   }
+public interface ajt {
+   void a(wi var1);
 }

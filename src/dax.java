@@ -1,130 +1,193 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dax implements daf {
-   final day a;
-   final cwb b;
-   final String c;
-   final dad d;
-   final boolean e;
+public class dax extends avi<dat<?>> {
+   private static final Logger a = LogUtils.getLogger();
+   private Multimap<daz<?>, dav<?>> b = ImmutableMultimap.of();
+   private Map<all, dav<?>> c = ImmutableMap.of();
    @Nullable
-   private dao f;
+   private List<dav<?>> d;
+   private boolean e;
 
-   public dax(String $$0, dad $$1, day $$2, cwb $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+   public dax(js.a $$0) {
+      super($$0, dat.h, ma.c(ma.bh));
    }
 
-   public dax(String $$0, dad $$1, day $$2, cwb $$3) {
-      this($$0, $$1, $$2, $$3, true);
-   }
+   protected void a(Map<all, dat<?>> $$0, ave $$1, bor $$2) {
+      this.e = false;
+      Builder<daz<?>, dav<?>> $$3 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<all, dav<?>> $$4 = ImmutableMap.builder();
 
-   @Override
-   public dau<?> aq_() {
-      return dau.a;
-   }
+      for (Entry<all, dat<?>> $$5 : $$0.entrySet()) {
+         all $$6 = $$5.getKey();
+         dat<?> $$7 = $$5.getValue();
 
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   @Override
-   public dad d() {
-      return this.d;
-   }
-
-   @Override
-   public cwb a(js.a $$0) {
-      return this.b;
-   }
-
-   @VisibleForTesting
-   public List<Optional<dal>> i() {
-      return this.a.c();
-   }
-
-   @Override
-   public dao a() {
-      if (this.f == null) {
-         this.f = dao.a(this.a.c());
+         try {
+            dav<?> $$8 = new dav<>($$6, $$7);
+            $$3.put($$7.e(), $$8);
+            $$4.put($$6, $$8);
+         } catch (IllegalArgumentException | JsonParseException var11) {
+            a.error("Parsing error loading recipe {}", $$6, var11);
+         }
       }
 
-      return this.f;
+      this.b = $$3.build();
+      this.c = $$4.build();
+      this.d = null;
+      a.info("Loaded {} recipes", this.b.size());
    }
 
-   @Override
-   public boolean h() {
+   public void a() {
+      this.c.values().forEach($$0 -> {
+         dat<?> $$1 = $$0.b();
+         if (!$$1.ap_() && $$1.a().c()) {
+            a.warn("Recipe {} can't be placed due to empty ingredients and will be ignored", $$0.a());
+         }
+      });
+   }
+
+   public boolean b() {
       return this.e;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
+   public <I extends daw, T extends dat<I>> Optional<dav<T>> a(daz<T> $$0, I $$1, dff $$2) {
+      return this.a($$0, $$1, $$2, (dav<T>)null);
    }
 
-   public boolean a(dae $$0, dfb $$1) {
-      return this.a.a($$0);
+   public <I extends daw, T extends dat<I>> Optional<dav<T>> a(daz<T> $$0, I $$1, dff $$2, @Nullable all $$3) {
+      dav<T> $$4 = $$3 != null ? this.a($$0, $$3) : null;
+      return this.a($$0, $$1, $$2, $$4);
    }
 
-   public cwb a(dae $$0, js.a $$1) {
-      return this.a($$1).v();
+   public <I extends daw, T extends dat<I>> Optional<dav<T>> a(daz<T> $$0, I $$1, dff $$2, @Nullable dav<T> $$3) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         return $$3 != null && $$3.b().a($$1, $$2) ? Optional.of($$3) : this.c($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2)).findFirst();
+      }
    }
 
-   public int j() {
-      return this.a.a();
+   public <I extends daw, T extends dat<I>> List<dav<T>> a(daz<T> $$0) {
+      return List.copyOf(this.c($$0));
    }
 
-   public int k() {
-      return this.a.b();
+   public <I extends daw, T extends dat<I>> List<dav<T>> b(daz<T> $$0, I $$1, dff $$2) {
+      return this.c($$0)
+         .stream()
+         .filter($$2x -> $$2x.b().a($$1, $$2))
+         .sorted(Comparator.comparing($$1x -> $$1x.b().a($$2.H_()).h().m()))
+         .collect(Collectors.toList());
    }
 
-   public static class a implements dau<dax> {
-      public static final MapCodec<dax> w = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dad.e.fieldOf("category").orElse(dad.d).forGetter($$0x -> $$0x.d),
-                  day.b.forGetter($$0x -> $$0x.a),
-                  cwb.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, dax::new)
-      );
-      public static final zg<wt, dax> x = zg.a(dax.a::a, dax.a::a);
+   private <I extends daw, T extends dat<I>> Collection<dav<T>> c(daz<T> $$0) {
+      return this.b.get($$0);
+   }
 
-      @Override
-      public MapCodec<dax> a() {
-         return w;
+   public <I extends daw, T extends dat<I>> jz<cwf> c(daz<T> $$0, I $$1, dff $$2) {
+      Optional<dav<T>> $$3 = this.a($$0, $$1, $$2);
+      if ($$3.isPresent()) {
+         return $$3.get().b().a($$1);
+      } else {
+         jz<cwf> $$4 = jz.a($$1.a(), cwf.k);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            $$4.set($$5, $$1.a($$5));
+         }
+
+         return $$4;
+      }
+   }
+
+   public Optional<dav<?>> a(all $$0) {
+      return Optional.ofNullable(this.c.get($$0));
+   }
+
+   @Nullable
+   private <T extends dat<?>> dav<T> a(daz<T> $$0, all $$1) {
+      dav<?> $$2 = this.c.get($$1);
+      return (dav<T>)($$2 != null && $$2.b().e().equals($$0) ? $$2 : null);
+   }
+
+   public Collection<dav<?>> d() {
+      return this.b.values();
+   }
+
+   public Collection<dav<?>> e() {
+      if (this.d == null) {
+         this.d = this.d().stream().filter($$0 -> !$$0.b().a().c()).toList();
       }
 
-      @Override
-      public zg<wt, dax> b() {
-         return x;
+      return this.d;
+   }
+
+   public Collection<dav<?>> f() {
+      return this.c.values();
+   }
+
+   public Stream<all> g() {
+      return this.c.keySet().stream();
+   }
+
+   @VisibleForTesting
+   protected static dav<?> a(all $$0, JsonObject $$1, js.a $$2) {
+      dat<?> $$3 = (dat<?>)dat.h.parse($$2.a(JsonOps.INSTANCE), $$1).getOrThrow(JsonParseException::new);
+      return new dav<>($$0, $$3);
+   }
+
+   public void a(Iterable<dav<?>> $$0) {
+      this.e = false;
+      Builder<daz<?>, dav<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<all, dav<?>> $$2 = ImmutableMap.builder();
+
+      for (dav<?> $$3 : $$0) {
+         daz<?> $$4 = $$3.b().e();
+         $$1.put($$4, $$3);
+         $$2.put($$3.a(), $$3);
       }
 
-      private static dax a(wt $$0) {
-         String $$1 = $$0.p();
-         dad $$2 = $$0.b(dad.class);
-         day $$3 = day.c.decode($$0);
-         cwb $$4 = cwb.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new dax($$1, $$2, $$3, $$4, $$5);
-      }
+      this.b = $$1.build();
+      this.c = $$2.build();
+      this.d = null;
+   }
 
-      private static void a(wt $$0, dax $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         day.c.encode($$0, $$1.a);
-         cwb.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   public static <I extends daw, T extends dat<I>> dax.a<I, T> b(final daz<T> $$0) {
+      return new dax.a<I, T>() {
+         @Nullable
+         private all b;
+
+         @Override
+         public Optional<dav<T>> a(I $$0x, dff $$1) {
+            dax $$2 = $$1.r();
+            Optional<dav<T>> $$3 = $$2.a($$0, $$0, $$1, this.b);
+            if ($$3.isPresent()) {
+               dav<T> $$4 = $$3.get();
+               this.b = $$4.a();
+               return Optional.of($$4);
+            } else {
+               return Optional.empty();
+            }
+         }
+      };
+   }
+
+   public interface a<I extends daw, T extends dat<I>> {
+      Optional<dav<T>> a(I var1, dff var2);
    }
 }

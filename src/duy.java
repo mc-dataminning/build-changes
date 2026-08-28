@@ -1,150 +1,62 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public final class duy {
-   private static final Map<String, duy> k = new Object2ObjectArrayMap();
-   public static final Codec<duy> a = Codec.stringResolver($$0 -> $$0.l, k::get);
-   public static final duy b = new duy(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(se.g), Optional.of(se.n), Optional.of(se.C), Optional.of(se.I)
-   );
-   public static final duy c = new duy(
-      "spruce", 0.5F, Optional.of(se.q), Optional.of(se.r), Optional.of(se.k), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final duy d = new duy(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(se.x), Optional.of(se.y), Optional.empty(), Optional.empty()
-   );
-   public static final duy e = new duy("azalea", Optional.empty(), Optional.of(se.w), Optional.empty());
-   public static final duy f = new duy("birch", Optional.empty(), Optional.of(se.i), Optional.of(se.F));
-   public static final duy g = new duy("jungle", Optional.of(se.p), Optional.of(se.o), Optional.empty());
-   public static final duy h = new duy("acacia", Optional.empty(), Optional.of(se.j), Optional.empty());
-   public static final duy i = new duy("cherry", Optional.empty(), Optional.of(se.z), Optional.of(se.K));
-   public static final duy j = new duy("dark_oak", Optional.of(se.h), Optional.empty(), Optional.empty());
-   private final String l;
-   private final float m;
-   private final Optional<alh<edx<?, ?>>> n;
-   private final Optional<alh<edx<?, ?>>> o;
-   private final Optional<alh<edx<?, ?>>> p;
-   private final Optional<alh<edx<?, ?>>> q;
-   private final Optional<alh<edx<?, ?>>> r;
-   private final Optional<alh<edx<?, ?>>> s;
+public record duy(alk<eul> d, double e, double f, cwf g, Optional<alk<eul>> h, dup i, dup.a j) {
+   static final String a = "config";
+   static duy b = new duy();
+   static Codec<duy> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alk.a(ma.bd).lenientOptionalFieldOf("loot_table", b.b()).forGetter(duy::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(duy::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(duy::d),
+                  cwf.a("key_item").forGetter(duy::e),
+                  alk.a(ma.bd).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(duy::f)
+               )
+               .apply($$0, duy::new)
+      )
+      .validate(duy::h);
 
-   public duy(String $$0, Optional<alh<edx<?, ?>>> $$1, Optional<alh<edx<?, ?>>> $$2, Optional<alh<edx<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   private duy() {
+      this(euc.R, 4.0, 4.5, new cwf(cwj.yV), Optional.empty(), dup.b, dup.a.a);
    }
 
-   public duy(
-      String $$0,
-      float $$1,
-      Optional<alh<edx<?, ?>>> $$2,
-      Optional<alh<edx<?, ?>>> $$3,
-      Optional<alh<edx<?, ?>>> $$4,
-      Optional<alh<edx<?, ?>>> $$5,
-      Optional<alh<edx<?, ?>>> $$6,
-      Optional<alh<edx<?, ?>>> $$7
-   ) {
-      this.l = $$0;
-      this.m = $$1;
-      this.n = $$2;
-      this.o = $$3;
-      this.p = $$4;
-      this.q = $$5;
-      this.r = $$6;
-      this.s = $$7;
-      k.put($$0, this);
+   public duy(alk<eul> $$0, double $$1, double $$2, cwf $$3, Optional<alk<eul>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   @Nullable
-   private alh<edx<?, ?>> a(azs $$0, boolean $$1) {
-      if ($$0.i() < this.m) {
-         if ($$1 && this.s.isPresent()) {
-            return this.s.get();
-         }
-
-         if (this.q.isPresent()) {
-            return this.q.get();
-         }
-      }
-
-      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
+   public dup a() {
+      return this.i;
    }
 
-   @Nullable
-   private alh<edx<?, ?>> a(azs $$0) {
-      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
+   private DataResult<duy> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
    }
 
-   public boolean a(arn $$0, dxg $$1, jh $$2, dvj $$3, azs $$4) {
-      alh<edx<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         jq<edx<?, ?>> $$6 = $$0.H_().e(lz.aJ).a($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     edx<?, ?> $$9 = $$6.a();
-                     dvj $$10 = dig.a.m();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      alh<edx<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         jq<edx<?, ?>> $$12 = $$0.H_().e(lz.aJ).a($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            edx<?, ?> $$13 = $$12.a();
-            dvj $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
-
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
-            }
-         }
-      }
+   public alk<eul> b() {
+      return this.d;
    }
 
-   private static boolean a(dvj $$0, deg $$1, jh $$2, int $$3, int $$4) {
-      die $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
+   public double c() {
+      return this.e;
    }
 
-   private boolean a(dfc $$0, jh $$1) {
-      for (jh $$2 : jh.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
-         if ($$0.a_($$2).a(axa.V)) {
-            return true;
-         }
-      }
+   public double d() {
+      return this.f;
+   }
 
-      return false;
+   public cwf e() {
+      return this.g;
+   }
+
+   public Optional<alk<eul>> f() {
+      return this.h;
+   }
+
+   public dup.a g() {
+      return this.j;
    }
 }

@@ -1,50 +1,107 @@
-import java.util.List;
+public abstract class fsf<T extends cru> extends fse<T> implements fvr {
+   private final fvl<?> G;
+   private boolean H;
+   private final all I;
+   private final all J;
+   private final all K;
 
-public class fsf {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<ali> e = List.of();
-   private int f;
-   private int g;
-
-   public fsf(int $$0) {
-      this.d = $$0;
+   public fsf(T $$0, coq $$1, xl $$2, xl $$3, all $$4, all $$5, all $$6) {
+      super($$0, $$1, $$2);
+      this.G = new fvi($$0, $$3);
+      this.I = $$4;
+      this.J = $$5;
+      this.K = $$6;
    }
 
-   public void a(List<ali> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
+   @Override
+   public void aS_() {
+      super.aS_();
+      this.H = this.n < 379;
+      this.G.a(this.n, this.o, this.m, this.H);
+      this.C = this.G.a(this.n, this.s);
+      this.c(new fmi(this.C + 20, this.o / 2 - 49, 20, 18, fvl.a, $$0 -> {
+         this.G.c();
+         this.C = this.G.a(this.n, this.s);
+         $$0.c(this.C + 20, this.o / 2 - 49);
+      }));
+      this.v = (this.s - this.p.a(this.l)) / 2;
+   }
+
+   @Override
+   public void D() {
+      super.D();
+      this.G.e();
+   }
+
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      if (this.G.d() && this.H) {
+         this.b($$0, $$1, $$2, $$3);
+         this.G.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.G.a($$0, $$1, $$2, $$3);
+         this.G.a($$0, this.C, this.D, true);
       }
 
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
+      this.a($$0, $$1, $$2);
+      this.G.a($$0, $$1, $$2, this.B);
+   }
+
+   @Override
+   protected void a(flj $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(gjh::B, this.I, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if (this.z.o()) {
+         int $$6 = 14;
+         int $$7 = azn.f(this.z.n() * 13.0F) + 1;
+         $$0.a(gjh::B, this.J, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = azn.f(this.z.m() * 24.0F);
+      $$0.a(gjh::B, this.K, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.G.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
       }
    }
 
-   public void a(cro $$0, fku $$1, float $$2, int $$3, int $$4) {
-      ctl $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
-
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
-      }
+   @Override
+   protected void a(ctp $$0, int $$1, int $$2, csd $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.G.b($$0);
    }
 
-   private void a(ctl $$0, ali $$1, float $$2, fku $$3, int $$4, int $$5) {
-      gyd $$6 = fji.Q().a(gyc.d).apply($$1);
-      $$3.a(gir::B, $$6, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axv.a($$2));
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
+      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public void F() {
+      this.G.f();
+   }
+
+   @Override
+   public fvl G() {
+      return this.G;
    }
 }

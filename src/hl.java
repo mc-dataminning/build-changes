@@ -9,48 +9,48 @@ import javax.annotation.Nullable;
 
 public class hl {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<ezn, List<? extends bue>> b = ($$0, $$1) -> {
+   public static final BiConsumer<ezr, List<? extends bui>> b = ($$0, $$1) -> {
    };
-   private static final dzu<bue, ?> c = new dzu<bue, bue>() {
-      public bue a(bue $$0) {
+   private static final dzy<bui, ?> c = new dzy<bui, bui>() {
+      public bui a(bui $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends bue> a() {
-         return bue.class;
+      public Class<? extends bui> a() {
+         return bui.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final List<Predicate<bue>> g;
+   private final List<Predicate<bui>> g;
    private final dj.c h;
-   private final Function<ezn, ezn> i;
+   private final Function<ezr, ezr> i;
    @Nullable
-   private final ezi j;
-   private final BiConsumer<ezn, List<? extends bue>> k;
+   private final ezm j;
+   private final BiConsumer<ezr, List<? extends bui>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final dzu<bue, ?> o;
+   private final dzy<bui, ?> o;
    private final boolean p;
 
    public hl(
       int $$0,
       boolean $$1,
       boolean $$2,
-      List<Predicate<bue>> $$3,
+      List<Predicate<bui>> $$3,
       dj.c $$4,
-      Function<ezn, ezn> $$5,
-      @Nullable ezi $$6,
-      BiConsumer<ezn, List<? extends bue>> $$7,
+      Function<ezr, ezr> $$5,
+      @Nullable ezm $$6,
+      BiConsumer<ezr, List<? extends bui>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bul<?> $$11,
+      @Nullable bup<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -64,7 +64,7 @@ public class hl {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (dzu<bue, ?>)($$11 == null ? c : $$11);
+      this.o = (dzy<bui, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -94,9 +94,9 @@ public class hl {
       }
    }
 
-   public bue a(ew $$0) throws CommandSyntaxException {
+   public bui a(ew $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends bue> $$1 = this.b($$0);
+      List<? extends bui> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw fj.d.create();
       } else if ($$1.size() > 1) {
@@ -106,16 +106,16 @@ public class hl {
       }
    }
 
-   public List<? extends bue> b(ew $$0) throws CommandSyntaxException {
+   public List<? extends bui> b(ew $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         aro $$1 = $$0.l().ag().a(this.m);
+         arr $$1 = $$0.l().ag().a(this.m);
          return $$1 == null ? List.of() : List.of($$1);
       } else if (this.n != null) {
-         for (arn $$2 : $$0.l().L()) {
-            bue $$3 = $$2.a(this.n);
+         for (arq $$2 : $$0.l().L()) {
+            bui $$3 = $$2.a(this.n);
             if ($$3 != null) {
                if ($$3.ar().a($$0.w())) {
                   return List.of($$3);
@@ -126,18 +126,18 @@ public class hl {
 
          return List.of();
       } else {
-         ezn $$4 = this.i.apply($$0.d());
-         ezi $$5 = this.a($$4);
+         ezr $$4 = this.i.apply($$0.d());
+         ezm $$5 = this.a($$4);
          if (this.l) {
-            Predicate<bue> $$6 = this.a($$4, $$5, null);
+            Predicate<bui> $$6 = this.a($$4, $$5, null);
             return $$0.f() != null && $$6.test($$0.f()) ? List.of($$0.f()) : List.of();
          } else {
-            Predicate<bue> $$7 = this.a($$4, $$5, $$0.w());
-            List<bue> $$8 = new ObjectArrayList();
+            Predicate<bui> $$7 = this.a($$4, $$5, $$0.w());
+            List<bui> $$8 = new ObjectArrayList();
             if (this.d()) {
                this.a($$8, $$0.e(), $$5, $$7);
             } else {
-               for (arn $$9 : $$0.l().L()) {
+               for (arq $$9 : $$0.l().L()) {
                   this.a($$8, $$9, $$5, $$7);
                }
             }
@@ -147,7 +147,7 @@ public class hl {
       }
    }
 
-   private void a(List<bue> $$0, arn $$1, @Nullable ezi $$2, Predicate<bue> $$3) {
+   private void a(List<bui> $$0, arq $$1, @Nullable ezm $$2, Predicate<bui> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if ($$2 != null) {
@@ -162,9 +162,9 @@ public class hl {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public aro c(ew $$0) throws CommandSyntaxException {
+   public arr c(ew $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<aro> $$1 = this.d($$0);
+      List<arr> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw fj.e.create();
       } else {
@@ -172,33 +172,33 @@ public class hl {
       }
    }
 
-   public List<aro> d(ew $$0) throws CommandSyntaxException {
+   public List<arr> d(ew $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         aro $$1 = $$0.l().ag().a(this.m);
+         arr $$1 = $$0.l().ag().a(this.m);
          return $$1 == null ? List.of() : List.of($$1);
       } else if (this.n != null) {
-         aro $$2 = $$0.l().ag().a(this.n);
+         arr $$2 = $$0.l().ag().a(this.n);
          return $$2 == null ? List.of() : List.of($$2);
       } else {
-         ezn $$3 = this.i.apply($$0.d());
-         ezi $$4 = this.a($$3);
-         Predicate<bue> $$5 = this.a($$3, $$4, null);
+         ezr $$3 = this.i.apply($$0.d());
+         ezm $$4 = this.a($$3);
+         Predicate<bui> $$5 = this.a($$3, $$4, null);
          if (this.l) {
-            if ($$0.f() instanceof aro $$6 && $$5.test($$6)) {
+            if ($$0.f() instanceof arr $$6 && $$5.test($$6)) {
                return List.of($$6);
             }
 
             return List.of();
          } else {
             int $$7 = this.f();
-            List<aro> $$8;
+            List<arr> $$8;
             if (this.d()) {
                $$8 = $$0.e().a($$5, $$7);
             } else {
                $$8 = new ObjectArrayList();
 
-               for (aro $$10 : $$0.l().ag().t()) {
+               for (arr $$10 : $$0.l().ag().t()) {
                   if ($$5.test($$10)) {
                      $$8.add($$10);
                      if ($$8.size() >= $$7) {
@@ -214,27 +214,27 @@ public class hl {
    }
 
    @Nullable
-   private ezi a(ezn $$0) {
+   private ezm a(ezr $$0) {
       return this.j != null ? this.j.c($$0) : null;
    }
 
-   private Predicate<bue> a(ezn $$0, @Nullable ezi $$1, @Nullable crf $$2) {
+   private Predicate<bui> a(ezr $$0, @Nullable ezm $$1, @Nullable crj $$2) {
       boolean $$3 = $$2 != null;
       boolean $$4 = $$1 != null;
       boolean $$5 = !this.h.c();
       int $$6 = ($$3 ? 1 : 0) + ($$4 ? 1 : 0) + ($$5 ? 1 : 0);
-      List<Predicate<bue>> $$7;
+      List<Predicate<bui>> $$7;
       if ($$6 == 0) {
          $$7 = this.g;
       } else {
-         List<Predicate<bue>> $$8 = new ObjectArrayList(this.g.size() + $$6);
+         List<Predicate<bui>> $$8 = new ObjectArrayList(this.g.size() + $$6);
          $$8.addAll(this.g);
          if ($$3) {
             $$8.add($$1x -> $$1x.ar().a($$2));
          }
 
          if ($$4) {
-            $$8.add($$1x -> $$1.c($$1x.cS()));
+            $$8.add($$1x -> $$1.c($$1x.cT()));
          }
 
          if ($$5) {
@@ -247,7 +247,7 @@ public class hl {
       return ae.a($$7);
    }
 
-   private <T extends bue> List<T> a(ezn $$0, List<T> $$1) {
+   private <T extends bui> List<T> a(ezr $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -255,7 +255,7 @@ public class hl {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static xi a(List<? extends bue> $$0) {
-      return xl.b($$0, bue::S_);
+   public static xl a(List<? extends bui> $$0) {
+      return xo.b($$0, bui::S_);
    }
 }

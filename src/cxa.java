@@ -1,60 +1,57 @@
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class cxa extends cuh {
-   public cxa(die $$0, cvx.a $$1) {
-      super($$0, $$1);
+public interface cxa {
+   cpk a(dff var1, ka var2, cwf var3, jm var4);
+
+   default cxa.a b() {
+      return cxa.a.a;
    }
 
-   @Nullable
-   @Override
-   public czs b(czs $$0) {
-      jh $$1 = $$0.a();
-      dfb $$2 = $$0.q();
-      dvj $$3 = $$2.a_($$1);
-      die $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dot.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         jm $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jm.b ? $$0.g() : jm.b;
+   default void a(cpk $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+      $$0.c($$1, $$2, $$3, $$4, $$5);
+   }
+
+   public static record a(cxa.b b, float c, float d, OptionalInt e) {
+      public static final cxa.a a = a().a();
+
+      public static cxa.a.a a() {
+         return new cxa.a.a();
+      }
+
+      public static class a {
+         private cxa.b a = ($$0, $$1) -> dko.a($$0, 0.7, new ezr(0.0, 0.1, 0.0));
+         private float b = 6.0F;
+         private float c = 1.1F;
+         private OptionalInt d = OptionalInt.empty();
+
+         public cxa.a.a a(cxa.b $$0) {
+            this.a = $$0;
+            return this;
          }
 
-         int $$7 = 0;
-         jh.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.C && !$$2.k($$8)) {
-               com $$9 = $$0.o();
-               int $$10 = $$2.al();
-               if ($$9 instanceof aro && $$8.v() > $$10) {
-                  ((aro)$$9).b(xi.a("build.tooHigh", $$10).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return czs.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
+         public cxa.a.a a(float $$0) {
+            this.b = $$0;
+            return this;
          }
 
-         return null;
+         public cxa.a.a b(float $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public cxa.a.a a(int $$0) {
+            this.d = OptionalInt.of($$0);
+            return this;
+         }
+
+         public cxa.a a() {
+            return new cxa.a(this.a, this.b, this.c, this.d);
+         }
       }
    }
 
-   @Override
-   protected boolean c() {
-      return false;
+   @FunctionalInterface
+   public interface b {
+      ka getDispensePosition(ky var1, jm var2);
    }
 }

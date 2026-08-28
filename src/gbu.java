@@ -1,22 +1,20 @@
-import com.google.common.collect.ImmutableList;
-import java.util.function.UnaryOperator;
-
-public class gbu {
-   private final gbw a;
-
-   public gbu() {
-      this(new gbw(ImmutableList.of(), gbo.a));
+public class gbu extends fxs<gxu> {
+   public gbu(gcc $$0) {
+      super($$0);
    }
 
-   private gbu(gbw $$0) {
-      this.a = $$0;
+   public void a(gxu $$0) {
+      super.a($$0);
+      fxv.a(this.s, this.r, $$0.a, $$0.C, $$0.p);
    }
 
-   public gbw a() {
-      return this.a;
-   }
-
-   public gbu a(UnaryOperator<gbo> $$0) {
-      return new gbu(this.a.a($$0));
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

@@ -1,32 +1,10 @@
-public class ftq extends ftu {
-   private static final xi b = xi.c("multiplayerWarning.header").a(n.r);
-   private static final xi c = xi.c("multiplayerWarning.message");
-   private static final xi d = xi.c("multiplayerWarning.check");
-   private static final xi s = b.f().f("\n").b(c);
-   private final fra u;
+public class ftq extends fsf<ctt> {
+   private static final all G = all.b("container/smoker/lit_progress");
+   private static final all H = all.b("container/smoker/burn_progress");
+   private static final all I = all.b("textures/gui/container/smoker.png");
+   private static final xl J = xl.c("gui.recipebook.toggleRecipes.smokable");
 
-   public ftq(fra $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
-   }
-
-   @Override
-   protected fox m() {
-      fpa $$0 = fpa.e().a(8);
-      $$0.a(flh.a(xh.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.ay();
-         }
-
-         this.m.a(new ftp(this.u));
-      }).a());
-      $$0.a(flh.a(xh.k, $$0x -> this.d()).a());
-      return $$0;
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.u);
+   public ftq(ctt $$0, coq $$1, xl $$2) {
+      super($$0, $$1, $$2, J, I, G, H);
    }
 }

@@ -1,177 +1,231 @@
-import com.google.common.collect.Queues;
+import com.mojang.datafixers.util.Pair;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public class fns {
-   private static final int a = 5;
-   private static final int b = -1;
-   final fji c;
-   private final List<fns.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fnr> f = Queues.newArrayDeque();
+public interface fns extends fnt {
+   List<? extends fnt> aI_();
 
-   public fns(fji $$0) {
-      this.c = $$0;
+   default Optional<fnt> b_(double $$0, double $$1) {
+      for (fnt $$2 : this.aI_()) {
+         if ($$2.c($$0, $$1)) {
+            return Optional.of($$2);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   public void a() {
-      this.d.removeIf($$0 -> {
-         $$0.c();
-         if ($$0.b()) {
-            this.e.clear($$0.d, $$0.d + $$0.e);
+   @Override
+   default boolean a(double $$0, double $$1, int $$2) {
+      for (fnt $$3 : this.aI_()) {
+         if ($$3.a($$0, $$1, $$2)) {
+            this.a($$3);
+            if ($$2 == 0) {
+               this.b_(true);
+            }
+
             return true;
-         } else {
-            return false;
-         }
-      });
-      if (!this.f.isEmpty() && this.e() > 0) {
-         this.f.removeIf($$0 -> {
-            int $$1 = $$0.g();
-            int $$2 = this.a($$1);
-            if ($$2 == -1) {
-               return false;
-            } else {
-               this.d.add(new fns.a<>($$0, $$2, $$1));
-               this.e.set($$2, $$2 + $$1);
-               return true;
-            }
-         });
-      }
-   }
-
-   public void a(fku $$0) {
-      if (!this.c.n.X) {
-         int $$1 = $$0.a();
-
-         for (fns.a<?> $$2 : this.d) {
-            $$2.a($$0, $$1);
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      if (this.e() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
          }
       }
 
-      return -1;
+      return false;
    }
 
-   private int e() {
-      return 5 - this.e.cardinality();
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
+      if ($$2 == 0 && this.aK_()) {
+         this.b_(false);
+         if (this.aL_() != null) {
+            return this.aL_().b($$0, $$1, $$2);
+         }
+      }
+
+      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
+   }
+
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.aL_() != null && this.aK_() && $$2 == 0 ? this.aL_().a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   boolean aK_();
+
+   void b_(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   }
+
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.aL_() != null && this.aL_().a($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean c(int $$0, int $$1, int $$2) {
+      return this.aL_() != null && this.aL_().c($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.aL_() != null && this.aL_().a($$0, $$1);
    }
 
    @Nullable
-   public <T extends fnr> T a(Class<? extends T> $$0, Object $$1) {
-      for (fns.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().f().equals($$1)) {
-            return (T)$$2.a();
+   fnt aL_();
+
+   void a(@Nullable fnt var1);
+
+   @Override
+   default void a(boolean $$0) {
+   }
+
+   @Override
+   default boolean aM_() {
+      return this.aL_() != null;
+   }
+
+   @Nullable
+   @Override
+   default flg aN_() {
+      fnt $$0 = this.aL_();
+      return $$0 != null ? flg.a(this, $$0.aN_()) : null;
+   }
+
+   @Nullable
+   @Override
+   default flg a(fqa $$0) {
+      fnt $$1 = this.aL_();
+      if ($$1 != null) {
+         flg $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return flg.a(this, $$2);
          }
       }
 
-      for (fnr $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.f().equals($$1)) {
-            return (T)$$3;
+      if ($$0 instanceof fqa.c $$3) {
+         return this.a($$3);
+      } else {
+         return $$0 instanceof fqa.a $$4 ? this.a($$4) : null;
+      }
+   }
+
+   @Nullable
+   private flg a(fqa.c $$0) {
+      boolean $$1 = $$0.b();
+      fnt $$2 = this.aL_();
+      List<? extends fnt> $$3 = new ArrayList<>(this.aI_());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.I()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
+      }
+
+      ListIterator<? extends fnt> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends fnt> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         fnt $$11 = $$10.get();
+         flg $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return flg.a(this, $$12);
          }
       }
 
       return null;
    }
 
-   public void b() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(fnr $$0) {
-      this.f.add($$0);
-   }
-
-   public fji c() {
-      return this.c;
-   }
-
-   public double d() {
-      return this.c.n.C().c();
-   }
-
-   class a<T extends fnr> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fnr.a h = fnr.a.a;
-      private long i;
-      private float j;
-      private boolean k;
-
-      a(final T $$0, final int $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   @Nullable
+   private flg a(fqa.a $$0) {
+      fnt $$1 = this.aL_();
+      if ($$1 == null) {
+         fqc $$2 = $$0.b();
+         fqe $$3 = this.H().c($$2.b());
+         return flg.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         fqe $$4 = $$1.H();
+         return flg.a(this, this.a($$4, $$0.b(), $$1, $$0));
       }
+   }
 
-      public T a() {
-         return this.c;
-      }
+   @Nullable
+   private flg a(fqe $$0, fqc $$1, @Nullable fnt $$2, fqa $$3) {
+      fqb $$4 = $$1.a();
+      fqb $$5 = $$4.a();
+      fqc $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<fnt> $$8 = new ArrayList<>();
 
-      public boolean b() {
-         return this.k;
-      }
-
-      private void a(long $$0) {
-         float $$1 = azk.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         if (this.h == fnr.a.b) {
-            this.j = 1.0F - $$1;
-         } else {
-            this.j = $$1;
+      for (fnt $$9 : this.aI_()) {
+         if ($$9 != $$2) {
+            fqe $$10 = $$9.H();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
+            }
          }
       }
 
-      public void c() {
-         long $$0 = ae.c();
-         if (this.f == -1L) {
-            this.f = $$0;
-            this.h.a(fns.this.c.ak());
-         }
+      Comparator<fnt> $$12 = Comparator.comparing($$1x -> $$1x.H().b($$1.b()), $$1.d());
+      Comparator<fnt> $$13 = Comparator.comparing($$1x -> $$1x.H().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
 
-         if (this.h == fnr.a.a && $$0 - this.f <= 600L) {
-            this.g = $$0;
+      for (fnt $$14 : $$8) {
+         flg $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
          }
-
-         this.i = $$0 - this.g;
-         this.a($$0);
-         this.c.a(fns.this, this.i);
-         fnr.a $$1 = this.c.a();
-         if ($$1 != this.h) {
-            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
-            this.h = $$1;
-            this.h.a(fns.this.c.ak());
-         }
-
-         this.k = this.h == fnr.a.b && $$0 - this.f > 600L;
       }
 
-      public void a(fku $$0, int $$1) {
-         $$0.c().a();
-         $$0.c().a((float)$$1 - (float)this.c.b() * this.j, (float)(this.d * 32), 800.0F);
-         this.c.a($$0, fns.this.c.h, this.i);
-         $$0.c().b();
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private flg b(fqe $$0, fqc $$1, @Nullable fnt $$2, fqa $$3) {
+      fqb $$4 = $$1.a();
+      fqb $$5 = $$4.a();
+      List<Pair<fnt, Long>> $$6 = new ArrayList<>();
+      fqd $$7 = fqd.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (fnt $$8 : this.aI_()) {
+         if ($$8 != $$2) {
+            fqe $$9 = $$8.H();
+            fqd $$10 = fqd.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
+            }
+         }
       }
+
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+
+      for (Pair<fnt, Long> $$12 : $$6) {
+         flg $$13 = ((fnt)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
+         }
+      }
+
+      return null;
    }
 }

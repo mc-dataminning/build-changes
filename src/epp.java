@@ -1,22 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class epp extends epw {
-   public final axq<die> a;
-   public static final MapCodec<epp> b = axq.b(lz.f).xmap(epp::new, $$0 -> $$0.a).fieldOf("value");
+public class epp extends epq {
+   public static final MapCodec<epp> a = MapCodec.unit(() -> epp.b);
+   public static final epp b = new epp();
 
-   public epp(axq<die> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public epz.c a(dfe $$0, jh $$1, jh $$2, epz.c $$3, epz.c $$4, epv $$5) {
-      return eel.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   private epp() {
    }
 
    @Override
-   protected epy<?> a() {
-      return epy.n;
+   public boolean a(jh $$0, jh $$1, jh $$2, azv $$3) {
+      return true;
+   }
+
+   @Override
+   protected epr<?> a() {
+      return epr.a;
    }
 }

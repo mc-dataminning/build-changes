@@ -1,83 +1,68 @@
-public class fxs extends fyk<gua> {
-   private static final int a = 28;
-   private static final int b = 32;
-   private static final int c = 6;
-   private static final int d = 20;
-   private static final int e = 4;
-   private static final String f = "water_patch";
-   private static final String g = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final gbm l;
-   private final gbm m;
+public class fxs<S extends gvt> extends fzn<S> {
+   private static final String x = "left_sleeve";
+   private static final String y = "right_sleeve";
+   private static final String z = "left_pants";
+   private static final String A = "right_pants";
+   public final gcc a = this.s.b("left_sleeve");
+   public final gcc b = this.r.b("right_sleeve");
+   public final gcc c = this.u.b("left_pants");
+   public final gcc d = this.t.b("right_pants");
+   public final gcc e = this.q.b("jacket");
+   public final gcc f = this.o.b("right_ear");
+   public final gcc g = this.o.b("left_ear");
 
-   public fxs(gbm $$0) {
-      super($$0);
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
+   public fxs(gcc $$0) {
+      super($$0, gjh::i);
    }
 
-   private static void a(gbw $$0) {
-      int $$1 = 16;
-      int $$2 = 14;
-      int $$3 = 10;
-      $$0.a("bottom", gbr.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gbo.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", gbr.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gbo.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", gbr.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gbo.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", gbr.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gbo.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", gbr.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gbo.a(0.0F, 4.0F, 9.0F));
-      int $$4 = 20;
-      int $$5 = 7;
-      int $$6 = 6;
-      float $$7 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gbr.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gbo.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+   public static gck a(gcg $$0) {
+      gck $$1 = gaf.a($$0, false);
+      gcm $$2 = $$1.a();
+      $$2.a("body", gch.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gce.a);
+      gcm $$3 = a($$0, $$1);
+      $$3.a("hat");
+      return $$1;
+   }
+
+   public static gcm a(gcg $$0, gck $$1) {
+      gcm $$2 = $$1.a();
+      gcm $$3 = $$2.a(
+         "head",
+         gch.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         gce.a
       );
-      $$0.a(
-         "right_paddle",
-         gbr.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gbo.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+      $$3.a("left_ear", gch.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gce.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", gch.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gce.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+      return $$3;
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      a($$1);
-      return gbs.a($$0, 128, 64);
-   }
-
-   public static gbs b() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gbr.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gbo.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gbr.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gbo.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gbr.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gbo.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gbs.a($$0, 128, 128);
-   }
-
-   public static gbs c() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("water_patch", gbr.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gbo.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return gbs.a($$0, 0, 0);
-   }
-
-   public void a(gua $$0) {
+   @Override
+   public void a(S $$0) {
       super.a($$0);
-      a($$0.h, 0, this.l);
-      a($$0.i, 1, this.m);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      float $$3 = (float) (Math.PI / 6);
+      float $$4 = $$0.p * 0.1F + $$1 * 0.5F;
+      float $$5 = 0.08F + $$2 * 0.4F;
+      this.g.g = (float) (-Math.PI / 6) - azn.b($$4 * 1.2F) * $$5;
+      this.f.g = (float) (Math.PI / 6) + azn.b($$4) * $$5;
    }
 
-   private static void a(float $$0, int $$1, gbm $$2) {
-      $$2.e = azk.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (azk.a(-$$0) + 1.0F) / 2.0F);
-      $$2.f = azk.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (azk.a(-$$0 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

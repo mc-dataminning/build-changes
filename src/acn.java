@@ -1,31 +1,45 @@
-public class acn implements zp<ace> {
-   public static final zg<wt, acn> a = zg.a(jh.b, acn::e, ze.a(die.q), acn::b, acn::new);
-   private final jh b;
-   private final dvj c;
+public class acn implements zs<ach> {
+   public static final zj<wi, acn> a = zs.a(acn::a, acn::new);
+   private final int b;
+   private final jh c;
+   private final int d;
 
-   public acn(jh $$0, dvj $$1) {
+   public acn(int $$0, jh $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public acn(deg $$0, jh $$1) {
-      this($$1, $$0.a_($$1));
+   private acn(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
+   }
+
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.l(this.d);
    }
 
    @Override
-   public zr<acn> a() {
-      return agt.k;
+   public zu<acn> a() {
+      return agw.h;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public dvj b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
    public jh e() {
-      return this.b;
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

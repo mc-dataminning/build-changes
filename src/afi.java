@@ -1,37 +1,37 @@
-public class afi implements zp<ace> {
-   public static final zg<wf, afi> a = zp.a(afi::a, afi::new);
-   private final jh b;
-   private final float c;
+public class afi implements zs<ach> {
+   public static final zj<wi, afi> a = zs.a(afi::a, afi::new);
+   private final int b;
+   private final int c;
 
-   public afi(jh $$0, float $$1) {
+   public afi(int $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private afi(wf $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private afi(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zr<afi> a() {
-      return agt.aA;
+   public zu<afi> a() {
+      return agw.ay;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
+   public int b() {
       return this.b;
    }
 
-   public float e() {
+   public int e() {
       return this.c;
    }
 }

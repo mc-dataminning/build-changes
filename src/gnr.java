@@ -1,27 +1,23 @@
-public class gnr extends gnf<cii, gud, fxw> {
-   private static final ali a = ali.b("textures/entity/camel/camel.png");
+public abstract class gnr<T extends ciz, S extends gve, M extends fza<? super S>> extends gnv<T, S, M> {
+   private final float a;
 
-   public gnr(gok.a $$0) {
-      super($$0, new fxw($$0.a(gbl.H)), new fxw($$0.a(gbl.I)), 0.7F);
+   public gnr(gpa.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$2, 0.75F);
+      this.a = $$3;
    }
 
-   public ali a(gud $$0) {
-      return a;
+   protected void a(S $$0, fek $$1) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1);
    }
 
-   public gud a() {
-      return new gud();
-   }
-
-   public void a(cii $$0, gud $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.cb();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f.a($$0.cg);
-      $$1.g.a($$0.ch);
-      $$1.h.a($$0.ci);
+      $$1.b = $$0.i();
+      $$1.c = $$0.cc();
+      $$1.e = $$0.J($$2);
+      $$1.f = $$0.K($$2);
+      $$1.g = $$0.L($$2);
+      $$1.d = $$0.cq > 0;
    }
 }

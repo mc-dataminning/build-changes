@@ -1,19 +1,30 @@
 import io.netty.buffer.ByteBuf;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class wt extends wf {
-   private final ke d;
+public interface wt<T extends wr> {
+   wg a();
 
-   public wt(ByteBuf $$0, ke $$1) {
-      super($$0);
-      this.d = $$1;
-   }
+   zt b();
 
-   public ke H() {
-      return this.d;
-   }
+   zj<ByteBuf, zs<? super T>> c();
 
-   public static Function<ByteBuf, wt> a(ke $$0) {
-      return $$1 -> new wt($$1, $$0);
+   @Nullable
+   zr d();
+
+   public interface a<T extends wr, B extends ByteBuf> {
+      wt<T> a(Function<ByteBuf, B> var1);
+
+      wg a();
+
+      zt b();
+
+      @bau
+      void a(wt.a.a var1);
+
+      @FunctionalInterface
+      public interface a {
+         void accept(zu<?> var1, int var2);
+      }
    }
 }

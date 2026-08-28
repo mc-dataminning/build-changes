@@ -1,59 +1,37 @@
-import java.util.concurrent.locks.LockSupport;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public class hdd extends bqs<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class hdd extends avr {
+   @Nullable
+   private un h;
 
-   public hdd() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
+   public hdd(hde $$0, jx<alu> $$1, etx $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
    @Override
-   public Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread ay() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.b(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void A() {
-      LockSupport.park("waiting for tasks");
-   }
-
-   public void a() {
-      this.b = true;
-      this.a.interrupt();
-
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+   protected void b(arr $$0) {
+      if (this.b().a($$0.gk())) {
+         this.h = $$0.f(new un());
       }
 
-      this.bz();
-      this.b = false;
-      this.a = this.b();
+      super.b($$0);
+   }
+
+   @Override
+   public xl a(SocketAddress $$0, GameProfile $$1) {
+      return (xl)(this.b().a($$1) && this.a($$1.getName()) != null ? xl.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
+
+   public hde b() {
+      return (hde)super.c();
+   }
+
+   @Nullable
+   @Override
+   public un r() {
+      return this.h;
    }
 }

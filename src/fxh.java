@@ -1,3 +1,9 @@
 public interface fxh {
-   void a(buu var1, feb var2);
+   void a(fxf var1);
+
+   xl aT_();
+
+   void a(flj var1, float var2, float var3);
+
+   boolean aU_();
 }

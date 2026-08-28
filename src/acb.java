@@ -1,3 +1,3 @@
-public interface acb extends agw {
+public interface acb extends wc {
    void a(acc var1);
 }

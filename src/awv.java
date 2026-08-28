@@ -1,98 +1,51 @@
-public class awv {
-   public static final awu<die> a = a("mined", ly.e);
-   public static final awu<cvx> b = a("crafted", ly.g);
-   public static final awu<cvx> c = a("used", ly.g);
-   public static final awu<cvx> d = a("broken", ly.g);
-   public static final awu<cvx> e = a("picked_up", ly.g);
-   public static final awu<cvx> f = a("dropped", ly.g);
-   public static final awu<bul<?>> g = a("killed", ly.f);
-   public static final awu<bul<?>> h = a("killed_by", ly.f);
-   public static final awu<ali> i = a("custom", ly.k);
-   public static final ali j = a("leave_game", awt.b);
-   public static final ali k = a("play_time", awt.e);
-   public static final ali l = a("total_world_time", awt.e);
-   public static final ali m = a("time_since_death", awt.e);
-   public static final ali n = a("time_since_rest", awt.e);
-   public static final ali o = a("sneak_time", awt.e);
-   public static final ali p = a("walk_one_cm", awt.d);
-   public static final ali q = a("crouch_one_cm", awt.d);
-   public static final ali r = a("sprint_one_cm", awt.d);
-   public static final ali s = a("walk_on_water_one_cm", awt.d);
-   public static final ali t = a("fall_one_cm", awt.d);
-   public static final ali u = a("climb_one_cm", awt.d);
-   public static final ali v = a("fly_one_cm", awt.d);
-   public static final ali w = a("walk_under_water_one_cm", awt.d);
-   public static final ali x = a("minecart_one_cm", awt.d);
-   public static final ali y = a("boat_one_cm", awt.d);
-   public static final ali z = a("pig_one_cm", awt.d);
-   public static final ali A = a("horse_one_cm", awt.d);
-   public static final ali B = a("aviate_one_cm", awt.d);
-   public static final ali C = a("swim_one_cm", awt.d);
-   public static final ali D = a("strider_one_cm", awt.d);
-   public static final ali E = a("jump", awt.b);
-   public static final ali F = a("drop", awt.b);
-   public static final ali G = a("damage_dealt", awt.c);
-   public static final ali H = a("damage_dealt_absorbed", awt.c);
-   public static final ali I = a("damage_dealt_resisted", awt.c);
-   public static final ali J = a("damage_taken", awt.c);
-   public static final ali K = a("damage_blocked_by_shield", awt.c);
-   public static final ali L = a("damage_absorbed", awt.c);
-   public static final ali M = a("damage_resisted", awt.c);
-   public static final ali N = a("deaths", awt.b);
-   public static final ali O = a("mob_kills", awt.b);
-   public static final ali P = a("animals_bred", awt.b);
-   public static final ali Q = a("player_kills", awt.b);
-   public static final ali R = a("fish_caught", awt.b);
-   public static final ali S = a("talked_to_villager", awt.b);
-   public static final ali T = a("traded_with_villager", awt.b);
-   public static final ali U = a("eat_cake_slice", awt.b);
-   public static final ali V = a("fill_cauldron", awt.b);
-   public static final ali W = a("use_cauldron", awt.b);
-   public static final ali X = a("clean_armor", awt.b);
-   public static final ali Y = a("clean_banner", awt.b);
-   public static final ali Z = a("clean_shulker_box", awt.b);
-   public static final ali aa = a("interact_with_brewingstand", awt.b);
-   public static final ali ab = a("interact_with_beacon", awt.b);
-   public static final ali ac = a("inspect_dropper", awt.b);
-   public static final ali ad = a("inspect_hopper", awt.b);
-   public static final ali ae = a("inspect_dispenser", awt.b);
-   public static final ali af = a("play_noteblock", awt.b);
-   public static final ali ag = a("tune_noteblock", awt.b);
-   public static final ali ah = a("pot_flower", awt.b);
-   public static final ali ai = a("trigger_trapped_chest", awt.b);
-   public static final ali aj = a("open_enderchest", awt.b);
-   public static final ali ak = a("enchant_item", awt.b);
-   public static final ali al = a("play_record", awt.b);
-   public static final ali am = a("interact_with_furnace", awt.b);
-   public static final ali an = a("interact_with_crafting_table", awt.b);
-   public static final ali ao = a("open_chest", awt.b);
-   public static final ali ap = a("sleep_in_bed", awt.b);
-   public static final ali aq = a("open_shulker_box", awt.b);
-   public static final ali ar = a("open_barrel", awt.b);
-   public static final ali as = a("interact_with_blast_furnace", awt.b);
-   public static final ali at = a("interact_with_smoker", awt.b);
-   public static final ali au = a("interact_with_lectern", awt.b);
-   public static final ali av = a("interact_with_campfire", awt.b);
-   public static final ali aw = a("interact_with_cartography_table", awt.b);
-   public static final ali ax = a("interact_with_loom", awt.b);
-   public static final ali ay = a("interact_with_stonecutter", awt.b);
-   public static final ali az = a("bell_ring", awt.b);
-   public static final ali aA = a("raid_trigger", awt.b);
-   public static final ali aB = a("raid_win", awt.b);
-   public static final ali aC = a("interact_with_anvil", awt.b);
-   public static final ali aD = a("interact_with_grindstone", awt.b);
-   public static final ali aE = a("target_hit", awt.b);
-   public static final ali aF = a("interact_with_smithing_table", awt.b);
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static ali a(String $$0, awt $$1) {
-      ali $$2 = ali.b($$0);
-      kd.a(ly.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class awv<T> extends faz {
+   public static final zj<ww, awv<?>> a = zh.a(ma.am).b(awv::a, awx::a);
+   private final aww o;
+   private final T p;
+   private final awx<T> q;
+
+   protected awv(awx<T> $$0, T $$1, aww $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
    }
 
-   private static <T> awu<T> a(String $$0, kd<T> $$1) {
-      xi $$2 = xi.c("stat_type.minecraft." + $$0);
-      return kd.a(ly.v, $$0, new awu<>($$1, $$2));
+   public static <T> String a(awx<T> $$0, T $$1) {
+      return a(lz.v.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable all $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public awx<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awv && Objects.equals(this.d(), ((awv)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

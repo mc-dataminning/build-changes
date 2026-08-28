@@ -1,52 +1,57 @@
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class fin extends fig {
+public class fin {
+   private static final Map<String, fin.a> a = Maps.newHashMap();
    private static final Logger b = LogUtils.getLogger();
-   private static final xi c = xi.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final ffx e;
-   private final fgq f;
+   private static final all c = all.b("textures/gui/presets/isles.png");
 
-   public fin(long $$0, ffx $$1, fgq $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static all a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   @Override
-   public void run() {
-      fer $$0 = fer.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (fgd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
+   private static all b(String $$0, String $$1) {
+      fin.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         fdk $$3 = a($$1);
+         if ($$3 == null) {
+            all $$4 = gyj.b();
+            a.put($$0, new fin.a($$1, $$4));
+            return $$4;
+         } else {
+            all $$5 = all.a("realms", "dynamic/" + $$0);
+            fjx.Q().aa().a($$5, new gyg($$3));
+            a.put($$0, new fin.a($$1, $$5));
+            return $$5;
          }
       }
    }
 
-   @Override
-   public xi a() {
-      return c;
+   @Nullable
+   private static fdk a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return fdk.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
+   }
+
+   public static record a(String a, all b) {
    }
 }

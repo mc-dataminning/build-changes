@@ -1,130 +1,225 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.jcraft.jogg.Packet;
+import com.jcraft.jogg.Page;
+import com.jcraft.jogg.StreamState;
+import com.jcraft.jogg.SyncState;
+import com.jcraft.jorbis.Block;
+import com.jcraft.jorbis.Comment;
+import com.jcraft.jorbis.DspState;
+import com.jcraft.jorbis.Info;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
 
-public class hdo {
-   static final Map<String, hdo> h = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<hdo> a = Codec.STRING.comapFlatMap($$0 -> {
-      hdo $$1 = h.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
-   }, hdo::a);
-   private static final List<hdq<?>> i = List.of(hdq.a, hdq.b, hdq.c, hdq.d, hdq.e, hdq.f, hdq.g, hdq.h, hdq.m, hdq.l);
-   private static final List<hdq<?>> j = Stream.concat(i.stream(), Stream.of(hdq.i, hdq.j, hdq.k)).toList();
-   public static final hdo b = a("world_loaded", "WorldLoaded").a(j).a(hdq.n).a(hdq.o).b();
-   public static final hdo c = a("performance_metrics", "PerformanceMetrics").a(j).a(hdq.r).a(hdq.s).a(hdq.t).a(hdq.u).a(hdq.v).a(hdq.w).a().b();
-   public static final hdo d = a("world_load_times", "WorldLoadTimes").a(j).a(hdq.x).a(hdq.y).a().b();
-   public static final hdo e = a("world_unloaded", "WorldUnloaded").a(j).a(hdq.p).a(hdq.q).b();
-   public static final hdo f = a("advancement_made", "AdvancementMade").a(j).a(hdq.D).a(hdq.E).a().b();
-   public static final hdo g = a("game_load_times", "GameLoadTimes").a(i).a(hdq.z).a(hdq.A).a(hdq.B).a(hdq.C).a().b();
-   private final String k;
-   private final String l;
-   private final List<hdq<?>> m;
-   private final boolean n;
-   private final MapCodec<hdk> o;
+public class hdo implements hdn {
+   private static final int b = 8192;
+   private static final int c = -1;
+   private static final int d = 0;
+   private static final int e = 1;
+   private static final int f = -1;
+   private static final int g = 0;
+   private static final int h = 1;
+   private final SyncState i = new SyncState();
+   private final Page j = new Page();
+   private final StreamState k = new StreamState();
+   private final Packet l = new Packet();
+   private final Info m = new Info();
+   private final DspState n = new DspState();
+   private final Block o = new Block(this.n);
+   private final AudioFormat p;
+   private final InputStream q;
+   private long r;
+   private long s = Long.MAX_VALUE;
 
-   hdo(String $$0, String $$1, List<hdq<?>> $$2, boolean $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = hdr.a($$2).xmap($$0x -> new hdk(this, $$0x), hdk::b);
+   public hdo(InputStream $$0) throws IOException {
+      this.q = $$0;
+      Comment $$1 = new Comment();
+      Page $$2 = this.d();
+      if ($$2 == null) {
+         throw new IOException("Invalid Ogg file - can't find first page");
+      } else {
+         Packet $$3 = this.a($$2);
+         if (b(this.m.synthesis_headerin($$1, $$3))) {
+            throw new IOException("Invalid Ogg identification packet");
+         } else {
+            for (int $$4 = 0; $$4 < 2; $$4++) {
+               $$3 = this.e();
+               if ($$3 == null) {
+                  throw new IOException("Unexpected end of Ogg stream");
+               }
+
+               if (b(this.m.synthesis_headerin($$1, $$3))) {
+                  throw new IOException("Invalid Ogg header packet " + $$4);
+               }
+            }
+
+            this.n.synthesis_init(this.m);
+            this.o.init(this.n);
+            this.p = new AudioFormat((float)this.m.rate, 16, this.m.channels, true, false);
+         }
+      }
    }
 
-   public static hdo.a a(String $$0, String $$1) {
-      return new hdo.a($$0, $$1);
+   private static boolean b(int $$0) {
+      return $$0 < 0;
    }
 
-   public String a() {
-      return this.k;
+   @Override
+   public AudioFormat a() {
+      return this.p;
    }
 
-   public List<hdq<?>> b() {
-      return this.m;
+   private boolean c() throws IOException {
+      int $$0 = this.i.buffer(8192);
+      byte[] $$1 = this.i.data;
+      int $$2 = this.q.read($$1, $$0, 8192);
+      if ($$2 == -1) {
+         return false;
+      } else {
+         this.i.wrote($$2);
+         return true;
+      }
    }
 
-   public MapCodec<hdk> c() {
-      return this.o;
+   @Nullable
+   private Page d() throws IOException {
+      while (true) {
+         int $$0 = this.i.pageout(this.j);
+         switch ($$0) {
+            case -1:
+               throw new IllegalStateException("Corrupt or missing data in bitstream");
+            case 0:
+               if (this.c()) {
+                  break;
+               }
+
+               return null;
+            case 1:
+               if (this.j.eos() != 0) {
+                  this.s = this.j.granulepos();
+               }
+
+               return this.j;
+            default:
+               throw new IllegalStateException("Unknown page decode result: " + $$0);
+         }
+      }
    }
 
-   public boolean d() {
-      return this.n;
+   private Packet a(Page $$0) throws IOException {
+      this.k.init($$0.serialno());
+      if (b(this.k.pagein($$0))) {
+         throw new IOException("Failed to parse page");
+      } else {
+         int $$1 = this.k.packetout(this.l);
+         if ($$1 != 1) {
+            throw new IOException("Failed to read identification packet: " + $$1);
+         } else {
+            return this.l;
+         }
+      }
    }
 
-   public TelemetryEvent a(TelemetrySession $$0, hdr $$1) {
-      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+   @Nullable
+   private Packet e() throws IOException {
+      while (true) {
+         int $$0 = this.k.packetout(this.l);
+         switch ($$0) {
+            case -1:
+               throw new IOException("Failed to parse packet");
+            case 0:
+               Page $$1 = this.d();
+               if ($$1 == null) {
+                  return null;
+               }
 
-      for (hdq<?> $$3 : this.m) {
-         $$3.a($$1, $$2);
+               if (!b(this.k.pagein($$1))) {
+                  break;
+               }
+
+               throw new IOException("Failed to parse page");
+            case 1:
+               return this.l;
+            default:
+               throw new IllegalStateException("Unknown packet decode result: " + $$0);
+         }
+      }
+   }
+
+   private long c(int $$0) {
+      long $$1 = this.r + (long)$$0;
+      long $$2;
+      if ($$1 > this.s) {
+         $$2 = this.s - this.r;
+         this.r = this.s;
+      } else {
+         this.r = $$1;
+         $$2 = (long)$$0;
       }
 
       return $$2;
    }
 
-   public <T> boolean a(hdq<T> $$0) {
-      return this.m.contains($$0);
+   @Override
+   public boolean a(FloatConsumer $$0) throws IOException {
+      float[][][] $$1 = new float[1][][];
+      int[] $$2 = new int[this.m.channels];
+      Packet $$3 = this.e();
+      if ($$3 == null) {
+         return false;
+      } else if (b(this.o.synthesis($$3))) {
+         throw new IOException("Can't decode audio packet");
+      } else {
+         this.n.synthesis_blockin(this.o);
+
+         int $$4;
+         while (($$4 = this.n.synthesis_pcmout($$1, $$2)) > 0) {
+            float[][] $$5 = $$1[0];
+            long $$6 = this.c($$4);
+            switch (this.m.channels) {
+               case 1:
+                  a($$5[0], $$2[0], $$6, $$0);
+                  break;
+               case 2:
+                  a($$5[0], $$2[0], $$5[1], $$2[1], $$6, $$0);
+                  break;
+               default:
+                  a($$5, this.m.channels, $$2, $$6, $$0);
+            }
+
+            this.n.synthesis_read($$4);
+         }
+
+         return true;
+      }
+   }
+
+   private static void a(float[][] $$0, int $$1, int[] $$2, long $$3, FloatConsumer $$4) {
+      for (int $$5 = 0; (long)$$5 < $$3; $$5++) {
+         for (int $$6 = 0; $$6 < $$1; $$6++) {
+            int $$7 = $$2[$$6];
+            float $$8 = $$0[$$6][$$7 + $$5];
+            $$4.accept($$8);
+         }
+      }
+   }
+
+   private static void a(float[] $$0, int $$1, long $$2, FloatConsumer $$3) {
+      for (int $$4 = $$1; (long)$$4 < (long)$$1 + $$2; $$4++) {
+         $$3.accept($$0[$$4]);
+      }
+   }
+
+   private static void a(float[] $$0, int $$1, float[] $$2, int $$3, long $$4, FloatConsumer $$5) {
+      for (int $$6 = 0; (long)$$6 < $$4; $$6++) {
+         $$5.accept($$0[$$1 + $$6]);
+         $$5.accept($$2[$$3 + $$6]);
+      }
    }
 
    @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.k + "]";
-   }
-
-   public xw e() {
-      return this.a("title");
-   }
-
-   public xw f() {
-      return this.a("description");
-   }
-
-   private xw a(String $$0) {
-      return xi.c("telemetry.event." + this.k + "." + $$0);
-   }
-
-   public static List<hdo> g() {
-      return List.copyOf(h.values());
-   }
-
-   public static class a {
-      private final String a;
-      private final String b;
-      private final List<hdq<?>> c = new ArrayList<>();
-      private boolean d;
-
-      a(String $$0, String $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public hdo.a a(List<hdq<?>> $$0) {
-         this.c.addAll($$0);
-         return this;
-      }
-
-      public <T> hdo.a a(hdq<T> $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public hdo.a a() {
-         this.d = true;
-         return this;
-      }
-
-      public hdo b() {
-         hdo $$0 = new hdo(this.a, this.b, List.copyOf(this.c), this.d);
-         if (hdo.h.putIfAbsent(this.a, $$0) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
-         } else {
-            return $$0;
-         }
-      }
+   public void close() throws IOException {
+      this.q.close();
    }
 }

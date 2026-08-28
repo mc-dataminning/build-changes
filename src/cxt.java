@@ -1,32 +1,20 @@
-public interface cxt {
-   cxt.a a = new cxt.a(false, false);
-   cxt.a b = new cxt.a(true, false);
+public class cxt extends cwb {
+   public cxt(cxw $$0, float $$1, float $$2, cwb.a $$3) {
+      super($$0.a($$3, $$1, $$2));
+   }
 
-   boolean a();
+   @Override
+   public boolean a(dvo $$0, dff $$1, jh $$2, cor $$3) {
+      return !$$3.f();
+   }
 
-   boolean b();
+   @Override
+   public boolean a(cwf $$0, bve $$1, bve $$2) {
+      return true;
+   }
 
-   public static record a(boolean c, boolean d) implements cxt {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cxt.a c() {
-         return new cxt.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public void b(cwf $$0, bve $$1, bve $$2) {
+      $$0.a(1, $$2, buq.a);
    }
 }

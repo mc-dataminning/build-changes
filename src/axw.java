@@ -1,22 +1,11 @@
-import java.util.function.Consumer;
+public class axw {
+   public static final axt<elq> a = a("normal");
+   public static final axt<elq> b = a("extended");
 
-@FunctionalInterface
-public interface axw<T> {
-   axw.a accept(T var1);
-
-   static <T> axw<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return axw.a.a;
-      };
+   private axw() {
    }
 
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   private static axt<elq> a(String $$0) {
+      return axt.a(ma.aZ, all.b($$0));
    }
 }

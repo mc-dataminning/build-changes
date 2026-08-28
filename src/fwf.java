@@ -1,75 +1,167 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fwf extends fra {
-   private static final Logger d = LogUtils.getLogger();
-   public static final ecd a = new ecd((long)"test1".hashCode(), true, false);
-   protected final fra b;
-   private flh s;
-   private flh u;
-   private flh v;
-   private flh w;
-   protected flq c;
-   private fwl x;
+public class fwf extends fmc<fwd> {
+   private final fwg a;
+   private final List<fwd> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-   public fwf(fra $$0) {
-      super(xi.c("selectWorld.title"));
-      this.b = $$0;
+   public fwf(fwg $$0, fjx $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
    }
 
    @Override
-   protected void aR_() {
-      this.c = new flq(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xi.c("selectWorld.search"));
-      this.c.b($$0 -> this.x.a($$0));
-      this.d(this.c);
-      this.x = this.c(new fwl(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
-      this.u = this.c(flh.a(etr.a, $$0 -> this.x.c().ifPresent(fwl.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
-      this.c(flh.a(xi.c("selectWorld.create"), $$0 -> fvx.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
-      this.v = this.c(flh.a(xi.c("selectWorld.edit"), $$0 -> this.x.c().ifPresent(fwl.c::f)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
-      this.s = this.c(flh.a(xi.c("selectWorld.delete"), $$0 -> this.x.c().ifPresent(fwl.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
-      this.w = this.c(flh.a(xi.c("selectWorld.recreate"), $$0 -> this.x.c().ifPresent(fwl.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
-      this.c(flh.a(xh.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
-      this.a(null);
+   protected void b(flj $$0) {
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.c);
+   protected void a(flj $$0) {
    }
 
    @Override
-   public void d() {
-      this.m.a(this.b);
+   protected void c(flj $$0) {
+      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
    }
 
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fwd> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   public void a(@Nullable etr $$0) {
-      if ($$0 == null) {
-         this.u.b(etr.a);
-         this.u.j = false;
-         this.v.j = false;
-         this.w.j = false;
-         this.s.j = false;
-      } else {
-         this.u.b($$0.t());
-         this.u.j = $$0.u();
-         this.v.j = $$0.w();
-         this.w.j = $$0.x();
-         this.s.j = $$0.y();
+   private void a(Collection<UUID> $$0, Map<UUID, fwd> $$1) {
+      gcz $$2 = this.c.t.j;
+
+      for (UUID $$3 : $$0) {
+         gdj $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fwd(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
       }
    }
 
-   @Override
-   public void j() {
-      if (this.x != null) {
-         this.x.aI_().forEach(fwl.a::close);
+   private void a(Map<UUID, fwd> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.bb().b())) {
+         fwd $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fwd $$2 = new fwd(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
+   }
+
+   private static Collection<GameProfile> a(gds $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         gdu $$3 = $$0.b($$2);
+         if ($$3 instanceof gdv.a) {
+            gdv.a $$4 = (gdv.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void J() {
+      this.m.sort(Comparator.<fwd, Integer>comparing($$0 -> {
+         if (this.c.b($$0.d())) {
+            return 0;
+         } else if (this.c.bb().a($$0.d())) {
+            return 1;
+         } else if ($$0.d().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fwd::c, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fwd> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.J();
+      this.K();
+      this.a(this.m);
+      this.b($$1);
+   }
+
+   private void K() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean c() {
+      return this.m.isEmpty();
+   }
+
+   public void a(gdj $$0, fwg.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fwd $$3 : this.m) {
+         if ($$3.d().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fwg.a.a || this.c.aN().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fwd $$5 = new fwd(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fwd)$$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fwd $$1 : this.m) {
+         if ($$1.d().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
       }
    }
 }

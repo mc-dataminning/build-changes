@@ -9,9 +9,9 @@ public class ca extends dy<ca.a> {
       return ca.a.a;
    }
 
-   public void a(aro $$0, ezn $$1, @Nullable bue $$2) {
-      ezn $$3 = $$0.dv();
-      euc $$4 = $$2 != null ? bw.b($$0, $$2) : null;
+   public void a(arr $$0, ezr $$1, @Nullable bui $$2) {
+      ezr $$3 = $$0.dw();
+      eug $$4 = $$2 != null ? bw.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.B(), $$1, $$3, $$4));
    }
 
@@ -36,7 +36,7 @@ public class ca extends dy<ca.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arn $$0, ezn $$1, ezn $$2, @Nullable euc $$3) {
+      public boolean a(arq $$0, ezr $$1, ezr $$2, @Nullable eug $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {

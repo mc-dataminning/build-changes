@@ -1,263 +1,142 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class bsv {
-   private final kd<bsw> a;
-   private final bsu b;
-   private final bsu c;
-   private final bsu d;
-   private final bsu e;
-   private final bsu f;
-   private final bsu g;
-   private final bsu h;
-   private final bsu i;
-   private final bsu j;
-   private final bsu k;
-   private final bsu l;
-   private final bsu m;
-   private final bsu n;
-   private final bsu o;
-   private final bsu p;
-   private final bsu q;
-   private final bsu r;
-   private final bsu s;
-   private final bsu t;
-   private final bsu u;
-   private final bsu v;
-   private final bsu w;
-   private final bsu x;
-   private final bsu y;
-   private final bsu z;
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final yi c = yi.a.a(new xj(xj.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new xr(xr.a.a, xl.b("MCPE-28723")));
+   private final List<bst> d = Lists.newArrayList();
+   private final bve e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
 
-   public bsv(ke $$0) {
-      this.a = $$0.e(lz.s);
-      this.b = this.a(bsx.a);
-      this.c = this.a(bsx.b);
-      this.d = this.a(bsx.c);
-      this.e = this.a(bsx.d);
-      this.f = this.a(bsx.e);
-      this.g = this.a(bsx.f);
-      this.h = this.a(bsx.g);
-      this.i = this.a(bsx.h);
-      this.j = this.a(bsx.i);
-      this.k = this.a(bsx.j);
-      this.l = this.a(bsx.k);
-      this.m = this.a(bsx.l);
-      this.n = this.a(bsx.m);
-      this.o = this.a(bsx.n);
-      this.p = this.a(bsx.o);
-      this.q = this.a(bsx.p);
-      this.r = this.a(bsx.q);
-      this.s = this.a(bsx.r);
-      this.t = this.a(bsx.s);
-      this.u = this.a(bsx.t);
-      this.v = this.a(bsx.u);
-      this.w = this.a(bsx.v);
-      this.x = this.a(bsx.w);
-      this.y = this.a(bsx.U);
-      this.z = this.a(bsx.V);
+   public bsv(bve $$0) {
+      this.e = $$0;
    }
 
-   private bsu a(alh<bsw> $$0) {
-      return new bsu(this.a.b($$0));
+   public void a(bsy $$0, float $$1) {
+      this.c();
+      btd $$2 = btd.a(this.e);
+      bst $$3 = new bst($$0, $$1, $$2, this.e.aa);
+      this.d.add($$3);
+      this.f = this.e.ag;
+      this.j = true;
+      if (!this.i && this.e.bN() && a($$0)) {
+         this.i = true;
+         this.g = this.e.ag;
+         this.h = this.g;
+         this.e.g_();
+      }
    }
 
-   private bsu a(alh<bsw> $$0, @Nullable bue $$1) {
-      return new bsu(this.a.b($$0), $$1);
+   private static boolean a(bsy $$0) {
+      return $$0.d() instanceof bve;
    }
 
-   private bsu a(alh<bsw> $$0, @Nullable bue $$1, @Nullable bue $$2) {
-      return new bsu(this.a.b($$0), $$1, $$2);
+   private xl a(bui $$0, xl $$1, String $$2, String $$3) {
+      cwf $$5 = $$0 instanceof bve $$4 ? $$4.fc() : cwf.k;
+      return !$$5.f() && $$5.b(ku.g) ? xl.a($$2, this.e.S_(), $$1, $$5.J()) : xl.a($$3, this.e.S_(), $$1);
    }
 
-   public bsu a() {
-      return this.b;
+   private xl a(bst $$0, @Nullable bui $$1) {
+      bsy $$2 = $$0.a();
+      if (!$$2.a(axf.m) && !$$2.a(axf.s)) {
+         xl $$4 = a($$1);
+         bui $$5 = $$2.d();
+         xl $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (xl)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xl.a("death.fell.killer", this.e.S_()));
+         }
+      } else {
+         btd $$3 = Objects.requireNonNullElse($$0.c(), btd.a);
+         return xl.a($$3.a(), this.e.S_());
+      }
    }
 
-   public bsu b() {
-      return this.c;
+   @Nullable
+   private static xl a(@Nullable bui $$0) {
+      return $$0 == null ? null : $$0.S_();
    }
 
-   public bsu c() {
-      return this.d;
+   public xl a() {
+      if (this.d.isEmpty()) {
+         return xl.a("death.attack.generic", this.e.S_());
+      } else {
+         bst $$0 = this.d.get(this.d.size() - 1);
+         bsy $$1 = $$0.a();
+         bst $$2 = this.d();
+         btc $$3 = $$1.k().e();
+         if ($$3 == btc.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == btc.c) {
+            String $$4 = "death.attack." + $$1.f();
+            xl $$5 = xo.a((xl)xl.c($$4 + ".link")).c(c);
+            return xl.a($$4 + ".message", this.e.S_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
    }
 
-   public bsu d() {
-      return this.e;
+   @Nullable
+   private bst d() {
+      bst $$0 = null;
+      bst $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         bst $$5 = this.d.get($$4);
+         bst $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         bsy $$7 = $$5.a();
+         boolean $$8 = $$7.a(axf.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(axf.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
    }
 
-   public bsu e() {
-      return this.f;
+   public int b() {
+      return this.i ? this.e.ag - this.g : this.h - this.g;
    }
 
-   public bsu f() {
-      return this.g;
-   }
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bN() || this.e.ag - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.ag;
+         if ($$1) {
+            this.e.h_();
+         }
 
-   public bsu g() {
-      return this.h;
-   }
-
-   public bsu h() {
-      return this.i;
-   }
-
-   public bsu i() {
-      return this.j;
-   }
-
-   public bsu j() {
-      return this.k;
-   }
-
-   public bsu k() {
-      return this.l;
-   }
-
-   public bsu l() {
-      return this.m;
-   }
-
-   public bsu m() {
-      return this.n;
-   }
-
-   public bsu n() {
-      return this.o;
-   }
-
-   public bsu o() {
-      return this.p;
-   }
-
-   public bsu p() {
-      return this.q;
-   }
-
-   public bsu q() {
-      return this.r;
-   }
-
-   public bsu r() {
-      return this.s;
-   }
-
-   public bsu s() {
-      return this.t;
-   }
-
-   public bsu t() {
-      return this.u;
-   }
-
-   public bsu u() {
-      return this.v;
-   }
-
-   public bsu v() {
-      return this.w;
-   }
-
-   public bsu w() {
-      return this.x;
-   }
-
-   public bsu a(bue $$0) {
-      return this.a(bsx.x, $$0);
-   }
-
-   public bsu b(bue $$0) {
-      return this.a(bsx.y, $$0);
-   }
-
-   public bsu c(bue $$0) {
-      return this.a(bsx.z, $$0);
-   }
-
-   public bsu a(bva $$0) {
-      return this.a(bsx.A, $$0);
-   }
-
-   public bsu b(bva $$0) {
-      return this.a(bsx.B, $$0);
-   }
-
-   public bsu c(bva $$0) {
-      return this.a(bsx.C, $$0);
-   }
-
-   public bsu a(com $$0) {
-      return this.a(bsx.D, $$0);
-   }
-
-   public bsu a(cou $$0, @Nullable bue $$1) {
-      return this.a(bsx.E, $$0, $$1);
-   }
-
-   public bsu a(bue $$0, @Nullable bue $$1) {
-      return this.a(bsx.F, $$0, $$1);
-   }
-
-   public bsu a(bue $$0, @Nullable bva $$1) {
-      return this.a(bsx.G, $$0, $$1);
-   }
-
-   public bsu b(bue $$0, @Nullable bva $$1) {
-      return this.a(bsx.H, $$0, $$1);
-   }
-
-   public bsu c(bue $$0, @Nullable bva $$1) {
-      return this.a(bsx.I, $$0, $$1);
-   }
-
-   public bsu a(cpb $$0, @Nullable bue $$1) {
-      return this.a(bsx.J, $$0, $$1);
-   }
-
-   public bsu a(cpa $$0, @Nullable bue $$1) {
-      return $$1 == null ? this.a(bsx.L, $$0) : this.a(bsx.K, $$0, $$1);
-   }
-
-   public bsu a(cpu $$0, bue $$1) {
-      return this.a(bsx.M, $$0, $$1);
-   }
-
-   public bsu b(bue $$0, @Nullable bue $$1) {
-      return this.a(bsx.N, $$0, $$1);
-   }
-
-   public bsu c(bue $$0, @Nullable bue $$1) {
-      return this.a(bsx.O, $$0, $$1);
-   }
-
-   public bsu d(bue $$0) {
-      return this.a(bsx.P, $$0);
-   }
-
-   public bsu a(@Nullable det $$0) {
-      return $$0 != null ? this.d($$0.c(), $$0.b()) : this.d(null, null);
-   }
-
-   public bsu d(@Nullable bue $$0, @Nullable bue $$1) {
-      return this.a($$1 != null && $$0 != null ? bsx.R : bsx.Q, $$0, $$1);
-   }
-
-   public bsu e(bue $$0) {
-      return this.a(bsx.S, $$0);
-   }
-
-   public bsu a(ezn $$0) {
-      return new bsu(this.a.b(bsx.T), $$0);
-   }
-
-   public bsu x() {
-      return this.y;
-   }
-
-   public bsu y() {
-      return this.z;
-   }
-
-   public bsu f(bue $$0) {
-      return this.a(bsx.W, $$0);
+         this.d.clear();
+      }
    }
 }

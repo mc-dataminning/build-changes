@@ -1,167 +1,99 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fho {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bak d;
+public class fho extends hff {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xl b = xl.c("mco.configure.world.buttons.invite");
+   private static final xl c = xl.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final xl B = xl.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final xl C = xl.c("mco.configure.world.players.error").b(-65536);
+   private final fpl D = new fpl(this);
+   private fmf E;
+   private flw F;
+   private final fgb G;
+   private final fhj H;
+   private final frp I;
+   @Nullable
+   private xl J;
 
-   public fho(Executor $$0, TimeUnit $$1, bak $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fho(fhj $$0, frp $$1, fgb $$2) {
+      super(b);
+      this.H = $$0;
+      this.I = $$1;
+      this.G = $$2;
    }
 
-   public <T> fho.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fhp $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aS_() {
+      this.D.a(b, this.p);
+      fpp $$0 = this.D.c(fpp.d().a(8));
+      this.E = new fmf(this.m.h, 200, 20, xl.c("mco.configure.world.invite.profile.name"));
+      $$0.a(fph.a(this.p, this.E, c));
+      this.F = $$0.a(flw.a(b, $$0x -> this.D()).a(200).a());
+      this.D.b(flw.a(xk.k, $$0x -> this.aP_()).a(200).a());
+      this.D.a($$1 -> {
+         flu var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.D.a();
+   }
+
+   @Override
+   protected void aG_() {
+      this.b(this.E);
+   }
+
+   private void D() {
+      if (bak.h(this.E.a())) {
+         this.a(C);
       } else {
-         return new fho.e<>($$0, $$1, $$4, $$3);
-      }
-   }
-
-   public fho.c a() {
-      return new fho.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fho.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fho.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fho.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fho.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fho.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fho.e<T> $$0, Consumer<T> $$1) {
-         fho.b<T> $$2 = fho.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fho.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fho.b<?> $$0 : this.b) {
-            $$0.a(fho.this.d.get(fho.this.c));
-         }
-      }
-
-      public void c() {
-         for (fho.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fhp e;
-      @Nullable
-      private CompletableFuture<fho.a<T>> f;
-      @Nullable
-      fho.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fhp $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fho.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+         long $$0 = this.G.a;
+         String $$1 = this.E.a().trim();
+         this.F.j = false;
+         this.E.e(false);
+         this.a(B);
+         CompletableFuture.<fgb>supplyAsync(() -> {
+            try {
+               return ffa.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ae.h()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.G.h = $$0x.h;
+               this.m.a(new fhu(this.H, this.G));
+            } else {
+               this.a(C);
             }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fho.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fho.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fho.this.d.get(fho.this.c);
-                  return new fho.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fho.this.d.get(fho.this.c);
-                  return new fho.a<>(Either.right(var4x), $$3);
-               }
-            }, fho.this.b);
-         }
+            this.E.e(true);
+            this.F.j = true;
+         }, this.r);
       }
+   }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+   private void a(xl $$0) {
+      this.J = $$0;
+      this.m.aZ().c($$0);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.I);
+   }
+
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, this.n / 2, this.F.E() + this.F.w() + 8, -1);
       }
    }
 }

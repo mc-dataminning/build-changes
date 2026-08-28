@@ -1,9 +1,2 @@
-import java.util.stream.Stream;
-
-public interface bnu<S> {
-   Stream<String> possibleValues(bnr<S> var1);
-
-   static <S> bnu<S> b() {
-      return $$0 -> Stream.empty();
-   }
+public record bnu<S>(int a, bny<S> b, Object c) {
 }

@@ -1,16 +1,4 @@
-public interface ajd extends aby {
-   @Override
-   default wd b() {
-      return wd.d;
-   }
-
-   void a(ajg var1);
-
-   void a(ajf var1);
-
-   void a(aji var1);
-
-   void a(ajh var1);
-
-   void a(aje var1);
+public class ajd {
+   public static final wt.a<aje, wi> a = zx.a(wg.a, $$0 -> $$0.a(ajc.a, ajb.a));
+   public static final wt<aje> b = a.a(wi::new);
 }

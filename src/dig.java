@@ -1,1196 +1,230 @@
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dig {
-   private static final dvi.f tu = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dtx $$4 ? $$4.u() : true;
-   private static final dvi.f tv = ($$0x, $$1x, $$2) -> !$$0x.c(dvc.c);
-   public static final die a = a("air", dhb::new, dvi.d.a().p().b().g().m());
-   public static final die b = a("stone", dvi.d.a().a(ero.l).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die c = a("granite", dvi.d.a().a(ero.k).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die d = a("polished_granite", dvi.d.a().a(ero.k).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die e = a("diorite", dvi.d.a().a(ero.o).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die f = a("polished_diorite", dvi.d.a().a(ero.o).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die g = a("andesite", dvi.d.a().a(ero.l).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die h = a("polished_andesite", dvi.d.a().a(ero.l).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die i = a("grass_block", dlo::new, dvi.d.a().a(ero.b).e().d(0.6F).a(dpr.d));
-   public static final die j = a("dirt", dvi.d.a().a(ero.k).d(0.5F).a(dpr.c));
-   public static final die k = a("coarse_dirt", dvi.d.a().a(ero.k).d(0.5F).a(dpr.c));
-   public static final die l = a("podzol", dpo::new, dvi.d.a().a(ero.I).d(0.5F).a(dpr.c));
-   public static final die m = a("cobblestone", dvi.d.a().a(ero.l).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die n = a("oak_planks", dvi.d.a().a(ero.n).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die o = a("spruce_planks", dvi.d.a().a(ero.I).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die p = a("birch_planks", dvi.d.a().a(ero.c).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die q = a("jungle_planks", dvi.d.a().a(ero.k).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die r = a("acacia_planks", dvi.d.a().a(ero.p).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die s = a("cherry_planks", dvi.d.a().a(ero.K).a(dwk.e).a(2.0F, 3.0F).a(dpr.aU).i());
-   public static final die t = a("dark_oak_planks", dvi.d.a().a(ero.A).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die u = a("mangrove_planks", dvi.d.a().a(ero.C).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die v = a("bamboo_planks", dvi.d.a().a(ero.s).a(dwk.e).a(2.0F, 3.0F).a(dpr.aS).i());
-   public static final die w = a("bamboo_mosaic", dvi.d.a().a(ero.s).a(dwk.e).a(2.0F, 3.0F).a(dpr.aS).i());
-   public static final die x = a("oak_sapling", $$0x -> new dos(duy.b, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(erp.b));
-   public static final die y = a("spruce_sapling", $$0x -> new dos(duy.c, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(erp.b));
-   public static final die z = a("birch_sapling", $$0x -> new dos(duy.f, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(erp.b));
-   public static final die A = a("jungle_sapling", $$0x -> new dos(duy.g, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(erp.b));
-   public static final die B = a("acacia_sapling", $$0x -> new dos(duy.h, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(erp.b));
-   public static final die C = a("cherry_sapling", $$0x -> new dos(duy.i, $$0x), dvi.d.a().a(ero.u).b().e().d().a(dpr.aV).a(erp.b));
-   public static final die D = a("dark_oak_sapling", $$0x -> new dos(duy.j, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(erp.b));
-   public static final die E = a("mangrove_propagule", $$0x -> new dmy(duy.d, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die F = a("bedrock", dvi.d.a().a(ero.l).a(dwk.b).a(-1.0F, 3600000.0F).g().a(dig::a));
-   public static final die G = a("water", $$0x -> new dmt(erl.c, $$0x), dvi.d.a().a(ero.m).p().b().d(100.0F).a(erp.b).g().j().a(dpr.a));
-   public static final die H = a("lava", $$0x -> new dmt(erl.e, $$0x), dvi.d.a().a(ero.e).p().b().e().d(100.0F).a($$0x -> 15).a(erp.b).g().j().a(dpr.a));
-   public static final die I = a("sand", $$0x -> new djm(new aye(14406560), $$0x), dvi.d.a().a(ero.c).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die J = a("suspicious_sand", $$0x -> new dij(I, awl.cT, awl.cT, $$0x), dvi.d.a().a(ero.c).a(dwk.c).d(0.25F).a(dpr.aZ).a(erp.b));
-   public static final die K = a("red_sand", $$0x -> new djm(new aye(11098145), $$0x), dvi.d.a().a(ero.p).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die L = a("gravel", $$0x -> new djm(new aye(-8356741), $$0x), dvi.d.a().a(ero.l).a(dwk.c).d(0.6F).a(dpr.c));
-   public static final die M = a("suspicious_gravel", $$0x -> new dij(L, awl.cU, awl.cU, $$0x), dvi.d.a().a(ero.l).a(dwk.c).d(0.25F).a(dpr.ba).a(erp.b));
-   public static final die N = a("gold_ore", $$0x -> new dko(brf.a(0), $$0x), dvi.d.a().a(ero.l).a(dwk.b).n().a(3.0F, 3.0F));
-   public static final die O = a("deepslate_gold_ore", $$0x -> new dko(brf.a(0), $$0x), dvi.d.b(N).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die P = a("iron_ore", $$0x -> new dko(brf.a(0), $$0x), dvi.d.a().a(ero.l).a(dwk.b).n().a(3.0F, 3.0F));
-   public static final die Q = a("deepslate_iron_ore", $$0x -> new dko(brf.a(0), $$0x), dvi.d.b(P).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die R = a("coal_ore", $$0x -> new dko(bro.a(0, 2), $$0x), dvi.d.a().a(ero.l).a(dwk.b).n().a(3.0F, 3.0F));
-   public static final die S = a("deepslate_coal_ore", $$0x -> new dko(bro.a(0, 2), $$0x), dvi.d.b(R).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die T = a("nether_gold_ore", $$0x -> new dko(bro.a(0, 1), $$0x), dvi.d.a().a(ero.J).a(dwk.b).n().a(3.0F, 3.0F).a(dpr.V));
-   public static final die U = a("oak_log", doq::new, a(ero.n, ero.I, dpr.b));
-   public static final die V = a("spruce_log", doq::new, a(ero.I, ero.A, dpr.b));
-   public static final die W = a("birch_log", doq::new, a(ero.c, ero.o, dpr.b));
-   public static final die X = a("jungle_log", doq::new, a(ero.k, ero.I, dpr.b));
-   public static final die Y = a("acacia_log", doq::new, a(ero.p, ero.l, dpr.b));
-   public static final die Z = a("cherry_log", doq::new, a(ero.K, ero.R, dpr.aU));
-   public static final die aa = a("dark_oak_log", doq::new, a(ero.A, ero.A, dpr.b));
-   public static final die ab = a("mangrove_log", doq::new, a(ero.C, ero.I, dpr.b));
-   public static final die ac = a("mangrove_roots", dmz::new, dvi.d.a().a(ero.I).a(dwk.e).d(0.7F).a(dpr.aK).c().b(dig::b).c(dig::b).c().i());
-   public static final die ad = a("muddy_mangrove_roots", doq::new, dvi.d.a().a(ero.I).d(0.7F).a(dpr.aL));
-   public static final die ae = a("bamboo_block", doq::new, a(ero.s, ero.h, dpr.aS));
-   public static final die af = a("stripped_spruce_log", doq::new, a(ero.I, ero.I, dpr.b));
-   public static final die ag = a("stripped_birch_log", doq::new, a(ero.c, ero.c, dpr.b));
-   public static final die ah = a("stripped_jungle_log", doq::new, a(ero.k, ero.k, dpr.b));
-   public static final die ai = a("stripped_acacia_log", doq::new, a(ero.p, ero.p, dpr.b));
-   public static final die aj = a("stripped_cherry_log", doq::new, a(ero.K, ero.Q, dpr.aU));
-   public static final die ak = a("stripped_dark_oak_log", doq::new, a(ero.A, ero.A, dpr.b));
-   public static final die al = a("stripped_oak_log", doq::new, a(ero.n, ero.n, dpr.b));
-   public static final die am = a("stripped_mangrove_log", doq::new, a(ero.C, ero.C, dpr.b));
-   public static final die an = a("stripped_bamboo_block", doq::new, a(ero.s, ero.s, dpr.aS));
-   public static final die ao = a("oak_wood", doq::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die ap = a("spruce_wood", doq::new, dvi.d.a().a(ero.I).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die aq = a("birch_wood", doq::new, dvi.d.a().a(ero.c).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die ar = a("jungle_wood", doq::new, dvi.d.a().a(ero.k).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die as = a("acacia_wood", doq::new, dvi.d.a().a(ero.v).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die at = a("cherry_wood", doq::new, dvi.d.a().a(ero.R).a(dwk.e).d(2.0F).a(dpr.aU).i());
-   public static final die au = a("dark_oak_wood", doq::new, dvi.d.a().a(ero.A).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die av = a("mangrove_wood", doq::new, dvi.d.a().a(ero.C).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die aw = a("stripped_oak_wood", doq::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die ax = a("stripped_spruce_wood", doq::new, dvi.d.a().a(ero.I).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die ay = a("stripped_birch_wood", doq::new, dvi.d.a().a(ero.c).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die az = a("stripped_jungle_wood", doq::new, dvi.d.a().a(ero.k).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die aA = a("stripped_acacia_wood", doq::new, dvi.d.a().a(ero.p).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die aB = a("stripped_cherry_wood", doq::new, dvi.d.a().a(ero.Q).a(dwk.e).d(2.0F).a(dpr.aU).i());
-   public static final die aC = a("stripped_dark_oak_wood", doq::new, dvi.d.a().a(ero.A).a(dwk.e).d(2.0F).a(dpr.b).i());
-   public static final die aD = a("stripped_mangrove_wood", doq::new, a(ero.C, ero.C, dpr.b));
-   public static final die aE = a("oak_leaves", dmn::new, a(dpr.d));
-   public static final die aF = a("spruce_leaves", dmn::new, a(dpr.d));
-   public static final die aG = a("birch_leaves", dmn::new, a(dpr.d));
-   public static final die aH = a("jungle_leaves", dmn::new, a(dpr.d));
-   public static final die aI = a("acacia_leaves", dmn::new, a(dpr.d));
-   public static final die aJ = a("cherry_leaves", djg::new, dvi.d.a().a(ero.u).d(0.2F).e().a(dpr.aW).c().a(dig::c).b(dig::b).c(dig::b).i().a(erp.b).a(dig::b));
-   public static final die aK = a("dark_oak_leaves", dmn::new, a(dpr.d));
-   public static final die aL = a("mangrove_leaves", dmx::new, a(dpr.d));
-   public static final die aM = a("azalea_leaves", dmn::new, a(dpr.ax));
-   public static final die aN = a("flowering_azalea_leaves", dmn::new, a(dpr.ax));
-   public static final die aO = a("sponge", dpt::new, dvi.d.a().a(ero.s).d(0.6F).a(dpr.be));
-   public static final die aP = a("wet_sponge", drv::new, dvi.d.a().a(ero.s).d(0.6F).a(dpr.bf));
-   public static final die aQ = a("glass", dqq::new, dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c().a(dig::a).a(dig::b).b(dig::b).c(dig::b));
-   public static final die aR = a("lapis_ore", $$0x -> new dko(bro.a(2, 5), $$0x), dvi.d.a().a(ero.l).a(dwk.b).n().a(3.0F, 3.0F));
-   public static final die aS = a("deepslate_lapis_ore", $$0x -> new dko(bro.a(2, 5), $$0x), dvi.d.b(aR).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die aT = a("lapis_block", dvi.d.a().a(ero.G).n().a(3.0F, 3.0F));
-   public static final die aU = a("dispenser", dkj::new, dvi.d.a().a(ero.l).a(dwk.b).n().d(3.5F));
-   public static final die aV = a("sandstone", dvi.d.a().a(ero.c).a(dwk.b).n().d(0.8F));
-   public static final die aW = a("chiseled_sandstone", dvi.d.a().a(ero.c).a(dwk.b).n().d(0.8F));
-   public static final die aX = a("cut_sandstone", dvi.d.a().a(ero.c).a(dwk.b).n().d(0.8F));
-   public static final die aY = a("note_block", dnm::new, dvi.d.a().a(ero.n).a(dwk.e).a(dpr.b).d(0.8F).i());
-   public static final die aZ = a("white_bed", cuy.a);
-   public static final die ba = a("orange_bed", cuy.b);
-   public static final die bb = a("magenta_bed", cuy.c);
-   public static final die bc = a("light_blue_bed", cuy.d);
-   public static final die bd = a("yellow_bed", cuy.e);
-   public static final die be = a("lime_bed", cuy.f);
-   public static final die bf = a("pink_bed", cuy.g);
-   public static final die bg = a("gray_bed", cuy.h);
-   public static final die bh = a("light_gray_bed", cuy.i);
-   public static final die bi = a("cyan_bed", cuy.j);
-   public static final die bj = a("purple_bed", cuy.k);
-   public static final die bk = a("blue_bed", cuy.l);
-   public static final die bl = a("brown_bed", cuy.m);
-   public static final die bm = a("green_bed", cuy.n);
-   public static final die bn = a("red_bed", cuy.o);
-   public static final die bo = a("black_bed", cuy.p);
-   public static final die bp = a("powered_rail", doa::new, dvi.d.a().b().d(0.7F).a(dpr.g));
-   public static final die bq = a("detector_rail", dkf::new, dvi.d.a().b().d(0.7F).a(dpr.g));
-   public static final die br = a("sticky_piston", $$0x -> new dvc(true, $$0x), a());
-   public static final die bs = a("cobweb", drr::new, dvi.d.a().a(ero.d).a(dpr.bi).k().b().n().d(4.0F).a(erp.b));
-   public static final die bt = a("short_grass", dqj::new, dvi.d.a().a(ero.h).p().b().d().a(dpr.d).a(dvi.c.c).i().a(erp.b));
-   public static final die bu = a("fern", dqj::new, dvi.d.a().a(ero.h).p().b().d().a(dpr.d).a(dvi.c.c).i().a(erp.b));
-   public static final die bv = a("dead_bush", dkd::new, dvi.d.a().a(ero.n).p().b().d().a(dpr.d).i().a(erp.b));
-   public static final die bw = a("seagrass", dpc::new, dvi.d.a().a(ero.m).p().b().d().a(dpr.q).a(erp.b));
-   public static final die bx = a("tall_seagrass", dqk::new, dvi.d.a().a(ero.m).p().b().d().a(dpr.q).a(dvi.c.b).a(erp.b));
-   public static final die by = a("piston", $$0x -> new dvc(false, $$0x), a());
-   public static final die bz = a("piston_head", dvd::new, dvi.d.a().a(ero.l).d(1.5F).g().a(erp.c));
-   public static final die bA = a("white_wool", dvi.d.a().a(ero.i).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bB = a("orange_wool", dvi.d.a().a(ero.p).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bC = a("magenta_wool", dvi.d.a().a(ero.q).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bD = a("light_blue_wool", dvi.d.a().a(ero.r).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bE = a("yellow_wool", dvi.d.a().a(ero.s).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bF = a("lime_wool", dvi.d.a().a(ero.t).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bG = a("pink_wool", dvi.d.a().a(ero.u).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bH = a("gray_wool", dvi.d.a().a(ero.v).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bI = a("light_gray_wool", dvi.d.a().a(ero.w).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bJ = a("cyan_wool", dvi.d.a().a(ero.x).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bK = a("purple_wool", dvi.d.a().a(ero.y).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bL = a("blue_wool", dvi.d.a().a(ero.z).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bM = a("brown_wool", dvi.d.a().a(ero.A).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bN = a("green_wool", dvi.d.a().a(ero.B).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bO = a("red_wool", dvi.d.a().a(ero.C).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bP = a("black_wool", dvi.d.a().a(ero.D).a(dwk.h).d(0.8F).a(dpr.i).i());
-   public static final die bQ = a("moving_piston", dvb::new, dvi.d.a().a(ero.l).k().d(-1.0F).f().g().c().a(dig::b).b(dig::b).c(dig::b).a(erp.c));
-   public static final die bR = a("dandelion", $$0x -> new dlf(btl.w, 0.35F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bS = a("torchflower", $$0x -> new dlf(btl.p, 5.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bT = a("poppy", $$0x -> new dlf(btl.p, 5.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bU = a("blue_orchid", $$0x -> new dlf(btl.w, 0.35F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bV = a("allium", $$0x -> new dlf(btl.l, 4.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bW = a("azure_bluet", $$0x -> new dlf(btl.o, 8.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bX = a("red_tulip", $$0x -> new dlf(btl.r, 9.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bY = a("orange_tulip", $$0x -> new dlf(btl.r, 9.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die bZ = a("white_tulip", $$0x -> new dlf(btl.r, 9.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die ca = a("pink_tulip", $$0x -> new dlf(btl.r, 9.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die cb = a("oxeye_daisy", $$0x -> new dlf(btl.j, 8.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die cc = a("cornflower", $$0x -> new dlf(btl.h, 6.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die cd = a("wither_rose", $$0x -> new drw(btl.t, 8.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die ce = a("lily_of_the_valley", $$0x -> new dlf(btl.s, 12.0F, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).a(erp.b));
-   public static final die cf = a("brown_mushroom", $$0x -> new dnf(se.e, $$0x), dvi.d.a().a(ero.A).b().e().d().a(dpr.d).a($$0x -> 1).d(dig::a).a(erp.b));
-   public static final die cg = a("red_mushroom", $$0x -> new dnf(se.f, $$0x), dvi.d.a().a(ero.C).b().e().d().a(dpr.d).d(dig::a).a(erp.b));
-   public static final die ch = a("gold_block", dvi.d.a().a(ero.E).a(dwk.g).n().a(3.0F, 6.0F).a(dpr.g));
-   public static final die ci = a("iron_block", dvi.d.a().a(ero.g).a(dwk.k).n().a(5.0F, 6.0F).a(dpr.g));
-   public static final die cj = a("bricks", dvi.d.a().a(ero.C).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die ck = a("tnt", dqn::new, dvi.d.a().a(ero.e).d().a(dpr.d).i().a(dig::b));
-   public static final die cl = a("bookshelf", dvi.d.a().a(ero.n).a(dwk.e).d(1.5F).a(dpr.b).i());
-   public static final die cm = a("chiseled_bookshelf", dji::new, dvi.d.a().a(ero.n).a(dwk.e).d(1.5F).a(dpr.aY).i());
-   public static final die cn = a("mossy_cobblestone", dvi.d.a().a(ero.l).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die co = a("obsidian", dvi.d.a().a(ero.D).a(dwk.b).n().a(50.0F, 1200.0F));
-   public static final die cp = a("torch", $$0x -> new dqo(lr.F, $$0x), dvi.d.a().b().d().a($$0x -> 14).a(dpr.b).a(erp.b));
-   public static final die cq = a("wall_torch", $$0x -> new drg(lr.F, $$0x), a(cp, true).b().d().a($$0x -> 14).a(dpr.b).a(erp.b));
-   public static final die cr = a("fire", dld::new, dvi.d.a().a(ero.e).p().b().d().a($$0x -> 15).a(dpr.i).a(erp.b));
-   public static final die cs = a("soul_fire", dpp::new, dvi.d.a().a(ero.r).p().b().d().a($$0x -> 10).a(dpr.i).a(erp.b));
-   public static final die ct = a("spawner", dps::new, dvi.d.a().a(ero.l).a(dwk.b).n().d(5.0F).a(dpr.bj).c());
-   public static final die cu = a("oak_stairs", n);
-   public static final die cv = a("chest", $$0x -> new djh(() -> dso.b, $$0x), dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die cw = a("redstone_wire", dog::new, dvi.d.a().b().d().a(erp.b));
-   public static final die cx = a("diamond_ore", $$0x -> new dko(bro.a(3, 7), $$0x), dvi.d.a().a(ero.l).a(dwk.b).n().a(3.0F, 3.0F));
-   public static final die cy = a("deepslate_diamond_ore", $$0x -> new dko(bro.a(3, 7), $$0x), dvi.d.b(cx).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die cz = a("diamond_block", dvi.d.a().a(ero.F).n().a(5.0F, 6.0F).a(dpr.g));
-   public static final die cA = a("crafting_table", djy::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die cB = a("wheat", djz::new, dvi.d.a().a($$0x -> $$0x.c(djz.f) >= 6 ? ero.s : ero.h).b().e().d().a(dpr.w).a(erp.b));
-   public static final die cC = a("farmland", dla::new, dvi.d.a().a(ero.k).e().d(0.6F).a(dpr.c).c(dig::a).b(dig::a));
-   public static final die cD = a("furnace", dlk::new, dvi.d.a().a(ero.l).a(dwk.b).n().d(3.5F).a(a(13)));
-   public static final die cE = a("oak_sign", $$0x -> new dpz(dww.b, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cF = a("spruce_sign", $$0x -> new dpz(dww.c, $$0x), dvi.d.a().a(V.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cG = a("birch_sign", $$0x -> new dpz(dww.d, $$0x), dvi.d.a().a(ero.c).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cH = a("acacia_sign", $$0x -> new dpz(dww.e, $$0x), dvi.d.a().a(ero.p).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cI = a("cherry_sign", $$0x -> new dpz(dww.f, $$0x), dvi.d.a().a(s.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cJ = a("jungle_sign", $$0x -> new dpz(dww.g, $$0x), dvi.d.a().a(X.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cK = a("dark_oak_sign", $$0x -> new dpz(dww.h, $$0x), dvi.d.a().a(aa.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cL = a("mangrove_sign", $$0x -> new dpz(dww.k, $$0x), dvi.d.a().a(ab.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cM = a("bamboo_sign", $$0x -> new dpz(dww.l, $$0x), dvi.d.a().a(v.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cN = a("oak_door", $$0x -> new dkk(dvy.g, $$0x), dvi.d.a().a(n.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die cO = a("ladder", dmj::new, dvi.d.a().l().d(0.4F).a(dpr.m).c().a(erp.b));
-   public static final die cP = a("rail", dod::new, dvi.d.a().b().d(0.7F).a(dpr.g));
-   public static final die cQ = a("cobblestone_stairs", m);
-   public static final die cR = a("oak_wall_sign", $$0x -> new dre(dww.b, $$0x), a(cE, true).a(ero.n).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cS = a("spruce_wall_sign", $$0x -> new dre(dww.c, $$0x), a(cF, true).a(V.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cT = a("birch_wall_sign", $$0x -> new dre(dww.d, $$0x), a(cG, true).a(ero.c).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cU = a("acacia_wall_sign", $$0x -> new dre(dww.e, $$0x), a(cH, true).a(ero.p).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cV = a("cherry_wall_sign", $$0x -> new dre(dww.f, $$0x), a(cI, true).a(Z.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cW = a("jungle_wall_sign", $$0x -> new dre(dww.g, $$0x), a(cJ, true).a(X.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cX = a("dark_oak_wall_sign", $$0x -> new dre(dww.h, $$0x), a(cK, true).a(aa.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cY = a("mangrove_wall_sign", $$0x -> new dre(dww.k, $$0x), a(cL, true).a(ab.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die cZ = a("bamboo_wall_sign", $$0x -> new dre(dww.l, $$0x), a(cM, true).a(v.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die da = a("oak_hanging_sign", $$0x -> new djd(dww.b, $$0x), dvi.d.a().a(U.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die db = a("spruce_hanging_sign", $$0x -> new djd(dww.c, $$0x), dvi.d.a().a(V.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dc = a("birch_hanging_sign", $$0x -> new djd(dww.d, $$0x), dvi.d.a().a(ero.c).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dd = a("acacia_hanging_sign", $$0x -> new djd(dww.e, $$0x), dvi.d.a().a(ero.p).k().a(dwk.e).b().d(1.0F).i());
-   public static final die de = a("cherry_hanging_sign", $$0x -> new djd(dww.f, $$0x), dvi.d.a().a(ero.Q).k().a(dwk.e).b().d(1.0F).i());
-   public static final die df = a("jungle_hanging_sign", $$0x -> new djd(dww.g, $$0x), dvi.d.a().a(X.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dg = a("dark_oak_hanging_sign", $$0x -> new djd(dww.h, $$0x), dvi.d.a().a(aa.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dh = a("crimson_hanging_sign", $$0x -> new djd(dww.i, $$0x), dvi.d.a().a(ero.ab).k().a(dwk.e).b().d(1.0F));
-   public static final die di = a("warped_hanging_sign", $$0x -> new djd(dww.j, $$0x), dvi.d.a().a(ero.ae).k().a(dwk.e).b().d(1.0F));
-   public static final die dj = a("mangrove_hanging_sign", $$0x -> new djd(dww.k, $$0x), dvi.d.a().a(ab.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dk = a("bamboo_hanging_sign", $$0x -> new djd(dww.l, $$0x), dvi.d.a().a(ero.s).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dl = a("oak_wall_hanging_sign", $$0x -> new drd(dww.b, $$0x), a(da, true).a(U.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dm = a("spruce_wall_hanging_sign", $$0x -> new drd(dww.c, $$0x), a(db, true).a(ero.n).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dn = a("birch_wall_hanging_sign", $$0x -> new drd(dww.d, $$0x), a(dc, true).a(ero.c).k().a(dwk.e).b().d(1.0F).i());
-   public static final die do = a("acacia_wall_hanging_sign", $$0x -> new drd(dww.e, $$0x), a(dd, true).a(ero.p).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dp = a("cherry_wall_hanging_sign", $$0x -> new drd(dww.f, $$0x), a(de, true).a(ero.Q).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dq = a("jungle_wall_hanging_sign", $$0x -> new drd(dww.g, $$0x), a(df, true).a(X.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dr = a("dark_oak_wall_hanging_sign", $$0x -> new drd(dww.h, $$0x), a(dg, true).a(aa.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die ds = a("mangrove_wall_hanging_sign", $$0x -> new drd(dww.k, $$0x), a(dj, true).a(ab.w()).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dt = a("crimson_wall_hanging_sign", $$0x -> new drd(dww.i, $$0x), a(dh, true).a(ero.ab).k().a(dwk.e).b().d(1.0F));
-   public static final die du = a("warped_wall_hanging_sign", $$0x -> new drd(dww.j, $$0x), a(di, true).a(ero.ae).k().a(dwk.e).b().d(1.0F));
-   public static final die dv = a("bamboo_wall_hanging_sign", $$0x -> new drd(dww.l, $$0x), a(dk, true).a(ero.s).k().a(dwk.e).b().d(1.0F).i());
-   public static final die dw = a("lever", dmq::new, dvi.d.a().b().d(0.5F).a(dpr.f).a(erp.b));
-   public static final die dx = a("stone_pressure_plate", $$0x -> new dob(dvy.e, $$0x), dvi.d.a().a(ero.l).k().a(dwk.b).n().b().d(0.5F).a(erp.b));
-   public static final die dy = a("iron_door", $$0x -> new dkk(dvy.b, $$0x), dvi.d.a().a(ero.g).n().d(5.0F).c().a(erp.b));
-   public static final die dz = a("oak_pressure_plate", $$0x -> new dob(dvy.g, $$0x), dvi.d.a().a(n.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dA = a("spruce_pressure_plate", $$0x -> new dob(dvy.h, $$0x), dvi.d.a().a(o.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dB = a("birch_pressure_plate", $$0x -> new dob(dvy.i, $$0x), dvi.d.a().a(p.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dC = a("jungle_pressure_plate", $$0x -> new dob(dvy.l, $$0x), dvi.d.a().a(q.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dD = a("acacia_pressure_plate", $$0x -> new dob(dvy.j, $$0x), dvi.d.a().a(r.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dE = a("cherry_pressure_plate", $$0x -> new dob(dvy.k, $$0x), dvi.d.a().a(s.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dF = a("dark_oak_pressure_plate", $$0x -> new dob(dvy.m, $$0x), dvi.d.a().a(t.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dG = a("mangrove_pressure_plate", $$0x -> new dob(dvy.p, $$0x), dvi.d.a().a(u.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dH = a("bamboo_pressure_plate", $$0x -> new dob(dvy.q, $$0x), dvi.d.a().a(v.w()).k().a(dwk.e).b().d(0.5F).i().a(erp.b));
-   public static final die dI = a("redstone_ore", dof::new, dvi.d.a().a(ero.l).a(dwk.b).n().e().a(a(9)).a(3.0F, 3.0F));
-   public static final die dJ = a("deepslate_redstone_ore", dof::new, dvi.d.b(dI).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die dK = a("redstone_torch", doi::new, dvi.d.a().b().d().a(a(7)).a(dpr.b).a(erp.b));
-   public static final die dL = a("redstone_wall_torch", doj::new, a(dK, true).b().d().a(a(7)).a(dpr.b).a(erp.b));
-   public static final die dM = a("stone_button", $$0x -> new dio(dvy.e, 20, $$0x), b());
-   public static final die dN = a("snow", dpn::new, dvi.d.a().a(ero.i).p().l().e().d(0.1F).n().a(dpr.k).c(($$0x, $$1x, $$2) -> $$0x.c(dpn.c) >= 8).a(erp.b));
-   public static final die dO = a("ice", dmb::new, dvi.d.a().a(ero.f).a(0.98F).e().d(0.5F).a(dpr.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bul.aD).a(dig::b));
-   public static final die dP = a("snow_block", dvi.d.a().a(ero.i).n().d(0.2F).a(dpr.k));
-   public static final die dQ = a("cactus", dip::new, dvi.d.a().a(ero.h).e().d(0.4F).a(dpr.i).a(erp.b));
-   public static final die dR = a("clay", dvi.d.a().a(ero.j).a(dwk.f).d(0.6F).a(dpr.c));
-   public static final die dS = a("sugar_cane", dqe::new, dvi.d.a().a(ero.h).b().e().d().a(dpr.d).a(erp.b));
-   public static final die dT = a("jukebox", dmg::new, dvi.d.a().a(ero.k).a(dwk.e).a(2.0F, 6.0F).a(dpr.b).i());
-   public static final die dU = a("oak_fence", dlb::new, dvi.d.a().a(n.w()).k().a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die dV = a("netherrack", dnl::new, dvi.d.a().a(ero.J).a(dwk.b).n().d(0.4F).a(dpr.M));
-   public static final die dW = a("soul_sand", dpq::new, dvi.d.a().a(ero.A).a(dwk.l).d(0.5F).b(0.4F).a(dpr.I).a(dig::b).a(dig::a).c(dig::a).b(dig::a));
-   public static final die dX = a("soul_soil", dvi.d.a().a(ero.A).d(0.5F).a(dpr.J));
-   public static final die dY = a("basalt", doq::new, dvi.d.a().a(ero.D).a(dwk.b).n().a(1.25F, 4.2F).a(dpr.K));
-   public static final die dZ = a("polished_basalt", doq::new, dvi.d.a().a(ero.D).a(dwk.b).n().a(1.25F, 4.2F).a(dpr.K));
-   public static final die ea = a("soul_torch", $$0x -> new dqo(lr.L, $$0x), dvi.d.a().b().d().a($$0x -> 10).a(dpr.b).a(erp.b));
-   public static final die eb = a("soul_wall_torch", $$0x -> new drg(lr.L, $$0x), a(ea, true).b().d().a($$0x -> 10).a(dpr.b).a(erp.b));
-   public static final die ec = a("glowstone", dvi.d.a().a(ero.c).a(dwk.p).d(0.3F).a(dpr.h).a($$0x -> 15).a(dig::b));
-   public static final die ed = a("nether_portal", dnh::new, dvi.d.a().b().e().d(-1.0F).a(dpr.h).a($$0x -> 11).a(erp.c));
-   public static final die ee = a("carved_pumpkin", diy::new, dvi.d.a().a(ero.p).d(1.0F).a(dpr.b).a(dig::b).a(erp.b));
-   public static final die ef = a("jack_o_lantern", diy::new, dvi.d.a().a(ero.p).d(1.0F).a(dpr.b).a($$0x -> 15).a(dig::b).a(erp.b));
-   public static final die eg = a("cake", diq::new, dvi.d.a().k().d(0.5F).a(dpr.i).a(erp.b));
-   public static final die eh = a("repeater", dol::new, dvi.d.a().d().a(dpr.f).a(erp.b));
-   public static final die ei = b("white_stained_glass", cuy.a);
-   public static final die ej = b("orange_stained_glass", cuy.b);
-   public static final die ek = b("magenta_stained_glass", cuy.c);
-   public static final die el = b("light_blue_stained_glass", cuy.d);
-   public static final die em = b("yellow_stained_glass", cuy.e);
-   public static final die en = b("lime_stained_glass", cuy.f);
-   public static final die eo = b("pink_stained_glass", cuy.g);
-   public static final die ep = b("gray_stained_glass", cuy.h);
-   public static final die eq = b("light_gray_stained_glass", cuy.i);
-   public static final die er = b("cyan_stained_glass", cuy.j);
-   public static final die es = b("purple_stained_glass", cuy.k);
-   public static final die et = b("blue_stained_glass", cuy.l);
-   public static final die eu = b("brown_stained_glass", cuy.m);
-   public static final die ev = b("green_stained_glass", cuy.n);
-   public static final die ew = b("red_stained_glass", cuy.o);
-   public static final die ex = b("black_stained_glass", cuy.p);
-   public static final die ey = a("oak_trapdoor", $$0x -> new dqr(dvy.g, $$0x), dvi.d.a().a(ero.n).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die ez = a("spruce_trapdoor", $$0x -> new dqr(dvy.h, $$0x), dvi.d.a().a(ero.I).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eA = a("birch_trapdoor", $$0x -> new dqr(dvy.i, $$0x), dvi.d.a().a(ero.c).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eB = a("jungle_trapdoor", $$0x -> new dqr(dvy.l, $$0x), dvi.d.a().a(ero.k).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eC = a("acacia_trapdoor", $$0x -> new dqr(dvy.j, $$0x), dvi.d.a().a(ero.p).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eD = a("cherry_trapdoor", $$0x -> new dqr(dvy.k, $$0x), dvi.d.a().a(ero.K).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eE = a("dark_oak_trapdoor", $$0x -> new dqr(dvy.m, $$0x), dvi.d.a().a(ero.A).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eF = a("mangrove_trapdoor", $$0x -> new dqr(dvy.p, $$0x), dvi.d.a().a(ero.C).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eG = a("bamboo_trapdoor", $$0x -> new dqr(dvy.q, $$0x), dvi.d.a().a(ero.s).a(dwk.e).d(3.0F).c().a(dig::a).i());
-   public static final die eH = a("stone_bricks", dvi.d.a().a(ero.l).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die eI = a("mossy_stone_bricks", dvi.d.a().a(ero.l).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die eJ = a("cracked_stone_bricks", dvi.d.a().a(ero.l).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die eK = a("chiseled_stone_bricks", dvi.d.a().a(ero.l).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die eL = a("packed_mud", dvi.d.b(j).a(1.0F, 3.0F).a(dpr.aO));
-   public static final die eM = a("mud_bricks", dvi.d.a().a(ero.S).a(dwk.b).n().a(1.5F, 3.0F).a(dpr.aN));
-   public static final die eN = a("infested_stone", $$0x -> new dmc(b, $$0x), dvi.d.a().a(ero.j));
-   public static final die eO = a("infested_cobblestone", $$0x -> new dmc(m, $$0x), dvi.d.a().a(ero.j));
-   public static final die eP = a("infested_stone_bricks", $$0x -> new dmc(eH, $$0x), dvi.d.a().a(ero.j));
-   public static final die eQ = a("infested_mossy_stone_bricks", $$0x -> new dmc(eI, $$0x), dvi.d.a().a(ero.j));
-   public static final die eR = a("infested_cracked_stone_bricks", $$0x -> new dmc(eJ, $$0x), dvi.d.a().a(ero.j));
-   public static final die eS = a("infested_chiseled_stone_bricks", $$0x -> new dmc(eK, $$0x), dvi.d.a().a(ero.j));
-   public static final die eT = a("brown_mushroom_block", dma::new, dvi.d.a().a(ero.k).a(dwk.e).d(0.2F).a(dpr.b).i());
-   public static final die eU = a("red_mushroom_block", dma::new, dvi.d.a().a(ero.C).a(dwk.e).d(0.2F).a(dpr.b).i());
-   public static final die eV = a("mushroom_stem", dma::new, dvi.d.a().a(ero.d).a(dwk.e).d(0.2F).a(dpr.b).i());
-   public static final die eW = a("iron_bars", dme::new, dvi.d.a().n().a(5.0F, 6.0F).a(dpr.g).c());
-   public static final die eX = a("chain", dje::new, dvi.d.a().k().n().a(5.0F, 6.0F).a(dpr.U).c());
-   public static final die eY = a("glass_pane", dme::new, dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die eZ = a(akw.a, doc::new, dvi.d.a().a(ero.p).a(dwk.m).d(1.0F).a(dpr.b).a(erp.b));
-   public static final die fa = a(akw.d, dvi.d.a().a(ero.t).d(1.0F).a(dpr.b).a(erp.b));
-   public static final die fb = a(akw.c, $$0x -> new dhf(akw.b, akw.a, akx.a, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.b).a(erp.b));
-   public static final die fc = a(akw.f, $$0x -> new dhf(akw.e, akw.d, akx.b, $$0x), dvi.d.a().a(ero.h).b().d().a(dpr.b).a(erp.b));
-   public static final die fd = a(akw.b, $$0x -> new dqa(akw.a, akw.c, akx.a, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.x).a(erp.b));
-   public static final die fe = a(akw.e, $$0x -> new dqa(akw.d, akw.f, akx.b, $$0x), dvi.d.a().a(ero.h).b().e().d().a(dpr.x).a(erp.b));
-   public static final die ff = a("vine", dra::new, dvi.d.a().a(ero.h).p().b().e().d(0.2F).a(dpr.y).i().a(erp.b));
-   public static final die fg = a("glow_lichen", dln::new, dvi.d.a().a(ero.aj).p().b().d(0.2F).a(dpr.aD).a(dln.b(7)).i().a(erp.b));
-   public static final die fh = a("oak_fence_gate", $$0x -> new dlc(dww.b, $$0x), dvi.d.a().a(n.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die fi = a("brick_stairs", cj);
-   public static final die fj = a("stone_brick_stairs", eH);
-   public static final die fk = a("mud_brick_stairs", eM);
-   public static final die fl = a("mycelium", dng::new, dvi.d.a().a(ero.y).e().d(0.6F).a(dpr.d));
-   public static final die fm = a("lily_pad", drh::new, dvi.d.a().a(ero.h).d().a(dpr.e).c().a(erp.b));
-   public static final die fn = a("nether_bricks", dvi.d.a().a(ero.J).a(dwk.b).n().a(2.0F, 6.0F).a(dpr.N));
-   public static final die fo = a("nether_brick_fence", dlb::new, dvi.d.a().a(ero.J).a(dwk.b).n().a(2.0F, 6.0F).a(dpr.N));
-   public static final die fp = a("nether_brick_stairs", fn);
-   public static final die fq = a("nether_wart", dnk::new, dvi.d.a().a(ero.C).b().e().a(dpr.z).a(erp.b));
-   public static final die fr = a("enchanting_table", dkq::new, dvi.d.a().a(ero.C).a(dwk.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
-   public static final die fs = a("brewing_stand", dii::new, dvi.d.a().a(ero.g).n().d(0.5F).a($$0x -> 1).c());
-   public static final die ft = a("cauldron", diz::new, dvi.d.a().a(ero.l).n().d(2.0F).c());
-   public static final die fu = a("water_cauldron", $$0x -> new dmm(dgc.c.b, kn.d, $$0x), dvi.d.b(ft));
-   public static final die fv = a("lava_cauldron", dml::new, dvi.d.b(ft).a($$0x -> 15));
-   public static final die fw = a("powder_snow_cauldron", $$0x -> new dmm(dgc.c.c, kn.f, $$0x), dvi.d.b(ft));
-   public static final die fx = a("end_portal", dks::new, dvi.d.a().a(ero.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(erp.c));
-   public static final die fy = a("end_portal_frame", dkt::new, dvi.d.a().a(ero.B).a(dwk.b).a(dpr.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
-   public static final die fz = a("end_stone", dvi.d.a().a(ero.c).a(dwk.b).n().a(3.0F, 9.0F));
-   public static final die fA = a("dragon_egg", dkn::new, dvi.d.a().a(ero.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(erp.b));
-   public static final die fB = a("redstone_lamp", doh::new, dvi.d.a().a(ero.L).a(a(15)).d(0.3F).a(dpr.h).a(dig::b));
-   public static final die fC = a("cocoa", djl::new, dvi.d.a().a(ero.h).e().a(0.2F, 3.0F).a(dpr.b).c().a(erp.b));
-   public static final die fD = a("sandstone_stairs", aV);
-   public static final die fE = a("emerald_ore", $$0x -> new dko(bro.a(3, 7), $$0x), dvi.d.a().a(ero.l).a(dwk.b).n().a(3.0F, 3.0F));
-   public static final die fF = a("deepslate_emerald_ore", $$0x -> new dko(bro.a(3, 7), $$0x), dvi.d.b(fE).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die fG = a("ender_chest", dkv::new, dvi.d.a().a(ero.l).a(dwk.b).n().a(22.5F, 600.0F).a($$0x -> 7));
-   public static final die fH = a("tripwire_hook", dqv::new, dvi.d.a().b().a(dpr.b).a(erp.b));
-   public static final die fI = a("tripwire", $$0x -> new dqu(fH, $$0x), dvi.d.a().b().a(erp.b));
-   public static final die fJ = a("emerald_block", dvi.d.a().a(ero.H).a(dwk.n).n().a(5.0F, 6.0F).a(dpr.g));
-   public static final die fK = a("spruce_stairs", o);
-   public static final die fL = a("birch_stairs", p);
-   public static final die fM = a("jungle_stairs", q);
-   public static final die fN = a("command_block", $$0x -> new djn(false, $$0x), dvi.d.a().a(ero.A).n().a(-1.0F, 3600000.0F).g());
-   public static final die fO = a("beacon", dhw::new, dvi.d.a().a(ero.F).a(dwk.d).d(3.0F).a($$0x -> 15).c().a(dig::b));
-   public static final die fP = a("cobblestone_wall", drc::new, dvi.d.b(m).k());
-   public static final die fQ = a("mossy_cobblestone_wall", drc::new, dvi.d.b(m).k());
-   public static final die fR = a("flower_pot", $$0x -> new dlg(a, $$0x), c());
-   public static final die fS = a("potted_torchflower", $$0x -> new dlg(bS, $$0x), c());
-   public static final die fT = a("potted_oak_sapling", $$0x -> new dlg(x, $$0x), c());
-   public static final die fU = a("potted_spruce_sapling", $$0x -> new dlg(y, $$0x), c());
-   public static final die fV = a("potted_birch_sapling", $$0x -> new dlg(z, $$0x), c());
-   public static final die fW = a("potted_jungle_sapling", $$0x -> new dlg(A, $$0x), c());
-   public static final die fX = a("potted_acacia_sapling", $$0x -> new dlg(B, $$0x), c());
-   public static final die fY = a("potted_cherry_sapling", $$0x -> new dlg(C, $$0x), c());
-   public static final die fZ = a("potted_dark_oak_sapling", $$0x -> new dlg(D, $$0x), c());
-   public static final die ga = a("potted_mangrove_propagule", $$0x -> new dlg(E, $$0x), c());
-   public static final die gb = a("potted_fern", $$0x -> new dlg(bu, $$0x), c());
-   public static final die gc = a("potted_dandelion", $$0x -> new dlg(bR, $$0x), c());
-   public static final die gd = a("potted_poppy", $$0x -> new dlg(bT, $$0x), c());
-   public static final die ge = a("potted_blue_orchid", $$0x -> new dlg(bU, $$0x), c());
-   public static final die gf = a("potted_allium", $$0x -> new dlg(bV, $$0x), c());
-   public static final die gg = a("potted_azure_bluet", $$0x -> new dlg(bW, $$0x), c());
-   public static final die gh = a("potted_red_tulip", $$0x -> new dlg(bX, $$0x), c());
-   public static final die gi = a("potted_orange_tulip", $$0x -> new dlg(bY, $$0x), c());
-   public static final die gj = a("potted_white_tulip", $$0x -> new dlg(bZ, $$0x), c());
-   public static final die gk = a("potted_pink_tulip", $$0x -> new dlg(ca, $$0x), c());
-   public static final die gl = a("potted_oxeye_daisy", $$0x -> new dlg(cb, $$0x), c());
-   public static final die gm = a("potted_cornflower", $$0x -> new dlg(cc, $$0x), c());
-   public static final die gn = a("potted_lily_of_the_valley", $$0x -> new dlg(ce, $$0x), c());
-   public static final die go = a("potted_wither_rose", $$0x -> new dlg(cd, $$0x), c());
-   public static final die gp = a("potted_red_mushroom", $$0x -> new dlg(cg, $$0x), c());
-   public static final die gq = a("potted_brown_mushroom", $$0x -> new dlg(cf, $$0x), c());
-   public static final die gr = a("potted_dead_bush", $$0x -> new dlg(bv, $$0x), c());
-   public static final die gs = a("potted_cactus", $$0x -> new dlg(dQ, $$0x), c());
-   public static final die gt = a("carrots", diw::new, dvi.d.a().a(ero.h).b().e().d().a(dpr.w).a(erp.b));
-   public static final die gu = a("potatoes", dnx::new, dvi.d.a().a(ero.h).b().e().d().a(dpr.w).a(erp.b));
-   public static final die gv = a("oak_button", $$0x -> new dio(dvy.g, 30, $$0x), b());
-   public static final die gw = a("spruce_button", $$0x -> new dio(dvy.h, 30, $$0x), b());
-   public static final die gx = a("birch_button", $$0x -> new dio(dvy.i, 30, $$0x), b());
-   public static final die gy = a("jungle_button", $$0x -> new dio(dvy.l, 30, $$0x), b());
-   public static final die gz = a("acacia_button", $$0x -> new dio(dvy.j, 30, $$0x), b());
-   public static final die gA = a("cherry_button", $$0x -> new dio(dvy.k, 30, $$0x), b());
-   public static final die gB = a("dark_oak_button", $$0x -> new dio(dvy.m, 30, $$0x), b());
-   public static final die gC = a("mangrove_button", $$0x -> new dio(dvy.p, 30, $$0x), b());
-   public static final die gD = a("bamboo_button", $$0x -> new dio(dvy.q, 30, $$0x), b());
-   public static final die gE = a("skeleton_skull", $$0x -> new dpg(dpg.b.c, $$0x), dvi.d.a().a(dwk.r).d(1.0F).a(erp.b));
-   public static final die gF = a("skeleton_wall_skull", $$0x -> new drf(dpg.b.c, $$0x), a(gE, true).d(1.0F).a(erp.b));
-   public static final die gG = a("wither_skeleton_skull", drx::new, dvi.d.a().a(dwk.u).d(1.0F).a(erp.b));
-   public static final die gH = a("wither_skeleton_wall_skull", dry::new, a(gG, true).d(1.0F).a(erp.b));
-   public static final die gI = a("zombie_head", $$0x -> new dpg(dpg.b.f, $$0x), dvi.d.a().a(dwk.q).d(1.0F).a(erp.b));
-   public static final die gJ = a("zombie_wall_head", $$0x -> new drf(dpg.b.f, $$0x), a(gI, true).d(1.0F).a(erp.b));
-   public static final die gK = a("player_head", dnt::new, dvi.d.a().a(dwk.w).d(1.0F).a(erp.b));
-   public static final die gL = a("player_wall_head", dnu::new, a(gK, true).d(1.0F).a(erp.b));
-   public static final die gM = a("creeper_head", $$0x -> new dpg(dpg.b.g, $$0x), dvi.d.a().a(dwk.s).d(1.0F).a(erp.b));
-   public static final die gN = a("creeper_wall_head", $$0x -> new drf(dpg.b.g, $$0x), a(gM, true).d(1.0F).a(erp.b));
-   public static final die gO = a("dragon_head", $$0x -> new dpg(dpg.b.i, $$0x), dvi.d.a().a(dwk.t).d(1.0F).a(erp.b));
-   public static final die gP = a("dragon_wall_head", $$0x -> new drf(dpg.b.i, $$0x), a(gO, true).d(1.0F).a(erp.b));
-   public static final die gQ = a("piglin_head", $$0x -> new dpg(dpg.b.h, $$0x), dvi.d.a().a(dwk.v).d(1.0F).a(erp.b));
-   public static final die gR = a("piglin_wall_head", dnp::new, a(gQ, true).d(1.0F).a(erp.b));
-   public static final die gS = a("anvil", dhe::new, dvi.d.a().a(ero.g).n().a(5.0F, 1200.0F).a(dpr.n).a(erp.c));
-   public static final die gT = a("chipped_anvil", dhe::new, dvi.d.a().a(ero.g).n().a(5.0F, 1200.0F).a(dpr.n).a(erp.c));
-   public static final die gU = a("damaged_anvil", dhe::new, dvi.d.a().a(ero.g).n().a(5.0F, 1200.0F).a(dpr.n).a(erp.c));
-   public static final die gV = a("trapped_chest", dqs::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die gW = a("light_weighted_pressure_plate", $$0x -> new dru(15, dvy.d, $$0x), dvi.d.a().a(ero.E).k().n().b().d(0.5F).a(erp.b));
-   public static final die gX = a("heavy_weighted_pressure_plate", $$0x -> new dru(150, dvy.b, $$0x), dvi.d.a().a(ero.g).k().n().b().d(0.5F).a(erp.b));
-   public static final die gY = a("comparator", djo::new, dvi.d.a().d().a(dpr.f).a(erp.b));
-   public static final die gZ = a("daylight_detector", dkc::new, dvi.d.a().a(ero.n).a(dwk.e).d(0.2F).a(dpr.b).i());
-   public static final die ha = a("redstone_block", dnz::new, dvi.d.a().a(ero.e).n().a(5.0F, 6.0F).a(dpr.g).a(dig::b));
-   public static final die hb = a("nether_quartz_ore", $$0x -> new dko(bro.a(2, 5), $$0x), dvi.d.a().a(ero.J).a(dwk.b).n().a(3.0F, 3.0F).a(dpr.P));
-   public static final die hc = a("hopper", dly::new, dvi.d.a().a(ero.l).n().a(3.0F, 4.8F).a(dpr.g).c());
-   public static final die hd = a("quartz_block", dvi.d.a().a(ero.o).a(dwk.b).n().d(0.8F));
-   public static final die he = a("chiseled_quartz_block", dvi.d.a().a(ero.o).a(dwk.b).n().d(0.8F));
-   public static final die hf = a("quartz_pillar", doq::new, dvi.d.a().a(ero.o).a(dwk.b).n().d(0.8F));
-   public static final die hg = a("quartz_stairs", hd);
-   public static final die hh = a("activator_rail", doa::new, dvi.d.a().b().d(0.7F).a(dpr.g));
-   public static final die hi = a("dropper", dkp::new, dvi.d.a().a(ero.l).a(dwk.b).n().d(3.5F));
-   public static final die hj = a("white_terracotta", dvi.d.a().a(ero.K).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hk = a("orange_terracotta", dvi.d.a().a(ero.L).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hl = a("magenta_terracotta", dvi.d.a().a(ero.M).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hm = a("light_blue_terracotta", dvi.d.a().a(ero.N).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hn = a("yellow_terracotta", dvi.d.a().a(ero.O).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die ho = a("lime_terracotta", dvi.d.a().a(ero.P).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hp = a("pink_terracotta", dvi.d.a().a(ero.Q).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hq = a("gray_terracotta", dvi.d.a().a(ero.R).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hr = a("light_gray_terracotta", dvi.d.a().a(ero.S).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hs = a("cyan_terracotta", dvi.d.a().a(ero.T).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die ht = a("purple_terracotta", dvi.d.a().a(ero.U).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hu = a("blue_terracotta", dvi.d.a().a(ero.V).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hv = a("brown_terracotta", dvi.d.a().a(ero.W).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hw = a("green_terracotta", dvi.d.a().a(ero.X).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hx = a("red_terracotta", dvi.d.a().a(ero.Y).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hy = a("black_terracotta", dvi.d.a().a(ero.Z).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die hz = a("white_stained_glass_pane", $$0x -> new dpx(cuy.a, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hA = a("orange_stained_glass_pane", $$0x -> new dpx(cuy.b, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hB = a("magenta_stained_glass_pane", $$0x -> new dpx(cuy.c, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hC = a("light_blue_stained_glass_pane", $$0x -> new dpx(cuy.d, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hD = a("yellow_stained_glass_pane", $$0x -> new dpx(cuy.e, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hE = a("lime_stained_glass_pane", $$0x -> new dpx(cuy.f, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hF = a("pink_stained_glass_pane", $$0x -> new dpx(cuy.g, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hG = a("gray_stained_glass_pane", $$0x -> new dpx(cuy.h, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hH = a("light_gray_stained_glass_pane", $$0x -> new dpx(cuy.i, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hI = a("cyan_stained_glass_pane", $$0x -> new dpx(cuy.j, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hJ = a("purple_stained_glass_pane", $$0x -> new dpx(cuy.k, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hK = a("blue_stained_glass_pane", $$0x -> new dpx(cuy.l, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hL = a("brown_stained_glass_pane", $$0x -> new dpx(cuy.m, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hM = a("green_stained_glass_pane", $$0x -> new dpx(cuy.n, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hN = a("red_stained_glass_pane", $$0x -> new dpx(cuy.o, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hO = a("black_stained_glass_pane", $$0x -> new dpx(cuy.p, $$0x), dvi.d.a().a(dwk.d).d(0.3F).a(dpr.h).c());
-   public static final die hP = a("acacia_stairs", r);
-   public static final die hQ = a("cherry_stairs", s);
-   public static final die hR = a("dark_oak_stairs", t);
-   public static final die hS = a("mangrove_stairs", u);
-   public static final die hT = a("bamboo_stairs", v);
-   public static final die hU = a("bamboo_mosaic_stairs", w);
-   public static final die hV = a("slime_block", dpi::new, dvi.d.a().a(ero.b).a(0.8F).a(dpr.o).c());
-   public static final die hW = a("barrier", dhl::new, dvi.d.a().a(-1.0F, 3600000.8F).a(a(ero.a)).g().c().a(dig::a).o().a(erp.c));
-   public static final die hX = a("light", dmr::new, dvi.d.a().p().a(-1.0F, 3600000.8F).a(a(ero.a)).g().c().a(dmr.e));
-   public static final die hY = a("iron_trapdoor", $$0x -> new dqr(dvy.b, $$0x), dvi.d.a().a(ero.g).n().d(5.0F).c().a(dig::a));
-   public static final die hZ = a("prismarine", dvi.d.a().a(ero.x).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ia = a("prismarine_bricks", dvi.d.a().a(ero.F).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ib = a("dark_prismarine", dvi.d.a().a(ero.F).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ic = a("prismarine_stairs", hZ);
-   public static final die id = a("prismarine_brick_stairs", ia);
-   public static final die ie = a("dark_prismarine_stairs", ib);
-   public static final die if = a("prismarine_slab", dph::new, dvi.d.a().a(ero.x).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ig = a("prismarine_brick_slab", dph::new, dvi.d.a().a(ero.F).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ih = a("dark_prismarine_slab", dph::new, dvi.d.a().a(ero.F).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ii = a("sea_lantern", dvi.d.a().a(ero.o).a(dwk.d).d(0.3F).a(dpr.h).a($$0x -> 15).a(dig::b));
-   public static final die ij = a("hay_block", dlv::new, dvi.d.a().a(ero.s).a(dwk.o).d(0.5F).a(dpr.d));
-   public static final die ik = a("white_carpet", $$0x -> new drz(cuy.a, $$0x), dvi.d.a().a(ero.i).d(0.1F).a(dpr.i).i());
-   public static final die il = a("orange_carpet", $$0x -> new drz(cuy.b, $$0x), dvi.d.a().a(ero.p).d(0.1F).a(dpr.i).i());
-   public static final die im = a("magenta_carpet", $$0x -> new drz(cuy.c, $$0x), dvi.d.a().a(ero.q).d(0.1F).a(dpr.i).i());
-   public static final die in = a("light_blue_carpet", $$0x -> new drz(cuy.d, $$0x), dvi.d.a().a(ero.r).d(0.1F).a(dpr.i).i());
-   public static final die io = a("yellow_carpet", $$0x -> new drz(cuy.e, $$0x), dvi.d.a().a(ero.s).d(0.1F).a(dpr.i).i());
-   public static final die ip = a("lime_carpet", $$0x -> new drz(cuy.f, $$0x), dvi.d.a().a(ero.t).d(0.1F).a(dpr.i).i());
-   public static final die iq = a("pink_carpet", $$0x -> new drz(cuy.g, $$0x), dvi.d.a().a(ero.u).d(0.1F).a(dpr.i).i());
-   public static final die ir = a("gray_carpet", $$0x -> new drz(cuy.h, $$0x), dvi.d.a().a(ero.v).d(0.1F).a(dpr.i).i());
-   public static final die is = a("light_gray_carpet", $$0x -> new drz(cuy.i, $$0x), dvi.d.a().a(ero.w).d(0.1F).a(dpr.i).i());
-   public static final die it = a("cyan_carpet", $$0x -> new drz(cuy.j, $$0x), dvi.d.a().a(ero.x).d(0.1F).a(dpr.i).i());
-   public static final die iu = a("purple_carpet", $$0x -> new drz(cuy.k, $$0x), dvi.d.a().a(ero.y).d(0.1F).a(dpr.i).i());
-   public static final die iv = a("blue_carpet", $$0x -> new drz(cuy.l, $$0x), dvi.d.a().a(ero.z).d(0.1F).a(dpr.i).i());
-   public static final die iw = a("brown_carpet", $$0x -> new drz(cuy.m, $$0x), dvi.d.a().a(ero.A).d(0.1F).a(dpr.i).i());
-   public static final die ix = a("green_carpet", $$0x -> new drz(cuy.n, $$0x), dvi.d.a().a(ero.B).d(0.1F).a(dpr.i).i());
-   public static final die iy = a("red_carpet", $$0x -> new drz(cuy.o, $$0x), dvi.d.a().a(ero.C).d(0.1F).a(dpr.i).i());
-   public static final die iz = a("black_carpet", $$0x -> new drz(cuy.p, $$0x), dvi.d.a().a(ero.D).d(0.1F).a(dpr.i).i());
-   public static final die iA = a("terracotta", dvi.d.a().a(ero.p).a(dwk.b).n().a(1.25F, 4.2F));
-   public static final die iB = a("coal_block", dvi.d.a().a(ero.D).a(dwk.b).n().a(5.0F, 6.0F));
-   public static final die iC = a("packed_ice", dvi.d.a().a(ero.f).a(dwk.i).a(0.98F).d(0.5F).a(dpr.h));
-   public static final die iD = a("sunflower", dqi::new, dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).i().a(erp.b));
-   public static final die iE = a("lilac", dqi::new, dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).i().a(erp.b));
-   public static final die iF = a("rose_bush", dqi::new, dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).i().a(erp.b));
-   public static final die iG = a("peony", dqi::new, dvi.d.a().a(ero.h).b().d().a(dpr.d).a(dvi.c.b).i().a(erp.b));
-   public static final die iH = a("tall_grass", dkm::new, dvi.d.a().a(ero.h).p().b().d().a(dpr.d).a(dvi.c.b).i().a(erp.b));
-   public static final die iI = a("large_fern", dkm::new, dvi.d.a().a(ero.h).p().b().d().a(dpr.d).a(dvi.c.b).i().a(erp.b));
-   public static final die iJ = a("white_banner", $$0x -> new dhj(cuy.a, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iK = a("orange_banner", $$0x -> new dhj(cuy.b, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iL = a("magenta_banner", $$0x -> new dhj(cuy.c, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iM = a("light_blue_banner", $$0x -> new dhj(cuy.d, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iN = a("yellow_banner", $$0x -> new dhj(cuy.e, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iO = a("lime_banner", $$0x -> new dhj(cuy.f, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iP = a("pink_banner", $$0x -> new dhj(cuy.g, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iQ = a("gray_banner", $$0x -> new dhj(cuy.h, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iR = a("light_gray_banner", $$0x -> new dhj(cuy.i, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iS = a("cyan_banner", $$0x -> new dhj(cuy.j, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iT = a("purple_banner", $$0x -> new dhj(cuy.k, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iU = a("blue_banner", $$0x -> new dhj(cuy.l, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iV = a("brown_banner", $$0x -> new dhj(cuy.m, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iW = a("green_banner", $$0x -> new dhj(cuy.n, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iX = a("red_banner", $$0x -> new dhj(cuy.o, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iY = a("black_banner", $$0x -> new dhj(cuy.p, $$0x), dvi.d.a().a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die iZ = a("white_wall_banner", $$0x -> new drb(cuy.a, $$0x), a(iJ, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die ja = a("orange_wall_banner", $$0x -> new drb(cuy.b, $$0x), a(iK, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jb = a("magenta_wall_banner", $$0x -> new drb(cuy.c, $$0x), a(iL, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jc = a("light_blue_wall_banner", $$0x -> new drb(cuy.d, $$0x), a(iM, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jd = a("yellow_wall_banner", $$0x -> new drb(cuy.e, $$0x), a(iN, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die je = a("lime_wall_banner", $$0x -> new drb(cuy.f, $$0x), a(iO, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jf = a("pink_wall_banner", $$0x -> new drb(cuy.g, $$0x), a(iP, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jg = a("gray_wall_banner", $$0x -> new drb(cuy.h, $$0x), a(iQ, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jh = a("light_gray_wall_banner", $$0x -> new drb(cuy.i, $$0x), a(iR, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die ji = a("cyan_wall_banner", $$0x -> new drb(cuy.j, $$0x), a(iS, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jj = a("purple_wall_banner", $$0x -> new drb(cuy.k, $$0x), a(iT, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jk = a("blue_wall_banner", $$0x -> new drb(cuy.l, $$0x), a(iU, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jl = a("brown_wall_banner", $$0x -> new drb(cuy.m, $$0x), a(iV, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jm = a("green_wall_banner", $$0x -> new drb(cuy.n, $$0x), a(iW, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jn = a("red_wall_banner", $$0x -> new drb(cuy.o, $$0x), a(iX, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jo = a("black_wall_banner", $$0x -> new drb(cuy.p, $$0x), a(iY, true).a(ero.n).k().a(dwk.e).b().d(1.0F).a(dpr.b).i());
-   public static final die jp = a("red_sandstone", dvi.d.a().a(ero.p).a(dwk.b).n().d(0.8F));
-   public static final die jq = a("chiseled_red_sandstone", dvi.d.a().a(ero.p).a(dwk.b).n().d(0.8F));
-   public static final die jr = a("cut_red_sandstone", dvi.d.a().a(ero.p).a(dwk.b).n().d(0.8F));
-   public static final die js = a("red_sandstone_stairs", jp);
-   public static final die jt = a("oak_slab", dph::new, dvi.d.a().a(ero.n).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die ju = a("spruce_slab", dph::new, dvi.d.a().a(ero.I).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die jv = a("birch_slab", dph::new, dvi.d.a().a(ero.c).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die jw = a("jungle_slab", dph::new, dvi.d.a().a(ero.k).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die jx = a("acacia_slab", dph::new, dvi.d.a().a(ero.p).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die jy = a("cherry_slab", dph::new, dvi.d.a().a(ero.K).a(dwk.e).a(2.0F, 3.0F).a(dpr.aU).i());
-   public static final die jz = a("dark_oak_slab", dph::new, dvi.d.a().a(ero.A).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die jA = a("mangrove_slab", dph::new, dvi.d.a().a(ero.C).a(dwk.e).a(2.0F, 3.0F).a(dpr.b).i());
-   public static final die jB = a("bamboo_slab", dph::new, dvi.d.a().a(ero.s).a(dwk.e).a(2.0F, 3.0F).a(dpr.aS).i());
-   public static final die jC = a("bamboo_mosaic_slab", dph::new, dvi.d.a().a(ero.s).a(dwk.e).a(2.0F, 3.0F).a(dpr.aS).i());
-   public static final die jD = a("stone_slab", dph::new, dvi.d.a().a(ero.l).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jE = a("smooth_stone_slab", dph::new, dvi.d.a().a(ero.l).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jF = a("sandstone_slab", dph::new, dvi.d.a().a(ero.c).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jG = a("cut_sandstone_slab", dph::new, dvi.d.a().a(ero.c).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jH = a("petrified_oak_slab", dph::new, dvi.d.a().a(ero.n).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jI = a("cobblestone_slab", dph::new, dvi.d.a().a(ero.l).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jJ = a("brick_slab", dph::new, dvi.d.a().a(ero.C).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jK = a("stone_brick_slab", dph::new, dvi.d.a().a(ero.l).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jL = a("mud_brick_slab", dph::new, dvi.d.a().a(ero.S).a(dwk.b).n().a(1.5F, 3.0F).a(dpr.aN));
-   public static final die jM = a("nether_brick_slab", dph::new, dvi.d.a().a(ero.J).a(dwk.b).n().a(2.0F, 6.0F).a(dpr.N));
-   public static final die jN = a("quartz_slab", dph::new, dvi.d.a().a(ero.o).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jO = a("red_sandstone_slab", dph::new, dvi.d.a().a(ero.p).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jP = a("cut_red_sandstone_slab", dph::new, dvi.d.a().a(ero.p).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jQ = a("purpur_slab", dph::new, dvi.d.a().a(ero.q).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jR = a("smooth_stone", dvi.d.a().a(ero.l).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jS = a("smooth_sandstone", dvi.d.a().a(ero.c).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jT = a("smooth_quartz", dvi.d.a().a(ero.o).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jU = a("smooth_red_sandstone", dvi.d.a().a(ero.p).a(dwk.b).n().a(2.0F, 6.0F));
-   public static final die jV = a("spruce_fence_gate", $$0x -> new dlc(dww.c, $$0x), dvi.d.a().a(o.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die jW = a("birch_fence_gate", $$0x -> new dlc(dww.d, $$0x), dvi.d.a().a(p.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die jX = a("jungle_fence_gate", $$0x -> new dlc(dww.g, $$0x), dvi.d.a().a(q.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die jY = a("acacia_fence_gate", $$0x -> new dlc(dww.e, $$0x), dvi.d.a().a(r.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die jZ = a("cherry_fence_gate", $$0x -> new dlc(dww.f, $$0x), dvi.d.a().a(s.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die ka = a("dark_oak_fence_gate", $$0x -> new dlc(dww.h, $$0x), dvi.d.a().a(t.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die kb = a("mangrove_fence_gate", $$0x -> new dlc(dww.k, $$0x), dvi.d.a().a(u.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die kc = a("bamboo_fence_gate", $$0x -> new dlc(dww.l, $$0x), dvi.d.a().a(v.w()).k().a(dwk.e).a(2.0F, 3.0F).i());
-   public static final die kd = a("spruce_fence", dlb::new, dvi.d.a().a(o.w()).a(dwk.e).a(2.0F, 3.0F).i().a(dpr.b));
-   public static final die ke = a("birch_fence", dlb::new, dvi.d.a().a(p.w()).a(dwk.e).a(2.0F, 3.0F).i().a(dpr.b));
-   public static final die kf = a("jungle_fence", dlb::new, dvi.d.a().a(q.w()).a(dwk.e).a(2.0F, 3.0F).i().a(dpr.b));
-   public static final die kg = a("acacia_fence", dlb::new, dvi.d.a().a(r.w()).a(dwk.e).a(2.0F, 3.0F).i().a(dpr.b));
-   public static final die kh = a("cherry_fence", dlb::new, dvi.d.a().a(s.w()).a(dwk.e).a(2.0F, 3.0F).i().a(dpr.aU));
-   public static final die ki = a("dark_oak_fence", dlb::new, dvi.d.a().a(t.w()).a(dwk.e).a(2.0F, 3.0F).i().a(dpr.b));
-   public static final die kj = a("mangrove_fence", dlb::new, dvi.d.a().a(u.w()).a(dwk.e).a(2.0F, 3.0F).i().a(dpr.b));
-   public static final die kk = a("bamboo_fence", dlb::new, dvi.d.a().a(v.w()).a(dwk.e).a(2.0F, 3.0F).a(dpr.aS).i());
-   public static final die kl = a("spruce_door", $$0x -> new dkk(dvy.h, $$0x), dvi.d.a().a(o.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die km = a("birch_door", $$0x -> new dkk(dvy.i, $$0x), dvi.d.a().a(p.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die kn = a("jungle_door", $$0x -> new dkk(dvy.l, $$0x), dvi.d.a().a(q.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die ko = a("acacia_door", $$0x -> new dkk(dvy.j, $$0x), dvi.d.a().a(r.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die kp = a("cherry_door", $$0x -> new dkk(dvy.k, $$0x), dvi.d.a().a(s.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die kq = a("dark_oak_door", $$0x -> new dkk(dvy.m, $$0x), dvi.d.a().a(t.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die kr = a("mangrove_door", $$0x -> new dkk(dvy.p, $$0x), dvi.d.a().a(u.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die ks = a("bamboo_door", $$0x -> new dkk(dvy.q, $$0x), dvi.d.a().a(v.w()).a(dwk.e).d(3.0F).c().i().a(erp.b));
-   public static final die kt = a("end_rod", dku::new, dvi.d.a().l().d().a($$0x -> 14).a(dpr.b).c());
-   public static final die ku = a("chorus_plant", djk::new, dvi.d.a().a(ero.y).l().d(0.4F).a(dpr.b).c().a(erp.b));
-   public static final die kv = a("chorus_flower", $$0x -> new djj(ku, $$0x), dvi.d.a().a(ero.y).l().e().d(0.4F).a(dpr.b).c().a(dig::a).a(erp.b).a(dig::b));
-   public static final die kw = a("purpur_block", dvi.d.a().a(ero.q).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die kx = a("purpur_pillar", doq::new, dvi.d.a().a(ero.q).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ky = a("purpur_stairs", kw);
-   public static final die kz = a("end_stone_bricks", dvi.d.a().a(ero.c).a(dwk.b).n().a(3.0F, 9.0F));
-   public static final die kA = a("torchflower_crop", dqp::new, dvi.d.a().a(ero.h).b().e().d().a(dpr.w).a(erp.b));
-   public static final die kB = a("pitcher_crop", dns::new, dvi.d.a().a(ero.h).b().e().d().a(dpr.w).a(erp.b));
-   public static final die kC = a("pitcher_plant", dkm::new, dvi.d.a().a(ero.h).b().d().a(dpr.w).a(dvi.c.b).i().a(erp.b));
-   public static final die kD = a("beetroots", dhz::new, dvi.d.a().a(ero.h).b().e().d().a(dpr.w).a(erp.b));
-   public static final die kE = a("dirt_path", dki::new, dvi.d.a().a(ero.k).d(0.65F).a(dpr.d).c(dig::a).b(dig::a));
-   public static final die kF = a("end_gateway", dkr::new, dvi.d.a().a(ero.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(erp.c));
-   public static final die kG = a("repeating_command_block", $$0x -> new djn(false, $$0x), dvi.d.a().a(ero.y).n().a(-1.0F, 3600000.0F).g());
-   public static final die kH = a("chain_command_block", $$0x -> new djn(true, $$0x), dvi.d.a().a(ero.B).n().a(-1.0F, 3600000.0F).g());
-   public static final die kI = a(
-      "frosted_ice", dli::new, dvi.d.a().a(ero.f).a(0.98F).d(0.5F).a(dpr.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bul.aD).a(dig::b)
+public class dig extends dme implements dim, dpk {
+   public static final MapCodec<dig> a = b(dig::new);
+   private static final dwf b = dwe.C;
+   private static final dwl<dwy> c = dwe.bl;
+   private static final int d = -1;
+   private static final Object2IntMap<dwy> e = ae.a(new Object2IntArrayMap(), $$0 -> {
+      $$0.defaultReturnValue(-1);
+      $$0.put(dwy.b, 10);
+      $$0.put(dwy.c, 10);
+      $$0.put(dwy.d, 100);
+   });
+   private static final int f = 5;
+   private static final int g = 6;
+   private static final int h = 11;
+   private static final int i = 13;
+   private static final Map<dwy, fal> j = ImmutableMap.of(
+      dwy.a,
+      dij.a(0.0, 11.0, 0.0, 16.0, 15.0, 16.0),
+      dwy.b,
+      dij.a(0.0, 11.0, 0.0, 16.0, 15.0, 16.0),
+      dwy.c,
+      dij.a(0.0, 11.0, 0.0, 16.0, 13.0, 16.0),
+      dwy.d,
+      fai.a()
    );
-   public static final die kJ = a(
-      "magma_block", dmw::new, dvi.d.a().a(ero.J).a(dwk.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dig::a).e(dig::a)
+   private static final fal k = dij.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
+   private static final Map<jm, fal> l = ImmutableMap.of(
+      jm.c, fai.b(dih.b, k, ezv.e), jm.d, fai.b(dih.c, k, ezv.e), jm.f, fai.b(dih.d, k, ezv.e), jm.e, fai.b(dih.e, k, ezv.e)
    );
-   public static final die kK = a("nether_wart_block", dvi.d.a().a(ero.C).d(1.0F).a(dpr.L));
-   public static final die kL = a("red_nether_bricks", dvi.d.a().a(ero.J).a(dwk.b).n().a(2.0F, 6.0F).a(dpr.N));
-   public static final die kM = a("bone_block", doq::new, dvi.d.a().a(ero.c).a(dwk.j).n().d(2.0F).a(dpr.Q));
-   public static final die kN = a("structure_void", dqd::new, dvi.d.a().p().b().g().o().a(erp.b));
-   public static final die kO = a("observer", dno::new, dvi.d.a().a(ero.l).a(dwk.b).d(3.0F).n().a(dig::b));
-   public static final die kP = a("shulker_box", $$0x -> new dpd(null, $$0x), c(ero.y));
-   public static final die kQ = a("white_shulker_box", $$0x -> new dpd(cuy.a, $$0x), c(ero.i));
-   public static final die kR = a("orange_shulker_box", $$0x -> new dpd(cuy.b, $$0x), c(ero.p));
-   public static final die kS = a("magenta_shulker_box", $$0x -> new dpd(cuy.c, $$0x), c(ero.q));
-   public static final die kT = a("light_blue_shulker_box", $$0x -> new dpd(cuy.d, $$0x), c(ero.r));
-   public static final die kU = a("yellow_shulker_box", $$0x -> new dpd(cuy.e, $$0x), c(ero.s));
-   public static final die kV = a("lime_shulker_box", $$0x -> new dpd(cuy.f, $$0x), c(ero.t));
-   public static final die kW = a("pink_shulker_box", $$0x -> new dpd(cuy.g, $$0x), c(ero.u));
-   public static final die kX = a("gray_shulker_box", $$0x -> new dpd(cuy.h, $$0x), c(ero.v));
-   public static final die kY = a("light_gray_shulker_box", $$0x -> new dpd(cuy.i, $$0x), c(ero.w));
-   public static final die kZ = a("cyan_shulker_box", $$0x -> new dpd(cuy.j, $$0x), c(ero.x));
-   public static final die la = a("purple_shulker_box", $$0x -> new dpd(cuy.k, $$0x), c(ero.U));
-   public static final die lb = a("blue_shulker_box", $$0x -> new dpd(cuy.l, $$0x), c(ero.z));
-   public static final die lc = a("brown_shulker_box", $$0x -> new dpd(cuy.m, $$0x), c(ero.A));
-   public static final die ld = a("green_shulker_box", $$0x -> new dpd(cuy.n, $$0x), c(ero.B));
-   public static final die le = a("red_shulker_box", $$0x -> new dpd(cuy.o, $$0x), c(ero.C));
-   public static final die lf = a("black_shulker_box", $$0x -> new dpd(cuy.p, $$0x), c(ero.D));
-   public static final die lg = a("white_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.a).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lh = a("orange_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.b).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die li = a("magenta_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.c).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lj = a("light_blue_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.d).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lk = a("yellow_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.e).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die ll = a("lime_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.f).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lm = a("pink_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.g).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die ln = a("gray_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.h).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lo = a("light_gray_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.i).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lp = a("cyan_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.j).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lq = a("purple_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.k).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lr = a("blue_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.l).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die ls = a("brown_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.m).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lt = a("green_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.n).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lu = a("red_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.o).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lv = a("black_glazed_terracotta", dlm::new, dvi.d.a().a(cuy.p).a(dwk.b).n().d(1.4F).a(erp.e));
-   public static final die lw = a("white_concrete", dvi.d.a().a(cuy.a).a(dwk.b).n().d(1.8F));
-   public static final die lx = a("orange_concrete", dvi.d.a().a(cuy.b).a(dwk.b).n().d(1.8F));
-   public static final die ly = a("magenta_concrete", dvi.d.a().a(cuy.c).a(dwk.b).n().d(1.8F));
-   public static final die lz = a("light_blue_concrete", dvi.d.a().a(cuy.d).a(dwk.b).n().d(1.8F));
-   public static final die lA = a("yellow_concrete", dvi.d.a().a(cuy.e).a(dwk.b).n().d(1.8F));
-   public static final die lB = a("lime_concrete", dvi.d.a().a(cuy.f).a(dwk.b).n().d(1.8F));
-   public static final die lC = a("pink_concrete", dvi.d.a().a(cuy.g).a(dwk.b).n().d(1.8F));
-   public static final die lD = a("gray_concrete", dvi.d.a().a(cuy.h).a(dwk.b).n().d(1.8F));
-   public static final die lE = a("light_gray_concrete", dvi.d.a().a(cuy.i).a(dwk.b).n().d(1.8F));
-   public static final die lF = a("cyan_concrete", dvi.d.a().a(cuy.j).a(dwk.b).n().d(1.8F));
-   public static final die lG = a("purple_concrete", dvi.d.a().a(cuy.k).a(dwk.b).n().d(1.8F));
-   public static final die lH = a("blue_concrete", dvi.d.a().a(cuy.l).a(dwk.b).n().d(1.8F));
-   public static final die lI = a("brown_concrete", dvi.d.a().a(cuy.m).a(dwk.b).n().d(1.8F));
-   public static final die lJ = a("green_concrete", dvi.d.a().a(cuy.n).a(dwk.b).n().d(1.8F));
-   public static final die lK = a("red_concrete", dvi.d.a().a(cuy.o).a(dwk.b).n().d(1.8F));
-   public static final die lL = a("black_concrete", dvi.d.a().a(cuy.p).a(dwk.b).n().d(1.8F));
-   public static final die lM = a("white_concrete_powder", $$0x -> new djq(lw, $$0x), dvi.d.a().a(cuy.a).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lN = a("orange_concrete_powder", $$0x -> new djq(lx, $$0x), dvi.d.a().a(cuy.b).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lO = a("magenta_concrete_powder", $$0x -> new djq(ly, $$0x), dvi.d.a().a(cuy.c).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lP = a("light_blue_concrete_powder", $$0x -> new djq(lz, $$0x), dvi.d.a().a(cuy.d).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lQ = a("yellow_concrete_powder", $$0x -> new djq(lA, $$0x), dvi.d.a().a(cuy.e).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lR = a("lime_concrete_powder", $$0x -> new djq(lB, $$0x), dvi.d.a().a(cuy.f).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lS = a("pink_concrete_powder", $$0x -> new djq(lC, $$0x), dvi.d.a().a(cuy.g).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lT = a("gray_concrete_powder", $$0x -> new djq(lD, $$0x), dvi.d.a().a(cuy.h).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lU = a("light_gray_concrete_powder", $$0x -> new djq(lE, $$0x), dvi.d.a().a(cuy.i).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lV = a("cyan_concrete_powder", $$0x -> new djq(lF, $$0x), dvi.d.a().a(cuy.j).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lW = a("purple_concrete_powder", $$0x -> new djq(lG, $$0x), dvi.d.a().a(cuy.k).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lX = a("blue_concrete_powder", $$0x -> new djq(lH, $$0x), dvi.d.a().a(cuy.l).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lY = a("brown_concrete_powder", $$0x -> new djq(lI, $$0x), dvi.d.a().a(cuy.m).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die lZ = a("green_concrete_powder", $$0x -> new djq(lJ, $$0x), dvi.d.a().a(cuy.n).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die ma = a("red_concrete_powder", $$0x -> new djq(lK, $$0x), dvi.d.a().a(cuy.o).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die mb = a("black_concrete_powder", $$0x -> new djq(lL, $$0x), dvi.d.a().a(cuy.p).a(dwk.c).d(0.5F).a(dpr.j));
-   public static final die mc = a("kelp", dmh::new, dvi.d.a().a(ero.m).b().e().d().a(dpr.q).a(erp.b));
-   public static final die md = a("kelp_plant", dmi::new, dvi.d.a().a(ero.m).b().d().a(dpr.q).a(erp.b));
-   public static final die me = a("dried_kelp_block", dvi.d.a().a(ero.B).a(0.5F, 2.5F).a(dpr.d));
-   public static final die mf = a("turtle_egg", dqw::new, dvi.d.a().a(ero.c).k().d(0.5F).a(dpr.g).e().c().a(erp.b));
-   public static final die mg = a("sniffer_egg", dpm::new, dvi.d.a().a(ero.C).d(0.5F).a(dpr.g).c());
-   public static final die mh = a("dead_tube_coral_block", dvi.d.a().a(ero.v).k().a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die mi = a("dead_brain_coral_block", dvi.d.a().a(ero.v).k().a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die mj = a("dead_bubble_coral_block", dvi.d.a().a(ero.v).k().a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die mk = a("dead_fire_coral_block", dvi.d.a().a(ero.v).k().a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ml = a("dead_horn_coral_block", dvi.d.a().a(ero.v).k().a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die mm = a("tube_coral_block", $$0x -> new djt(mh, $$0x), dvi.d.a().a(ero.z).a(dwk.b).n().a(1.5F, 6.0F).a(dpr.r));
-   public static final die mn = a("brain_coral_block", $$0x -> new djt(mi, $$0x), dvi.d.a().a(ero.u).a(dwk.b).n().a(1.5F, 6.0F).a(dpr.r));
-   public static final die mo = a("bubble_coral_block", $$0x -> new djt(mj, $$0x), dvi.d.a().a(ero.y).a(dwk.b).n().a(1.5F, 6.0F).a(dpr.r));
-   public static final die mp = a("fire_coral_block", $$0x -> new djt(mk, $$0x), dvi.d.a().a(ero.C).a(dwk.b).n().a(1.5F, 6.0F).a(dpr.r));
-   public static final die mq = a("horn_coral_block", $$0x -> new djt(ml, $$0x), dvi.d.a().a(ero.s).a(dwk.b).n().a(1.5F, 6.0F).a(dpr.r));
-   public static final die mr = a("dead_tube_coral", dhn::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die ms = a("dead_brain_coral", dhn::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mt = a("dead_bubble_coral", dhn::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mu = a("dead_fire_coral", dhn::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mv = a("dead_horn_coral", dhn::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mw = a("tube_coral", $$0x -> new djv(mr, $$0x), dvi.d.a().a(ero.z).b().d().a(dpr.q).a(erp.b));
-   public static final die mx = a("brain_coral", $$0x -> new djv(ms, $$0x), dvi.d.a().a(ero.u).b().d().a(dpr.q).a(erp.b));
-   public static final die my = a("bubble_coral", $$0x -> new djv(mt, $$0x), dvi.d.a().a(ero.y).b().d().a(dpr.q).a(erp.b));
-   public static final die mz = a("fire_coral", $$0x -> new djv(mu, $$0x), dvi.d.a().a(ero.C).b().d().a(dpr.q).a(erp.b));
-   public static final die mA = a("horn_coral", $$0x -> new djv(mv, $$0x), dvi.d.a().a(ero.s).b().d().a(dpr.q).a(erp.b));
-   public static final die mB = a("dead_tube_coral_fan", dhm::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mC = a("dead_brain_coral_fan", dhm::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mD = a("dead_bubble_coral_fan", dhm::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mE = a("dead_fire_coral_fan", dhm::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mF = a("dead_horn_coral_fan", dhm::new, dvi.d.a().a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mG = a("tube_coral_fan", $$0x -> new dju(mB, $$0x), dvi.d.a().a(ero.z).b().d().a(dpr.q).a(erp.b));
-   public static final die mH = a("brain_coral_fan", $$0x -> new dju(mC, $$0x), dvi.d.a().a(ero.u).b().d().a(dpr.q).a(erp.b));
-   public static final die mI = a("bubble_coral_fan", $$0x -> new dju(mD, $$0x), dvi.d.a().a(ero.y).b().d().a(dpr.q).a(erp.b));
-   public static final die mJ = a("fire_coral_fan", $$0x -> new dju(mE, $$0x), dvi.d.a().a(ero.C).b().d().a(dpr.q).a(erp.b));
-   public static final die mK = a("horn_coral_fan", $$0x -> new dju(mF, $$0x), dvi.d.a().a(ero.s).b().d().a(dpr.q).a(erp.b));
-   public static final die mL = a("dead_tube_coral_wall_fan", dhp::new, a(mB, false).a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mM = a("dead_brain_coral_wall_fan", dhp::new, a(mC, false).a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mN = a("dead_bubble_coral_wall_fan", dhp::new, a(mD, false).a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mO = a("dead_fire_coral_wall_fan", dhp::new, a(mE, false).a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mP = a("dead_horn_coral_wall_fan", dhp::new, a(mF, false).a(ero.v).k().a(dwk.b).n().b().d());
-   public static final die mQ = a("tube_coral_wall_fan", $$0x -> new djw(mL, $$0x), a(mG, false).a(ero.z).b().d().a(dpr.q).a(erp.b));
-   public static final die mR = a("brain_coral_wall_fan", $$0x -> new djw(mM, $$0x), a(mH, false).a(ero.u).b().d().a(dpr.q).a(erp.b));
-   public static final die mS = a("bubble_coral_wall_fan", $$0x -> new djw(mN, $$0x), a(mI, false).a(ero.y).b().d().a(dpr.q).a(erp.b));
-   public static final die mT = a("fire_coral_wall_fan", $$0x -> new djw(mO, $$0x), a(mJ, false).a(ero.C).b().d().a(dpr.q).a(erp.b));
-   public static final die mU = a("horn_coral_wall_fan", $$0x -> new djw(mP, $$0x), a(mK, false).a(ero.s).b().d().a(dpr.q).a(erp.b));
-   public static final die mV = a("sea_pickle", dpb::new, dvi.d.a().a(ero.B).a($$0x -> dpb.o($$0x) ? 0 : 3 + 3 * $$0x.c(dpb.c)).a(dpr.o).c().a(erp.b));
-   public static final die mW = a("blue_ice", dlt::new, dvi.d.a().a(ero.f).d(2.8F).a(0.989F).a(dpr.h));
-   public static final die mX = a("conduit", djr::new, dvi.d.a().a(ero.F).k().a(dwk.d).d(3.0F).a($$0x -> 15).c());
-   public static final die mY = a("bamboo_sapling", dhh::new, dvi.d.a().a(ero.n).k().e().d().b().d(1.0F).a(dpr.t).a(dvi.c.b).i().a(erp.b));
-   public static final die mZ = a("bamboo", dhi::new, dvi.d.a().a(ero.h).k().e().d().d(1.0F).a(dpr.s).c().f().a(dvi.c.b).i().a(erp.b).a(dig::b));
-   public static final die na = a("potted_bamboo", $$0x -> new dlg(mZ, $$0x), c());
-   public static final die nb = a("void_air", dhb::new, dvi.d.a().p().b().g().m());
-   public static final die nc = a("cave_air", dhb::new, dvi.d.a().p().b().g().m());
-   public static final die nd = a("bubble_column", dik::new, dvi.d.a().a(ero.m).p().b().g().a(erp.b).j().a(dpr.a));
-   public static final die ne = a("polished_granite_stairs", d);
-   public static final die nf = a("smooth_red_sandstone_stairs", jU);
-   public static final die ng = a("mossy_stone_brick_stairs", eI);
-   public static final die nh = a("polished_diorite_stairs", f);
-   public static final die ni = a("mossy_cobblestone_stairs", cn);
-   public static final die nj = a("end_stone_brick_stairs", kz);
-   public static final die nk = a("stone_stairs", b);
-   public static final die nl = a("smooth_sandstone_stairs", jS);
-   public static final die nm = a("smooth_quartz_stairs", jT);
-   public static final die nn = a("granite_stairs", c);
-   public static final die no = a("andesite_stairs", g);
-   public static final die np = a("red_nether_brick_stairs", kL);
-   public static final die nq = a("polished_andesite_stairs", h);
-   public static final die nr = a("diorite_stairs", e);
-   public static final die ns = a("polished_granite_slab", dph::new, dvi.d.b(d));
-   public static final die nt = a("smooth_red_sandstone_slab", dph::new, dvi.d.b(jU));
-   public static final die nu = a("mossy_stone_brick_slab", dph::new, dvi.d.b(eI));
-   public static final die nv = a("polished_diorite_slab", dph::new, dvi.d.b(f));
-   public static final die nw = a("mossy_cobblestone_slab", dph::new, dvi.d.b(cn));
-   public static final die nx = a("end_stone_brick_slab", dph::new, dvi.d.b(kz));
-   public static final die ny = a("smooth_sandstone_slab", dph::new, dvi.d.b(jS));
-   public static final die nz = a("smooth_quartz_slab", dph::new, dvi.d.b(jT));
-   public static final die nA = a("granite_slab", dph::new, dvi.d.b(c));
-   public static final die nB = a("andesite_slab", dph::new, dvi.d.b(g));
-   public static final die nC = a("red_nether_brick_slab", dph::new, dvi.d.b(kL));
-   public static final die nD = a("polished_andesite_slab", dph::new, dvi.d.b(h));
-   public static final die nE = a("diorite_slab", dph::new, dvi.d.b(e));
-   public static final die nF = a("brick_wall", drc::new, dvi.d.b(cj).k());
-   public static final die nG = a("prismarine_wall", drc::new, dvi.d.b(hZ).k());
-   public static final die nH = a("red_sandstone_wall", drc::new, dvi.d.b(jp).k());
-   public static final die nI = a("mossy_stone_brick_wall", drc::new, dvi.d.b(eI).k());
-   public static final die nJ = a("granite_wall", drc::new, dvi.d.b(c).k());
-   public static final die nK = a("stone_brick_wall", drc::new, dvi.d.b(eH).k());
-   public static final die nL = a("mud_brick_wall", drc::new, dvi.d.b(eM).k());
-   public static final die nM = a("nether_brick_wall", drc::new, dvi.d.b(fn).k());
-   public static final die nN = a("andesite_wall", drc::new, dvi.d.b(g).k());
-   public static final die nO = a("red_nether_brick_wall", drc::new, dvi.d.b(kL).k());
-   public static final die nP = a("sandstone_wall", drc::new, dvi.d.b(aV).k());
-   public static final die nQ = a("end_stone_brick_wall", drc::new, dvi.d.b(kz).k());
-   public static final die nR = a("diorite_wall", drc::new, dvi.d.b(e).k());
-   public static final die nS = a("scaffolding", dot::new, dvi.d.a().a(ero.c).b().a(dpr.u).f().a(dig::a).a(erp.b).a(dig::b));
-   public static final die nT = a("loom", dmv::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die nU = a("barrel", dhk::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die nV = a("smoker", dpl::new, dvi.d.a().a(ero.l).a(dwk.b).n().d(3.5F).a(a(13)));
-   public static final die nW = a("blast_furnace", did::new, dvi.d.a().a(ero.l).a(dwk.b).n().d(3.5F).a(a(13)));
-   public static final die nX = a("cartography_table", dix::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die nY = a("fletching_table", dle::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die nZ = a("grindstone", dlp::new, dvi.d.a().a(ero.g).n().a(2.0F, 6.0F).a(dpr.f).a(erp.c));
-   public static final die oa = a("lectern", dmo::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die ob = a("smithing_table", dpk::new, dvi.d.a().a(ero.n).a(dwk.e).d(2.5F).a(dpr.b).i());
-   public static final die oc = a("stonecutter", dqb::new, dvi.d.a().a(ero.l).a(dwk.b).n().d(3.5F));
-   public static final die od = a("bell", dia::new, dvi.d.a().a(ero.E).k().n().d(5.0F).a(dpr.n).a(erp.b));
-   public static final die oe = a("lantern", dmk::new, dvi.d.a().a(ero.g).k().n().d(3.5F).a(dpr.A).a($$0x -> 15).c().a(erp.b));
-   public static final die of = a("soul_lantern", dmk::new, dvi.d.a().a(ero.g).k().n().d(3.5F).a(dpr.A).a($$0x -> 10).c().a(erp.b));
-   public static final die og = a("campfire", $$0x -> new dis(true, 1, $$0x), dvi.d.a().a(ero.I).a(dwk.e).d(2.0F).a(dpr.b).a(a(15)).c().i());
-   public static final die oh = a("soul_campfire", $$0x -> new dis(false, 2, $$0x), dvi.d.a().a(ero.I).a(dwk.e).d(2.0F).a(dpr.b).a(a(10)).c().i());
-   public static final die oi = a("sweet_berry_bush", dqh::new, dvi.d.a().a(ero.h).e().b().a(dpr.v).a(erp.b));
-   public static final die oj = a("warped_stem", doq::new, b(ero.ae));
-   public static final die ok = a("stripped_warped_stem", doq::new, b(ero.ae));
-   public static final die ol = a("warped_hyphae", doq::new, dvi.d.a().a(ero.af).a(dwk.e).d(2.0F).a(dpr.B));
-   public static final die om = a("stripped_warped_hyphae", doq::new, dvi.d.a().a(ero.af).a(dwk.e).d(2.0F).a(dpr.B));
-   public static final die on = a("warped_nylium", dnn::new, dvi.d.a().a(ero.ad).a(dwk.b).n().d(0.4F).a(dpr.C).e());
-   public static final die oo = a("warped_fungus", $$0x -> new dlj(se.d, on, $$0x), dvi.d.a().a(ero.x).d().b().a(dpr.D).a(erp.b));
-   public static final die op = a("warped_wart_block", dvi.d.a().a(ero.ag).d(1.0F).a(dpr.L));
-   public static final die oq = a("warped_roots", dop::new, dvi.d.a().a(ero.x).p().b().d().a(dpr.E).a(dvi.c.b).a(erp.b));
-   public static final die or = a("nether_sprouts", dni::new, dvi.d.a().a(ero.x).p().b().d().a(dpr.O).a(dvi.c.b).a(erp.b));
-   public static final die os = a("crimson_stem", doq::new, b(ero.ab));
-   public static final die ot = a("stripped_crimson_stem", doq::new, b(ero.ab));
-   public static final die ou = a("crimson_hyphae", doq::new, dvi.d.a().a(ero.ac).a(dwk.e).d(2.0F).a(dpr.B));
-   public static final die ov = a("stripped_crimson_hyphae", doq::new, dvi.d.a().a(ero.ac).a(dwk.e).d(2.0F).a(dpr.B));
-   public static final die ow = a("crimson_nylium", dnn::new, dvi.d.a().a(ero.aa).a(dwk.b).n().d(0.4F).a(dpr.C).e());
-   public static final die ox = a("crimson_fungus", $$0x -> new dlj(se.b, ow, $$0x), dvi.d.a().a(ero.J).d().b().a(dpr.D).a(erp.b));
-   public static final die oy = a("shroomlight", dvi.d.a().a(ero.C).d(1.0F).a(dpr.F).a($$0x -> 15));
-   public static final die oz = a("weeping_vines", drs::new, dvi.d.a().a(ero.J).e().b().d().a(dpr.G).a(erp.b));
-   public static final die oA = a("weeping_vines_plant", drt::new, dvi.d.a().a(ero.J).b().d().a(dpr.G).a(erp.b));
-   public static final die oB = a("twisting_vines", dqx::new, dvi.d.a().a(ero.x).e().b().d().a(dpr.G).a(erp.b));
-   public static final die oC = a("twisting_vines_plant", dqy::new, dvi.d.a().a(ero.x).b().d().a(dpr.G).a(erp.b));
-   public static final die oD = a("crimson_roots", dop::new, dvi.d.a().a(ero.J).p().b().d().a(dpr.E).a(dvi.c.b).a(erp.b));
-   public static final die oE = a("crimson_planks", dvi.d.a().a(ero.ab).a(dwk.e).a(2.0F, 3.0F).a(dpr.aT));
-   public static final die oF = a("warped_planks", dvi.d.a().a(ero.ae).a(dwk.e).a(2.0F, 3.0F).a(dpr.aT));
-   public static final die oG = a("crimson_slab", dph::new, dvi.d.a().a(oE.w()).a(dwk.e).a(2.0F, 3.0F).a(dpr.aT));
-   public static final die oH = a("warped_slab", dph::new, dvi.d.a().a(oF.w()).a(dwk.e).a(2.0F, 3.0F).a(dpr.aT));
-   public static final die oI = a("crimson_pressure_plate", $$0x -> new dob(dvy.n, $$0x), dvi.d.a().a(oE.w()).k().a(dwk.e).b().d(0.5F).a(erp.b));
-   public static final die oJ = a("warped_pressure_plate", $$0x -> new dob(dvy.o, $$0x), dvi.d.a().a(oF.w()).k().a(dwk.e).b().d(0.5F).a(erp.b));
-   public static final die oK = a("crimson_fence", dlb::new, dvi.d.a().a(oE.w()).a(dwk.e).a(2.0F, 3.0F).a(dpr.aT));
-   public static final die oL = a("warped_fence", dlb::new, dvi.d.a().a(oF.w()).a(dwk.e).a(2.0F, 3.0F).a(dpr.aT));
-   public static final die oM = a("crimson_trapdoor", $$0x -> new dqr(dvy.n, $$0x), dvi.d.a().a(oE.w()).a(dwk.e).d(3.0F).c().a(dig::a));
-   public static final die oN = a("warped_trapdoor", $$0x -> new dqr(dvy.o, $$0x), dvi.d.a().a(oF.w()).a(dwk.e).d(3.0F).c().a(dig::a));
-   public static final die oO = a("crimson_fence_gate", $$0x -> new dlc(dww.i, $$0x), dvi.d.a().a(oE.w()).k().a(dwk.e).a(2.0F, 3.0F));
-   public static final die oP = a("warped_fence_gate", $$0x -> new dlc(dww.j, $$0x), dvi.d.a().a(oF.w()).k().a(dwk.e).a(2.0F, 3.0F));
-   public static final die oQ = a("crimson_stairs", oE);
-   public static final die oR = a("warped_stairs", oF);
-   public static final die oS = a("crimson_button", $$0x -> new dio(dvy.n, 30, $$0x), b());
-   public static final die oT = a("warped_button", $$0x -> new dio(dvy.o, 30, $$0x), b());
-   public static final die oU = a("crimson_door", $$0x -> new dkk(dvy.n, $$0x), dvi.d.a().a(oE.w()).a(dwk.e).d(3.0F).c().a(erp.b));
-   public static final die oV = a("warped_door", $$0x -> new dkk(dvy.o, $$0x), dvi.d.a().a(oF.w()).a(dwk.e).d(3.0F).c().a(erp.b));
-   public static final die oW = a("crimson_sign", $$0x -> new dpz(dww.i, $$0x), dvi.d.a().a(oE.w()).a(dwk.e).k().b().d(1.0F));
-   public static final die oX = a("warped_sign", $$0x -> new dpz(dww.j, $$0x), dvi.d.a().a(oF.w()).a(dwk.e).k().b().d(1.0F));
-   public static final die oY = a("crimson_wall_sign", $$0x -> new dre(dww.i, $$0x), a(oW, true).a(oE.w()).a(dwk.e).k().b().d(1.0F));
-   public static final die oZ = a("warped_wall_sign", $$0x -> new dre(dww.j, $$0x), a(oX, true).a(oF.w()).a(dwk.e).k().b().d(1.0F));
-   public static final die pa = a("structure_block", dqc::new, dvi.d.a().a(ero.w).n().a(-1.0F, 3600000.0F).g());
-   public static final die pb = a("jigsaw", dmf::new, dvi.d.a().a(ero.w).n().a(-1.0F, 3600000.0F).g());
-   public static final die pc = a("composter", djp::new, dvi.d.a().a(ero.n).a(dwk.e).d(0.6F).a(dpr.b).i());
-   public static final die pd = a("target", dql::new, dvi.d.a().a(ero.o).d(0.5F).a(dpr.d));
-   public static final die pe = a("bee_nest", dhy::new, dvi.d.a().a(ero.s).a(dwk.e).d(0.3F).a(dpr.b).i());
-   public static final die pf = a("beehive", dhy::new, dvi.d.a().a(ero.n).a(dwk.e).d(0.6F).a(dpr.b).i());
-   public static final die pg = a("honey_block", dlx::new, dvi.d.a().a(ero.p).b(0.4F).c(0.5F).c().a(dpr.p));
-   public static final die ph = a("honeycomb_block", dvi.d.a().a(ero.p).d(0.6F).a(dpr.r));
-   public static final die pi = a("netherite_block", dvi.d.a().a(ero.D).n().a(50.0F, 1200.0F).a(dpr.R));
-   public static final die pj = a("ancient_debris", dvi.d.a().a(ero.D).n().a(30.0F, 1200.0F).a(dpr.S));
-   public static final die pk = a("crying_obsidian", dkb::new, dvi.d.a().a(ero.D).a(dwk.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
-   public static final die pl = a("respawn_anchor", dom::new, dvi.d.a().a(ero.D).a(dwk.b).n().a(50.0F, 1200.0F).a($$0x -> dom.a($$0x, 15)));
-   public static final die pm = a("potted_crimson_fungus", $$0x -> new dlg(ox, $$0x), c());
-   public static final die pn = a("potted_warped_fungus", $$0x -> new dlg(oo, $$0x), c());
-   public static final die po = a("potted_crimson_roots", $$0x -> new dlg(oD, $$0x), c());
-   public static final die pp = a("potted_warped_roots", $$0x -> new dlg(oq, $$0x), c());
-   public static final die pq = a("lodestone", dvi.d.a().a(ero.g).n().d(3.5F).a(dpr.T).a(erp.c));
-   public static final die pr = a("blackstone", dvi.d.a().a(ero.D).a(dwk.b).n().a(1.5F, 6.0F));
-   public static final die ps = a("blackstone_stairs", pr);
-   public static final die pt = a("blackstone_wall", drc::new, dvi.d.b(pr).k());
-   public static final die pu = a("blackstone_slab", dph::new, dvi.d.b(pr).a(2.0F, 6.0F));
-   public static final die pv = a("polished_blackstone", dvi.d.b(pr).a(2.0F, 6.0F));
-   public static final die pw = a("polished_blackstone_bricks", dvi.d.b(pv).a(1.5F, 6.0F));
-   public static final die px = a("cracked_polished_blackstone_bricks", dvi.d.b(pw));
-   public static final die py = a("chiseled_polished_blackstone", dvi.d.b(pv).a(1.5F, 6.0F));
-   public static final die pz = a("polished_blackstone_brick_slab", dph::new, dvi.d.b(pw).a(2.0F, 6.0F));
-   public static final die pA = a("polished_blackstone_brick_stairs", pw);
-   public static final die pB = a("polished_blackstone_brick_wall", drc::new, dvi.d.b(pw).k());
-   public static final die pC = a("gilded_blackstone", dvi.d.b(pr).a(dpr.W));
-   public static final die pD = a("polished_blackstone_stairs", pv);
-   public static final die pE = a("polished_blackstone_slab", dph::new, dvi.d.b(pv));
-   public static final die pF = a("polished_blackstone_pressure_plate", $$0x -> new dob(dvy.f, $$0x), dvi.d.a().a(ero.D).k().a(dwk.b).n().b().d(0.5F).a(erp.b));
-   public static final die pG = a("polished_blackstone_button", $$0x -> new dio(dvy.e, 20, $$0x), b());
-   public static final die pH = a("polished_blackstone_wall", drc::new, dvi.d.b(pv).k());
-   public static final die pI = a("chiseled_nether_bricks", dvi.d.a().a(ero.J).a(dwk.b).n().a(2.0F, 6.0F).a(dpr.N));
-   public static final die pJ = a("cracked_nether_bricks", dvi.d.a().a(ero.J).a(dwk.b).n().a(2.0F, 6.0F).a(dpr.N));
-   public static final die pK = a("quartz_bricks", dvi.d.b(hd));
-   public static final die pL = a("candle", dit::new, d(ero.c));
-   public static final die pM = a("white_candle", dit::new, d(ero.d));
-   public static final die pN = a("orange_candle", dit::new, d(ero.p));
-   public static final die pO = a("magenta_candle", dit::new, d(ero.q));
-   public static final die pP = a("light_blue_candle", dit::new, d(ero.r));
-   public static final die pQ = a("yellow_candle", dit::new, d(ero.s));
-   public static final die pR = a("lime_candle", dit::new, d(ero.t));
-   public static final die pS = a("pink_candle", dit::new, d(ero.u));
-   public static final die pT = a("gray_candle", dit::new, d(ero.v));
-   public static final die pU = a("light_gray_candle", dit::new, d(ero.w));
-   public static final die pV = a("cyan_candle", dit::new, d(ero.x));
-   public static final die pW = a("purple_candle", dit::new, d(ero.y));
-   public static final die pX = a("blue_candle", dit::new, d(ero.z));
-   public static final die pY = a("brown_candle", dit::new, d(ero.A));
-   public static final die pZ = a("green_candle", dit::new, d(ero.B));
-   public static final die qa = a("red_candle", dit::new, d(ero.C));
-   public static final die qb = a("black_candle", dit::new, d(ero.D));
-   public static final die qc = a("candle_cake", $$0x -> new diu(pL, $$0x), dvi.d.b(eg).a(a(3)));
-   public static final die qd = a("white_candle_cake", $$0x -> new diu(pM, $$0x), dvi.d.b(qc));
-   public static final die qe = a("orange_candle_cake", $$0x -> new diu(pN, $$0x), dvi.d.b(qc));
-   public static final die qf = a("magenta_candle_cake", $$0x -> new diu(pO, $$0x), dvi.d.b(qc));
-   public static final die qg = a("light_blue_candle_cake", $$0x -> new diu(pP, $$0x), dvi.d.b(qc));
-   public static final die qh = a("yellow_candle_cake", $$0x -> new diu(pQ, $$0x), dvi.d.b(qc));
-   public static final die qi = a("lime_candle_cake", $$0x -> new diu(pR, $$0x), dvi.d.b(qc));
-   public static final die qj = a("pink_candle_cake", $$0x -> new diu(pS, $$0x), dvi.d.b(qc));
-   public static final die qk = a("gray_candle_cake", $$0x -> new diu(pT, $$0x), dvi.d.b(qc));
-   public static final die ql = a("light_gray_candle_cake", $$0x -> new diu(pU, $$0x), dvi.d.b(qc));
-   public static final die qm = a("cyan_candle_cake", $$0x -> new diu(pV, $$0x), dvi.d.b(qc));
-   public static final die qn = a("purple_candle_cake", $$0x -> new diu(pW, $$0x), dvi.d.b(qc));
-   public static final die qo = a("blue_candle_cake", $$0x -> new diu(pX, $$0x), dvi.d.b(qc));
-   public static final die qp = a("brown_candle_cake", $$0x -> new diu(pY, $$0x), dvi.d.b(qc));
-   public static final die qq = a("green_candle_cake", $$0x -> new diu(pZ, $$0x), dvi.d.b(qc));
-   public static final die qr = a("red_candle_cake", $$0x -> new diu(qa, $$0x), dvi.d.b(qc));
-   public static final die qs = a("black_candle_cake", $$0x -> new diu(qb, $$0x), dvi.d.b(qc));
-   public static final die qt = a("amethyst_block", dhc::new, dvi.d.a().a(ero.y).d(1.5F).a(dpr.Y).n());
-   public static final die qu = a("budding_amethyst", dim::new, dvi.d.a().a(ero.y).e().d(1.5F).a(dpr.Y).n().a(erp.b));
-   public static final die qv = a("amethyst_cluster", $$0x -> new dhd(7.0F, 3.0F, $$0x), dvi.d.a().a(ero.y).k().c().a(dpr.Z).d(1.5F).a($$0x -> 5).a(erp.b));
-   public static final die qw = a("large_amethyst_bud", $$0x -> new dhd(5.0F, 3.0F, $$0x), dvi.d.b(qv).a(dpr.ab).a($$0x -> 4));
-   public static final die qx = a("medium_amethyst_bud", $$0x -> new dhd(4.0F, 3.0F, $$0x), dvi.d.b(qv).a(dpr.ac).a($$0x -> 2));
-   public static final die qy = a("small_amethyst_bud", $$0x -> new dhd(3.0F, 4.0F, $$0x), dvi.d.b(qv).a(dpr.aa).a($$0x -> 1));
-   public static final die qz = a("tuff", dvi.d.a().a(ero.R).a(dwk.b).a(dpr.ad).n().a(1.5F, 6.0F));
-   public static final die qA = a("tuff_slab", dph::new, dvi.d.b(qz));
-   public static final die qB = a("tuff_stairs", $$0x -> new dpy(qz.m(), $$0x), dvi.d.b(qz));
-   public static final die qC = a("tuff_wall", drc::new, dvi.d.b(qz).k());
-   public static final die qD = a("polished_tuff", dvi.d.b(qz).a(dpr.af));
-   public static final die qE = a("polished_tuff_slab", dph::new, dvi.d.b(qD));
-   public static final die qF = a("polished_tuff_stairs", $$0x -> new dpy(qD.m(), $$0x), dvi.d.b(qD));
-   public static final die qG = a("polished_tuff_wall", drc::new, dvi.d.b(qD).k());
-   public static final die qH = a("chiseled_tuff", dvi.d.b(qz));
-   public static final die qI = a("tuff_bricks", dvi.d.b(qz).a(dpr.ae));
-   public static final die qJ = a("tuff_brick_slab", dph::new, dvi.d.b(qI));
-   public static final die qK = a("tuff_brick_stairs", $$0x -> new dpy(qI.m(), $$0x), dvi.d.b(qI));
-   public static final die qL = a("tuff_brick_wall", drc::new, dvi.d.b(qI).k());
-   public static final die qM = a("chiseled_tuff_bricks", dvi.d.b(qI));
-   public static final die qN = a("calcite", dvi.d.a().a(ero.K).a(dwk.b).a(dpr.ag).n().d(0.75F));
-   public static final die qO = a("tinted_glass", dqm::new, dvi.d.b(aQ).a(ero.v).c().a(dig::a).a(dig::b).b(dig::b).c(dig::b));
-   public static final die qP = a("powder_snow", dny::new, dvi.d.a().a(ero.i).d(0.25F).a(dpr.l).f().c().a(dig::b));
-   public static final die qQ = a("sculk_sensor", dox::new, dvi.d.a().a(ero.x).d(1.5F).a(dpr.ay).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dox.o($$0x) == dwq.b));
-   public static final die qR = a("calibrated_sculk_sensor", dir::new, dvi.d.b(qQ));
-   public static final die qS = a("sculk", dov::new, dvi.d.a().a(ero.D).d(0.2F).a(dpr.aA));
-   public static final die qT = a("sculk_vein", dpa::new, dvi.d.a().a(ero.D).k().b().d(0.2F).a(dpr.aB).a(erp.b));
-   public static final die qU = a("sculk_catalyst", dow::new, dvi.d.a().a(ero.D).a(3.0F, 3.0F).a(dpr.az).a($$0x -> 6));
-   public static final die qV = a("sculk_shrieker", doy::new, dvi.d.a().a(ero.D).a(3.0F, 3.0F).a(dpr.aC));
-   public static final die qW = a("copper_block", $$0x -> new drm(drj.a.a, $$0x), dvi.d.a().a(ero.p).n().a(3.0F, 6.0F).a(dpr.aj));
-   public static final die qX = a("exposed_copper", $$0x -> new drm(drj.a.b, $$0x), dvi.d.a(qW).a(ero.S));
-   public static final die qY = a("weathered_copper", $$0x -> new drm(drj.a.c, $$0x), dvi.d.a(qW).a(ero.ae));
-   public static final die qZ = a("oxidized_copper", $$0x -> new drm(drj.a.d, $$0x), dvi.d.a(qW).a(ero.ad));
-   public static final die ra = a("copper_ore", $$0x -> new dko(brf.a(0), $$0x), dvi.d.b(P));
-   public static final die rb = a("deepslate_copper_ore", $$0x -> new dko(brf.a(0), $$0x), dvi.d.b(ra).a(ero.ah).a(4.5F, 3.0F).a(dpr.aE));
-   public static final die rc = a("oxidized_cut_copper", $$0x -> new drm(drj.a.d, $$0x), dvi.d.a(qZ));
-   public static final die rd = a("weathered_cut_copper", $$0x -> new drm(drj.a.c, $$0x), dvi.d.a(qY));
-   public static final die re = a("exposed_cut_copper", $$0x -> new drm(drj.a.b, $$0x), dvi.d.a(qX));
-   public static final die rf = a("cut_copper", $$0x -> new drm(drj.a.a, $$0x), dvi.d.a(qW));
-   public static final die rg = a("oxidized_chiseled_copper", $$0x -> new drm(drj.a.d, $$0x), dvi.d.a(qZ));
-   public static final die rh = a("weathered_chiseled_copper", $$0x -> new drm(drj.a.c, $$0x), dvi.d.a(qY));
-   public static final die ri = a("exposed_chiseled_copper", $$0x -> new drm(drj.a.b, $$0x), dvi.d.a(qX));
-   public static final die rj = a("chiseled_copper", $$0x -> new drm(drj.a.a, $$0x), dvi.d.a(qW));
-   public static final die rk = a("waxed_oxidized_chiseled_copper", dvi.d.a(rg));
-   public static final die rl = a("waxed_weathered_chiseled_copper", dvi.d.a(rh));
-   public static final die rm = a("waxed_exposed_chiseled_copper", dvi.d.a(ri));
-   public static final die rn = a("waxed_chiseled_copper", dvi.d.a(rj));
-   public static final die ro = a("oxidized_cut_copper_stairs", $$0x -> new drp(drj.a.d, rc.m(), $$0x), dvi.d.a(rc));
-   public static final die rp = a("weathered_cut_copper_stairs", $$0x -> new drp(drj.a.c, rd.m(), $$0x), dvi.d.a(qY));
-   public static final die rq = a("exposed_cut_copper_stairs", $$0x -> new drp(drj.a.b, re.m(), $$0x), dvi.d.a(qX));
-   public static final die rr = a("cut_copper_stairs", $$0x -> new drp(drj.a.a, rf.m(), $$0x), dvi.d.a(qW));
-   public static final die rs = a("oxidized_cut_copper_slab", $$0x -> new dro(drj.a.d, $$0x), dvi.d.a(rc));
-   public static final die rt = a("weathered_cut_copper_slab", $$0x -> new dro(drj.a.c, $$0x), dvi.d.a(rd));
-   public static final die ru = a("exposed_cut_copper_slab", $$0x -> new dro(drj.a.b, $$0x), dvi.d.a(re));
-   public static final die rv = a("cut_copper_slab", $$0x -> new dro(drj.a.a, $$0x), dvi.d.a(rf));
-   public static final die rw = a("waxed_copper_block", dvi.d.a(qW));
-   public static final die rx = a("waxed_weathered_copper", dvi.d.a(qY));
-   public static final die ry = a("waxed_exposed_copper", dvi.d.a(qX));
-   public static final die rz = a("waxed_oxidized_copper", dvi.d.a(qZ));
-   public static final die rA = a("waxed_oxidized_cut_copper", dvi.d.a(qZ));
-   public static final die rB = a("waxed_weathered_cut_copper", dvi.d.a(qY));
-   public static final die rC = a("waxed_exposed_cut_copper", dvi.d.a(qX));
-   public static final die rD = a("waxed_cut_copper", dvi.d.a(qW));
-   public static final die rE = b("waxed_oxidized_cut_copper_stairs", rA);
-   public static final die rF = b("waxed_weathered_cut_copper_stairs", rB);
-   public static final die rG = b("waxed_exposed_cut_copper_stairs", rC);
-   public static final die rH = b("waxed_cut_copper_stairs", rD);
-   public static final die rI = a("waxed_oxidized_cut_copper_slab", dph::new, dvi.d.a(rA).n());
-   public static final die rJ = a("waxed_weathered_cut_copper_slab", dph::new, dvi.d.a(rB).n());
-   public static final die rK = a("waxed_exposed_cut_copper_slab", dph::new, dvi.d.a(rC).n());
-   public static final die rL = a("waxed_cut_copper_slab", dph::new, dvi.d.a(rD).n());
-   public static final die rM = a("copper_door", $$0x -> new drl(dvy.c, drj.a.a, $$0x), dvi.d.a().a(qW.w()).a(3.0F, 6.0F).c().n().a(erp.b));
-   public static final die rN = a("exposed_copper_door", $$0x -> new drl(dvy.c, drj.a.b, $$0x), dvi.d.a(rM).a(qX.w()));
-   public static final die rO = a("oxidized_copper_door", $$0x -> new drl(dvy.c, drj.a.d, $$0x), dvi.d.a(rM).a(qZ.w()));
-   public static final die rP = a("weathered_copper_door", $$0x -> new drl(dvy.c, drj.a.c, $$0x), dvi.d.a(rM).a(qY.w()));
-   public static final die rQ = a("waxed_copper_door", $$0x -> new dkk(dvy.c, $$0x), dvi.d.a(rM));
-   public static final die rR = a("waxed_exposed_copper_door", $$0x -> new dkk(dvy.c, $$0x), dvi.d.a(rN));
-   public static final die rS = a("waxed_oxidized_copper_door", $$0x -> new dkk(dvy.c, $$0x), dvi.d.a(rO));
-   public static final die rT = a("waxed_weathered_copper_door", $$0x -> new dkk(dvy.c, $$0x), dvi.d.a(rP));
-   public static final die rU = a("copper_trapdoor", $$0x -> new drq(dvy.c, drj.a.a, $$0x), dvi.d.a().a(qW.w()).a(3.0F, 6.0F).n().c().a(dig::a));
-   public static final die rV = a("exposed_copper_trapdoor", $$0x -> new drq(dvy.c, drj.a.b, $$0x), dvi.d.a(rU).a(qX.w()));
-   public static final die rW = a("oxidized_copper_trapdoor", $$0x -> new drq(dvy.c, drj.a.d, $$0x), dvi.d.a(rU).a(qZ.w()));
-   public static final die rX = a("weathered_copper_trapdoor", $$0x -> new drq(dvy.c, drj.a.c, $$0x), dvi.d.a(rU).a(qY.w()));
-   public static final die rY = a("waxed_copper_trapdoor", $$0x -> new dqr(dvy.c, $$0x), dvi.d.a(rU));
-   public static final die rZ = a("waxed_exposed_copper_trapdoor", $$0x -> new dqr(dvy.c, $$0x), dvi.d.a(rV));
-   public static final die sa = a("waxed_oxidized_copper_trapdoor", $$0x -> new dqr(dvy.c, $$0x), dvi.d.a(rW));
-   public static final die sb = a("waxed_weathered_copper_trapdoor", $$0x -> new dqr(dvy.c, $$0x), dvi.d.a(rX));
-   public static final die sc = a(
-      "copper_grate", $$0x -> new drn(drj.a.a, $$0x), dvi.d.a().a(3.0F, 6.0F).a(dpr.al).a(ero.p).c().n().a(dig::a).a(dig::b).b(dig::b).c(dig::b)
-   );
-   public static final die sd = a("exposed_copper_grate", $$0x -> new drn(drj.a.b, $$0x), dvi.d.a(sc).a(ero.S));
-   public static final die se = a("weathered_copper_grate", $$0x -> new drn(drj.a.c, $$0x), dvi.d.a(sc).a(ero.ae));
-   public static final die sf = a("oxidized_copper_grate", $$0x -> new drn(drj.a.d, $$0x), dvi.d.a(sc).a(ero.ad));
-   public static final die sg = a("waxed_copper_grate", dri::new, dvi.d.a(sc));
-   public static final die sh = a("waxed_exposed_copper_grate", dri::new, dvi.d.a(sd));
-   public static final die si = a("waxed_weathered_copper_grate", dri::new, dvi.d.a(se));
-   public static final die sj = a("waxed_oxidized_copper_grate", dri::new, dvi.d.a(sf));
-   public static final die sk = a("copper_bulb", $$0x -> new drk(drj.a.a, $$0x), dvi.d.a().a(qW.w()).a(3.0F, 6.0F).a(dpr.ak).n().a(dig::b).a(a(15)));
-   public static final die sl = a("exposed_copper_bulb", $$0x -> new drk(drj.a.b, $$0x), dvi.d.a(sk).a(ero.S).a(a(12)));
-   public static final die sm = a("weathered_copper_bulb", $$0x -> new drk(drj.a.c, $$0x), dvi.d.a(sk).a(ero.ae).a(a(8)));
-   public static final die sn = a("oxidized_copper_bulb", $$0x -> new drk(drj.a.d, $$0x), dvi.d.a(sk).a(ero.ad).a(a(4)));
-   public static final die so = a("waxed_copper_bulb", djs::new, dvi.d.a(sk));
-   public static final die sp = a("waxed_exposed_copper_bulb", djs::new, dvi.d.a(sl));
-   public static final die sq = a("waxed_weathered_copper_bulb", djs::new, dvi.d.a(sm));
-   public static final die sr = a("waxed_oxidized_copper_bulb", djs::new, dvi.d.a(sn));
-   public static final die ss = a("lightning_rod", dms::new, dvi.d.a().a(ero.p).k().n().a(3.0F, 6.0F).a(dpr.aj).c());
-   public static final die st = a(
-      "pointed_dripstone", dnv::new, dvi.d.a().a(ero.W).k().a(dwk.b).c().a(dpr.ai).e().a(1.5F, 3.0F).f().a(dvi.c.b).a(erp.b).a(dig::b)
-   );
-   public static final die su = a("dripstone_block", dvi.d.a().a(ero.W).a(dwk.b).a(dpr.ah).n().a(1.5F, 1.0F));
-   public static final die sv = a("cave_vines", djb::new, dvi.d.a().a(ero.h).e().b().a(dja.i_(14)).d().a(dpr.am).a(erp.b));
-   public static final die sw = a("cave_vines_plant", djc::new, dvi.d.a().a(ero.h).b().a(dja.i_(14)).d().a(dpr.am).a(erp.b));
-   public static final die sx = a("spore_blossom", dpu::new, dvi.d.a().a(ero.h).d().b().a(dpr.an).a(erp.b));
-   public static final die sy = a("azalea", dhg::new, dvi.d.a().a(ero.h).l().d().a(dpr.ao).c().a(erp.b));
-   public static final die sz = a("flowering_azalea", dhg::new, dvi.d.a().a(ero.h).l().d().a(dpr.ap).c().a(erp.b));
-   public static final die sA = a("moss_carpet", div::new, dvi.d.a().a(ero.B).d(0.1F).a(dpr.aq).a(erp.b));
-   public static final die sB = a("pink_petals", dnq::new, dvi.d.a().a(ero.h).b().a(dpr.ar).a(erp.b));
-   public static final die sC = a("moss_block", dnb::new, dvi.d.a().a(ero.B).d(0.1F).a(dpr.as).a(erp.b));
-   public static final die sD = a("big_dripleaf", dib::new, dvi.d.a().a(ero.h).l().d(0.1F).a(dpr.at).a(erp.b));
-   public static final die sE = a("big_dripleaf_stem", dic::new, dvi.d.a().a(ero.h).b().d(0.1F).a(dpr.at).a(erp.b));
-   public static final die sF = a("small_dripleaf", dpj::new, dvi.d.a().a(ero.h).b().d().a(dpr.au).a(dvi.c.c).a(erp.b));
-   public static final die sG = a("hanging_roots", dlu::new, dvi.d.a().a(ero.k).p().b().d().a(dpr.aw).a(dvi.c.b).i().a(erp.b));
-   public static final die sH = a("rooted_dirt", doo::new, dvi.d.a().a(ero.k).d(0.5F).a(dpr.av));
-   public static final die sI = a("mud", dnc::new, dvi.d.b(j).a(ero.T).a(dig::b).a(dig::a).c(dig::a).b(dig::a).a(dpr.aM));
-   public static final die sJ = a("deepslate", doq::new, dvi.d.a().a(ero.ah).a(dwk.b).n().a(3.0F, 6.0F).a(dpr.aE));
-   public static final die sK = a("cobbled_deepslate", dvi.d.b(sJ).a(3.5F, 6.0F));
-   public static final die sL = a("cobbled_deepslate_stairs", sK);
-   public static final die sM = a("cobbled_deepslate_slab", dph::new, dvi.d.b(sK));
-   public static final die sN = a("cobbled_deepslate_wall", drc::new, dvi.d.b(sK).k());
-   public static final die sO = a("polished_deepslate", dvi.d.b(sK).a(dpr.aH));
-   public static final die sP = a("polished_deepslate_stairs", sO);
-   public static final die sQ = a("polished_deepslate_slab", dph::new, dvi.d.b(sO));
-   public static final die sR = a("polished_deepslate_wall", drc::new, dvi.d.b(sO).k());
-   public static final die sS = a("deepslate_tiles", dvi.d.b(sK).a(dpr.aG));
-   public static final die sT = a("deepslate_tile_stairs", sS);
-   public static final die sU = a("deepslate_tile_slab", dph::new, dvi.d.b(sS));
-   public static final die sV = a("deepslate_tile_wall", drc::new, dvi.d.b(sS).k());
-   public static final die sW = a("deepslate_bricks", dvi.d.b(sK).a(dpr.aF));
-   public static final die sX = a("deepslate_brick_stairs", sW);
-   public static final die sY = a("deepslate_brick_slab", dph::new, dvi.d.b(sW));
-   public static final die sZ = a("deepslate_brick_wall", drc::new, dvi.d.b(sW).k());
-   public static final die ta = a("chiseled_deepslate", dvi.d.b(sK).a(dpr.aF));
-   public static final die tb = a("cracked_deepslate_bricks", dvi.d.b(sW));
-   public static final die tc = a("cracked_deepslate_tiles", dvi.d.b(sS));
-   public static final die td = a("infested_deepslate", $$0x -> new dmd(sJ, $$0x), dvi.d.a().a(ero.ah).a(dpr.aE));
-   public static final die te = a("smooth_basalt", dvi.d.b(dY));
-   public static final die tf = a("raw_iron_block", dvi.d.a().a(ero.ai).a(dwk.b).n().a(5.0F, 6.0F));
-   public static final die tg = a("raw_copper_block", dvi.d.a().a(ero.p).a(dwk.b).n().a(5.0F, 6.0F));
-   public static final die th = a("raw_gold_block", dvi.d.a().a(ero.E).a(dwk.b).n().a(5.0F, 6.0F));
-   public static final die ti = a("potted_azalea_bush", $$0x -> new dlg(sy, $$0x), c());
-   public static final die tj = a("potted_flowering_azalea_bush", $$0x -> new dlg(sz, $$0x), c());
-   public static final die tk = a("ochre_froglight", doq::new, dvi.d.a().a(ero.c).d(0.3F).a($$0x -> 15).a(dpr.aI));
-   public static final die tl = a("verdant_froglight", doq::new, dvi.d.a().a(ero.aj).d(0.3F).a($$0x -> 15).a(dpr.aI));
-   public static final die tm = a("pearlescent_froglight", doq::new, dvi.d.a().a(ero.u).d(0.3F).a($$0x -> 15).a(dpr.aI));
-   public static final die tn = a("frogspawn", dlh::new, dvi.d.a().a(ero.m).d().c().b().a(dpr.aJ).a(erp.b));
-   public static final die to = a("reinforced_deepslate", dvi.d.a().a(ero.ah).a(dwk.b).a(dpr.aE).a(55.0F, 1200.0F));
-   public static final die tp = a("decorated_pot", dke::new, dvi.d.a().a(ero.Y).a(0.0F, 0.0F).a(erp.b).c());
-   public static final die tq = a("crafter", djx::new, dvi.d.a().a(ero.l).a(1.5F, 3.5F));
-   public static final die tr = a("trial_spawner", dqt::new, dvi.d.a().a(ero.l).a(dwk.b).a($$0x -> $$0x.c(dqt.b).a()).d(50.0F).a(dpr.bd).c(dig::b).c());
-   public static final die ts = a("vault", dqz::new, dvi.d.a().a(ero.l).a(dwk.b).c().a(dpr.bg).a($$0x -> $$0x.c(dqz.b).a()).d(50.0F).c(dig::b));
-   public static final die tt = a("heavy_core", dlw::new, dvi.d.a().a(ero.g).a(dwk.c).a(dpr.bh).d(10.0F).a(erp.a).f(1200.0F));
+   private final Map<dvo, fal> m;
 
-   private static ToIntFunction<dvj> a(int $$0) {
-      return $$1 -> $$1.c(dvz.r) ? $$0 : 0;
+   @Override
+   public MapCodec<dig> a() {
+      return a;
    }
 
-   private static Function<dvj, ero> a(ero $$0) {
-      return $$1 -> $$1.c(dvz.C) ? ero.m : $$0;
+   protected dig(dvn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(aF, jm.c).b(c, dwy.a));
+      this.m = this.a(dig::o);
    }
 
-   private static Boolean a(dvj $$0, deg $$1, jh $$2, bul<?> $$3) {
-      return false;
+   private static fal o(dvo $$0) {
+      return fai.a(j.get($$0.c(c)), l.get($$0.c(aF)));
    }
 
-   private static Boolean b(dvj $$0, deg $$1, jh $$2, bul<?> $$3) {
-      return true;
-   }
+   public static void a(dfg $$0, azv $$1, jh $$2, jm $$3) {
+      int $$4 = azn.a($$1, 2, 5);
+      jh.a $$5 = $$2.k();
+      int $$6 = 0;
 
-   private static Boolean c(dvj $$0, deg $$1, jh $$2, bul<?> $$3) {
-      return $$3 == bul.au || $$3 == bul.ax;
-   }
-
-   private static die a(String $$0, cuy $$1) {
-      return a($$0, $$1x -> new dhx($$1, $$1x), dvi.d.a().a($$1x -> $$1x.c(dhx.b) == dvw.b ? $$1.e() : ero.d).a(dpr.b).d(0.2F).c().i().a(erp.b));
-   }
-
-   private static dvi.d a(ero $$0, ero $$1, dpr $$2) {
-      return dvi.d.a().a($$2x -> $$2x.c(doq.i) == jm.a.b ? $$0 : $$1).a(dwk.e).d(2.0F).a($$2).i();
-   }
-
-   private static dvi.d b(ero $$0) {
-      return dvi.d.a().a($$1 -> $$0).a(dwk.e).d(2.0F).a(dpr.B);
-   }
-
-   private static boolean a(dvj $$0, deg $$1, jh $$2) {
-      return true;
-   }
-
-   private static boolean b(dvj $$0, deg $$1, jh $$2) {
-      return false;
-   }
-
-   private static die b(String $$0, cuy $$1) {
-      return a($$0, $$1x -> new dpw($$1, $$1x), dvi.d.a().a($$1).a(dwk.d).d(0.3F).a(dpr.h).c().a(dig::a).a(dig::b).b(dig::b).c(dig::b));
-   }
-
-   private static dvi.d a(dpr $$0) {
-      return dvi.d.a().a(ero.h).d(0.2F).e().a($$0).c().a(dig::c).b(dig::b).c(dig::b).i().a(erp.b).a(dig::b);
-   }
-
-   private static dvi.d c(ero $$0) {
-      return dvi.d.a().a($$0).k().d(2.0F).f().c().b(tu).c(tu).a(erp.b);
-   }
-
-   private static dvi.d a() {
-      return dvi.d.a().a(ero.l).d(1.5F).a(dig::b).b(tv).c(tv).a(erp.c);
-   }
-
-   private static dvi.d b() {
-      return dvi.d.a().b().d(0.5F).a(erp.b);
-   }
-
-   private static dvi.d c() {
-      return dvi.d.a().d().c().a(erp.b);
-   }
-
-   private static dvi.d d(ero $$0) {
-      return dvi.d.a().a($$0).c().d(0.1F).a(dpr.X).a(dit.i).a(erp.b);
-   }
-
-   @Deprecated
-   private static die a(String $$0, die $$1) {
-      return a($$0, $$1x -> new dpy($$1.m(), $$1x), dvi.d.b($$1));
-   }
-
-   private static die b(String $$0, die $$1) {
-      return a($$0, $$1x -> new dpy($$1.m(), $$1x), dvi.d.a($$1));
-   }
-
-   private static dvi.d a(die $$0, boolean $$1) {
-      dvi.d $$2 = $$0.s();
-      dvi.d $$3 = dvi.d.a().a($$0.u());
-      if ($$1) {
-         $$3 = $$3.a($$0.v());
+      while ($$6 < $$4 && a($$0, $$5, $$0.a_($$5))) {
+         $$6++;
+         $$5.c(jm.b);
       }
 
-      return $$3;
+      int $$7 = $$2.v() + $$6 - 1;
+      $$5.q($$2.v());
+
+      while ($$5.v() < $$7) {
+         dih.a($$0, $$5, $$0.b_($$5), $$3);
+         $$5.c(jm.b);
+      }
+
+      a($$0, $$5, $$0.b_($$5), $$3);
    }
 
-   private static die a(alh<die> $$0, Function<dvi.d, die> $$1, dvi.d $$2) {
-      die $$3 = $$1.apply($$2.a($$0));
-      return kd.a(ly.e, $$0, $$3);
+   private static boolean q(dvo $$0) {
+      return $$0.l() || $$0.a(dil.G) || $$0.a(dil.sF);
    }
 
-   private static die a(alh<die> $$0, dvi.d $$1) {
-      return a($$0, die::new, $$1);
+   protected static boolean a(dfh $$0, jh $$1, dvo $$2) {
+      return !$$0.s($$1) && q($$2);
    }
 
-   private static alh<die> a(String $$0) {
-      return alh.a(lz.f, ali.b($$0));
+   protected static boolean a(dfg $$0, jh $$1, ero $$2, jm $$3) {
+      dvo $$4 = dil.sD.m().b(b, Boolean.valueOf($$2.a(erp.c))).b(aF, $$3);
+      return $$0.a($$1, $$4, 3);
    }
 
-   private static die a(String $$0, Function<dvi.d, die> $$1, dvi.d $$2) {
-      return a(a($$0), $$1, $$2);
+   @Override
+   protected void a(dff $$0, dvo $$1, ezn $$2, cpk $$3) {
+      this.a($$1, $$0, $$2.b(), dwy.d, awo.hC);
    }
 
-   private static die a(String $$0, dvi.d $$1) {
-      return a($$0, die::new, $$1);
+   @Override
+   protected ero b_(dvo $$0) {
+      return $$0.c(b) ? erp.c.a(false) : super.b_($$0);
    }
 
-   static {
-      for (die $$0 : ly.e) {
-         UnmodifiableIterator var2 = $$0.l().a().iterator();
+   @Override
+   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      dvo $$4 = $$1.a_($$3);
+      return $$4.a(this) || $$4.a(dil.sE) || $$4.a(axd.bz);
+   }
 
-         while (var2.hasNext()) {
-            dvj $$1 = (dvj)var2.next();
-            die.q.b($$1);
-            $$1.a();
+   @Override
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      if ($$4 == jm.a && !$$0.a($$1, $$3)) {
+         return dil.a.m();
+      } else {
+         if ($$0.c(b)) {
+            $$2.a($$3, erp.c, erp.c.a($$1));
+         }
+
+         return $$4 == jm.b && $$6.a(this) ? dil.sE.m($$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      dvo $$3 = $$0.a_($$1.d());
+      return q($$3);
+   }
+
+   @Override
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      jh $$4 = $$2.d();
+      dvo $$5 = $$0.a_($$4);
+      if (a($$0, $$4, $$5)) {
+         jm $$6 = $$3.c(aF);
+         dih.a($$0, $$2, $$3.y(), $$6);
+         a($$0, $$4, $$5.y(), $$6);
+      }
+   }
+
+   @Override
+   protected void a(dvo $$0, dff $$1, jh $$2, bui $$3) {
+      if (!$$1.C) {
+         if ($$0.c(c) == dwy.a && a($$2, $$3) && !$$1.C($$2)) {
+            this.a($$0, $$1, $$2, dwy.b, null);
          }
       }
+   }
+
+   @Override
+   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
+      if ($$1.C($$2)) {
+         e($$0, $$1, $$2);
+      } else {
+         dwy $$4 = $$0.c(c);
+         if ($$4 == dwy.b) {
+            this.a($$0, $$1, $$2, dwy.c, awo.hC);
+         } else if ($$4 == dwy.c) {
+            this.a($$0, $$1, $$2, dwy.d, awo.hC);
+         } else if ($$4 == dwy.d) {
+            e($$0, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dvo $$0, dff $$1, jh $$2, dij $$3, @Nullable esw $$4, boolean $$5) {
+      if ($$1.C($$2)) {
+         e($$0, $$1, $$2);
+      }
+   }
+
+   private static void a(dff $$0, jh $$1, awn $$2) {
+      float $$3 = azn.b($$0.A, 0.8F, 1.2F);
+      $$0.a(null, $$1, $$2, awp.e, 1.0F, $$3);
+   }
+
+   private static boolean a(jh $$0, bui $$1) {
+      return $$1.aL() && $$1.dw().e > (double)((float)$$0.v() + 0.6875F);
+   }
+
+   private void a(dvo $$0, dff $$1, jh $$2, dwy $$3, @Nullable awn $$4) {
+      a($$0, $$1, $$2, $$3);
+      if ($$4 != null) {
+         a($$1, $$2, $$4);
+      }
+
+      int $$5 = e.getInt($$3);
+      if ($$5 != -1) {
+         $$1.a($$2, this, $$5);
+      }
+   }
+
+   private static void e(dvo $$0, dff $$1, jh $$2) {
+      a($$0, $$1, $$2, dwy.a);
+      if ($$0.c(c) != dwy.a) {
+         a($$1, $$2, awo.hD);
+      }
+   }
+
+   private static void a(dvo $$0, dff $$1, jh $$2, dwy $$3) {
+      dwy $$4 = $$0.c(c);
+      $$1.a($$2, $$0.b(c, $$3), 2);
+      if ($$3.a() && $$3 != $$4) {
+         $$1.a(null, eak.c, $$2);
+      }
+   }
+
+   @Override
+   protected fal b(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return j.get($$0.c(c));
+   }
+
+   @Override
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return this.m.get($$0);
+   }
+
+   @Override
+   public dvo a(czw $$0) {
+      dvo $$1 = $$0.q().a_($$0.a().e());
+      ero $$2 = $$0.q().b_($$0.a());
+      boolean $$3 = $$1.a(dil.sD) || $$1.a(dil.sE);
+      return this.m().b(b, Boolean.valueOf($$2.a(erp.c))).b(aF, $$3 ? $$1.c(aF) : $$0.g().g());
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(b, aF, c);
    }
 }

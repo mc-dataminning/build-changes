@@ -1,60 +1,60 @@
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
 import java.util.List;
+import java.util.Optional;
 
-public class acz implements zp<ace> {
-   public static final zg<wt, acz> a = zp.a(acz::a, acz::new);
-   private final int b;
-   private final int c;
-   private final List<cwb> d;
-   private final cwb e;
+public record acz(int b, int c, int d, List<acz.a> e) implements zs<ach> {
+   public static final zj<ww, acz> a = zj.a(zh.h, acz::e, zh.h, acz::f, zh.h, acz::g, acz.a.a.a(zh.a()), acz::h, acz::new);
 
-   public acz(int $$0, int $$1, jz<cwb> $$2, cwb $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = jz.a($$2.size(), cwb.k);
-
-      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
-         this.d.set($$4, $$2.get($$4).v());
-      }
-
-      this.e = $$3.v();
-   }
-
-   private acz(wt $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = cwb.j.decode($$0);
-      this.e = cwb.h.decode($$0);
-   }
-
-   private void a(wt $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      cwb.j.encode($$0, this.d);
-      cwb.h.encode($$0, this.e);
+   public acz(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new acz.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xo::a))).toList()
+      );
    }
 
    @Override
-   public zr<acz> a() {
-      return agt.u;
+   public zu<acz> a() {
+      return agw.r;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
+   }
+
+   public int e() {
       return this.b;
    }
 
-   public List<cwb> e() {
-      return this.d;
-   }
-
-   public cwb f() {
-      return this.e;
+   public int f() {
+      return this.c;
    }
 
    public int g() {
-      return this.c;
+      return this.d;
+   }
+
+   public List<acz.a> h() {
+      return this.e;
+   }
+
+   public static record a(String b, Optional<xl> c) {
+      public static final zj<ww, acz.a> a = zj.a(zh.m, acz.a::a, xn.e, acz.a::b, acz.a::new);
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<xl> b() {
+         return this.c;
+      }
    }
 }

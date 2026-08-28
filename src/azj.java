@@ -1,49 +1,64 @@
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
+import java.io.Serializable;
+import java.util.Deque;
+import java.util.List;
+import java.util.RandomAccess;
+import javax.annotation.Nullable;
 
-public record azj(azj.a a, String b) {
-   public static azj a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new azj(azj.a.c, $$2 + " brand changed to '" + $$4 + "'");
-      } else {
-         return $$3.getSigners() == null
-            ? new azj(azj.a.b, $$2 + " jar signature invalidated")
-            : new azj(azj.a.a, $$2 + " jar signature and brand is untouched");
-      }
+public interface azj<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
+   azj<T> b();
+
+   @Override
+   T getFirst();
+
+   @Override
+   T getLast();
+
+   @Override
+   void addFirst(T var1);
+
+   @Override
+   void addLast(T var1);
+
+   @Override
+   T removeFirst();
+
+   @Override
+   T removeLast();
+
+   @Override
+   default boolean offer(T $$0) {
+      return this.offerLast($$0);
    }
 
-   public boolean a() {
-      return this.a.e;
+   @Override
+   default T remove() {
+      return this.removeFirst();
    }
 
-   public azj a(azj $$0) {
-      return new azj((azj.a)ObjectUtils.max(new azj.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   @Nullable
+   @Override
+   default T poll() {
+      return this.pollFirst();
    }
 
-   public String b() {
-      return this.a.d + " " + this.b;
+   @Override
+   default T element() {
+      return this.getFirst();
    }
 
-   public azj.a c() {
-      return this.a;
+   @Nullable
+   @Override
+   default T peek() {
+      return this.peekFirst();
    }
 
-   public String d() {
-      return this.b;
+   @Override
+   default void push(T $$0) {
+      this.addFirst($$0);
    }
 
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(final String $$0, final boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   @Override
+   default T pop() {
+      return this.removeFirst();
    }
 }

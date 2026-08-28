@@ -1,29 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqi extends dkm implements dih {
-   public static final MapCodec<dqi> c = b(dqi::new);
+public class dqi extends dij {
+   public static final MapCodec<dqi> a = b(dqi::new);
+   private static final double b = 5.0;
+   private static final fal c = dij.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dqi> a() {
-      return c;
+      return a;
    }
 
-   public dqi(dvi.d $$0) {
+   protected dqi(dvn.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(dfe $$0, jh $$1, dvj $$2) {
-      return true;
+   protected dop a_(dvo $$0) {
+      return dop.a;
    }
 
    @Override
-   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
-      return true;
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return c;
    }
 
    @Override
-   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
-      a($$0, $$2, new cwb(this));
+   protected float c(dvo $$0, dek $$1, jh $$2) {
+      return 1.0F;
    }
 }

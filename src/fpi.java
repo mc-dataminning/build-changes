@@ -1,88 +1,163 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class fpi {
-   int a;
-   final Map<fpi.a, fpi.b> b = Maps.newTreeMap(Comparator.<fpi.a, fpe>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fpi extends fpg {
+   private final fpi.b c;
+   private final List<fpi.a> d = new ArrayList<>();
+   private final fpo e = fpo.i();
 
-   public void a(Consumer<fpf> $$0) {
-      this.a++;
-      $$0.accept(new fpi.c(0));
+   public fpi(int $$0, int $$1, fpi.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
+   public fpi(int $$0, int $$1, int $$2, int $$3, fpi.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+   }
 
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (fpi.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fpi.a> $$5 = this.d.iterator();
+         fpi.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fpi.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
             }
-
-            this.b = false;
-            $$1.append($$0);
          }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
+
+         int $$9 = this.c.d(this);
+
+         for (fpi.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
          }
-      });
-      return $$1.toString();
-   }
 
-   static class a {
-      final fpe a;
-      final int b;
-
-      a(fpe $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
       }
    }
 
-   static class b {
-      fph<?> a;
-      int b;
-      boolean c;
+   @Override
+   public void b(Consumer<fpn> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
+   }
 
-      b() {
-         this.a = fph.a;
-         this.b = -1;
-      }
+   public fpo b() {
+      return this.e.g();
+   }
 
-      public fpi.b a(int $$0, fph<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
+   public fpo c() {
+      return this.e;
+   }
 
-         this.b = $$0;
-         return this;
+   public <T extends fpn> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fpn> T a(T $$0, fpo $$1) {
+      this.d.add(new fpi.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fpn> T a(T $$0, Consumer<fpo> $$1) {
+      return this.a($$0, ae.a(this.b(), $$1));
+   }
+
+   static class a extends fpg.a {
+      protected a(fpn $$0, fpo $$1) {
+         super($$0, $$1);
       }
    }
 
-   class c implements fpf {
-      private final int b;
+   public static enum b {
+      a,
+      b;
 
-      c(final int $$0) {
-         this.b = $$0;
+      int a(fpn $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.w();
+         };
       }
 
-      @Override
-      public void a(fpe $$0, fph<?> $$1) {
-         fpi.this.b.computeIfAbsent(new fpi.a($$0, this.b), $$0x -> new fpi.b()).a(fpi.this.a, $$1);
+      int a(fpi.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
       }
 
-      @Override
-      public fpf a() {
-         return fpi.this.new c(this.b + 1);
+      int b(fpn $$0) {
+         return switch (this) {
+            case a -> $$0.w();
+            case b -> $$0.y();
+         };
+      }
+
+      int b(fpi.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fpi.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(fpi.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fpn $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.E();
+         };
+      }
+
+      int d(fpn $$0) {
+         return switch (this) {
+            case a -> $$0.E();
+            case b -> $$0.D();
+         };
       }
    }
 }

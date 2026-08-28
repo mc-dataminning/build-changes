@@ -1,112 +1,65 @@
-public class cum extends cvx {
-   public static final int a = 10;
-   private static final int b = 200;
+import java.util.List;
 
-   public cum(cvx.a $$0) {
-      super($$0);
+public class cum extends cwb {
+   private final cqq.b a;
+   private final boolean b;
+
+   public cum(boolean $$0, cqq.b $$1, cwb.a $$2) {
+      super($$2);
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public bsd a(czu $$0) {
-      com $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).d() == ezl.a.b) {
-         $$1.c($$0.p());
-      }
+   public bsh a(dff $$0, cor $$1, bsg $$2) {
+      cwf $$3 = $$1.b($$2);
+      ezp $$4 = a($$0, $$1, den.b.c);
+      if ($$4.d() == ezp.a.a) {
+         return bsh.e;
+      } else {
+         ezr $$5 = $$1.g(1.0F);
+         double $$6 = 5.0;
+         List<bui> $$7 = $$0.a($$1, $$1.cT().b($$5.c(5.0)).g(1.0), bun.h);
+         if (!$$7.isEmpty()) {
+            ezr $$8 = $$1.bH();
 
-      return bsd.c;
-   }
-
-   @Override
-   public cwd b(cwb $$0) {
-      return cwd.j;
-   }
-
-   @Override
-   public int a(cwb $$0, bva $$1) {
-      return 200;
-   }
-
-   @Override
-   public void a(dfb $$0, bva $$1, cwb $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof com $$4) {
-         ezl $$6 = this.a($$4);
-         if ($$6 instanceof ezj $$7 && $$6.d() == ezl.a.b) {
-            int $$9 = this.a($$2, $$1) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               jh $$11 = $$7.b();
-               dvj $$12 = $$0.a_($$11);
-               buu $$13 = $$1.fC() == bsc.a ? $$4.fA() : $$4.fA().e();
-               if ($$12.D() && $$12.o() != dok.a) {
-                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
-               }
-
-               awk $$15;
-               if ($$12.b() instanceof dij $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = awl.cS;
-               }
-
-               $$0.a($$4, $$11, $$15, awm.e);
-               if ($$0 instanceof arn $$17 && $$0.c_($$11) instanceof dsq $$18) {
-                  boolean $$19 = $$18.a($$0.aa(), $$17, $$4, $$7.c(), $$2);
-                  if ($$19) {
-                     bum $$20 = $$2.equals($$4.a(bum.b)) ? bum.b : bum.a;
-                     $$2.a(1, $$4, $$20);
-                  }
+            for (bui $$9 : $$7) {
+               ezm $$10 = $$9.cT().g((double)$$9.bU());
+               if ($$10.d($$8)) {
+                  return bsh.e;
                }
             }
-
-            return;
          }
 
-         $$1.fG();
-      } else {
-         $$1.fG();
+         if ($$4.d() == ezp.a.b) {
+            cqq $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.a);
+            $$11.v($$1.dO());
+            if (!$$0.a($$11, $$11.cT())) {
+               return bsh.d;
+            } else {
+               if (!$$0.C) {
+                  $$0.b($$11);
+                  $$0.a($$1, eak.t, $$4.g());
+                  $$3.a(1, $$1);
+               }
+
+               $$1.b(awy.c.b(this));
+               return bsh.a;
+            }
+         } else {
+            return bsh.e;
+         }
       }
    }
 
-   private ezl a(com $$0) {
-      return cpi.a($$0, buj.h, $$0.gK());
-   }
-
-   private void a(dfb $$0, ezj $$1, dvj $$2, ezn $$3, buu $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == buu.b ? 1 : -1;
-      int $$7 = $$0.E_().b(7, 12);
-      lj $$8 = new lj(lr.b, $$2);
-      jm $$9 = $$1.c();
-      cum.a $$10 = cum.a.a($$3, $$9);
-      ezn $$11 = $$1.g();
-
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.d - (double)($$9 == jm.e ? 1.0E-6F : 0.0F),
-            $$11.e,
-            $$11.f - (double)($$9 == jm.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.E_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.E_().j()
-         );
+   private cqq a(dff $$0, ezp $$1, cwf $$2, cor $$3) {
+      ezr $$4 = $$1.g();
+      cqq $$5 = (cqq)(this.b ? new cqr($$0, $$4.d, $$4.e, $$4.f) : new cqq($$0, $$4.d, $$4.e, $$4.f));
+      if ($$0 instanceof arq $$6) {
+         bup.<cqq>a($$6, $$2, $$3).accept($$5);
       }
-   }
 
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
-
-      public static cum.a a(ezn $$0, jm $$1) {
-         double $$2 = 0.0;
-
-         return switch ($$1) {
-            case a, b -> new cum.a($$0.c(), 0.0, -$$0.a());
-            case c -> new cum.a(1.0, 0.0, -0.1);
-            case d -> new cum.a(-1.0, 0.0, 0.1);
-            case e -> new cum.a(-0.1, 0.0, -1.0);
-            case f -> new cum.a(0.1, 0.0, 1.0);
-         };
-      }
+      return $$5;
    }
 }

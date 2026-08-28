@@ -1,6 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface dyh {
-   CompletableFuture<dxf> doWork(dyl var1, dyj var2, bae<arf> var3, dxf var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dyh {
 }

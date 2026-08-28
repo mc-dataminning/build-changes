@@ -1,46 +1,59 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
+public interface fbd extends bsa {
+   cwf f();
 
-public class fbd<T> implements fbg<T>, fbi<T> {
-   private final List<fbe<T>> a = Lists.newArrayList();
-   private final Set<fbe<?>> b = new ObjectOpenCustomHashSet(fbe.a);
-
-   @Override
-   public void a(fbf<T> $$0) {
-      fbe<T> $$1 = new fbe<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   default cwf c(int $$0) {
+      return this.f().a($$0);
    }
 
-   private void a(fbe<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   void b(cwf var1);
+
+   default cwf h() {
+      return this.c(this.am_());
+   }
+
+   @Override
+   default int b() {
+      return 1;
+   }
+
+   @Override
+   default boolean c() {
+      return this.f().f();
+   }
+
+   @Override
+   default void a() {
+      this.h();
+   }
+
+   @Override
+   default cwf b(int $$0) {
+      return this.a($$0, this.am_());
+   }
+
+   @Override
+   default cwf a(int $$0) {
+      return $$0 == 0 ? this.f() : cwf.k;
+   }
+
+   @Override
+   default cwf a(int $$0, int $$1) {
+      return $$0 != 0 ? cwf.k : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, cwf $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
       }
    }
 
-   @Override
-   public boolean a(jh $$0, T $$1) {
-      return this.b.contains(fbe.a($$1, $$0));
-   }
+   public interface a extends fbd {
+      dsr v();
 
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public List<fbe<T>> a(long $$0) {
-      return this.a;
-   }
-
-   public List<fbe<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> fbd<T> a(List<fbe<T>> $$0) {
-      fbd<T> $$1 = new fbd<>();
-      $$0.forEach($$1::a);
-      return $$1;
+      @Override
+      default boolean a(cor $$0) {
+         return bsa.a(this.v(), $$0);
+      }
    }
 }

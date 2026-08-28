@@ -1,36 +1,37 @@
-public class ahz implements zp<agv> {
-   public static final zg<wf, ahz> a = zp.a(ahz::a, ahz::new);
-   private static final int b = 2;
+public class ahz implements zs<agy> {
+   public static final zj<wi, ahz> a = zs.a(ahz::a, ahz::new);
+   private final boolean b;
    private final boolean c;
 
-   public ahz(coi $$0) {
-      this.c = $$0.b;
+   public ahz(boolean $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahz(wf $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+   private ahz(wi $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(wf $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
+   private void a(wi $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   @Override
-   public zr<ahz> a() {
-      return agt.bM;
-   }
-
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
+   @Override
+   public zu<ahz> a() {
+      return agw.bJ;
+   }
+
    public boolean b() {
+      return this.b;
+   }
+
+   public boolean e() {
       return this.c;
    }
 }

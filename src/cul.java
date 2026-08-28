@@ -1,86 +1,179 @@
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cul extends cwx {
-   public static final int a = 20;
-   public static final int b = 15;
+public class cul extends cwb {
+   @Deprecated
+   private final dij a;
 
-   public cul(cvx.a $$0) {
-      super($$0);
+   public cul(dij $$0, cwb.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public boolean a(cwb $$0, dfb $$1, bva $$2, int $$3) {
-      if (!($$2 instanceof com $$4)) {
-         return false;
+   public bsh a(czy $$0) {
+      bsh $$1 = this.a(new czw($$0));
+      return !$$1.a() && $$0.n().b(ku.x) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
+   }
+
+   public bsh a(czw $$0) {
+      if (!this.d().a($$0.q().J())) {
+         return bsh.d;
+      } else if (!$$0.b()) {
+         return bsh.d;
       } else {
-         cwb $$5 = $$4.d($$0);
-         if ($$5.f()) {
-            return false;
+         czw $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bsh.d;
          } else {
-            int $$6 = this.a($$0, $$2) - $$3;
-            float $$7 = a($$6);
-            if ((double)$$7 < 0.1) {
-               return false;
+            dvo $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bsh.d;
+            } else if (!this.a($$1, $$2)) {
+               return bsh.d;
             } else {
-               List<cwb> $$8 = a($$0, $$5, $$4);
-               if ($$1 instanceof arn $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fC(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+               jh $$3 = $$1.a();
+               dff $$4 = $$1.q();
+               cor $$5 = $$1.o();
+               cwf $$6 = $$1.n();
+               dvo $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  a($$4, $$3, $$6);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof arr) {
+                     ao.z.a((arr)$$5, $$3, $$6);
+                  }
                }
 
-               $$1.a(null, $$4.dC(), $$4.dE(), $$4.dI(), awl.aG, awm.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awv.c.b(this));
-               return true;
+               dpw $$8 = $$7.A();
+               $$4.a($$5, $$3, this.a($$7), awp.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(eak.i, $$3, eak.a.a($$5, $$7));
+               $$6.a(1, $$5);
+               return bsh.a;
             }
          }
       }
    }
 
-   @Override
-   protected void a(bva $$0, cpg $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bva $$6) {
-      $$1.a($$0, $$0.dP(), $$0.dN() + $$5, 0.0F, $$3, $$4);
+   protected awn a(dvo $$0) {
+      return $$0.A().e();
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
+   @Nullable
+   public czw b(czw $$0) {
+      return $$0;
+   }
+
+   private static void a(dff $$0, jh $$1, cwf $$2) {
+      dsr $$3 = $$0.c_($$1);
+      if ($$3 != null) {
+         $$3.a($$2);
+         $$3.e();
       }
-
-      return $$1;
    }
 
-   @Override
-   public int a(cwb $$0, bva $$1) {
-      return 72000;
+   protected boolean a(jh $$0, dff $$1, @Nullable cor $$2, cwf $$3, dvo $$4) {
+      return a($$1, $$2, $$0, $$3);
    }
 
-   @Override
-   public cwd b(cwb $$0) {
-      return cwd.e;
+   @Nullable
+   protected dvo c(czw $$0) {
+      dvo $$1 = this.d().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
    }
 
-   @Override
-   public bsd a(dfb $$0, com $$1, bsc $$2) {
-      cwb $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.d($$3).f();
-      if (!$$1.fX() && !$$4) {
-         return bsd.d;
+   private dvo a(jh $$0, dff $$1, cwf $$2, dvo $$3) {
+      cyh $$4 = $$2.a(ku.am, cyh.a);
+      if ($$4.a()) {
+         return $$3;
       } else {
-         $$1.c($$2);
-         return bsd.c;
+         dvo $$5 = $$4.a($$3);
+         if ($$5 != $$3) {
+            $$1.a($$0, $$5, 2);
+         }
+
+         return $$5;
+      }
+   }
+
+   protected boolean b(czw $$0, dvo $$1) {
+      cor $$2 = $$0.o();
+      ezw $$3 = $$2 == null ? ezw.a() : ezw.a($$2);
+      return (!this.c() || $$1.a((dfi)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
+   }
+
+   protected boolean c() {
+      return true;
+   }
+
+   protected boolean a(czw $$0, dvo $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(dff $$0, @Nullable cor $$1, jh $$2, cwf $$3) {
+      MinecraftServer $$4 = $$0.o();
+      if ($$4 == null) {
+         return false;
+      } else {
+         cyo $$5 = $$3.a(ku.Y, cyo.a);
+         if (!$$5.b()) {
+            dsr $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               if ($$0.C || !$$6.p() || $$1 != null && $$1.gJ()) {
+                  return $$5.a($$6, $$0.H_());
+               }
+
+               return false;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public Predicate<cwb> b() {
-      return c;
+   public void a(cwf $$0, cwb.b $$1, List<xl> $$2, cxx $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d().a($$0, $$1, $$2, $$3);
+   }
+
+   public dij d() {
+      return this.a;
+   }
+
+   public void a(Map<dij, cwb> $$0, cwb $$1) {
+      $$0.put(this.d(), $$1);
    }
 
    @Override
-   public int c() {
-      return 15;
+   public boolean e() {
+      return !(this.d() instanceof dpi);
+   }
+
+   @Override
+   public void a(ckz $$0) {
+      cyx $$1 = $$0.m().b(ku.al, cyx.a);
+      if ($$1 != null) {
+         cwi.a($$0, $$1.e());
+      }
+   }
+
+   public static void a(cwf $$0, dst<?> $$1, un $$2) {
+      $$2.r("id");
+      if ($$2.g()) {
+         $$0.c(ku.Y);
+      } else {
+         dsr.a($$2, $$1);
+         $$0.b(ku.Y, cyo.a($$2));
+      }
+   }
+
+   @Override
+   public crj i() {
+      return this.d().i();
    }
 }

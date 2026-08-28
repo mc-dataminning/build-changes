@@ -1,43 +1,33 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class een<FC extends egp> {
-   private final Optional<edx<?, ?>> a;
-   private final dfy b;
-   private final dxg c;
-   private final azs d;
-   private final jh e;
-   private final FC f;
-
-   public een(Optional<edx<?, ?>> $$0, dfy $$1, dxg $$2, azs $$3, jh $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class een extends eep<eha> {
+   public een(Codec<eha> $$0) {
+      super($$0);
    }
 
-   public Optional<edx<?, ?>> a() {
-      return this.a;
+   @Override
+   public boolean a(eer<eha> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
    }
 
-   public dfy b() {
-      return this.b;
-   }
+   public static void a(dfw $$0, jh $$1, boolean $$2) {
+      jh.a $$3 = $$1.k();
 
-   public dxg c() {
-      return this.c;
-   }
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               jh $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dij $$8 = $$6 == -1 ? dil.co : dil.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
 
-   public azs d() {
-      return this.d;
-   }
-
-   public jh e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+                  $$0.a($$7, $$8.m(), 3);
+               }
+            }
+         }
+      }
    }
 }

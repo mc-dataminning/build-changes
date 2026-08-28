@@ -1,10 +1,18 @@
-public class grt<M extends fzp> extends gtf<M> {
-   public grt(gpl<?, gvy, M> $$0, gok.a $$1) {
-      super($$0, new fxk($$1.a(gbl.j)), gqy.a, gtf.a.a);
+public class grt extends gnr<ciz, gve, fxr<gve>> {
+   private static final all a = all.b("textures/entity/horse/horse_zombie.png");
+   private static final all b = all.b("textures/entity/horse/horse_skeleton.png");
+   private final all k;
+
+   public grt(gpa.a $$0, gca $$1, gca $$2, boolean $$3) {
+      super($$0, new fzl($$0.a($$1)), new fzl($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   @Override
-   protected int a(gvy $$0) {
-      return $$0.e;
+   public all a(gve $$0) {
+      return this.k;
+   }
+
+   public gve c() {
+      return new gve();
    }
 }

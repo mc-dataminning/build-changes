@@ -1,38 +1,89 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class cfv {
+   public static final cfv a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
    @Nullable
-   public static ezn a(bvi $$0, int $$1, int $$2) {
-      boolean $$3 = cfw.a($$0, $$1);
-      return cfz.a($$0, () -> {
-         jh $$4 = cfz.a($$0.ea(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+   private Predicate<bve> g;
+
+   private cfv(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   public static ezn a(bvi $$0, int $$1, int $$2, ezn $$3, double $$4) {
-      ezn $$5 = $$3.a($$0.dC(), $$0.dE(), $$0.dI());
-      boolean $$6 = cfw.a($$0, $$1);
-      return cfz.a($$0, () -> {
-         jh $$6x = cfz.a($$0.ea(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   public static cfv a() {
+      return new cfv(true);
    }
 
-   @Nullable
-   public static ezn a(bvi $$0, int $$1, int $$2, ezn $$3) {
-      ezn $$4 = $$0.dv().d($$3);
-      boolean $$5 = cfw.a($$0, $$1);
-      return cfz.a($$0, () -> {
-         jh $$5x = cfz.a($$0.ea(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   public static cfv b() {
+      return new cfv(false);
    }
 
-   @Nullable
-   private static jh a(bvi $$0, int $$1, boolean $$2, jh $$3) {
-      jh $$4 = cfz.a($$0, $$1, $$0.ea(), $$3);
-      return !cfw.a($$4, $$0) && !cfw.a($$2, $$0, $$4) && !cfw.a($$0.P(), $$4) && !cfw.b($$0, $$4) ? $$4 : null;
+   public cfv c() {
+      cfv $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public cfv a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public cfv d() {
+      this.e = false;
+      return this;
+   }
+
+   public cfv e() {
+      this.f = false;
+      return this;
+   }
+
+   public cfv a(@Nullable Predicate<bve> $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(@Nullable bve $$0, bve $$1) {
+      if ($$0 == $$1) {
+         return false;
+      } else if (!$$1.eB()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$1)) {
+         return false;
+      } else {
+         if ($$0 == null) {
+            if (this.c && (!$$1.eA() || $$1.dY().ak() == bse.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ar()) || $$0.s($$1))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$2 = this.f ? $$1.C($$0) : 1.0;
+               double $$3 = Math.max(this.d * $$2, 2.0);
+               double $$4 = $$0.i($$1.dD(), $$1.dF(), $$1.dJ());
+               if ($$4 > $$3 * $$3) {
+                  return false;
+               }
+            }
+
+            if (this.e && $$0 instanceof bvg $$5 && !$$5.Q().a($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

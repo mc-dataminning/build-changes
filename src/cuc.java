@@ -1,18 +1,21 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cuc extends cvx implements cww {
-   public cuc(cvx.a $$0) {
-      super($$0);
-   }
+public class cuc extends cwb {
+   private final dij a;
 
-   public cou a(dfb $$0, cwb $$1, bva $$2, @Nullable cwb $$3) {
-      return new cow($$0, $$2, $$1.c(1), $$3);
+   public cuc(dij $$0, cwb.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public cpg a(dfb $$0, ka $$1, cwb $$2, jm $$3) {
-      cow $$4 = new cow($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.d = cou.a.b;
-      return $$4;
+   public void a(cwf $$0, cwb.b $$1, List<xl> $$2, cxx $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public xl a(cwf $$0) {
+      return this.n();
    }
 }

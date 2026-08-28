@@ -1,9 +1,29 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
+public enum fbn {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-public @interface fbn {
+   private final int h;
+
+   private fbn(final int $$0) {
+      this.h = $$0;
+   }
+
+   public static fbn a(int $$0) {
+      for (fbn $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
+   }
+
+   public int a() {
+      return this.h;
+   }
 }

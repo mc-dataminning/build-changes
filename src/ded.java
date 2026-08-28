@@ -1,19 +1,48 @@
-public interface ded extends deg {
-   float a(jm var1, boolean var2);
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   eqz z_();
+public class ded extends ArrayList<dec> {
+   public static final Codec<ded> a = dec.a.listOf().fieldOf("Recipes").xmap(ded::new, Function.identity()).codec();
+   public static final zj<ww, ded> b = dec.b.a(zh.a(ded::new));
 
-   int a(jh var1, del var2);
-
-   default int a(dfk $$0, jh $$1) {
-      return this.z_().a($$0).b($$1);
+   public ded() {
    }
 
-   default int b(jh $$0, int $$1) {
-      return this.z_().a($$0, $$1);
+   private ded(int $$0) {
+      super($$0);
    }
 
-   default boolean h(jh $$0) {
-      return this.a(dfk.a, $$0) >= 15;
+   private ded(Collection<dec> $$0) {
+      super($$0);
+   }
+
+   @Nullable
+   public dec a(cwf $$0, cwf $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dec $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dec $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   public ded a() {
+      ded $$0 = new ded(this.size());
+
+      for (dec $$1 : this) {
+         $$0.add($$1.v());
+      }
+
+      return $$0;
    }
 }

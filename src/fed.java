@@ -1,40 +1,90 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
 public class fed {
-   private static final int a = 786432;
-   private final fdy b;
-   @Nullable
-   private static fed c;
+   private int a;
 
-   public static void a() {
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
+   public static Optional<fed> a() {
+      return fed.b.a;
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
       } else {
-         c = new fed();
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
       }
    }
 
-   public static fed b() {
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
+   public fed.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
       } else {
-         return c;
+         GL32C.glEndQuery(35007);
+         fed.a $$0 = new fed.a(this.a);
+         this.a = 0;
+         return $$0;
       }
    }
 
-   public fed(int $$0) {
-      this.b = new fdy($$0);
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
    }
 
-   public fed() {
-      this(786432);
-   }
+   static class b {
+      static final Optional<fed> a = Optional.ofNullable(a());
 
-   public fdw a(feg.c $$0, feg $$1) {
-      return new fdw(this.b, $$0, $$1);
-   }
+      private b() {
+      }
 
-   public void c() {
-      this.b.b();
+      @Nullable
+      private static fed a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fed();
+      }
    }
 }

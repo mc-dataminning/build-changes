@@ -1,51 +1,75 @@
-public class gss extends gsx<gvq, fyb> {
-   private final gjk a;
+import java.util.Map;
 
-   public gss(gqg<gvq, fyb> $$0, gjk $$1) {
-      super($$0);
-      this.a = $$1;
+public class gss<S extends gwb, M extends fza<S> & fzj> extends gtn<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final gss.a c;
+   private final Map<dpl.a, gax> d;
+   private final gpy e;
+
+   public gss(gqw<S, M> $$0, gby $$1, gpy $$2) {
+      this($$0, $$1, gss.a.a, $$2);
    }
 
-   public void a(feb $$0, gih $$1, int $$2, gvq $$3, float $$4, float $$5) {
-      if (!$$3.ae) {
-         boolean $$6 = $$3.aj && $$3.u;
-         if (!$$3.u || $$6) {
-            dvj $$7 = $$3.a.a();
-            int $$8 = gpl.a($$3, 0.0F);
-            haf $$9 = this.a.a($$7);
+   public gss(gqw<S, M> $$0, gby $$1, gss.a $$2, gpy $$3) {
+      super($$0);
+      this.c = $$2;
+      this.d = glx.a($$1);
+      this.e = $$3;
+   }
+
+   public void a(fek $$0, gix $$1, int $$2, S $$3, float $$4, float $$5) {
+      cwf $$6 = $$3.ao;
+      hav $$7 = $$3.an;
+      if (!$$6.f() && $$7 != null) {
+         label17: {
+            cwb $$8 = $$6.h();
             $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().b().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
+            $$0.b(this.c.c(), 1.0F, this.c.c());
+            M $$9 = this.d();
+            $$9.e().a($$0);
+            $$9.b().a($$0);
+            if ($$8 instanceof cul $$10 && $$10.d() instanceof dhf $$11) {
+               $$0.a(0.0F, this.c.b(), 0.0F);
+               $$0.b(1.1875F, -1.1875F, -1.1875F);
+               cze $$12 = $$6.a(ku.ag);
+               $$0.a(-0.5, 0.0, -0.5);
+               dpl.a $$13 = $$11.b();
+               gax $$14 = this.d.get($$13);
+               gjh $$15 = glx.a($$13, $$12);
+               glx.a(null, 180.0F, $$3.Z, $$0, $$1, $$2, $$14, $$15);
+               break label17;
+            }
+
+            if (!gtd.a($$6, buq.f)) {
+               a($$0, this.c);
+               this.e.a($$6, cwd.f, false, $$0, $$1, $$2, gyk.d, $$7);
+            }
          }
+
+         $$0.b();
       }
    }
 
-   private void a(feb $$0, gih $$1, int $$2, boolean $$3, dvj $$4, int $$5, haf $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gir.r(gyc.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
+   public static void a(fek $$0, gss.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
+   }
+
+   public static record a(float b, float c, float d) {
+      public static final gss.a a = new gss.a(0.0F, 0.0F, 1.0F);
+
+      public float a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
       }
    }
 }

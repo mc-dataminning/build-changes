@@ -1,31 +1,40 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqo extends dhu {
-   protected static final MapCodec<lv> c = ly.i
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof lv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dqo> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dqo::new));
-   protected final lv e;
+public class dqo extends dis implements dim {
+   public static final MapCodec<dqo> a = b(dqo::new);
+   protected static final float b = 6.0F;
+   protected static final fal c = dij.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
-   public MapCodec<? extends dqo> a() {
-      return d;
+   public MapCodec<dqo> a() {
+      return a;
    }
 
-   protected dqo(lv $$0, dvi.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected dqo(dvn.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(lr.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return c;
+   }
+
+   @Override
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
+   }
+
+   @Override
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      dkr.a($$0, o($$3).m(), $$2, 2);
+   }
+
+   private static dkr o(dvo $$0) {
+      return (dkr)($$0.a(dil.bu) ? dil.iI : dil.iH);
    }
 }

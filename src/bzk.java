@@ -1,29 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzk {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   public static bwy<bve> a(int $$0, BiPredicate<bve, bve> $$1) {
+      return cak.a(
+         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$2 -> $$2.group($$2.b(cei.o), $$2.a(cei.ab), $$2.c(cei.ai), $$2.a(cei.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bve $$10 = $$2.b($$3);
+                     if (!$$10.eI()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
 
-   public static bye<bvi> a(cee<jp> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return cag.a(
-         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$4 -> $$4.group($$4.a(cee.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  jp $$9 = $$4.b($$5);
-                  if ($$6.ag() != $$9.a() || !$$9.b().a($$7.dv(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<ezn> $$10 = Optional.ofNullable(cfy.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new ceh($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+                        $$5.a($$10.dy(), (long)$$0);
+                        if ($$10.ar() != bup.by || $$7.ac().b(dfb.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
+                        return true;
+                     }
+                  }))
       );
    }
 }

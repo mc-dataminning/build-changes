@@ -1,156 +1,101 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fqe extends fra {
-   private static final ali a = ali.b("icon/draft_report");
-   private int b;
-   private final xi c;
-   private final boolean d;
-   private xi s;
-   private final List<flh> u = Lists.newArrayList();
-   @Nullable
-   private flh v;
+public record fqe(fqd a, int b, int c) {
+   private static final fqe d = new fqe(0, 0, 0, 0);
 
-   public fqe(@Nullable xi $$0, boolean $$1) {
-      super(xi.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.d = $$1;
+   public fqe(int $$0, int $$1, int $$2, int $$3) {
+      this(new fqd($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   protected void aR_() {
-      this.b = 0;
-      this.u.clear();
-      xi $$0 = this.d ? xi.c("deathScreen.spectate") : xi.c("deathScreen.respawn");
-      this.u.add(this.c(flh.a($$0, $$0x -> {
-         this.m.t.gi();
-         $$0x.j = false;
-      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
-      this.v = this.c(
-         flh.a(xi.c("deathScreen.titleScreen"), $$0x -> this.m.bb().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
-      );
-      this.u.add(this.v);
-      this.c(false);
-      this.s = xi.a("deathScreen.score.value", xi.b(Integer.toString(this.m.t.gf())).a(n.o));
+   public static fqe a() {
+      return d;
    }
 
-   @Override
-   public boolean aH_() {
-      return false;
+   public static fqe a(fqb $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fqe($$1, $$2, $$3, $$4);
+         case b -> new fqe($$2, $$1, $$4, $$3);
+      };
    }
 
-   private void m() {
-      if (this.d) {
-         this.D();
-      } else {
-         fpy $$0 = new fqe.a($$0x -> {
-            if ($$0x) {
-               this.D();
-            } else {
-               this.m.t.gi();
-               this.m.a(null);
-            }
-         }, xi.c("deathScreen.quit.confirm"), xh.a, xi.c("deathScreen.titleScreen"), xi.c("deathScreen.respawn"));
-         this.m.a($$0);
-         $$0.b(20);
-      }
+   public fqe a(fqc $$0) {
+      return new fqe(this.a.a($$0), this.b, this.c);
    }
 
-   private void D() {
-      if (this.m.s != null) {
-         this.m.s.Z();
-      }
-
-      this.m.b(new fql(xi.c("menu.savingLevel")));
-      this.m.a(new frc());
+   public int a(fqb $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
-      }
-
-      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         yf $$4 = this.a($$1);
-         $$0.a(this.p, $$4, $$1, $$2);
-      }
-
-      if (this.v != null && this.m.bb().c()) {
-         $$0.a(gir::B, a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
-      }
+   public int b(fqc $$0) {
+      fqb $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   @Override
-   public void b(fku $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.n, this.o);
+   public fqe c(fqc $$0) {
+      int $$1 = this.b($$0);
+      fqb $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   static void a(fku $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   public boolean a(fqe $$0) {
+      return this.a($$0, fqb.a) && this.a($$0, fqb.b);
+   }
+
+   public boolean a(fqe $$0, fqb $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fqb $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
    }
 
    @Nullable
-   private yf a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.m.h.a(this.c);
-         int $$2 = this.n / 2 - $$1 / 2;
-         int $$3 = this.n / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
-      }
+   public fqe b(fqe $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fqe($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         yf $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == xg.a.a) {
-            this.a($$3);
-            return false;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+   public int b() {
+      return this.a.b();
    }
 
-   @Override
-   public boolean k() {
-      return false;
+   public int c() {
+      return this.a.b() + this.c;
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
+   public int d() {
+      return this.a.a();
    }
 
-   private void c(boolean $$0) {
-      for (flh $$1 : this.u) {
-         $$1.j = $$0;
-      }
+   public int e() {
+      return this.a.a() + this.b;
    }
 
-   public static class a extends fpy {
-      public a(BooleanConsumer $$0, xi $$1, xi $$2, xi $$3, xi $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-      }
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
 
-      @Override
-      public void b(fku $$0, int $$1, int $$2, float $$3) {
-         fqe.a($$0, this.n, this.o);
-      }
+   public fqd f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

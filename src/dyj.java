@@ -1,127 +1,63 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.UnaryOperator;
 
-public record dyj(dyg a, dye b, dye c, int d, dyh e) {
+public record dyj(ImmutableList<dyn> c) {
+   public static final dyj a = new dyj.a()
+      .a(dyk.c, $$0 -> $$0)
+      .a(dyk.d, $$0 -> $$0.a(dym::b))
+      .a(dyk.e, $$0 -> $$0.a(dyk.d, 8).a(dym::d))
+      .a(dyk.f, $$0 -> $$0.a(dyk.d, 8).a(dym::e))
+      .a(dyk.g, $$0 -> $$0.a(dyk.d, 8).a(dyk.f, 1).a(0).a(dym::f))
+      .a(dyk.h, $$0 -> $$0.a(dyk.d, 8).a(dyk.f, 1).a(0).a(dym::g))
+      .a(dyk.i, $$0 -> $$0.a(dyk.d, 8).a(0).a(dym::h))
+      .a(dyk.j, $$0 -> $$0.a(dyk.d, 8).a(dyk.i, 1).a(1).a(dym::i))
+      .a(dyk.k, $$0 -> $$0.a(dym::j))
+      .a(dyk.l, $$0 -> $$0.a(dyk.k, 1).a(dym::k))
+      .a(dyk.m, $$0 -> $$0.a(dyk.f, 1).a(dym::l))
+      .a(dyk.n, $$0 -> $$0.a(dym::m))
+      .a();
+   public static final dyj b = new dyj.a()
+      .a(dyk.c, $$0 -> $$0)
+      .a(dyk.d, $$0 -> $$0.a(dym::c))
+      .a(dyk.e, $$0 -> $$0)
+      .a(dyk.f, $$0 -> $$0)
+      .a(dyk.g, $$0 -> $$0)
+      .a(dyk.h, $$0 -> $$0)
+      .a(dyk.i, $$0 -> $$0)
+      .a(dyk.j, $$0 -> $$0)
+      .a(dyk.k, $$0 -> $$0.a(dym::j))
+      .a(dyk.l, $$0 -> $$0.a(dyk.k, 1).a(dym::k))
+      .a(dyk.m, $$0 -> $$0)
+      .a(dyk.n, $$0 -> $$0.a(dym::m))
+      .a();
 
-   public int a(dyg $$0) {
-      return $$0 == this.a ? 0 : this.c.a($$0);
+   public dyn a(dyk $$0) {
+      return (dyn)this.c.get($$0.b());
    }
 
-   public CompletableFuture<dxf> a(dyl $$0, bae<arf> $$1, dxf $$2) {
-      if ($$2.j().d(this.a)) {
-         boy $$3 = bov.f.a($$2.f(), $$0.a().ag(), this.a.f());
-         return this.e.doWork($$0, this, $$1, $$2).thenApply($$1x -> this.a($$1x, $$3));
-      } else {
-         return this.e.doWork($$0, this, $$1, $$2);
-      }
-   }
-
-   private dxf a(dxf $$0, @Nullable boy $$1) {
-      if ($$0 instanceof dxz $$2 && $$2.j().d(this.a)) {
-         $$2.a(this.a);
-      }
-
-      if ($$1 != null) {
-         $$1.finish();
-      }
-
-      return $$0;
+   public ImmutableList<dyn> a() {
+      return this.c;
    }
 
    public static class a {
-      private final dyg a;
-      @Nullable
-      private final dyj b;
-      private dyg[] c;
-      private int d = -1;
-      private dyh e = dyi::a;
-
-      protected a(dyg $$0) {
-         if ($$0.c() != $$0) {
-            throw new IllegalArgumentException("Not starting with the first status: " + $$0);
-         } else {
-            this.a = $$0;
-            this.b = null;
-            this.c = new dyg[0];
-         }
-      }
-
-      protected a(dyg $$0, dyj $$1) {
-         if ($$1.a.b() != $$0.b() - 1) {
-            throw new IllegalArgumentException("Out of order status: " + $$0);
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-            this.c = new dyg[]{$$1.a};
-         }
-      }
-
-      public dyj.a a(dyg $$0, int $$1) {
-         if ($$0.a(this.a)) {
-            throw new IllegalArgumentException("Status " + $$0 + " can not be required by " + this.a);
-         } else {
-            dyg[] $$2 = this.c;
-            int $$3 = $$1 + 1;
-            if ($$3 > $$2.length) {
-               this.c = new dyg[$$3];
-               Arrays.fill(this.c, $$0);
-            }
-
-            for (int $$4 = 0; $$4 < Math.min($$3, $$2.length); $$4++) {
-               this.c[$$4] = dyg.a($$2[$$4], $$0);
-            }
-
-            return this;
-         }
-      }
-
-      public dyj.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public dyj.a a(dyh $$0) {
-         this.e = $$0;
-         return this;
-      }
+      private final List<dyn> a = new ArrayList<>();
 
       public dyj a() {
-         return new dyj(this.a, new dye(ImmutableList.copyOf(this.c)), new dye(ImmutableList.copyOf(this.b())), this.d, this.e);
+         return new dyj(ImmutableList.copyOf(this.a));
       }
 
-      private dyg[] b() {
-         if (this.b == null) {
-            return this.c;
+      public dyj.a a(dyk $$0, UnaryOperator<dyn.a> $$1) {
+         dyn.a $$2;
+         if (this.a.isEmpty()) {
+            $$2 = new dyn.a($$0);
          } else {
-            int $$0 = this.a(this.b.a);
-            dye $$1 = this.b.c;
-            dyg[] $$2 = new dyg[Math.max($$0 + $$1.b(), this.c.length)];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               int $$4 = $$3 - $$0;
-               if ($$4 < 0 || $$4 >= $$1.b()) {
-                  $$2[$$3] = this.c[$$3];
-               } else if ($$3 >= this.c.length) {
-                  $$2[$$3] = $$1.a($$4);
-               } else {
-                  $$2[$$3] = dyg.a(this.c[$$3], $$1.a($$4));
-               }
-            }
-
-            return $$2;
-         }
-      }
-
-      private int a(dyg $$0) {
-         for (int $$1 = this.c.length - 1; $$1 >= 0; $$1--) {
-            if (this.c[$$1].a($$0)) {
-               return $$1;
-            }
+            $$2 = new dyn.a($$0, this.a.getLast());
          }
 
-         return 0;
+         this.a.add($$1.apply($$2).a());
+         return this;
       }
    }
 }

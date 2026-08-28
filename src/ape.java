@@ -1,40 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ape {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xi.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xi.b("commands.spectate.not_spectator", $$0));
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spectate").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ew)$$0x.getSource(), null, ((ew)$$0x.getSource()).h())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ew)$$0x.getSource(), Collections.singleton(((ew)$$0x.getSource()).h()), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)ex.a("target", fj.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), ((ew)$$0x.getSource()).h())))
-                  .then(ex.a("player", fj.c()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), fj.e($$0x, "player"))))
+               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("pos", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), 0.0F)))
+                        .then(ex.a("angle", fc.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), fc.a($$0x, "angle"))))
+                  )
             )
       );
    }
 
-   private static int a(ew $$0, @Nullable bue $$1, aro $$2) throws CommandSyntaxException {
-      if ($$2 == $$1) {
-         throw a.create();
-      } else if ($$2.i.b() != dey.d) {
-         throw b.create($$2.S_());
-      } else {
-         $$2.d($$1);
-         if ($$1 != null) {
-            $$0.a(() -> xi.a("commands.spectate.success.started", $$1.S_()), false);
-         } else {
-            $$0.a(() -> xi.c("commands.spectate.success.stopped"), false);
-         }
+   private static int a(ew $$0, Collection<arr> $$1, jh $$2, float $$3) {
+      alk<dff> $$4 = $$0.e().ag();
 
-         return 1;
+      for (arr $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
+
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xl.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().S_()), true);
+      } else {
+         $$0.a(() -> xl.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

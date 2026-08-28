@@ -1,23 +1,39 @@
-public class fml {
-   public static final fml a = new fml("Merry X-mas!");
-   public static final fml b = new fml("Happy new year!");
-   public static final fml c = new fml("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import javax.annotation.Nullable;
 
-   public fml(String $$0) {
-      this.f = $$0;
+public class fml extends flu {
+   private final flh a;
+
+   public fml(flh $$0, xl $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
-   public void a(fku $$0, int $$1, fks $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - azk.e(azk.a((float)(ae.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   @Override
+   protected void b(flj $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.y() / 2;
+      int $$5 = this.E() + this.w() / 2;
+      xl $$6 = this.z();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fre.a(ae.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   }
+
+   @Override
+   protected void a(fpu $$0) {
+   }
+
+   @Override
+   public void a(hdv $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public flg a(fqa $$0) {
+      return null;
    }
 }

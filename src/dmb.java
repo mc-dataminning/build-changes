@@ -1,51 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmb extends dlt {
-   public static final MapCodec<dmb> e = b(dmb::new);
+public class dmb extends dij implements dpk {
+   public static final MapCodec<dmb> a = b(dmb::new);
+   private static final fal c = dij.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   public static final dwf b = dwe.C;
 
-   @Override
-   public MapCodec<? extends dmb> a() {
-      return e;
-   }
-
-   public dmb(dvi.d $$0) {
+   public dmb(dvn.d $$0) {
       super($$0);
-   }
-
-   public static dvj b() {
-      return dig.G.m();
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dfb $$0, com $$1, jh $$2, dvj $$3, @Nullable dsm $$4, cwb $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!dbu.a($$5, axd.s)) {
-         if ($$0.D_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dvj $$6 = $$0.a_($$2.e());
-         if ($$6.d() || $$6.n()) {
-            $$0.b($$2, b());
-         }
-      }
+   public MapCodec<dmb> a() {
+      return a;
    }
 
    @Override
-   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if ($$1.a(dfk.b, $$2) > 11 - $$0.g()) {
-         this.e($$0, $$1, $$2);
-      }
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(b);
    }
 
-   protected void e(dvj $$0, dfb $$1, jh $$2) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.b($$2, b().b(), null);
+   @Override
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, erp.c, erp.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected ero b_(dvo $$0) {
+      return $$0.c(b) ? erp.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public dvo a(czw $$0) {
+      ero $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.b(erp.c)));
+   }
+
+   @Override
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
    }
 }

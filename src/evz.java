@@ -1,75 +1,156 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import java.util.Set;
+import java.util.function.Function;
 
-public class evz extends evp {
+public class evz extends evt {
    public static final MapCodec<evz> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(eua.e.fieldOf("component").forGetter($$0x -> $$0x.b), euq.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(evz.b.a.listOf().fieldOf("modifiers").forGetter($$0x -> $$0x.b), Codec.BOOL.optionalFieldOf("replace", true).forGetter($$0x -> $$0x.c))
+            )
             .apply($$0, evz::new)
    );
-   private final etz<?> b;
-   private final List<eus> c;
+   private final List<evz.b> b;
+   private final boolean c;
 
-   evz(List<exn> $$0, etz<?> $$1, List<eus> $$2) {
+   evz(List<exr> $$0, List<evz.b> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.b = List.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public evr<evz> b() {
-      return evs.t;
+   public evv<evz> b() {
+      return evw.o;
    }
 
    @Override
-   public cwb a(cwb $$0, euc $$1) {
-      if ($$0.f()) {
-         return $$0;
+   public Set<ewz<?>> a() {
+      return this.b.stream().flatMap($$0 -> $$0.e.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cwf a(cwf $$0, eug $$1) {
+      if (this.c) {
+         $$0.b(ku.o, this.a($$1, cyw.a));
       } else {
-         Builder<cwb> $$2 = Stream.builder();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(euh.a($$1.d(), $$2::add), $$1)));
-         this.b.a($$0, $$2.build());
-         return $$0;
+         $$0.a(ku.o, cyw.a, $$1x -> this.a($$1, $$1x));
       }
+
+      return $$0;
    }
 
-   @Override
-   public void a(eui $$0) {
-      super.a($$0);
+   private cyw a(eug $$0, cyw $$1) {
+      azv $$2 = $$0.b();
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      for (evz.b $$3 : this.b) {
+         bur $$4 = ae.a($$3.f, $$2);
+         $$1 = $$1.a($$3.c, new bwk($$3.b, (double)$$3.e.b($$0), $$3.d), $$4);
       }
+
+      return $$1;
    }
 
-   public static evz.a a(etz<?> $$0) {
-      return new evz.a($$0);
+   public static evz.c a(all $$0, jq<bwh> $$1, bwk.a $$2, eyn $$3) {
+      return new evz.c($$0, $$1, $$2, $$3);
    }
 
-   public static class a extends evp.a<evz.a> {
-      private final com.google.common.collect.ImmutableList.Builder<eus> a = ImmutableList.builder();
-      private final etz<?> b;
+   public static evz.a c() {
+      return new evz.a();
+   }
 
-      public a(etz<?> $$0) {
-         this.b = $$0;
+   public static class a extends evt.a<evz.a> {
+      private final boolean a;
+      private final List<evz.b> b = Lists.newArrayList();
+
+      public a(boolean $$0) {
+         this.a = $$0;
+      }
+
+      public a() {
+         this(false);
       }
 
       protected evz.a a() {
          return this;
       }
 
-      public evz.a a(eus.a<?> $$0) {
-         this.a.add($$0.b());
+      public evz.a a(evz.c $$0) {
+         this.b.add($$0.a());
          return this;
       }
 
       @Override
-      public evq b() {
-         return new evz(this.g(), this.b, this.a.build());
+      public evu b() {
+         return new evz(this.g(), this.b, this.a);
+      }
+   }
+
+   static record b(all b, jq<bwh> c, bwk.a d, eyn e, List<bur> f) {
+      private static final Codec<List<bur>> g = ayw.a(
+         Codec.either(bur.l, bur.l.listOf())
+            .xmap($$0 -> (List)$$0.map(List::of, Function.identity()), $$0 -> $$0.size() == 1 ? Either.left((bur)$$0.getFirst()) : Either.right($$0))
+      );
+      public static final Codec<evz.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  all.a.fieldOf("id").forGetter(evz.b::a),
+                  bwh.a.fieldOf("attribute").forGetter(evz.b::b),
+                  bwk.a.f.fieldOf("operation").forGetter(evz.b::c),
+                  eyo.a.fieldOf("amount").forGetter(evz.b::d),
+                  g.fieldOf("slot").forGetter(evz.b::e)
+               )
+               .apply($$0, evz.b::new)
+      );
+
+      public all a() {
+         return this.b;
+      }
+
+      public jq<bwh> b() {
+         return this.c;
+      }
+
+      public bwk.a c() {
+         return this.d;
+      }
+
+      public eyn d() {
+         return this.e;
+      }
+
+      public List<bur> e() {
+         return this.f;
+      }
+   }
+
+   public static class c {
+      private final all a;
+      private final jq<bwh> b;
+      private final bwk.a c;
+      private final eyn d;
+      private final Set<bur> e = EnumSet.noneOf(bur.class);
+
+      public c(all $$0, jq<bwh> $$1, bwk.a $$2, eyn $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public evz.c a(bur $$0) {
+         this.e.add($$0);
+         return this;
+      }
+
+      public evz.b a() {
+         return new evz.b(this.a, this.b, this.c, this.d, List.copyOf(this.e));
       }
    }
 }

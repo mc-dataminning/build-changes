@@ -1,65 +1,86 @@
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cup extends cvx {
-   private static final xi a = xi.c("item.minecraft.lodestone_compass");
+public class cup extends cxb {
+   public static final int a = 20;
+   public static final int b = 15;
 
-   public cup(cvx.a $$0) {
+   public cup(cwb.a $$0) {
       super($$0);
    }
 
-   @Nullable
-   public static jp a(dfb $$0) {
-      return $$0.D_().j() ? jp.a($$0.ag(), $$0.W()) : null;
-   }
-
    @Override
-   public boolean c_(cwb $$0) {
-      return $$0.b(ku.ad) || super.c_($$0);
-   }
-
-   @Override
-   public void a(cwb $$0, dfb $$1, bue $$2, int $$3, boolean $$4) {
-      if ($$1 instanceof arn $$5) {
-         cyv $$6 = $$0.a(ku.ad);
-         if ($$6 != null) {
-            cyv $$7 = $$6.a($$5);
-            if ($$7 != $$6) {
-               $$0.b(ku.ad, $$7);
-            }
-         }
-      }
-   }
-
-   @Override
-   public bsd a(czu $$0) {
-      jh $$1 = $$0.a();
-      dfb $$2 = $$0.q();
-      if (!$$2.a_($$1).a(dig.pq)) {
-         return super.a($$0);
+   public boolean a(cwf $$0, dff $$1, bve $$2, int $$3) {
+      if (!($$2 instanceof cor $$4)) {
+         return false;
       } else {
-         $$2.a(null, $$1, awl.om, awm.h, 1.0F, 1.0F);
-         com $$3 = $$0.o();
-         cwb $$4 = $$0.n();
-         boolean $$5 = !$$3.fX() && $$4.L() == 1;
-         cyv $$6 = new cyv(Optional.of(jp.a($$2.ag(), $$1)), true);
-         if ($$5) {
-            $$4.b(ku.ad, $$6);
+         cwf $$5 = $$4.d($$0);
+         if ($$5.f()) {
+            return false;
          } else {
-            cwb $$7 = $$4.a(cwf.qT, 1);
-            $$4.a(1, $$3);
-            $$7.b(ku.ad, $$6);
-            if (!$$3.gk().f($$7)) {
-               $$3.a($$7, false);
+            int $$6 = this.a($$0, $$2) - $$3;
+            float $$7 = a($$6);
+            if ((double)$$7 < 0.1) {
+               return false;
+            } else {
+               List<cwf> $$8 = a($$0, $$5, $$4);
+               if ($$1 instanceof arq $$9 && !$$8.isEmpty()) {
+                  this.a($$9, $$4, $$4.fD(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+               }
+
+               $$1.a(null, $$4.dD(), $$4.dF(), $$4.dJ(), awo.aG, awp.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$4.b(awy.c.b(this));
+               return true;
             }
          }
-
-         return bsd.a;
       }
    }
 
    @Override
-   public xi a(cwb $$0) {
-      return $$0.b(ku.ad) ? a : super.a($$0);
+   protected void a(bve $$0, cpk $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bve $$6) {
+      $$1.a($$0, $$0.dQ(), $$0.dO() + $$5, 0.0F, $$3, $$4);
+   }
+
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public int a(cwf $$0, bve $$1) {
+      return 72000;
+   }
+
+   @Override
+   public cwh b(cwf $$0) {
+      return cwh.e;
+   }
+
+   @Override
+   public bsh a(dff $$0, cor $$1, bsg $$2) {
+      cwf $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.d($$3).f();
+      if (!$$1.fY() && !$$4) {
+         return bsh.d;
+      } else {
+         $$1.c($$2);
+         return bsh.c;
+      }
+   }
+
+   @Override
+   public Predicate<cwf> b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 15;
    }
 }

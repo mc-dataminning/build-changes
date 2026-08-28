@@ -1,30 +1,108 @@
-public class fsw extends fro {
-   private final deb u;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-   public fsw(deb $$0) {
-      this.u = $$0;
+public abstract class fsw<T extends crs> extends fse<T> {
+   private static final all G = all.b("container/inventory/effect_background_large");
+   private static final all H = all.b("container/inventory/effect_background_small");
+
+   public fsw(T $$0, coq $$1, xl $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public deb m() {
-      return this.u;
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2);
    }
 
-   @Override
-   int D() {
-      return 150;
+   public boolean J() {
+      int $$0 = this.C + this.s + 2;
+      int $$1 = this.n - $$0;
+      return $$1 >= 32;
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.a.a(this.m().m());
-   }
+   private void c(flj $$0, int $$1, int $$2) {
+      int $$3 = this.C + this.s + 2;
+      int $$4 = this.n - $$3;
+      Collection<btn> $$5 = this.m.t.eE();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
+         }
 
-   @Override
-   protected void a(deb $$0) {
-      if ($$0 instanceof cqt.a $$1) {
-         this.m.L().b(new aim($$1.h().as(), this.a.a(), $$0.p()));
+         Iterable<btn> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.D;
+            btn $$10 = null;
+
+            for (btn $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
+
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<xl> $$12 = List.of(this.a($$10), bto.a($$10, 1.0F, this.m.s.s().f()));
+               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
+            }
+         }
       }
+   }
+
+   private void a(flj $$0, int $$1, int $$2, Iterable<btn> $$3, boolean $$4) {
+      int $$5 = this.D;
+
+      for (btn $$6 : $$3) {
+         if ($$4) {
+            $$0.a(gjh::B, G, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(gjh::B, H, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
+      }
+   }
+
+   private void b(flj $$0, int $$1, int $$2, Iterable<btn> $$3, boolean $$4) {
+      gzs $$5 = this.m.aG();
+      int $$6 = this.D;
+
+      for (btn $$7 : $$3) {
+         jq<btl> $$8 = $$7.c();
+         gyt $$9 = $$5.a($$8);
+         $$0.a(gjh::B, $$9, $$1 + ($$4 ? 6 : 7), $$6 + 7, 18, 18);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(flj $$0, int $$1, int $$2, Iterable<btn> $$3) {
+      int $$4 = this.D;
+
+      for (btn $$5 : $$3) {
+         xl $$6 = this.a($$5);
+         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         xl $$7 = bto.a($$5, 1.0F, this.m.s.s().f());
+         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private xl a(btn $$0) {
+      xz $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(xk.v).b(xl.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

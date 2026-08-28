@@ -1,48 +1,97 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.function.IntFunction;
 
-public class eog extends elx {
+public class eog extends emb {
    public static final MapCodec<eog> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), eke.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eog::new)
+      $$0 -> $$0.group(a($$0), eog.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, eog::new)
    );
-   public final eke e;
+   private final eog.a e;
 
-   public eog(elx.c $$0, eke $$1) {
+   public eog(emb.c $$0, eog.a $$1) {
       super($$0);
       this.e = $$1;
    }
 
    @Override
-   public Optional<elx.b> a(elx.a $$0) {
-      ece $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().f();
-      ecc $$5 = new ecc($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dfn $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      jh.a $$8 = new jh.a($$2, $$6, $$3);
+   public Optional<emb.b> a(emb.a $$0) {
+      $$0.f().j();
+      del $$1 = $$0.h();
+      jh $$2 = new jh($$1.b(), 50, $$1.e());
+      emt $$3 = new emt();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new emb.b($$2.b(0, $$4, 0), Either.right($$3)));
+   }
 
-      while ($$6 > $$4) {
-         dvj $$9 = $$7.a($$6);
-         dvj $$10 = $$7.a(--$$6);
-         if ($$9.l() && ($$10.a(dig.dW) || $$10.c(deq.a, $$8.q($$6), jm.b))) {
-            break;
-         }
-      }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
+   private int a(emt $$0, emb.a $$1) {
+      del $$2 = $$1.h();
+      eci $$3 = $$1.f();
+      dxk $$4 = $$1.b();
+      eof.d $$5 = new eof.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.f();
+      if (this.e == eog.a.b) {
+         jh $$7 = $$0.d().g();
+         int $$8 = $$4.a($$7.u(), $$7.w(), ebj.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : azn.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
       } else {
-         jh $$11 = new jh($$2, $$6, $$3);
-         return Optional.of(new elx.b($$11, (Consumer<emp>)($$3x -> eof.a($$0.e(), $$3x, $$1, $$11))));
+         return $$0.a($$6, $$4.g(), $$3, 10);
       }
    }
 
    @Override
-   public emg<?> e() {
-      return emg.i;
+   public emk<?> e() {
+      return emk.h;
+   }
+
+   public static enum a implements baj {
+      a("normal", dil.U, dil.n, dil.dU),
+      b("mesa", dil.aa, dil.t, dil.ki);
+
+      public static final Codec<eog.a> c = baj.a(eog.a::values);
+      private static final IntFunction<eog.a> d = aye.a(Enum::ordinal, values(), aye.a.a);
+      private final String e;
+      private final dvo f;
+      private final dvo g;
+      private final dvo h;
+
+      private a(final String $$0, final dij $$1, final dij $$2, final dij $$3) {
+         this.e = $$0;
+         this.f = $$1.m();
+         this.g = $$2.m();
+         this.h = $$3.m();
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static eog.a a(int $$0) {
+         return d.apply($$0);
+      }
+
+      public dvo b() {
+         return this.f;
+      }
+
+      public dvo d() {
+         return this.g;
+      }
+
+      public dvo e() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

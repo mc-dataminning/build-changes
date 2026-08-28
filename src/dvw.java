@@ -1,20 +1,18 @@
-public enum dvw implements bag {
-   a("head"),
-   b("foot");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class dvw implements Predicate<dvo> {
+   private final dij a;
 
-   private dvw(final String $$0) {
-      this.c = $$0;
+   public dvw(dij $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static dvw a(dij $$0) {
+      return new dvw($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable dvo $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

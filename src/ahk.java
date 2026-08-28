@@ -1,16 +1,15 @@
-public record ahk(int b, int c) implements zp<agv> {
-   public static final zg<wf, ahk> a = zg.a(ze.u, ahk::b, ze.h, ahk::e, ahk::new);
+import io.netty.buffer.ByteBuf;
+
+public record ahk() implements zs<agy> {
+   public static final ahk a = new ahk();
+   public static final zj<ByteBuf, ahk> b = zj.a(a);
 
    @Override
-   public zr<ahk> a() {
-      return agt.bu;
+   public zu<ahk> a() {
+      return agw.br;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

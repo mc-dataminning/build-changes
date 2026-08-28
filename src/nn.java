@@ -1,61 +1,64 @@
 import java.util.function.BiConsumer;
 
-public record nn(js.a a) implements nd {
+public record nn(js.a a) implements ne {
    @Override
-   public void generate(BiConsumer<alh<euh>, euh.a> $$0) {
-      js.b<dgc> $$1 = this.a.d(lz.aG);
+   public void generate(BiConsumer<alk<eul>, eul.a> $$0) {
+      js.b<ddw> $$1 = this.a.d(ma.aY);
+      js.b<ddu> $$2 = this.a.d(ma.aX);
+      js.b<dbw> $$3 = this.a.d(ma.aM);
+      ddt $$4 = new ddt($$2.b(ddv.e), $$1.b(ddx.q));
+      ddt $$5 = new ddt($$2.b(ddv.e), $$1.b(ddx.r));
       $$0.accept(
-         ety.am,
-         euh.b()
+         euc.ai,
+         eul.b()
             .a(
-               eug.a()
-                  .a(eyg.a(1.0F))
-                  .a(euv.a(ety.an).a(10).b(-2))
-                  .a(euv.a(ety.ao).a(5).b(2).a(exq.a(euc.b.a, bw.a.a().a(cc.a(true)))))
-                  .a(euv.a(ety.ap).a(85).b(-1))
-            )
-      );
-      $$0.accept(ety.ap, a());
-      $$0.accept(
-         ety.an,
-         euh.b()
-            .a(
-               eug.a()
-                  .a(eup.a(dig.fm).a(17))
-                  .a(eup.a(cwf.pC).a(10).a(ewi.a(eyn.a(0.0F, 0.9F))))
-                  .a(eup.a(cwf.qE).a(10))
-                  .a(eup.a(cwf.rA).a(10))
-                  .a(eup.a(cwf.sm).a(10).a(ewn.a(cyb.a)))
-                  .a(eup.a(cwf.pt).a(5))
-                  .a(eup.a(cwf.qW).a(2).a(ewi.a(eyn.a(0.0F, 0.9F))))
-                  .a(eup.a(cwf.ou).a(10))
-                  .a(eup.a(cwf.pr).a(5))
-                  .a(eup.a(cwf.rg).a(1).a(ewh.a(eyg.a(10.0F))))
-                  .a(eup.a(dig.fH).a(10))
-                  .a(eup.a(cwf.sf).a(10))
-                  .a(eup.a(dig.mZ).a(exl.a(dh.a.a().a(ju.a($$1.b(dgj.x), $$1.b(dgj.y), $$1.b(dgj.z))))).a(10))
+               euk.a()
+                  .a(eyk.a(1.0F))
+                  .a(euz.a(a(cwj.pD, cwj.pE, $$5, $$3).b()).a(4))
+                  .a(euz.a(a(cwj.pH, cwj.pI, $$4, $$3).b()).a(2))
+                  .a(euz.a(a(cwj.pL, cwj.pM, $$4, $$3).b()).a(1))
             )
       );
       $$0.accept(
-         ety.ao,
-         euh.b()
+         euc.ak,
+         eul.b()
+            .a(euk.a().a(eyk.a(1.0F)).a(euz.a(euc.ai)))
             .a(
-               eug.a()
-                  .a(eup.a(cwf.uN))
-                  .a(eup.a(cwf.nL))
-                  .a(eup.a(cwf.ow).a(ewi.a(eyn.a(0.0F, 0.25F))).a(evg.a(this.a, eyg.a(30.0F))))
-                  .a(eup.a(cwf.qW).a(ewi.a(eyn.a(0.0F, 0.25F))).a(evg.a(this.a, eyg.a(30.0F))))
-                  .a(eup.a(cwf.qQ).a(evg.a(this.a, eyg.a(30.0F))))
-                  .a(eup.a(cwf.vV))
+               euk.a()
+                  .a(eyk.a(1.0F))
+                  .a(eut.a(cwj.pc).a(4))
+                  .a(eut.a(cwj.pc).a(new ewh.a().a($$3.b(dcb.n), eyk.a(1.0F))))
+                  .a(eut.a(cwj.pc).a(new ewh.a().a($$3.b(dcb.q), eyk.a(1.0F))))
+                  .a(eut.a(cwj.ph))
+            )
+      );
+      $$0.accept(
+         euc.aj,
+         eul.b()
+            .a(euk.a().a(eyk.a(1.0F)).a(euz.a(euc.ai)))
+            .a(
+               euk.a()
+                  .a(eyk.a(1.0F))
+                  .a(eut.a(cwj.ow).a(2))
+                  .a(eut.a(cwj.ow).a(new ewh.a().a($$3.b(dcb.y), eyk.a(1.0F))))
+                  .a(eut.a(cwj.ow).a(new ewh.a().a($$3.b(dcb.z), eyk.a(1.0F))))
             )
       );
    }
 
-   public static euh.a a() {
-      return euh.b().a(eug.a().a(eup.a(cwf.ra).a(60)).a(eup.a(cwf.rb).a(25)).a(eup.a(cwf.rc).a(2)).a(eup.a(cwf.rd).a(13)));
-   }
-
-   public js.a b() {
-      return this.a;
+   public static eul.a a(cwb $$0, cwb $$1, ddt $$2, js.b<dbw> $$3) {
+      return eul.b()
+         .a(
+            euk.a()
+               .a(eyk.a(1.0F))
+               .a(exw.a(0.5F))
+               .a(eut.a($$0).a(ewc.a(ku.U, $$2)).a(new ewh.a().a($$3.b(dcb.a), eyk.a(4.0F)).a($$3.b(dcb.e), eyk.a(4.0F)).a($$3.b(dcb.b), eyk.a(4.0F))))
+         )
+         .a(
+            euk.a()
+               .a(eyk.a(1.0F))
+               .a(exw.a(0.5F))
+               .a(eut.a($$1).a(ewc.a(ku.U, $$2)).a(new ewh.a().a($$3.b(dcb.a), eyk.a(4.0F)).a($$3.b(dcb.e), eyk.a(4.0F)).a($$3.b(dcb.b), eyk.a(4.0F))))
+         );
    }
 }

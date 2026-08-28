@@ -1,59 +1,56 @@
-import java.util.Arrays;
+public class gpe extends goz<buu, gvh> {
+   private static final all a = all.b("textures/entity/experience_orb.png");
+   private static final gjh b = gjh.h(a);
 
-public class gpe extends gpd<clp, gvf> {
-   private static final ali a = ali.b("textures/entity/illager/illusioner.png");
-
-   public gpe(gok.a $$0) {
-      super($$0, new fyy<>($$0.a(gbl.aZ)), 0.5F);
-      this.a(new gsq<gvf, fyy<gvf>>(this, $$0.b()) {
-         public void a(feb $$0, gih $$1, int $$2, gvf $$3, float $$4, float $$5) {
-            if ($$3.i || $$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
-      this.h.c().k = true;
+   public gpe(gpa.a $$0) {
+      super($$0);
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public ali a(gvf $$0) {
-      return a;
+   protected int a(buu $$0, jh $$1) {
+      return azn.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   public gvf c() {
-      return new gvf();
+   public void a(gvh $$0, fek $$1, gix $$2, int $$3) {
+      $$1.a();
+      int $$4 = $$0.a;
+      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
+      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
+      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
+      float $$9 = 1.0F;
+      float $$10 = 0.5F;
+      float $$11 = 0.25F;
+      float $$12 = 255.0F;
+      float $$13 = $$0.p / 2.0F;
+      int $$14 = (int)((azn.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$15 = 255;
+      int $$16 = (int)((azn.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$1.a(0.0F, 0.1F, 0.0F);
+      $$1.a(this.e.b());
+      float $$17 = 0.3F;
+      $$1.b(0.3F, 0.3F, 0.3F);
+      feo $$18 = $$2.getBuffer(b);
+      fek.a $$19 = $$1.c();
+      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
+      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
+      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
+      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(clp $$0, gvf $$1, float $$2) {
+   private static void a(feo $$0, fek.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(gyk.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   public gvh a() {
+      return new gvh();
+   }
+
+   public void a(buu $$0, gvh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      ezn[] $$3 = $$0.J($$2);
-      $$1.a = Arrays.copyOf($$3, $$3.length);
-      $$1.i = $$0.gE();
-   }
-
-   public void a(gvf $$0, feb $$1, gih $$2, int $$3) {
-      if ($$0.u) {
-         ezn[] $$4 = $$0.a;
-
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$1.a();
-            $$1.a(
-               $$4[$$5].d + (double)azk.b((float)$$5 + $$0.p * 0.5F) * 0.025,
-               $$4[$$5].e + (double)azk.b((float)$$5 + $$0.p * 0.75F) * 0.0125,
-               $$4[$$5].f + (double)azk.b((float)$$5 + $$0.p * 0.7F) * 0.025
-            );
-            super.a($$0, $$1, $$2, $$3);
-            $$1.b();
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   protected boolean b(gvf $$0) {
-      return true;
-   }
-
-   protected ezi a(clp $$0) {
-      return super.a($$0).c(3.0, 0.0, 3.0);
+      $$1.a = $$0.o();
    }
 }

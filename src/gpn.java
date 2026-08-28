@@ -1,31 +1,22 @@
-public class gpn extends goj<cpf, gvn> {
-   private static final ali a = ali.b("textures/entity/llama/spit.png");
-   private final fzd b;
+public class gpn extends gnv<civ, gvp, fzh> {
+   private static final all a = all.b("textures/entity/goat/goat.png");
 
-   public gpn(gok.a $$0) {
-      super($$0);
-      this.b = new fzd($$0.a(gbl.bg));
+   public gpn(gpa.a $$0) {
+      super($$0, new fzh($$0.a(gcb.aJ)), new fzh($$0.a(gcb.aK)), 0.7F);
    }
 
-   public void a(gvn $$0, feb $$1, gih $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.b));
-      this.b.a($$0);
-      fef $$4 = $$2.getBuffer(this.b.a(a));
-      this.b.a($$1, $$4, $$3, gxu.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public all a(gvp $$0) {
+      return a;
    }
 
-   public gvn a() {
-      return new gvn();
+   public gvp c() {
+      return new gvp();
    }
 
-   public void a(cpf $$0, gvn $$1, float $$2) {
+   public void a(civ $$0, gvp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.j($$2);
-      $$1.a = $$0.k($$2);
+      $$1.a = $$0.gv();
+      $$1.b = $$0.gw();
+      $$1.c = $$0.gI();
    }
 }

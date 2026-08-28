@@ -1,130 +1,48 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicReference;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bqr<T extends Runnable> implements bpz, bqy<T>, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicReference<bqr.a> b = new AtomicReference<>(bqr.a.a);
-   private final bqx<T> c;
-   private final Executor d;
-   private final String e;
+public interface bqr {
+   bqq a();
 
-   public bqr(bqx<T> $$0, Executor $$1, String $$2) {
-      this.d = $$1;
-      this.c = $$0;
-      this.e = $$2;
-      bpx.a.a(this);
+   static <T> bqr.b<T> a(T $$0, int $$1) {
+      return new bqr.b<>($$0, bqq.a($$1));
    }
 
-   private boolean e() {
-      return !this.k() && !this.c.b();
-   }
+   public static class a implements bqr {
+      private final bqq a;
 
-   @Override
-   public void close() {
-      this.b.set(bqr.a.c);
-   }
+      public a(int $$0) {
+         this.a = bqq.a($$0);
+      }
 
-   private boolean f() {
-      if (!this.j()) {
-         return false;
-      } else {
-         Runnable $$0 = this.c.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ae.a($$0, this.e);
-            return true;
-         }
+      public a(bqq $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bqq a() {
+         return this.a;
       }
    }
 
-   @Override
-   public void run() {
-      try {
-         this.f();
-      } finally {
-         this.i();
-         this.g();
+   public static record b<T>(T a, bqq b) implements bqr {
+      @Override
+      public bqq a() {
+         return this.b;
       }
-   }
 
-   public void a() {
-      try {
-         while (this.f()) {
-         }
-      } finally {
-         this.i();
-         this.g();
+      public static <E> Codec<bqr.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bqr.b::b), bqq.a.fieldOf("weight").forGetter(bqr.b::c)).apply($$1, bqr.b::new)
+         );
       }
-   }
 
-   @Override
-   public void a_(T $$0) {
-      this.c.a($$0);
-      this.g();
-   }
-
-   private void g() {
-      if (this.e() && this.h()) {
-         try {
-            this.d.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.d.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Could not schedule ConsecutiveExecutor", var3);
-            }
-         }
+      public T b() {
+         return this.a;
       }
-   }
 
-   public int b() {
-      return this.c.c();
-   }
-
-   public boolean c() {
-      return this.j() && !this.c.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.e + " " + this.b.get() + " " + this.c.b();
-   }
-
-   @Override
-   public String x_() {
-      return this.e;
-   }
-
-   @Override
-   public List<bpw> bw() {
-      return ImmutableList.of(bpw.a(this.e + "-queue-size", bpv.c, this::b));
-   }
-
-   private boolean h() {
-      return this.b.compareAndSet(bqr.a.a, bqr.a.b);
-   }
-
-   private void i() {
-      this.b.compareAndSet(bqr.a.b, bqr.a.a);
-   }
-
-   private boolean j() {
-      return this.b.get() == bqr.a.b;
-   }
-
-   private boolean k() {
-      return this.b.get() == bqr.a.c;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+      public bqq c() {
+         return this.b;
+      }
    }
 }

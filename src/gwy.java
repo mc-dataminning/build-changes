@@ -1,4 +1,4 @@
-public class gwy extends gvl {
-   public int a;
+public class gwy extends gvt {
    public boolean b;
+   public boolean c;
 }

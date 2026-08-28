@@ -1,65 +1,107 @@
-public class fqh extends fra {
-   private static final xi a = xi.c("gui.toMenu");
-   private static final xi b = xi.c("gui.toTitle");
-   private static final xi c = xi.c("gui.report_to_server");
-   private static final xi d = xi.c("gui.open_report_dir");
-   private final fra s;
-   private final we u;
-   private final xi v;
-   private final fpa w = fpa.d();
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public fqh(fra $$0, xi $$1, xi $$2) {
-      this($$0, $$1, new we($$2));
-   }
+public class fqh extends frp {
+   private static final xl a = xl.c("accessibility.onboarding.screen.title");
+   private static final xl b = xl.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fmn s;
+   private final fkb u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
+   @Nullable
+   private fmh z;
+   private final fpl A = new fpl(this, this.m(), 33);
 
-   public fqh(fra $$0, xi $$1, xi $$2, xi $$3) {
-      this($$0, $$1, new we($$2), $$3);
-   }
-
-   public fqh(fra $$0, xi $$1, we $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fqh(fra $$0, xi $$1, we $$2, xi $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   public fqh(fkb $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new fmn(true);
+      this.v = fjx.Q().aZ().a();
    }
 
    @Override
-   protected void aR_() {
-      this.w.c().b().a(10);
-      this.w.a(new fmo(this.l, this.p));
-      this.w.a(new fmb(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(flh.a(c, fpx.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(flh.a(d, $$1x -> ae.m().a($$0.getParent())).a(200).a()));
-      flh $$0;
-      if (this.m.F()) {
-         $$0 = flh.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
-      } else {
-         $$0 = flh.a(b, $$0x -> this.m.a(new frc())).a(200).a();
+   public void aS_() {
+      fpp $$0 = this.A.c(fpp.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fmh(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      if (this.u.au().a(this.u) instanceof fmd $$1) {
+         this.q = $$1;
+         this.q.j = this.v;
+         $$0.a(this.q);
       }
 
-      this.w.a($$0);
-      this.w.a();
-      this.w.a(this::c);
+      $$0.a(fma.b(150, $$0x -> this.a(new ful(this, this.m.n)), false));
+      $$0.a(fma.a(150, $$0x -> this.a(new fuo(this, this.m.n, this.m.ah())), false));
+      this.A.b(flw.a(xk.j, $$0x -> this.aP_()).a());
+      this.A.a(this::c);
       this.c();
    }
 
    @Override
    protected void c() {
-      fou.a(this.w, this.H());
+      if (this.z != null) {
+         this.z.b(this.n);
+      }
+
+      this.A.a();
    }
 
    @Override
-   public xi i() {
-      return xh.a(this.l, this.u.a());
+   protected void aG_() {
+      if (this.v && this.q != null) {
+         this.b(this.q);
+      } else {
+         super.aG_();
+      }
+   }
+
+   private int m() {
+      return 90;
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   public void aP_() {
+      this.a(true, this.y);
+   }
+
+   private void a(frp $$0) {
+      this.a(false, () -> this.m.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.aw();
+      }
+
+      Narrator.getNarrator().clear();
+      $$1.run();
+   }
+
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.D();
+      this.s.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(flj $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void D() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.m.aC()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.w = true;
+         }
+      }
    }
 }

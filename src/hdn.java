@@ -1,16 +1,29 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-@FunctionalInterface
-public interface hdn {
-   hdn a = ($$0, $$1) -> {
-   };
+public interface hdn extends hdm {
+   int a = 8192;
 
-   default hdn decorate(Consumer<hdr.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   boolean a(FloatConsumer var1) throws IOException;
+
+   @Override
+   default ByteBuffer a(int $$0) throws IOException {
+      hdl $$1 = new hdl($$0 + 8192);
+
+      while (this.a($$1) && $$1.b() < $$0) {
+      }
+
+      return $$1.a();
    }
 
-   void send(hdo var1, Consumer<hdr.a> var2);
+   @Override
+   default ByteBuffer b() throws IOException {
+      hdl $$0 = new hdl(16384);
+
+      while (this.a($$0)) {
+      }
+
+      return $$0.a();
+   }
 }

@@ -1,7 +1,7 @@
-public enum dwv implements bag {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dwv implements baj {
+   a("top"),
+   b("bottom"),
+   c("double");
 
    private final String d;
 
@@ -11,7 +11,7 @@ public enum dwv implements bag {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override

@@ -1,145 +1,45 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class adp implements zs<ach> {
+   public static final zj<wi, adp> a = zs.a(adp::a, adp::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public class adp {
-   private static final int a = 2097152;
-   private final uk b;
-   private final byte[] c;
-   private final List<adp.a> d;
-
-   public adp(dxp $$0) {
-      this.b = new uk();
-
-      for (Entry<ebf.a, ebf> $$1 : $$0.e()) {
-         if ($$1.getKey().b()) {
-            this.b.a($$1.getKey().a(), new ur($$1.getValue().a()));
-         }
-      }
-
-      this.c = new byte[a($$0)];
-      a(new wf(this.c()), $$0);
-      this.d = Lists.newArrayList();
-
-      for (Entry<jh, dsm> $$2 : $$0.F().entrySet()) {
-         this.d.add(adp.a.a($$2.getValue()));
-      }
+   public adp(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public adp(wt $$0, int $$1, int $$2) {
-      this.b = $$0.o();
-      if (this.b == null) {
-         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
-      } else {
-         int $$3 = $$0.l();
-         if ($$3 > 2097152) {
-            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
-         } else {
-            this.c = new byte[$$3];
-            $$0.b(this.c);
-            this.d = adp.a.b.decode($$0);
-         }
-      }
+   private adp(wi $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   public void a(wt $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c.length);
+   private void a(wi $$0) {
+      $$0.f(this.b);
       $$0.c(this.c);
-      adp.a.b.encode($$0, this.d);
+      $$0.q(this.d);
    }
 
-   private static int a(dxp $$0) {
-      int $$1 = 0;
-
-      for (dxq $$2 : $$0.d()) {
-         $$1 += $$2.j();
-      }
-
-      return $$1;
+   @Override
+   public zu<adp> a() {
+      return agw.H;
    }
 
-   private ByteBuf c() {
-      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
-      $$0.writerIndex(0);
-      return $$0;
+   public void a(ach $$0) {
+      $$0.a(this);
    }
 
-   public static void a(wf $$0, dxp $$1) {
-      for (dxq $$2 : $$1.d()) {
-         $$2.c($$0);
-      }
-   }
-
-   public Consumer<adp.b> a(int $$0, int $$1) {
-      return $$2 -> this.a($$2, $$0, $$1);
-   }
-
-   private void a(adp.b $$0, int $$1, int $$2) {
-      int $$3 = 16 * $$1;
-      int $$4 = 16 * $$2;
-      jh.a $$5 = new jh.a();
-
-      for (adp.a $$6 : this.d) {
-         int $$7 = $$3 + kj.b($$6.c >> 4);
-         int $$8 = $$4 + kj.b($$6.c);
-         $$5.d($$7, $$6.d, $$8);
-         $$0.accept($$5, $$6.e, $$6.f);
-      }
-   }
-
-   public wf a() {
-      return new wf(Unpooled.wrappedBuffer(this.c));
-   }
-
-   public uk b() {
+   public int b() {
       return this.b;
    }
 
-   static class a {
-      public static final zg<wt, adp.a> a = zg.a(adp.a::a, adp.a::new);
-      public static final zg<wt, List<adp.a>> b = a.a(ze.a());
-      final int c;
-      final int d;
-      final dso<?> e;
-      @Nullable
-      final uk f;
-
-      private a(int $$0, int $$1, dso<?> $$2, @Nullable uk $$3) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
-
-      private a(wt $$0) {
-         this.c = $$0.readByte();
-         this.d = $$0.readShort();
-         this.e = ze.a(lz.h).decode($$0);
-         this.f = $$0.o();
-      }
-
-      private void a(wt $$0) {
-         $$0.l(this.c);
-         $$0.m(this.d);
-         ze.a(lz.h).encode($$0, this.e);
-         $$0.a(this.f);
-      }
-
-      static adp.a a(dsm $$0) {
-         uk $$1 = $$0.a($$0.i().H_());
-         jh $$2 = $$0.aB_();
-         int $$3 = kj.b($$2.u()) << 4 | kj.b($$2.w());
-         return new adp.a($$3, $$2.v(), $$0.q(), $$1.g() ? null : $$1);
-      }
+   public int e() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(jh var1, dso<?> var2, @Nullable uk var3);
+   public int f() {
+      return this.d;
    }
 }

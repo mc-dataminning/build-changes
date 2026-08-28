@@ -1,8 +1,95 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ss {
+public class ss {
+   public static final alk<elf> a = sr.a("crimson_fungi");
+   public static final alk<elf> b = sr.a("warped_fungi");
+   public static final alk<elf> c = sr.a("oak_checked");
+   public static final alk<elf> d = sr.a("dark_oak_checked");
+   public static final alk<elf> e = sr.a("birch_checked");
+   public static final alk<elf> f = sr.a("acacia_checked");
+   public static final alk<elf> g = sr.a("spruce_checked");
+   public static final alk<elf> h = sr.a("mangrove_checked");
+   public static final alk<elf> i = sr.a("cherry_checked");
+   public static final alk<elf> j = sr.a("pine_on_snow");
+   public static final alk<elf> k = sr.a("spruce_on_snow");
+   public static final alk<elf> l = sr.a("pine_checked");
+   public static final alk<elf> m = sr.a("jungle_tree");
+   public static final alk<elf> n = sr.a("fancy_oak_checked");
+   public static final alk<elf> o = sr.a("mega_jungle_tree_checked");
+   public static final alk<elf> p = sr.a("mega_spruce_checked");
+   public static final alk<elf> q = sr.a("mega_pine_checked");
+   public static final alk<elf> r = sr.a("tall_mangrove_checked");
+   public static final alk<elf> s = sr.a("jungle_bush");
+   public static final alk<elf> t = sr.a("super_birch_bees_0002");
+   public static final alk<elf> u = sr.a("super_birch_bees");
+   public static final alk<elf> v = sr.a("oak_bees_0002");
+   public static final alk<elf> w = sr.a("oak_bees_002");
+   public static final alk<elf> x = sr.a("birch_bees_0002");
+   public static final alk<elf> y = sr.a("birch_bees_002");
+   public static final alk<elf> z = sr.a("fancy_oak_bees_0002");
+   public static final alk<elf> A = sr.a("fancy_oak_bees_002");
+   public static final alk<elf> B = sr.a("fancy_oak_bees");
+   public static final alk<elf> C = sr.a("cherry_bees_005");
+
+   public static void a(rb<elf> $$0) {
+      jr<eeb<?, ?>> $$1 = $$0.a(ma.aJ);
+      jq<eeb<?, ?>> $$2 = $$1.b(sh.a);
+      jq<eeb<?, ?>> $$3 = $$1.b(sh.c);
+      jq<eeb<?, ?>> $$4 = $$1.b(sh.g);
+      jq<eeb<?, ?>> $$5 = $$1.b(sh.h);
+      jq<eeb<?, ?>> $$6 = $$1.b(sh.i);
+      jq<eeb<?, ?>> $$7 = $$1.b(sh.j);
+      jq<eeb<?, ?>> $$8 = $$1.b(sh.k);
+      jq<eeb<?, ?>> $$9 = $$1.b(sh.x);
+      jq<eeb<?, ?>> $$10 = $$1.b(sh.z);
+      jq<eeb<?, ?>> $$11 = $$1.b(sh.l);
+      jq<eeb<?, ?>> $$12 = $$1.b(sh.m);
+      jq<eeb<?, ?>> $$13 = $$1.b(sh.n);
+      jq<eeb<?, ?>> $$14 = $$1.b(sh.p);
+      jq<eeb<?, ?>> $$15 = $$1.b(sh.q);
+      jq<eeb<?, ?>> $$16 = $$1.b(sh.r);
+      jq<eeb<?, ?>> $$17 = $$1.b(sh.y);
+      jq<eeb<?, ?>> $$18 = $$1.b(sh.v);
+      jq<eeb<?, ?>> $$19 = $$1.b(sh.s);
+      jq<eeb<?, ?>> $$20 = $$1.b(sh.t);
+      jq<eeb<?, ?>> $$21 = $$1.b(sh.A);
+      jq<eeb<?, ?>> $$22 = $$1.b(sh.B);
+      jq<eeb<?, ?>> $$23 = $$1.b(sh.D);
+      jq<eeb<?, ?>> $$24 = $$1.b(sh.E);
+      jq<eeb<?, ?>> $$25 = $$1.b(sh.G);
+      jq<eeb<?, ?>> $$26 = $$1.b(sh.H);
+      jq<eeb<?, ?>> $$27 = $$1.b(sh.J);
+      jq<eeb<?, ?>> $$28 = $$1.b(sh.K);
+      sr.a($$0, a, $$2, ekw.a(8), ekt.a());
+      sr.a($$0, b, $$3, ekw.a(8), ekt.a());
+      sr.a($$0, c, $$4, sr.a(dil.x));
+      sr.a($$0, d, $$5, sr.a(dil.D));
+      sr.a($$0, e, $$6, sr.a(dil.z));
+      sr.a($$0, f, $$7, sr.a(dil.B));
+      sr.a($$0, g, $$8, sr.a(dil.y));
+      sr.a($$0, h, $$9, sr.a(dil.E));
+      sr.a($$0, i, $$10, sr.a(dil.C));
+      ecq $$29 = ecq.a(jm.a.q(), dil.dP, dil.qP);
+      List<eli> $$30 = List.of(eky.a(jm.b, ecq.a(ecq.a(dil.qP)), 8), eku.a($$29));
+      sr.a($$0, j, $$11, $$30);
+      sr.a($$0, k, $$8, $$30);
+      sr.a($$0, l, $$11, sr.a(dil.y));
+      sr.a($$0, m, $$12, sr.a(dil.A));
+      sr.a($$0, n, $$13, sr.a(dil.x));
+      sr.a($$0, o, $$14, sr.a(dil.A));
+      sr.a($$0, p, $$15, sr.a(dil.y));
+      sr.a($$0, q, $$16, sr.a(dil.y));
+      sr.a($$0, r, $$17, sr.a(dil.E));
+      sr.a($$0, s, $$18, sr.a(dil.x));
+      sr.a($$0, t, $$19, sr.a(dil.z));
+      sr.a($$0, u, $$20, sr.a(dil.z));
+      sr.a($$0, v, $$21, sr.a(dil.x));
+      sr.a($$0, w, $$22, sr.a(dil.x));
+      sr.a($$0, x, $$23, sr.a(dil.z));
+      sr.a($$0, y, $$24, sr.a(dil.z));
+      sr.a($$0, z, $$25, sr.a(dil.x));
+      sr.a($$0, A, $$26, sr.a(dil.x));
+      sr.a($$0, B, $$27, sr.a(dil.x));
+      sr.a($$0, C, $$28, sr.a(dil.C));
+   }
 }

@@ -1,25 +1,29 @@
-public record aih(int b, int c) implements zp<agv> {
-   public static final zg<wf, aih> a = zp.a(aih::a, aih::new);
+public class aih implements zs<agy> {
+   public static final zj<wi, aih> a = zs.a(aih::a, aih::new);
+   private final all b;
 
-   private aih(wf $$0) {
-      this($$0.l(), $$0.l());
+   public aih(dav<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private void a(wf $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private aih(wi $$0) {
+      this.b = $$0.q();
+   }
+
+   private void a(wi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zr<aih> a() {
-      return agt.bi;
+   public zu<aih> a() {
+      return agw.bR;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public all b() {
+      return this.b;
    }
 }

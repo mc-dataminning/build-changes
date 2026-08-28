@@ -1,3 +1,3 @@
-public class gur extends gun {
-   public int a;
+public class gur extends gwy {
+   public boolean a;
 }

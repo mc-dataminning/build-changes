@@ -1,834 +1,474 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicLike;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public abstract class dfb implements dfc, AutoCloseable {
-   public static final Codec<alh<dfb>> h = alh.a(lz.bb);
-   public static final alh<dfb> i = alh.a(lz.bb, ali.b("overworld"));
-   public static final alh<dfb> j = alh.a(lz.bb, ali.b("the_nether"));
-   public static final alh<dfb> k = alh.a(lz.bb, ali.b("the_end"));
-   public static final int l = 30000000;
-   public static final int m = 512;
-   public static final int n = 32;
-   public static final int o = 15;
-   public static final int p = 24000;
-   public static final int q = 20000000;
-   public static final int r = -20000000;
-   protected final List<dug> s = Lists.newArrayList();
-   protected final esr t;
-   private final List<dug> a = Lists.newArrayList();
-   private boolean b;
-   private final Thread c;
-   private final boolean d;
-   private int e;
-   protected int u = azs.a().f();
-   protected final int v = 1013904223;
-   protected float w;
-   protected float x;
-   protected float y;
-   protected float z;
-   public final azs A = azs.a();
-   @Deprecated
-   private final azs f = azs.b();
-   private final jq<dzf> E;
-   protected final etx B;
-   public final boolean C;
-   private final dxa F;
-   private final dge G;
-   private final alh<dfb> H;
-   private final ke I;
-   private final bsv J;
-   private long K;
+public class dfb {
+   public static final int a = 3;
+   static final Logger ab = LogUtils.getLogger();
+   private static final Map<dfb.e<?>, dfb.f<?>> ac = Maps.newTreeMap(Comparator.comparing($$0 -> $$0.a));
+   public static final dfb.e<dfb.a> b = a("doFireTick", dfb.b.e, dfb.a.a(true));
+   public static final dfb.e<dfb.a> c = a("mobGriefing", dfb.b.b, dfb.a.a(true));
+   public static final dfb.e<dfb.a> d = a("keepInventory", dfb.b.a, dfb.a.a(false));
+   public static final dfb.e<dfb.a> e = a("doMobSpawning", dfb.b.c, dfb.a.a(true));
+   public static final dfb.e<dfb.a> f = a("doMobLoot", dfb.b.d, dfb.a.a(true));
+   public static final dfb.e<dfb.a> g = a("projectilesCanBreakBlocks", dfb.b.d, dfb.a.a(true));
+   public static final dfb.e<dfb.a> h = a("doTileDrops", dfb.b.d, dfb.a.a(true));
+   public static final dfb.e<dfb.a> i = a("doEntityDrops", dfb.b.d, dfb.a.a(true));
+   public static final dfb.e<dfb.a> j = a("commandBlockOutput", dfb.b.f, dfb.a.a(true));
+   public static final dfb.e<dfb.a> k = a("naturalRegeneration", dfb.b.a, dfb.a.a(true));
+   public static final dfb.e<dfb.a> l = a("doDaylightCycle", dfb.b.e, dfb.a.a(true));
+   public static final dfb.e<dfb.a> m = a("logAdminCommands", dfb.b.f, dfb.a.a(true));
+   public static final dfb.e<dfb.a> n = a("showDeathMessages", dfb.b.f, dfb.a.a(true));
+   public static final dfb.e<dfb.d> o = a("randomTickSpeed", dfb.b.e, dfb.d.a(3));
+   public static final dfb.e<dfb.a> p = a("sendCommandFeedback", dfb.b.f, dfb.a.a(true));
+   public static final dfb.e<dfb.a> q = a("reducedDebugInfo", dfb.b.g, dfb.a.a(false, ($$0, $$1) -> {
+      byte $$2 = (byte)($$1.a() ? 22 : 23);
 
-   protected dfb(etx $$0, alh<dfb> $$1, ke $$2, jq<dzf> $$3, boolean $$4, boolean $$5, long $$6, int $$7) {
-      this.B = $$0;
-      this.E = $$3;
-      final dzf $$8 = $$3.a();
-      this.H = $$1;
-      this.C = $$4;
-      if ($$8.k() != 1.0) {
-         this.F = new dxa() {
-            @Override
-            public double a() {
-               return super.a() / $$8.k();
-            }
+      for (arr $$3 : $$0.ag().t()) {
+         $$3.g.b(new adl($$3, $$2));
+      }
+   }));
+   public static final dfb.e<dfb.a> r = a("spectatorsGenerateChunks", dfb.b.a, dfb.a.a(true));
+   public static final dfb.e<dfb.d> s = a("spawnRadius", dfb.b.a, dfb.d.a(10));
+   public static final dfb.e<dfb.a> t = a("disableElytraMovementCheck", dfb.b.a, dfb.a.a(false));
+   public static final dfb.e<dfb.d> u = a("maxEntityCramming", dfb.b.b, dfb.d.a(24));
+   public static final dfb.e<dfb.a> v = a("doWeatherCycle", dfb.b.e, dfb.a.a(true));
+   public static final dfb.e<dfb.a> w = a("doLimitedCrafting", dfb.b.a, dfb.a.a(false, ($$0, $$1) -> {
+      for (arr $$2 : $$0.ag().t()) {
+         $$2.g.b(new ado(ado.n, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final dfb.e<dfb.d> x = a("maxCommandChainLength", dfb.b.g, dfb.d.a(65536));
+   public static final dfb.e<dfb.d> y = a("maxCommandForkCount", dfb.b.g, dfb.d.a(65536));
+   public static final dfb.e<dfb.d> z = a("commandModificationBlockLimit", dfb.b.g, dfb.d.a(32768));
+   public static final dfb.e<dfb.a> A = a("announceAdvancements", dfb.b.f, dfb.a.a(true));
+   public static final dfb.e<dfb.a> B = a("disableRaids", dfb.b.b, dfb.a.a(false));
+   public static final dfb.e<dfb.a> C = a("doInsomnia", dfb.b.c, dfb.a.a(true));
+   public static final dfb.e<dfb.a> D = a("doImmediateRespawn", dfb.b.a, dfb.a.a(false, ($$0, $$1) -> {
+      for (arr $$2 : $$0.ag().t()) {
+         $$2.g.b(new ado(ado.m, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final dfb.e<dfb.d> E = a("playersNetherPortalDefaultDelay", dfb.b.a, dfb.d.a(80));
+   public static final dfb.e<dfb.d> F = a("playersNetherPortalCreativeDelay", dfb.b.a, dfb.d.a(0));
+   public static final dfb.e<dfb.a> G = a("drowningDamage", dfb.b.a, dfb.a.a(true));
+   public static final dfb.e<dfb.a> H = a("fallDamage", dfb.b.a, dfb.a.a(true));
+   public static final dfb.e<dfb.a> I = a("fireDamage", dfb.b.a, dfb.a.a(true));
+   public static final dfb.e<dfb.a> J = a("freezeDamage", dfb.b.a, dfb.a.a(true));
+   public static final dfb.e<dfb.a> K = a("doPatrolSpawning", dfb.b.c, dfb.a.a(true));
+   public static final dfb.e<dfb.a> L = a("doTraderSpawning", dfb.b.c, dfb.a.a(true));
+   public static final dfb.e<dfb.a> M = a("doWardenSpawning", dfb.b.c, dfb.a.a(true));
+   public static final dfb.e<dfb.a> N = a("forgiveDeadPlayers", dfb.b.b, dfb.a.a(true));
+   public static final dfb.e<dfb.a> O = a("universalAnger", dfb.b.b, dfb.a.a(false));
+   public static final dfb.e<dfb.d> P = a("playersSleepingPercentage", dfb.b.a, dfb.d.a(100));
+   public static final dfb.e<dfb.a> Q = a("blockExplosionDropDecay", dfb.b.d, dfb.a.a(true));
+   public static final dfb.e<dfb.a> R = a("mobExplosionDropDecay", dfb.b.d, dfb.a.a(true));
+   public static final dfb.e<dfb.a> S = a("tntExplosionDropDecay", dfb.b.d, dfb.a.a(false));
+   public static final dfb.e<dfb.d> T = a("snowAccumulationHeight", dfb.b.e, dfb.d.a(1));
+   public static final dfb.e<dfb.a> U = a("waterSourceConversion", dfb.b.e, dfb.a.a(true));
+   public static final dfb.e<dfb.a> V = a("lavaSourceConversion", dfb.b.e, dfb.a.a(false));
+   public static final dfb.e<dfb.a> W = a("globalSoundEvents", dfb.b.g, dfb.a.a(true));
+   public static final dfb.e<dfb.a> X = a("doVinesSpread", dfb.b.e, dfb.a.a(true));
+   public static final dfb.e<dfb.a> Y = a("enderPearlsVanishOnDeath", dfb.b.a, dfb.a.a(true));
+   public static final dfb.e<dfb.d> Z = a("minecartMaxSpeed", dfb.b.g, dfb.d.a(8, 1, 1000, crj.a(crl.e), ($$0, $$1) -> {
+   }));
+   public static final dfb.e<dfb.d> aa = a("spawnChunkRadius", dfb.b.g, dfb.d.a(2, 0, 32, crj.a(), ($$0, $$1) -> {
+      arq $$2 = $$0.J();
+      $$2.a($$2.W(), $$2.X());
+   }));
+   private final Map<dfb.e<?>, dfb.g<?>> ad;
+   private final crj ae;
 
-            @Override
-            public double b() {
-               return super.b() / $$8.k();
-            }
-         };
+   private static <T extends dfb.g<T>> dfb.e<T> a(String $$0, dfb.b $$1, dfb.f<T> $$2) {
+      dfb.e<T> $$3 = new dfb.e<>($$0, $$1);
+      dfb.f<?> $$4 = ac.put($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate game rule registration for " + $$0);
       } else {
-         this.F = new dxa();
+         return $$3;
       }
-
-      this.c = Thread.currentThread();
-      this.G = new dge(this, $$6);
-      this.d = $$5;
-      this.t = new esm(this, $$7);
-      this.I = $$2;
-      this.J = new bsv($$2);
    }
 
-   @Override
-   public boolean y_() {
-      return this.C;
+   public dfb(crj $$0, DynamicLike<?> $$1) {
+      this($$0);
+      this.a($$1);
    }
 
-   @Nullable
-   @Override
-   public MinecraftServer o() {
-      return null;
+   public dfb(crj $$0) {
+      this(b($$0).collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((dfb.f)$$0x.getValue()).a())), $$0);
    }
 
-   public boolean k(jh $$0) {
-      return !this.s($$0) && g($$0);
+   private static Stream<Entry<dfb.e<?>, dfb.f<?>>> b(crj $$0) {
+      return ac.entrySet().stream().filter($$1 -> $$1.getValue().e.a($$0));
    }
 
-   public static boolean l(jh $$0) {
-      return !b($$0.v()) && g($$0);
+   private dfb(Map<dfb.e<?>, dfb.g<?>> $$0, crj $$1) {
+      this.ad = $$0;
+      this.ae = $$1;
    }
 
-   private static boolean g(jh $$0) {
-      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000;
-   }
-
-   private static boolean b(int $$0) {
-      return $$0 < -20000000 || $$0 >= 20000000;
-   }
-
-   public dxp m(jh $$0) {
-      return this.d(kj.a($$0.u()), kj.a($$0.w()));
-   }
-
-   public dxp d(int $$0, int $$1) {
-      return (dxp)this.a($$0, $$1, dyg.n);
-   }
-
-   @Nullable
-   @Override
-   public dxf a(int $$0, int $$1, dyg $$2, boolean $$3) {
-      dxf $$4 = this.P().a($$0, $$1, $$2, $$3);
-      if ($$4 == null && $$3) {
-         throw new IllegalStateException("Should always be able to create a chunk!");
+   public <T extends dfb.g<T>> T a(dfb.e<T> $$0) {
+      T $$1 = (T)this.ad.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Tried to access invalid game rule");
       } else {
-         return $$4;
+         return $$1;
       }
    }
 
-   @Override
-   public boolean a(jh $$0, dvj $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   @Override
-   public boolean a(jh $$0, dvj $$1, int $$2, int $$3) {
-      if (this.s($$0)) {
-         return false;
-      } else if (!this.C && this.ah()) {
-         return false;
-      } else {
-         dxp $$4 = this.m($$0);
-         die $$5 = $$1.b();
-         dvj $$6 = $$4.a($$0, $$1, ($$2 & 64) != 0);
-         if ($$6 == null) {
-            return false;
-         } else {
-            dvj $$7 = this.a_($$0);
-            if ($$7 == $$1) {
-               if ($$6 != $$7) {
-                  this.b($$0, $$6, $$7);
-               }
-
-               if (($$2 & 2) != 0 && (!this.C || ($$2 & 4) == 0) && (this.C || $$4.C() != null && $$4.C().a(ard.c))) {
-                  this.a($$0, $$6, $$1, $$2);
-               }
-
-               if (($$2 & 1) != 0) {
-                  this.b($$0, $$6.b());
-                  if (!this.C && $$1.q()) {
-                     this.c($$0, $$5);
-                  }
-               }
-
-               if (($$2 & 16) == 0 && $$3 > 0) {
-                  int $$8 = $$2 & -34;
-                  $$6.b(this, $$0, $$8, $$3 - 1);
-                  $$1.a((dfc)this, $$0, $$8, $$3 - 1);
-                  $$1.b(this, $$0, $$8, $$3 - 1);
-               }
-
-               this.a($$0, $$6, $$7);
-            }
-
-            return true;
-         }
-      }
-   }
-
-   public void a(jh $$0, dvj $$1, dvj $$2) {
-   }
-
-   @Override
-   public boolean a(jh $$0, boolean $$1) {
-      erk $$2 = this.b_($$0);
-      return this.a($$0, $$2.g(), 3 | ($$1 ? 64 : 0));
-   }
-
-   @Override
-   public boolean a(jh $$0, boolean $$1, @Nullable bue $$2, int $$3) {
-      dvj $$4 = this.a_($$0);
-      if ($$4.l()) {
-         return false;
-      } else {
-         erk $$5 = this.b_($$0);
-         if (!($$4.b() instanceof dhr)) {
-            this.c(2001, $$0, die.j($$4));
-         }
-
-         if ($$1) {
-            dsm $$6 = $$4.x() ? this.c_($$0) : null;
-            die.a($$4, this, $$0, $$6, $$2, cwb.k);
-         }
-
-         boolean $$7 = this.a($$0, $$5.g(), 3, $$3);
-         if ($$7) {
-            this.a(eag.f, $$0, eag.a.a($$2, $$4));
-         }
-
-         return $$7;
-      }
-   }
-
-   public void a(jh $$0, dvj $$1) {
-   }
-
-   public boolean b(jh $$0, dvj $$1) {
-      return this.a($$0, $$1, 3);
-   }
-
-   public abstract void a(jh var1, dvj var2, dvj var3, int var4);
-
-   public void b(jh $$0, dvj $$1, dvj $$2) {
-   }
-
-   public void a(jh $$0, die $$1) {
-   }
-
-   public void a(jh $$0, die $$1, @Nullable ess $$2) {
-   }
-
-   public void a(jh $$0, die $$1, jm $$2, @Nullable ess $$3) {
-   }
-
-   public void b(jh $$0, die $$1, @Nullable ess $$2) {
-   }
-
-   public void a(dvj $$0, jh $$1, die $$2, @Nullable ess $$3, boolean $$4) {
-   }
-
-   @Override
-   public void a(jm $$0, jh $$1, jh $$2, dvj $$3, int $$4, int $$5) {
-      this.t.a($$0, $$3, $$1, $$2, $$4, $$5);
-   }
-
-   @Override
-   public int a(ebf.a $$0, int $$1, int $$2) {
-      int $$4;
-      if ($$1 >= -30000000 && $$2 >= -30000000 && $$1 < 30000000 && $$2 < 30000000) {
-         if (this.b(kj.a($$1), kj.a($$2))) {
-            $$4 = this.d(kj.a($$1), kj.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
-         } else {
-            $$4 = this.I_();
-         }
-      } else {
-         $$4 = this.N() + 1;
-      }
-
-      return $$4;
-   }
-
-   @Override
-   public eqz z_() {
-      return this.P().p();
-   }
-
-   @Override
-   public dvj a_(jh $$0) {
-      if (this.s($$0)) {
-         return dig.nb.m();
-      } else {
-         dxp $$1 = this.d(kj.a($$0.u()), kj.a($$0.w()));
-         return $$1.a_($$0);
-      }
-   }
-
-   @Override
-   public erk b_(jh $$0) {
-      if (this.s($$0)) {
-         return erl.a.g();
-      } else {
-         dxp $$1 = this.m($$0);
-         return $$1.b_($$0);
-      }
-   }
-
-   public boolean S() {
-      return !this.D_().a() && this.e < 4;
-   }
-
-   public boolean T() {
-      return !this.D_().a() && !this.S();
-   }
-
-   public void a(@Nullable bue $$0, jh $$1, awk $$2, awm $$3, float $$4, float $$5) {
-      this.a($$0 instanceof com $$6 ? $$6 : null, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(@Nullable com $$0, jh $$1, awk $$2, awm $$3, float $$4, float $$5) {
-      this.a($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$2, $$3, $$4, $$5);
-   }
-
-   public abstract void a(@Nullable com var1, double var2, double var4, double var6, jq<awk> var8, awm var9, float var10, float var11, long var12);
-
-   public void a(@Nullable com $$0, double $$1, double $$2, double $$3, awk $$4, awm $$5, float $$6, float $$7, long $$8) {
-      this.a($$0, $$1, $$2, $$3, ly.b.e($$4), $$5, $$6, $$7, $$8);
-   }
-
-   public abstract void a(@Nullable com var1, bue var2, jq<awk> var3, awm var4, float var5, float var6, long var7);
-
-   public void a(@Nullable com $$0, double $$1, double $$2, double $$3, awk $$4, awm $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F);
-   }
-
-   public void a(@Nullable com $$0, double $$1, double $$2, double $$3, awk $$4, awm $$5, float $$6, float $$7) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.f.g());
-   }
-
-   public void a(@Nullable com $$0, double $$1, double $$2, double $$3, jq<awk> $$4, awm $$5, float $$6, float $$7) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.f.g());
-   }
-
-   public void a(@Nullable com $$0, bue $$1, awk $$2, awm $$3, float $$4, float $$5) {
-      this.a($$0, $$1, ly.b.e($$2), $$3, $$4, $$5, this.f.g());
-   }
-
-   public void a(jh $$0, awk $$1, awm $$2, float $$3, float $$4, boolean $$5) {
-      this.a((double)$$0.u() + 0.5, (double)$$0.v() + 0.5, (double)$$0.w() + 0.5, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(bue $$0, awk $$1, awm $$2, float $$3, float $$4) {
-   }
-
-   public void a(double $$0, double $$1, double $$2, awk $$3, awm $$4, float $$5, float $$6, boolean $$7) {
-   }
-
-   @Override
-   public void a(lp $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-   }
-
-   public void a(lp $$0, boolean $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-   }
-
-   public void b(lp $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-   }
-
-   public void b(lp $$0, boolean $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f($$0);
-      return $$1 * (float) (Math.PI * 2);
-   }
-
-   public void a(dug $$0) {
-      (this.b ? this.a : this.s).add($$0);
-   }
-
-   protected void U() {
-      bon $$0 = bom.a();
-      $$0.a("blockEntities");
-      this.b = true;
-      if (!this.a.isEmpty()) {
-         this.s.addAll(this.a);
-         this.a.clear();
-      }
-
-      Iterator<dug> $$1 = this.s.iterator();
-      boolean $$2 = this.s().i();
-
-      while ($$1.hasNext()) {
-         dug $$3 = $$1.next();
-         if ($$3.b()) {
-            $$1.remove();
-         } else if ($$2 && this.n($$3.c())) {
-            $$3.a();
-         }
-      }
-
-      this.b = false;
-      $$0.c();
-   }
-
-   public <T extends bue> void a(Consumer<T> $$0, T $$1) {
-      try {
-         $$0.accept($$1);
-      } catch (Throwable var6) {
-         o $$3 = o.a(var6, "Ticking entity");
-         p $$4 = $$3.a("Entity being ticked");
-         $$1.a($$4);
-         throw new z($$3);
-      }
-   }
-
-   public boolean h(bue $$0) {
-      return true;
-   }
-
-   public boolean a(long $$0) {
-      return true;
-   }
-
-   public boolean n(jh $$0) {
-      return this.a(deh.a($$0));
-   }
-
-   public void a(@Nullable bue $$0, double $$1, double $$2, double $$3, float $$4, dfb.a $$5) {
-      this.a($$0, det.a(this, $$0), null, $$1, $$2, $$3, $$4, false, $$5, lr.w, lr.v, awl.kf);
-   }
-
-   public void a(@Nullable bue $$0, double $$1, double $$2, double $$3, float $$4, boolean $$5, dfb.a $$6) {
-      this.a($$0, det.a(this, $$0), null, $$1, $$2, $$3, $$4, $$5, $$6, lr.w, lr.v, awl.kf);
-   }
-
-   public void a(@Nullable bue $$0, @Nullable bsu $$1, @Nullable deu $$2, ezn $$3, float $$4, boolean $$5, dfb.a $$6) {
-      this.a($$0, $$1, $$2, $$3.a(), $$3.b(), $$3.c(), $$4, $$5, $$6, lr.w, lr.v, awl.kf);
-   }
-
-   public void a(@Nullable bue $$0, @Nullable bsu $$1, @Nullable deu $$2, double $$3, double $$4, double $$5, float $$6, boolean $$7, dfb.a $$8) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, lr.w, lr.v, awl.kf);
-   }
-
-   public abstract void a(
-      @Nullable bue var1,
-      @Nullable bsu var2,
-      @Nullable deu var3,
-      double var4,
-      double var6,
-      double var8,
-      float var10,
-      boolean var11,
-      dfb.a var12,
-      lp var13,
-      lp var14,
-      jq<awk> var15
-   );
-
-   public abstract String I();
-
-   @Nullable
-   @Override
-   public dsm c_(jh $$0) {
-      if (this.s($$0)) {
-         return null;
-      } else {
-         return !this.C && Thread.currentThread() != this.c ? null : this.m($$0).a($$0, dxp.b.a);
-      }
-   }
-
-   public void a(dsm $$0) {
-      jh $$1 = $$0.aB_();
-      if (!this.s($$1)) {
-         this.m($$1).b($$0);
-      }
-   }
-
-   public void o(jh $$0) {
-      if (!this.s($$0)) {
-         this.m($$0).d($$0);
-      }
-   }
-
-   public boolean p(jh $$0) {
-      return this.s($$0) ? false : this.P().b(kj.a($$0.u()), kj.a($$0.w()));
-   }
-
-   public boolean a(jh $$0, bue $$1, jm $$2) {
-      if (this.s($$0)) {
-         return false;
-      } else {
-         dxf $$3 = this.a(kj.a($$0.u()), kj.a($$0.w()), dyg.n, false);
-         return $$3 == null ? false : $$3.a_($$0).a(this, $$0, $$1, $$2);
-      }
-   }
-
-   public boolean a(jh $$0, bue $$1) {
-      return this.a($$0, $$1, jm.b);
-   }
-
-   public void V() {
-      double $$0 = 1.0 - (double)(this.d(1.0F) * 5.0F) / 16.0;
-      double $$1 = 1.0 - (double)(this.b(1.0F) * 5.0F) / 16.0;
-      double $$2 = 0.5 + 2.0 * azk.a((double)azk.b(this.f(1.0F) * (float) (Math.PI * 2)), -0.25, 0.25);
-      this.e = (int)((1.0 - $$2 * $$0 * $$1) * 11.0);
-   }
-
-   public void a(boolean $$0) {
-      this.P().b($$0);
-   }
-
-   public jh W() {
-      jh $$0 = this.B.a();
-      if (!this.C_().a($$0)) {
-         $$0 = this.a(ebf.a.e, jh.a(this.C_().a(), 0.0, this.C_().b()));
-      }
-
+   public un a() {
+      un $$0 = new un();
+      this.ad.forEach(($$1, $$2) -> $$0.a($$1.a, $$2.b()));
       return $$0;
    }
 
-   public float X() {
-      return this.B.b();
+   private void a(DynamicLike<?> $$0) {
+      this.ad.forEach(($$1, $$2) -> $$0.get($$1.a).asString().ifSuccess($$2::a));
    }
 
-   protected void Y() {
-      if (this.B.i()) {
-         this.x = 1.0F;
-         if (this.B.g()) {
-            this.z = 1.0F;
-         }
+   public dfb a(crj $$0) {
+      return new dfb(
+         b($$0)
+            .collect(
+               ImmutableMap.toImmutableMap(
+                  Entry::getKey, $$0x -> this.ad.containsKey($$0x.getKey()) ? this.ad.get($$0x.getKey()) : ((dfb.f)$$0x.getValue()).a()
+               )
+            ),
+         $$0
+      );
+   }
+
+   public void a(dfb.c $$0) {
+      ac.forEach(($$1, $$2) -> this.a($$0, (dfb.e<?>)$$1, (dfb.f<?>)$$2));
+   }
+
+   private <T extends dfb.g<T>> void a(dfb.c $$0, dfb.e<?> $$1, dfb.f<?> $$2) {
+      if ($$2.e.a(this.ae)) {
+         $$0.a($$1, $$2);
+         $$2.a($$0, $$1);
       }
    }
 
-   @Override
-   public void close() throws IOException {
-      this.P().close();
+   public void a(dfb $$0, @Nullable MinecraftServer $$1) {
+      $$0.ad.keySet().forEach($$2 -> this.a((dfb.e<?>)$$2, $$0, $$1));
    }
 
-   @Nullable
-   @Override
-   public deg c(int $$0, int $$1) {
-      return this.a($$0, $$1, dyg.n, false);
+   private <T extends dfb.g<T>> void a(dfb.e<T> $$0, dfb $$1, @Nullable MinecraftServer $$2) {
+      T $$3 = $$1.a($$0);
+      this.<T>a($$0).a($$3, $$2);
    }
 
-   @Override
-   public List<bue> a(@Nullable bue $$0, ezi $$1, Predicate<? super bue> $$2) {
-      bom.a().f("getEntities");
-      List<bue> $$3 = Lists.newArrayList();
-      this.G().a($$1, $$3x -> {
-         if ($$3x != $$0 && $$2.test($$3x)) {
-            $$3.add($$3x);
-         }
-
-         if ($$3x instanceof cjo) {
-            for (cjl $$4 : ((cjo)$$3x).gq()) {
-               if ($$3x != $$0 && $$2.test($$4)) {
-                  $$3.add($$4);
-               }
-            }
-         }
-      });
-      return $$3;
+   public boolean b(dfb.e<dfb.a> $$0) {
+      return this.a($$0).a();
    }
 
-   @Override
-   public <T extends bue> List<T> a(dzu<bue, T> $$0, ezi $$1, Predicate<? super T> $$2) {
-      List<T> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, $$3);
-      return $$3;
+   public int c(dfb.e<dfb.d> $$0) {
+      return this.a($$0).a();
    }
 
-   public <T extends bue> void a(dzu<bue, T> $$0, ezi $$1, Predicate<? super T> $$2, List<? super T> $$3) {
-      this.a($$0, $$1, $$2, $$3, Integer.MAX_VALUE);
-   }
+   public static class a extends dfb.g<dfb.a> {
+      private boolean b;
 
-   public <T extends bue> void a(dzu<bue, T> $$0, ezi $$1, Predicate<? super T> $$2, List<? super T> $$3, int $$4) {
-      bom.a().f("getEntities");
-      this.G().a($$0, $$1, $$4x -> {
-         if ($$2.test((T)$$4x)) {
-            $$3.add((T)$$4x);
-            if ($$3.size() >= $$4) {
-               return axw.a.b;
-            }
-         }
-
-         if ($$4x instanceof cjo $$5) {
-            for (cjl $$6 : $$5.gq()) {
-               T $$7 = $$0.a($$6);
-               if ($$7 != null && $$2.test($$7)) {
-                  $$3.add($$7);
-                  if ($$3.size() >= $$4) {
-                     return axw.a.b;
-                  }
-               }
-            }
-         }
-
-         return axw.a.a;
-      });
-   }
-
-   @Nullable
-   public abstract bue a(int var1);
-
-   public void q(jh $$0) {
-      if (this.B($$0)) {
-         this.m($$0).a(true);
-      }
-   }
-
-   public void Z() {
-   }
-
-   public long aa() {
-      return this.B.c();
-   }
-
-   public long ab() {
-      return this.B.d();
-   }
-
-   public boolean a(com $$0, jh $$1) {
-      return true;
-   }
-
-   public void a(bue $$0, byte $$1) {
-   }
-
-   public void a(bue $$0, bsu $$1) {
-   }
-
-   public void a(jh $$0, die $$1, int $$2, int $$3) {
-      this.a_($$0).a(this, $$0, $$2, $$3);
-   }
-
-   @Override
-   public etm A_() {
-      return this.B;
-   }
-
-   public dex ac() {
-      return this.B.o();
-   }
-
-   public abstract bsm s();
-
-   public float b(float $$0) {
-      return azk.h($$0, this.y, this.z) * this.d($$0);
-   }
-
-   public void c(float $$0) {
-      float $$1 = azk.a($$0, 0.0F, 1.0F);
-      this.y = $$1;
-      this.z = $$1;
-   }
-
-   public float d(float $$0) {
-      return azk.h($$0, this.w, this.x);
-   }
-
-   public void e(float $$0) {
-      float $$1 = azk.a($$0, 0.0F, 1.0F);
-      this.w = $$1;
-      this.x = $$1;
-   }
-
-   private boolean a() {
-      return this.D_().g() && !this.D_().h();
-   }
-
-   public boolean ad() {
-      return this.a() && (double)this.b(1.0F) > 0.9;
-   }
-
-   public boolean ae() {
-      return this.a() && (double)this.d(1.0F) > 0.2;
-   }
-
-   public boolean r(jh $$0) {
-      if (!this.ae()) {
-         return false;
-      } else if (!this.h($$0)) {
-         return false;
-      } else if (this.a(ebf.a.e, $$0).v() > $$0.v()) {
-         return false;
-      } else {
-         dgc $$1 = this.t($$0).a();
-         return $$1.a($$0, this.N()) == dgc.c.b;
-      }
-   }
-
-   @Nullable
-   public abstract ete a(etc var1);
-
-   public abstract void a(etc var1, ete var2);
-
-   public abstract etc v();
-
-   public void b(int $$0, jh $$1, int $$2) {
-   }
-
-   public p a(o $$0) {
-      p $$1 = $$0.a("Affected level", 1);
-      $$1.a("All players", () -> this.x().size() + " total; " + this.x());
-      $$1.a("Chunk stats", this.P()::e);
-      $$1.a("Level dimension", () -> this.ag().a().toString());
-
-      try {
-         this.B.a($$1, this);
-      } catch (Throwable var4) {
-         $$1.a("Level Data Unobtainable", var4);
+      static dfb.f<dfb.a> a(boolean $$0, BiConsumer<MinecraftServer, dfb.a> $$1) {
+         return new dfb.f<>(BoolArgumentType::bool, $$1x -> new dfb.a($$1x, $$0), $$1, dfb.c::b, crj.a());
       }
 
-      return $$1;
-   }
-
-   public abstract void a(int var1, jh var2, int var3);
-
-   public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, List<cyq> $$6) {
-   }
-
-   public abstract fas O();
-
-   public void c(jh $$0, die $$1) {
-      for (jm $$2 : jm.c.a) {
-         jh $$3 = $$0.a($$2);
-         if (this.B($$3)) {
-            dvj $$4 = this.a_($$3);
-            if ($$4.a(dig.gY)) {
-               this.a($$4, $$3, $$1, null, false);
-            } else if ($$4.d(this, $$3)) {
-               $$3 = $$3.a($$2);
-               $$4 = this.a_($$3);
-               if ($$4.a(dig.gY)) {
-                  this.a($$4, $$3, $$1, null, false);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public bsb d_(jh $$0) {
-      long $$1 = 0L;
-      float $$2 = 0.0F;
-      if (this.B($$0)) {
-         $$2 = this.ap();
-         $$1 = this.m($$0).t();
+      static dfb.f<dfb.a> a(boolean $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
       }
 
-      return new bsb(this.ak(), this.ab(), $$1, $$2);
-   }
-
-   @Override
-   public int B_() {
-      return this.e;
-   }
-
-   public void c(int $$0) {
-   }
-
-   @Override
-   public dxa C_() {
-      return this.F;
-   }
-
-   public void a(zp<?> $$0) {
-      throw new UnsupportedOperationException("Can't send packets to server unless you're on the client.");
-   }
-
-   @Override
-   public dzf D_() {
-      return this.E.a();
-   }
-
-   public jq<dzf> af() {
-      return this.E;
-   }
-
-   public alh<dfb> ag() {
-      return this.H;
-   }
-
-   @Override
-   public azs E_() {
-      return this.A;
-   }
-
-   @Override
-   public boolean a(jh $$0, Predicate<dvj> $$1) {
-      return $$1.test(this.a_($$0));
-   }
-
-   @Override
-   public boolean b(jh $$0, Predicate<erk> $$1) {
-      return $$1.test(this.b_($$0));
-   }
-
-   public abstract dat r();
-
-   public jh a(int $$0, int $$1, int $$2, int $$3) {
-      this.u = this.u * 3 + 1013904223;
-      int $$4 = this.u >> 2;
-      return new jh($$0 + ($$4 & 15), $$1 + ($$4 >> 16 & $$3), $$2 + ($$4 >> 8 & 15));
-   }
-
-   public boolean t() {
-      return false;
-   }
-
-   @Override
-   public dge F_() {
-      return this.G;
-   }
-
-   public final boolean ah() {
-      return this.d;
-   }
-
-   protected abstract dzw<bue> G();
-
-   @Override
-   public long G_() {
-      return this.K++;
-   }
-
-   @Override
-   public ke H_() {
-      return this.I;
-   }
-
-   public bsv ai() {
-      return this.J;
-   }
-
-   public abstract cxz K();
-
-   public abstract dtj L();
-
-   public static enum a implements bag {
-      a("none"),
-      b("block"),
-      c("mob"),
-      d("tnt"),
-      e("trigger");
-
-      public static final Codec<dfb.a> f = bag.a(dfb.a::values);
-      private final String g;
-
-      private a(final String $$0) {
-         this.g = $$0;
+      public a(dfb.f<dfb.a> $$0, boolean $$1) {
+         super($$0);
+         this.b = $$1;
       }
 
       @Override
-      public String c() {
-         return this.g;
+      protected void a(CommandContext<ew> $$0, String $$1) {
+         this.b = BoolArgumentType.getBool($$0, $$1);
       }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public void a(boolean $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Boolean.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = Boolean.parseBoolean($$0);
+      }
+
+      @Override
+      public int c() {
+         return this.b ? 1 : 0;
+      }
+
+      protected dfb.a d() {
+         return this;
+      }
+
+      protected dfb.a e() {
+         return new dfb.a(this.a, this.b);
+      }
+
+      public void a(dfb.a $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
+   }
+
+   public static enum b {
+      a("gamerule.category.player"),
+      b("gamerule.category.mobs"),
+      c("gamerule.category.spawning"),
+      d("gamerule.category.drops"),
+      e("gamerule.category.updates"),
+      f("gamerule.category.chat"),
+      g("gamerule.category.misc");
+
+      private final String h;
+
+      private b(final String $$0) {
+         this.h = $$0;
+      }
+
+      public String a() {
+         return this.h;
+      }
+   }
+
+   public interface c {
+      default <T extends dfb.g<T>> void a(dfb.e<T> $$0, dfb.f<T> $$1) {
+      }
+
+      default void b(dfb.e<dfb.a> $$0, dfb.f<dfb.a> $$1) {
+      }
+
+      default void c(dfb.e<dfb.d> $$0, dfb.f<dfb.d> $$1) {
+      }
+   }
+
+   public static class d extends dfb.g<dfb.d> {
+      private int b;
+
+      private static dfb.f<dfb.d> a(int $$0, BiConsumer<MinecraftServer, dfb.d> $$1) {
+         return new dfb.f<>(IntegerArgumentType::integer, $$1x -> new dfb.d($$1x, $$0), $$1, dfb.c::c, crj.a());
+      }
+
+      static dfb.f<dfb.d> a(int $$0, int $$1, int $$2, crj $$3, BiConsumer<MinecraftServer, dfb.d> $$4) {
+         return new dfb.f<>(() -> IntegerArgumentType.integer($$1, $$2), $$1x -> new dfb.d($$1x, $$0), $$4, dfb.c::c, $$3);
+      }
+
+      static dfb.f<dfb.d> a(int $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
+      }
+
+      public d(dfb.f<dfb.d> $$0, int $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      protected void a(CommandContext<ew> $$0, String $$1) {
+         this.b = IntegerArgumentType.getInteger($$0, $$1);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public void a(int $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Integer.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = c($$0);
+      }
+
+      public boolean b(String $$0) {
+         try {
+            StringReader $$1 = new StringReader($$0);
+            this.b = (Integer)this.a.a.get().parse($$1);
+            return !$$1.canRead();
+         } catch (CommandSyntaxException var3) {
+            return false;
+         }
+      }
+
+      private static int c(String $$0) {
+         if (!$$0.isEmpty()) {
+            try {
+               return Integer.parseInt($$0);
+            } catch (NumberFormatException var2) {
+               dfb.ab.warn("Failed to parse integer {}", $$0);
+            }
+         }
+
+         return 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b;
+      }
+
+      protected dfb.d d() {
+         return this;
+      }
+
+      protected dfb.d e() {
+         return new dfb.d(this.a, this.b);
+      }
+
+      public void a(dfb.d $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
+   }
+
+   public static final class e<T extends dfb.g<T>> {
+      final String a;
+      private final dfb.b b;
+
+      public e(String $$0, dfb.b $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.a;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return this == $$0 ? true : $$0 instanceof dfb.e && ((dfb.e)$$0).a.equals(this.a);
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
+      }
+
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return "gamerule." + this.a;
+      }
+
+      public dfb.b c() {
+         return this.b;
+      }
+   }
+
+   public static class f<T extends dfb.g<T>> {
+      final Supplier<ArgumentType<?>> a;
+      private final Function<dfb.f<T>, T> b;
+      final BiConsumer<MinecraftServer, T> c;
+      private final dfb.h<T> d;
+      final crj e;
+
+      f(Supplier<ArgumentType<?>> $$0, Function<dfb.f<T>, T> $$1, BiConsumer<MinecraftServer, T> $$2, dfb.h<T> $$3, crj $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      public RequiredArgumentBuilder<ew, ?> a(String $$0) {
+         return ex.a($$0, (ArgumentType<T>)this.a.get());
+      }
+
+      public T a() {
+         return this.b.apply(this);
+      }
+
+      public void a(dfb.c $$0, dfb.e<T> $$1) {
+         this.d.call($$0, $$1, this);
+      }
+
+      public crj b() {
+         return this.e;
+      }
+   }
+
+   public abstract static class g<T extends dfb.g<T>> {
+      protected final dfb.f<T> a;
+
+      public g(dfb.f<T> $$0) {
+         this.a = $$0;
+      }
+
+      protected abstract void a(CommandContext<ew> var1, String var2);
+
+      public void b(CommandContext<ew> $$0, String $$1) {
+         this.a($$0, $$1);
+         this.a(((ew)$$0.getSource()).l());
+      }
+
+      protected void a(@Nullable MinecraftServer $$0) {
+         if ($$0 != null) {
+            this.a.c.accept($$0, this.g());
+         }
+      }
+
+      protected abstract void a(String var1);
+
+      public abstract String b();
+
+      @Override
+      public String toString() {
+         return this.b();
+      }
+
+      public abstract int c();
+
+      protected abstract T g();
+
+      protected abstract T f();
+
+      public abstract void a(T var1, @Nullable MinecraftServer var2);
+   }
+
+   interface h<T extends dfb.g<T>> {
+      void call(dfb.c var1, dfb.e<T> var2, dfb.f<T> var3);
    }
 }

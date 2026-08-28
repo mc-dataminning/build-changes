@@ -1,87 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Function;
 
-public class ecd {
-   public static final MapCodec<ecd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(ecd::c),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(ecd::d),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(ecd::e),
-               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(ecd::new))
-   );
-   public static final ecd b = new ecd((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+public interface ecd {
+   Codec<ecd> a = Codec.xor(ecd.b.d, Codec.xor(ecd.a.d, ecd.c.d)).xmap(ecd::a, ecd::a);
+   ecd b = b(0);
+   ecd c = c(0);
 
-   public ecd(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   static ecd a(int $$0) {
+      return new ecd.b($$0);
    }
 
-   public static ecd a() {
-      return new ecd(g(), true, false);
+   static ecd b(int $$0) {
+      return new ecd.a($$0);
    }
 
-   public static ecd b() {
-      return new ecd(g(), false, false);
+   static ecd c(int $$0) {
+      return new ecd.c($$0);
    }
 
-   private ecd(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   static ecd a() {
+      return b;
    }
 
-   public long c() {
-      return this.c;
+   static ecd b() {
+      return c;
    }
 
-   public boolean d() {
-      return this.d;
+   private static ecd a(Either<ecd.b, Either<ecd.a, ecd.c>> $$0) {
+      return (ecd)$$0.map(Function.identity(), Either::unwrap);
    }
 
-   public boolean e() {
-      return this.e;
+   private static Either<ecd.b, Either<ecd.a, ecd.c>> a(ecd $$0) {
+      return $$0 instanceof ecd.b ? Either.left((ecd.b)$$0) : Either.right($$0 instanceof ecd.a ? Either.left((ecd.a)$$0) : Either.right((ecd.c)$$0));
    }
 
-   public boolean f() {
-      return this.f.isPresent();
-   }
+   int a(ecg var1);
 
-   public ecd a(boolean $$0) {
-      return new ecd(this.c, this.d, $$0, this.f);
-   }
+   public static record a(int e) implements ecd {
+      public static final Codec<ecd.a> d = Codec.intRange(dzj.e, dzj.d).fieldOf("above_bottom").xmap(ecd.a::new, ecd.a::c).codec();
 
-   public ecd b(boolean $$0) {
-      return new ecd(this.c, $$0, this.e, this.f);
-   }
+      @Override
+      public int a(ecg $$0) {
+         return $$0.a() + this.e;
+      }
 
-   public ecd a(OptionalLong $$0) {
-      return new ecd($$0.orElse(g()), this.d, this.e, this.f);
-   }
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
 
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
+      public int c() {
+         return this.e;
       }
    }
 
-   public static long g() {
-      return azs.a().g();
+   public static record b(int e) implements ecd {
+      public static final Codec<ecd.b> d = Codec.intRange(dzj.e, dzj.d).fieldOf("absolute").xmap(ecd.b::new, ecd.b::c).codec();
+
+      @Override
+      public int a(ecg $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements ecd {
+      public static final Codec<ecd.c> d = Codec.intRange(dzj.e, dzj.d).fieldOf("below_top").xmap(ecd.c::new, ecd.c::c).codec();
+
+      @Override
+      public int a(ecg $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

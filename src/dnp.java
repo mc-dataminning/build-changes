@@ -1,33 +1,57 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dnp extends drf {
-   public static final MapCodec<dnp> b = b(dnp::new);
-   private static final Map<jm, fah> e = Maps.immutableEnumMap(
-      Map.of(
-         jm.c,
-         die.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         jm.d,
-         die.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         jm.f,
-         die.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         jm.e,
-         die.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class dnp extends dis {
+   public static final MapCodec<dnp> a = b(dnp::new);
+   public static final int b = 3;
+   public static final dwn c = dwe.as;
+   private static final fal[] d = new fal[]{
+      dij.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dij.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dij.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      dij.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<dnp> a() {
-      return b;
+      return a;
    }
 
-   public dnp(dvi.d $$0) {
-      super(dpg.b.h, $$0);
+   protected dnp(dvn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return e.get($$0.c(d));
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean b(dvo $$0, dek $$1, jh $$2) {
+      return $$0.a(dil.dW);
+   }
+
+   @Override
+   protected boolean f(dvo $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
+      }
+   }
+
+   @Override
+   public cwf a(dfi $$0, jh $$1, dvo $$2) {
+      return new cwf(cwj.sA);
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(c);
    }
 }

@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class gvr extends gun {
-   @Nullable
-   public haf a;
-   public cwb b = cwb.k;
+public class gvr extends gwb {
+   public int a;
+   public boolean b;
 }

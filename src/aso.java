@@ -1,148 +1,105 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
 import org.slf4j.Logger;
 
-public class aso extends asn implements abu, ww {
-   private static final Logger f = LogUtils.getLogger();
-   private static final xi g = xi.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile h;
-   private final Queue<ase> i = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private ase j;
-   private aqz k;
-   @Nullable
-   private asz l;
+public class aso {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   public aso(MinecraftServer $$0, wc $$1, asd $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.k = $$2.c();
+   public aso(boolean $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected GameProfile i() {
-      return this.h;
+   public void a(dxt $$0) {
+      this.f.add($$0.f().a());
    }
 
-   @Override
-   public void a(we $$0) {
-      f.info("{} lost connection: {}", this.h, $$0.a().getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.e.i();
-   }
-
-   @Override
-   public void l() {
-      this.b(new zw(new aaq(this.d.getServerModName())));
-      ama $$0 = this.d.bp();
-      if (!$$0.a()) {
-         this.b(new aad($$0.b()));
-      }
-
-      jx<alr> $$1 = this.d.bb();
-      List<auh> $$2 = this.d.be().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new abr(crh.f.b(this.d.aZ().K())));
-      this.l = new asz($$2, $$1);
-      this.i.add(this.l);
-      this.n();
-      this.i.add(new asx());
-      this.o();
-   }
-
-   public void m() {
-      this.i.add(new asx());
-      this.o();
-   }
-
-   private void n() {
-      this.d.Y().ifPresent($$0 -> this.i.add(new asy($$0)));
-   }
-
-   @Override
-   public void a(aaj $$0) {
-      this.k = $$0.b();
-   }
-
-   @Override
-   public void a(aan $$0) {
-      super.a($$0);
-      if ($$0.e().a()) {
-         this.a(asy.a);
+   public void a(arr $$0, del $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bN()) {
+         $$0.g.b(new adn($$1));
       }
    }
 
-   @Override
-   public void a(abw $$0) {
-      zs.a($$0, this, this.d);
-      if (this.l == null) {
-         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
+   public void a(arr $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               arq $$2 = $$0.B();
+               aqw $$3 = $$2.l().a;
+               List<dxt> $$4 = this.a($$3, $$0.dA());
+               if (!$$4.isEmpty()) {
+                  ast $$5 = $$0.g;
+                  this.j++;
+                  $$5.b(acw.a);
+
+                  for (dxt $$6 : $$4) {
+                     a($$5, $$2, $$6);
+                  }
+
+                  $$5.b(new acv($$4.size()));
+                  this.i = this.i - (float)$$4.size();
+               }
+            }
+         }
+      }
+   }
+
+   private static void a(ast $$0, arq $$1, dxt $$2) {
+      $$0.b(new adt($$2, $$1.z_(), null, null));
+      del $$3 = $$2.f();
+      agv.a($$1, $$3);
+   }
+
+   private List<dxt> a(aqw $$0, del $$1) {
+      int $$2 = azn.d(this.i);
+      List<dxt> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::e)
+            .filter(Objects::nonNull)
+            .toList();
       } else {
-         this.l.a($$0.b(), this::b);
-         this.a(asz.a);
+         $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
+
+      for (dxt $$5 : $$4) {
+         this.f.remove($$5.f().a());
+      }
+
+      return $$4;
    }
 
-   @Override
-   public void a(abv $$0) {
-      zs.a($$0, this, this.d);
-      this.a(asx.a);
-      this.e.a(agu.b.a(wt.a(this.d.ba())));
-
-      try {
-         avo $$1 = this.d.ag();
-         if ($$1.a(this.h.getId()) != null) {
-            this.a(avo.f);
-            return;
-         }
-
-         xi $$2 = $$1.a(this.e.d(), this.h);
-         if ($$2 != null) {
-            this.a($$2);
-            return;
-         }
-
-         aro $$3 = $$1.a(this.h, this.k);
-         $$1.a(this.e, $$3, this.a(this.k));
-      } catch (Exception var5) {
-         f.error("Couldn't place player in world", var5);
-         this.e.a(new zy(g));
-         this.e.a(g);
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : azn.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
       }
+
+      this.k = 10;
    }
 
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   private void o() {
-      if (this.j != null) {
-         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         ase $$0 = this.i.poll();
-         if ($$0 != null) {
-            this.j = $$0;
-            $$0.a(this::b);
-         }
-      }
-   }
-
-   private void a(ase.a $$0) {
-      ase.a $$1 = this.j != null ? this.j.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
-      } else {
-         this.j = null;
-         this.o();
-      }
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

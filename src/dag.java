@@ -1,27 +1,17 @@
-public abstract class dag implements daf {
-   private final dad a;
+public enum dag implements baj {
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-   public dag(dad $$0) {
-      this.a = $$0;
+   public static final baj.a<dag> d = baj.a(dag::values);
+   private final String e;
+
+   private dag(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean ap_() {
-      return true;
-   }
-
-   @Override
-   public cwb a(js.a $$0) {
-      return cwb.k;
-   }
-
-   @Override
-   public dad d() {
-      return this.a;
-   }
-
-   @Override
-   public dao a() {
-      return dao.a;
+   public String c() {
+      return this.e;
    }
 }

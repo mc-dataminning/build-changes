@@ -1,80 +1,44 @@
-import java.io.DataOutput;
-import java.io.IOException;
+public class ayo {
+   private static final int a = 2;
+   private static final int b = 6;
+   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
 
-public class ayo implements DataOutput {
-   private final DataOutput a;
-
-   public ayo(DataOutput $$0) {
-      this.a = $$0;
+   private ayo() {
    }
 
-   @Override
-   public void write(int $$0) throws IOException {
-      this.a.write($$0);
+   public static ezr a(ezr $$0, ayo.a $$1) {
+      int $$2 = azn.a($$0.a());
+      int $$3 = azn.a($$0.b());
+      int $$4 = azn.a($$0.c());
+      double $$5 = $$0.a() - (double)$$2;
+      double $$6 = $$0.b() - (double)$$3;
+      double $$7 = $$0.c() - (double)$$4;
+      double $$8 = 0.0;
+      ezr $$9 = ezr.c;
+
+      for (int $$10 = 0; $$10 < 6; $$10++) {
+         double $$11 = azn.d($$5, c[$$10 + 1], c[$$10]);
+         int $$12 = $$2 - 2 + $$10;
+
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            double $$14 = azn.d($$6, c[$$13 + 1], c[$$13]);
+            int $$15 = $$3 - 2 + $$13;
+
+            for (int $$16 = 0; $$16 < 6; $$16++) {
+               double $$17 = azn.d($$7, c[$$16 + 1], c[$$16]);
+               int $$18 = $$4 - 2 + $$16;
+               double $$19 = $$11 * $$14 * $$17;
+               $$8 += $$19;
+               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).c($$19));
+            }
+         }
+      }
+
+      return $$9.c(1.0 / $$8);
    }
 
-   @Override
-   public void write(byte[] $$0) throws IOException {
-      this.a.write($$0);
-   }
-
-   @Override
-   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
-      this.a.write($$0, $$1, $$2);
-   }
-
-   @Override
-   public void writeBoolean(boolean $$0) throws IOException {
-      this.a.writeBoolean($$0);
-   }
-
-   @Override
-   public void writeByte(int $$0) throws IOException {
-      this.a.writeByte($$0);
-   }
-
-   @Override
-   public void writeShort(int $$0) throws IOException {
-      this.a.writeShort($$0);
-   }
-
-   @Override
-   public void writeChar(int $$0) throws IOException {
-      this.a.writeChar($$0);
-   }
-
-   @Override
-   public void writeInt(int $$0) throws IOException {
-      this.a.writeInt($$0);
-   }
-
-   @Override
-   public void writeLong(long $$0) throws IOException {
-      this.a.writeLong($$0);
-   }
-
-   @Override
-   public void writeFloat(float $$0) throws IOException {
-      this.a.writeFloat($$0);
-   }
-
-   @Override
-   public void writeDouble(double $$0) throws IOException {
-      this.a.writeDouble($$0);
-   }
-
-   @Override
-   public void writeBytes(String $$0) throws IOException {
-      this.a.writeBytes($$0);
-   }
-
-   @Override
-   public void writeChars(String $$0) throws IOException {
-      this.a.writeChars($$0);
-   }
-
-   @Override
-   public void writeUTF(String $$0) throws IOException {
-      this.a.writeUTF($$0);
+   @FunctionalInterface
+   public interface a {
+      ezr fetch(int var1, int var2, int var3);
    }
 }

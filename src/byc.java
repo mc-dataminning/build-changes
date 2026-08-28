@@ -1,37 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class byc {
-   public static bye<bva> a(float $$0) {
-      return cag.a((Function<cag.b<bva>, ? extends App<cag.c<bva>, caj<bva>>>)($$1 -> $$1.group($$1.c(cee.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dx())) {
-                  return false;
-               } else {
-                  Optional<ezn> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new ceh($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class byc extends bwx<coc> {
+   private final float c;
+
+   public byc(float $$0) {
+      super(ImmutableMap.of(cei.m, cej.c, cei.n, cej.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   @Nullable
-   private static ezn a(arn $$0, bva $$1) {
-      azs $$2 = $$1.ea();
-      jh $$3 = $$1.dx();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jh $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return ezn.c($$5);
-         }
-      }
-
-      return null;
+   protected boolean a(arq $$0, coc $$1) {
+      cor $$2 = $$1.gv();
+      return $$1.bN() && $$2 != null && !$$1.bl() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cd != null;
    }
 
-   public static boolean a(arn $$0, bva $$1, jh $$2) {
-      return $$0.h($$2) && (double)$$0.a(ebf.a.e, $$2).v() <= $$1.dE();
+   protected boolean a(arq $$0, coc $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(arq $$0, coc $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(arq $$0, coc $$1, long $$2) {
+      bwg<?> $$3 = $$1.ee();
+      $$3.b(cei.m);
+      $$3.b(cei.n);
+   }
+
+   protected void d(arq $$0, coc $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(coc $$0) {
+      bwg<?> $$1 = $$0.ee();
+      $$1.a(cei.m, new cel(new bxi($$0.gv(), false), this.c, 2));
+      $$1.a(cei.n, new bxi($$0.gv(), true));
    }
 }

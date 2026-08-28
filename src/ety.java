@@ -1,139 +1,544 @@
-import java.util.Collections;
-import java.util.EnumMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class ety {
-   private static final Set<alh<euh>> bd = new HashSet<>();
-   private static final Set<alh<euh>> be = Collections.unmodifiableSet(bd);
-   public static final alh<euh> a = a("chests/spawn_bonus_chest");
-   public static final alh<euh> b = a("chests/end_city_treasure");
-   public static final alh<euh> c = a("chests/simple_dungeon");
-   public static final alh<euh> d = a("chests/village/village_weaponsmith");
-   public static final alh<euh> e = a("chests/village/village_toolsmith");
-   public static final alh<euh> f = a("chests/village/village_armorer");
-   public static final alh<euh> g = a("chests/village/village_cartographer");
-   public static final alh<euh> h = a("chests/village/village_mason");
-   public static final alh<euh> i = a("chests/village/village_shepherd");
-   public static final alh<euh> j = a("chests/village/village_butcher");
-   public static final alh<euh> k = a("chests/village/village_fletcher");
-   public static final alh<euh> l = a("chests/village/village_fisher");
-   public static final alh<euh> m = a("chests/village/village_tannery");
-   public static final alh<euh> n = a("chests/village/village_temple");
-   public static final alh<euh> o = a("chests/village/village_desert_house");
-   public static final alh<euh> p = a("chests/village/village_plains_house");
-   public static final alh<euh> q = a("chests/village/village_taiga_house");
-   public static final alh<euh> r = a("chests/village/village_snowy_house");
-   public static final alh<euh> s = a("chests/village/village_savanna_house");
-   public static final alh<euh> t = a("chests/abandoned_mineshaft");
-   public static final alh<euh> u = a("chests/nether_bridge");
-   public static final alh<euh> v = a("chests/stronghold_library");
-   public static final alh<euh> w = a("chests/stronghold_crossing");
-   public static final alh<euh> x = a("chests/stronghold_corridor");
-   public static final alh<euh> y = a("chests/desert_pyramid");
-   public static final alh<euh> z = a("chests/jungle_temple");
-   public static final alh<euh> A = a("chests/jungle_temple_dispenser");
-   public static final alh<euh> B = a("chests/igloo_chest");
-   public static final alh<euh> C = a("chests/woodland_mansion");
-   public static final alh<euh> D = a("chests/underwater_ruin_small");
-   public static final alh<euh> E = a("chests/underwater_ruin_big");
-   public static final alh<euh> F = a("chests/buried_treasure");
-   public static final alh<euh> G = a("chests/shipwreck_map");
-   public static final alh<euh> H = a("chests/shipwreck_supply");
-   public static final alh<euh> I = a("chests/shipwreck_treasure");
-   public static final alh<euh> J = a("chests/pillager_outpost");
-   public static final alh<euh> K = a("chests/bastion_treasure");
-   public static final alh<euh> L = a("chests/bastion_other");
-   public static final alh<euh> M = a("chests/bastion_bridge");
-   public static final alh<euh> N = a("chests/bastion_hoglin_stable");
-   public static final alh<euh> O = a("chests/ancient_city");
-   public static final alh<euh> P = a("chests/ancient_city_ice_box");
-   public static final alh<euh> Q = a("chests/ruined_portal");
-   public static final alh<euh> R = a("chests/trial_chambers/reward");
-   public static final alh<euh> S = a("chests/trial_chambers/reward_common");
-   public static final alh<euh> T = a("chests/trial_chambers/reward_rare");
-   public static final alh<euh> U = a("chests/trial_chambers/reward_unique");
-   public static final alh<euh> V = a("chests/trial_chambers/reward_ominous");
-   public static final alh<euh> W = a("chests/trial_chambers/reward_ominous_common");
-   public static final alh<euh> X = a("chests/trial_chambers/reward_ominous_rare");
-   public static final alh<euh> Y = a("chests/trial_chambers/reward_ominous_unique");
-   public static final alh<euh> Z = a("chests/trial_chambers/supply");
-   public static final alh<euh> aa = a("chests/trial_chambers/corridor");
-   public static final alh<euh> ab = a("chests/trial_chambers/intersection");
-   public static final alh<euh> ac = a("chests/trial_chambers/intersection_barrel");
-   public static final alh<euh> ad = a("chests/trial_chambers/entrance");
-   public static final alh<euh> ae = a("dispensers/trial_chambers/corridor");
-   public static final alh<euh> af = a("dispensers/trial_chambers/chamber");
-   public static final alh<euh> ag = a("dispensers/trial_chambers/water");
-   public static final alh<euh> ah = a("pots/trial_chambers/corridor");
-   public static final alh<euh> ai = a("equipment/trial_chamber");
-   public static final alh<euh> aj = a("equipment/trial_chamber_ranged");
-   public static final alh<euh> ak = a("equipment/trial_chamber_melee");
-   public static final Map<cuy, alh<euh>> al = ae.a(new EnumMap<>(cuy.class), $$0 -> a((EnumMap<cuy, alh<euh>>)$$0, "entities/sheep"));
-   public static final alh<euh> am = a("gameplay/fishing");
-   public static final alh<euh> an = a("gameplay/fishing/junk");
-   public static final alh<euh> ao = a("gameplay/fishing/treasure");
-   public static final alh<euh> ap = a("gameplay/fishing/fish");
-   public static final alh<euh> aq = a("gameplay/cat_morning_gift");
-   public static final alh<euh> ar = a("gameplay/hero_of_the_village/armorer_gift");
-   public static final alh<euh> as = a("gameplay/hero_of_the_village/butcher_gift");
-   public static final alh<euh> at = a("gameplay/hero_of_the_village/cartographer_gift");
-   public static final alh<euh> au = a("gameplay/hero_of_the_village/cleric_gift");
-   public static final alh<euh> av = a("gameplay/hero_of_the_village/farmer_gift");
-   public static final alh<euh> aw = a("gameplay/hero_of_the_village/fisherman_gift");
-   public static final alh<euh> ax = a("gameplay/hero_of_the_village/fletcher_gift");
-   public static final alh<euh> ay = a("gameplay/hero_of_the_village/leatherworker_gift");
-   public static final alh<euh> az = a("gameplay/hero_of_the_village/librarian_gift");
-   public static final alh<euh> aA = a("gameplay/hero_of_the_village/mason_gift");
-   public static final alh<euh> aB = a("gameplay/hero_of_the_village/shepherd_gift");
-   public static final alh<euh> aC = a("gameplay/hero_of_the_village/toolsmith_gift");
-   public static final alh<euh> aD = a("gameplay/hero_of_the_village/weaponsmith_gift");
-   public static final alh<euh> aE = a("gameplay/hero_of_the_village/unemployed_gift");
-   public static final alh<euh> aF = a("gameplay/hero_of_the_village/baby_gift");
-   public static final alh<euh> aG = a("gameplay/sniffer_digging");
-   public static final alh<euh> aH = a("gameplay/panda_sneeze");
-   public static final alh<euh> aI = a("gameplay/chicken_lay");
-   public static final alh<euh> aJ = a("gameplay/armadillo_shed");
-   public static final alh<euh> aK = a("gameplay/piglin_bartering");
-   public static final alh<euh> aL = a("spawners/trial_chamber/key");
-   public static final alh<euh> aM = a("spawners/trial_chamber/consumables");
-   public static final alh<euh> aN = a("spawners/ominous/trial_chamber/key");
-   public static final alh<euh> aO = a("spawners/ominous/trial_chamber/consumables");
-   public static final alh<euh> aP = a("spawners/trial_chamber/items_to_drop_when_ominous");
-   public static final alh<euh> aQ = a("shearing/bogged");
-   public static final alh<euh> aR = a("shearing/mooshroom");
-   public static final alh<euh> aS = a("shearing/mooshroom/red");
-   public static final alh<euh> aT = a("shearing/mooshroom/brown");
-   public static final alh<euh> aU = a("shearing/snow_golem");
-   public static final alh<euh> aV = a("shearing/sheep");
-   public static final Map<cuy, alh<euh>> aW = ae.a(new EnumMap<>(cuy.class), $$0 -> a((EnumMap<cuy, alh<euh>>)$$0, "shearing/sheep"));
-   public static final alh<euh> aX = a("archaeology/desert_well");
-   public static final alh<euh> aY = a("archaeology/desert_pyramid");
-   public static final alh<euh> aZ = a("archaeology/trail_ruins_common");
-   public static final alh<euh> ba = a("archaeology/trail_ruins_rare");
-   public static final alh<euh> bb = a("archaeology/ocean_ruin_warm");
-   public static final alh<euh> bc = a("archaeology/ocean_ruin_cold");
+public class ety implements etz, eua {
+   private static final Logger f = LogUtils.getLogger();
+   public static final String a = "LevelName";
+   protected static final String b = "Player";
+   protected static final String c = "WorldGenSettings";
+   private dfj g;
+   private final ech h;
+   private final ety.a i;
+   private final Lifecycle j;
+   private jh k;
+   private float l;
+   private long m;
+   private long n;
+   @Nullable
+   private final un o;
+   private final int p;
+   private int q;
+   private boolean r;
+   private int s;
+   private boolean t;
+   private int u;
+   private boolean v;
+   private boolean w;
+   private dxe.c x;
+   private dzm.a y;
+   @Nullable
+   private un z;
+   private int A;
+   private int B;
+   @Nullable
+   private UUID C;
+   private final Set<String> D;
+   private boolean E;
+   private final Set<String> F;
+   private final eze<MinecraftServer> G;
 
-   private static void a(EnumMap<cuy, alh<euh>> $$0, String $$1) {
-      for (cuy $$2 : cuy.values()) {
-         $$0.put($$2, a($$1 + "/" + $$2.b()));
+   private ety(
+      @Nullable un $$0,
+      boolean $$1,
+      jh $$2,
+      float $$3,
+      long $$4,
+      long $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      boolean $$9,
+      int $$10,
+      boolean $$11,
+      boolean $$12,
+      boolean $$13,
+      dxe.c $$14,
+      int $$15,
+      int $$16,
+      @Nullable UUID $$17,
+      Set<String> $$18,
+      Set<String> $$19,
+      eze<MinecraftServer> $$20,
+      @Nullable un $$21,
+      dzm.a $$22,
+      dfj $$23,
+      ech $$24,
+      ety.a $$25,
+      Lifecycle $$26
+   ) {
+      this.E = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.p = $$6;
+      this.q = $$7;
+      this.s = $$8;
+      this.r = $$9;
+      this.u = $$10;
+      this.t = $$11;
+      this.v = $$12;
+      this.w = $$13;
+      this.x = $$14;
+      this.A = $$15;
+      this.B = $$16;
+      this.C = $$17;
+      this.D = $$18;
+      this.F = $$19;
+      this.o = $$0;
+      this.G = $$20;
+      this.z = $$21;
+      this.y = $$22;
+      this.g = $$23;
+      this.h = $$24;
+      this.i = $$25;
+      this.j = $$26;
+   }
+
+   public ety(dfj $$0, ech $$1, ety.a $$2, Lifecycle $$3) {
+      this(
+         null,
+         false,
+         jh.c,
+         0.0F,
+         0L,
+         0L,
+         19133,
+         0,
+         0,
+         false,
+         0,
+         false,
+         false,
+         false,
+         dxe.d,
+         0,
+         0,
+         null,
+         Sets.newLinkedHashSet(),
+         new HashSet<>(),
+         new eze<>(ezd.a),
+         null,
+         dzm.a.b,
+         $$0.h(),
+         $$1,
+         $$2,
+         $$3
+      );
+   }
+
+   public static <T> ety a(Dynamic<T> $$0, dfj $$1, ety.a $$2, ech $$3, Lifecycle $$4) {
+      long $$5 = $$0.get("Time").asLong(0L);
+      return new ety(
+         (un)$$0.get("Player").flatMap(un.a::parse).result().orElse(null),
+         $$0.get("WasModded").asBoolean(false),
+         new jh($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
+         $$0.get("SpawnAngle").asFloat(0.0F),
+         $$5,
+         $$0.get("DayTime").asLong($$5),
+         etw.a($$0).a(),
+         $$0.get("clearWeatherTime").asInt(0),
+         $$0.get("rainTime").asInt(0),
+         $$0.get("raining").asBoolean(false),
+         $$0.get("thunderTime").asInt(0),
+         $$0.get("thundering").asBoolean(false),
+         $$0.get("initialized").asBoolean(true),
+         $$0.get("DifficultyLocked").asBoolean(false),
+         dxe.c.a($$0, dxe.d),
+         $$0.get("WanderingTraderSpawnDelay").asInt(0),
+         $$0.get("WanderingTraderSpawnChance").asInt(0),
+         (UUID)$$0.get("WanderingTraderId").read(kk.a).result().orElse(null),
+         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
+         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
+         new eze<>(ezd.a, $$0.get("ScheduledEvents").asStream()),
+         (un)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
+         $$0.get("DragonFight").read(dzm.a.a).resultOrPartial(f::error).orElse(dzm.a.b),
+         $$1,
+         $$3,
+         $$2,
+         $$4
+      );
+   }
+
+   @Override
+   public un a(ke $$0, @Nullable un $$1) {
+      if ($$1 == null) {
+         $$1 = this.o;
+      }
+
+      un $$2 = new un();
+      this.a($$0, $$2, $$1);
+      return $$2;
+   }
+
+   private void a(ke $$0, un $$1, @Nullable un $$2) {
+      $$1.a("ServerBrands", a(this.D));
+      $$1.a("WasModded", this.E);
+      if (!this.F.isEmpty()) {
+         $$1.a("removed_features", a(this.F));
+      }
+
+      un $$3 = new un();
+      $$3.a("Name", ab.b().c());
+      $$3.a("Id", ab.b().d().c());
+      $$3.a("Snapshot", !ab.b().g());
+      $$3.a("Series", ab.b().d().b());
+      $$1.a("Version", $$3);
+      vc.e($$1);
+      DynamicOps<vk> $$4 = $$0.a(vb.a);
+      ecf.a($$4, this.h, $$0).resultOrPartial(ae.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
+      $$1.a("GameType", this.g.b().a());
+      $$1.a("SpawnX", this.k.u());
+      $$1.a("SpawnY", this.k.v());
+      $$1.a("SpawnZ", this.k.w());
+      $$1.a("SpawnAngle", this.l);
+      $$1.a("Time", this.m);
+      $$1.a("DayTime", this.n);
+      $$1.a("LastPlayed", ae.e());
+      $$1.a("LevelName", this.g.a());
+      $$1.a("version", 19133);
+      $$1.a("clearWeatherTime", this.q);
+      $$1.a("rainTime", this.s);
+      $$1.a("raining", this.r);
+      $$1.a("thunderTime", this.u);
+      $$1.a("thundering", this.t);
+      $$1.a("hardcore", this.g.c());
+      $$1.a("allowCommands", this.g.e());
+      $$1.a("initialized", this.v);
+      this.x.a($$1);
+      $$1.a("Difficulty", (byte)this.g.d().a());
+      $$1.a("DifficultyLocked", this.w);
+      $$1.a("GameRules", this.g.f().a());
+      $$1.a("DragonFight", (vk)dzm.a.a.encodeStart(vb.a, this.y).getOrThrow());
+      if ($$2 != null) {
+         $$1.a("Player", $$2);
+      }
+
+      dgc.b.encodeStart(vb.a, this.g.g()).ifSuccess($$1x -> $$1.a((un)$$1x)).ifError($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
+      if (this.z != null) {
+         $$1.a("CustomBossEvents", this.z);
+      }
+
+      $$1.a("ScheduledEvents", this.G.b());
+      $$1.a("WanderingTraderSpawnDelay", this.A);
+      $$1.a("WanderingTraderSpawnChance", this.B);
+      if (this.C != null) {
+         $$1.a("WanderingTraderId", this.C);
       }
    }
 
-   private static alh<euh> a(String $$0) {
-      return a(alh.a(lz.bd, ali.b($$0)));
+   private static ut a(Set<String> $$0) {
+      ut $$1 = new ut();
+      $$0.stream().map(vi::a).forEach($$1::add);
+      return $$1;
    }
 
-   private static alh<euh> a(alh<euh> $$0) {
-      if (bd.add($$0)) {
-         return $$0;
-      } else {
-         throw new IllegalArgumentException($$0.a() + " is already a registered built-in loot table");
-      }
+   @Override
+   public jh a() {
+      return this.k;
    }
 
-   public static Set<alh<euh>> a() {
-      return be;
+   @Override
+   public float b() {
+      return this.l;
+   }
+
+   @Override
+   public long c() {
+      return this.m;
+   }
+
+   @Override
+   public long d() {
+      return this.n;
+   }
+
+   @Nullable
+   @Override
+   public un w() {
+      return this.o;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   public void a(jh $$0, float $$1) {
+      this.k = $$0.j();
+      this.l = $$1;
+   }
+
+   @Override
+   public String e() {
+      return this.g.a();
+   }
+
+   @Override
+   public int x() {
+      return this.p;
+   }
+
+   @Override
+   public int f() {
+      return this.q;
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public boolean g() {
+      return this.t;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.t = $$0;
+   }
+
+   @Override
+   public int h() {
+      return this.u;
+   }
+
+   @Override
+   public void b(int $$0) {
+      this.u = $$0;
+   }
+
+   @Override
+   public boolean i() {
+      return this.r;
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int j() {
+      return this.s;
+   }
+
+   @Override
+   public void c(int $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public dfc k() {
+      return this.g.b();
+   }
+
+   @Override
+   public void a(dfc $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean l() {
+      return this.g.c();
+   }
+
+   @Override
+   public boolean m() {
+      return this.g.e();
+   }
+
+   @Override
+   public boolean n() {
+      return this.v;
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.v = $$0;
+   }
+
+   @Override
+   public dfb o() {
+      return this.g.f();
+   }
+
+   @Override
+   public dxe.c p() {
+      return this.x;
+   }
+
+   @Override
+   public void a(dxe.c $$0) {
+      this.x = $$0;
+   }
+
+   @Override
+   public bse q() {
+      return this.g.d();
+   }
+
+   @Override
+   public void a(bse $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean r() {
+      return this.w;
+   }
+
+   @Override
+   public void d(boolean $$0) {
+      this.w = $$0;
+   }
+
+   @Override
+   public eze<MinecraftServer> s() {
+      return this.G;
+   }
+
+   @Override
+   public void a(p $$0, dfh $$1) {
+      etz.super.a($$0, $$1);
+      eua.super.a($$0);
+   }
+
+   @Override
+   public ech y() {
+      return this.h;
+   }
+
+   @Override
+   public boolean z() {
+      return this.i == ety.a.b;
+   }
+
+   @Override
+   public boolean A() {
+      return this.i == ety.a.c;
+   }
+
+   @Override
+   public Lifecycle B() {
+      return this.j;
+   }
+
+   @Override
+   public dzm.a C() {
+      return this.y;
+   }
+
+   @Override
+   public void a(dzm.a $$0) {
+      this.y = $$0;
+   }
+
+   @Override
+   public dgc D() {
+      return this.g.g();
+   }
+
+   @Override
+   public void a(dgc $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public un E() {
+      return this.z;
+   }
+
+   @Override
+   public void a(@Nullable un $$0) {
+      this.z = $$0;
+   }
+
+   @Override
+   public int t() {
+      return this.A;
+   }
+
+   @Override
+   public void d(int $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public int u() {
+      return this.B;
+   }
+
+   @Override
+   public void e(int $$0) {
+      this.B = $$0;
+   }
+
+   @Nullable
+   @Override
+   public UUID v() {
+      return this.C;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+      this.C = $$0;
+   }
+
+   @Override
+   public void a(String $$0, boolean $$1) {
+      this.D.add($$0);
+      this.E |= $$1;
+   }
+
+   @Override
+   public boolean F() {
+      return this.E;
+   }
+
+   @Override
+   public Set<String> G() {
+      return ImmutableSet.copyOf(this.D);
+   }
+
+   @Override
+   public Set<String> H() {
+      return Set.copyOf(this.F);
+   }
+
+   @Override
+   public etz I() {
+      return this;
+   }
+
+   @Override
+   public dfj J() {
+      return this.g.h();
+   }
+
+   @Deprecated
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

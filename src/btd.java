@@ -1,36 +1,46 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-class btd extends btg {
-   private final boolean c;
+public record btd(String i) {
+   public static final btd a = new btd("generic");
+   public static final btd b = new btd("ladder");
+   public static final btd c = new btd("vines");
+   public static final btd d = new btd("weeping_vines");
+   public static final btd e = new btd("twisting_vines");
+   public static final btd f = new btd("scaffolding");
+   public static final btd g = new btd("other_climbable");
+   public static final btd h = new btd("water");
 
-   public btd(bti $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.c = $$2;
+   public static btd a(dvo $$0) {
+      if ($$0.a(dil.cO) || $$0.a(axd.Q)) {
+         return b;
+      } else if ($$0.a(dil.ff)) {
+         return c;
+      } else if ($$0.a(dil.oz) || $$0.a(dil.oA)) {
+         return d;
+      } else if ($$0.a(dil.oB) || $$0.a(dil.oC)) {
+         return e;
+      } else {
+         return $$0.a(dil.nS) ? f : g;
+      }
    }
 
-   @Override
-   public boolean a(bva $$0, int $$1) {
-      if (this.c == $$0.eF()) {
-         $$0.c((float)Math.max(4 << $$1, 0));
+   @Nullable
+   public static btd a(bve $$0) {
+      Optional<jh> $$1 = $$0.eR();
+      if ($$1.isPresent()) {
+         dvo $$2 = $$0.dY().a_($$1.get());
+         return a($$2);
       } else {
-         $$0.a($$0.dY().q(), (float)(6 << $$1));
+         return $$0.bl() ? h : null;
       }
-
-      return true;
    }
 
-   @Override
-   public void a(@Nullable bue $$0, @Nullable bue $$1, bva $$2, int $$3, double $$4) {
-      if (this.c == $$2.eF()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.c((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dY().q(), (float)$$6);
-         } else {
-            $$2.a($$2.dY().c($$0, $$1), (float)$$6);
-         }
-      }
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

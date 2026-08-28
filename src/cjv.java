@@ -1,18 +1,6 @@
-import javax.annotation.Nullable;
-
-public class cjv extends cjq {
-   @Nullable
-   private ezn b;
-
-   public cjv(cjo $$0) {
+public abstract class cjv extends cju {
+   public cjv(cjs $$0) {
       super($$0);
-   }
-
-   @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = this.a.dv();
-      }
    }
 
    @Override
@@ -21,23 +9,12 @@ public class cjv extends cjq {
    }
 
    @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public float f() {
-      return 1.0F;
-   }
-
-   @Nullable
-   @Override
-   public ezn g() {
-      return this.b;
-   }
-
-   @Override
-   public cke<cjv> i() {
-      return cke.k;
+   public float a(bsy $$0, float $$1) {
+      if (!($$0.c() instanceof coy) && !($$0.c() instanceof cqc)) {
+         return super.a($$0, $$1);
+      } else {
+         $$0.c().d(1.0F);
+         return 0.0F;
+      }
    }
 }

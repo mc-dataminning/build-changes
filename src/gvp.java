@@ -1,3 +1,5 @@
-public class gvp extends gvo {
-   public float C = -1.0F;
+public class gvp extends gwb {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

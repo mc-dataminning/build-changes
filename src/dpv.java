@@ -1,46 +1,60 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dpv extends dpo {
-   protected dpv(dvi.d $$0) {
+public class dpv extends dij {
+   public static final MapCodec<dpv> a = b(dpv::new);
+   protected static final fal b = dij.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
+
+   @Override
+   public MapCodec<dpv> a() {
+      return a;
+   }
+
+   public dpv(dvn.d $$0) {
       super($$0);
    }
 
-   private static boolean b(dvj $$0, dfe $$1, jh $$2) {
-      jh $$3 = $$2.d();
-      dvj $$4 = $$1.a_($$3);
-      if ($$4.a(dig.dN) && $$4.c(dpn.c) == 1) {
-         return true;
-      } else if ($$4.y().e() == 8) {
-         return false;
-      } else {
-         int $$5 = erb.a($$0, $$4, jm.b, $$4.g());
-         return $$5 < 15;
-      }
+   @Override
+   protected fal b(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return b;
    }
 
    @Override
-   protected abstract MapCodec<? extends dpv> a();
-
-   private static boolean c(dvj $$0, dfe $$1, jh $$2) {
-      jh $$3 = $$2.d();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(axg.a);
+   protected fal b_(dvo $$0, dek $$1, jh $$2) {
+      return fai.b();
    }
 
    @Override
-   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dig.j.m());
-      } else {
-         if ($$1.A($$2.d()) >= 9) {
-            dvj $$4 = this.m();
+   protected fal c(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return fai.b();
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               jh $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dig.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.b(c, Boolean.valueOf($$1.a_($$6.d()).a(dig.dN))));
-               }
-            }
-         }
+   @Override
+   protected void a(dvo $$0, arq $$1, jh $$2, azv $$3) {
+      dip.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      if ($$4 == jm.b && $$6.a(dil.G)) {
+         $$2.a($$3, this, 20);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void b(dvo $$0, dff $$1, jh $$2, dvo $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
+
+   @Override
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(dvo $$0, dek $$1, jh $$2) {
+      return 0.2F;
    }
 }

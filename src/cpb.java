@@ -1,274 +1,62 @@
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
 import java.util.List;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
 
-public class cpb extends cpg implements cpd {
-   private static final akl<cwb> b = akp.a(cpb.class, akn.h);
-   private static final akl<OptionalInt> c = akp.a(cpb.class, akn.v);
-   private static final akl<Boolean> d = akp.a(cpb.class, akn.k);
-   private int e;
-   private int f;
-   @Nullable
-   private bva g;
+public class cpb extends coz {
+   public static final float e = 4.0F;
 
-   public cpb(bul<? extends cpb> $$0, dfb $$1) {
+   public cpb(bup<? extends cpb> $$0, dff $$1) {
       super($$0, $$1);
    }
 
-   public cpb(dfb $$0, double $$1, double $$2, double $$3, cwb $$4) {
-      super(bul.P, $$0);
-      this.e = 0;
-      this.a_($$1, $$2, $$3);
-      this.am.a(b, $$4.v());
-      int $$5 = 1;
-      cyr $$6 = $$4.a(ku.af);
-      if ($$6 != null) {
-         $$5 += $$6.a();
-      }
-
-      this.n(this.af.a(0.0, 0.002297), 0.05, this.af.a(0.0, 0.002297));
-      this.f = 10 * $$5 + this.af.a(6) + this.af.a(7);
-   }
-
-   public cpb(dfb $$0, @Nullable bue $$1, double $$2, double $$3, double $$4, cwb $$5) {
-      this($$0, $$2, $$3, $$4, $$5);
-      this.c($$1);
-   }
-
-   public cpb(dfb $$0, cwb $$1, bva $$2) {
-      this($$0, $$2, $$2.dC(), $$2.dE(), $$2.dI(), $$1);
-      this.am.a(c, OptionalInt.of($$2.as()));
-      this.g = $$2;
-   }
-
-   public cpb(dfb $$0, cwb $$1, double $$2, double $$3, double $$4, boolean $$5) {
-      this($$0, $$2, $$3, $$4, $$1);
-      this.am.a(d, $$5);
-   }
-
-   public cpb(dfb $$0, cwb $$1, bue $$2, double $$3, double $$4, double $$5, boolean $$6) {
-      this($$0, $$1, $$3, $$4, $$5, $$6);
-      this.c($$2);
+   public cpb(dff $$0, bve $$1, ezr $$2) {
+      super(bup.A, $$1, $$2, $$0);
    }
 
    @Override
-   protected void a(akp.a $$0) {
-      $$0.a(b, y());
-      $$0.a(c, OptionalInt.empty());
-      $$0.a(d, false);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 4096.0 && !this.w();
-   }
-
-   @Override
-   public boolean k(double $$0, double $$1, double $$2) {
-      return super.k($$0, $$1, $$2) && !this.w();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      ezl $$6;
-      if (this.w()) {
-         if (this.g == null) {
-            this.am.a(c).ifPresent($$0x -> {
-               bue $$1x = this.dX().a($$0x);
-               if ($$1x instanceof bva) {
-                  this.g = (bva)$$1x;
-               }
-            });
-         }
-
-         if (this.g != null) {
-            ezn $$4;
-            if (this.g.fL()) {
-               ezn $$0 = this.g.bU();
-               double $$1 = 1.5;
-               double $$2 = 0.1;
-               ezn $$3 = this.g.dA();
-               this.g.h($$3.b($$0.d * 0.1 + ($$0.d * 1.5 - $$3.d) * 0.5, $$0.e * 0.1 + ($$0.e * 1.5 - $$3.e) * 0.5, $$0.f * 0.1 + ($$0.f * 1.5 - $$3.f) * 0.5));
-               $$4 = this.g.a(cwf.uw);
-            } else {
-               $$4 = ezn.c;
+   protected void a(ezp $$0) {
+      super.a($$0);
+      if ($$0.d() != ezp.a.c || !this.e(((ezo)$$0).a())) {
+         if (!this.dY().C) {
+            List<bve> $$1 = this.dY().a(bve.class, this.cT().c(4.0, 2.0, 4.0));
+            bub $$2 = new bub(this.dY(), this.dD(), this.dF(), this.dJ());
+            bui $$3 = this.s();
+            if ($$3 instanceof bve) {
+               $$2.a((bve)$$3);
             }
 
-            this.a_(this.g.dC() + $$4.d, this.g.dE() + $$4.e, this.g.dI() + $$4.f);
-            this.h(this.g.dA());
-         }
-
-         $$6 = cpi.a(this, this::b);
-      } else {
-         if (!this.o()) {
-            double $$7 = this.Q ? 1.0 : 1.15;
-            this.h(this.dA().d($$7, 1.0, $$7).b(0.0, 0.04, 0.0));
-         }
-
-         ezn $$8 = this.dA();
-         $$6 = cpi.a(this, this::b);
-         this.a(bve.a, $$8);
-         this.aL();
-         this.h($$8);
-      }
-
-      if (!this.ae && this.bM() && $$6.d() != ezl.a.a) {
-         this.b($$6);
-         this.as = true;
-      }
-
-      this.F();
-      if (this.e == 0 && !this.bc()) {
-         this.dX().a(null, this.dC(), this.dE(), this.dI(), awl.iQ, awm.i, 3.0F, 1.0F);
-      }
-
-      this.e++;
-      if (this.dX().C && this.e % 2 < 2) {
-         this.dX().a(lr.D, this.dC(), this.dE(), this.dI(), this.af.k() * 0.05, -this.dA().e * 0.5, this.af.k() * 0.05);
-      }
-
-      if (!this.dX().C && this.e > this.f) {
-         this.q();
-      }
-   }
-
-   private void q() {
-      this.dX().a(this, (byte)17);
-      this.a(eag.w, this.s());
-      this.v();
-      this.av();
-   }
-
-   @Override
-   protected void a(ezk $$0) {
-      super.a($$0);
-      if (!this.dX().C) {
-         this.q();
-      }
-   }
-
-   @Override
-   protected void a(ezj $$0) {
-      jh $$1 = new jh($$0.b());
-      this.dX().a_($$1).a(this.dX(), $$1, this);
-      if (!this.dX().y_() && this.t()) {
-         this.q();
-      }
-
-      super.a($$0);
-   }
-
-   private boolean t() {
-      return !this.x().isEmpty();
-   }
-
-   private void v() {
-      float $$0 = 0.0F;
-      List<cyq> $$1 = this.x();
-      if (!$$1.isEmpty()) {
-         $$0 = 5.0F + (float)($$1.size() * 2);
-      }
-
-      if ($$0 > 0.0F) {
-         if (this.g != null) {
-            this.g.a(this.dY().a(this, this.s()), 5.0F + (float)($$1.size() * 2));
-         }
-
-         double $$2 = 5.0;
-         ezn $$3 = this.dv();
-
-         for (bva $$5 : this.dX().a(bva.class, this.cS().g(5.0))) {
-            if ($$5 != this.g && !(this.g($$5) > 25.0)) {
-               boolean $$6 = false;
-
-               for (int $$7 = 0; $$7 < 2; $$7++) {
-                  ezn $$8 = new ezn($$5.dC(), $$5.e(0.5 * (double)$$7), $$5.dI());
-                  ezl $$9 = this.dX().a(new dej($$3, $$8, dej.a.a, dej.b.a, this));
-                  if ($$9.d() == ezl.a.a) {
-                     $$6 = true;
+            $$2.a(ls.h);
+            $$2.a(3.0F);
+            $$2.a(600);
+            $$2.c((7.0F - $$2.g()) / (float)$$2.j());
+            $$2.a(new btn(btp.g, 1, 1));
+            if (!$$1.isEmpty()) {
+               for (bve $$4 : $$1) {
+                  double $$5 = this.g($$4);
+                  if ($$5 < 16.0) {
+                     $$2.a_($$4.dD(), $$4.dF(), $$4.dJ());
                      break;
                   }
                }
-
-               if ($$6) {
-                  float $$10 = $$0 * (float)Math.sqrt((5.0 - (double)this.f($$5)) / 5.0);
-                  $$5.a(this.dY().a(this, this.s()), $$10);
-               }
             }
+
+            this.dY().c(2006, this.dy(), this.bd() ? -1 : 1);
+            this.dY().b($$2);
+            this.av();
          }
       }
    }
 
-   private boolean w() {
-      return this.am.a(c).isPresent();
-   }
-
    @Override
-   public boolean o() {
-      return this.am.a(d);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 17 && this.dX().C) {
-         ezn $$1 = this.dA();
-         this.dX().a(this.dC(), this.dE(), this.dI(), $$1.d, $$1.e, $$1.f, this.x());
-      }
-
-      super.b($$0);
-   }
-
-   @Override
-   public void b(uk $$0) {
-      super.b($$0);
-      $$0.a("Life", this.e);
-      $$0.a("LifeTime", this.f);
-      $$0.a("FireworksItem", this.m().a(this.dZ()));
-      $$0.a("ShotAtAngle", this.am.a(d));
-   }
-
-   @Override
-   public void a(uk $$0) {
-      super.a($$0);
-      this.e = $$0.h("Life");
-      this.f = $$0.h("LifeTime");
-      if ($$0.b("FireworksItem", 10)) {
-         this.am.a(b, cwb.a(this.dZ(), (vh)$$0.p("FireworksItem")).orElseGet(cpb::y));
-      } else {
-         this.am.a(b, y());
-      }
-
-      if ($$0.e("ShotAtAngle")) {
-         this.am.a(d, $$0.q("ShotAtAngle"));
-      }
-   }
-
-   private List<cyq> x() {
-      cwb $$0 = this.am.a(b);
-      cyr $$1 = $$0.a(ku.af);
-      return $$1 != null ? $$1.b() : List.of();
-   }
-
-   @Override
-   public cwb m() {
-      return this.am.a(b);
-   }
-
-   @Override
-   public boolean cC() {
+   public boolean a(bsy $$0, float $$1) {
       return false;
    }
 
-   private static cwb y() {
-      return new cwb(cwf.uw);
+   @Override
+   protected lq q() {
+      return ls.h;
    }
 
    @Override
-   public DoubleDoubleImmutablePair a_(bva $$0, bsu $$1) {
-      double $$2 = $$0.dv().d - this.dv().d;
-      double $$3 = $$0.dv().f - this.dv().f;
-      return DoubleDoubleImmutablePair.of($$2, $$3);
+   protected boolean o() {
+      return false;
    }
 }

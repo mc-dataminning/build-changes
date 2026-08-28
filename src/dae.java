@@ -1,150 +1,95 @@
-import java.util.ArrayList;
-import java.util.List;
+public class dae extends dak {
+   public dae(dah $$0) {
+      super($$0);
+   }
 
-public class dae implements das {
-   public static final dae a = new dae(0, 0, List.of());
-   private final int b;
-   private final int c;
-   private final List<cwb> d;
-   private final cos e = new cos();
-   private final int f;
+   public boolean a(dai $$0, dff $$1) {
+      int $$2 = 0;
+      cwf $$3 = cwf.k;
 
-   private dae(int $$0, int $$1, List<cwb> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      int $$3 = 0;
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwf $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cwj.ur)) {
+               if (!$$3.f()) {
+                  return false;
+               }
 
-      for (cwb $$4 : $$2) {
-         if (!$$4.f()) {
-            $$3++;
-            this.e.a($$4, 1);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cwj.uq)) {
+                  return false;
+               }
+
+               $$2++;
+            }
          }
       }
 
-      this.f = $$3;
+      return !$$3.f() && $$2 > 0;
    }
 
-   public static dae a(int $$0, int $$1, List<cwb> $$2) {
-      return b($$0, $$1, $$2).a();
-   }
+   public cwf a(dai $$0, js.a $$1) {
+      int $$2 = 0;
+      cwf $$3 = cwf.k;
 
-   public static dae.a b(int $$0, int $$1, List<cwb> $$2) {
-      if ($$0 != 0 && $$1 != 0) {
-         int $$3 = $$0 - 1;
-         int $$4 = 0;
-         int $$5 = $$1 - 1;
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$1; $$7++) {
-            boolean $$8 = true;
-
-            for (int $$9 = 0; $$9 < $$0; $$9++) {
-               cwb $$10 = $$2.get($$9 + $$7 * $$0);
-               if (!$$10.f()) {
-                  $$3 = Math.min($$3, $$9);
-                  $$4 = Math.max($$4, $$9);
-                  $$8 = false;
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwf $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cwj.ur)) {
+               if (!$$3.f()) {
+                  return cwf.k;
                }
-            }
 
-            if (!$$8) {
-               $$5 = Math.min($$5, $$7);
-               $$6 = Math.max($$6, $$7);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cwj.uq)) {
+                  return cwf.k;
+               }
+
+               $$2++;
             }
          }
+      }
 
-         int $$11 = $$4 - $$3 + 1;
-         int $$12 = $$6 - $$5 + 1;
-         if ($$11 <= 0 || $$12 <= 0) {
-            return dae.a.a;
-         } else if ($$11 == $$0 && $$12 == $$1) {
-            return new dae.a(new dae($$0, $$1, $$2), $$3, $$5);
+      czn $$6 = $$3.a(ku.T);
+      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
+         czn $$7 = $$6.b();
+         if ($$7 == null) {
+            return cwf.k;
          } else {
-            List<cwb> $$13 = new ArrayList<>($$11 * $$12);
-
-            for (int $$14 = 0; $$14 < $$12; $$14++) {
-               for (int $$15 = 0; $$15 < $$11; $$15++) {
-                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
-                  $$13.add($$2.get($$16));
-               }
-            }
-
-            return new dae.a(new dae($$11, $$12, $$13), $$3, $$5);
+            cwf $$8 = $$3.c($$2);
+            $$8.b(ku.T, $$7);
+            return $$8;
          }
       } else {
-         return dae.a.a;
+         return cwf.k;
       }
    }
 
-   @Override
-   public cwb a(int $$0) {
-      return this.d.get($$0);
-   }
+   public jz<cwf> a(dai $$0) {
+      jz<cwf> $$1 = jz.a($$0.a(), cwf.k);
 
-   public cwb a(int $$0, int $$1) {
-      return this.d.get($$0 + $$1 * this.b);
-   }
-
-   @Override
-   public int a() {
-      return this.d.size();
-   }
-
-   @Override
-   public boolean b() {
-      return this.f == 0;
-   }
-
-   public cos c() {
-      return this.e;
-   }
-
-   public List<cwb> d() {
-      return this.d;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.b;
-   }
-
-   public int g() {
-      return this.c;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return !($$0 instanceof dae $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && cwb.a(this.d, $$1.d);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = cwb.a(this.d);
-      $$0 = 31 * $$0 + this.b;
-      return 31 * $$0 + this.c;
-   }
-
-   public static record a(dae b, int c, int d) {
-      public static final dae.a a = new dae.a(dae.a, 0, 0);
-
-      public dae a() {
-         return this.b;
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cwf $$3 = $$0.a($$2);
+         if ($$3.h().l()) {
+            $$1.set($$2, new cwf($$3.h().k()));
+         } else if ($$3.h() instanceof cyb) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
       }
 
-      public int b() {
-         return this.c;
-      }
+      return $$1;
+   }
 
-      public int c() {
-         return this.d;
-      }
+   @Override
+   public day<?> aq_() {
+      return day.d;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

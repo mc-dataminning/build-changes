@@ -1,74 +1,61 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eww {
-   private final Set<ewv<?>> a;
-   private final Set<ewv<?>> b;
+public class eww extends evt {
+   private static final Map<kt<?>, eww.a<?>> b = Stream.of(
+         new eww.a<>(ku.U, ddt::a),
+         new eww.a<>(ku.J, cyt::a),
+         new eww.a<>(ku.l, dcc::a),
+         new eww.a<>(ku.I, dcc::a),
+         new eww.a<>(ku.f, czj::a),
+         new eww.a<>(ku.n, cub::a),
+         new eww.a<>(ku.m, cub::a),
+         new eww.a<>(ku.o, cyw::a),
+         new eww.a<>(ku.ab, cwk::a)
+      )
+      .collect(Collectors.toMap(eww.a::a, $$0 -> (eww.a<?>)$$0));
+   private static final Codec<eww.a<?>> c = lz.ao.q().comapFlatMap($$0 -> {
+      eww.a<?> $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lz.ao.b($$0));
+   }, eww.a::a);
+   public static final MapCodec<eww> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, eww::new)
+   );
+   private final Map<eww.a<?>, Boolean> d;
 
-   eww(Set<ewv<?>> $$0, Set<ewv<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(ewv<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<ewv<?>> a() {
-      return this.a;
-   }
-
-   public Set<ewv<?>> b() {
-      return this.b;
+   private eww(List<exr> $$0, Map<eww.a<?>, Boolean> $$1) {
+      super($$0);
+      this.d = $$1;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   protected cwf a(cwf $$0, eug $$1) {
+      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+      return $$0;
    }
 
-   public void a(eui $$0, eud $$1) {
-      this.a($$0.c(), $$1);
+   @Override
+   public evv<eww> b() {
+      return evw.P;
    }
 
-   public void a(azq $$0, eud $$1) {
-      Set<ewv<?>> $$2 = $$1.a();
-      Set<ewv<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static eww.a c() {
-      return new eww.a();
-   }
-
-   public static class a {
-      private final Set<ewv<?>> a = Sets.newIdentityHashSet();
-      private final Set<ewv<?>> b = Sets.newIdentityHashSet();
-
-      public eww.a a(ewv<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
+   static record a<T>(kt<T> a, eww.b<T> b) {
+      public void a(cwf $$0, boolean $$1) {
+         T $$2 = $$0.a(this.a);
+         if ($$2 != null) {
+            $$0.b(this.a, this.b.withTooltip($$2, $$1));
          }
       }
+   }
 
-      public eww.a b(ewv<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public eww a() {
-         return new eww(this.a, this.b);
-      }
+   @FunctionalInterface
+   interface b<T> {
+      T withTooltip(T var1, boolean var2);
    }
 }

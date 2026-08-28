@@ -1,42 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dga {
-   public static final Codec<dga> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awk.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dga::new)
-   );
-   public static final dga b = new dga(awl.h, 6000, 8, 2.0);
-   private final jq<awk> c;
-   private final int d;
-   private final int e;
-   private final double f;
+public interface dga {
+   void a(bup<?> var1, azv var2);
 
-   public dga(jq<awk> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   static void a(cwf $$0, List<xl> $$1, String $$2) {
+      xl $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(xk.a);
+         $$1.add(xl.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(xk.a().b(xl.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public jq<awk> a() {
-      return this.c;
+   @Nullable
+   static xl a(cwf $$0, String $$1) {
+      un $$2 = $$0.a(ku.Y, cyo.a).d();
+      all $$3 = a($$2, $$1);
+      return $$3 != null ? lz.f.b($$3).map($$0x -> xl.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public double d() {
-      return this.f;
+   @Nullable
+   private static all a(un $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return all.c($$2);
+      } else {
+         return null;
+      }
    }
 }

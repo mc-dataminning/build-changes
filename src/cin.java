@@ -1,132 +1,107 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class cin extends bwt<cil> {
-   public static final int c = 100;
-   public static final int d = 6;
-   public static final int e = 10;
-   private static final float h = 1.75F;
-   private static final float i = 0.75F;
-   public static final int f = 100;
-   public static final int g = 5;
-   private int j;
-   private int k;
-   private final awk l;
-   private final awk m;
-   private ezn n;
-   private cin.a o = cin.a.d;
+public class cin {
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final brs f = brs.a(5, 16);
+   private static final ImmutableList<cfp<? extends cfo<? super cim>>> g = ImmutableList.of(cfp.c, cfp.f, cfp.t, cfp.o);
+   private static final ImmutableList<cei<?>> h = ImmutableList.of(
+      cei.Z, cei.x, cei.y, cei.m, cei.n, cei.E, cei.t, cei.h, cei.O, cei.P, cei.Q, cei.R, new cei[]{cei.r, cei.K}
+   );
 
-   public cin(awk $$0, awk $$1) {
-      super(ImmutableMap.of(cee.m, cef.b, cee.n, cef.c, cee.o, cef.a, cee.Z, cef.b), 100);
-      this.l = $$0;
-      this.m = $$1;
+   protected static void a(cim $$0, azv $$1) {
    }
 
-   protected boolean a(arn $$0, cil $$1) {
-      bva $$2 = $$1.ed().c(cee.o).get();
-      boolean $$3 = this.a($$1, $$2);
-      if (!$$3) {
-         $$1.ed().b(cee.o);
-         this.b($$1, $$2);
+   public static bwg.b<cim> a() {
+      return bwg.a(h, g);
+   }
+
+   protected static bwg<?> a(bwg<cim> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cqi.a));
+      $$0.b(cqi.b);
+      $$0.f();
+      return $$0;
+   }
+
+   private static void b(bwg<cim> $$0) {
+      $$0.a(cqi.a, 0, ImmutableList.of(new bzr(0.8F), new cin.a(4.0F), new byd(45, 90), new byh(), new bxd(cei.P), new bxd(cei.Q)));
+   }
+
+   private static void c(bwg<cim> $$0) {
+      $$0.a(
+         cqi.b,
+         ImmutableList.of(
+            Pair.of(0, byx.a(bup.by, 6.0F, brs.a(30, 60))),
+            Pair.of(1, new bwr(bup.o)),
+            Pair.of(
+               2,
+               new byu(
+                  ImmutableList.of(Pair.of(new bxk($$0x -> 2.5F, $$0x -> $$0x.p_() ? 2.5 : 3.5), 1), Pair.of(cak.a(Predicate.not(cim::t), bwu.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new byo(brs.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4,
+               new byu(
+                  ImmutableMap.of(cei.m, cej.b),
+                  ImmutableList.of(
+                     Pair.of(cak.a(Predicate.not(cim::t), byp.a(2.0F)), 1),
+                     Pair.of(cak.a(Predicate.not(cim::t), bze.a(2.0F, 3)), 1),
+                     Pair.of(new cin.b(20), 1),
+                     Pair.of(new bxh(30, 60), 1)
+                  )
+               )
+            )
+         )
+      );
+   }
+
+   public static void a(cim $$0) {
+      $$0.ee().a(ImmutableList.of(cqi.b));
+   }
+
+   public static Predicate<cwf> b() {
+      return $$0 -> $$0.a(axm.al);
+   }
+
+   public static class a extends bws<cim> {
+      public a(float $$0) {
+         super($$0);
       }
 
-      return $$3 && $$1.ay() != bvm.i && cil.j($$2);
+      protected void a(arq $$0, cim $$1, long $$2) {
+         $$1.gK();
+         super.b($$0, $$1, $$2);
+      }
    }
 
-   protected boolean a(arn $$0, cil $$1, long $$2) {
-      return $$1.ed().a(cee.o) && this.o != cin.a.d && !$$1.ed().a(cee.Z);
-   }
+   public static class b extends bwx<cim> {
+      private final int c;
 
-   protected void b(arn $$0, cil $$1, long $$2) {
-      bva $$3 = $$1.ed().c(cee.o).get();
-      bwv.a($$1, $$3);
-      $$1.c($$3);
-      $$1.ed().a(cee.m, new ceh($$3.dv(), 2.0F, 0));
-      this.k = 10;
-      this.o = cin.a.a;
-   }
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
+      }
 
-   protected void c(arn $$0, cil $$1, long $$2) {
-      $$1.ed().b(cee.o);
-      $$1.q();
-      $$1.b(bvm.a);
-   }
+      protected boolean a(arq $$0, cim $$1) {
+         return !$$1.bl() && $$1.gL() >= (long)this.c && !$$1.M_() && $$1.aL() && !$$1.da() && $$1.gv();
+      }
 
-   private void b(arn $$0, cil $$1) {
-      $$0.a(null, $$1, this.m, awm.g, 2.0F, 1.0F);
-      Optional<bue> $$2 = $$1.t();
-      if ($$2.isPresent()) {
-         bue $$3 = $$2.get();
-         if ($$3.bM()) {
-            $$1.E($$3);
-            if (!$$3.bM()) {
-               $$3.a(bue.c.a);
-            }
+      protected void a(arq $$0, cim $$1, long $$2) {
+         if ($$1.gy()) {
+            $$1.gJ();
+         } else if (!$$1.gs()) {
+            $$1.gI();
          }
       }
-   }
-
-   protected void d(arn $$0, cil $$1, long $$2) {
-      bva $$3 = $$1.ed().c(cee.o).get();
-      $$1.c($$3);
-      switch (this.o) {
-         case a:
-            if ($$3.f($$1) < 1.75F) {
-               $$0.a(null, $$1, this.l, awm.g, 2.0F, 1.0F);
-               $$1.b(bvm.j);
-               $$3.h($$3.dv().a($$1.dv()).d().c(0.75));
-               this.n = $$3.dv();
-               this.j = 0;
-               this.o = cin.a.b;
-            } else if (this.k <= 0) {
-               $$1.ed().a(cee.m, new ceh($$3.dv(), 2.0F, 0));
-               this.k = 10;
-            } else {
-               this.k--;
-            }
-            break;
-         case b:
-            if (this.j++ >= 6) {
-               this.o = cin.a.c;
-               this.b($$0, $$1);
-            }
-            break;
-         case c:
-            if (this.j >= 10) {
-               this.o = cin.a.d;
-            } else {
-               this.j++;
-            }
-         case d:
-      }
-   }
-
-   private boolean a(cil $$0, bva $$1) {
-      ery $$2 = $$0.P().a($$1, 0);
-      return $$2 != null && $$2.m() < 1.75F;
-   }
-
-   private void b(cil $$0, bva $$1) {
-      List<UUID> $$2 = $$0.ed().c(cee.aa).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cH());
-      if ($$2.size() == 5 && $$3) {
-         $$2.remove(0);
-      }
-
-      if ($$3) {
-         $$2.add($$1.cH());
-      }
-
-      $$0.ed().a(cee.aa, $$2, 100L);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

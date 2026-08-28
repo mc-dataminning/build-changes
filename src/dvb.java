@@ -1,113 +1,116 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class dvb extends dhq {
-   public static final MapCodec<dvb> a = b(dvb::new);
-   public static final dwd b = dvd.a;
-   public static final dwh<dwl> c = dvd.c;
-
-   @Override
-   public MapCodec<dvb> a() {
-      return a;
-   }
-
-   public dvb(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jm.c).b(c, dwl.a));
-   }
-
-   @Nullable
-   @Override
-   public dsm a(jh $$0, dvj $$1) {
-      return null;
-   }
-
-   public static dsm a(jh $$0, dvj $$1, dvj $$2, jm $$3, boolean $$4, boolean $$5) {
-      return new dvf($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
-      return a($$2, dso.k, dvf::a);
-   }
-
-   @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dsm $$5 = $$1.c_($$2);
-         if ($$5 instanceof dvf) {
-            ((dvf)$$5).k();
+public enum dvb implements baj {
+   a("inactive", dvb.a.a) {
+      @Override
+      protected void a(arq $$0, jh $$1, duy $$2, dva $$3, boolean $$4) {
+         $$3.a(cwf.k);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      }
+   },
+   b("active", dvb.a.b) {
+      @Override
+      protected void a(arq $$0, jh $$1, duy $$2, dva $$3, boolean $$4) {
+         if (!$$3.b()) {
+            duw.b.a($$0, this, $$2, $$3, $$1);
          }
+
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
       }
-   }
-
-   @Override
-   public void a(dfc $$0, jh $$1, dvj $$2) {
-      jh $$3 = $$1.a($$2.c(b).g());
-      dvj $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dvc && $$4.c(dvc.c)) {
-         $$0.a($$3, false);
+   },
+   c("unlocking", dvb.a.b) {
+      @Override
+      protected void a(arq $$0, jh $$1, duy $$2, dva $$3, boolean $$4) {
+         $$0.a(null, $$1, awo.AN, awp.e);
       }
-   }
-
-   @Override
-   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
-      if (!$$1.C && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bsd.c;
-      } else {
-         return bsd.e;
+   },
+   d("ejecting", dvb.a.b) {
+      @Override
+      protected void a(arq $$0, jh $$1, duy $$2, dva $$3, boolean $$4) {
+         $$0.a(null, $$1, awo.AP, awp.e);
       }
+
+      @Override
+      protected void a(arq $$0, jh $$1, duy $$2, dva $$3) {
+         $$0.a(null, $$1, awo.AH, awp.e);
+      }
+   };
+
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final dvb.a j;
+
+   dvb(final String $$0, final dvb.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
    @Override
-   protected List<cwb> a(dvj $$0, euf.a $$1) {
-      dvf $$2 = this.a($$1.a(), jh.a($$1.a(ewy.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   public String c() {
+      return this.i;
    }
 
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return fae.a();
+   public int a() {
+      return this.j.c;
    }
 
-   @Override
-   protected fah b(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      dvf $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : fae.a();
+   public dvb a(arq $$0, jh $$1, duy $$2, duz $$3, dva $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.aa() + 20L);
+            yield d;
+         }
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.aa() + (long)$$7);
+               yield d;
+            }
+         }
+      };
    }
 
-   @Nullable
-   private dvf a(deg $$0, jh $$1) {
-      dsm $$2 = $$0.c_($$1);
-      return $$2 instanceof dvf ? (dvf)$$2 : null;
+   private static dvb a(arq $$0, jh $$1, duy $$2, duz $$3, dva $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.aa() + 20L);
+      return $$4.c() ? b : a;
    }
 
-   @Override
-   public cwb a(dfe $$0, jh $$1, dvj $$2) {
-      return cwb.k;
+   public void a(arq $$0, jh $$1, dvb $$2, duy $$3, dva $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
    }
 
-   @Override
-   protected dvj a(dvj $$0, dor $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected void a(arq $$0, jh $$1, duy $$2, dva $$3, boolean $$4) {
    }
 
-   @Override
-   protected dvj a(dvj $$0, dna $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(arq $$0, jh $$1, duy $$2, dva $$3) {
    }
 
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b, c);
+   private void a(arq $$0, jh $$1, cwf $$2, float $$3) {
+      la.a($$0, $$2, 2, jm.b, ezr.c($$1).a(jm.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, awo.AJ, awp.e, 1.0F, 0.8F + 0.4F * $$3);
    }
 
-   @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      return false;
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
+      }
    }
 }

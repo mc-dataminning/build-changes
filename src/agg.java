@@ -1,16 +1,23 @@
-public record agg(xi b, xi c) implements zp<ace> {
-   public static final zg<wt, agg> a = zg.a(xk.d, agg::b, xk.d, agg::e, agg::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zr<agg> a() {
-      return agt.aX;
+public class agg implements zs<ach> {
+   public static final agg a = new agg();
+   public static final zj<ByteBuf, agg> b = zj.a(a);
+
+   private agg() {
    }
 
-   public void a(ace $$0) {
+   @Override
+   public zu<agg> a() {
+      return agw.aU;
+   }
+
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public xi e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

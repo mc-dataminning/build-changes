@@ -1,35 +1,13 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
-public final class arh {
-   private final Object2BooleanMap<aro> a = new Object2BooleanOpenHashMap();
+public interface arh {
+   ari d(long var1);
 
-   public Set<aro> a() {
-      return this.a.keySet();
-   }
+   void a(ari var1);
 
-   public void a(aro $$0, boolean $$1) {
-      this.a.put($$0, $$1);
-   }
+   CompletableFuture<dxj> a(ari var1, dyn var2, bah<ari> var3);
 
-   public void a(aro $$0) {
-      this.a.removeBoolean($$0);
-   }
+   aqt a(dyk var1, del var2);
 
-   public void b(aro $$0) {
-      this.a.replace($$0, true);
-   }
-
-   public void c(aro $$0) {
-      this.a.replace($$0, false);
-   }
-
-   public boolean d(aro $$0) {
-      return this.a.getOrDefault($$0, true);
-   }
-
-   public boolean e(aro $$0) {
-      return this.a.getBoolean($$0);
-   }
+   void g();
 }

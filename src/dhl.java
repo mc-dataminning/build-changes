@@ -1,67 +1,45 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dhl extends die implements dpf {
+public class dhl extends dis implements dim {
    public static final MapCodec<dhl> a = b(dhl::new);
-   public static final dwa b = dvz.C;
+   private static final fal b = fai.a(dij.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dij.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
    @Override
    public MapCodec<dhl> a() {
       return a;
    }
 
-   protected dhl(dvi.d $$0) {
+   protected dhl(dvn.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean e_(dvj $$0) {
-      return $$0.y().c();
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return b;
    }
 
    @Override
-   protected dok a_(dvj $$0) {
-      return dok.a;
+   protected boolean b(dvo $$0, dek $$1, jh $$2) {
+      return $$0.a(dil.dR) || super.b($$0, $$1, $$2);
    }
 
    @Override
-   protected float c(dvj $$0, deg $$1, jh $$2) {
-      return 1.0F;
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      return $$0.b_($$1.d()).c();
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return (double)$$0.A.i() < 0.45;
    }
 
    @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(b) ? erl.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dvj a(czs $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == erl.c));
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      dvd.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cwb a(@Nullable com $$0, dfc $$1, jh $$2, dvj $$3) {
-      return $$0 != null && $$0.f() ? dpf.super.a($$0, $$1, $$2, $$3) : cwb.k;
-   }
-
-   @Override
-   public boolean a(@Nullable com $$0, deg $$1, jh $$2, dvj $$3, erj $$4) {
-      return $$0 != null && $$0.f() ? dpf.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected boolean a(dvo $$0, esd $$1) {
+      return false;
    }
 }

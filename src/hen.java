@@ -1,22 +1,22 @@
-public class hen implements fmk {
-   private final xi a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-   public hen(xi $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
+public class hen {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
+
+   public hen(boolean $$0, @Nullable Duration $$1) {
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.a = $$0;
    }
 
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      $$0.a(fji.Q().h, this.a, this.b, this.c, this.d);
-   }
-
-   public xi a() {
-      return this.a;
+   public void a(hed $$0) {
+      if (this.b != null) {
+         $$0.send(hee.d, $$0x -> {
+            $$0x.a(heg.x, (int)this.b.toMillis());
+            $$0x.a(heg.y, this.a);
+         });
+      }
    }
 }

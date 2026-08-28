@@ -1,90 +1,55 @@
 import java.util.EnumSet;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class ccr extends cby {
-   public static final int b = 1;
-   protected final bvi c;
-   protected final double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected boolean h;
-   private final Function<bvi, axq<bsw>> a;
+public class ccr extends ccc {
+   private final bvm a;
+   @Nullable
+   private bve b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public ccr(bvi $$0, double $$1) {
-      this($$0, $$1, axc.F);
-   }
-
-   public ccr(bvi $$0, double $$1, axq<bsw> $$2) {
-      this($$0, $$1, $$1x -> $$2);
-   }
-
-   public ccr(bvi $$0, double $$1, Function<bvi, axq<bsw>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.a(EnumSet.of(cby.a.a));
+   public ccr(bvm $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(ccc.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.h()) {
+      this.b = this.a.m();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         if (this.c.bZ()) {
-            jh $$0 = this.a(this.c.dX(), this.c, 5);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            }
+         ezr $$0 = cfz.a(this.a, 16, 7, this.b.dw(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
          }
-
-         return this.i();
       }
-   }
-
-   protected boolean h() {
-      return this.c.eI() != null && this.c.eI().a(this.a.apply(this.c));
-   }
-
-   protected boolean i() {
-      ezn $$0 = cfv.a(this.c, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.e = $$0.d;
-         this.f = $$0.e;
-         this.g = $$0.f;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.h;
-   }
-
-   @Override
-   public void d() {
-      this.c.P().a(this.e, this.f, this.g, this.d);
-      this.h = true;
-   }
-
-   @Override
-   public void e() {
-      this.h = false;
    }
 
    @Override
    public boolean c() {
-      return !this.c.P().m();
+      return !this.a.P().m() && this.b.bN() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
-   @Nullable
-   protected jh a(deg $$0, bue $$1, int $$2) {
-      jh $$3 = $$1.dx();
-      return !$$0.a_($$3).g($$0, $$3).c() ? null : jh.a($$1.dx(), $$2, 1, $$1x -> $$0.b_($$1x).a(axg.a)).orElse(null);
+   @Override
+   public void e() {
+      this.b = null;
+   }
+
+   @Override
+   public void d() {
+      this.a.P().a(this.c, this.d, this.e, this.f);
    }
 }

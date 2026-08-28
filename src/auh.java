@@ -1,31 +1,8 @@
-import io.netty.buffer.ByteBuf;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record auh(String c, String d, String e) {
-   public static final zg<ByteBuf, auh> a = zg.a(ze.m, auh::b, ze.m, auh::c, ze.m, auh::d, auh::new);
-   public static final String b = "minecraft";
-
-   public static auh a(String $$0) {
-      return new auh("minecraft", $$0, ab.b().b());
-   }
-
-   public boolean a() {
-      return this.c.equals("minecraft");
-   }
-
-   @Override
-   public String toString() {
-      return this.c + ":" + this.d + ":" + this.e;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface auh {
 }

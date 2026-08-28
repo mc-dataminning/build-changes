@@ -1,104 +1,161 @@
-public class crx extends cro {
-   private final brw m;
-   private final int n;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private crx(csx<?> $$0, int $$1, col $$2, int $$3) {
-      this($$0, $$1, $$2, new bsk(9 * $$3), $$3);
+public class crx extends crs {
+   private static final int m = 0;
+   private static final int n = 1;
+   private static final int o = 3;
+   private static final int p = 1;
+   private static final int q = 28;
+   private static final int r = 28;
+   private static final int s = 37;
+   private static final int t = 0;
+   private final bsa u = new bso(1) {
+      @Override
+      public boolean b(int $$0, cwf $$1) {
+         return $$1.a(axm.bb);
+      }
+
+      @Override
+      public int am_() {
+         return 1;
+      }
+   };
+   private final crx.a v;
+   private final csf w;
+   private final cse x;
+
+   public crx(int $$0, bsa $$1) {
+      this($$0, $$1, new cto(3), csf.a);
    }
 
-   public static crx a(int $$0, col $$1) {
-      return new crx(csx.a, $$0, $$1, 1);
+   public crx(int $$0, bsa $$1, cse $$2, csf $$3) {
+      super(ctb.j, $$0);
+      a($$2, 3);
+      this.x = $$2;
+      this.w = $$3;
+      this.v = new crx.a(this.u, 0, 136, 110);
+      this.a(this.v);
+      this.a($$2);
+      this.c($$1, 36, 137);
    }
 
-   public static crx b(int $$0, col $$1) {
-      return new crx(csx.b, $$0, $$1, 2);
-   }
-
-   public static crx c(int $$0, col $$1) {
-      return new crx(csx.c, $$0, $$1, 3);
-   }
-
-   public static crx d(int $$0, col $$1) {
-      return new crx(csx.d, $$0, $$1, 4);
-   }
-
-   public static crx e(int $$0, col $$1) {
-      return new crx(csx.e, $$0, $$1, 5);
-   }
-
-   public static crx f(int $$0, col $$1) {
-      return new crx(csx.f, $$0, $$1, 6);
-   }
-
-   public static crx a(int $$0, col $$1, brw $$2) {
-      return new crx(csx.c, $$0, $$1, $$2, 3);
-   }
-
-   public static crx b(int $$0, col $$1, brw $$2) {
-      return new crx(csx.f, $$0, $$1, $$2, 6);
-   }
-
-   public crx(csx<?> $$0, int $$1, col $$2, brw $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.d_($$2.k);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(brw $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new ctl($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
+   @Override
+   public void a(cor $$0) {
+      super.a($$0);
+      if (!$$0.dY().C) {
+         cwf $$1 = this.v.a(this.v.a());
+         if (!$$1.f()) {
+            $$0.a($$1, false);
          }
       }
    }
 
    @Override
-   public boolean b(com $$0) {
-      return this.m.a($$0);
+   public boolean b(cor $$0) {
+      return a(this.w, $$0, dil.fO);
    }
 
    @Override
-   public cwb b(com $$0, int $$1) {
-      cwb $$2 = cwb.k;
-      ctl $$3 = this.k.get($$1);
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public cwf b(cor $$0, int $$1) {
+      cwf $$2 = cwf.k;
+      ctp $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cwb $$4 = $$3.g();
+         cwf $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return cwb.k;
+         if ($$1 == 0) {
+            if (!this.a($$4, 1, 37, true)) {
+               return cwf.k;
             }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return cwb.k;
+
+            $$3.b($$4, $$2);
+         } else if (!this.v.h() && this.v.a($$4) && $$4.L() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cwf.k;
+            }
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return cwf.k;
+            }
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return cwf.k;
+            }
+         } else if (!this.a($$4, 1, 37, false)) {
+            return cwf.k;
          }
 
          if ($$4.f()) {
-            $$3.e(cwb.k);
+            $$3.e(cwf.k);
          } else {
             $$3.c();
          }
+
+         if ($$4.L() == $$2.L()) {
+            return cwf.k;
+         }
+
+         $$3.a($$0, $$4);
       }
 
       return $$2;
    }
 
-   @Override
-   public void a(com $$0) {
-      super.a($$0);
-      this.m.c($$0);
+   public int l() {
+      return this.x.a(0);
    }
 
-   public brw l() {
-      return this.m;
+   public static int a(@Nullable jq<btl> $$0) {
+      return $$0 == null ? 0 : lz.d.t().a($$0) + 1;
    }
 
-   public int m() {
-      return this.n;
+   @Nullable
+   public static jq<btl> e(int $$0) {
+      return $$0 == 0 ? null : lz.d.t().a($$0 - 1);
+   }
+
+   @Nullable
+   public jq<btl> m() {
+      return e(this.x.a(1));
+   }
+
+   @Nullable
+   public jq<btl> n() {
+      return e(this.x.a(2));
+   }
+
+   public void a(Optional<jq<btl>> $$0, Optional<jq<btl>> $$1) {
+      if (this.v.h()) {
+         this.x.a(1, a($$0.orElse(null)));
+         this.x.a(2, a($$1.orElse(null)));
+         this.v.a(1);
+         this.w.a(dff::q);
+      }
+   }
+
+   public boolean o() {
+      return !this.u.a(0).f();
+   }
+
+   class a extends ctp {
+      public a(final bsa $$0, final int $$1, final int $$2, final int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cwf $$0) {
+         return $$0.a(axm.bb);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
    }
 }

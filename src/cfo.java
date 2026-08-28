@@ -1,36 +1,76 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Predicate;
 
-public class cfo extends cfe {
-   private static final ImmutableMap<bul<?>, Float> a = ImmutableMap.builder()
-      .put(bul.B, 8.0F)
-      .put(bul.J, 12.0F)
-      .put(bul.ac, 8.0F)
-      .put(bul.ad, 12.0F)
-      .put(bul.aC, 15.0F)
-      .put(bul.aH, 12.0F)
-      .put(bul.bi, 8.0F)
-      .put(bul.bk, 10.0F)
-      .put(bul.bt, 10.0F)
-      .put(bul.bu, 8.0F)
-      .put(bul.bw, 8.0F)
-      .build();
+public abstract class cfo<E extends bve> {
+   private static final azv a = azv.b();
+   private static final int b = 20;
+   private static final int c = 16;
+   private static final cfv d = cfv.b().a(16.0);
+   private static final cfv e = cfv.b().a(16.0).e();
+   private static final cfv f = cfv.a().a(16.0);
+   private static final cfv g = cfv.a().a(16.0).e();
+   private static final cfv h = cfv.a().a(16.0).d();
+   private static final cfv i = cfv.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   @Override
-   protected boolean a(bva $$0, bva $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   public cfo(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   private boolean e(bva $$0, bva $$1) {
-      float $$2 = (Float)a.get($$1.ar());
-      return $$1.g((bue)$$0) <= (double)($$2 * $$2);
+   public cfo() {
+      this(20);
    }
 
-   @Override
-   protected cee<bva> b() {
-      return cee.A;
+   public final void b(arq $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$1);
+         this.a($$0, $$1);
+      }
    }
 
-   private boolean b(bva $$0) {
-      return a.containsKey($$0.ar());
+   private void a(E $$0) {
+      double $$1 = $$0.h(bwm.m);
+      d.a($$1);
+      e.a($$1);
+      f.a($$1);
+      g.a($$1);
+      h.a($$1);
+      i.a($$1);
+   }
+
+   protected abstract void a(arq var1, E var2);
+
+   public abstract Set<cei<?>> a();
+
+   public static boolean b(bve $$0, bve $$1) {
+      return $$0.ee().b(cei.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   }
+
+   public static boolean c(bve $$0, bve $$1) {
+      return $$0.ee().b(cei.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static Predicate<bve> a(bve $$0, int $$1) {
+      return a($$1, $$1x -> c($$0, $$1x));
+   }
+
+   public static boolean d(bve $$0, bve $$1) {
+      return $$0.ee().b(cei.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   }
+
+   static <T> Predicate<T> a(int $$0, Predicate<T> $$1) {
+      AtomicInteger $$2 = new AtomicInteger(0);
+      return $$3 -> {
+         if ($$1.test($$3)) {
+            $$2.set($$0);
+            return true;
+         } else {
+            return $$2.decrementAndGet() >= 0;
+         }
+      };
    }
 }

@@ -1,172 +1,167 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fhx {
-   private fhx() {
+public class fhx extends hff {
+   private static final Logger b = LogUtils.getLogger();
+   public static final xl a = xl.c("mco.upload.select.world.title");
+   private static final xl c = xl.c("selectWorld.unable_to_load");
+   static final xl B = xl.c("selectWorld.world");
+   private static final xl C = xl.c("mco.upload.hardcore").b(-65536);
+   private static final xl D = xl.c("selectWorld.commands");
+   private static final DateFormat E = new SimpleDateFormat();
+   @Nullable
+   private final fiy F;
+   private final fhw G;
+   private final long H;
+   private final int I;
+   flw J;
+   List<etv> K = Lists.newArrayList();
+   int L = -1;
+   fhx.b M;
+
+   public fhx(@Nullable fiy $$0, long $$1, int $$2, fhw $$3) {
+      super(a);
+      this.F = $$0;
+      this.G = $$3;
+      this.H = $$1;
+      this.I = $$2;
    }
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
+   private void D() {
+      etu.a $$0 = this.m.m().b();
+      this.K = this.m.m().a($$0).join().stream().filter(etv::v).collect(Collectors.toList());
+
+      for (etv $$1 : this.K) {
+         this.M.a($$1);
+      }
    }
 
-   public static List<fhx.a> a(String $$0, fhx.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
+   @Override
+   public void aS_() {
+      this.M = this.c(new fhx.b());
 
-   private static List<fhx.a> a(String $$0, List<fhx.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<fhx.a> a(List<String> $$0, List<fhx.b> $$1) {
-      int $$2 = 0;
-      List<fhx.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<fhx.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(fhx.b.a($$7));
-            }
-         }
-
-         $$3.add(new fhx.a($$5));
+      try {
+         this.D();
+      } catch (Exception var2) {
+         b.error("Couldn't load level list", var2);
+         this.m.a(new fhn(c, xl.a(var2.getMessage()), this.G));
+         return;
       }
 
-      return $$3;
+      this.J = this.c(flw.a(xl.c("mco.upload.button.name"), $$0 -> this.E()).a(this.n / 2 - 154, this.o - 32, 153, 20).a());
+      this.J.j = this.L >= 0 && this.L < this.K.size();
+      this.c(flw.a(xk.k, $$0 -> this.m.a(this.G)).a(this.n / 2 + 6, this.o - 32, 153, 20).a());
+      this.a(new hfd(xl.c("mco.upload.select.world.subtitle"), this.n / 2, g(-1), -6250336));
+      if (this.K.isEmpty()) {
+         this.a(new hfd(xl.c("mco.upload.select.world.none"), this.n / 2, this.o / 2 - 20, -1));
+      }
    }
 
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   @Override
+   public xl i() {
+      return xk.a(this.n(), this.m());
+   }
+
+   private void E() {
+      if (this.L != -1 && !this.K.get(this.L).i()) {
+         etv $$0 = this.K.get(this.L);
+         this.m.a(new fid(this.F, this.H, this.I, this.G, $$0));
+      }
+   }
+
+   @Override
+   public void a(flj $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 13, -1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.a(this.G);
+         return true;
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
-            }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public static class a {
-      public final List<fhx.b> a;
-
-      a(fhx.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<fhx.b> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fhx.a $$1 = (fhx.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
-      }
+   static xl a(etv $$0) {
+      return $$0.h().d();
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
+   static String b(etv $$0) {
+      return E.format(new Date($$0.f()));
+   }
+
+   class a extends fms.a<fhx.a> {
+      private final etv b;
       private final String c;
+      private final xl d;
+      private final xl e;
 
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
-      }
-
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      public a(final etv $$0) {
+         this.b = $$0;
+         this.c = $$0.b();
+         this.d = xl.a("mco.upload.entry.id", $$0.a(), fhx.b($$0));
+         this.e = $$0.s();
       }
 
       @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fhx.b $$1 = (fhx.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+      public void a(flj $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$1, $$3, $$2);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fhx.this.M.b(fhx.this.K.indexOf(this.b));
+         return super.a($$0, $$1, $$2);
+      }
+
+      protected void a(flj $$0, int $$1, int $$2, int $$3) {
+         String $$4;
+         if (this.c.isEmpty()) {
+            $$4 = fhx.B + " " + ($$1 + 1);
          } else {
-            return false;
+            $$4 = this.c;
          }
+
+         $$0.a(fhx.this.p, $$4, $$2 + 2, $$3 + 1, 16777215, false);
+         $$0.a(fhx.this.p, this.d, $$2 + 2, $$3 + 12, -8355712, false);
+         $$0.a(fhx.this.p, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
       }
 
       @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
+      public xl a() {
+         xl $$0 = xk.b(xl.b(this.b.b()), xl.b(fhx.b(this.b)), fhx.a(this.b));
+         return xl.a("narrator.select", $$0);
+      }
+   }
+
+   class b extends hfe<fhx.a> {
+      public b() {
+         super(fhx.this.n, fhx.this.o - 40 - fhx.g(0), fhx.g(0), 36);
+      }
+
+      public void a(etv $$0) {
+         this.a((fhx.a)(fhx.this.new a($$0)));
       }
 
       @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
+      public int a() {
+         return fhx.this.K.size() * 36;
       }
 
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static fhx.b a(String $$0, String $$1) {
-         return new fhx.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static fhx.b a(String $$0) {
-         return new fhx.b($$0);
+      public void a(@Nullable fhx.a $$0) {
+         super.a($$0);
+         fhx.this.L = this.aI_().indexOf($$0);
+         fhx.this.J.j = fhx.this.L >= 0 && fhx.this.L < this.l() && !fhx.this.K.get(fhx.this.L).i();
       }
    }
 }

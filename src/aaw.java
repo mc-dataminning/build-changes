@@ -1,36 +1,23 @@
-public record aaw(jh c, int d, String e, int f) implements aas {
-   public static final zg<wf, aaw> a = aas.a(aaw::a, aaw::new);
-   public static final aas.b<aaw> b = aas.a("debug/game_test_add_marker");
-
-   private aaw(wf $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
-   }
-
-   private void a(wf $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
-      $$0.q(this.f);
+public record aaw(all a) implements aav {
+   public static <T extends wi> zj<T, aaw> a(all $$0, int $$1) {
+      return aav.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new aaw($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aas.b<aaw> a() {
-      return b;
+   public aav.b<aaw> a() {
+      return new aav.b<>(this.a);
    }
 
-   public jh b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
+   public all b() {
+      return this.a;
    }
 }

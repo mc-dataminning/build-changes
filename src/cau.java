@@ -1,18 +1,20 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class cau {
-   private static final bri a = bro.a(100, 200);
-
-   public static bwu<bva> a() {
-      return cag.a(
-         (Function<cag.b<bva>, ? extends App<cag.c<bva>, caj<bva>>>)($$0 -> $$0.group($$0.a(cee.aB), $$0.a(cee.m), $$0.c(cee.aG), $$0.b(cee.B), $$0.c(cee.az))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(bap.a);
-                     $$2.a(bap.a, (long)a.a($$3x.E_()));
-                     $$1.b();
-                     $$4x.b(bvm.m);
-                     return true;
+   public static <E extends cnt> bwy<E> a(Function<E, Optional<? extends bve>> $$0) {
+      return cak.a(
+         (Function<cak.b<E>, ? extends App<cak.c<E>, can<E>>>)($$1 -> $$1.group($$1.c(cei.ay), $$1.c(cei.o), $$1.a(cei.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bve> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::c).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
                   }))
       );
    }

@@ -1,31 +1,37 @@
-public class gnm extends gnf<cgs, gty, fxo> {
-   private static final ali a = ali.b("textures/entity/bee/bee_angry.png");
-   private static final ali b = ali.b("textures/entity/bee/bee_angry_nectar.png");
-   private static final ali k = ali.b("textures/entity/bee/bee.png");
-   private static final ali l = ali.b("textures/entity/bee/bee_nectar.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gnm(gok.a $$0) {
-      super($$0, new fxo($$0.a(gbl.q)), new fxo($$0.a(gbl.r)), 0.4F);
+public class gnm implements gmx.a {
+   private static final int a = 60;
+   private final Set<kj> b = Sets.newHashSet();
+
+   gnm() {
    }
 
-   public ali a(gty $$0) {
-      if ($$0.d) {
-         return $$0.e ? b : a;
-      } else {
-         return $$0.e ? l : k;
-      }
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public gty a() {
-      return new gty();
+   public void a(kj $$0) {
+      this.b.add($$0);
    }
 
-   public void a(cgs $$0, gty $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = !$$0.gH();
-      $$1.c = $$0.aK() && $$0.dA().h() < 1.0E-7;
-      $$1.d = $$0.ae_();
-      $$1.e = $$0.gG();
+   public void b(kj $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = jh.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fek $$0, gix $$1, kj $$2) {
+      gmx.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

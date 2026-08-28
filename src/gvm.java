@@ -1,11 +1,10 @@
-public class gvm extends gvl {
-   public ciy.d a;
-   public boolean b;
-   public cwb c;
+public class gvm extends gwb {
+   public float a;
+   public float b;
+   public boolean c;
    public boolean d;
-
-   public gvm() {
-      this.a = ciy.d.a;
-      this.c = cwb.k;
-   }
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public chf.v h = chf.v.a;
 }

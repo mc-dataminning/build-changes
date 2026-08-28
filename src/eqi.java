@@ -1,14 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public interface eqi<P extends eqh> {
-   eqi<eqf> a = a("clear", eqf.a);
-   eqi<eqg> b = a("passthrough", eqg.b);
-   eqi<eqe> c = a("append_static", eqe.a);
-   eqi<eqd> d = a("append_loot", eqd.a);
+public class eqi implements eql {
+   public static final MapCodec<eqi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(un.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, eqi::new));
+   private final un b;
 
-   MapCodec<P> codec();
+   public eqi(un $$0) {
+      this.b = $$0;
+   }
 
-   private static <P extends eqh> eqi<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ly.n, $$0, () -> $$1);
+   @Override
+   public un a(azv $$0, @Nullable un $$1) {
+      return $$1 == null ? this.b.i() : $$1.a(this.b);
+   }
+
+   @Override
+   public eqm<?> a() {
+      return eqm.c;
    }
 }

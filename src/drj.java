@@ -1,96 +1,99 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface drj extends djf<drj.a> {
-   Supplier<BiMap<die, die>> x_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dig.qW, dig.qX)
-            .put(dig.qX, dig.qY)
-            .put(dig.qY, dig.qZ)
-            .put(dig.rf, dig.re)
-            .put(dig.re, dig.rd)
-            .put(dig.rd, dig.rc)
-            .put(dig.rj, dig.ri)
-            .put(dig.ri, dig.rh)
-            .put(dig.rh, dig.rg)
-            .put(dig.rv, dig.ru)
-            .put(dig.ru, dig.rt)
-            .put(dig.rt, dig.rs)
-            .put(dig.rr, dig.rq)
-            .put(dig.rq, dig.rp)
-            .put(dig.rp, dig.ro)
-            .put(dig.rM, dig.rN)
-            .put(dig.rN, dig.rP)
-            .put(dig.rP, dig.rO)
-            .put(dig.rU, dig.rV)
-            .put(dig.rV, dig.rX)
-            .put(dig.rX, dig.rW)
-            .put(dig.sc, dig.sd)
-            .put(dig.sd, dig.se)
-            .put(dig.se, dig.sf)
-            .put(dig.sk, dig.sl)
-            .put(dig.sl, dig.sm)
-            .put(dig.sm, dig.sn)
-            .build()
+public class drj extends dpj {
+   public static final MapCodec<drj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dxa.a.fieldOf("wood_type").forGetter(dpj::d), t()).apply($$0, drj::new));
+   public static final dwl<jm> b = dme.aF;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<jm, fal> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         jm.c,
+         dij.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         jm.d,
+         dij.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         jm.f,
+         dij.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         jm.e,
+         dij.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
    );
-   Supplier<BiMap<die, die>> y_ = Suppliers.memoize(() -> x_.get().inverse());
 
-   static Optional<die> a(die $$0) {
-      return Optional.ofNullable((die)y_.get().get($$0));
+   @Override
+   public MapCodec<drj> a() {
+      return a;
    }
 
-   static die b(die $$0) {
-      die $$1 = $$0;
-
-      for (die $$2 = (die)y_.get().get($$0); $$2 != null; $$2 = (die)y_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dvj> b(dvj $$0) {
-      return a($$0.b()).map($$1 -> $$1.m($$0));
-   }
-
-   static Optional<die> c(die $$0) {
-      return Optional.ofNullable((die)x_.get().get($$0));
-   }
-
-   static dvj c(dvj $$0) {
-      return b($$0.b()).m($$0);
+   public drj(dxa $$0, dvn.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, jm.c).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   default Optional<dvj> k_(dvj $$0) {
-      return c($$0.b()).map($$1 -> $$1.m($$0));
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return i.get($$0.c(b));
    }
 
    @Override
-   default float av_() {
-      return this.c() == drj.a.a ? 0.75F : 1.0F;
+   protected boolean a(dvo $$0, dfi $$1, jh $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
    }
 
-   public static enum a implements bag {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Nullable
+   @Override
+   public dvo a(czw $$0) {
+      dvo $$1 = this.m();
+      ero $$2 = $$0.q().b_($$0.a());
+      dfi $$3 = $$0.q();
+      jh $$4 = $$0.a();
+      jm[] $$5 = $$0.f();
 
-      public static final Codec<drj.a> e = bag.a(drj.a::values);
-      private final String f;
-
-      private a(final String $$0) {
-         this.f = $$0;
+      for (jm $$6 : $$5) {
+         if ($$6.o().d()) {
+            jm $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(f, Boolean.valueOf($$2.a() == erp.c));
+            }
+         }
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+      return null;
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      return $$4.g() == $$0.c(b) && !$$0.a($$1, $$3) ? dil.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public float h(dvo $$0) {
+      return $$0.c(b).p();
+   }
+
+   @Override
+   public ezr o(dvo $$0) {
+      fal $$1 = i.get($$0.c(b));
+      return $$1.a().f();
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dow $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dvo a(dvo $$0, dnf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(b, f);
    }
 }

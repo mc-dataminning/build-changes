@@ -1,52 +1,75 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DynamicOps;
-import java.util.Locale;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Arrays;
 import java.util.function.Function;
 
-public abstract class bee extends DataFix {
-   protected final String a;
-
-   public bee(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+public class bee extends DataFix {
+   public bee(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bhu.B);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bhu.B);
-      Function<String, Type<?>> $$2 = ae.b($$2x -> {
-         Type<?> $$3 = (Type<?>)$$0.types().get($$2x);
-         return bav.a($$3, $$0, $$1);
-      });
-      return this.fixTypeEverywhere(
-         this.a,
-         $$0,
-         $$1,
-         $$2x -> $$3 -> {
-               String $$4 = (String)$$3.getFirst();
-               Type<?> $$5 = $$2.apply($$4);
-               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2x, $$5));
-               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
-               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
-                  throw new IllegalStateException(
-                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
-                  );
-               } else {
-                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
-               }
-            }
-      );
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bhy.B), this::a);
    }
 
-   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
-      return new Typed($$2, $$1, $$0);
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:egg", this::d);
+      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
+      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
+      $$0 = this.a($$0, "minecraft:snowball", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::d);
+      $$0 = this.a($$0, "minecraft:potion", this::c);
+      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
+      $$0 = this.a($$0, "minecraft:arrow", this::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
+      return this.a($$0, "minecraft:trident", this::a);
    }
 
-   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
+      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      OptionalDynamic<?> $$1 = $$0.get("Owner");
+      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
+      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
+      return this.a($$0, $$2, $$3).remove("Owner");
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      OptionalDynamic<?> $$1 = $$0.get("Potion");
+      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      String $$1 = "owner";
+      OptionalDynamic<?> $$2 = $$0.get("owner");
+      long $$3 = $$2.get("M").asLong(0L);
+      long $$4 = $$2.get("L").asLong(0L);
+      return this.a($$0, $$3, $$4).remove("owner");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
+      String $$3 = "OwnerUUID";
+      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
+   }
+
+   private static int[] a(long $$0, long $$1) {
+      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bhy.B, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bhy.B, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   }
 }

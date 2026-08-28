@@ -1,20 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gxm extends gwb implements gxl {
+   public boolean a;
+   public cod b = new cod(coh.c, cof.b, 1);
 
-public class gxm {
-   @Nullable
-   public ali a;
-   public final List<gxm.a> b = new ArrayList<>();
-
-   public static class a {
-      @Nullable
-      public gyd a;
-      public byte b;
-      public byte c;
-      public byte d;
-      public boolean e;
-      @Nullable
-      public xi f;
+   @Override
+   public cod a() {
+      return this.b;
    }
 }

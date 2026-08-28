@@ -1,213 +1,93 @@
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class ern extends eri {
-   public static final float e = 0.44444445F;
+public abstract class ern {
+   public static final jw<ero> c = new jw<>();
+   protected final dvp<ern, ero> d;
+   private ero a;
+   private final jq.c<ern> b = lz.c.f(this);
 
-   @Override
-   public erj d() {
-      return erl.d;
+   protected ern() {
+      dvp.a<ern, ero> $$0 = new dvp.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(ern::g, ero::new);
+      this.f(this.d.b());
    }
 
-   @Override
-   public erj e() {
-      return erl.e;
+   protected void a(dvp.a<ern, ero> $$0) {
    }
 
-   @Override
-   public cvx a() {
-      return cwf.qB;
+   public dvp<ern, ero> f() {
+      return this.d;
    }
 
-   @Override
-   public void a(dfb $$0, jh $$1, erk $$2, azs $$3) {
-      jh $$4 = $$1.d();
-      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(lr.Y, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, awl.nQ, awm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awl.nO, awm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
+   protected final void f(ero $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void b(dfb $$0, jh $$1, erk $$2, azs $$3) {
-      if ($$0.ac().b(dex.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            jh $$5 = $$1;
-
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.p($$5)) {
-                  return;
-               }
-
-               dvj $$7 = $$0.a_($$5);
-               if ($$7.l()) {
-                  if (this.a((dfe)$$0, $$5)) {
-                     $$0.b($$5, dhr.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
-         } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               jh $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.p($$9)) {
-                  return;
-               }
-
-               if ($$0.u($$9.d()) && this.b($$0, $$9)) {
-                  $$0.b($$9.d(), dhr.a($$0, $$9));
-               }
-            }
-         }
-      }
+   public final ero g() {
+      return this.a;
    }
 
-   private boolean a(dfe $$0, jh $$1) {
-      for (jm $$2 : jm.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
+   public abstract cwb a();
 
-      return false;
+   protected void a(dff $$0, jh $$1, ero $$2, azv $$3) {
    }
 
-   private boolean b(dfe $$0, jh $$1) {
-      return $$0.d($$1.v()) && !$$0.B($$1) ? false : $$0.a_($$1).m();
+   protected void b(dff $$0, jh $$1, dvo $$2, ero $$3) {
+   }
+
+   protected void b(dff $$0, jh $$1, ero $$2, azv $$3) {
    }
 
    @Nullable
-   @Override
-   public lp h() {
-      return lr.i;
+   protected lq h() {
+      return null;
    }
 
-   @Override
-   protected void a(dfc $$0, jh $$1, dvj $$2) {
-      this.a($$0, $$1);
-   }
+   protected abstract boolean a(ero var1, dek var2, jh var3, ern var4, jm var5);
 
-   @Override
-   public int b(dfe $$0) {
-      return $$0.D_().i() ? 4 : 2;
-   }
+   protected abstract ezr a(dek var1, jh var2, ero var3);
 
-   @Override
-   public dvj b(erk $$0) {
-      return dig.H.m().b(dmt.b, Integer.valueOf(e($$0)));
-   }
+   public abstract int a(dfi var1);
 
-   @Override
-   public boolean a(erj $$0) {
-      return $$0 == erl.e || $$0 == erl.d;
-   }
-
-   @Override
-   public int c(dfe $$0) {
-      return $$0.D_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(erk $$0, deg $$1, jh $$2, erj $$3, jm $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(axg.a);
-   }
-
-   @Override
-   public int a(dfe $$0) {
-      return $$0.D_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(dfb $$0, jh $$1, erk $$2, erk $$3) {
-      int $$4 = this.a((dfe)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.E_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(dfc $$0, jh $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(dfb $$0) {
-      return $$0.ac().b(dex.V);
-   }
-
-   @Override
-   protected void a(dfc $$0, jh $$1, dvj $$2, jm $$3, erk $$4) {
-      if ($$3 == jm.a) {
-         erk $$5 = $$0.b_($$1);
-         if (this.a(axg.b) && $$5.a(axg.a)) {
-            if ($$2.b() instanceof dmt) {
-               $$0.a($$1, dig.b.m(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
    protected boolean i() {
-      return true;
+      return false;
    }
 
-   @Override
-   protected float c() {
-      return 100.0F;
+   protected boolean b() {
+      return false;
    }
 
-   @Override
-   public Optional<awk> j() {
-      return Optional.of(awl.dl);
+   protected abstract float c();
+
+   public abstract float a(ero var1, dek var2, jh var3);
+
+   public abstract float a(ero var1);
+
+   protected abstract dvo b(ero var1);
+
+   public abstract boolean c(ero var1);
+
+   public abstract int d(ero var1);
+
+   public boolean a(ern $$0) {
+      return $$0 == this;
    }
 
-   public static class a extends ern {
-      @Override
-      protected void a(dvk.a<erj, erk> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(erk $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(erk $$0) {
-         return false;
-      }
+   @Deprecated
+   public boolean a(axt<ern> $$0) {
+      return this.b.a($$0);
    }
 
-   public static class b extends ern {
-      @Override
-      public int d(erk $$0) {
-         return 8;
-      }
+   public abstract fal b(ero var1, dek var2, jh var3);
 
-      @Override
-      public boolean c(erk $$0) {
-         return true;
-      }
+   public Optional<awn> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public jq.c<ern> k() {
+      return this.b;
    }
 }

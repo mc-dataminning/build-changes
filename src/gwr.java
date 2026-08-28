@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gwr extends gun {
+public class gwr extends gwb {
    public float a;
-   @Nullable
-   public dvj b;
+   public boolean b;
+   public chp.g c = chp.g.a;
 }

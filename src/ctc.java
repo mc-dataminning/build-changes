@@ -1,73 +1,135 @@
 import javax.annotation.Nullable;
 
-public class ctc extends bsk {
+public class ctc implements bsa {
+   private final deb b;
+   private final jz<cwf> c = jz.a(3, cwf.k);
    @Nullable
-   private dti b;
+   private dec d;
+   private int e;
+   private int f;
 
-   public ctc() {
-      super(27);
-   }
-
-   public void a(dti $$0) {
+   public ctc(deb $$0) {
       this.b = $$0;
    }
 
-   public boolean b(dti $$0) {
-      return this.b == $$0;
+   @Override
+   public int b() {
+      return this.c.size();
    }
 
    @Override
-   public void a(uq $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cwb.k);
-      }
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         uk $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cwb.a($$1, (vh)$$4).orElse(cwb.k));
-         }
-      }
-   }
-
-   @Override
-   public uq a(js.a $$0) {
-      uq $$1 = new uq();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cwb $$3 = this.a($$2);
-         if (!$$3.f()) {
-            uk $$4 = new uk();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
+   public boolean c() {
+      for (cwf $$0 : this.c) {
+         if (!$$0.f()) {
+            return false;
          }
       }
 
-      return $$1;
+      return true;
    }
 
    @Override
-   public boolean a(com $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   public cwf a(int $$0) {
+      return this.c.get($$0);
    }
 
    @Override
-   public void d_(com $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
+   public cwf a(int $$0, int $$1) {
+      cwf $$2 = this.c.get($$0);
+      if ($$0 == 2 && !$$2.f()) {
+         return bsb.a(this.c, $$0, $$2.L());
+      } else {
+         cwf $$3 = bsb.a(this.c, $$0, $$1);
+         if (!$$3.f() && this.d($$0)) {
+            this.f();
+         }
+
+         return $$3;
+      }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cwf b(int $$0) {
+      return bsb.a(this.c, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cwf $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.e_($$1));
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(cor $$0) {
+      return this.b.gv() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.d = null;
+      cwf $$0;
+      cwf $$1;
+      if (this.c.get(0).f()) {
+         $$0 = this.c.get(1);
+         $$1 = cwf.k;
+      } else {
+         $$0 = this.c.get(0);
+         $$1 = this.c.get(1);
       }
 
-      super.d_($$0);
+      if ($$0.f()) {
+         this.a(2, cwf.k);
+         this.f = 0;
+      } else {
+         ded $$4 = this.b.gx();
+         if (!$$4.isEmpty()) {
+            dec $$5 = $$4.a($$0, $$1, this.e);
+            if ($$5 == null || $$5.r()) {
+               this.d = $$5;
+               $$5 = $$4.a($$1, $$0, this.e);
+            }
+
+            if ($$5 != null && !$$5.r()) {
+               this.d = $$5;
+               this.a(2, $$5.h());
+               this.f = $$5.q();
+            } else {
+               this.a(2, cwf.k);
+               this.f = 0;
+            }
+         }
+
+         this.b.k(this.a(2));
+      }
+   }
+
+   @Nullable
+   public dec g() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.e = $$0;
+      this.f();
    }
 
    @Override
-   public void c(com $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
+   public void a() {
+      this.c.clear();
+   }
 
-      super.c($$0);
-      this.b = null;
+   public int h() {
+      return this.f;
    }
 }

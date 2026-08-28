@@ -1,29 +1,37 @@
-public class aeh implements zp<ace> {
-   public static final zg<wf, aeh> a = zp.a(aeh::a, aeh::new);
+public class aeh implements zs<ach> {
+   public static final zj<wi, aeh> a = zs.a(aeh::a, aeh::new);
    private final int b;
+   private final all c;
 
-   public aeh(bsr $$0) {
-      this($$0.b());
-   }
-
-   public aeh(int $$0) {
+   public aeh(int $$0, dav<?> $$1) {
       this.b = $$0;
+      this.c = $$1.a();
    }
 
-   private aeh(wf $$0) {
-      this.b = $$0.l();
+   private aeh(wi $$0) {
+      this.b = $$0.x();
+      this.c = $$0.q();
    }
 
-   private void a(wf $$0) {
-      $$0.c(this.b);
+   private void a(wi $$0) {
+      $$0.f(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zr<aeh> a() {
-      return agt.ac;
+   public zu<aeh> a() {
+      return agw.Z;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
+   }
+
+   public all b() {
+      return this.c;
+   }
+
+   public int e() {
+      return this.b;
    }
 }

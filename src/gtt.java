@@ -1,6 +1,12 @@
-public class gtt extends gvl {
-   public boolean a;
-   public final btw b = new btw();
-   public final btw c = new btw();
-   public final btw d = new btw();
+public class gtt<M extends gbb> extends gsz<gwb, M> {
+   private static final gjh a = gjh.p(all.b("textures/entity/spider_eyes.png"));
+
+   public gtt(gqw<gwb, M> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public gjh a() {
+      return a;
+   }
 }

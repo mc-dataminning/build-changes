@@ -1,33 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public record eme(eme.a b, bqp<dgo.c> c) {
-   public static final Codec<eme> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eme.a.c.fieldOf("bounding_box").forGetter(eme::a), bqp.c(dgo.c.a).fieldOf("spawns").forGetter(eme::b)).apply($$0, eme::new)
-   );
+public class eme extends eta {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public eme.a a() {
-      return this.b;
+   public static eta.a<eme> a() {
+      return new eta.a<>(eme::new, eme::b, bax.o);
    }
 
-   public bqp<dgo.c> b() {
+   private eme(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public eme() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static eme b(un $$0, js.a $$1) {
+      return new eme(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public un a(un $$0, js.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+      this.c();
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      if (this.d.remove($$0)) {
+         this.c();
+      }
+   }
+
+   public LongSet b() {
       return this.c;
-   }
-
-   public static enum a implements bag {
-      a("piece"),
-      b("full");
-
-      public static final Codec<eme.a> c = bag.a(eme.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
    }
 }

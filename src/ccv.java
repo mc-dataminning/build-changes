@@ -1,87 +1,90 @@
 import java.util.EnumSet;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class ccv extends cby {
-   public static final int a = 120;
-   protected final bvi b;
-   protected double c;
-   protected double d;
+public class ccv extends ccc {
+   public static final int b = 1;
+   protected final bvm c;
+   protected final double d;
    protected double e;
-   protected final double f;
-   protected int g;
+   protected double f;
+   protected double g;
    protected boolean h;
-   private final boolean i;
+   private final Function<bvm, axt<bta>> a;
 
-   public ccv(bvi $$0, double $$1) {
-      this($$0, $$1, 120);
+   public ccv(bvm $$0, double $$1) {
+      this($$0, $$1, axf.F);
    }
 
-   public ccv(bvi $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
+   public ccv(bvm $$0, double $$1, axt<bta> $$2) {
+      this($$0, $$1, $$1x -> $$2);
    }
 
-   public ccv(bvi $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(cby.a.a));
+   public ccv(bvm $$0, double $$1, Function<bvm, axt<bta>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.a(EnumSet.of(ccc.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cZ()) {
+      if (!this.h()) {
          return false;
       } else {
-         if (!this.h) {
-            if (this.i && this.b.ew() >= 100) {
-               return false;
-            }
-
-            if (this.b.ea().a(b(this.g)) != 0) {
-               return false;
+         if (this.c.ca()) {
+            jh $$0 = this.a(this.c.dY(), this.c, 5);
+            if ($$0 != null) {
+               this.e = (double)$$0.u();
+               this.f = (double)$$0.v();
+               this.g = (double)$$0.w();
+               return true;
             }
          }
 
-         ezn $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            this.h = false;
-            return true;
-         }
+         return this.i();
       }
    }
 
-   @Nullable
-   protected ezn h() {
-      return cfv.a(this.b, 10, 7);
+   protected boolean h() {
+      return this.c.eJ() != null && this.c.eJ().a(this.a.apply(this.c));
    }
 
-   @Override
-   public boolean c() {
-      return !this.b.P().m() && !this.b.cZ();
+   protected boolean i() {
+      ezr $$0 = cfz.a(this.c, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.e = $$0.d;
+         this.f = $$0.e;
+         this.g = $$0.f;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.h;
    }
 
    @Override
    public void d() {
-      this.b.P().a(this.c, this.d, this.e, this.f);
+      this.c.P().a(this.e, this.f, this.g, this.d);
+      this.h = true;
    }
 
    @Override
    public void e() {
-      this.b.P().o();
-      super.e();
+      this.h = false;
    }
 
-   public void i() {
-      this.h = true;
+   @Override
+   public boolean c() {
+      return !this.c.P().m();
    }
 
-   public void c(int $$0) {
-      this.g = $$0;
+   @Nullable
+   protected jh a(dek $$0, bui $$1, int $$2) {
+      jh $$3 = $$1.dy();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : jh.a($$1.dy(), $$2, 1, $$1x -> $$0.b_($$1x).a(axj.a)).orElse(null);
    }
 }

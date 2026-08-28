@@ -1,40 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmi extends dlr implements dmu {
-   public static final MapCodec<dmi> c = b(dmi::new);
+public class dmi extends dmh {
+   public static final MapCodec<dmi> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lz.e.q().fieldOf("host").forGetter(dmh::b), t()).apply($$0, dmi::new));
 
    @Override
    public MapCodec<dmi> a() {
-      return c;
+      return b;
    }
 
-   protected dmi(dvi.d $$0) {
-      super($$0, jm.b, fae.b(), true);
-   }
-
-   @Override
-   protected dls c() {
-      return (dls)dig.mc;
+   public dmi(dij $$0, dvn.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(dov.i, jm.a.b));
    }
 
    @Override
-   protected erk b_(dvj $$0) {
-      return erl.c.a(false);
+   protected dvo a(dvo $$0, dow $$1) {
+      return dov.b($$0, $$1);
    }
 
    @Override
-   protected boolean o(dvj $$0) {
-      return this.c().o($$0);
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(dov.i);
    }
 
    @Override
-   public boolean a(@Nullable com $$0, deg $$1, jh $$2, dvj $$3, erj $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dfc $$0, jh $$1, dvj $$2, erk $$3) {
-      return false;
+   public dvo a(czw $$0) {
+      return this.m().b(dov.i, $$0.k().o());
    }
 }

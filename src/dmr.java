@@ -1,82 +1,95 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmr extends die implements dpf {
-   public static final MapCodec<dmr> a = b(dmr::new);
-   public static final int b = 15;
-   public static final dwj c = dvz.aP;
-   public static final dwa d = dvz.C;
-   public static final ToIntFunction<dvj> e = $$0 -> $$0.c(c);
+public class dmr extends dhc {
+   public static final MapCodec<dmr> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dgh.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), kn.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
+            .apply($$0, dmr::new)
+   );
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final dwn g = dwe.aK;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final dgh.c j;
 
    @Override
    public MapCodec<dmr> a() {
-      return a;
+      return d;
    }
 
-   public dmr(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(c, d);
+   public dmr(dgh.c $$0, kn.a $$1, dvn.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.l(this.F.b().b(g, Integer.valueOf(1)));
    }
 
    @Override
-   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
-      if (!$$1.C && $$3.gH()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bsd.b;
+   public boolean d(dvo $$0) {
+      return $$0.c(g) == 3;
+   }
+
+   @Override
+   protected boolean a(ern $$0) {
+      return $$0 == erp.c && this.j == dgh.c.b;
+   }
+
+   @Override
+   protected double b(dvo $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   }
+
+   @Override
+   protected void a(dvo $$0, dff $$1, jh $$2, bui $$3) {
+      if (!$$1.C && $$3.ca() && this.a($$0, $$2, $$3)) {
+         $$3.aJ();
+         if ($$3.a($$1, $$2)) {
+            this.f($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private void f(dvo $$0, dff $$1, jh $$2) {
+      if (this.j == dgh.c.c) {
+         e(dil.fu.m().b(g, $$0.c(g)), $$1, $$2);
       } else {
-         return bsd.c;
+         e($$0, $$1, $$2);
+      }
+   }
+
+   public static void e(dvo $$0, dff $$1, jh $$2) {
+      int $$3 = $$0.c(g) - 1;
+      dvo $$4 = $$3 == 0 ? dil.ft.m() : $$0.b(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(eak.c, $$2, eak.a.a($$4));
+   }
+
+   @Override
+   public void a(dvo $$0, dff $$1, jh $$2, dgh.c $$3) {
+      if (dje.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         dvo $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(eak.c, $$2, eak.a.a($$4));
       }
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return $$3.a(cwf.hC) ? fae.b() : fae.a();
+   protected int a(dvo $$0, dff $$1, jh $$2) {
+      return $$0.c(g);
    }
 
    @Override
-   protected boolean e_(dvj $$0) {
-      return $$0.y().c();
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(g);
    }
 
    @Override
-   protected dok a_(dvj $$0) {
-      return dok.a;
-   }
-
-   @Override
-   protected float c(dvj $$0, deg $$1, jh $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
+   protected void a(dvo $$0, dff $$1, jh $$2, ern $$3) {
+      if (!this.d($$0)) {
+         dvo $$4 = $$0.b(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(eak.c, $$2, eak.a.a($$4));
+         $$1.c(1047, $$2, 0);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(d) ? erl.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public cwb a(dfe $$0, jh $$1, dvj $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
-
-   public static cwb a(cwb $$0, int $$1) {
-      if ($$1 != 15) {
-         $$0.b(ku.am, cyd.a.a(c, $$1));
-      }
-
-      return $$0;
    }
 }

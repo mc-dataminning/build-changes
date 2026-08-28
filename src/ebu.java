@@ -1,63 +1,95 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+public class ebu implements der {
+   private int a;
 
-public final class ebu {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+   @Override
+   public int a(arq $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.ac().b(dfb.K)) {
+         return 0;
+      } else {
+         azv $$3 = $$0.A;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.ab() / 24000L;
+            if ($$4 < 5L || !$$0.S()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cor $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.R_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dy(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     jh.a $$9 = $$6.dy().k().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        jq<dgh> $$11 = $$0.t($$9);
+                        if ($$11.a(axc.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
-   }
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(ebj.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
 
-   public static ebu.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new ebu.a($$1, $$2);
-   }
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
 
-   public static ebu.a c(long $$0) {
-      return b($$0).a();
-   }
-
-   public static ebu.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new ebu.a($$2, $$3);
-   }
-
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
-   }
-
-   public static record a(long a, long b) {
-      public ebu.a a(long $$0, long $$1) {
-         return new ebu.a(this.a ^ $$0, this.b ^ $$1);
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
+   }
 
-      public ebu.a a(ebu.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   private boolean a(arq $$0, jh $$1, azv $$2, boolean $$3) {
+      dvo $$4 = $$0.a_($$1);
+      if (!dfq.a($$0, $$1, $$4, $$4.y(), bup.aC)) {
+         return false;
+      } else if (!clw.b(bup.aC, $$0, buo.p, $$1, $$2)) {
+         return false;
+      } else {
+         clw $$5 = bup.aC.a($$0, buo.p);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.x(true);
+               $$5.gD();
+            }
 
-      public ebu.a a() {
-         return new ebu.a(ebu.a(this.a), ebu.a(this.b));
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), buo.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

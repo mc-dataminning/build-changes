@@ -1,46 +1,28 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
 import java.util.List;
-import org.lwjgl.BufferUtils;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hcv implements FloatConsumer {
-   private final List<ByteBuffer> a = Lists.newArrayList();
-   private final int b;
-   private int c;
-   private ByteBuffer d;
+public class hcv<T> extends hcw<T> {
+   private final hda<T> c;
 
-   public hcv(int $$0) {
-      this.b = $$0 + 1 & -2;
-      this.d = BufferUtils.createByteBuffer($$0);
+   public hcv(Function<T, Stream<String>> $$0, Function<T, Stream<all>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hda.plainText($$2, $$0);
    }
 
-   public void accept(float $$0) {
-      if (this.d.remaining() == 0) {
-         this.d.flip();
-         this.a.add(this.d);
-         this.d = BufferUtils.createByteBuffer(this.b);
-      }
-
-      int $$1 = azk.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
-      this.d.putShort((short)$$1);
-      this.c += 2;
+   @Override
+   protected List<T> a(String $$0) {
+      return this.c.search($$0);
    }
 
-   public ByteBuffer a() {
-      this.d.flip();
-      if (this.a.isEmpty()) {
-         return this.d;
-      } else {
-         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
-         this.a.forEach($$0::put);
-         $$0.put(this.d);
-         $$0.flip();
-         return $$0;
-      }
-   }
-
-   public int b() {
-      return this.c;
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hcy<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hcx<T>($$2.iterator(), $$5, this.a));
    }
 }

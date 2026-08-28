@@ -1,26 +1,15 @@
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogListeners;
-import org.slf4j.event.Level;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
 public class fbq {
-   private static boolean a;
-
    public static void a() {
-      if (!a) {
-         TracyClient.load();
-         if (TracyClient.isAvailable()) {
-            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
-            a = true;
-         }
-      }
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   private static int a(Level $$0) {
-      return switch ($$0) {
-         case DEBUG -> 11184810;
-         case WARN -> 16777130;
-         case ERROR -> 16755370;
-         default -> 16777215;
-      };
+   public static double b() {
+      return GLFW.glfwGetTime();
+   }
+
+   private fbq() {
    }
 }

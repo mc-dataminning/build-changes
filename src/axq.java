@@ -1,48 +1,35 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public record axq<T>(alh<? extends kd<T>> a, ali b) {
-   private static final Interner<axq<?>> c = Interners.newWeakInterner();
+public class axq {
+   private final List<axr> a = new ArrayList<>();
 
-   @Deprecated
-   public axq(alh<? extends kd<T>> a, ali b) {
-      this.a = a;
-      this.b = b;
+   public static axq a() {
+      return new axq();
    }
 
-   public static <T> Codec<axq<T>> a(alh<? extends kd<T>> $$0) {
-      return ali.a.xmap($$1 -> a($$0, $$1), axq::b);
+   public List<axr> b() {
+      return List.copyOf(this.a);
    }
 
-   public static <T> Codec<axq<T>> b(alh<? extends kd<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? ali.d($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
+   public axq a(axr $$0) {
+      this.a.add($$0);
+      return this;
    }
 
-   public static <T> zg<ByteBuf, axq<T>> c(alh<? extends kd<T>> $$0) {
-      return ali.b.a($$1 -> a($$0, $$1), axq::b);
+   public axq a(all $$0) {
+      return this.a(axr.a($$0));
    }
 
-   public static <T> axq<T> a(alh<? extends kd<T>> $$0, ali $$1) {
-      return (axq<T>)c.intern(new axq<>($$0, $$1));
+   public axq b(all $$0) {
+      return this.a(axr.b($$0));
    }
 
-   public boolean d(alh<? extends kd<?>> $$0) {
-      return this.a == $$0;
+   public axq c(all $$0) {
+      return this.a(axr.c($$0));
    }
 
-   public <E> Optional<axq<E>> e(alh<? extends kd<E>> $$0) {
-      return this.d($$0) ? Optional.of((axq<E>)this) : Optional.empty();
-   }
-
-   @Override
-   public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+   public axq d(all $$0) {
+      return this.a(axr.d($$0));
    }
 }

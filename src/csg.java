@@ -1,17 +1,5 @@
-import java.util.List;
+public interface csg {
+   void a(crs var1, int var2, cwf var3);
 
-public interface csg extends brw, ctq {
-   int az_();
-
-   int g();
-
-   List<cwb> h();
-
-   default dae aC_() {
-      return this.aD_().a();
-   }
-
-   default dae.a aD_() {
-      return dae.b(this.az_(), this.g(), this.h());
-   }
+   void a(crs var1, int var2, int var3);
 }

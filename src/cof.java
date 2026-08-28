@@ -1,138 +1,68 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cof implements den {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final azs h = azs.a();
-   private final etv i;
-   private int j;
-   private int k;
-   private int l;
-
-   public cof(etv $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.t();
-      this.l = $$0.u();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.d(this.k);
-         this.l = 25;
-         $$0.e(this.l);
-      }
-   }
+public record cof(String q, Predicate<jq<cgl>> r, Predicate<jq<cgl>> s, ImmutableSet<cwb> t, ImmutableSet<dij> u, @Nullable awn v) {
+   public static final Predicate<jq<cgl>> a = $$0 -> $$0.a(axo.a);
+   public static final cof b = a("none", cgl.a, a, null);
+   public static final cof c = a("armorer", cgm.a, awo.Bd);
+   public static final cof d = a("butcher", cgm.b, awo.Be);
+   public static final cof e = a("cartographer", cgm.c, awo.Bf);
+   public static final cof f = a("cleric", cgm.d, awo.Bg);
+   public static final cof g = a("farmer", cgm.e, ImmutableSet.of(cwj.px, cwj.pw, cwj.vD, cwj.rP), ImmutableSet.of(dil.cC), awo.Bh);
+   public static final cof h = a("fisherman", cgm.f, awo.Bi);
+   public static final cof i = a("fletcher", cgm.g, awo.Bj);
+   public static final cof j = a("leatherworker", cgm.h, awo.Bk);
+   public static final cof k = a("librarian", cgm.i, awo.Bl);
+   public static final cof l = a("mason", cgm.j, awo.Bm);
+   public static final cof m = a("nitwit", cgl.a, cgl.a, null);
+   public static final cof n = a("shepherd", cgm.k, awo.Bn);
+   public static final cof o = a("toolsmith", cgm.l, awo.Bo);
+   public static final cof p = a("weaponsmith", cgm.m, awo.Bp);
 
    @Override
-   public int a(arn $$0, boolean $$1, boolean $$2) {
-      if (!$$0.ac().b(dex.L)) {
-         return 0;
-      } else if (--this.j > 0) {
-         return 0;
-      } else {
-         this.j = 1200;
-         this.k -= 1200;
-         this.i.d(this.k);
-         if (this.k > 0) {
-            return 0;
-         } else {
-            this.k = 24000;
-            if (!$$0.ac().b(dex.e)) {
-               return 0;
-            } else {
-               int $$3 = this.l;
-               this.l = azk.a(this.l + 25, 25, 75);
-               this.i.e(this.l);
-               if (this.h.a(100) > $$3) {
-                  return 0;
-               } else if (this.a($$0)) {
-                  this.l = 25;
-                  return 1;
-               } else {
-                  return 0;
-               }
-            }
-         }
-      }
+   public String toString() {
+      return this.q;
    }
 
-   private boolean a(arn $$0) {
-      com $$1 = $$0.j();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
-      } else {
-         jh $$2 = $$1.dx();
-         int $$3 = 48;
-         cge $$4 = $$0.y();
-         Optional<jh> $$5 = $$4.d($$0x -> $$0x.a(cgi.o), $$0x -> true, $$2, 48, cge.b.c);
-         jh $$6 = $$5.orElse($$2);
-         jh $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.t($$7).a(awz.ah)) {
-               return false;
-            }
-
-            coe $$8 = bul.bl.a($$0, $$7, buk.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cH());
-               $$8.u(48000);
-               $$8.h($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
-         }
-
-         return false;
-      }
+   private static cof a(String $$0, alk<cgl> $$1, @Nullable awn $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
    }
 
-   private void a(arn $$0, coe $$1, int $$2) {
-      jh $$3 = this.a($$0, $$1.dx(), $$2);
-      if ($$3 != null) {
-         cjd $$4 = bul.be.a($$0, $$3, buk.h);
-         if ($$4 != null) {
-            $$4.b($$1, true);
-         }
-      }
+   private static cof a(String $$0, Predicate<jq<cgl>> $$1, Predicate<jq<cgl>> $$2, @Nullable awn $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   }
+
+   private static cof a(String $$0, alk<cgl> $$1, ImmutableSet<cwb> $$2, ImmutableSet<dij> $$3, @Nullable awn $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   }
+
+   private static cof a(String $$0, Predicate<jq<cgl>> $$1, Predicate<jq<cgl>> $$2, ImmutableSet<cwb> $$3, ImmutableSet<dij> $$4, @Nullable awn $$5) {
+      return kd.a(lz.x, all.b($$0), new cof($$0, $$1, $$2, $$3, $$4, $$5));
+   }
+
+   public String a() {
+      return this.q;
+   }
+
+   public Predicate<jq<cgl>> b() {
+      return this.r;
+   }
+
+   public Predicate<jq<cgl>> c() {
+      return this.s;
+   }
+
+   public ImmutableSet<cwb> d() {
+      return this.t;
+   }
+
+   public ImmutableSet<dij> e() {
+      return this.u;
    }
 
    @Nullable
-   private jh a(dfe $$0, jh $$1, int $$2) {
-      jh $$3 = null;
-      bvu $$4 = bvw.a(bul.bl);
-
-      for (int $$5 = 0; $$5 < 10; $$5++) {
-         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(ebf.a.b, $$6, $$7);
-         jh $$9 = new jh($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, bul.bl)) {
-            $$3 = $$9;
-            break;
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(deg $$0, jh $$1) {
-      for (jh $$2 : jh.c($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).g($$0, $$2).c()) {
-            return false;
-         }
-      }
-
-      return true;
+   public awn f() {
+      return this.v;
    }
 }

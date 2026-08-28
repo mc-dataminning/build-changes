@@ -1,82 +1,42 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fqr extends frp {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xl c = xl.c("credits_and_attribution.screen.title");
+   private static final xl d = xl.c("credits_and_attribution.button.credits");
+   private static final xl s = xl.c("credits_and_attribution.button.attribution");
+   private static final xl u = xl.c("credits_and_attribution.button.licenses");
+   private final frp v;
+   private final fpl w = new fpl(this);
 
-public class fqr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<csx<?>, fqr.a<?, ?>> b = Maps.newHashMap();
-
-   public static <T extends cro> void a(csx<T> $$0, fji $$1, int $$2, xi $$3) {
-      fqr.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", ly.p.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
+   public fqr(frp $$0) {
+      super(c);
+      this.v = $$0;
    }
 
-   @Nullable
-   private static <T extends cro> fqr.a<T, ?> a(csx<T> $$0) {
-      return (fqr.a<T, ?>)b.get($$0);
+   @Override
+   protected void aS_() {
+      this.w.a(c, this.p);
+      fpp $$0 = this.w.c(fpp.d()).a(8);
+      $$0.c().b();
+      $$0.a(flw.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(flw.a(s, fqm.b(this, ayj.d)).a(210).a());
+      $$0.a(flw.a(u, fqm.b(this, ayj.e)).a(210).a());
+      this.w.b(flw.a(xk.d, $$0x -> this.aP_()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
-   private static <M extends cro, U extends fra & fsu<M>> void a(csx<? extends M> $$0, fqr.a<M, U> $$1) {
-      fqr.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + ly.p.b($$0));
-      }
+   @Override
+   protected void c() {
+      this.w.a();
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (csx<?> $$1 : ly.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", ly.p.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
+   private void m() {
+      this.m.a(new frs(false, () -> this.m.a(this)));
    }
 
-   static {
-      a(csx.a, fsa::new);
-      a(csx.b, fsa::new);
-      a(csx.c, fsa::new);
-      a(csx.d, fsa::new);
-      a(csx.e, fsa::new);
-      a(csx.f, fsa::new);
-      a(csx.g, fsg::new);
-      a(csx.h, fsb::new);
-      a(csx.i, frs::new);
-      a(csx.j, frt::new);
-      a(csx.k, fru::new);
-      a(csx.l, frx::new);
-      a(csx.m, fsc::new);
-      a(csx.n, fsj::new);
-      a(csx.o, fsk::new);
-      a(csx.p, fsl::new);
-      a(csx.q, fsn::new);
-      a(csx.r, fss::new);
-      a(csx.s, fst::new);
-      a(csx.t, fsv::new);
-      a(csx.u, fsy::new);
-      a(csx.v, fta::new);
-      a(csx.w, ftb::new);
-      a(csx.x, fry::new);
-      a(csx.y, ftc::new);
-   }
-
-   interface a<T extends cro, U extends fra & fsu<T>> {
-      default void a(xi $$0, csx<T> $$1, fji $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gk()), $$2.t.gk(), $$0);
-         $$2.t.cd = $$4.E();
-         $$2.a($$4);
-      }
-
-      U create(T var1, col var2, xi var3);
+   @Override
+   public void aP_() {
+      this.m.a(this.v);
    }
 }

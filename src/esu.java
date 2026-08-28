@@ -1,39 +1,25 @@
 import javax.annotation.Nullable;
 
-public abstract class esu {
-   protected final dog a;
+public class esu implements esv {
+   private final dff b;
 
-   protected esu(dog $$0) {
-      this.a = $$0;
+   public esu(dff $$0) {
+      this.b = $$0;
    }
 
-   public abstract void a(dfb var1, jh var2, dvj var3, @Nullable ess var4, boolean var5);
-
-   protected int a(dfb $$0, jh $$1) {
-      return this.a.a($$0, $$1);
+   @Override
+   public void a(jm $$0, dvo $$1, jh $$2, jh $$3, int $$4, int $$5) {
+      esv.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
-   protected int a(jh $$0, dvj $$1) {
-      return $$1.a(this.a) ? $$1.c(dog.f) : 0;
+   @Override
+   public void a(jh $$0, dij $$1, @Nullable esw $$2) {
+      dvo $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   protected int b(dfb $$0, jh $$1) {
-      int $$2 = 0;
-
-      for (jm $$3 : jm.c.a) {
-         jh $$4 = $$1.a($$3);
-         dvj $$5 = $$0.a_($$4);
-         $$2 = Math.max($$2, this.a($$4, $$5));
-         jh $$6 = $$1.d();
-         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
-            jh $$7 = $$4.d();
-            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
-         } else if (!$$5.d($$0, $$4)) {
-            jh $$8 = $$4.e();
-            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
-         }
-      }
-
-      return Math.max(0, $$2 - 1);
+   @Override
+   public void a(dvo $$0, jh $$1, dij $$2, @Nullable esw $$3, boolean $$4) {
+      esv.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

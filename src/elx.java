@@ -1,232 +1,109 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public abstract class elx {
-   public static final Codec<elx> a = ly.R.q().dispatch(elx::e, emg::codec);
-   public static final Codec<jq<elx>> b = ale.a(lz.aS, a);
-   protected final elx.c c;
+public class elx extends emf {
+   private static final Logger d = LogUtils.getLogger();
+   protected final enj a;
+   protected jh b;
+   private final int h;
+   protected final dow c;
+   private final List<ene> i = Lists.newArrayList();
+   private final eqe j;
+   private final epn k;
 
-   public static <S extends elx> RecordCodecBuilder<S, elx.c> a(Instance<S> $$0) {
-      return elx.c.a.forGetter($$0x -> $$0x.c);
+   public elx(eqe $$0, enj $$1, jh $$2, int $$3, dow $$4, elt $$5, epn $$6) {
+      super(ems.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
+      this.k = $$6;
    }
 
-   public static <S extends elx> MapCodec<S> a(Function<elx.c, S> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   public elx(emr $$0, un $$1) {
+      super(ems.ad, $$1);
+      this.j = $$0.c();
+      this.b = new jh($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<vk> $$2 = $$0.b().a(vb.a);
+      this.a = (enj)enj.f.parse($$2, $$1.p("pool_element")).getPartialOrThrow($$0x -> new IllegalStateException("Invalid pool element found: " + $$0x));
+      this.c = dow.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      ut $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(ene.a(new Dynamic($$2, $$1x))));
+      this.k = epn.c.parse(vb.a, $$1.c("liquid_settings")).result().orElse(eoc.e);
    }
 
-   protected elx(elx.c $$0) {
-      this.c = $$0;
-   }
+   @Override
+   protected void a(emr $$0, un $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<vk> $$2 = $$0.b().a(vb.a);
+      enj.f.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      ut $$3 = new ut();
 
-   public ju<dgc> a() {
-      return this.c.b;
-   }
-
-   public Map<bvd, eme> b() {
-      return this.c.c;
-   }
-
-   public ebb.a c() {
-      return this.c.d;
-   }
-
-   public emi d() {
-      return this.c.e;
-   }
-
-   public elp a(elp $$0) {
-      return this.d() != emi.a ? $$0.a(12) : $$0;
-   }
-
-   public emf a(ke $$0, dxg $$1, dgg $$2, ebt $$3, eqa $$4, long $$5, deh $$6, int $$7, dfd $$8, Predicate<jq<dgc>> $$9) {
-      elx.a $$10 = new elx.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
-      Optional<elx.b> $$11 = this.b($$10);
-      if ($$11.isPresent()) {
-         emp $$12 = $$11.get().a();
-         emf $$13 = new emf(this, $$6, $$7, $$12.a());
-         if ($$13.b()) {
-            return $$13;
-         }
+      for (ene $$4 : this.i) {
+         $$3.add((vk)$$4.a($$2).getValue());
       }
 
-      return emf.b;
-   }
-
-   protected static Optional<elx.b> a(elx.a $$0, ebf.a $$1, Consumer<emp> $$2) {
-      deh $$3 = $$0.h();
-      int $$4 = $$3.b();
-      int $$5 = $$3.c();
-      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
-      return Optional.of(new elx.b(new jh($$4, $$6, $$5), $$2));
-   }
-
-   private static boolean a(elx.b $$0, elx.a $$1) {
-      jh $$2 = $$0.b();
-      return $$1.j.test($$1.b.d().getNoiseBiome(kb.a($$2.u()), kb.a($$2.v()), kb.a($$2.w()), $$1.d.b()));
-   }
-
-   public void a(dfy $$0, dfw $$1, dxg $$2, azs $$3, elp $$4, deh $$5, emm $$6) {
-   }
-
-   private static int[] c(elx.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      dxg $$5 = $$0.b();
-      dfd $$6 = $$0.i();
-      ebt $$7 = $$0.d();
-      return new int[]{
-         $$5.c($$1, $$3, ebf.a.a, $$6, $$7),
-         $$5.c($$1, $$3 + $$4, ebf.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3, ebf.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3 + $$4, ebf.a.a, $$6, $$7)
-      };
-   }
-
-   public static int a(elx.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
-      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
-   }
-
-   protected static int a(elx.a $$0, int $$1, int $$2) {
-      deh $$3 = $$0.h();
-      int $$4 = $$3.d();
-      int $$5 = $$3.e();
-      return b($$0, $$4, $$5, $$1, $$2);
-   }
-
-   protected static int b(elx.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
-      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
-   }
-
-   @Deprecated
-   protected jh a(elx.a $$0, dor $$1) {
-      int $$2 = 5;
-      int $$3 = 5;
-      if ($$1 == dor.b) {
-         $$2 = -5;
-      } else if ($$1 == dor.c) {
-         $$2 = -5;
-         $$3 = -5;
-      } else if ($$1 == dor.d) {
-         $$3 = -5;
-      }
-
-      deh $$4 = $$0.h();
-      int $$5 = $$4.a(7);
-      int $$6 = $$4.b(7);
-      return new jh($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
-   }
-
-   protected abstract Optional<elx.b> a(elx.a var1);
-
-   public Optional<elx.b> b(elx.a $$0) {
-      return this.a($$0).filter($$1 -> a($$1, $$0));
-   }
-
-   public abstract emg<?> e();
-
-   public static record a(ke a, dxg b, dgg c, ebt d, eqa e, ece f, long g, deh h, dfd i, Predicate<jq<dgc>> j) {
-
-      public a(ke $$0, dxg $$1, dgg $$2, ebt $$3, eqa $$4, long $$5, deh $$6, dfd $$7, Predicate<jq<dgc>> $$8) {
-         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
-      }
-
-      private static ece a(long $$0, deh $$1) {
-         ece $$2 = new ece(new ebg(0L));
-         $$2.c($$0, $$1.g, $$1.h);
-         return $$2;
+      $$1.a("junctions", $$3);
+      if (this.k != eoc.e) {
+         $$1.a("liquid_settings", (vk)epn.c.encodeStart(vb.a, this.k).getOrThrow());
       }
    }
 
-   public static record b(jh a, Either<Consumer<emp>, emp> b) {
-      public b(jh $$0, Consumer<emp> $$1) {
-         this($$0, Either.left($$1));
-      }
-
-      public emp a() {
-         return (emp)this.b.map($$0 -> {
-            emp $$1 = new emp();
-            $$0.accept($$1);
-            return $$1;
-         }, $$0 -> $$0);
-      }
-
-      public jh b() {
-         return this.a;
-      }
-
-      public Either<Consumer<emp>, emp> c() {
-         return this.b;
-      }
+   @Override
+   public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   public static record c(ju<dgc> b, Map<bvd, eme> c, ebb.a d, emi e) {
-      static final elx.c f = new elx.c(ju.a(), Map.of(), ebb.a.e, emi.a);
-      public static final MapCodec<elx.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  kf.a(lz.aG).fieldOf("biomes").forGetter(elx.c::a),
-                  Codec.simpleMap(bvd.i, eme.a, bag.a(bvd.values())).fieldOf("spawn_overrides").forGetter(elx.c::b),
-                  ebb.a.l.fieldOf("step").forGetter(elx.c::c),
-                  emi.f.optionalFieldOf("terrain_adaptation", f.e).forGetter(elx.c::d)
-               )
-               .apply($$0, elx.c::new)
-      );
+   public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, jh $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, this.k, $$6);
+   }
 
-      public c(ju<dgc> $$0) {
-         this($$0, f.c, f.d, f.e);
-      }
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
 
-      public ju<dgc> a() {
-         return this.b;
-      }
+   @Override
+   public dow a() {
+      return this.c;
+   }
 
-      public Map<bvd, eme> b() {
-         return this.c;
-      }
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
 
-      public ebb.a c() {
-         return this.d;
-      }
+   public enj b() {
+      return this.a;
+   }
 
-      public emi d() {
-         return this.e;
-      }
+   public jh c() {
+      return this.b;
+   }
 
-      public static class a {
-         private final ju<dgc> a;
-         private Map<bvd, eme> b = elx.c.f.c;
-         private ebb.a c = elx.c.f.d;
-         private emi d = elx.c.f.e;
+   public int d() {
+      return this.h;
+   }
 
-         public a(ju<dgc> $$0) {
-            this.a = $$0;
-         }
+   public void a(ene $$0) {
+      this.i.add($$0);
+   }
 
-         public elx.c.a a(Map<bvd, eme> $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public elx.c.a a(ebb.a $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public elx.c.a a(emi $$0) {
-            this.d = $$0;
-            return this;
-         }
-
-         public elx.c a() {
-            return new elx.c(this.a, this.b, this.c, this.d);
-         }
-      }
+   public List<ene> e() {
+      return this.i;
    }
 }

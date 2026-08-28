@@ -1,17 +1,25 @@
-import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gyx extends avg<int[]> {
-   private static final ali a = ali.b("textures/colormap/grass.png");
+public interface gyx {
+   ale a = new ale("textures", ".png");
 
-   protected int[] a(avb $$0, bon $$1) {
-      try {
-         return gyz.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
+   void a(ave var1, gyx.a var2);
+
+   gyz a();
+
+   public interface a {
+      default void a(all $$0, avc $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
+
+      void a(all var1, gyx.b var2);
+
+      void a(Predicate<all> var1);
    }
 
-   protected void a(int[] $$0, avb $$1, bon $$2) {
-      dez.a($$0);
+   public interface b extends Function<gyw, gyn> {
+      default void a() {
+      }
    }
 }

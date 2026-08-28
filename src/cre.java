@@ -1,107 +1,94 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+public abstract class cre extends bui {
+   protected static final ako<Integer> f = aks.a(cre.class, akq.b);
+   protected static final ako<Integer> g = aks.a(cre.class, akq.b);
+   protected static final ako<Float> h = aks.a(cre.class, akq.d);
 
-public class cre {
-   private static final Logger a = LogUtils.getLogger();
-   private final crg b;
-   private final Map<ali, crd> c;
-   private final crf d;
-
-   cre(crg $$0, crf $$1, Map<ali, crd> $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
+   public cre(bup<?> $$0, dff $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(crf $$0) {
-      return $$0.a(this.d);
-   }
-
-   public crf a() {
-      return this.d;
-   }
-
-   public crf a(Iterable<ali> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
-   }
-
-   public crf a(crd... $$0) {
-      return crf.a(this.b, Arrays.asList($$0));
-   }
-
-   public crf a(Iterable<ali> $$0, Consumer<ali> $$1) {
-      Set<crd> $$2 = Sets.newIdentityHashSet();
-
-      for (ali $$3 : $$0) {
-         crd $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
-         }
-      }
-
-      return crf.a(this.b, $$2);
-   }
-
-   public Set<ali> b(crf $$0) {
-      Set<ali> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
-         }
-      });
-      return $$1;
-   }
-
-   public Codec<crf> b() {
-      return ali.a.listOf().comapFlatMap($$0 -> {
-         Set<ali> $$1 = new HashSet<>();
-         crf $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
-   }
-
-   public static class a {
-      private final crg a;
-      private int b;
-      private final Map<ali, crd> c = new LinkedHashMap<>();
-
-      public a(String $$0) {
-         this.a = new crg($$0);
-      }
-
-      public crd a(String $$0) {
-         return this.a(ali.b($$0));
-      }
-
-      public crd a(ali $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            crd $$1 = new crd(this.a, this.b++);
-            crd $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
+   @Override
+   public boolean a(bsy $$0, float $$1) {
+      if (this.dY().C || this.dT()) {
+         return true;
+      } else if (this.b($$0)) {
+         return false;
+      } else {
+         this.m(-this.T());
+         this.d(10);
+         this.bF();
+         this.b(this.R() + $$1 * 10.0F);
+         this.a(eak.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cor && ((cor)$$0.d()).gm().d;
+         if (($$2 || !(this.R() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.av();
             }
+         } else {
+            this.a($$0);
          }
-      }
 
-      public cre a() {
-         crf $$0 = crf.a(this.a, this.c.values());
-         return new cre(this.a, $$0, Map.copyOf(this.c));
+         return true;
       }
    }
+
+   boolean d(bsy $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dex $$0) {
+      return $$0.b() instanceof bvg && !this.dY().ac().b(dfb.c);
+   }
+
+   public void b(cwb $$0) {
+      this.au();
+      if (this.dY().ac().b(dfb.i)) {
+         cwf $$1 = new cwf($$0);
+         $$1.b(ku.g, this.ao());
+         this.b($$1);
+      }
+   }
+
+   @Override
+   protected void a(aks.a $$0) {
+      $$0.a(f, 0);
+      $$0.a(g, 1);
+      $$0.a(h, 0.0F);
+   }
+
+   public void d(int $$0) {
+      this.am.a(f, $$0);
+   }
+
+   public void m(int $$0) {
+      this.am.a(g, $$0);
+   }
+
+   public void b(float $$0) {
+      this.am.a(h, $$0);
+   }
+
+   public float R() {
+      return this.am.a(h);
+   }
+
+   public int S() {
+      return this.am.a(f);
+   }
+
+   public int T() {
+      return this.am.a(g);
+   }
+
+   protected void a(bsy $$0) {
+      this.b(this.al_());
+   }
+
+   @Override
+   public int bZ() {
+      return 10;
+   }
+
+   abstract cwb al_();
 }

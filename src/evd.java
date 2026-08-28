@@ -1,178 +1,146 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class evd extends evp {
+public class evd extends evt {
+   private static final Map<all, evd.c> b = Stream.of(evd.a.a, evd.d.b, evd.e.b).collect(Collectors.toMap(evd.c::a, Function.identity()));
+   private static final Codec<evd.c> c = all.a.comapFlatMap($$0 -> {
+      evd.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, evd.c::a);
+   private static final MapCodec<evd.b> d = ayw.a("formula", "parameters", c, evd.b::a, evd.c::b);
    public static final MapCodec<evd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eyc.a.fieldOf("source").forGetter($$0x -> $$0x.b), evd.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
-            .apply($$0, evd::new)
+      $$0 -> a($$0).and($$0.group(dbw.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, evd::new)
    );
-   private final eyb b;
-   private final List<evd.b> c;
+   private final jq<dbw> e;
+   private final evd.b f;
 
-   evd(List<exn> $$0, eyb $$1, List<evd.b> $$2) {
+   private evd(List<exr> $$0, jq<dbw> $$1, evd.b $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public evr<evd> b() {
-      return evs.C;
+   public evv<evd> b() {
+      return evw.x;
    }
 
    @Override
-   public Set<ewv<?>> a() {
-      return this.b.b();
+   public Set<ewz<?>> a() {
+      return ImmutableSet.of(exc.i);
    }
 
    @Override
-   public cwb a(cwb $$0, euc $$1) {
-      vh $$2 = this.b.a($$1);
-      if ($$2 == null) {
-         return $$0;
-      } else {
-         MutableObject<uk> $$3 = new MutableObject();
-         Supplier<vh> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(ku.b, cyk.a).c());
-            }
-
-            return (vh)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         uk $$5 = (uk)$$3.getValue();
-         if ($$5 != null) {
-            cyk.a(ku.b, $$0, $$5);
-         }
-
-         return $$0;
+   public cwf a(cwf $$0, eug $$1) {
+      cwf $$2 = $$1.c(exc.i);
+      if ($$2 != null) {
+         int $$3 = dby.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.L(), $$3);
+         $$0.e($$4);
       }
+
+      return $$0;
    }
 
-   @Deprecated
-   public static evd.a a(eyb $$0) {
-      return new evd.a($$0);
+   public static evt.a<?> a(jq<dbw> $$0, float $$1, int $$2) {
+      return a($$3 -> new evd($$3, $$0, new evd.a($$2, $$1)));
    }
 
-   public static evd.a a(euc.b $$0) {
-      return new evd.a(exz.a($$0));
+   public static evt.a<?> a(jq<dbw> $$0) {
+      return a($$1 -> new evd($$1, $$0, new evd.d()));
    }
 
-   public static class a extends evp.a<evd.a> {
-      private final eyb a;
-      private final List<evd.b> b = Lists.newArrayList();
-
-      a(eyb $$0) {
-         this.a = $$0;
-      }
-
-      public evd.a a(String $$0, String $$1, evd.c $$2) {
-         try {
-            this.b.add(new evd.b(fo.g.a($$0), fo.g.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
-      }
-
-      public evd.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, evd.c.a);
-      }
-
-      protected evd.a a() {
-         return this;
-      }
-
-      @Override
-      public evq b() {
-         return new evd(this.g(), this.a, this.b);
-      }
+   public static evt.a<?> b(jq<dbw> $$0) {
+      return a($$1 -> new evd($$1, $$0, new evd.e(1)));
    }
 
-   static record b(fo.g b, fo.g c, evd.c d) {
-      public static final Codec<evd.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fo.g.a.fieldOf("source").forGetter(evd.b::a), fo.g.a.fieldOf("target").forGetter(evd.b::b), evd.c.d.fieldOf("op").forGetter(evd.b::c))
-               .apply($$0, evd.b::new)
+   public static evt.a<?> a(jq<dbw> $$0, int $$1) {
+      return a($$2 -> new evd($$2, $$0, new evd.e($$1)));
+   }
+
+   static record a(int b, float c) implements evd.b {
+      private static final Codec<evd.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(evd.a::b), Codec.FLOAT.fieldOf("probability").forGetter(evd.a::c)).apply($$0, evd.a::new)
       );
+      public static final evd.c a = new evd.c(all.b("binomial_with_bonus_count"), d);
 
-      public void a(Supplier<vh> $$0, vh $$1) {
-         try {
-            List<vh> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c, $$2);
+      @Override
+      public int a(azv $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
             }
-         } catch (CommandSyntaxException var4) {
          }
-      }
 
-      public fo.g a() {
-         return this.b;
-      }
-
-      public fo.g b() {
-         return this.c;
-      }
-
-      public evd.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements bag {
-      a("replace") {
-         @Override
-         public void a(vh $$0, fo.g $$1, List<vh> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (vh)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(vh $$0, fo.g $$1, List<vh> $$2) throws CommandSyntaxException {
-            List<vh> $$3 = $$1.a($$0, uq::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof uq) {
-                  $$2.forEach($$1xx -> ((uq)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(vh $$0, fo.g $$1, List<vh> $$2) throws CommandSyntaxException {
-            List<vh> $$3 = $$1.a($$0, uk::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof uk) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof uk) {
-                        ((uk)$$1x).a((uk)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<evd.c> d = bag.a(evd.c::values);
-      private final String e;
-
-      public abstract void a(vh var1, fo.g var2, List<vh> var3) throws CommandSyntaxException;
-
-      c(final String $$0) {
-         this.e = $$0;
+         return $$1;
       }
 
       @Override
-      public String c() {
-         return this.e;
+      public evd.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(azv var1, int var2, int var3);
+
+      evd.c a();
+   }
+
+   static record c(all a, Codec<? extends evd.b> b) {
+   }
+
+   static record d() implements evd.b {
+      public static final Codec<evd.d> a = Codec.unit(evd.d::new);
+      public static final evd.c b = new evd.c(all.b("ore_drops"), a);
+
+      @Override
+      public int a(azv $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public evd.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements evd.b {
+      public static final Codec<evd.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(evd.e::b)).apply($$0, evd.e::new)
+      );
+      public static final evd.c b = new evd.c(all.b("uniform_bonus_count"), a);
+
+      @Override
+      public int a(azv $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public evd.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

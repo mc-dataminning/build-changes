@@ -1,146 +1,150 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dvd extends dkh {
-   public static final MapCodec<dvd> b = b(dvd::new);
-   public static final dwh<dwl> c = dvz.bg;
-   public static final dwa d = dvz.x;
-   public static final float e = 4.0F;
-   protected static final fah f = die.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final fah g = die.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
-   protected static final fah h = die.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
-   protected static final fah i = die.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
-   protected static final fah j = die.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final fah k = die.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
-   protected static final float l = 2.0F;
-   protected static final float m = 6.0F;
-   protected static final float n = 10.0F;
-   protected static final fah o = die.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final fah G = die.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
-   protected static final fah H = die.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
-   protected static final fah I = die.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
-   protected static final fah J = die.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final fah K = die.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
-   protected static final fah L = die.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
-   protected static final fah M = die.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final fah N = die.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
-   protected static final fah O = die.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
-   protected static final fah P = die.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
-   protected static final fah Q = die.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
-   private static final fah[] R = a(true);
-   private static final fah[] S = a(false);
+public final class dvd {
+   private static final Map<String, dvd> k = new Object2ObjectArrayMap();
+   public static final Codec<dvd> a = Codec.stringResolver($$0 -> $$0.l, k::get);
+   public static final dvd b = new dvd(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(sh.g), Optional.of(sh.n), Optional.of(sh.C), Optional.of(sh.I)
+   );
+   public static final dvd c = new dvd(
+      "spruce", 0.5F, Optional.of(sh.q), Optional.of(sh.r), Optional.of(sh.k), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dvd d = new dvd(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(sh.x), Optional.of(sh.y), Optional.empty(), Optional.empty()
+   );
+   public static final dvd e = new dvd("azalea", Optional.empty(), Optional.of(sh.w), Optional.empty());
+   public static final dvd f = new dvd("birch", Optional.empty(), Optional.of(sh.i), Optional.of(sh.F));
+   public static final dvd g = new dvd("jungle", Optional.of(sh.p), Optional.of(sh.o), Optional.empty());
+   public static final dvd h = new dvd("acacia", Optional.empty(), Optional.of(sh.j), Optional.empty());
+   public static final dvd i = new dvd("cherry", Optional.empty(), Optional.of(sh.z), Optional.of(sh.K));
+   public static final dvd j = new dvd("dark_oak", Optional.of(sh.h), Optional.empty(), Optional.empty());
+   private final String l;
+   private final float m;
+   private final Optional<alk<eeb<?, ?>>> n;
+   private final Optional<alk<eeb<?, ?>>> o;
+   private final Optional<alk<eeb<?, ?>>> p;
+   private final Optional<alk<eeb<?, ?>>> q;
+   private final Optional<alk<eeb<?, ?>>> r;
+   private final Optional<alk<eeb<?, ?>>> s;
 
-   @Override
-   protected MapCodec<dvd> a() {
-      return b;
+   public dvd(String $$0, Optional<alk<eeb<?, ?>>> $$1, Optional<alk<eeb<?, ?>>> $$2, Optional<alk<eeb<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
    }
 
-   private static fah[] a(boolean $$0) {
-      return Arrays.stream(jm.values()).map($$1 -> a($$1, $$0)).toArray(fah[]::new);
+   public dvd(
+      String $$0,
+      float $$1,
+      Optional<alk<eeb<?, ?>>> $$2,
+      Optional<alk<eeb<?, ?>>> $$3,
+      Optional<alk<eeb<?, ?>>> $$4,
+      Optional<alk<eeb<?, ?>>> $$5,
+      Optional<alk<eeb<?, ?>>> $$6,
+      Optional<alk<eeb<?, ?>>> $$7
+   ) {
+      this.l = $$0;
+      this.m = $$1;
+      this.n = $$2;
+      this.o = $$3;
+      this.p = $$4;
+      this.q = $$5;
+      this.r = $$6;
+      this.s = $$7;
+      k.put($$0, this);
    }
 
-   private static fah a(jm $$0, boolean $$1) {
-      switch ($$0) {
-         case a:
-         default:
-            return fae.a(k, $$1 ? M : G);
-         case b:
-            return fae.a(j, $$1 ? L : o);
-         case c:
-            return fae.a(i, $$1 ? O : I);
-         case d:
-            return fae.a(h, $$1 ? N : H);
-         case e:
-            return fae.a(g, $$1 ? Q : K);
-         case f:
-            return fae.a(f, $$1 ? P : J);
-      }
-   }
+   @Nullable
+   private alk<eeb<?, ?>> a(azv $$0, boolean $$1) {
+      if ($$0.i() < this.m) {
+         if ($$1 && this.s.isPresent()) {
+            return this.s.get();
+         }
 
-   public dvd(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(a, jm.c).b(c, dwl.a).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean g_(dvj $$0) {
-      return true;
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return ($$0.c(d) ? R : S)[$$0.c(a).ordinal()];
-   }
-
-   private boolean a(dvj $$0, dvj $$1) {
-      die $$2 = $$0.c(c) == dwl.a ? dig.by : dig.br;
-      return $$1.a($$2) && $$1.c(dvc.c) && $$1.c(a) == $$0.c(a);
-   }
-
-   @Override
-   public dvj a(dfb $$0, jh $$1, dvj $$2, com $$3) {
-      if (!$$0.C && $$3.gl().d) {
-         jh $$4 = $$1.a($$2.c(a).g());
-         if (this.a($$2, $$0.a_($$4))) {
-            $$0.b($$4, false);
+         if (this.q.isPresent()) {
+            return this.q.get();
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
    }
 
-   @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         jh $$5 = $$2.a($$0.c(a).g());
-         if (this.a($$0, $$1.a_($$5))) {
-            $$1.b($$5, true);
+   @Nullable
+   private alk<eeb<?, ?>> a(azv $$0) {
+      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
+   }
+
+   public boolean a(arq $$0, dxk $$1, jh $$2, dvo $$3, azv $$4) {
+      alk<eeb<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         jq<eeb<?, ?>> $$6 = $$0.H_().e(ma.aJ).a($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     eeb<?, ?> $$9 = $$6.a();
+                     dvo $$10 = dil.a.m();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
+                     return false;
+                  }
+               }
+            }
+         }
+      }
+
+      alk<eeb<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         jq<eeb<?, ?>> $$12 = $$0.H_().e(ma.aJ).a($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
+         } else {
+            eeb<?, ?> $$13 = $$12.a();
+            dvo $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 4);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 4);
+               return false;
+            }
          }
       }
    }
 
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static boolean a(dvo $$0, dek $$1, jh $$2, int $$3, int $$4) {
+      dij $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
    }
 
-   @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      dvj $$3 = $$1.a_($$2.a($$0.c(a).g()));
-      return this.a($$0, $$3) || $$3.a(dig.bQ) && $$3.c(a) == $$0.c(a);
-   }
-
-   @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
-      if ($$0.a((dfe)$$1, $$2)) {
-         $$1.b($$2.a($$0.c(a).g()), $$3, eso.a($$4, $$0.c(a).g()));
+   private boolean a(dfg $$0, jh $$1) {
+      for (jh $$2 : jh.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
+         if ($$0.a_($$2).a(axd.V)) {
+            return true;
+         }
       }
-   }
 
-   @Override
-   public cwb a(dfe $$0, jh $$1, dvj $$2) {
-      return new cwb($$2.c(c) == dwl.b ? dig.br : dig.by);
-   }
-
-   @Override
-   protected dvj a(dvj $$0, dor $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dvj a(dvj $$0, dna $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(a, c, d);
-   }
-
-   @Override
-   protected boolean a(dvj $$0, erz $$1) {
       return false;
    }
 }

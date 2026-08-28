@@ -1,92 +1,108 @@
-public interface dfs extends deg {
-   jm[] D = jm.values();
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   default int a(jh $$0, jm $$1) {
-      return this.a_($$0).b(this, $$0, $$1);
-   }
+public class dfs implements deo {
+   protected final int a;
+   protected final int b;
+   protected final dxj[][] c;
+   protected boolean d;
+   protected final dff e;
+   private final Supplier<jq<dgh>> f;
 
-   default int e_(jh $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.e(), jm.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.d(), jm.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.f(), jm.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.g(), jm.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.h(), jm.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.i(), jm.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
+   public dfs(dff $$0, jh $$1, jh $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.H_().e(ma.aG).b(dgo.b));
+      this.a = kj.a($$1.u());
+      this.b = kj.a($$1.w());
+      int $$3 = kj.a($$2.u());
+      int $$4 = kj.a($$2.w());
+      this.c = new dxj[$$3 - this.a + 1][$$4 - this.b + 1];
+      dxn $$5 = $$0.P();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = kj.a($$1.u()); $$8 <= kj.a($$2.u()); $$8++) {
+         for (int $$9 = kj.a($$1.w()); $$9 <= kj.a($$2.w()); $$9++) {
+            dxj $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
             }
          }
       }
    }
 
-   default int a(jh $$0, jm $$1, boolean $$2) {
-      dvj $$3 = this.a_($$0);
-      if ($$2) {
-         return dkg.n($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(dig.ha)) {
-         return 15;
-      } else if ($$3.a(dig.cw)) {
-         return $$3.c(dog.f);
+   private dxj d(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w()));
+   }
+
+   private dxj a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dxj $$4 = this.c[$$2][$$3];
+         return (dxj)($$4 != null ? $$4 : new dxp(this.e, new del($$0, $$1), this.f.get()));
       } else {
-         return $$3.p() ? this.a($$0, $$1) : 0;
+         return new dxp(this.e, new del($$0, $$1), this.f.get());
       }
    }
 
-   default boolean b(jh $$0, jm $$1) {
-      return this.c($$0, $$1) > 0;
+   @Override
+   public dxe C_() {
+      return this.e.C_();
    }
 
-   default int c(jh $$0, jm $$1) {
-      dvj $$2 = this.a_($$0);
-      int $$3 = $$2.a(this, $$0, $$1);
-      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   @Override
+   public dek c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
-   default boolean C(jh $$0) {
-      if (this.c($$0.e(), jm.a) > 0) {
-         return true;
-      } else if (this.c($$0.d(), jm.b) > 0) {
-         return true;
-      } else if (this.c($$0.f(), jm.c) > 0) {
-         return true;
-      } else if (this.c($$0.g(), jm.d) > 0) {
-         return true;
+   @Override
+   public List<fal> c(@Nullable bui $$0, ezm $$1) {
+      return List.of();
+   }
+
+   @Nullable
+   @Override
+   public dsr c_(jh $$0) {
+      dxj $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
+
+   @Override
+   public dvo a_(jh $$0) {
+      if (this.s($$0)) {
+         return dil.a.m();
       } else {
-         return this.c($$0.h(), jm.e) > 0 ? true : this.c($$0.i(), jm.f) > 0;
+         dxj $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
    }
 
-   default int D(jh $$0) {
-      int $$1 = 0;
-
-      for (jm $$2 : D) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
+   @Override
+   public ero b_(jh $$0) {
+      if (this.s($$0)) {
+         return erp.a.g();
+      } else {
+         dxj $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
+   }
 
-      return $$1;
+   @Override
+   public int I_() {
+      return this.e.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.e.J_();
    }
 }

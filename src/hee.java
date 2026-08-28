@@ -1,114 +1,130 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class hee implements hei {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final xi f = xi.a("tutorial.move.title", heh.a("forward"), heh.a("left"), heh.a("back"), heh.a("right"));
-   private static final xi g = xi.a("tutorial.move.description", heh.a("jump"));
-   private static final xi h = xi.c("tutorial.look.title");
-   private static final xi i = xi.c("tutorial.look.description");
-   private final heh j;
-   @Nullable
-   private fnt k;
-   @Nullable
-   private fnt l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+public class hee {
+   static final Map<String, hee> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<hee> a = Codec.STRING.comapFlatMap($$0 -> {
+      hee $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, hee::a);
+   private static final List<heg<?>> i = List.of(heg.a, heg.b, heg.c, heg.d, heg.e, heg.f, heg.g, heg.h, heg.m, heg.l);
+   private static final List<heg<?>> j = Stream.concat(i.stream(), Stream.of(heg.i, heg.j, heg.k)).toList();
+   public static final hee b = a("world_loaded", "WorldLoaded").a(j).a(heg.n).a(heg.o).b();
+   public static final hee c = a("performance_metrics", "PerformanceMetrics").a(j).a(heg.r).a(heg.s).a(heg.t).a(heg.u).a(heg.v).a(heg.w).a().b();
+   public static final hee d = a("world_load_times", "WorldLoadTimes").a(j).a(heg.x).a(heg.y).a().b();
+   public static final hee e = a("world_unloaded", "WorldUnloaded").a(j).a(heg.p).a(heg.q).b();
+   public static final hee f = a("advancement_made", "AdvancementMade").a(j).a(heg.D).a(heg.E).a().b();
+   public static final hee g = a("game_load_times", "GameLoadTimes").a(i).a(heg.z).a(heg.A).a(heg.B).a(heg.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<heg<?>> m;
+   private final boolean n;
+   private final MapCodec<hea> o;
 
-   public hee(heh $$0) {
-      this.j = $$0;
+   hee(String $$0, String $$1, List<heg<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = heh.a($$2).xmap($$0x -> new hea(this, $$0x), hea::b);
+   }
+
+   public static hee.a a(String $$0, String $$1) {
+      return new hee.a($$0, $$1);
+   }
+
+   public String a() {
+      return this.k;
+   }
+
+   public List<heg<?>> b() {
+      return this.m;
+   }
+
+   public MapCodec<hea> c() {
+      return this.o;
+   }
+
+   public boolean d() {
+      return this.n;
+   }
+
+   public TelemetryEvent a(TelemetrySession $$0, heh $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+
+      for (heg<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
+      }
+
+      return $$2;
+   }
+
+   public <T> boolean a(heg<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
+   public String toString() {
+      return "TelemetryEventType[" + this.k + "]";
+   }
+
+   public xz e() {
+      return this.a("title");
+   }
+
+   public xz f() {
+      return this.a("description");
+   }
+
+   private xz a(String $$0) {
+      return xl.c("telemetry.event." + this.k + "." + $$0);
+   }
+
+   public static List<hee> g() {
+      return List.copyOf(h.values());
+   }
+
+   public static class a {
+      private final String a;
+      private final String b;
+      private final List<heg<?>> c = new ArrayList<>();
+      private boolean d;
+
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
+      public hee.a a(List<heg<?>> $$0) {
+         this.c.addAll($$0);
+         return this;
       }
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.d();
-            this.k = null;
-         }
-
-         this.r = this.m;
+      public <T> hee.a a(heg<T> $$0) {
+         this.c.add($$0);
+         return this;
       }
 
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.d();
-            this.l = null;
-         }
-
-         this.s = this.m;
+      public hee.a a() {
+         this.d = true;
+         return this;
       }
 
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(hej.b);
+      public hee b() {
+         hee $$0 = new hee(this.a, this.b, List.copyOf(this.c), this.d);
+         if (hee.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
          } else {
-            this.j.a(hej.f);
+            return $$0;
          }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fnt(fnt.a.a, f, g, true);
-            this.j.e().aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fnt(fnt.a.b, h, i, true);
-            this.j.e().aA().a(this.l);
-         }
-      }
-   }
-
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.d();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.d();
-         this.l = null;
-      }
-   }
-
-   @Override
-   public void a(ghb $$0) {
-      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
-         this.p = true;
-      }
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
       }
    }
 }

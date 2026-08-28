@@ -1,11 +1,10 @@
-import java.util.stream.IntStream;
+import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class eli extends ele {
-   protected abstract int a(azs var1, jh var2);
+public abstract class eli {
+   public static final Codec<eli> b = lz.S.q().dispatch(eli::b, elj::codec);
 
-   @Override
-   public Stream<jh> a_(elc $$0, azs $$1, jh $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
-   }
+   public abstract Stream<jh> a_(elg var1, azv var2, jh var3);
+
+   public abstract elj<?> b();
 }

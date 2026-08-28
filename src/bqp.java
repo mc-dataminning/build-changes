@@ -1,67 +1,52 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bqp<E extends bqn> {
-   private final int a;
-   private final ImmutableList<E> b;
-
-   bqp(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bqo.a($$0);
+public class bqp<E> extends bqt<bqr.b<E>> {
+   public static <E> Codec<bqp<E>> a(Codec<E> $$0) {
+      return bqr.b.a($$0).listOf().xmap(bqp::new, bqt::e);
    }
 
-   public static <E extends bqn> bqp<E> c() {
-      return new bqp<>(ImmutableList.of());
+   public static <E> Codec<bqp<E>> b(Codec<E> $$0) {
+      return ayw.a(bqr.b.a($$0).listOf()).xmap(bqp::new, bqt::e);
    }
 
-   @SafeVarargs
-   public static <E extends bqn> bqp<E> a(E... $$0) {
-      return new bqp<>(ImmutableList.copyOf($$0));
+   bqp(List<? extends bqr.b<E>> $$0) {
+      super($$0);
    }
 
-   public static <E extends bqn> bqp<E> a(List<E> $$0) {
-      return new bqp<>($$0);
+   public static <E> bqp.a<E> a() {
+      return new bqp.a<>();
    }
 
-   public boolean d() {
-      return this.b.isEmpty();
+   public static <E> bqp<E> b() {
+      return new bqp<>(List.of());
    }
 
-   public Optional<E> b(azs $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
-      } else {
-         int $$1 = $$0.a(this.a);
-         return bqo.a(this.b, $$1);
+   public static <E> bqp<E> a(E $$0) {
+      return new bqp<>(List.of(bqr.a($$0, 1)));
+   }
+
+   public Optional<E> a(azv $$0) {
+      return this.b($$0).map(bqr.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bqr.b<E>> a = ImmutableList.builder();
+
+      public bqp.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
-   }
 
-   public List<E> e() {
-      return this.b;
-   }
-
-   public static <E extends bqn> Codec<bqp<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bqp::a, bqp::e);
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bqp<?> $$1 = (bqp<?>)$$0;
-         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
-      } else {
-         return false;
+      public bqp.a<E> a(E $$0, int $$1) {
+         this.a.add(bqr.a($$0, $$1));
+         return this;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
+      public bqp<E> a() {
+         return new bqp<>(this.a.build());
+      }
    }
 }

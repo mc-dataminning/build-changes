@@ -1,80 +1,67 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class daq {
-   private final daq.a[] a;
-   private WeakReference<dat> b = new WeakReference<>(null);
-
-   public daq(int $$0) {
-      this.a = new daq.a[$$0];
+public class daq extends dak {
+   public daq(dah $$0) {
+      super($$0);
    }
 
-   public Optional<dar<daf>> a(dfb $$0, dae $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
+   public boolean a(dai $$0, dff $$1) {
+      int $$2 = 0;
+      cwf $$3 = cwf.k;
 
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            daq.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
-            }
-         }
-
-         return this.a($$1, $$0);
-      }
-   }
-
-   private void a(dfb $$0) {
-      dat $$1 = $$0.r();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
-
-   private Optional<dar<daf>> a(dae $$0, dfb $$1) {
-      Optional<dar<daf>> $$2 = $$1.r().a(dav.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         daq.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(dae $$0, @Nullable dar<daf> $$1) {
-      jz<cwb> $$2 = jz.a($$0.a(), cwb.k);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new daq.a($$2, $$0.f(), $$0.g(), $$1);
-   }
-
-   static record a(jz<cwb> a, int b, int c, @Nullable dar<daf> d) {
-      public boolean a(dae $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cwb.c(this.a.get($$1), $$0.a($$1))) {
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwf $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.b(ku.L)) {
+               if (!$$3.f()) {
                   return false;
                }
-            }
 
-            return true;
-         } else {
-            return false;
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cwj.uB)) {
+                  return false;
+               }
+
+               $$2++;
+            }
          }
       }
+
+      return !$$3.f() && $$2 > 0;
+   }
+
+   public cwf a(dai $$0, js.a $$1) {
+      int $$2 = 0;
+      cwf $$3 = cwf.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwf $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.b(ku.L)) {
+               if (!$$3.f()) {
+                  return cwf.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cwj.uB)) {
+                  return cwf.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cwf.k;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
+   }
+
+   @Override
+   public day<?> aq_() {
+      return day.e;
    }
 }

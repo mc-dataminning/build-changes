@@ -1,34 +1,24 @@
-public class ftx extends fud {
-   private static final xi a = xi.c("options.chat.title");
+import org.joml.Matrix4f;
 
-   private static fjl<?>[] a(fjm $$0) {
-      return new fjl[]{
-         $$0.n(),
-         $$0.M(),
-         $$0.N(),
-         $$0.O(),
-         $$0.o(),
-         $$0.s(),
-         $$0.x(),
-         $$0.p(),
-         $$0.B(),
-         $$0.y(),
-         $$0.A(),
-         $$0.z(),
-         $$0.au(),
-         $$0.L(),
-         $$0.ag(),
-         $$0.X(),
-         $$0.ai()
-      };
-   }
+public class ftx implements fty {
+   private final ayz a;
 
-   public ftx(fra $$0, fjm $$1) {
-      super($$0, $$1, a);
+   public ftx(ayz $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void m() {
-      this.d.a(a(this.c));
+   public int b(flh $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public int a(flh $$0) {
+      return 10;
+   }
+
+   @Override
+   public void a(flh $$0, int $$1, int $$2, Matrix4f $$3, gix.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, flh.a.a, 0, 15728880);
    }
 }

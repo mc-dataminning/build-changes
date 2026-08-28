@@ -1,22 +1,68 @@
-public class ctk implements csa {
-   private final int[] a;
+import javax.annotation.Nullable;
 
-   public ctk(int $$0) {
-      this.a = new int[$$0];
+public class ctk implements bsa, ctj {
+   private final jz<cwf> b = jz.a(1, cwf.k);
+   @Nullable
+   private dav<?> c;
+
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
+   public boolean c() {
+      for (cwf $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
+   public cwf a(int $$0) {
+      return this.b.get(0);
    }
 
    @Override
-   public int a() {
-      return this.a.length;
+   public cwf a(int $$0, int $$1) {
+      return bsb.a(this.b, 0);
+   }
+
+   @Override
+   public cwf b(int $$0) {
+      return bsb.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cwf $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cor $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable dav<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public dav<?> d() {
+      return this.c;
    }
 }

@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bty {
-   @Nullable
-   bva Z_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bty {
 }

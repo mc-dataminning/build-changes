@@ -1,70 +1,40 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fie extends fig {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xi c = xi.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fra f;
-   private final String g;
+public class fie {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public fie(long $$0, int $$1, String $$2, fra $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   fie(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void run() {
-      fer $$0 = fer.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            ffw $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fgt(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fgd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fgc var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fgu(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
+   @Nullable
+   public String a() {
+      if (this.a >= 200 && this.a < 300) {
+         return null;
+      } else {
+         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
       }
    }
 
-   @Override
-   public xi a() {
-      return c;
+   public static class a {
+      private int a = -1;
+      private String b;
+
+      public fie.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fie.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fie a() {
+         return new fie(this.a, this.b);
+      }
    }
 }

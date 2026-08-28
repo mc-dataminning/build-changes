@@ -1,16 +1,46 @@
-public interface abm extends zv {
-   @Override
-   default wd b() {
-      return wd.e;
+public record abm(jh c, float d, float e, float f, float g, float h) implements aav {
+   public static final zj<wi, abm> a = aav.a(abm::a, abm::new);
+   public static final aav.b<abm> b = aav.a("debug/worldgen_attempt");
+
+   private abm(wi $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   void a(abn var1);
+   private void a(wi $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+   }
 
-   void a(abo var1);
+   @Override
+   public aav.b<abm> a() {
+      return b;
+   }
 
-   void a(abr var1);
+   public jh b() {
+      return this.c;
+   }
 
-   void a(abq var1);
+   public float c() {
+      return this.d;
+   }
 
-   void a(abp var1);
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
 }

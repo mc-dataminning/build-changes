@@ -1,4 +1,3 @@
-public enum bsc {
-   a,
-   b;
+public interface bsc {
+   void a(bsa var1);
 }

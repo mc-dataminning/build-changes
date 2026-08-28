@@ -1,13 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface epn<P extends epm> {
-   epn<epl> a = a("always_true", epl.a);
-   epn<epi> b = a("linear_pos", epi.a);
-   epn<eox> c = a("axis_aligned_linear_pos", eox.a);
+public enum epn implements baj {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   MapCodec<P> codec();
+   public static Codec<epn> c = baj.b(epn::values);
+   private final String d;
 
-   static <P extends epm> epn<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ly.o, $$0, () -> $$1);
+   private epn(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
    }
 }

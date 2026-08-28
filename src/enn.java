@@ -1,25 +1,38 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
-record enn(bql<List<enj>> c) implements enj {
-   static MapCodec<enn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bql.b(Codec.list(enj.b)).fieldOf("groups").forGetter(enn::c)).apply($$0, enn::new));
+public interface enn {
+   Codec<enn> b = lz.ah.q().dispatch(enn::b, Function.identity());
 
-   @Override
-   public void a(azs $$0, BiConsumer<alh<enh>, alh<enh>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   void a(azv var1, BiConsumer<alk<enl>, alk<enl>> var2);
+
+   Stream<alk<enl>> a();
+
+   static enm a(String $$0, String $$1) {
+      return a(ri.a($$0), ri.a($$1));
    }
 
-   @Override
-   public Stream<alh<enh>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(enj::a);
+   static enm a(alk<enl> $$0, alk<enl> $$1) {
+      return new enm($$0, $$1);
    }
 
-   @Override
-   public MapCodec<enn> b() {
-      return a;
+   static enq a(String $$0, bqp<String> $$1) {
+      bqp.a<alk<enl>> $$2 = bqp.a();
+      $$1.e().forEach($$1x -> $$2.a(ri.a((String)$$1x.b()), $$1x.a().a()));
+      return a(ri.a($$0), $$2.a());
    }
+
+   static enq a(alk<enl> $$0, bqp<alk<enl>> $$1) {
+      return new enq($$0, $$1);
+   }
+
+   static enr a(bqp<List<enn>> $$0) {
+      return new enr($$0);
+   }
+
+   MapCodec<? extends enn> b();
 }

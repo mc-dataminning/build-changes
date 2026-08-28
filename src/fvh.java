@@ -1,71 +1,47 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class fvh {
-   private final gdc a;
-   private final gdk b;
-   private final Predicate<gdf.a> c;
-   @Nullable
-   private yd d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xy g;
+public class fvh extends fvl<crt> {
+   private static final fnj h = new fnj(
+      all.b("recipe_book/filter_enabled"),
+      all.b("recipe_book/filter_disabled"),
+      all.b("recipe_book/filter_enabled_highlighted"),
+      all.b("recipe_book/filter_disabled_highlighted")
+   );
+   private static final xl i = xl.c("gui.recipebook.toggleRecipes.craftable");
 
-   public fvh(gdq $$0, Predicate<gdf.a> $$1) {
-      this.a = $$0.b();
-      this.b = new gdk($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   public fvh(crt $$0) {
+      super($$0);
    }
 
-   public void a(int $$0, fvh.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         gde $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof gdf.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(xi.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
-      }
+   @Override
+   protected boolean a(ctp $$0) {
+      return this.f.m() == $$0 || this.f.n().contains($$0);
    }
 
-   private boolean a(fvh.a $$0, gdf.a $$1) {
-      xy $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(xi.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
-
-         this.d = $$2.k();
-         return true;
-      } else {
-         return $$3;
-      }
+   @Override
+   protected void a(fvj $$0, dav<?> $$1) {
+      cwf $$2 = $$1.b().a(this.g.s.H_());
+      ctp $$3 = this.f.m();
+      $$0.a($$2, $$3);
+      List<ctp> $$4 = this.f.n();
+      akw.a(this.f.o(), this.f.p(), $$1, $$1.b().a().a(), ($$2x, $$3x, $$4x, $$5) -> $$2x.ifPresent($$3xx -> {
+            ctp $$4xx = $$4.get($$3x);
+            $$0.a($$3xx.a(), $$4xx);
+         }));
    }
 
-   public interface a {
-      void a(int var1, gdf.a var2);
+   @Override
+   protected void a() {
+      this.e.a(h);
+   }
 
-      void a(xi var1);
+   @Override
+   protected xl b() {
+      return i;
+   }
+
+   @Override
+   protected void a(fvp $$0, cow $$1, awr $$2) {
+      $$0.a($$1, this.f.o(), this.f.p(), $$2);
    }
 }

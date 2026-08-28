@@ -1,89 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class yh {
-   private static final String b = "#";
-   public static final Codec<yh> a = Codec.STRING.comapFlatMap(yh::a, yh::b);
-   private static final Map<n, yh> c = Stream.of(n.values())
-      .filter(n::e)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new yh($$0.f(), $$0.g())));
-   private static final Map<String, yh> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
-   private final int e;
+@FunctionalInterface
+public interface yh {
+   Logger a = LogUtils.getLogger();
+   yh b = yb::b;
+   yh c = $$0 -> {
+      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
+      return null;
+   };
+
    @Nullable
-   private final String f;
+   yb updateAndValidate(yb var1);
 
-   private yh(int $$0, String $$1) {
-      this.e = $$0 & 16777215;
-      this.f = $$1;
-   }
+   public static class a implements yh {
+      private final baa d;
+      private final BooleanSupplier e;
+      @Nullable
+      private yb f;
+      private boolean g = true;
 
-   private yh(int $$0) {
-      this.e = $$0 & 16777215;
-      this.f = null;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public String b() {
-      return this.f != null ? this.f : this.c();
-   }
-
-   private String c() {
-      return String.format(Locale.ROOT, "#%06X", this.e);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         yh $$1 = (yh)$$0;
-         return this.e == $$1.e;
-      } else {
-         return false;
+      public a(baa $$0, BooleanSupplier $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.e, this.f);
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   @Nullable
-   public static yh a(n $$0) {
-      return c.get($$0);
-   }
-
-   public static yh a(int $$0) {
-      return new yh($$0);
-   }
-
-   public static DataResult<yh> a(String $$0) {
-      if ($$0.startsWith("#")) {
-         try {
-            int $$1 = Integer.parseInt($$0.substring(1), 16);
-            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Invalid color value: " + $$0);
+      private boolean a(yb $$0) {
+         if ($$0.equals(this.f)) {
+            return true;
+         } else if (this.f != null && !$$0.k().a(this.f.k())) {
+            a.error(
+               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
+               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
+            );
+            return false;
+         } else {
+            return true;
          }
-      } else {
-         yh $$3 = d.get($$0);
-         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
+      }
+
+      private boolean b(yb $$0) {
+         if (this.e.getAsBoolean()) {
+            a.error("Received message from player with expired profile public key: {}", $$0);
+            return false;
+         } else if (!$$0.a(this.d)) {
+            a.error("Received message with invalid signature from {}", $$0.g());
+            return false;
+         } else {
+            return this.a($$0);
+         }
+      }
+
+      @Nullable
+      @Override
+      public yb updateAndValidate(yb $$0) {
+         this.g = this.g && this.b($$0);
+         if (!this.g) {
+            return null;
+         } else {
+            this.f = $$0;
+            return $$0;
+         }
       }
    }
 }

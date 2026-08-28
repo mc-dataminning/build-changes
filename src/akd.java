@@ -1,8 +1,3 @@
-public interface akd extends ajx, vz {
-   @Override
-   default wd b() {
-      return wd.c;
-   }
-
+public interface akd extends wr {
    void a(ake var1);
 }

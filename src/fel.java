@@ -1,71 +1,67 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fel {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<fel.a> b;
+public class fel implements feo {
+   private final feo a;
+   private final Matrix4f b;
+   private final Matrix3f c;
+   private final float d;
+   private final Vector3f e = new Vector3f();
+   private final Vector3f f = new Vector3f();
+   private float g;
+   private float h;
+   private float i;
 
-   public static CompletableFuture<fel.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public fel(feo $$0, fek.a $$1, float $$2) {
+      this.a = $$0;
+      this.b = new Matrix4f($$1.a()).invert();
+      this.c = new Matrix3f($$1.b()).invert();
+      this.d = $$2;
    }
 
-   private static boolean a(CompletableFuture<fel.a> $$0) {
-      fel.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   @Override
+   public feo a(float $$0, float $$1, float $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.a.a($$0, $$1, $$2);
+      return this;
    }
 
-   private static CompletableFuture<fel.a> b() {
-      fjv $$0 = fji.Q().X();
-      return $$0.g() != fjv.a.c ? CompletableFuture.completedFuture(new fel.a(fel.b.d)) : CompletableFuture.supplyAsync(() -> {
-         fer $$0x = fer.a();
-
-         try {
-            if ($$0x.g() != fer.a.a) {
-               return new fel.a(fel.b.b);
-            } else {
-               return !$$0x.f() ? new fel.a(fel.b.c) : new fel.a(fel.b.a);
-            }
-         } catch (fgc var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fel.a(fel.b.d) : new fel.a(var2);
-         }
-      }, ae.h());
+   @Override
+   public feo a(int $$0, int $$1, int $$2, int $$3) {
+      this.a.a(-1);
+      return this;
    }
 
-   public static record a(fel.b a, @Nullable fgc b) {
-      public a(fel.b $$0) {
-         this($$0, null);
-      }
-
-      public a(fgc $$0) {
-         this(fel.b.e, $$0);
-      }
-
-      @Nullable
-      public fra a(fra $$0) {
-         return (fra)(switch (this.a) {
-            case a -> null;
-            case b -> new fgp($$0);
-            case c -> new fgz($$0);
-            case d -> new fgu(xi.c("mco.error.invalid.session.title"), xi.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fgu(Objects.requireNonNull(this.b), $$0);
-         });
-      }
+   @Override
+   public feo a(float $$0, float $$1) {
+      return this;
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   @Override
+   public feo a(int $$0, int $$1) {
+      this.a.a($$0, $$1);
+      return this;
+   }
+
+   @Override
+   public feo b(int $$0, int $$1) {
+      this.a.b($$0, $$1);
+      return this;
+   }
+
+   @Override
+   public feo b(float $$0, float $$1, float $$2) {
+      this.a.b($$0, $$1, $$2);
+      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
+      jm $$4 = jm.a($$3.x(), $$3.y(), $$3.z());
+      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
+      $$5.rotateY((float) Math.PI);
+      $$5.rotateX((float) (-Math.PI / 2));
+      $$5.rotate($$4.b());
+      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
+      return this;
    }
 }

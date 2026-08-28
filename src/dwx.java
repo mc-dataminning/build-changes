@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dwx implements baj {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dwx {
+   private final String e;
+   private final xl f;
+
+   private dwx(final String $$0) {
+      this.e = $$0;
+      this.f = xl.c("structure_block.mode_info." + $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public xl a() {
+      return this.f;
+   }
 }

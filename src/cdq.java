@@ -1,102 +1,99 @@
 import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cdq extends cdy {
-   private static final cfr a = cfr.a().d().e();
-   private static final int b = 10;
+public class cdq extends ccc {
+   private final ccc a;
+   private final int b;
    private boolean c;
-   private int d;
-   private final Class<?>[] i;
-   @Nullable
-   private Class<?>[] j;
 
-   public cdq(bvi $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(cby.a.d));
+   public cdq(int $$0, ccc $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
+
+   public boolean a(cdq $$0) {
+      return this.U_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean b() {
-      int $$0 = this.e.et();
-      bva $$1 = this.e.es();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.ar() == bul.by && this.e.dX().ac().b(dex.O)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
-            }
-
-            return this.a($$1, a);
-         }
-      } else {
-         return false;
-      }
+      return this.a.b();
    }
 
-   public cdq a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean U_() {
+      return this.a.U_();
    }
 
    @Override
    public void d() {
-      this.e.h(this.e.es());
-      this.g = this.e.m();
-      this.d = this.e.et();
-      this.h = 300;
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public void e() {
       if (this.c) {
-         this.h();
-      }
-
-      super.d();
-   }
-
-   protected void h() {
-      double $$0 = this.l();
-      ezi $$1 = ezi.a(this.e.dv()).c($$0, 10.0, $$0);
-      List<? extends bvc> $$2 = this.e.dX().a((Class<? extends bvc>)this.e.getClass(), $$1, buj.f);
-      Iterator var5 = $$2.iterator();
-
-      while (true) {
-         bvc $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
-
-            $$3 = (bvc)var5.next();
-            if (this.e != $$3 && $$3.m() == null && (!(this.e instanceof bvx) || ((bvx)this.e).T_() == ((bvx)$$3).T_()) && !$$3.s(this.e.es())) {
-               if (this.j == null) {
-                  break;
-               }
-
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
-         }
-
-         this.a($$3, this.e.es());
+         this.c = false;
+         this.a.e();
       }
    }
 
-   protected void a(bvc $$0, bva $$1) {
-      $$0.h($$1);
+   @Override
+   public boolean V_() {
+      return this.a.V_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<ccc.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<ccc.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public ccc k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cdq)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

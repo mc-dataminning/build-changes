@@ -1,33 +1,23 @@
-import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-public record aae(ali c, byte[] d) implements zp<zv> {
-   public static final zg<wf, aae> a = zp.a(aae::a, aae::new);
-   private static final int e = 5120;
-   public static final zg<ByteBuf, byte[]> b = ze.a(5120);
+public record aae(Optional<UUID> b) implements zs<zy> {
+   public static final zj<wi, aae> a = zs.a(aae::a, aae::new);
 
-   private aae(wf $$0) {
-      this($$0.q(), b.decode($$0));
+   private aae(wi $$0) {
+      this($$0.b(kk.g));
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   private void a(wi $$0) {
+      $$0.a(this.b, kk.g);
    }
 
    @Override
-   public zr<aae> a() {
-      return aah.i;
+   public zu<aae> a() {
+      return aak.f;
    }
 
-   public void a(zv $$0) {
+   public void a(zy $$0) {
       $$0.a(this);
-   }
-
-   public ali b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
    }
 }

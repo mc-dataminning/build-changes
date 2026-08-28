@@ -1,16 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ehg(int b, int c, int d, int e, int f, bri g, float h) implements egp {
+public record ehg(int b, int c, int d, jq<elf> e) implements egt {
    public static final Codec<ehg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ehg::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ehg::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ehg::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ehg::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ehg::f),
-               bri.c.fieldOf("extra_rare_growths").forGetter(ehg::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ehg::h)
+               ayw.m.fieldOf("tries").orElse(128).forGetter(ehg::a),
+               ayw.l.fieldOf("xz_spread").orElse(7).forGetter(ehg::b),
+               ayw.l.fieldOf("y_spread").orElse(3).forGetter(ehg::c),
+               elf.b.fieldOf("feature").forGetter(ehg::d)
             )
             .apply($$0, ehg::new)
    );
@@ -27,7 +24,7 @@ public record ehg(int b, int c, int d, int e, int f, bri g, float h) implements 
       return this.d;
    }
 
-   public int d() {
+   public jq<elf> d() {
       return this.e;
    }
 }

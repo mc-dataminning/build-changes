@@ -1,40 +1,30 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzq {
-   private static final int a = 60;
-
-   public static bwu<bvi> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cag.a(
-         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$3 -> $$3.group($$3.c(cee.o), $$3.c(cee.m), $$3.a(cee.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dx()).a(axg.a)) {
+   public static bwy<coc> a(cei<List<jp>> $$0, float $$1, int $$2, int $$3, cei<jp> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return cak.a(
+         (Function<cak.b<coc>, ? extends App<cak.c<coc>, can<coc>>>)($$6 -> $$6.group($$6.a(cei.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<jp> $$11 = $$6.b($$6x);
+                     jp $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
                         return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
                      } else {
-                        jh $$8 = $$6.dx();
-                        jh.a $$9 = new jh.a();
-                        ezs $$10 = ezs.a($$6);
-
-                        for (jh $$11 : jh.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dvj $$12 = $$5x.a_($$11);
-                              dvj $$13 = $$5x.a_($$9.a($$11, jm.a));
-                              if (!$$12.a(dig.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jm.b)) {
-                                 jh $$14 = $$11.j();
-                                 $$5.a(new bww($$14));
-                                 $$4.a(new ceh(new bww($$14), $$1, 1));
-                                 break;
-                              }
+                        jp $$13 = $$11.get($$8.E_().a($$11.size()));
+                        if ($$13 != null && $$8.ag() == $$13.a() && $$12.b().a($$9.dw(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new cel($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
                            }
-                        }
 
-                        $$2.setValue($$7 + 60L);
-                        return true;
+                           return true;
+                        } else {
+                           return false;
+                        }
                      }
                   }))
       );

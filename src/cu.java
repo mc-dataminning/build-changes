@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cu(Optional<ju<cvx>> b, dj.d c, ks d, Map<cv.a<?>, cv> e) implements Predicate<cwb> {
+public record cu(Optional<ju<cwb>> b, dj.d c, ks d, Map<cv.a<?>, cv> e) implements Predicate<cwf> {
    public static final Codec<cu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               kf.a(lz.K).optionalFieldOf("items").forGetter(cu::a),
+               kf.a(ma.K).optionalFieldOf("items").forGetter(cu::a),
                dj.d.d.optionalFieldOf("count", dj.d.c).forGetter(cu::b),
                ks.a.optionalFieldOf("components", ks.c).forGetter(cu::c),
                cv.b.optionalFieldOf("predicates", Map.of()).forGetter(cu::d)
@@ -17,7 +17,7 @@ public record cu(Optional<ju<cvx>> b, dj.d c, ks d, Map<cv.a<?>, cv> e) implemen
             .apply($$0, cu::new)
    );
 
-   public boolean a(cwb $$0) {
+   public boolean a(cwf $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (!this.c.d($$0.L())) {
@@ -35,7 +35,7 @@ public record cu(Optional<ju<cvx>> b, dj.d c, ks d, Map<cv.a<?>, cv> e) implemen
       }
    }
 
-   public Optional<ju<cvx>> a() {
+   public Optional<ju<cwb>> a() {
       return this.b;
    }
 
@@ -52,7 +52,7 @@ public record cu(Optional<ju<cvx>> b, dj.d c, ks d, Map<cv.a<?>, cv> e) implemen
    }
 
    public static class a {
-      private Optional<ju<cvx>> a = Optional.empty();
+      private Optional<ju<cwb>> a = Optional.empty();
       private dj.d b = dj.d.c;
       private ks c;
       private final Builder<cv.a<?>, cv> d;
@@ -66,12 +66,12 @@ public record cu(Optional<ju<cvx>> b, dj.d c, ks d, Map<cv.a<?>, cv> e) implemen
          return new cu.a();
       }
 
-      public cu.a a(jr<cvx> $$0, dfa... $$1) {
+      public cu.a a(jr<cwb> $$0, dfe... $$1) {
          this.a = Optional.of(ju.a($$0x -> $$0x.j().f(), $$1));
          return this;
       }
 
-      public cu.a a(jr<cvx> $$0, axq<cvx> $$1) {
+      public cu.a a(jr<cwb> $$0, axt<cwb> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }

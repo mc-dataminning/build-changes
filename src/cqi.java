@@ -1,59 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
 public class cqi {
-   private final List<cqf> a = Lists.newArrayList();
-   private int b;
+   public static final cqi a = a("core");
+   public static final cqi b = a("idle");
+   public static final cqi c = a("work");
+   public static final cqi d = a("play");
+   public static final cqi e = a("rest");
+   public static final cqi f = a("meet");
+   public static final cqi g = a("panic");
+   public static final cqi h = a("raid");
+   public static final cqi i = a("pre_raid");
+   public static final cqi j = a("hide");
+   public static final cqi k = a("fight");
+   public static final cqi l = a("celebrate");
+   public static final cqi m = a("admire_item");
+   public static final cqi n = a("avoid");
+   public static final cqi o = a("ride");
+   public static final cqi p = a("play_dead");
+   public static final cqi q = a("long_jump");
+   public static final cqi r = a("ram");
+   public static final cqi s = a("tongue");
+   public static final cqi t = a("swim");
+   public static final cqi u = a("lay_spawn");
+   public static final cqi v = a("sniff");
+   public static final cqi w = a("investigate");
+   public static final cqi x = a("roar");
+   public static final cqi y = a("emerge");
+   public static final cqi z = a("dig");
+   private final String A;
+   private final int B;
 
-   public ImmutableList<cqf> a() {
-      return ImmutableList.copyOf(this.a);
+   private cqi(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cqi a(int $$0, float $$1) {
-      this.a.add(new cqf($$0, $$1));
-      this.b();
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public cqi a(Collection<cqf> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   private static cqi a(String $$0) {
+      return kd.a(lz.C, $$0, new cqi($$0));
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cqf> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cqi $$1 = (cqi)$$0;
+         return this.A.equals($$1.A);
       } else {
-         cqf $$1 = this.a.get(this.b);
-         cqf $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cqf $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
+
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

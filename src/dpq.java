@@ -1,60 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpq extends die {
-   public static final MapCodec<dpq> a = b(dpq::new);
-   protected static final fah b = die.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
+public class dpq extends dhe {
+   public static final MapCodec<dpq> c = b(dpq::new);
 
    @Override
    public MapCodec<dpq> a() {
-      return a;
+      return c;
    }
 
-   public dpq(dvi.d $$0) {
+   protected dpq(dvn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fah b(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return b;
+   public dsr a(jh $$0, dvo $$1) {
+      return new dug($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsr> dss<T> a(dff $$0, dvo $$1, dst<T> $$2) {
+      return a($$0, $$2, dst.B);
    }
 
    @Override
-   protected fah b_(dvj $$0, deg $$1, jh $$2) {
-      return fae.b();
-   }
-
-   @Override
-   protected fah c(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return fae.b();
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      dik.b($$1, $$2.d(), $$0);
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$1 == jm.b && $$2.a(dig.G)) {
-         $$3.a($$4, this, 20);
+   protected void a(dff $$0, jh $$1, cor $$2) {
+      dsr $$3 = $$0.c_($$1);
+      if ($$3 instanceof dug) {
+         $$2.a((bsj)$$3);
+         $$2.a(awy.at);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void b(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
+   public void a(dvo $$0, dff $$1, jh $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awo.yo, awp.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(dvj $$0, deg $$1, jh $$2) {
-      return 0.2F;
+         $$1.a(ls.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

@@ -1,141 +1,79 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
+import java.util.Objects;
+import java.util.WeakHashMap;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bqb implements bqd {
-   public static final int a = 10;
-   @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<bpw, List<bqi>> c = new Object2ObjectOpenHashMap();
-   private final bog d;
-   private final Executor e;
-   private final bqh f;
-   private final Consumer<bol> g;
-   private final Consumer<Path> h;
-   private final bpy i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bok m;
-   private volatile boolean n;
-   private Set<bpw> o = ImmutableSet.of();
+public class bqb {
+   public static final bqb a = new bqb();
+   private final WeakHashMap<bqd, Void> b = new WeakHashMap<>();
 
-   private bqb(bpy $$0, LongSupplier $$1, Executor $$2, bqh $$3, Consumer<bol> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bog($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bof(this.j, () -> this.l, false);
-      this.d.c();
+   private bqb() {
    }
 
-   public static bqb a(bpy $$0, LongSupplier $$1, Executor $$2, bqh $$3, Consumer<bol> $$4, Consumer<Path> $$5) {
-      return new bqb($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(bqd $$0) {
+      this.b.put($$0, null);
    }
 
-   @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
-      }
+   public List<bqa> a() {
+      Map<String, List<bqa>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(bqa::d));
+      return a($$0);
    }
 
-   @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = boj.a;
-         this.g.accept(boh.a);
-         this.a(this.o);
-      }
+   private static List<bqa> a(Map<String, List<bqa>> $$0) {
+      return $$0.entrySet().stream().map($$0x -> {
+         String $$1 = (String)$$0x.getKey();
+         List<bqa> $$2 = (List<bqa>)$$0x.getValue();
+         return (bqa)($$2.size() > 1 ? new bqb.a($$1, $$2) : $$2.get(0));
+      }).collect(Collectors.toList());
    }
 
-   @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
+   static class a extends bqa {
+      private final List<bqa> b;
 
-      for (bpw $$0 : this.o) {
-         $$0.a();
+      a(String $$0, List<bqa> $$1) {
+         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
+         this.b = $$1;
       }
 
-      this.l++;
-   }
+      private static bqa.c a(List<bqa> $$0) {
+         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
+      }
 
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (bpw $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               bqi $$1 = new bqi(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-            }
+      private static void b(List<bqa> $$0) {
+         for (bqa $$1 : $$0) {
+            $$1.a();
+         }
+      }
+
+      private static double c(List<bqa> $$0) {
+         double $$1 = 0.0;
+
+         for (bqa $$2 : $$0) {
+            $$1 += $$2.c().getAsDouble();
          }
 
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bof(this.j, () -> this.l, false);
+         return $$1 / (double)$$0.size();
+      }
+
+      @Override
+      public boolean equals(@Nullable Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
+            return false;
+         } else if (!super.equals($$0)) {
+            return false;
          } else {
-            this.n = false;
-            bol $$2 = this.d.e();
-            this.m = boj.a;
-            this.g.accept($$2);
-            this.a($$2);
+            bqb.a $$1 = (bqb.a)$$0;
+            return this.b.equals($$1.b);
          }
       }
-   }
 
-   @Override
-   public boolean e() {
-      return this.d.a();
-   }
-
-   @Override
-   public bon f() {
-      return bon.a(this.d.d(), this.m);
-   }
-
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
+      @Override
+      public int hashCode() {
+         return Objects.hash(super.hashCode(), this.b);
       }
-   }
-
-   private void a(bol $$0) {
-      HashSet<bpw> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
-   }
-
-   private void a(Collection<bpw> $$0) {
-      for (bpw $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
-   }
-
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
    }
 }

@@ -1,304 +1,100 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gxx implements gya.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final ali b;
-   final int c;
-   final int d;
-   private final fdb e;
-   fdb[] f;
-   @Nullable
-   private final gxx.a g;
-   private final avd h;
+public class gxx implements gxw {
+   public static final int a = 0;
+   private final gxx.b c = new gxx.b();
+   private final gxx.b d = new gxx.b();
+   public final gxx.a b;
 
-   public gxx(ali $$0, gzr $$1, fdb $$2, avd $$3) {
+   public gxx(gxx.a $$0) {
       this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$1.b();
-      this.h = $$3;
-      gzp $$4 = $$3.a(gzp.a).orElse(gzp.e);
-      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
-      this.e = $$2;
-      this.f = new fdb[]{this.e};
    }
 
-   public void a(int $$0) {
-      try {
-         this.f = gxs.a(this.f, $$0);
-      } catch (Throwable var6) {
-         o $$2 = o.a(var6, "Generating mipmaps for frame");
-         p $$3 = $$2.a("Sprite being mipmapped");
-         $$3.a("First frame", () -> {
-            StringBuilder $$0x = new StringBuilder();
-            if ($$0x.length() > 0) {
-               $$0x.append(", ");
-            }
-
-            $$0x.append(this.e.a()).append("x").append(this.e.b());
-            return $$0x.toString();
-         });
-         p $$4 = $$2.a("Frame being iterated");
-         $$4.a("Sprite name", this.b);
-         $$4.a("Sprite size", () -> this.c + " x " + this.d);
-         $$4.a("Sprite frames", () -> this.g() + " frames");
-         $$4.a("Mipmap levels", $$0);
-         throw new z($$2);
+   @Override
+   public float unclampedCall(cwf $$0, @Nullable gcy $$1, @Nullable bve $$2, int $$3) {
+      bui $$4 = (bui)($$2 != null ? $$2 : $$0.I());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
       }
    }
 
-   private int g() {
-      return this.g != null ? this.g.b.size() : 1;
+   private float a(cwf $$0, gcy $$1, int $$2, bui $$3) {
+      jp $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.aa();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return azn.b((float)$$2, 1.0F);
+   }
+
+   private float a(bui $$0, long $$1, jh $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cor $$5 && $$5.g() && $$5.dY().s().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return azn.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return azn.b((float)$$7, 1.0F);
    }
 
    @Nullable
-   private gxx.a a(gzr $$0, int $$1, int $$2, gzp $$3) {
-      int $$4 = $$1 / $$0.a();
-      int $$5 = $$2 / $$0.b();
-      int $$6 = $$4 * $$5;
-      List<gxx.b> $$7 = new ArrayList<>();
-      $$3.a(($$1x, $$2x) -> $$7.add(new gxx.b($$1x, $$2x)));
-      if ($$7.isEmpty()) {
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$7.add(new gxx.b($$8, $$3.a()));
-         }
-      } else {
-         int $$9 = 0;
-         IntSet $$10 = new IntOpenHashSet();
-
-         for (Iterator<gxx.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
-            gxx.b $$12 = $$11.next();
-            boolean $$13 = true;
-            if ($$12.b <= 0) {
-               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
-               $$13 = false;
-            }
-
-            if ($$12.a < 0 || $$12.a >= $$6) {
-               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
-               $$13 = false;
-            }
-
-            if ($$13) {
-               $$10.add($$12.a);
-            } else {
-               $$11.remove();
-            }
-         }
-
-         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
-         if ($$14.length > 0) {
-            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
-         }
-      }
-
-      return $$7.size() <= 1 ? null : new gxx.a(ImmutableList.copyOf($$7), $$4, $$3.b());
+   private gcy a(bui $$0, @Nullable gcy $$1) {
+      return $$1 == null && $$0.dY() instanceof gcy ? (gcy)$$0.dY() : $$1;
    }
 
-   void a(int $$0, int $$1, int $$2, int $$3, fdb[] $$4) {
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
-      }
+   private boolean a(bui $$0, @Nullable jp $$1) {
+      return $$1 != null && $$1.a() == $$0.dY().ag() && !($$1.b().b($$0.dw()) < 1.0E-5F);
    }
 
-   @Override
-   public int a() {
-      return this.c;
+   private double a(bui $$0, jh $$1) {
+      ezr $$2 = ezr.b($$1);
+      return Math.atan2($$2.c() - $$0.dJ(), $$2.a() - $$0.dD()) / (float) (Math.PI * 2);
    }
 
-   @Override
-   public int b() {
-      return this.d;
+   private double a(bui $$0) {
+      return azn.c((double)($$0.dP() / 360.0F), 1.0);
    }
 
-   @Override
-   public ali c() {
-      return this.b;
+   private int a(int $$0) {
+      return $$0 * 1327217883;
    }
 
-   public IntStream d() {
-      return this.g != null ? this.g.b() : IntStream.of(1);
-   }
-
-   @Nullable
-   public gxz e() {
-      return this.g != null ? this.g.a() : null;
-   }
-
-   public avd f() {
-      return this.h;
-   }
-
-   @Override
-   public void close() {
-      for (fdb $$0 : this.f) {
-         $$0.close();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      int $$3 = $$1;
-      int $$4 = $$2;
-      if (this.g != null) {
-         $$3 = $$1 + this.g.a($$0) * this.c;
-         $$4 = $$2 + this.g.b($$0) * this.d;
-      }
-
-      return axv.a(this.e.a($$3, $$4)) == 0;
-   }
-
-   public void a(int $$0, int $$1) {
-      if (this.g != null) {
-         this.g.a($$0, $$1);
-      } else {
-         this.a($$0, $$1, 0, 0, this.f);
-      }
-   }
-
-   class a {
-      final List<gxx.b> b;
-      private final int c;
-      private final boolean d;
-
-      a(final List<gxx.b> $$0, final int $$1, final boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      int a(int $$0) {
-         return $$0 % this.c;
-      }
-
-      int b(int $$0) {
-         return $$0 / this.c;
-      }
-
-      void a(int $$0, int $$1, int $$2) {
-         int $$3 = this.a($$2) * gxx.this.c;
-         int $$4 = this.b($$2) * gxx.this.d;
-         gxx.this.a($$0, $$1, $$3, $$4, gxx.this.f);
-      }
-
-      public gxz a() {
-         return gxx.this.new d(this, this.d ? gxx.this.new c() : null);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.a($$0, $$1, this.b.get(0).a);
-      }
-
-      public IntStream b() {
-         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
-      }
+   public interface a {
+      @Nullable
+      jp getPos(gcy var1, cwf var2, bui var3);
    }
 
    static class b {
-      final int a;
-      final int b;
+      double a;
+      private double b;
+      private long c;
 
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   final class c implements AutoCloseable {
-      private final fdb[] b = new fdb[gxx.this.f.length];
-
-      c() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            int $$1 = gxx.this.c >> $$0;
-            int $$2 = gxx.this.d >> $$0;
-            this.b[$$0] = new fdb($$1, $$2, false);
-         }
+      boolean a(long $$0) {
+         return this.c != $$0;
       }
 
-      void a(int $$0, int $$1, gxx.d $$2) {
-         gxx.a $$3 = $$2.c;
-         List<gxx.b> $$4 = $$3.b;
-         gxx.b $$5 = $$4.get($$2.a);
-         float $$6 = (float)$$2.b / (float)$$5.b;
-         int $$7 = $$5.a;
-         int $$8 = $$4.get(($$2.a + 1) % $$4.size()).a;
-         if ($$7 != $$8) {
-            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-               int $$10 = gxx.this.c >> $$9;
-               int $$11 = gxx.this.d >> $$9;
-
-               for (int $$12 = 0; $$12 < $$11; $$12++) {
-                  for (int $$13 = 0; $$13 < $$10; $$13++) {
-                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
-                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
-                     this.b[$$9].a($$13, $$12, axv.a($$6, $$14, $$15));
-                  }
-               }
-            }
-
-            gxx.this.a($$0, $$1, 0, 0, this.b);
-         }
-      }
-
-      private int a(gxx.a $$0, int $$1, int $$2, int $$3, int $$4) {
-         return gxx.this.f[$$2].a($$3 + ($$0.a($$1) * gxx.this.c >> $$2), $$4 + ($$0.b($$1) * gxx.this.d >> $$2));
-      }
-
-      @Override
-      public void close() {
-         for (fdb $$0 : this.b) {
-            $$0.close();
-         }
-      }
-   }
-
-   class d implements gxz {
-      int a;
-      int b;
-      final gxx.a c;
-      @Nullable
-      private final gxx.c d;
-
-      d(final gxx.a $$0, @Nullable final gxx.c $$1) {
+      void a(long $$0, double $$1) {
          this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         this.b++;
-         gxx.b $$2 = this.c.b.get(this.a);
-         if (this.b >= $$2.b) {
-            int $$3 = $$2.a;
-            this.a = (this.a + 1) % this.c.b.size();
-            this.b = 0;
-            int $$4 = this.c.b.get(this.a).a;
-            if ($$3 != $$4) {
-               this.c.a($$0, $$1, $$4);
-            }
-         } else if (this.d != null) {
-            this.d.a($$0, $$1, this);
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.d != null) {
-            this.d.close();
-         }
+         double $$2 = $$1 - this.a;
+         $$2 = azn.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = azn.c(this.a + this.b, 1.0);
       }
    }
 }

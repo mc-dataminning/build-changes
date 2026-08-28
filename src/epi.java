@@ -1,42 +1,64 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class epi extends epm {
+public class epi extends eqa {
    public static final MapCodec<epi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, epi::new)
+      $$0 -> $$0.group(eqc.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), brm.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, epi::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+   private final eqa b;
+   private final brm c;
 
-   public epi(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   public epi(eqa $$0, brm $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   protected eqc<?> a() {
+      return eqc.o;
+   }
+
+   @Override
+   public final List<eqd.c> a(dfw $$0, jh $$1, jh $$2, List<eqd.c> $$3, List<eqd.c> $$4, epz $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ae.b(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            azv $$6 = azv.a($$0.E().C()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ae.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  eqd.c $$12 = $$3.get($$11);
+                  eqd.c $$13 = $$4.get($$11);
+                  eqd.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         return $$4;
       }
-   }
-
-   @Override
-   public boolean a(jh $$0, jh $$1, jh $$2, azs $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= azk.b(this.b, this.d, azk.f((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected epn<?> a() {
-      return epn.b;
    }
 }

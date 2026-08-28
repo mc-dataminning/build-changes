@@ -1,32 +1,24 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record dcx(ju<bul<?>> d, boolean e) implements dcj {
-   public static final MapCodec<dcx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kf.a(lz.z).fieldOf("entity").forGetter(dcx::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dcx::c)).apply($$0, dcx::new)
-   );
+public record dcx(all d) implements dcn {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dcx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(all.a.fieldOf("function").forGetter(dcx::b)).apply($$0, dcx::new));
 
    @Override
-   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
-      jh $$5 = jh.a((ka)$$4);
-      if (dfb.l($$5)) {
-         Optional<jq<bul<?>>> $$6 = this.b().a($$0.E_());
-         if (!$$6.isEmpty()) {
-            bue $$7 = $$6.get().a().a($$0, $$5, buk.k);
-            if ($$7 != null) {
-               if ($$7 instanceof buz $$8 && $$2.c() instanceof aro $$9) {
-                  $$8.b($$9);
-               }
-
-               if (this.e && $$3.cs() != null) {
-                  $$0.f().a($$7.cJ(), $$3.cs());
-               }
-
-               $$7.b($$4.d, $$4.e, $$4.f, $$7.dN(), $$7.dP());
-            }
-         }
+   public void a(arq $$0, int $$1, dbv $$2, bui $$3, ezr $$4) {
+      MinecraftServer $$5 = $$0.o();
+      ama $$6 = $$5.aE();
+      Optional<ik<ew>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ew $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bW());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
       }
    }
 
@@ -35,11 +27,7 @@ public record dcx(ju<bul<?>> d, boolean e) implements dcj {
       return a;
    }
 
-   public ju<bul<?>> b() {
+   public all b() {
       return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
    }
 }

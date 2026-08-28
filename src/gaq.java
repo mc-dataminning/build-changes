@@ -1,18 +1,23 @@
-public class gaq extends fzf {
-   public static final ali a = ali.b("textures/entity/trident.png");
+import java.util.Set;
 
-   public gaq(gbm $$0) {
-      super($$0, gir::c);
+public class gaq extends gak<gwv> {
+   public static final gcl a = new fyc(false, 8.0F, 4.0F, 2.0F, 2.0F, 24.0F, Set.of("head"));
+
+   public gaq(gcc $$0) {
+      super($$0);
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      gbw $$2 = $$1.a("pole", gbr.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), gbo.a);
-      $$2.a("base", gbr.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), gbo.a);
-      $$2.a("left_spike", gbr.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gbo.a);
-      $$2.a("middle_spike", gbr.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), gbo.a);
-      $$2.a("right_spike", gbr.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gbo.a);
-      return gbs.a($$0, 32, 32);
+   public static gci a() {
+      gck $$0 = gak.a(12, gcg.a);
+      gcm $$1 = $$0.a();
+      $$1.a("head", gch.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), gce.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gch.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), gce.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gci.a($$0, 64, 32);
+   }
+
+   public void a(gwv $$0) {
+      super.a($$0);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ab;
+      this.b.e = $$0.b;
    }
 }

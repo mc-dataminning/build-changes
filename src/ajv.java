@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record ajv() implements ajt {
+   public static final ajv a = new ajv();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajv {
+   @Override
+   public void a(wi $$0) {
+   }
 }

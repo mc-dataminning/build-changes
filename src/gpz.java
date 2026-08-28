@@ -1,21 +1,25 @@
-public class gpz extends gnf<chi, gvw, fzk> {
-   private static final ali a = ali.b("textures/entity/pig/pig.png");
+public class gpz extends goz<ckt, gvd> {
+   private static final all a = all.b("textures/entity/lead_knot.png");
+   private final fzr b;
 
-   public gpz(gok.a $$0) {
-      super($$0, new fzk($$0.a(gbl.bt)), new fzk($$0.a(gbl.bu)), 0.7F);
-      this.a(new gsy<>(this, new fzk($$0.a(gbl.bv)), new fzk($$0.a(gbl.bw)), ali.b("textures/entity/pig/pig_saddle.png")));
+   public gpz(gpa.a $$0) {
+      super($$0);
+      this.b = new fzr($$0.a(gcb.bb));
    }
 
-   public ali a(gvw $$0) {
-      return a;
+   @Override
+   public void a(gvd $$0, fek $$1, gix $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      feo $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gyk.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gvw c() {
-      return new gvw();
-   }
-
-   public void a(chi $$0, gvw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
+   @Override
+   public gvd b() {
+      return new gvd();
    }
 }

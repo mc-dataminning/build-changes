@@ -1,53 +1,16 @@
-import java.util.function.Consumer;
-
-public class btw {
-   private static final int a = Integer.MIN_VALUE;
-   private int b = Integer.MIN_VALUE;
-
-   public void a(int $$0) {
-      this.b = $$0;
+class btw extends btl {
+   protected btw(btm $$0, int $$1) {
+      super($$0, $$1, ls.y);
    }
 
-   public void b(int $$0) {
-      if (!this.b()) {
-         this.a($$0);
+   @Override
+   public void a(bve $$0, int $$1, bui.c $$2) {
+      if ($$2 == bui.c.a && $$0.dY() instanceof arq $$3) {
+         double $$4 = $$0.dD();
+         double $$5 = $$0.dF() + (double)($$0.du() / 2.0F);
+         double $$6 = $$0.dJ();
+         float $$7 = 3.0F + $$0.eb().i() * 2.0F;
+         $$3.a($$0, null, cqa.e, $$4, $$5, $$6, $$7, false, dff.a.e, ls.A, ls.z, awo.cQ);
       }
-   }
-
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
-      } else {
-         this.a();
-      }
-   }
-
-   public void a() {
-      this.b = Integer.MIN_VALUE;
-   }
-
-   public void a(Consumer<btw> $$0) {
-      if (this.b()) {
-         $$0.accept(this);
-      }
-   }
-
-   public void a(int $$0, float $$1) {
-      if (this.b()) {
-         this.b -= (int)((float)$$0 * $$1);
-      }
-   }
-
-   public long a(float $$0) {
-      float $$1 = $$0 - (float)this.b;
-      return (long)($$1 * 50.0F);
-   }
-
-   public boolean b() {
-      return this.b != Integer.MIN_VALUE;
-   }
-
-   public void a(btw $$0) {
-      this.b = $$0.b;
    }
 }

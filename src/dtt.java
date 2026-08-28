@@ -1,103 +1,143 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Optional;
 
-public abstract class dtt extends dsg implements bsj {
-   @Nullable
-   protected alh<euh> l;
-   protected long m = 0L;
+public class dtt extends dsr {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private all h = all.b("empty");
+   private all i = all.b("empty");
+   private alk<enl> j = alk.a(ma.aV, all.b("empty"));
+   private dtt.a k = dtt.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-   protected dtt(dso<?> $$0, jh $$1, dvj $$2) {
-      super($$0, $$1, $$2);
+   public dtt(jh $$0, dvo $$1) {
+      super(dst.F, $$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public alh<euh> ax_() {
+   public all b() {
+      return this.h;
+   }
+
+   public all c() {
+      return this.i;
+   }
+
+   public alk<enl> d() {
+      return this.j;
+   }
+
+   public String f() {
       return this.l;
    }
 
-   @Override
-   public void a(@Nullable alh<euh> $$0) {
-      this.l = $$0;
+   public dtt.a j() {
+      return this.k;
    }
 
-   @Override
-   public long aA_() {
+   public int k() {
       return this.m;
    }
 
-   @Override
-   public void a(long $$0) {
+   public int t() {
+      return this.n;
+   }
+
+   public void a(all $$0) {
+      this.h = $$0;
+   }
+
+   public void b(all $$0) {
+      this.i = $$0;
+   }
+
+   public void a(alk<enl> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dtt.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
       this.m = $$0;
    }
 
-   @Override
-   public boolean c() {
-      this.e_(null);
-      return super.c();
+   public void b(int $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public cwb a(int $$0) {
-      this.e_(null);
-      return super.a($$0);
+   protected void b(un $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
    }
 
    @Override
-   public cwb a(int $$0, int $$1) {
-      this.e_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public cwb b(int $$0) {
-      this.e_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cwb $$1) {
-      this.e_(null);
+   protected void a(un $$0, js.a $$1) {
       super.a($$0, $$1);
+      this.h = all.a($$0.l("name"));
+      this.i = all.a($$0.l("target"));
+      this.j = alk.a(ma.aV, all.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = dtt.a.a($$0.l("joint")).orElseGet(() -> dmk.o(this.m()).o().d() ? dtt.a.b : dtt.a.a);
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public aco u() {
+      return aco.a(this);
    }
 
    @Override
-   public boolean d(com $$0) {
-      return super.d($$0) && (this.l == null || !$$0.R_());
+   public un a(js.a $$0) {
+      return this.e($$0);
    }
 
-   @Nullable
-   @Override
-   public cro createMenu(int $$0, col $$1, com $$2) {
-      if (this.d($$2)) {
-         this.e_($$1.k);
-         return this.a($$0, $$1);
-      } else {
-         return null;
+   public void a(arq $$0, int $$1, boolean $$2) {
+      jh $$3 = this.aB_().a(this.m().c(dmk.b).a());
+      kd<enl> $$4 = $$0.H_().e(ma.aV);
+      jq<enl> $$5 = $$4.b(this.j);
+      enf.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements baj {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
-   }
 
-   @Override
-   protected void a(dsm.b $$0) {
-      super.a($$0);
-      czb $$1 = $$0.a(ku.ap);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
+      @Override
+      public String c() {
+         return this.c;
       }
-   }
 
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(ku.ap, new czb(this.l, this.m));
+      public static Optional<dtt.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
       }
-   }
 
-   @Override
-   public void a(uk $$0) {
-      super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
+      public xl a() {
+         return xl.c("jigsaw_block.joint." + this.c);
+      }
    }
 }

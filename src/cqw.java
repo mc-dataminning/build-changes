@@ -1,70 +1,51 @@
-public class cqw extends cqk {
-   private final dec c = new dec() {
-      @Override
-      public void a(dfb $$0, jh $$1, int $$2) {
-         $$0.a(cqw.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
-
-   public cqw(bul<? extends cqw> $$0, dfb $$1) {
+public class cqw extends cqp {
+   public cqw(bup<? extends cqw> $$0, dff $$1) {
       super($$0, $$1);
-      this.d = this.c($$1);
-   }
-
-   public cqw(dfb $$0, double $$1, double $$2, double $$3) {
-      super(bul.aU, $$0, $$1, $$2, $$3);
-      this.d = this.c($$0);
    }
 
    @Override
-   protected cvx al_() {
-      return cwf.nM;
-   }
-
-   private Runnable c(dfb $$0) {
-      return $$0 instanceof arn ? () -> this.c.a((arn)$$0, this.dx()) : () -> this.c.a($$0, this.dx());
+   protected cwb al_() {
+      return cwj.nN;
    }
 
    @Override
-   public cqk.a y() {
-      return cqk.a.e;
+   public cwf dL() {
+      return new cwf(cwj.nN);
    }
 
    @Override
-   public dvj A() {
-      return dig.ct.m();
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(uk $$0) {
-      super.a($$0);
-      this.c.a(this.dX(), this.dx(), $$0);
+   public dvo z() {
+      return dil.cv.m().b(djm.c, jm.c);
    }
 
    @Override
-   protected void b(uk $$0) {
-      super.b($$0);
-      this.c.a($$0);
+   public int B() {
+      return 8;
    }
 
    @Override
-   public void b(byte $$0) {
-      this.c.a(this.dX(), $$0);
+   public crs a(int $$0, coq $$1) {
+      return csb.a($$0, $$1, this);
    }
 
    @Override
-   public void l() {
-      super.l();
-      this.d.run();
-   }
-
-   public dec E() {
-      return this.c;
+   public void c(cor $$0) {
+      this.dY().a(eak.j, this.dw(), eak.a.a($$0));
    }
 
    @Override
-   public boolean cX() {
-      return true;
+   public bsh a(cor $$0, bsg $$1) {
+      bsh $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(eak.k, $$0);
+         cng.a($$0, true);
+      }
+
+      return $$2;
    }
 }

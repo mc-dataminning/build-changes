@@ -1,17 +1,37 @@
-public class gfk extends ggd {
-   protected gfk(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+public class gfk<T extends lt> extends ghf {
+   private final gha a;
+
+   protected gfk(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gha $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.D = this.D * 0.75F * $$7.d();
+      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
+      this.b($$8);
    }
 
-   public static class a implements gfs<lv> {
-      private final ggk a;
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
+   }
 
-      public a(ggk $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public ggj b() {
+      return ggj.b;
+   }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfk($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * azn.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

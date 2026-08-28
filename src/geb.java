@@ -1,30 +1,66 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class geb {
-   public static final geb a = new geb(gea.b, gec.createDnsSrvRedirectHandler(), gdx.a());
-   private final gea b;
-   private final gec c;
-   private final gdx d;
+public class geb extends gec {
+   private final String g;
 
-   @VisibleForTesting
-   geb(gea $$0, gec $$1, gdx $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   geb(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public Optional<gdy> a(gdz $$0) {
-      Optional<gdy> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<gdz> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public String a() {
+      return this.g;
+   }
 
-         return $$1;
-      } else {
-         return Optional.empty();
+   public geb c() {
+      geb $$0 = new geb(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
+   }
+
+   @Override
+   public frp a(frp $$0, geg $$1) {
+      return new fvy($$0, $$1, this);
+   }
+
+   public static class a extends gec.a<geb> {
+      public a(geb $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
+      }
+
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new geb(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public gec.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gec.b.d : super.c();
+      }
+
+      @Override
+      public Either<gec.c, gec.b> a(geg $$0) {
+         gec.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gec.c(this.a.a, gef.c, $$3));
+         }
       }
    }
 }

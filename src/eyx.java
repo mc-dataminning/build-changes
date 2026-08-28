@@ -1,32 +1,16 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class eyx implements eyy<MinecraftServer> {
-   final ali a;
+public class eyx {
+   private static final Codec<eyw> d = lz.I.q().dispatch(eyw::a, eyv::a);
+   public static final Codec<eyw> a = Codec.lazyInitialized(
+      () -> Codec.either(eyt.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eyt $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final eyv b = a("fixed", eyu.a);
+   public static final eyv c = a("context", eyt.a);
 
-   public eyx(ali $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, eza<MinecraftServer> $$1, long $$2) {
-      alx $$3 = $$0.aE();
-
-      for (ik<ew> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
-   }
-
-   public static class a extends eyy.a<MinecraftServer, eyx> {
-      public a() {
-         super(ali.b("function_tag"), eyx.class);
-      }
-
-      public void a(uk $$0, eyx $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public eyx a(uk $$0) {
-         ali $$1 = ali.a($$0.l("Name"));
-         return new eyx($$1);
-      }
+   private static eyv a(String $$0, MapCodec<? extends eyw> $$1) {
+      return kd.a(lz.I, all.b($$0), new eyv($$1));
    }
 }

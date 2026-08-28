@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gxf {
+public class gxf extends gvd {
+   public float a;
+   public float b;
+   public boolean c;
 }

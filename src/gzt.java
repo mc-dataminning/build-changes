@@ -1,12 +1,15 @@
-import com.google.gson.JsonObject;
+public class gzt extends gzx {
+   private static final all a = all.b("back");
 
-public class gzt implements atz<gzs> {
-   public gzs b(JsonObject $$0) {
-      return new gzs(gzs.a.a(aza.a($$0, "hat", "none")));
+   public gzt(gyu $$0) {
+      super($$0, all.b("textures/atlas/paintings.png"), all.b("paintings"));
    }
 
-   @Override
-   public String a() {
-      return "villager";
+   public gyt a(ckv $$0) {
+      return this.a($$0.d());
+   }
+
+   public gyt a() {
+      return this.a(a);
    }
 }

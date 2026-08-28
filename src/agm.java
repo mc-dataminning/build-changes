@@ -1,59 +1,78 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class agm implements zs<ach> {
+   public static final zj<wi, agm> a = zs.a(agm::a, agm::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-public class agm implements zp<ace> {
-   public static final zg<wt, agm> a = zp.a(agm::a, agm::new);
-   private final boolean b;
-   private final List<ah> c;
-   private final Set<ali> d;
-   private final Map<ali, aj> e;
-
-   public agm(boolean $$0, Collection<ah> $$1, Set<ali> $$2, Map<ali, aj> $$3) {
-      this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+   public agm(bui $$0) {
+      this.b = $$0.as();
+      ezr $$1 = $$0.dx();
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = $$1.f;
+      this.f = azn.g($$0.dO());
+      this.g = azn.g($$0.dQ());
+      this.h = $$0.aL();
    }
 
-   private agm(wt $$0) {
-      this.b = $$0.readBoolean();
-      this.c = ah.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, wf::q);
-      this.e = $$0.a(wf::q, aj::b);
+   private agm(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private void a(wt $$0) {
-      $$0.a(this.b);
-      ah.b.encode($$0, this.c);
-      $$0.a(this.d, wf::a);
-      $$0.a(this.e, wf::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.l(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public zr<agm> a() {
-      return agt.bb;
+   public zu<agm> a() {
+      return agw.ba;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public List<ah> b() {
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
    }
 
-   public Set<ali> e() {
+   public double f() {
       return this.d;
    }
 
-   public Map<ali, aj> f() {
+   public double g() {
       return this.e;
    }
 
-   public boolean g() {
-      return this.b;
+   public float h() {
+      return azn.a(this.f);
+   }
+
+   public float i() {
+      return azn.a(this.g);
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

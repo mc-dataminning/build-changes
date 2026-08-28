@@ -1,20 +1,8 @@
-public interface akm<T> {
-   zg<? super wt, T> codec();
+import io.netty.buffer.ByteBuf;
 
-   default akl<T> a(int $$0) {
-      return new akl<>($$0, this);
-   }
-
-   T copy(T var1);
-
-   static <T> akm<T> a(zg<? super wt, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends akm<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
-   }
+public class akm {
+   public static final wt.a<akj, ByteBuf> a = zx.a(wg.c, $$0 -> $$0.a(akl.b, akk.b).a(akc.b, ake.a));
+   public static final wt<akj> b = a.a($$0 -> $$0);
+   public static final wt.a<akg, wi> c = zx.b(wg.c, $$0 -> $$0.a(akl.a, akh.a).a(akc.a, akb.a));
+   public static final wt<akg> d = c.a(wi::new);
 }

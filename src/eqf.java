@@ -1,17 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class eqf implements eqh {
-   private static final eqf b = new eqf();
-   public static final MapCodec<eqf> a = MapCodec.unit(b);
+public class eqf extends epx {
+   public static final MapCodec<eqf> a = axt.a(ma.f).fieldOf("tag").xmap(eqf::new, $$0 -> $$0.b);
+   private final axt<dij> b;
 
-   @Override
-   public uk a(azs $$0, @Nullable uk $$1) {
-      return new uk();
+   public eqf(axt<dij> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public eqi<?> a() {
-      return eqi.a;
+   public boolean a(dvo $$0, azv $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected epy<?> a() {
+      return epy.d;
    }
 }

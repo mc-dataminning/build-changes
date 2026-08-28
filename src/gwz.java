@@ -1,6 +1,4 @@
-public class gwz extends gvl {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class gwz extends gwb {
+   public float a;
+   public int b = 1;
 }

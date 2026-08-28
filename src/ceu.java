@@ -1,13 +1,8 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class ceu extends cfk<bva> {
-   @Override
-   protected void a(arn $$0, bva $$1) {
-   }
-
-   @Override
-   public Set<cee<?>> a() {
-      return ImmutableSet.of();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ceu {
 }

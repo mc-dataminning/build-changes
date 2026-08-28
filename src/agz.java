@@ -1,29 +1,11 @@
-public class agz implements zp<agv> {
-   public static final zg<wf, agz> a = zp.a(agz::a, agz::new);
-   private final bsa b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public agz(bsa $$0) {
-      this.b = $$0;
-   }
-
-   private agz(wf $$0) {
-      this.b = bsa.a($$0.readUnsignedByte());
-   }
-
-   private void a(wf $$0) {
-      $$0.l(this.b.a());
-   }
+public interface agz extends wx {
+   Logger a = LogUtils.getLogger();
 
    @Override
-   public zr<agz> a() {
-      return agt.bj;
-   }
-
-   public void a(agv $$0) {
-      $$0.a(this);
-   }
-
-   public bsa b() {
-      return this.b;
+   default void a(zs $$0, Exception $$1) throws z {
+      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
    }
 }

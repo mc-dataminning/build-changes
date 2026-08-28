@@ -1,41 +1,51 @@
-public class glk extends gll<due> {
-   private static final ali c = ali.b("textures/entity/end_gateway_beam.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public glk(gkt.a $$0) {
-      super($$0);
+public class glk {
+   private static final Map<dst<?>, glj<?>> a = Maps.newHashMap();
+
+   private static <T extends dsr> void a(dst<? extends T> $$0, glj<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(due $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().al() : 50.0;
-         $$6 = azk.a($$6 * (float) Math.PI);
-         int $$8 = azk.a((double)$$6 * $$7);
-         int $$9 = $$0.b() ? cuy.c.d() : cuy.k.d();
-         long $$10 = $$0.i().aa();
-         gko.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public static Map<dst<?>, gli<?>> a(glj.a $$0) {
+      Builder<dst<?>, gli<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + lz.j.b((dst<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected gir d() {
-      return gir.u();
-   }
-
-   @Override
-   public int aU_() {
-      return 256;
+   static {
+      a(dst.h, glw::new);
+      a(dst.i, gls::new);
+      a(dst.j, gly::new);
+      a(dst.k, glu::new);
+      a(dst.b, glo::new);
+      a(dst.d, glo::new);
+      a(dst.c, glo::new);
+      a(dst.m, glr::new);
+      a(dst.D, glt::new);
+      a(dst.n, gmb::new);
+      a(dst.v, gma::new);
+      a(dst.o, gle::new);
+      a(dst.p, glx::new);
+      a(dst.t, gld::new);
+      a(dst.u, glz::new);
+      a(dst.x, glv::new);
+      a(dst.y, glf::new);
+      a(dst.z, glp::new);
+      a(dst.E, glg::new);
+      a(dst.G, gln::new);
+      a(dst.N, glm::new);
+      a(dst.O, glq::new);
+      a(dst.Q, gmc::new);
+      a(dst.R, gmd::new);
    }
 }

@@ -1,50 +1,157 @@
-public class btl {
-   private static final int N = 22;
-   public static final jq<bth> a = a("speed", new bth(bti.a, 3402751).a(bwi.v, ali.b("effect.speed"), 0.2F, bwg.a.c));
-   public static final jq<bth> b = a("slowness", new bth(bti.b, 9154528).a(bwi.v, ali.b("effect.slowness"), -0.15F, bwg.a.c));
-   public static final jq<bth> c = a("haste", new bth(bti.a, 14270531).a(bwi.e, ali.b("effect.haste"), 0.1F, bwg.a.c));
-   public static final jq<bth> d = a("mining_fatigue", new bth(bti.b, 4866583).a(bwi.e, ali.b("effect.mining_fatigue"), -0.1F, bwg.a.c));
-   public static final jq<bth> e = a("strength", new bth(bti.a, 16762624).a(bwi.c, ali.b("effect.strength"), 3.0, bwg.a.a));
-   public static final jq<bth> f = a("instant_health", new btd(bti.a, 16262179, false));
-   public static final jq<bth> g = a("instant_damage", new btd(bti.b, 11101546, true));
-   public static final jq<bth> h = a("jump_boost", new bth(bti.a, 16646020).a(bwi.x, ali.b("effect.jump_boost"), 1.0, bwg.a.a));
-   public static final jq<bth> i = a("nausea", new bth(bti.b, 5578058));
-   public static final jq<bth> j = a("regeneration", new btp(bti.a, 13458603));
-   public static final jq<bth> k = a("resistance", new bth(bti.a, 9520880));
-   public static final jq<bth> l = a("fire_resistance", new bth(bti.a, 16750848));
-   public static final jq<bth> m = a("water_breathing", new bth(bti.a, 10017472));
-   public static final jq<bth> n = a("invisibility", new bth(bti.a, 16185078));
-   public static final jq<bth> o = a("blindness", new bth(bti.b, 2039587));
-   public static final jq<bth> p = a("night_vision", new bth(bti.a, 12779366));
-   public static final jq<bth> q = a("hunger", new bte(bti.b, 5797459));
-   public static final jq<bth> r = a("weakness", new bth(bti.b, 4738376).a(bwi.c, ali.b("effect.weakness"), -4.0, bwg.a.a));
-   public static final jq<bth> s = a("poison", new btn(bti.b, 8889187));
-   public static final jq<bth> t = a("wither", new btt(bti.b, 7561558));
-   public static final jq<bth> u = a("health_boost", new bth(bti.a, 16284963).a(bwi.s, ali.b("effect.health_boost"), 4.0, bwg.a.a));
-   public static final jq<bth> v = a("absorption", new btb(bti.a, 2445989).a(bwi.r, ali.b("effect.absorption"), 4.0, bwg.a.a));
-   public static final jq<bth> w = a("saturation", new btq(bti.a, 16262179));
-   public static final jq<bth> x = a("glowing", new bth(bti.c, 9740385));
-   public static final jq<bth> y = a("levitation", new bth(bti.b, 13565951));
-   public static final jq<bth> z = a("luck", new bth(bti.a, 5882118).a(bwi.q, ali.b("effect.luck"), 1.0, bwg.a.a));
-   public static final jq<bth> A = a("unluck", new bth(bti.b, 12624973).a(bwi.q, ali.b("effect.unluck"), -1.0, bwg.a.a));
-   public static final jq<bth> B = a("slow_falling", new bth(bti.a, 15978425));
-   public static final jq<bth> C = a("conduit_power", new bth(bti.a, 1950417));
-   public static final jq<bth> D = a("dolphins_grace", new bth(bti.a, 8954814));
-   public static final jq<bth> E = a("bad_omen", new btc(bti.c, 745784).a(awl.DU));
-   public static final jq<bth> F = a("hero_of_the_village", new bth(bti.a, 4521796));
-   public static final jq<bth> G = a("darkness", new bth(bti.b, 2696993).a(22));
-   public static final jq<bth> H = a("trial_omen", new bth(bti.c, 1484454, lr.be).a(awl.DV));
-   public static final jq<bth> I = a("raid_omen", new bto(bti.c, 14565464, lr.bd).a(awl.DW));
-   public static final jq<bth> J = a("wind_charged", new bts(bti.b, 12438015));
-   public static final jq<bth> K = a("weaving", new btr(bti.b, 7891290, $$0 -> azk.b($$0, 2, 3)));
-   public static final jq<bth> L = a("oozing", new btm(bti.b, 10092451, $$0 -> 2));
-   public static final jq<bth> M = a("infested", new btf(bti.b, 9214860, 0.1F, $$0 -> azk.b($$0, 1, 2)));
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   private static jq<bth> a(String $$0, bth $$1) {
-      return kd.b(ly.d, ali.b($$0), $$1);
+public class btl implements crg {
+   public static final Codec<jq<btl>> a = lz.d.r();
+   public static final zj<ww, jq<btl>> b = zh.b(ma.W);
+   private static final int c = azn.d(38.25F);
+   private final Map<jq<bwh>, btl.a> d = new Object2ObjectOpenHashMap();
+   private final btm e;
+   private final int f;
+   private final Function<btn, lq> g;
+   @Nullable
+   private String h;
+   private int i;
+   private Optional<awn> j = Optional.empty();
+   private crj k = crl.h;
+
+   protected btl(btm $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$1x -> {
+         int $$2 = $$1x.f() ? c : 255;
+         return ll.a(ls.u, axy.c($$2, $$1));
+      };
    }
 
-   public static jq<bth> a(kd<bth> $$0) {
-      return a;
+   protected btl(btm $$0, int $$1, lq $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$1x -> $$2;
+   }
+
+   public int b() {
+      return this.i;
+   }
+
+   public boolean a(bve $$0, int $$1) {
+      return true;
+   }
+
+   public void a(@Nullable bui $$0, @Nullable bui $$1, bve $$2, int $$3, double $$4) {
+      this.a($$2, $$3);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return false;
+   }
+
+   public void b(bve $$0, int $$1) {
+   }
+
+   public void c(bve $$0, int $$1) {
+      this.j.ifPresent($$1x -> $$0.dY().a(null, $$0.dD(), $$0.dF(), $$0.dJ(), $$1x, $$0.do(), 1.0F, 1.0F));
+   }
+
+   public void a(bve $$0, int $$1, bui.c $$2) {
+   }
+
+   public void a(bve $$0, int $$1, bsy $$2, float $$3) {
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   protected String c() {
+      if (this.h == null) {
+         this.h = ae.a("effect", lz.d.b(this));
+      }
+
+      return this.h;
+   }
+
+   public String d() {
+      return this.c();
+   }
+
+   public xl e() {
+      return xl.c(this.d());
+   }
+
+   public btm f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public btl a(jq<bwh> $$0, all $$1, double $$2, bwk.a $$3) {
+      this.d.put($$0, new btl.a($$1, $$2, $$3));
+      return this;
+   }
+
+   public btl a(int $$0) {
+      this.i = $$0;
+      return this;
+   }
+
+   public void a(int $$0, BiConsumer<jq<bwh>, bwk> $$1) {
+      this.d.forEach(($$2, $$3) -> $$1.accept((jq<bwh>)$$2, $$3.a($$0)));
+   }
+
+   public void a(bwj $$0) {
+      for (Entry<jq<bwh>, btl.a> $$1 : this.d.entrySet()) {
+         bwi $$2 = $$0.a($$1.getKey());
+         if ($$2 != null) {
+            $$2.c($$1.getValue().a());
+         }
+      }
+   }
+
+   public void a(bwj $$0, int $$1) {
+      for (Entry<jq<bwh>, btl.a> $$2 : this.d.entrySet()) {
+         bwi $$3 = $$0.a($$2.getKey());
+         if ($$3 != null) {
+            $$3.c($$2.getValue().a());
+            $$3.d($$2.getValue().a($$1));
+         }
+      }
+   }
+
+   public boolean h() {
+      return this.e == btm.a;
+   }
+
+   public lq a(btn $$0) {
+      return this.g.apply($$0);
+   }
+
+   public btl a(awn $$0) {
+      this.j = Optional.of($$0);
+      return this;
+   }
+
+   public btl a(crh... $$0) {
+      this.k = crl.f.a($$0);
+      return this;
+   }
+
+   @Override
+   public crj i() {
+      return this.k;
+   }
+
+   static record a(all a, double b, bwk.a c) {
+      public bwk a(int $$0) {
+         return new bwk(this.a, this.b * (double)($$0 + 1), this.c);
+      }
    }
 }

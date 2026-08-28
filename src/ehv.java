@@ -1,34 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehv extends eib {
-   public static final MapCodec<ehv> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ehv::new));
+public class ehv<P extends ehu> {
+   public static final ehv<ehx> a = a("two_layers_feature_size", ehx.d);
+   public static final ehv<ehw> b = a("three_layers_feature_size", ehw.d);
+   private final MapCodec<P> c;
 
-   public ehv(bri $$0, bri $$1) {
-      super($$0, $$1);
+   private static <P extends ehu> ehv<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.Y, $$0, new ehv<>($$1));
    }
 
-   @Override
-   protected eic<?> a() {
-      return eic.d;
+   private ehv(MapCodec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(dfh $$0, eib.b $$1, azs $$2, ehl $$3, int $$4, eib.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      jh $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(azs $$0, int $$1, ehl $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public MapCodec<P> a() {
+      return this.c;
    }
 }

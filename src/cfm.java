@@ -1,47 +1,42 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cfm extends cfk<bvi> {
-   private static final cfr a = cfr.b().d();
-   private final Predicate<cwb> b;
+public class cfm extends cfo<coc> {
+   private static final int a = 40;
 
-   public cfm(Predicate<cwb> $$0) {
-      this.b = $$0;
+   public cfm() {
+      super(40);
    }
 
-   protected void a(arn $$0, bvi $$1) {
-      bwc<?> $$2 = $$1.ed();
-      cfr $$3 = a.c().a((double)((float)$$1.h(bwi.E)));
-      List<com> $$4 = $$0.x()
-         .stream()
-         .filter(buj.f)
-         .filter($$2x -> $$3.a($$1, $$2x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
+   protected void a(arq $$0, coc $$1) {
+      alk<dff> $$2 = $$0.ag();
+      jh $$3 = $$1.dy();
+      List<jp> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               jh $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gF().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(jp.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bwg<?> $$10 = $$1.ee();
       if (!$$4.isEmpty()) {
-         com $$5 = $$4.get(0);
-         $$2.a(cee.O, $$5);
+         $$10.a(cei.f, $$4);
       } else {
-         $$2.b(cee.O);
+         $$10.b(cei.f);
       }
    }
 
-   private boolean a(com $$0) {
-      return this.a($$0.fb()) || this.a($$0.fc());
-   }
-
-   private boolean a(cwb $$0) {
-      return this.b.test($$0);
-   }
-
    @Override
-   public Set<cee<?>> a() {
-      return ImmutableSet.of(cee.O);
+   public Set<cei<?>> a() {
+      return ImmutableSet.of(cei.f);
    }
 }

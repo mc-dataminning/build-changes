@@ -1,7 +1,7 @@
-public interface akg extends agw, aka {
+public interface akg extends aka, wc {
    @Override
-   default wd b() {
-      return wd.c;
+   default wg b() {
+      return wg.c;
    }
 
    void a(akh var1);

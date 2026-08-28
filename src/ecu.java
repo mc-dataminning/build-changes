@@ -1,22 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class ecu implements ecm {
+public class ecu implements ecq {
    public static final MapCodec<ecu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ecm.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, ecu::new)
+      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", jh.c).forGetter($$0x -> $$0x.e)).apply($$0, ecu::new)
    );
-   private final ecm e;
+   private final kl e;
 
-   public ecu(ecm $$0) {
+   public ecu(kl $$0) {
       this.e = $$0;
    }
 
-   public boolean a(dfy $$0, jh $$1) {
-      return !this.e.test($$0, $$1);
+   public boolean a(dgd $$0, jh $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   public ecn<?> a() {
-      return ecn.k;
+   public ecr<?> a() {
+      return ecr.h;
    }
 }

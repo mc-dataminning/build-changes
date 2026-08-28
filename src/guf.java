@@ -1,4 +1,8 @@
-public class guf extends gvl {
-   public float a;
-   public float b;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface guf {
 }

@@ -1,23 +1,37 @@
-public enum dwt implements bag {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+import java.util.Optional;
 
-   private final String e;
-   private final xi f;
+public class dwt {
+   private static final azx a = new azx(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   private dwt(final String $$0) {
-      this.e = $$0;
-      this.f = xi.c("structure_block.mode_info." + $$0);
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static int a(jm $$0) {
+      return a.a($$0);
    }
 
-   public xi a() {
-      return this.f;
+   public static int a(float $$0) {
+      return a.b($$0);
+   }
+
+   public static Optional<jm> a(int $$0) {
+      jm $$1 = switch ($$0) {
+         case 0 -> jm.c;
+         case 4 -> jm.f;
+         case 8 -> jm.d;
+         case 12 -> jm.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
+   }
+
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

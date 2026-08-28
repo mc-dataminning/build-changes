@@ -1,109 +1,56 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class hdr {
-   final Map<hdq<?>, Object> a;
+   private final avh a;
+   private final Map<all, CompletableFuture<fcb>> b = Maps.newHashMap();
 
-   hdr(Map<hdq<?>, Object> $$0) {
+   public hdr(avh $$0) {
       this.a = $$0;
    }
 
-   public static hdr.a a() {
-      return new hdr.a();
-   }
+   public CompletableFuture<fcb> a(all $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               fcb var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  hdm $$2 = new hdo($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new fcb($$3, $$2.a());
+               }
 
-   public static MapCodec<hdr> a(final List<hdq<?>> $$0) {
-      return new MapCodec<hdr>() {
-         public <T> RecordBuilder<T> a(hdr $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (hdq<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
             }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(hdr $$0x, RecordBuilder<T> $$1, hdq<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<hdr> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<hdr.a> $$2 = DataResult.success(new hdr.a());
-
-            for (hdq<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(hdr.a::a);
-         }
-
-         private <T, V> DataResult<hdr.a> a(DataResult<hdr.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hdq<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(hdq::b).map($$0::createString);
-         }
-      };
+         }, ae.i()));
    }
 
-   @Nullable
-   public <T> T a(hdq<T> $$0) {
-      return (T)this.a.get($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public Set<hdq<?>> b() {
-      return this.a.keySet();
-   }
-
-   public static class a {
-      private final Map<hdq<?>, Object> a = new Reference2ObjectOpenHashMap();
-
-      a() {
-      }
-
-      public <T> hdr.a a(hdq<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> hdr.a b(hdq<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
+   public CompletableFuture<hdj> a(all $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (hdj)($$1 ? new hdp(hdo::new, $$2) : new hdo($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
          }
+      }, ae.i());
+   }
 
-         return this;
-      }
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(fcb::b));
+      this.b.clear();
+   }
 
-      public hdr.a a(hdr $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public hdr a() {
-         return new hdr(this.a);
-      }
+   public CompletableFuture<?> a(Collection<hcn> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

@@ -1,26 +1,14 @@
-import java.util.function.BooleanSupplier;
+public enum fju {
+   a,
+   b,
+   c,
+   d;
 
-public class fju extends fjg {
-   private final BooleanSupplier h;
-
-   public fju(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, fcw.b.a, $$1, $$2);
-      this.h = $$3;
+   public boolean a() {
+      return this == b;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   protected void n() {
-      super.a(false);
+   public boolean b() {
+      return this == c || this == d;
    }
 }

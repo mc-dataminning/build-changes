@@ -1,48 +1,24 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cdf extends ccc {
+   private final bvm a;
 
-public class cdf extends cby {
-   private final cld a;
-   @Nullable
-   private bva b;
-
-   public cdf(cld $$0) {
+   public cdf(bvm $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cby.a.a));
    }
 
    @Override
    public boolean b() {
-      bva $$0 = this.a.m();
-      return this.a.y() > 0 || $$0 != null && this.a.g((bue)$$0) < 9.0;
+      return this.a.dY().S() && this.a.a(buq.f).f() && cga.a(this.a);
    }
 
    @Override
    public void d() {
-      this.a.P().o();
-      this.b = this.a.m();
+      ((cep)this.a.P()).d(true);
    }
 
    @Override
    public void e() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g((bue)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.Q().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      if (cga.a(this.a)) {
+         ((cep)this.a.P()).d(false);
       }
    }
 }

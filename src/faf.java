@@ -1,24 +1,37 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import javax.annotation.Nullable;
 
-public class faf extends fah {
-   private final fah b;
-   private final jm.a c;
-   private static final DoubleList d = new ezt(1);
+public class faf extends fab {
+   @Nullable
+   private jh b;
+   @Nullable
+   private jh c;
 
-   public faf(fah $$0, jm.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   protected faf(cqo $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
    }
 
-   private static ezw a(ezw $$0, jm.a $$1, int $$2) {
-      return new fag(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   private void a(cqo $$0) {
+      jh $$1 = $$0.q();
+      dvo $$2 = $$0.dY().a_($$1);
+      boolean $$3 = dhy.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dwr $$4 = $$2.c(((dhy)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
    }
 
    @Override
-   public DoubleList a(jm.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public fal a(dvo $$0, deo $$1, jh $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fai.a();
    }
 }

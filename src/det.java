@@ -1,50 +1,46 @@
 import javax.annotation.Nullable;
 
-public interface det {
-   static bsu a(dfb $$0, @Nullable bue $$1) {
-      return $$0.ai().d($$1, a($$1));
+public enum det implements deh {
+   a;
+
+   @Override
+   public float a(jm $$0, boolean $$1) {
+      return 1.0F;
+   }
+
+   @Override
+   public erd z_() {
+      return erd.c;
+   }
+
+   @Override
+   public int a(jh $$0, dep $$1) {
+      return -1;
    }
 
    @Nullable
-   static bva a(@Nullable bue $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case ckw $$1 -> $$1.m();
-         case bva $$2 -> $$2;
-         case cpg $$3 when $$3.s() instanceof bva $$4 -> $$4;
-      };
+   @Override
+   public dsr c_(jh $$0) {
+      return null;
    }
 
-   det.a a();
+   @Override
+   public dvo a_(jh $$0) {
+      return dil.a.m();
+   }
 
-   @Nullable
-   bva b();
+   @Override
+   public ero b_(jh $$0) {
+      return erp.a.g();
+   }
 
-   @Nullable
-   bue c();
+   @Override
+   public int J_() {
+      return 0;
+   }
 
-   float d();
-
-   ezn e();
-
-   boolean f();
-
-   boolean g();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a() {
-         return this.e;
-      }
+   @Override
+   public int I_() {
+      return 0;
    }
 }

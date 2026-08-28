@@ -1,78 +1,233 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class ame {
-   private static final int a = 8;
-   private final Queue<ame.a> b = new axx<>();
-   private final Object2IntLinkedOpenHashMap<ame.b> c = new Object2IntLinkedOpenHashMap();
+public class ame extends faw {
+   private final MinecraftServer b;
+   private final Set<fao> c = Sets.newHashSet();
+   private final List<Runnable> d = Lists.newArrayList();
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public ame(MinecraftServer $$0) {
+      this.b = $$0;
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new ame.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
-
-      while (this.b.size() > 8) {
-         this.b.remove();
+   @Override
+   protected void a(fav $$0, fao $$1, fat $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new afy($$0.cK(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
       }
 
-      ame.b $$4 = new ame.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
+      this.a();
    }
 
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
+   @Override
+   protected void a(fav $$0, fao $$1) {
+      super.a($$0, $$1);
+      this.a();
+   }
 
-         for (ame.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
+   @Override
+   public void a(fav $$0) {
+      super.a($$0);
+      this.b.ag().a(new aev($$0.cK(), null));
+      this.a();
+   }
+
+   @Override
+   public void b(fav $$0, fao $$1) {
+      super.b($$0, $$1);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new aev($$0.cK(), $$1.b()));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(fan $$0, @Nullable fao $$1) {
+      fao $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.b.ag().a(new afm($$0, $$1));
+         } else {
+            this.g($$2);
          }
       }
 
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
-
-         while (var6.hasNext()) {
-            Entry<ame.b> $$3 = (Entry<ame.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((ame.b)$$3.getKey()).a)
-               .append(":")
-               .append(((ame.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
+      if ($$1 != null) {
+         if (this.c.contains($$1)) {
+            this.b.ag().a(new afm($$0, $$1));
+         } else {
+            this.e($$1);
          }
       }
 
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+      this.a();
    }
 
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   @Override
+   public boolean a(String $$0, far $$1) {
+      if (super.a($$0, $$1)) {
+         this.b.ag().a(afx.a($$1, $$0, afx.a.a));
+         this.a();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   static record b(String a, Class<? extends Throwable> b) {
+   @Override
+   public void b(String $$0, far $$1) {
+      super.b($$0, $$1);
+      this.b.ag().a(afx.a($$1, $$0, afx.a.b));
+      this.a();
+   }
+
+   @Override
+   public void a(fao $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(fao $$0) {
+      super.b($$0);
+      if (this.c.contains($$0)) {
+         this.b.ag().a(new afu($$0, 2));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void c(fao $$0) {
+      super.c($$0);
+      if (this.c.contains($$0)) {
+         this.g($$0);
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(far $$0) {
+      super.a($$0);
+      this.b.ag().a(afx.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(far $$0) {
+      super.b($$0);
+      this.b.ag().a(afx.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(far $$0) {
+      super.c($$0);
+      this.b.ag().a(afx.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.d.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.d) {
+         $$0.run();
+      }
+   }
+
+   public List<zs<?>> d(fao $$0) {
+      List<zs<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afu($$0, 0));
+
+      for (fan $$2 : fan.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new afm($$2, $$0));
+         }
+      }
+
+      for (fap $$3 : this.i($$0)) {
+         $$1.add(new afy($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
+      }
+
+      return $$1;
+   }
+
+   public void e(fao $$0) {
+      List<zs<?>> $$1 = this.d($$0);
+
+      for (arr $$2 : this.b.ag().t()) {
+         for (zs<?> $$3 : $$1) {
+            $$2.g.b($$3);
+         }
+      }
+
+      this.c.add($$0);
+   }
+
+   public List<zs<?>> f(fao $$0) {
+      List<zs<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afu($$0, 1));
+
+      for (fan $$2 : fan.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new afm($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(fao $$0) {
+      List<zs<?>> $$1 = this.f($$0);
+
+      for (arr $$2 : this.b.ag().t()) {
+         for (zs<?> $$3 : $$1) {
+            $$2.g.b($$3);
+         }
+      }
+
+      this.c.remove($$0);
+   }
+
+   public int h(fao $$0) {
+      int $$1 = 0;
+
+      for (fan $$2 : fan.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public eta.a<fax> b() {
+      return new eta.a<>(this::h, this::a, bax.n);
+   }
+
+   private fax h() {
+      fax $$0 = new fax(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private fax a(un $$0, js.a $$1) {
+      return this.h().b($$0, $$1);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

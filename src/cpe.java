@@ -1,48 +1,69 @@
-public class cpe extends cpa {
-   private int e = 1;
+public abstract class cpe extends coz implements cph {
+   private static final float e = 12.25F;
+   private static final ako<cwf> f = aks.a(cpe.class, akq.h);
 
-   public cpe(bul<? extends cpe> $$0, dfb $$1) {
+   public cpe(bup<? extends cpe> $$0, dff $$1) {
       super($$0, $$1);
    }
 
-   public cpe(dfb $$0, bva $$1, ezn $$2, int $$3) {
-      super(bul.ak, $$1, $$2, $$0);
-      this.e = $$3;
+   public cpe(bup<? extends cpe> $$0, double $$1, double $$2, double $$3, ezr $$4, dff $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void a(ezl $$0) {
-      super.a($$0);
-      if (!this.dX().C) {
-         boolean $$1 = this.dX().ac().b(dex.c);
-         this.dX().a(this, this.dC(), this.dE(), this.dI(), (float)this.e, $$1, dfb.a.c);
-         this.av();
+   public cpe(bup<? extends cpe> $$0, bve $$1, ezr $$2, dff $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
+
+   public void a(cwf $$0) {
+      if ($$0.f()) {
+         this.aw().a(f, this.w());
+      } else {
+         this.aw().a(f, $$0.c(1));
       }
    }
 
    @Override
-   protected void a(ezk $$0) {
-      super.a($$0);
-      if (this.dX() instanceof arn $$1) {
-         bue var6 = $$0.a();
-         bue $$4 = this.s();
-         bsu $$5 = this.dY().a((cpa)this, $$4);
-         var6.a($$5, 6.0F);
-         dbu.a($$1, var6, $$5);
-      }
+   public cwf m() {
+      return this.aw().a(f);
    }
 
    @Override
-   public void b(uk $$0) {
+   protected void a(aks.a $$0) {
+      $$0.a(f, this.w());
+   }
+
+   @Override
+   public void b(un $$0) {
       super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.e);
+      $$0.a("Item", this.m().a(this.ea()));
    }
 
    @Override
-   public void a(uk $$0) {
+   public void a(un $$0) {
       super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.e = $$0.f("ExplosionPower");
+      if ($$0.b("Item", 10)) {
+         this.a(cwf.a(this.ea(), (vk)$$0.p("Item")).orElse(this.w()));
+      } else {
+         this.a(this.w());
       }
+   }
+
+   private cwf w() {
+      return new cwf(cwj.uo);
+   }
+
+   @Override
+   public bvw a_(int $$0) {
+      return $$0 == 0 ? bvw.a(this::m, this::a) : super.a_($$0);
+   }
+
+   @Override
+   public boolean a(bsy $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return this.ag < 2 && $$0 < 12.25 ? false : super.a($$0);
    }
 }

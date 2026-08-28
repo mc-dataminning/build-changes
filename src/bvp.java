@@ -1,3 +1,65 @@
-public interface bvp {
-   void a(cgb var1, bue var2);
+import javax.annotation.Nullable;
+
+public class bvp {
+   private final dob a;
+   private jh b;
+   private int c;
+   private boolean d;
+
+   public bvp(dob $$0, jh $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = true;
+   }
+
+   public boolean a(arq $$0, bui $$1, boolean $$2) {
+      if (!this.d) {
+         this.f();
+         return false;
+      } else {
+         this.d = false;
+         return $$2 && this.c++ >= this.a.a($$0, $$1);
+      }
+   }
+
+   @Nullable
+   public esm a(arq $$0, bui $$1) {
+      return this.a.a($$0, $$1, this.b);
+   }
+
+   public dob.a a() {
+      return this.a.b();
+   }
+
+   private void f() {
+      this.c = Math.max(this.c - 4, 0);
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public jh c() {
+      return this.b;
+   }
+
+   public void a(jh $$0) {
+      this.b = $$0;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean a(dob $$0) {
+      return this.a == $$0;
+   }
 }

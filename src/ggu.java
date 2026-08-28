@@ -1,55 +1,44 @@
-public class ggu extends ggp {
-   private final ggk a;
+public class ggu extends ghf {
+   private final gha a;
 
-   ggu(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+   protected ggu(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gha $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
       this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
-      this.u = 0.0F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
    }
 
    @Override
-   public gft b() {
-      return gft.b;
+   public ggj b() {
+      return ggj.b;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
-      }
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static class a implements gfs<lv> {
-      private final ggk a;
+   public static class a implements ggi<lw> {
+      private final gha a;
 
-      public a(ggk $$0) {
+      public a(gha $$0) {
          this.a = $$0;
       }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ggu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggu $$8 = new ggu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
    }
 }

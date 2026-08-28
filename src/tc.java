@@ -1,20 +1,33 @@
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.function.Consumer;
 
-class tc {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
+public record tc(String b, Collection<ti> c, Consumer<arq> d, Consumer<arq> e) {
+   public static final String a = "defaultBatch";
 
-   private tc(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public tc(String b, Collection<ti> c, Consumer<arq> d, Consumer<arq> e) {
+      if (c.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+      }
    }
 
-   static tc a(Runnable $$0) {
-      return new tc(null, $$0);
+   public String a() {
+      return this.b;
    }
 
-   static tc a(long $$0, Runnable $$1) {
-      return new tc($$0, $$1);
+   public Collection<ti> b() {
+      return this.c;
+   }
+
+   public Consumer<arq> c() {
+      return this.d;
+   }
+
+   public Consumer<arq> d() {
+      return this.e;
    }
 }

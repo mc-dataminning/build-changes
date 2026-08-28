@@ -1,11 +1,7 @@
-public class gvc extends guo {
-   public cje a;
-   public ciz h;
-   public cwb i;
+import javax.annotation.Nullable;
 
-   public gvc() {
-      this.a = cje.a;
-      this.h = ciz.a;
-      this.i = cwb.k;
-   }
+public class gvc extends gvt {
+   public boolean a;
+   @Nullable
+   public dvo b;
 }

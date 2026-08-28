@@ -1,62 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eui {
-   private final azq a;
-   private final eww b;
-   private final Optional<jr.a> c;
-   private final Set<alh<?>> d;
+public record eui<T>(alk<kd<T>> d, Codec<T> e, eui.a<T> f) {
+   public static final eui<exr> a = new eui<>(ma.bf, exr.e, e());
+   public static final eui<evu> b = new eui<>(ma.be, evw.c, e());
+   public static final eui<eul> c = new eui<>(ma.bd, eul.d, f());
 
-   public eui(azq $$0, eww $$1, jr.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
+   public void a(eum $$0, alk<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   public eui(azq $$0, eww $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
+   public static Stream<eui<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   private eui(azq $$0, eww $$1, Optional<jr.a> $$2, Set<alh<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private static <T extends euh> eui.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public eui a(String $$0) {
-      return new eui(this.a.a($$0), this.b, this.c, this.d);
+   private static eui.a<eul> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public eui a(String $$0, alh<?> $$1) {
-      Set<alh<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new eui(this.a.a($$0), this.b, this.c, $$2);
+   public alk<kd<T>> b() {
+      return this.d;
    }
 
-   public boolean a(alh<?> $$0) {
-      return this.d.contains($$0);
+   public Codec<T> c() {
+      return this.e;
    }
 
-   public void b(String $$0) {
-      this.a.b($$0);
+   public eui.a<T> d() {
+      return this.f;
    }
 
-   public void a(eud $$0) {
-      this.b.a(this, $$0);
-   }
-
-   public jr.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
-
-   public boolean b() {
-      return this.c.isPresent();
-   }
-
-   public eui a(eww $$0) {
-      return new eui(this.a, $$0, this.c, this.d);
-   }
-
-   public azq c() {
-      return this.a;
+   @FunctionalInterface
+   public interface a<T> {
+      void run(eum var1, alk<T> var2, T var3);
    }
 }

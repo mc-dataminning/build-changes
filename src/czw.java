@@ -1,76 +1,77 @@
 import javax.annotation.Nullable;
 
-public abstract class czw implements dap<dbf> {
-   protected final dav<?> a;
-   protected final dac b;
-   protected final String c;
-   protected final dal d;
-   protected final cwb e;
-   protected final float f;
-   protected final int g;
-   @Nullable
-   private dao j;
+public class czw extends czy {
+   private final jh b;
+   protected boolean a = true;
 
-   public czw(dav<?> $$0, String $$1, dac $$2, dal $$3, cwb $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public czw(cor $$0, bsg $$1, cwf $$2, ezn $$3) {
+      this($$0.dY(), $$0, $$1, $$2, $$3);
    }
 
-   public boolean a(dbf $$0, dfb $$1) {
-      return this.d.a($$0.c());
+   public czw(czy $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
    }
 
-   public cwb a(dbf $$0, js.a $$1) {
-      return this.e.v();
+   protected czw(dff $$0, @Nullable cor $$1, bsg $$2, cwf $$3, ezn $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.b().a($$4.c());
+      this.a = $$0.a_($$4.b()).a(this);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public dao a() {
-      if (this.j == null) {
-         this.j = dao.a(this.d);
-      }
-
-      return this.j;
-   }
-
-   public float b() {
-      return this.f;
+   public static czw a(czw $$0, jh $$1, jm $$2) {
+      return new czw(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new ezn(
+            new ezr((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
-   public cwb a(js.a $$0) {
-      return this.e;
+   public jh a() {
+      return this.a ? super.a() : this.b;
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public dav<?> e() {
+   public boolean c() {
       return this.a;
    }
 
-   public dac f() {
-      return this.b;
+   public jm d() {
+      return jm.a(this.o())[0];
    }
 
-   public interface a<T extends czw> {
-      T create(String var1, dac var2, dal var3, cwb var4, float var5, int var6);
+   public jm e() {
+      return jm.a(this.o(), jm.a.b);
+   }
+
+   public jm[] f() {
+      jm[] $$0 = jm.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         jm $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
+      }
    }
 }

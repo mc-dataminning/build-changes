@@ -1,304 +1,72 @@
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
+public class gez extends ghf {
+   private final float a;
+   private final float b;
 
-public class gez {
-   public static class a implements gfs<lv> {
-      private final ggk a;
+   gez(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cwf $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+   }
 
-      public a(ggk $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public ggj b() {
+      return ggj.a;
+   }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gez.b $$8 = new gez.b($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   protected gez(gcy $$0, double $$1, double $$2, double $$3, cwf $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(fjx.Q().as().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements ggi<lw> {
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gez($$1, $$2, $$3, $$4, new cwf(cwj.cM));
       }
    }
 
-   public static class b extends ggp {
-      b(gci $$0, double $$1, double $$2, double $$3) {
-         super($$0, $$1, $$2, $$3);
-         this.t = 4;
-      }
-
-      @Override
-      public gft b() {
-         return gft.c;
-      }
-
-      @Override
-      public void a(fef $$0, fir $$1, float $$2) {
-         this.e(0.6F - ((float)this.s + $$2 - 1.0F) * 0.25F * 0.5F);
-         super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public float b(float $$0) {
-         return 7.1F * azk.a(((float)this.s + $$0 - 1.0F) * 0.25F * (float) Math.PI);
+   public static class b implements ggi<lo> {
+      public ggf a(lo $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gez($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
       }
    }
 
-   static class c extends ggb {
-      private boolean b;
-      private boolean F;
-      private final gfr G;
-      private float H;
-      private float I;
-      private float J;
-      private boolean K;
-
-      c(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfr $$7, ggk $$8) {
-         super($$0, $$1, $$2, $$3, $$8, 0.1F);
-         this.j = $$4;
-         this.k = $$5;
-         this.l = $$6;
-         this.G = $$7;
-         this.D *= 0.75F;
-         this.t = 48 + this.r.a(12);
-         this.b($$8);
-      }
-
-      public void a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      public void b(boolean $$0) {
-         this.F = $$0;
-      }
-
-      @Override
-      public void a(fef $$0, fir $$1, float $$2) {
-         if (!this.F || this.s < this.t / 3 || (this.s + this.t) / 3 % 2 == 0) {
-            super.a($$0, $$1, $$2);
-         }
-      }
-
-      @Override
-      public void a() {
-         super.a();
-         if (this.b && this.s < this.t / 2 && (this.s + this.t) % 2 == 0) {
-            gez.c $$0 = new gez.c(this.c, this.g, this.h, this.i, 0.0, 0.0, 0.0, this.G, this.a);
-            $$0.e(0.99F);
-            $$0.a(this.v, this.w, this.x);
-            $$0.s = $$0.t / 2;
-            if (this.K) {
-               $$0.K = true;
-               $$0.H = this.H;
-               $$0.I = this.I;
-               $$0.J = this.J;
-            }
-
-            $$0.F = this.F;
-            this.G.a($$0);
-         }
+   public static class c implements ggi<lw> {
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gez($$1, $$2, $$3, $$4, new cwf(cwj.qR));
       }
    }
 
-   public static class d implements gfs<lv> {
-      private final ggk a;
-
-      public d(ggk $$0) {
-         this.a = $$0;
-      }
-
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gez.c $$8 = new gez.c($$1, $$2, $$3, $$4, $$5, $$6, $$7, fji.Q().g, this.a);
-         $$8.e(0.99F);
-         return $$8;
-      }
-   }
-
-   public static class e extends gfn {
-      private static final double[][] a = new double[][]{
-         {0.0, 0.2}, {0.2, 0.2}, {0.2, 0.6}, {0.6, 0.6}, {0.6, 0.2}, {0.2, 0.2}, {0.2, 0.0}, {0.4, 0.0}, {0.4, -0.6}, {0.2, -0.6}, {0.2, -0.4}, {0.0, -0.4}
-      };
-      private static final double[][] b = new double[][]{
-         {0.0, 1.0},
-         {0.3455, 0.309},
-         {0.9511, 0.309},
-         {0.3795918367346939, -0.12653061224489795},
-         {0.6122448979591837, -0.8040816326530612},
-         {0.0, -0.35918367346938773}
-      };
-      private int D;
-      private final gfr E;
-      private final List<cyq> F;
-      private boolean G;
-
-      public e(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfr $$7, List<cyq> $$8) {
-         super($$0, $$1, $$2, $$3);
-         this.j = $$4;
-         this.k = $$5;
-         this.l = $$6;
-         this.E = $$7;
-         if ($$8.isEmpty()) {
-            throw new IllegalArgumentException("Cannot create firework starter with no explosions");
-         } else {
-            this.F = $$8;
-            this.t = $$8.size() * 2 - 1;
-
-            for (cyq $$9 : $$8) {
-               if ($$9.e()) {
-                  this.G = true;
-                  this.t += 15;
-                  break;
-               }
-            }
-         }
-      }
-
-      @Override
-      public void a() {
-         if (this.D == 0) {
-            boolean $$0 = this.c();
-            boolean $$1 = false;
-            if (this.F.size() >= 3) {
-               $$1 = true;
-            } else {
-               for (cyq $$2 : this.F) {
-                  if ($$2.a() == cyq.a.b) {
-                     $$1 = true;
-                     break;
-                  }
-               }
-            }
-
-            awk $$3;
-            if ($$1) {
-               $$3 = $$0 ? awl.iP : awl.iO;
-            } else {
-               $$3 = $$0 ? awl.iN : awl.iM;
-            }
-
-            this.c.a(this.g, this.h, this.i, $$3, awm.i, 20.0F, 0.95F + this.r.i() * 0.1F, true);
-         }
-
-         if (this.D % 2 == 0 && this.D / 2 < this.F.size()) {
-            int $$5 = this.D / 2;
-            cyq $$6 = this.F.get($$5);
-            boolean $$7 = $$6.d();
-            boolean $$8 = $$6.e();
-            IntList $$9 = $$6.b();
-            IntList $$10 = $$6.c();
-            if ($$9.isEmpty()) {
-               $$9 = IntList.of(cuy.p.f());
-            }
-
-            switch ($$6.a()) {
-               case a:
-                  this.a(0.25, 2, $$9, $$10, $$7, $$8);
-                  break;
-               case b:
-                  this.a(0.5, 4, $$9, $$10, $$7, $$8);
-                  break;
-               case c:
-                  this.a(0.5, b, $$9, $$10, $$7, $$8, false);
-                  break;
-               case d:
-                  this.a(0.5, a, $$9, $$10, $$7, $$8, true);
-                  break;
-               case e:
-                  this.a($$9, $$10, $$7, $$8);
-            }
-
-            int $$11 = $$9.getInt(0);
-            gfp $$12 = this.E.a(lr.N, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            $$12.a((float)axv.b($$11) / 255.0F, (float)axv.c($$11) / 255.0F, (float)axv.d($$11) / 255.0F);
-         }
-
-         this.D++;
-         if (this.D > this.t) {
-            if (this.G) {
-               boolean $$13 = this.c();
-               awk $$14 = $$13 ? awl.iT : awl.iS;
-               this.c.a(this.g, this.h, this.i, $$14, awm.i, 20.0F, 0.9F + this.r.i() * 0.15F, true);
-            }
-
-            this.k();
-         }
-      }
-
-      private boolean c() {
-         fji $$0 = fji.Q();
-         return $$0.j.k().b().c(this.g, this.h, this.i) >= 256.0;
-      }
-
-      private void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, IntList $$6, IntList $$7, boolean $$8, boolean $$9) {
-         gez.c $$10 = (gez.c)this.E.a(lr.D, $$0, $$1, $$2, $$3, $$4, $$5);
-         $$10.a($$8);
-         $$10.b($$9);
-         $$10.e(0.99F);
-         $$10.b(ae.<Integer>a($$6, this.r));
-         if (!$$7.isEmpty()) {
-            $$10.c(ae.<Integer>a($$7, this.r));
-         }
-      }
-
-      private void a(double $$0, int $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5) {
-         double $$6 = this.g;
-         double $$7 = this.h;
-         double $$8 = this.i;
-
-         for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
-            for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
-               for (int $$11 = -$$1; $$11 <= $$1; $$11++) {
-                  double $$12 = (double)$$10 + (this.r.j() - this.r.j()) * 0.5;
-                  double $$13 = (double)$$9 + (this.r.j() - this.r.j()) * 0.5;
-                  double $$14 = (double)$$11 + (this.r.j() - this.r.j()) * 0.5;
-                  double $$15 = Math.sqrt($$12 * $$12 + $$13 * $$13 + $$14 * $$14) / $$0 + this.r.k() * 0.05;
-                  this.a($$6, $$7, $$8, $$12 / $$15, $$13 / $$15, $$14 / $$15, $$2, $$3, $$4, $$5);
-                  if ($$9 != -$$1 && $$9 != $$1 && $$10 != -$$1 && $$10 != $$1) {
-                     $$11 += $$1 * 2 - 1;
-                  }
-               }
-            }
-         }
-      }
-
-      private void a(double $$0, double[][] $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5, boolean $$6) {
-         double $$7 = $$1[0][0];
-         double $$8 = $$1[0][1];
-         this.a(this.g, this.h, this.i, $$7 * $$0, $$8 * $$0, 0.0, $$2, $$3, $$4, $$5);
-         float $$9 = this.r.i() * (float) Math.PI;
-         double $$10 = $$6 ? 0.034 : 0.34;
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            double $$12 = (double)$$9 + (double)((float)$$11 * (float) Math.PI) * $$10;
-            double $$13 = $$7;
-            double $$14 = $$8;
-
-            for (int $$15 = 1; $$15 < $$1.length; $$15++) {
-               double $$16 = $$1[$$15][0];
-               double $$17 = $$1[$$15][1];
-
-               for (double $$18 = 0.25; $$18 <= 1.0; $$18 += 0.25) {
-                  double $$19 = azk.d($$18, $$13, $$16) * $$0;
-                  double $$20 = azk.d($$18, $$14, $$17) * $$0;
-                  double $$21 = $$19 * Math.sin($$12);
-                  $$19 *= Math.cos($$12);
-
-                  for (double $$22 = -1.0; $$22 <= 1.0; $$22 += 2.0) {
-                     this.a(this.g, this.h, this.i, $$19 * $$22, $$20, $$21 * $$22, $$2, $$3, $$4, $$5);
-                  }
-               }
-
-               $$13 = $$16;
-               $$14 = $$17;
-            }
-         }
-      }
-
-      private void a(IntList $$0, IntList $$1, boolean $$2, boolean $$3) {
-         double $$4 = this.r.k() * 0.05;
-         double $$5 = this.r.k() * 0.05;
-
-         for (int $$6 = 0; $$6 < 70; $$6++) {
-            double $$7 = this.j * 0.5 + this.r.k() * 0.15 + $$4;
-            double $$8 = this.l * 0.5 + this.r.k() * 0.15 + $$5;
-            double $$9 = this.k * 0.5 + this.r.j() * 0.5;
-            this.a(this.g, this.h, this.i, $$7, $$9, $$8, $$0, $$1, $$2, $$3);
-         }
+   public static class d implements ggi<lw> {
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gez($$1, $$2, $$3, $$4, new cwf(cwj.qD));
       }
    }
 }

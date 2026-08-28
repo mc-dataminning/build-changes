@@ -1,58 +1,101 @@
 import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hdg implements hdh<hbx> {
-   private final List<hdh<hbx>> a = Lists.newArrayList();
-   @Nullable
-   private final xi b;
+public class hdg {
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public hdg(ali $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : xi.c($$1);
-   }
+   public static class a extends Thread {
+      private final hdg.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (hdh<hbx> $$1 : this.a) {
-         $$0 += $$1.e();
+      public a(hdg.b $$0) throws IOException {
+         super("LanServerDetector #" + hdg.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(hdg.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
       }
 
-      return $$0;
-   }
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
 
-   public hbx a(azs $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
 
-         for (hdh<hbx> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               hdg.b.error("Couldn't ping server", var6);
+               break;
             }
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            hdg.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
          }
 
-         return hdf.b;
-      } else {
-         return hdf.b;
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
       }
    }
 
-   public void a(hdh<hbx> $$0) {
-      this.a.add($$0);
-   }
+   public static class b {
+      private final List<hdf> a = Lists.newArrayList();
+      private boolean b;
 
-   @Nullable
-   public xi a() {
-      return this.b;
-   }
+      @Nullable
+      public synchronized List<hdf> a() {
+         if (this.b) {
+            List<hdf> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
+      }
 
-   @Override
-   public void a(hdc $$0) {
-      for (hdh<hbx> $$1 : this.a) {
-         $$1.a($$0);
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = hdh.a($$0);
+         String $$3 = hdh.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (hdf $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new hdf($$2, $$3));
+               this.b = true;
+            }
+         }
       }
    }
 }

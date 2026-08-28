@@ -1,34 +1,54 @@
-public record dar<T extends dap<?>>(ali b, T c) {
-   public static final zg<wt, dar<?>> a = zg.a(ali.b, dar::a, dap.i, dar::b, dar::new);
+import java.util.Map;
+
+public class dar extends dbb {
+   public dar(dah $$0) {
+      super("", $$0, dbc.a(Map.of('#', dap.a(cwj.qP), 'x', dap.a(cwj.sl)), "###", "#x#", "###"), new cwf(cwj.uB));
+   }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dar<?> $$1 && this.b.equals($$1.b)) {
-            return true;
-         }
-
+   public boolean a(dai $$0, dff $$1) {
+      if (!super.a($$0, $$1)) {
          return false;
+      } else {
+         cwf $$2 = a($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            eti $$3 = cws.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public cwf a(dai $$0, js.a $$1) {
+      cwf $$2 = a($$0).c(1);
+      $$2.b(ku.N, czc.b);
+      return $$2;
+   }
+
+   private static cwf a(dai $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cwf $$2 = $$0.a($$1);
+         if ($$2.b(ku.L)) {
+            return $$2;
+         }
+      }
+
+      return cwf.k;
    }
 
    @Override
-   public String toString() {
-      return this.b.toString();
+   public boolean ap_() {
+      return true;
    }
 
-   public ali a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   @Override
+   public day<?> aq_() {
+      return day.f;
    }
 }

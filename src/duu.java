@@ -1,124 +1,263 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class duu {
-   static final String a = "server_data";
-   static Codec<duu> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kk.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cwb.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, duu::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cwb> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public enum duu implements baj {
+   a("inactive", 0, duu.b.a, -1.0, false),
+   b("waiting_for_players", 4, duu.b.b, 200.0, true),
+   c("active", 8, duu.b.c, 1000.0, true),
+   d("waiting_for_reward_ejection", 8, duu.b.b, -1.0, false),
+   e("ejecting_reward", 8, duu.b.b, -1.0, false),
+   f("cooldown", 0, duu.b.d, -1.0, false);
 
-   duu(Set<UUID> $$0, long $$1, List<cwb> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   private static final float g = 40.0F;
+   private static final int h = azn.d(30.0F);
+   private final String i;
+   private final int j;
+   private final double k;
+   private final duu.b l;
+   private final boolean m;
+
+   private duu(final String $$0, final int $$1, final duu.b $$2, final double $$3, final boolean $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l = $$2;
+      this.k = $$3;
+      this.m = $$4;
    }
 
-   duu() {
+   duu a(jh $$0, duq $$1, arq $$2) {
+      dut $$3 = $$1.f();
+      dur $$4 = $$1.b();
+
+      return switch (this) {
+         case a -> $$3.a($$1, $$2, b) == null ? this : b;
+         case b -> {
+            if (!$$1.a($$2)) {
+               $$3.b();
+               yield this;
+            } else if (!$$3.a($$1, $$2.A)) {
+               yield a;
+            } else {
+               $$3.a($$2, $$0, $$1);
+               yield $$3.c.isEmpty() ? this : c;
+            }
+         }
+         case c -> {
+            if (!$$1.a($$2)) {
+               $$3.b();
+               yield b;
+            } else if (!$$3.a($$1, $$2.A)) {
+               yield a;
+            } else {
+               int $$5 = $$3.a($$0);
+               $$3.a($$2, $$0, $$1);
+               if ($$1.e()) {
+                  this.a($$2, $$0, $$1);
+               }
+
+               if ($$3.a($$4, $$5)) {
+                  if ($$3.c()) {
+                     $$3.e = $$2.aa() + (long)$$1.g();
+                     $$3.g = 0;
+                     $$3.f = 0L;
+                     yield d;
+                  }
+               } else if ($$3.a($$2, $$4, $$5)) {
+                  $$1.c($$2, $$0).ifPresent($$4x -> {
+                     $$3.d.add($$4x);
+                     $$3.g++;
+                     $$3.f = $$2.aa() + (long)$$4.h();
+                     $$4.i().b($$2.E_()).ifPresent($$2xx -> {
+                        $$3.h = Optional.of((dfz)$$2xx.b());
+                        $$1.j();
+                     });
+                  });
+               }
+
+               yield this;
+            }
+         }
+         case d -> {
+            if ($$3.a($$2, 40.0F, $$1.g())) {
+               $$2.a(null, $$0, awo.mj, awp.e);
+               yield e;
+            } else {
+               yield this;
+            }
+         }
+         case e -> {
+            if (!$$3.b($$2, (float)h, $$1.g())) {
+               yield this;
+            } else if ($$3.c.isEmpty()) {
+               $$2.a(null, $$0, awo.mk, awp.e);
+               $$3.i = Optional.empty();
+               yield f;
+            } else {
+               if ($$3.i.isEmpty()) {
+                  $$3.i = $$4.j().a($$2.E_());
+               }
+
+               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
+               $$3.c.remove($$3.c.iterator().next());
+               yield this;
+            }
+         }
+         case f -> {
+            $$3.a($$2, $$0, $$1);
+            if (!$$3.c.isEmpty()) {
+               $$3.g = 0;
+               $$3.f = 0L;
+               yield c;
+            } else if ($$3.a($$2)) {
+               $$1.b($$2, $$0);
+               $$3.a();
+               yield b;
+            } else {
+               yield this;
+            }
+         }
+      };
    }
 
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(com $$0) {
-      return this.e.contains($$0.cH());
-   }
-
-   @VisibleForTesting
-   public void b(com $$0) {
-      this.e.add($$0.cH());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+   private void a(arq $$0, jh $$1, duq $$2) {
+      dut $$3 = $$2.f();
+      dur $$4 = $$2.b();
+      cwf $$5 = $$3.a($$0, $$4, $$1).a($$0.A).orElse(cwf.k);
+      if (!$$5.f()) {
+         if (this.a($$0, $$3)) {
+            a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
+               bvk $$5x = bvk.a($$0, $$5);
+               $$5x.e($$4x);
+               $$0.b($$5x);
+               float $$6 = ($$0.E_().i() - $$0.E_().i()) * 0.2F + 1.0F;
+               $$0.a(null, jh.a((ka)$$4x), awo.me, awp.e, 1.0F, $$6);
+               $$3.e = $$0.aa() + $$2.d().a();
+            });
          }
       }
-
-      this.i();
    }
 
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<cwb> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<cwb> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   cwb f() {
-      return this.g.isEmpty() ? cwb.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cwb.k);
-   }
-
-   cwb g() {
-      if (this.g.isEmpty()) {
-         return cwb.k;
+   private static Optional<ezr> a(arq $$0, jh $$1, duq $$2, dut $$3) {
+      List<cor> $$4 = $$3.c
+         .stream()
+         .map($$0::b)
+         .filter(Objects::nonNull)
+         .filter($$2x -> !$$2x.f() && !$$2x.R_() && $$2x.bN() && $$2x.f($$1.b()) <= (double)azn.h($$2.h()))
+         .toList();
+      if ($$4.isEmpty()) {
+         return Optional.empty();
       } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cwb.k);
+         bui $$5 = a($$4, $$3.d, $$2, $$1, $$0);
+         return $$5 == null ? Optional.empty() : a($$5, $$0);
       }
    }
 
-   void a(duu $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
+   private static Optional<ezr> a(bui $$0, arq $$1) {
+      ezr $$2 = $$0.dw();
+      ezr $$3 = $$2.a(jm.b, (double)($$0.du() + 2.0F + (float)$$1.A.a(4)));
+      ezn $$4 = $$1.a(new den($$2, $$3, den.a.c, den.b.a, ezw.a()));
+      ezr $$5 = $$4.b().b().a(jm.a, 1.0);
+      jh $$6 = jh.a((ka)$$5);
+      return !$$1.a_($$6).g($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
    }
 
-   private void i() {
-      this.c = true;
+   @Nullable
+   private static bui a(List<cor> $$0, Set<UUID> $$1, duq $$2, jh $$3, arq $$4) {
+      Stream<bui> $$5 = $$1.stream().map($$4::a).filter(Objects::nonNull).filter($$2x -> $$2x.bN() && $$2x.f($$3.b()) <= (double)azn.h($$2.h()));
+      List<? extends bui> $$6 = $$4.A.h() ? $$5.toList() : $$0;
+      if ($$6.isEmpty()) {
+         return null;
+      } else {
+         return $$6.size() == 1 ? $$6.getFirst() : ae.a($$6, $$4.A);
+      }
    }
 
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - azk.f((float)this.d().size(), 1.0F, (float)this.i);
+   private boolean a(arq $$0, dut $$1) {
+      return $$0.aa() >= $$1.e;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public double b() {
+      return this.k;
+   }
+
+   public boolean d() {
+      return this.k >= 0.0;
+   }
+
+   public boolean e() {
+      return this.m;
+   }
+
+   public void a(dff $$0, jh $$1, boolean $$2) {
+      this.l.emit($$0, $$0.E_(), $$1, $$2);
+   }
+
+   @Override
+   public String c() {
+      return this.i;
+   }
+
+   static class a {
+      private static final int a = 0;
+      private static final int b = 4;
+      private static final int c = 8;
+
+      private a() {
+      }
+   }
+
+   interface b {
+      duu.b a = ($$0, $$1, $$2, $$3) -> {
+      };
+      duu.b b = ($$0, $$1, $$2, $$3) -> {
+         if ($$1.a(2) == 0) {
+            ezr $$4 = $$2.b().a($$1, 0.9F);
+            a($$3 ? ls.L : ls.aJ, $$4, $$0);
+         }
+      };
+      duu.b c = ($$0, $$1, $$2, $$3) -> {
+         ezr $$4 = $$2.b().a($$1, 1.0F);
+         a(ls.ae, $$4, $$0);
+         a($$3 ? ls.L : ls.F, $$4, $$0);
+      };
+      duu.b d = ($$0, $$1, $$2, $$3) -> {
+         ezr $$4 = $$2.b().a($$1, 0.9F);
+         if ($$1.a(3) == 0) {
+            a(ls.ae, $$4, $$0);
+         }
+
+         if ($$0.aa() % 20L == 0L) {
+            ezr $$5 = $$2.b().b(0.0, 0.5, 0.0);
+            int $$6 = $$0.E_().a(4) + 20;
+
+            for (int $$7 = 0; $$7 < $$6; $$7++) {
+               a(ls.ae, $$5, $$0);
+            }
+         }
+      };
+
+      private static void a(lw $$0, ezr $$1, dff $$2) {
+         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
+      }
+
+      void emit(dff var1, azv var2, jh var3, boolean var4);
+   }
+
+   static class c {
+      private static final double a = -1.0;
+      private static final double b = 200.0;
+      private static final double c = 1000.0;
+
+      private c() {
+      }
    }
 }

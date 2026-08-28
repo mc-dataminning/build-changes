@@ -1,505 +1,178 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.bytes.ByteList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.IntBuffer;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class foo implements fca {
-   static final Logger b = LogUtils.getLogger();
-   private static final int c = 16;
-   private static final int d = 2;
-   private static final int e = 32;
-   private static final int f = 64;
-   private static final int g = 96;
-   private static final int h = 128;
-   private final fnw<foo.d> i;
+public class foo implements AutoCloseable {
+   private static final azv a = azv.a();
+   private static final float b = 32.0F;
+   private final gyu c;
+   private final all d;
+   private fot e;
+   private fot f;
+   private List<fcj.a> g = List.of();
+   private List<fcj> h = List.of();
+   private final fol<fot> i = new fol<>(fot[]::new, fot[][]::new);
+   private final fol<foo.a> j = new fol<>(foo.a[]::new, foo.a[][]::new);
+   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
+   private final List<fop> l = Lists.newArrayList();
 
-   foo(fnw<foo.d> $$0) {
-      this.i = $$0;
+   public foo(gyu $$0, all $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Nullable
-   @Override
-   public fbz a(int $$0) {
-      return this.i.a($$0);
+   public void a(List<fcj.a> $$0, Set<fon> $$1) {
+      this.g = $$0;
+      this.a($$1);
    }
 
-   @Override
-   public IntSet a() {
-      return this.i.b();
+   public void a(Set<fon> $$0) {
+      this.h = List.of();
+      this.c();
+      this.h = this.b(this.g, $$0);
    }
 
-   @VisibleForTesting
-   static void a(IntBuffer $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 32 - $$2 - 1;
-      int $$5 = 32 - $$3 - 1;
+   private void c() {
+      this.d();
+      this.i.a();
+      this.j.a();
+      this.k.clear();
+      this.e = fov.b.bake(this::a);
+      this.f = fov.a.bake(this::a);
+   }
 
-      for (int $$6 = $$4; $$6 >= $$5; $$6--) {
-         if ($$6 < 32 && $$6 >= 0) {
-            boolean $$7 = ($$1 >> $$6 & 1) != 0;
-            $$0.put($$7 ? -1 : 0);
-         } else {
-            $$0.put(0);
+   private List<fcj> b(List<fcj.a> $$0, Set<fon> $$1) {
+      IntSet $$2 = new IntOpenHashSet();
+      List<fcj> $$3 = new ArrayList<>();
+
+      for (fcj.a $$4 : $$0) {
+         if ($$4.b().a($$1)) {
+            $$3.add($$4.a());
+            $$2.addAll($$4.a().a());
          }
       }
-   }
 
-   static void a(IntBuffer $$0, foo.f $$1, int $$2, int $$3) {
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         int $$5 = $$1.a($$4);
-         a($$0, $$5, $$2, $$3);
-      }
-   }
-
-   @VisibleForTesting
-   static void a(InputStream $$0, foo.h $$1) throws IOException {
-      int $$2 = 0;
-      ByteList $$3 = new ByteArrayList(128);
-
-      while (true) {
-         boolean $$4 = a($$0, $$3, 58);
-         int $$5 = $$3.size();
-         if ($$5 == 0 && !$$4) {
-            return;
-         }
-
-         if (!$$4 || $$5 != 4 && $$5 != 5 && $$5 != 6) {
-            throw new IllegalArgumentException("Invalid entry at line " + $$2 + ": expected 4, 5 or 6 hex digits followed by a colon");
-         }
-
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            $$6 = $$6 << 4 | a($$2, $$3.getByte($$7));
-         }
-
-         $$3.clear();
-         a($$0, $$3, 10);
-         int $$8 = $$3.size();
-
-         foo.f $$9 = switch ($$8) {
-            case 32 -> foo.a.a($$2, $$3);
-            case 64 -> foo.i.a($$2, $$3);
-            case 96 -> foo.e.b($$2, $$3);
-            case 128 -> foo.e.a($$2, $$3);
-            default -> throw new IllegalArgumentException(
-            "Invalid entry at line " + $$2 + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
-         );
-         };
-         $$1.accept($$6, $$9);
-         $$2++;
-         $$3.clear();
-      }
-   }
-
-   static int a(int $$0, ByteList $$1, int $$2) {
-      return a($$0, $$1.getByte($$2));
-   }
-
-   private static int a(int $$0, byte $$1) {
-      return switch ($$1) {
-         case 48 -> 0;
-         case 49 -> 1;
-         case 50 -> 2;
-         case 51 -> 3;
-         case 52 -> 4;
-         case 53 -> 5;
-         case 54 -> 6;
-         case 55 -> 7;
-         case 56 -> 8;
-         case 57 -> 9;
-         default -> throw new IllegalArgumentException("Invalid entry at line " + $$0 + ": expected hex digit, got " + (char)$$1);
-         case 65 -> 10;
-         case 66 -> 11;
-         case 67 -> 12;
-         case 68 -> 13;
-         case 69 -> 14;
-         case 70 -> 15;
-      };
-   }
-
-   private static boolean a(InputStream $$0, ByteList $$1, int $$2) throws IOException {
-      while (true) {
-         int $$3 = $$0.read();
-         if ($$3 == -1) {
-            return false;
-         }
-
-         if ($$3 == $$2) {
-            return true;
-         }
-
-         $$1.add((byte)$$3);
-      }
-   }
-
-   static record a(byte[] a) implements foo.f {
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0] << 24;
-      }
-
-      static foo.f a(int $$0, ByteList $$1) {
-         byte[] $$2 = new byte[16];
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            int $$5 = foo.a($$0, $$1, $$3++);
-            int $$6 = foo.a($$0, $$1, $$3++);
-            byte $$7 = (byte)($$5 << 4 | $$6);
-            $$2[$$4] = $$7;
-         }
-
-         return new foo.a($$2);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      public byte[] b() {
-         return this.a;
-      }
-   }
-
-   public static class b implements fok {
-      public static final MapCodec<foo.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ali.a.fieldOf("hex_file").forGetter($$0x -> $$0x.c), foo.g.a.listOf().fieldOf("size_overrides").forGetter($$0x -> $$0x.d))
-               .apply($$0, foo.b::new)
-      );
-      private final ali c;
-      private final List<foo.g> d;
-
-      private b(ali $$0, List<foo.g> $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public fol a() {
-         return fol.d;
-      }
-
-      @Override
-      public Either<fok.b, fok.c> b() {
-         return Either.left(this::a);
-      }
-
-      private fca a(avb $$0) throws IOException {
-         foo var3;
-         try (InputStream $$1 = $$0.open(this.c)) {
-            var3 = this.a($$1);
-         }
-
-         return var3;
-      }
-
-      private foo a(InputStream $$0) throws IOException {
-         fnw<foo.f> $$1 = new fnw<>(foo.f[]::new, foo.f[][]::new);
-         foo.h $$2 = $$1::a;
-
-         foo var17;
-         try (ZipInputStream $$3 = new ZipInputStream($$0)) {
-            ZipEntry $$4;
-            while (($$4 = $$3.getNextEntry()) != null) {
-               String $$5 = $$4.getName();
-               if ($$5.endsWith(".hex")) {
-                  foo.b.info("Found {}, loading", $$5);
-                  foo.a(new ayu($$3), $$2);
+      Set<fcj> $$5 = Sets.newHashSet();
+      $$2.forEach($$2x -> {
+         for (fcj $$3x : $$3) {
+            fci $$4x = $$3x.a($$2x);
+            if ($$4x != null) {
+               $$5.add($$3x);
+               if ($$4x != fov.b) {
+                  ((IntList)this.k.computeIfAbsent(azn.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
                }
+               break;
             }
-
-            fnw<foo.d> $$6 = new fnw<>(foo.d[]::new, foo.d[][]::new);
-
-            for (foo.g $$7 : this.d) {
-               int $$8 = $$7.b;
-               int $$9 = $$7.c;
-               foo.c $$10 = $$7.d;
-
-               for (int $$11 = $$8; $$11 <= $$9; $$11++) {
-                  foo.f $$12 = $$1.b($$11);
-                  if ($$12 != null) {
-                     $$6.a($$11, new foo.d($$12, $$10.c, $$10.d));
-                  }
-               }
-            }
-
-            $$1.a(($$1x, $$2x) -> {
-               int $$3x = $$2x.d();
-               int $$4x = foo.c.a($$3x);
-               int $$5 = foo.c.b($$3x);
-               $$6.a($$1x, new foo.d($$2x, $$4x, $$5));
-            });
-            var17 = new foo($$6);
          }
+      });
+      return $$3.stream().filter($$5::contains).toList();
+   }
 
-         return var17;
+   @Override
+   public void close() {
+      this.d();
+   }
+
+   private void d() {
+      for (fop $$0 : this.l) {
+         $$0.close();
+      }
+
+      this.l.clear();
+   }
+
+   private static boolean b(fci $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
+      } else {
+         return true;
       }
    }
 
-   public static record c(int c, int d) {
-      public static final MapCodec<foo.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("left").forGetter(foo.c::b), Codec.INT.fieldOf("right").forGetter(foo.c::c)).apply($$0, foo.c::new)
-      );
-      public static final Codec<foo.c> b = a.codec();
+   private foo.a b(int $$0) {
+      fci $$1 = null;
 
-      public int a() {
-         return a(this.c, this.d);
-      }
-
-      public static int a(int $$0, int $$1) {
-         return ($$0 & 0xFF) << 8 | $$1 & 0xFF;
-      }
-
-      public static int a(int $$0) {
-         return (byte)($$0 >> 8);
-      }
-
-      public static int b(int $$0) {
-         return (byte)$$0;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-   }
-
-   static record d(foo.f a, int b, int c) implements fbz {
-
-      public int c() {
-         return this.c - this.b + 1;
-      }
-
-      @Override
-      public float getAdvance() {
-         return (float)(this.c() / 2 + 1);
-      }
-
-      @Override
-      public float b() {
-         return 0.5F;
-      }
-
-      @Override
-      public float a() {
-         return 0.5F;
-      }
-
-      @Override
-      public fod bake(Function<fcb, fod> $$0) {
-         return $$0.apply(new fcb() {
-            @Override
-            public float d() {
-               return 2.0F;
+      for (fcj $$2 : this.h) {
+         fci $$3 = $$2.a($$0);
+         if ($$3 != null) {
+            if ($$1 == null) {
+               $$1 = $$3;
             }
 
-            @Override
-            public int a() {
-               return d.this.c();
+            if (!b($$3)) {
+               return new foo.a($$1, $$3);
             }
-
-            @Override
-            public int b() {
-               return 16;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               IntBuffer $$2 = MemoryUtil.memAllocInt(d.this.c() * 16);
-               foo.a($$2, d.this.a, d.this.b, d.this.c);
-               $$2.rewind();
-               GlStateManager.upload(0, $$0, $$1, d.this.c(), 16, fdb.a.a, $$2, MemoryUtil::memFree);
-            }
-
-            @Override
-            public boolean c() {
-               return true;
-            }
-         });
+         }
       }
 
-      public foo.f d() {
-         return this.a;
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.c;
-      }
+      return $$1 != null ? new foo.a($$1, fov.b) : foo.a.c;
    }
 
-   static record e(int[] a, int b) implements foo.f {
-      private static final int c = 24;
-
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0];
-      }
-
-      static foo.f b(int $$0, ByteList $$1) {
-         int[] $$2 = new int[16];
-         int $$3 = 0;
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            int $$6 = foo.a($$0, $$1, $$4++);
-            int $$7 = foo.a($$0, $$1, $$4++);
-            int $$8 = foo.a($$0, $$1, $$4++);
-            int $$9 = foo.a($$0, $$1, $$4++);
-            int $$10 = foo.a($$0, $$1, $$4++);
-            int $$11 = foo.a($$0, $$1, $$4++);
-            int $$12 = $$6 << 20 | $$7 << 16 | $$8 << 12 | $$9 << 8 | $$10 << 4 | $$11;
-            $$2[$$5] = $$12 << 8;
-            $$3 |= $$12;
-         }
-
-         return new foo.e($$2, 24);
-      }
-
-      public static foo.f a(int $$0, ByteList $$1) {
-         int[] $$2 = new int[16];
-         int $$3 = 0;
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            int $$6 = foo.a($$0, $$1, $$4++);
-            int $$7 = foo.a($$0, $$1, $$4++);
-            int $$8 = foo.a($$0, $$1, $$4++);
-            int $$9 = foo.a($$0, $$1, $$4++);
-            int $$10 = foo.a($$0, $$1, $$4++);
-            int $$11 = foo.a($$0, $$1, $$4++);
-            int $$12 = foo.a($$0, $$1, $$4++);
-            int $$13 = foo.a($$0, $$1, $$4++);
-            int $$14 = $$6 << 28 | $$7 << 24 | $$8 << 20 | $$9 << 16 | $$10 << 12 | $$11 << 8 | $$12 << 4 | $$13;
-            $$2[$$5] = $$14;
-            $$3 |= $$14;
-         }
-
-         return new foo.e($$2, 32);
-      }
-
-      public int[] b() {
-         return this.a;
-      }
-
-      @Override
-      public int a() {
-         return this.b;
-      }
+   public fci a(int $$0, boolean $$1) {
+      return this.j.a($$0, this::b).a($$1);
    }
 
-   public interface f {
-      int a(int var1);
-
-      int a();
-
-      default int c() {
-         int $$0 = 0;
-
-         for (int $$1 = 0; $$1 < 16; $$1++) {
-            $$0 |= this.a($$1);
+   private fot c(int $$0) {
+      for (fcj $$1 : this.h) {
+         fci $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
          }
-
-         return $$0;
       }
 
-      default int d() {
-         int $$0 = this.c();
-         int $$1 = this.a();
-         int $$2;
-         int $$3;
-         if ($$0 == 0) {
-            $$2 = 0;
-            $$3 = $$1;
-         } else {
-            $$2 = Integer.numberOfLeadingZeros($$0);
-            $$3 = 32 - Integer.numberOfTrailingZeros($$0) - 1;
-         }
-
-         return foo.c.a($$2, $$3);
-      }
+      return this.e;
    }
 
-   static record g(int b, int c, foo.c d) {
-      private static final Codec<foo.g> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayt.B.fieldOf("from").forGetter(foo.g::a), ayt.B.fieldOf("to").forGetter(foo.g::b), foo.c.a.forGetter(foo.g::c))
-               .apply($$0, foo.g::new)
-      );
-      public static final Codec<foo.g> a = e.validate(
-         $$0 -> $$0.b >= $$0.c ? DataResult.error(() -> "Invalid range: [" + $$0.b + ";" + $$0.c + "]") : DataResult.success($$0)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public foo.c c() {
-         return this.d;
-      }
+   public fot a(int $$0) {
+      return this.i.a($$0, this::c);
    }
 
-   @FunctionalInterface
-   public interface h {
-      void accept(int var1, foo.f var2);
-   }
-
-   static record i(short[] a) implements foo.f {
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0] << 16;
-      }
-
-      static foo.f a(int $$0, ByteList $$1) {
-         short[] $$2 = new short[16];
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            int $$5 = foo.a($$0, $$1, $$3++);
-            int $$6 = foo.a($$0, $$1, $$3++);
-            int $$7 = foo.a($$0, $$1, $$3++);
-            int $$8 = foo.a($$0, $$1, $$3++);
-            short $$9 = (short)($$5 << 12 | $$6 << 8 | $$7 << 4 | $$8);
-            $$2[$$4] = $$9;
+   private fot a(fck $$0) {
+      for (fop $$1 : this.l) {
+         fot $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
          }
-
-         return new foo.i($$2);
       }
 
-      @Override
-      public int a() {
-         return 16;
-      }
+      all $$3 = this.d.g("/" + this.l.size());
+      boolean $$4 = $$0.c();
+      foq $$5 = $$4 ? foq.b($$3) : foq.a($$3);
+      fop $$6 = new fop($$5, $$4);
+      this.l.add($$6);
+      this.c.a($$3, $$6);
+      fot $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
 
-      public short[] b() {
-         return this.a;
+   public fot a(fci $$0) {
+      IntList $$1 = (IntList)this.k.get(azn.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
+
+   public all a() {
+      return this.d;
+   }
+
+   public fot b() {
+      return this.f;
+   }
+
+   static record a(fci a, fci b) {
+      static final foo.a c = new foo.a(fov.b, fov.b);
+
+      fci a(boolean $$0) {
+         return $$0 ? this.b : this.a;
       }
    }
 }

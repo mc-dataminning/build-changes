@@ -1,48 +1,147 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P2;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eif extends eib {
-   public static final MapCodec<eif> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bri.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eif::new)
-   );
-   private final bri b;
+public abstract class eif {
+   public static final Codec<eif> d = lz.U.q().dispatch(eif::a, eig::a);
+   protected final brm e;
+   protected final brm f;
 
-   public eif(bri $$0, bri $$1, bri $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   protected static <P extends eif> P2<Mu<P>, brm, brm> b(Instance<P> $$0) {
+      return $$0.group(brm.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), brm.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   protected eic<?> a() {
-      return eic.c;
+   public eif(brm $$0, brm $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   protected void a(dfh $$0, eib.b $$1, azs $$2, ehl $$3, int $$4, eib.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
+   protected abstract eig<?> a();
 
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
+   public void a(dfl $$0, eif.b $$1, azv $$2, ehp $$3, int $$4, eif.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
+   }
+
+   protected abstract void a(dfl var1, eif.b var2, azv var3, ehp var4, int var5, eif.a var6, int var7, int var8, int var9);
+
+   public abstract int a(azv var1, int var2, ehp var3);
+
+   public int a(azv $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(azv $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(azv var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
+      }
+
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
+
+   protected void a(dfl $$0, eif.b $$1, azv $$2, ehp $$3, jh $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      jh.a $$9 = new jh.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
+            }
          }
       }
    }
 
-   @Override
-   public int a(azs $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   protected final void a(dfl $$0, eif.b $$1, azv $$2, ehp $$3, jh $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      jh $$11 = $$4.e();
+      jh.a $$12 = new jh.a();
+
+      for (jm $$13 : jm.c.a) {
+         jm $$14 = $$13.h();
+         int $$15 = $$14.f() == jm.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.c(jm.b));
+            $$12.c(jm.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.c(jm.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.c(jm.b);
+            }
+
+            $$16++;
+            $$12.c($$13);
+         }
+      }
    }
 
-   @Override
-   public int a(azs $$0, int $$1, ehl $$2) {
-      return this.b.a($$0);
+   private static boolean a(dfl $$0, eif.b $$1, azv $$2, ehp $$3, float $$4, jh $$5, jh.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
+      }
    }
 
-   @Override
-   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   protected static boolean a(dfl $$0, eif.b $$1, azv $$2, ehp $$3, jh $$4) {
+      boolean $$5 = $$0.a($$4, $$0x -> $$0x.a(dwe.v, Boolean.valueOf(false)));
+      if (!$$5 && egb.c($$0, $$4)) {
+         dvo $$6 = $$3.e.a($$2, $$4);
+         if ($$6.b(dwe.C)) {
+            $$6 = $$6.b(dwe.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(erp.c))));
+         }
+
+         $$1.a($$4, $$6);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static final class a {
+      private final jh a;
+      private final int b;
+      private final boolean c;
+
+      public a(jh $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public jh a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.c;
+      }
+   }
+
+   public interface b {
+      void a(jh var1, dvo var2);
+
+      boolean a(jh var1);
    }
 }

@@ -1,9 +1,9 @@
-public record ky(arn a, jh b, dvj c, dtf d) {
-   public ezn a() {
+public record ky(arq a, jh b, dvo c, dtk d) {
+   public ezr a() {
       return this.b.b();
    }
 
-   public arn b() {
+   public arq b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record ky(arn a, jh b, dvj c, dtf d) {
       return this.b;
    }
 
-   public dvj d() {
+   public dvo d() {
       return this.c;
    }
 
-   public dtf e() {
+   public dtk e() {
       return this.d;
    }
 }

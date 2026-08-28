@@ -1,96 +1,159 @@
-import com.google.common.base.Joiner;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dvp {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dvn>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+public class dvp<O, S extends dvq<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, dwq<?>> c;
+   private final ImmutableList<S> d;
 
-   private dvp() {
-      this.c.put(' ', $$0 -> true);
-   }
+   protected dvp(Function<O, S> $$0, O $$1, dvp.b<O, S> $$2, Map<String, dwq<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
 
-   public dvp a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
+      while ($$7.hasNext()) {
+         Entry<String, dwq<?>> $$6 = (Entry<String, dwq<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+      }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<dwq<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<dwq<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         dwq<?> $$11 = (dwq<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<dwq<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<dwq<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<dwq<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((dwq)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
          }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
 
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
+   }
+
+   private static <S extends dvq<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dwq<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dvq)((dvq)$$1x.getFirst()).b($$3, ((dwq.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
+   }
+
+   public ImmutableList<S> a() {
+      return this.d;
+   }
+
+   public S b() {
+      return (S)this.d.get(0);
+   }
+
+   public O c() {
+      return this.b;
+   }
+
+   public Collection<dwq<?>> d() {
+      return this.c.values();
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(dwq::f).collect(Collectors.toList()))
+         .toString();
+   }
+
+   @Nullable
+   public dwq<?> a(String $$0) {
+      return (dwq<?>)this.c.get($$0);
+   }
+
+   public static class a<O, S extends dvq<O, S>> {
+      private final O a;
+      private final Map<String, dwq<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
+      }
+
+      public dvp.a<O, S> a(dwq<?>... $$0) {
+         for (dwq<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
+
+         return this;
+      }
+
+      private <T extends Comparable<T>> void a(dwq<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dvp.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+         } else {
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.b($$3);
+                  if (!dvp.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
                   }
                }
-            }
 
-            this.b.add($$0);
-            return this;
-         }
-      } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
-      }
-   }
-
-   public static dvp a() {
-      return new dvp();
-   }
-
-   public dvp a(char $$0, Predicate<dvn> $$1) {
-      this.c.put($$0, $$1);
-      return this;
-   }
-
-   public dvo b() {
-      return new dvo(this.c());
-   }
-
-   private Predicate<dvn>[][][] c() {
-      this.d();
-      Predicate<dvn>[][][] $$0 = (Predicate<dvn>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
             }
          }
       }
 
-      return $$0;
+      public dvp<O, S> a(Function<O, S> $$0, dvp.b<O, S> $$1) {
+         return new dvp<>($$0, this.a, $$1, this.b);
+      }
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
-
-      for (Entry<Character, Predicate<dvn>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
-
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<dwq<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

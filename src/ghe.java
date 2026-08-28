@@ -1,88 +1,88 @@
-import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class ghe extends gha {
-   private ezn i = ezn.c;
-   private int j;
+public class ghe extends ghf {
+   private final jh a;
+   private final float b;
+   private final float F;
 
-   public ghe(gci $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ae = true;
+   public ghe(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dvo $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, jh.a($$1, $$2, $$3));
    }
 
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cS().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
+   public ghe(gcy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dvo $$7, jh $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(fjx.Q().ap().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(dil.i)) {
+         int $$9 = fjx.Q().aw().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
 
-      $$1 *= 64.0 * cL();
-      return $$0 < $$1 * $$1;
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
    @Override
-   public boolean a(bsu $$0, float $$1) {
-      return true;
+   public ggj b() {
+      return ggj.a;
    }
 
    @Override
-   public void l() {
-      super.l();
-      this.s(false);
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
    @Override
-   public void n_() {
-      if (this.br > 0) {
-         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
-         this.br--;
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? git.a(this.c, this.a) : $$1;
+   }
+
+   @Nullable
+   static ghe a(lk $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      dvo $$8 = $$0.b();
+      return !$$8.l() && !$$8.a(dil.bQ) && $$8.D() ? new ghe($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   }
+
+   public static class a implements ggi<lk> {
+      @Nullable
+      public ggf a(lk $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggf $$8 = ghe.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         if ($$8 != null) {
+            $$8.b($$1.A.k() / 30.0, $$6 + $$1.A.k() / 2.0, $$1.A.k() / 30.0);
+            $$8.a($$1.A.a(20) + 20);
+         }
+
+         return $$8;
       }
-
-      if (this.by > 0) {
-         this.a(this.by, this.bx);
-         this.by--;
-      }
-
-      if (this.j > 0) {
-         this.i(new ezn((this.i.d - this.dA().d) / (double)this.j, (this.i.e - this.dA().e) / (double)this.j, (this.i.f - this.dA().f) / (double)this.j));
-         this.j--;
-      }
-
-      this.cg = this.ch;
-      this.eZ();
-      float $$1;
-      if (this.aK() && !this.eH()) {
-         $$1 = (float)Math.min(0.1, this.dA().i());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.ch = this.ch + ($$1 - this.ch) * 0.4F;
-
-      try (bos $$2 = bom.a().d("push")) {
-         this.r();
-      }
    }
 
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.i = new ezn($$0, $$1, $$2);
-      this.j = this.ar().p() + 1;
-   }
-
-   @Override
-   protected void ge() {
-   }
-
-   @Override
-   public void a(xi $$0) {
-      fji $$1 = fji.Q();
-      $$1.m.d().a($$0);
-   }
-
-   @Override
-   public void a(acf $$0) {
-      super.a($$0);
-      this.bA();
+   public static class b implements ggi<lk> {
+      @Nullable
+      public ggf a(lk $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return ghe.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

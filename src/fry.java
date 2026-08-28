@@ -1,96 +1,38 @@
-import javax.annotation.Nullable;
+public enum fry {
+   a(
+      all.b("advancements/box_obtained"),
+      all.b("advancements/task_frame_obtained"),
+      all.b("advancements/challenge_frame_obtained"),
+      all.b("advancements/goal_frame_obtained")
+   ),
+   b(
+      all.b("advancements/box_unobtained"),
+      all.b("advancements/task_frame_unobtained"),
+      all.b("advancements/challenge_frame_unobtained"),
+      all.b("advancements/goal_frame_unobtained")
+   );
 
-public class fry extends frp<crw> {
-   private static final ali G = ali.b("container/cartography_table/error");
-   private static final ali H = ali.b("container/cartography_table/scaled_map");
-   private static final ali I = ali.b("container/cartography_table/duplicated_map");
-   private static final ali J = ali.b("container/cartography_table/map");
-   private static final ali K = ali.b("container/cartography_table/locked");
-   private static final ali L = ali.b("textures/gui/container/cartography_table.png");
-   private final gxm M = new gxm();
+   private final all c;
+   private final all d;
+   private final all e;
+   private final all f;
 
-   public fry(crw $$0, col $$1, xi $$2) {
-      super($$0, $$1, $$2);
-      this.w -= 2;
+   private fry(final all $$0, final all $$1, final all $$2, final all $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public all a() {
+      return this.c;
    }
 
-   @Override
-   protected void a(fku $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gir::B, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      cwb $$6 = this.z.b(1).g();
-      boolean $$7 = $$6.a(cwf.ul);
-      boolean $$8 = $$6.a(cwf.qP);
-      boolean $$9 = $$6.a(cwf.fT);
-      cwb $$10 = this.z.b(0).g();
-      etc $$11 = $$10.a(ku.L);
-      boolean $$12 = false;
-      ete $$13;
-      if ($$11 != null) {
-         $$13 = cwo.a($$11, this.m.s);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(gir::B, G, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
-
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(gir::B, G, $$4 + 35, $$5 + 31, 28, 21);
-            }
-         }
-      } else {
-         $$13 = null;
-      }
-
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
-   }
-
-   private void a(fku $$0, @Nullable etc $$1, @Nullable ete $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.C;
-      int $$8 = this.D;
-      if ($$4 && !$$6) {
-         $$0.a(gir::B, H, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(gir::B, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gir::B, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(gir::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gir::B, K, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(gir::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-      }
-   }
-
-   private void a(fku $$0, @Nullable etc $$1, @Nullable ete $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         gig $$6 = this.m.at();
-         $$6.a($$1, $$2, this.M);
-         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
-         $$0.c().b();
-      }
+   public all a(an $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

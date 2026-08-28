@@ -1,89 +1,147 @@
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class cqp {
-   public static int[][] a(jm $$0) {
-      jm $$1 = $$0.h();
-      jm $$2 = $$1.g();
-      jm $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+public abstract class cqp extends cqo implements cqs {
+   private jz<cwf> c = jz.a(36, cwf.k);
+   @Nullable
+   private alk<eul> d;
+   private long e;
+
+   protected cqp(bup<?> $$0, dff $$1) {
+      super($$0, $$1);
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   @Override
+   public void a(bsy $$0) {
+      super.a($$0);
+      this.a($$0, this.dY(), this);
    }
 
-   public static boolean a(dek $$0, bva $$1, ezi $$2) {
-      for (fah $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
-         }
+   @Override
+   public cwf a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public cwf a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cwf b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cwf $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bvw a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cor $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bui.c $$0) {
+      if (!this.dY().C && $$0.a()) {
+         bsd.a(this.dY(), this, this);
       }
 
-      return $$0.C_().a($$2);
+      super.a($$0);
    }
 
-   public static boolean a(dek $$0, ezn $$1, bva $$2, bvm $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
+   @Override
+   protected void b(un $$0) {
+      super.b($$0);
+      this.a($$0, this.ea());
    }
 
-   public static fah a(deg $$0, jh $$1) {
-      dvj $$2 = $$0.a_($$1);
-      return !$$2.a(axa.aQ) && (!($$2.b() instanceof dqr) || !$$2.c(dqr.b)) ? $$2.g($$0, $$1) : fae.a();
+   @Override
+   protected void a(un $$0) {
+      super.a($$0);
+      this.b($$0, this.ea());
    }
 
-   public static double a(jh $$0, int $$1, Function<jh, fah> $$2) {
-      jh.a $$3 = $$0.k();
-      int $$4 = 0;
+   @Override
+   public bsh a(cor $$0, bsg $$1) {
+      return this.c_($$0);
+   }
 
-      while ($$4 < $$1) {
-         fah $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(jm.a.b);
-         }
-
-         $$4++;
-         $$3.c(jm.b);
+   @Override
+   protected ezr a(ezr $$0) {
+      float $$1 = 0.98F;
+      if (this.d == null) {
+         int $$2 = 15 - crs.b(this);
+         $$1 += (float)$$2 * 0.001F;
       }
 
-      return Double.POSITIVE_INFINITY;
+      if (this.bl()) {
+         $$1 *= 0.95F;
+      }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(alk<eul> $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Nullable
-   public static ezn a(bul<?> $$0, dek $$1, jh $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
+   @Override
+   public crs createMenu(int $$0, coq $$1, cor $$2) {
+      if (this.d != null && $$2.R_()) {
          return null;
       } else {
-         double $$4 = $$1.a(a((deg)$$1, $$2), () -> a((deg)$$1, $$2.e()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
-            return null;
-         } else {
-            ezn $$5 = ezn.a($$2, $$4);
-            ezi $$6 = $$0.n().a($$5);
-
-            for (fah $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != bul.by || !$$1.a_($$2).a(axa.cs) && !$$1.a_($$2.d()).a(axa.cs)) {
-               return !$$1.C_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+         this.f($$1.k);
+         return this.a($$0, $$1);
       }
+   }
+
+   protected abstract crs a(int var1, coq var2);
+
+   @Nullable
+   @Override
+   public alk<eul> F() {
+      return this.d;
+   }
+
+   @Override
+   public void a(@Nullable alk<eul> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public long G() {
+      return this.e;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public jz<cwf> I() {
+      return this.c;
+   }
+
+   @Override
+   public void J() {
+      this.c = jz.a(this.b(), cwf.k);
    }
 }

@@ -1,39 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import org.slf4j.Logger;
 
-public class dku extends don {
-   public static final MapCodec<dku> b = b(dku::new);
+public class dku extends dko {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dku> e = b(dku::new);
+   private static final lb g = new la();
 
    @Override
    public MapCodec<dku> a() {
-      return b;
+      return e;
    }
 
-   protected dku(dvi.d $$0) {
+   public dku(dvn.d $$0) {
       super($$0);
-      this.l(this.F.b().b(a, jm.b));
    }
 
    @Override
-   public dvj a(czs $$0) {
-      jm $$1 = $$0.k();
-      dvj $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
+   protected lb a(dff $$0, cwf $$1) {
+      return g;
    }
 
    @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      jm $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(lr.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   public dsr a(jh $$0, dvo $$1) {
+      return new dtl($$0, $$1);
+   }
+
+   @Override
+   protected void a(arq $$0, dvo $$1, jh $$2) {
+      dtk $$3 = $$0.a($$2, dst.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         ky $$4 = new ky($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cwf $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               jm $$7 = $$0.a_($$2).c(b);
+               bsa $$8 = dts.a($$0, $$2.a($$7));
+               cwf $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dts.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.v();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.v();
+                  }
+               }
+
+               $$3.a($$5, $$9);
+            }
+         }
       }
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(a);
    }
 }

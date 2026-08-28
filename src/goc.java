@@ -1,27 +1,31 @@
-public class goc extends gne<clf, gxc, fyf> {
-   private static final ali a = ali.b("textures/entity/zombie/drowned.png");
+public class goc extends gnv<cgw, guo, fye> {
+   private static final all a = all.b("textures/entity/bee/bee_angry.png");
+   private static final all b = all.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final all k = all.b("textures/entity/bee/bee.png");
+   private static final all l = all.b("textures/entity/bee/bee_nectar.png");
 
-   public goc(gok.a $$0) {
-      super($$0, new fyf($$0.a(gbl.ai)), new fyf($$0.a(gbl.am)), new fyf($$0.a(gbl.aj)), new fyf($$0.a(gbl.ak)), new fyf($$0.a(gbl.an)), new fyf($$0.a(gbl.ao)));
-      this.a(new gsf(this, $$0.f()));
+   public goc(gpa.a $$0) {
+      super($$0, new fye($$0.a(gcb.q)), new fye($$0.a(gcb.r)), 0.4F);
    }
 
-   public gxc a() {
-      return new gxc();
-   }
-
-   @Override
-   public ali a(gxc $$0) {
-      return a;
-   }
-
-   protected void a(gxc $$0, feb $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.B;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.V;
-         float $$6 = azk.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
+   public all a(guo $$0) {
+      if ($$0.d) {
+         return $$0.e ? b : a;
+      } else {
+         return $$0.e ? l : k;
       }
+   }
+
+   public guo a() {
+      return new guo();
+   }
+
+   public void a(cgw $$0, guo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = !$$0.gI();
+      $$1.c = $$0.aL() && $$0.dB().h() < 1.0E-7;
+      $$1.d = $$0.ae_();
+      $$1.e = $$0.gH();
    }
 }

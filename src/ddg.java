@@ -1,24 +1,28 @@
-public interface ddg {
-   alh<dda> a = a("mob_spawn_equipment");
-   alh<dda> b = a("pillager_spawn_crossbow");
-   alh<dda> c = a("raid/pillager_post_wave_3");
-   alh<dda> d = a("raid/pillager_post_wave_5");
-   alh<dda> e = a("raid/vindicator");
-   alh<dda> f = a("raid/vindicator_post_wave_5");
-   alh<dda> g = a("enderman_loot_drop");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qy<dda> $$0) {
-      jr<dbs> $$1 = $$0.a(lz.aM);
-      $$0.a(a, new ddd($$1.b(axd.l), 5, 17));
-      $$0.a(b, new dde($$1.b(dbx.K), brf.a(1)));
-      $$0.a(c, new dde($$1.b(dbx.J), brf.a(1)));
-      $$0.a(d, new dde($$1.b(dbx.J), brf.a(2)));
-      $$0.a(e, new dde($$1.b(dbx.n), brf.a(1)));
-      $$0.a(f, new dde($$1.b(dbx.n), brf.a(2)));
-      $$0.a(g, new dde($$1.b(dbx.v), brf.a(1)));
+public record ddg(ju<dbw> c, brm d) implements dde {
+   public static final MapCodec<ddg> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kf.a(ma.aM).fieldOf("enchantments").forGetter(ddg::b), brm.c.fieldOf("cost").forGetter(ddg::c)).apply($$0, ddg::new)
+   );
+
+   @Override
+   public void a(cwf $$0, dcc.a $$1, azv $$2, bsf $$3) {
+      for (dbz $$5 : dby.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.a, $$5.b);
+      }
    }
 
-   static alh<dda> a(String $$0) {
-      return alh.a(lz.aN, ali.b($$0));
+   @Override
+   public MapCodec<ddg> a() {
+      return b;
+   }
+
+   public ju<dbw> b() {
+      return this.c;
+   }
+
+   public brm c() {
+      return this.d;
    }
 }

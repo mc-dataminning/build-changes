@@ -1,56 +1,27 @@
-public class ggg extends gfx {
-   private final ggk b;
-   protected boolean a;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
 
-   ggg(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
-      this.b($$7);
+public class ggg {
+   private final List<all> a;
+
+   private ggg(List<all> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
+   public List<all> a() {
+      return this.a;
    }
 
-   @Override
-   public gft b() {
-      return gft.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gfs<lv> {
-      private final ggk a;
-
-      public a(ggk $$0) {
-         this.a = $$0;
-      }
-
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggg $$8 = new ggg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements gfs<lv> {
-      private final ggk a;
-
-      public b(ggk $$0) {
-         this.a = $$0;
-      }
-
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggg $$8 = new ggg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         return $$8;
+   public static ggg a(JsonObject $$0) {
+      JsonArray $$1 = azd.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new ggg(List.of());
+      } else {
+         List<all> $$2 = Streams.stream($$1).map($$0x -> azd.a($$0x, "texture")).map(all::a).collect(ImmutableList.toImmutableList());
+         return new ggg($$2);
       }
    }
 }

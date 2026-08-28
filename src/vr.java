@@ -1,36 +1,77 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Set;
 
-public record vr(int a, Map<String, vj<?>> b, Map<String, vr> c) {
-   private vr(int $$0) {
-      this($$0, new HashMap<>(), new HashMap<>());
+public class vr extends vs {
+   private int a;
+   private final Set<vm<?>> b;
+   private final Deque<vu> c = new ArrayDeque<>();
+
+   public vr(vt... $$0) {
+      this.a = $$0.length;
+      Builder<vm<?>> $$1 = ImmutableSet.builder();
+      vu $$2 = vu.a();
+
+      for (vt $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
+      }
+
+      this.c.push($$2);
+      $$1.add(un.b);
+      this.b = $$1.build();
    }
 
-   public static vr a() {
-      return new vr(1);
+   @Override
+   public vh.b b(vm<?> $$0) {
+      return $$0 != un.b ? vh.b.c : super.b($$0);
    }
 
-   public void a(vq $$0) {
-      if (this.a <= $$0.a().size()) {
-         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vr(this.a + 1)).a($$0);
+   @Override
+   public vh.a a(vm<?> $$0) {
+      vu $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return vh.a.d;
       } else {
-         this.b.put($$0.c(), $$0.b());
+         return !this.b.contains($$0) ? vh.a.b : super.a($$0);
       }
    }
 
-   public boolean a(vj<?> $$0, String $$1) {
-      return $$0.equals(this.c().get($$1));
+   @Override
+   public vh.a a(vm<?> $$0, String $$1) {
+      vu $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == un.b) {
+            vu $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return vh.a.b;
+      }
    }
 
-   public int b() {
+   @Override
+   public vh.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
+      }
+
+      return super.b();
+   }
+
+   public int c() {
       return this.a;
-   }
-
-   public Map<String, vj<?>> c() {
-      return this.b;
-   }
-
-   public Map<String, vr> d() {
-      return this.c;
    }
 }

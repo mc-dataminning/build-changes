@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drs extends dls {
-   public static final MapCodec<drs> c = b(drs::new);
-   protected static final fah g = die.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
-
-   @Override
-   public MapCodec<drs> a() {
-      return c;
-   }
-
-   public drs(dvi.d $$0) {
-      super($$0, jm.a, g, false, 0.1);
-   }
+public class drs extends drn implements dro {
+   public static final MapCodec<drs> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dro.a.e.fieldOf("weathering_state").forGetter(drs::q), t()).apply($$0, drs::new)
+   );
+   private final dro.a f;
 
    @Override
-   protected int a(azs $$0) {
-      return dnj.a($$0);
+   protected MapCodec<drs> a() {
+      return e;
    }
 
-   @Override
-   protected die b() {
-      return dig.oA;
+   protected drs(dro.a $$0, dvn.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected boolean h(dvj $$0) {
-      return dnj.a($$0);
+   protected void b(dvo $$0, arq $$1, jh $$2, azv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(dvo $$0) {
+      return dro.c($$0.b()).isPresent();
+   }
+
+   public dro.a q() {
+      return this.f;
    }
 }

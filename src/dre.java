@@ -1,99 +1,75 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dre extends dpe {
-   public static final MapCodec<dre> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dww.a.fieldOf("wood_type").forGetter(dpe::d), t()).apply($$0, dre::new));
-   public static final dwd b = dlz.aF;
-   protected static final float c = 2.0F;
-   protected static final float d = 4.5F;
-   protected static final float e = 12.5F;
-   private static final Map<jm, fah> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.c,
-         die.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
-         jm.d,
-         die.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
-         jm.f,
-         die.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
-         jm.e,
-         die.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
-      )
-   );
+public class dre extends dhv {
+   public static final MapCodec<dre> a = b(dre::new);
+   public static final dwq<dvb> b = dwe.bz;
+   public static final dwl<jm> c = dme.aF;
+   public static final dwf d = dwe.bA;
 
    @Override
    public MapCodec<dre> a() {
       return a;
    }
 
-   public dre(dww $$0, dvi.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.l(this.F.b().b(b, jm.c).b(f, Boolean.valueOf(false)));
+   public dre(dvn.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, jm.c).b(b, dvb.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return i.get($$0.c(b));
-   }
+   public bsh a(cwf $$0, dvo $$1, dff $$2, jh $$3, cor $$4, bsg $$5, ezn $$6) {
+      if (!$$0.f() && $$1.c(b) == dvb.b) {
+         if ($$2 instanceof arq $$7) {
+            if (!($$7.c_($$3) instanceof duw $$8)) {
+               return bsh.f;
+            }
 
-   @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
+            duw.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
+         }
+
+         return bsh.b;
+      } else {
+         return bsh.f;
+      }
    }
 
    @Nullable
    @Override
-   public dvj a(czs $$0) {
-      dvj $$1 = this.m();
-      erk $$2 = $$0.q().b_($$0.a());
-      dfe $$3 = $$0.q();
-      jh $$4 = $$0.a();
-      jm[] $$5 = $$0.f();
-
-      for (jm $$6 : $$5) {
-         if ($$6.o().d()) {
-            jm $$7 = $$6.g();
-            $$1 = $$1.b(b, $$7);
-            if ($$1.a($$3, $$4)) {
-               return $$1.b(f, Boolean.valueOf($$2.a() == erl.c));
-            }
-         }
-      }
-
-      return null;
+   public dsr a(jh $$0, dvo $$1) {
+      return new duw($$0, $$1);
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dvp.a<dij, dvo> $$0) {
+      $$0.a(c, b, d);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsr> dss<T> a(dff $$0, dvo $$1, dst<T> $$2) {
+      return $$0 instanceof arq $$3
+         ? a($$2, dst.R, ($$1x, $$2x, $$3x, $$4) -> duw.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
+         : a($$2, dst.R, ($$0x, $$1x, $$2x, $$3x) -> duw.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
    }
 
    @Override
-   public float h(dvj $$0) {
-      return $$0.c(b).p();
+   public dvo a(czw $$0) {
+      return this.m().b(c, $$0.g().g());
    }
 
    @Override
-   public ezn o(dvj $$0) {
-      fah $$1 = i.get($$0.c(b));
-      return $$1.a().f();
+   public dvo a(dvo $$0, dow $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   protected dvj a(dvj $$0, dor $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   public dvo a(dvo $$0, dnf $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   protected dvj a(dvj $$0, dna $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b, f);
+   public dop a_(dvo $$0) {
+      return dop.c;
    }
 }

@@ -1,72 +1,41 @@
-import java.util.function.Consumer;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public record tz(String a, String b, String c, dor d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<te> l) {
-   public tz(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<te> $$6) {
-      this($$0, $$1, $$2, dor.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
+public class tz implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (tk.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = xl.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+      }
    }
 
-   public tz(String $$0, String $$1, String $$2, dor $$3, int $$4, long $$5, boolean $$6, Consumer<te> $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
+   public static tz a() {
+      return new tz();
    }
 
-   public void a(te $$0) {
-      this.l.accept($$0);
+   public static String a(CommandContext<ew> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
-   @Override
-   public String toString() {
-      return this.b;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fb.b(tk.b().stream(), $$1);
    }
 
-   public boolean a() {
-      return this.i > 1;
-   }
-
-   public String b() {
-      return this.a;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public dor e() {
-      return this.d;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public long g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return this.g;
-   }
-
-   public boolean i() {
-      return this.h;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.j;
-   }
-
-   public boolean l() {
-      return this.k;
-   }
-
-   public Consumer<te> m() {
-      return this.l;
+   public Collection<String> getExamples() {
+      return a;
    }
 }

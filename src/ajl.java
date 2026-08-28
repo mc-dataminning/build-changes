@@ -1,14 +1,20 @@
-public interface ajl extends acb {
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
+
+public record ajl(GameProfile b) implements zs<ajg> {
+   public static final zj<ByteBuf, ajl> a = zj.a(zh.w, ajl::b, ajl::new);
+
    @Override
-   default wd b() {
-      return wd.d;
+   public zu<ajl> a() {
+      return ajm.b;
    }
 
-   void a(ajn var1);
+   public void a(ajg $$0) {
+      $$0.a(this);
+   }
 
-   void a(ajo var1);
-
-   void a(ajm var1);
-
-   void a(ajp var1);
+   @Override
+   public boolean d() {
+      return true;
+   }
 }

@@ -1,28 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class hcf implements hca {
+   private final ght a;
+   private boolean b;
+   private boolean c = true;
 
-public class hcf<T> extends hcg<T> {
-   private final hck<T> c;
-
-   public hcf(Function<T, Stream<String>> $$0, Function<T, Stream<ali>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hck.plainText($$2, $$0);
+   public hcf(ght $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
-   }
+   public void a() {
+      dff $$0 = this.a.dY();
+      dvo $$1 = $$0.c(this.a.cT().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dil.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dil.nd) && !this.a.R_()) {
+            boolean $$2 = $$1.c(dip.b);
+            if ($$2) {
+               this.a.a(awo.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(awo.cZ, 1.0F, 1.0F);
+            }
+         }
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hci<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hch<T>($$2.iterator(), $$5, this.a));
+         this.b = true;
+      } else {
+         this.b = false;
+      }
+
+      this.c = false;
    }
 }

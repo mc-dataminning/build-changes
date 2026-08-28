@@ -1,274 +1,65 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fqw extends frp {
+   private static final xl a = xl.c("gui.toMenu");
+   private static final xl b = xl.c("gui.toTitle");
+   private static final xl c = xl.c("gui.report_to_server");
+   private static final xl d = xl.c("gui.open_report_dir");
+   private final frp s;
+   private final wh u;
+   private final xl v;
+   private final fpp w = fpp.d();
 
-public class fqw extends fra {
-   static final ali b = ali.b("container/slot");
-   static final Logger c = LogUtils.getLogger();
-   private static final int d = 18;
-   private static final int s = 20;
-   private static final int u = 1;
-   private static final int v = 1;
-   private static final int w = 2;
-   private static final int x = 2;
-   private static final alh<dgc> y = dgj.b;
-   public static final xi a = xi.c("flat_world_preset.unknown");
-   private final fqb z;
-   private xi A;
-   private xi B;
-   private fqw.a C;
-   private flh D;
-   flq E;
-   eka F;
-
-   public fqw(fqb $$0) {
-      super(xi.c("createWorld.customize.presets.title"));
-      this.z = $$0;
+   public fqw(frp $$0, xl $$1, xl $$2) {
+      this($$0, $$1, new wh($$2));
    }
 
-   @Nullable
-   private static ejx a(jr<die> $$0, String $$1, int $$2) {
-      List<String> $$3 = Splitter.on('*').limit(2).splitToList($$1);
-      int $$5;
-      String $$4;
-      if ($$3.size() == 2) {
-         $$4 = $$3.get(1);
+   public fqw(frp $$0, xl $$1, xl $$2, xl $$3) {
+      this($$0, $$1, new wh($$2), $$3);
+   }
 
-         try {
-            $$5 = Math.max(Integer.parseInt($$3.get(0)), 0);
-         } catch (NumberFormatException var11) {
-            c.error("Error while parsing flat world string", var11);
-            return null;
-         }
+   public fqw(frp $$0, xl $$1, wh $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fqw(frp $$0, xl $$1, wh $$2, xl $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
+   }
+
+   @Override
+   protected void aS_() {
+      this.w.c().b().a(10);
+      this.w.a(new fnd(this.l, this.p));
+      this.w.a(new fmq(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(flw.a(c, fqm.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(flw.a(d, $$1x -> ae.m().a($$0.getParent())).a(200).a()));
+      flw $$0;
+      if (this.m.F()) {
+         $$0 = flw.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
       } else {
-         $$4 = $$3.get(0);
-         $$5 = 1;
+         $$0 = flw.a(b, $$0x -> this.m.a(new frr())).a(200).a();
       }
 
-      int $$9 = Math.min($$2 + $$5, dzf.c);
-      int $$10 = $$9 - $$2;
-
-      Optional<jq.c<die>> $$11;
-      try {
-         $$11 = $$0.a(alh.a(lz.f, ali.a($$4)));
-      } catch (Exception var10) {
-         c.error("Error while parsing flat world string", var10);
-         return null;
-      }
-
-      if ($$11.isEmpty()) {
-         c.error("Error while parsing flat world string => Unknown block, {}", $$4);
-         return null;
-      } else {
-         return new ejx($$10, $$11.get().a());
-      }
-   }
-
-   private static List<ejx> a(jr<die> $$0, String $$1) {
-      List<ejx> $$2 = Lists.newArrayList();
-      String[] $$3 = $$1.split(",");
-      int $$4 = 0;
-
-      for (String $$5 : $$3) {
-         ejx $$6 = a($$0, $$5, $$4);
-         if ($$6 == null) {
-            return Collections.emptyList();
-         }
-
-         $$2.add($$6);
-         $$4 += $$6.a();
-      }
-
-      return $$2;
-   }
-
-   public static eka a(jr<die> $$0, jr<dgc> $$1, jr<emd> $$2, jr<elb> $$3, String $$4, eka $$5) {
-      Iterator<String> $$6 = Splitter.on(';').split($$4).iterator();
-      if (!$$6.hasNext()) {
-         return eka.a($$1, $$2, $$3);
-      } else {
-         List<ejx> $$7 = a($$0, $$6.next());
-         if ($$7.isEmpty()) {
-            return eka.a($$1, $$2, $$3);
-         } else {
-            jq.c<dgc> $$8 = $$1.b(y);
-            jq<dgc> $$9 = $$8;
-            if ($$6.hasNext()) {
-               String $$10 = $$6.next();
-               $$9 = Optional.ofNullable(ali.c($$10)).map($$0x -> alh.a(lz.aG, $$0x)).flatMap($$1::a).orElseGet(() -> {
-                  c.warn("Invalid biome: {}", $$10);
-                  return $$8;
-               });
-            }
-
-            return $$5.a($$7, $$5.c(), $$9);
-         }
-      }
-   }
-
-   static String a(eka $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (int $$2 = 0; $$2 < $$0.e().size(); $$2++) {
-         if ($$2 > 0) {
-            $$1.append(",");
-         }
-
-         $$1.append($$0.e().get($$2));
-      }
-
-      $$1.append(";");
-      $$1.append($$0.d().e().map(alh::a).orElseThrow(() -> new IllegalStateException("Biome not registered")));
-      return $$1.toString();
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
    @Override
-   protected void aR_() {
-      this.A = xi.c("createWorld.customize.presets.share");
-      this.B = xi.c("createWorld.customize.presets.list");
-      this.E = new flq(this.p, 50, 40, this.n - 100, 20, this.A);
-      this.E.f(1230);
-      fwh $$0 = this.z.a.m().k();
-      ke $$1 = $$0.a();
-      crf $$2 = $$0.h().b();
-      jr<dgc> $$3 = $$1.e(lz.aG);
-      jr<emd> $$4 = $$1.e(lz.aU);
-      jr<elb> $$5 = $$1.e(lz.aR);
-      jr<die> $$6 = $$1.e(lz.f).a($$2);
-      this.E.a(a(this.z.l()));
-      this.F = this.z.l();
-      this.d(this.E);
-      this.C = this.c(new fqw.a($$1, $$2));
-      this.D = this.c(flh.a(xi.c("createWorld.customize.presets.select"), $$4x -> {
-         eka $$5x = a($$6, $$3, $$4, $$5, this.E.a(), this.F);
-         this.z.a($$5x);
-         this.m.a(this.z);
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
-      this.c(flh.a(xh.e, $$0x -> this.m.a(this.z)).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
-      this.c(this.C.h() != null);
+   protected void c() {
+      fpj.a(this.w, this.H());
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.C.a($$0, $$1, $$2, $$3);
+   public xl i() {
+      return xk.a(this.l, this.u.a());
    }
 
    @Override
-   public void a(fji $$0, int $$1, int $$2) {
-      String $$3 = this.E.a();
-      this.b($$0, $$1, $$2);
-      this.E.a($$3);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.z);
-   }
-
-   @Override
-   public void a(fku $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 400.0F);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-      $$0.b(this.p, this.A, 51, 30, 10526880);
-      $$0.b(this.p, this.B, 51, 68, 10526880);
-      $$0.c().b();
-      this.E.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      this.D.j = $$0 || this.E.a().length() > 1;
-   }
-
-   class a extends fmd<fqw.a.a> {
-      public a(final ke $$0, final crf $$1) {
-         super(fqw.this.m, fqw.this.n, fqw.this.o - 117, 80, 24);
-
-         for (jq<ejy> $$2 : $$0.e(lz.aO).c(axf.a)) {
-            Set<die> $$3 = $$2.a().b().e().stream().map($$0x -> $$0x.b().b()).filter($$1x -> !$$1x.a($$1)).collect(Collectors.toSet());
-            if (!$$3.isEmpty()) {
-               fqw.c
-                  .info(
-                     "Discarding flat world preset {} since it contains experimental blocks {}",
-                     $$2.e().map($$0x -> $$0x.a().toString()).orElse("<unknown>"),
-                     $$3
-                  );
-            } else {
-               this.b(new fqw.a.a($$2));
-            }
-         }
-      }
-
-      public void a(@Nullable fqw.a.a $$0) {
-         super.a($$0);
-         fqw.this.c($$0 != null);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (super.a($$0, $$1, $$2)) {
-            return true;
-         } else {
-            if (fpk.a($$0) && this.h() != null) {
-               this.h().b();
-            }
-
-            return false;
-         }
-      }
-
-      public class a extends fmd.a<fqw.a.a> {
-         private static final ali b = ali.b("textures/gui/container/stats_icons.png");
-         private final ejy c;
-         private final xi d;
-
-         public a(final jq<ejy> $$1) {
-            this.c = $$1.a();
-            this.d = $$1.e().map($$0x -> xi.c($$0x.a().h("flat_world_preset"))).orElse(fqw.a);
-         }
-
-         @Override
-         public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            this.a($$0, $$3, $$2, this.c.a().a());
-            $$0.a(fqw.this.p, this.d, $$3 + 18 + 5, $$2 + 6, 16777215, false);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            return super.a($$0, $$1, $$2);
-         }
-
-         void b() {
-            a.this.a(this);
-            fqw.this.F = this.c.b();
-            fqw.this.E.a(fqw.a(fqw.this.F));
-            fqw.this.E.b(false);
-         }
-
-         private void a(fku $$0, int $$1, int $$2, cvx $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            $$0.b(new cwb($$3), $$1 + 2, $$2 + 2);
-         }
-
-         private void a(fku $$0, int $$1, int $$2) {
-            $$0.a(gir::B, fqw.b, $$1, $$2, 18, 18);
-         }
-
-         @Override
-         public xi a() {
-            return xi.a("narrator.select", this.d);
-         }
-      }
+   public boolean aH_() {
+      return false;
    }
 }

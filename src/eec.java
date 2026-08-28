@@ -1,63 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class eec extends eel<egl> {
-   private static final ImmutableList<die> a = ImmutableList.of(dig.F, dig.fn, dig.fo, dig.fp, dig.fq, dig.cv, dig.ct);
-   private static final jm[] b = jm.values();
-   private static final double c = 0.9;
-
-   public eec(Codec<egl> $$0) {
+public class eec extends eed {
+   public eec(Codec<eha> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(een<egl> $$0) {
-      boolean $$1 = false;
-      azs $$2 = $$0.d();
-      dfy $$3 = $$0.b();
-      egl $$4 = $$0.f();
-      jh $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (jh $$13 : jh.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            jh $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static boolean a(dfc $$0, jh $$1, egl $$2) {
-      dvj $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
+   protected boolean a(dfg $$0, azv $$1, jh $$2, dvo $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
          return false;
       } else {
-         for (jm $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != jm.b || !$$5 && $$4 == jm.b) {
-               return false;
+         jm $$4 = jm.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jm> $$6 = ae.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+
+         for (jm $$8 : $$6.subList(0, $$5)) {
+            jh.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jm $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jm.b);
+               jm[] $$13 = new jm[]{$$8, jm.b};
+               $$11 = ae.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(jm.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jm.b);
+               }
             }
          }
 

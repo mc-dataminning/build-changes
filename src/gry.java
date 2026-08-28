@@ -1,24 +1,36 @@
-public class gry extends gsx<gum, fyi<gum>> {
-   private final gjk a;
+public class gry extends gqg<cnt, gxn, gbn> {
+   private static final all a = all.b("textures/entity/warden/warden.png");
+   private static final all b = all.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final all k = all.b("textures/entity/warden/warden_heart.png");
+   private static final all l = all.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final all m = all.b("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gry(gqg<gum, fyi<gum>> $$0, gjk $$1) {
-      super($$0);
-      this.a = $$1;
+   public gry(gpa.a $$0) {
+      super($$0, new gbn($$0.a(gcb.cV)), 0.9F);
+      this.a(new gty(this, b, ($$0x, $$1) -> 1.0F, gbn::d));
+      this.a(new gty(this, l, ($$0x, $$1) -> Math.max(0.0F, azn.b($$1 * 0.045F) * 0.25F), gbn::h));
+      this.a(new gty(this, m, ($$0x, $$1) -> Math.max(0.0F, azn.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gbn::h));
+      this.a(new gty(this, a, ($$0x, $$1) -> $$0x.a, gbn::b));
+      this.a(new gty(this, k, ($$0x, $$1) -> $$0x.b, gbn::c));
    }
 
-   public void a(feb $$0, gih $$1, int $$2, gum $$3, float $$4, float $$5) {
-      dvj $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, gxu.d);
-         $$0.b();
-      }
+   public all a(gxn $$0) {
+      return a;
+   }
+
+   public gxn c() {
+      return new gxn();
+   }
+
+   public void a(cnt $$0, gxn $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.K($$2);
+      $$1.c.a($$0.b);
+      $$1.d.a($$0.c);
+      $$1.e.a($$0.d);
+      $$1.f.a($$0.e);
+      $$1.g.a($$0.bY);
+      $$1.h.a($$0.bZ);
    }
 }

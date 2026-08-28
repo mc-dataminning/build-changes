@@ -1,30 +1,43 @@
-public class cjz extends cjr {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cjz(cjo $$0) {
+public class cjz extends cju {
+   @Nullable
+   private ezr b;
+
+   public cjz(cjs $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dX().a(this.a.dC(), this.a.dE(), this.a.dI(), awl.if, this.a.dn(), 2.5F, 0.8F + this.a.ea().i() * 0.3F, false);
-   }
-
-   @Override
    public void c() {
-      if (this.c++ >= 40) {
-         this.a.gr().a(cke.f);
+      if (this.b == null) {
+         this.b = this.a.dw();
       }
    }
 
    @Override
-   public void d() {
-      this.c = 0;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public cke<cjz> i() {
-      return cke.h;
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public float f() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public ezr g() {
+      return this.b;
+   }
+
+   @Override
+   public cki<cjz> i() {
+      return cki.k;
    }
 }

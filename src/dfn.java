@@ -1,25 +1,25 @@
-public final class dfn implements dxc {
-   private final int a;
-   private final dvj[] b;
+import javax.annotation.Nullable;
 
-   public dfn(int $$0, dvj[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface dfn {
+   boolean a(jh var1, dvo var2, int var3, int var4);
+
+   default boolean a(jh $$0, dvo $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   @Override
-   public dvj a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dig.a.m();
+   boolean a(jh var1, boolean var2);
+
+   default boolean b(jh $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   @Override
-   public void a(int $$0, dvj $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   default boolean a(jh $$0, boolean $$1, @Nullable bui $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(jh var1, boolean var2, @Nullable bui var3, int var4);
+
+   default boolean b(bui $$0) {
+      return false;
    }
 }

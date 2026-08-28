@@ -1,12 +1,9 @@
-public class axl {
-   public static final axq<cgh> a = a("acquirable_job_site");
-   public static final axq<cgh> b = a("village");
-   public static final axq<cgh> c = a("bee_home");
+public interface axl {
+   axt<cvy> a = a("regular_goat_horns");
+   axt<cvy> b = a("screaming_goat_horns");
+   axt<cvy> c = a("goat_horns");
 
-   private axl() {
-   }
-
-   private static axq<cgh> a(String $$0) {
-      return axq.a(lz.aa, ali.b($$0));
+   private static axt<cvy> a(String $$0) {
+      return axt.a(ma.I, all.b($$0));
    }
 }

@@ -8,7 +8,7 @@ public class em extends dy<em.a> {
       return em.a.a;
    }
 
-   public void a(aro $$0, cwb $$1) {
+   public void a(arr $$0, cwf $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class em extends dy<em.a> {
          return ao.W.a(new em.a(Optional.of(bw.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(cwb $$0) {
+      public boolean a(cwf $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

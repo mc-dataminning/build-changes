@@ -1,50 +1,37 @@
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public enum cos {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-public class cos {
-   private final cor<jq<cvx>> a = new cor<>();
+   private final int h;
+   private final int i;
+   private final String j;
+   private final xl k;
 
-   public void a(cwb $$0) {
-      if (col.d($$0)) {
-         this.b($$0);
-      }
+   private cos(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = xl.c("options.modelPart." + $$1);
    }
 
-   public void b(cwb $$0) {
-      this.a($$0, $$0.k());
+   public int a() {
+      return this.i;
    }
 
-   public void a(cwb $$0, int $$1) {
-      if (!$$0.f()) {
-         int $$2 = Math.min($$1, $$0.L());
-         this.a.a($$0.i(), $$2);
-      }
+   public int b() {
+      return this.h;
    }
 
-   public static cor.a<jq<cvx>> a(Stream<jq<cvx>> $$0) {
-      List<jq<cvx>> $$1 = $$0.sorted(Comparator.comparingInt($$0x -> ly.g.a((cvx)$$0x.a()))).toList();
-      return new cor.a<>($$1);
+   public String c() {
+      return this.j;
    }
 
-   public boolean a(dap<?> $$0, @Nullable cor.b<jq<cvx>> $$1) {
-      return this.a($$0, 1, $$1);
-   }
-
-   public boolean a(dap<?> $$0, int $$1, @Nullable cor.b<jq<cvx>> $$2) {
-      return this.a.a($$0.a().b(), $$1, $$2);
-   }
-
-   public int b(dap<?> $$0, @Nullable cor.b<jq<cvx>> $$1) {
-      return this.b($$0, Integer.MAX_VALUE, $$1);
-   }
-
-   public int b(dap<?> $$0, int $$1, @Nullable cor.b<jq<cvx>> $$2) {
-      return this.a.b($$0.a().b(), $$1, $$2);
-   }
-
-   public void a() {
-      this.a.a();
+   public xl d() {
+      return this.k;
    }
 }

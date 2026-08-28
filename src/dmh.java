@@ -1,59 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dmh extends dls implements dmu {
-   public static final MapCodec<dmh> c = b(dmh::new);
-   protected static final fah g = die.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
-
-   @Override
-   public MapCodec<dmh> a() {
-      return c;
-   }
-
-   protected dmh(dvi.d $$0) {
-      super($$0, jm.b, g, true, 0.14);
-   }
+public class dmh extends dij {
+   public static final MapCodec<dmh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lz.e.q().fieldOf("host").forGetter(dmh::b), t()).apply($$0, dmh::new));
+   private final dij b;
+   private static final Map<dij, dij> c = Maps.newIdentityHashMap();
+   private static final Map<dvo, dvo> d = Maps.newIdentityHashMap();
+   private static final Map<dvo, dvo> e = Maps.newIdentityHashMap();
 
    @Override
-   protected boolean h(dvj $$0) {
-      return $$0.a(dig.G);
+   public MapCodec<? extends dmh> a() {
+      return a;
    }
 
-   @Override
-   protected die b() {
-      return dig.md;
+   public dmh(dij $$0, dvn.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected boolean o(dvj $$0) {
-      return !$$0.a(dig.kJ);
+   public dij b() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(@Nullable com $$0, deg $$1, jh $$2, dvj $$3, erj $$4) {
-      return false;
+   public static boolean o(dvo $$0) {
+      return c.containsKey($$0.b());
    }
 
-   @Override
-   public boolean a(dfc $$0, jh $$1, dvj $$2, erk $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azs $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dvj a(czs $$0) {
-      erk $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axg.a) && $$1.e() == 8 ? super.a($$0) : null;
+   private void a(arq $$0, jh $$1) {
+      cmc $$2 = bup.aM.a($$0, buo.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.V();
+      }
    }
 
    @Override
-   protected erk b_(dvj $$0) {
-      return erl.c.a(false);
+   protected void a(dvo $$0, arq $$1, jh $$2, cwf $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.ac().b(dfb.h) && !dby.a($$3, axg.t)) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public static dvo p(dvo $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
+   }
+
+   public dvo q(dvo $$0) {
+      return a(e, $$0, () -> this.b().m());
+   }
+
+   private static dvo a(Map<dvo, dvo> $$0, dvo $$1, Supplier<dvo> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dvo $$2x = $$2.get();
+
+         for (dwq $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

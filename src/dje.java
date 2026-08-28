@@ -1,67 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dje extends doq implements dpf {
-   public static final MapCodec<dje> a = b(dje::new);
-   public static final dwa b = dvz.C;
-   protected static final float c = 6.5F;
-   protected static final float d = 9.5F;
-   protected static final fah e = die.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final fah f = die.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final fah g = die.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+public class dje extends dhc {
+   public static final MapCodec<dje> d = b(dje::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dje> a() {
-      return a;
+      return d;
    }
 
-   public dje(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(i, jm.a.b));
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      switch ((jm.a)$$0.c(i)) {
-         case a:
-         default:
-            return g;
-         case c:
-            return f;
-         case b:
-            return e;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dvj a(czs $$0) {
-      erk $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == erl.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
+   public dje(dvn.d $$0) {
+      super($$0, kn.c);
    }
 
    @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b).a(i);
-   }
-
-   @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(b) ? erl.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dvj $$0, erz $$1) {
+   public boolean d(dvo $$0) {
       return false;
+   }
+
+   protected static boolean a(dff $$0, dgh.c $$1) {
+      if ($$1 == dgh.c.b) {
+         return $$0.E_().i() < 0.05F;
+      } else {
+         return $$1 == dgh.c.c ? $$0.E_().i() < 0.1F : false;
+      }
+   }
+
+   @Override
+   public void a(dvo $$0, dff $$1, jh $$2, dgh.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dgh.c.b) {
+            $$1.b($$2, dil.fu.m());
+            $$1.a(null, eak.c, $$2);
+         } else if ($$3 == dgh.c.c) {
+            $$1.b($$2, dil.fw.m());
+            $$1.a(null, eak.c, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(ern $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dvo $$0, dff $$1, jh $$2, ern $$3) {
+      if ($$3 == erp.c) {
+         dvo $$4 = dil.fu.m();
+         $$1.b($$2, $$4);
+         $$1.a(eak.c, $$2, eak.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == erp.e) {
+         dvo $$5 = dil.fv.m();
+         $$1.b($$2, $$5);
+         $$1.a(eak.c, $$2, eak.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

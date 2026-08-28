@@ -1,6 +1,6 @@
-public interface gxz extends AutoCloseable {
-   void a(int var1, int var2);
+import javax.annotation.Nullable;
 
-   @Override
-   void close();
+@Deprecated
+public interface gxz {
+   float call(cwf var1, @Nullable gcy var2, @Nullable bve var3, int var4);
 }

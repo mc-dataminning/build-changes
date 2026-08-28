@@ -1,36 +1,8 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fii extends fig {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xi c = xi.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
-
-   public fii(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   @Override
-   public void run() {
-      fer $$0 = fer.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fgc var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
-      }
-   }
-
-   @Override
-   public xi a() {
-      return c;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fii {
 }

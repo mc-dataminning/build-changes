@@ -1,40 +1,79 @@
-public interface axc {
-   axq<bsw> a = a("damages_helmet");
-   axq<bsw> b = a("bypasses_armor");
-   axq<bsw> c = a("bypasses_shield");
-   axq<bsw> d = a("bypasses_invulnerability");
-   axq<bsw> e = a("bypasses_cooldown");
-   axq<bsw> f = a("bypasses_effects");
-   axq<bsw> g = a("bypasses_resistance");
-   axq<bsw> h = a("bypasses_enchantments");
-   axq<bsw> i = a("is_fire");
-   axq<bsw> j = a("is_projectile");
-   axq<bsw> k = a("witch_resistant_to");
-   axq<bsw> l = a("is_explosion");
-   axq<bsw> m = a("is_fall");
-   axq<bsw> n = a("is_drowning");
-   axq<bsw> o = a("is_freezing");
-   axq<bsw> p = a("is_lightning");
-   axq<bsw> q = a("no_anger");
-   axq<bsw> r = a("no_impact");
-   axq<bsw> s = a("always_most_significant_fall");
-   axq<bsw> t = a("wither_immune_to");
-   axq<bsw> u = a("ignites_armor_stands");
-   axq<bsw> v = a("burns_armor_stands");
-   axq<bsw> w = a("avoids_guardian_thorns");
-   axq<bsw> x = a("always_triggers_silverfish");
-   axq<bsw> y = a("always_hurts_ender_dragons");
-   axq<bsw> z = a("no_knockback");
-   axq<bsw> A = a("always_kills_armor_stands");
-   axq<bsw> B = a("can_break_armor_stand");
-   axq<bsw> C = a("bypasses_wolf_armor");
-   axq<bsw> D = a("is_player_attack");
-   axq<bsw> E = a("burn_from_stepping");
-   axq<bsw> F = a("panic_causes");
-   axq<bsw> G = a("panic_environmental_causes");
-   axq<bsw> H = a("mace_smash");
+public class axc {
+   public static final axt<dgh> a = a("is_deep_ocean");
+   public static final axt<dgh> b = a("is_ocean");
+   public static final axt<dgh> c = a("is_beach");
+   public static final axt<dgh> d = a("is_river");
+   public static final axt<dgh> e = a("is_mountain");
+   public static final axt<dgh> f = a("is_badlands");
+   public static final axt<dgh> g = a("is_hill");
+   public static final axt<dgh> h = a("is_taiga");
+   public static final axt<dgh> i = a("is_jungle");
+   public static final axt<dgh> j = a("is_forest");
+   public static final axt<dgh> k = a("is_savanna");
+   public static final axt<dgh> l = a("is_overworld");
+   public static final axt<dgh> m = a("is_nether");
+   public static final axt<dgh> n = a("is_end");
+   public static final axt<dgh> o = a("stronghold_biased_to");
+   public static final axt<dgh> p = a("has_structure/buried_treasure");
+   public static final axt<dgh> q = a("has_structure/desert_pyramid");
+   public static final axt<dgh> r = a("has_structure/igloo");
+   public static final axt<dgh> s = a("has_structure/jungle_temple");
+   public static final axt<dgh> t = a("has_structure/mineshaft");
+   public static final axt<dgh> u = a("has_structure/mineshaft_mesa");
+   public static final axt<dgh> v = a("has_structure/ocean_monument");
+   public static final axt<dgh> w = a("has_structure/ocean_ruin_cold");
+   public static final axt<dgh> x = a("has_structure/ocean_ruin_warm");
+   public static final axt<dgh> y = a("has_structure/pillager_outpost");
+   public static final axt<dgh> z = a("has_structure/ruined_portal_desert");
+   public static final axt<dgh> A = a("has_structure/ruined_portal_jungle");
+   public static final axt<dgh> B = a("has_structure/ruined_portal_ocean");
+   public static final axt<dgh> C = a("has_structure/ruined_portal_swamp");
+   public static final axt<dgh> D = a("has_structure/ruined_portal_mountain");
+   public static final axt<dgh> E = a("has_structure/ruined_portal_standard");
+   public static final axt<dgh> F = a("has_structure/shipwreck_beached");
+   public static final axt<dgh> G = a("has_structure/shipwreck");
+   public static final axt<dgh> H = a("has_structure/stronghold");
+   public static final axt<dgh> I = a("has_structure/trial_chambers");
+   public static final axt<dgh> J = a("has_structure/swamp_hut");
+   public static final axt<dgh> K = a("has_structure/village_desert");
+   public static final axt<dgh> L = a("has_structure/village_plains");
+   public static final axt<dgh> M = a("has_structure/village_savanna");
+   public static final axt<dgh> N = a("has_structure/village_snowy");
+   public static final axt<dgh> O = a("has_structure/village_taiga");
+   public static final axt<dgh> P = a("has_structure/trail_ruins");
+   public static final axt<dgh> Q = a("has_structure/woodland_mansion");
+   public static final axt<dgh> R = a("has_structure/nether_fortress");
+   public static final axt<dgh> S = a("has_structure/nether_fossil");
+   public static final axt<dgh> T = a("has_structure/bastion_remnant");
+   public static final axt<dgh> U = a("has_structure/ancient_city");
+   public static final axt<dgh> V = a("has_structure/ruined_portal_nether");
+   public static final axt<dgh> W = a("has_structure/end_city");
+   public static final axt<dgh> X = a("required_ocean_monument_surrounding");
+   public static final axt<dgh> Y = a("mineshaft_blocking");
+   public static final axt<dgh> Z = a("plays_underwater_music");
+   public static final axt<dgh> aa = a("has_closer_water_fog");
+   public static final axt<dgh> ab = a("water_on_map_outlines");
+   public static final axt<dgh> ac = a("produces_corals_from_bonemeal");
+   public static final axt<dgh> ad = a("increased_fire_burnout");
+   public static final axt<dgh> ae = a("snow_golem_melts");
+   public static final axt<dgh> af = a("without_zombie_sieges");
+   public static final axt<dgh> ag = a("without_patrol_spawns");
+   public static final axt<dgh> ah = a("without_wandering_trader_spawns");
+   public static final axt<dgh> ai = a("spawns_cold_variant_frogs");
+   public static final axt<dgh> aj = a("spawns_warm_variant_frogs");
+   public static final axt<dgh> ak = a("spawns_gold_rabbits");
+   public static final axt<dgh> al = a("spawns_white_rabbits");
+   public static final axt<dgh> am = a("reduce_water_ambient_spawns");
+   public static final axt<dgh> an = a("allows_tropical_fish_spawns_at_any_height");
+   public static final axt<dgh> ao = a("polar_bears_spawn_on_alternate_blocks");
+   public static final axt<dgh> ap = a("more_frequent_drowned_spawns");
+   public static final axt<dgh> aq = a("allows_surface_slime_spawns");
+   public static final axt<dgh> ar = a("spawns_snow_foxes");
 
-   private static axq<bsw> a(String $$0) {
-      return axq.a(lz.s, ali.b($$0));
+   private axc() {
+   }
+
+   private static axt<dgh> a(String $$0) {
+      return axt.a(ma.aG, all.b($$0));
    }
 }

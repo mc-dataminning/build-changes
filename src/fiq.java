@@ -1,30 +1,19 @@
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public enum fiq implements azn {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class fiq {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   private static final IntFunction<fiq> d = ayb.a(fiq::b, values(), ayb.a.b);
-   private final int e;
-   private final String f;
-
-   private fiq(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static fiq a(int $$0) {
-      return d.apply($$0);
+   public static void a(long $$0, @Nullable String $$1) {
+      a.put($$0, $$1);
    }
 }

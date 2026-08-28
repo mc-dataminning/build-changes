@@ -1,5 +1,5 @@
-public class fzg extends fym<gut> {
-   public fzg(gbm $$0) {
+public class fzg extends fxt<gxs> {
+   public fzg(gcc $$0) {
       super($$0);
    }
 }

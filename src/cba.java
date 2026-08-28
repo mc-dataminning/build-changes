@@ -1,102 +1,59 @@
-import java.util.Optional;
+public class cba implements cbb {
+   private final bvg a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class cba implements cax {
-   protected final bvc a;
-   protected float b;
-   protected float c;
-   protected int d;
-   protected double e;
-   protected double f;
-   protected double g;
-
-   public cba(bvc $$0) {
+   public cba(bvg $$0) {
       this.a = $$0;
    }
 
-   public void a(ezn $$0) {
-      this.a($$0.d, $$0.e, $$0.f);
-   }
-
-   public void a(bue $$0) {
-      this.a($$0.dC(), b($$0), $$0.dI());
-   }
-
-   public void a(bue $$0, float $$1, float $$2) {
-      this.a($$0.dC(), b($$0), $$0.dI(), $$1, $$2);
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.ah(), (float)this.a.ad());
-   }
-
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = 2;
-   }
-
    public void a() {
-      if (this.c()) {
-         this.a.w(0.0F);
-      }
-
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0 -> this.a.aZ = this.a(this.a.aZ, $$0, this.b));
-         this.h().ifPresent($$0 -> this.a.w(this.a(this.a.dP(), $$0, this.c)));
+      if (this.f()) {
+         this.a.aX = this.a.dO();
+         this.c();
+         this.f = this.a.aZ;
+         this.e = 0;
       } else {
-         this.a.aZ = this.a(this.a.aZ, this.a.aX, 10.0F);
+         if (this.e()) {
+            if (Math.abs(this.a.aZ - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aZ;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
+         }
       }
-
-      this.b();
    }
 
-   protected void b() {
-      if (!this.a.P().m()) {
-         this.a.aZ = azk.c(this.a.aZ, this.a.aX, (float)this.a.ae());
-      }
+   private void b() {
+      this.a.aX = azn.c(this.a.aX, this.a.aZ, (float)this.a.ae());
    }
 
-   protected boolean c() {
-      return true;
+   private void c() {
+      this.a.aZ = azn.c(this.a.aZ, this.a.aX, (float)this.a.ae());
    }
 
-   public boolean d() {
-      return this.d > 0;
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = azn.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ae() * (1.0F - $$1);
+      this.a.aX = azn.c(this.a.aX, this.a.aZ, $$2);
    }
 
-   public double e() {
-      return this.e;
+   private boolean e() {
+      return !(this.a.dc() instanceof bvg);
    }
 
-   public double f() {
-      return this.f;
-   }
-
-   public double g() {
-      return this.g;
-   }
-
-   protected Optional<Float> h() {
-      double $$0 = this.e - this.a.dC();
-      double $$1 = this.f - this.a.dG();
-      double $$2 = this.g - this.a.dI();
-      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(azk.d($$1, $$3) * 180.0F / (float)Math.PI)));
-   }
-
-   protected Optional<Float> i() {
-      double $$0 = this.e - this.a.dC();
-      double $$1 = this.g - this.a.dI();
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
-         ? Optional.empty()
-         : Optional.of((float)(azk.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
-   }
-
-   private static double b(bue $$0) {
-      return $$0 instanceof bva ? $$0.dG() : ($$0.cS().b + $$0.cS().e) / 2.0;
+   private boolean f() {
+      double $$0 = this.a.dD() - this.a.L;
+      double $$1 = this.a.dJ() - this.a.N;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

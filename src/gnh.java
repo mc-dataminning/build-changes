@@ -1,23 +1,44 @@
-public class gnh extends gnf<cia, gtt, fxg> {
-   private static final ali a = ali.b("textures/entity/armadillo.png");
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public gnh(gok.a $$0) {
-      super($$0, new fxg($$0.a(gbl.b)), new fxg($$0.a(gbl.c)), 0.4F);
+public class gnh implements gmx.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fjx c;
+   private Collection<jh> d = Lists.newArrayList();
+
+   public gnh(fjx $$0) {
+      this.c = $$0;
    }
 
-   public ali a(gtt $$0) {
-      return a;
+   public void a(Collection<jh> $$0) {
+      this.d = $$0;
    }
 
-   public gtt a() {
-      return new gtt();
+   @Override
+   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = this.b().c();
+
+      for (jh $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
    }
 
-   public void a(cia $$0, gtt $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.y();
-      $$1.d.a($$0.ce);
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
+   private static void a(fek $$0, gix $$1, jh $$2) {
+      gmx.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fek $$0, gix $$1, String $$2, jh $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gmx.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fjg b() {
+      return this.c.j.k();
    }
 }

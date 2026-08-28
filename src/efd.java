@@ -1,73 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class efd extends eel<egu> {
-   public efd(Codec<egu> $$0) {
+public class efd extends eep<eha> {
+   public efd(Codec<eha> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(een<egu> $$0) {
-      dfy $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      azs $$3 = $$0.d();
-      egu $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<jm> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            jh.a $$6 = $$2.k();
+   public boolean a(eer<eha> $$0) {
+      int $$1 = 0;
+      dgd $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      azv $$4 = $$0.d();
+      int $$5 = $$2.a(ebj.a.d, $$3.u(), $$3.w());
+      jh $$6 = new jh($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(dil.G)) {
+         dvo $$7 = dil.mc.m();
+         dvo $$8 = dil.md.m();
+         int $$9 = 1 + $$4.a(10);
 
-            for (jm $$7 : $$5) {
-               $$6.g($$2);
-               List<jm> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dvj $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(dil.G) && $$2.a_($$6.d()).a(dil.G) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.b(dmm.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
                }
+            } else if ($$10 > 0) {
+               jh $$11 = $$6.e();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dil.mc)) {
+                  $$2.a($$11, $$7.b(dmm.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
             }
 
-            return false;
-         }
-      }
-   }
-
-   public static boolean a(dfy $$0, jh $$1, dvj $$2, egu $$3, azs $$4, List<jm> $$5) {
-      jh.a $$6 = $$1.k();
-
-      for (jm $$7 : $$5) {
-         dvj $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dvj $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
+            $$6 = $$6.d();
          }
       }
 
-      return false;
-   }
-
-   private static boolean c(dvj $$0) {
-      return $$0.l() || $$0.a(dig.G);
+      return $$1 > 0;
    }
 }

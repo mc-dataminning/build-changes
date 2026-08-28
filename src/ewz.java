@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class ewz<T> {
+   private final all a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ewz {
+   public ewz(all $$0) {
+      this.a = $$0;
+   }
+
+   public all a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<parameter " + this.a + ">";
+   }
 }

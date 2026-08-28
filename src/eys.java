@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eys {
-   @Nullable
-   far a(euc var1);
-
-   eyr a();
-
-   Set<ewv<?>> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eys {
 }

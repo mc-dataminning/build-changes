@@ -1,35 +1,59 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class gyk {
-   private static final BiMap<ali, gyj> i = HashBiMap.create();
-   public static final gyj a = a("single", gyp.b);
-   public static final gyj b = a("directory", gym.b);
-   public static final gyj c = a("filter", gyq.b);
-   public static final gyj d = a("unstitch", gyr.b);
-   public static final gyj e = a("paletted_permutations", gyo.b);
-   public static Codec<gyj> f = ali.a.flatXmap($$0 -> {
-      gyj $$1 = (gyj)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      ali $$1 = (ali)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gyh> g = f.dispatch(gyh::a, gyj::a);
-   public static Codec<List<gyh>> h = g.listOf().fieldOf("sources").codec();
+public class gyk implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final gyg f = new gyg(16, 16, false);
 
-   private static gyj a(String $$0, MapCodec<? extends gyh> $$1) {
-      gyj $$2 = new gyj($$1);
-      ali $$3 = ali.b($$0);
-      gyj $$4 = (gyj)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   public gyk() {
+      fdk $$0 = this.f.f();
+
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1291911168);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, axy.c($$3, -1));
+            }
+         }
       }
+
+      RenderSystem.activeTexture(33985);
+      this.f.d();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
+   }
+
+   @Override
+   public void close() {
+      this.f.close();
+   }
+
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f.a(), 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

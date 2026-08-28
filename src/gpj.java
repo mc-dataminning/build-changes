@@ -1,25 +1,23 @@
-public class gpj extends goj<ckp, gun> {
-   private static final ali a = ali.b("textures/entity/lead_knot.png");
-   private final fzb b;
-
-   public gpj(gok.a $$0) {
-      super($$0);
-      this.b = new fzb($$0.a(gbl.bb));
+public class gpj extends gqg<cip, gvn, fze> {
+   public gpj(gpa.a $$0) {
+      super($$0, new fze($$0.a(gcb.aB)), 0.3F);
    }
 
-   @Override
-   public void a(gun $$0, feb $$1, gih $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      this.b.a($$0);
-      fef $$4 = $$2.getBuffer(this.b.a(a));
-      this.b.a($$1, $$4, $$3, gxu.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public all a(gvn $$0) {
+      return $$0.f;
    }
 
-   @Override
-   public gun b() {
-      return new gun();
+   public gvn c() {
+      return new gvn();
+   }
+
+   public void a(cip $$0, gvn $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.bo();
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.cd);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.cf);
+      $$1.f = $$0.y().a().a();
    }
 }

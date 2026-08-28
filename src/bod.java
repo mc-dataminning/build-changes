@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.brigadier.StringReader;
+import java.util.stream.Stream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bod {
+public interface bod extends bny<StringReader> {
+   Stream<all> a();
+
+   @Override
+   default Stream<String> possibleValues(bnv<StringReader> $$0) {
+      return this.a().map(all::toString);
+   }
 }

@@ -1,53 +1,20 @@
-public class aiq implements zp<agv> {
-   public static final zg<wf, aiq> a = zp.a(aiq::a, aiq::new);
-   private static final int b = 384;
-   private final jh c;
-   private final String[] d;
-   private final boolean e;
+public record aiq(short b, cwf c) implements zs<agy> {
+   public static final zj<ww, aiq> a = zj.a(zh.e, aiq::b, cwf.a(cwf.h), aiq::e, aiq::new);
 
-   public aiq(jh $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new String[]{$$2, $$3, $$4, $$5};
-   }
-
-   private aiq(wf $$0) {
-      this.c = $$0.e();
-      this.e = $$0.readBoolean();
-      this.d = new String[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.d(384);
-      }
-   }
-
-   private void a(wf $$0) {
-      $$0.a(this.c);
-      $$0.a(this.e);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.d[$$1]);
-      }
+   public aiq(int $$0, cwf $$1) {
+      this((short)$$0, $$1);
    }
 
    @Override
-   public zr<aiq> a() {
-      return agt.cc;
+   public zu<aiq> a() {
+      return agw.bZ;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
+   public cwf e() {
       return this.c;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public String[] f() {
-      return this.d;
    }
 }

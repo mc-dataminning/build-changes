@@ -1,35 +1,47 @@
-import java.net.InetSocketAddress;
+import javax.annotation.Nullable;
 
-public interface gdy {
-   String a();
+public enum gdy {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   String b();
+   private final xl n;
 
-   int c();
+   private gdy(final String $$0) {
+      this.n = xl.c("gui.banned.reason." + $$0);
+   }
 
-   InetSocketAddress d();
+   public xl a() {
+      return this.n;
+   }
 
-   static gdy a(final InetSocketAddress $$0) {
-      return new gdy() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
+   @Nullable
+   public static gdy a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
       };
    }
 }

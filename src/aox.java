@@ -2,12 +2,14 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class aox {
-   public static void a(CommandDispatcher<ew> $$0, boolean $$1) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
-         long $$1x = ((ew)$$0x.getSource()).e().C();
-         xi $$2 = xl.a(String.valueOf($$1x));
-         ((ew)$$0x.getSource()).a(() -> xi.a("commands.seed.success", $$2), false);
-         return (int)$$1x;
-      }));
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("say").requires($$0x -> $$0x.c(2))).then(ex.a("message", fn.a()).executes($$0x -> {
+         fn.a($$0x, "message", $$1 -> {
+            ew $$2 = (ew)$$0x.getSource();
+            avr $$3 = $$2.l().ag();
+            $$3.a($$1, $$2, xh.a(xh.f, $$2));
+         });
+         return 1;
+      })));
    }
 }

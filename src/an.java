@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public enum an implements bag {
+public enum an implements baj {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<an> d = bag.a(an::values);
+   public static final Codec<an> d = baj.a(an::values);
    private final String e;
    private final n f;
-   private final xi g;
+   private final xl g;
 
    private an(final String $$0, final n $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = xi.c("advancements.toast." + $$0);
+      this.g = xl.c("advancements.toast." + $$0);
    }
 
    public n a() {
       return this.f;
    }
 
-   public xi b() {
+   public xl b() {
       return this.g;
    }
 
@@ -29,7 +29,7 @@ public enum an implements bag {
       return this.e;
    }
 
-   public xw a(ah $$0, aro $$1) {
-      return xi.a("chat.type.advancement." + this.e, $$1.S_(), ag.a($$0));
+   public xz a(ah $$0, arr $$1) {
+      return xl.a("chat.type.advancement." + this.e, $$1.S_(), ag.a($$0));
    }
 }

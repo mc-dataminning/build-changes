@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fdv<T> {
+   T e();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fbp
-@fbo
-interface fdv {
+   void a(T var1);
 }

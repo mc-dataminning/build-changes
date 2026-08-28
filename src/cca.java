@@ -1,86 +1,81 @@
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cca extends ccv {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class cca extends ccc {
+   private final bwb a;
+   @Nullable
+   private bve b;
+   private final double c;
+   private final ceq d;
+   private int e;
+   private final float f;
+   private final float g;
+   private float h;
 
-   public cca(bvi $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public cca(bwb $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = $$0.P();
+      this.g = $$2;
+      this.f = $$3;
+      this.a(EnumSet.of(ccc.a.a, ccc.a.b));
+      if (!($$0.P() instanceof cep) && !($$0.P() instanceof ceo)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+      }
    }
 
-   @Nullable
    @Override
-   protected ezn h() {
-      float $$0 = this.b.dX().A.i();
-      if (this.b.dX().A.i() < 0.3F) {
-         return this.k();
-      } else {
-         ezn $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
-         }
-
-         return $$1 == null ? this.k() : $$1;
-      }
-   }
-
-   @Nullable
-   private ezn k() {
-      return cfy.a(this.b, 10, 7);
-   }
-
-   @Nullable
-   private ezn l() {
-      arn $$0 = (arn)this.b.dX();
-      List<cny> $$1 = $$0.a(bul.bj, this.b.cS().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cny $$2 = $$1.get(this.b.dX().A.a($$1.size()));
-         ezn $$3 = $$2.dv();
-         return cfy.a(this.b, 10, 7, $$3);
-      }
-   }
-
-   @Nullable
-   private ezn m() {
-      kj $$0 = this.n();
+   public boolean b() {
+      bve $$0 = this.a.T_();
       if ($$0 == null) {
-         return null;
+         return false;
+      } else if (this.a.gy()) {
+         return false;
+      } else if (this.a.g((bui)$$0) < (double)(this.g * this.g)) {
+         return false;
       } else {
-         jh $$1 = this.a($$0);
-         return $$1 == null ? null : cfy.a(this.b, 10, 7, ezn.c($$1));
+         this.b = $$0;
+         return true;
       }
    }
 
-   @Nullable
-   private kj n() {
-      arn $$0 = (arn)this.b.dX();
-      List<kj> $$1 = kj.a(kj.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   @Override
+   public boolean c() {
+      if (this.d.m()) {
+         return false;
+      } else {
+         return this.a.gy() ? false : !(this.a.g((bui)this.b) <= (double)(this.f * this.f));
+      }
    }
 
-   @Nullable
-   private jh a(kj $$0) {
-      arn $$1 = (arn)this.b.dX();
-      cge $$2 = $$1.y();
-      List<jh> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cge.b.b).map(cgf::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   @Override
+   public void d() {
+      this.e = 0;
+      this.h = this.a.a(esf.j);
+      this.a.a(esf.j, 0.0F);
    }
 
-   private boolean a(cny $$0) {
-      return $$0.a(this.b.dX().aa());
+   @Override
+   public void e() {
+      this.b = null;
+      this.d.o();
+      this.a.a(esf.j, this.h);
+   }
+
+   @Override
+   public void a() {
+      boolean $$0 = this.a.gx();
+      if (!$$0) {
+         this.a.K().a(this.b, 10.0F, (float)this.a.ad());
+      }
+
+      if (--this.e <= 0) {
+         this.e = this.a(10);
+         if ($$0) {
+            this.a.gw();
+         } else {
+            this.d.a(this.b, this.c);
+         }
+      }
    }
 }

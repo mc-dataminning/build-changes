@@ -1,11 +1,7 @@
 import javax.annotation.Nullable;
 
-public class gwh extends gvl {
-   public ezn a = ezn.c;
+public class gwh extends gvd {
    @Nullable
-   public cuy b;
-   public float c;
-   public float d;
-   public float e;
-   public jm f = jm.a;
+   public hav a;
+   public cwf b = cwf.k;
 }

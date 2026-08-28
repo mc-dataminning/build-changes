@@ -1,142 +1,249 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class dik extends die implements dil {
-   public static final MapCodec<dik> a = b(dik::new);
-   public static final dwa b = dvz.e;
-   private static final int c = 5;
+public class dik {
+   public static final MapCodec<dij> a = lz.ae.q().dispatchMap(dij::a, Function.identity());
 
-   @Override
-   public MapCodec<dik> a() {
-      return a;
-   }
-
-   public dik(dvi.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected void a(dvj $$0, dfb $$1, jh $$2, bue $$3) {
-      dvj $$4 = $$1.a_($$2.d());
-      if ($$4.l()) {
-         $$3.l($$0.c(b));
-         if (!$$1.C) {
-            arn $$5 = (arn)$$1;
-
-            for (int $$6 = 0; $$6 < 2; $$6++) {
-               $$5.a(lr.am, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
-               $$5.a(lr.d, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.01, 0.0, 0.2);
-            }
-         }
-      } else {
-         $$3.m($$0.c(b));
-      }
-   }
-
-   @Override
-   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
-      a($$1, $$2, $$0, $$1.a_($$2.e()));
-   }
-
-   @Override
-   protected erk b_(dvj $$0) {
-      return erl.c.a(false);
-   }
-
-   public static void b(dfc $$0, jh $$1, dvj $$2) {
-      a($$0, $$1, $$0.a_($$1), $$2);
-   }
-
-   public static void a(dfc $$0, jh $$1, dvj $$2, dvj $$3) {
-      if (o($$2)) {
-         dvj $$4 = q($$3);
-         $$0.a($$1, $$4, 2);
-         jh.a $$5 = $$1.k().c(jm.b);
-
-         while (o($$0.a_($$5))) {
-            if (!$$0.a($$5, $$4, 2)) {
-               return;
-            }
-
-            $$5.c(jm.b);
-         }
-      }
-   }
-
-   private static boolean o(dvj $$0) {
-      return $$0.a(dig.nd) || $$0.a(dig.G) && $$0.y().e() >= 8 && $$0.y().b();
-   }
-
-   private static dvj q(dvj $$0) {
-      if ($$0.a(dig.nd)) {
-         return $$0;
-      } else if ($$0.a(dig.dW)) {
-         return dig.nd.m().b(b, Boolean.valueOf(false));
-      } else {
-         return $$0.a(dig.kJ) ? dig.nd.m().b(b, Boolean.valueOf(true)) : dig.G.m();
-      }
-   }
-
-   @Override
-   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
-      double $$4 = (double)$$2.u();
-      double $$5 = (double)$$2.v();
-      double $$6 = (double)$$2.w();
-      if ($$0.c(b)) {
-         $$1.b(lr.ap, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, awl.da, awm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      } else {
-         $$1.b(lr.aq, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
-         $$1.b(lr.aq, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, awl.cY, awm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      $$3.a($$4, erl.c, erl.c.a($$3));
-      if (!$$0.a($$3, $$4) || $$1 == jm.a || $$1 == jm.b && !$$2.a(dig.nd) && o($$2)) {
-         $$3.a($$4, this, 5);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
-      dvj $$3 = $$1.a_($$2.e());
-      return $$3.a(dig.nd) || $$3.a(dig.kJ) || $$3.a(dig.dW);
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      return fae.a();
-   }
-
-   @Override
-   protected dok a_(dvj $$0) {
-      return dok.a;
-   }
-
-   @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cwb a(@Nullable com $$0, dfc $$1, jh $$2, dvj $$3) {
-      $$1.a($$2, dig.a.m(), 11);
-      return new cwb(cwf.qA);
-   }
-
-   @Override
-   public Optional<awk> at_() {
-      return erl.c.j();
+   public static MapCodec<? extends dij> a(kd<MapCodec<? extends dij>> $$0) {
+      kd.a($$0, "block", dij.p);
+      kd.a($$0, "air", dhg.a);
+      kd.a($$0, "amethyst", dhh.a);
+      kd.a($$0, "amethyst_cluster", dhi.b);
+      kd.a($$0, "anvil", dhj.a);
+      kd.a($$0, "attached_stem", dhk.a);
+      kd.a($$0, "azalea", dhl.a);
+      kd.a($$0, "bamboo_sapling", dhm.a);
+      kd.a($$0, "bamboo_stalk", dhn.a);
+      kd.a($$0, "banner", dho.a);
+      kd.a($$0, "barrel", dhp.a);
+      kd.a($$0, "barrier", dhq.a);
+      kd.a($$0, "base_coral_fan", dhr.a);
+      kd.a($$0, "base_coral_plant", dhs.a);
+      kd.a($$0, "base_coral_wall_fan", dhu.b);
+      kd.a($$0, "beacon", dib.a);
+      kd.a($$0, "bed", dic.a);
+      kd.a($$0, "beehive", did.a);
+      kd.a($$0, "beetroot", die.a);
+      kd.a($$0, "bell", dif.a);
+      kd.a($$0, "big_dripleaf", dig.a);
+      kd.a($$0, "big_dripleaf_stem", dih.a);
+      kd.a($$0, "blast_furnace", dii.c);
+      kd.a($$0, "brewing_stand", din.a);
+      kd.a($$0, "brushable", dio.a);
+      kd.a($$0, "bubble_column", dip.a);
+      kd.a($$0, "budding_amethyst", dir.b);
+      kd.a($$0, "button", dit.a);
+      kd.a($$0, "cactus", diu.a);
+      kd.a($$0, "cake", div.a);
+      kd.a($$0, "calibrated_sculk_sensor", diw.a);
+      kd.a($$0, "campfire", dix.a);
+      kd.a($$0, "candle_cake", diz.c);
+      kd.a($$0, "candle", diy.c);
+      kd.a($$0, "carpet", dja.a);
+      kd.a($$0, "carrot", djb.a);
+      kd.a($$0, "cartography_table", djc.a);
+      kd.a($$0, "cauldron", dje.d);
+      kd.a($$0, "cave_vines", djg.c);
+      kd.a($$0, "cave_vines_plant", djh.c);
+      kd.a($$0, "ceiling_hanging_sign", dji.a);
+      kd.a($$0, "chain", djj.a);
+      kd.a($$0, "cherry_leaves", djl.a);
+      kd.a($$0, "chest", djm.b);
+      kd.a($$0, "chiseled_book_shelf", djn.a);
+      kd.a($$0, "chorus_flower", djo.a);
+      kd.a($$0, "chorus_plant", djp.a);
+      kd.a($$0, "cocoa", djq.a);
+      kd.a($$0, "colored_falling", djr.a);
+      kd.a($$0, "command", djs.a);
+      kd.a($$0, "comparator", djt.a);
+      kd.a($$0, "composter", dju.a);
+      kd.a($$0, "concrete_powder", djv.a);
+      kd.a($$0, "conduit", djw.a);
+      kd.a($$0, "copper_bulb_block", djx.a);
+      kd.a($$0, "coral", djy.b);
+      kd.a($$0, "coral_fan", djz.b);
+      kd.a($$0, "coral_plant", dka.a);
+      kd.a($$0, "coral_wall_fan", dkb.e);
+      kd.a($$0, "crafter", dkc.a);
+      kd.a($$0, "crafting_table", dkd.a);
+      kd.a($$0, "crop", dke.d);
+      kd.a($$0, "crying_obsidian", dkg.a);
+      kd.a($$0, "daylight_detector", dkh.a);
+      kd.a($$0, "dead_bush", dki.a);
+      kd.a($$0, "decorated_pot", dkj.a);
+      kd.a($$0, "detector_rail", dkk.d);
+      kd.a($$0, "dirt_path", dkn.a);
+      kd.a($$0, "dispenser", dko.a);
+      kd.a($$0, "door", dkp.a);
+      kd.a($$0, "double_plant", dkr.a);
+      kd.a($$0, "dragon_egg", dks.a);
+      kd.a($$0, "drop_experience", dkt.a);
+      kd.a($$0, "dropper", dku.e);
+      kd.a($$0, "enchantment_table", dkv.a);
+      kd.a($$0, "ender_chest", dla.b);
+      kd.a($$0, "end_gateway", dkw.a);
+      kd.a($$0, "end_portal", dkx.a);
+      kd.a($$0, "end_portal_frame", dky.a);
+      kd.a($$0, "end_rod", dkz.b);
+      kd.a($$0, "farm", dlf.a);
+      kd.a($$0, "fence", dlg.i);
+      kd.a($$0, "fence_gate", dlh.a);
+      kd.a($$0, "fire", dli.c);
+      kd.a($$0, "fletching_table", dlj.b);
+      kd.a($$0, "flower", dlk.b);
+      kd.a($$0, "flower_pot", dll.a);
+      kd.a($$0, "frogspawn", dlm.a);
+      kd.a($$0, "frosted_ice", dln.a);
+      kd.a($$0, "fungus", dlo.a);
+      kd.a($$0, "furnace", dlp.c);
+      kd.a($$0, "glazed_terracotta", dlr.a);
+      kd.a($$0, "glow_lichen", dls.a);
+      kd.a($$0, "grass", dlt.a);
+      kd.a($$0, "grindstone", dlu.a);
+      kd.a($$0, "half_transparent", dly.d);
+      kd.a($$0, "hanging_roots", dlz.a);
+      kd.a($$0, "hay", dma.a);
+      kd.a($$0, "heavy_core", dmb.a);
+      kd.a($$0, "honey", dmc.a);
+      kd.a($$0, "hopper", dmd.a);
+      kd.a($$0, "huge_mushroom", dmf.a);
+      kd.a($$0, "ice", dmg.e);
+      kd.a($$0, "infested", dmh.a);
+      kd.a($$0, "infested_rotated_pillar", dmi.b);
+      kd.a($$0, "iron_bars", dmj.i);
+      kd.a($$0, "jack_o_lantern", djd.a);
+      kd.a($$0, "jigsaw", dmk.a);
+      kd.a($$0, "jukebox", dml.a);
+      kd.a($$0, "kelp", dmm.c);
+      kd.a($$0, "kelp_plant", dmn.c);
+      kd.a($$0, "ladder", dmo.a);
+      kd.a($$0, "lantern", dmp.a);
+      kd.a($$0, "lava_cauldron", dmq.d);
+      kd.a($$0, "layered_cauldron", dmr.d);
+      kd.a($$0, "leaves", dms.b);
+      kd.a($$0, "lectern", dmt.a);
+      kd.a($$0, "lever", dmv.a);
+      kd.a($$0, "light", dmw.a);
+      kd.a($$0, "lightning_rod", dmx.b);
+      kd.a($$0, "liquid", dmy.a);
+      kd.a($$0, "loom", dna.a);
+      kd.a($$0, "magma", dnb.a);
+      kd.a($$0, "mangrove_leaves", dnc.a);
+      kd.a($$0, "mangrove_propagule", dnd.a);
+      kd.a($$0, "mangrove_roots", dne.a);
+      kd.a($$0, "moss", dng.a);
+      kd.a($$0, "moving_piston", dvg.a);
+      kd.a($$0, "mud", dnh.a);
+      kd.a($$0, "mushroom", dnk.a);
+      kd.a($$0, "mycelium", dnl.a);
+      kd.a($$0, "nether_portal", dnm.a);
+      kd.a($$0, "netherrack", dnq.a);
+      kd.a($$0, "nether_sprouts", dnn.a);
+      kd.a($$0, "nether_wart", dnp.a);
+      kd.a($$0, "note", dnr.a);
+      kd.a($$0, "nylium", dns.a);
+      kd.a($$0, "observer", dnt.b);
+      kd.a($$0, "piglinwallskull", dnu.b);
+      kd.a($$0, "pink_petals", dnv.a);
+      kd.a($$0, "piston_base", dvh.b);
+      kd.a($$0, "piston_head", dvi.b);
+      kd.a($$0, "pitcher_crop", dnx.c);
+      kd.a($$0, "player_head", dny.b);
+      kd.a($$0, "player_wall_head", dnz.b);
+      kd.a($$0, "pointed_dripstone", doa.a);
+      kd.a($$0, "potato", doc.a);
+      kd.a($$0, "powder_snow", dod.a);
+      kd.a($$0, "powered", doe.a);
+      kd.a($$0, "powered_rail", dof.d);
+      kd.a($$0, "pressure_plate", dog.e);
+      kd.a($$0, "pumpkin", doh.a);
+      kd.a($$0, "rail", doi.d);
+      kd.a($$0, "redstone_lamp", dom.a);
+      kd.a($$0, "redstone_ore", dok.a);
+      kd.a($$0, "redstone_torch", don.c);
+      kd.a($$0, "redstone_wall_torch", doo.h);
+      kd.a($$0, "redstone_wire", dol.a);
+      kd.a($$0, "repeater", doq.a);
+      kd.a($$0, "respawn_anchor", dor.a);
+      kd.a($$0, "rooted_dirt", dot.a);
+      kd.a($$0, "roots", dou.a);
+      kd.a($$0, "rotated_pillar", dov.h);
+      kd.a($$0, "sapling", dox.e);
+      kd.a($$0, "scaffolding", doy.a);
+      kd.a($$0, "sculk_catalyst", dpb.a);
+      kd.a($$0, "sculk", dpa.b);
+      kd.a($$0, "sculk_sensor", dpc.c);
+      kd.a($$0, "sculk_shrieker", dpd.a);
+      kd.a($$0, "sculk_vein", dpf.c);
+      kd.a($$0, "seagrass", dph.a);
+      kd.a($$0, "sea_pickle", dpg.a);
+      kd.a($$0, "shulker_box", dpi.a);
+      kd.a($$0, "skull", dpl.c);
+      kd.a($$0, "slab", dpm.a);
+      kd.a($$0, "slime", dpn.a);
+      kd.a($$0, "small_dripleaf", dpo.c);
+      kd.a($$0, "smithing_table", dpp.b);
+      kd.a($$0, "smoker", dpq.c);
+      kd.a($$0, "sniffer_egg", dpr.a);
+      kd.a($$0, "snow_layer", dps.a);
+      kd.a($$0, "snowy_dirt", dpt.b);
+      kd.a($$0, "soul_fire", dpu.c);
+      kd.a($$0, "soul_sand", dpv.a);
+      kd.a($$0, "spawner", dpx.a);
+      kd.a($$0, "sponge", dpy.a);
+      kd.a($$0, "spore_blossom", dpz.a);
+      kd.a($$0, "stained_glass_pane", dqc.j);
+      kd.a($$0, "stained_glass", dqb.a);
+      kd.a($$0, "stair", dqd.a);
+      kd.a($$0, "standing_sign", dqe.a);
+      kd.a($$0, "stem", dqf.a);
+      kd.a($$0, "stonecutter", dqg.a);
+      kd.a($$0, "structure", dqh.a);
+      kd.a($$0, "structure_void", dqi.a);
+      kd.a($$0, "sugar_cane", dqj.a);
+      kd.a($$0, "sweet_berry_bush", dqm.a);
+      kd.a($$0, "tall_flower", dqn.c);
+      kd.a($$0, "tall_grass", dqo.a);
+      kd.a($$0, "tall_seagrass", dqp.c);
+      kd.a($$0, "target", dqq.a);
+      kd.a($$0, "tinted_glass", dqr.a);
+      kd.a($$0, "tnt", dqs.a);
+      kd.a($$0, "torchflower_crop", dqu.a);
+      kd.a($$0, "torch", dqt.d);
+      kd.a($$0, "transparent", dqv.b);
+      kd.a($$0, "trapdoor", dqw.a);
+      kd.a($$0, "trapped_chest", dqx.n);
+      kd.a($$0, "trial_spawner", dqy.a);
+      kd.a($$0, "trip_wire_hook", dra.a);
+      kd.a($$0, "tripwire", dqz.a);
+      kd.a($$0, "turtle_egg", drb.a);
+      kd.a($$0, "twisting_vines_plant", drd.c);
+      kd.a($$0, "twisting_vines", drc.c);
+      kd.a($$0, "vault", dre.a);
+      kd.a($$0, "vine", drf.a);
+      kd.a($$0, "wall_banner", drg.a);
+      kd.a($$0, "wall_hanging_sign", dri.a);
+      kd.a($$0, "wall_sign", drj.a);
+      kd.a($$0, "wall_skull", drk.c);
+      kd.a($$0, "wall_torch", drl.f);
+      kd.a($$0, "wall", drh.a);
+      kd.a($$0, "waterlily", drm.a);
+      kd.a($$0, "waterlogged_transparent", drn.a);
+      kd.a($$0, "weathering_copper_bulb", drp.d);
+      kd.a($$0, "weathering_copper_door", drq.l);
+      kd.a($$0, "weathering_copper_full", drr.d);
+      kd.a($$0, "weathering_copper_grate", drs.e);
+      kd.a($$0, "weathering_copper_slab", drt.f);
+      kd.a($$0, "weathering_copper_stair", dru.J);
+      kd.a($$0, "weathering_copper_trap_door", drv.m);
+      kd.a($$0, "web", drw.a);
+      kd.a($$0, "weeping_vines_plant", dry.c);
+      kd.a($$0, "weeping_vines", drx.c);
+      kd.a($$0, "weighted_pressure_plate", drz.e);
+      kd.a($$0, "wet_sponge", dsa.a);
+      kd.a($$0, "wither_rose", dsb.e);
+      kd.a($$0, "wither_skull", dsc.b);
+      kd.a($$0, "wither_wall_skull", dsd.b);
+      return kd.a($$0, "wool_carpet", dse.c);
    }
 }

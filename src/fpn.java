@@ -1,45 +1,26 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+import java.util.function.Consumer;
 
-public enum fpn {
-   a,
-   b,
-   c,
-   d;
+public interface fpn {
+   void m(int var1);
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+   void n(int var1);
 
-   public fpm a() {
-      return switch (this) {
-         case a, b -> fpm.b;
-         case c, d -> fpm.a;
-      };
+   int D();
+
+   int E();
+
+   int y();
+
+   int w();
+
+   default fqe H() {
+      return new fqe(this.D(), this.E(), this.y(), this.w());
    }
 
-   public fpn b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   default void c(int $$0, int $$1) {
+      this.m($$0);
+      this.n($$1);
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
-   }
+   void a(Consumer<flu> var1);
 }

@@ -1,118 +1,40 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import org.jetbrains.annotations.Nullable;
 
-public class aru extends aqx {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<bac<ars<?>>> d = new Long2ObjectOpenHashMap();
+public class aru extends aqy {
+   private final LongSet c = new LongOpenHashSet();
+   private final int d;
+   private final String e;
 
-   public aru() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
-   }
-
-   private bac<ars<?>> g(long $$0) {
-      return (bac<ars<?>>)this.d.computeIfAbsent($$0, $$0x -> bac.a(4));
-   }
-
-   private int a(bac<ars<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, ars<?> $$1) {
-      bac<ars<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, ars<?> $$1) {
-      bac<ars<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(art<T> $$0, deh $$1, int $$2, T $$3) {
-      this.a($$1.a(), new ars<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(art<T> $$0, deh $$1, int $$2, T $$3) {
-      ars<T> $$4 = new ars<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<ars<deh>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<bac<ars<?>>> $$2 = (Entry<bac<ars<?>>>)var3.next();
-
-         for (ars<?> $$3 : (bac)$$2.getValue()) {
-            if ($$3.a() == art.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<ars<deh>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         ars<deh> $$6 = (ars<deh>)$$4.getFirst();
-         this.b($$5, $$6);
-         deh $$7 = new deh($$5);
-         art<deh> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
+   public aru(brc<Runnable> $$0, Executor $$1, int $$2) {
+      super($$0, $$1);
+      this.d = $$2;
+      this.e = $$0.x_();
    }
 
    @Override
-   protected int b(long $$0) {
-      bac<ars<?>> $$1 = (bac<ars<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
+   protected void a(long $$0) {
+      this.c.remove($$0);
    }
 
-   public int a(deh $$0) {
-      return this.c($$0.a());
+   @Nullable
+   @Override
+   protected aqz.a c() {
+      return this.c.size() < this.d ? super.c() : null;
    }
 
    @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
+   protected void a(aqz.a $$0) {
+      this.c.add($$0.a());
+      super.a($$0);
    }
 
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public LongSet a() {
-      return this.b.keySet();
-   }
-
-   public void b() {
-      this.b(Integer.MAX_VALUE);
-   }
-
-   public String d(long $$0) {
-      bac<ars<?>> $$1 = (bac<ars<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   @VisibleForTesting
+   public String d() {
+      return this.e + "=[" + this.c.stream().map($$0 -> $$0 + ":" + new del($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

@@ -1,63 +1,100 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cke<T extends cjy> {
-   private static cke<?>[] l = new cke[0];
-   public static final cke<cju> a = a(cju.class, "HoldingPattern");
-   public static final cke<ckc> b = a(ckc.class, "StrafePlayer");
-   public static final cke<cjw> c = a(cjw.class, "LandingApproach");
-   public static final cke<cjx> d = a(cjx.class, "Landing");
-   public static final cke<ckd> e = a(ckd.class, "Takeoff");
-   public static final cke<cka> f = a(cka.class, "SittingFlaming");
-   public static final cke<ckb> g = a(ckb.class, "SittingScanning");
-   public static final cke<cjz> h = a(cjz.class, "SittingAttacking");
-   public static final cke<cjs> i = a(cjs.class, "ChargingPlayer");
-   public static final cke<cjt> j = a(cjt.class, "Dying");
-   public static final cke<cjv> k = a(cjv.class, "Hover");
-   private final Class<? extends cjy> m;
-   private final int n;
-   private final String o;
+public class cke extends cjv {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bub g;
 
-   private cke(int $$0, Class<? extends cjy> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cjy a(cjo $$0) {
-      try {
-         Constructor<? extends cjy> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cjy> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cjo.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cke(cjs $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         ezr $$0 = this.a.J(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.d.dD();
+         double $$2 = this.a.d.e(0.5);
+         double $$3 = this.a.d.dJ();
+
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.eb().k() / 2.0;
+            double $$6 = $$2 + this.a.eb().k() / 2.0;
+            double $$7 = $$3 + this.a.eb().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dY().a(ls.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
+         }
+      }
    }
 
-   public static cke<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gs().a(cki.e);
+         } else {
+            this.a.gs().a(cki.g);
+         }
+      } else if (this.e == 10) {
+         ezr $$0 = new ezr(this.a.d.dD() - this.a.dD(), 0.0, this.a.d.dJ() - this.a.dJ()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.d.dD() + $$0.d * 5.0 / 2.0;
+         double $$3 = this.a.d.dJ() + $$0.f * 5.0 / 2.0;
+         double $$4 = this.a.d.e(0.5);
+         double $$5 = $$4;
+         jh.a $$6 = new jh.a($$2, $$4, $$3);
+
+         while (this.a.dY().u($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
+
+            $$6.b($$2, $$5, $$3);
+         }
+
+         $$5 = (double)(azn.a($$5) + 1);
+         this.g = new bub(this.a.dY(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(ls.h);
+         this.g.a(new btn(btp.g));
+         this.a.dY().b(this.g);
+      }
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public void d() {
+      this.e = 0;
+      this.f++;
    }
 
-   private static <T extends cjy> cke<T> a(Class<T> $$0, String $$1) {
-      cke<T> $$2 = new cke<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public void e() {
+      if (this.g != null) {
+         this.g.av();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public cki<cke> i() {
+      return cki.f;
+   }
+
+   public void j() {
+      this.f = 0;
    }
 }

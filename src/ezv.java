@@ -1,38 +1,20 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface ezv {
+   ezv a = ($$0, $$1) -> false;
+   ezv b = ($$0, $$1) -> !$$0 && !$$1;
+   ezv c = ($$0, $$1) -> $$1 && !$$0;
+   ezv d = ($$0, $$1) -> !$$0;
+   ezv e = ($$0, $$1) -> $$0 && !$$1;
+   ezv f = ($$0, $$1) -> !$$1;
+   ezv g = ($$0, $$1) -> $$0 != $$1;
+   ezv h = ($$0, $$1) -> !$$0 || !$$1;
+   ezv i = ($$0, $$1) -> $$0 && $$1;
+   ezv j = ($$0, $$1) -> $$0 == $$1;
+   ezv k = ($$0, $$1) -> $$1;
+   ezv l = ($$0, $$1) -> !$$0 || $$1;
+   ezv m = ($$0, $$1) -> $$0;
+   ezv n = ($$0, $$1) -> $$0 || !$$1;
+   ezv o = ($$0, $$1) -> $$0 || $$1;
+   ezv p = ($$0, $$1) -> true;
 
-public final class ezv implements ezz {
-   private final ezt a;
-   private final int b;
-   private final int c;
-
-   ezv(int $$0, int $$1) {
-      this.a = new ezt((int)fae.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
-   }
-
-   @Override
-   public boolean a(ezz.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

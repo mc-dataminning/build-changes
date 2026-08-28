@@ -1,31 +1,53 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cam<E extends cnp> extends bwt<E> {
-   public cam(int $$0) {
-      super(ImmutableMap.of(cee.o, cef.b, cee.m, cef.b), $$0);
-   }
+public interface cam<F extends K1, Value> {
+   cei<Value> a();
 
-   protected boolean a(arn $$0, E $$1, long $$2) {
-      return $$1.dT() == null;
-   }
+   cej b();
 
-   protected boolean a(arn $$0, E $$1) {
-      return $$1.aK() || $$1.bk() || $$1.by();
-   }
+   @Nullable
+   cal<F, Value> a(bwg<?> var1, Optional<Value> var2);
 
-   protected void b(arn $$0, E $$1, long $$2) {
-      if ($$1.aK()) {
-         $$1.b(bvm.o);
-         $$1.a(awl.BP, 5.0F, 1.0F);
-      } else {
-         $$1.a(awl.BK, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
+   public static record a<Value>(cei<Value> a) implements cam<Mu<Unit>, Value> {
+      @Override
+      public cej b() {
+         return cej.b;
+      }
+
+      @Override
+      public cal<Mu<Unit>, Value> a(bwg<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new cal<>($$0, this.a, Const.create(Unit.INSTANCE));
       }
    }
 
-   protected void c(arn $$0, E $$1, long $$2) {
-      if ($$1.dT() == null) {
-         $$1.a(bue.c.b);
+   public static record b<Value>(cei<Value> a) implements cam<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public cej b() {
+         return cej.a;
+      }
+
+      @Override
+      public cal<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bwg<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new cal<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
+
+   public static record c<Value>(cei<Value> a) implements cam<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public cej b() {
+         return cej.c;
+      }
+
+      @Override
+      public cal<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bwg<?> $$0, Optional<Value> $$1) {
+         return new cal<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

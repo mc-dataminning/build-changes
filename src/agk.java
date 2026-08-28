@@ -1,29 +1,46 @@
-public record agk(float b, boolean c) implements zp<ace> {
-   public static final zg<wf, agk> a = zp.a(agk::a, agk::new);
+import javax.annotation.Nullable;
 
-   private agk(wf $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+public class agk implements zs<ach> {
+   public static final zj<wi, agk> a = zs.a(agk::a, agk::new);
+   private final int b;
+   @Nullable
+   private final un c;
+
+   public agk(int $$0, @Nullable un $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static agk a(bsm $$0) {
-      return new agk($$0.f(), $$0.l());
+   private agk(wi $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wi $$0) {
+      $$0.c(this.b);
+      $$0.a((vk)this.c);
    }
 
    @Override
-   public zr<agk> a() {
-      return agt.ci;
+   public zu<agk> a() {
+      return agw.aY;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public un e() {
       return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

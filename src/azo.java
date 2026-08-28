@@ -1,109 +1,159 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.sun.jna.Memory;
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
+import com.sun.jna.platform.win32.Kernel32;
+import com.sun.jna.platform.win32.Kernel32Util;
+import com.sun.jna.platform.win32.Version;
+import com.sun.jna.platform.win32.Win32Exception;
+import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
+import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
+import java.nio.charset.StandardCharsets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class azo {
-   public static void a(dfb $$0, jh $$1, lp $$2, bri $$3) {
-      for (jm $$4 : jm.values()) {
-         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.A), 0.55);
-      }
-   }
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 65535;
+   private static final int c = 1033;
+   private static final int d = -65536;
+   private static final int e = 78643200;
 
-   public static void a(dfb $$0, jh $$1, lp $$2, bri $$3, jm $$4, Supplier<ezn> $$5, double $$6) {
-      int $$7 = $$3.a($$0.A);
+   public static List<azo.a> a() {
+      if (!Platform.isWindows()) {
+         return ImmutableList.of();
+      } else {
+         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
+         Builder<azo.a> $$1 = ImmutableList.builder();
 
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
-      }
-   }
-
-   private static ezn a(azs $$0) {
-      return new ezn(azk.a($$0, -0.5, 0.5), azk.a($$0, -0.5, 0.5), azk.a($$0, -0.5, 0.5));
-   }
-
-   public static void a(jm.a $$0, dfb $$1, jh $$2, double $$3, lp $$4, bro $$5) {
-      ezn $$6 = ezn.b($$2);
-      boolean $$7 = $$0 == jm.a.a;
-      boolean $$8 = $$0 == jm.a.b;
-      boolean $$9 = $$0 == jm.a.c;
-      int $$10 = $$5.a($$1.A);
-
-      for (int $$11 = 0; $$11 < $$10; $$11++) {
-         double $$12 = $$6.d + azk.a($$1.A, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
-         double $$13 = $$6.e + azk.a($$1.A, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
-         double $$14 = $$6.f + azk.a($$1.A, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
-         double $$15 = $$7 ? azk.a($$1.A, -1.0, 1.0) : 0.0;
-         double $$16 = $$8 ? azk.a($$1.A, -1.0, 1.0) : 0.0;
-         double $$17 = $$9 ? azk.a($$1.A, -1.0, 1.0) : 0.0;
-         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
-      }
-   }
-
-   public static void a(dfb $$0, jh $$1, jm $$2, lp $$3, ezn $$4, double $$5) {
-      ezn $$6 = ezn.b($$1);
-      int $$7 = $$2.j();
-      int $$8 = $$2.k();
-      int $$9 = $$2.l();
-      double $$10 = $$6.d + ($$7 == 0 ? azk.a($$0.A, -0.5, 0.5) : (double)$$7 * $$5);
-      double $$11 = $$6.e + ($$8 == 0 ? azk.a($$0.A, -0.5, 0.5) : (double)$$8 * $$5);
-      double $$12 = $$6.f + ($$9 == 0 ? azk.a($$0.A, -0.5, 0.5) : (double)$$9 * $$5);
-      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
-      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
-      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
-      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
-   }
-
-   public static void a(dfb $$0, jh $$1, azs $$2, lp $$3) {
-      double $$4 = (double)$$1.u() + $$2.j();
-      double $$5 = (double)$$1.v() - 0.05;
-      double $$6 = (double)$$1.w() + $$2.j();
-      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(dfc $$0, jh $$1, int $$2, lp $$3) {
-      double $$4 = 0.5;
-      dvj $$5 = $$0.a_($$1);
-      double $$6 = $$5.l() ? 1.0 : $$5.f($$0, $$1).c(jm.a.b);
-      a($$0, $$1, $$2, 0.5, $$6, true, $$3);
-   }
-
-   public static void a(dfc $$0, jh $$1, int $$2, double $$3, double $$4, boolean $$5, lp $$6) {
-      azs $$7 = $$0.E_();
-
-      for (int $$8 = 0; $$8 < $$2; $$8++) {
-         double $$9 = $$7.k() * 0.02;
-         double $$10 = $$7.k() * 0.02;
-         double $$11 = $$7.k() * 0.02;
-         double $$12 = 0.5 - $$3;
-         double $$13 = (double)$$1.u() + $$12 + $$7.j() * $$3 * 2.0;
-         double $$14 = (double)$$1.v() + $$7.j() * $$4;
-         double $$15 = (double)$$1.w() + $$12 + $$7.j() * $$3 * 2.0;
-         if ($$5 || !$$0.a_(jh.a($$13, $$14, $$15).e()).l()) {
-            $$0.a($$6, $$13, $$14, $$15, $$9, $$10, $$11);
+         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
+            String $$4 = $$3.szModule();
+            Optional<azo.b> $$5 = a($$3.szExePath());
+            $$1.add(new azo.a($$4, $$5));
          }
+
+         return $$1.build();
       }
    }
 
-   public static void a(dfc $$0, jh $$1, int $$2) {
-      ezn $$3 = $$1.b().b(0.0, 0.5, 0.0);
-      lj $$4 = new lj(lr.bb, $$0.a_($$1));
+   private static Optional<azo.b> a(String $$0) {
+      try {
+         IntByReference $$1 = new IntByReference();
+         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
+         if ($$2 == 0) {
+            int $$3 = Native.getLastError();
+            if ($$3 != 1813 && $$3 != 1812) {
+               throw new Win32Exception($$3);
+            } else {
+               return Optional.empty();
+            }
+         } else {
+            Pointer $$4 = new Memory((long)$$2);
+            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
+               throw new Win32Exception(Native.getLastError());
+            } else {
+               IntByReference $$5 = new IntByReference();
+               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
+               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
+               OptionalInt $$8 = a($$7);
+               if ($$8.isEmpty()) {
+                  return Optional.empty();
+               } else {
+                  int $$9 = $$8.getAsInt();
+                  int $$10 = $$9 & 65535;
+                  int $$11 = ($$9 & -65536) >> 16;
+                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
+                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
+                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
+                  return Optional.of(new azo.b($$12, $$14, $$13));
+               }
+            }
+         }
+      } catch (Exception var14) {
+         a.info("Failed to find module info for {}", $$0, var14);
+         return Optional.empty();
+      }
+   }
 
-      for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {
-         double $$6 = $$3.d + $$0.E_().k() / 2.0;
-         double $$7 = $$3.e;
-         double $$8 = $$3.f + $$0.E_().k() / 2.0;
-         double $$9 = $$0.E_().k() * 0.2F;
-         double $$10 = $$0.E_().k() * 0.2F;
-         double $$11 = $$0.E_().k() * 0.2F;
-         $$0.a($$4, $$6, $$7, $$8, $$9, $$10, $$11);
+   private static String a(String $$0, int $$1, int $$2) {
+      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
+   }
+
+   private static OptionalInt a(int[] $$0) {
+      OptionalInt $$1 = OptionalInt.empty();
+
+      for (int $$2 : $$0) {
+         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
+            return OptionalInt.of($$2);
+         }
+
+         $$1 = OptionalInt.of($$2);
       }
 
-      for (int $$12 = 0; (float)$$12 < (float)$$2 / 1.5F; $$12++) {
-         double $$13 = $$3.d + 3.5 * Math.cos((double)$$12) + $$0.E_().k() / 2.0;
-         double $$14 = $$3.e;
-         double $$15 = $$3.f + 3.5 * Math.sin((double)$$12) + $$0.E_().k() / 2.0;
-         double $$16 = $$0.E_().k() * 0.05F;
-         double $$17 = $$0.E_().k() * 0.05F;
-         double $$18 = $$0.E_().k() * 0.05F;
-         $$0.a($$4, $$13, $$14, $$15, $$16, $$17, $$18);
+      return $$1;
+   }
+
+   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
+      PointerByReference $$3 = new PointerByReference();
+      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
+         throw new UnsupportedOperationException("Can't get version value " + $$1);
+      } else {
+         return $$3.getValue();
+      }
+   }
+
+   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
+      try {
+         Pointer $$3 = a($$0, $$1, $$2);
+         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
+         return new String($$4, StandardCharsets.UTF_16LE);
+      } catch (Exception var5) {
+         return "";
+      }
+   }
+
+   public static void a(p $$0) {
+      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
+   }
+
+   public static class a {
+      public final String a;
+      public final Optional<azo.b> b;
+
+      public a(String $$0, Optional<azo.b> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
+      }
+   }
+
+   public static class b {
+      public final String a;
+      public final String b;
+      public final String c;
+
+      public b(String $$0, String $$1, String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.a + ":" + this.b + ":" + this.c;
       }
    }
 }

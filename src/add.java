@@ -1,33 +1,45 @@
-import java.util.List;
+public class add implements zs<ach> {
+   public static final zj<wi, add> a = zs.a(add::a, add::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record add(add.a b, List<String> c) implements zp<ace> {
-   public static final zg<wf, add> a = zp.a(add::a, add::new);
-
-   private add(wf $$0) {
-      this($$0.b(add.a.class), $$0.a(wf::p));
+   public add(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, wf::a);
+   private add(wi $$0) {
+      this.b = $$0.x();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+   }
+
+   private void a(wi $$0) {
+      $$0.f(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
    }
 
    @Override
-   public zr<add> a() {
-      return agt.y;
+   public zu<add> a() {
+      return agw.v;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int f() {
+      return this.d;
    }
 }

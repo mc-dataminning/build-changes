@@ -1,59 +1,23 @@
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public abstract class fgj {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class fgj extends fgo implements fgi {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   public fgj(int $$0, int $$1, int $$2, int $$3) {
+   public fgj(String $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
-
-   public void a(fku $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
-
-   protected abstract void a(fku var1, int var2, int var3, boolean var4);
 
    public int a() {
-      return this.c + this.a;
+      return this.b;
    }
 
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(fku $$0, List<fgj> $$1, heo<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (fgj $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
-      }
-   }
-
-   public static void a(heo<?> $$0, fmd.a<?> $$1, List<fgj> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aI_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.s();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (fgj $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
-         }
-      }
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

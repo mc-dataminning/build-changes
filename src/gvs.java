@@ -1,8 +1,11 @@
-import javax.annotation.Nullable;
+public class gvs extends gve {
+   public cji a;
+   public cjd h;
+   public cwf i;
 
-public class gvs extends gun {
-   public jm a = jm.c;
-   @Nullable
-   public ckr b;
-   public int[] c = new int[0];
+   public gvs() {
+      this.a = cji.a;
+      this.h = cjd.a;
+      this.i = cwf.k;
+   }
 }

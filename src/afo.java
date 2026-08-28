@@ -1,45 +1,39 @@
-public class afo implements zp<ace> {
-   public static final zg<wf, afo> a = zp.a(afo::a, afo::new);
-   private final float b;
+import javax.annotation.Nullable;
+
+public class afo implements zs<ach> {
+   public static final zj<wi, afo> a = zs.a(afo::a, afo::new);
+   private final int b;
    private final int c;
-   private final int d;
 
-   public afo(float $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afo(bui $$0, @Nullable bui $$1) {
+      this.b = $$0.as();
+      this.c = $$1 != null ? $$1.as() : 0;
    }
 
-   private afo(wf $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private afo(wi $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+   private void a(wi $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zr<afo> a() {
-      return agt.aG;
+   public zu<afo> a() {
+      return agw.aD;
    }
 
-   public void a(ace $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

@@ -1,55 +1,82 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record gjq(@Nullable jm b, int c, String d, gjs e) {
-   public static final int a = -1;
+public record gjq(all b, all c, List<gjq.a> d, List<gjq.b> e, gjn f) {
+   public static final Codec<gjq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               all.a.fieldOf("vertex").forGetter(gjq::a),
+               all.a.fieldOf("fragment").forGetter(gjq::b),
+               gjq.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(gjq::c),
+               gjq.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gjq::d),
+               gjn.b.optionalFieldOf("defines", gjn.a).forGetter(gjq::e)
+            )
+            .apply($$0, gjq::new)
+   );
 
-   @Nullable
-   public jm a() {
+   public all a() {
       return this.b;
    }
 
-   public int b() {
+   public all b() {
       return this.c;
    }
 
-   public String c() {
+   public List<gjq.a> c() {
       return this.d;
    }
 
-   public gjs d() {
+   public List<gjq.b> d() {
       return this.e;
    }
 
-   protected static class a implements JsonDeserializer<gjq> {
-      private static final int a = -1;
+   public gjn e() {
+      return this.f;
+   }
 
-      public gjq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         jm $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gjs $$7 = (gjs)$$2.deserialize($$3, gjs.class);
-         return new gjq($$4, $$5, $$6, $$7);
+   public static record a(String b) {
+      public static final Codec<gjq.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gjq.a::a)).apply($$0, gjq.a::new));
+
+      public String a() {
+         return this.b;
+      }
+   }
+
+   public static record b(String b, String c, int d, List<Float> e) {
+      public static final Codec<gjq.b> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.STRING.fieldOf("name").forGetter(gjq.b::a),
+                     Codec.STRING.fieldOf("type").forGetter(gjq.b::b),
+                     Codec.INT.fieldOf("count").forGetter(gjq.b::c),
+                     Codec.FLOAT.listOf().fieldOf("values").forGetter(gjq.b::d)
+                  )
+                  .apply($$0, gjq.b::new)
+         )
+         .validate(gjq.b::a);
+
+      private static DataResult<gjq.b> a(gjq.b $$0) {
+         int $$1 = $$0.d;
+         int $$2 = $$0.e.size();
+         return $$2 != $$1 && $$2 > 1
+            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
+            : DataResult.success($$0);
       }
 
-      protected int a(JsonObject $$0) {
-         return aza.a($$0, "tintindex", -1);
+      public String a() {
+         return this.b;
       }
 
-      private String b(JsonObject $$0) {
-         return aza.i($$0, "texture");
+      public String b() {
+         return this.c;
       }
 
-      @Nullable
-      private jm c(JsonObject $$0) {
-         String $$1 = aza.a($$0, "cullface", "");
-         return jm.a($$1);
+      public int c() {
+         return this.d;
+      }
+
+      public List<Float> d() {
+         return this.e;
       }
    }
 }

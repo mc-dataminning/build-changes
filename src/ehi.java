@@ -1,16 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehi implements egp {
-   public static final Codec<ehi> a = ayt.b(elb.c).fieldOf("features").xmap(ehi::new, $$0 -> $$0.b).codec();
-   public final ju<elb> b;
+public class ehi implements egt {
+   public static final Codec<ehi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvo.a.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dvo.a.fieldOf("state").forGetter($$0x -> $$0x.c),
+               brm.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, ehi::new)
+   );
+   public final dvo b;
+   public final dvo c;
+   private final brm d;
 
-   public ehi(ju<elb> $$0) {
+   public ehi(dvo $$0, dvo $$1, brm $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public Stream<edx<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public brm a() {
+      return this.d;
    }
 }

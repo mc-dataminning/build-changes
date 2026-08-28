@@ -1,34 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+public class bxa implements byl {
+   private final jh a;
+   private final ezr b;
 
-public class bxa extends bwt<cil> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public bxa() {
-      super(ImmutableMap.of(cee.m, cef.b), 100);
+   public bxa(jh $$0) {
+      this.a = $$0.j();
+      this.b = ezr.b($$0);
    }
 
-   protected boolean a(arn $$0, cil $$1) {
-      return $$1.ay() == bvm.a;
+   public bxa(ezr $$0) {
+      this.a = jh.a((ka)$$0);
+      this.b = $$0;
    }
 
-   protected boolean a(arn $$0, cil $$1, long $$2) {
-      return this.e < 60;
+   @Override
+   public ezr a() {
+      return this.b;
    }
 
-   protected void b(arn $$0, cil $$1, long $$2) {
-      if (!$$1.bo()) {
-         $$1.b(bvm.i);
-         this.e = 0;
-      }
+   @Override
+   public jh b() {
+      return this.a;
    }
 
-   protected void c(arn $$0, cil $$1, long $$2) {
-      $$1.b(bvm.a);
+   @Override
+   public boolean a(bve $$0) {
+      return true;
    }
 
-   protected void d(arn $$0, cil $$1, long $$2) {
-      this.e++;
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

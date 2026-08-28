@@ -1,10 +1,38 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ele {
-   public static final Codec<ele> b = ly.S.q().dispatch(ele::b, elf::codec);
+public class ele extends elm {
+   public static final MapCodec<ele> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ele::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   public abstract Stream<jh> a_(elc var1, azs var2, jh var3);
+   private ele(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   public abstract elf<?> b();
+   public static ele a(double $$0, int $$1, int $$2) {
+      return new ele($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(azv $$0, jh $$1) {
+      double $$2 = dgh.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public elj<?> b() {
+      return elj.h;
+   }
 }

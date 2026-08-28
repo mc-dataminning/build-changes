@@ -1,59 +1,51 @@
-import java.util.Set;
+public class gat extends fza<gwx> {
+   public static final String a = "lid";
+   private static final String b = "base";
+   private final gcc c;
+   private final gcc d;
 
-public class gat extends fzu<gwt> {
-   private static final String i = "egg_belly";
-   public static final gbv a = new fxm(true, 120.0F, 0.0F, 9.0F, 6.0F, 120.0F, Set.of("head"));
-   private final gbm j;
-
-   public gat(gbm $$0) {
-      super($$0);
-      this.j = $$0.b("egg_belly");
+   public gat(gcc $$0) {
+      super($$0, gjh::g);
+      this.c = $$0.b("lid");
+      this.d = $$0.b("head");
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("head", gbr.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), gbo.a(0.0F, 19.0F, -10.0F));
-      $$1.a(
-         "body",
-         gbr.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         gbo.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      $$1.a("egg_belly", gbr.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), gbo.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      int $$2 = 1;
-      $$1.a("right_hind_leg", gbr.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gbo.a(-3.5F, 22.0F, 11.0F));
-      $$1.a("left_hind_leg", gbr.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gbo.a(3.5F, 22.0F, 11.0F));
-      $$1.a("right_front_leg", gbr.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gbo.a(-5.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", gbr.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gbo.a(5.0F, 21.0F, -4.0F));
-      return gbs.a($$0, 128, 64);
+   private static gck c() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      $$1.a("lid", gch.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gce.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", gch.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gce.a(0.0F, 24.0F, 0.0F));
+      return $$0;
    }
 
-   public void a(gwt $$0) {
+   public static gci a() {
+      gck $$0 = c();
+      $$0.a().a("head", gch.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gce.a(0.0F, 12.0F, 0.0F));
+      return gci.a($$0, 64, 64);
+   }
+
+   public static gci b() {
+      gck $$0 = c();
+      return gci.a($$0, 64, 64);
+   }
+
+   public void a(gwx $$0) {
       super.a($$0);
-      float $$1 = $$0.X;
-      float $$2 = $$0.Y;
-      if ($$0.a) {
-         float $$3 = $$0.b ? 4.0F : 1.0F;
-         float $$4 = $$0.b ? 2.0F : 1.0F;
-         float $$5 = $$1 * 5.0F;
-         float $$6 = azk.b($$3 * $$5);
-         float $$7 = azk.b($$5);
-         this.f.f = -$$6 * 8.0F * $$2 * $$4;
-         this.g.f = $$6 * 8.0F * $$2 * $$4;
-         this.d.f = -$$7 * 3.0F * $$2;
-         this.e.f = $$7 * 3.0F * $$2;
-      } else {
-         float $$8 = 0.5F * $$2;
-         float $$9 = azk.b($$1 * 0.6662F * 0.6F) * $$8;
-         this.d.e = $$9;
-         this.e.e = -$$9;
-         this.f.g = -$$9;
-         this.g.g = $$9;
+      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
+      float $$2 = -1.0F + azn.a($$1);
+      float $$3 = 0.0F;
+      if ($$1 > (float) Math.PI) {
+         $$3 = azn.a($$0.p * 0.1F) * 0.7F;
       }
 
-      this.j.k = $$0.c;
-      if (this.j.k) {
-         this.v.c--;
+      this.c.a(0.0F, 16.0F + azn.a($$1) * 8.0F + $$3, 0.0F);
+      if ($$0.c > 0.3F) {
+         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
+      } else {
+         this.c.f = 0.0F;
       }
+
+      this.d.e = $$0.V * (float) (Math.PI / 180.0);
+      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 }

@@ -1,119 +1,68 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-public interface gdf extends gde {
-   static gdf.a a(GameProfile $$0, xy $$1, gdd $$2) {
-      return new gdf.a($$0, $$1, $$2);
+public class gdf extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final gep b;
+   private final gdf.a c;
+
+   public gdf(gep $$0, gdf.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static gdf.b a(xi $$0, Instant $$1) {
-      return new gdf.b($$0, $$1);
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         ask.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         ask.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
+      }
    }
 
-   xi b();
-
-   default xi c() {
-      return this.b();
-   }
-
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, xy d, gdd e) implements gdf {
-      public static final MapCodec<gdf.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ayt.z.fieldOf("profile").forGetter(gdf.a::f), xy.a.forGetter(gdf.a::g), gdd.d.optionalFieldOf("trust_level", gdd.a).forGetter(gdf.a::h)
-               )
-               .apply($$0, gdf.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public xi b() {
-         if (!this.d.o().a()) {
-            xi $$0 = this.d.o().b(this.d.c());
-            return (xi)($$0 != null ? $$0 : xi.i());
-         } else {
-            return this.d.d();
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = ask.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = azn.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = azn.a($$4.get(4), -1);
+            int $$9 = azn.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
          }
       }
 
-      @Override
-      public xi c() {
-         xi $$0 = this.b();
-         xi $$1 = this.i();
-         return xi.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public xi d() {
-         xi $$0 = this.i();
-         return xi.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private xi i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return xi.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public gde.a a() {
-         return gde.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xy g() {
-         return this.d;
-      }
-
-      public gdd h() {
-         return this.e;
-      }
+      $$0.close();
    }
 
-   public static record b(xi c, Instant d) implements gdf {
-      public static final MapCodec<gdf.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xk.a.fieldOf("message").forGetter(gdf.b::d), ayt.q.fieldOf("time_stamp").forGetter(gdf.b::e)).apply($$0, gdf.b::new)
-      );
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
 
-      @Override
-      public xi b() {
-         return this.c;
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
-
-      @Override
-      public gde.a a() {
-         return gde.a.b;
-      }
-
-      public xi d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

@@ -1,16 +1,29 @@
-public record aft(int b, cwb c) implements zp<ace> {
-   public static final zg<wt, aft> a = zg.a(ze.h, aft::b, cwb.h, aft::e, aft::new);
+public class aft implements zs<ach> {
+   public static final zj<wi, aft> a = zs.a(aft::a, aft::new);
+   private final int b;
 
-   @Override
-   public zr<aft> a() {
-      return agt.cl;
+   public aft(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(ace $$0) {
+   private aft(wi $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(wi $$0) {
+      $$0.l(this.b);
+   }
+
+   @Override
+   public zu<aft> a() {
+      return agw.aI;
+   }
+
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public cwb e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

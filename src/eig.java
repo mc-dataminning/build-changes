@@ -1,50 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eig extends eib {
-   public static final MapCodec<eig> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bri.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, eig::new)
-   );
-   private final bri b;
-   private final int c;
+public class eig<P extends eif> {
+   public static final eig<eia> a = a("blob_foliage_placer", eia.a);
+   public static final eig<eil> b = a("spruce_foliage_placer", eil.a);
+   public static final eig<eij> c = a("pine_foliage_placer", eij.a);
+   public static final eig<ehz> d = a("acacia_foliage_placer", ehz.a);
+   public static final eig<eib> e = a("bush_foliage_placer", eib.c);
+   public static final eig<eie> f = a("fancy_foliage_placer", eie.c);
+   public static final eig<eih> g = a("jungle_foliage_placer", eih.a);
+   public static final eig<eii> h = a("mega_pine_foliage_placer", eii.a);
+   public static final eig<eid> i = a("dark_oak_foliage_placer", eid.a);
+   public static final eig<eik> j = a("random_spread_foliage_placer", eik.a);
+   public static final eig<eic> k = a("cherry_foliage_placer", eic.a);
+   private final MapCodec<P> l;
 
-   public eig(bri $$0, bri $$1, bri $$2, int $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+   private static <P extends eif> eig<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.U, $$0, new eig<>($$1));
    }
 
-   @Override
-   protected eic<?> a() {
-      return eic.j;
+   private eig(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected void a(dfh $$0, eib.b $$1, azs $$2, ehl $$3, int $$4, eib.a $$5, int $$6, int $$7, int $$8) {
-      jh $$9 = $$5.a();
-      jh.a $$10 = $$9.k();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
-      }
-   }
-
-   @Override
-   public int a(azs $$0, int $$1, ehl $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

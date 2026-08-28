@@ -1,5 +1,10 @@
-public class sx extends RuntimeException {
-   public sx(String $$0) {
-      super($$0);
-   }
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sx {
+   String a();
 }

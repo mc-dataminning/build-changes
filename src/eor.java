@@ -1,98 +1,124 @@
-public class eor extends elv {
-   private boolean h;
-   private boolean i;
+import java.util.Map;
 
-   public eor(azs $$0, int $$1, int $$2) {
-      super(emo.K, $$1, 64, $$2, 7, 7, 9, a($$0));
+public class eor {
+   private static final int a = 32;
+   static final jh b = new jh(4, 0, 15);
+   private static final all[] c = new all[]{
+      all.b("shipwreck/with_mast"),
+      all.b("shipwreck/sideways_full"),
+      all.b("shipwreck/sideways_fronthalf"),
+      all.b("shipwreck/sideways_backhalf"),
+      all.b("shipwreck/rightsideup_full"),
+      all.b("shipwreck/rightsideup_fronthalf"),
+      all.b("shipwreck/rightsideup_backhalf"),
+      all.b("shipwreck/with_mast_degraded"),
+      all.b("shipwreck/rightsideup_full_degraded"),
+      all.b("shipwreck/rightsideup_fronthalf_degraded"),
+      all.b("shipwreck/rightsideup_backhalf_degraded")
+   };
+   private static final all[] d = new all[]{
+      all.b("shipwreck/with_mast"),
+      all.b("shipwreck/upsidedown_full"),
+      all.b("shipwreck/upsidedown_fronthalf"),
+      all.b("shipwreck/upsidedown_backhalf"),
+      all.b("shipwreck/sideways_full"),
+      all.b("shipwreck/sideways_fronthalf"),
+      all.b("shipwreck/sideways_backhalf"),
+      all.b("shipwreck/rightsideup_full"),
+      all.b("shipwreck/rightsideup_fronthalf"),
+      all.b("shipwreck/rightsideup_backhalf"),
+      all.b("shipwreck/with_mast_degraded"),
+      all.b("shipwreck/upsidedown_full_degraded"),
+      all.b("shipwreck/upsidedown_fronthalf_degraded"),
+      all.b("shipwreck/upsidedown_backhalf_degraded"),
+      all.b("shipwreck/sideways_full_degraded"),
+      all.b("shipwreck/sideways_fronthalf_degraded"),
+      all.b("shipwreck/sideways_backhalf_degraded"),
+      all.b("shipwreck/rightsideup_full_degraded"),
+      all.b("shipwreck/rightsideup_fronthalf_degraded"),
+      all.b("shipwreck/rightsideup_backhalf_degraded")
+   };
+   static final Map<String, alk<eul>> e = Map.of("map_chest", euc.G, "treasure_chest", euc.I, "supply_chest", euc.H);
+
+   public static eor.a a(eqe $$0, jh $$1, dow $$2, emg $$3, azv $$4, boolean $$5) {
+      all $$6 = ae.a($$5 ? c : d, $$4);
+      eor.a $$7 = new eor.a($$0, $$6, $$1, $$2, $$5);
+      $$3.a($$7);
+      return $$7;
    }
 
-   public eor(uk $$0) {
-      super(emo.K, $$0);
-      this.h = $$0.q("Witch");
-      this.i = $$0.q("Cat");
-   }
+   public static class a extends eml {
+      private final boolean h;
 
-   @Override
-   protected void a(emn $$0, uk $$1) {
-      super.a($$0, $$1);
-      $$1.a("Witch", this.h);
-      $$1.a("Cat", this.i);
-   }
-
-   @Override
-   public void a(dfy $$0, dfw $$1, dxg $$2, azs $$3, elp $$4, deh $$5, jh $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, dig.o.m(), dig.o.m(), false);
-         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, dig.o.m(), dig.o.m(), false);
-         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, dig.o.m(), dig.o.m(), false);
-         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, dig.o.m(), dig.o.m(), false);
-         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, dig.o.m(), dig.o.m(), false);
-         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, dig.o.m(), dig.o.m(), false);
-         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, dig.o.m(), dig.o.m(), false);
-         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, dig.U.m(), dig.U.m(), false);
-         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, dig.U.m(), dig.U.m(), false);
-         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, dig.U.m(), dig.U.m(), false);
-         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, dig.U.m(), dig.U.m(), false);
-         this.a($$0, dig.dU.m(), 2, 3, 2, $$4);
-         this.a($$0, dig.dU.m(), 3, 3, 7, $$4);
-         this.a($$0, dig.a.m(), 1, 3, 4, $$4);
-         this.a($$0, dig.a.m(), 5, 3, 4, $$4);
-         this.a($$0, dig.a.m(), 5, 3, 5, $$4);
-         this.a($$0, dig.gp.m(), 1, 3, 5, $$4);
-         this.a($$0, dig.cA.m(), 3, 2, 6, $$4);
-         this.a($$0, dig.ft.m(), 4, 2, 6, $$4);
-         this.a($$0, dig.dU.m(), 1, 2, 1, $$4);
-         this.a($$0, dig.dU.m(), 5, 2, 1, $$4);
-         dvj $$7 = dig.fK.m().b(dpy.b, jm.c);
-         dvj $$8 = dig.fK.m().b(dpy.b, jm.f);
-         dvj $$9 = dig.fK.m().b(dpy.b, jm.e);
-         dvj $$10 = dig.fK.m().b(dpy.b, jm.d);
-         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
-         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
-         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
-         this.a($$0, $$7.b(dpy.d, dws.e), 0, 4, 1, $$4);
-         this.a($$0, $$7.b(dpy.d, dws.d), 6, 4, 1, $$4);
-         this.a($$0, $$10.b(dpy.d, dws.d), 0, 4, 8, $$4);
-         this.a($$0, $$10.b(dpy.d, dws.e), 6, 4, 8, $$4);
-
-         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
-            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
-               this.b($$0, dig.U.m(), $$12, -1, $$11, $$4);
-            }
-         }
-
-         if (!this.h) {
-            jh $$13 = this.b(2, 2, 5);
-            if ($$4.b($$13)) {
-               this.h = true;
-               cmh $$14 = bul.bo.a($$0.E(), buk.d);
-               if ($$14 != null) {
-                  $$14.ga();
-                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
-                  $$14.a($$0, $$0.d_($$13), buk.d, null);
-                  $$0.a_($$14);
-               }
-            }
-         }
-
-         this.a($$0, $$4);
+      public a(eqe $$0, all $$1, jh $$2, dow $$3, boolean $$4) {
+         super(ems.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+         this.h = $$4;
       }
-   }
 
-   private void a(dfr $$0, elp $$1) {
-      if (!this.i) {
-         jh $$2 = this.b(2, 2, 5);
-         if ($$1.b($$2)) {
-            this.i = true;
-            cgu $$3 = bul.p.a($$0.E(), buk.d);
-            if ($$3 != null) {
-               $$3.ga();
-               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
-               $$3.a($$0, $$0.d_($$2), buk.d, null);
-               $$0.a_($$3);
-            }
+      public a(eqe $$0, un $$1) {
+         super(ems.ab, $$1, $$0, $$1x -> a(dow.valueOf($$1.l("Rot"))));
+         this.h = $$1.q("isBeached");
+      }
+
+      @Override
+      protected void a(emr $$0, un $$1) {
+         super.a($$0, $$1);
+         $$1.a("isBeached", this.h);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      private static epz a(dow $$0) {
+         return new epz().a($$0).a(dnf.a).a(eor.b).a(epe.d);
+      }
+
+      @Override
+      protected void a(String $$0, jh $$1, dfw $$2, azv $$3, elt $$4) {
+         alk<eul> $$5 = eor.e.get($$0);
+         if ($$5 != null) {
+            bsn.a($$2, $$3, $$1.e(), $$5);
          }
+      }
+
+      @Override
+      public void a(dgd $$0, dgb $$1, dxk $$2, azv $$3, elt $$4, del $$5, jh $$6) {
+         if (this.l()) {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         } else {
+            int $$7 = $$0.al() + 1;
+            int $$8 = 0;
+            kl $$9 = this.b.a();
+            ebj.a $$10 = this.h ? ebj.a.a : ebj.a.c;
+            int $$11 = $$9.u() * $$9.w();
+            if ($$11 == 0) {
+               $$8 = $$0.a($$10, this.d.u(), this.d.w());
+            } else {
+               jh $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+
+               for (jh $$13 : jh.c(this.d, $$12)) {
+                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
+                  $$8 += $$14;
+                  $$7 = Math.min($$7, $$14);
+               }
+
+               $$8 /= $$11;
+            }
+
+            this.c(this.h ? this.a($$7, $$3) : $$8);
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         }
+      }
+
+      public boolean l() {
+         kl $$0 = this.b.a();
+         return $$0.u() > 32 || $$0.v() > 32;
+      }
+
+      public int a(int $$0, azv $$1) {
+         return $$0 - this.b.a().v() / 2 - $$1.a(3);
+      }
+
+      public void c(int $$0) {
+         this.d = new jh(this.d.u(), $$0, this.d.w());
       }
    }
 }

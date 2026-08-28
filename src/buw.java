@@ -1,61 +1,91 @@
-public class buw {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final akp c;
-   private final akl<Integer> d;
-   private final akl<Boolean> e;
-   private boolean f;
-   private int g;
+import org.jetbrains.annotations.Nullable;
 
-   public buw(akp $$0, akl<Integer> $$1, akl<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public class buw extends chu {
+   private static final ako<Integer> cg = aks.a(buw.class, akq.b);
+
+   public buw(bup<? extends buw> $$0, dff $$1) {
+      super($$0, $$1);
    }
 
-   public void a() {
-      this.f = true;
-      this.g = 0;
+   @Override
+   protected lq q() {
+      return ls.aP;
    }
 
-   public boolean a(azs $$0) {
-      if (this.f) {
-         return false;
-      } else {
-         this.f = true;
-         this.g = 0;
-         this.c.a(this.d, $$0.a(841) + 140);
-         return true;
+   @Override
+   protected void a(aks.a $$0) {
+      super.a($$0);
+      $$0.a(cg, 0);
+   }
+
+   @Nullable
+   @Override
+   public btz a(arq $$0, btz $$1) {
+      return bup.W.a($$0, buo.e);
+   }
+
+   @Override
+   protected awn t() {
+      return awo.kK;
+   }
+
+   @Override
+   protected awn w() {
+      return awo.kH;
+   }
+
+   @Override
+   protected awn d(bsy $$0) {
+      return awo.kJ;
+   }
+
+   @Override
+   protected awn o_() {
+      return awo.kI;
+   }
+
+   @Override
+   public void b(un $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.y());
+   }
+
+   @Override
+   public void a(un $$0) {
+      super.a($$0);
+      this.t($$0.h("DarkTicksRemaining"));
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      int $$0 = this.y();
+      if ($$0 > 0) {
+         this.t($$0 - 1);
       }
+
+      this.dY().a(ls.aQ, this.d(0.6), this.dG(), this.g(0.6), 0.0, 0.0, 0.0);
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
+   @Override
+   public boolean a(bsy $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if ($$2) {
+         this.t(100);
       }
+
+      return $$2;
    }
 
-   public float c() {
-      return this.f ? 1.0F + 1.15F * azk.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   private void t(int $$0) {
+      this.am.a(cg, $$0);
    }
 
-   private int e() {
-      return this.c.a(this.d);
+   public int y() {
+      return this.am.a(cg);
    }
 
-   public void a(uk $$0) {
-      $$0.a("Saddle", this.d());
-   }
-
-   public void b(uk $$0) {
-      this.a($$0.q("Saddle"));
-   }
-
-   public void a(boolean $$0) {
-      this.c.a(this.e, $$0);
-   }
-
-   public boolean d() {
-      return this.c.a(this.e);
+   public static boolean a(bup<? extends bve> $$0, dfw $$1, buo $$2, jh $$3, azv $$4) {
+      return $$3.v() <= $$1.N() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dil.G);
    }
 }

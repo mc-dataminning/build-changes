@@ -1,65 +1,80 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class ayr {
-   final LoadingCache<ayr.a<?, ?>, DataResult<?>> a;
+public class ayr implements DataOutput {
+   private final DataOutput a;
 
-   public ayr(int $$0) {
-      this.a = CacheBuilder.newBuilder().maximumSize((long)$$0).concurrencyLevel(1).softValues().build(new CacheLoader<ayr.a<?, ?>, DataResult<?>>() {
-         public DataResult<?> a(ayr.a<?, ?> $$0) {
-            return $$0.a();
-         }
-      });
+   public ayr(DataOutput $$0) {
+      this.a = $$0;
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0) {
-      return new Codec<A>() {
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
-            return $$0.decode($$0, $$1);
-         }
-
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
-            return ((DataResult)ayr.this.a.getUnchecked(new ayr.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof vh $$1x ? $$1x.d() : $$0xx);
-         }
-      };
+   @Override
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   static record a<A, T>(Codec<A> a, A b, DynamicOps<T> c) {
-      public DataResult<T> a() {
-         return this.a.encodeStart(this.c, this.b);
-      }
+   @Override
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
+   }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof ayr.a<?, ?> $$1) ? false : this.a == $$1.a && this.b.equals($$1.b) && this.c.equals($$1.c);
-         }
-      }
+   @Override
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
+   }
 
-      @Override
-      public int hashCode() {
-         int $$0 = System.identityHashCode(this.a);
-         $$0 = 31 * $$0 + this.b.hashCode();
-         return 31 * $$0 + this.c.hashCode();
-      }
+   @Override
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
+   }
 
-      public Codec<A> b() {
-         return this.a;
-      }
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
+   }
 
-      public A c() {
-         return this.b;
-      }
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
+   }
 
-      public DynamicOps<T> d() {
-         return this.c;
-      }
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
+   }
+
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
+   }
+
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
+   }
+
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
+   }
+
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
+   }
+
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
+
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

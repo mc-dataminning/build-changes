@@ -1,160 +1,297 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.joml.Matrix4f;
-import org.joml.Vector3f;
 
 public class gjb {
-   public static void a(feb $$0, fef $$1, fah $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9) {
-      feb.a $$10 = $$0.c();
-      $$2.a(($$9x, $$10x, $$11, $$12, $$13, $$14) -> {
-         Vector3f $$15 = new Vector3f((float)($$12 - $$9x), (float)($$13 - $$10x), (float)($$14 - $$11)).normalize();
-         $$1.a($$10, (float)($$9x + $$3), (float)($$10x + $$4), (float)($$11 + $$5)).a($$6, $$7, $$8, $$9).b($$10, $$15);
-         $$1.a($$10, (float)($$12 + $$3), (float)($$13 + $$4), (float)($$14 + $$5)).a($$6, $$7, $$8, $$9).b($$10, $$15);
-      });
+   public static final all a = all.b("main");
+   private final List<gjd> b;
+   private final Map<all, gjc.d> c;
+   private final Set<all> d;
+
+   private gjb(List<gjd> $$0, Map<all, gjc.d> $$1, Set<all> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static void a(feb $$0, fef $$1, ezi $$2, float $$3, float $$4, float $$5, float $$6) {
-      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6, $$3, $$4, $$5);
-   }
+   public static gjb a(gjc $$0, gyu $$1, gjo $$2, Set<all> $$3) throws gjo.b {
+      Stream<all> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
+      Set<all> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<all> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new gjo.b("Referenced external targets are not available in this context: " + $$6);
+      } else {
+         Builder<gjd> $$7 = ImmutableList.builder();
 
-   public static void a(feb $$0, fef $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$8, $$9, $$10);
-   }
+         for (gjc.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
+         }
 
-   public static void a(
-      feb $$0,
-      fef $$1,
-      double $$2,
-      double $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      double $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14
-   ) {
-      feb.a $$15 = $$0.c();
-      float $$16 = (float)$$2;
-      float $$17 = (float)$$3;
-      float $$18 = (float)$$4;
-      float $$19 = (float)$$5;
-      float $$20 = (float)$$6;
-      float $$21 = (float)$$7;
-      $$1.a($$15, $$16, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$13, $$14, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$12, $$9, $$14, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$18).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$12, $$13, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, -1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$16, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, -1.0F, 0.0F);
-      $$1.a($$15, $$16, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$19, $$17, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, -1.0F);
-      $$1.a($$15, $$16, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 1.0F, 0.0F, 0.0F);
-      $$1.a($$15, $$19, $$17, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 1.0F, 0.0F);
-      $$1.a($$15, $$19, $$20, $$18).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-      $$1.a($$15, $$19, $$20, $$21).a($$8, $$9, $$10, $$11).b($$15, 0.0F, 0.0F, 1.0F);
-   }
-
-   public static void b(feb $$0, fef $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, (float)$$2, (float)$$3, (float)$$4, (float)$$5, (float)$$6, (float)$$7, $$8, $$9, $$10, $$11);
-   }
-
-   public static void a(feb $$0, fef $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      Matrix4f $$12 = $$0.c().a();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11);
-   }
-
-   public static void a(
-      feb $$0, fef $$1, jm $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      Matrix4f $$13 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case b:
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case c:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case d:
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            break;
-         case e:
-            $$1.a($$13, $$3, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$4, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$3, $$7, $$5).a($$9, $$10, $$11, $$12);
-            break;
-         case f:
-            $$1.a($$13, $$6, $$4, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$5).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$7, $$8).a($$9, $$10, $$11, $$12);
-            $$1.a($$13, $$6, $$4, $$8).a($$9, $$10, $$11, $$12);
+         return new gjb($$7.build(), $$0.a(), $$5);
       }
    }
 
-   public static void a(feb $$0, fef $$1, Vector3f $$2, ezn $$3, int $$4) {
-      feb.a $$5 = $$0.c();
-      $$1.a($$5, $$2).a($$4).b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
-      $$1.a($$5, (float)((double)$$2.x() + $$3.d), (float)((double)$$2.y() + $$3.e), (float)((double)$$2.z() + $$3.f))
-         .a($$4)
-         .b($$5, (float)$$3.d, (float)$$3.e, (float)$$3.f);
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static gjd a(gyu $$0, gjo $$1, gjc.e $$2) throws gjo.b {
+      all $$3 = $$2.a();
+      gig $$4 = $$1.b(new gjp($$3, fei.e, gjn.a));
+
+      for (gjc.h $$5 : $$2.d()) {
+         String $$6 = $$5.a();
+         if ($$4.a($$6) == null) {
+            throw new gjo.b("Uniform '" + $$6 + "' does not exist for " + $$3);
+         }
+      }
+
+      String $$7 = $$3.toString();
+      gjd $$8 = new gjd($$7, $$4, $$2.c(), $$2.d());
+
+      for (gjc.c $$9 : $$2.b()) {
+         Objects.requireNonNull($$9);
+         Throwable var45;
+         switch ($$9) {
+            case gjc.g var11:
+               gjc.g var53 = var11;
+
+               try {
+                  var54 = var53.a();
+               } catch (Throwable var31) {
+                  var45 = var31;
+                  boolean var66 = false;
+                  break;
+               }
+
+               String var36 = var54;
+               gjc.g var55 = var11;
+
+               try {
+                  var56 = var55.c();
+               } catch (Throwable var30) {
+                  var45 = var30;
+                  boolean var67 = false;
+                  break;
+               }
+
+               all var37 = var56;
+               gjc.g var57 = var11;
+
+               try {
+                  var58 = var57.d();
+               } catch (Throwable var29) {
+                  var45 = var29;
+                  boolean var68 = false;
+                  break;
+               }
+
+               int var38 = var58;
+               gjc.g var59 = var11;
+
+               try {
+                  var60 = var59.e();
+               } catch (Throwable var28) {
+                  var45 = var28;
+                  boolean var69 = false;
+                  break;
+               }
+
+               int var39 = var60;
+               gjc.g var61 = var11;
+
+               try {
+                  var62 = var61.f();
+               } catch (Throwable var27) {
+                  var45 = var27;
+                  boolean var70 = false;
+                  break;
+               }
+
+               boolean var40 = var62;
+               gye $$15x = $$0.a(var37.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$15x.a(var40, false);
+               $$8.a(new gjd.c(var36, $$15x, var38, var39));
+               continue;
+            case gjc.f $$15:
+               gjc.f var10000 = $$15;
+
+               try {
+                  var46 = var10000.a();
+               } catch (Throwable var26) {
+                  var45 = var26;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var22 = var46;
+               gjc.f var47 = $$15;
+
+               try {
+                  var48 = var47.c();
+               } catch (Throwable var25) {
+                  var45 = var25;
+                  boolean var63 = false;
+                  break;
+               }
+
+               all var42 = var48;
+               gjc.f var49 = $$15;
+
+               try {
+                  var50 = var49.d();
+               } catch (Throwable var24) {
+                  var45 = var24;
+                  boolean var64 = false;
+                  break;
+               }
+
+               boolean var43 = var50;
+               gjc.f var51 = $$15;
+
+               try {
+                  var52 = var51.e();
+               } catch (Throwable var23) {
+                  var45 = var23;
+                  boolean var65 = false;
+                  break;
+               }
+
+               boolean var44 = var52;
+               $$8.a(new gjd.b(var22, var42, var43, var44));
+               continue;
+            default:
+               throw new MatchException(null, null);
+         }
+
+         Throwable var35 = var45;
+         throw new MatchException(var35.toString(), var35);
+      }
+
+      return $$8;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fco $$0, int $$1, int $$2, gjb.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<all, fdw<fcu>> $$5 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (all $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
+      }
+
+      for (Entry<all, gjc.d> $$7 : this.c.entrySet()) {
+         all $$8 = $$7.getKey();
+         gjc.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
+
+         var35 = $$7.getValue();
+         fdu $$11 = switch (var11) {
+            case gjc.a var13 -> {
+               gjc.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     gjc.a var32 = var13;
+
+                     try {
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
+                     }
+                  }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
+               }
+
+               int var27 = var33;
+               yield new fdu(var26, var27, true);
+            }
+            case gjc.b var16 -> new fdu($$1, $$2, true);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
+      }
+
+      for (gjd $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (all $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
+      }
+   }
+
+   @Deprecated
+   public void a(fcu $$0, fdt $$1) {
+      fco $$2 = new fco();
+      gjb.a $$3 = gjb.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (gjd $$2 : this.b) {
+         $$2.a().b($$0).a($$1);
+      }
+   }
+
+   public interface a {
+      static gjb.a b(final all $$0, final fdw<fcu> $$1) {
+         return new gjb.a() {
+            private fdw<fcu> c = $$1;
+
+            @Override
+            public void a(all $$0x, fdw<fcu> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
+               }
+            }
+
+            @Nullable
+            @Override
+            public fdw<fcu> a(all $$0x) {
+               return $$0.equals($$0) ? this.c : null;
+            }
+         };
+      }
+
+      void a(all var1, fdw<fcu> var2);
+
+      @Nullable
+      fdw<fcu> a(all var1);
+
+      default fdw<fcu> b(all $$0) {
+         fdw<fcu> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
+         }
+      }
    }
 }

@@ -1,44 +1,76 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface gyg {
-   Logger a = LogUtils.getLogger();
+public class gyg extends gye implements gyf {
+   private static final Logger d = LogUtils.getLogger();
+   @Nullable
+   private fdk e;
 
-   static gyg create(Collection<atz<?>> $$0) {
-      return ($$1, $$2) -> {
-         avd $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
+   public gyg(fdk $$0) {
+      this.e = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+            this.e();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+         this.e();
+      }
+   }
 
-         fdb $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fdb.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
+   public gyg(int $$0, int $$1, boolean $$2) {
+      this.e = new fdk($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+   }
 
-         gzp $$11 = $$3.a(gzp.a).orElse(gzp.e);
-         gzr $$12 = $$11.a($$7.a(), $$7.b());
-         if (azk.c($$7.a(), $$12.a()) && azk.c($$7.b(), $$12.b())) {
-            return new gxx($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   @Override
+   public void a(ave $$0) {
+   }
+
+   @Override
+   public void e() {
+      if (this.e != null) {
+         this.d();
+         this.e.a(0, 0, 0, false);
+      } else {
+         d.warn("Trying to upload disposed texture {}", this.a());
+      }
    }
 
    @Nullable
-   gxx loadSprite(ali var1, auz var2);
+   public fdk f() {
+      return this.e;
+   }
+
+   public void a(fdk $$0) {
+      if (this.e != null) {
+         this.e.close();
+      }
+
+      this.e = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.close();
+         this.b();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(all $$0, Path $$1) throws IOException {
+      if (this.e != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.e.a($$3);
+      }
+   }
 }

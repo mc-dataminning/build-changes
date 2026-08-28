@@ -1,57 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
 
-public record ddw(jq<cvx> d, int e, ks f, cwb g) {
+public record ddw(all e, jq<cwb> f, xl g, boolean h) {
    public static final Codec<ddw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cwb.a.fieldOf("id").forGetter(ddw::a),
-               ayt.m.fieldOf("count").orElse(1).forGetter(ddw::b),
-               ks.a.optionalFieldOf("components", ks.c).forGetter(ddw::c)
+               all.a.fieldOf("asset_id").forGetter(ddw::a),
+               ali.a(ma.K).fieldOf("template_item").forGetter(ddw::b),
+               xn.a.fieldOf("description").forGetter(ddw::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(ddw::d)
             )
             .apply($$0, ddw::new)
    );
-   public static final zg<wt, ddw> b = zg.a(ze.b(lz.K), ddw::a, ze.h, ddw::b, ks.b, ddw::c, ddw::new);
-   public static final zg<wt, Optional<ddw>> c = b.a(ze::a);
+   public static final zj<ww, ddw> b = zj.a(all.b, ddw::a, zh.b(ma.K), ddw::b, xn.b, ddw::c, zh.b, ddw::d, ddw::new);
+   public static final Codec<jq<ddw>> c = alh.a(ma.aY, a);
+   public static final zj<ww, jq<ddw>> d = zh.a(ma.aY, b);
 
-   public ddw(dfa $$0) {
-      this($$0, 1);
+   public xl a(jq<ddu> $$0) {
+      return this.g.f().c($$0.a().e().a());
    }
 
-   public ddw(dfa $$0, int $$1) {
-      this($$0.j().f(), $$1, ks.c);
-   }
-
-   public ddw(jq<cvx> $$0, int $$1, ks $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
-   }
-
-   public ddw a(UnaryOperator<ks.a> $$0) {
-      return new ddw(this.d, this.e, $$0.apply(ks.a()).a());
-   }
-
-   private static cwb a(jq<cvx> $$0, int $$1, ks $$2) {
-      return new cwb($$0, $$1, $$2.c());
-   }
-
-   public boolean a(cwb $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
-
-   public jq<cvx> a() {
-      return this.d;
-   }
-
-   public int b() {
+   public all a() {
       return this.e;
    }
 
-   public ks c() {
+   public jq<cwb> b() {
       return this.f;
    }
 
-   public cwb d() {
+   public xl c() {
       return this.g;
+   }
+
+   public boolean d() {
+      return this.h;
    }
 }

@@ -1,36 +1,15 @@
-public class gli implements gks<duc> {
-   private final goi a;
+public interface gli<T extends dsr> {
+   void a(T var1, float var2, fek var3, gix var4, int var5, int var6);
 
-   public gli(gkt.a $$0) {
-      this.a = $$0.c();
+   default boolean a(T $$0) {
+      return false;
    }
 
-   public void a(duc $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
-      dfb $$6 = $$0.i();
-      if ($$6 != null) {
-         dec $$7 = $$0.c();
-         bue $$8 = $$7.b($$6, $$0.aB_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
-         }
-      }
+   default int aV_() {
+      return 64;
    }
 
-   public static void a(float $$0, feb $$1, gih $$2, int $$3, bue $$4, goi $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.ds(), $$4.dt());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
-      }
-
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)azk.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
-      $$1.b();
+   default boolean a(T $$0, ezr $$1) {
+      return ezr.b($$0.aB_()).a((ka)$$1, (double)this.aV_());
    }
 }

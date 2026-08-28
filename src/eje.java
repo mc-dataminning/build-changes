@@ -1,48 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class eje extends ejh {
-   public static final MapCodec<eje> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eje::new, $$0 -> $$0.d);
-   private static final jm b = jm.d;
-   private static final jm[] c = jm.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jm[]::new);
-   private final float d;
+public class eje extends eiu {
+   public static final MapCodec<eje> b = bqp.b(dvo.a).comapFlatMap(eje::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bqp<dvo> c;
 
-   public eje(float $$0) {
-      this.d = $$0;
+   private static DataResult<eje> a(bqp<dvo> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new eje($$0));
+   }
+
+   public eje(bqp<dvo> $$0) {
+      this.c = $$0;
+   }
+
+   public eje(bqp.a<dvo> $$0) {
+      this($$0.a());
    }
 
    @Override
-   protected eji<?> a() {
-      return eji.d;
+   protected eiv<?> a() {
+      return eiv.b;
    }
 
    @Override
-   public void a(ejh.a $$0) {
-      azs $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<jh> $$2 = $$0.d();
-         List<jh> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<jh> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<jh> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dig.pe.m().b(dhy.b, b));
-               $$0.a().a($$6.get(), dso.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(dsj.c.a($$1.a(599)));
-                  }
-               });
-            }
-         }
-      }
+   public dvo a(azv $$0, jh $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

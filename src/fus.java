@@ -1,47 +1,67 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fus extends fuw<crp> {
-   private static final fmu h = new fmu(
-      ali.b("recipe_book/filter_enabled"),
-      ali.b("recipe_book/filter_disabled"),
-      ali.b("recipe_book/filter_enabled_highlighted"),
-      ali.b("recipe_book/filter_disabled_highlighted")
-   );
-   private static final xi i = xi.c("gui.recipebook.toggleRecipes.craftable");
+public abstract class fus extends frp {
+   protected final frp b;
+   protected final fkb c;
+   @Nullable
+   protected fmt d;
+   public final fpl s = new fpl(this);
 
-   public fus(crp $$0) {
-      super($$0);
+   public fus(frp $$0, fkb $$1, xl $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected boolean a(ctl $$0) {
-      return this.f.m() == $$0 || this.f.n().contains($$0);
+   protected void aS_() {
+      this.F();
+      this.E();
+      this.D();
+      this.s.a($$1 -> {
+         flu var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   protected void F() {
+      this.s.a(this.l, this.p);
+   }
+
+   protected void E() {
+      this.d = this.s.c(new fmt(this.m, this.n, this));
+      this.m();
+      if (this.d.b(this.c.au()) instanceof fmd $$0) {
+         this.q = $$0;
+         this.q.j = this.m.aZ().a();
+      }
+   }
+
+   protected abstract void m();
+
+   protected void D() {
+      this.s.b(flw.a(xk.d, $$0 -> this.aP_()).a(200).a());
    }
 
    @Override
-   protected void a(fuu $$0, dar<?> $$1) {
-      cwb $$2 = $$1.b().a(this.g.s.H_());
-      ctl $$3 = this.f.m();
-      $$0.a($$2, $$3);
-      List<ctl> $$4 = this.f.n();
-      akt.a(this.f.o(), this.f.p(), $$1, $$1.b().a().a(), ($$2x, $$3x, $$4x, $$5) -> $$2x.ifPresent($$3xx -> {
-            ctl $$4xx = $$4.get($$3x);
-            $$0.a($$3xx.a(), $$4xx);
-         }));
+   protected void c() {
+      this.s.a();
+      if (this.d != null) {
+         this.d.a(this.n, this.s);
+      }
    }
 
    @Override
-   protected void a() {
-      this.e.a(h);
+   public void j() {
+      this.m.n.ay();
    }
 
    @Override
-   protected xi b() {
-      return i;
-   }
+   public void aP_() {
+      if (this.d != null) {
+         this.d.c();
+      }
 
-   @Override
-   protected void a(fva $$0, cos $$1, awo $$2) {
-      $$0.a($$1, this.f.o(), this.f.p(), $$2);
+      this.m.a(this.b);
    }
 }

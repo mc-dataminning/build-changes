@@ -1,102 +1,69 @@
-public class fxv extends fyk<guc> {
-   private static final float a = 0.6F;
-   private static final float b = 0.8F;
-   private static final float c = 1.0F;
-   private final gbm d;
-   private final gbm e;
-   private final gbm f;
-   private final gbm g;
-   private final gbm i;
-   private final gbm j;
-   private final gbm k;
-
-   public fxv(gbm $$0) {
-      super($$0, gir::i);
-      this.f = $$0.b("wind_body");
-      this.j = this.f.b("wind_bottom");
-      this.i = this.j.b("wind_mid");
-      this.g = this.i.b("wind_top");
-      this.d = $$0.b("body").b("head");
-      this.e = this.d.b("eyes");
-      this.k = $$0.b("body").b("rods");
+public class fxv {
+   public static void a(gcc $$0, gcc $$1, gcc $$2, boolean $$3) {
+      gcc $$4 = $$3 ? $$0 : $$1;
+      gcc $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static gbs a(int $$0, int $$1) {
-      gbu $$2 = new gbu();
-      gbw $$3 = $$2.a();
-      gbw $$4 = $$3.a("body", gbr.c(), gbo.a(0.0F, 0.0F, 0.0F));
-      gbw $$5 = $$4.a("rods", gbr.c(), gbo.a(0.0F, 8.0F, 0.0F));
-      $$5.a("rod_1", gbr.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gbq(0.0F)), gbo.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
-      $$5.a("rod_2", gbr.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gbq(0.0F)), gbo.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
-      $$5.a("rod_3", gbr.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gbq(0.0F)), gbo.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
-      gbw $$6 = $$4.a(
-         "head",
-         gbr.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gbq(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gbq(0.0F)),
-         gbo.a(0.0F, 4.0F, 0.0F)
-      );
-      $$6.a(
-         "eyes",
-         gbr.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gbq(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gbq(0.0F)),
-         gbo.a(0.0F, 0.0F, 0.0F)
-      );
-      gbw $$7 = $$3.a("wind_body", gbr.c(), gbo.a(0.0F, 0.0F, 0.0F));
-      gbw $$8 = $$7.a("wind_bottom", gbr.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new gbq(0.0F)), gbo.a(0.0F, 24.0F, 0.0F));
-      gbw $$9 = $$8.a(
-         "wind_mid",
-         gbr.c()
-            .a(74, 28)
-            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new gbq(0.0F))
-            .a(78, 32)
-            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new gbq(0.0F))
-            .a(49, 71)
-            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new gbq(0.0F)),
-         gbo.a(0.0F, -7.0F, 0.0F)
-      );
-      $$9.a(
-         "wind_top",
-         gbr.c()
-            .a(0, 0)
-            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new gbq(0.0F))
-            .a(6, 6)
-            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new gbq(0.0F))
-            .a(105, 57)
-            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new gbq(0.0F)),
-         gbo.a(0.0F, -6.0F, 0.0F)
-      );
-      return gbs.a($$2, $$0, $$1);
+   public static void a(gcc $$0, gcc $$1, float $$2, int $$3, boolean $$4) {
+      gcc $$5 = $$4 ? $$0 : $$1;
+      gcc $$6 = $$4 ? $$1 : $$0;
+      $$5.f = $$4 ? -0.8F : 0.8F;
+      $$5.e = -0.97079635F;
+      $$6.e = $$5.e;
+      float $$7 = azn.a((float)$$3, 0.0F, $$2);
+      float $$8 = $$7 / $$2;
+      $$6.f = azn.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
+      $$6.e = azn.h($$8, $$6.e, (float) (-Math.PI / 2));
    }
 
-   public void a(guc $$0) {
-      super.a($$0);
-      float $$1 = $$0.p * (float) Math.PI * -0.1F;
-      this.g.b = azk.b($$1) * 1.0F * 0.6F;
-      this.g.d = azk.a($$1) * 1.0F * 0.6F;
-      this.i.b = azk.a($$1) * 0.5F * 0.8F;
-      this.i.d = azk.b($$1) * 0.8F;
-      this.j.b = azk.b($$1) * -0.25F * 1.0F;
-      this.j.d = azk.a($$1) * -0.25F * 1.0F;
-      this.d.c = 4.0F + azk.b($$1) / 4.0F;
-      this.k.f = $$0.p * (float) Math.PI * 0.1F;
-      this.a($$0.a, fkc.a, $$0.p);
-      this.a($$0.b, fkc.d, $$0.p);
-      this.a($$0.c, fkc.e, $$0.p);
-      this.a($$0.d, fkc.c, $$0.p);
-      this.a($$0.e, fkc.b, $$0.p);
+   public static void a(gcc $$0, gcc $$1, buy $$2, float $$3, float $$4) {
+      float $$5 = azn.a($$3 * (float) Math.PI);
+      float $$6 = azn.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2 == buy.b) {
+         $$0.e = -1.8849558F + azn.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + azn.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + azn.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + azn.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+      }
+
+      a($$0, $$1, $$4);
    }
 
-   public gbm a() {
-      return this.d;
+   public static void a(gcc $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (azn.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * azn.a($$1 * 0.067F) * 0.05F;
    }
 
-   public gbm b() {
-      return this.e;
+   public static void a(gcc $$0, gcc $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
    }
 
-   public gbm c() {
-      return this.k;
-   }
-
-   public gbm d() {
-      return this.f;
+   public static void a(gcc $$0, gcc $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = azn.a($$3 * (float) Math.PI);
+      float $$6 = azn.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

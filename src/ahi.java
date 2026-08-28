@@ -1,37 +1,20 @@
-public class ahi implements zp<agv> {
-   public static final zg<wf, ahi> a = zp.a(ahi::a, ahi::new);
-   private final int b;
-   private final String c;
+public record ahi(float b) implements zs<agy> {
+   public static final zj<wi, ahi> a = zs.a(ahi::a, ahi::new);
 
-   public ahi(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ahi(wi $$0) {
+      this($$0.readFloat());
    }
 
-   private ahi(wf $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
-   }
-
-   private void a(wf $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
+   private void a(wi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zr<ahi> a() {
-      return agt.bs;
+   public zu<ahi> a() {
+      return agw.bp;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public String e() {
-      return this.c;
    }
 }

@@ -1,21 +1,56 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bdh extends DataFix {
-   public bdh(Schema $$0) {
-      super($$0, false);
+public class bdh extends bgt {
+   private static final String[] a = new String[]{
+      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
+   };
+
+   public bdh(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, bhy.s, $$2);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhu.x);
-      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
-         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
-         String $$2 = bji.a($$1.get("id").asString("minecraft:air"));
-         int $$3 = $$1.get("count").asInt(0);
-         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
-      });
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", bdh::b);
+      $$0 = $$0.update("back_text", bdh::b);
+
+      for (String $$1 : a) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
+      if ($$1) {
+         return $$0.remove("_filtered_correct");
+      } else {
+         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
+         if ($$2.isEmpty()) {
+            return $$0;
+         } else {
+            Dynamic<T> $$3 = baw.a($$0.getOps());
+            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
+               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
+               return $$2x.equals($$3) ? $$4x : $$2x;
+            }).toList();
+            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
+               ? $$0.remove("filtered_messages")
+               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
+         }
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bdh::a);
    }
 }

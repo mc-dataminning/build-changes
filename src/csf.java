@@ -1,19 +1,34 @@
-public class csf extends ctl {
-   private final cse a;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
-   public csf(brw $$0, int $$1, int $$2, int $$3, cse $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
+public interface csf {
+   csf a = new csf() {
+      @Override
+      public <T> Optional<T> a(BiFunction<dff, jh, T> $$0) {
+         return Optional.empty();
+      }
+   };
+
+   static csf a(final dff $$0, final jh $$1) {
+      return new csf() {
+         @Override
+         public <T> Optional<T> a(BiFunction<dff, jh, T> $$0x) {
+            return Optional.of($$0.apply($$0, $$1));
+         }
+      };
    }
 
-   @Override
-   public boolean a(cwb $$0) {
-      return !this.a.e(this.d) && super.a($$0);
+   <T> Optional<T> a(BiFunction<dff, jh, T> var1);
+
+   default <T> T a(BiFunction<dff, jh, T> $$0, T $$1) {
+      return this.a($$0).orElse($$1);
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.a.a(this.c);
+   default void a(BiConsumer<dff, jh> $$0) {
+      this.a(($$1, $$2) -> {
+         $$0.accept($$1, $$2);
+         return Optional.empty();
+      });
    }
 }

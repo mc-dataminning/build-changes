@@ -1,29 +1,23 @@
-public class ahm implements zp<agv> {
-   public static final zg<wf, ahm> a = zp.a(ahm::a, ahm::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public ahm(int $$0) {
-      this.b = $$0;
-   }
+public class ahm implements zs<agy> {
+   public static final ahm a = new ahm();
+   public static final zj<ByteBuf, ahm> b = zj.a(a);
 
-   private ahm(wf $$0) {
-      this.b = $$0.x();
-   }
-
-   private void a(wf $$0) {
-      $$0.f(this.b);
+   private ahm() {
    }
 
    @Override
-   public zr<ahm> a() {
-      return agt.bw;
+   public zu<ahm> a() {
+      return agw.bt;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

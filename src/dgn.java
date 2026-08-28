@@ -1,57 +1,245 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class dgn extends dgg implements dge.a {
-   public static final MapCodec<dgn> b = dgc.c.fieldOf("biome").xmap(dgn::new, $$0 -> $$0.c).stable();
-   private final jq<dgc> c;
+public class dgn {
+   public static final Codec<dgn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               dgn.b.d.optionalFieldOf("grass_color_modifier", dgn.b.a).forGetter($$0x -> $$0x.h),
+               dgg.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               awn.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dgf.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               dge.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               awl.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
+            .apply($$0, dgn::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final dgn.b h;
+   private final Optional<dgg> i;
+   private final Optional<jq<awn>> j;
+   private final Optional<dgf> k;
+   private final Optional<dge> l;
+   private final Optional<awl> m;
 
-   public dgn(jq<dgc> $$0) {
-      this.c = $$0;
+   dgn(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      dgn.b $$6,
+      Optional<dgg> $$7,
+      Optional<jq<awn>> $$8,
+      Optional<dgf> $$9,
+      Optional<dge> $$10,
+      Optional<awl> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   @Override
-   protected Stream<jq<dgc>> b() {
-      return Stream.of(this.c);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected MapCodec<? extends dgg> a() {
-      return b;
-   }
-
-   @Override
-   public jq<dgc> getNoiseBiome(int $$0, int $$1, int $$2, dgl.f $$3) {
+   public int b() {
       return this.c;
    }
 
-   @Override
-   public jq<dgc> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
+   public int c() {
+      return this.d;
    }
 
-   @Nullable
-   @Override
-   public Pair<jh, jq<dgc>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jq<dgc>> $$5, azs $$6, boolean $$7, dgl.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new jh($$0, $$1, $$2), this.c) : Pair.of(new jh($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public dgn.b g() {
+      return this.h;
+   }
+
+   public Optional<dgg> h() {
+      return this.i;
+   }
+
+   public Optional<jq<awn>> i() {
+      return this.j;
+   }
+
+   public Optional<dgf> j() {
+      return this.k;
+   }
+
+   public Optional<dge> k() {
+      return this.l;
+   }
+
+   public Optional<awl> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private dgn.b g = dgn.b.a;
+      private Optional<dgg> h = Optional.empty();
+      private Optional<jq<awn>> i = Optional.empty();
+      private Optional<dgf> j = Optional.empty();
+      private Optional<dge> k = Optional.empty();
+      private Optional<awl> l = Optional.empty();
+
+      public dgn.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dgn.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dgn.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dgn.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dgn.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public dgn.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public dgn.a a(dgn.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public dgn.a a(dgg $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public dgn.a a(jq<awn> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public dgn.a a(dgf $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public dgn.a a(dge $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public dgn.a a(@Nullable awl $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public dgn a() {
+         return new dgn(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
       }
    }
 
-   @Nullable
-   @Override
-   public Pair<jh, jq<dgc>> a(jh $$0, int $$1, int $$2, int $$3, Predicate<jq<dgc>> $$4, dgl.f $$5, dfe $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
-   }
+   public static enum b implements baj {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = dgh.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
 
-   @Override
-   public Set<jq<dgc>> a(int $$0, int $$1, int $$2, int $$3, dgl.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+      private final String e;
+      public static final Codec<dgn.b> d = baj.a(dgn.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

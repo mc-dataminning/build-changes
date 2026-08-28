@@ -1,48 +1,56 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class byx {
-   public static bwu<bvi> a(cee<jh> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, ezn::c);
+   public static bwy<bve> a(float $$0, brs $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static bye<bvi> b(cee<? extends bue> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bue::dv);
+   public static bwy<bve> a(bup<?> $$0, float $$1, brs $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ar()));
    }
 
-   private static <T> bye<bvi> a(cee<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ezn> $$4) {
-      return cag.a(
-         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$5 -> $$5.group($$5.a(cee.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<ceh> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     ezn $$11 = $$8.dv();
-                     ezn $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((ka)$$12, (double)$$2)) {
+   private static bwy<bve> a(float $$0, brs $$1, Predicate<bve> $$2) {
+      float $$3 = $$0 * $$0;
+      byx.a $$4 = new byx.a($$1);
+      return cak.a(
+         (Function<cak.b<bve>, ? extends App<cak.c<bve>, can<bve>>>)($$3x -> $$3x.group($$3x.c(cei.n), $$3x.b(cei.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bve> $$9 = $$3x.<cek>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bui)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.A)) {
                         return false;
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           ezn $$13 = $$10.get().a().a().d($$11);
-                           ezn $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           ezn $$16 = cfy.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new ceh($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+                        $$4x.a(new bxi($$9.get(), true));
                         return true;
                      }
-                  }
-               }))
+                  }))
       );
+   }
+
+   public static final class a {
+      private final brs a;
+      private int b;
+
+      public a(brs $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(azv $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

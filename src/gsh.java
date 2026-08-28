@@ -1,24 +1,28 @@
-public abstract class gsh<S extends gun, M extends fyk<S>> extends gsx<S, M> {
-   public gsh(gqg<S, M> $$0) {
-      super($$0);
+public class gsh extends gpr<cmp, gxt, gbt<gxt>> {
+   private static final all a = all.b("textures/entity/zombie_villager/zombie_villager.png");
+
+   public gsh(gpa.a $$0) {
+      super($$0, new gbt<>($$0.a(gcb.dv)), new gbt<>($$0.a(gcb.dy)), 0.5F, grv.a);
+      this.a(new gtd<>(this, new gbt($$0.a(gcb.dw)), new gbt($$0.a(gcb.dx)), new gbt($$0.a(gcb.dz)), new gbt($$0.a(gcb.dA)), $$0.h()));
+      this.a(new gtx<>(this, $$0.e(), "zombie_villager"));
    }
 
-   @Override
-   public void a(feb $$0, gih $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.p;
-         M $$7 = this.c();
-         fef $$8 = $$1.getBuffer(gir.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, gxu.d, -8355712);
-      }
+   public all a(gxt $$0) {
+      return a;
    }
 
-   protected abstract boolean a(S var1);
+   public gxt c() {
+      return new gxt();
+   }
 
-   protected abstract float a(float var1);
+   public void a(cmp $$0, gxt $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gE();
+      $$1.c = $$0.gF();
+      $$1.a = $$0.gk();
+   }
 
-   protected abstract ali a();
-
-   protected abstract M c();
+   protected boolean b(gxt $$0) {
+      return super.a($$0) || $$0.b;
+   }
 }

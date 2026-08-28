@@ -1,53 +1,48 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public interface cai<F extends K1, Value> {
-   cee<Value> a();
+public class cai extends bwx<coc> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
 
-   cef b();
+   public cai() {
+      super(ImmutableMap.of(cei.c, cej.a, cei.n, cej.c));
+   }
 
-   @Nullable
-   cah<F, Value> a(bwc<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cee<Value> a) implements cai<Mu<Unit>, Value> {
-      @Override
-      public cef b() {
-         return cef.b;
-      }
-
-      @Override
-      public cah<Mu<Unit>, Value> a(bwc<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new cah<>($$0, this.a, Const.create(Unit.INSTANCE));
+   protected boolean b(arq $$0, coc $$1) {
+      if ($$0.aa() - this.e < 300L) {
+         return false;
+      } else if ($$0.A.a(2) != 0) {
+         return false;
+      } else {
+         this.e = $$0.aa();
+         jp $$2 = $$1.ee().c(cei.c).get();
+         return $$2.a() == $$0.ag() && $$2.b().a($$1.dw(), 1.73);
       }
    }
 
-   public static record b<Value>(cee<Value> a) implements cai<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cef b() {
-         return cef.a;
-      }
-
-      @Override
-      public cah<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bwc<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new cah<>($$0, this.a, IdF.create($$1.get()));
+   protected void a(arq $$0, coc $$1, long $$2) {
+      bwg<coc> $$3 = $$1.ee();
+      $$3.a(cei.J, $$2);
+      $$3.c(cei.c).ifPresent($$1x -> $$3.a(cei.n, new bxa($$1x.b())));
+      $$1.gK();
+      this.a($$0, $$1);
+      if ($$1.gJ()) {
+         $$1.gI();
       }
    }
 
-   public static record c<Value>(cee<Value> a) implements cai<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cef b() {
-         return cef.c;
-      }
+   protected void a(arq $$0, coc $$1) {
+   }
 
-      @Override
-      public cah<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bwc<?> $$0, Optional<Value> $$1) {
-         return new cah<>($$0, this.a, OptionalBox.create($$1));
+   protected boolean b(arq $$0, coc $$1, long $$2) {
+      Optional<jp> $$3 = $$1.ee().c(cei.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jp $$4 = $$3.get();
+         return $$4.a() == $$0.ag() && $$4.b().a($$1.dw(), 1.73);
       }
    }
 }

@@ -1,124 +1,132 @@
-import java.util.List;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ckp extends ckl {
-   public static final double c = 0.375;
+public abstract class ckp extends bui {
+   private static final Logger c = LogUtils.getLogger();
+   private int d;
+   protected jh b;
 
-   public ckp(bul<? extends ckp> $$0, dfb $$1) {
+   protected ckp(bup<? extends ckp> $$0, dff $$1) {
       super($$0, $$1);
    }
 
-   public ckp(dfb $$0, jh $$1) {
-      super(bul.al, $$0, $$1);
-      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   protected ckp(bup<? extends ckp> $$0, dff $$1, jh $$2) {
+      this($$0, $$1);
+      this.b = $$2;
+   }
+
+   protected abstract void m();
+
+   @Override
+   public void l() {
+      if (!this.dY().C) {
+         this.aC();
+         if (this.d++ == 100) {
+            this.d = 0;
+            if (!this.dT() && !this.o()) {
+               this.av();
+               this.b(null);
+            }
+         }
+      }
+   }
+
+   public abstract boolean o();
+
+   @Override
+   public boolean bJ() {
+      return true;
    }
 
    @Override
-   protected void a(akp.a $$0) {
-   }
-
-   @Override
-   protected void m() {
-      this.o((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
-      double $$0 = (double)this.ar().l() / 2.0;
-      double $$1 = (double)this.ar().m();
-      this.a(new ezi(this.dC() - $$0, this.dE(), this.dI() - $$0, this.dC() + $$0, this.dE() + $$1, this.dI() + $$0));
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
-   }
-
-   @Override
-   public void b(@Nullable bue $$0) {
-      this.a(awl.nR, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(uk $$0) {
-   }
-
-   @Override
-   public void a(uk $$0) {
-   }
-
-   @Override
-   public bsd a(com $$0, bsc $$1) {
-      if (this.dX().C) {
-         return bsd.a;
+   public boolean v(bui $$0) {
+      if ($$0 instanceof cor $$1) {
+         return !this.dY().a($$1, this.b) ? true : this.a(this.dZ().a($$1), 0.0F);
       } else {
-         boolean $$2 = false;
-         List<buy> $$3 = cwl.a(this.dX(), this.q(), $$1x -> {
-            bue $$2x = $$1x.C();
-            return $$2x == $$0 || $$2x == this;
-         });
-
-         for (buy $$4 : $$3) {
-            if ($$4.C() == $$0) {
-               $$4.b(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$5 = false;
-         if (!$$2) {
-            this.av();
-            if ($$0.gl().d) {
-               for (buy $$6 : $$3) {
-                  if ($$6.M_() && $$6.C() == this) {
-                     $$6.a(true, false);
-                     $$5 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$5) {
-            this.a(eag.b, $$0);
-         }
-
-         return bsd.a;
+         return false;
       }
    }
 
    @Override
-   public boolean o() {
-      return this.dX().a_(this.b).a(axa.T);
-   }
-
-   public static ckp b(dfb $$0, jh $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
-
-      for (ckp $$6 : $$0.a(ckp.class, new ezi((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.q().equals($$1)) {
-            return $$6;
+   public boolean a(bsy $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if (!this.dY().ac().b(dfb.c) && $$0.d() instanceof bvg) {
+         return false;
+      } else {
+         if (!this.dT() && !this.dY().C) {
+            this.au();
+            this.bF();
+            this.b($$0.d());
          }
+
+         return true;
       }
-
-      ckp $$7 = new ckp($$0, $$1);
-      $$0.b($$7);
-      return $$7;
-   }
-
-   public void t() {
-      this.a(awl.nS, 1.0F, 1.0F);
    }
 
    @Override
-   public zp<ace> a(arm $$0) {
-      return new acf(this, 0, this.q());
+   public boolean a(dex $$0) {
+      return $$0.g() ? super.a($$0) : true;
    }
 
    @Override
-   public ezn u(float $$0) {
-      return this.o($$0).b(0.0, 0.2, 0.0);
+   public void a(bvi $$0, ezr $$1) {
+      if (!this.dY().C && !this.dT() && $$1.h() > 0.0) {
+         this.au();
+         this.b(null);
+      }
    }
 
    @Override
-   public cwb dK() {
-      return new cwb(cwf.uM);
+   public void j(double $$0, double $$1, double $$2) {
+      if (!this.dY().C && !this.dT() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.au();
+         this.b(null);
+      }
+   }
+
+   @Override
+   public void b(un $$0) {
+      jh $$1 = this.q();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
+   }
+
+   @Override
+   public void a(un $$0) {
+      jh $$1 = new jh($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.dy(), 16.0)) {
+         c.error("Block-attached entity at invalid position: {}", $$1);
+      } else {
+         this.b = $$1;
+      }
+   }
+
+   public abstract void b(@Nullable bui var1);
+
+   @Override
+   protected boolean bL() {
+      return false;
+   }
+
+   @Override
+   public void a_(double $$0, double $$1, double $$2) {
+      this.b = jh.a($$0, $$1, $$2);
+      this.m();
+      this.as = true;
+   }
+
+   public jh q() {
+      return this.b;
+   }
+
+   @Override
+   public void a(arq $$0, bvd $$1) {
+   }
+
+   @Override
+   public void j_() {
    }
 }

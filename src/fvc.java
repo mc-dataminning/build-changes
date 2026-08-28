@@ -1,5 +1,8 @@
-public interface fvc {
-   void F();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   fuw G();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fvc {
 }

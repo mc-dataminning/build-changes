@@ -1,118 +1,89 @@
-public class cqt extends cqk {
-   static final akl<String> c = akp.a(cqt.class, akn.e);
-   static final akl<xi> d = akp.a(cqt.class, akn.f);
-   private final deb e = new cqt.a();
-   private static final int i = 4;
-   private int j;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cqt(bul<? extends cqt> $$0, dfb $$1) {
-      super($$0, $$1);
+public class cqt {
+   public static int[][] a(jm $$0) {
+      jm $$1 = $$0.h();
+      jm $$2 = $$1.g();
+      jm $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cqt(dfb $$0, double $$1, double $$2, double $$3) {
-      super(bul.v, $$0, $$1, $$2, $$3);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   protected cvx al_() {
-      return cwf.nM;
-   }
-
-   @Override
-   protected void a(akp.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, xh.a);
-   }
-
-   @Override
-   protected void a(uk $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dZ());
-      this.aw().a(c, this.E().m());
-      this.aw().a(d, this.E().l());
-   }
-
-   @Override
-   protected void b(uk $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dZ());
-   }
-
-   @Override
-   public cqk.a y() {
-      return cqk.a.g;
-   }
-
-   @Override
-   public dvj A() {
-      return dig.fN.m();
-   }
-
-   public deb E() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ag - this.j >= 4) {
-         this.E().a(this.dX());
-         this.j = this.ag;
-      }
-   }
-
-   @Override
-   public bsd a(com $$0, bsc $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(akl<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.aw().a(d));
-         } catch (Throwable var3) {
+   public static boolean a(deo $$0, bve $$1, ezm $$2) {
+      for (fal $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.aw().a(c));
       }
+
+      return $$0.C_().a($$2);
    }
 
-   @Override
-   public boolean cX() {
-      return true;
+   public static boolean a(deo $$0, ezr $$1, bve $$2, bvq $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   public class a extends deb {
-      @Override
-      public arn e() {
-         return (arn)cqt.this.dX();
+   public static fal a(dek $$0, jh $$1) {
+      dvo $$2 = $$0.a_($$1);
+      return !$$2.a(axd.aR) && (!($$2.b() instanceof dqw) || !$$2.c(dqw.b)) ? $$2.g($$0, $$1) : fai.a();
+   }
+
+   public static double a(jh $$0, int $$1, Function<jh, fal> $$2) {
+      jh.a $$3 = $$0.k();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         fal $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jm.a.b);
+         }
+
+         $$4++;
+         $$3.c(jm.b);
       }
 
-      @Override
-      public void f() {
-         cqt.this.aw().a(cqt.c, this.m());
-         cqt.this.aw().a(cqt.d, this.l());
-      }
+      return Double.POSITIVE_INFINITY;
+   }
 
-      @Override
-      public ezn g() {
-         return cqt.this.dv();
-      }
+   @Nullable
+   public static ezr a(bup<?> $$0, deo $$1, jh $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dek)$$1, $$2), () -> a((dek)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            ezr $$5 = ezr.a($$2, $$4);
+            ezm $$6 = $$0.n().a($$5);
 
-      public cqt h() {
-         return cqt.this;
-      }
+            for (fal $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-      @Override
-      public ew i() {
-         return new ew(this, cqt.this.dv(), cqt.this.bV(), this.e(), 2, this.n().getString(), cqt.this.S_(), this.e().o(), cqt.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cqt.this.dS();
+            if ($$0 != bup.by || !$$1.a_($$2).a(axd.cs) && !$$1.a_($$2.d()).a(axd.cs)) {
+               return !$$1.C_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
 }

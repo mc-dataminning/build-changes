@@ -1,31 +1,112 @@
-public class crj {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   public static float a(int $$0, float $$1) {
-      return (float)$$0 * $$1 * 2.0F;
+public final class crj {
+   private static final crj b = new crj(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final crk c;
+   private final long d;
+
+   private crj(@Nullable crk $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   static crj a(crk $$0, Collection<crh> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new crj($$0, $$2);
+      }
+   }
+
+   public static crj a() {
+      return b;
+   }
+
+   public static crj a(crh $$0) {
+      return new crj($$0.a, $$0.b);
+   }
+
+   public static crj a(crh $$0, crh... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new crj($$0.a, $$2);
+   }
+
+   private static long a(crk $$0, long $$1, Iterable<crh> $$2) {
+      for (crh $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
+   }
+
+   public boolean b(crh $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean b() {
+      return this.equals(b);
+   }
+
+   public boolean a(crj $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public boolean b(crj $$0) {
+      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
+   }
+
+   public crj c(crj $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new crj(this.c, this.d | $$0.d);
+      }
+   }
+
+   public crj d(crj $$0) {
+      if (this.c == null || $$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         long $$1 = this.d & ~$$0.d;
+         return $$1 == 0L ? b : new crj(this.c, $$1);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof crj $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

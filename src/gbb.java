@@ -1,111 +1,84 @@
-import java.util.Set;
+public class gbb extends fza<gwb> {
+   private static final String a = "body0";
+   private static final String b = "body1";
+   private static final String c = "right_middle_front_leg";
+   private static final String d = "left_middle_front_leg";
+   private static final String e = "right_middle_hind_leg";
+   private static final String f = "left_middle_hind_leg";
+   private final gcc g;
+   private final gcc i;
+   private final gcc j;
+   private final gcc k;
+   private final gcc l;
+   private final gcc m;
+   private final gcc n;
+   private final gcc o;
+   private final gcc p;
 
-public class gbb extends fyk<gxb> {
-   public static final gbv a = new fxm(Set.of("head"));
-   private static final String b = "real_head";
-   private static final String c = "upper_body";
-   private static final String d = "real_tail";
-   private final gbm e;
-   private final gbm f;
-   private final gbm g;
-   private final gbm i;
-   private final gbm j;
-   private final gbm k;
-   private final gbm l;
-   private final gbm m;
-   private final gbm n;
-   private final gbm o;
-   private static final int p = 8;
-
-   public gbb(gbm $$0) {
+   public gbb(gcc $$0) {
       super($$0);
-      this.e = $$0.b("head");
-      this.f = this.e.b("real_head");
-      this.g = $$0.b("body");
-      this.o = $$0.b("upper_body");
+      this.g = $$0.b("head");
       this.i = $$0.b("right_hind_leg");
       this.j = $$0.b("left_hind_leg");
-      this.k = $$0.b("right_front_leg");
-      this.l = $$0.b("left_front_leg");
-      this.m = $$0.b("tail");
-      this.n = this.m.b("real_tail");
+      this.k = $$0.b("right_middle_hind_leg");
+      this.l = $$0.b("left_middle_hind_leg");
+      this.m = $$0.b("right_middle_front_leg");
+      this.n = $$0.b("left_middle_front_leg");
+      this.o = $$0.b("right_front_leg");
+      this.p = $$0.b("left_front_leg");
    }
 
-   public static gbu a(gbq $$0) {
-      gbu $$1 = new gbu();
-      gbw $$2 = $$1.a();
-      float $$3 = 13.5F;
-      gbw $$4 = $$2.a("head", gbr.c(), gbo.a(-1.0F, 13.5F, -7.0F));
-      $$4.a(
-         "real_head",
-         gbr.c()
-            .a(0, 0)
-            .a(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F, $$0)
-            .a(16, 14)
-            .a(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
-            .a(16, 14)
-            .a(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, $$0)
-            .a(0, 10)
-            .a(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F, $$0),
-         gbo.a
-      );
-      $$2.a("body", gbr.c().a(18, 14).a(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F, $$0), gbo.a(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("upper_body", gbr.c().a(21, 0).a(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F, $$0), gbo.a(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gbr $$5 = gbr.c().a(0, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0);
-      $$2.a("right_hind_leg", $$5, gbo.a(-2.5F, 16.0F, 7.0F));
-      $$2.a("left_hind_leg", $$5, gbo.a(0.5F, 16.0F, 7.0F));
-      $$2.a("right_front_leg", $$5, gbo.a(-2.5F, 16.0F, -4.0F));
-      $$2.a("left_front_leg", $$5, gbo.a(0.5F, 16.0F, -4.0F));
-      gbw $$6 = $$2.a("tail", gbr.c(), gbo.a(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F));
-      $$6.a("real_tail", gbr.c().a(9, 18).a(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, $$0), gbo.a);
-      return $$1;
+   public static gci a() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      int $$2 = 15;
+      $$1.a("head", gch.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), gce.a(0.0F, 15.0F, -3.0F));
+      $$1.a("body0", gch.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gce.a(0.0F, 15.0F, 0.0F));
+      $$1.a("body1", gch.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), gce.a(0.0F, 15.0F, 9.0F));
+      gch $$3 = gch.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      gch $$4 = gch.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      float $$5 = (float) (Math.PI / 4);
+      float $$6 = (float) (Math.PI / 8);
+      $$1.a("right_hind_leg", $$3, gce.a(-4.0F, 15.0F, 2.0F, 0.0F, (float) (Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_hind_leg", $$4, gce.a(4.0F, 15.0F, 2.0F, 0.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4)));
+      $$1.a("right_middle_hind_leg", $$3, gce.a(-4.0F, 15.0F, 1.0F, 0.0F, (float) (Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_hind_leg", $$4, gce.a(4.0F, 15.0F, 1.0F, 0.0F, (float) (-Math.PI / 8), 0.58119464F));
+      $$1.a("right_middle_front_leg", $$3, gce.a(-4.0F, 15.0F, 0.0F, 0.0F, (float) (-Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_front_leg", $$4, gce.a(4.0F, 15.0F, 0.0F, 0.0F, (float) (Math.PI / 8), 0.58119464F));
+      $$1.a("right_front_leg", $$3, gce.a(-4.0F, 15.0F, -1.0F, 0.0F, (float) (-Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_front_leg", $$4, gce.a(4.0F, 15.0F, -1.0F, 0.0F, (float) (Math.PI / 4), (float) (Math.PI / 4)));
+      return gci.a($$0, 64, 32);
    }
 
-   public void a(gxb $$0) {
+   public void a(gwb $$0) {
       super.a($$0);
-      float $$1 = $$0.X;
+      this.g.f = $$0.U * (float) (Math.PI / 180.0);
+      this.g.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = $$0.X * 0.6662F;
       float $$2 = $$0.Y;
-      if ($$0.a) {
-         this.m.f = 0.0F;
-      } else {
-         this.m.f = azk.b($$1 * 0.6662F) * 1.4F * $$2;
-      }
-
-      if ($$0.b) {
-         float $$3 = $$0.ab;
-         this.o.c += 2.0F * $$3;
-         this.o.e = (float) (Math.PI * 2.0 / 5.0);
-         this.o.f = 0.0F;
-         this.g.c += 4.0F * $$3;
-         this.g.d -= 2.0F * $$3;
-         this.g.e = (float) (Math.PI / 4);
-         this.m.c += 9.0F * $$3;
-         this.m.d -= 2.0F * $$3;
-         this.i.c += 6.7F * $$3;
-         this.i.d -= 5.0F * $$3;
-         this.i.e = (float) (Math.PI * 3.0 / 2.0);
-         this.j.c += 6.7F * $$3;
-         this.j.d -= 5.0F * $$3;
-         this.j.e = (float) (Math.PI * 3.0 / 2.0);
-         this.k.e = 5.811947F;
-         this.k.b += 0.01F * $$3;
-         this.k.c += 1.0F * $$3;
-         this.l.e = 5.811947F;
-         this.l.b -= 0.01F * $$3;
-         this.l.c += 1.0F * $$3;
-      } else {
-         this.i.e = azk.b($$1 * 0.6662F) * 1.4F * $$2;
-         this.j.e = azk.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.k.e = azk.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-         this.l.e = azk.b($$1 * 0.6662F) * 1.4F * $$2;
-      }
-
-      this.f.g = $$0.d + $$0.a(0.0F);
-      this.o.g = $$0.a(-0.08F);
-      this.g.g = $$0.a(-0.16F);
-      this.n.g = $$0.a(-0.2F);
-      this.e.e = $$0.V * (float) (Math.PI / 180.0);
-      this.e.f = $$0.U * (float) (Math.PI / 180.0);
-      this.m.e = $$0.c;
+      float $$3 = -(azn.b($$1 * 2.0F + 0.0F) * 0.4F) * $$2;
+      float $$4 = -(azn.b($$1 * 2.0F + (float) Math.PI) * 0.4F) * $$2;
+      float $$5 = -(azn.b($$1 * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$6 = -(azn.b($$1 * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      float $$7 = Math.abs(azn.a($$1 + 0.0F) * 0.4F) * $$2;
+      float $$8 = Math.abs(azn.a($$1 + (float) Math.PI) * 0.4F) * $$2;
+      float $$9 = Math.abs(azn.a($$1 + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$10 = Math.abs(azn.a($$1 + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      this.i.f += $$3;
+      this.j.f -= $$3;
+      this.k.f += $$4;
+      this.l.f -= $$4;
+      this.m.f += $$5;
+      this.n.f -= $$5;
+      this.o.f += $$6;
+      this.p.f -= $$6;
+      this.i.g += $$7;
+      this.j.g -= $$7;
+      this.k.g += $$8;
+      this.l.g -= $$8;
+      this.m.g += $$9;
+      this.n.g -= $$9;
+      this.o.g += $$10;
+      this.p.g -= $$10;
    }
 }

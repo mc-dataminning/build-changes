@@ -1,41 +1,56 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface ddx {
-   void a(@Nullable com var1);
+public class ddx {
+   public static final alk<ddw> a = a("sentry");
+   public static final alk<ddw> b = a("dune");
+   public static final alk<ddw> c = a("coast");
+   public static final alk<ddw> d = a("wild");
+   public static final alk<ddw> e = a("ward");
+   public static final alk<ddw> f = a("eye");
+   public static final alk<ddw> g = a("vex");
+   public static final alk<ddw> h = a("tide");
+   public static final alk<ddw> i = a("snout");
+   public static final alk<ddw> j = a("rib");
+   public static final alk<ddw> k = a("spire");
+   public static final alk<ddw> l = a("wayfinder");
+   public static final alk<ddw> m = a("shaper");
+   public static final alk<ddw> n = a("silence");
+   public static final alk<ddw> o = a("raiser");
+   public static final alk<ddw> p = a("host");
+   public static final alk<ddw> q = a("flow");
+   public static final alk<ddw> r = a("bolt");
 
-   @Nullable
-   com gu();
-
-   ddz gw();
-
-   void a(ddz var1);
-
-   void a(ddy var1);
-
-   void k(cwb var1);
-
-   int t();
-
-   void t(int var1);
-
-   boolean gx();
-
-   awk gy();
-
-   default boolean gG() {
-      return false;
+   public static void a(rb<ddw> $$0) {
+      a($$0, cwj.xP, a);
+      a($$0, cwj.xQ, b);
+      a($$0, cwj.xR, c);
+      a($$0, cwj.xS, d);
+      a($$0, cwj.xT, e);
+      a($$0, cwj.xU, f);
+      a($$0, cwj.xV, g);
+      a($$0, cwj.xW, h);
+      a($$0, cwj.xX, i);
+      a($$0, cwj.xY, j);
+      a($$0, cwj.xZ, k);
+      a($$0, cwj.ya, l);
+      a($$0, cwj.yb, m);
+      a($$0, cwj.yc, n);
+      a($$0, cwj.yd, o);
+      a($$0, cwj.ye, p);
+      a($$0, cwj.yf, q);
+      a($$0, cwj.yg, r);
    }
 
-   default void a(com $$0, xi $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new bsl(($$0x, $$1x, $$2x) -> new csz($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         ddz $$4 = this.gw();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gx(), this.gG());
-         }
-      }
+   public static Optional<jq.c<ddw>> a(js.a $$0, cwf $$1) {
+      return $$0.d(ma.aY).c().filter($$1x -> $$1.a(((ddw)$$1x.a()).b())).findFirst();
    }
 
-   boolean gC();
+   public static void a(rb<ddw> $$0, cwb $$1, alk<ddw> $$2) {
+      ddw $$3 = new ddw($$2.a(), lz.g.e($$1), xl.c(ae.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
+   }
+
+   private static alk<ddw> a(String $$0) {
+      return alk.a(ma.aY, all.b($$0));
+   }
 }

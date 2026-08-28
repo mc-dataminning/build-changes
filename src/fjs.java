@@ -1,44 +1,66 @@
-import org.joml.Vector2i;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
 public class fjs {
-   private double a;
-   private double b;
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final ghv[] e = new ghv[9];
+   private boolean f;
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
-      }
+   public fjs(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
-      }
-
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
-      } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new ghv();
       }
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
+   private void b() {
+      try {
+         un $$0 = va.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
 
-      while ($$1 < 0) {
-         $$1 += $$2;
+         int $$1 = vc.b($$0, 1343);
+         $$0 = bax.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = ghv.a.parse(vb.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(ghv::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
+   }
+
+   public void a() {
+      try {
+         un $$0 = vc.e(new un());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            ghv $$2 = this.a($$1);
+            DataResult<vk> $$3 = ghv.a.encodeStart(vb.a, $$2);
+            $$0.a(String.valueOf($$1), (vk)$$3.getOrThrow());
+         }
+
+         va.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public ghv a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
       }
 
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
-      }
-
-      return $$1;
+      return this.e[$$0];
    }
 }

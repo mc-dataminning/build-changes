@@ -1,147 +1,49 @@
-import java.util.UUID;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class brt {
-   private final UUID h;
-   protected xi a;
-   protected float b;
-   protected brt.a c;
-   protected brt.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+public class brt extends brm {
+   public static final MapCodec<brt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bqp.b(brm.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, brt::new)
+   );
+   private final bqp<brm> b;
+   private final int f;
+   private final int g;
 
-   public brt(UUID $$0, xi $$1, brt.a $$2, brt.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
-   }
-
-   public UUID h() {
-      return this.h;
-   }
-
-   public xi i() {
-      return this.a;
-   }
-
-   public void a(xi $$0) {
-      this.a = $$0;
-   }
-
-   public float j() {
-      return this.b;
-   }
-
-   public void a(float $$0) {
+   public brt(bqp<brm> $$0) {
       this.b = $$0;
+      List<bqr.b<brm>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bqr.b<brm> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
+
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public brt.a k() {
-      return this.c;
+   @Override
+   public int a(azv $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
-   public void a(brt.a $$0) {
-      this.c = $$0;
-   }
-
-   public brt.b l() {
-      return this.d;
-   }
-
-   public void a(brt.b $$0) {
-      this.d = $$0;
-   }
-
-   public boolean m() {
-      return this.e;
-   }
-
-   public brt a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean n() {
+   @Override
+   public int a() {
       return this.f;
    }
 
-   public brt b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public brt c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean o() {
+   @Override
+   public int b() {
       return this.g;
    }
 
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(final String $$0, final n $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static brt.a a(String $$0) {
-         for (brt.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return g;
-      }
-   }
-
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
-
-      private final String f;
-
-      private b(final String $$0) {
-         this.f = $$0;
-      }
-
-      public String a() {
-         return this.f;
-      }
-
-      public static brt.b a(String $$0) {
-         for (brt.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
+   @Override
+   public brn<?> c() {
+      return brn.e;
    }
 }

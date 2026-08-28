@@ -1,29 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record abi(Set<kj> c, Set<kj> d) implements aas {
-   public static final zg<wf, abi> a = aas.a(abi::a, abi::new);
-   public static final aas.b<abi> b = aas.a("debug/village_sections");
+public record abi(List<jh> c) implements aav {
+   public static final zj<wi, abi> a = aav.a(abi::a, abi::new);
+   public static final aav.b<abi> b = aav.a("debug/raids");
 
-   private abi(wf $$0) {
-      this($$0.a(HashSet::new, wf::g), $$0.a(HashSet::new, wf::g));
+   private abi(wi $$0) {
+      this($$0.a(jh.b));
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.c, wf::a);
-      $$0.a(this.d, wf::a);
+   private void a(wi $$0) {
+      $$0.a(this.c, jh.b);
    }
 
    @Override
-   public aas.b<abi> a() {
+   public aav.b<abi> a() {
       return b;
    }
 
-   public Set<kj> b() {
+   public List<jh> b() {
       return this.c;
-   }
-
-   public Set<kj> c() {
-      return this.d;
    }
 }

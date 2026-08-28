@@ -1,37 +1,29 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-public class gmw implements gmh.a {
-   private static final int a = 60;
-   private final Set<kj> b = Sets.newHashSet();
+public class gmw implements gmx.a {
+   private final fjx a;
+   private double b = Double.MIN_VALUE;
+   private List<fal> c = Collections.emptyList();
 
-   gmw() {
+   public gmw(fjx $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ae.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bui $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dY().d($$6, $$6.cT().g(6.0)));
+      }
 
-   public void a(kj $$0) {
-      this.b.add($$0);
-   }
+      feo $$7 = $$1.getBuffer(gjh.y());
 
-   public void b(kj $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(feb $$0, gih $$1, double $$2, double $$3, double $$4) {
-      jh $$5 = jh.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
-         }
-      });
-   }
-
-   private static void a(feb $$0, gih $$1, kj $$2) {
-      gmh.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+      for (fal $$8 : this.c) {
+         gmx.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

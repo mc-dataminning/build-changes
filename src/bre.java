@@ -1,45 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bre extends brg {
-   public static final bre a = new bre(0.0F);
-   public static final MapCodec<bre> b = Codec.FLOAT.fieldOf("value").xmap(bre::a, bre::d);
-   private final float d;
+public class bre extends brm {
+   public static final MapCodec<bre> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bre::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public static bre a(float $$0) {
-      return $$0 == 0.0F ? a : new bre($$0);
+   private bre(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   private bre(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(azs $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
+   public static bre a(int $$0, int $$1) {
+      return new bre($$0, $$1);
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int a(azv $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
-   public brh<?> c() {
-      return brh.a;
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public brn<?> c() {
+      return brn.c;
    }
 
    @Override
    public String toString() {
-      return Float.toString(this.d);
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

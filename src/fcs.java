@@ -1,46 +1,134 @@
-public class fcs {
-   private static final int a = 60;
-   private static final int b = 10;
-   private static final int c = 30;
-   private static final int d = 10;
-   private static final long e = 60000L;
-   private static final long f = 600000L;
-   private final fjm g;
-   private final fji h;
-   private int i;
-   private long j;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Objects;
 
-   public fcs(fjm $$0, fji $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$0.h().c();
+public class fcs extends fcu {
+   public static final int a = 854;
+   public static final int b = 480;
+   static final fcs.b l = new fcs.b(854, 480);
+
+   public fcs(int $$0, int $$1) {
+      super(true);
+      this.e($$0, $$1);
    }
 
-   public int a() {
-      fje $$0 = this.g.i().c();
-      if (this.h.aO().j()) {
-         return 10;
-      } else {
-         if ($$0 == fje.b) {
-            long $$1 = ae.c() - this.j;
-            if ($$1 > 600000L) {
-               return 10;
-            }
+   private void e(int $$0, int $$1) {
+      fcs.b $$2 = this.f($$0, $$1);
+      this.h = GlStateManager.glGenFramebuffers();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texParameter(3553, 34892, 0);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+      GlStateManager._bindTexture(0);
+      this.e = $$2.a;
+      this.f = $$2.b;
+      this.c = $$2.a;
+      this.d = $$2.b;
+      this.b();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
 
-            if ($$1 > 60000L) {
-               return Math.min(this.i, 30);
-            }
+   private fcs.b f(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.i = TextureUtil.generateTextureId();
+      this.j = TextureUtil.generateTextureId();
+      fcs.a $$2 = fcs.a.a;
+
+      for (fcs.b $$3 : fcs.b.a($$0, $$1)) {
+         $$2 = fcs.a.a;
+         if (this.a($$3)) {
+            $$2 = $$2.a(fcs.a.b);
          }
 
-         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
+         if (this.b($$3)) {
+            $$2 = $$2.a(fcs.a.c);
+         }
+
+         if ($$2 == fcs.a.d) {
+            return $$3;
+         }
+      }
+
+      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
+   }
+
+   private boolean a(fcs.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   private boolean b(fcs.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
+
+      private static final fcs.a[] e = values();
+
+      fcs.a a(fcs.a $$0) {
+         return e[this.ordinal() | $$0.ordinal()];
       }
    }
 
-   public void a(int $$0) {
-      this.i = $$0;
-   }
+   static class b {
+      public final int a;
+      public final int b;
 
-   public void b() {
-      this.j = ae.c();
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      static List<fcs.b> a(int $$0, int $$1) {
+         RenderSystem.assertOnRenderThreadOrInit();
+         int $$2 = RenderSystem.maxSupportedTextureSize();
+         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new fcs.b($$0, $$1), fcs.l) : ImmutableList.of(fcs.l);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fcs.b $$1 = (fcs.b)$$0;
+            return this.a == $$1.a && this.b == $$1.b;
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
+      }
+
+      @Override
+      public String toString() {
+         return this.a + "x" + this.b;
+      }
    }
 }

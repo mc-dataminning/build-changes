@@ -1,9 +1,22 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class ept {
-   public static final Codec<ept> c = ly.m.q().dispatch("predicate_type", ept::a, epu::codec);
+public class ept extends eqa {
+   public final axt<dij> a;
+   public static final MapCodec<ept> b = axt.b(ma.f).xmap(ept::new, $$0 -> $$0.a).fieldOf("value");
 
-   public abstract boolean a(dvj var1, azs var2);
+   public ept(axt<dij> $$0) {
+      this.a = $$0;
+   }
 
-   protected abstract epu<?> a();
+   @Nullable
+   @Override
+   public eqd.c a(dfi $$0, jh $$1, jh $$2, eqd.c $$3, eqd.c $$4, epz $$5) {
+      return eep.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
+
+   @Override
+   protected eqc<?> a() {
+      return eqc.n;
+   }
 }

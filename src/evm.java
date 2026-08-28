@@ -1,22 +1,126 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public interface evm<T extends evm<T>> {
-   T b(evq.a var1);
+public class evm extends evt {
+   public static final axt<emb> a = axp.l;
+   public static final jq<etd> b = ete.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final MapCodec<evm> f = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  axt.a(ma.aS).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
+                  etd.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
+                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
+                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, evm::new)
+   );
+   private final axt<emb> h;
+   private final jq<etd> i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   default <E> T a(Iterable<E> $$0, Function<E, evq.a> $$1) {
-      T $$2 = this.c();
+   evm(List<exr> $$0, axt<emb> $$1, jq<etd> $$2, byte $$3, int $$4, boolean $$5) {
+      super($$0);
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
+   }
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
+   @Override
+   public evv<evm> b() {
+      return evw.q;
+   }
+
+   @Override
+   public Set<ewz<?>> a() {
+      return ImmutableSet.of(exc.f);
+   }
+
+   @Override
+   public cwf a(cwf $$0, eug $$1) {
+      if (!$$0.a(cwj.uB)) {
+         return $$0;
+      } else {
+         ezr $$2 = $$1.c(exc.f);
+         if ($$2 != null) {
+            arq $$3 = $$1.d();
+            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
+            if ($$4 != null) {
+               cwf $$5 = cws.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cws.a($$3, $$5);
+               eti.a($$5, $$4, "+", this.i);
+               return $$5;
+            }
+         }
+
+         return $$0;
+      }
+   }
+
+   public static evm.a c() {
+      return new evm.a();
+   }
+
+   public static class a extends evt.a<evm.a> {
+      private axt<emb> a;
+      private jq<etd> b;
+      private byte c;
+      private int d;
+      private boolean e;
+
+      public a() {
+         this.a = evm.a;
+         this.b = evm.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
       }
 
-      return $$2;
-   }
+      protected evm.a a() {
+         return this;
+      }
 
-   default <E> T a(E[] $$0, Function<E, evq.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
-   }
+      public evm.a a(axt<emb> $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   T c();
+      public evm.a a(jq<etd> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public evm.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public evm.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public evm.a a(boolean $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      @Override
+      public evu b() {
+         return new evm(this.g(), this.a, this.b, this.c, this.d, this.e);
+      }
+   }
 }

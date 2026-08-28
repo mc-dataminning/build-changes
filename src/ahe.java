@@ -1,20 +1,20 @@
-public record ahe(xz.a b) implements zp<agv> {
-   public static final zg<wf, ahe> a = zp.a(ahe::a, ahe::new);
+public record ahe(String b) implements zs<agy> {
+   public static final zj<wi, ahe> a = zs.a(ahe::a, ahe::new);
 
-   private ahe(wf $$0) {
-      this(xz.a.a($$0));
+   private ahe(wi $$0) {
+      this($$0.p());
    }
 
-   private void a(wf $$0) {
-      xz.a.a($$0, this.b);
+   private void a(wi $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zr<ahe> a() {
-      return agt.bo;
+   public zu<ahe> a() {
+      return agw.bl;
    }
 
-   public void a(agv $$0) {
+   public void a(agy $$0) {
       $$0.a(this);
    }
 }

@@ -1,36 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public abstract class bri {
-   private static final Codec<Either<Integer, bri>> a = Codec.either(Codec.INT, ly.K.q().dispatch(bri::c, brj::codec));
-   public static final Codec<bri> c = a.xmap(
-      $$0 -> (bri)$$0.map(brf::a, $$0x -> $$0x), $$0 -> $$0.c() == brj.a ? Either.left(((brf)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bri> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bri> e = b(1, Integer.MAX_VALUE);
+public class bri extends brk {
+   public static final bri a = new bri(0.0F);
+   public static final MapCodec<bri> b = Codec.FLOAT.fieldOf("value").xmap(bri::a, bri::d);
+   private final float d;
 
-   public static Codec<bri> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   public static bri a(float $$0) {
+      return $$0 == 0.0F ? a : new bri($$0);
    }
 
-   public static <T extends bri> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   private bri(float $$0) {
+      this.d = $$0;
    }
 
-   private static <T extends bri> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-      }
+   public float d() {
+      return this.d;
    }
 
-   public abstract int a(azs var1);
+   @Override
+   public float a(azv $$0) {
+      return this.d;
+   }
 
-   public abstract int a();
+   @Override
+   public float a() {
+      return this.d;
+   }
 
-   public abstract int b();
+   @Override
+   public float b() {
+      return this.d;
+   }
 
-   public abstract brj<?> c();
+   @Override
+   public brl<?> c() {
+      return brl.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
+   }
 }

@@ -1,22 +1,102 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-@FunctionalInterface
-public interface gea {
-   Logger a = LogUtils.getLogger();
-   gea b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(gdy.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
+public class gea {
+   final int a;
+   private final List<gea.a> b = new ArrayList<>();
+
+   public gea(int $$0) {
+      this.a = $$0;
+   }
+
+   public void a(gds $$0, IntCollection $$1, gea.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
+
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         gdu $$6 = $$0.b($$4);
+         if ($$6 instanceof gdv.a) {
+            gdv.a $$5 = (gdv.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
-   };
+   }
 
-   Optional<gdy> resolve(gdz var1);
+   public void a(yb $$0) {
+      this.b.add(new gea.a($$0));
+   }
+
+   public boolean b(yb $$0) {
+      boolean $$1 = false;
+      Iterator<gea.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         gea.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<xx> b;
+      private yb c;
+      private boolean d = true;
+      private int e;
+
+      a(final yb $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(yb $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= gea.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, gdv.a var2);
+   }
 }

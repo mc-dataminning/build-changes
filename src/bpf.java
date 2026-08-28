@@ -1,100 +1,49 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public record bpf(
-   Instant a,
-   Instant b,
-   Duration c,
-   @Nullable Duration d,
-   List<bpr> e,
-   List<bpl> f,
-   bpn.a g,
-   bpq.a h,
-   bpo<bpp> i,
-   bpo<bpp> j,
-   bpo<bpk> k,
-   bpo<bpk> l,
-   bpm.a m,
-   bpm.a n,
-   List<bpj> o
-) {
-   public List<Pair<dyg, bpt<bpj>>> a() {
-      Map<dyg, List<bpj>> $$0 = this.o.stream().collect(Collectors.groupingBy(bpj::d));
-      return $$0.entrySet()
-         .stream()
-         .map($$0x -> Pair.of((dyg)$$0x.getKey(), bpt.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<dyg, bpt<bpj>>, Duration>comparing($$0x -> ((bpt)$$0x.getSecond()).f()).reversed())
-         .toList();
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bpf extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetDirection")
+   @Label("Packet Direction")
+   public final String packetDirection;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final String packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
+
+   public bpf(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
+      this.protocolId = $$0;
+      this.packetDirection = $$1;
+      this.packetId = $$2;
+      this.remoteAddress = $$3.toString();
+      this.bytes = $$4;
    }
 
-   public String b() {
-      return new bph().a(this);
-   }
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetDirection";
+      public static final String d = "packetId";
+      public static final String e = "bytes";
 
-   public Instant c() {
-      return this.a;
-   }
-
-   public Instant d() {
-      return this.b;
-   }
-
-   public Duration e() {
-      return this.c;
-   }
-
-   @Nullable
-   public Duration f() {
-      return this.d;
-   }
-
-   public List<bpr> g() {
-      return this.e;
-   }
-
-   public List<bpl> h() {
-      return this.f;
-   }
-
-   public bpn.a i() {
-      return this.g;
-   }
-
-   public bpq.a j() {
-      return this.h;
-   }
-
-   public bpo<bpp> k() {
-      return this.i;
-   }
-
-   public bpo<bpp> l() {
-      return this.j;
-   }
-
-   public bpo<bpk> m() {
-      return this.k;
-   }
-
-   public bpo<bpk> n() {
-      return this.l;
-   }
-
-   public bpm.a o() {
-      return this.m;
-   }
-
-   public bpm.a p() {
-      return this.n;
-   }
-
-   public List<bpj> q() {
-      return this.o;
+      private a() {
+      }
    }
 }

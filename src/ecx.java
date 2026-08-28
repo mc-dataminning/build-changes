@@ -1,21 +1,24 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ecx implements ecm {
-   protected final kl f;
+class ecx extends edb {
+   private final ju<ern> e;
+   public static final MapCodec<ecx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kf.a(ma.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, ecx::new)
+   );
 
-   protected static <P extends ecx> P1<Mu<P>, kl> a(Instance<P> $$0) {
-      return $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.f));
+   public ecx(kl $$0, ju<ern> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   protected ecx(kl $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dvo $$0) {
+      return $$0.y().a(this.e);
    }
 
-   public final boolean a(dfy $$0, jh $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public ecr<?> a() {
+      return ecr.c;
    }
-
-   protected abstract boolean a(dvj var1);
 }

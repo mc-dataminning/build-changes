@@ -1,25 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cft {
-   @Nullable
-   public static ezn a(bvi $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cfw.a($$0, $$1);
-      return cfz.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class cft extends cfh<cnt> {
+   @Override
+   public Set<cei<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cei.B)));
    }
 
-   @Nullable
-   public static jh a(bvi $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      jh $$8 = cfz.a($$0.ea(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         jh $$9 = cfz.a($$0, $$1, $$0.ea(), $$8);
-         if (!cfw.a($$9, $$0) && !cfw.a($$7, $$0, $$9)) {
-            $$9 = cfz.a($$9, $$0.dX().al(), $$1x -> cfw.c($$0, $$1x));
-            return cfw.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   protected void a(arq $$0, cnt $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ar() == bup.by)
+         .or(() -> a($$1, $$0xx -> $$0xx.ar() != bup.by))
+         .ifPresentOrElse($$1x -> $$1.ee().a(cei.B, $$1x), () -> $$1.ee().b(cei.B));
+   }
+
+   private static Optional<bve> a(cnt $$0, Predicate<bve> $$1) {
+      return $$0.ee().c(cei.g).stream().flatMap(Collection::stream).filter($$0::c).filter($$1).findFirst();
    }
 }

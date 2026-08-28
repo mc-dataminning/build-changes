@@ -1,20 +1,98 @@
 public class awy {
-   public static final axq<dsc> a = a("no_item_required");
-   public static final axq<dsc> b = a("pattern_item/flower");
-   public static final axq<dsc> c = a("pattern_item/creeper");
-   public static final axq<dsc> d = a("pattern_item/skull");
-   public static final axq<dsc> e = a("pattern_item/mojang");
-   public static final axq<dsc> f = a("pattern_item/globe");
-   public static final axq<dsc> g = a("pattern_item/piglin");
-   public static final axq<dsc> h = a("pattern_item/flow");
-   public static final axq<dsc> i = a("pattern_item/guster");
-   public static final axq<dsc> j = a("pattern_item/field_masoned");
-   public static final axq<dsc> k = a("pattern_item/bordure_indented");
+   public static final awx<dij> a = a("mined", lz.e);
+   public static final awx<cwb> b = a("crafted", lz.g);
+   public static final awx<cwb> c = a("used", lz.g);
+   public static final awx<cwb> d = a("broken", lz.g);
+   public static final awx<cwb> e = a("picked_up", lz.g);
+   public static final awx<cwb> f = a("dropped", lz.g);
+   public static final awx<bup<?>> g = a("killed", lz.f);
+   public static final awx<bup<?>> h = a("killed_by", lz.f);
+   public static final awx<all> i = a("custom", lz.k);
+   public static final all j = a("leave_game", aww.b);
+   public static final all k = a("play_time", aww.e);
+   public static final all l = a("total_world_time", aww.e);
+   public static final all m = a("time_since_death", aww.e);
+   public static final all n = a("time_since_rest", aww.e);
+   public static final all o = a("sneak_time", aww.e);
+   public static final all p = a("walk_one_cm", aww.d);
+   public static final all q = a("crouch_one_cm", aww.d);
+   public static final all r = a("sprint_one_cm", aww.d);
+   public static final all s = a("walk_on_water_one_cm", aww.d);
+   public static final all t = a("fall_one_cm", aww.d);
+   public static final all u = a("climb_one_cm", aww.d);
+   public static final all v = a("fly_one_cm", aww.d);
+   public static final all w = a("walk_under_water_one_cm", aww.d);
+   public static final all x = a("minecart_one_cm", aww.d);
+   public static final all y = a("boat_one_cm", aww.d);
+   public static final all z = a("pig_one_cm", aww.d);
+   public static final all A = a("horse_one_cm", aww.d);
+   public static final all B = a("aviate_one_cm", aww.d);
+   public static final all C = a("swim_one_cm", aww.d);
+   public static final all D = a("strider_one_cm", aww.d);
+   public static final all E = a("jump", aww.b);
+   public static final all F = a("drop", aww.b);
+   public static final all G = a("damage_dealt", aww.c);
+   public static final all H = a("damage_dealt_absorbed", aww.c);
+   public static final all I = a("damage_dealt_resisted", aww.c);
+   public static final all J = a("damage_taken", aww.c);
+   public static final all K = a("damage_blocked_by_shield", aww.c);
+   public static final all L = a("damage_absorbed", aww.c);
+   public static final all M = a("damage_resisted", aww.c);
+   public static final all N = a("deaths", aww.b);
+   public static final all O = a("mob_kills", aww.b);
+   public static final all P = a("animals_bred", aww.b);
+   public static final all Q = a("player_kills", aww.b);
+   public static final all R = a("fish_caught", aww.b);
+   public static final all S = a("talked_to_villager", aww.b);
+   public static final all T = a("traded_with_villager", aww.b);
+   public static final all U = a("eat_cake_slice", aww.b);
+   public static final all V = a("fill_cauldron", aww.b);
+   public static final all W = a("use_cauldron", aww.b);
+   public static final all X = a("clean_armor", aww.b);
+   public static final all Y = a("clean_banner", aww.b);
+   public static final all Z = a("clean_shulker_box", aww.b);
+   public static final all aa = a("interact_with_brewingstand", aww.b);
+   public static final all ab = a("interact_with_beacon", aww.b);
+   public static final all ac = a("inspect_dropper", aww.b);
+   public static final all ad = a("inspect_hopper", aww.b);
+   public static final all ae = a("inspect_dispenser", aww.b);
+   public static final all af = a("play_noteblock", aww.b);
+   public static final all ag = a("tune_noteblock", aww.b);
+   public static final all ah = a("pot_flower", aww.b);
+   public static final all ai = a("trigger_trapped_chest", aww.b);
+   public static final all aj = a("open_enderchest", aww.b);
+   public static final all ak = a("enchant_item", aww.b);
+   public static final all al = a("play_record", aww.b);
+   public static final all am = a("interact_with_furnace", aww.b);
+   public static final all an = a("interact_with_crafting_table", aww.b);
+   public static final all ao = a("open_chest", aww.b);
+   public static final all ap = a("sleep_in_bed", aww.b);
+   public static final all aq = a("open_shulker_box", aww.b);
+   public static final all ar = a("open_barrel", aww.b);
+   public static final all as = a("interact_with_blast_furnace", aww.b);
+   public static final all at = a("interact_with_smoker", aww.b);
+   public static final all au = a("interact_with_lectern", aww.b);
+   public static final all av = a("interact_with_campfire", aww.b);
+   public static final all aw = a("interact_with_cartography_table", aww.b);
+   public static final all ax = a("interact_with_loom", aww.b);
+   public static final all ay = a("interact_with_stonecutter", aww.b);
+   public static final all az = a("bell_ring", aww.b);
+   public static final all aA = a("raid_trigger", aww.b);
+   public static final all aB = a("raid_win", aww.b);
+   public static final all aC = a("interact_with_anvil", aww.b);
+   public static final all aD = a("interact_with_grindstone", aww.b);
+   public static final all aE = a("target_hit", aww.b);
+   public static final all aF = a("interact_with_smithing_table", aww.b);
 
-   private awy() {
+   private static all a(String $$0, aww $$1) {
+      all $$2 = all.b($$0);
+      kd.a(lz.k, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private static axq<dsc> a(String $$0) {
-      return axq.a(lz.d, ali.b($$0));
+   private static <T> awx<T> a(String $$0, kd<T> $$1) {
+      xl $$2 = xl.c("stat_type.minecraft." + $$0);
+      return kd.a(lz.v, $$0, new awx<>($$1, $$2));
    }
 }

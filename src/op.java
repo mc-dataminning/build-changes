@@ -1,87 +1,76 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class op {
-   public static final op.a a = a(on::a, om.c);
-   public static final op.a b = a(on::a, om.d);
-   public static final op.a c = a(on::a, om.e);
-   public static final op.a d = a(on::k, om.j);
-   public static final op.a e = a(on::k, om.k);
-   public static final op.a f = a(on::q, om.n);
-   public static final op.a g = a(on::l, om.m);
-   public static final op.a h = a(on::B, om.p);
-   public static final op.a i = a(on::A, om.q);
-   public static final op.a j = a(on::f, om.aw);
-   public static final op.a k = a(on::g, om.ax);
-   public static final op.a l = a(on::g, om.ay);
-   public static final op.a m = a(on::g, om.az);
-   public static final op.a n = a(on::g, om.aA);
-   public static final op.a o = a(on::i, om.aD);
-   public static final op.a p = a(on::j, om.aB);
-   public static final op.a q = a(on::u, om.aa);
-   public static final op.a r = a(on::D, om.aS);
-   public static final op.a s = a(on::a, om.ad);
-   public static final op.a t = a(on::x, om.bd);
-   public static final op.a u = a(on::x, om.be);
-   public static final op.a v = a(on::b, om.bm);
-   public static final op.a w = a(on::n, om.j);
-   public static final op.a x = a(on::n, om.k);
-   public static final op.a y = a(on::r, om.n);
-   public static final op.a z = a(on::s, om.j);
-   private final on A;
-   private final ol B;
+public final class op {
+   public static final op a = a("all");
+   public static final op b = a("texture", a);
+   public static final op c = a("particle", b);
+   public static final op d = a("end", a);
+   public static final op e = a("bottom", d);
+   public static final op f = a("top", d);
+   public static final op g = a("front", a);
+   public static final op h = a("back", a);
+   public static final op i = a("side", a);
+   public static final op j = a("north", i);
+   public static final op k = a("south", i);
+   public static final op l = a("east", i);
+   public static final op m = a("west", i);
+   public static final op n = a("up");
+   public static final op o = a("down");
+   public static final op p = a("cross");
+   public static final op q = a("plant");
+   public static final op r = a("wall", a);
+   public static final op s = a("rail");
+   public static final op t = a("wool");
+   public static final op u = a("pattern");
+   public static final op v = a("pane");
+   public static final op w = a("edge");
+   public static final op x = a("fan");
+   public static final op y = a("stem");
+   public static final op z = a("upperstem");
+   public static final op A = a("crop");
+   public static final op B = a("dirt");
+   public static final op C = a("fire");
+   public static final op D = a("lantern");
+   public static final op E = a("platform");
+   public static final op F = a("unsticky");
+   public static final op G = a("torch");
+   public static final op H = a("layer0");
+   public static final op I = a("layer1");
+   public static final op J = a("layer2");
+   public static final op K = a("lit_log");
+   public static final op L = a("candle");
+   public static final op M = a("inside");
+   public static final op N = a("content");
+   public static final op O = a("inner_top");
+   public static final op P = a("flowerbed");
+   private final String Q;
+   @Nullable
+   private final op R;
 
-   private op(on $$0, ol $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   private static op a(String $$0) {
+      return new op($$0, null);
    }
 
-   public ol a() {
-      return this.B;
+   private static op a(String $$0, op $$1) {
+      return new op($$0, $$1);
    }
 
-   public on b() {
-      return this.A;
+   private op(String $$0, @Nullable op $$1) {
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   public op a(Consumer<on> $$0) {
-      $$0.accept(this.A);
-      return this;
+   public String a() {
+      return this.Q;
    }
 
-   public ali a(die $$0, BiConsumer<ali, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   @Nullable
+   public op b() {
+      return this.R;
    }
 
-   public ali a(die $$0, String $$1, BiConsumer<ali, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static op.a a(Function<die, on> $$0, ol $$1) {
-      return $$2 -> new op($$0.apply($$2), $$1);
-   }
-
-   public static op a(ali $$0) {
-      return new op(on.b($$0), om.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      op get(die var1);
-
-      default ali create(die $$0, BiConsumer<ali, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default ali createWithSuffix(die $$0, String $$1, BiConsumer<ali, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default op.a updateTexture(Consumer<on> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   @Override
+   public String toString() {
+      return "#" + this.Q;
    }
 }

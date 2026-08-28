@@ -1,143 +1,134 @@
-import java.util.Arrays;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
+import java.util.Collections;
+import java.util.SequencedSet;
 
-public class dto extends dsm {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "placement_priority";
-   public static final String e = "selection_priority";
-   public static final String f = "name";
-   public static final String g = "final_state";
-   private ali h = ali.b("empty");
-   private ali i = ali.b("empty");
-   private alh<enh> j = alh.a(lz.aV, ali.b("empty"));
-   private dto.a k = dto.a.a;
-   private String l = "minecraft:air";
-   private int m;
-   private int n;
+public class dto {
+   private final Object2IntSortedMap<cwb> a;
 
-   public dto(jh $$0, dvj $$1) {
-      super(dso.F, $$0, $$1);
+   dto(Object2IntSortedMap<cwb> $$0) {
+      this.a = $$0;
    }
 
-   public ali b() {
-      return this.h;
+   public boolean a(cwf $$0) {
+      return this.a.containsKey($$0.h());
    }
 
-   public ali c() {
-      return this.i;
+   public SequencedSet<cwb> a() {
+      return Collections.unmodifiableSequencedSet(this.a.keySet());
    }
 
-   public alh<enh> d() {
-      return this.j;
+   public int b(cwf $$0) {
+      return $$0.f() ? 0 : this.a.getInt($$0.h());
    }
 
-   public String f() {
-      return this.l;
+   public static dto a(js.a $$0, crj $$1) {
+      return a($$0, $$1, 200);
    }
 
-   public dto.a j() {
-      return this.k;
+   public static dto a(js.a $$0, crj $$1, int $$2) {
+      return new dto.a($$0, $$1)
+         .a(cwj.qB, $$2 * 100)
+         .a(dil.iB, $$2 * 8 * 10)
+         .a(cwj.sx, $$2 * 12)
+         .a(cwj.oy, $$2 * 8)
+         .a(cwj.oz, $$2 * 8)
+         .a(axm.r, $$2 * 3 / 2)
+         .a(axm.C, $$2 * 3 / 2)
+         .a(axm.b, $$2 * 3 / 2)
+         .a(dil.w, $$2 * 3 / 2)
+         .a(axm.i, $$2 * 3 / 2)
+         .a(dil.hU, $$2 * 3 / 2)
+         .a(axm.j, $$2 * 3 / 4)
+         .a(dil.jC, $$2 * 3 / 4)
+         .a(axm.n, $$2 * 3 / 2)
+         .a(axm.m, $$2 * 3 / 2)
+         .a(axm.k, $$2 * 3 / 2)
+         .a(axm.l, $$2 * 3 / 2)
+         .a(dil.aY, $$2 * 3 / 2)
+         .a(dil.cl, $$2 * 3 / 2)
+         .a(dil.cm, $$2 * 3 / 2)
+         .a(dil.oa, $$2 * 3 / 2)
+         .a(dil.dT, $$2 * 3 / 2)
+         .a(dil.cv, $$2 * 3 / 2)
+         .a(dil.gV, $$2 * 3 / 2)
+         .a(dil.cA, $$2 * 3 / 2)
+         .a(dil.gZ, $$2 * 3 / 2)
+         .a(axm.E, $$2 * 3 / 2)
+         .a(cwj.ow, $$2 * 3 / 2)
+         .a(cwj.rm, $$2 * 3 / 2)
+         .a(dil.cO, $$2 * 3 / 2)
+         .a(axm.aV, $$2)
+         .a(axm.bv, $$2 * 4)
+         .a(cwj.oO, $$2)
+         .a(cwj.oN, $$2)
+         .a(cwj.oR, $$2)
+         .a(cwj.oQ, $$2)
+         .a(cwj.oP, $$2)
+         .a(axm.h, $$2)
+         .a(axm.aS, $$2 * 6)
+         .a(axm.a, $$2 / 2)
+         .a(axm.d, $$2 / 2)
+         .a(cwj.pr, $$2 / 2)
+         .a(axm.p, $$2 / 2)
+         .a(cwj.ou, $$2 / 2)
+         .a(axm.g, 1 + $$2 / 3)
+         .a(dil.me, 1 + $$2 * 20)
+         .a(cwj.wn, $$2 * 3 / 2)
+         .a(dil.mZ, $$2 / 4)
+         .a(dil.bv, $$2 / 2)
+         .a(dil.nS, $$2 / 4)
+         .a(dil.nT, $$2 * 3 / 2)
+         .a(dil.nU, $$2 * 3 / 2)
+         .a(dil.nX, $$2 * 3 / 2)
+         .a(dil.nY, $$2 * 3 / 2)
+         .a(dil.ob, $$2 * 3 / 2)
+         .a(dil.pc, $$2 * 3 / 2)
+         .a(dil.sy, $$2 / 2)
+         .a(dil.sz, $$2 / 2)
+         .a(dil.ac, $$2 * 3 / 2)
+         .a(axm.aM)
+         .a();
    }
 
-   public int k() {
-      return this.m;
-   }
+   public static class a {
+      private final js<cwb> a;
+      private final crj b;
+      private final Object2IntSortedMap<cwb> c = new Object2IntLinkedOpenHashMap();
 
-   public int t() {
-      return this.n;
-   }
-
-   public void a(ali $$0) {
-      this.h = $$0;
-   }
-
-   public void b(ali $$0) {
-      this.i = $$0;
-   }
-
-   public void a(alh<enh> $$0) {
-      this.j = $$0;
-   }
-
-   public void a(String $$0) {
-      this.l = $$0;
-   }
-
-   public void a(dto.a $$0) {
-      this.k = $$0;
-   }
-
-   public void a(int $$0) {
-      this.m = $$0;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   protected void b(uk $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", this.h.toString());
-      $$0.a("target", this.i.toString());
-      $$0.a("pool", this.j.a().toString());
-      $$0.a("final_state", this.l);
-      $$0.a("joint", this.k.c());
-      $$0.a("placement_priority", this.m);
-      $$0.a("selection_priority", this.n);
-   }
-
-   @Override
-   protected void a(uk $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.h = ali.a($$0.l("name"));
-      this.i = ali.a($$0.l("target"));
-      this.j = alh.a(lz.aV, ali.a($$0.l("pool")));
-      this.l = $$0.l("final_state");
-      this.k = dto.a.a($$0.l("joint")).orElseGet(() -> dmf.o(this.m()).o().d() ? dto.a.b : dto.a.a);
-      this.m = $$0.h("placement_priority");
-      this.n = $$0.h("selection_priority");
-   }
-
-   public acl u() {
-      return acl.a(this);
-   }
-
-   @Override
-   public uk a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   public void a(arn $$0, int $$1, boolean $$2) {
-      jh $$3 = this.aB_().a(this.m().c(dmf.b).a());
-      kd<enh> $$4 = $$0.H_().e(lz.aV);
-      jq<enh> $$5 = $$4.b(this.j);
-      enb.a($$0, $$5, this.i, $$1, $$3, $$2);
-   }
-
-   public static enum a implements bag {
-      a("rollable"),
-      b("aligned");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+      public a(js.a $$0, crj $$1) {
+         this.a = $$0.d(ma.K);
+         this.b = $$1;
       }
 
-      @Override
-      public String c() {
-         return this.c;
+      public dto a() {
+         return new dto(this.c);
       }
 
-      public static Optional<dto.a> a(String $$0) {
-         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      public dto.a a(axt<cwb> $$0) {
+         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
+         return this;
       }
 
-      public xi a() {
-         return xi.c("jigsaw_block.joint." + this.c);
+      public dto.a a(axt<cwb> $$0, int $$1) {
+         this.a.a($$0).ifPresent($$1x -> {
+            for (jq<cwb> $$2 : $$1x) {
+               this.a($$1, $$2.a());
+            }
+         });
+         return this;
+      }
+
+      public dto.a a(dfe $$0, int $$1) {
+         cwb $$2 = $$0.j();
+         this.a($$1, $$2);
+         return this;
+      }
+
+      private void a(int $$0, cwb $$1) {
+         if ($$1.a(this.b)) {
+            this.c.put($$1, $$0);
+         }
       }
    }
 }

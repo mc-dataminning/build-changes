@@ -1,53 +1,48 @@
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFWNativeCocoa;
+import com.google.common.base.Charsets;
+import java.nio.ByteBuffer;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
+import org.lwjgl.system.MemoryUtil;
 
 public class fcy {
-   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
-   private static final int b = 8;
-   private static final int c = 16384;
+   public static final int a = 65545;
+   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
 
-   public static void a(long $$0) {
-      c($$0).filter(fcy::a).ifPresent(fcy::c);
+   public String a(long $$0, GLFWErrorCallbackI $$1) {
+      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
+      String $$3 = GLFW.glfwGetClipboardString($$0);
+      $$3 = $$3 != null ? bai.a($$3) : "";
+      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
+      if ($$4 != null) {
+         $$4.free();
+      }
+
+      return $$3;
    }
 
-   public static void b(long $$0) {
-      c($$0).ifPresent($$0x -> {
-         long $$1 = b($$0x);
-         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
-      });
+   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
+      $$1.clear();
+      $$1.put($$2);
+      $$1.put((byte)0);
+      $$1.flip();
+      GLFW.glfwSetClipboardString($$0, $$1);
    }
 
-   private static Optional<NSObject> c(long $$0) {
-      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
-      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
-   }
+   public void a(long $$0, String $$1) {
+      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
+      int $$3 = $$2.length + 1;
+      if ($$3 < this.b.capacity()) {
+         a($$0, this.b, $$2);
+      } else {
+         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
 
-   private static boolean a(NSObject $$0) {
-      return (b($$0) & 16384L) != 0L;
-   }
-
-   private static long b(NSObject $$0) {
-      return (Long)$$0.sendRaw("styleMask", new Object[0]);
-   }
-
-   private static void c(NSObject $$0) {
-      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
-   }
-
-   public static void a(aus<InputStream> $$0) throws IOException {
-      try (InputStream $$1 = $$0.get()) {
-         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
-         Client $$3 = Client.getInstance();
-         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
-         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
-         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+         try {
+            a($$0, $$4, $$2);
+         } finally {
+            MemoryUtil.memFree($$4);
+         }
       }
    }
 }

@@ -1,133 +1,129 @@
-public class fzi extends fyk<gvu> {
-   private static final String a = "feather";
-   private final gbm b;
-   private final gbm c;
-   private final gbm d;
-   private final gbm e;
-   private final gbm f;
-   private final gbm g;
-   private final gbm i;
+public class fzi extends fza<gvq> {
+   public static final gcl a = gcl.scaling(2.35F);
+   private static final float[] b = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] c = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] d = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] e = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] f = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] g = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String i = "eye";
+   private static final String j = "tail0";
+   private static final String k = "tail1";
+   private static final String l = "tail2";
+   private final gcc m;
+   private final gcc n;
+   private final gcc[] o = new gcc[12];
+   private final gcc[] p;
 
-   public fzi(gbm $$0) {
+   public fzi(gcc $$0) {
       super($$0);
-      this.b = $$0.b("body");
-      this.c = $$0.b("tail");
-      this.d = $$0.b("left_wing");
-      this.e = $$0.b("right_wing");
-      this.f = $$0.b("head");
-      this.g = $$0.b("left_leg");
-      this.i = $$0.b("right_leg");
+      this.m = $$0.b("head");
+
+      for (int $$1 = 0; $$1 < this.o.length; $$1++) {
+         this.o[$$1] = this.m.b(a($$1));
+      }
+
+      this.n = this.m.b("eye");
+      this.p = new gcc[3];
+      this.p[0] = this.m.b("tail0");
+      this.p[1] = this.p[0].b("tail1");
+      this.p[2] = this.p[1].b("tail2");
    }
 
-   public static gbs a() {
-      gbu $$0 = new gbu();
-      gbw $$1 = $$0.a();
-      $$1.a("body", gbr.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), gbo.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
-      $$1.a("tail", gbr.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), gbo.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
-      $$1.a("left_wing", gbr.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gbo.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      $$1.a("right_wing", gbr.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gbo.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      gbw $$2 = $$1.a("head", gbr.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), gbo.a(0.0F, 15.69F, -2.76F));
-      $$2.a("head2", gbr.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), gbo.a(0.0F, -2.0F, -1.0F));
-      $$2.a("beak1", gbr.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), gbo.a(0.0F, -0.5F, -1.5F));
-      $$2.a("beak2", gbr.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), gbo.a(0.0F, -1.75F, -2.45F));
-      $$2.a("feather", gbr.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), gbo.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
-      gbr $$3 = gbr.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
-      $$1.a("left_leg", $$3, gbo.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      $$1.a("right_leg", $$3, gbo.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      return gbs.a($$0, 32, 32);
+   private static String a(int $$0) {
+      return "spike" + $$0;
    }
 
-   public void a(gvu $$0) {
+   public static gci a() {
+      gck $$0 = new gck();
+      gcm $$1 = $$0.a();
+      gcm $$2 = $$1.a(
+         "head",
+         gch.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         gce.a
+      );
+      gch $$3 = gch.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * b[$$4];
+         float $$9 = (float) Math.PI * c[$$4];
+         float $$10 = (float) Math.PI * d[$$4];
+         $$2.a(a($$4), $$3, gce.a($$5, $$6, $$7, $$8, $$9, $$10));
+      }
+
+      $$2.a("eye", gch.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), gce.a(0.0F, 0.0F, -8.25F));
+      gcm $$11 = $$2.a("tail0", gch.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), gce.a);
+      gcm $$12 = $$11.a("tail1", gch.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), gce.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", gch.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), gce.a(0.5F, 0.5F, 6.0F));
+      return gci.a($$0, 64, 64);
+   }
+
+   public static gci b() {
+      return a().a(a);
+   }
+
+   public void a(gvq $$0) {
       super.a($$0);
-      this.a($$0.c);
-      this.f.e = $$0.V * (float) (Math.PI / 180.0);
-      this.f.f = $$0.U * (float) (Math.PI / 180.0);
-      switch ($$0.c) {
-         case b:
-            this.g.e = this.g.e + azk.b($$0.X * 0.6662F) * 1.4F * $$0.Y;
-            this.i.e = this.i.e + azk.b($$0.X * 0.6662F + (float) Math.PI) * 1.4F * $$0.Y;
-         case a:
-         case e:
-         default:
-            float $$3 = $$0.b * 0.3F;
-            this.f.c += $$3;
-            this.c.e = this.c.e + azk.b($$0.X * 0.6662F) * 0.3F * $$0.Y;
-            this.c.c += $$3;
-            this.b.c += $$3;
-            this.d.g = -0.0873F - $$0.b;
-            this.d.c += $$3;
-            this.e.g = 0.0873F + $$0.b;
-            this.e.c += $$3;
-            this.g.c += $$3;
-            this.i.c += $$3;
-         case c:
-            break;
-         case d:
-            float $$1 = azk.b($$0.p);
-            float $$2 = azk.a($$0.p);
-            this.f.b += $$1;
-            this.f.c += $$2;
-            this.f.e = 0.0F;
-            this.f.f = 0.0F;
-            this.f.g = azk.a($$0.p) * 0.4F;
-            this.b.b += $$1;
-            this.b.c += $$2;
-            this.d.g = -0.0873F - $$0.b;
-            this.d.b += $$1;
-            this.d.c += $$2;
-            this.e.g = 0.0873F + $$0.b;
-            this.e.b += $$1;
-            this.e.c += $$2;
-            this.c.b += $$1;
-            this.c.c += $$2;
+      this.m.f = $$0.U * (float) (Math.PI / 180.0);
+      this.m.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = (1.0F - $$0.a) * 0.55F;
+      this.a($$0.p, $$1);
+      if ($$0.e != null && $$0.d != null) {
+         double $$2 = $$0.e.e - $$0.c.e;
+         if ($$2 > 0.0) {
+            this.n.c = 0.0F;
+         } else {
+            this.n.c = 1.0F;
+         }
+
+         ezr $$3 = $$0.d;
+         $$3 = new ezr($$3.d, 0.0, $$3.f);
+         ezr $$4 = new ezr($$0.c.d - $$0.e.d, 0.0, $$0.c.f - $$0.e.f).d().b((float) (Math.PI / 2));
+         double $$5 = $$3.b($$4);
+         this.n.b = azn.c((float)Math.abs($$5)) * 2.0F * (float)Math.signum($$5);
+      }
+
+      this.n.k = true;
+      float $$6 = $$0.b;
+      this.p[0].f = azn.a($$6) * (float) Math.PI * 0.05F;
+      this.p[1].f = azn.a($$6) * (float) Math.PI * 0.1F;
+      this.p[2].f = azn.a($$6) * (float) Math.PI * 0.15F;
+   }
+
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.o[$$2].b = b($$2, $$0, $$1);
+         this.o[$$2].c = c($$2, $$0, $$1);
+         this.o[$$2].d = d($$2, $$0, $$1);
       }
    }
 
-   private void a(fzi.a $$0) {
-      switch ($$0) {
-         case a:
-            this.g.e += (float) (Math.PI * 2.0 / 9.0);
-            this.i.e += (float) (Math.PI * 2.0 / 9.0);
-         case b:
-         case e:
-         default:
-            break;
-         case c:
-            float $$1 = 1.9F;
-            this.f.c++;
-            this.c.e += (float) (Math.PI / 6);
-            this.c.c++;
-            this.b.c++;
-            this.d.g = -0.0873F;
-            this.d.c++;
-            this.e.g = 0.0873F;
-            this.e.c++;
-            this.g.c++;
-            this.i.c++;
-            this.g.e++;
-            this.i.e++;
-            break;
-         case d:
-            this.g.g = (float) (-Math.PI / 9);
-            this.i.g = (float) (Math.PI / 9);
-      }
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + azn.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
    }
 
-   public static fzi.a a(chh $$0) {
-      if ($$0.gH()) {
-         return fzi.a.d;
-      } else if ($$0.y()) {
-         return fzi.a.c;
-      } else {
-         return $$0.gJ() ? fzi.a.a : fzi.a.b;
-      }
+   private static float b(int $$0, float $$1, float $$2) {
+      return e[$$0] * a($$0, $$1, $$2);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + f[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float d(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
    }
 }

@@ -1,23 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekj extends eke {
-   public static final MapCodec<ekj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bql.b(eke.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ekj::new)
-   );
-   private final bql<eke> b;
+public interface ekj<P extends eki> {
+   ekj<ekh> a = a("constant", ekh.b);
+   ekj<ekl> b = a("uniform", ekl.a);
+   ekj<ekg> c = a("biased_to_bottom", ekg.a);
+   ekj<ekm> d = a("very_biased_to_bottom", ekm.a);
+   ekj<ekk> e = a("trapezoid", ekk.a);
+   ekj<ekn> f = a("weighted_list", ekn.a);
 
-   public ekj(bql<eke> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public int a(azs $$0, ecc $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
-
-   @Override
-   public ekf<?> a() {
-      return ekf.f;
+   private static <P extends eki> ekj<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(lz.L, $$0, () -> $$1);
    }
 }

@@ -1,29 +1,11 @@
-public class aal implements zp<aai> {
-   public static final zg<wf, aal> a = zp.a(aal::a, aal::new);
-   private final long b;
+public interface aal extends ace {
+   void a(aao var1);
 
-   public aal(long $$0) {
-      this.b = $$0;
-   }
+   void a(aap var1);
 
-   private aal(wf $$0) {
-      this.b = $$0.readLong();
-   }
+   void a(aan var1);
 
-   private void a(wf $$0) {
-      $$0.b(this.b);
-   }
+   void a(aaq var1);
 
-   @Override
-   public zr<aal> a() {
-      return aah.n;
-   }
-
-   public void a(aai $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
-   }
+   void a(aam var1);
 }

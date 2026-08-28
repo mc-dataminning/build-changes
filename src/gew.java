@@ -1,30 +1,49 @@
-public class gew extends ggb {
-   gew(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+public class gew extends ghf {
+   private final gha a;
+
+   gew(gcy $$0, double $$1, double $$2, double $$3, double $$4, gha $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static class a implements gfs<lv> {
-      private final ggk a;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
 
-      public a(ggk $$0) {
+   @Override
+   public ggj b() {
+      return ggj.b;
+   }
+
+   public static class a implements ggi<lw> {
+      private final gha a;
+
+      public a(gha $$0) {
          this.a = $$0;
       }
 
-      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gew($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public ggf a(lw $$0, gcy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gew($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

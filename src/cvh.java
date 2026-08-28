@@ -1,60 +1,44 @@
-public class cvh extends cvx implements cww {
-   public cvh(cvx.a $$0) {
+import java.util.List;
+
+public class cvh extends cwb {
+   public cvh(cwb.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsd a(czu $$0) {
-      dfb $$1 = $$0.q();
+   public bsh a(czy $$0) {
+      dff $$1 = $$0.q();
       jh $$2 = $$0.a();
-      dvj $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dis.i($$3) && !dit.h($$3) && !diu.h($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (dhr.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, dhr.a($$1, $$2));
-            $$1.a($$0.o(), eag.i, $$2);
-            $$4 = true;
+      dvo $$3 = $$1.a_($$2);
+      if (!$$3.a(dil.co) && !$$3.a(dil.F)) {
+         return bsh.d;
+      } else {
+         jh $$4 = $$2.d();
+         if (!$$1.u($$4)) {
+            return bsh.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bui> $$8 = $$1.a_(null, new ezm($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bsh.d;
+            } else {
+               if ($$1 instanceof arq) {
+                  cjr $$9 = new cjr($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), eak.t, $$4);
+                  dzm $$10 = ((arq)$$1).D();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
+
+               $$0.n().h(1);
+               return bsh.a;
+            }
          }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.b(dvz.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), eag.c, $$2);
-         $$4 = true;
       }
-
-      if ($$4) {
-         $$0.n().h(1);
-         return bsd.a;
-      } else {
-         return bsd.d;
-      }
-   }
-
-   private void a(dfb $$0, jh $$1) {
-      azs $$2 = $$0.E_();
-      $$0.a(null, $$1, awl.iL, awm.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
-   }
-
-   @Override
-   public cpg a(dfb $$0, ka $$1, cwb $$2, jm $$3) {
-      azs $$4 = $$0.E_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      ezn $$8 = new ezn($$5, $$6, $$7);
-      cpk $$9 = new cpk($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
-      $$9.a($$2);
-      return $$9;
-   }
-
-   @Override
-   public void a(cpg $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cww.a b() {
-      return cww.a.a().a(($$0, $$1) -> dkj.a($$0, 1.0, ezn.c)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

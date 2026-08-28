@@ -1,60 +1,70 @@
-public class ebr implements den {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   @Override
-   public int a(arn $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ac().b(dex.C)) {
-         return 0;
+public record ebr(int g, int h, int i, int j) {
+   public static final Codec<ebr> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dzj.e, dzj.d).fieldOf("min_y").forGetter(ebr::c),
+                  Codec.intRange(0, dzj.c).fieldOf("height").forGetter(ebr::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(ebr::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(ebr::f)
+               )
+               .apply($$0, ebr::new)
+      )
+      .comapFlatMap(ebr::a, Function.identity());
+   protected static final ebr b = a(-64, 384, 1, 2);
+   protected static final ebr c = a(0, 128, 1, 2);
+   protected static final ebr d = a(0, 128, 2, 1);
+   protected static final ebr e = a(-64, 192, 1, 2);
+   protected static final ebr f = a(0, 256, 2, 1);
+
+   private static DataResult<ebr> a(ebr $$0) {
+      if ($$0.c() + $$0.d() > dzj.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dzj.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
       } else {
-         azs $$3 = $$0.A;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.B_() < 5 && $$0.D_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
-
-               for (aro $$5 : $$0.x()) {
-                  if (!$$5.R_()) {
-                     jh $$6 = $$5.dx();
-                     if (!$$0.D_().g() || $$6.v() >= $$0.N() && $$0.h($$6)) {
-                        bsb $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           awr $$8 = $$5.J();
-                           int $$9 = azk.a($$8.a(awv.i.b(awv.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              jh $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dvj $$12 = $$0.a_($$11);
-                              erk $$13 = $$0.b_($$11);
-                              if (dfm.a($$0, $$11, $$12, $$13, bul.ay)) {
-                                 bvt $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
-
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    clt $$17 = bul.ay.a($$0, buk.a);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, buk.a, $$14);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$4;
-            }
-         }
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
+   }
+
+   public static ebr a(int $$0, int $$1, int $$2, int $$3) {
+      ebr $$4 = new ebr($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return kb.c(this.f());
+   }
+
+   public int b() {
+      return kb.c(this.e());
+   }
+
+   public ebr a(dfh $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.al() + 1) - $$1;
+      return new ebr($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

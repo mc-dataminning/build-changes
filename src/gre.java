@@ -1,26 +1,29 @@
-public class gre extends gpq<cmf, gwu, gau> {
-   private static final ali a = ali.b("textures/entity/illager/vex.png");
-   private static final ali b = ali.b("textures/entity/illager/vex_charging.png");
+public class gre extends gnv<cjm, gxa, gaz> {
+   private static final all a = all.b("textures/entity/sniffer/sniffer.png");
 
-   public gre(gok.a $$0) {
-      super($$0, new gau($$0.a(gbl.cS)), 0.3F);
-      this.a(new gsq<>(this, $$0.b()));
+   public gre(gpa.a $$0) {
+      super($$0, new gaz($$0.a(gcb.cu)), new gaz($$0.a(gcb.cv)), 1.1F);
    }
 
-   protected int a(cmf $$0, jh $$1) {
-      return 15;
+   public all a(gxa $$0) {
+      return a;
    }
 
-   public ali a(gwu $$0) {
-      return $$0.a ? b : a;
+   public gxa c() {
+      return new gxa();
    }
 
-   public gwu c() {
-      return new gwu();
-   }
-
-   public void a(cmf $$0, gwu $$1, float $$2) {
+   public void a(cjm $$0, gxa $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gu();
+      $$1.a = $$0.t();
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.ca);
+      $$1.d.a($$0.cd);
+      $$1.e.a($$0.bY);
+      $$1.f.a($$0.bZ);
+   }
+
+   protected ezm a(cjm $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

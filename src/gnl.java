@@ -1,22 +1,74 @@
-public class gnl extends gpq<cgl, gtx, fxn> {
-   private static final ali a = ali.b("textures/entity/bat.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-   public gnl(gok.a $$0) {
-      super($$0, new fxn($$0.a(gbl.n)), 0.25F);
+public class gnl implements gmx.a {
+   private final fjx a;
+   private double b = Double.MIN_VALUE;
+   private List<bui> c = Collections.emptyList();
+
+   public gnl(fjx $$0) {
+      this.a = $$0;
    }
 
-   public ali a(gtx $$0) {
-      return a;
+   @Override
+   public void a(fek $$0, gix $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ae.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bui $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dY().a_($$6, $$6.cT().g(16.0)));
+      }
+
+      cor $$7 = this.a.t;
+      if ($$7 != null && $$7.ay.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
+
+      for (bui $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         }
+      }
    }
 
-   public gtx a() {
-      return new gtx();
+   private void a(fek $$0, gix $$1, double $$2, double $$3, double $$4, bui $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.ay.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         jh $$12 = $$5.aT();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         jh $$13 = $$5.aR();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
    }
 
-   public void a(cgl $$0, gtx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.d);
-      $$1.c.a($$0.e);
+   private double a(bui $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.as() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(jh $$0, fek $$1, double $$2, double $$3, double $$4, gix $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      gjr.a($$1, $$5.getBuffer(gjh.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      gmx.a(
+         $$1,
+         $$5.getBuffer(gjh.y()),
+         this.a.s.a_($$0).b(this.a.s, $$0, ezw.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

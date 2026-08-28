@@ -1,69 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cjx extends cjq {
+public class cjx extends cju {
    @Nullable
-   private ezn b;
+   private ezr b;
+   private int c;
 
-   public cjx(cjo $$0) {
+   public cjx(cjs $$0) {
       super($$0);
    }
 
    @Override
    public void b() {
-      ezn $$0 = this.a.J(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.d.dC();
-      double $$2 = this.a.d.e(0.5);
-      double $$3 = this.a.d.dI();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azs $$5 = this.a.ea();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         ezn $$9 = this.a.dA();
-         this.a.dX().a(lr.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.eb().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.eb().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.eb().i() - 0.5F) * 8.0F;
+         this.a.dY().a(ls.v, this.a.dD() + (double)$$0, this.a.dF() + 2.0 + (double)$$1, this.a.dJ() + (double)$$2, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
    public void c() {
+      this.c++;
       if (this.b == null) {
-         this.b = ezn.c(this.a.dX().a(ebf.a.f, eek.a(this.a.q())));
+         jh $$0 = this.a.dY().a(ebj.a.e, eeo.a(this.a.q()));
+         this.b = ezr.c($$0);
       }
 
-      if (this.b.c(this.a.dC(), this.a.dE(), this.a.dI()) < 1.0) {
-         this.a.gr().b(cke.f).j();
-         this.a.gr().a(cke.g);
+      double $$1 = this.b.c(this.a.dD(), this.a.dF(), this.a.dJ());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
+         this.a.x(1.0F);
+      } else {
+         this.a.x(0.0F);
       }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dA().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
    }
 
    @Override
    public void d() {
       this.b = null;
+      this.c = 0;
+   }
+
+   @Override
+   public float f() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public ezn g() {
+   public ezr g() {
       return this.b;
    }
 
    @Override
-   public cke<cjx> i() {
-      return cke.d;
+   public cki<cjx> i() {
+      return cki.j;
    }
 }

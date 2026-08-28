@@ -1,44 +1,23 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
+import java.util.List;
 
-public class bbk extends DataFix {
+public class bbk extends bbm {
+   private static final List<String> a = List.of("generic.", "horse.", "player.", "zombie.");
+
    public bbk(Schema $$0) {
-      super($$0, false);
+      super($$0, "AttributeIdPrefixFix", bbk::a);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhu.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bhu.s);
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
-         Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();
-         return $$3.equals("minecraft:banner") ? this.a($$2x, $$2) : $$2x;
-      });
-   }
+   private static String a(String $$0) {
+      String $$1 = bjm.a($$0);
 
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$0.getOptional(DSL.remainderFinder()).orElseThrow();
-      OptionalDynamic<?> $$3 = $$2.get("CustomName");
-      boolean $$4 = $$3.asString().result().flatMap(bas::a).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
-      if ($$4) {
-         Typed<?> $$5 = $$0.getOrCreateTyped($$1)
-            .update(
-               DSL.remainderFinder(),
-               $$1x -> $$1x.set("minecraft:item_name", (Dynamic)$$3.result().get()).set("minecraft:hide_additional_tooltip", $$1x.createMap(Map.of()))
-            );
-         return $$0.set($$1, $$5).set(DSL.remainderFinder(), $$2.remove("CustomName"));
-      } else {
-         return $$0;
+      for (String $$2 : a) {
+         String $$3 = bjm.a($$2);
+         if ($$1.startsWith($$3)) {
+            return "minecraft:" + $$1.substring($$3.length());
+         }
       }
+
+      return $$0;
    }
 }

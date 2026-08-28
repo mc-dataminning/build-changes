@@ -1,30 +1,25 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
 
-public record emx(int c, int d) {
-   private static final Codec<emx> e = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayt.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayt.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
-            .apply($$0, emx::new)
-   );
-   public static final Codec<emx> a = Codec.either(ayt.l, e)
-      .xmap($$0 -> (emx)$$0.map(emx::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
-   public static final emx b = new emx(0);
+public enum emx implements baj {
+   a("linear"),
+   b("triangular");
 
-   public emx(int $$0) {
-      this($$0, $$0);
+   public static final Codec<emx> c = baj.a(emx::values);
+   private final String d;
+
+   private emx(final String $$0) {
+      this.d = $$0;
    }
 
-   public boolean a() {
-      return this.d == this.c;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   @Override
+   public String c() {
       return this.d;
+   }
+
+   public int a(azv $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

@@ -1,27 +1,22 @@
-public class gsa extends gsh<gug, fyc> {
-   private static final ali a = ali.b("textures/entity/creeper/creeper_armor.png");
-   private final fyc b;
+public class gsa extends gqg<cml, gxo, gbp> {
+   private static final all a = all.b("textures/entity/witch.png");
 
-   public gsa(gqg<gug, fyc> $$0, gbi $$1) {
-      super($$0);
-      this.b = new fyc($$1.a(gbl.X));
+   public gsa(gpa.a $$0) {
+      super($$0, new gbp($$0.a(gcb.cY)), 0.5F);
+      this.a(new gua(this, $$0.b()));
    }
 
-   protected boolean a(gug $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ali a() {
+   public all a(gxo $$0) {
       return a;
    }
 
-   protected fyc b() {
-      return this.b;
+   public gxo c() {
+      return new gxo();
+   }
+
+   public void a(cml $$0, gxo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.as();
+      $$1.b = !$$0.fc().f();
    }
 }

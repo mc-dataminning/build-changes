@@ -1,52 +1,26 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dou {
-   dou w_ = new dou() {
-      @Override
-      public boolean a(dfc $$0, jh $$1, dvj $$2, @Nullable Collection<jm> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dpa)dig.qT).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.l() && !$$2.y().b(erl.c) ? false : dpa.a($$0, $$1, $$2, $$3);
-         } else {
-            return dou.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+public class dou extends dis {
+   public static final MapCodec<dou> a = b(dou::new);
+   protected static final float b = 6.0F;
+   protected static final fal c = dij.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-      @Override
-      public int a(doz.a $$0, dfc $$1, jh $$2, azs $$3, doz $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int j_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
+   @Override
+   public MapCodec<dou> a() {
+      return a;
    }
 
-   default void a(dfc $$0, dvj $$1, jh $$2, azs $$3) {
+   protected dou(dvn.d $$0) {
+      super($$0);
    }
 
-   default boolean a(dfc $$0, jh $$1, azs $$2) {
-      return false;
+   @Override
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return c;
    }
 
-   default boolean a(dfc $$0, jh $$1, dvj $$2, @Nullable Collection<jm> $$3, boolean $$4) {
-      return ((dnd)dig.qT).c().a($$2, $$0, $$1, $$4) > 0L;
+   @Override
+   protected boolean b(dvo $$0, dek $$1, jh $$2) {
+      return $$0.a(axd.aN) || $$0.a(dil.dX) || super.b($$0, $$1, $$2);
    }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int j_(int $$0) {
-      return 1;
-   }
-
-   int a(doz.a var1, dfc var2, jh var3, azs var4, doz var5, boolean var6);
 }

@@ -1,13 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egz implements egp {
-   public static final Codec<egz> k = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, egz::new)
+public class egz extends egl {
+   public static final Codec<egz> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eiu.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               ayw.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               ayw.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, egz::new)
    );
-   public final float l;
+   public final int d;
+   public final int e;
 
-   public egz(float $$0) {
-      this.l = $$0;
+   public egz(eiu $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

@@ -1,45 +1,37 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class ejj extends ejh {
-   public static final MapCodec<ejj> a = MapCodec.unit(() -> ejj.b);
-   public static final ejj b = new ejj();
+public class ejj extends ejl {
+   public static final MapCodec<ejj> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ejj::new, $$0 -> $$0.b);
+   private final float b;
 
-   @Override
-   protected eji<?> a() {
-      return eji.a;
+   public ejj(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(ejh.a $$0) {
-      azs $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dra.d);
-            }
-         }
+   protected ejm<?> a() {
+      return ejm.c;
+   }
 
-         if ($$1.a(3) > 0) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dra.f);
+   @Override
+   public void a(ejl.a $$0) {
+      azv $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<jh> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (jm $$3x : jm.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  jm $$4 = $$3x.g();
+                  jh $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dil.fC.m().b(djq.c, Integer.valueOf($$1.a(3))).b(djq.aF, $$3x));
+                  }
+               }
             }
-         }
-
-         if ($$1.a(3) > 0) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dra.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dra.c);
-            }
-         }
-      });
+         });
+      }
    }
 }

@@ -1,94 +1,54 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public interface etw {
-   int d = 19133;
-   int e = 19132;
+public class etw {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final etm d;
+   private final boolean e;
 
-   dfx D();
-
-   void a(dfx var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   private etw(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new etm($$3, $$4);
+      this.e = $$5;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
+   public static etw a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new etw(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(ab.b().c()),
+            $$3.get("Id").asInt(ab.b().d().c()),
+            $$3.get("Series").asString(etm.a),
+            $$3.get("Snapshot").asBoolean(!ab.b().g())
+         )
+         : new etw($$1, $$2, "", 0, etm.a, false);
    }
 
-   @Nullable
-   uk E();
+   public int a() {
+      return this.a;
+   }
 
-   void a(@Nullable uk var1);
+   public long b() {
+      return this.b;
+   }
 
-   etv I();
+   public String c() {
+      return this.c;
+   }
 
-   dff J();
+   public etm d() {
+      return this.d;
+   }
 
-   uk a(ke var1, @Nullable uk var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dey k();
-
-   void a(dey var1);
-
-   boolean m();
-
-   bsa q();
-
-   void a(bsa var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dex o();
-
-   @Nullable
-   uk w();
-
-   dzi.a C();
-
-   void a(dzi.a var1);
-
-   ecd y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default crf K() {
-      return this.D().b();
+   public boolean e() {
+      return this.e;
    }
 }

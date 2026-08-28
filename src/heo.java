@@ -1,57 +1,37 @@
-import java.util.Collection;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public abstract class heo<E extends fmd.a<E>> extends fmd<E> {
-   protected heo(int $$0, int $$1, int $$2, int $$3) {
-      super(fji.Q(), $$0, $$1, $$2, $$3);
-   }
+public class heo {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
       }
    }
 
-   public void b(int $$0) {
-      this.p($$0);
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   @Override
-   public int a() {
-      return 0;
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int l() {
-      return super.l();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int s() {
-      return super.s();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void J() {
-      this.k();
+   public void a(hed $$0) {
+      this.b.ifPresent($$1 -> $$0.send(hee.e, $$1x -> {
+            $$1x.a(heg.p, this.a($$1));
+            $$1x.a(heg.q, (int)this.c);
+         }));
    }
 }

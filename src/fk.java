@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class fk implements ArgumentType<dey> {
-   private static final Collection<String> a = Stream.of(dey.a, dey.b).map(dey::b).collect(Collectors.toList());
-   private static final dey[] b = dey.values();
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xi.b("argument.gamemode.invalid", $$0));
+public class fk implements ArgumentType<dfc> {
+   private static final Collection<String> a = Stream.of(dfc.a, dfc.b).map(dfc::b).collect(Collectors.toList());
+   private static final dfc[] b = dfc.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xl.b("argument.gamemode.invalid", $$0));
 
-   public dey a(StringReader $$0) throws CommandSyntaxException {
+   public dfc a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      dey $$2 = dey.a($$1, null);
+      dfc $$2 = dfc.a($$1, null);
       if ($$2 == null) {
          throw c.createWithContext($$0, $$1);
       } else {
@@ -27,7 +27,7 @@ public class fk implements ArgumentType<dey> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof fb ? fb.b(Arrays.stream(b).map(dey::b), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof fb ? fb.b(Arrays.stream(b).map(dfc::b), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -38,7 +38,7 @@ public class fk implements ArgumentType<dey> {
       return new fk();
    }
 
-   public static dey a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return (dey)$$0.getArgument($$1, dey.class);
+   public static dfc a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return (dfc)$$0.getArgument($$1, dfc.class);
    }
 }

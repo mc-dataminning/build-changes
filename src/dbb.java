@@ -1,61 +1,130 @@
-public class dbb extends dag {
-   public dbb(dad $$0) {
-      super($$0);
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class dbb implements daj {
+   final dbc a;
+   final cwf b;
+   final String c;
+   final dah d;
+   final boolean e;
+   @Nullable
+   private das f;
+
+   public dbb(String $$0, dah $$1, dbc $$2, cwf $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.e = $$4;
    }
 
-   public boolean a(dae $$0, dfb $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwb $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (die.a($$5.h()) instanceof dpd) {
-               $$2++;
-            } else {
-               if (!($$5.h() instanceof cuz)) {
-                  return false;
-               }
-
-               $$3++;
-            }
-
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 == 1 && $$3 == 1;
+   public dbb(String $$0, dah $$1, dbc $$2, cwf $$3) {
+      this($$0, $$1, $$2, $$3, true);
    }
 
-   public cwb a(dae $$0, js.a $$1) {
-      cwb $$2 = cwb.k;
-      cuz $$3 = (cuz)cwf.rj;
+   @Override
+   public day<?> aq_() {
+      return day.a;
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwb $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            cvx $$6 = $$5.h();
-            if (die.a($$6) instanceof dpd) {
-               $$2 = $$5;
-            } else if ($$6 instanceof cuz) {
-               $$3 = (cuz)$$6;
-            }
-         }
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   @Override
+   public dah d() {
+      return this.d;
+   }
+
+   @Override
+   public cwf a(js.a $$0) {
+      return this.b;
+   }
+
+   @VisibleForTesting
+   public List<Optional<dap>> i() {
+      return this.a.c();
+   }
+
+   @Override
+   public das a() {
+      if (this.f == null) {
+         this.f = das.a(this.a.c());
       }
 
-      die $$7 = dpd.a($$3.b());
-      return $$2.a($$7, 1);
+      return this.f;
+   }
+
+   @Override
+   public boolean h() {
+      return this.e;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 >= this.a.a() && $$1 >= this.a.b();
    }
 
-   @Override
-   public dau<?> aq_() {
-      return dau.m;
+   public boolean a(dai $$0, dff $$1) {
+      return this.a.a($$0);
+   }
+
+   public cwf a(dai $$0, js.a $$1) {
+      return this.a($$1).v();
+   }
+
+   public int j() {
+      return this.a.a();
+   }
+
+   public int k() {
+      return this.a.b();
+   }
+
+   public static class a implements day<dbb> {
+      public static final MapCodec<dbb> w = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
+                  dah.e.fieldOf("category").orElse(dah.d).forGetter($$0x -> $$0x.d),
+                  dbc.b.forGetter($$0x -> $$0x.a),
+                  cwf.d.fieldOf("result").forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, dbb::new)
+      );
+      public static final zj<ww, dbb> x = zj.a(dbb.a::a, dbb.a::a);
+
+      @Override
+      public MapCodec<dbb> a() {
+         return w;
+      }
+
+      @Override
+      public zj<ww, dbb> b() {
+         return x;
+      }
+
+      private static dbb a(ww $$0) {
+         String $$1 = $$0.p();
+         dah $$2 = $$0.b(dah.class);
+         dbc $$3 = dbc.c.decode($$0);
+         cwf $$4 = cwf.i.decode($$0);
+         boolean $$5 = $$0.readBoolean();
+         return new dbb($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private static void a(ww $$0, dbb $$1) {
+         $$0.a($$1.c);
+         $$0.a($$1.d);
+         dbc.c.encode($$0, $$1.a);
+         cwf.i.encode($$0, $$1.b);
+         $$0.a($$1.e);
+      }
    }
 }

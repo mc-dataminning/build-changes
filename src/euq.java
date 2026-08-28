@@ -1,18 +1,30 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class euq {
-   public static final Codec<eus> a = ly.D.q().dispatch(eus::a, eut::a);
-   public static final eut b = a("empty", eun.a);
-   public static final eut c = a("item", eup.a);
-   public static final eut d = a("loot_table", euv.a);
-   public static final eut e = a("dynamic", eum.a);
-   public static final eut f = a("tag", eux.a);
-   public static final eut g = a("alternatives", euj.a);
-   public static final eut h = a("sequence", euw.a);
-   public static final eut i = a("group", euo.a);
+public class euq extends euy {
+   public static final MapCodec<euq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(all.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, euq::new)
+   );
+   private final all j;
 
-   private static eut a(String $$0, MapCodec<? extends eus> $$1) {
-      return kd.a(ly.D, ali.b($$0), new eut($$1));
+   private euq(all $$0, int $$1, int $$2, List<exr> $$3, List<evu> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
+   }
+
+   @Override
+   public eux a() {
+      return euu.e;
+   }
+
+   @Override
+   public void a(Consumer<cwf> $$0, eug $$1) {
+      $$1.a(this.j, $$0);
+   }
+
+   public static euy.a<?> a(all $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new euq($$0, $$1, $$2, $$3, $$4));
    }
 }

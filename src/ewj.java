@@ -1,25 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class ewj extends evp {
+public class ewj extends evt {
    public static final MapCodec<ewj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alf.a(lz.K).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, ewj::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  evs.e.a(cyu.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ayw.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ewj::new)
    );
-   private final jq<cvx> b;
+   public static final cyv b = new cyv(0, List.of());
+   private final Optional<evs.e<cyu>> c;
+   private final Optional<Integer> d;
 
-   private ewj(List<exn> $$0, jq<cvx> $$1) {
+   protected ewj(List<exr> $$0, Optional<evs.e<cyu>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public evr<ewj> b() {
-      return evs.f;
+   protected cwf a(cwf $$0, eug $$1) {
+      $$0.a(ku.af, b, this::a);
+      return $$0;
+   }
+
+   private cyv a(cyv $$0) {
+      return new cyv(this.d.orElseGet($$0::a), this.c.<List<cyu>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
    @Override
-   public cwb a(cwb $$0, euc $$1) {
-      return $$0.a(this.b.a());
+   public evv<ewj> b() {
+      return evw.K;
    }
 }

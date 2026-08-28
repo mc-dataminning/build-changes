@@ -1,10 +1,11 @@
-public class gwx extends gvl {
-   public float a;
-   public float b;
-   public final btw c = new btw();
-   public final btw d = new btw();
-   public final btw e = new btw();
-   public final btw f = new btw();
-   public final btw g = new btw();
-   public final btw h = new btw();
+import javax.annotation.Nullable;
+
+public class gwx extends gwb {
+   public ezr a = ezr.c;
+   @Nullable
+   public cvc b;
+   public float c;
+   public float d;
+   public float e;
+   public jm f = jm.a;
 }

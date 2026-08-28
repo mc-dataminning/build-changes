@@ -1,21 +1,36 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eyk {
-   private static final Codec<eyj> h = ly.G.q().dispatch(eyj::b, eyi::a);
-   public static final Codec<eyj> a = Codec.lazyInitialized(() -> {
-      Codec<eyj> $$0 = Codec.withAlternative(h, eyn.a.codec());
-      return Codec.either(eyg.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof eyg $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final eyi b = a("constant", eyg.a);
-   public static final eyi c = a("uniform", eyn.a);
-   public static final eyi d = a("binomial", eyf.a);
-   public static final eyi e = a("score", eyl.a);
-   public static final eyi f = a("storage", eym.a);
-   public static final eyi g = a("enchantment_level", eyh.a);
+public record eyk(float c) implements eyn {
+   public static final MapCodec<eyk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eyk::c)).apply($$0, eyk::new));
+   public static final Codec<eyk> b = Codec.FLOAT.xmap(eyk::new, eyk::c);
 
-   private static eyi a(String $$0, MapCodec<? extends eyj> $$1) {
-      return kd.a(ly.G, ali.b($$0), new eyi($$1));
+   @Override
+   public eym b() {
+      return eyo.b;
+   }
+
+   @Override
+   public float b(eug $$0) {
+      return this.c;
+   }
+
+   public static eyk a(float $$0) {
+      return new eyk($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eyk)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

@@ -1,31 +1,35 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eeu implements egp {
+public class eeu implements egt {
    public static final Codec<eeu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dvj.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dvj.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dvj.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dvj.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               ecm.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+               all.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               all.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               eqc.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               eqc.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, eeu::new)
    );
-   public final dvj b;
-   public final dvj c;
-   public final dvj d;
-   public final dvj e;
-   public final ecm f;
-   public final boolean g;
+   public final List<all> b;
+   public final List<all> c;
+   public final jq<eqb> d;
+   public final jq<eqb> e;
+   public final int f;
 
-   public eeu(dvj $$0, dvj $$1, dvj $$2, dvj $$3, ecm $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public eeu(List<all> $$0, List<all> $$1, jq<eqb> $$2, jq<eqb> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+      }
    }
 }

@@ -1,30 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dpk extends djy {
-   public static final MapCodec<dpk> b = b(dpk::new);
-   private static final xi c = xi.c("container.upgrade");
-
+public interface dpk extends diq, dmz {
    @Override
-   public MapCodec<dpk> a() {
-      return b;
-   }
-
-   protected dpk(dvi.d $$0) {
-      super($$0);
+   default boolean a(@Nullable cor $$0, dek $$1, jh $$2, dvo $$3, ern $$4) {
+      return $$4 == erp.c;
    }
 
    @Override
-   protected bsf b(dvj $$0, dfb $$1, jh $$2) {
-      return new bsl(($$2x, $$3, $$4) -> new cto($$2x, $$3, csb.a($$1, $$2)), c);
-   }
+   default boolean a(dfg $$0, jh $$1, dvo $$2, ero $$3) {
+      if (!$$2.c(dwe.C) && $$3.a() == erp.c) {
+         if (!$$0.y_()) {
+            $$0.a($$1, $$2.b(dwe.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awv.aF);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      return bsd.a;
+   @Override
+   default cwf a(@Nullable cor $$0, dfg $$1, jh $$2, dvo $$3) {
+      if ($$3.c(dwe.C)) {
+         $$1.a($$2, $$3.b(dwe.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cwf(cwj.qA);
+      } else {
+         return cwf.k;
+      }
+   }
+
+   @Override
+   default Optional<awn> at_() {
+      return erp.c.j();
    }
 }

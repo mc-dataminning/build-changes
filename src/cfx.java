@@ -2,21 +2,24 @@ import javax.annotation.Nullable;
 
 public class cfx {
    @Nullable
-   public static ezn a(bvi $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cfw.a($$0, $$1);
-      return cfz.a($$0, () -> {
-         jh $$9 = cfz.a($$0.ea(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
+   public static ezr a(bvm $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = cga.a($$0, $$1);
+      return cgd.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   }
+
+   @Nullable
+   public static jh a(bvm $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      jh $$8 = cgd.a($$0.eb(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         jh $$9 = cgd.a($$0, $$1, $$0.eb(), $$8);
+         if (!cga.a($$9, $$0) && !cga.a($$7, $$0, $$9)) {
+            $$9 = cgd.a($$9, $$0.dY().al(), $$1x -> cga.c($$0, $$1x));
+            return cga.b($$0, $$9) ? null : $$9;
          } else {
-            jh $$10 = cfy.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cfz.a($$10, $$0.ea().a($$6 - $$7 + 1) + $$7, $$0.dX().al(), $$1xx -> cfw.c($$0, $$1xx));
-               return !cfw.a($$0, $$10) && !cfw.b($$0, $$10) ? $$10 : null;
-            }
+            return null;
          }
-      });
+      }
    }
 }

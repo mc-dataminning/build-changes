@@ -1,144 +1,228 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
+import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public interface dek extends deg {
-   dxa C_();
+public interface dek extends dfh {
+   int g = 16;
 
    @Nullable
-   deg c(int var1, int var2);
+   dsr c_(jh var1);
 
-   default boolean a(@Nullable bue $$0, fah $$1) {
-      return true;
+   default <T extends dsr> Optional<T> a(jh $$0, dst<T> $$1) {
+      dsr $$2 = this.c_($$0);
+      return $$2 != null && $$2.q() == $$1 ? Optional.of((T)$$2) : Optional.empty();
    }
 
-   default boolean a(dvj $$0, jh $$1, ezs $$2) {
-      fah $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   dvo a_(jh var1);
+
+   ero b_(jh var1);
+
+   default int i(jh $$0) {
+      return this.a_($$0).k();
    }
 
-   default boolean f(bue $$0) {
-      return this.a($$0, fae.a($$0.cS()));
+   default Stream<dvo> a(ezm $$0) {
+      return jh.b($$0).map(this::a_);
    }
 
-   default boolean b(ezi $$0) {
-      return this.a(null, $$0);
+   default ezn a(dem $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         dvo $$2 = this.a_($$1);
+         ezr $$3 = $$0x.b().d($$0x.a());
+         return $$0x.c().test($$2) ? new ezn($$0x.a(), jm.a($$3.d, $$3.e, $$3.f), jh.a((ka)$$0x.a()), false) : null;
+      }, $$0x -> {
+         ezr $$1 = $$0x.b().d($$0x.a());
+         return ezn.a($$0x.a(), jm.a($$1.d, $$1.e, $$1.f), jh.a((ka)$$0x.a()));
+      });
    }
 
-   default boolean g(bue $$0) {
-      return this.a($$0, $$0.cS());
-   }
-
-   default boolean a(@Nullable bue $$0, ezi $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   default boolean a(@Nullable bue $$0, ezi $$1, boolean $$2) {
-      for (fah $$4 : $$2 ? this.f($$0, $$1) : this.e($$0, $$1)) {
-         if (!$$4.c()) {
-            return false;
-         }
-      }
-
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         fah $$5 = this.i($$0, $$1);
-         return $$5 == null || !fae.c($$5, fae.a($$1), ezr.i);
-      }
-   }
-
-   default boolean b(@Nullable bue $$0, ezi $$1) {
-      for (fah $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   List<fah> c(@Nullable bue var1, ezi var2);
-
-   default Iterable<fah> d(@Nullable bue $$0, ezi $$1) {
-      List<fah> $$2 = this.c($$0, $$1);
-      Iterable<fah> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<fah> e(@Nullable bue $$0, ezi $$1) {
-      return () -> new dee<fah>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   default Iterable<fah> f(@Nullable bue $$0, ezi $$1) {
-      return () -> new dee<fah>(this, ezs.a($$0, true), $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   default ezn a(den $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         dvo $$2 = this.a_($$1);
+         ero $$3 = this.b_($$1);
+         ezr $$4 = $$0x.b();
+         ezr $$5 = $$0x.a();
+         fal $$6 = $$0x.a($$2, this, $$1);
+         ezn $$7 = this.a($$4, $$5, $$1, $$6, $$2);
+         fal $$8 = $$0x.a($$3, this, $$1);
+         ezn $$9 = $$8.a($$4, $$5, $$1);
+         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.g());
+         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.g());
+         return $$10 <= $$11 ? $$7 : $$9;
+      }, $$0x -> {
+         ezr $$1 = $$0x.b().d($$0x.a());
+         return ezn.a($$0x.a(), jm.a($$1.d, $$1.e, $$1.f), jh.a((ka)$$0x.a()));
+      });
    }
 
    @Nullable
-   private fah i(bue $$0, ezi $$1) {
-      dxa $$2 = this.C_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default ezj b(dej $$0) {
-      ezj $$1 = this.a($$0);
-      dxa $$2 = this.C_();
-      if ($$2.a($$0.b()) && !$$2.a($$1.g())) {
-         ezn $$3 = $$1.g().d($$0.b());
-         jm $$4 = jm.a($$3.d, $$3.e, $$3.f);
-         ezn $$5 = $$2.c($$1.g());
-         return new ezj($$5, $$4, jh.a((ka)$$5), false, true);
-      } else {
-         return $$1;
-      }
-   }
-
-   default boolean g(@Nullable bue $$0, ezi $$1) {
-      dee<fah> $$2 = new dee<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((fah)$$2.next()).c()) {
-            return true;
+   default ezn a(ezr $$0, ezr $$1, jh $$2, fal $$3, dvo $$4) {
+      ezn $$5 = $$3.a($$0, $$1, $$2);
+      if ($$5 != null) {
+         ezn $$6 = $$4.i(this, $$2).a($$0, $$1, $$2);
+         if ($$6 != null && $$6.g().d($$0).h() < $$5.g().d($$0).h()) {
+            return $$5.a($$6.c());
          }
       }
 
-      return false;
+      return $$5;
    }
 
-   default Optional<jh> h(bue $$0, ezi $$1) {
-      jh $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      dee<jh> $$4 = new dee<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+   default double a(fal $$0, Supplier<fal> $$1) {
+      if (!$$0.c()) {
+         return $$0.c(jm.a.b);
+      } else {
+         double $$2 = $$1.get().c(jm.a.b);
+         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
+      }
+   }
 
-      while ($$4.hasNext()) {
-         jh $$5 = (jh)$$4.next();
-         double $$6 = $$5.b($$0.dv());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.j();
-            $$3 = $$6;
+   default double j(jh $$0) {
+      return this.a(this.a_($$0).g(this, $$0), () -> {
+         jh $$1 = $$0.e();
+         return this.a_($$1).g(this, $$1);
+      });
+   }
+
+   static <T, C> T a(ezr $$0, ezr $$1, C $$2, BiFunction<C, jh, T> $$3, Function<C, T> $$4) {
+      if ($$0.equals($$1)) {
+         return $$4.apply($$2);
+      } else {
+         double $$5 = azn.d(-1.0E-7, $$1.d, $$0.d);
+         double $$6 = azn.d(-1.0E-7, $$1.e, $$0.e);
+         double $$7 = azn.d(-1.0E-7, $$1.f, $$0.f);
+         double $$8 = azn.d(-1.0E-7, $$0.d, $$1.d);
+         double $$9 = azn.d(-1.0E-7, $$0.e, $$1.e);
+         double $$10 = azn.d(-1.0E-7, $$0.f, $$1.f);
+         int $$11 = azn.a($$8);
+         int $$12 = azn.a($$9);
+         int $$13 = azn.a($$10);
+         jh.a $$14 = new jh.a($$11, $$12, $$13);
+         T $$15 = $$3.apply($$2, $$14);
+         if ($$15 != null) {
+            return $$15;
+         } else {
+            double $$16 = $$5 - $$8;
+            double $$17 = $$6 - $$9;
+            double $$18 = $$7 - $$10;
+            int $$19 = azn.j($$16);
+            int $$20 = azn.j($$17);
+            int $$21 = azn.j($$18);
+            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
+            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
+            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
+            double $$25 = $$22 * ($$19 > 0 ? 1.0 - azn.e($$8) : azn.e($$8));
+            double $$26 = $$23 * ($$20 > 0 ? 1.0 - azn.e($$9) : azn.e($$9));
+            double $$27 = $$24 * ($$21 > 0 ? 1.0 - azn.e($$10) : azn.e($$10));
+
+            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
+               if ($$25 < $$26) {
+                  if ($$25 < $$27) {
+                     $$11 += $$19;
+                     $$25 += $$22;
+                  } else {
+                     $$13 += $$21;
+                     $$27 += $$24;
+                  }
+               } else if ($$26 < $$27) {
+                  $$12 += $$20;
+                  $$26 += $$23;
+               } else {
+                  $$13 += $$21;
+                  $$27 += $$24;
+               }
+
+               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
+               if ($$28 != null) {
+                  return $$28;
+               }
+            }
+
+            return $$4.apply($$2);
          }
       }
-
-      return Optional.ofNullable($$2);
    }
 
-   default Optional<ezn> a(@Nullable bue $$0, fah $$1, ezn $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
+   static Iterable<jh> a(ezr $$0, ezr $$1, ezm $$2) {
+      ezr $$3 = $$1.d($$0);
+      Iterable<jh> $$4 = jh.a($$2);
+      if ($$3.h() < (double)azn.l(0.99999F)) {
+         return $$4;
       } else {
-         ezi $$6 = $$1.a().c($$3, $$4, $$5);
-         fah $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(fae::a)
-            .reduce(fae.a(), fae::a);
-         fah $$8 = fae.a($$1, $$7, ezr.e);
-         return $$8.b($$2);
+         Set<jh> $$5 = new ObjectOpenHashSet();
+
+         for (jh $$6 : $$4) {
+            $$5.add($$6.j());
+         }
+
+         ezr $$7 = $$3.d().c(1.0E-7);
+         ezr $$8 = $$2.h().e($$7);
+         ezr $$9 = $$2.h().d($$3).d($$7);
+         a($$5, $$9, $$8, $$2);
+         return $$5;
+      }
+   }
+
+   private static void a(Set<jh> $$0, ezr $$1, ezr $$2, ezm $$3) {
+      ezr $$4 = $$2.d($$1);
+      int $$5 = azn.a($$1.d);
+      int $$6 = azn.a($$1.e);
+      int $$7 = azn.a($$1.f);
+      int $$8 = azn.j($$4.d);
+      int $$9 = azn.j($$4.e);
+      int $$10 = azn.j($$4.f);
+      double $$11 = $$8 == 0 ? Double.MAX_VALUE : (double)$$8 / $$4.d;
+      double $$12 = $$9 == 0 ? Double.MAX_VALUE : (double)$$9 / $$4.e;
+      double $$13 = $$10 == 0 ? Double.MAX_VALUE : (double)$$10 / $$4.f;
+      double $$14 = $$11 * ($$8 > 0 ? 1.0 - azn.e($$1.d) : azn.e($$1.d));
+      double $$15 = $$12 * ($$9 > 0 ? 1.0 - azn.e($$1.e) : azn.e($$1.e));
+      double $$16 = $$13 * ($$10 > 0 ? 1.0 - azn.e($$1.f) : azn.e($$1.f));
+      int $$17 = 0;
+
+      while ($$14 <= 1.0 || $$15 <= 1.0 || $$16 <= 1.0) {
+         if ($$14 < $$15) {
+            if ($$14 < $$16) {
+               $$5 += $$8;
+               $$14 += $$11;
+            } else {
+               $$7 += $$10;
+               $$16 += $$13;
+            }
+         } else if ($$15 < $$16) {
+            $$6 += $$9;
+            $$15 += $$12;
+         } else {
+            $$7 += $$10;
+            $$16 += $$13;
+         }
+
+         if ($$17++ > 16) {
+            break;
+         }
+
+         Optional<ezr> $$18 = ezm.a((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1), $$1, $$2);
+         if (!$$18.isEmpty()) {
+            ezr $$19 = $$18.get();
+            double $$20 = azn.a($$19.d, (double)$$5 + 1.0E-5F, (double)$$5 + 1.0 - 1.0E-5F);
+            double $$21 = azn.a($$19.e, (double)$$6 + 1.0E-5F, (double)$$6 + 1.0 - 1.0E-5F);
+            double $$22 = azn.a($$19.f, (double)$$7 + 1.0E-5F, (double)$$7 + 1.0 - 1.0E-5F);
+            int $$23 = azn.a($$20 + $$3.b());
+            int $$24 = azn.a($$21 + $$3.c());
+            int $$25 = azn.a($$22 + $$3.d());
+
+            for (int $$26 = $$5; $$26 <= $$23; $$26++) {
+               for (int $$27 = $$6; $$27 <= $$24; $$27++) {
+                  for (int $$28 = $$7; $$28 <= $$25; $$28++) {
+                     $$0.add(new jh($$26, $$27, $$28));
+                  }
+               }
+            }
+         }
       }
    }
 }

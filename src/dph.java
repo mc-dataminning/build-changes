@@ -1,111 +1,78 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dph extends die implements dpf {
+public class dph extends dis implements dim, dmz {
    public static final MapCodec<dph> a = b(dph::new);
-   public static final dwh<dwr> b = dvz.bh;
-   public static final dwa c = dvz.C;
-   protected static final fah d = die.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final fah e = die.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final float b = 6.0F;
+   protected static final fal c = dij.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
-   public MapCodec<? extends dph> a() {
+   public MapCodec<dph> a() {
       return a;
    }
 
-   public dph(dvi.d $$0) {
+   protected dph(dvn.d $$0) {
       super($$0);
-      this.l(this.m().b(b, dwr.b).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dvj $$0) {
-      return $$0.c(b) != dwr.c;
+   protected fal a(dvo $$0, dek $$1, jh $$2, ezw $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dvk.a<die, dvj> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
-      dwr $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return fae.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
+   protected boolean b(dvo $$0, dek $$1, jh $$2) {
+      return $$0.c($$1, $$2, jm.b) && !$$0.a(dil.kJ);
    }
 
    @Nullable
    @Override
-   public dvj a(czs $$0) {
-      jh $$1 = $$0.a();
-      dvj $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dwr.c).b(c, Boolean.valueOf(false));
-      } else {
-         erk $$3 = $$0.q().b_($$1);
-         dvj $$4 = this.m().b(b, dwr.b).b(c, Boolean.valueOf($$3.a() == erl.c));
-         jm $$5 = $$0.k();
-         return $$5 != jm.a && ($$5 == jm.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dwr.a);
-      }
+   public dvo a(czw $$0) {
+      ero $$1 = $$0.q().b_($$0.a());
+      return $$1.a(axj.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected boolean a(dvj $$0, czs $$1) {
-      cwb $$2 = $$1.n();
-      dwr $$3 = $$0.c(b);
-      if ($$3 == dwr.c || !$$2.a(this.j())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jm $$5 = $$1.k();
-         return $$3 == dwr.b ? $$5 == jm.b || $$4 && $$5.o().d() : $$5 == jm.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
-   }
-
-   @Override
-   protected erk b_(dvj $$0) {
-      return $$0.c(c) ? erl.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public boolean a(dfc $$0, jh $$1, dvj $$2, erk $$3) {
-      return $$2.c(b) != dwr.c ? dpf.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable com $$0, deg $$1, jh $$2, dvj $$3, erj $$4) {
-      return $$3.c(b) != dwr.c ? dpf.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, erl.c, erl.c.a($$3));
+   protected dvo a(dvo $$0, dfi $$1, dfu $$2, jh $$3, jm $$4, jh $$5, dvo $$6, azv $$7) {
+      dvo $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if (!$$8.l()) {
+         $$2.a($$3, erp.c, erp.c.a($$1));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$8;
    }
 
    @Override
-   protected boolean a(dvj $$0, erz $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(axg.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   public boolean b(dfi $$0, jh $$1, dvo $$2) {
+      return $$0.a_($$1.d()).a(dil.G);
+   }
+
+   @Override
+   public boolean a(dff $$0, azv $$1, jh $$2, dvo $$3) {
+      return true;
+   }
+
+   @Override
+   protected ero b_(dvo $$0) {
+      return erp.c.a(false);
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, jh $$2, dvo $$3) {
+      dvo $$4 = dil.bx.m();
+      dvo $$5 = $$4.b(dqp.d, dwj.a);
+      jh $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
+   }
+
+   @Override
+   public boolean a(@Nullable cor $$0, dek $$1, jh $$2, dvo $$3, ern $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dfg $$0, jh $$1, dvo $$2, ero $$3) {
+      return false;
    }
 }

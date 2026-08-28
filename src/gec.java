@@ -1,48 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface gec {
-   Logger a = LogUtils.getLogger();
-   gec b = $$0 -> Optional.empty();
+public abstract class gec {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected gee e;
+   protected boolean f;
 
-   Optional<gdz> lookupRedirect(gdz var1);
+   public gec(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   static gec createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
+   }
+
+   public abstract gec b();
+
+   public abstract frp a(frp var1, geg var2);
+
+   public abstract static class a<R extends gec> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new gdz($$4x[3], gdz.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      public R e() {
+         return this.a;
+      }
 
-         return Optional.empty();
-      };
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public gee i() {
+         return this.a.e;
+      }
+
+      public void a(gee $$0) {
+         this.a.e = $$0;
+      }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public gec.b c() {
+         return !this.e().f ? gec.b.e : null;
+      }
+
+      public abstract Either<gec.c, gec.b> a(geg var1);
+   }
+
+   public static record b(xl f) {
+      public static final gec.b a = new gec.b(xl.c("gui.abuseReport.send.no_reason"));
+      public static final gec.b b = new gec.b(xl.c("gui.chatReport.send.no_reported_messages"));
+      public static final gec.b c = new gec.b(xl.c("gui.chatReport.send.too_many_messages"));
+      public static final gec.b d = new gec.b(xl.c("gui.abuseReport.send.comment_too_long"));
+      public static final gec.b e = new gec.b(xl.c("gui.abuseReport.send.not_attested"));
+
+      public fnh a() {
+         return fnh.a(this.f);
+      }
+
+      public xl b() {
+         return this.f;
+      }
+   }
+
+   public static record c(UUID a, gef b, AbuseReport c) {
    }
 }
