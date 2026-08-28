@@ -1,3 +1,48 @@
-public interface buf {
-   void a(cer var1, bsv var2);
+import java.util.EnumSet;
+import java.util.Set;
+
+public enum buf {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   public static final Set<buf> f = Set.of(values());
+   public static final Set<buf> g = Set.of(e, d);
+   private final int h;
+
+   private buf(final int $$0) {
+      this.h = $$0;
+   }
+
+   private int a() {
+      return 1 << this.h;
+   }
+
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
+   }
+
+   public static Set<buf> a(int $$0) {
+      Set<buf> $$1 = EnumSet.noneOf(buf.class);
+
+      for (buf $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static int a(Set<buf> $$0) {
+      int $$1 = 0;
+
+      for (buf $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
+
+      return $$1;
+   }
 }

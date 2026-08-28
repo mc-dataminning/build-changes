@@ -1,5 +1,5 @@
-public class dam extends dab {
-   public dam(dab.b $$0) {
+public class dam extends dac {
+   public dam(dac.b $$0) {
       super($$0);
    }
 

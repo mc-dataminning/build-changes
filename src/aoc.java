@@ -30,7 +30,7 @@ public class aoc {
       if ($$1.aV()) {
          throw c.create();
       } else {
-         Consumer<bni> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<bnj> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
          $$0.a(() -> xp.c("commands.perf.started"), false);
@@ -53,14 +53,14 @@ public class aoc {
 
       String $$4;
       try {
-         $$4 = v.a(bpb.a, $$3, ".zip");
+         $$4 = v.a(bpc.a, $$3, ".zip");
       } catch (IOException var11) {
          $$0.b(xp.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
 
-      try (ayk $$7 = new ayk(bpb.a.resolve($$4))) {
+      try (ayk $$7 = new ayk(bpc.a.resolve($$4))) {
          $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
          $$7.a($$1);
       }
@@ -74,8 +74,8 @@ public class aoc {
       $$0.a(() -> xp.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(ep $$0, bni $$1) {
-      if ($$1 != bne.a) {
+   private static void a(ep $$0, bnj $$1) {
+      if ($$1 != bnf.a) {
          int $$2 = $$1.f();
          double $$3 = (double)$$1.g() / (double)azz.a;
          $$0.a(() -> xp.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);

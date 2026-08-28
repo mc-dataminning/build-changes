@@ -51,14 +51,14 @@ public class apo {
    }
 
    public static CompletableFuture<Suggestions> a(ep $$0, SuggestionsBuilder $$1) {
-      ewv $$2 = $$0.f();
+      eww $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         eww $$4 = $$0.l().aK();
+         ewx $$4 = $$0.l().aK();
 
-         for (ewo $$5 : $$4.c()) {
-            if ($$5.c() == ewz.c) {
-               ews $$6 = $$4.d($$2, $$5);
+         for (ewp $$5 : $$4.c()) {
+            if ($$5.c() == exa.c) {
+               ewt $$6 = $$4.d($$2, $$5);
                if ($$6 != null && !$$6.b()) {
                   $$3.add($$5.b());
                }
@@ -69,34 +69,34 @@ public class apo {
       return eu.b($$3, $$1);
    }
 
-   private static int a(ep $$0, arg $$1, ewo $$2, int $$3) throws CommandSyntaxException {
-      ewu $$4 = a($$0.l().aK(), $$1, $$2);
+   private static int a(ep $$0, arg $$1, ewp $$2, int $$3) throws CommandSyntaxException {
+      ewv $$4 = a($$0.l().aK(), $$1, $$2);
       int $$5 = $$4.b($$3);
       $$0.a(() -> xp.a("commands.trigger.add.success", $$2.g(), $$3), true);
       return $$5;
    }
 
-   private static int b(ep $$0, arg $$1, ewo $$2, int $$3) throws CommandSyntaxException {
-      ewu $$4 = a($$0.l().aK(), $$1, $$2);
+   private static int b(ep $$0, arg $$1, ewp $$2, int $$3) throws CommandSyntaxException {
+      ewv $$4 = a($$0.l().aK(), $$1, $$2);
       $$4.a($$3);
       $$0.a(() -> xp.a("commands.trigger.set.success", $$2.g(), $$3), true);
       return $$3;
    }
 
-   private static int a(ep $$0, arg $$1, ewo $$2) throws CommandSyntaxException {
-      ewu $$3 = a($$0.l().aK(), $$1, $$2);
+   private static int a(ep $$0, arg $$1, ewp $$2) throws CommandSyntaxException {
+      ewv $$3 = a($$0.l().aK(), $$1, $$2);
       int $$4 = $$3.b(1);
       $$0.a(() -> xp.a("commands.trigger.simple.success", $$2.g()), true);
       return $$4;
    }
 
-   private static ewu a(eww $$0, ewv $$1, ewo $$2) throws CommandSyntaxException {
-      if ($$2.c() != ewz.c) {
+   private static ewv a(ewx $$0, eww $$1, ewp $$2) throws CommandSyntaxException {
+      if ($$2.c() != exa.c) {
          throw b.create();
       } else {
-         ews $$3 = $$0.d($$1, $$2);
+         ewt $$3 = $$0.d($$1, $$2);
          if ($$3 != null && !$$3.b()) {
-            ewu $$4 = $$0.c($$1, $$2);
+            ewv $$4 = $$0.c($$1, $$2);
             $$4.f();
             return $$4;
          } else {

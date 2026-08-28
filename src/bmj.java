@@ -1,10 +1,8 @@
-public record bmj<T>(String a) {
-   @Override
-   public String toString() {
-      return "<" + this.a + ">";
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static <T> bmj<T> a(String $$0) {
-      return new bmj<>($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bmj {
 }

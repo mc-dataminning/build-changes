@@ -1,9 +1,11 @@
-public class cpk {
-   final cpn a;
-   final long b;
+import java.util.Set;
 
-   cpk(cpn $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface cpk {
+   Set<ale<? extends jv<? extends cpk>>> bA = Set.of(lq.G, lq.f, lq.v, lq.Q, lq.u, lq.Y, lq.R);
+
+   cpn i();
+
+   default boolean a(cpn $$0) {
+      return this.i().a($$0);
    }
 }

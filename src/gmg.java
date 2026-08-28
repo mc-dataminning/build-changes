@@ -1,24 +1,17 @@
-public class gmg<T extends btq, M extends fvg<T>> extends gnt<T, M> {
-   private final giw a;
+public class gmg extends gjq<ckz, fwv<ckz>> {
+   private static final alf a = new alf("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gmg(giy.a $$0, gjz<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public gmg(giz.a $$0) {
+      super($$0, new fwv<>($$0.a(fxb.ck)), 0.5F);
+      this.a(new gnb<>(this, new fwv($$0.a(fxb.cl)), new fwv($$0.a(fxb.cm)), $$0.g()));
+      this.a(new gnw<>(this, $$0.e(), "zombie_villager"));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eT();
+   public alf a(ckz $$0) {
+      return a;
    }
 
-   @Override
-   protected void a(ezz $$0, gdp $$1, int $$2, bsv $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = ayz.c($$4 * $$4 + $$6 * $$6);
-      cng $$9 = new cng($$3.dP(), $$3.du(), $$3.dw(), $$3.dA(), cuq.l);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.O = $$9.dF();
-      $$9.P = $$9.dH();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   protected boolean b(ckz $$0) {
+      return super.a($$0) || $$0.gA();
    }
 }

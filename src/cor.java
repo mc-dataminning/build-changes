@@ -1,45 +1,39 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class cor {
-   private final coq a;
-   private final List<cor.a> b = Lists.newArrayList();
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cor c = a("empty").a(0, cop.b).a();
+   public static final cor d = a("simple").a(5000, cop.c).a(11000, cop.e).a();
+   public static final cor e = a("villager_baby").a(10, cop.b).a(3000, cop.d).a(6000, cop.b).a(10000, cop.d).a(12000, cop.e).a();
+   public static final cor f = a("villager_default").a(10, cop.b).a(2000, cop.c).a(9000, cop.f).a(11000, cop.b).a(12000, cop.e).a();
+   private final Map<cop, cot> g = Maps.newHashMap();
 
-   public cor(coq $$0) {
-      this.a = $$0;
+   protected static cos a(String $$0) {
+      cor $$1 = jv.a(lp.D, $$0, new cor());
+      return new cos($$1);
    }
 
-   public cor a(int $$0, coo $$1) {
-      this.b.add(new cor.a($$0, $$1));
-      return this;
+   protected void a(cop $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cot());
+      }
    }
 
-   public coq a() {
-      this.b.stream().map(cor.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         coo $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   protected cot b(cop $$0) {
+      return this.g.get($$0);
    }
 
-   static class a {
-      private final int a;
-      private final coo b;
+   protected List<cot> c(cop $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
 
-      public a(int $$0, coo $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public coo b() {
-         return this.b;
-      }
+   public cop a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cop.b);
    }
 }

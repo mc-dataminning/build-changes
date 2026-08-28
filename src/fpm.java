@@ -1,21 +1,33 @@
-public class fpm extends foc<crn> {
-   private static final alf D = new alf("textures/gui/container/shulker_box.png");
+public class fpm extends fhg {
+   private static final alf a = new alf("widget/page_forward_highlighted");
+   private static final alf b = new alf("widget/page_forward");
+   private static final alf c = new alf("widget/page_backward_highlighted");
+   private static final alf d = new alf("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-   public fpm(crn $$0, cmx $$1, xp $$2) {
-      super($$0, $$1, $$2);
-      this.d++;
+   public fpm(int $$0, int $$1, boolean $$2, fhg.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xo.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   public void a(fgs $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void b(fgt $$0, int $$1, int $$2, float $$3) {
+      alf $$4;
+      if (this.u) {
+         $$4 = this.A() ? a : b;
+      } else {
+         $$4 = this.A() ? c : d;
+      }
+
+      $$0.a($$4, this.C(), this.D(), 23, 13);
    }
 
    @Override
-   protected void a(fgs $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void a(gtx $$0) {
+      if (this.v) {
+         $$0.a(gsk.a(awa.cy, 1.0F));
+      }
    }
 }

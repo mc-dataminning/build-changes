@@ -82,7 +82,7 @@ public class tr {
                   tr.this.k.d().accept(tr.this.c);
                   tr.this.g.forEach($$0xxx -> $$0xxx.b(tr.this.k));
                   LongSet $$0 = new LongArraySet(tr.this.c.w());
-                  $$0.forEach($$0xxx -> tr.this.c.a(dbg.a($$0xxx), dbg.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> tr.this.c.a(dbh.a($$0xxx), dbh.b($$0xxx), false));
                   tr.this.a($$0 + 1);
                }
             }

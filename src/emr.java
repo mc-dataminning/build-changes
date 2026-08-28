@@ -1,17 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class emr implements emt {
-   private static final emr b = new emr();
-   public static final MapCodec<emr> a = MapCodec.unit(b);
+public class emr implements emu {
+   public static final MapCodec<emr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(us.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, emr::new));
+   private final us b;
 
-   @Override
-   public us a(azh $$0, @Nullable us $$1) {
-      return new us();
+   public emr(us $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public emu<?> a() {
-      return emu.a;
+   public us a(azh $$0, @Nullable us $$1) {
+      return $$1 == null ? this.b.i() : $$1.a(this.b);
+   }
+
+   @Override
+   public emv<?> a() {
+      return emv.c;
    }
 }

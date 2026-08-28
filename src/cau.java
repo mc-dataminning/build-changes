@@ -1,48 +1,36 @@
-import java.util.EnumSet;
+public class cau extends cap {
+   private final cge a;
+   private arg b;
+   private boolean c;
 
-public class cau extends cao {
-   private final bts a;
-   private btq b;
-   private final float c;
-
-   public cau(bts $$0, float $$1) {
+   public cau(cge $$0) {
       this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(cao.a.c, cao.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.cR()) {
-         return false;
-      } else {
-         this.b = this.a.p();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aE() ? false : this.a.el().a(b(5)) == 0;
-            }
-         }
-      }
+      arg $$0 = (arg)this.a.P_();
+      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.gd().b && !$$0.be() && !$$0.aB;
+      return !this.a.gq() && $$1 && this.a.gz();
    }
 
    @Override
-   public boolean b() {
-      return !this.a.aE();
+   public boolean Q_() {
+      return !this.c;
    }
 
    @Override
    public void c() {
-      evs $$0 = this.a.ds();
-      evs $$1 = new evs(this.b.du() - this.a.du(), 0.0, this.b.dA() - this.a.dA());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
+      this.b = (arg)this.a.P_();
+      this.c = false;
+   }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+   @Override
+   public void e() {
+      if (!this.c && !this.a.y() && !this.a.gd()) {
+         if (this.a.cK().c(this.b.cK())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

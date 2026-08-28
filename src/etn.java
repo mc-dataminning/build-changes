@@ -1,33 +1,17 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public record etn(Optional<bj> b) implements ett {
-   public static final MapCodec<etn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bj.a.optionalFieldOf("predicate").forGetter(etn::c)).apply($$0, etn::new));
+public interface etn<T extends etn<T>> {
+   T b(etu.a var1);
 
-   @Override
-   public etu b() {
-      return etv.o;
+   default <E> T a_(Iterable<E> $$0, Function<E, etu.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public Set<etc<?>> a() {
-      return ImmutableSet.of(etf.f, etf.c);
-   }
-
-   public boolean a(eqj $$0) {
-      bro $$1 = $$0.c(etf.c);
-      evs $$2 = $$0.c(etf.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
-   }
-
-   public static ett.a a(bj.a $$0) {
-      return () -> new etn(Optional.of($$0.b()));
-   }
-
-   public Optional<bj> c() {
-      return this.b;
-   }
+   T d();
 }

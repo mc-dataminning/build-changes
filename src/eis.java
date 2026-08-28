@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record eis(eis.a b, bpj<ddk.c> c) {
+public record eis(List<eis.a> c, ejj d) {
    public static final Codec<eis> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eis.a.c.fieldOf("bounding_box").forGetter(eis::a), bpj.c(ddk.c.a).fieldOf("spawns").forGetter(eis::b)).apply($$0, eis::new)
+      $$0 -> $$0.group(eis.a.a.listOf().fieldOf("structures").forGetter(eis::a), ejj.b.fieldOf("placement").forGetter(eis::b)).apply($$0, eis::new)
    );
+   public static final Codec<ji<eis>> b = alb.a(lq.aL, a);
 
-   public eis.a a() {
-      return this.b;
+   public eis(ji<eim> $$0, ejj $$1) {
+      this(List.of(new eis.a($$0, 1)), $$1);
    }
 
-   public bpj<ddk.c> b() {
+   public static eis.a a(ji<eim> $$0, int $$1) {
+      return new eis.a($$0, $$1);
+   }
+
+   public static eis.a a(ji<eim> $$0) {
+      return new eis.a($$0, 1);
+   }
+
+   public List<eis.a> a() {
       return this.c;
    }
 
-   public static enum a implements azu {
-      a("piece"),
-      b("full");
+   public ejj b() {
+      return this.d;
+   }
 
-      public static final Codec<eis.a> c = azu.a(eis.a::values);
-      private final String d;
+   public static record a(ji<eim> b, int c) {
+      public static final Codec<eis.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eim.b.fieldOf("structure").forGetter(eis.a::a), ayh.l.fieldOf("weight").forGetter(eis.a::b)).apply($$0, eis.a::new)
+      );
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public ji<eim> a() {
+         return this.b;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public int b() {
+         return this.c;
       }
    }
 }

@@ -1,45 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
 
-public record etr(Optional<dc> b, iz c) implements ett {
-   private static final MapCodec<iz> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kd::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kd::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kd::w)
-            )
-            .apply($$0, iz::new)
-   );
-   public static final MapCodec<etr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dc.a.optionalFieldOf("predicate").forGetter(etr::c), d.forGetter(etr::d)).apply($$0, etr::new)
-   );
+public record etr(etu b) implements etu {
+   public static final MapCodec<etr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(etw.a.fieldOf("term").forGetter(etr::c)).apply($$0, etr::new));
 
    @Override
-   public etu b() {
-      return etv.p;
+   public etv b() {
+      return etw.c;
    }
 
-   public boolean a(eqj $$0) {
-      evs $$1 = $$0.c(etf.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   public boolean a(eqk $$0) {
+      return !this.b.test($$0);
    }
 
-   public static ett.a a(dc.a $$0) {
-      return () -> new etr(Optional.of($$0.b()), iz.c);
+   @Override
+   public Set<etd<?>> a() {
+      return this.b.a();
    }
 
-   public static ett.a a(dc.a $$0, iz $$1) {
-      return () -> new etr(Optional.of($$0.b()), $$1);
+   @Override
+   public void a(eqq $$0) {
+      etu.super.a($$0);
+      this.b.a($$0);
    }
 
-   public Optional<dc> c() {
+   public static etu.a a(etu.a $$0) {
+      etr $$1 = new etr($$0.build());
+      return () -> $$1;
+   }
+
+   public etu c() {
       return this.b;
-   }
-
-   public iz d() {
-      return this.c;
    }
 }

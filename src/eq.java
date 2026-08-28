@@ -96,7 +96,7 @@ public class eq {
       apo.a(this.h);
       apq.a(this.h);
       aps.a(this.h);
-      if (bnp.f.d()) {
+      if (bnq.f.d()) {
          anr.a(this.h);
       }
 
@@ -214,8 +214,8 @@ public class eq {
       ho<ep> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aM().c(dbv.x));
-         int $$6 = $$2.aM().c(dbv.y);
+         int $$5 = Math.max(1, $$2.aM().c(dbw.x));
+         int $$6 = $$2.aM().c(dbw.y);
 
          try (ho<ep> $$7 = new ho<>($$5, $$6, $$2.aT())) {
             f.set($$7);

@@ -1,62 +1,70 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
-
 public class gdv {
-   private final gea a = new gea();
-   private final geb b;
-   private final gdp.a c;
-   private final gdp.a d;
-   private final gdq e;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public gdv(int $$0) {
-      this.b = geb.a($$0);
-      SortedMap<gdx, ezu> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gee.h(), this.a.a(gdx.c()));
-         $$0x.put(gee.i(), this.a.a(gdx.e()));
-         $$0x.put(gee.a(), this.a.a(gdx.d()));
-         $$0x.put(gee.k(), this.a.a(gdx.f()));
-         a($$0x, gee.b());
-         a($$0x, gee.c());
-         a($$0x, gee.d());
-         a($$0x, gee.e());
-         a($$0x, gee.f());
-         $$0x.put(gee.g(), new ezu(786432));
-         a($$0x, gdx.j());
-         a($$0x, gdx.k());
-         a($$0x, gdx.m());
-         a($$0x, gdx.n());
-         a($$0x, gdx.l());
-         a($$0x, gdx.o());
-         a($$0x, gdx.p());
-         a($$0x, gdx.i());
-         grg.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = gdp.a(new ezu(1536));
-      this.c = gdp.a($$1, new ezu(786432));
-      this.e = new gdq(this.c);
+   public gdv(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gdx, ezu> $$0, gdx $$1) {
-      $$0.put($$1, new ezu($$1.I()));
+   public gdv a(gdv $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public gea a() {
+   public int a() {
       return this.a;
    }
 
-   public geb b() {
+   public int b() {
       return this.b;
    }
 
-   public gdp.a c() {
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
       return this.c;
    }
 
-   public gdp.a d() {
+   public int d() {
       return this.d;
    }
 
-   public gdq e() {
-      return this.e;
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

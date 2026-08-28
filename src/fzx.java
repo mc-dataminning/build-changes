@@ -1,72 +1,25 @@
-public class fzx extends gcd {
-   private final float a;
-   private final float b;
-
-   fzx(fxw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cuq $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class fzx extends gce {
+   fzx(fxx $$0, double $$1, double $$2, double $$3, dse $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(ffh.Q().ao().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public gbh b() {
-      return gbh.a;
-   }
-
-   protected fzx(fxw $$0, double $$1, double $$2, double $$3, cuq $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(ffg.Q().ar().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+   public gbi b() {
+      return gbi.a;
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements gbg<lm> {
-      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzx($$1, $$2, $$3, $$4, new cuq(cut.cM));
-      }
-   }
-
-   public static class b implements gbg<le> {
-      public gbd a(le $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzx($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
-      }
-   }
-
-   public static class c implements gbg<lm> {
-      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzx($$1, $$2, $$3, $$4, new cuq(cut.qQ));
-      }
-   }
-
-   public static class d implements gbg<lm> {
-      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzx($$1, $$2, $$3, $$4, new cuq(cut.qC));
+   public static class a implements gbh<la> {
+      public gbe a(la $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fzx($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

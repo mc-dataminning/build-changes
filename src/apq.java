@@ -23,7 +23,7 @@ public class apq {
       );
    }
 
-   private static int a(ep $$0, int $$1, bqa $$2) {
+   private static int a(ep $$0, int $$1, bqb $$2) {
       return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
    }
 

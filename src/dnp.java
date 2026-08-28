@@ -1,49 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dnp extends dem {
-   public static final MapCodec<dnp> a = b(dnp::new);
-   public static final dtb<drj> b = dst.by;
-   public static final dsu c = dst.bA;
+public class dnp extends dge {
+   public static final MapCodec<dnp> n = b(dnp::new);
 
    @Override
    public MapCodec<dnp> a() {
-      return a;
+      return n;
    }
 
-   public dnp(dsc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, drj.a).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(b, c);
+   public dnp(dsd.d $$0) {
+      super($$0, () -> dpl.c);
    }
 
    @Override
-   protected dlg a_(dsd $$0) {
-      return dlg.c;
-   }
-
-   @Nullable
-   @Override
-   public dpi a(iz $$0, dsd $$1) {
+   public dpj a(iz $$0, dse $$1) {
       return new drc($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public <T extends dpi> dpj<T> a(dbz $$0, dsd $$1, dpk<T> $$2) {
-      return $$0 instanceof arf $$3
-         ? a($$2, dpk.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dst.bA).orElse(false)))
-         : a($$2, dpk.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dst.bA).orElse(false)));
+   protected awh<alf> c() {
+      return awk.i.b(awk.ai);
    }
 
    @Override
-   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dcr.a($$0, $$2, "spawn_data");
+   protected boolean e_(dse $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dse $$0, dbg $$1, iz $$2, je $$3) {
+      return ayz.a(dpq.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   protected int b(dse $$0, dbg $$1, iz $$2, je $$3) {
+      return $$3 == je.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

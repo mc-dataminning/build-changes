@@ -1,32 +1,42 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record cxo(Optional<jh> c, boolean d) {
-   public static final Codec<cxo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jh.b.optionalFieldOf("target").forGetter(cxo::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(cxo::b)).apply($$0, cxo::new)
-   );
-   public static final zn<ByteBuf, cxo> b = zn.a(jh.c.a(zl::a), cxo::a, zl.b, cxo::b, cxo::new);
+public record cxo(List<xp> e, List<xp> f) implements cxx {
+   public static final cxo a = new cxo(List.of());
+   public static final int b = 256;
+   private static final ym g = ym.a.a(n.f).b(true);
+   public static final Codec<cxo> c = xr.g.sizeLimitedListOf(256).xmap(cxo::new, cxo::a);
+   public static final zn<xa, cxo> d = xr.b.a(zl.c(256)).a(cxo::new, cxo::a);
 
-   public cxo a(arf $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.af()) {
-            return this;
-         } else {
-            iz $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.y().a(cey.s, $$1) ? this : new cxo(Optional.empty(), true);
-         }
+   public cxo(List<xp> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xs.a($$0x.f(), g)));
+   }
+
+   public cxo(List<xp> e, List<xp> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
       } else {
-         return this;
+         this.e = e;
+         this.f = f;
       }
    }
 
-   public Optional<jh> a() {
-      return this.c;
+   public cxo a(xp $$0) {
+      return new cxo(ac.a(this.e, $$0));
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public void a(cum.b $$0, Consumer<xp> $$1, cwk $$2) {
+      this.f.forEach($$1);
+   }
+
+   public List<xp> a() {
+      return this.e;
+   }
+
+   public List<xp> b() {
+      return this.f;
    }
 }

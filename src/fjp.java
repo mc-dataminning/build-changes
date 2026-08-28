@@ -1,151 +1,37 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.List;
-import javax.annotation.Nullable;
+public interface fjp {
+   Object b = new Object();
+   int c = 32;
 
-public class fjp {
-   private static final int a = 5;
-   private static final int b = -1;
-   final ffg c;
-   private final List<fjp.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fjo> f = Queues.newArrayDeque();
+   fjp.a a(fgt var1, fjq var2, long var3);
 
-   public fjp(ffg $$0) {
-      this.c = $$0;
+   default Object e() {
+      return b;
    }
 
-   public void a(fgs $$0) {
-      if (!this.c.m.Y) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
-               return true;
-            } else {
-               return false;
-            }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.f();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new fjp.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-         }
-      }
+   default int a() {
+      return 160;
    }
 
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
-      }
-
-      return -1;
+   default int b() {
+      return 32;
    }
 
-   private int d() {
-      return 5 - this.e.cardinality();
+   default int f() {
+      return ayz.e(this.b(), 32);
    }
 
-   @Nullable
-   public <T extends fjo> T a(Class<? extends T> $$0, Object $$1) {
-      for (fjp.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
+   public static enum a {
+      a(awa.Av),
+      b(awa.Aw);
 
-      for (fjo $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
-            return (T)$$3;
-         }
-      }
+      private final avz c;
 
-      return null;
-   }
-
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(fjo $$0) {
-      this.f.add($$0);
-   }
-
-   public ffg b() {
-      return this.c;
-   }
-
-   public double c() {
-      return this.c.m.B().c();
-   }
-
-   class a<T extends fjo> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fjo.a h = fjo.a.a;
-
-      a(final T $$0, final int $$1, final int $$2) {
+      private a(final avz $$0) {
          this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
       }
 
-      public T a() {
-         return this.c;
-      }
-
-      private float a(long $$0) {
-         float $$1 = ayz.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == fjo.a.b ? 1.0F - $$1 : $$1;
-      }
-
-      public boolean a(int $$0, fgs $$1) {
-         long $$2 = ac.c();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(fjp.this.c.aj());
-         }
-
-         if (this.h == fjo.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
-         }
-
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         fjo.a $$3 = this.c.a($$1, fjp.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(fjp.this.c.aj());
-         }
-
-         return this.h == fjo.a.b && $$2 - this.f > 600L;
+      public void a(gtx $$0) {
+         $$0.a(gsk.a(this.c, 1.0F, 1.0F));
       }
    }
 }

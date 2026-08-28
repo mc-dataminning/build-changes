@@ -108,7 +108,7 @@ public class ac {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dtg<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dth<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 

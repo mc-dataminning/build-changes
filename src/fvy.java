@@ -1,7 +1,39 @@
-public abstract class fvy extends fux {
-   public fvy() {
-      super(gdx::i);
+public class fvy extends fvz {
+   private final fxc b;
+   protected final fxc a;
+
+   public fvy(fxc $$0) {
+      this.b = $$0;
+      this.a = $$0.b("head");
    }
 
-   public abstract void a(float var1, float var2, float var3);
+   public static fxk a() {
+      fxk $$0 = new fxk();
+      fxl $$1 = $$0.a();
+      $$1.a("head", fxh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxe.a);
+      return $$0;
+   }
+
+   public static fxi b() {
+      fxk $$0 = a();
+      fxl $$1 = $$0.a();
+      $$1.a("head").a("hat", fxh.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fxg(0.25F)), fxe.a);
+      return fxi.a($$0, 64, 64);
+   }
+
+   public static fxi c() {
+      fxk $$0 = a();
+      return fxi.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public void a(faa $$0, fae $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 }

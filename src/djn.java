@@ -1,149 +1,84 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-
-public class djn extends dhu {
-   public static final MapCodec<djn> a = b(djn::new);
-   public static final dsu b = dst.w;
-   protected static final int c = 6;
-   protected static final int d = 6;
-   protected static final int e = 8;
-   protected static final ewl f = dfa.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
-   protected static final ewl g = dfa.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
-   protected static final ewl h = dfa.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
-   protected static final ewl i = dfa.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
-   protected static final ewl j = dfa.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
-   protected static final ewl k = dfa.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
-   protected static final ewl l = dfa.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
-   protected static final ewl m = dfa.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
-
-   @Override
-   public MapCodec<djn> a() {
-      return a;
-   }
-
-   protected djn(dsc.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, je.c).a(b, Boolean.valueOf(false)).a(K, dso.b));
-   }
-
-   @Override
-   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      switch ((dso)$$0.c(K)) {
-         case a:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return k;
-               case c:
-               default:
-                  return j;
-            }
-         case b:
-            switch ((je)$$0.c(aE)) {
-               case f:
-                  return i;
-               case e:
-                  return h;
-               case d:
-                  return g;
-               case c:
-               default:
-                  return f;
-            }
-         case c:
-         default:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return m;
-               case c:
-               default:
-                  return l;
-            }
-      }
-   }
-
-   @Override
-   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
-      if ($$1.B) {
-         dsd $$5 = $$0.a(b);
-         if ($$5.c(b)) {
-            a($$5, $$1, $$2, 1.0F);
-         }
-
-         return bqv.a;
-      } else {
-         dsd $$6 = this.d($$0, $$1, $$2);
-         float $$7 = $$6.c(b) ? 0.6F : 0.5F;
-         $$1.a(null, $$2, awa.nU, awb.e, 0.3F, $$7);
-         $$1.a($$3, $$6.c(b) ? dww.a : dww.e, $$2);
-         return bqv.c;
-      }
-   }
-
-   @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, dbr $$3, BiConsumer<cuq, iz> $$4) {
-      if ($$3.j() == dbr.a.d && !$$1.x_()) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public dsd d(dsd $$0, dbz $$1, iz $$2) {
-      $$0 = $$0.a(b);
-      $$1.a($$2, $$0, 3);
-      this.e($$0, $$1, $$2);
-      return $$0;
-   }
-
-   private static void a(dsd $$0, dca $$1, iz $$2, float $$3) {
-      je $$4 = $$0.c(aE).g();
-      je $$5 = m($$0).g();
-      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
-      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
-      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
-      $$1.a(new ld(ld.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dsd $$0, dbz $$1, iz $$2, azh $$3) {
-      if ($$0.c(b) && $$3.i() < 0.25F) {
-         a($$0, $$1, $$2, 0.5F);
-      }
-   }
-
-   @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if ($$0.c(b)) {
-            this.e($$0, $$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected int a(dsd $$0, dbf $$1, iz $$2, je $$3) {
-      return $$0.c(b) ? 15 : 0;
-   }
-
-   @Override
-   protected int b(dsd $$0, dbf $$1, iz $$2, je $$3) {
-      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected boolean e_(dsd $$0) {
-      return true;
-   }
-
-   private void e(dsd $$0, dbz $$1, iz $$2) {
-      $$1.a($$2, this);
-      $$1.a($$2.a(m($$0).g()), this);
-   }
-
-   @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(K, aE, b);
-   }
+public class djn {
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1003;
+   public static final int e = 1004;
+   public static final int f = 1009;
+   public static final int g = 1010;
+   public static final int h = 1011;
+   public static final int i = 1015;
+   public static final int j = 1016;
+   public static final int k = 1017;
+   public static final int l = 1018;
+   public static final int m = 1019;
+   public static final int n = 1020;
+   public static final int o = 1021;
+   public static final int p = 1022;
+   public static final int q = 1023;
+   public static final int r = 1024;
+   public static final int s = 1025;
+   public static final int t = 1026;
+   public static final int u = 1027;
+   public static final int v = 1028;
+   public static final int w = 1029;
+   public static final int x = 1030;
+   public static final int y = 1031;
+   public static final int z = 1032;
+   public static final int A = 1033;
+   public static final int B = 1034;
+   public static final int C = 1035;
+   public static final int D = 1038;
+   public static final int E = 1039;
+   public static final int F = 1040;
+   public static final int G = 1041;
+   public static final int H = 1042;
+   public static final int I = 1043;
+   public static final int J = 1044;
+   public static final int K = 1045;
+   public static final int L = 1046;
+   public static final int M = 1047;
+   public static final int N = 1048;
+   public static final int O = 1049;
+   public static final int P = 1050;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 2013;
+   public static final int aj = 3000;
+   public static final int ak = 3001;
+   public static final int al = 3002;
+   public static final int am = 3003;
+   public static final int an = 3004;
+   public static final int ao = 3005;
+   public static final int ap = 3006;
+   public static final int aq = 3007;
+   public static final int ar = 3008;
+   public static final int as = 3009;
+   public static final int at = 3011;
+   public static final int au = 3012;
+   public static final int av = 3013;
+   public static final int aw = 3014;
+   public static final int ax = 3015;
+   public static final int ay = 3016;
+   public static final int az = 3017;
+   public static final int aA = 3018;
+   public static final int aB = 3019;
+   public static final int aC = 3020;
+   public static final int aD = 3021;
 }

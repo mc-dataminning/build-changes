@@ -5,7 +5,7 @@ public class adm implements zw<aci> {
    private final int b;
    private final byte c;
 
-   public adm(bsv $$0, byte $$1) {
+   public adm(bsw $$0, byte $$1) {
       this.b = $$0.al();
       this.c = $$1;
    }
@@ -30,7 +30,7 @@ public class adm implements zw<aci> {
    }
 
    @Nullable
-   public bsv a(dbz $$0) {
+   public bsw a(dca $$0) {
       return $$0.a(this.b);
    }
 

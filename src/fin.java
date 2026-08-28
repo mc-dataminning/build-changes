@@ -1,143 +1,56 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+public class fin extends fhd {
+   private float a = 0.5F;
 
-public class fin implements gtv {
-   private static final long a = 3000L;
-   private final ffg b;
-   private final List<fin.a> c = Lists.newArrayList();
-   private boolean d;
-   private final List<fin.a> e = new ArrayList<>();
-
-   public fin(ffg $$0) {
-      this.b = $$0;
+   public fin(xp $$0, fgr $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
    }
 
-   public void a(fgs $$0) {
-      gtw $$1 = this.b.aj();
-      if (!this.d && this.b.m.W().c()) {
-         $$1.a(this);
-         this.d = true;
-      } else if (this.d && !this.b.m.W().c()) {
-         $$1.b(this);
-         this.d = false;
-      }
+   public fin(int $$0, int $$1, xp $$2, fgr $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
 
-      if (this.d) {
-         exx $$2 = $$1.b();
-         evs $$3 = $$2.b();
-         evs $$4 = $$2.c();
-         evs $$5 = $$2.a();
-         this.e.clear();
+   public fin(int $$0, int $$1, int $$2, int $$3, xp $$4, fgr $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
+   }
 
-         for (fin.a $$6 : this.c) {
-            if ($$6.b($$3)) {
-               this.e.add($$6);
-            }
-         }
+   public fin b(int $$0) {
+      super.a($$0);
+      return this;
+   }
 
-         if (!this.e.isEmpty()) {
-            int $$7 = 0;
-            int $$8 = 0;
-            double $$9 = this.b.m.B().c();
-            Iterator<fin.a> $$10 = this.e.iterator();
+   private fin b(float $$0) {
+      this.a = $$0;
+      return this;
+   }
 
-            while ($$10.hasNext()) {
-               fin.a $$11 = $$10.next();
-               if ((double)$$11.b() + 3000.0 * $$9 <= (double)ac.c()) {
-                  $$10.remove();
-               } else {
-                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
-               }
-            }
+   public fin c() {
+      return this.b(0.0F);
+   }
 
-            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+   public fin e() {
+      return this.b(0.5F);
+   }
 
-            for (fin.a $$12 : this.e) {
-               int $$13 = 255;
-               xp $$14 = $$12.a();
-               evs $$15 = $$12.c().d($$3).d();
-               double $$16 = $$5.b($$15);
-               double $$17 = $$4.b($$15);
-               boolean $$18 = $$17 > 0.5;
-               int $$19 = $$8 / 2;
-               int $$20 = 9;
-               int $$21 = $$20 / 2;
-               float $$22 = 1.0F;
-               int $$23 = this.b.h.a($$14);
-               int $$24 = ayz.d(ayz.b(255.0F, 75.0F, (float)(ac.c() - $$12.b()) / (float)(3000.0 * $$9)));
-               int $$25 = $$24 << 16 | $$24 << 8 | $$24;
-               $$0.c().a();
-               $$0.c().a((float)$$0.a() - (float)$$19 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$20 + 1)) * 1.0F, 0.0F);
-               $$0.c().b(1.0F, 1.0F, 1.0F);
-               $$0.a(-$$19 - 1, -$$21 - 1, $$19 + 1, $$21 + 1, this.b.m.b(0.8F));
-               int $$26 = $$25 + -16777216;
-               if (!$$18) {
-                  if ($$16 > 0.0) {
-                     $$0.b(this.b.h, ">", $$19 - this.b.h.b(">"), -$$21, $$26);
-                  } else if ($$16 < 0.0) {
-                     $$0.b(this.b.h, "<", -$$19, -$$21, $$26);
-                  }
-               }
-
-               $$0.b(this.b.h, $$14, -$$23 / 2, -$$21, $$26);
-               $$0.c().b();
-               $$7++;
-            }
-         }
-      }
+   public fin f() {
+      return this.b(1.0F);
    }
 
    @Override
-   public void a(gso $$0, gtx $$1, float $$2) {
-      if ($$1.a() != null) {
-         xp $$3 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (fin.a $$4 : this.c) {
-               if ($$4.a().equals($$3)) {
-                  $$4.a(new evs($$0.h(), $$0.i(), $$0.j()));
-                  return;
-               }
-            }
-         }
-
-         this.c.add(new fin.a($$3, $$2, new evs($$0.h(), $$0.i(), $$0.j())));
-      }
+   public void b(fgt $$0, int $$1, int $$2, float $$3) {
+      xp $$4 = this.y();
+      fgr $$5 = this.a();
+      int $$6 = this.x();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.C() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.D() + (this.v() - 9) / 2;
+      ayl $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
    }
 
-   public static class a {
-      private final xp a;
-      private final float b;
-      private long c;
-      private evs d;
-
-      public a(xp $$0, float $$1, evs $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.d = $$2;
-         this.c = ac.c();
-      }
-
-      public xp a() {
-         return this.a;
-      }
-
-      public long b() {
-         return this.c;
-      }
-
-      public evs c() {
-         return this.d;
-      }
-
-      public void a(evs $$0) {
-         this.d = $$0;
-         this.c = ac.c();
-      }
-
-      public boolean b(evs $$0) {
-         return Float.isInfinite(this.b) || $$0.a((js)this.d, (double)this.b);
-      }
+   private ayl a(xp $$0, int $$1) {
+      fgr $$2 = this.a();
+      xu $$3 = $$2.a($$0, $$1 - $$2.a(xo.u));
+      return un.a().a(xu.a($$3, xo.u));
    }
 }

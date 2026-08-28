@@ -1,49 +1,53 @@
-public class gav extends gcd {
-   private final gby a;
-
-   protected gav(fxw $$0, double $$1, double $$2, double $$3, double $$4, gby $$5) {
+public class gav extends gce {
+   gav(fxx $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public gbi b() {
+      return gbi.b;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+   public float b(float $$0) {
+      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public gbh b() {
-      return gbh.d;
-   }
+   public static class a implements gbh<lm> {
+      private final gbz a;
 
-   public static class a implements gbg<lm> {
-      private final gby a;
-
-      public a(gby $$0) {
+      public a(gbz $$0) {
          this.a = $$0;
       }
 
-      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gav($$1, $$2, $$3, $$4, $$5, this.a);
+      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gav $$8 = new gav($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gbh<lm> {
+      private final gbz a;
+
+      public b(gbz $$0) {
+         this.a = $$0;
+      }
+
+      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gav $$8 = new gav($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

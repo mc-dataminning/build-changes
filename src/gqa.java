@@ -1,37 +1,15 @@
-import javax.annotation.Nullable;
+public class gqa extends gqe {
+   private static final alf a = new alf("back");
 
-public record gqa(alf a, @Nullable String b, @Nullable alf c, @Nullable alf d, gqa.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+   public gqa(gpc $$0) {
+      super($$0, new alf("textures/atlas/paintings.png"), new alf("paintings"));
+   }
 
-      private final String c;
+   public gpb a(cjf $$0) {
+      return this.a(lp.l.b($$0));
+   }
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static gqa.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   public gpb a() {
+      return this.a(a);
    }
 }

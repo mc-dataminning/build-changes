@@ -69,8 +69,8 @@ public class ags {
       "Fist"
    };
 
-   public static String a(bsv $$0) {
-      if ($$0 instanceof cmy) {
+   public static String a(bsw $$0) {
+      if ($$0 instanceof cmz) {
          return $$0.af().getString();
       } else {
          xp $$1 = $$0.ah();

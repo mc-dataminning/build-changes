@@ -198,7 +198,7 @@ public interface xp extends Message, xu {
       return b($$0.toString());
    }
 
-   static xp a(dbg $$0) {
+   static xp a(dbh $$0) {
       return b($$0.toString());
    }
 

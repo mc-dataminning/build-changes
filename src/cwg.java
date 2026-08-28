@@ -1,22 +1,19 @@
-public class cwg extends cul {
-   private final cwf a;
+import java.util.List;
 
-   public cwg(cwf $$0, cul.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
+public interface cwg {
+   int a();
 
-   public cwf h() {
-      return this.a;
-   }
+   float b();
 
-   @Override
-   public int g() {
-      return this.a.e();
-   }
+   float c();
 
-   @Override
-   public boolean a(cuq $$0, cuq $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   axf<dfb> d();
+
+   int e();
+
+   cyu f();
+
+   default cxw a(axf<dfb> $$0) {
+      return new cxw(List.of(cxw.a.a(this.d()), cxw.a.a($$0, this.b())), 1.0F, 1);
    }
 }

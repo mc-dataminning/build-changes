@@ -1,289 +1,178 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import com.google.common.base.Strings;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Locale;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fas<T extends fas<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public interface fas {
+   xp a = xp.c("mco.errorMessage.noDetails");
+   Logger b = LogUtils.getLogger();
 
-   public fas(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = faq.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
-         }
+   int a();
 
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new fcb(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new fcb(var6.getMessage(), var6);
-      }
-   }
+   xp b();
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
-   }
+   String c();
 
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+   static fas a(int $$0, String $$1) {
+      if ($$0 == 429) {
+         return fas.b.c;
+      } else if (Strings.isNullOrEmpty($$1)) {
+         return fas.b.b($$0);
       } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new fcb(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new fcb(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
-      }
-   }
-
-   private void f() {
-      byte[] $$0 = new byte[1024];
-
-      try {
-         InputStream $$1 = this.a.getInputStream();
-
-         while ($$1.read($$0) > 0) {
-         }
-
-         $$1.close();
-         return;
-      } catch (Exception var9) {
          try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
+            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
+            String $$3 = ayp.a($$2, "reason", null);
+            String $$4 = ayp.a($$2, "errorMsg", null);
+            int $$5 = ayp.a($$2, "errorCode", -1);
+            if ($$4 != null || $$3 != null || $$5 != -1) {
+               return new fas.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
+            }
+         } catch (Exception var6) {
+            b.error("Could not parse RealmsError", var6);
+         }
+
+         return new fas.d($$0, $$1);
+      }
+   }
+
+   public static record a(String d) implements fas {
+      public static final int c = 401;
+
+      @Override
+      public int a() {
+         return 401;
+      }
+
+      @Override
+      public xp b() {
+         return xp.b(this.d);
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+      }
+   }
+
+   public static record b(int e, @Nullable xp f) implements fas {
+      public static final fas.b c = new fas.b(429, xp.c("mco.errorMessage.serviceBusy"));
+      public static final xp d = xp.c("mco.errorMessage.retry");
+
+      public static fas.b a(String $$0) {
+         return new fas.b(500, xp.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
+      }
+
+      public static fas.b a(fcc $$0) {
+         return new fas.b(500, xp.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
+      }
+
+      public static fas.b a(int $$0) {
+         return new fas.b($$0, d);
+      }
+
+      public static fas.b b(int $$0) {
+         return new fas.b($$0, null);
+      }
+
+      @Override
+      public int a() {
+         return this.e;
+      }
+
+      @Override
+      public xp b() {
+         return this.f != null ? this.f : a;
+      }
+
+      @Override
+      public String c() {
+         return this.f != null
+            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
+            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      @Nullable
+      public xp e() {
+         return this.f;
+      }
+   }
+
+   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fas {
+      @Override
+      public int a() {
+         return this.d;
+      }
+
+      @Override
+      public xp b() {
+         String $$0 = "mco.errorMessage." + this.d;
+         if (gqh.a($$0)) {
+            return xp.c($$0);
+         } else {
+            if (this.e != null) {
+               String $$1 = "mco.errorReason." + this.e;
+               if (gqh.a($$1)) {
+                  return xp.c($$1);
                }
-
-               $$3.close();
-               return;
-            }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
-      }
-   }
-
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
-
-   protected abstract T e();
-
-   public static fas<?> a(String $$0) {
-      return new fas.b($$0, 5000, 60000);
-   }
-
-   public static fas<?> a(String $$0, int $$1, int $$2) {
-      return new fas.b($$0, $$1, $$2);
-   }
-
-   public static fas<?> b(String $$0, String $$1) {
-      return new fas.c($$0, $$1, 5000, 60000);
-   }
-
-   public static fas<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new fas.c($$0, $$1, $$2, $$3);
-   }
-
-   public static fas<?> b(String $$0) {
-      return new fas.a($$0, 5000, 60000);
-   }
-
-   public static fas<?> c(String $$0, String $$1) {
-      return new fas.d($$0, $$1, 5000, 60000);
-   }
-
-   public static fas<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new fas.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends fas<fas.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public fas.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new fcb(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class b extends fas<fas.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public fas.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new fcb(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends fas<fas.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public fas.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             }
 
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fcb(var3.getMessage(), var3);
+            return (xp)(this.f != null ? xp.b(this.f) : a);
          }
+      }
+
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public int e() {
+         return this.d;
+      }
+
+      @Nullable
+      public String f() {
+         return this.e;
+      }
+
+      @Nullable
+      public String g() {
+         return this.f;
       }
    }
 
-   public static class d extends fas<fas.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
+   public static record d(int c, String d) implements fas {
+      @Override
+      public int a() {
+         return this.c;
       }
 
-      public fas.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
+      @Override
+      public xp b() {
+         return xp.b(this.d);
+      }
 
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fcb(var3.getMessage(), var3);
-         }
+      @Override
+      public String c() {
+         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public String e() {
+         return this.d;
       }
    }
 }

@@ -7,7 +7,7 @@ public class agc implements zw<aci> {
    private final float f;
    private final long g;
 
-   public agc(ji<avz> $$0, awb $$1, bsv $$2, float $$3, float $$4, long $$5) {
+   public agc(ji<avz> $$0, awb $$1, bsw $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.al();

@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record adz(int b, boolean c, Set<ale<dbz>> d, int e, int f, int g, boolean h, boolean i, boolean j, agr k, boolean l) implements zw<aci> {
+public record adz(int b, boolean c, Set<ale<dca>> d, int e, int f, int g, boolean h, boolean i, boolean j, agr k, boolean l) implements zw<aci> {
    public static final zn<xa, adz> a = zw.a(adz::a, adz::new);
 
    private adz(xa $$0) {
@@ -47,7 +47,7 @@ public record adz(int b, boolean c, Set<ale<dbz>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<ale<dbz>> f() {
+   public Set<ale<dca>> f() {
       return this.d;
    }
 

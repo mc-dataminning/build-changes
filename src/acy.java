@@ -10,7 +10,7 @@ public record acy(List<acy.a> b) implements zw<aci> {
       this($$0.a(acy.a::new));
    }
 
-   public static acy a(List<duj> $$0) {
+   public static acy a(List<duk> $$0) {
       return new acy($$0.stream().map(acy.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record acy(List<acy.a> b) implements zw<aci> {
       $$0.a(this);
    }
 
-   public static record a(dbg a, byte[] b) {
-      public a(duj $$0) {
+   public static record a(dbh a, byte[] b) {
+      public a(duk $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new wm(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record acy(List<acy.a> b) implements zw<aci> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(duj $$0) {
+      private static int a(duk $$0) {
          int $$1 = 0;
 
-         for (duk $$2 : $$0.d()) {
+         for (dul $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record acy(List<acy.a> b) implements zw<aci> {
          return $$0;
       }
 
-      public static void a(wm $$0, duj $$1) {
-         for (duk $$2 : $$1.d()) {
+      public static void a(wm $$0, duk $$1) {
+         for (dul $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record acy(List<acy.a> b) implements zw<aci> {
          $$0.a(this.b);
       }
 
-      public dbg b() {
+      public dbh b() {
          return this.a;
       }
 

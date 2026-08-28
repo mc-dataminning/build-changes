@@ -1,41 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cbz extends cap {
+   private final bua a;
 
-public class cbz<T extends bts> extends cao {
-   private final T a;
-   private final cuq b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final avz d;
-
-   public cbz(T $$0, cuq $$1, @Nullable avz $$2, Predicate<? super T> $$3) {
+   public cbz(bua $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.fv();
+      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awv.a);
    }
 
    @Override
    public void c() {
-      this.a.a(btc.a, this.b.s());
-      this.a.c(bqu.a);
-   }
+      iz $$0 = null;
 
-   @Override
-   public void d() {
-      this.a.a(btc.a, cuq.l);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.el().i() * 0.2F + 0.9F);
+      for (iz $$2 : iz.b(
+         ayz.a(this.a.du() - 2.0), ayz.a(this.a.dw() - 2.0), ayz.a(this.a.dA() - 2.0), ayz.a(this.a.du() + 2.0), this.a.dv(), ayz.a(this.a.dA() + 2.0)
+      )) {
+         if (this.a.dP().b_($$2).a(awv.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

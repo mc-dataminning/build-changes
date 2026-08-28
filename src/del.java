@@ -1,89 +1,72 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class del extends dei {
-   public static final MapCodec<del> b = b(del::new);
-   public static final dsx c = diw.aE;
-   private static final Map<je, ewl> e = Maps.newEnumMap(
-      ImmutableMap.of(
-         je.c,
-         dfa.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
-         je.d,
-         dfa.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
-         je.e,
-         dfa.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
-         je.f,
-         dfa.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
-      )
-   );
+public abstract class del extends dfb implements dmc {
+   public static final dsv d = dsu.C;
+   private static final ewm a = dfb.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   @Override
-   public MapCodec<? extends del> a() {
-      return b;
-   }
-
-   protected del(dsc.d $$0) {
+   protected del(dsd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, je.c).a(d, Boolean.valueOf(true)));
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      return e.get($$0.c(c));
-   }
+   protected abstract MapCodec<? extends del> a();
 
-   @Override
-   protected dsd a(dsd $$0, dln $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected dsd a(dsd $$0, djx $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, enx.c, enx.c.a($$3));
+   protected void a(dse $$0, dcb $$1, iz $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.E_().a(40));
       }
-
-      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? dfc.a.o() : $$0;
    }
 
-   @Override
-   protected boolean a(dsd $$0, dcc $$1, iz $$2) {
-      je $$3 = $$0.c(c);
-      iz $$4 = $$2.a($$3.g());
-      dsd $$5 = $$1.a_($$4);
-      return $$5.d($$1, $$4, $$3);
+   protected static boolean e(dse $$0, dbg $$1, iz $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (je $$3 : je.values()) {
+            if ($$1.b_($$2.a($$3)).a(awv.a)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Nullable
    @Override
-   public dsd a(cyb $$0) {
-      dsd $$1 = super.a($$0);
-      dcc $$2 = $$0.q();
-      iz $$3 = $$0.a();
-      je[] $$4 = $$0.f();
+   public dse a(cyc $$0) {
+      enx $$1 = $$0.q().b_($$0.a());
+      return this.o().a(d, Boolean.valueOf($$1.a(awv.a) && $$1.e() == 8));
+   }
 
-      for (je $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.a(c, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
+   @Override
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      return a;
+   }
+
+   @Override
+   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eny.c, eny.c.a($$3));
       }
 
-      return null;
+      return $$1 == je.a && !this.a($$0, (dcd)$$3, $$4) ? dfd.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dse $$0, dcd $$1, iz $$2) {
+      iz $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, je.b);
+   }
+
+   @Override
+   protected void a(dsf.a<dfb, dse> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected enx b_(dse $$0) {
+      return $$0.c(d) ? eny.c.a(false) : super.b_($$0);
    }
 }

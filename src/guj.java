@@ -1,65 +1,109 @@
-import java.time.Duration;
-import java.util.UUID;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class guj {
-   private final UUID a = UUID.randomUUID();
-   private final gue b;
-   private final gun c;
-   private final gup d = new gup();
-   private final gum e;
-   private final guo f;
+   final Map<gui<?>, Object> a;
 
-   public guj(gue $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new gun($$3);
-      this.e = new gum();
-      this.f = new guo($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(guh.i, this.a);
-      });
+   guj(Map<gui<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public void a() {
-      this.e.a(this.b);
+   public static guj.a a() {
+      return new guj.a();
    }
 
-   public void a(dbw $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
+   public static MapCodec<guj> a(final List<gui<?>> $$0) {
+      return new MapCodec<guj>() {
+         public <T> RecordBuilder<T> a(guj $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (gui<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(guj $$0x, RecordBuilder<T> $$1, gui<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<guj> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<guj.a> $$2 = DataResult.success(new guj.a());
+
+            for (gui<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(guj.a::a);
+         }
+
+         private <T, V> DataResult<guj.a> a(DataResult<guj.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gui<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(gui::b).map($$0::createString);
+         }
+      };
    }
 
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
+   @Nullable
+   public <T> T a(gui<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
-   public void a(long $$0) {
-      this.d.a($$0);
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
+   public Set<gui<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<gui<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
       }
-   }
 
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
+      public <T> guj.a a(gui<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
 
-   public void a(dbz $$0, af $$1) {
-      alf $$2 = $$1.a();
-      if ($$1.b().g() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.Z();
-         this.b.send(guf.f, $$2x -> {
-            $$2x.a(guh.D, $$2.toString());
-            $$2x.a(guh.E, $$3);
-         });
+      public <T> guj.a b(gui<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public guj.a a(guj $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public guj a() {
+         return new guj(this.a);
       }
    }
 }

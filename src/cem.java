@@ -1,33 +1,38 @@
+import javax.annotation.Nullable;
+
 public class cem {
-   public static boolean a(bts $$0) {
-      return $$0.K() instanceof cdb;
+   @Nullable
+   public static evt a(bua $$0, int $$1, int $$2) {
+      boolean $$3 = cen.a($$0, $$1);
+      return ceq.a($$0, () -> {
+         iz $$4 = ceq.a($$0.el(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
-   public static boolean a(btz $$0, int $$1) {
-      return $$0.gb() && $$0.fY().a($$0.dn(), (double)($$0.fZ() + (float)$$1) + 1.0);
+   @Nullable
+   public static evt a(bua $$0, int $$1, int $$2, evt $$3, double $$4) {
+      evt $$5 = $$3.a($$0.du(), $$0.dw(), $$0.dA());
+      boolean $$6 = cen.a($$0, $$1);
+      return ceq.a($$0, () -> {
+         iz $$6x = ceq.a($$0.el(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
-   public static boolean a(iz $$0, btz $$1) {
-      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().am();
+   @Nullable
+   public static evt a(bua $$0, int $$1, int $$2, evt $$3) {
+      evt $$4 = $$0.dn().d($$3);
+      boolean $$5 = cen.a($$0, $$1);
+      return ceq.a($$0, () -> {
+         iz $$5x = ceq.a($$0.el(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
    }
 
-   public static boolean a(boolean $$0, btz $$1, iz $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cdc $$0, iz $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(btz $$0, iz $$1) {
-      return $$0.dP().b_($$1).a(awv.a);
-   }
-
-   public static boolean b(btz $$0, iz $$1) {
-      return $$0.a(eos.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(btz $$0, iz $$1) {
-      return $$0.dP().a_($$1).e();
+   @Nullable
+   private static iz a(bua $$0, int $$1, boolean $$2, iz $$3) {
+      iz $$4 = ceq.a($$0, $$1, $$0.el(), $$3);
+      return !cen.a($$4, $$0) && !cen.a($$2, $$0, $$4) && !cen.a($$0.K(), $$4) && !cen.b($$0, $$4) ? $$4 : null;
    }
 }

@@ -5,7 +5,7 @@ public record agm(int b) implements zw<aci> {
       this($$0.l());
    }
 
-   public static agm a(brg $$0) {
+   public static agm a(brh $$0) {
       return new agm($$0.k());
    }
 

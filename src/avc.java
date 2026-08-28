@@ -405,7 +405,7 @@ public class avc {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(epv.d).toFile();
+      return $$0.a(epw.d).toFile();
    }
 
    private static void b(File $$0) {

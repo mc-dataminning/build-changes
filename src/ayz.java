@@ -300,7 +300,7 @@ public class ayz {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(evs $$0, evs $$1, evn $$2) {
+   public static boolean a(evt $$0, evt $$1, evo $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.c - $$3;

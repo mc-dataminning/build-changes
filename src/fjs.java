@@ -1,16 +1,8 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fjs implements eyc {
-   @Nullable
-   @Override
-   public eyb a(int $$0) {
-      return fkc.b;
-   }
-
-   @Override
-   public IntSet a() {
-      return IntSets.EMPTY_SET;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fjs {
 }

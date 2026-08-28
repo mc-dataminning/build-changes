@@ -1,70 +1,43 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dwu implements dxa {
-   public static final MapCodec<dwu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kc.a.fieldOf("source_entity").forGetter(dwu::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
-            .apply($$0, ($$0x, $$1) -> new dwu(Either.right(Either.left($$0x)), $$1))
-   );
-   public static final zn<ByteBuf, dwu> b = zn.a(zl.g, dwu::c, zl.i, $$0 -> $$0.f, ($$0, $$1) -> new dwu(Either.right(Either.right($$0)), $$1));
-   private Either<bsv, Either<UUID, Integer>> e;
-   private final float f;
+public class dwu<T extends dwz> {
+   private final T a;
+   @Nullable
+   private kb b;
 
-   public dwu(bsv $$0, float $$1) {
-      this(Either.left($$0), $$1);
+   public dwu(T $$0) {
+      this.a = $$0;
    }
 
-   private dwu(Either<bsv, Either<UUID, Integer>> $$0, float $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(arf $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public Optional<evs> a(dbz $$0) {
-      if (this.e.left().isEmpty()) {
-         this.b($$0);
-      }
-
-      return this.e.left().map($$0x -> $$0x.dn().b(0.0, (double)this.f, 0.0));
+   public T a() {
+      return this.a;
    }
 
-   private void b(dbz $$0) {
-      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bsv)$$1.map($$1x -> $$0 instanceof arf $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.e = Either.left($$0x));
+   public void b(arf $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
    }
 
-   private UUID b() {
-      return (UUID)this.e.map(bsv::cz, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
+   public void c(arf $$0) {
+      this.a.a().a($$0).map(kb::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
    }
 
-   private int c() {
-      return (Integer)this.e.map(bsv::al, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public dxb<dwu> a() {
-      return dxb.b;
-   }
-
-   public static class a implements dxb<dwu> {
-      @Override
-      public MapCodec<dwu> a() {
-         return dwu.a;
-      }
-
-      @Override
-      public zn<ByteBuf, dwu> b() {
-         return dwu.b;
+   private static void a(dcd $$0, @Nullable kb $$1, Consumer<dxa> $$2) {
+      if ($$1 != null) {
+         dua $$3 = $$0.a($$1.a(), $$1.c(), duz.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
    }
 }

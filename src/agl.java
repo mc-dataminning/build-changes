@@ -5,7 +5,7 @@ public record agl(float b, boolean c) implements zw<aci> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static agl a(brg $$0) {
+   public static agl a(brh $$0) {
       return new agl($$0.f(), $$0.l());
    }
 

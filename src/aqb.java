@@ -36,11 +36,11 @@ public class aqb extends MinecraftServer implements alw {
    @Nullable
    private final asl t;
    @Nullable
-   private blx u;
+   private bly u;
    @Nullable
-   private blu v;
+   private blv v;
 
-   public aqb(Thread $$0, epx.c $$1, aua $$2, amc $$3, aqd $$4, DataFixer $$5, alz $$6, arp $$7) {
+   public aqb(Thread $$0, epy.c $$1, aua $$2, amc $$3, aqd $$4, DataFixer $$5, alz $$6, arp $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.r = $$4;
       this.p = new avq(this);
@@ -127,10 +127,10 @@ public class aqb extends MinecraftServer implements alw {
          return false;
       } else {
          this.a(new aqa(this, this.bd(), this.g));
-         this.v = new blu(this.br());
-         this.u = new blx(bma.values().length, this.v, blw.a);
+         this.v = new blv(this.br());
+         this.u = new bly(bmb.values().length, this.v, blx.a);
          long $$4 = ac.d();
-         dqu.a(this.i, this);
+         dqv.a(this.i, this);
          auz.a(this.Z());
          k.info("Preparing level \"{}\"", this.s());
          this.t_();
@@ -138,7 +138,7 @@ public class aqb extends MinecraftServer implements alw {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          k.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.o != null) {
-            this.aM().a(dbv.A).a($$1.o, this);
+            this.aM().a(dbw.A).a($$1.o, this);
          }
 
          if ($$1.p) {
@@ -160,7 +160,7 @@ public class aqb extends MinecraftServer implements alw {
          }
 
          if ($$1.O) {
-            bmf.a(this);
+            bmg.a(this);
             k.info("JMX monitoring enabled");
          }
 
@@ -329,8 +329,8 @@ public class aqb extends MinecraftServer implements alw {
    }
 
    @Override
-   public boolean a(arf $$0, iz $$1, cmy $$2) {
-      if ($$0.af() != dbz.h) {
+   public boolean a(arf $$0, iz $$1, cmz $$2) {
+      if ($$0.af() != dca.h) {
          return false;
       } else if (this.br().k().c()) {
          return false;
@@ -500,7 +500,7 @@ public class aqb extends MinecraftServer implements alw {
    public void v() {
       super.v();
       ac.j();
-      dqu.b();
+      dqv.b();
    }
 
    @Override
@@ -530,7 +530,7 @@ public class aqb extends MinecraftServer implements alw {
 
    @Nullable
    @Override
-   public dbw bf() {
+   public dbx bf() {
       return this.r.a().i ? this.j.k() : null;
    }
 
@@ -546,17 +546,17 @@ public class aqb extends MinecraftServer implements alw {
    }
 
    @Override
-   public bly f() {
+   public blz f() {
       return this.u;
    }
 
    @Override
    public boolean g() {
-      return this.v.a(blw.a);
+      return this.v.a(blx.a);
    }
 
    @Override
-   public void a(arg $$0, blw $$1) {
+   public void a(arg $$0, blx $$1) {
       this.v.a($$0, $$1);
    }
 

@@ -1,5 +1,5 @@
-public record aba(dxa c, int d) implements aax {
-   public static final zn<xa, aba> a = zn.a(dxa.d, aba::b, zl.g, aba::c, aba::new);
+public record aba(dxb c, int d) implements aax {
+   public static final zn<xa, aba> a = zn.a(dxb.d, aba::b, zl.g, aba::c, aba::new);
    public static final aax.b<aba> b = aax.a("debug/game_event_listeners");
 
    @Override
@@ -7,7 +7,7 @@ public record aba(dxa c, int d) implements aax {
       return b;
    }
 
-   public dxa b() {
+   public dxb b() {
       return this.c;
    }
 

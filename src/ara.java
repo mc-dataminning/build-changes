@@ -4,25 +4,25 @@ public class ara {
    @Nullable
    protected static iz a(arf $$0, int $$1, int $$2) {
       boolean $$3 = $$0.D_().h();
-      duj $$4 = $$0.d(kb.a($$1), kb.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dxv.a.e, $$1 & 15, $$2 & 15);
+      duk $$4 = $$0.d(kb.a($$1), kb.a($$2));
+      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dxw.a.e, $$1 & 15, $$2 & 15);
       if ($$5 < $$0.I_()) {
          return null;
       } else {
-         int $$6 = $$4.a(dxv.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dxv.a.d, $$1 & 15, $$2 & 15)) {
+         int $$6 = $$4.a(dxw.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dxw.a.d, $$1 & 15, $$2 & 15)) {
             return null;
          } else {
             iz.a $$7 = new iz.a();
 
             for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
                $$7.d($$1, $$8, $$2);
-               dsd $$9 = $$0.a_($$7);
+               dse $$9 = $$0.a_($$7);
                if (!$$9.u().c()) {
                   break;
                }
 
-               if (dfa.a($$9.k($$0, $$7), je.b)) {
+               if (dfb.a($$9.k($$0, $$7), je.b)) {
                   return $$7.c().i();
                }
             }
@@ -33,7 +33,7 @@ public class ara {
    }
 
    @Nullable
-   public static iz a(arf $$0, dbg $$1) {
+   public static iz a(arf $$0, dbh $$1) {
       if (aa.a($$1)) {
          return null;
       } else {

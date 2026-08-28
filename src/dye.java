@@ -1,71 +1,70 @@
-public class dye {
-   public static final ale<emz.a> a = a("temperature");
-   public static final ale<emz.a> b = a("vegetation");
-   public static final ale<emz.a> c = a("continentalness");
-   public static final ale<emz.a> d = a("erosion");
-   public static final ale<emz.a> e = a("temperature_large");
-   public static final ale<emz.a> f = a("vegetation_large");
-   public static final ale<emz.a> g = a("continentalness_large");
-   public static final ale<emz.a> h = a("erosion_large");
-   public static final ale<emz.a> i = a("ridge");
-   public static final ale<emz.a> j = a("offset");
-   public static final ale<emz.a> k = a("aquifer_barrier");
-   public static final ale<emz.a> l = a("aquifer_fluid_level_floodedness");
-   public static final ale<emz.a> m = a("aquifer_lava");
-   public static final ale<emz.a> n = a("aquifer_fluid_level_spread");
-   public static final ale<emz.a> o = a("pillar");
-   public static final ale<emz.a> p = a("pillar_rareness");
-   public static final ale<emz.a> q = a("pillar_thickness");
-   public static final ale<emz.a> r = a("spaghetti_2d");
-   public static final ale<emz.a> s = a("spaghetti_2d_elevation");
-   public static final ale<emz.a> t = a("spaghetti_2d_modulator");
-   public static final ale<emz.a> u = a("spaghetti_2d_thickness");
-   public static final ale<emz.a> v = a("spaghetti_3d_1");
-   public static final ale<emz.a> w = a("spaghetti_3d_2");
-   public static final ale<emz.a> x = a("spaghetti_3d_rarity");
-   public static final ale<emz.a> y = a("spaghetti_3d_thickness");
-   public static final ale<emz.a> z = a("spaghetti_roughness");
-   public static final ale<emz.a> A = a("spaghetti_roughness_modulator");
-   public static final ale<emz.a> B = a("cave_entrance");
-   public static final ale<emz.a> C = a("cave_layer");
-   public static final ale<emz.a> D = a("cave_cheese");
-   public static final ale<emz.a> E = a("ore_veininess");
-   public static final ale<emz.a> F = a("ore_vein_a");
-   public static final ale<emz.a> G = a("ore_vein_b");
-   public static final ale<emz.a> H = a("ore_gap");
-   public static final ale<emz.a> I = a("noodle");
-   public static final ale<emz.a> J = a("noodle_thickness");
-   public static final ale<emz.a> K = a("noodle_ridge_a");
-   public static final ale<emz.a> L = a("noodle_ridge_b");
-   public static final ale<emz.a> M = a("jagged");
-   public static final ale<emz.a> N = a("surface");
-   public static final ale<emz.a> O = a("surface_secondary");
-   public static final ale<emz.a> P = a("clay_bands_offset");
-   public static final ale<emz.a> Q = a("badlands_pillar");
-   public static final ale<emz.a> R = a("badlands_pillar_roof");
-   public static final ale<emz.a> S = a("badlands_surface");
-   public static final ale<emz.a> T = a("iceberg_pillar");
-   public static final ale<emz.a> U = a("iceberg_pillar_roof");
-   public static final ale<emz.a> V = a("iceberg_surface");
-   public static final ale<emz.a> W = a("surface_swamp");
-   public static final ale<emz.a> X = a("calcite");
-   public static final ale<emz.a> Y = a("gravel");
-   public static final ale<emz.a> Z = a("powder_snow");
-   public static final ale<emz.a> aa = a("packed_ice");
-   public static final ale<emz.a> ab = a("ice");
-   public static final ale<emz.a> ac = a("soul_sand_layer");
-   public static final ale<emz.a> ad = a("gravel_layer");
-   public static final ale<emz.a> ae = a("patch");
-   public static final ale<emz.a> af = a("netherrack");
-   public static final ale<emz.a> ag = a("nether_wart");
-   public static final ale<emz.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private static ale<emz.a> a(String $$0) {
-      return ale.a(lq.aH, new alf($$0));
+public record dye(int g, int h, int i, int j) {
+   public static final Codec<dye> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dvw.e, dvw.d).fieldOf("min_y").forGetter(dye::c),
+                  Codec.intRange(0, dvw.c).fieldOf("height").forGetter(dye::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dye::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dye::f)
+               )
+               .apply($$0, dye::new)
+      )
+      .comapFlatMap(dye::a, Function.identity());
+   protected static final dye b = a(-64, 384, 1, 2);
+   protected static final dye c = a(0, 128, 1, 2);
+   protected static final dye d = a(0, 128, 2, 1);
+   protected static final dye e = a(-64, 192, 1, 2);
+   protected static final dye f = a(0, 256, 2, 1);
+
+   private static DataResult<dye> a(dye $$0) {
+      if ($$0.c() + $$0.d() > dvw.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dvw.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   public static emz a(jj<emz.a> $$0, dyi $$1, ale<emz.a> $$2) {
-      ji<emz.a> $$3 = $$0.b($$2);
-      return emz.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public static dye a(int $$0, int $$1, int $$2, int $$3) {
+      dye $$4 = new dye($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return jt.c(this.f());
+   }
+
+   public int b() {
+      return jt.c(this.e());
+   }
+
+   public dye a(dcc $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.am()) - $$1;
+      return new dye($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

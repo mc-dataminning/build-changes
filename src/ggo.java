@@ -1,76 +1,62 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public class ggo {
-   private final Long2ObjectMap<ggo.a> a = new Long2ObjectOpenHashMap();
+public class ggo implements dbd {
+   private final int c;
+   private final int d;
+   protected final ggn[][] a;
+   protected final dca b;
+
+   ggo(dca $$0, int $$1, int $$2, ggn[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
+   }
+
+   @Override
+   public dse a_(iz $$0) {
+      int $$1 = kb.a($$0.u()) - this.c;
+      int $$2 = kb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
+   }
+
+   @Override
+   public enx b_(iz $$0) {
+      int $$1 = kb.a($$0.u()) - this.c;
+      int $$2 = kb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
+   }
+
+   @Override
+   public float a(je $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public enm y_() {
+      return this.b.y_();
+   }
 
    @Nullable
-   public ggn a(dbz $$0, iz $$1, iz $$2, int $$3) {
-      int $$4 = kb.a($$1.u() - $$3);
-      int $$5 = kb.a($$1.w() - $$3);
-      int $$6 = kb.a($$2.u() + $$3);
-      int $$7 = kb.a($$2.w() + $$3);
-      ggo.a[][] $$8 = new ggo.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (ggo.a)this.a.computeIfAbsent(dbg.c($$9, $$10), $$1x -> new ggo.a($$0.d(dbg.a($$1x), dbg.b($$1x))));
-         }
-      }
-
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
-      } else {
-         ggm[][] $$11 = new ggm[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new ggn($$0, $$4, $$5, $$11);
-      }
+   @Override
+   public dpj c_(iz $$0) {
+      int $$1 = kb.a($$0.u()) - this.c;
+      int $$2 = kb.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
    }
 
-   private static boolean a(iz $$0, iz $$1, int $$2, int $$3, ggo.a[][] $$4) {
-      int $$5 = kb.a($$0.u());
-      int $$6 = kb.a($$0.w());
-      int $$7 = kb.a($$1.u());
-      int $$8 = kb.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            duj $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
-      }
-
-      return true;
+   @Override
+   public int a(iz $$0, dbl $$1) {
+      return this.b.a($$0, $$1);
    }
 
-   static final class a {
-      private final duj a;
-      @Nullable
-      private ggm b;
+   @Override
+   public int I_() {
+      return this.b.I_();
+   }
 
-      a(duj $$0) {
-         this.a = $$0;
-      }
-
-      public duj a() {
-         return this.a;
-      }
-
-      public ggm b() {
-         if (this.b == null) {
-            this.b = new ggm(this.a);
-         }
-
-         return this.b;
-      }
+   @Override
+   public int J_() {
+      return this.b.J_();
    }
 }

@@ -1,28 +1,99 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gsm {
-   private final List<gsl> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
+public class gsm implements gtz<gsm> {
+   public static final aky a = new aky("sounds", ".ogg");
+   private final alf b;
+   private final bqe c;
+   private final bqe d;
+   private final int e;
+   private final gsm.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public gsm(List<gsl> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gsm(String $$0, bqe $$1, bqe $$2, int $$3, gsm.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new alf($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   public List<gsl> a() {
-      return this.a;
-   }
-
-   public boolean b() {
+   public alf a() {
       return this.b;
    }
 
-   @Nullable
-   public String c() {
+   public alf b() {
+      return a.a(this.b);
+   }
+
+   public bqe c() {
       return this.c;
+   }
+
+   public bqe d() {
+      return this.d;
+   }
+
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public gsm a(azh $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gtu $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gsm.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gsm.a a(String $$0) {
+         for (gsm.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
    }
 }

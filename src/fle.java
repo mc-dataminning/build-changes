@@ -1,88 +1,46 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
+import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class fle {
-   int a;
-   final Map<fle.a, fle.b> b = Maps.newTreeMap(Comparator.<fle.a, fla>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fle<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fle<?> a = new fle<>(bac.a, ($$0, $$1) -> {
+   });
 
-   public void a(Consumer<flb> $$0) {
-      this.a++;
-      $$0.accept(new fle.c(0));
+   private fle(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
-
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
-
-            this.b = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   public static fle<?> a(String $$0) {
+      return new fle<>($$0, Consumer::accept);
    }
 
-   static class a {
-      final fla a;
-      final int b;
+   public static fle<?> a(xp $$0) {
+      return new fle<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   }
 
-      a(fla $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static fle<?> a(List<xp> $$0) {
+      return new fle<>($$0, ($$1, $$2) -> $$0.stream().map(xp::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fle<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
       }
    }
 
-   static class b {
-      fld<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fld.a;
-         this.b = -1;
-      }
-
-      public fle.b a(int $$0, fld<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements flb {
-      private final int b;
-
-      c(final int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fla $$0, fld<?> $$1) {
-         fle.this.b.computeIfAbsent(new fle.a($$0, this.b), $$0x -> new fle.b()).a(fle.this.a, $$1);
-      }
-
-      @Override
-      public flb a() {
-         return fle.this.new c(this.b + 1);
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

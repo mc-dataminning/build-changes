@@ -36,19 +36,19 @@ public class anf {
       );
    }
 
-   private static int a(ep $$0, Collection<? extends bsv> $$1, ji<dab> $$2, int $$3) throws CommandSyntaxException {
-      dab $$4 = $$2.a();
+   private static int a(ep $$0, Collection<? extends bsw> $$1, ji<dac> $$2, int $$3) throws CommandSyntaxException {
+      dac $$4 = $$2.a();
       if ($$3 > $$4.g()) {
          throw d.create($$3, $$4.g());
       } else {
          int $$5 = 0;
 
-         for (bsv $$6 : $$1) {
-            if ($$6 instanceof btq) {
-               btq $$7 = (btq)$$6;
-               cuq $$8 = $$7.eX();
+         for (bsw $$6 : $$1) {
+            if ($$6 instanceof btr) {
+               btr $$7 = (btr)$$6;
+               cur $$8 = $$7.eX();
                if (!$$8.e()) {
-                  if ($$4.b($$8) && dac.a(dac.b($$8).a(), $$4)) {
+                  if ($$4.b($$8) && dad.a(dad.b($$8).a(), $$4)) {
                      $$8.a($$4, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {

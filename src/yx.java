@@ -51,9 +51,9 @@ public class yx implements xq {
       return this.f;
    }
 
-   private ewv a(ep $$0) throws CommandSyntaxException {
+   private eww a(ep $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends bsv> $$1 = this.e.b($$0);
+         List<? extends bsw> $$1 = this.e.b($$0);
          if (!$$1.isEmpty()) {
             if ($$1.size() != 1) {
                throw fc.a.create();
@@ -63,16 +63,16 @@ public class yx implements xq {
          }
       }
 
-      return ewv.c(this.d);
+      return eww.c(this.d);
    }
 
-   private yd a(ewv $$0, ep $$1) {
+   private yd a(eww $$0, ep $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         eww $$3 = $$2.aK();
-         ewo $$4 = $$3.a(this.f);
+         ewx $$3 = $$2.aK();
+         ewp $$4 = $$3.a(this.f);
          if ($$4 != null) {
-            ews $$5 = $$3.d($$0, $$4);
+            ewt $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(zi.b));
             }
@@ -83,12 +83,12 @@ public class yx implements xq {
    }
 
    @Override
-   public yd a(@Nullable ep $$0, @Nullable bsv $$1, int $$2) throws CommandSyntaxException {
+   public yd a(@Nullable ep $$0, @Nullable bsw $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return xp.i();
       } else {
-         ewv $$3 = this.a($$0);
-         ewv $$4 = (ewv)($$1 != null && $$3.equals(ewv.cy) ? $$1 : $$3);
+         eww $$3 = this.a($$0);
+         eww $$4 = (eww)($$1 != null && $$3.equals(eww.cy) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

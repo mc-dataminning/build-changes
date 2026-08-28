@@ -1,60 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dxe {
+public record dxe(ji<dwx> b, float c, evt d, @Nullable UUID e, @Nullable UUID f, @Nullable bsw g) {
    public static final Codec<dxe> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dxd.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
-               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+               lp.a.r().fieldOf("game_event").forGetter(dxe::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dxe::b),
+               evt.a.fieldOf("pos").forGetter(dxe::c),
+               kc.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               kc.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
-            .apply($$0, dxe::new)
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dxe($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
-   private Optional<Pair<dxd, Long>> b;
 
-   public dxe(Optional<dxd> $$0, long $$1) {
-      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   public dxe(ji<dwx> $$0, float $$1, evt $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public dxe() {
-      this.b = Optional.empty();
+   public dxe(ji<dwx> $$0, float $$1, evt $$2, @Nullable bsw $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cz(), a($$3), $$3);
    }
 
-   public void a(dxd $$0, long $$1) {
-      if (this.b($$0, $$1)) {
-         this.b = Optional.of(Pair.of($$0, $$1));
+   @Nullable
+   private static UUID a(@Nullable bsw $$0) {
+      if ($$0 instanceof cnr $$1 && $$1.s() != null) {
+         return $$1.s().cz();
       }
+
+      return null;
    }
 
-   private boolean b(dxd $$0, long $$1) {
-      if (this.b.isEmpty()) {
-         return true;
-      } else {
-         Pair<dxd, Long> $$2 = this.b.get();
-         long $$3 = (Long)$$2.getRight();
-         if ($$1 != $$3) {
-            return false;
-         } else {
-            dxd $$4 = (dxd)$$2.getLeft();
-            if ($$0.b() < $$4.b()) {
-               return true;
-            } else {
-               return $$0.b() > $$4.b() ? false : dxf.a_($$0.a()) > dxf.a_($$4.a());
-            }
-         }
-      }
+   public Optional<bsw> a(arf $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   public Optional<dxd> a(long $$0) {
-      if (this.b.isEmpty()) {
-         return Optional.empty();
-      } else {
-         return this.b.get().getRight() < $$0 ? Optional.of((dxd)this.b.get().getLeft()) : Optional.empty();
-      }
+   public Optional<bsw> b(arf $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cnr).map($$0x -> (cnr)$$0x).map(cnr::s).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   public void a() {
-      this.b = Optional.empty();
+   public ji<dwx> a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public evt c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bsw f() {
+      return this.g;
    }
 }

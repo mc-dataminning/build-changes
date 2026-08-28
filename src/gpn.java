@@ -1,21 +1,35 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gpn implements gpe {
-   public static final MapCodec<gpn> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azi.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gpn::new));
-   private final azi c;
+public class gpn implements gpf {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<gpn> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alf.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alf.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gpn::new)
+   );
+   private final alf d;
+   private final Optional<alf> e;
 
-   public gpn(azi $$0) {
-      this.c = $$0;
+   public gpn(alf $$0, Optional<alf> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public void a(aup $$0, gpe.a $$1) {
-      $$1.a(this.c.c());
+   public void a(aup $$0, gpf.a $$1) {
+      alf $$2 = a.a(this.d);
+      Optional<aun> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
    }
 
    @Override
-   public gpg a() {
-      return gph.c;
+   public gph a() {
+      return gpi.a;
    }
 }

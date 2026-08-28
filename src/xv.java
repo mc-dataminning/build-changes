@@ -126,17 +126,17 @@ public class xv {
                )
                .apply($$0, xv.b::new)
       );
-      public final btb<?> b;
+      public final btc<?> b;
       public final UUID c;
       public final Optional<xp> d;
       @Nullable
       private List<xp> e;
 
-      public b(btb<?> $$0, UUID $$1, @Nullable xp $$2) {
+      public b(btc<?> $$0, UUID $$1, @Nullable xp $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(btb<?> $$0, UUID $$1, Optional<xp> $$2) {
+      public b(btc<?> $$0, UUID $$1, Optional<xp> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -147,7 +147,7 @@ public class xv {
             us $$2 = vq.a($$0.getString());
             DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
             DataResult<xp> $$4 = xr.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            btb<?> $$5 = lp.g.a(new alf($$2.l("type")));
+            btc<?> $$5 = lp.g.a(new alf($$2.l("type")));
             UUID $$6 = UUID.fromString($$2.l("id"));
             return $$4.map($$2x -> new xv.b($$5, $$6, $$2x));
          } catch (Exception var7) {
@@ -187,22 +187,22 @@ public class xv {
    }
 
    public static class c {
-      public static final Codec<xv.c> a = cuq.b.xmap(xv.c::new, xv.c::a);
-      private static final Codec<xv.c> c = cuq.g.xmap(xv.c::new, xv.c::a);
+      public static final Codec<xv.c> a = cur.b.xmap(xv.c::new, xv.c::a);
+      private static final Codec<xv.c> c = cur.g.xmap(xv.c::new, xv.c::a);
       public static final Codec<xv.c> b = Codec.withAlternative(a, c);
-      private final ji<cul> d;
+      private final ji<cum> d;
       private final int e;
       private final kj f;
       @Nullable
-      private cuq g;
+      private cur g;
 
-      c(ji<cul> $$0, int $$1, kj $$2) {
+      c(ji<cum> $$0, int $$1, kj $$2) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;
       }
 
-      public c(cuq $$0) {
+      public c(cur $$0) {
          this($$0.h(), $$0.I(), $$0.d());
       }
 
@@ -225,9 +225,9 @@ public class xv {
          return 31 * $$0 + this.f.hashCode();
       }
 
-      public cuq a() {
+      public cur a() {
          if (this.g == null) {
-            this.g = new cuq(this.d, this.e, this.f);
+            this.g = new cur(this.d, this.e, this.f);
          }
 
          return this.g;
@@ -237,7 +237,7 @@ public class xv {
          try {
             us $$2 = vq.a($$0.getString());
             DynamicOps<vp> $$3 = (DynamicOps<vp>)($$1 != null ? $$1.a(vg.a) : vg.a);
-            return cuq.b.parse($$3, $$2).map(xv.c::new);
+            return cur.b.parse($$3, $$2).map(xv.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }

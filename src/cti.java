@@ -1,14 +1,8 @@
-public class cti extends cso {
-   public cti(dfa $$0, cul.a $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public interface cti {
+   default void a(@Nullable cmz $$0, dca $$1, cur $$2, iz $$3) {
    }
 
-   @Override
-   protected boolean a(cyb $$0, dsd $$1) {
-      dbz $$2 = $$0.q();
-      iz $$3 = $$0.a().c();
-      dsd $$4 = $$2.z($$3) ? dfc.G.o() : dfc.a.o();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
-   }
+   boolean a(@Nullable cmz var1, dca var2, iz var3, @Nullable evp var4);
 }

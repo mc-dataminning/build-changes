@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 
 public class afm implements zw<aci> {
    public static final zn<wm, afm> a = zw.a(afm::a, afm::new);
-   private final ewn b;
+   private final ewo b;
    private final String c;
 
-   public afm(ewn $$0, @Nullable ewo $$1) {
+   public afm(ewo $$0, @Nullable ewp $$1) {
       this.b = $$0;
       if ($$1 == null) {
          this.c = "";
@@ -16,12 +16,12 @@ public class afm implements zw<aci> {
    }
 
    private afm(wm $$0) {
-      this.b = $$0.a(ewn.u);
+      this.b = $$0.a(ewo.u);
       this.c = $$0.p();
    }
 
    private void a(wm $$0) {
-      $$0.a(ewn::a, this.b);
+      $$0.a(ewo::a, this.b);
       $$0.a(this.c);
    }
 
@@ -34,7 +34,7 @@ public class afm implements zw<aci> {
       $$0.a(this);
    }
 
-   public ewn b() {
+   public ewo b() {
       return this.b;
    }
 

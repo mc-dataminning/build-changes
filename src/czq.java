@@ -1,15 +1,15 @@
-public class czq extends czk {
-   public czq(String $$0, cyt $$1, cuq $$2) {
-      super(czb.f, cza.t, $$0, $$1, $$2);
+public class czq extends cyg {
+   public czq(String $$0, cym $$1, cyu $$2, cur $$3, float $$4, int $$5) {
+      super(czc.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(bqo $$0, dbz $$1) {
-      return this.a.a($$0.a(0));
+   public cur g() {
+      return new cur(dfd.nV);
    }
 
    @Override
-   public cuq g() {
-      return new cuq(dfc.oc);
+   public czb<?> ao_() {
+      return czb.r;
    }
 }

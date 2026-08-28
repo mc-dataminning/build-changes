@@ -1,46 +1,44 @@
-public class fwv extends fvy {
-   private final fxb a;
-   private final fxb b;
+public class fwv<T extends cky> extends fup<T> implements fwm {
+   private final fxc a = this.l.b("hat_rim");
 
-   public fwv(fxb $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("jaw");
+   public fwv(fxc $$0) {
+      super($$0);
    }
 
-   public static fxh a() {
-      fxj $$0 = new fxj();
-      fxk $$1 = $$0.a();
-      float $$2 = -16.0F;
-      fxk $$3 = $$1.a(
-         "head",
-         fxg.c()
-            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .a(true)
-            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .a(false)
-            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         fxd.a
-      );
-      $$3.a("jaw", fxg.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), fxd.a(0.0F, 4.0F, -8.0F));
-      return fxh.a($$0, 256, 256);
+   public static fxi c() {
+      fxk $$0 = fup.a(fxg.a, 0.0F);
+      fxl $$1 = $$0.a();
+      $$1.a("head", new fxh().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), fxe.a);
+      fxl $$2 = $$1.a("hat", fxh.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new fxg(0.5F)), fxe.a);
+      $$2.a("hat_rim", fxh.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), fxe.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", fxh.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fxg(0.05F)), fxe.a);
+      $$1.a("right_arm", fxh.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fxe.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fxh.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fxe.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fxh.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fxe.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fxh.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fxe.a(2.0F, 12.0F, 0.0F));
+      return fxi.a($$0, 64, 64);
+   }
+
+   public static fxi a(fxg $$0) {
+      fxk $$1 = fup.a($$0, 0.0F);
+      fxl $$2 = $$1.a();
+      $$2.a("head", fxh.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fxe.a);
+      $$2.a("body", fxh.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), fxe.a);
+      $$2.a("right_leg", fxh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fxe.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", fxh.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), fxe.a(2.0F, 12.0F, 0.0F));
+      $$2.a("hat").a("hat_rim", fxh.c(), fxe.a);
+      return fxi.a($$1, 64, 32);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      fsz.a(this.o, this.n, $$0.gi(), this.c, $$3);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   @Override
-   public void a(ezz $$0, fad $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$0.a();
-      $$0.a(0.0F, -0.374375F, 0.0F);
-      $$0.b(0.75F, 0.75F, 0.75F);
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      $$0.b();
+   public void a(boolean $$0) {
+      this.k.k = $$0;
+      this.l.k = $$0;
+      this.a.k = $$0;
    }
 }

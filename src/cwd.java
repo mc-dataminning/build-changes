@@ -1,29 +1,37 @@
+import java.util.ArrayList;
 import java.util.List;
 
-public class cwd extends cwg {
-   public cwd(cwf $$0, cul.a $$1) {
-      super($$0, $$1.a(km.x, k()));
-   }
+public class cwd extends cum {
+   public static final int a = 160;
 
-   private static cxv k() {
-      return new cxv(List.of(cxv.a.a(List.of(dfc.bs), 15.0F), cxv.a.b(awp.bE, 1.5F)), 1.0F, 2);
-   }
-
-   public static cxl a(cwf $$0, int $$1, float $$2) {
-      return cxl.a()
-         .a(buy.c, new buw(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), buw.a.a), btd.b)
-         .a(buy.e, new buw(f, "Weapon modifier", (double)$$2, buw.a.a), btd.b)
-         .a();
+   public cwd(cum.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dsd $$0, dbz $$1, iz $$2, cmy $$3) {
-      return !$$3.f();
+   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bse> $$4 = new ArrayList<>();
+         cxv $$5 = $$0.a(km.H, cxv.a);
+
+         for (cxv.a $$6 : $$5.a()) {
+            $$4.add($$6.a());
+         }
+
+         cws.a($$4, $$2::add, 1.0F, $$1.b());
+      }
    }
 
    @Override
-   public boolean a(cuq $$0, btq $$1, btq $$2) {
-      $$0.a(1, $$2, btc.a);
-      return true;
+   public cur a(cur $$0, dca $$1, btr $$2) {
+      cxv $$3 = $$0.a(km.H, cxv.a);
+
+      for (cxv.a $$4 : $$3.a()) {
+         $$2.b($$4.a());
+      }
+
+      super.a($$0, $$1, $$2);
+      return $$2.fP() ? $$0 : new cur(cuu.pq);
    }
 }

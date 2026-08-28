@@ -1,43 +1,55 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public record bte(ale<eqo> c, Map<btc, Float> d) {
-   public static final Codec<Map<btc, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(btc.h, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(bte::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(btc.values()));
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<bte> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ale.a(lq.aU).fieldOf("loot_table").forGetter(bte::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bte::b))
-            .apply($$0, bte::new)
-   );
+public enum bte implements azu {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", btd.a),
+   c(2, "offhand", btd.b),
+   d(3, "hand", $$0 -> $$0.a() == btd.a.a),
+   e(4, "feet", btd.c),
+   f(5, "legs", btd.d),
+   g(6, "chest", btd.e),
+   h(7, "head", btd.f),
+   i(8, "armor", btd::f),
+   j(9, "body", btd.g);
 
-   private static Map<btc, Float> a(float $$0) {
-      return a(List.of(btc.values()), $$0);
+   public static final IntFunction<bte> k = axp.a($$0 -> $$0.n, values(), axp.a.a);
+   public static final Codec<bte> l = azu.a(bte::values);
+   public static final zn<ByteBuf, bte> m = zl.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<btd> p;
+
+   private bte(final int $$0, final String $$1, final Predicate<btd> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   private static Map<btc, Float> a(List<btc> $$0, float $$1) {
-      Map<btc, Float> $$2 = Maps.newHashMap();
-
-      for (btc $$3 : $$0) {
-         $$2.put($$3, $$1);
-      }
-
-      return $$2;
+   private bte(final int $$0, final String $$1, final btd $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   public ale<eqo> a() {
-      return this.c;
+   public static bte a(btd $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
-   public Map<btc, Float> b() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.o;
+   }
+
+   public boolean b(btd $$0) {
+      return this.p.test($$0);
    }
 }

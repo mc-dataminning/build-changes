@@ -25,7 +25,7 @@ public class als extends aut {
       this.e = $$0;
    }
 
-   protected void a(Map<alf, JsonElement> $$0, aup $$1, bnj $$2) {
+   protected void a(Map<alf, JsonElement> $$0, aup $$1, bnk $$2) {
       ald<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
       Builder<alf, af> $$4 = ImmutableMap.builder();
       $$0.forEach(($$2x, $$3x) -> {

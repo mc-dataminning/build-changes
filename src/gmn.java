@@ -1,24 +1,16 @@
-public class gmn extends gmv<cjq, ftv<cjq>> {
-   private static final alf a = new alf("textures/entity/creeper/creeper_armor.png");
-   private final ftv<cjq> b;
+public class gmn extends gnl<cfk, ftn<cfk>> {
+   private static final alf a = new alf("textures/entity/cat/cat_collar.png");
+   private final ftn<cfk> b;
 
-   public gmn(gku<cjq, ftv<cjq>> $$0, fwx $$1) {
+   public gmn(gkv<cfk, ftn<cfk>> $$0, fwy $$1) {
       super($$0);
-      this.b = new ftv<>($$1.a(fxa.I));
+      this.b = new ftn<>($$1.a(fxb.u));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected alf a() {
-      return a;
-   }
-
-   @Override
-   protected fub<cjq> b() {
-      return this.b;
+   public void a(faa $$0, gdq $$1, int $$2, cfk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s()) {
+         float[] $$10 = $$3.gz().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
+      }
    }
 }

@@ -21,10 +21,10 @@ public class apa {
       );
    }
 
-   private static int a(ep $$0, @Nullable bsv $$1, arg $$2) throws CommandSyntaxException {
+   private static int a(ep $$0, @Nullable bsw $$1, arg $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.e.b() != dbw.d) {
+      } else if ($$2.e.b() != dbx.d) {
          throw b.create($$2.O_());
       } else {
          $$2.d($$1);

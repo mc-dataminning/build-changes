@@ -1,10 +1,8 @@
-public abstract class cfa extends bts {
-   protected cfa(btb<? extends cfa> $$0, dbz $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cmy $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cfa {
 }

@@ -2,14 +2,14 @@ public class aqn {
    private static final int b = 33;
    private static final int c = 32;
    private static final int d = 31;
-   public static final int a = 33 + duy.b();
+   public static final int a = 33 + duz.b();
 
-   public static duy a(int $$0) {
-      return $$0 < 33 ? duy.n : duy.a($$0 - 33);
+   public static duz a(int $$0) {
+      return $$0 < 33 ? duz.n : duz.a($$0 - 33);
    }
 
-   public static int a(duy $$0) {
-      return 33 + duy.a($$0);
+   public static int a(duz $$0) {
+      return 33 + duz.a($$0);
    }
 
    public static aqy b(int $$0) {

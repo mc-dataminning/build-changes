@@ -3,7 +3,7 @@ public class aeh implements zw<aci> {
    private final int b;
    private final alf c;
 
-   public aeh(int $$0, cyy<?> $$1) {
+   public aeh(int $$0, cyz<?> $$1) {
       this.b = $$0;
       this.c = $$1.a();
    }

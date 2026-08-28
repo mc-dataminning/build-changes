@@ -1,46 +1,9 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class dud implements dum, AutoCloseable {
-   @Nullable
-   public duj a(int $$0, int $$1, boolean $$2) {
-      return (duj)this.a($$0, $$1, duy.n, $$2);
-   }
-
-   @Nullable
-   public duj a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   @Nullable
-   @Override
-   public dul c(int $$0, int $$1) {
-      return this.a($$0, $$1, duy.c, false);
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, duy.n, false) != null;
-   }
-
-   @Nullable
-   public abstract dtz a(int var1, int var2, duy var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
-   }
-
-   public abstract enl p();
-
-   public void a(boolean $$0, boolean $$1) {
-   }
-
-   public void a(dbg $$0, boolean $$1) {
+public class dud {
+   public static MapCodec<? extends dub> a(jv<MapCodec<? extends dub>> $$0) {
+      jv.a($$0, "noise", dxz.c);
+      jv.a($$0, "flat", dxr.c);
+      return jv.a($$0, "debug", dxn.c);
    }
 }

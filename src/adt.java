@@ -12,10 +12,10 @@ public class adt {
    private final byte[] c;
    private final List<adt.a> d;
 
-   public adt(duj $$0) {
+   public adt(duk $$0) {
       this.b = new us();
 
-      for (Entry<dxv.a, dxv> $$1 : $$0.e()) {
+      for (Entry<dxw.a, dxw> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new uz($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class adt {
       a(new wm(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<iz, dpi> $$2 : $$0.G().entrySet()) {
+      for (Entry<iz, dpj> $$2 : $$0.G().entrySet()) {
          this.d.add(adt.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class adt {
       adt.a.b.encode($$0, this.d);
    }
 
-   private static int a(duj $$0) {
+   private static int a(duk $$0) {
       int $$1 = 0;
 
-      for (duk $$2 : $$0.d()) {
+      for (dul $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class adt {
       return $$0;
    }
 
-   public static void a(wm $$0, duj $$1) {
-      for (duk $$2 : $$1.d()) {
+   public static void a(wm $$0, duk $$1) {
+      for (dul $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class adt {
       public static final zn<xa, List<adt.a>> b = a.a(zl.a());
       final int c;
       final int d;
-      final dpk<?> e;
+      final dpl<?> e;
       @Nullable
       final us f;
 
-      private a(int $$0, int $$1, dpk<?> $$2, @Nullable us $$3) {
+      private a(int $$0, int $$1, dpl<?> $$2, @Nullable us $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,7 +130,7 @@ public class adt {
          $$0.a(this.f);
       }
 
-      static adt.a a(dpi $$0) {
+      static adt.a a(dpj $$0) {
          us $$1 = $$0.a($$0.i().H_());
          iz $$2 = $$0.ay_();
          int $$3 = kb.b($$2.u()) << 4 | kb.b($$2.w());
@@ -140,6 +140,6 @@ public class adt {
 
    @FunctionalInterface
    public interface b {
-      void accept(iz var1, dpk<?> var2, @Nullable us var3);
+      void accept(iz var1, dpl<?> var2, @Nullable us var3);
    }
 }

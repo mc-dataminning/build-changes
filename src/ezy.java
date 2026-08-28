@@ -1,21 +1,30 @@
-public abstract class ezy implements fad {
-   protected boolean a;
-   protected int b = 255;
-   protected int c = 255;
-   protected int d = 255;
-   protected int e = 255;
+import com.google.common.collect.ImmutableMap;
 
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.a = true;
-   }
-
-   @Override
-   public void l() {
-      this.a = false;
-   }
+public class ezy {
+   public static final fag a = new fag(0, fag.a.a, fag.b.a, 3);
+   public static final fag b = new fag(0, fag.a.b, fag.b.c, 4);
+   public static final fag c = new fag(0, fag.a.a, fag.b.d, 2);
+   public static final fag d = new fag(1, fag.a.e, fag.b.d, 2);
+   public static final fag e = new fag(2, fag.a.e, fag.b.d, 2);
+   public static final fag f = new fag(0, fag.a.c, fag.b.b, 3);
+   public static final fag g = new fag(0, fag.a.c, fag.b.e, 1);
+   public static final fag h = c;
+   public static final faf i = new faf(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final faf j = new faf(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final faf k = new faf(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final faf l = new faf(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final faf m = new faf(ImmutableMap.builder().put("Position", a).build());
+   public static final faf n = new faf(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final faf o = new faf(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final faf p = new faf(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final faf q = new faf(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final faf r = new faf(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final faf s = new faf(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final faf t = new faf(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final faf u = new faf(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final faf v = new faf(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

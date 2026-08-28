@@ -1,183 +1,112 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ego {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ego> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jx.a(lq.aL).lenientOptionalFieldOf("structure_overrides").forGetter($$0x -> $$0x.c),
-                  egl.a.listOf().fieldOf("layers").forGetter(ego::e),
-                  Codec.BOOL.fieldOf("lakes").orElse(false).forGetter($$0x -> $$0x.i),
-                  Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
-                  dcy.c.lenientOptionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
-                  ald.d(ddf.b),
-                  ald.d(su.g),
-                  ald.d(su.h)
-               )
-               .apply($$0, ego::new)
-      )
-      .comapFlatMap(ego::a, Function.identity())
-      .stable();
-   private final Optional<jm<eir>> c;
-   private final List<egl> d = Lists.newArrayList();
-   private final ji<dcy> e;
-   private final List<dsd> f;
-   private boolean g;
-   private boolean h;
-   private boolean i;
-   private final List<ji<ehp>> j;
+   public static final ale<egn> a = a("classic_flat");
+   public static final ale<egn> b = a("tunnelers_dream");
+   public static final ale<egn> c = a("water_world");
+   public static final ale<egn> d = a("overworld");
+   public static final ale<egn> e = a("snowy_kingdom");
+   public static final ale<egn> f = a("bottomless_pit");
+   public static final ale<egn> g = a("desert");
+   public static final ale<egn> h = a("redstone_ready");
+   public static final ale<egn> i = a("the_void");
 
-   private static DataResult<ego> a(ego $$0) {
-      int $$1 = $$0.d.stream().mapToInt(egl::a).sum();
-      return $$1 > dvv.c ? DataResult.error(() -> "Sum of layer heights is > " + dvv.c, $$0) : DataResult.success($$0);
+   public static void a(rc<egn> $$0) {
+      new ego.a($$0).a();
    }
 
-   private ego(Optional<jm<eir>> $$0, List<egl> $$1, boolean $$2, boolean $$3, Optional<ji<dcy>> $$4, ji.c<dcy> $$5, ji<ehp> $$6, ji<ehp> $$7) {
-      this($$0, a($$4, $$5), List.of($$6, $$7));
-      if ($$2) {
-         this.b();
+   private static ale<egn> a(String $$0) {
+      return ale.a(lq.aF, new alf($$0));
+   }
+
+   static class a {
+      private final rc<egn> a;
+
+      a(rc<egn> $$0) {
+         this.a = $$0;
       }
 
-      if ($$3) {
-         this.a();
-      }
-
-      this.d.addAll($$1);
-      this.g();
-   }
-
-   private static ji<dcy> a(Optional<? extends ji<dcy>> $$0, ji<dcy> $$1) {
-      if ($$0.isEmpty()) {
-         b.error("Unknown biome, defaulting to plains");
-         return $$1;
-      } else {
-         return (ji<dcy>)$$0.get();
-      }
-   }
-
-   public ego(Optional<jm<eir>> $$0, ji<dcy> $$1, List<ji<ehp>> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.f = Lists.newArrayList();
-      this.j = $$2;
-   }
-
-   public ego a(List<egl> $$0, Optional<jm<eir>> $$1, ji<dcy> $$2) {
-      ego $$3 = new ego($$1, $$2, this.j);
-
-      for (egl $$4 : $$0) {
-         $$3.d.add(new egl($$4.a(), $$4.b().b()));
-         $$3.g();
-      }
-
-      if (this.h) {
-         $$3.a();
-      }
-
-      if (this.i) {
-         $$3.b();
-      }
-
-      return $$3;
-   }
-
-   public void a() {
-      this.h = true;
-   }
-
-   public void b() {
-      this.i = true;
-   }
-
-   public dcz a(ji<dcy> $$0) {
-      if (!$$0.equals(this.e)) {
-         return $$0.a().d();
-      } else {
-         dcz $$1 = this.d().a().d();
-         dcz.b $$2 = new dcz.b();
-         if (this.i) {
-            for (ji<ehp> $$3 : this.j) {
-               $$2.a(dxr.b.b, $$3);
-            }
-         }
-
-         boolean $$4 = (!this.g || $$0.a(ddf.a)) && this.h;
+      private void a(ale<egn> $$0, dbz $$1, ale<dcz> $$2, Set<ale<eis>> $$3, boolean $$4, boolean $$5, egm... $$6) {
+         jj<eis> $$7 = this.a.a(lq.aL);
+         jj<ehq> $$8 = this.a.a(lq.aI);
+         jj<dcz> $$9 = this.a.a(lq.az);
+         jm.a<eis> $$10 = jm.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         egp $$11 = new egp(Optional.of($$10), $$9.b($$2), egp.b($$8));
          if ($$4) {
-            List<jm<ehp>> $$5 = $$1.b();
-
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               if ($$6 != dxr.b.d.ordinal() && $$6 != dxr.b.e.ordinal() && (!this.i || $$6 != dxr.b.b.ordinal())) {
-                  for (ji<ehp> $$8 : $$5.get($$6)) {
-                     $$2.a($$6, $$8);
-                  }
-               }
-            }
+            $$11.a();
          }
 
-         List<dsd> $$9 = this.f();
-
-         for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            dsd $$11 = $$9.get($$10);
-            if (!dxv.a.e.e().test($$11)) {
-               $$9.set($$10, null);
-               $$2.a(dxr.b.k, sx.a(eaz.ab, new edh($$10, $$11)));
-            }
+         if ($$5) {
+            $$11.b();
          }
 
-         return $$2.a();
-      }
-   }
-
-   public Optional<jm<eir>> c() {
-      return this.c;
-   }
-
-   public ji<dcy> d() {
-      return this.e;
-   }
-
-   public List<egl> e() {
-      return this.d;
-   }
-
-   public List<dsd> f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.f.clear();
-
-      for (egl $$0 : this.d) {
-         for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-            this.f.add($$0.b());
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
          }
+
+         this.a.a($$0, new egn($$1.r().o(), $$11));
       }
 
-      this.g = this.f.stream().allMatch($$0x -> $$0x.a(dfc.a));
-   }
-
-   public static ego a(jj<dcy> $$0, jj<eir> $$1, jj<ehp> $$2) {
-      jm<eir> $$3 = jm.a($$1.b(eie.r), $$1.b(eie.a));
-      ego $$4 = new ego(Optional.of($$3), a($$0), b($$2));
-      $$4.e().add(new egl(1, dfc.F));
-      $$4.e().add(new egl(2, dfc.j));
-      $$4.e().add(new egl(1, dfc.i));
-      $$4.g();
-      return $$4;
-   }
-
-   public static ji<dcy> a(jj<dcy> $$0) {
-      return $$0.b(ddf.b);
-   }
-
-   public static List<ji<ehp>> b(jj<ehp> $$0) {
-      return List.of($$0.b(su.g), $$0.b(su.h));
+      public void a() {
+         this.a(ego.a, dfd.i, ddg.b, ImmutableSet.of(eif.a), false, false, new egm(1, dfd.i), new egm(2, dfd.j), new egm(1, dfd.F));
+         this.a(ego.b, dfd.b, ddg.t, ImmutableSet.of(eif.j, eif.r), true, false, new egm(1, dfd.i), new egm(5, dfd.j), new egm(230, dfd.b), new egm(1, dfd.F));
+         this.a(
+            ego.c,
+            cuu.qz,
+            ddg.T,
+            ImmutableSet.of(eif.m, eif.l, eif.g),
+            false,
+            false,
+            new egm(90, dfd.G),
+            new egm(5, dfd.L),
+            new egm(5, dfd.j),
+            new egm(5, dfd.b),
+            new egm(64, dfd.sJ),
+            new egm(1, dfd.F)
+         );
+         this.a(
+            ego.d,
+            dfd.bt,
+            ddg.b,
+            ImmutableSet.of(eif.a, eif.j, eif.f, eif.k, eif.r),
+            true,
+            true,
+            new egm(1, dfd.i),
+            new egm(3, dfd.j),
+            new egm(59, dfd.b),
+            new egm(1, dfd.F)
+         );
+         this.a(
+            ego.e,
+            dfd.dN,
+            ddg.d,
+            ImmutableSet.of(eif.a, eif.c),
+            false,
+            false,
+            new egm(1, dfd.dN),
+            new egm(1, dfd.i),
+            new egm(3, dfd.j),
+            new egm(59, dfd.b),
+            new egm(1, dfd.F)
+         );
+         this.a(ego.f, cuu.pt, ddg.b, ImmutableSet.of(eif.a), false, false, new egm(1, dfd.i), new egm(3, dfd.j), new egm(2, dfd.m));
+         this.a(
+            ego.g,
+            dfd.I,
+            ddg.f,
+            ImmutableSet.of(eif.a, eif.b, eif.j, eif.r),
+            true,
+            false,
+            new egm(8, dfd.I),
+            new egm(52, dfd.aV),
+            new egm(3, dfd.b),
+            new egm(1, dfd.F)
+         );
+         this.a(ego.h, cuu.lH, ddg.f, ImmutableSet.of(), false, false, new egm(116, dfd.aV), new egm(3, dfd.b), new egm(1, dfd.F));
+         this.a(ego.i, dfd.hW, ddg.a, ImmutableSet.of(), true, false, new egm(1, dfd.a));
+      }
    }
 }

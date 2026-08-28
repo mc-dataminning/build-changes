@@ -1,139 +1,23 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+public class dpr {
+   private boolean a;
+   private float b;
+   private float c;
 
-public class dpr extends dpi implements bqo {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jr<cuq> d = jr.a(6, cuq.l);
-   private int e = -1;
-
-   public dpr(iz $$0, dsd $$1) {
-      super(dpk.M, $$0, $$1);
-   }
-
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         dsd $$1 = this.n();
-
-         for (int $$2 = 0; $$2 < dge.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).e();
-            dsu $$4 = dge.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
-
-         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
-         this.n.a(dww.c, this.o, dww.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
-      }
-   }
-
-   @Override
-   protected void a(us $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.d.clear();
-      bqp.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(us $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      bqp.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(cuq::e)).count();
-   }
-
-   @Override
    public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(cuq::e);
-   }
-
-   @Override
-   public cuq a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cuq a(int $$0, int $$1) {
-      cuq $$2 = Objects.requireNonNullElse(this.d.get($$0), cuq.l);
-      this.d.set($$0, cuq.l);
-      if (!$$2.e()) {
-         this.c($$0);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public cuq b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, cuq $$1) {
-      if ($$1.a(awy.aW)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.e()) {
-         this.a($$0, 1);
+      this.c = this.b;
+      float $$0 = 0.1F;
+      if (!this.a && this.b > 0.0F) {
+         this.b = Math.max(this.b - 0.1F, 0.0F);
+      } else if (this.a && this.b < 1.0F) {
+         this.b = Math.min(this.b + 0.1F, 1.0F);
       }
    }
 
-   @Override
-   public boolean a(bqo $$0, int $$1, cuq $$2) {
-      return $$0.a_($$2x -> $$2x.e() ? true : cuq.c($$2, $$2x) && $$2x.I() + $$2.I() <= $$0.e_($$2x));
+   public float a(float $$0) {
+      return ayz.i($$0, this.c, this.b);
    }
 
-   @Override
-   public int ah_() {
-      return 1;
-   }
-
-   @Override
-   public boolean a(cmy $$0) {
-      return bqo.a(this, $$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cuq $$1) {
-      return $$1.a(awy.aW) && this.a($$0).e() && $$1.I() == this.ah_();
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dpi.b $$0) {
-      super.a($$0);
-      $$0.a(km.aa, cxm.a).a(this.d);
-   }
-
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(km.aa, cxm.a(this.d));
-   }
-
-   @Override
-   public void a(us $$0) {
-      $$0.r("Items");
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 }

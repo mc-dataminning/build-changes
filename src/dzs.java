@@ -1,104 +1,52 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzs extends eaa<dzr> {
-   public dzs(Codec<dzr> $$0) {
-      super($$0);
+public class dzs extends dzu {
+   public static final Codec<dzs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dzu.d.forGetter($$0x -> $$0x), bpz.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), dzs.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dzs::new)
+   );
+   public final bpz b;
+   public final dzs.a c;
+
+   public dzs(float $$0, egt $$1, bpz $$2, dyq $$3, dzv $$4, jm<dfb> $$5, bpz $$6, dzs.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   public boolean a(dzr $$0, azh $$1) {
-      return $$1.i() <= $$0.l;
+   public dzs(dzu $$0, bpz $$1, dzs.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   public boolean a(dzv $$0, dzr $$1, dtz $$2, Function<iz, ji<dcy>> $$3, azh $$4, dxh $$5, dbg $$6, dty $$7) {
-      int $$8 = (this.d() * 2 - 1) * 16;
-      double $$9 = (double)$$6.a($$4.a(16));
-      int $$10 = $$1.e.a($$4, $$0);
-      double $$11 = (double)$$6.b($$4.a(16));
-      float $$12 = $$4.i() * (float) (Math.PI * 2);
-      float $$13 = $$1.b.a($$4);
-      double $$14 = (double)$$1.f.a($$4);
-      float $$15 = $$1.c.c.a($$4);
-      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
-      int $$17 = 0;
-      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
-      return true;
-   }
+   public static class a {
+      public static final Codec<dzs.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bpz.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bpz.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ayh.k.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bpz.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dzs.a::new)
+      );
+      public final bpz b;
+      public final bpz c;
+      public final int d;
+      public final bpz e;
+      public final float f;
+      public final float g;
 
-   private void a(
-      dzv $$0,
-      dzr $$1,
-      dtz $$2,
-      Function<iz, ji<dcy>> $$3,
-      long $$4,
-      dxh $$5,
-      double $$6,
-      double $$7,
-      double $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      int $$12,
-      int $$13,
-      double $$14,
-      dty $$15
-   ) {
-      azh $$16 = azh.a($$4);
-      float[] $$17 = this.a($$0, $$1, $$16);
-      float $$18 = 0.0F;
-      float $$19 = 0.0F;
-
-      for (int $$20 = $$12; $$20 < $$13; $$20++) {
-         double $$21 = 1.5 + (double)(ayz.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
-         double $$22 = $$21 * $$14;
-         $$21 *= (double)$$1.c.e.a($$16);
-         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
-         float $$23 = ayz.b($$11);
-         float $$24 = ayz.a($$11);
-         $$6 += (double)(ayz.b($$10) * $$23);
-         $$7 += (double)$$24;
-         $$8 += (double)(ayz.a($$10) * $$23);
-         $$11 *= 0.7F;
-         $$11 += $$19 * 0.05F;
-         $$10 += $$18 * 0.05F;
-         $$19 *= 0.8F;
-         $$18 *= 0.5F;
-         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
-         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
-         if ($$16.a(4) != 0) {
-            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
-               return;
-            }
-
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
-         }
+      public a(bpz $$0, bpz $$1, int $$2, bpz $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
-   }
-
-   private float[] a(dzv $$0, dzr $$1, azh $$2) {
-      int $$3 = $$0.b();
-      float[] $$4 = new float[$$3];
-      float $$5 = 1.0F;
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
-            $$5 = 1.0F + $$2.i() * $$2.i();
-         }
-
-         $$4[$$6] = $$5 * $$5;
-      }
-
-      return $$4;
-   }
-
-   private double a(dzr $$0, azh $$1, double $$2, float $$3, float $$4) {
-      float $$5 = 1.0F - ayz.e(0.5F - $$4 / $$3) * 2.0F;
-      float $$6 = $$0.c.f + $$0.c.g * $$5;
-      return (double)$$6 * $$2 * (double)ayz.b($$1, 0.75F, 1.0F);
-   }
-
-   private boolean a(dzv $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
-      int $$6 = $$5 - $$0.a();
-      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
    }
 }

@@ -1,51 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+@FunctionalInterface
+public interface gfr<T extends dpj> {
+   gfq<T> create(gfr.a var1);
 
-public class gfr {
-   private static final Map<dpk<?>, gfq<?>> a = Maps.newHashMap();
+   public static class a {
+      private final gfp a;
+      private final gek b;
+      private final gjx c;
+      private final gix d;
+      private final fwy e;
+      private final fgr f;
 
-   private static <T extends dpi> void a(dpk<? extends T> $$0, gfq<T> $$1) {
-      a.put($$0, $$1);
-   }
+      public a(gfp $$0, gek $$1, gjx $$2, gix $$3, fwy $$4, fgr $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public static Map<dpk<?>, gfp<?>> a(gfq.a $$0) {
-      Builder<dpk<?>, gfp<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + lp.k.b((dpk<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
-   }
+      public gfp a() {
+         return this.a;
+      }
 
-   static {
-      a(dpk.h, ggd::new);
-      a(dpk.i, gfz::new);
-      a(dpk.j, ggf::new);
-      a(dpk.k, ggb::new);
-      a(dpk.b, gfv::new);
-      a(dpk.d, gfv::new);
-      a(dpk.c, gfv::new);
-      a(dpk.m, gfy::new);
-      a(dpk.D, gga::new);
-      a(dpk.n, ggi::new);
-      a(dpk.v, ggh::new);
-      a(dpk.o, gfl::new);
-      a(dpk.p, gge::new);
-      a(dpk.t, gfk::new);
-      a(dpk.u, ggg::new);
-      a(dpk.x, ggc::new);
-      a(dpk.y, gfm::new);
-      a(dpk.z, gfw::new);
-      a(dpk.E, gfn::new);
-      a(dpk.G, gfu::new);
-      a(dpk.N, gft::new);
-      a(dpk.O, gfx::new);
-      a(dpk.Q, ggj::new);
-      a(dpk.R, ggk::new);
+      public gek b() {
+         return this.b;
+      }
+
+      public gix c() {
+         return this.d;
+      }
+
+      public gjx d() {
+         return this.c;
+      }
+
+      public fwy e() {
+         return this.e;
+      }
+
+      public fxc a(fxa $$0) {
+         return this.e.a($$0);
+      }
+
+      public fgr f() {
+         return this.f;
+      }
    }
 }

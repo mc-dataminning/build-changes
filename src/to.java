@@ -30,13 +30,13 @@ public class to {
    private final ub o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dln r;
+   private final dlo r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dqx t;
+   private dqy t;
 
-   public to(ui $$0, dln $$1, arf $$2, ub $$3) {
+   public to(ui $$0, dlo $$1, arf $$2, ub $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class to {
       } else {
          this.j = 0;
          this.k = true;
-         dqx $$0 = this.e();
+         dqy $$0 = this.e();
          $$0.c(this.d);
-         eid $$1 = ue.b($$0);
+         eie $$1 = ue.b($$0);
          this.d.m().a($$1);
          this.d.a($$1);
          return this;
@@ -165,18 +165,18 @@ public class to {
       return this.b;
    }
 
-   public evn d() {
-      dqx $$0 = this.e();
+   public evo d() {
+      dqy $$0 = this.e();
       return ue.a($$0);
    }
 
-   public dqx e() {
+   public dqy e() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dqx)this.d.c_(this.b);
+         this.t = (dqy)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -221,9 +221,9 @@ public class to {
    public void l() {
       if (this.s == null) {
          this.F();
-         evn $$0 = this.d();
-         List<bsv> $$1 = this.f().a(bsv.class, $$0.g(1.0), $$0x -> !($$0x instanceof cmy));
-         $$1.forEach($$0x -> $$0x.a(bsv.c.b));
+         evo $$0 = this.d();
+         List<bsw> $$1 = this.f().a(bsw.class, $$0.g(1.0), $$0x -> !($$0x instanceof cmz));
+         $$1.forEach($$0x -> $$0x.a(bsw.c.b));
       }
    }
 
@@ -278,7 +278,7 @@ public class to {
       return this.a.d();
    }
 
-   public dln t() {
+   public dlo t() {
       return this.r;
    }
 
@@ -325,7 +325,7 @@ public class to {
 
    private iz G() {
       if (this.c == null) {
-         eid $$0 = ue.b(this.e());
+         eie $$0 = ue.b(this.e());
          this.c = new iz($$0.h(), $$0.i(), $$0.j());
       }
 

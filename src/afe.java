@@ -2,7 +2,7 @@ public class afe implements zw<aci> {
    public static final zn<wm, afe> a = zw.a(afe::a, afe::new);
    private final double b;
 
-   public afe(dtu $$0) {
+   public afe(dtv $$0) {
       this.b = $$0.k();
    }
 

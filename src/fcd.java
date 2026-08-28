@@ -1,13 +1,12 @@
-public class fcd extends fcc {
-   public static final int b = 5;
-   public final int c;
+public class fcd extends Exception {
+   public final fas a;
 
-   public fcd(int $$0, int $$1) {
-      super(far.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
-      }
+   public fcd(fas $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

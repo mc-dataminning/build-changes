@@ -45,7 +45,7 @@ public class asd extends asc implements aby, xd {
       this.b(new aad(new aav(this.d.getServerModName())));
       jp<alo> $$0 = this.d.bd();
       List<atw> $$1 = this.d.bg().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new abv(cpo.e.b(this.d.bb().K())));
+      this.b(new abv(cpp.e.b(this.d.bb().K())));
       this.l = new aso($$1, $$0);
       this.i.add(this.l);
       this.n();

@@ -2,8 +2,8 @@ public record aqv(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public dbg a() {
-      return new dbg(kb.a(this.a), kb.a(this.b));
+   public dbh a() {
+      return new dbh(kb.a(this.a), kb.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record aqv(int a, int b) {
 
    @Override
    public int hashCode() {
-      return dbg.d(this.a, this.b);
+      return dbh.d(this.a, this.b);
    }
 
    public int c() {

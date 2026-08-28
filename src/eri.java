@@ -1,93 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-public class eri extends erv {
-   public static final MapCodec<eri> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  lp.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dtg::f).toList())
-               )
-            )
-            .apply($$0, eri::new)
-   );
-   private final ji<dfa> b;
-   private final Set<dtg<?>> c;
+public class eri extends erw {
+   public static final MapCodec<eri> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eri::new));
 
-   eri(List<ett> $$0, ji<dfa> $$1, Set<dtg<?>> $$2) {
+   private eri(List<etu> $$0) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private eri(List<ett> $$0, ji<dfa> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public erx<eri> b() {
-      return ery.D;
+   public ery<eri> b() {
+      return erz.z;
    }
 
    @Override
-   public Set<etc<?>> a() {
-      return ImmutableSet.of(etf.g);
-   }
-
-   @Override
-   protected cuq a(cuq $$0, eqj $$1) {
-      dsd $$2 = $$1.c(etf.g);
+   public cur a(cur $$0, eqk $$1) {
+      Float $$2 = $$1.c(etg.j);
       if ($$2 != null) {
-         $$0.a(km.ab, cxb.a, $$1x -> {
-            for (dtg<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
+         azh $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.I();
+         int $$6 = 0;
 
-            return $$1x;
-         });
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
       }
 
       return $$0;
    }
 
-   public static eri.a a(dfa $$0) {
-      return new eri.a($$0);
-   }
-
-   public static class a extends erv.a<eri.a> {
-      private final ji<dfa> a;
-      private final Builder<dtg<?>> b = ImmutableSet.builder();
-
-      a(dfa $$0) {
-         this.a = $$0.s();
-      }
-
-      public eri.a a(dtg<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      protected eri.a a() {
-         return this;
-      }
-
-      @Override
-      public erw b() {
-         return new eri(this.g(), this.a, this.b.build());
-      }
+   public static erw.a<?> c() {
+      return a(eri::new);
    }
 }

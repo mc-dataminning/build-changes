@@ -1,31 +1,61 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzv extends dys {
-   private final jw a;
-   private final dxz b;
-   private final dyj c;
-   private final dym.o d;
+public class dzv {
+   public static final dzv a = new dzv(false, dfd.gz.o(), dfd.pL.o(), dfd.ej.o(), dfd.aQ.o());
+   public static final Codec<dzv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dzv::a),
+               dse.b.optionalFieldOf("air_state", a.b()).forGetter(dzv::b),
+               dse.b.optionalFieldOf("water_state", a.b()).forGetter(dzv::c),
+               dse.b.optionalFieldOf("lava_state", a.b()).forGetter(dzv::d),
+               dse.b.optionalFieldOf("barrier_state", a.b()).forGetter(dzv::e)
+            )
+            .apply($$0, dzv::new)
+   );
+   private final boolean c;
+   private final dse d;
+   private final dse e;
+   private final dse f;
+   private final dse g;
 
-   public dzv(dxy $$0, jw $$1, dcb $$2, dxz $$3, dyj $$4, dym.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public static dzv a(boolean $$0, dse $$1, dse $$2, dse $$3, dse $$4) {
+      return new dzv($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Deprecated
-   public Optional<dsd> a(Function<iz, ji<dcy>> $$0, dtz $$1, iz $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public static dzv a(dse $$0, dse $$1, dse $$2, dse $$3) {
+      return new dzv(false, $$0, $$1, $$2, $$3);
    }
 
-   @Deprecated
-   public jw c() {
-      return this.a;
+   public static dzv a(boolean $$0, dse $$1) {
+      return new dzv($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   public dyj d() {
+   private dzv(boolean $$0, dse $$1, dse $$2, dse $$3, dse $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
       return this.c;
+   }
+
+   public dse b() {
+      return this.d;
+   }
+
+   public dse c() {
+      return this.e;
+   }
+
+   public dse d() {
+      return this.f;
+   }
+
+   public dse e() {
+      return this.g;
    }
 }

@@ -1,49 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class chp extends chj {
-   public chp(btb<? extends chp> $$0, dbz $$1) {
-      super($$0, $$1);
+public enum chp {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<chp> f = axp.a(chp::a, values(), axp.a.b);
+   private final int g;
+
+   private chp(final int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected avz v() {
-      return awa.px;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   protected avz gO() {
-      return awa.py;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.pA;
-   }
-
-   @Nullable
-   @Override
-   protected avz gx() {
-      return awa.pB;
-   }
-
-   @Override
-   protected avz d(bro $$0) {
-      return awa.pC;
-   }
-
-   @Override
-   protected void gW() {
-      this.a(awa.pD, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void gq() {
-      this.a(awa.pz, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bsp a(arf $$0, bsp $$1) {
-      return btb.at.a((dbz)$$0);
+   public static chp a(int $$0) {
+      return f.apply($$0);
    }
 }

@@ -1,29 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public record ffa(int a, xp b, @Nullable yb c, @Nullable ffb d) {
-   @Nullable
-   public ffb.a a() {
-      return this.d != null ? this.d.f() : null;
+public enum ffa implements azc {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
+
+   private static final IntFunction<ffa> d = axp.a(ffa::a, values(), axp.a.b);
+   private final int e;
+   private final String f;
+
+   private ffa(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public int b() {
-      return this.a;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public xp c() {
-      return this.b;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   @Nullable
-   public yb d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
    }
 
-   @Nullable
-   public ffb e() {
-      return this.d;
-   }
-
-   public static record a(int a, ayl b, @Nullable ffb c, boolean d) {
+   public static ffa a(int $$0) {
+      return d.apply($$0);
    }
 }

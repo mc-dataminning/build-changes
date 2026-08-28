@@ -20,7 +20,8 @@ public class bbv extends DataFix {
       );
       Type<?> $$1 = this.getInputSchema().getType(bgx.B);
       return TypeRewriteRule.seq(
-         this.a($$0, $$1, "minecraft:llama"), new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
+         this.a($$0, $$1, "minecraft:llama"),
+         new TypeRewriteRule[]{this.a($$0, $$1, "minecraft:trader_llama"), this.a($$0, $$1, "minecraft:mule"), this.a($$0, $$1, "minecraft:donkey")}
       );
    }
 

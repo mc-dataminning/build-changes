@@ -319,7 +319,7 @@ public class asl implements AutoCloseable {
 
       d(final GameProfile $$0) {
          this.c = $$0;
-         bpo<Runnable> $$1 = bpo.a(asl.this.m, "chat stream for " + $$0.getName());
+         bpp<Runnable> $$1 = bpp.a(asl.this.m, "chat stream for " + $$0.getName());
          this.d = $$1::a;
       }
 

@@ -1,13 +1,13 @@
 import java.util.function.Supplier;
 
 public class azd {
-   public static void a(dbz $$0, iz $$1, lg $$2, bqa $$3) {
+   public static void a(dca $$0, iz $$1, lg $$2, bqb $$3) {
       for (je $$4 : je.values()) {
          a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
       }
    }
 
-   public static void a(dbz $$0, iz $$1, lg $$2, bqa $$3, je $$4, Supplier<evs> $$5, double $$6) {
+   public static void a(dca $$0, iz $$1, lg $$2, bqb $$3, je $$4, Supplier<evt> $$5, double $$6) {
       int $$7 = $$3.a($$0.z);
 
       for (int $$8 = 0; $$8 < $$7; $$8++) {
@@ -15,12 +15,12 @@ public class azd {
       }
    }
 
-   private static evs a(azh $$0) {
-      return new evs(ayz.a($$0, -0.5, 0.5), ayz.a($$0, -0.5, 0.5), ayz.a($$0, -0.5, 0.5));
+   private static evt a(azh $$0) {
+      return new evt(ayz.a($$0, -0.5, 0.5), ayz.a($$0, -0.5, 0.5), ayz.a($$0, -0.5, 0.5));
    }
 
-   public static void a(je.a $$0, dbz $$1, iz $$2, double $$3, lg $$4, bqg $$5) {
-      evs $$6 = evs.b($$2);
+   public static void a(je.a $$0, dca $$1, iz $$2, double $$3, lg $$4, bqh $$5) {
+      evt $$6 = evt.b($$2);
       boolean $$7 = $$0 == je.a.a;
       boolean $$8 = $$0 == je.a.b;
       boolean $$9 = $$0 == je.a.c;
@@ -37,8 +37,8 @@ public class azd {
       }
    }
 
-   public static void a(dbz $$0, iz $$1, je $$2, lg $$3, evs $$4, double $$5) {
-      evs $$6 = evs.b($$1);
+   public static void a(dca $$0, iz $$1, je $$2, lg $$3, evt $$4, double $$5) {
+      evt $$6 = evt.b($$1);
       int $$7 = $$2.j();
       int $$8 = $$2.k();
       int $$9 = $$2.l();
@@ -51,21 +51,21 @@ public class azd {
       $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   public static void a(dbz $$0, iz $$1, azh $$2, lg $$3) {
+   public static void a(dca $$0, iz $$1, azh $$2, lg $$3) {
       double $$4 = (double)$$1.u() + $$2.j();
       double $$5 = (double)$$1.v() - 0.05;
       double $$6 = (double)$$1.w() + $$2.j();
       $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   public static void a(dca $$0, iz $$1, int $$2, lg $$3) {
+   public static void a(dcb $$0, iz $$1, int $$2, lg $$3) {
       double $$4 = 0.5;
-      dsd $$5 = $$0.a_($$1);
+      dse $$5 = $$0.a_($$1);
       double $$6 = $$5.i() ? 1.0 : $$5.j($$0, $$1).c(je.a.b);
       a($$0, $$1, $$2, 0.5, $$6, true, $$3);
    }
 
-   public static void a(dca $$0, iz $$1, int $$2, double $$3, double $$4, boolean $$5, lg $$6) {
+   public static void a(dcb $$0, iz $$1, int $$2, double $$3, double $$4, boolean $$5, lg $$6) {
       azh $$7 = $$0.E_();
 
       for (int $$8 = 0; $$8 < $$2; $$8++) {
@@ -82,8 +82,8 @@ public class azd {
       }
    }
 
-   public static void a(dca $$0, iz $$1, int $$2) {
-      evs $$3 = $$1.b().b(0.0, 0.5, 0.0);
+   public static void a(dcb $$0, iz $$1, int $$2) {
+      evt $$3 = $$1.b().b(0.0, 0.5, 0.0);
       la $$4 = new la(li.bb, $$0.a_($$1));
 
       for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {

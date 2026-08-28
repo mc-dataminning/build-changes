@@ -1,24 +1,9 @@
-public class foz extends foc<cqt> {
-   private static final alf D = new alf("container/grindstone/error");
-   private static final alf E = new alf("textures/gui/container/grindstone.png");
+public class foz extends foe<cqs> {
+   private static final alf E = new alf("container/furnace/lit_progress");
+   private static final alf F = new alf("container/furnace/burn_progress");
+   private static final alf G = new alf("textures/gui/container/furnace.png");
 
-   public foz(cqt $$0, cmx $$1, xp $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(fgs $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fgs $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.d);
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(2).h()) {
-         $$0.a(D, $$4 + 92, $$5 + 31, 28, 21);
-      }
+   public foz(cqs $$0, cmy $$1, xp $$2) {
+      super($$0, new fqz(), $$1, $$2, G, E, F);
    }
 }

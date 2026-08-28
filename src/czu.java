@@ -1,10 +1,8 @@
-public class czu extends dab {
-   public czu(dab.b $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(dab $$0) {
-      return $$0 instanceof dai ? false : super.a($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface czu {
 }

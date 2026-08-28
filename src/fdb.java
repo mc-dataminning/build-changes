@@ -1,233 +1,234 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fdb extends gvh {
-   static final Logger a = LogUtils.getLogger();
-   private static final xp b = xp.c("mco.configure.world.players.title");
-   static final xp c = xp.c("mco.question");
-   private static final int B = 8;
-   final fks C = new fks(this);
-   private final fcp D;
-   final fbg E;
+public class fdb extends gvi {
+   static final alf a = new alf("pending_invite/accept_highlighted");
+   static final alf b = new alf("pending_invite/accept");
+   static final alf c = new alf("pending_invite/reject_highlighted");
+   static final alf B = new alf("pending_invite/reject");
+   private static final Logger C = LogUtils.getLogger();
+   private static final xp D = xp.c("mco.invites.nopending");
+   static final xp E = xp.c("mco.invites.button.accept");
+   static final xp F = xp.c("mco.invites.button.reject");
+   private final fnf G;
+   private final CompletableFuture<List<fba>> H = CompletableFuture.supplyAsync(() -> {
+      try {
+         return faq.a().i().a;
+      } catch (fcd var1x) {
+         C.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ac.h());
    @Nullable
-   private fdb.b F;
-   boolean G;
+   xp I;
+   fdb.b J;
+   int K = -1;
+   private fhg L;
+   private fhg M;
 
-   public fdb(fcp $$0, fbg $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public fdb(fnf $$0, xp $$1) {
+      super($$1);
+      this.G = $$0;
    }
 
    @Override
    public void aM_() {
-      this.C.a(b, this.p);
-      this.F = this.C.c(new fdb.b());
-      this.E();
-      fkw $$0 = this.C.b(fkw.e().a(8));
-      $$0.a(fhf.a(xp.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fcu(this.D, this, this.E))).a());
-      $$0.a(fhf.a(xo.k, $$0x -> this.d()).a());
-      this.C.a($$1 -> {
-         fhd var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.C.a();
-      if (this.F != null) {
-         this.F.a(this.n, this.C);
-      }
-   }
-
-   void E() {
-      if (this.F != null) {
-         this.F.aD_().clear();
-
-         for (fbc $$0 : this.E.h) {
-            this.F.aD_().add(new fdb.a($$0));
+      fal.f();
+      this.J = new fdb.b();
+      this.H.thenAcceptAsync($$0 -> {
+         List<fdb.a> $$1 = $$0.stream().map($$0x -> new fdb.a($$0x)).toList();
+         this.J.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aX().b(D);
          }
-      }
+      }, this.q);
+      this.c(this.J);
+      this.L = this.c((fhg)fhg.a(E, $$0 -> {
+         this.a(this.K, true);
+         this.K = -1;
+         this.E();
+      }).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((fhg)fhg.a(xo.d, $$0 -> this.d()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((fhg)fhg.a(F, $$0 -> {
+         this.a(this.K, false);
+         this.K = -1;
+         this.E();
+      }).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.E();
    }
 
    @Override
    public void d() {
-      this.F();
+      this.m.a(this.G);
    }
 
-   private void F() {
-      if (this.G) {
-         this.m.a(this.D.f());
-      } else {
-         this.m.a(this.D);
-      }
-   }
-
-   class a extends fhl.a<fdb.a> {
-      private static final xp b = xp.c("mco.configure.world.invites.normal.tooltip");
-      private static final xp c = xp.c("mco.configure.world.invites.ops.tooltip");
-      private static final xp d = xp.c("mco.configure.world.invites.remove.tooltip");
-      private static final alf e = new alf("player_list/make_operator");
-      private static final alf f = new alf("player_list/remove_operator");
-      private static final alf g = new alf("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fbc j;
-      private final fhf k;
-      private final fhf l;
-      private final fhf m;
-
-      public a(final fbc $$0) {
-         this.j = $$0;
-         int $$1 = fdb.this.E.h.indexOf(this.j);
-         this.l = fik.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fdb.this.p.a(b))
-            .a($$1x -> xo.a(xp.a("mco.invited.player.narration", $$0.a()), (xp)$$1x.get(), xp.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fik.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fdb.this.p.a(c))
-            .a($$1x -> xo.a(xp.a("mco.invited.player.narration", $$0.a()), (xp)$$1x.get(), xp.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fik.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fdb.this.p.a(d))
-            .a($$1x -> xo.a(xp.a("mco.invited.player.narration", $$0.a()), (xp)$$1x.get()))
-            .a();
-         this.c();
-      }
-
-      private void a(int $$0) {
-         fap $$1 = fap.a();
-         UUID $$2 = fdb.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fdb.this.E.a, $$2));
-         } catch (fcc var5) {
-            fdb.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fap $$1 = fap.a();
-         UUID $$2 = fdb.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fdb.this.E.a, $$2));
-         } catch (fcc var5) {
-            fdb.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fdb.this.E.h.size()) {
-            fbc $$1 = fdb.this.E.h.get($$0);
-            fcq $$2 = new fcq($$2x -> {
-               if ($$2x) {
-                  fap $$3 = fap.a();
-
-                  try {
-                     $$3.a(fdb.this.E.a, $$1.b());
-                  } catch (fcc var6) {
-                     fdb.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fdb.this.E.h.remove($$0);
-                  fdb.this.E();
+   void a(int $$0, boolean $$1) {
+      if ($$0 < this.J.l()) {
+         String $$2 = this.J.aD_().get($$0).c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               faq $$2x = faq.a();
+               if ($$1) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
                }
 
-               fdb.this.G = true;
-               fdb.this.m.a(fdb.this);
-            }, fdb.c, xp.a("mco.configure.world.uninvite.player", $$1.a()));
-            fdb.this.m.a($$2);
-         }
-      }
+               return true;
+            } catch (fcd var3x) {
+               C.error("Couldn't handle invite", var3x);
+               return false;
+            }
+         }, ac.h()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.J.a($$0);
+               fcg $$3 = this.m.ba();
+               if ($$1) {
+                  $$3.c.a();
+               }
 
-      private void a(fay $$0) {
-         for (fbc $$1 : fdb.this.E.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fhf d() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fjb> aD_() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public List<? extends fkz> b() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public void a(fgs $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fdw.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(fdb.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.x();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.d().x() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
+               $$3.d.a();
+            }
+         }, this.q);
       }
    }
 
-   class b extends fhl<fdb.a> {
-      private static final int m = 36;
+   @Override
+   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.I = null;
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.I != null) {
+         $$0.a(this.p, this.I, $$1, $$2);
+      }
 
-      public b() {
-         super(ffg.Q(), fdb.this.n, fdb.this.C.d(), fdb.this.C.c(), 36);
-         this.a(true, (int)(9.0F * 1.5F));
+      if (this.H.isDone() && this.J.l() == 0) {
+         $$0.a(this.p, D, this.n / 2, this.o / 2 - 20, -1);
+      }
+   }
+
+   void E() {
+      this.L.k = this.a(this.K);
+      this.M.k = this.a(this.K);
+   }
+
+   private boolean a(int $$0) {
+      return $$0 != -1;
+   }
+
+   class a extends fic.a<fdb.a> {
+      private static final int b = 38;
+      final fba c;
+      private final List<fck> d;
+
+      a(final fba $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fdb.a.a(), new fdb.a.b());
       }
 
       @Override
-      protected void a(fgs $$0, int $$1, int $$2) {
-         String $$3 = fdb.this.E.h != null ? Integer.toString(fdb.this.E.h.size()) : "0";
-         xp $$4 = xp.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.a(fdb.this.p, $$4, $$1 + this.b() / 2 - fdb.this.p.a($$4) / 2, $$2, -1, false);
+      public void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fck.a(fdb.this.J, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(fgt $$0, fba $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(fdb.this.p, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(fdb.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(fdb.this.p, fdx.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         fck.a($$0, this.d, fdb.this.J, $$2, $$3, $$4, $$5);
+         fdx.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public xp a() {
+         xp $$0 = xo.b(xp.b(this.c.b), xp.b(this.c.c), fdx.a(this.c.e));
+         return xp.a("narrator.select", $$0);
+      }
+
+      class a extends fck {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(fgt $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? fdb.a : fdb.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fdb.this.I = fdb.E;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fdb.this.a($$0, true);
+         }
+      }
+
+      class b extends fck {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(fgt $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a($$3 ? fdb.c : fdb.B, $$1, $$2, 18, 18);
+            if ($$3) {
+               fdb.this.I = fdb.F;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fdb.this.a($$0, false);
+         }
+      }
+   }
+
+   class b extends gvh<fdb.a> {
+      public b() {
+         super(fdb.this.n, fdb.this.o - 72, 32, 36);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.i($$0);
       }
 
       @Override
       public int a() {
-         return this.l() * this.d + this.f;
+         return this.l() * 36;
       }
 
       @Override
       public int b() {
-         return 300;
+         return 260;
+      }
+
+      @Override
+      public void b(int $$0) {
+         super.b($$0);
+         this.c($$0);
+      }
+
+      public void c(int $$0) {
+         fdb.this.K = $$0;
+         fdb.this.E();
+      }
+
+      public void a(@Nullable fdb.a $$0) {
+         super.a($$0);
+         fdb.this.K = this.aD_().indexOf($$0);
+         fdb.this.E();
       }
    }
 }

@@ -11,7 +11,7 @@ public class apt implements apu {
          @Override
          public apu a(CommandContext<ep> $$0x) throws CommandSyntaxException {
             iz $$1 = gl.a($$0, $$0 + "Pos");
-            dpi $$2 = ((ep)$$0.getSource()).e().c_($$1);
+            dpj $$2 = ((ep)$$0.getSource()).e().c_($$1);
             if ($$2 == null) {
                throw apt.b.create();
             } else {
@@ -24,17 +24,17 @@ public class apt implements apu {
             return $$0.then(eq.a("block").then($$1.apply(eq.a($$0 + "Pos", gl.a()))));
          }
       };
-   private final dpi c;
+   private final dpj c;
    private final iz d;
 
-   public apt(dpi $$0, iz $$1) {
+   public apt(dpj $$0, iz $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(us $$0) {
-      dsd $$1 = this.c.i().a_(this.d);
+      dse $$1 = this.c.i().a_(this.d);
       this.c.c($$0, this.c.i().H_());
       this.c.e();
       this.c.i().a(this.d, $$1, $$1, 3);

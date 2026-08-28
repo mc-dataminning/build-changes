@@ -1,32 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dzw extends dzt {
-   public static final Codec<dzw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dzt.d.forGetter($$0x -> $$0x),
-               bpy.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bpy.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bpy.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, dzw::new)
-   );
-   public final bpy b;
-   public final bpy c;
-   final bpy j;
+public class dzw extends dyt {
+   private final jw a;
+   private final dya b;
+   private final dyk c;
+   private final dyn.o d;
 
-   public dzw(float $$0, egs $$1, bpy $$2, dyp $$3, dzu $$4, jm<dfa> $$5, bpy $$6, bpy $$7, bpy $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public dzw(dxz $$0, jw $$1, dcc $$2, dya $$3, dyk $$4, dyn.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   public dzw(float $$0, egs $$1, bpy $$2, dyp $$3, jm<dfa> $$4, bpy $$5, bpy $$6, bpy $$7) {
-      this($$0, $$1, $$2, $$3, dzu.a, $$4, $$5, $$6, $$7);
+   @Deprecated
+   public Optional<dse> a(Function<iz, ji<dcz>> $$0, dua $$1, iz $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   public dzw(dzt $$0, bpy $$1, bpy $$2, bpy $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   @Deprecated
+   public jw c() {
+      return this.a;
+   }
+
+   public dyk d() {
+      return this.c;
    }
 }

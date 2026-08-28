@@ -1,2 +1,2 @@
-public interface csa {
+public record csa(cxe a) implements csb {
 }

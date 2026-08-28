@@ -1,59 +1,45 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class cos {
-   private final List<cop> a = Lists.newArrayList();
-   private int b;
+   private final cor a;
+   private final List<cos.a> b = Lists.newArrayList();
 
-   public ImmutableList<cop> a() {
-      return ImmutableList.copyOf(this.a);
+   public cos(cor $$0) {
+      this.a = $$0;
    }
 
-   public cos a(int $$0, float $$1) {
-      this.a.add(new cop($$0, $$1));
-      this.b();
+   public cos a(int $$0, cop $$1) {
+      this.b.add(new cos.a($$0, $$1));
       return this;
    }
 
-   public cos a(Collection<cop> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cor a() {
+      this.b.stream().map(cos.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cop $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cop> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
+   static class a {
+      private final int a;
+      private final cop b;
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cop $$1 = this.a.get(this.b);
-         cop $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+      public a(int $$0, cop $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cop $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
+      public int a() {
+         return this.a;
+      }
 
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+      public cop b() {
+         return this.b;
       }
    }
 }

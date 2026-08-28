@@ -1,222 +1,117 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class eqo {
-   private static final Logger f = LogUtils.getLogger();
-   public static final eqo a = new eqo(ete.b, Optional.empty(), List.of(), List.of());
-   public static final etd b = ete.q;
-   public static final long c = 0L;
-   public static final Codec<eqo> d = RecordCodecBuilder.create(
+   public static final Codec<eqo> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ete.a.lenientOptionalFieldOf("type", b).forGetter($$0x -> $$0x.g),
-               alf.a.optionalFieldOf("random_sequence").forGetter($$0x -> $$0x.h),
-               eqn.a.listOf().optionalFieldOf("pools", List.of()).forGetter($$0x -> $$0x.i),
-               ery.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.j)
+               eqy.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               etw.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
+               erz.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
+               euq.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               euq.a.fieldOf("bonus_rolls").orElse(eun.a(0.0F)).forGetter($$0x -> $$0x.h)
             )
             .apply($$0, eqo::new)
    );
-   public static final Codec<ji<eqo>> e = alb.a(lq.aU, d);
-   private final etd g;
-   private final Optional<alf> h;
-   private final List<eqn> i;
-   private final List<erw> j;
-   private final BiFunction<cuq, eqj, cuq> k;
+   private final List<era> b;
+   private final List<etu> c;
+   private final Predicate<eqk> d;
+   private final List<erx> e;
+   private final BiFunction<cur, eqk, cur> f;
+   private final eup g;
+   private final eup h;
 
-   eqo(etd $$0, Optional<alf> $$1, List<eqn> $$2, List<erw> $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = ery.a($$3);
+   eqo(List<era> $$0, List<etu> $$1, List<erx> $$2, eup $$3, eup $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = ac.a($$1);
+      this.e = $$2;
+      this.f = erz.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   public static Consumer<cuq> a(arf $$0, Consumer<cuq> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.J())) {
-            if ($$2.I() < $$2.j()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.I();
+   private void b(Consumer<cur> $$0, eqk $$1) {
+      azh $$2 = $$1.b();
+      List<eqz> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-               while ($$3 > 0) {
-                  cuq $$4 = $$2.c(Math.min($$2.j(), $$3));
-                  $$3 -= $$4.I();
-                  $$1.accept($$4);
+      for (era $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
+      }
+
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (eqz $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
                }
             }
          }
-      };
-   }
-
-   public void a(eqm $$0, Consumer<cuq> $$1) {
-      this.a(new eqj.a($$0).a(this.h), $$1);
-   }
-
-   public void a(eqj $$0, Consumer<cuq> $$1) {
-      eqj.c<?> $$2 = eqj.a(this);
-      if ($$0.b($$2)) {
-         Consumer<cuq> $$3 = erw.a(this.k, $$1, $$0);
-
-         for (eqn $$4 : this.i) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
-      } else {
-         f.warn("Detected infinite loop in loot tables");
       }
    }
 
-   public void a(eqm $$0, long $$1, Consumer<cuq> $$2) {
-      this.a(new eqj.a($$0).a($$1).a(this.h), a($$0.a(), $$2));
-   }
+   public void a(Consumer<cur> $$0, eqk $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cur> $$2 = erx.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + ayz.d(this.h.b($$1) * $$1.c());
 
-   public void b(eqm $$0, Consumer<cuq> $$1) {
-      this.a($$0, a($$0.a(), $$1));
-   }
-
-   public void b(eqj $$0, Consumer<cuq> $$1) {
-      this.a($$0, a($$0.d(), $$1));
-   }
-
-   public ObjectArrayList<cuq> a(eqm $$0, long $$1) {
-      return this.a(new eqj.a($$0).a($$1).a(this.h));
-   }
-
-   public ObjectArrayList<cuq> a(eqm $$0) {
-      return this.a(new eqj.a($$0).a(this.h));
-   }
-
-   private ObjectArrayList<cuq> a(eqj $$0) {
-      ObjectArrayList<cuq> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
-      return $$1;
-   }
-
-   public etd a() {
-      return this.g;
-   }
-
-   public void a(eqp $$0) {
-      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
-         this.i.get($$1).a($$0.a(".pools[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.j.size(); $$2++) {
-         this.j.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-   }
-
-   public void a(bqo $$0, eqm $$1, long $$2) {
-      eqj $$3 = new eqj.a($$1).a($$2).a(this.h);
-      ObjectArrayList<cuq> $$4 = this.a($$3);
-      azh $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
-
-      while (var9.hasNext()) {
-         cuq $$7 = (cuq)var9.next();
-         if ($$6.isEmpty()) {
-            f.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if ($$7.e()) {
-            $$0.a($$6.remove($$6.size() - 1), cuq.l);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
          }
       }
    }
 
-   private void a(ObjectArrayList<cuq> $$0, int $$1, azh $$2) {
-      List<cuq> $$3 = Lists.newArrayList();
-      Iterator<cuq> $$4 = $$0.iterator();
-
-      while ($$4.hasNext()) {
-         cuq $$5 = $$4.next();
-         if ($$5.e()) {
-            $$4.remove();
-         } else if ($$5.I() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
+   public void a(eqq $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
 
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         cuq $$6 = $$3.remove(ayz.a($$2, 0, $$3.size() - 1));
-         int $$7 = ayz.a($$2, 1, $$6.I() / 2);
-         cuq $$8 = $$6.a($$7);
-         if ($$6.I() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
-
-         if ($$8.I() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
       }
 
-      $$0.addAll($$3);
-      ac.c($$0, $$2);
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
    }
 
-   private List<Integer> a(bqo $$0, azh $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).e()) {
-            $$2.add($$3);
-         }
-      }
-
-      ac.c($$2, $$1);
-      return $$2;
-   }
-
-   public static eqo.a b() {
+   public static eqo.a a() {
       return new eqo.a();
    }
 
-   public static class a implements ers<eqo.a> {
-      private final Builder<eqn> a = ImmutableList.builder();
-      private final Builder<erw> b = ImmutableList.builder();
-      private etd c = eqo.b;
-      private Optional<alf> d = Optional.empty();
+   public static class a implements ert<eqo.a>, etn<eqo.a> {
+      private final Builder<era> a = ImmutableList.builder();
+      private final Builder<etu> b = ImmutableList.builder();
+      private final Builder<erx> c = ImmutableList.builder();
+      private eup d = eun.a(1.0F);
+      private eup e = eun.a(0.0F);
 
-      public eqo.a a(eqn.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public eqo.a a(etd $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eqo.a a(alf $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public eqo.a a(erw.a $$0) {
-         this.b.add($$0.b());
+      public eqo.a a(eup $$0) {
+         this.d = $$0;
          return this;
       }
 
@@ -224,8 +119,28 @@ public class eqo {
          return this;
       }
 
+      public eqo.a b(eup $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public eqo.a a(era.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public eqo.a a(etu.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public eqo.a a(erx.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
       public eqo b() {
-         return new eqo(this.c, this.d, this.a.build(), this.b.build());
+         return new eqo(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
       }
    }
 }

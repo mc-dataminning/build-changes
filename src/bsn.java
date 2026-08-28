@@ -1,17 +1,16 @@
-class bsn extends bsb {
-   protected bsn(bsc $$0, int $$1) {
-      super($$0, $$1);
+class bsn extends bsc {
+   protected bsn(bsd $$0, int $$1) {
+      super($$0, $$1, li.y);
    }
 
    @Override
-   public boolean a(btq $$0, int $$1) {
-      $$0.a($$0.dQ().p(), 1.0F);
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public void a(btr $$0, int $$1, bsw.c $$2) {
+      if ($$2 == bsw.c.a && $$0.dP() instanceof arf $$3) {
+         double $$4 = $$0.du();
+         double $$5 = $$0.dw() + (double)($$0.dk() / 2.0F);
+         double $$6 = $$0.dA();
+         float $$7 = 3.0F + $$0.el().i() * 2.0F;
+         $$3.a($$0, null, coh.g, $$4, $$5, $$6, $$7, false, dca.a.e, li.A, li.z, awa.cQ);
+      }
    }
 }

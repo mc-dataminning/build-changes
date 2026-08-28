@@ -1,65 +1,45 @@
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record ets(ji<dfa> b, Optional<dx> c) implements ett {
+public record ets(Optional<dc> b, iz c) implements etu {
+   private static final MapCodec<iz> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kd::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kd::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kd::w)
+            )
+            .apply($$0, iz::new)
+   );
    public static final MapCodec<ets> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(lp.e.r().fieldOf("block").forGetter(ets::c), dx.a.optionalFieldOf("properties").forGetter(ets::d)).apply($$0, ets::new)
-      )
-      .validate(ets::a);
-
-   private static DataResult<ets> a(ets $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
-   }
+      $$0 -> $$0.group(dc.a.optionalFieldOf("predicate").forGetter(ets::c), d.forGetter(ets::d)).apply($$0, ets::new)
+   );
 
    @Override
-   public etu b() {
-      return etv.k;
+   public etv b() {
+      return etw.p;
    }
 
-   @Override
-   public Set<etc<?>> a() {
-      return Set.of(etf.g);
+   public boolean a(eqk $$0) {
+      evt $$1 = $$0.c(etg.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public boolean a(eqj $$0) {
-      dsd $$1 = $$0.c(etf.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static etu.a a(dc.a $$0) {
+      return () -> new ets(Optional.of($$0.b()), iz.c);
    }
 
-   public static ets.a a(dfa $$0) {
-      return new ets.a($$0);
+   public static etu.a a(dc.a $$0, iz $$1) {
+      return () -> new ets(Optional.of($$0.b()), $$1);
    }
 
-   public ji<dfa> c() {
+   public Optional<dc> c() {
       return this.b;
    }
 
-   public Optional<dx> d() {
+   public iz d() {
       return this.c;
-   }
-
-   public static class a implements ett.a {
-      private final ji<dfa> a;
-      private Optional<dx> b = Optional.empty();
-
-      public a(dfa $$0) {
-         this.a = $$0.s();
-      }
-
-      public ets.a a(dx.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public ett build() {
-         return new ets(this.a, this.b);
-      }
    }
 }

@@ -1,15 +1,16 @@
-public class gsa extends gsb {
-   public gsa(cfh $$0) {
-      super($$0, awa.bR, awb.g);
+public class gsa extends gsc {
+   public gsa(cfi $$0) {
+      super($$0, awa.bQ, awb.g);
+      this.j = 0;
    }
 
    @Override
-   protected grx o() {
-      return new grz(this.n);
+   protected gry o() {
+      return new gsb(this.n);
    }
 
    @Override
    protected boolean p() {
-      return this.n.Z_();
+      return !this.n.Z_();
    }
 }

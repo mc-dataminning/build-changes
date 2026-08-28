@@ -28,7 +28,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.c($$0);
    }
 
-   public static ji<eqo> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji<eqp> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.a($$0);
    }
 
-   public static ji<erw> b(CommandContext<ep> $$0, String $$1) {
+   public static ji<erx> b(CommandContext<ep> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.b($$0);
    }
 
-   public static ji<ett> c(CommandContext<ep> $$0, String $$1) {
+   public static ji<etu> c(CommandContext<ep> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -89,21 +89,21 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return b;
    }
 
-   public static class a extends fr<erw> {
+   public static class a extends fr<erx> {
       protected a(el $$0) {
-         super($$0, lq.aV, ery.d);
+         super($$0, lq.aV, erz.d);
       }
    }
 
-   public static class b extends fr<ett> {
+   public static class b extends fr<etu> {
       protected b(el $$0) {
-         super($$0, lq.aW, etv.b);
+         super($$0, lq.aW, etw.b);
       }
    }
 
-   public static class c extends fr<eqo> {
+   public static class c extends fr<eqp> {
       protected c(el $$0) {
-         super($$0, lq.aU, eqo.e);
+         super($$0, lq.aU, eqp.e);
       }
    }
 }

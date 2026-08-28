@@ -12,8 +12,8 @@ public record du(de.d c) implements bv {
    }
 
    @Override
-   public boolean a(bsv $$0, arf $$1, @Nullable evs $$2) {
-      return $$0 instanceof ckn $$3 ? this.c.d($$3.gr()) : false;
+   public boolean a(bsw $$0, arf $$1, @Nullable evt $$2) {
+      return $$0 instanceof cko $$3 ? this.c.d($$3.gr()) : false;
    }
 
    @Override

@@ -25,8 +25,8 @@ public class fq implements ArgumentType<alf> {
       }
    }
 
-   public static cyy<?> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      cyz $$2 = ((ep)$$0.getSource()).l().aJ();
+   public static cyz<?> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      cza $$2 = ((ep)$$0.getSource()).l().aJ();
       alf $$3 = c($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }

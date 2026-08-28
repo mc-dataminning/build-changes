@@ -1,64 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class erd extends eqs {
-   public static final MapCodec<erd> a = a(erd::new);
+public class erd extends erc {
+   public static final MapCodec<erd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.either(ale.a(lq.aU), eqp.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erd::new)
+   );
+   private final Either<ale<eqp>, eqp> j;
 
-   erd(List<eqz> $$0, List<ett> $$1) {
-      super($$0, $$1);
+   private erd(Either<ale<eqp>, eqp> $$0, int $$1, int $$2, List<etu> $$3, List<erx> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public era a() {
-      return eqx.h;
+   public erb a() {
+      return eqy.d;
    }
 
    @Override
-   protected eqr a(List<? extends eqr> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eqr)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (eqr $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<cur> $$0, eqk $$1) {
+      ((eqp)this.j.map($$1x -> $$1.a().a(lq.aU, $$1x).map(ji::a).orElse(eqp.a), $$0x -> $$0x)).a($$1, $$0);
    }
 
-   public static erd.a a(eqz.a<?>... $$0) {
-      return new erd.a($$0);
-   }
-
-   public static class a extends eqz.a<erd.a> {
-      private final Builder<eqz> a = ImmutableList.builder();
-
-      public a(eqz.a<?>... $$0) {
-         for (eqz.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
+   @Override
+   public void a(eqq $$0) {
+      Optional<ale<eqp>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         ale<eqp> $$2 = $$1.get();
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
          }
       }
 
-      protected erd.a a() {
-         return this;
-      }
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .a(lq.aU, $$1x)
+                  .ifPresentOrElse($$2x -> ((eqp)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+   }
 
-      @Override
-      public erd.a c(eqz.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public static erc.a<?> a(ale<eqp> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erd(Either.left($$0), $$1, $$2, $$3, $$4));
+   }
 
-      @Override
-      public eqz b() {
-         return new erd(this.a.build(), this.f());
-      }
+   public static erc.a<?> a(eqp $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erd(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

@@ -1,69 +1,81 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cvb extends cum {
+   private static final kt a = new ks() {
+      private final ks c = new ks();
 
-public class cvb extends csw {
-   private static final MapCodec<cgg.d> a = cgg.d.a.fieldOf("BucketVariantTag");
-   private final btb<?> b;
-   private final avz c;
+      @Override
+      public cur a(kq $$0, cur $$1) {
+         je $$2 = $$0.d().c(dhg.b);
+         arf $$3 = $$0.b();
+         evt $$4 = $$0.a();
+         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
+         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
+         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
+         iz $$8 = $$0.c().a($$2);
+         dse $$9 = $$3.a_($$8);
+         dti $$10 = $$9.b() instanceof deq ? $$9.c(((deq)$$9.b()).c()) : dti.a;
+         double $$11;
+         if ($$9.a(awp.N)) {
+            if ($$10.b()) {
+               $$11 = 0.6;
+            } else {
+               $$11 = 0.1;
+            }
+         } else {
+            if (!$$9.i() || !$$3.a_($$8.d()).a(awp.N)) {
+               return this.c.dispense($$0, $$1);
+            }
 
-   public cvb(btb<?> $$0, env $$1, avz $$2, cul.a $$3) {
-      super($$1, $$3);
+            dse $$13 = $$3.a_($$8.d());
+            dti $$14 = $$13.b() instanceof deq ? $$13.c(((deq)$$13.b()).c()) : dti.a;
+            if ($$2 != je.a && $$14.b()) {
+               $$11 = -0.4;
+            } else {
+               $$11 = -0.9;
+            }
+         }
+
+         cov $$18 = cov.a($$3, $$5, $$6 + $$11, $$7, ((cvb)$$1.g()).b, $$1, null);
+         $$3.b($$18);
+         $$1.h(1);
+         return $$1;
+      }
+
+      @Override
+      protected void a(kq $$0) {
+         $$0.b().c(1000, $$0.c(), 0);
+      }
+   };
+   final cov.a b;
+
+   public cvb(cov.a $$0, cum.a $$1) {
+      super($$1);
       this.b = $$0;
-      this.c = $$2;
+      dhg.a(this, a);
    }
 
    @Override
-   public void a(@Nullable cmy $$0, dbz $$1, cuq $$2, iz $$3) {
-      if ($$1 instanceof arf) {
-         this.a((arf)$$1, $$2, $$3);
-         $$1.a($$0, dww.t, $$3);
-      }
-   }
-
-   @Override
-   protected void a(@Nullable cmy $$0, dca $$1, iz $$2) {
-      $$1.a($$0, $$2, this.c, awb.g, 1.0F, 1.0F);
-   }
-
-   private void a(arf $$0, cuq $$1, iz $$2) {
-      if (this.b.a($$0, $$1, null, $$2, btu.l, true, false) instanceof cfi $$4) {
-         cxf $$5 = $$1.a(km.N, cxf.a);
-         $$4.c($$5.c());
-         $$4.w(true);
-      }
-   }
-
-   @Override
-   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
-      if (this.b == btb.bg) {
-         cxf $$4 = $$0.a(km.N, cxf.a);
-         if ($$4.b()) {
-            return;
-         }
-
-         Optional<cgg.d> $$5 = $$4.a(a).result();
-         if ($$5.isPresent()) {
-            cgg.d $$6 = $$5.get();
-            n[] $$7 = new n[]{n.u, n.h};
-            String $$8 = "color.minecraft." + $$6.c();
-            String $$9 = "color.minecraft." + $$6.d();
-            int $$10 = cgg.c.indexOf($$6);
-            if ($$10 != -1) {
-               $$2.add(xp.c(cgg.c($$10)).a($$7));
-               return;
+   public bqw a(cye $$0) {
+      dca $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dse $$3 = $$1.a_($$2);
+      if (!$$3.a(awp.N)) {
+         return bqw.f;
+      } else {
+         cur $$4 = $$0.n();
+         if ($$1 instanceof arf $$5) {
+            dti $$6 = $$3.b() instanceof deq ? $$3.c(((deq)$$3.b()).c()) : dti.a;
+            double $$7 = 0.0;
+            if ($$6.b()) {
+               $$7 = 0.5;
             }
 
-            $$2.add($$6.b().d().e().a($$7));
-            yd $$11 = xp.c($$8);
-            if (!$$8.equals($$9)) {
-               $$11.f(", ").b(xp.c($$9));
-            }
-
-            $$11.a($$7);
-            $$2.add($$11);
+            cov $$8 = cov.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
+            $$5.b($$8);
+            $$5.a(dwx.t, $$2, dwx.a.a($$0.o(), $$5.a_($$2.d())));
          }
+
+         $$4.h(1);
+         return bqw.a($$1.B);
       }
    }
 }

@@ -1,15 +1,14 @@
-public class cub extends cul implements cvs {
-   public cub(cul.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cub extends csp {
+   public cub(dfb $$0, cum.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a(dbz $$0, dqs $$1, boolean $$2, cmy $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.ay_(), awa.kA, awb.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   protected dse c(cyc $$0) {
+      cmz $$1 = $$0.o();
+      return $$1 != null && !$$1.gz() ? null : super.c($$0);
    }
 }

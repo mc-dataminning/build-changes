@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonObject;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gqq {
+public class gqq implements ato<gqp> {
+   public gqp b(JsonObject $$0) {
+      return new gqp(gqp.a.a(ayp.a($$0, "hat", "none")));
+   }
+
+   @Override
+   public String a() {
+      return "villager";
+   }
 }

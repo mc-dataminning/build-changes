@@ -1,55 +1,48 @@
 public class cpb extends cov {
-   public cpb(btb<? extends cpb> $$0, dbz $$1) {
+   public cpb(btc<?> $$0, dca $$1) {
       super($$0, $$1);
    }
 
-   public cpb(dbz $$0, double $$1, double $$2, double $$3) {
-      super(btb.s, $$1, $$2, $$3, $$0);
+   public cpb(dca $$0, double $$1, double $$2, double $$3) {
+      super(btc.ar, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected cul ag_() {
-      return cut.nN;
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cou.a v() {
-      return cou.a.b;
-   }
-
-   @Override
-   public dsd x() {
-      return dfc.cv.o().a(dgd.c, je.c);
-   }
-
-   @Override
-   public int z() {
-      return 8;
-   }
-
-   @Override
-   public cpv a(int $$0, cmx $$1) {
-      return cqc.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cmy $$0) {
-      this.dP().a(dww.j, this.dn(), dww.a.a($$0));
-   }
-
-   @Override
-   public bqv a(cmy $$0, bqu $$1) {
-      bqv $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(dww.k, $$0);
-         clp.a($$0, true);
+   public bqw a(cmz $$0, bqv $$1) {
+      if ($$0.fR()) {
+         return bqw.e;
+      } else if (this.bS()) {
+         return bqw.e;
+      } else if (!this.dP().B) {
+         return $$0.n(this) ? bqw.c : bqw.e;
+      } else {
+         return bqw.a;
       }
+   }
 
-      return $$2;
+   @Override
+   protected cum ag_() {
+      return cuu.nM;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.bS()) {
+            this.bH();
+         }
+
+         if (this.O() == 0) {
+            this.n(-this.P());
+            this.d(10);
+            this.b(50.0F);
+            this.bv();
+         }
+      }
+   }
+
+   @Override
+   public cov.a v() {
+      return cov.a.a;
    }
 }

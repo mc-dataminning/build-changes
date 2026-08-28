@@ -1,95 +1,41 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class gfo implements gfq<dph> {
+   public static final grf a = new grf(gpa.e, new alf("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fxc c;
 
-public class gfo implements auq {
-   private Map<dpk<?>, gfp<?>> d = ImmutableMap.of();
-   private final fgq e;
-   private final fwx f;
-   public dbz a;
-   public fer b;
-   public evq c;
-   private final Supplier<gej> g;
-   private final Supplier<gjw> h;
-   private final Supplier<giw> i;
-
-   public gfo(fgq $$0, fwx $$1, Supplier<gej> $$2, Supplier<gjw> $$3, Supplier<giw> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public gfo(gfr.a $$0) {
+      fxc $$1 = $$0.a(fxb.l);
+      this.c = $$1.b("bell_body");
    }
 
-   @Nullable
-   public <E extends dpi> gfp<E> a(E $$0) {
-      return (gfp<E>)this.d.get($$0.r());
+   public static fxi b() {
+      fxk $$0 = new fxk();
+      fxl $$1 = $$0.a();
+      fxl $$2 = $$1.a("bell_body", fxh.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fxe.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fxh.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fxe.a(-8.0F, -12.0F, -8.0F));
+      return fxi.a($$0, 32, 32);
    }
 
-   public void a(dbz $$0, fer $$1, evq $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dpi> void a(E $$0, float $$1, ezz $$2, gdp $$3) {
-      gfp<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.m() && $$0.r().a($$0.n())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
+   public void a(dph $$0, float $$1, faa $$2, gdq $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = ayz.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == je.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == je.d) {
+            $$7 = $$9;
+         } else if ($$0.c == je.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == je.e) {
+            $$8 = $$9;
          }
       }
-   }
 
-   private static <T extends dpi> void a(gfp<T> $$0, T $$1, float $$2, ezz $$3, gdp $$4) {
-      dbz $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = gdn.a($$5, $$1.ay_());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, gor.d);
-   }
-
-   public <E extends dpi> boolean a(E $$0, ezz $$1, gdp $$2, int $$3, int $$4) {
-      gfp<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
-      }
-   }
-
-   private static void a(dpi $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable dbz $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(aup $$0) {
-      gfq.a $$1 = new gfq.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = gfr.a($$1);
+      this.c.e = $$7;
+      this.c.g = $$8;
+      fae $$10 = a.a($$3, gdy::c);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

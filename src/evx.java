@@ -1,17 +1,20 @@
 public interface evx {
-   static evx a() {
-      return ewc.a;
-   }
+   evx a = ($$0, $$1) -> false;
+   evx b = ($$0, $$1) -> !$$0 && !$$1;
+   evx c = ($$0, $$1) -> $$1 && !$$0;
+   evx d = ($$0, $$1) -> !$$0;
+   evx e = ($$0, $$1) -> $$0 && !$$1;
+   evx f = ($$0, $$1) -> !$$1;
+   evx g = ($$0, $$1) -> $$0 != $$1;
+   evx h = ($$0, $$1) -> !$$0 || !$$1;
+   evx i = ($$0, $$1) -> $$0 && $$1;
+   evx j = ($$0, $$1) -> $$0 == $$1;
+   evx k = ($$0, $$1) -> $$1;
+   evx l = ($$0, $$1) -> !$$0 || $$1;
+   evx m = ($$0, $$1) -> $$0;
+   evx n = ($$0, $$1) -> $$0 || !$$1;
+   evx o = ($$0, $$1) -> $$0 || $$1;
+   evx p = ($$0, $$1) -> true;
 
-   static evx a(bsv $$0) {
-      return new ewc($$0);
-   }
-
-   boolean b();
-
-   boolean a(ewl var1, iz var2, boolean var3);
-
-   boolean a(cul var1);
-
-   boolean a(enw var1, enw var2);
+   boolean apply(boolean var1, boolean var2);
 }

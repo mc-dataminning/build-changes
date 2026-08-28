@@ -1,41 +1,22 @@
-import com.google.common.collect.ImmutableSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 
-public class cdm extends cea<btq> {
-   private static final int a = 200;
-   private static final int c = 599;
+public class cdm extends cdv {
+   public static final float a = 10.0F;
 
-   public cdm() {
-      this(200);
+   @Override
+   protected boolean a(btr $$0, btr $$1) {
+      return !$$0.dS().a(ccv.U) && ceb.c($$0, $$1) && chb.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   public cdm(int $$0) {
-      super($$0);
+   private boolean e(btr $$0, btr $$1) {
+      List<UUID> $$2 = $$0.dS().c(ccv.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cz());
    }
 
    @Override
-   protected void a(arf $$0, btq $$1) {
-      a($$1);
-   }
-
-   @Override
-   public Set<ccu<?>> a() {
-      return ImmutableSet.of(ccu.g);
-   }
-
-   public static void a(btq $$0) {
-      Optional<List<btq>> $$1 = $$0.dS().c(ccu.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ak().equals(btb.af));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(btq $$0) {
-      $$0.dS().a(ccu.F, true, 599L);
+   protected ccv<btr> b() {
+      return ccv.B;
    }
 }

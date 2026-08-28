@@ -1,41 +1,9 @@
-import javax.annotation.Nullable;
-
-public class fmk extends fne {
-   @Nullable
-   private fhq a;
-
-   public fmk(xp $$0) {
-      super($$0);
+public class fmk extends fnh {
+   private static ffk<?>[] a(ffl $$0) {
+      return new ffk[]{$$0.P(), $$0.Q()};
    }
 
-   @Override
-   protected void aM_() {
-      this.a = this.c(new fhq(this.n, this.l, this.p, 12));
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.x() / 2, this.o / 2 - 9 / 2);
-      }
-   }
-
-   @Override
-   public boolean aC_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aL_() {
-      return false;
-   }
-
-   @Override
-   public void b(fgs $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.a($$3);
-      this.a($$0);
+   public fmk(fnf $$0, ffl $$1) {
+      super($$0, $$1, xp.c("options.font.title"), a($$1));
    }
 }

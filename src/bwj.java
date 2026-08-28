@@ -1,33 +1,101 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bwj {
-   public static bwu<btq> a(int $$0, float $$1, int $$2) {
-      return byw.a(
-         (Function<byw.b<btq>, ? extends App<byw.c<btq>, byz<btq>>>)($$3 -> $$3.group(
-                  $$3.c(ccu.m), $$3.a(ccu.b), $$3.a(ccu.C), $$3.a(ccu.t), $$3.a(ccu.n), $$3.a(ccu.r), $$3.a(ccu.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.y()
-                           .d($$0xxxx -> $$0xxxx.a(cey.n), $$0xxxx -> true, $$12.dp(), $$2 + 1, ceu.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dn(), (double)$$2))
-                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cey.n), $$0xxxxx -> true, ceu.b.c, $$12.dp(), $$0, $$12.el()))
-                           .or(() -> $$3.<jh>a($$5).map(jh::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(jh.a($$11.af(), $$10xx));
-                              if (!$$10xx.a($$12.dn(), (double)$$2)) {
-                                 $$4.a(new ccx($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class bwj extends bvk<btt> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private iz h;
+   private int i;
+   private int j;
+   private int k;
+
+   public bwj(float $$0) {
+      super(ImmutableMap.of(ccv.w, ccw.a, ccv.m, ccw.b));
+      this.g = $$0;
+   }
+
+   protected boolean a(arf $$0, btt $$1) {
+      return $$1.p_() && this.b($$0, $$1);
+   }
+
+   protected void a(arf $$0, btt $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.z.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
+   }
+
+   protected void b(arf $$0, btt $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   protected boolean c(arf $$0, btt $$1, long $$2) {
+      return $$1.p_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected void d(arf $$0, btt $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.I().a();
+            this.j--;
+            this.k = 5;
+         }
+      }
+   }
+
+   private void a(btt $$0, iz $$1) {
+      $$0.dS().a(ccv.m, new ccy($$1, this.g, 0));
+   }
+
+   private boolean b(arf $$0, btt $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(arf $$0, btt $$1) {
+      iz $$2 = $$1.dp();
+      iz $$3 = $$2.d();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(arf $$0, btt $$1) {
+      return this.a($$0, $$1.dp());
+   }
+
+   private boolean a(arf $$0, iz $$1) {
+      return $$0.a_($$1).a(awp.R);
+   }
+
+   private Optional<iz> a(btt $$0) {
+      return $$0.dS().c(ccv.w);
+   }
+
+   private boolean e(arf $$0, btt $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(arf $$0, btt $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

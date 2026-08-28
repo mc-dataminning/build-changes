@@ -1,6 +1,6 @@
 import java.util.Optional;
 
-public record aii(Optional<ji<bsb>> b, Optional<ji<bsb>> c) implements zw<agw> {
+public record aii(Optional<ji<bsc>> b, Optional<ji<bsc>> c) implements zw<agw> {
    public static final zn<xa, aii> a = zn.a(zl.b(lq.R).a(zl::a), aii::b, zl.b(lq.R).a(zl::a), aii::e, aii::new);
 
    @Override
@@ -12,7 +12,7 @@ public record aii(Optional<ji<bsb>> b, Optional<ji<bsb>> c) implements zw<agw> {
       $$0.a(this);
    }
 
-   public Optional<ji<bsb>> e() {
+   public Optional<ji<bsc>> e() {
       return this.c;
    }
 }

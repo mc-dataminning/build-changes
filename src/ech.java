@@ -1,19 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class ech extends eaz<edw> {
+public class ech extends eba<edw> {
    public ech(Codec<edw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebb<edw> $$0) {
-      azh $$1 = $$0.d();
-      edw $$2 = $$0.f();
-      dcu $$3 = $$0.b();
-      iz $$4 = $$0.e();
-      dua $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      ehp $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(ebc<edw> $$0) {
+      edw $$1 = $$0.f();
+      dcv $$2 = $$0.b();
+      iz $$3 = $$0.e();
+      dse $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dhj) {
+            if (!$$2.u($$3.c())) {
+               return false;
+            }
+
+            dhj.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

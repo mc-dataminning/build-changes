@@ -1,26 +1,128 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface eiu<S extends eil> {
-   eiu<eke> a = a("buried_treasure", eke.d);
-   eiu<ekg> b = a("desert_pyramid", ekg.d);
-   eiu<eki> c = a("end_city", eki.d);
-   eiu<ekr> d = a("fortress", ekr.e);
-   eiu<ekk> e = a("igloo", ekk.d);
-   eiu<ekl> f = a("jigsaw", ekl.g);
-   eiu<ekn> g = a("jungle_temple", ekn.d);
-   eiu<ekp> h = a("mineshaft", ekp.d);
-   eiu<ekt> i = a("nether_fossil", ekt.d);
-   eiu<ekv> j = a("ocean_monument", ekv.d);
-   eiu<ekx> k = a("ocean_ruin", ekx.d);
-   eiu<ekz> l = a("ruined_portal", ekz.d);
-   eiu<elb> m = a("shipwreck", elb.d);
-   eiu<eld> n = a("stronghold", eld.d);
-   eiu<elf> o = a("swamp_hut", elf.d);
-   eiu<elh> p = a("woodland_mansion", elh.d);
+public final class eiu {
+   public static final String a = "INVALID";
+   public static final eiu b = new eiu(null, new dbh(0, 0), 0, new ejb(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final eim d;
+   private final ejb e;
+   private final dbh f;
+   private int g;
+   @Nullable
+   private volatile eie h;
 
-   MapCodec<S> codec();
+   public eiu(eim $$0, dbh $$1, int $$2, ejb $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
+   }
 
-   private static <S extends eil> eiu<S> a(String $$0, MapCodec<S> $$1) {
-      return jv.a(lp.T, $$0, () -> $$1);
+   @Nullable
+   public static eiu a(ejc $$0, us $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         jv<eim> $$4 = $$0.b().d(lq.aJ);
+         eim $$5 = $$4.a(new alf($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            dbh $$6 = new dbh($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            uy $$8 = $$1.c("Children", 10);
+
+            try {
+               ejb $$9 = ejb.a($$8, $$0);
+               if ($$5 instanceof ekw) {
+                  $$9 = ekw.a($$6, $$2, $$9);
+               }
+
+               return new eiu($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
+         }
+      }
+   }
+
+   public eie a() {
+      eie $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
+   }
+
+   public void a(dcv $$0, dct $$1, dub $$2, azh $$3, eie $$4, dbh $$5) {
+      List<eiq> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         eie $$7 = $$6.get(0).f;
+         iz $$8 = $$7.g();
+         iz $$9 = new iz($$8.u(), $$7.i(), $$8.w());
+
+         for (eiq $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public us a(ejc $$0, dbh $$1) {
+      us $$2 = new us();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(lq.aJ).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public dbh c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public eim h() {
+      return this.d;
+   }
+
+   public List<eiq> i() {
+      return this.e.c();
    }
 }

@@ -1,28 +1,39 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class esu extends erv {
-   public static final MapCodec<esu> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(lp.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, esu::new));
-   private final ji<cwp> b;
+public class esu extends erw {
+   static final MapCodec<esu> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(euq.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, esu::new));
+   private final eup b;
 
-   private esu(List<ett> $$0, ji<cwp> $$1) {
+   private esu(List<etu> $$0, eup $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public erx<esu> b() {
-      return ery.F;
+   public Set<etd<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cuq a(cuq $$0, eqj $$1) {
-      $$0.a(km.G, cwr.a, this.b, cwr::b);
+   public ery<esu> b() {
+      return erz.Q;
+   }
+
+   @Override
+   public cur a(cur $$0, eqk $$1) {
+      int $$2 = ayz.a(this.b.a($$1), 0, 4);
+      $$0.b(km.Q, Integer.valueOf($$2));
       return $$0;
    }
 
-   public static erv.a<?> a(ji<cwp> $$0) {
+   public eup c() {
+      return this.b;
+   }
+
+   public static erw.a<?> a(eup $$0) {
       return a($$1 -> new esu($$1, $$0));
    }
 }

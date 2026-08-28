@@ -1,13 +1,13 @@
-public class fek extends fel {
-   private final fbx b;
+public class fek extends fem {
+   private final fea b;
 
-   public fek(fbx $$0, long $$1, xp $$2, Runnable $$3) {
+   public fek(fea $$0, long $$1, xp $$2, Runnable $$3) {
       super($$1, $$2, $$3);
       this.b = $$0;
    }
 
    @Override
-   protected void a(fap $$0, long $$1) throws fcc {
-      $$0.d($$1, this.b.a);
+   protected void a(faq $$0, long $$1) throws fcd {
+      $$0.a($$1, this.b);
    }
 }

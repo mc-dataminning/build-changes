@@ -1,11 +1,31 @@
-public class gkt extends gke<ckj, fvo> {
-   private static final alf a = new alf("textures/entity/illager/ravager.png");
+public class gkt extends gkf<cgb, fvn<cgb>> {
+   private static final alf a = new alf("textures/entity/rabbit/brown.png");
+   private static final alf i = new alf("textures/entity/rabbit/white.png");
+   private static final alf j = new alf("textures/entity/rabbit/black.png");
+   private static final alf k = new alf("textures/entity/rabbit/gold.png");
+   private static final alf l = new alf("textures/entity/rabbit/salt.png");
+   private static final alf m = new alf("textures/entity/rabbit/white_splotched.png");
+   private static final alf n = new alf("textures/entity/rabbit/toast.png");
+   private static final alf o = new alf("textures/entity/rabbit/caerbannog.png");
 
-   public gkt(giy.a $$0) {
-      super($$0, new fvo($$0.a(fxa.bf)), 1.1F);
+   public gkt(giz.a $$0) {
+      super($$0, new fvn<>($$0.a(fxb.be)), 0.3F);
    }
 
-   public alf a(ckj $$0) {
-      return a;
+   public alf a(cgb $$0) {
+      String $$1 = n.a($$0.af().getString());
+      if ("Toast".equals($$1)) {
+         return n;
+      } else {
+         return switch ($$0.gq()) {
+            case a -> a;
+            case b -> i;
+            case c -> j;
+            case e -> k;
+            case f -> l;
+            case d -> m;
+            case g -> o;
+         };
+      }
    }
 }

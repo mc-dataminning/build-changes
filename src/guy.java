@@ -1,13 +1,12 @@
-public class guy implements gva {
+public class guy implements gvb {
    private static final int a = 600;
-   private static final xp b = xp.c("tutorial.punch_tree.title");
-   private static final xp c = xp.a("tutorial.punch_tree.description", guz.a("attack"));
-   private final guz d;
-   private fjq e;
+   private static final xp b = xp.c("tutorial.open_inventory.title");
+   private static final xp c = xp.a("tutorial.open_inventory.description", gva.a("inventory"));
+   private final gva d;
+   private fjr e;
    private int f;
-   private int g;
 
-   public guy(guz $$0) {
+   public guy(gva $$0) {
       this.d = $$0;
    }
 
@@ -15,25 +14,10 @@ public class guy implements gva {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(gvb.f);
+         this.d.a(gvc.f);
       } else {
-         if (this.f == 1) {
-            gcr $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.gc().a(awy.r)) {
-                  this.d.a(gvb.e);
-                  return;
-               }
-
-               if (guv.a($$0)) {
-                  this.d.a(gvb.e);
-                  return;
-               }
-            }
-         }
-
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fjq(fjq.a.c, b, c, true);
+         if (this.f >= 600 && this.e == null) {
+            this.e = new fjr(fjr.a.d, b, c, false);
             this.d.e().ax().a(this.e);
          }
       }
@@ -48,27 +32,7 @@ public class guy implements gva {
    }
 
    @Override
-   public void a(fxw $$0, iz $$1, dsd $$2, float $$3) {
-      boolean $$4 = $$2.a(awp.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(gvb.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
-      }
-   }
-
-   @Override
-   public void a(cuq $$0) {
-      if ($$0.a(awy.r)) {
-         this.d.a(gvb.e);
-      }
+   public void c() {
+      this.d.a(gvc.e);
    }
 }

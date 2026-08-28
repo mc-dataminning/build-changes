@@ -1,9 +1,9 @@
-public class daa extends dab {
-   protected daa(dab.b $$0) {
-      super($$0);
+public class daa extends dac {
+   public daa() {
+      super(dac.a(awy.bR, 10, 5, dac.a(1, 11), dac.a(21, 11), 1, cpn.a(cpp.c), btd.a));
    }
 
-   public static boolean a(cuq $$0, int $$1, azh $$2) {
-      return $$0.g() instanceof csf && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   public static float a(int $$0, float $$1) {
+      return $$1 * (float)$$0;
    }
 }

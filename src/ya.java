@@ -1,7 +1,7 @@
 import java.util.UUID;
 
-public record ya(UUID a, cna b) {
-   public static ya a(cna $$0) {
+public record ya(UUID a, cnb b) {
+   public static ya a(cnb $$0) {
       return new ya(UUID.randomUUID(), $$0);
    }
 
@@ -17,7 +17,7 @@ public record ya(UUID a, cna b) {
       return this.a;
    }
 
-   public cna c() {
+   public cnb c() {
       return this.b;
    }
 }

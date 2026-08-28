@@ -1,16 +1,6 @@
 public enum dsz implements azu {
-   a(je.a),
-   b(je.b);
-
-   private final je c;
-
-   private dsz(final je $$0) {
-      this.c = $$0;
-   }
-
-   public je a() {
-      return this.c;
-   }
+   a,
+   b;
 
    @Override
    public String toString() {
@@ -19,10 +9,6 @@ public enum dsz implements azu {
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dsz b() {
-      return this == a ? b : a;
+      return this == a ? "left" : "right";
    }
 }

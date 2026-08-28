@@ -1,58 +1,42 @@
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fcw extends gvh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gvi b = new gvi(Duration.ofSeconds(5L));
-   private final List<feg> c;
-   private final fne B;
-   private final fkw C = fkw.d();
-   private volatile xp D;
-   @Nullable
-   private fhu E;
+public class fcw extends gvi {
+   static final xp b = xp.c("mco.warning");
+   static final xp c = xp.c("mco.info");
+   private final fcw.a B;
+   private final xp C;
+   private final xp D;
+   protected final BooleanConsumer a;
+   private final boolean E;
 
-   public fcw(fne $$0, feg... $$1) {
-      super(fey.a);
-      this.B = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
+   public fcw(BooleanConsumer $$0, fcw.a $$1, xp $$2, xp $$3, boolean $$4) {
+      super(fez.a);
+      this.a = $$0;
+      this.B = $$1;
+      this.C = $$2;
+      this.D = $$3;
+      this.E = $$4;
+   }
+
+   @Override
+   public void aM_() {
+      if (this.E) {
+         this.c(fhg.a(xo.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(8), 100, 20).a());
+         this.c(fhg.a(xo.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(8), 100, 20).a());
       } else {
-         this.D = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (feg $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
-
-               $$1x.run();
-               if ($$1x.d()) {
-                  return;
-               }
-            }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new fca(a));
-         $$3.start();
+         this.c(fhg.a(xo.h, $$0 -> this.a.accept(true)).a(this.n / 2 - 50, g(8), 100, 20).a());
       }
    }
 
    @Override
-   public void e() {
-      super.e();
-      if (this.E != null) {
-         b.a(this.m.aX(), this.E.y());
-      }
+   public xp i() {
+      return xo.b(this.B.d, this.C, this.D);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.f();
+         this.a.accept(false);
          return true;
       } else {
          return super.a($$0, $$1, $$2);
@@ -60,36 +44,23 @@ public class fcw extends gvh {
    }
 
    @Override
-   public void aM_() {
-      this.C.c().b();
-      this.E = new fhu(this.p, this.D);
-      this.C.a(this.E, $$0 -> $$0.e(30));
-      this.C.a(fhf.a(xo.e, $$0 -> this.f()).a());
-      this.C.a($$1 -> {
-         fhd var10000 = this.c($$1);
-      });
-      this.c();
+   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.B.d, this.n / 2, g(2), this.B.c);
+      $$0.a(this.p, this.C, this.n / 2, g(4), -1);
+      $$0.a(this.p, this.D, this.n / 2, g(6), -1);
    }
 
-   @Override
-   protected void c() {
-      this.C.a();
-      fkq.a(this.C, this.G());
-   }
+   public static enum a {
+      a(fcw.b, -65536),
+      b(fcw.c, 8226750);
 
-   protected void f() {
-      for (feg $$0 : this.c) {
-         $$0.b();
+      public final int c;
+      public final xp d;
+
+      private a(final xp $$0, final int $$1) {
+         this.d = $$0;
+         this.c = $$1;
       }
-
-      this.m.a(this.B);
-   }
-
-   public void a(xp $$0) {
-      if (this.E != null) {
-         this.E.b($$0);
-      }
-
-      this.D = $$0;
    }
 }

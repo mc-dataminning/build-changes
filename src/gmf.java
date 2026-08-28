@@ -1,17 +1,9 @@
-public class gmf extends gjp<cky, fwu<cky>> {
-   private static final alf a = new alf("textures/entity/zombie_villager/zombie_villager.png");
-
-   public gmf(giy.a $$0) {
-      super($$0, new fwu<>($$0.a(fxa.ck)), 0.5F);
-      this.a(new gna<>(this, new fwu($$0.a(fxa.cl)), new fwu($$0.a(fxa.cm)), $$0.g()));
-      this.a(new gnv<>(this, $$0.e(), "zombie_villager"));
+public class gmf extends ghu<cky, fwu<cky>> {
+   public gmf(giz.a $$0) {
+      this($$0, fxb.cf, fxb.ci, fxb.cj);
    }
 
-   public alf a(cky $$0) {
-      return a;
-   }
-
-   protected boolean b(cky $$0) {
-      return super.a($$0) || $$0.gA();
+   public gmf(giz.a $$0, fxa $$1, fxa $$2, fxa $$3) {
+      super($$0, new fwu<>($$0.a($$1)), new fwu<>($$0.a($$2)), new fwu<>($$0.a($$3)));
    }
 }

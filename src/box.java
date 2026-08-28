@@ -1,13 +1,29 @@
-public interface box {
-   void a();
+public class box implements boy {
+   public static final boy a = new box();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bnj f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bnk f() {
+      return bnh.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

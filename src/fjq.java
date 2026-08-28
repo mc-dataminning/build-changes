@@ -1,84 +1,151 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fjq implements fjo {
-   private static final alf g = new alf("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final fjq.a h;
-   private final xp i;
-   @Nullable
-   private final xp j;
-   private fjo.a k = fjo.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+public class fjq {
+   private static final int a = 5;
+   private static final int b = -1;
+   final ffh c;
+   private final List<fjq.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fjp> f = Queues.newArrayDeque();
 
-   public fjq(fjq.a $$0, xp $$1, @Nullable xp $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   public fjq(ffh $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public fjo.a a(fgs $$0, fjp $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+   public void a(fgt $$0) {
+      if (!this.c.m.Y) {
+         int $$1 = $$0.a();
+         this.d.removeIf($$2 -> {
+            if ($$2 != null && $$2.a($$1, $$0)) {
+               this.e.clear($$2.d, $$2.d + $$2.e);
+               return true;
+            } else {
+               return false;
+            }
+         });
+         if (!this.f.isEmpty() && this.d() > 0) {
+            this.f.removeIf($$0x -> {
+               int $$1x = $$0x.f();
+               int $$2 = this.a($$1x);
+               if ($$2 != -1) {
+                  this.d.add(new fjq.a<>($$0x, $$2, $$1x));
+                  this.e.set($$2, $$2 + $$1x);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      if (this.d() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
       }
 
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = ayz.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
+      return -1;
+   }
+
+   private int d() {
+      return 5 - this.e.cardinality();
+   }
+
+   @Nullable
+   public <T extends fjp> T a(Class<? extends T> $$0, Object $$1) {
+      for (fjq.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
+            return (T)$$2.a();
+         }
+      }
+
+      for (fjp $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
+            return (T)$$3;
+         }
+      }
+
+      return null;
+   }
+
+   public void a() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
+
+   public void a(fjp $$0) {
+      this.f.add($$0);
+   }
+
+   public ffh b() {
+      return this.c;
+   }
+
+   public double c() {
+      return this.c.m.B().c();
+   }
+
+   class a<T extends fjp> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private fjp.a h = fjp.a.a;
+
+      a(final T $$0, final int $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      private float a(long $$0) {
+         float $$1 = ayz.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         return this.h == fjp.a.b ? 1.0F - $$1 : $$1;
+      }
+
+      public boolean a(int $$0, fgt $$1) {
+         long $$2 = ac.c();
+         if (this.f == -1L) {
+            this.f = $$2;
+            this.h.a(fjq.this.c.aj());
          }
 
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
+         if (this.h == fjp.a.a && $$2 - this.f <= 600L) {
+            this.g = $$2;
+         }
 
-      return this.k;
-   }
+         $$1.c().a();
+         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
+         fjp.a $$3 = this.c.a($$1, fjq.this, $$2 - this.g);
+         $$1.c().b();
+         if ($$3 != this.h) {
+            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
+            this.h = $$3;
+            this.h.a(fjq.this.c.aj());
+         }
 
-   public void c() {
-      this.k = fjo.a.b;
-   }
-
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new alf("toast/movement_keys")),
-      b(new alf("toast/mouse")),
-      c(new alf("toast/tree")),
-      d(new alf("toast/recipe_book")),
-      e(new alf("toast/wooden_planks")),
-      f(new alf("toast/social_interactions")),
-      g(new alf("toast/right_click"));
-
-      private final alf h;
-
-      private a(final alf $$0) {
-         this.h = $$0;
-      }
-
-      public void a(fgs $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
+         return this.h == fjp.a.b && $$2 - this.f > 600L;
       }
    }
 }

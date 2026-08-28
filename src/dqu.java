@@ -1,215 +1,127 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dqu extends dpi {
-   private static final String b = "profile";
-   private static final String c = "note_block_sound";
-   private static final String d = "custom_name";
-   private static final Logger e = LogUtils.getLogger();
+public class dqu {
+   private static final Codec<xp[]> c = xr.g
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ac.a($$0, 4).map($$0x -> new xp[]{(xp)$$0x.get(0), (xp)$$0x.get(1), (xp)$$0x.get(2), (xp)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dqu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dqu::d),
+               ctk.q.fieldOf("color").orElse(ctk.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dqu::a)
+   );
+   public static final int b = 4;
+   private final xp[] d;
+   private final xp[] e;
+   private final ctk f;
+   private final boolean g;
    @Nullable
-   private static Executor f;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> g;
-   @Nullable
-   private static LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> h;
-   public static final Executor a = $$0 -> {
-      Executor $$1 = f;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private cxs i;
-   @Nullable
-   private alf j;
-   private int k;
-   private boolean l;
-   @Nullable
-   private xp m;
+   private ayl[] h;
+   private boolean i;
 
-   public dqu(iz $$0, dsd $$1) {
-      super(dpk.p, $$0, $$1);
+   public dqu() {
+      this(c(), c(), ctk.p, false);
    }
 
-   public static void a(final alz $$0, Executor $$1) {
-      f = $$1;
-      final BooleanSupplier $$2 = () -> h == null;
-      g = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return dqu.a($$0, $$0);
-            }
-         });
-      h = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<UUID, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(UUID $$0x) {
-               return dqu.a($$0, $$0, $$2);
-            }
-         });
+   public dqu(xp[] $$0, xp[] $$1, ctk $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, alz $$1) {
-      return $$1.f()
-         .b($$0)
-         .thenCompose(
-            $$0x -> {
-               LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1x = h;
-               return $$1x != null && !$$0x.isEmpty()
-                  ? ((CompletableFuture)$$1x.getUnchecked(((GameProfile)$$0x.get()).getId())).thenApply($$1xx -> $$1xx.or(() -> $$0x))
-                  : CompletableFuture.completedFuture(Optional.empty());
-            }
-         );
+   private static xp[] c() {
+      return new xp[]{xo.a, xo.a, xo.a, xo.a};
    }
 
-   static CompletableFuture<Optional<GameProfile>> a(UUID $$0, alz $$1, BooleanSupplier $$2) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$2.getAsBoolean()) {
-            return Optional.empty();
-         } else {
-            ProfileResult $$3 = $$1.c().fetchProfile($$0, true);
-            return Optional.ofNullable($$3).map(ProfileResult::profile);
-         }
-      }, ac.g());
+   private static dqu a(xp[] $$0, Optional<xp[]> $$1, ctk $$2, boolean $$3) {
+      return new dqu($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   public static void b() {
-      f = null;
-      g = null;
-      h = null;
+   public boolean a() {
+      return this.g;
    }
 
-   @Override
-   protected void b(us $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      if (this.i != null) {
-         $$0.a("profile", (vp)cxs.a.encodeStart(vg.a, this.i).getOrThrow());
-      }
-
-      if (this.j != null) {
-         $$0.a("note_block_sound", this.j.toString());
-      }
-
-      if (this.m != null) {
-         $$0.a("custom_name", xp.a.a(this.m, $$1));
-      }
+   public dqu a(boolean $$0) {
+      return $$0 == this.g ? this : new dqu(this.d, this.e, this.f, $$0);
    }
 
-   @Override
-   protected void a(us $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.e("profile")) {
-         cxs.a.parse(vg.a, $$0.c("profile")).resultOrPartial($$0x -> e.error("Failed to load profile from player head: {}", $$0x)).ifPresent(this::a);
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.j = alf.a($$0.l("note_block_sound"));
-      }
-
-      if ($$0.b("custom_name", 8)) {
-         this.m = xp.a.a($$0.l("custom_name"), $$1);
-      } else {
-         this.m = null;
-      }
+   public ctk b() {
+      return this.f;
    }
 
-   public static void a(dbz $$0, iz $$1, dsd $$2, dqu $$3) {
-      if ($$2.b(dmc.a) && $$2.c(dmc.a)) {
-         $$3.l = true;
-         $$3.k++;
-      } else {
-         $$3.l = false;
-      }
+   public dqu a(ctk $$0) {
+      return $$0 == this.b() ? this : new dqu(this.d, this.e, $$0, this.g);
    }
 
-   public float a(float $$0) {
-      return this.l ? (float)this.k + $$0 : (float)this.k;
+   public xp a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
    }
 
-   @Nullable
-   public cxs c() {
-      return this.i;
+   public dqu a(int $$0, xp $$1) {
+      return this.a($$0, $$1, $$1);
    }
 
-   @Nullable
-   public alf d() {
-      return this.j;
+   public dqu a(int $$0, xp $$1, xp $$2) {
+      xp[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      xp[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dqu($$3, $$4, this.f, this.g);
    }
 
-   public acp f() {
-      return acp.a(this);
+   public boolean a(cmz $$0) {
+      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
    }
 
-   @Override
-   public us a(jk.a $$0) {
-      return this.e($$0);
+   public xp[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
    }
 
-   public void a(@Nullable cxs $$0) {
-      synchronized (this) {
+   public ayl[] a(boolean $$0, Function<xp, ayl> $$1) {
+      if (this.h == null || this.i != $$0) {
          this.i = $$0;
+         this.h = new ayl[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+         }
       }
 
-      this.j();
+      return this.h;
    }
 
-   private void j() {
-      if (this.i != null && !this.i.b()) {
-         this.i.a().thenAcceptAsync($$0 -> {
-            this.i = $$0;
-            this.e();
-         }, a);
-      } else {
-         this.e();
+   private Optional<xp[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
       }
+
+      return Optional.empty();
    }
 
-   public static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = g;
-      return $$1 != null && azv.f($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
+   public boolean b(cmz $$0) {
+      for (xp $$1 : this.b($$0.Y())) {
+         ym $$2 = $$1.a();
+         xn $$3 = $$2.h();
+         if ($$3 != null && $$3.a() == xn.a.c) {
+            return true;
+         }
+      }
 
-   public static CompletableFuture<Optional<GameProfile>> a(UUID $$0) {
-      LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1 = h;
-      return $$1 != null ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
-
-   @Override
-   protected void a(dpi.b $$0) {
-      super.a($$0);
-      this.a($$0.a(km.V));
-      this.j = $$0.a(km.W);
-      this.m = $$0.a(km.g);
-   }
-
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(km.V, this.i);
-      $$0.a(km.W, this.j);
-      $$0.a(km.g, this.m);
-   }
-
-   @Override
-   public void a(us $$0) {
-      super.a($$0);
-      $$0.r("profile");
-      $$0.r("note_block_sound");
-      $$0.r("custom_name");
+      return false;
    }
 }

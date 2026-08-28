@@ -1,43 +1,36 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class dwt<T extends dwy> {
-   private final T a;
-   @Nullable
-   private kb b;
+public class dwt implements dxb {
+   public static final MapCodec<dwt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(iz.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dwt::new));
+   public static final zn<ByteBuf, dwt> b = zn.a(iz.b, $$0 -> $$0.e, dwt::new);
+   private final iz e;
 
-   public dwt(T $$0) {
-      this.a = $$0;
+   public dwt(iz $$0) {
+      this.e = $$0;
    }
 
-   public void a(arf $$0) {
-      this.c($$0);
+   @Override
+   public Optional<evt> a(dca $$0) {
+      return Optional.of(evt.b(this.e));
    }
 
-   public T a() {
-      return this.a;
+   @Override
+   public dxc<dwt> a() {
+      return dxc.a;
    }
 
-   public void b(arf $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
+   public static class a implements dxc<dwt> {
+      @Override
+      public MapCodec<dwt> a() {
+         return dwt.a;
+      }
 
-   public void c(arf $$0) {
-      this.a.a().a($$0).map(kb::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(dcc $$0, @Nullable kb $$1, Consumer<dwz> $$2) {
-      if ($$1 != null) {
-         dtz $$3 = $$0.a($$1.a(), $$1.c(), duy.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
+      @Override
+      public zn<ByteBuf, dwt> b() {
+         return dwt.b;
       }
    }
 }

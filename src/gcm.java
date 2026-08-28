@@ -1,22 +1,26 @@
-public class gcm extends fzv {
+public class gcm extends fzw {
    private static final int a = 12235202;
 
-   protected gcm(fxw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gby $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   protected gcm(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbz $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)ayj.b.b(12235202) / 255.0F;
+      this.w = (float)ayj.b.c(12235202) / 255.0F;
+      this.x = (float)ayj.b.d(12235202) / 255.0F;
    }
 
-   public static class a implements gbg<lm> {
-      private final gby a;
+   public static class a implements gbh<lm> {
+      private final gbz a;
 
-      public a(gby $$0) {
+      public a(gbz $$0) {
          this.a = $$0;
       }
 
-      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcm($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azh $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gcm($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
    }
 }

@@ -1,29 +1,139 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public record cex(Set<dsd> b, int c, int d) {
-   public static final Predicate<ji<cex>> a = $$0 -> false;
+public class cex {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<cew> b = new Short2ObjectOpenHashMap();
+   private final Map<ji<cey>, Set<cew>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public cex(Set<dsd> b, int c, int d) {
-      b = Set.copyOf(b);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   public static Codec<cex> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     RecordCodecBuilder.point($$0),
+                     Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter($$0xx -> $$0xx.e),
+                     cew.a($$0).listOf().fieldOf("Records").forGetter($$0xx -> ImmutableList.copyOf($$0xx.b.values()))
+                  )
+                  .apply($$1, cex::new)
+         )
+         .orElseGet(ac.a("Failed to read POI section: ", a::error), () -> new cex($$0, false, ImmutableList.of()));
    }
 
-   public boolean a(dsd $$0) {
-      return this.b.contains($$0);
+   public cex(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   public Set<dsd> a() {
-      return this.b;
+   private cex(Runnable $$0, boolean $$1, List<cew> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
    }
 
-   public int b() {
-      return this.c;
+   public Stream<cew> a(Predicate<ji<cey>> $$0, cev.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((ji<cey>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
    }
 
-   public int c() {
-      return this.d;
+   public void a(iz $$0, ji<cey> $$1) {
+      if (this.a(new cew($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
+         this.d.run();
+      }
+   }
+
+   private boolean a(cew $$0) {
+      iz $$1 = $$0.f();
+      ji<cey> $$2 = $$0.g();
+      short $$3 = kb.b($$1);
+      cew $$4 = (cew)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.g())) {
+            return false;
+         }
+
+         ac.a("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
+   }
+
+   public void a(iz $$0) {
+      cew $$1 = (cew)this.b.remove(kb.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.g()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::g), LogUtils.defer($$1::f));
+         this.d.run();
+      }
+   }
+
+   @Deprecated
+   @bad
+   public int b(iz $$0) {
+      return this.e($$0).map(cew::a).orElse(0);
+   }
+
+   public boolean c(iz $$0) {
+      cew $$1 = (cew)this.b.get(kb.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.c();
+         this.d.run();
+         return $$2;
+      }
+   }
+
+   public boolean a(iz $$0, Predicate<ji<cey>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
+   }
+
+   public Optional<ji<cey>> d(iz $$0) {
+      return this.e($$0).map(cew::g);
+   }
+
+   private Optional<cew> e(iz $$0) {
+      return Optional.ofNullable((cew)this.b.get(kb.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<iz, ji<cey>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<cew> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.b();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = kb.b($$1x);
+            cew $$4 = (cew)$$1.computeIfAbsent($$3, $$2x -> new cew($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
+      }
+   }
+
+   private void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean a() {
+      return this.e;
    }
 }

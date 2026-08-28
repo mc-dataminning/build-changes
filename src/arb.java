@@ -1,4 +1,4 @@
-public abstract class arb extends eni {
+public abstract class arb extends enj {
    protected arb(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

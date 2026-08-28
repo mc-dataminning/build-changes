@@ -1,34 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlk extends dfa implements dfd {
-   public static final MapCodec<dlk> a = b(dlk::new);
+public abstract class dlk extends dhe {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final ewm h = dfb.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ewm i = dfb.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ewm j = dfb.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dlk> a() {
-      return a;
-   }
-
-   public dlk(dsc.d $$0) {
+   protected dlk(dsd.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(dcc $$0, iz $$1, dsd $$2) {
-      return $$0.a_($$1.d()).i();
+   protected abstract MapCodec<? extends dlk> a();
+
+   @Override
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
    }
 
    @Override
-   public boolean a(dbz $$0, azh $$1, iz $$2, dsd $$3) {
-      return true;
+   protected dse a(dse $$0, dlo $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public void a(arf $$0, azh $$1, iz $$2, dsd $$3) {
-      $$0.b($$2.d(), dfc.sG.o());
+   protected dse a(dse $$0, djy $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
    }
 
    @Override
-   public iz a(iz $$0) {
-      return $$0.d();
+   protected boolean a(dse $$0, eom $$1) {
+      return false;
    }
 }

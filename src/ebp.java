@@ -1,195 +1,154 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebp extends eaz<edg> {
-   public ebp(Codec<edg> $$0) {
+@Deprecated
+public class ebp extends eba<ebp.a> {
+   private static final dse a = dfd.nc.o();
+
+   public ebp(Codec<ebp.a> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebb<edg> $$0) {
-      dcu $$1 = $$0.b();
-      iz $$2 = $$0.e();
-      edg $$3 = $$0.f();
-      azh $$4 = $$0.d();
-      if (!eav.a($$1, $$2)) {
+   public boolean a(ebc<ebp.a> $$0) {
+      iz $$1 = $$0.e();
+      dcv $$2 = $$0.b();
+      azh $$3 = $$0.d();
+      ebp.a $$4 = $$0.f();
+      if ($$1.v() <= $$2.I_() + 4) {
          return false;
       } else {
-         Optional<dxl> $$5 = dxl.a($$1, $$2, $$3.b, eav::c, eav::a);
-         if (!$$5.isEmpty() && $$5.get() instanceof dxl.b) {
-            dxl.b $$6 = (dxl.b)$$5.get();
-            if ($$6.g() < 4) {
-               return false;
-            } else {
-               int $$7 = (int)((float)$$6.g() * $$3.e);
-               int $$8 = ayz.a($$7, $$3.c.a(), $$3.c.b());
-               int $$9 = ayz.b($$4, $$3.c.a(), $$8);
-               ebp.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
-               ebp.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
-               ebp.b $$12;
-               if ($$10.a($$3) && $$11.a($$3)) {
-                  $$12 = new ebp.b($$2.v(), $$4, $$3.h);
-               } else {
-                  $$12 = ebp.b.a();
-               }
+         $$1 = $$1.c(4);
+         boolean[] $$5 = new boolean[2048];
+         int $$6 = $$3.a(4) + 4;
 
-               boolean $$14 = $$10.a($$1, $$12);
-               boolean $$15 = $$11.a($$1, $$12);
-               if ($$14) {
-                  $$10.a($$1, $$4, $$12);
-               }
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            double $$8 = $$3.j() * 6.0 + 3.0;
+            double $$9 = $$3.j() * 4.0 + 2.0;
+            double $$10 = $$3.j() * 6.0 + 3.0;
+            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
+            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
+            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
 
-               if ($$15) {
-                  $$11.a($$1, $$4, $$12);
-               }
-
-               return true;
-            }
-         } else {
-            return false;
-         }
-      }
-   }
-
-   private static ebp.a a(iz $$0, boolean $$1, azh $$2, int $$3, bpy $$4, bpy $$5) {
-      return new ebp.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
-   }
-
-   private void a(dcu $$0, iz $$1, dxl.b $$2, ebp.b $$3) {
-      $$0.a($$3.a($$1.h($$2.e() - 1)), dfc.cz.o(), 2);
-      $$0.a($$3.a($$1.h($$2.f() + 1)), dfc.ch.o(), 2);
-
-      for (iz.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(je.b)) {
-         iz $$5 = $$3.a($$4);
-         if (eav.a($$0, $$5) || $$0.a_($$5).a(dfc.su)) {
-            $$0.a($$5, dfc.gM.o(), 2);
-         }
-      }
-   }
-
-   static final class a {
-      private iz a;
-      private final boolean b;
-      private int c;
-      private final double d;
-      private final double e;
-
-      a(iz $$0, boolean $$1, int $$2, double $$3, double $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      private int a() {
-         return this.a(0.0F);
-      }
-
-      private int b() {
-         return this.b ? this.a.v() : this.a.v() - this.a();
-      }
-
-      private int c() {
-         return !this.b ? this.a.v() : this.a.v() + this.a();
-      }
-
-      boolean a(dcu $$0, ebp.b $$1) {
-         while (this.c > 1) {
-            iz.a $$2 = this.a.j();
-            int $$3 = Math.min(10, this.a());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               if ($$0.a_($$2).a(dfc.H)) {
-                  return false;
-               }
-
-               if (eav.a($$0, $$1.a($$2), this.c)) {
-                  this.a = $$2;
-                  return true;
-               }
-
-               $$2.c(this.b ? je.a : je.b);
-            }
-
-            this.c /= 2;
-         }
-
-         return false;
-      }
-
-      private int a(float $$0) {
-         return (int)eav.a((double)$$0, (double)this.c, this.e, this.d);
-      }
-
-      void a(dcu $$0, azh $$1, ebp.b $$2) {
-         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
-            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
-               float $$5 = ayz.c((float)($$3 * $$3 + $$4 * $$4));
-               if (!($$5 > (float)this.c)) {
-                  int $$6 = this.a($$5);
-                  if ($$6 > 0) {
-                     if ((double)$$1.i() < 0.2) {
-                        $$6 = (int)((float)$$6 * ayz.b($$1, 0.8F, 1.0F));
-                     }
-
-                     iz.a $$7 = this.a.b($$3, 0, $$4).j();
-                     boolean $$8 = false;
-                     int $$9 = this.b ? $$0.a(dxv.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
-
-                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
-                        iz $$11 = $$2.a($$7);
-                        if (eav.b($$0, $$11)) {
-                           $$8 = true;
-                           dfa $$12 = dfc.su;
-                           $$0.a($$11, $$12.o(), 2);
-                        } else if ($$8 && $$0.a_($$11).a(awp.be)) {
-                           break;
-                        }
-
-                        $$7.c(this.b ? je.b : je.a);
+            for (int $$14 = 1; $$14 < 15; $$14++) {
+               for (int $$15 = 1; $$15 < 15; $$15++) {
+                  for (int $$16 = 1; $$16 < 7; $$16++) {
+                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
+                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
+                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
+                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
+                     if ($$20 < 1.0) {
+                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
                      }
                   }
                }
             }
          }
-      }
 
-      boolean a(edg $$0) {
-         return this.c >= $$0.i && this.d >= (double)$$0.j;
+         dse $$21 = $$4.a().a($$3, $$1);
+
+         for (int $$22 = 0; $$22 < 16; $$22++) {
+            for (int $$23 = 0; $$23 < 16; $$23++) {
+               for (int $$24 = 0; $$24 < 8; $$24++) {
+                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
+                     && (
+                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
+                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
+                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
+                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
+                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
+                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
+                     );
+                  if ($$25) {
+                     dse $$26 = $$2.a_($$1.b($$22, $$24, $$23));
+                     if ($$24 >= 4 && $$26.k()) {
+                        return false;
+                     }
+
+                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
+                        return false;
+                     }
+                  }
+               }
+            }
+         }
+
+         for (int $$27 = 0; $$27 < 16; $$27++) {
+            for (int $$28 = 0; $$28 < 16; $$28++) {
+               for (int $$29 = 0; $$29 < 8; $$29++) {
+                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
+                     iz $$30 = $$1.b($$27, $$29, $$28);
+                     if (this.c($$2.a_($$30))) {
+                        boolean $$31 = $$29 >= 4;
+                        $$2.a($$30, $$31 ? a : $$21, 2);
+                        if ($$31) {
+                           $$2.a($$30, a.b(), 0);
+                           this.a($$2, $$30);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         dse $$32 = $$4.b().a($$3, $$1);
+         if (!$$32.i()) {
+            for (int $$33 = 0; $$33 < 16; $$33++) {
+               for (int $$34 = 0; $$34 < 16; $$34++) {
+                  for (int $$35 = 0; $$35 < 8; $$35++) {
+                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
+                        && (
+                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
+                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
+                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
+                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
+                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
+                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
+                        );
+                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
+                        dse $$37 = $$2.a_($$1.b($$33, $$35, $$34));
+                        if ($$37.e() && !$$37.a(awp.bP)) {
+                           iz $$38 = $$1.b($$33, $$35, $$34);
+                           $$2.a($$38, $$32, 2);
+                           this.a($$2, $$38);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         if ($$21.u().a(awv.a)) {
+            for (int $$39 = 0; $$39 < 16; $$39++) {
+               for (int $$40 = 0; $$40 < 16; $$40++) {
+                  int $$41 = 4;
+                  iz $$42 = $$1.b($$39, 4, $$40);
+                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
+                     $$2.a($$42, dfd.dO.o(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
       }
    }
 
-   static final class b {
-      private final int a;
-      @Nullable
-      private final evs b;
+   private boolean c(dse $$0) {
+      return !$$0.a(awp.bO);
+   }
 
-      b(int $$0, azh $$1, bpy $$2) {
-         this.a = $$0;
-         float $$3 = $$2.a($$1);
-         float $$4 = ayz.b($$1, 0.0F, (float) Math.PI);
-         this.b = new evs((double)(ayz.b($$4) * $$3), 0.0, (double)(ayz.a($$4) * $$3));
+   public static record a(eff b, eff c) implements ede {
+      public static final Codec<ebp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eff.a.fieldOf("fluid").forGetter(ebp.a::a), eff.a.fieldOf("barrier").forGetter(ebp.a::b)).apply($$0, ebp.a::new)
+      );
+
+      public eff a() {
+         return this.b;
       }
 
-      private b() {
-         this.a = 0;
-         this.b = null;
-      }
-
-      static ebp.b a() {
-         return new ebp.b();
-      }
-
-      iz a(iz $$0) {
-         if (this.b == null) {
-            return $$0;
-         } else {
-            int $$1 = this.a - $$0.v();
-            evs $$2 = this.b.a((double)$$1);
-            return $$0.b(ayz.a($$2.c), 0, ayz.a($$2.e));
-         }
+      public eff b() {
+         return this.c;
       }
    }
 }

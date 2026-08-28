@@ -1,218 +1,103 @@
 import com.mojang.logging.LogUtils;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fxs extends dud {
-   static final Logger a = LogUtils.getLogger();
-   private final duj b;
-   private final enl c;
-   volatile fxs.a d;
-   final fxw e;
-
-   public fxs(fxw $$0, int $$1) {
-      this.e = $$0;
-      this.b = new duf($$0, new dbg(0, 0), $$0.H_().d(lq.az).g(ddf.b));
-      this.c = new enl(this, true, $$0.D_().g());
-      this.d = new fxs.a(b($$1));
-   }
-
-   @Override
-   public enl p() {
-      return this.c;
-   }
-
-   private static boolean a(@Nullable duj $$0, int $$1, int $$2) {
-      if ($$0 == null) {
-         return false;
-      } else {
-         dbg $$3 = $$0.f();
-         return $$3.e == $$1 && $$3.f == $$2;
-      }
-   }
-
-   public void a(dbg $$0) {
-      if (this.d.b($$0.e, $$0.f)) {
-         int $$1 = this.d.a($$0.e, $$0.f);
-         duj $$2 = this.d.a($$1);
-         if (a($$2, $$0.e, $$0.f)) {
-            this.d.a($$1, $$2, null);
-         }
-      }
-   }
-
+public class fxs {
+   private static final Logger a = LogUtils.getLogger();
+   private final ffh b;
+   private final guk c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
    @Nullable
-   public duj b(int $$0, int $$1, duy $$2, boolean $$3) {
-      if (this.d.b($$0, $$1)) {
-         duj $$4 = this.d.a(this.d.a($$0, $$1));
-         if (a($$4, $$0, $$1)) {
-            return $$4;
-         }
-      }
-
-      return $$3 ? this.b : null;
-   }
-
-   @Override
-   public dbf q() {
-      return this.e;
-   }
-
-   public void a(int $$0, int $$1, wm $$2) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-      } else {
-         int $$3 = this.d.a($$0, $$1);
-         duj $$4 = this.d.b.get($$3);
-         if (!a($$4, $$0, $$1)) {
-            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
-         } else {
-            $$4.a($$2);
-         }
-      }
-   }
-
+   private fxs.a f;
    @Nullable
-   public duj a(int $$0, int $$1, wm $$2, us $$3, Consumer<adt.b> $$4) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-         return null;
-      } else {
-         int $$5 = this.d.a($$0, $$1);
-         duj $$6 = this.d.b.get($$5);
-         dbg $$7 = new dbg($$0, $$1);
-         if (!a($$6, $$0, $$1)) {
-            $$6 = new duj(this.e, $$7);
-            $$6.a($$2, $$3, $$4);
-            this.d.a($$5, $$6);
-         } else {
-            $$6.a($$2, $$3, $$4);
-         }
+   private af g;
 
-         this.e.a($$7);
-         return $$6;
-      }
+   public fxs(ffh $$0, guk $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-   }
-
-   public void d(int $$0, int $$1) {
-      this.d.e = $$0;
-      this.d.f = $$1;
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.d.c;
-      int $$2 = b($$0);
-      if ($$1 != $$2) {
-         fxs.a $$3 = new fxs.a($$2);
-         $$3.e = this.d.e;
-         $$3.f = this.d.f;
-
-         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
-            duj $$5 = this.d.b.get($$4);
-            if ($$5 != null) {
-               dbg $$6 = $$5.f();
-               if ($$3.b($$6.e, $$6.f)) {
-                  $$3.a($$3.a($$6.e, $$6.f), $$5);
-               }
-            }
-         }
-
-         this.d = $$3;
-      }
-   }
-
-   private static int b(int $$0) {
-      return Math.max(2, $$0) + 3;
-   }
-
-   @Override
-   public String e() {
-      return this.d.b.length() + ", " + this.j();
-   }
-
-   @Override
-   public int j() {
-      return this.d.g;
-   }
-
-   @Override
-   public void a(dci $$0, kb $$1) {
-      ffg.Q().f.b($$1.a(), $$1.b(), $$1.c());
-   }
-
-   final class a {
-      final AtomicReferenceArray<duj> b;
-      final int c;
-      private final int d;
-      volatile int e;
-      volatile int f;
-      int g;
-
-      a(final int $$0) {
-         this.c = $$0;
-         this.d = $$0 * 2 + 1;
-         this.b = new AtomicReferenceArray<>(this.d * this.d);
+   public void a(agn $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      int a(int $$0, int $$1) {
-         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
-      }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-      protected void a(int $$0, @Nullable duj $$1) {
-         duj $$2 = this.b.getAndSet($$0, $$1);
+      for (Entry<alf, ah> $$1 : $$0.f().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
          if ($$2 != null) {
-            this.g--;
-            fxs.this.e.a($$2);
-         }
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
 
-         if ($$1 != null) {
-            this.g++;
-         }
-      }
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
 
-      protected duj a(int $$0, duj $$1, @Nullable duj $$2) {
-         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
-            this.g--;
-         }
-
-         fxs.this.e.a($$1);
-         return $$1;
-      }
-
-      boolean b(int $$0, int $$1) {
-         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
-      }
-
-      @Nullable
-      protected duj a(int $$0) {
-         return this.b.get($$0);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
-            int $$2 = fxs.this.d.c;
-
-            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
-               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
-                  duj $$5 = fxs.this.d.b.get(fxs.this.d.a($$4, $$3));
-                  if ($$5 != null) {
-                     dbg $$6 = $$5.f();
-                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
-                  }
+               Optional<ar> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.ax().a(new fjm($$2.b()));
                }
             }
-         } catch (IOException var10) {
-            fxs.a.error("Failed to dump chunks to file {}", $$0, var10);
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
+   }
+
+   public ak a() {
+      return this.d;
+   }
+
+   public void a(@Nullable af $$0, boolean $$1) {
+      fxy $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aig.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable fxs.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
+   }
+
+   @Nullable
+   public af a(alf $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
+
+      void a(@Nullable af var1);
    }
 }

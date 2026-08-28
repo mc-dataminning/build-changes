@@ -1,88 +1,69 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.stream.Stream;
 
-public class czo implements czm {
-   final cyt a;
-   final cyt b;
-   final cyt c;
+public class czo implements czn {
+   final cyu a;
+   final cyu b;
+   final cyu c;
+   final cur d;
 
-   public czo(cyt $$0, cyt $$1, cyt $$2) {
+   public czo(cyu $$0, cyu $$1, cyu $$2, cur $$3) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public boolean a(bqo $$0, dbz $$1) {
+   public boolean a(bqp $$0, dca $$1) {
       return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
    }
 
    @Override
-   public cuq a(bqo $$0, jk.a $$1) {
-      cuq $$2 = $$0.a(1);
-      if (this.b.a($$2)) {
-         Optional<ji.c<cwv>> $$3 = cww.a($$1, $$0.a(2));
-         Optional<ji.c<cwx>> $$4 = cwy.a($$1, $$0.a(0));
-         if ($$3.isPresent() && $$4.isPresent()) {
-            cwu $$5 = $$2.a(km.K);
-            if ($$5 != null && $$5.a($$4.get(), $$3.get())) {
-               return cuq.l;
-            }
-
-            cuq $$6 = $$2.c(1);
-            $$6.b(km.K, new cwu($$3.get(), $$4.get()));
-            return $$6;
-         }
-      }
-
-      return cuq.l;
+   public cur a(bqp $$0, jk.a $$1) {
+      cur $$2 = $$0.a(1).a(this.d.g(), this.d.I());
+      $$2.b(this.d.d());
+      return $$2;
    }
 
    @Override
-   public cuq a(jk.a $$0) {
-      cuq $$1 = new cuq(cut.pH);
-      Optional<ji.c<cwx>> $$2 = $$0.b(lq.aP).b().findFirst();
-      Optional<ji.c<cwv>> $$3 = $$0.b(lq.aO).a(cww.d);
-      if ($$2.isPresent() && $$3.isPresent()) {
-         $$1.b(km.K, new cwu($$3.get(), $$2.get()));
-      }
-
-      return $$1;
+   public cur a(jk.a $$0) {
+      return this.d;
    }
 
    @Override
-   public boolean a(cuq $$0) {
+   public boolean a(cur $$0) {
       return this.a.a($$0);
    }
 
    @Override
-   public boolean b(cuq $$0) {
+   public boolean b(cur $$0) {
       return this.b.a($$0);
    }
 
    @Override
-   public boolean c(cuq $$0) {
+   public boolean c(cur $$0) {
       return this.c.a($$0);
    }
 
    @Override
-   public cza<?> ao_() {
-      return cza.v;
+   public czb<?> ao_() {
+      return czb.u;
    }
 
    @Override
    public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cyt::c);
+      return Stream.of(this.a, this.b, this.c).anyMatch(cyu::c);
    }
 
-   public static class a implements cza<czo> {
+   public static class a implements czb<czo> {
       private static final MapCodec<czo> y = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  cyt.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cyt.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cyt.c.fieldOf("addition").forGetter($$0x -> $$0x.c)
+                  cyu.c.fieldOf("template").forGetter($$0x -> $$0x.a),
+                  cyu.c.fieldOf("base").forGetter($$0x -> $$0x.b),
+                  cyu.c.fieldOf("addition").forGetter($$0x -> $$0x.c),
+                  cur.d.fieldOf("result").forGetter($$0x -> $$0x.d)
                )
                .apply($$0, czo::new)
       );
@@ -99,16 +80,18 @@ public class czo implements czm {
       }
 
       private static czo a(xa $$0) {
-         cyt $$1 = cyt.b.decode($$0);
-         cyt $$2 = cyt.b.decode($$0);
-         cyt $$3 = cyt.b.decode($$0);
-         return new czo($$1, $$2, $$3);
+         cyu $$1 = cyu.b.decode($$0);
+         cyu $$2 = cyu.b.decode($$0);
+         cyu $$3 = cyu.b.decode($$0);
+         cur $$4 = cur.i.decode($$0);
+         return new czo($$1, $$2, $$3, $$4);
       }
 
       private static void a(xa $$0, czo $$1) {
-         cyt.b.encode($$0, $$1.a);
-         cyt.b.encode($$0, $$1.b);
-         cyt.b.encode($$0, $$1.c);
+         cyu.b.encode($$0, $$1.a);
+         cyu.b.encode($$0, $$1.b);
+         cyu.b.encode($$0, $$1.c);
+         cur.i.encode($$0, $$1.d);
       }
    }
 }

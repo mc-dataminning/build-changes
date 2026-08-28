@@ -1,15 +1,15 @@
 public enum dto implements azu {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
    private final String e;
-   private final boolean f;
+   private final xp f;
 
-   private dto(final String $$0, final boolean $$1) {
+   private dto(final String $$0) {
       this.e = $$0;
-      this.f = $$1;
+      this.f = xp.c("structure_block.mode_info." + $$0);
    }
 
    @Override
@@ -17,7 +17,7 @@ public enum dto implements azu {
       return this.e;
    }
 
-   public boolean a() {
+   public xp a() {
       return this.f;
    }
 }

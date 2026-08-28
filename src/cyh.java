@@ -1,90 +1,70 @@
-public class cyh extends cyo {
-   public cyh(cym $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cyh extends cyp {
+   public cyh(cyn $$0) {
       super($$0);
    }
 
-   public boolean a(cql $$0, dbz $$1) {
-      ctj $$2 = null;
-      cuq $$3 = null;
-      cuq $$4 = null;
+   public boolean a(cqm $$0, dca $$1) {
+      cur $$2 = cur.l;
+      List<cur> $$3 = Lists.newArrayList();
 
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cuq $$6 = $$0.a($$5);
-         if (!$$6.e()) {
-            cul $$7 = $$6.g();
-            if (!($$7 instanceof csl)) {
-               return false;
-            }
-
-            csl $$8 = (csl)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(km.X, doz.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cur $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awy.by)) {
+               if (!$$2.e()) {
                   return false;
                }
 
-               $$3 = $$6;
+               $$2 = $$5;
             } else {
-               if ($$4 != null) {
+               if (!($$5.g() instanceof ctl)) {
                   return false;
                }
 
-               $$4 = $$6;
+               $$3.add($$5);
             }
          }
       }
 
-      return $$3 != null && $$4 != null;
+      return !$$2.e() && !$$3.isEmpty();
    }
 
-   public cuq a(cql $$0, jk.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         cuq $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            int $$4 = $$3.a(km.X, doz.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
+   public cur a(cqm $$0, jk.a $$1) {
+      List<ctl> $$2 = Lists.newArrayList();
+      cur $$3 = cur.l;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cur $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awy.by)) {
+               if (!$$3.e()) {
+                  return cur.l;
+               }
+
+               $$3 = $$5.s();
+            } else {
+               if (!($$5.g() instanceof ctl $$6)) {
+                  return cur.l;
+               }
+
+               $$2.add($$6);
             }
          }
       }
 
-      return cuq.l;
-   }
-
-   public jr<cuq> a(cql $$0) {
-      jr<cuq> $$1 = jr.a($$0.b(), cuq.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cuq $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            if ($$3.g().v()) {
-               $$1.set($$2, new cuq($$3.g().u()));
-            } else if (!$$3.a(km.X, doz.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cza<?> ao_() {
-      return cza.k;
+      return !$$3.e() && !$$2.isEmpty() ? cxj.a($$3, $$2) : cur.l;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
       return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public czb<?> ao_() {
+      return czb.c;
    }
 }

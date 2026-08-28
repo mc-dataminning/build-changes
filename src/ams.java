@@ -31,11 +31,11 @@ public class ams {
       );
    }
 
-   private static int a(ep $$0, Collection<arg> $$1, Predicate<cuq> $$2) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<arg> $$1, Predicate<cur> $$2) throws CommandSyntaxException {
       return a($$0, $$1, $$2, -1);
    }
 
-   private static int a(ep $$0, Collection<arg> $$1, Predicate<cuq> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<arg> $$1, Predicate<cur> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (arg $$5 : $$1) {

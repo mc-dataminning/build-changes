@@ -1,19 +1,50 @@
 import java.util.List;
 
-public class cuw extends cwe {
-   public cuw(cul.a $$0) {
+public class cuw extends cum {
+   public cuw(cum.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
-      cwr $$4 = $$0.a(km.G, cwr.a);
-      $$4.a($$2::add, 0.25F, $$1.b());
+   public bqw a(cye $$0) {
+      dca $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dse $$3 = $$1.a_($$2);
+      if ($$3.a(awp.S)) {
+         cmz $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
+         }
+
+         return bqw.a($$1.B);
+      } else {
+         return bqw.e;
+      }
    }
 
-   @Override
-   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.nX, awb.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public static bqw a(cmz $$0, dca $$1, iz $$2) {
+      cjd $$3 = null;
+      double $$4 = 7.0;
+      int $$5 = $$2.u();
+      int $$6 = $$2.v();
+      int $$7 = $$2.w();
+      evo $$8 = new evo((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      List<btt> $$9 = $$1.a(btt.class, $$8, $$1x -> $$1x.gf() == $$0);
+
+      for (btt $$10 : $$9) {
+         if ($$3 == null) {
+            $$3 = cjd.b($$1, $$2);
+            $$3.C();
+         }
+
+         $$10.b($$3, true);
+      }
+
+      if (!$$9.isEmpty()) {
+         $$1.a(dwx.b, $$2, dwx.a.a($$0));
+         return bqw.a;
+      } else {
+         return bqw.e;
+      }
    }
 }

@@ -1,33 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dft extends dfa {
+public class dft extends dgw {
    public static final MapCodec<dft> a = b(dft::new);
-   private static final xp b = xp.c("container.cartography_table");
+   private static final ewm[] b = new ewm[]{
+      dfb.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dfb.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      dfb.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dfb.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dfb.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dfb.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      dfb.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dfb.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<dft> a() {
       return a;
    }
 
-   protected dft(dsc.d $$0) {
+   public dft(dsd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
-      if ($$1.B) {
-         return bqv.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awk.aw);
-         return bqv.c;
-      }
+   protected dbz d() {
+      return cuu.uf;
    }
 
-   @Nullable
    @Override
-   protected bqz b(dsd $$0, dbz $$1, iz $$2) {
-      return new brf(($$2x, $$3, $$4) -> new cqb($$2x, $$3, cqg.a($$1, $$2)), b);
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      return b[this.g($$0)];
    }
 }

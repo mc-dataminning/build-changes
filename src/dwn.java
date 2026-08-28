@@ -2,44 +2,18 @@ import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class dwn<T extends dwd> implements dwm<T> {
-   private final dwf<T> a;
-   private final dwi<T> b;
-
-   public dwn(dwf<T> $$0, dwi<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface dwn<T extends dwe> {
+   @Nullable
+   T a(int var1);
 
    @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
+   T a(UUID var1);
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   Iterable<T> a();
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
+   <U extends T> void a(dwl<T, U> var1, axl<U> var2);
 
-   @Override
-   public <U extends T> void a(dwk<T, U> $$0, axl<U> $$1) {
-      this.a.a($$0, $$1);
-   }
+   void a(evo var1, Consumer<T> var2);
 
-   @Override
-   public void a(evn $$0, Consumer<T> $$1) {
-      this.b.b($$0, axl.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(dwk<T, U> $$0, evn $$1, axl<U> $$2) {
-      this.b.a($$0, $$1, $$2);
-   }
+   <U extends T> void a(dwl<T, U> var1, evo var2, axl<U> var3);
 }

@@ -1,15 +1,15 @@
 public class acv implements zw<aci> {
    public static final zn<wm, acv> a = zw.a(acv::a, acv::new);
-   private final bqs b;
+   private final bqt b;
    private final boolean c;
 
-   public acv(bqs $$0, boolean $$1) {
+   public acv(bqt $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private acv(wm $$0) {
-      this.b = bqs.a($$0.readUnsignedByte());
+      this.b = bqt.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class acv implements zw<aci> {
       return this.c;
    }
 
-   public bqs e() {
+   public bqt e() {
       return this.b;
    }
 }

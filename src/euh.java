@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface euh {
-   @Nullable
-   vp a(eqj var1);
-
-   Set<etc<?>> b();
-
-   eug a();
+public record euh(MapCodec<? extends eui> a) {
 }

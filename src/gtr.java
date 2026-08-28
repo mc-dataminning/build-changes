@@ -1,62 +1,58 @@
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class gtr {
-   private static final int a = 100;
-   private final azh b = azh.a();
-   private final ffg c;
-   @Nullable
-   private gso d;
-   private int e = 100;
+public class gtr implements gtl {
+   private final gtr.a a;
+   private gtl b;
+   private final BufferedInputStream c;
 
-   public gtr(ffg $$0) {
-      this.c = $$0;
+   public gtr(gtr.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gtr.b(this.c));
    }
 
-   public void a() {
-      avx $$0 = this.c.ak();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.aj().b(this.d);
-            this.e = ayz.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.aj().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, ayz.a(this.b, $$0.b(), $$0.c()));
-         }
-      }
-
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
    }
 
-   public void a(avx $$0) {
-      this.d = gsj.a($$0.a().a());
-      if (this.d.b() != gtw.a) {
-         this.c.aj().a(this.d);
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gtr.b(this.c));
+         $$1 = this.b.a($$0);
       }
 
-      this.e = Integer.MAX_VALUE;
+      return $$1;
    }
 
-   public void b(avx $$0) {
-      if (this.c($$0)) {
-         this.b();
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      gtl create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
-   }
 
-   public void b() {
-      if (this.d != null) {
-         this.c.aj().b(this.d);
-         this.d = null;
+      @Override
+      public void close() {
       }
-
-      this.e += 100;
-   }
-
-   public boolean c(avx $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

@@ -1,14 +1,11 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface emu<P extends emt> {
-   emu<emr> a = a("clear", emr.a);
-   emu<ems> b = a("passthrough", ems.b);
-   emu<emq> c = a("append_static", emq.a);
-   emu<emp> d = a("append_loot", emp.a);
+public interface emu {
+   Codec<emu> c = lp.p.q().dispatch(emu::a, emv::codec);
 
-   MapCodec<P> codec();
+   @Nullable
+   us a(azh var1, @Nullable us var2);
 
-   private static <P extends emt> emu<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.p, $$0, () -> $$1);
-   }
+   emv<?> a();
 }

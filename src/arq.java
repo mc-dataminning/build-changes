@@ -27,14 +27,14 @@ public class arq implements aro {
    }
 
    @Override
-   public void a(dbg $$0) {
+   public void a(dbh $$0) {
       this.e = ac.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dbg $$0, @Nullable duy $$1) {
-      if ($$1 == duy.n) {
+   public void a(dbh $$0, @Nullable duz $$1) {
+      if ($$1 == duz.n) {
          this.c++;
       }
 

@@ -4,7 +4,7 @@ public class afd implements zw<aci> {
    private final double c;
    private final long d;
 
-   public afd(dtu $$0) {
+   public afd(dtv $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

@@ -1,38 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
-public interface ejw {
-   Codec<ejw> b = lp.aj.q().dispatch(ejw::b, Function.identity());
+record ejw(ale<ejv> c, ale<ejv> d) implements ejx {
+   static MapCodec<ejw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ale.a(lq.aM).fieldOf("alias").forGetter(ejw::c), ale.a(lq.aM).fieldOf("target").forGetter(ejw::d)).apply($$0, ejw::new)
+   );
 
-   void a(azh var1, BiConsumer<ale<eju>, ale<eju>> var2);
-
-   Stream<ale<eju>> a();
-
-   static ejv a(String $$0, String $$1) {
-      return a(rj.a($$0), rj.a($$1));
+   @Override
+   public void a(azh $$0, BiConsumer<ale<ejv>, ale<ejv>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
-   static ejv a(ale<eju> $$0, ale<eju> $$1) {
-      return new ejv($$0, $$1);
+   @Override
+   public Stream<ale<ejv>> a() {
+      return Stream.of(this.d);
    }
 
-   static ejz a(String $$0, bpf<String> $$1) {
-      bpf.a<ale<eju>> $$2 = bpf.a();
-      $$1.e().forEach($$1x -> $$2.a(rj.a((String)$$1x.b()), $$1x.a().a()));
-      return a(rj.a($$0), $$2.a());
+   @Override
+   public MapCodec<ejw> b() {
+      return a;
    }
-
-   static ejz a(ale<eju> $$0, bpf<ale<eju>> $$1) {
-      return new ejz($$0, $$1);
-   }
-
-   static eka a(bpf<List<ejw>> $$0) {
-      return new eka($$0);
-   }
-
-   MapCodec<? extends ejw> b();
 }

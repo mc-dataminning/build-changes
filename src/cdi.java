@@ -1,25 +1,19 @@
-public class cdi extends cdu {
-   public static final float a = 8.0F;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
+public class cdi extends ceb<bsq> {
    @Override
-   protected boolean a(btq $$0, btq $$1) {
-      return this.f($$0, $$1) && $$1.bh() && (this.b($$1) || this.e($$0, $$1)) && cea.c($$0, $$1);
+   public Set<ccv<?>> a() {
+      return ImmutableSet.of(ccv.K, ccv.h);
    }
 
-   private boolean e(btq $$0, btq $$1) {
-      return !$$0.dS().a(ccu.U) && $$1.ak().a(awt.j);
+   protected void a(arf $$0, bsq $$1) {
+      $$1.dS().c(ccv.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private boolean b(btq $$0) {
-      return $$0.ak().a(awt.i);
-   }
-
-   private boolean f(btq $$0, btq $$1) {
-      return $$1.g((bsv)$$0) <= 64.0;
-   }
-
-   @Override
-   protected ccu<btq> b() {
-      return ccu.B;
+   private void a(bsq $$0, ccx $$1) {
+      Optional<bsq> $$2 = $$1.a($$1x -> $$1x.ak() == $$0.ak() && !$$1x.p_()).map(bsq.class::cast);
+      $$0.dS().a(ccv.K, $$2);
    }
 }

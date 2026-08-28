@@ -1,24 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
-@FunctionalInterface
-public interface ejy {
-   ejy a = $$0 -> $$0;
+public class ejy {
+   public static MapCodec<? extends ejx> a(jv<MapCodec<? extends ejx>> $$0) {
+      jv.a($$0, "random", eka.a);
+      jv.a($$0, "random_group", ekb.a);
+      return jv.a($$0, "direct", ejw.a);
+   }
 
-   ale<eju> lookup(ale<eju> var1);
-
-   static ejy create(List<ejw> $$0, iz $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         azh $$3 = azh.a($$2).e().a($$1);
-         Builder<ale<eju>, ale<eju>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<ale<eju>, ale<eju>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
-      }
+   public static void a(rc<ejv> $$0, ji<ejv> $$1, List<ejx> $$2) {
+      $$2.stream().flatMap(ejx::a).map($$0x -> $$0x.a().a()).forEach($$2x -> rj.a($$0, $$2x, new ejv($$1, List.of(Pair.of(ejt.b($$2x), 1)), ejv.a.b)));
    }
 }

@@ -1,21 +1,85 @@
-public class gcp {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-   public void a(boolean $$0, float $$1) {
+public abstract class gcp extends cmz {
+   @Nullable
+   private fyi g;
+   protected evt b;
+   public float c;
+   public float d;
+   public float e;
+   public final fxx f;
+
+   public gcp(fxx $$0, GameProfile $$1) {
+      super($$0, $$0.V(), $$0.W(), $$1);
+      this.b = evt.b;
+      this.f = $$0;
    }
 
-   public evr a() {
-      return new evr(this.a, this.b);
+   @Override
+   public boolean N_() {
+      fyi $$0 = this.a();
+      return $$0 != null && $$0.e() == dbx.d;
    }
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+   @Override
+   public boolean f() {
+      fyi $$0 = this.a();
+      return $$0 != null && $$0.e() == dbx.b;
+   }
+
+   @Nullable
+   protected fyi a() {
+      if (this.g == null) {
+         this.g = ffh.Q().L().a(this.cz());
+      }
+
+      return this.g;
+   }
+
+   @Override
+   public void l() {
+      this.b = this.ds();
+      super.l();
+   }
+
+   public evt E(float $$0) {
+      return this.b.a(this.ds(), (double)$$0);
+   }
+
+   public gqb b() {
+      fyi $$0 = this.a();
+      return $$0 == null ? gpt.a(this.cz()) : $$0.g();
+   }
+
+   public float c() {
+      float $$0 = 1.0F;
+      if (this.gd().b) {
+         $$0 *= 1.1F;
+      }
+
+      $$0 *= ((float)this.g(buz.r) / this.gd().b() + 1.0F) / 2.0F;
+      if (this.gd().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
+         $$0 = 1.0F;
+      }
+
+      cur $$1 = this.fx();
+      if (this.fv()) {
+         if ($$1.a(cuu.ou)) {
+            int $$2 = this.fz();
+            float $$3 = (float)$$2 / 20.0F;
+            if ($$3 > 1.0F) {
+               $$3 = 1.0F;
+            } else {
+               $$3 *= $$3;
+            }
+
+            $$0 *= 1.0F - $$3 * 0.15F;
+         } else if (ffh.Q().m.aA().a() && this.gA()) {
+            return 0.1F;
+         }
+      }
+
+      return ayz.i(ffh.Q().m.ak().c().floatValue(), 1.0F, $$0);
    }
 }

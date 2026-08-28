@@ -34,7 +34,7 @@ public class acs implements zw<aci> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static acs a(bql $$0) {
+   public static acs a(bqm $$0) {
       return new acs($$0.h(), new acs.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class acs implements zw<aci> {
       return new acs($$0, g);
    }
 
-   public static acs b(bql $$0) {
+   public static acs b(bqm $$0) {
       return new acs($$0.h(), new acs.f($$0.j()));
    }
 
-   public static acs c(bql $$0) {
+   public static acs c(bqm $$0) {
       return new acs($$0.h(), new acs.e($$0.i()));
    }
 
-   public static acs d(bql $$0) {
+   public static acs d(bqm $$0) {
       return new acs($$0.h(), new acs.h($$0.k(), $$0.l()));
    }
 
-   public static acs e(bql $$0) {
+   public static acs e(bqm $$0) {
       return new acs($$0.h(), new acs.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class acs implements zw<aci> {
    static class a implements acs.c {
       private final xp a;
       private final float b;
-      private final bql.a c;
-      private final bql.b d;
+      private final bqm.a c;
+      private final bqm.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bql $$0) {
+      a(bqm $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class acs implements zw<aci> {
       private a(xa $$0) {
          this.a = xr.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(bql.a.class);
-         this.d = $$0.b(bql.b.class);
+         this.c = $$0.b(bqm.a.class);
+         this.d = $$0.b(bqm.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class acs implements zw<aci> {
    }
 
    public interface b {
-      default void a(UUID $$0, xp $$1, float $$2, bql.a $$3, bql.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, xp $$1, float $$2, bqm.a $$3, bqm.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class acs implements zw<aci> {
       default void a(UUID $$0, xp $$1) {
       }
 
-      default void a(UUID $$0, bql.a $$1, bql.b $$2) {
+      default void a(UUID $$0, bqm.a $$1, bqm.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class acs implements zw<aci> {
    }
 
    static class h implements acs.c {
-      private final bql.a a;
-      private final bql.b b;
+      private final bqm.a a;
+      private final bqm.b b;
 
-      h(bql.a $$0, bql.b $$1) {
+      h(bqm.a $$0, bqm.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(xa $$0) {
-         this.a = $$0.b(bql.a.class);
-         this.b = $$0.b(bql.b.class);
+         this.a = $$0.b(bqm.a.class);
+         this.b = $$0.b(bqm.b.class);
       }
 
       @Override

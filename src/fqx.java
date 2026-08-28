@@ -1,5 +1,5 @@
-public interface fqx {
-   void I();
+import java.util.List;
 
-   fqr J();
+public interface fqx {
+   void a(List<cyz<?>> var1);
 }

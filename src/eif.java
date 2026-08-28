@@ -1,40 +1,26 @@
 public interface eif {
-   ale<eil> a = a("pillager_outpost");
-   ale<eil> b = a("mineshaft");
-   ale<eil> c = a("mineshaft_mesa");
-   ale<eil> d = a("mansion");
-   ale<eil> e = a("jungle_pyramid");
-   ale<eil> f = a("desert_pyramid");
-   ale<eil> g = a("igloo");
-   ale<eil> h = a("shipwreck");
-   ale<eil> i = a("shipwreck_beached");
-   ale<eil> j = a("swamp_hut");
-   ale<eil> k = a("stronghold");
-   ale<eil> l = a("monument");
-   ale<eil> m = a("ocean_ruin_cold");
-   ale<eil> n = a("ocean_ruin_warm");
-   ale<eil> o = a("fortress");
-   ale<eil> p = a("nether_fossil");
-   ale<eil> q = a("end_city");
-   ale<eil> r = a("buried_treasure");
-   ale<eil> s = a("bastion_remnant");
-   ale<eil> t = a("village_plains");
-   ale<eil> u = a("village_desert");
-   ale<eil> v = a("village_savanna");
-   ale<eil> w = a("village_snowy");
-   ale<eil> x = a("village_taiga");
-   ale<eil> y = a("ruined_portal");
-   ale<eil> z = a("ruined_portal_desert");
-   ale<eil> A = a("ruined_portal_jungle");
-   ale<eil> B = a("ruined_portal_swamp");
-   ale<eil> C = a("ruined_portal_mountain");
-   ale<eil> D = a("ruined_portal_ocean");
-   ale<eil> E = a("ruined_portal_nether");
-   ale<eil> F = a("ancient_city");
-   ale<eil> G = a("trail_ruins");
-   ale<eil> H = a("trial_chambers");
+   ale<eis> a = a("villages");
+   ale<eis> b = a("desert_pyramids");
+   ale<eis> c = a("igloos");
+   ale<eis> d = a("jungle_temples");
+   ale<eis> e = a("swamp_huts");
+   ale<eis> f = a("pillager_outposts");
+   ale<eis> g = a("ocean_monuments");
+   ale<eis> h = a("woodland_mansions");
+   ale<eis> i = a("buried_treasures");
+   ale<eis> j = a("mineshafts");
+   ale<eis> k = a("ruined_portals");
+   ale<eis> l = a("shipwrecks");
+   ale<eis> m = a("ocean_ruins");
+   ale<eis> n = a("nether_complexes");
+   ale<eis> o = a("nether_fossils");
+   ale<eis> p = a("end_cities");
+   ale<eis> q = a("ancient_cities");
+   ale<eis> r = a("strongholds");
+   ale<eis> s = a("trail_ruins");
+   ale<eis> t = a("trial_chambers");
 
-   private static ale<eil> a(String $$0) {
-      return ale.a(lq.aJ, new alf($$0));
+   private static ale<eis> a(String $$0) {
+      return ale.a(lq.aL, new alf($$0));
    }
 }

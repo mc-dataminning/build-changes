@@ -1,31 +1,67 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface bmp<S, T> {
-   Optional<T> a(bmo<S> var1);
+public abstract class bmp<S> {
+   private final Map<bmp.b<?>, bmp.a<?>> a = new HashMap<>();
+   private final bmm<S> b;
+   private final bmn<S> c;
 
-   static <S, T> bmp<S, T> a(bms<S> $$0, bmp.a<S, T> $$1) {
-      return new bmp.c<>($$1, $$0);
+   protected bmp(bmm<S> $$0, bmn<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static <S, T> bmp<S, T> a(bms<S> $$0, bmp.b<T> $$1) {
-      return new bmp.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   public bmn<S> a() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bmo<S> var1, bmq var2);
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bmq var1);
-   }
-
-   public static record c<S, T>(bmp.a<S, T> a, bms<S> b) implements bmp<S, T> {
-      @Override
-      public Optional<T> a(bmo<S> $$0) {
-         bmq $$1 = new bmq();
-         return this.b.a($$0, $$1, bmk.a) ? this.a.run($$0, $$1) : Optional.empty();
+   public <T> Optional<T> a(bmk<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
       }
+
+      return $$1;
+   }
+
+   public <T> Optional<T> b(bmk<T> $$0) {
+      bmp.b<T> $$1 = new bmp.b<>($$0, this.c());
+      bmp.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         bmq<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
+         }
+      }
+   }
+
+   @Nullable
+   private <T> bmp.a<T> a(bmp.b<T> $$0) {
+      return (bmp.a<T>)this.a.get($$0);
+   }
+
+   private <T> void a(bmp.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bmp.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(bmk<T> a, int b) {
    }
 }

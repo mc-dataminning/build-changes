@@ -1,131 +1,92 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
 
-public record cxj(cxj.a e, IntList f, IntList g, boolean h, boolean i) implements cxw {
-   public static final cxj a = new cxj(cxj.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<cxj> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cxj.a.g.fieldOf("shape").forGetter(cxj::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(cxj::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(cxj::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(cxj::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(cxj::e)
-            )
-            .apply($$0, cxj::new)
+public record cxj(int d, boolean e) implements cxx {
+   private static final Codec<cxj> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cxj::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxj::b)).apply($$0, cxj::new)
    );
-   private static final zn<ByteBuf, IntList> j = zl.f.a(zl.a()).a(IntArrayList::new, ArrayList::new);
-   public static final zn<ByteBuf, cxj> d = zn.a(cxj.a.f, cxj::a, j, cxj::b, j, cxj::c, zl.b, cxj::d, zl.b, cxj::e, cxj::new);
-   private static final xp k = xp.c("item.minecraft.firework_star.custom_color");
+   public static final Codec<cxj> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cxj($$0, true));
+   public static final zn<ByteBuf, cxj> b = zn.a(zl.f, cxj::a, zl.b, cxj::b, cxj::new);
+   public static final int c = -6265536;
 
-   @Override
-   public void a(cul.b $$0, Consumer<xp> $$1, cwj $$2) {
-      this.a($$1);
-      this.b($$1);
+   public static int a(cur $$0, int $$1) {
+      cxj $$2 = $$0.a(km.z);
+      return $$2 != null ? ayj.b.e($$2.a()) : $$1;
    }
 
-   public void a(Consumer<xp> $$0) {
-      $$0.accept(this.e.a().a(n.h));
-   }
-
-   public void b(Consumer<xp> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(xp.i().a(n.h), this.f));
-      }
-
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(xp.c("item.minecraft.firework_star.fade_to").b(xo.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(xp.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(xp.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static xp a(yd $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   public static cur a(cur $$0, List<ctl> $$1) {
+      if (!$$0.a(awy.by)) {
+         return cur.l;
+      } else {
+         cur $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         cxj $$8 = $$2.a(km.z);
+         if ($$8 != null) {
+            int $$9 = ayj.b.b($$8.a());
+            int $$10 = ayj.b.c($$8.a());
+            int $$11 = ayj.b.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
          }
 
-         $$0.b(a($$1.getInt($$2)));
+         for (ctl $$12 : $$1) {
+            float[] $$13 = $$12.c().d();
+            int $$14 = (int)($$13[0] * 255.0F);
+            int $$15 = (int)($$13[1] * 255.0F);
+            int $$16 = (int)($$13[2] * 255.0F);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = ayj.b.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(km.z, new cxj($$22, $$23));
+         return $$2;
       }
-
-      return $$0;
    }
 
-   private static xp a(int $$0) {
-      ctj $$1 = ctj.b($$0);
-      return (xp)($$1 == null ? k : xp.c("item.minecraft.firework_star." + $$1.b()));
+   @Override
+   public void a(cum.b $$0, Consumer<xp> $$1, cwk $$2) {
+      if (this.e) {
+         if ($$2.a()) {
+            $$1.accept(xp.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$1.accept(xp.c("item.dyed").a(n.h, n.u));
+         }
+      }
    }
 
-   public cxj a(IntList $$0) {
-      return new cxj(this.e, this.f, new IntArrayList($$0), this.h, this.i);
+   public cxj a(boolean $$0) {
+      return new cxj(this.d, $$0);
    }
 
-   public cxj.a a() {
+   public int a() {
+      return this.d;
+   }
+
+   public boolean b() {
       return this.e;
-   }
-
-   public IntList b() {
-      return this.f;
-   }
-
-   public IntList c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
-   }
-
-   public boolean e() {
-      return this.i;
-   }
-
-   public static enum a implements azu {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<cxj.a> h = axp.a(cxj.a::b, values(), axp.a.a);
-      public static final zn<ByteBuf, cxj.a> f = zl.a(h, cxj.a::b);
-      public static final Codec<cxj.a> g = azu.b(cxj.a::values);
-      private final int i;
-      private final String j;
-
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
-
-      public yd a() {
-         return xp.c("item.minecraft.firework_star.shape." + this.j);
-      }
-
-      public int b() {
-         return this.i;
-      }
-
-      public static cxj.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
    }
 }

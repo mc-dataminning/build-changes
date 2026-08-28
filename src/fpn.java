@@ -1,47 +1,21 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fpn extends fod<cro> {
+   private static final alf D = new alf("textures/gui/container/shulker_box.png");
 
-public class fpn extends foe {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f d = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private ggd.a r;
-
-   public fpn(dqs $$0, boolean $$1, boolean $$2) {
+   public fpn(cro $$0, cmy $$1, xp $$2) {
       super($$0, $$1, $$2);
+      this.d++;
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.r = ggd.a(this.m.aR(), this.a);
+   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void b(fgs $$0, dsd $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dmv;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
-      }
-   }
-
-   @Override
-   protected void a(fgs $$0, dsd $$1) {
-      if (this.r != null) {
-         boolean $$2 = $$1.b() instanceof dmv;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gre $$3 = gee.a(this.a);
-         fad $$4 = $$3.a($$0.d(), this.r::a);
-         this.r.b.k = $$2;
-         this.r.a.a($$0.c(), $$4, 15728880, gor.d);
-      }
-   }
-
-   @Override
-   protected Vector3f m() {
-      return d;
+   protected void a(fgt $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
    }
 }

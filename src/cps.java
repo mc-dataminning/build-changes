@@ -1,98 +1,121 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class cps {
+   private int a = 20;
+   private float b;
+   private float c;
+   private int d;
+   private int e = 20;
 
-public record cps(int c, float d, boolean e, float f, List<cps.b> g) {
-   private static final float h = 1.6F;
-   public static final Codec<cps> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayh.k.fieldOf("nutrition").forGetter(cps::b),
-               Codec.FLOAT.fieldOf("saturation").forGetter(cps::c),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cps::d),
-               ayh.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cps::e),
-               cps.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cps::f)
-            )
-            .apply($$0, cps::new)
-   );
-   public static final zn<xa, cps> b = zn.a(zl.g, cps::b, zl.i, cps::c, zl.b, cps::d, zl.i, cps::e, cps.b.b.a(zl.a()), cps::f, cps::new);
+   public cps() {
+      this.b = 5.0F;
+   }
+
+   private void b(int $$0, float $$1) {
+      this.a = Math.min($$0 + this.a, 20);
+      this.b = Math.min($$1 + this.b, (float)this.a);
+   }
+
+   public void a(int $$0, float $$1) {
+      this.b($$0, cpr.a($$0, $$1));
+   }
+
+   public void a(cur $$0) {
+      cpt $$1 = $$0.a(km.v);
+      if ($$1 != null) {
+         this.b($$1.b(), $$1.c());
+      }
+   }
+
+   public void a(cmz $$0) {
+      bqt $$1 = $$0.dP().al();
+      this.e = this.a;
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$1 != bqt.a) {
+            this.a = Math.max(this.a - 1, 0);
+         }
+      }
+
+      boolean $$2 = $$0.dP().ab().b(dbw.k);
+      if ($$2 && this.b > 0.0F && $$0.gn() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$3 = Math.min(this.b, 6.0F);
+            $$0.c($$3 / 6.0F);
+            this.a($$3);
+            this.d = 0;
+         }
+      } else if ($$2 && this.a >= 18 && $$0.gn()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eA() > 10.0F || $$1 == bqt.d || $$0.eA() > 1.0F && $$1 == bqt.c) {
+               $$0.a($$0.dQ().i(), 1.0F);
+            }
+
+            this.d = 0;
+         }
+      } else {
+         this.d = 0;
+      }
+   }
+
+   public void a(us $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
+   }
+
+   public void b(us $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
+   }
 
    public int a() {
-      return (int)(this.f * 20.0F);
+      return this.a;
    }
 
    public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public boolean d() {
       return this.e;
    }
 
+   public boolean c() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
    public float e() {
-      return this.f;
+      return this.b;
    }
 
-   public List<cps.b> f() {
-      return this.g;
+   public void a(int $$0) {
+      this.a = $$0;
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private float d = 1.6F;
-      private final Builder<cps.b> e = ImmutableList.builder();
-
-      public cps.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public cps.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cps.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public cps.a b() {
-         this.d = 0.8F;
-         return this;
-      }
-
-      public cps.a a(bsd $$0, float $$1) {
-         this.e.add(new cps.b($$0, $$1));
-         return this;
-      }
-
-      public cps c() {
-         float $$0 = cpq.a(this.a, this.b);
-         return new cps(this.a, $$0, this.c, this.d, this.e.build());
-      }
+   public void b(float $$0) {
+      this.b = $$0;
    }
 
-   public static record b(bsd c, float d) {
-      public static final Codec<cps.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bsd.d.fieldOf("effect").forGetter(cps.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cps.b::b))
-               .apply($$0, cps.b::new)
-      );
-      public static final zn<xa, cps.b> b = zn.a(bsd.e, cps.b::a, zl.i, cps.b::b, cps.b::new);
-
-      public bsd a() {
-         return new bsd(this.c);
-      }
-
-      public float b() {
-         return this.d;
-      }
+   public void c(float $$0) {
+      this.c = $$0;
    }
 }

@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ezf {
+   void a(boolean var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ext
-@exs
-interface ezf {
+   void a();
+
+   void b();
 }

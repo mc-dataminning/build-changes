@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fen extends feg {
+public class fen extends feh {
    private static final Logger b = LogUtils.getLogger();
-   private static final xp c = xp.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final fbx e;
-   private final fcp f;
+   private static final xp c = xp.c("mco.backup.restoring");
+   private final faw d;
+   private final long e;
+   private final fcq f;
 
-   public fen(long $$0, fbx $$1, fcp $$2) {
+   public fen(faw $$0, long $$1, fcq $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,31 +16,46 @@ public class fen extends feg {
 
    @Override
    public void run() {
-      fap $$0 = fap.a();
+      faq $$0 = faq.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (fcd var4) {
+
+            a(this.f.f());
+            return;
+         } catch (fce var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (fcd var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't start mini game!");
-            this.a(var5);
+            b.error("Couldn't restore backup", var5);
+            a(new fcu(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
    }

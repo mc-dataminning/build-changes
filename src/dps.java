@@ -1,164 +1,139 @@
-public class dps extends dpi {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final dba d = new dba() {
-      @Override
-      public void a(String $$0) {
-         super.a($$0);
-         dps.this.e();
-      }
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-      @Override
-      public arf e() {
-         return (arf)dps.this.n;
-      }
+public class dps extends dpj implements bqp {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jr<cur> d = jr.a(6, cur.l);
+   private int e = -1;
 
-      @Override
-      public void f() {
-         dsd $$0 = dps.this.n.a_(dps.this.o);
-         this.e().a(dps.this.o, $$0, $$0, 3);
-      }
-
-      @Override
-      public evs g() {
-         return evs.b(dps.this.o);
-      }
-
-      @Override
-      public ep i() {
-         je $$0 = dps.this.n().c(dgj.b);
-         return new ep(this, evs.b(dps.this.o), new evr(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !dps.this.o();
-      }
-   };
-
-   public dps(iz $$0, dsd $$1) {
-      super(dpk.w, $$0, $$1);
+   public dps(iz $$0, dse $$1) {
+      super(dpl.M, $$0, $$1);
    }
 
-   @Override
-   protected void b(us $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0, $$1);
-      $$0.a("powered", this.c());
-      $$0.a("conditionMet", this.j());
-      $$0.a("auto", this.d());
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dse $$1 = this.n();
+
+         for (int $$2 = 0; $$2 < dgf.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).e();
+            dsv $$4 = dgf.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(dwx.c, this.o, dwx.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
    @Override
    protected void a(us $$0, jk.a $$1) {
       super.a($$0, $$1);
-      this.d.b($$0, $$1);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
+      this.d.clear();
+      bqq.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
    }
 
    @Override
-   public boolean q() {
-      return true;
+   protected void b(us $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      bqq.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
    }
 
-   public dba b() {
-      return this.d;
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cur::e)).count();
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.d.clear();
    }
 
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
    public boolean c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.n != null && this.l() != dps.a.a) {
-         this.v();
-      }
-   }
-
-   public void f() {
-      dps.a $$0 = this.l();
-      if ($$0 == dps.a.b && (this.a || this.b) && this.n != null) {
-         this.v();
-      }
-   }
-
-   private void v() {
-      dfa $$0 = this.n().b();
-      if ($$0 instanceof dgj) {
-         this.k();
-         this.n.a(this.o, $$0, 1);
-      }
-   }
-
-   public boolean j() {
-      return this.c;
-   }
-
-   public boolean k() {
-      this.c = true;
-      if (this.u()) {
-         iz $$0 = this.o.a(this.n.a_(this.o).c(dgj.b).g());
-         if (this.n.a_($$0).b() instanceof dgj) {
-            dpi $$1 = this.n.c_($$0);
-            this.c = $$1 instanceof dps && ((dps)$$1).b().k() > 0;
-         } else {
-            this.c = false;
-         }
-      }
-
-      return this.c;
-   }
-
-   public dps.a l() {
-      dsd $$0 = this.n();
-      if ($$0.a(dfc.fN)) {
-         return dps.a.c;
-      } else if ($$0.a(dfc.kG)) {
-         return dps.a.b;
-      } else {
-         return $$0.a(dfc.kH) ? dps.a.a : dps.a.c;
-      }
-   }
-
-   public boolean u() {
-      dsd $$0 = this.n.a_(this.ay_());
-      return $$0.b() instanceof dgj ? $$0.c(dgj.c) : false;
+      return this.d.stream().allMatch(cur::e);
    }
 
    @Override
-   protected void a(dpi.b $$0) {
+   public cur a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cur a(int $$0, int $$1) {
+      cur $$2 = Objects.requireNonNullElse(this.d.get($$0), cur.l);
+      this.d.set($$0, cur.l);
+      if (!$$2.e()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cur b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cur $$1) {
+      if ($$1.a(awy.aW)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.e()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bqp $$0, int $$1, cur $$2) {
+      return $$0.a_($$2x -> $$2x.e() ? true : cur.c($$2, $$2x) && $$2x.I() + $$2.I() <= $$0.e_($$2x));
+   }
+
+   @Override
+   public int ah_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(cmz $$0) {
+      return bqp.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cur $$1) {
+      return $$1.a(awy.aW) && this.a($$0).e() && $$1.I() == this.ah_();
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dpj.b $$0) {
       super.a($$0);
-      this.d.b($$0.a(km.g));
+      $$0.a(km.aa, cxn.a).a(this.d);
    }
 
    @Override
    protected void a(ki.a $$0) {
       super.a($$0);
-      $$0.a(km.g, this.d.o());
+      $$0.a(km.aa, cxn.a(this.d));
    }
 
    @Override
    public void a(us $$0) {
-      super.a($$0);
-      $$0.r("CustomName");
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+      $$0.r("Items");
    }
 }

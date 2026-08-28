@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ehb {
+public interface ehb {
+   @Nullable
+   dse a(dya var1, int var2, int var3, int var4);
 }

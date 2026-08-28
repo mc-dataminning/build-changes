@@ -1,35 +1,22 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.function.Function;
 
-public class ert extends erv {
-   public static final MapCodec<ert> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eqi.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, ert::new));
-   private final eqi b;
+public interface ert<T extends ert<T>> {
+   T b(erx.a var1);
 
-   private ert(List<ett> $$0, eqi $$1) {
-      super($$0);
-      this.b = $$1;
+   default <E> T a(Iterable<E> $$0, Function<E, erx.a> $$1) {
+      T $$2 = this.c();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public erx<ert> b() {
-      return ery.w;
+   default <E> T a(E[] $$0, Function<E, erx.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
    }
 
-   @Override
-   public Set<etc<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public cuq a(cuq $$0, eqj $$1) {
-      int $$2 = this.b.a($$1, $$0.I());
-      $$0.e($$2);
-      return $$0;
-   }
-
-   public static erv.a<?> a(eqi $$0) {
-      return a($$1 -> new ert($$1, $$0));
-   }
+   T c();
 }

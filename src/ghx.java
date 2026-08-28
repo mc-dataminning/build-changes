@@ -1,55 +1,45 @@
-public abstract class ghx<T extends cne> extends gix<T> {
-   public ghx(giy.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class ghx extends gka<ciz, ftc> {
+   public static final alf a = new alf("textures/entity/armorstand/wood.png");
+
+   public ghx(giz.a $$0) {
+      super($$0, new ftd($$0.a(fxb.c)), 0.0F);
+      this.a(new gnb<>(this, new ftc($$0.a(fxb.d)), new ftc($$0.a(fxb.e)), $$0.g()));
+      this.a(new gne<>(this, $$0.d()));
+      this.a(new gmu<>(this, $$0.f()));
+      this.a(new gmq<>(this, $$0.f(), $$0.d()));
    }
 
-   public void a(T $$0, float $$1, float $$2, ezz $$3, gdp $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(ayz.i($$2, $$0.O, $$0.dF()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayz.i($$2, $$0.P, $$0.dH())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -ayz.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
-      }
-
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      fad $$18 = $$4.getBuffer(gdx.d(this.a($$0)));
-      ezz.a $$19 = $$3.c();
-      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
-
-      for (int $$20 = 0; $$20 < 4; $$20++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$19, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$19, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$19, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$19, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public alf a(ciz $$0) {
+      return a;
    }
 
-   public void a(ezz.a $$0, fad $$1, int $$2, int $$3, int $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
-      $$1.a($$0, (float)$$2, (float)$$3, (float)$$4).a(255, 255, 255, 255).a($$5, $$6).c(gor.d).b($$10).b($$0, (float)$$7, (float)$$9, (float)$$8).e();
+   protected void a(ciz $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      float $$6 = (float)($$0.dP().Z() - $$0.bN) + $$4;
+      if ($$6 < 5.0F) {
+         $$1.a(a.d.rotationDegrees(ayz.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
+      }
+   }
+
+   protected boolean b(ciz $$0) {
+      double $$1 = this.c.b($$0);
+      float $$2 = $$0.ca() ? 32.0F : 64.0F;
+      return $$1 >= (double)($$2 * $$2) ? false : $$0.cE();
+   }
+
+   @Nullable
+   protected gdy a(ciz $$0, boolean $$1, boolean $$2, boolean $$3) {
+      if (!$$0.z()) {
+         return super.a($$0, $$1, $$2, $$3);
+      } else {
+         alf $$4 = this.a($$0);
+         if ($$2) {
+            return gdy.c($$4, false);
+         } else {
+            return $$1 ? gdy.a($$4, false) : null;
+         }
+      }
    }
 }

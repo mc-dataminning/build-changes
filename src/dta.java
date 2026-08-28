@@ -1,23 +1,28 @@
 public enum dta implements azu {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+   a(je.a),
+   b(je.b);
 
-   private final String f;
+   private final je c;
 
-   private dta(final String $$0) {
-      this.f = $$0;
+   private dta(final je $$0) {
+      this.c = $$0;
+   }
+
+   public je a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dta b() {
+      return this == a ? b : a;
    }
 }

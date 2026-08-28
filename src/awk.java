@@ -1,12 +1,12 @@
 public class awk {
-   public static final awj<dfa> a = a("mined", lp.e);
-   public static final awj<cul> b = a("crafted", lp.h);
-   public static final awj<cul> c = a("used", lp.h);
-   public static final awj<cul> d = a("broken", lp.h);
-   public static final awj<cul> e = a("picked_up", lp.h);
-   public static final awj<cul> f = a("dropped", lp.h);
-   public static final awj<btb<?>> g = a("killed", lp.g);
-   public static final awj<btb<?>> h = a("killed_by", lp.g);
+   public static final awj<dfb> a = a("mined", lp.e);
+   public static final awj<cum> b = a("crafted", lp.h);
+   public static final awj<cum> c = a("used", lp.h);
+   public static final awj<cum> d = a("broken", lp.h);
+   public static final awj<cum> e = a("picked_up", lp.h);
+   public static final awj<cum> f = a("dropped", lp.h);
+   public static final awj<btc<?>> g = a("killed", lp.g);
+   public static final awj<btc<?>> h = a("killed_by", lp.g);
    public static final awj<alf> i = a("custom", lp.m);
    public static final alf j = a("leave_game", awi.b);
    public static final alf k = a("play_time", awi.e);

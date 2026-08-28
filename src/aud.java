@@ -5,14 +5,14 @@ import javax.annotation.Nullable;
 
 public class aud extends atu {
    private static final atq c = new atq(xp.c("dataPack.vanilla.description"), aa.b().a(atd.b), Optional.empty());
-   private static final asx d = new asx(cpo.h);
+   private static final asx d = new asx(cpp.h);
    private static final ast e = ast.a(atq.b, c, asx.a, d);
    private static final ata f = new ata("vanilla", xp.c("dataPack.vanilla.name"), aub.c, Optional.of(b));
    private static final atc g = new atc(false, atx.b.b, false);
    private static final atc h = new atc(false, atx.b.a, false);
    private static final alf i = new alf("minecraft", "datapacks");
 
-   public aud(evi $$0) {
+   public aud(evj $$0) {
       super(atd.b, b(), i, $$0);
    }
 
@@ -42,15 +42,15 @@ public class aud extends atu {
       return atx.a(a($$0, $$2), $$1, atd.b, h);
    }
 
-   public static aua a(Path $$0, evi $$1) {
+   public static aua a(Path $$0, evj $$1) {
       return new aua(new aud($$1), new atv($$0, atd.b, aub.e, $$1));
    }
 
    public static aua c() {
-      return new aua(new aud(new evi($$0 -> true)));
+      return new aua(new aud(new evj($$0 -> true)));
    }
 
-   public static aua a(epx.c $$0) {
-      return a($$0.a(epv.j), $$0.d().e());
+   public static aua a(epy.c $$0) {
+      return a($$0.a(epw.j), $$0.d().e());
    }
 }

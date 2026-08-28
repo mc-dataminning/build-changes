@@ -1,38 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class esx extends erv {
-   public static final Codec<xp> a = xr.a.validate($$0 -> cxz.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<esx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cxz.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), eru.a.forGetter($$0x -> $$0x.d))).apply($$0, esx::new)
+public class esx extends erw {
+   public static final MapCodec<esx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(cxz.d.fieldOf("pages").forGetter($$0x -> $$0x.b), erv.a(100).forGetter($$0x -> $$0x.c))).apply($$0, esx::new)
    );
-   private final List<arw<xp>> c;
-   private final eru d;
+   private final List<arw<String>> b;
+   private final erv c;
 
-   protected esx(List<ett> $$0, List<arw<xp>> $$1, eru $$2) {
+   protected esx(List<etu> $$0, List<arw<String>> $$1, erv $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cuq a(cuq $$0, eqj $$1) {
-      $$0.a(km.J, cxz.a, this::a);
+   protected cur a(cur $$0, eqk $$1) {
+      $$0.a(km.I, cxz.a, this::a);
       return $$0;
    }
 
-   @VisibleForTesting
    public cxz a(cxz $$0) {
-      List<arw<xp>> $$1 = this.d.a($$0.a(), this.c);
+      List<arw<String>> $$1 = this.c.a($$0.a(), this.b, 100);
       return $$0.b($$1);
    }
 
    @Override
-   public erx<esx> b() {
-      return ery.N;
+   public ery<esx> b() {
+      return erz.O;
    }
 }

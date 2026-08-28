@@ -1,96 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djd extends dem {
+public class djd extends dfb implements dht, dij {
    public static final MapCodec<djd> a = b(djd::new);
-   public static final dsu b = dst.n;
+   public static final dtc<jg> b = dsu.T;
 
    @Override
    public MapCodec<djd> a() {
       return a;
    }
 
-   protected djd(dsc.d $$0) {
+   protected djd(dsd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, jg.k));
    }
 
    @Override
-   public void a(dbz $$0, iz $$1, dsd $$2, @Nullable btq $$3, cuq $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cxf $$5 = $$4.a(km.O, cxf.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
-      }
+   protected void a(dsf.a<dfb, dse> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dqj $$5) {
-         $$5.l();
-         return bqv.a($$1.B);
+   protected dse a(dse $$0, dlo $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   protected dse a(dse $$0, djy $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public dse a(cyc $$0) {
+      je $$1 = $$0.k();
+      je $$2;
+      if ($$1.o() == je.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         return bqv.e;
+         $$2 = je.b;
       }
+
+      return this.o().a(b, jg.a($$1, $$2));
    }
 
    @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dqj $$5) {
-            $$5.l();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dpi a(iz $$0, dsd $$1) {
+   public dpj a(iz $$0, dse $$1) {
       return new dqj($$0, $$1);
    }
 
    @Override
-   public boolean e_(dsd $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dsd $$0, dbf $$1, iz $$2, je $$3) {
-      if ($$1.c_($$2) instanceof dqj $$4 && $$4.j()) {
-         return 15;
+   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
+      dpj $$5 = $$1.c_($$2);
+      if ($$5 instanceof dqj && $$3.gz()) {
+         $$3.a((dqj)$$5);
+         return bqw.a($$1.B);
+      } else {
+         return bqw.e;
       }
-
-      return 0;
    }
 
-   @Override
-   protected boolean c_(dsd $$0) {
-      return true;
+   public static boolean a(emm.c $$0, emm.c $$1) {
+      je $$2 = m($$0.b());
+      je $$3 = m($$1.b());
+      je $$4 = n($$0.b());
+      je $$5 = n($$1.b());
+      dqj.a $$6 = dqj.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dqj.a.b : dqj.a.a);
+      boolean $$7 = $$6 == dqj.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   protected int a(dsd $$0, dbz $$1, iz $$2) {
-      if ($$1.c_($$2) instanceof dqj $$3 && $$3.f().g() instanceof cvl $$4) {
-         return $$4.h();
-      }
-
-      return 0;
+   public static je m(dse $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected dlg a_(dsd $$0) {
-      return dlg.c;
-   }
-
-   @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpi> dpj<T> a(dbz $$0, dsd $$1, dpk<T> $$2) {
-      return $$1.c(b) ? a($$2, dpk.e, dqj::a) : null;
+   public static je n(dse $$0) {
+      return $$0.c(b).b();
    }
 }

@@ -1,17 +1,17 @@
 public class aid implements zw<agw> {
    public static final zn<wm, aid> a = zw.a(aid::a, aid::new);
-   private final crj b;
+   private final crk b;
    private final boolean c;
    private final boolean d;
 
-   public aid(crj $$0, boolean $$1, boolean $$2) {
+   public aid(crk $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
    private aid(wm $$0) {
-      this.b = $$0.b(crj.class);
+      this.b = $$0.b(crk.class);
       this.c = $$0.readBoolean();
       this.d = $$0.readBoolean();
    }
@@ -31,7 +31,7 @@ public class aid implements zw<agw> {
       $$0.a(this);
    }
 
-   public crj b() {
+   public crk b() {
       return this.b;
    }
 

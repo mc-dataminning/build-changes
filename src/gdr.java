@@ -1,30 +1,125 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
 
-public class gdr {
-   public static final alf a = new alf("textures/gui/title/background/panorama_overlay.png");
-   private final ffg b;
-   private final gdd c;
-   private float d;
-   private float e;
+public class gdr implements gdq {
+   private final gdq.a a;
+   private final gdq.a b = gdq.a(new ezv(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public gdr(gdd $$0) {
+   public gdr(gdq.a $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public fae getBuffer(gdy $$0) {
+      if ($$0.M()) {
+         fae $$1 = this.b.getBuffer($$0);
+         return new gdr.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         fae $$2 = this.a.getBuffer($$0);
+         Optional<gdy> $$3 = $$0.L();
+         if ($$3.isPresent()) {
+            fae $$4 = this.b.getBuffer($$3.get());
+            gdr.a $$5 = new gdr.a($$4, this.c, this.d, this.e, this.f);
+            return fah.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
       this.c = $$0;
-      this.b = ffg.Q();
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public void a(fgs $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = (float)((double)$$4 * this.b.m.s().c());
-      this.d = a(this.d + $$5 * 0.1F, 360.0F);
-      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$3);
-      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   public void a() {
+      this.b.b();
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   static class a extends ezz {
+      private final fae f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(fae $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public fae a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public fae a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fae a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public fae a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fae b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fae a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      }
    }
 }

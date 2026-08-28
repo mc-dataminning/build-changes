@@ -3,9 +3,9 @@ public class acq implements zw<aci> {
    private final iz b;
    private final int c;
    private final int d;
-   private final dfa e;
+   private final dfb e;
 
-   public acq(iz $$0, dfa $$1, int $$2, int $$3) {
+   public acq(iz $$0, dfb $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class acq implements zw<aci> {
       return this.d;
    }
 
-   public dfa g() {
+   public dfb g() {
       return this.e;
    }
 }

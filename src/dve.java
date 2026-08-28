@@ -1,5 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dve {
-   CompletableFuture<Void> a(dbg var1, vm var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dve {
 }

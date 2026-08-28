@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dzk implements dzc {
+class dzk extends dzo {
+   private final jm<enw> e;
    public static final MapCodec<dzk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dzc.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dzk::new)
+      $$0 -> a($$0).and(jx.a(lq.z).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dzk::new)
    );
-   private final dzc e;
 
-   public dzk(dzc $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(dcu $$0, iz $$1) {
-      return !this.e.test($$0, $$1);
+   public dzk(kd $$0, jm<enw> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public dzd<?> a() {
-      return dzd.k;
+   protected boolean a(dse $$0) {
+      return $$0.u().a(this.e);
+   }
+
+   @Override
+   public dze<?> a() {
+      return dze.c;
    }
 }

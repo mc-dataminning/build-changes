@@ -1,11 +1,11 @@
 import java.util.function.Consumer;
 
-public record ui(String a, String b, String c, dln d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<tn> l) {
+public record ui(String a, String b, String c, dlo d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<tn> l) {
    public ui(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<tn> $$6) {
-      this($$0, $$1, $$2, dln.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
+      this($$0, $$1, $$2, dlo.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   public ui(String $$0, String $$1, String $$2, dln $$3, int $$4, long $$5, boolean $$6, Consumer<tn> $$7) {
+   public ui(String $$0, String $$1, String $$2, dlo $$3, int $$4, long $$5, boolean $$6, Consumer<tn> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
    }
 
@@ -34,7 +34,7 @@ public record ui(String a, String b, String c, dln d, int e, long f, boolean g, 
       return this.c;
    }
 
-   public dln e() {
+   public dlo e() {
       return this.d;
    }
 

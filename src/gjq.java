@@ -1,18 +1,12 @@
-public class gjq extends gme {
-   private static final alf a = new alf("textures/entity/zombie/husk.png");
-
-   public gjq(giy.a $$0) {
-      super($$0, fxa.ar, fxa.as, fxa.at);
+public abstract class gjq<T extends btt, M extends fup<T>> extends gkf<T, M> {
+   public gjq(giz.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   protected void a(ckx $$0, ezz $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public alf a(ckx $$0) {
-      return a;
+   public gjq(giz.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new gmq<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new gmu<>(this, $$0.f()));
+      this.a(new gne<>(this, $$0.d()));
    }
 }

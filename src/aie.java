@@ -2,7 +2,7 @@ public class aie implements zw<agw> {
    public static final zn<wm, aie> a = zw.a(aie::a, aie::new);
    private final alf b;
 
-   public aie(cyy<?> $$0) {
+   public aie(cyz<?> $$0) {
       this.b = $$0.a();
    }
 

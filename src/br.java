@@ -17,24 +17,24 @@ public record br(Optional<cp> b, Optional<cp> c, Optional<cp> d, Optional<cp> e,
             .apply($$0, br::new)
    );
 
-   public static br a(jj<doy> $$0) {
-      return br.a.a().a(cp.a.a().a(cut.uP).a(kk.a(coj.a($$0).a()))).b();
+   public static br a(jj<doz> $$0) {
+      return br.a.a().a(cp.a.a().a(cuu.uP).a(kk.a(cok.a($$0).a()))).b();
    }
 
-   public boolean a(@Nullable bsv $$0) {
-      if ($$0 instanceof btq $$1) {
-         if (this.b.isPresent() && !this.b.get().a($$1.a(btc.f))) {
+   public boolean a(@Nullable bsw $$0) {
+      if ($$0 instanceof btr $$1) {
+         if (this.b.isPresent() && !this.b.get().a($$1.a(btd.f))) {
             return false;
-         } else if (this.c.isPresent() && !this.c.get().a($$1.a(btc.e))) {
+         } else if (this.c.isPresent() && !this.c.get().a($$1.a(btd.e))) {
             return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.a(btc.d))) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.a(btd.d))) {
             return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.a(btc.c))) {
+         } else if (this.e.isPresent() && !this.e.get().a($$1.a(btd.c))) {
             return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.a(btc.g))) {
+         } else if (this.f.isPresent() && !this.f.get().a($$1.a(btd.g))) {
             return false;
          } else {
-            return this.g.isPresent() && !this.g.get().a($$1.a(btc.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(btc.b));
+            return this.g.isPresent() && !this.g.get().a($$1.a(btd.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(btd.b));
          }
       } else {
          return false;

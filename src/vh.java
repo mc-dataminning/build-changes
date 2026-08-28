@@ -122,23 +122,23 @@ public final class vh {
       return new uw(new int[]{$$0.u(), $$0.v(), $$0.w()});
    }
 
-   public static dsd a(jj<dfa> $$0, us $$1) {
+   public static dse a(jj<dfb> $$0, us $$1) {
       if (!$$1.b("Name", 8)) {
-         return dfc.a.o();
+         return dfd.a.o();
       } else {
          alf $$2 = new alf($$1.l("Name"));
-         Optional<? extends ji<dfa>> $$3 = $$0.a(ale.a(lq.f, $$2));
+         Optional<? extends ji<dfb>> $$3 = $$0.a(ale.a(lq.f, $$2));
          if ($$3.isEmpty()) {
-            return dfc.a.o();
+            return dfd.a.o();
          } else {
-            dfa $$4 = $$3.get().a();
-            dsd $$5 = $$4.o();
+            dfb $$4 = $$3.get().a();
+            dse $$5 = $$4.o();
             if ($$1.b("Properties", 10)) {
                us $$6 = $$1.p("Properties");
-               dse<dfa, dsd> $$7 = $$4.l();
+               dsf<dfb, dse> $$7 = $$4.l();
 
                for (String $$8 : $$6.e()) {
-                  dtg<?> $$9 = $$7.a($$8);
+                  dth<?> $$9 = $$7.a($$8);
                   if ($$9 != null) {
                      $$5 = a($$5, $$9, $$8, $$6, $$1);
                   }
@@ -150,7 +150,7 @@ public final class vh {
       }
    }
 
-   private static <S extends dsf<?, S>, T extends Comparable<T>> S a(S $$0, dtg<T> $$1, String $$2, us $$3, us $$4) {
+   private static <S extends dsg<?, S>, T extends Comparable<T>> S a(S $$0, dth<T> $$1, String $$2, us $$3, us $$4) {
       Optional<T> $$5 = $$1.b($$3.l($$2));
       if ($$5.isPresent()) {
          return $$0.a($$1, $$5.get());
@@ -160,15 +160,15 @@ public final class vh {
       }
    }
 
-   public static us a(dsd $$0) {
+   public static us a(dse $$0) {
       us $$1 = new us();
       $$1.a("Name", lp.e.b($$0.b()).toString());
-      Map<dtg<?>, Comparable<?>> $$2 = $$0.C();
+      Map<dth<?>, Comparable<?>> $$2 = $$0.C();
       if (!$$2.isEmpty()) {
          us $$3 = new us();
 
-         for (Entry<dtg<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            dtg<?> $$5 = $$4.getKey();
+         for (Entry<dth<?>, Comparable<?>> $$4 : $$2.entrySet()) {
+            dth<?> $$5 = $$4.getKey();
             $$3.a($$5.f(), a($$5, $$4.getValue()));
          }
 
@@ -178,15 +178,15 @@ public final class vh {
       return $$1;
    }
 
-   public static us a(enw $$0) {
+   public static us a(enx $$0) {
       us $$1 = new us();
       $$1.a("Name", lp.c.b($$0.a()).toString());
-      Map<dtg<?>, Comparable<?>> $$2 = $$0.C();
+      Map<dth<?>, Comparable<?>> $$2 = $$0.C();
       if (!$$2.isEmpty()) {
          us $$3 = new us();
 
-         for (Entry<dtg<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            dtg<?> $$5 = $$4.getKey();
+         for (Entry<dth<?>, Comparable<?>> $$4 : $$2.entrySet()) {
+            dth<?> $$5 = $$4.getKey();
             $$3.a($$5.f(), a($$5, $$4.getValue()));
          }
 
@@ -196,7 +196,7 @@ public final class vh {
       return $$1;
    }
 
-   private static <T extends Comparable<T>> String a(dtg<T> $$0, Comparable<?> $$1) {
+   private static <T extends Comparable<T>> String a(dth<T> $$0, Comparable<?> $$1) {
       return $$0.a((T)$$1);
    }
 

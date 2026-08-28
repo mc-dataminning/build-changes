@@ -1,24 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class don extends dfa {
-   public static final MapCodec<don> a = b(don::new);
+public class don extends dno implements dog {
+   public static final MapCodec<don> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dst.a.fieldOf("block_set_type").forGetter(dno::m), dog.a.e.fieldOf("weathering_state").forGetter(don::n), u()).apply($$0, don::new)
+   );
+   private final dog.a n;
 
    @Override
    public MapCodec<don> a() {
-      return a;
+      return m;
    }
 
-   public don(dsc.d $$0) {
-      super($$0);
+   protected don(dst $$0, dog.a $$1, dsd.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, bsv $$3) {
-      evs $$4 = new evs(0.25, 0.05F, 0.25);
-      if ($$3 instanceof btq $$5 && $$5.b(bsf.K)) {
-         $$4 = new evs(0.5, 0.25, 0.5);
-      }
+   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-      $$3.a($$0, $$4);
+   @Override
+   protected boolean d_(dse $$0) {
+      return dog.c($$0.b()).isPresent();
+   }
+
+   public dog.a n() {
+      return this.n;
    }
 }

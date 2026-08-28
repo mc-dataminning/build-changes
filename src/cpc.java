@@ -1,118 +1,55 @@
-public class cpc extends cou {
-   static final akk<String> c = ako.a(cpc.class, akm.e);
-   static final akk<xp> d = ako.a(cpc.class, akm.f);
-   private final dba e = new cpc.a();
-   private static final int i = 4;
-   private int j;
-
-   public cpc(btb<? extends cpc> $$0, dbz $$1) {
+public class cpc extends cow {
+   public cpc(btc<? extends cpc> $$0, dca $$1) {
       super($$0, $$1);
    }
 
-   public cpc(dbz $$0, double $$1, double $$2, double $$3) {
-      super(btb.v, $$0, $$1, $$2, $$3);
+   public cpc(dca $$0, double $$1, double $$2, double $$3) {
+      super(btc.s, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected cul ag_() {
-      return cut.nM;
+   protected cum ag_() {
+      return cuu.nN;
    }
 
    @Override
-   protected void a(ako.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, xo.a);
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(us $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dR());
-      this.ap().a(c, this.B().m());
-      this.ap().a(d, this.B().l());
+   public cov.a v() {
+      return cov.a.b;
    }
 
    @Override
-   protected void b(us $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dR());
+   public dse x() {
+      return dfd.cv.o().a(dge.c, je.c);
    }
 
    @Override
-   public cou.a v() {
-      return cou.a.g;
+   public int z() {
+      return 8;
    }
 
    @Override
-   public dsd x() {
-      return dfc.fN.o();
-   }
-
-   public dba B() {
-      return this.e;
+   public cpw a(int $$0, cmy $$1) {
+      return cqd.a($$0, $$1, this);
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ai - this.j >= 4) {
-         this.B().a(this.dP());
-         this.j = this.ai;
-      }
+   public void c(cmz $$0) {
+      this.dP().a(dwx.j, this.dn(), dwx.a.a($$0));
    }
 
    @Override
-   public bqv a(cmy $$0, bqu $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(akk<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.ap().a(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.ap().a(c));
-      }
-   }
-
-   @Override
-   public boolean cP() {
-      return true;
-   }
-
-   public class a extends dba {
-      @Override
-      public arf e() {
-         return (arf)cpc.this.dP();
+   public bqw a(cmz $$0, bqv $$1) {
+      bqw $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dwx.k, $$0);
+         clq.a($$0, true);
       }
 
-      @Override
-      public void f() {
-         cpc.this.ap().a(cpc.c, this.m());
-         cpc.this.ap().a(cpc.d, this.l());
-      }
-
-      @Override
-      public evs g() {
-         return cpc.this.dn();
-      }
-
-      public cpc h() {
-         return cpc.this;
-      }
-
-      @Override
-      public ep i() {
-         return new ep(this, cpc.this.dn(), cpc.this.bM(), this.e(), 2, this.n().getString(), cpc.this.O_(), this.e().o(), cpc.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cpc.this.dK();
-      }
+      return $$2;
    }
 }

@@ -1,28 +1,16 @@
-public class coi extends cog {
-   private static final coi.a h = new coi.a();
-   private static final float i = 1.2F;
+public class coi extends coh {
+   private static final float h = 3.0F;
 
-   public coi(btb<? extends cog> $$0, dbz $$1) {
+   public coi(btc<? extends coh> $$0, dca $$1) {
       super($$0, $$1);
    }
 
-   public coi(cmy $$0, dbz $$1, double $$2, double $$3, double $$4) {
-      super(btb.bn, $$1, $$0, $$2, $$3, $$4);
-   }
-
-   public coi(dbz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super(btb.bn, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
+   public coi(clb $$0, dca $$1) {
+      super(btc.n, $$1, $$0, $$0.du(), $$0.gs(), $$0.dA());
    }
 
    @Override
    protected void y() {
-      this.dP().a(this, null, h, this.du(), this.dw(), this.dA(), 1.2F, false, dbz.a.e, li.A, li.z, awa.Cm);
-   }
-
-   public static final class a extends cog.a {
-      @Override
-      public float a(bsv $$0) {
-         return 1.1F;
-      }
+      this.dP().a(this, null, g, this.du(), this.dw(), this.dA(), 3.0F, false, dca.a.e, li.A, li.z, awa.cQ);
    }
 }

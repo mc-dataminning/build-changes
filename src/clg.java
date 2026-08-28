@@ -1,38 +1,19 @@
 import java.util.Map;
 
-public class clg extends bvj<cla> {
+public class clg extends bvk<clb> {
    public clg() {
-      super(Map.of(ccu.o, ccv.a, ccu.m, ccv.b, ccu.aU, ccv.b, ccu.aV, ccv.b));
+      super(Map.of(ccv.o, ccw.a, ccv.aZ, ccw.b, ccv.ba, ccw.b, ccv.m, ccw.b, ccv.aV, ccw.b));
    }
 
-   protected boolean a(arf $$0, cla $$1) {
-      return $$1.aE() && !$$1.be() && $$1.ar() == buc.a;
+   protected boolean a(arf $$0, clb $$1) {
+      return $$1.bR() || $$1.be() || $$1.c(bsg.y) != null;
    }
 
-   protected void a(arf $$0, cla $$1, long $$2) {
-      btq $$3 = $$1.dS().c(ccu.o).orElse(null);
-      if ($$3 != null) {
-         boolean $$4 = $$1.k($$3.dn());
-         evs $$5 = null;
-         if ($$4) {
-            evs $$6 = cel.a($$1, 5, 5, $$3.dn());
-            if ($$6 != null && clc.a($$1, $$6) && $$3.i($$6.c, $$6.d, $$6.e) > $$3.g($$1)) {
-               $$5 = $$6;
-            }
-         }
-
-         if ($$5 == null) {
-            $$5 = $$1.el().h() ? clc.a($$3, $$1.el()) : a($$1, $$3);
-         }
-
-         $$1.dS().a(ccu.m, new ccx(iz.a($$5), 0.6F, 1));
-      }
+   protected boolean a(arf $$0, clb $$1, long $$2) {
+      return false;
    }
 
-   private static evs a(cla $$0, btq $$1) {
-      evs $$2 = $$1.dn().d($$0.dn());
-      double $$3 = $$2.f() - ayz.d($$0.el().j(), 8.0, 4.0);
-      evs $$4 = $$2.d().d($$3, $$3, $$3);
-      return $$0.dn().e($$4);
+   protected void b(arf $$0, clb $$1, long $$2) {
+      $$1.dS().a(ccv.aV, bac.a, 60L);
    }
 }

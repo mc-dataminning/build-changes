@@ -1,280 +1,824 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Arrays;
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public class dyn {
-   private static final dsd a = dfc.hj.o();
-   private static final dsd b = dfc.hk.o();
-   private static final dsd c = dfc.iA.o();
-   private static final dsd d = dfc.hn.o();
-   private static final dsd e = dfc.hv.o();
-   private static final dsd f = dfc.hx.o();
-   private static final dsd g = dfc.hr.o();
-   private static final dsd h = dfc.iC.o();
-   private static final dsd i = dfc.dP.o();
-   private final dsd j;
-   private final int k;
-   private final dsd[] l;
-   private final emz m;
-   private final emz n;
-   private final emz o;
-   private final emz p;
-   private final emz q;
-   private final emz r;
-   private final emz s;
-   private final dyi t;
-   private final emz u;
-   private final emz v;
+   public static final dyn.f a = a(0, false, ehh.b);
+   public static final dyn.f b = a(0, true, ehh.b);
+   public static final dyn.f c = a(0, true, 6, ehh.b);
+   public static final dyn.f d = a(0, true, 30, ehh.b);
+   public static final dyn.f e = a(0, false, ehh.a);
+   public static final dyn.f f = a(0, true, ehh.a);
 
-   public dyn(dyj $$0, dsd $$1, int $$2, dyi $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(dye.P);
-      this.l = a($$3.a(new alf("clay_bands")));
-      this.u = $$0.a(dye.N);
-      this.v = $$0.a(dye.O);
-      this.n = $$0.a(dye.Q);
-      this.o = $$0.a(dye.R);
-      this.p = $$0.a(dye.S);
-      this.q = $$0.a(dye.T);
-      this.r = $$0.a(dye.U);
-      this.s = $$0.a(dye.V);
+   public static dyn.f a(int $$0, boolean $$1, ehh $$2) {
+      return new dyn.t($$0, $$1, 0, $$2);
    }
 
-   public void a(dyj $$0, dda $$1, jv<dcy> $$2, boolean $$3, dys $$4, final dtz $$5, dxz $$6, dym.o $$7) {
-      final iz.a $$8 = new iz.a();
-      final dbg $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dtw $$12 = new dtw() {
-         @Override
-         public dsd a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
+   public static dyn.f a(int $$0, boolean $$1, int $$2, ehh $$3) {
+      return new dyn.t($$0, $$1, $$2, $$3);
+   }
 
-         @Override
-         public void a(int $$0, dsd $$1) {
-            dcb $$2 = $$5.z();
-            if ($$0 >= $$2.I_() && $$0 < $$2.am()) {
-               $$5.a($$8.q($$0), $$1, false);
-               if (!$$1.u().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
+   public static dyn.f a(dyn.f $$0) {
+      return new dyn.n($$0);
+   }
 
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      dym.g $$13 = new dym.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      dym.u $$14 = $$7.apply($$13);
-      iz.a $$15 = new iz.a();
+   public static dyn.f a(dyq $$0, int $$1) {
+      return new dyn.aa($$0, $$1, false);
+   }
 
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(dxv.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            ji<dcy> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(ddf.B)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
+   public static dyn.f b(dyq $$0, int $$1) {
+      return new dyn.aa($$0, $$1, true);
+   }
 
-            int $$22 = $$5.a(dxv.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.I_();
+   public static dyn.f a(int $$0, int $$1) {
+      return new dyn.z($$0, $$1, false);
+   }
 
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dsd $$28 = $$12.a($$27);
-               if ($$28.i()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.u().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = dvv.g;
+   public static dyn.f b(int $$0, int $$1) {
+      return new dyn.z($$0, $$1, true);
+   }
 
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dsd $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
-                        }
-                     }
-                  }
+   @SafeVarargs
+   public static dyn.f a(ale<dcz>... $$0) {
+      return a(List.of($$0));
+   }
 
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dsd $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
+   private static dyn.c a(List<ale<dcz>> $$0) {
+      return new dyn.c($$0);
+   }
 
-            if ($$21.a(ddf.W) || $$21.a(ddf.X)) {
-               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
+   public static dyn.f a(ale<ena.a> $$0, double $$1) {
+      return a($$0, $$1, Double.MAX_VALUE);
+   }
+
+   public static dyn.f a(ale<ena.a> $$0, double $$1, double $$2) {
+      return new dyn.l($$0, $$1, $$2);
+   }
+
+   public static dyn.f a(String $$0, dyq $$1, dyq $$2) {
+      return new dyn.y(new alf($$0), $$1, $$2);
+   }
+
+   public static dyn.f a() {
+      return dyn.s.a;
+   }
+
+   public static dyn.f b() {
+      return dyn.h.a;
+   }
+
+   public static dyn.f c() {
+      return dyn.a.a;
+   }
+
+   public static dyn.f d() {
+      return dyn.v.a;
+   }
+
+   public static dyn.o a(dyn.f $$0, dyn.o $$1) {
+      return new dyn.x($$0, $$1);
+   }
+
+   public static dyn.o a(dyn.o... $$0) {
+      if ($$0.length == 0) {
+         throw new IllegalArgumentException("Need at least 1 rule for a sequence");
+      } else {
+         return new dyn.q(Arrays.asList($$0));
       }
    }
 
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   public static dyn.o a(dse $$0) {
+      return new dyn.d($$0);
    }
 
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
+   public static dyn.o e() {
+      return dyn.b.a;
    }
 
-   private boolean a(dsd $$0) {
-      return !$$0.i() && $$0.u().c();
+   static <A> MapCodec<? extends A> a(jv<MapCodec<? extends A>> $$0, String $$1, ays<? extends A> $$2) {
+      return jv.a($$0, $$1, $$2.a());
    }
 
-   @Deprecated
-   public Optional<dsd> a(dym.o $$0, dzv $$1, Function<iz, ji<dcy>> $$2, dtz $$3, dxz $$4, iz $$5, boolean $$6) {
-      dym.g $$7 = new dym.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(lq.az), $$1);
-      dym.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dsd $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
-   }
+   static enum a implements dyn.f {
+      a;
 
-   private void a(dtw $$0, int $$1, int $$2, int $$3, dcb $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = ayz.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.I_(); $$12--) {
-               dsd $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
+      static final ays<dyn.a> c = ays.a(MapCodec.unit(a));
 
-               if ($$13.a(dfc.G)) {
-                  return;
-               }
-            }
+      @Override
+      public ays<? extends dyn.f> a() {
+         return c;
+      }
 
-            for (int $$14 = $$11; $$14 >= $$4.I_() && $$0.a($$14).i(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
+      public dyn.e a(dyn.g $$0) {
+         return $$0.i;
       }
    }
 
-   private void a(int $$0, dcy $$1, dtw $$2, iz.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, 63, $$5))) {
-            $$12 -= 2.0;
+   static record aa(dyq a, int c, boolean d) implements dyn.f {
+      static final ays<dyn.aa> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     dyq.a.fieldOf("anchor").forGetter(dyn.aa::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(dyn.aa::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(dyn.aa::d)
+                  )
+                  .apply($$0, dyn.aa::new)
+         )
+      );
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return e;
+      }
+
+      public dyn.e a(final dyn.g $$0) {
+         class a extends dyn.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.B + (aa.this.d ? this.c.E : 0) >= aa.this.a.a(this.c.n) + this.c.t * aa.this.c;
+            }
          }
 
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
+         return new a();
+      }
+
+      public dyq b() {
+         return this.a;
+      }
+   }
+
+   static enum b implements dyn.o {
+      a;
+
+      static final ays<dyn.b> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends dyn.o> a() {
+         return c;
+      }
+
+      public dyn.u a(dyn.g $$0) {
+         return $$0.e::a;
+      }
+   }
+
+   static final class c implements dyn.f {
+      static final ays<dyn.c> a = ays.a(ale.a(lq.az).listOf().fieldOf("biome_is").xmap(dyn::a, $$0 -> $$0.c));
+      private final List<ale<dcz>> c;
+      final Predicate<ale<dcz>> d;
+
+      c(List<ale<dcz>> $$0) {
+         this.c = $$0;
+         this.d = Set.copyOf($$0)::contains;
+      }
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return a;
+      }
+
+      public dyn.e a(final dyn.g $$0) {
+         class a extends dyn.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.A.get().a(c.this.d);
+            }
+         }
+
+         return new a();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
+            return $$0 instanceof dyn.c $$1 ? this.c.equals($$1.c) : false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return this.c.hashCode();
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeConditionSource[biomes=" + this.c + "]";
+      }
+   }
+
+   static record d(dse a, dyn.r c) implements dyn.o {
+      static final ays<dyn.d> d = ays.a(dse.b.xmap(dyn.d::new, dyn.d::b).fieldOf("result_state"));
+
+      d(dse $$0) {
+         this($$0, new dyn.r($$0));
+      }
+
+      @Override
+      public ays<? extends dyn.o> a() {
+         return d;
+      }
+
+      public dyn.u a(dyn.g $$0) {
+         return this.c;
+      }
+
+      public dse b() {
+         return this.a;
+      }
+   }
+
+   interface e {
+      boolean b();
+   }
+
+   public interface f extends Function<dyn.g, dyn.e> {
+      Codec<dyn.f> b = lp.ad.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static MapCodec<? extends dyn.f> a(jv<MapCodec<? extends dyn.f>> $$0) {
+         dyn.a($$0, "biome", dyn.c.a);
+         dyn.a($$0, "noise_threshold", dyn.l.e);
+         dyn.a($$0, "vertical_gradient", dyn.y.e);
+         dyn.a($$0, "y_above", dyn.aa.e);
+         dyn.a($$0, "water", dyn.z.e);
+         dyn.a($$0, "temperature", dyn.v.c);
+         dyn.a($$0, "steep", dyn.s.c);
+         dyn.a($$0, "not", dyn.n.c);
+         dyn.a($$0, "hole", dyn.h.c);
+         dyn.a($$0, "above_preliminary_surface", dyn.a.c);
+         return dyn.a($$0, "stone_depth", dyn.t.f);
+      }
+
+      ays<? extends dyn.f> a();
+   }
+
+   protected static final class g {
+      private static final int a = 8;
+      private static final int b = 4;
+      private static final int c = 16;
+      private static final int d = 15;
+      final dyo e;
+      final dyn.e f = new dyn.g.d(this);
+      final dyn.e g = new dyn.g.c(this);
+      final dyn.e h = new dyn.g.b(this);
+      final dyn.e i = new dyn.g.a();
+      final dyk j;
+      final dua k;
+      private final dya l;
+      private final Function<iz, ji<dcz>> m;
+      final dyt n;
+      private long o = Long.MAX_VALUE;
+      private final int[] p = new int[4];
+      long q = -9223372036854775807L;
+      int r;
+      int s;
+      int t;
+      private long u = this.q - 1L;
+      private double v;
+      private long w = this.q - 1L;
+      private int x;
+      long y = -9223372036854775807L;
+      final iz.a z = new iz.a();
+      Supplier<ji<dcz>> A;
+      int B;
+      int C;
+      int D;
+      int E;
+
+      protected g(dyo $$0, dyk $$1, dua $$2, dya $$3, Function<iz, ji<dcz>> $$4, jv<dcz> $$5, dyt $$6) {
+         this.e = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+         this.m = $$4;
+         this.n = $$6;
+      }
+
+      protected void a(int $$0, int $$1) {
+         this.q++;
+         this.y++;
+         this.r = $$0;
+         this.s = $$1;
+         this.t = this.e.a($$0, $$1);
+      }
+
+      protected void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+         this.y++;
+         this.A = Suppliers.memoize(() -> this.m.apply(this.z.d($$3, $$4, $$5)));
+         this.B = $$4;
+         this.C = $$2;
+         this.D = $$1;
+         this.E = $$0;
+      }
+
+      protected double a() {
+         if (this.u != this.q) {
+            this.u = this.q;
+            this.v = this.e.b(this.r, this.s);
          }
 
-         double $$15 = $$12;
-         azh $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
+         return this.v;
+      }
 
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(dfc.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
-               }
+      private static int a(int $$0) {
+         return $$0 >> 4;
+      }
+
+      private static int b(int $$0) {
+         return $$0 << 4;
+      }
+
+      protected int b() {
+         if (this.w != this.q) {
+            this.w = this.q;
+            int $$0 = a(this.r);
+            int $$1 = a(this.s);
+            long $$2 = dbh.c($$0, $$1);
+            if (this.o != $$2) {
+               this.o = $$2;
+               this.p[0] = this.l.a(b($$0), b($$1));
+               this.p[1] = this.l.a(b($$0 + 1), b($$1));
+               this.p[2] = this.l.a(b($$0), b($$1 + 1));
+               this.p[3] = this.l.a(b($$0 + 1), b($$1 + 1));
+            }
+
+            int $$3 = ayz.a(
+               ayz.a(
+                  (double)((float)(this.r & 15) / 16.0F),
+                  (double)((float)(this.s & 15) / 16.0F),
+                  (double)this.p[0],
+                  (double)this.p[1],
+                  (double)this.p[2],
+                  (double)this.p[3]
+               )
+            );
+            this.x = $$3 + this.t - 8;
+         }
+
+         return this.x;
+      }
+
+      final class a implements dyn.e {
+         @Override
+         public boolean b() {
+            return g.this.B >= g.this.b();
+         }
+      }
+
+      static final class b extends dyn.j {
+         b(dyn.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            return this.c.t <= 0;
+         }
+      }
+
+      static class c extends dyn.j {
+         c(dyn.g $$0) {
+            super($$0);
+         }
+
+         @Override
+         protected boolean a() {
+            int $$0 = this.c.r & 15;
+            int $$1 = this.c.s & 15;
+            int $$2 = Math.max($$1 - 1, 0);
+            int $$3 = Math.min($$1 + 1, 15);
+            dua $$4 = this.c.k;
+            int $$5 = $$4.a(dxw.a.a, $$0, $$2);
+            int $$6 = $$4.a(dxw.a.a, $$0, $$3);
+            if ($$6 >= $$5 + 4) {
+               return true;
+            } else {
+               int $$7 = Math.max($$0 - 1, 0);
+               int $$8 = Math.min($$0 + 1, 15);
+               int $$9 = $$4.a(dxw.a.a, $$7, $$1);
+               int $$10 = $$4.a(dxw.a.a, $$8, $$1);
+               return $$9 >= $$10 + 4;
             }
          }
       }
-   }
 
-   private static dsd[] a(azh $$0) {
-      dsd[] $$1 = new dsd[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
-         }
-      }
-
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
+      static class d extends dyn.k {
+         d(dyn.g $$0) {
+            super($$0);
          }
 
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
-   }
-
-   private static void a(azh $$0, dsd[] $$1, int $$2, dsd $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
+         @Override
+         protected boolean a() {
+            return this.c.A.get().a().b(this.c.z.d(this.c.r, this.c.B, this.c.s));
          }
       }
    }
 
-   protected dsd a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
+   static enum h implements dyn.f {
+      a;
+
+      static final ays<dyn.h> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return c;
+      }
+
+      public dyn.e a(dyn.g $$0) {
+         return $$0.h;
+      }
+   }
+
+   abstract static class i implements dyn.e {
+      protected final dyn.g c;
+      private long a;
+      @Nullable
+      Boolean d;
+
+      protected i(dyn.g $$0) {
+         this.c = $$0;
+         this.a = this.c() - 1L;
+      }
+
+      @Override
+      public boolean b() {
+         long $$0 = this.c();
+         if ($$0 == this.a) {
+            if (this.d == null) {
+               throw new IllegalStateException("Update triggered but the result is null");
+            } else {
+               return this.d;
+            }
+         } else {
+            this.a = $$0;
+            this.d = this.a();
+            return this.d;
+         }
+      }
+
+      protected abstract long c();
+
+      protected abstract boolean a();
+   }
+
+   abstract static class j extends dyn.i {
+      protected j(dyn.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.q;
+      }
+   }
+
+   abstract static class k extends dyn.i {
+      protected k(dyn.g $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected long c() {
+         return this.c.y;
+      }
+   }
+
+   static record l(ale<ena.a> a, double c, double d) implements dyn.f {
+      static final ays<dyn.l> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     ale.a(lq.aH).fieldOf("noise").forGetter(dyn.l::b),
+                     Codec.DOUBLE.fieldOf("min_threshold").forGetter(dyn.l::c),
+                     Codec.DOUBLE.fieldOf("max_threshold").forGetter(dyn.l::d)
+                  )
+                  .apply($$0, dyn.l::new)
+         )
+      );
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return e;
+      }
+
+      public dyn.e a(final dyn.g $$0) {
+         final ena $$1 = $$0.j.a(this.a);
+
+         class a extends dyn.j {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               double $$0 = $$1.a((double)this.c.r, 0.0, (double)this.c.s);
+               return $$0 >= l.this.c && $$0 <= l.this.d;
+            }
+         }
+
+         return new a();
+      }
+
+      public ale<ena.a> b() {
+         return this.a;
+      }
+   }
+
+   static record m(dyn.e a) implements dyn.e {
+      @Override
+      public boolean b() {
+         return !this.a.b();
+      }
+   }
+
+   static record n(dyn.f a) implements dyn.f {
+      static final ays<dyn.n> c = ays.a(dyn.f.b.xmap(dyn.n::new, dyn.n::b).fieldOf("invert"));
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return c;
+      }
+
+      public dyn.e a(dyn.g $$0) {
+         return new dyn.m(this.a.apply($$0));
+      }
+
+      public dyn.f b() {
+         return this.a;
+      }
+   }
+
+   public interface o extends Function<dyn.g, dyn.u> {
+      Codec<dyn.o> b = lp.ae.q().dispatch($$0 -> $$0.a().a(), Function.identity());
+
+      static MapCodec<? extends dyn.o> a(jv<MapCodec<? extends dyn.o>> $$0) {
+         dyn.a($$0, "bandlands", dyn.b.c);
+         dyn.a($$0, "block", dyn.d.d);
+         dyn.a($$0, "sequence", dyn.q.c);
+         return dyn.a($$0, "condition", dyn.x.d);
+      }
+
+      ays<? extends dyn.o> a();
+   }
+
+   static record p(List<dyn.u> a) implements dyn.u {
+      @Nullable
+      @Override
+      public dse tryApply(int $$0, int $$1, int $$2) {
+         for (dyn.u $$3 : this.a) {
+            dse $$4 = $$3.tryApply($$0, $$1, $$2);
+            if ($$4 != null) {
+               return $$4;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   static record q(List<dyn.o> a) implements dyn.o {
+      static final ays<dyn.q> c = ays.a(dyn.o.b.listOf().xmap(dyn.q::new, dyn.q::b).fieldOf("sequence"));
+
+      @Override
+      public ays<? extends dyn.o> a() {
+         return c;
+      }
+
+      public dyn.u a(dyn.g $$0) {
+         if (this.a.size() == 1) {
+            return this.a.get(0).apply($$0);
+         } else {
+            Builder<dyn.u> $$1 = ImmutableList.builder();
+
+            for (dyn.o $$2 : this.a) {
+               $$1.add($$2.apply($$0));
+            }
+
+            return new dyn.p($$1.build());
+         }
+      }
+
+      public List<dyn.o> b() {
+         return this.a;
+      }
+   }
+
+   static record r(dse a) implements dyn.u {
+      @Override
+      public dse tryApply(int $$0, int $$1, int $$2) {
+         return this.a;
+      }
+   }
+
+   static enum s implements dyn.f {
+      a;
+
+      static final ays<dyn.s> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return c;
+      }
+
+      public dyn.e a(dyn.g $$0) {
+         return $$0.g;
+      }
+   }
+
+   static record t(int a, boolean c, int d, ehh e) implements dyn.f {
+      static final ays<dyn.t> f = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(dyn.t::b),
+                     Codec.BOOL.fieldOf("add_surface_depth").forGetter(dyn.t::c),
+                     Codec.INT.fieldOf("secondary_depth_range").forGetter(dyn.t::d),
+                     ehh.c.fieldOf("surface_type").forGetter(dyn.t::e)
+                  )
+                  .apply($$0, dyn.t::new)
+         )
+      );
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return f;
+      }
+
+      public dyn.e a(final dyn.g $$0) {
+         final boolean $$1 = this.e == ehh.a;
+
+         class a extends dyn.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               int $$0 = $$1 ? this.c.D : this.c.E;
+               int $$1 = t.this.c ? this.c.t : 0;
+               int $$2 = t.this.d == 0 ? 0 : (int)ayz.b(this.c.a(), -1.0, 1.0, 0.0, (double)t.this.d);
+               return $$0 <= 1 + t.this.a + $$1 + $$2;
+            }
+         }
+
+         return new a();
+      }
+
+      public int b() {
+         return this.a;
+      }
+   }
+
+   protected interface u {
+      @Nullable
+      dse tryApply(int var1, int var2, int var3);
+   }
+
+   static enum v implements dyn.f {
+      a;
+
+      static final ays<dyn.v> c = ays.a(MapCodec.unit(a));
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return c;
+      }
+
+      public dyn.e a(dyn.g $$0) {
+         return $$0.f;
+      }
+   }
+
+   static record w(dyn.e a, dyn.u b) implements dyn.u {
+      @Nullable
+      @Override
+      public dse tryApply(int $$0, int $$1, int $$2) {
+         return !this.a.b() ? null : this.b.tryApply($$0, $$1, $$2);
+      }
+   }
+
+   static record x(dyn.f a, dyn.o c) implements dyn.o {
+      static final ays<dyn.x> d = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(dyn.f.b.fieldOf("if_true").forGetter(dyn.x::b), dyn.o.b.fieldOf("then_run").forGetter(dyn.x::c)).apply($$0, dyn.x::new)
+         )
+      );
+
+      @Override
+      public ays<? extends dyn.o> a() {
+         return d;
+      }
+
+      public dyn.u a(dyn.g $$0) {
+         return new dyn.w(this.a.apply($$0), this.c.apply($$0));
+      }
+
+      public dyn.f b() {
+         return this.a;
+      }
+   }
+
+   static record y(alf a, dyq c, dyq d) implements dyn.f {
+      static final ays<dyn.y> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     alf.a.fieldOf("random_name").forGetter(dyn.y::b),
+                     dyq.a.fieldOf("true_at_and_below").forGetter(dyn.y::c),
+                     dyq.a.fieldOf("false_at_and_above").forGetter(dyn.y::d)
+                  )
+                  .apply($$0, dyn.y::new)
+         )
+      );
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return e;
+      }
+
+      public dyn.e a(final dyn.g $$0) {
+         final int $$1 = this.c().a($$0.n);
+         final int $$2 = this.d().a($$0.n);
+         final dyj $$3 = $$0.j.a(this.b());
+
+         class a extends dyn.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               int $$0 = this.c.B;
+               if ($$0 <= $$1) {
+                  return true;
+               } else if ($$0 >= $$2) {
+                  return false;
+               } else {
+                  double $$1 = ayz.b((double)$$0, (double)$$1, (double)$$2, 1.0, 0.0);
+                  azh $$2 = $$3.a(this.c.r, $$0, this.c.s);
+                  return (double)$$2.i() < $$1;
+               }
+            }
+         }
+
+         return new a();
+      }
+
+      public alf b() {
+         return this.a;
+      }
+   }
+
+   static record z(int a, int c, boolean d) implements dyn.f {
+      static final ays<dyn.z> e = ays.a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     Codec.INT.fieldOf("offset").forGetter(dyn.z::b),
+                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(dyn.z::c),
+                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(dyn.z::d)
+                  )
+                  .apply($$0, dyn.z::new)
+         )
+      );
+
+      @Override
+      public ays<? extends dyn.f> a() {
+         return e;
+      }
+
+      public dyn.e a(final dyn.g $$0) {
+         class a extends dyn.k {
+            a() {
+               super($$0);
+            }
+
+            @Override
+            protected boolean a() {
+               return this.c.C == Integer.MIN_VALUE || this.c.B + (z.this.d ? this.c.E : 0) >= this.c.C + z.this.a + this.c.t * z.this.c;
+            }
+         }
+
+         return new a();
+      }
+
+      public int b() {
+         return this.a;
+      }
    }
 }

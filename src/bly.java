@@ -1,7 +1,19 @@
-public interface bly {
-   void a(long[] var1);
+public class bly extends blu {
+   private final blv c;
+   private final blx d;
 
-   void a(long var1);
+   public bly(int $$0, blv $$1, blx $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
+   }
 
-   void a(long var1, int var3);
+   public bly(int $$0, blv $$1, blx $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   protected void a() {
+      this.c.a(new adj((long[])this.b.clone(), this.d));
+   }
 }

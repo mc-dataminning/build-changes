@@ -49,7 +49,7 @@ public class alu {
    }
 
    public void a(ib<ep> $$0, ep $$1) {
-      bnj $$2 = this.d.aT();
+      bnk $$2 = this.d.aT();
       $$2.a(() -> "function " + $$0.a());
 
       try {

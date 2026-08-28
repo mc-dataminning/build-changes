@@ -1,80 +1,68 @@
-public class crm extends crq {
-   private final cql a;
-   private final cmy b;
-   private int g;
+import javax.annotation.Nullable;
 
-   public crm(cmy $$0, cql $$1, bqo $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.a = $$1;
+public class crm implements bqp, crl {
+   private final jr<cur> b = jr.a(1, cur.l);
+   @Nullable
+   private cyz<?> c;
+
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public boolean a(cuq $$0) {
-      return false;
-   }
-
-   @Override
-   public cuq a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().I());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cuq $$0, int $$1) {
-      this.g += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.g += $$0;
-   }
-
-   @Override
-   protected void b_(cuq $$0) {
-      if (this.g > 0) {
-         $$0.a(this.b.dP(), this.b, this.g);
-      }
-
-      if (this.c instanceof crk $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.g = 0;
-   }
-
-   @Override
-   public void a(cmy $$0, cuq $$1) {
-      this.b_($$1);
-      jr<cuq> $$2 = $$0.dP().r().c(czb.a, this.a, $$0.dP());
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         cuq $$4 = this.a.a($$3);
-         cuq $$5 = $$2.get($$3);
-         if (!$$4.e()) {
-            this.a.a($$3, 1);
-            $$4 = this.a.a($$3);
-         }
-
-         if (!$$5.e()) {
-            if ($$4.e()) {
-               this.a.a($$3, $$5);
-            } else if (cuq.c($$4, $$5)) {
-               $$5.g($$4.I());
-               this.a.a($$3, $$5);
-            } else if (!this.b.gc().f($$5)) {
-               this.b.a($$5, false);
-            }
+   public boolean c() {
+      for (cur $$0 : this.b) {
+         if (!$$0.e()) {
+            return false;
          }
       }
-   }
 
-   @Override
-   public boolean f() {
       return true;
+   }
+
+   @Override
+   public cur a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cur a(int $$0, int $$1) {
+      return bqq.a(this.b, 0);
+   }
+
+   @Override
+   public cur b(int $$0) {
+      return bqq.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cur $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cmz $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable cyz<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public cyz<?> d() {
+      return this.c;
    }
 }

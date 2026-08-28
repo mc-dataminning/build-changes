@@ -1,28 +1,46 @@
-public class ctl extends cul implements cvi {
-   public ctl(cul.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class ctl extends cum implements cvt {
+   private static final Map<ctk, ctl> a = Maps.newEnumMap(ctk.class);
+   private final ctk b;
+
+   public ctl(ctk $$0, cum.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
-      cuq $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.hN, awb.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cnz $$4 = new cnz($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public bqw a(cur $$0, cmz $$1, btr $$2, bqv $$3) {
+      if ($$2 instanceof cgd $$4 && $$4.bD() && !$$4.y() && $$4.u() != this.b) {
+         $$4.dP().a($$1, $$4, awa.hM, awb.h, 1.0F, 1.0F);
+         if (!$$1.dP().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return bqw.a($$1.dP().B);
       }
 
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bqw.a($$3, $$0.x_());
+      return bqw.e;
+   }
+
+   public ctk c() {
+      return this.b;
+   }
+
+   public static ctl a(ctk $$0) {
+      return a.get($$0);
    }
 
    @Override
-   public cnq a(dbz $$0, js $$1, cuq $$2, je $$3) {
-      cnz $$4 = new cnz($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public boolean a(dca $$0, dqt $$1, boolean $$2, cmz $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.ay_(), awa.hM, awb.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

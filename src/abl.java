@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record abl(ale<dbz> c, eid d, List<abl.a> e) implements aax {
+public record abl(ale<dca> c, eie d, List<abl.a> e) implements aax {
    public static final zn<wm, abl> a = aax.a(abl::a, abl::new);
    public static final aax.b<abl> b = aax.a("debug/structures");
 
@@ -19,11 +19,11 @@ public record abl(ale<dbz> c, eid d, List<abl.a> e) implements aax {
       return b;
    }
 
-   static eid b(wm $$0) {
-      return new eid($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static eie b(wm $$0) {
+      return new eie($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(wm $$0, eid $$1) {
+   static void a(wm $$0, eie $$1) {
       $$0.p($$1.h());
       $$0.p($$1.i());
       $$0.p($$1.j());
@@ -32,11 +32,11 @@ public record abl(ale<dbz> c, eid d, List<abl.a> e) implements aax {
       $$0.p($$1.m());
    }
 
-   public ale<dbz> b() {
+   public ale<dca> b() {
       return this.c;
    }
 
-   public eid c() {
+   public eie c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record abl(ale<dbz> c, eid d, List<abl.a> e) implements aax {
       return this.e;
    }
 
-   public static record a(eid a, boolean b) {
+   public static record a(eie a, boolean b) {
       public a(wm $$0) {
          this(abl.b($$0), $$0.readBoolean());
       }

@@ -5,9 +5,9 @@ public class adf implements zw<aci> {
    private final int d;
    private final int e;
    private final int f;
-   private final cuq g;
+   private final cur g;
 
-   public adf(int $$0, int $$1, int $$2, cuq $$3) {
+   public adf(int $$0, int $$1, int $$2, cur $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -18,14 +18,14 @@ public class adf implements zw<aci> {
       this.d = $$0.readByte();
       this.e = $$0.l();
       this.f = $$0.readShort();
-      this.g = cuq.h.decode($$0);
+      this.g = cur.h.decode($$0);
    }
 
    private void a(xa $$0) {
       $$0.k(this.d);
       $$0.c(this.e);
       $$0.l(this.f);
-      cuq.h.encode($$0, this.g);
+      cur.h.encode($$0, this.g);
    }
 
    @Override
@@ -45,7 +45,7 @@ public class adf implements zw<aci> {
       return this.f;
    }
 
-   public cuq f() {
+   public cur f() {
       return this.g;
    }
 

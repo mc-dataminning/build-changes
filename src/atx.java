@@ -37,7 +37,7 @@ public class atx {
             }
 
             asx $$5 = $$3.a(asx.a);
-            cpm $$6 = $$5 != null ? $$5.a() : cpm.a();
+            cpn $$6 = $$5 != null ? $$5.a() : cpn.a();
             ayr<Integer> $$7 = a($$0.a(), $$4);
             aty $$8 = aty.a($$7, $$2);
             asz $$9 = $$3.a(asz.a);
@@ -87,7 +87,7 @@ public class atx {
       return this.d.b();
    }
 
-   public cpm e() {
+   public cpn e() {
       return this.d.c();
    }
 
@@ -133,7 +133,7 @@ public class atx {
       return this.b.hashCode();
    }
 
-   public static record a(xp a, aty b, cpm c, List<String> d) {
+   public static record a(xp a, aty b, cpn c, List<String> d) {
    }
 
    public static enum b {

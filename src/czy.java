@@ -1,33 +1,9 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class czy extends dab {
-   private final Optional<axf<btb<?>>> b;
-
-   public czy(dab.b $$0, Optional<axf<btb<?>>> $$1) {
-      super($$0);
-      this.b = $$1;
+public class czy extends dac {
+   public czy() {
+      super(dac.a(awy.bR, 2, 4, dac.a(15, 9), dac.a(65, 9), 4, cpn.a(cpp.c), btd.a));
    }
 
-   @Override
-   public float a(int $$0, @Nullable btb<?> $$1) {
-      if (this.b.isEmpty()) {
-         return 1.0F + (float)Math.max(0, $$0 - 1) * 0.5F;
-      } else {
-         return $$1 != null && $$1.a(this.b.get()) ? (float)$$0 * 2.5F : 0.0F;
-      }
-   }
-
-   @Override
-   public boolean a(dab $$0) {
-      return !($$0 instanceof czy);
-   }
-
-   @Override
-   public void a(btq $$0, bsv $$1, int $$2) {
-      if (this.b.isPresent() && $$1 instanceof btq $$3 && this.b.get() == awt.C && $$2 > 0 && $$3.ak().a(this.b.get())) {
-         int $$4 = 20 + $$0.el().a(10 * $$2);
-         $$3.b(new bsd(bsf.b, $$4, 3));
-      }
+   public static float a(float $$0, float $$1) {
+      return ayz.a($$1 - 0.15F * $$0, 0.0F, 1.0F);
    }
 }

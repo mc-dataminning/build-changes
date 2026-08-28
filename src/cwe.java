@@ -1,32 +1,29 @@
-public class cwe extends cvh implements cvi {
-   public cwe(cul.a $$0) {
-      super($$0);
+import java.util.List;
+
+public class cwe extends cwh {
+   public cwe(cwg $$0, cum.a $$1) {
+      super($$0, $$1.a(km.x, k()));
+   }
+
+   private static cxw k() {
+      return new cxw(List.of(cxw.a.a(List.of(dfd.bs), 15.0F), cxw.a.b(awp.bE, 1.5F)), 1.0F, 2);
+   }
+
+   public static cxm a(cwg $$0, int $$1, float $$2) {
+      return cxm.a()
+         .a(buz.c, new bux(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), bux.a.a), bte.b)
+         .a(buz.e, new bux(f, "Weapon modifier", (double)$$2, bux.a.a), bte.b)
+         .a();
    }
 
    @Override
-   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
-      cuq $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         coc $$4 = new coc($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bqw.a($$3, $$0.x_());
+   public boolean a(dse $$0, dca $$1, iz $$2, cmz $$3) {
+      return !$$3.f();
    }
 
    @Override
-   public cnq a(dbz $$0, js $$1, cuq $$2, je $$3) {
-      coc $$4 = new coc($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
-
-   @Override
-   public cvi.a c() {
-      return cvi.a.a().a(cvi.a.a.c() * 0.5F).b(cvi.a.a.d() * 1.25F).a();
+   public boolean a(cur $$0, btr $$1, btr $$2) {
+      $$0.a(1, $$2, btd.a);
+      return true;
    }
 }

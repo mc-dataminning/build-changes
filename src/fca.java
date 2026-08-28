@@ -1,15 +1,7 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fca implements UncaughtExceptionHandler {
-   private final Logger a;
-
-   public fca(Logger $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+interface fca {
 }

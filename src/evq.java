@@ -1,26 +1,21 @@
-public abstract class evq {
-   protected final evs a;
+public class evq extends evr {
+   private final bsw b;
 
-   protected evq(evs $$0) {
-      this.a = $$0;
+   public evq(bsw $$0) {
+      this($$0, $$0.dn());
    }
 
-   public double a(bsv $$0) {
-      double $$1 = this.a.c - $$0.du();
-      double $$2 = this.a.d - $$0.dw();
-      double $$3 = this.a.e - $$0.dA();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public evq(bsw $$0, evt $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public abstract evq.a c();
-
-   public evs e() {
-      return this.a;
+   public bsw a() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public evr.a c() {
+      return evr.a.c;
    }
 }

@@ -1,9 +1,7 @@
+import java.util.List;
+
 public interface fsk {
-   void a(fsi var1);
+   List<fsl> a();
 
-   xp aN_();
-
-   void a(fgs var1, float var2, int var3);
-
-   boolean aO_();
+   xp b();
 }

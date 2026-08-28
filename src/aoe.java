@@ -85,7 +85,7 @@ public class aoe {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(ep $$0, Collection<arg> $$1, alf $$2, awb $$3, evs $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<arg> $$1, alf $$2, awb $$3, evt $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       ji<avz> $$8 = ji.a(avz.a($$2));
       double $$9 = (double)ayz.k($$8.a().a($$5));
       int $$10 = 0;
@@ -96,7 +96,7 @@ public class aoe {
          double $$14 = $$4.d - $$12.dw();
          double $$15 = $$4.e - $$12.dA();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         evs $$17 = $$4;
+         evt $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class aoe {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new evs($$12.du() + $$13 / $$19 * 2.0, $$12.dw() + $$14 / $$19 * 2.0, $$12.dA() + $$15 / $$19 * 2.0);
+            $$17 = new evt($$12.du() + $$13 / $$19 * 2.0, $$12.dw() + $$14 / $$19 * 2.0, $$12.dA() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

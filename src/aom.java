@@ -25,11 +25,11 @@ public class aom {
       );
    }
 
-   private static int a(ep $$0, bsv $$1, bsv $$2) throws CommandSyntaxException {
-      bsv $$3 = $$1.dc();
+   private static int a(ep $$0, bsw $$1, bsw $$2) throws CommandSyntaxException {
+      bsw $$3 = $$1.dc();
       if ($$3 != null) {
          throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.ak() == btb.by) {
+      } else if ($$2.ak() == btc.by) {
          throw d.create();
       } else if ($$1.cU().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
@@ -43,8 +43,8 @@ public class aom {
       }
    }
 
-   private static int a(ep $$0, bsv $$1) throws CommandSyntaxException {
-      bsv $$2 = $$1.dc();
+   private static int a(ep $$0, bsw $$1) throws CommandSyntaxException {
+      bsw $$2 = $$1.dc();
       if ($$2 == null) {
          throw a.create($$1.O_());
       } else {

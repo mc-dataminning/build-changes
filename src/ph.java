@@ -11,29 +11,29 @@ public class ph {
       .a(lq.aK, rk::a)
       .a(lq.aM, rj::a)
       .a(lq.az, rz::a)
-      .a(lq.aR, ddn::a)
+      .a(lq.aR, ddo::a)
       .a(lq.aH, rg::a)
-      .a(lq.aD, dyc::a)
-      .a(lq.aG, dya::a)
-      .a(lq.aQ, eib::a)
-      .a(lq.aF, egn::a)
+      .a(lq.aD, dyd::a)
+      .a(lq.aG, dyb::a)
+      .a(lq.aQ, eic::a)
+      .a(lq.aF, ego::a)
       .a(lq.aA, xl::a)
-      .a(lq.aP, cwy::a)
-      .a(lq.aO, cww::a)
-      .a(lq.m, cgl::a)
-      .a(lq.s, brr::a)
-      .a(lq.d, dpa::a);
+      .a(lq.aP, cwz::a)
+      .a(lq.aO, cwx::a)
+      .a(lq.m, cgm::a)
+      .a(lq.s, brs::a)
+      .a(lq.d, dpb::a);
 
    private static void a(jk.a $$0) {
       a($$0.b(lq.aI), $$0.b(lq.az));
    }
 
-   public static void a(jj<ehp> $$0, jk<dcy> $$1) {
+   public static void a(jj<ehq> $$0, jk<dcz> $$1) {
       $$1.b().forEach($$1x -> {
          alf $$2 = $$1x.h().a();
-         List<jm<ehp>> $$3 = ((dcy)$$1x.a()).d().b();
+         List<jm<ehq>> $$3 = ((dcz)$$1x.a()).d().b();
          $$3.stream().flatMap(jm::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               ji.c<ehp> $$3xx = $$0.b($$2xx);
+               ji.c<ehq> $$3xx = $$0.b($$2xx);
                if (!a($$3xx.a())) {
                   ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
                }
@@ -45,8 +45,8 @@ public class ph {
       });
    }
 
-   private static boolean a(ehp $$0) {
-      return $$0.c().contains(ehd.a());
+   private static boolean a(ehq $$0) {
+      return $$0.c().contains(ehe.a());
    }
 
    public static jk.a a() {

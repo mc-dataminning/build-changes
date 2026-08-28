@@ -27,9 +27,9 @@ public class gr implements ArgumentType<gn> {
       return new gr($$0);
    }
 
-   public static evr a(CommandContext<ep> $$0, String $$1) {
-      evs $$2 = ((gn)$$0.getArgument($$1, gn.class)).a((ep)$$0.getSource());
-      return new evr((float)$$2.c, (float)$$2.e);
+   public static evs a(CommandContext<ep> $$0, String $$1) {
+      evt $$2 = ((gn)$$0.getArgument($$1, gn.class)).a((ep)$$0.getSource());
+      return new evs((float)$$2.c, (float)$$2.e);
    }
 
    public gn a(StringReader $$0) throws CommandSyntaxException {

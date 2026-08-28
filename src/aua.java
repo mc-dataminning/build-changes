@@ -97,8 +97,8 @@ public class aua {
       return this.c.stream().map(atx::g).collect(ImmutableSet.toImmutableSet());
    }
 
-   public cpm e() {
-      return this.f().stream().map(atx::e).reduce(cpm::c).orElse(cpm.a());
+   public cpn e() {
+      return this.f().stream().map(atx::e).reduce(cpn::c).orElse(cpn.a());
    }
 
    public Collection<atx> f() {

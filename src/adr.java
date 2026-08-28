@@ -1,7 +1,7 @@
 public record adr(int b, float c) implements zw<aci> {
    public static final zn<wm, adr> a = zw.a(adr::a, adr::new);
 
-   public adr(btq $$0) {
+   public adr(btr $$0) {
       this($$0.al(), $$0.eJ());
    }
 

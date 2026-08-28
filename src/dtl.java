@@ -1,7 +1,7 @@
 public enum dtl implements azu {
-   a("top"),
-   b("bottom"),
-   c("double");
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 

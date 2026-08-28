@@ -2,56 +2,56 @@ import java.util.function.BiConsumer;
 
 public class nj implements mu {
    @Override
-   public void generate(jk.a $$0, BiConsumer<ale<eqo>, eqo.a> $$1) {
-      jk.b<dcy> $$2 = $$0.b(lq.az);
+   public void generate(jk.a $$0, BiConsumer<ale<eqp>, eqp.a> $$1) {
+      jk.b<dcz> $$2 = $$0.b(lq.az);
       $$1.accept(
-         eqf.aC,
-         eqo.b()
+         eqg.aC,
+         eqp.b()
             .a(
-               eqn.a()
-                  .a(eum.a(1.0F))
-                  .a(erc.a(eqf.aD).a(10).b(-2))
-                  .a(erc.a(eqf.aE).a(5).b(2).a(etw.a(eqj.b.a, bu.a.a().a(ca.a(true)))))
-                  .a(erc.a(eqf.aF).a(85).b(-1))
+               eqo.a()
+                  .a(eun.a(1.0F))
+                  .a(erd.a(eqg.aD).a(10).b(-2))
+                  .a(erd.a(eqg.aE).a(5).b(2).a(etx.a(eqk.b.a, bu.a.a().a(ca.a(true)))))
+                  .a(erd.a(eqg.aF).a(85).b(-1))
             )
       );
-      $$1.accept(eqf.aF, a());
+      $$1.accept(eqg.aF, a());
       $$1.accept(
-         eqf.aD,
-         eqo.b()
+         eqg.aD,
+         eqp.b()
             .a(
-               eqn.a()
-                  .a(eqw.a(dfc.fm).a(17))
-                  .a(eqw.a(cut.pB).a(10).a(esp.a(eus.a(0.0F, 0.9F))))
-                  .a(eqw.a(cut.qD).a(10))
-                  .a(eqw.a(cut.rz).a(10))
-                  .a(eqw.a(cut.sk).a(10).a(esu.a(cws.a)))
-                  .a(eqw.a(cut.ps).a(5))
-                  .a(eqw.a(cut.qV).a(2).a(esp.a(eus.a(0.0F, 0.9F))))
-                  .a(eqw.a(cut.pq).a(10))
-                  .a(eqw.a(cut.pp).a(5))
-                  .a(eqw.a(cut.rf).a(1).a(eso.a(eum.a(10.0F))))
-                  .a(eqw.a(dfc.fH).a(10))
-                  .a(eqw.a(cut.se).a(10))
-                  .a(eqw.a(dfc.mZ).a(etr.a(dc.a.a().a(jm.a($$2.b(ddf.x), $$2.b(ddf.y), $$2.b(ddf.z))))).a(10))
+               eqo.a()
+                  .a(eqx.a(dfd.fm).a(17))
+                  .a(eqx.a(cuu.pB).a(10).a(esq.a(eut.a(0.0F, 0.9F))))
+                  .a(eqx.a(cuu.qD).a(10))
+                  .a(eqx.a(cuu.rz).a(10))
+                  .a(eqx.a(cuu.sk).a(10).a(esv.a(cwt.a)))
+                  .a(eqx.a(cuu.ps).a(5))
+                  .a(eqx.a(cuu.qV).a(2).a(esq.a(eut.a(0.0F, 0.9F))))
+                  .a(eqx.a(cuu.pq).a(10))
+                  .a(eqx.a(cuu.pp).a(5))
+                  .a(eqx.a(cuu.rf).a(1).a(esp.a(eun.a(10.0F))))
+                  .a(eqx.a(dfd.fH).a(10))
+                  .a(eqx.a(cuu.se).a(10))
+                  .a(eqx.a(dfd.mZ).a(ets.a(dc.a.a().a(jm.a($$2.b(ddg.x), $$2.b(ddg.y), $$2.b(ddg.z))))).a(10))
             )
       );
       $$1.accept(
-         eqf.aE,
-         eqo.b()
+         eqg.aE,
+         eqp.b()
             .a(
-               eqn.a()
-                  .a(eqw.a(cut.uL))
-                  .a(eqw.a(cut.nL))
-                  .a(eqw.a(cut.ou).a(esp.a(eus.a(0.0F, 0.25F))).a(ern.a(eum.a(30.0F)).e()))
-                  .a(eqw.a(cut.qV).a(esp.a(eus.a(0.0F, 0.25F))).a(ern.a(eum.a(30.0F)).e()))
-                  .a(eqw.a(cut.qP).a(ern.a(eum.a(30.0F)).e()))
-                  .a(eqw.a(cut.vR))
+               eqo.a()
+                  .a(eqx.a(cuu.uL))
+                  .a(eqx.a(cuu.nL))
+                  .a(eqx.a(cuu.ou).a(esq.a(eut.a(0.0F, 0.25F))).a(ero.a(eun.a(30.0F)).e()))
+                  .a(eqx.a(cuu.qV).a(esq.a(eut.a(0.0F, 0.25F))).a(ero.a(eun.a(30.0F)).e()))
+                  .a(eqx.a(cuu.qP).a(ero.a(eun.a(30.0F)).e()))
+                  .a(eqx.a(cuu.vR))
             )
       );
    }
 
-   public static eqo.a a() {
-      return eqo.b().a(eqn.a().a(eqw.a(cut.qZ).a(60)).a(eqw.a(cut.ra).a(25)).a(eqw.a(cut.rb).a(2)).a(eqw.a(cut.rc).a(13)));
+   public static eqp.a a() {
+      return eqp.b().a(eqo.a().a(eqx.a(cuu.qZ).a(60)).a(eqx.a(cuu.ra).a(25)).a(eqx.a(cuu.rb).a(2)).a(eqx.a(cuu.rc).a(13)));
    }
 }

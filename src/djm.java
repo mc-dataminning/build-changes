@@ -1,84 +1,259 @@
-public class djm {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class djm extends den {
+   public static final MapCodec<djm> a = b(djm::new);
+   public static final dsy b = dix.aE;
+   public static final dsv c = dsu.w;
+   public static final dsv d = dsu.o;
+   public static final ewm e = dfb.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   public static final ewm f = dfb.a(4.0, 2.0, 4.0, 12.0, 14.0, 12.0);
+   public static final ewm g = ewj.a(e, f);
+   public static final ewm h = dfb.a(0.0, 15.0, 0.0, 16.0, 15.0, 16.0);
+   public static final ewm i = ewj.a(g, h);
+   public static final ewm j = ewj.a(
+      dfb.a(1.0, 10.0, 0.0, 5.333333, 14.0, 16.0), dfb.a(5.333333, 12.0, 0.0, 9.666667, 16.0, 16.0), dfb.a(9.666667, 14.0, 0.0, 14.0, 18.0, 16.0), g
+   );
+   public static final ewm k = ewj.a(
+      dfb.a(0.0, 10.0, 1.0, 16.0, 14.0, 5.333333), dfb.a(0.0, 12.0, 5.333333, 16.0, 16.0, 9.666667), dfb.a(0.0, 14.0, 9.666667, 16.0, 18.0, 14.0), g
+   );
+   public static final ewm l = ewj.a(
+      dfb.a(10.666667, 10.0, 0.0, 15.0, 14.0, 16.0), dfb.a(6.333333, 12.0, 0.0, 10.666667, 16.0, 16.0), dfb.a(2.0, 14.0, 0.0, 6.333333, 18.0, 16.0), g
+   );
+   public static final ewm m = ewj.a(
+      dfb.a(0.0, 10.0, 10.666667, 16.0, 14.0, 15.0), dfb.a(0.0, 12.0, 6.333333, 16.0, 16.0, 10.666667), dfb.a(0.0, 14.0, 2.0, 16.0, 18.0, 6.333333), g
+   );
+   private static final int n = 2;
+
+   @Override
+   public MapCodec<djm> a() {
+      return a;
+   }
+
+   protected djm(dsd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected dlh a_(dse $$0) {
+      return dlh.c;
+   }
+
+   @Override
+   protected ewm f(dse $$0, dbg $$1, iz $$2) {
+      return g;
+   }
+
+   @Override
+   protected boolean f_(dse $$0) {
+      return true;
+   }
+
+   @Override
+   public dse a(cyc $$0) {
+      dca $$1 = $$0.q();
+      cur $$2 = $$0.n();
+      cmz $$3 = $$0.o();
+      boolean $$4 = false;
+      if (!$$1.B && $$3 != null && $$3.gz()) {
+         cxg $$5 = $$2.a(km.O, cxg.a);
+         if ($$5.a("Book")) {
+            $$4 = true;
+         }
+      }
+
+      return this.o().a(b, $$0.g().g()).a(d, Boolean.valueOf($$4));
+   }
+
+   @Override
+   protected ewm b(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      return i;
+   }
+
+   @Override
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      switch ((je)$$0.c(b)) {
+         case c:
+            return k;
+         case d:
+            return m;
+         case f:
+            return l;
+         case e:
+            return j;
+         default:
+            return g;
+      }
+   }
+
+   @Override
+   protected dse a(dse $$0, dlo $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dse a(dse $$0, djy $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsf.a<dfb, dse> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public dpj a(iz $$0, dse $$1) {
+      return new dql($$0, $$1);
+   }
+
+   public static boolean a(@Nullable bsw $$0, dca $$1, iz $$2, dse $$3, cur $$4) {
+      if (!$$3.c(d)) {
+         if (!$$1.B) {
+            b($$0, $$1, $$2, $$3, $$4);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static void b(@Nullable bsw $$0, dca $$1, iz $$2, dse $$3, cur $$4) {
+      if ($$1.c_($$2) instanceof dql $$6) {
+         $$6.b($$4.a(1));
+         a($$0, $$1, $$2, $$3, true);
+         $$1.a(null, $$2, awa.cz, awb.e, 1.0F, 1.0F);
+      }
+   }
+
+   public static void a(@Nullable bsw $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
+      dse $$5 = $$3.a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf($$4));
+      $$1.a($$2, $$5, 3);
+      $$1.a(dwx.c, $$2, dwx.a.a($$0, $$5));
+      b($$1, $$2, $$3);
+   }
+
+   public static void a(dca $$0, iz $$1, dse $$2) {
+      a($$0, $$1, $$2, true);
+      $$0.a($$1, $$2.b(), 2);
+      $$0.c(1043, $$1, 0);
+   }
+
+   private static void a(dca $$0, iz $$1, dse $$2, boolean $$3) {
+      $$0.a($$1, $$2.a(c, Boolean.valueOf($$3)), 3);
+      b($$0, $$1, $$2);
+   }
+
+   private static void b(dca $$0, iz $$1, dse $$2) {
+      $$0.a($$1.d(), $$2.b());
+   }
+
+   @Override
+   protected void a(dse $$0, arf $$1, iz $$2, azh $$3) {
+      a($$1, $$2, $$0, false);
+   }
+
+   @Override
+   protected void a(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d)) {
+            this.d($$0, $$1, $$2);
+         }
+
+         if ($$0.c(c)) {
+            $$1.a($$2.d(), this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   private void d(dse $$0, dca $$1, iz $$2) {
+      if ($$1.c_($$2) instanceof dql $$4) {
+         je $$5 = $$0.c(b);
+         cur $$6 = $$4.b().s();
+         float $$7 = 0.25F * (float)$$5.j();
+         float $$8 = 0.25F * (float)$$5.l();
+         cjj $$9 = new cjj($$1, (double)$$2.u() + 0.5 + (double)$$7, (double)($$2.v() + 1), (double)$$2.w() + 0.5 + (double)$$8, $$6);
+         $$9.v();
+         $$1.b($$9);
+         $$4.a();
+      }
+   }
+
+   @Override
+   protected boolean e_(dse $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dse $$0, dbg $$1, iz $$2, je $$3) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(dse $$0, dbg $$1, iz $$2, je $$3) {
+      return $$3 == je.b && $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected boolean c_(dse $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dse $$0, dca $$1, iz $$2) {
+      if ($$0.c(d)) {
+         dpj $$3 = $$1.c_($$2);
+         if ($$3 instanceof dql) {
+            return ((dql)$$3).j();
+         }
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected bqy a(cur $$0, dse $$1, dca $$2, iz $$3, cmz $$4, bqv $$5, evp $$6) {
+      if ($$1.c(d)) {
+         return bqy.d;
+      } else if ($$0.a(awy.aV)) {
+         return a($$4, $$2, $$3, $$1, $$0) ? bqy.a($$2.B) : bqy.e;
+      } else {
+         return $$0.e() && $$5 == bqv.a ? bqy.e : bqy.d;
+      }
+   }
+
+   @Override
+   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
+      if ($$0.c(d)) {
+         if (!$$1.B) {
+            this.a($$1, $$2, $$3);
+         }
+
+         return bqw.a($$1.B);
+      } else {
+         return bqw.c;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bra b(dse $$0, dca $$1, iz $$2) {
+      return !$$0.c(d) ? null : super.b($$0, $$1, $$2);
+   }
+
+   private void a(dca $$0, iz $$1, cmz $$2) {
+      dpj $$3 = $$0.c_($$1);
+      if ($$3 instanceof dql) {
+         $$2.a((dql)$$3);
+         $$2.a(awk.au);
+      }
+   }
+
+   @Override
+   protected boolean a(dse $$0, eom $$1) {
+      return false;
+   }
 }

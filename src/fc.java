@@ -32,7 +32,7 @@ public class fc implements ArgumentType<he> {
       return new fc(true, false);
    }
 
-   public static bsv a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static bsw a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return ((he)$$0.getArgument($$1, he.class)).a((ep)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class fc implements ArgumentType<he> {
       return new fc(false, false);
    }
 
-   public static Collection<? extends bsv> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bsv> $$2 = c($$0, $$1);
+   public static Collection<? extends bsw> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bsw> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,7 +49,7 @@ public class fc implements ArgumentType<he> {
       }
    }
 
-   public static Collection<? extends bsv> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends bsw> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return ((he)$$0.getArgument($$1, he.class)).b((ep)$$0.getSource());
    }
 

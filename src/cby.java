@@ -1,30 +1,40 @@
-public class cby extends cao {
-   private final btz a;
+import java.util.EnumSet;
 
-   public cby(btz $$0) {
+public class cby extends cap {
+   private final cmh a;
+
+   public cby(cmh $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(cap.a.c, cap.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awv.a);
+      if (!this.a.bD()) {
+         return false;
+      } else if (this.a.be()) {
+         return false;
+      } else if (!this.a.aE()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cmz $$0 = this.a.gq();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cb != null;
+         }
+      }
    }
 
    @Override
    public void c() {
-      iz $$0 = null;
+      this.a.K().n();
+   }
 
-      for (iz $$2 : iz.b(
-         ayz.a(this.a.du() - 2.0), ayz.a(this.a.dw() - 2.0), ayz.a(this.a.dA() - 2.0), ayz.a(this.a.du() + 2.0), this.a.dv(), ayz.a(this.a.dA() + 2.0)
-      )) {
-         if (this.a.dP().b_($$2).a(awv.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

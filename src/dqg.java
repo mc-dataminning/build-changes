@@ -1,15 +1,23 @@
-public interface dqg extends bqo {
-   evn p_ = dfa.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+public class dqg extends dqt {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   default evn ai_() {
-      return p_;
+   public dqg(iz $$0, dse $$1) {
+      super(dpl.i, $$0, $$1);
    }
 
-   double H();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double I();
+   @Override
+   public int c() {
+      return 60;
+   }
 
-   double J();
-
-   boolean K();
+   @Override
+   public avz d() {
+      return awa.BW;
+   }
 }

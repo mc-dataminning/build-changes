@@ -1,86 +1,15 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class fqp {
-   @Nullable
-   private cyy<?> a;
-   private final List<fqp.a> b = Lists.newArrayList();
-   float c;
+public class fqp extends fqo {
+   private static final xp i = xp.c("gui.recipebook.toggleRecipes.blastable");
 
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   @Override
+   protected xp c() {
+      return i;
    }
 
-   public void a(cyt $$0, int $$1, int $$2) {
-      this.b.add(new fqp.a($$0, $$1, $$2));
-   }
-
-   public fqp.a a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int b() {
-      return this.b.size();
-   }
-
-   @Nullable
-   public cyy<?> c() {
-      return this.a;
-   }
-
-   public void a(cyy<?> $$0) {
-      this.a = $$0;
-   }
-
-   public void a(fgs $$0, ffg $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fne.s()) {
-         this.c += $$5;
-      }
-
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fqp.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
-         }
-
-         cuq $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(gdx.G(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
-      }
-   }
-
-   public class a {
-      private final cyt b;
-      private final int c;
-      private final int d;
-
-      public a(final cyt $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public cuq c() {
-         cuq[] $$0 = this.b.a();
-         return $$0.length == 0 ? cuq.l : $$0[ayz.d(fqp.this.c / 30.0F) % $$0.length];
-      }
+   @Override
+   protected Set<cum> b() {
+      return dox.g().keySet();
    }
 }

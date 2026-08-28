@@ -1,478 +1,247 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public abstract class gdx extends gdw {
-   private static final int aY = 1048576;
-   public static final int aT = 4194304;
-   public static final int aU = 786432;
-   public static final int aV = 1536;
-   private static final gdx aZ = a("solid", ezx.j, fae.b.h, 4194304, true, false, gdx.b.a().a(at).a(p).a(an).a(true));
-   private static final gdx ba = a("cutout_mipped", ezx.j, fae.b.h, 4194304, true, false, gdx.b.a().a(at).a(q).a(an).a(true));
-   private static final gdx bb = a("cutout", ezx.j, fae.b.h, 786432, true, false, gdx.b.a().a(at).a(r).a(ao).a(true));
-   private static final gdx bc = a("translucent", ezx.j, fae.b.h, 786432, true, true, a(s));
-   private static final gdx bd = a("translucent_moving_block", ezx.j, fae.b.h, 786432, false, true, Q());
-   private static final Function<alf, gdx> be = ac.b($$0 -> a("armor_cutout_no_cull", $$0, false));
-   private static final Function<alf, gdx> bf = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(v).a(new gdw.n($$0, false, false)).a(c).a(at).a(av).a(true);
-      return a("entity_solid", ezx.k, fae.b.h, 1536, true, false, $$1);
+public abstract class gdx {
+   private static final float aT = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aU;
+   private final Runnable aV;
+   protected static final gdx.p c = new gdx.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
    });
-   private static final Function<alf, gdx> bg = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(w).a(new gdw.n($$0, false, false)).a(c).a(at).a(av).a(true);
-      return a("entity_cutout", ezx.k, fae.b.h, 1536, true, false, $$1);
+   protected static final gdx.p d = new gdx.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<alf, Boolean, gdx> bh = ac.a(($$0, $$1) -> {
-      gdx.b $$2 = gdx.b.a().a(x).a(new gdw.n($$0, false, false)).a(c).a(ay).a(at).a(av).a($$1);
-      return a("entity_cutout_no_cull", ezx.k, fae.b.h, 1536, true, false, $$2);
+   protected static final gdx.p e = new gdx.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<alf, Boolean, gdx> bi = ac.a(($$0, $$1) -> {
-      gdx.b $$2 = gdx.b.a().a(y).a(new gdw.n($$0, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$1);
-      return a("entity_cutout_no_cull_z_offset", ezx.k, fae.b.h, 1536, true, false, $$2);
-   });
-   private static final Function<alf, gdx> bj = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(z).a(new gdw.n($$0, false, false)).a(h).a(aP).a(at).a(av).a(gdw.aD).a(true);
-      return a("item_entity_translucent_cull", ezx.k, fae.b.h, 1536, true, true, $$1);
-   });
-   private static final Function<alf, gdx> bk = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(A).a(new gdw.n($$0, false, false)).a(h).a(at).a(av).a(true);
-      return a("entity_translucent_cull", ezx.k, fae.b.h, 1536, true, true, $$1);
-   });
-   private static final BiFunction<alf, Boolean, gdx> bl = ac.a(($$0, $$1) -> {
-      gdx.b $$2 = gdx.b.a().a(B).a(new gdw.n($$0, false, false)).a(h).a(ay).a(at).a(av).a($$1);
-      return a("entity_translucent", ezx.k, fae.b.h, 1536, true, true, $$2);
-   });
-   private static final BiFunction<alf, Boolean, gdx> bm = ac.a(($$0, $$1) -> {
-      gdx.b $$2 = gdx.b.a().a(C).a(new gdw.n($$0, false, false)).a(h).a(ay).a(aE).a(av).a($$1);
-      return a("entity_translucent_emissive", ezx.k, fae.b.h, 1536, true, true, $$2);
-   });
-   private static final Function<alf, gdx> bn = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(D).a(new gdw.n($$0, false, false)).a(ay).a(at).a(true);
-      return a("entity_smooth_cutout", ezx.k, fae.b.h, 1536, $$1);
-   });
-   private static final BiFunction<alf, Boolean, gdx> bo = ac.a(($$0, $$1) -> {
-      gdx.b $$2 = gdx.b.a().a(E).a(new gdw.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aE : aD).a(false);
-      return a("beacon_beam", ezx.j, fae.b.h, 1536, false, true, $$2);
-   });
-   private static final Function<alf, gdx> bp = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(F).a(new gdw.n($$0, false, false)).a(aA).a(ay).a(at).a(av).a(false);
-      return a("entity_decal", ezx.k, fae.b.h, 1536, $$1);
-   });
-   private static final Function<alf, gdx> bq = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(G).a(new gdw.n($$0, false, false)).a(h).a(ay).a(at).a(av).a(aE).a(false);
-      return a("entity_no_outline", ezx.k, fae.b.h, 1536, false, true, $$1);
-   });
-   private static final Function<alf, gdx> br = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(H).a(new gdw.n($$0, false, false)).a(h).a(ax).a(at).a(av).a(aE).a(aB).a(aI).a(false);
-      return a("entity_shadow", ezx.k, fae.b.h, 1536, false, false, $$1);
-   });
-   private static final Function<alf, gdx> bs = ac.b($$0 -> {
-      gdx.b $$1 = gdx.b.a().a(I).a(new gdw.n($$0, false, false)).a(ay).a(true);
-      return a("entity_alpha", ezx.k, fae.b.h, 1536, $$1);
-   });
-   private static final BiFunction<alf, gdw.p, gdx> bt = ac.a(($$0, $$1) -> {
-      gdw.n $$2 = new gdw.n($$0, false, false);
-      return a("eyes", ezx.k, fae.b.h, 1536, false, true, gdx.b.a().a(J).a($$2).a($$1).a(aE).a(false));
-   });
-   private static final gdx bu = a("leash", ezx.p, fae.b.f, 1536, gdx.b.a().a(L).a(ap).a(ay).a(at).a(false));
-   private static final gdx bv = a("water_mask", ezx.m, fae.b.h, 1536, gdx.b.a().a(M).a(ap).a(aF).a(false));
-   private static final gdx bw = a(
-      "armor_glint", ezx.q, fae.b.h, 1536, gdx.b.a().a(O).a(new gdw.n(gjw.a, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aI).a(false)
-   );
-   private static final gdx bx = a(
-      "armor_entity_glint", ezx.q, fae.b.h, 1536, gdx.b.a().a(P).a(new gdw.n(gjw.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(aI).a(false)
-   );
-   private static final gdx by = a(
-      "glint_translucent", ezx.q, fae.b.h, 1536, gdx.b.a().a(Q).a(new gdw.n(gjw.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aP).a(false)
-   );
-   private static final gdx bz = a("glint", ezx.q, fae.b.h, 1536, gdx.b.a().a(R).a(new gdw.n(gjw.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
-   private static final gdx bA = a("glint_direct", ezx.q, fae.b.h, 1536, gdx.b.a().a(S).a(new gdw.n(gjw.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
-   private static final gdx bB = a(
-      "entity_glint", ezx.q, fae.b.h, 1536, gdx.b.a().a(T).a(new gdw.n(gjw.a, true, false)).a(aE).a(ay).a(aA).a(f).a(aP).a(as).a(false)
-   );
-   private static final gdx bC = a(
-      "entity_glint_direct", ezx.q, fae.b.h, 1536, gdx.b.a().a(U).a(new gdw.n(gjw.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(false)
-   );
-   private static final Function<alf, gdx> bD = ac.b($$0 -> {
-      gdw.n $$1 = new gdw.n($$0, false, false);
-      return a("crumbling", ezx.j, fae.b.h, 1536, false, true, gdx.b.a().a(V).a($$1).a(g).a(aE).a(aH).a(false));
-   });
-   private static final Function<alf, gdx> bE = ac.b(
-      $$0 -> a("text", ezx.t, fae.b.h, 786432, false, true, gdx.b.a().a(W).a(new gdw.n($$0, false, false)).a(h).a(at).a(false))
-   );
-   private static final gdx bF = a("text_background", ezx.p, fae.b.h, 1536, false, true, gdx.b.a().a(X).a(ap).a(h).a(at).a(false));
-   private static final Function<alf, gdx> bG = ac.b(
-      $$0 -> a("text_intensity", ezx.t, fae.b.h, 786432, false, true, gdx.b.a().a(Y).a(new gdw.n($$0, false, false)).a(h).a(at).a(false))
-   );
-   private static final Function<alf, gdx> bH = ac.b(
-      $$0 -> a("text_polygon_offset", ezx.t, fae.b.h, 1536, false, true, gdx.b.a().a(W).a(new gdw.n($$0, false, false)).a(h).a(at).a(aH).a(false))
-   );
-   private static final Function<alf, gdx> bI = ac.b(
-      $$0 -> a("text_intensity_polygon_offset", ezx.t, fae.b.h, 1536, false, true, gdx.b.a().a(Y).a(new gdw.n($$0, false, false)).a(h).a(at).a(aH).a(false))
-   );
-   private static final Function<alf, gdx> bJ = ac.b(
-      $$0 -> a("text_see_through", ezx.t, fae.b.h, 1536, false, true, gdx.b.a().a(Z).a(new gdw.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
-   );
-   private static final gdx bK = a("text_background_see_through", ezx.p, fae.b.h, 1536, false, true, gdx.b.a().a(aa).a(ap).a(h).a(at).a(az).a(aE).a(false));
-   private static final Function<alf, gdx> bL = ac.b(
-      $$0 -> a("text_intensity_see_through", ezx.t, fae.b.h, 1536, false, true, gdx.b.a().a(ab).a(new gdw.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
-   );
-   private static final gdx bM = a("lightning", ezx.n, fae.b.h, 1536, false, true, gdx.b.a().a(ac).a(aD).a(e).a(aN).a(false));
-   private static final gdx bN = a("tripwire", ezx.j, fae.b.h, 1536, true, true, R());
-   private static final gdx bO = a(
-      "end_portal", ezx.m, fae.b.h, 1536, false, false, gdx.b.a().a(ae).a(gdw.i.d().a(ggi.a, false, false).a(ggi.b, false, false).a()).a(false)
-   );
-   private static final gdx bP = a(
-      "end_gateway", ezx.m, fae.b.h, 1536, false, false, gdx.b.a().a(af).a(gdw.i.d().a(ggi.a, false, false).a(ggi.b, false, false).a()).a(false)
-   );
-   private static final gdx bQ = a(false);
-   private static final gdx bR = a(true);
-   public static final gdx.a aW = a("lines", ezx.o, fae.b.a, 1536, gdx.b.a().a(ah).a(new gdw.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false));
-   public static final gdx.a aX = a(
-      "line_strip", ezx.o, fae.b.b, 1536, gdx.b.a().a(ah).a(new gdw.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false)
-   );
-   private static final Function<Double, gdx.a> bS = ac.b(
-      $$0 -> a("debug_line_strip", ezx.n, fae.b.d, 1536, gdx.b.a().a(o).a(new gdw.h(OptionalDouble.of($$0))).a(c).a(ay).a(false))
-   );
-   private static final gdx.a bT = a("debug_filled_box", ezx.n, fae.b.f, 1536, false, true, gdx.b.a().a(o).a(aI).a(h).a(false));
-   private static final gdx.a bU = a("debug_quads", ezx.n, fae.b.h, 1536, false, true, gdx.b.a().a(o).a(h).a(ay).a(false));
-   private static final gdx.a bV = a("debug_section_quads", ezx.n, fae.b.h, 1536, false, true, gdx.b.a().a(o).a(aI).a(h).a(ax).a(false));
-   private static final gdx.a bW = a("gui", ezx.n, fae.b.h, 786432, gdx.b.a().a(ai).a(h).a(aB).a(false));
-   private static final gdx.a bX = a("gui_overlay", ezx.n, fae.b.h, 1536, gdx.b.a().a(aj).a(h).a(az).a(aE).a(false));
-   private static final gdx.a bY = a("gui_text_highlight", ezx.n, fae.b.h, 1536, gdx.b.a().a(ak).a(h).a(az).a(aS).a(false));
-   private static final gdx.a bZ = a("gui_ghost_recipe_overlay", ezx.n, fae.b.h, 1536, gdx.b.a().a(al).a(h).a(aC).a(aE).a(false));
-   private static final ImmutableList<gdx> ca = ImmutableList.of(c(), d(), e(), f(), t());
-   private final fae cb;
-   private final fae.b cc;
-   private final int cd;
-   private final boolean ce;
-   private final boolean cf;
-   private final Optional<gdx> cg;
-
-   public static gdx c() {
-      return aZ;
-   }
-
-   public static gdx d() {
-      return ba;
-   }
-
-   public static gdx e() {
-      return bb;
-   }
-
-   private static gdx.b a(gdw.m $$0) {
-      return gdx.b.a().a(at).a($$0).a(an).a(h).a(aL).a(true);
-   }
-
-   public static gdx f() {
-      return bc;
-   }
-
-   private static gdx.b Q() {
-      return gdx.b.a().a(at).a(t).a(an).a(h).a(aP).a(true);
-   }
-
-   public static gdx g() {
-      return bd;
-   }
-
-   private static gdx.a a(String $$0, alf $$1, boolean $$2) {
-      gdx.b $$3 = gdx.b.a().a(u).a(new gdw.n($$1, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$2 ? aA : aB).a(true);
-      return a($$0, ezx.k, fae.b.h, 1536, true, false, $$3);
-   }
-
-   public static gdx a(alf $$0) {
-      return be.apply($$0);
-   }
-
-   public static gdx b(alf $$0) {
-      return a("armor_decal_cutout_no_cull", $$0, true);
-   }
-
-   public static gdx c(alf $$0) {
-      return bf.apply($$0);
-   }
-
-   public static gdx d(alf $$0) {
-      return bg.apply($$0);
-   }
-
-   public static gdx a(alf $$0, boolean $$1) {
-      return bh.apply($$0, $$1);
-   }
-
-   public static gdx e(alf $$0) {
-      return a($$0, true);
-   }
-
-   public static gdx b(alf $$0, boolean $$1) {
-      return bi.apply($$0, $$1);
-   }
-
-   public static gdx f(alf $$0) {
-      return b($$0, true);
-   }
-
-   public static gdx g(alf $$0) {
-      return bj.apply($$0);
-   }
-
-   public static gdx h(alf $$0) {
-      return bk.apply($$0);
-   }
-
-   public static gdx c(alf $$0, boolean $$1) {
-      return bl.apply($$0, $$1);
-   }
-
-   public static gdx i(alf $$0) {
-      return c($$0, true);
-   }
-
-   public static gdx d(alf $$0, boolean $$1) {
-      return bm.apply($$0, $$1);
-   }
-
-   public static gdx j(alf $$0) {
-      return d($$0, true);
-   }
-
-   public static gdx k(alf $$0) {
-      return bn.apply($$0);
-   }
-
-   public static gdx e(alf $$0, boolean $$1) {
-      return bo.apply($$0, $$1);
-   }
-
-   public static gdx l(alf $$0) {
-      return bp.apply($$0);
-   }
-
-   public static gdx m(alf $$0) {
-      return bq.apply($$0);
-   }
-
-   public static gdx n(alf $$0) {
-      return br.apply($$0);
-   }
-
-   public static gdx o(alf $$0) {
-      return bs.apply($$0);
-   }
-
-   public static gdx p(alf $$0) {
-      return bt.apply($$0, d);
-   }
-
-   public static gdx q(alf $$0) {
-      return bm.apply($$0, false);
-   }
-
-   public static gdx a(alf $$0, float $$1, float $$2) {
-      return a(
-         "breeze_wind",
-         ezx.k,
-         fae.b.h,
-         1536,
-         false,
-         true,
-         gdx.b.a().a(am).a(new gdw.n($$0, false, false)).a(new gdw.j($$1, $$2)).a(h).a(ay).a(at).a(aw).a(false)
-      );
-   }
-
-   public static gdx b(alf $$0, float $$1, float $$2) {
-      return a(
-         "energy_swirl",
-         ezx.k,
-         fae.b.h,
-         1536,
-         false,
-         true,
-         gdx.b.a().a(K).a(new gdw.n($$0, false, false)).a(new gdw.j($$1, $$2)).a(d).a(ay).a(at).a(av).a(false)
-      );
-   }
-
-   public static gdx h() {
-      return bu;
-   }
-
-   public static gdx i() {
-      return bv;
-   }
-
-   public static gdx r(alf $$0) {
-      return gdx.a.aY.apply($$0, ay);
-   }
-
-   public static gdx j() {
-      return bw;
-   }
-
-   public static gdx k() {
-      return bx;
-   }
-
-   public static gdx l() {
-      return by;
-   }
-
-   public static gdx m() {
-      return bz;
-   }
-
-   public static gdx n() {
-      return bA;
-   }
-
-   public static gdx o() {
-      return bB;
-   }
-
-   public static gdx p() {
-      return bC;
-   }
-
-   public static gdx s(alf $$0) {
-      return bD.apply($$0);
-   }
-
-   public static gdx t(alf $$0) {
-      return bE.apply($$0);
-   }
-
-   public static gdx q() {
-      return bF;
-   }
-
-   public static gdx u(alf $$0) {
-      return bG.apply($$0);
-   }
-
-   public static gdx v(alf $$0) {
-      return bH.apply($$0);
-   }
-
-   public static gdx w(alf $$0) {
-      return bI.apply($$0);
-   }
-
-   public static gdx x(alf $$0) {
-      return bJ.apply($$0);
-   }
-
-   public static gdx r() {
-      return bK;
-   }
-
-   public static gdx y(alf $$0) {
-      return bL.apply($$0);
-   }
-
-   public static gdx s() {
-      return bM;
-   }
-
-   private static gdx.b R() {
-      return gdx.b.a().a(at).a(ad).a(an).a(h).a(aN).a(true);
-   }
-
-   public static gdx t() {
-      return bN;
-   }
-
-   public static gdx u() {
-      return bO;
-   }
-
-   public static gdx v() {
-      return bP;
-   }
-
-   private static gdx.a a(boolean $$0) {
-      return a("clouds", ezx.v, fae.b.h, 786432, false, false, gdx.b.a().a(ag).a(new gdw.n(gdn.c, false, false)).a(h).a(ay).a($$0 ? aF : aD).a(aO).a(true));
-   }
-
-   public static gdx w() {
-      return bQ;
-   }
-
-   public static gdx x() {
-      return bR;
-   }
-
-   public static gdx y() {
-      return aW;
-   }
-
-   public static gdx z() {
-      return aX;
-   }
-
-   public static gdx a(double $$0) {
-      return bS.apply($$0);
-   }
-
-   public static gdx A() {
-      return bT;
-   }
-
-   public static gdx B() {
-      return bU;
-   }
-
-   public static gdx C() {
-      return bV;
-   }
-
-   public static gdx D() {
-      return bW;
-   }
-
-   public static gdx E() {
-      return bX;
-   }
-
-   public static gdx F() {
-      return bY;
-   }
-
-   public static gdx G() {
-      return bZ;
-   }
-
-   public gdx(String $$0, fae $$1, fae.b $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
-      super($$0, $$6, $$7);
-      this.cb = $$1;
-      this.cc = $$2;
-      this.cd = $$3;
-      this.ce = $$4;
-      this.cf = $$5;
-      this.cg = Optional.of(this);
-   }
-
-   static gdx.a a(String $$0, fae $$1, fae.b $$2, int $$3, gdx.b $$4) {
-      return a($$0, $$1, $$2, $$3, false, false, $$4);
-   }
-
-   private static gdx.a a(String $$0, fae $$1, fae.b $$2, int $$3, boolean $$4, boolean $$5, gdx.b $$6) {
-      return new gdx.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(ezu $$0, fah $$1) {
-      if ($$0.k()) {
-         if (this.cf) {
-            $$0.a($$1);
-         }
-
-         ezu.b $$2 = $$0.d();
-         this.a();
-         ezv.a($$2);
-         this.b();
+   protected static final gdx.p f = new gdx.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
+   );
+   protected static final gdx.p g = new gdx.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gdx.p h = new gdx.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gdx.m i = new gdx.m();
+   protected static final gdx.m j = new gdx.m(gdj::u);
+   protected static final gdx.m k = new gdx.m(gdj::o);
+   protected static final gdx.m l = new gdx.m(gdj::q);
+   protected static final gdx.m m = new gdx.m(gdj::r);
+   protected static final gdx.m n = new gdx.m(gdj::v);
+   protected static final gdx.m o = new gdx.m(gdj::p);
+   protected static final gdx.m p = new gdx.m(gdj::w);
+   protected static final gdx.m q = new gdx.m(gdj::x);
+   protected static final gdx.m r = new gdx.m(gdj::y);
+   protected static final gdx.m s = new gdx.m(gdj::z);
+   protected static final gdx.m t = new gdx.m(gdj::A);
+   protected static final gdx.m u = new gdx.m(gdj::B);
+   protected static final gdx.m v = new gdx.m(gdj::C);
+   protected static final gdx.m w = new gdx.m(gdj::D);
+   protected static final gdx.m x = new gdx.m(gdj::E);
+   protected static final gdx.m y = new gdx.m(gdj::F);
+   protected static final gdx.m z = new gdx.m(gdj::G);
+   protected static final gdx.m A = new gdx.m(gdj::H);
+   protected static final gdx.m B = new gdx.m(gdj::I);
+   protected static final gdx.m C = new gdx.m(gdj::J);
+   protected static final gdx.m D = new gdx.m(gdj::K);
+   protected static final gdx.m E = new gdx.m(gdj::L);
+   protected static final gdx.m F = new gdx.m(gdj::M);
+   protected static final gdx.m G = new gdx.m(gdj::N);
+   protected static final gdx.m H = new gdx.m(gdj::O);
+   protected static final gdx.m I = new gdx.m(gdj::P);
+   protected static final gdx.m J = new gdx.m(gdj::Q);
+   protected static final gdx.m K = new gdx.m(gdj::R);
+   protected static final gdx.m L = new gdx.m(gdj::T);
+   protected static final gdx.m M = new gdx.m(gdj::U);
+   protected static final gdx.m N = new gdx.m(gdj::V);
+   protected static final gdx.m O = new gdx.m(gdj::W);
+   protected static final gdx.m P = new gdx.m(gdj::X);
+   protected static final gdx.m Q = new gdx.m(gdj::Y);
+   protected static final gdx.m R = new gdx.m(gdj::Z);
+   protected static final gdx.m S = new gdx.m(gdj::aa);
+   protected static final gdx.m T = new gdx.m(gdj::ab);
+   protected static final gdx.m U = new gdx.m(gdj::ac);
+   protected static final gdx.m V = new gdx.m(gdj::ap);
+   protected static final gdx.m W = new gdx.m(gdj::ad);
+   protected static final gdx.m X = new gdx.m(gdj::ae);
+   protected static final gdx.m Y = new gdx.m(gdj::af);
+   protected static final gdx.m Z = new gdx.m(gdj::ag);
+   protected static final gdx.m aa = new gdx.m(gdj::ah);
+   protected static final gdx.m ab = new gdx.m(gdj::ai);
+   protected static final gdx.m ac = new gdx.m(gdj::aj);
+   protected static final gdx.m ad = new gdx.m(gdj::ak);
+   protected static final gdx.m ae = new gdx.m(gdj::al);
+   protected static final gdx.m af = new gdx.m(gdj::am);
+   protected static final gdx.m ag = new gdx.m(gdj::an);
+   protected static final gdx.m ah = new gdx.m(gdj::ao);
+   protected static final gdx.m ai = new gdx.m(gdj::aq);
+   protected static final gdx.m aj = new gdx.m(gdj::ar);
+   protected static final gdx.m ak = new gdx.m(gdj::as);
+   protected static final gdx.m al = new gdx.m(gdj::at);
+   protected static final gdx.m am = new gdx.m(gdj::S);
+   protected static final gdx.n an = new gdx.n(gpa.e, false, true);
+   protected static final gdx.n ao = new gdx.n(gpa.e, false, false);
+   protected static final gdx.e ap = new gdx.e();
+   protected static final gdx.o aq = new gdx.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gdx.o ar = new gdx.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gdx.o as = new gdx.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gdx.g at = new gdx.g(true);
+   protected static final gdx.g au = new gdx.g(false);
+   protected static final gdx.l av = new gdx.l(true);
+   protected static final gdx.l aw = new gdx.l(false);
+   protected static final gdx.c ax = new gdx.c(true);
+   protected static final gdx.c ay = new gdx.c(false);
+   protected static final gdx.d az = new gdx.d("always", 519);
+   protected static final gdx.d aA = new gdx.d("==", 514);
+   protected static final gdx.d aB = new gdx.d("<=", 515);
+   protected static final gdx.d aC = new gdx.d(">", 516);
+   protected static final gdx.q aD = new gdx.q(true, true);
+   protected static final gdx.q aE = new gdx.q(true, false);
+   protected static final gdx.q aF = new gdx.q(false, true);
+   protected static final gdx.f aG = new gdx.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gdx.f aH = new gdx.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gdx.f aI = new gdx.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final gdx.k aJ = new gdx.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final gdx.k aK = new gdx.k("outline_target", () -> ffh.Q().f.s().a(false), () -> ffh.Q().h().a(false));
+   protected static final gdx.k aL = new gdx.k("translucent_target", () -> {
+      if (ffh.O()) {
+         ffh.Q().f.t().a(false);
+      }
+   }, () -> {
+      if (ffh.O()) {
+         ffh.Q().h().a(false);
+      }
+   });
+   protected static final gdx.k aM = new gdx.k("particles_target", () -> {
+      if (ffh.O()) {
+         ffh.Q().f.v().a(false);
+      }
+   }, () -> {
+      if (ffh.O()) {
+         ffh.Q().h().a(false);
+      }
+   });
+   protected static final gdx.k aN = new gdx.k("weather_target", () -> {
+      if (ffh.O()) {
+         ffh.Q().f.w().a(false);
+      }
+   }, () -> {
+      if (ffh.O()) {
+         ffh.Q().h().a(false);
+      }
+   });
+   protected static final gdx.k aO = new gdx.k("clouds_target", () -> {
+      if (ffh.O()) {
+         ffh.Q().f.x().a(false);
+      }
+   }, () -> {
+      if (ffh.O()) {
+         ffh.Q().h().a(false);
+      }
+   });
+   protected static final gdx.k aP = new gdx.k("item_entity_target", () -> {
+      if (ffh.O()) {
+         ffh.Q().f.u().a(false);
+      }
+   }, () -> {
+      if (ffh.O()) {
+         ffh.Q().h().a(false);
+      }
+   });
+   protected static final gdx.h aQ = new gdx.h(OptionalDouble.of(1.0));
+   protected static final gdx.b aR = new gdx.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final gdx.b aS = new gdx.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public gdx(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aU = $$1;
+      this.aV = $$2;
+   }
+
+   public void a() {
+      this.aU.run();
+   }
+
+   public void b() {
+      this.aV.run();
    }
 
    @Override
@@ -480,254 +249,293 @@ public abstract class gdx extends gdw {
       return this.b;
    }
 
-   public static List<gdx> H() {
-      return ca;
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.c() * ffh.Q().m.am().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
    }
 
-   public int I() {
-      return this.cd;
-   }
+   static class a extends gdx {
+      private final boolean aT;
 
-   public fae J() {
-      return this.cb;
-   }
-
-   public fae.b K() {
-      return this.cc;
-   }
-
-   public Optional<gdx> L() {
-      return Optional.empty();
-   }
-
-   public boolean M() {
-      return false;
-   }
-
-   public boolean N() {
-      return this.ce;
-   }
-
-   public boolean O() {
-      return !this.cc.l;
-   }
-
-   public Optional<gdx> P() {
-      return this.cg;
-   }
-
-   static final class a extends gdx {
-      static final BiFunction<alf, gdw.c, gdx> aY = ac.a(
-         ($$0, $$1) -> gdx.a("outline", ezx.r, fae.b.h, 1536, gdx.b.a().a(N).a(new gdw.n($$0, false, false)).a($$1).a(az).a(aK).a(gdx.c.b))
-      );
-      private final gdx.b aZ;
-      private final Optional<gdx> ba;
-      private final boolean bb;
-
-      a(String $$0, fae $$1, fae.b $$2, int $$3, boolean $$4, boolean $$5, gdx.b $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(gdw::a), () -> $$6.o.forEach(gdw::b));
-         this.aZ = $$6;
-         this.ba = $$6.n == gdx.c.c ? $$6.a.c().map($$1x -> aY.apply($$1x, $$6.e)) : Optional.empty();
-         this.bb = $$6.n == gdx.c.b;
-      }
-
-      @Override
-      public Optional<gdx> L() {
-         return this.ba;
-      }
-
-      @Override
-      public boolean M() {
-         return this.bb;
-      }
-
-      protected final gdx.b Q() {
-         return this.aZ;
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aT = $$3;
       }
 
       @Override
       public String toString() {
-         return "RenderType[" + this.b + ":" + this.aZ + "]";
+         return this.b + "[" + this.aT + "]";
       }
    }
 
-   protected static final class b {
-      final gdw.e a;
-      private final gdw.m b;
-      private final gdw.p c;
-      private final gdw.d d;
-      final gdw.c e;
-      private final gdw.g f;
-      private final gdw.l g;
-      private final gdw.f h;
-      private final gdw.k i;
-      private final gdw.o j;
-      private final gdw.q k;
-      private final gdw.h l;
-      private final gdw.b m;
-      final gdx.c n;
-      final ImmutableList<gdw> o;
+   protected static class b extends gdx {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
 
-      b(
-         gdw.e $$0,
-         gdw.m $$1,
-         gdw.p $$2,
-         gdw.d $$3,
-         gdw.c $$4,
-         gdw.g $$5,
-         gdw.l $$6,
-         gdw.f $$7,
-         gdw.k $$8,
-         gdw.o $$9,
-         gdw.q $$10,
-         gdw.h $$11,
-         gdw.b $$12,
-         gdx.c $$13
-      ) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-         this.j = $$9;
-         this.k = $$10;
-         this.l = $$11;
-         this.m = $$12;
-         this.n = $$13;
-         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new gdw[]{this.l});
+   protected static class c extends gdx.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends gdx {
+      private final String aT;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aT = $$0;
       }
 
       @Override
       public String toString() {
-         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
-      }
-
-      public static gdx.b.a a() {
-         return new gdx.b.a();
-      }
-
-      public static class a {
-         private gdw.e a = gdw.ap;
-         private gdw.m b = gdw.i;
-         private gdw.p c;
-         private gdw.d d;
-         private gdw.c e;
-         private gdw.g f;
-         private gdw.l g;
-         private gdw.f h;
-         private gdw.k i;
-         private gdw.o j;
-         private gdw.q k;
-         private gdw.h l;
-         private gdw.b m;
-
-         a() {
-            this.c = gdw.c;
-            this.d = gdw.aB;
-            this.e = gdw.ax;
-            this.f = gdw.au;
-            this.g = gdw.aw;
-            this.h = gdw.aG;
-            this.i = gdw.aJ;
-            this.j = gdw.aq;
-            this.k = gdw.aD;
-            this.l = gdw.aQ;
-            this.m = gdw.aR;
-         }
-
-         public gdx.b.a a(gdw.e $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.m $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.p $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.d $$0) {
-            this.d = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.c $$0) {
-            this.e = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.g $$0) {
-            this.f = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.l $$0) {
-            this.g = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.f $$0) {
-            this.h = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.k $$0) {
-            this.i = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.o $$0) {
-            this.j = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.q $$0) {
-            this.k = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.h $$0) {
-            this.l = $$0;
-            return this;
-         }
-
-         public gdx.b.a a(gdw.b $$0) {
-            this.m = $$0;
-            return this;
-         }
-
-         public gdx.b a(boolean $$0) {
-            return this.a($$0 ? gdx.c.c : gdx.c.a);
-         }
-
-         public gdx.b a(gdx.c $$0) {
-            return new gdx.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
-         }
+         return this.b + "[" + this.aT + "]";
       }
    }
 
-   static enum c {
-      a("none"),
-      b("is_outline"),
-      c("affects_outline");
+   protected static class e extends gdx {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
 
-      private final String d;
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
 
-      private c(final String $$0) {
-         this.d = $$0;
+      protected Optional<alf> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class f extends gdx {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class g extends gdx.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               ffh.Q().j.m().c();
+            }
+         }, () -> {
+            if ($$0) {
+               ffh.Q().j.m().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class h extends gdx {
+      private final OptionalDouble aT;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)ffh.Q().aO().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aT = $$0;
       }
 
       @Override
       public String toString() {
-         return this.d;
+         return this.b + "[" + (this.aT.isPresent() ? this.aT.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gdx.e {
+      private final Optional<alf> aT;
+
+      i(ImmutableList<Triple<alf, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<alf, Boolean, Boolean> $$2 = (Triple<alf, Boolean, Boolean>)var2.next();
+               gpc $$3 = ffh.Q().aa();
+               $$3.b((alf)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (alf)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aT = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<alf> c() {
+         return this.aT;
+      }
+
+      public static gdx.i.a d() {
+         return new gdx.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<alf, Boolean, Boolean>> a = new Builder();
+
+         public gdx.i.a a(alf $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public gdx.i a() {
+            return new gdx.i(this.a.build());
+         }
+      }
+   }
+
+   protected static final class j extends gdx.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends gdx {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends gdx.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               ffh.Q().j.n().a();
+            }
+         }, () -> {
+            if ($$0) {
+               ffh.Q().j.n().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends gdx {
+      private final Optional<Supplier<gee>> aT;
+
+      public m(Supplier<gee> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aT = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aT = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class n extends gdx.e {
+      private final Optional<alf> aT;
+      private final boolean aU;
+      private final boolean aV;
+
+      public n(alf $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gpc $$3 = ffh.Q().aa();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aT = Optional.of($$0);
+         this.aU = $$1;
+         this.aV = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "(blur=" + this.aU + ", mipmap=" + this.aV + ")]";
+      }
+
+      @Override
+      protected Optional<alf> c() {
+         return this.aT;
+      }
+   }
+
+   protected static class o extends gdx {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gdx {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gdx {
+      private final boolean aT;
+      private final boolean aU;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aT = $$0;
+         this.aU = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aT + ", writeDepth=" + this.aU + "]";
       }
    }
 }

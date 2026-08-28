@@ -6,7 +6,7 @@ public class ack implements zw<aci> {
    private final double e;
    private final int f;
 
-   public ack(btg $$0) {
+   public ack(bth $$0) {
       this.b = $$0.al();
       this.c = $$0.du();
       this.d = $$0.dw();

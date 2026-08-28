@@ -1,28 +1,22 @@
-public class glz extends gke<ciw, fwr<ciw>> {
-   private static final alf a = new alf("textures/entity/wither/wither_invulnerable.png");
-   private static final alf i = new alf("textures/entity/wither/wither.png");
+public class glz extends gkf<ckv, fwr<ckv>> {
+   private static final alf a = new alf("textures/entity/witch.png");
 
-   public glz(giy.a $$0) {
-      super($$0, new fwr<>($$0.a(fxa.bV)), 1.0F);
-      this.a(new gny(this, $$0.f()));
+   public glz(giz.a $$0) {
+      super($$0, new fwr<>($$0.a(fxb.bU)), 0.5F);
+      this.a(new gny<>(this, $$0.d()));
    }
 
-   protected int a(ciw $$0, iz $$1) {
-      return 15;
+   public void a(ckv $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5) {
+      this.f.b(!$$0.eX().e());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public alf a(ciw $$0) {
-      int $$1 = $$0.y();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   public alf a(ckv $$0) {
+      return a;
    }
 
-   protected void a(ciw $$0, ezz $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   protected void a(ckv $$0, faa $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

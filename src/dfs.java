@@ -1,34 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfs extends dgv {
+public class dfs extends dfb {
    public static final MapCodec<dfs> a = b(dfs::new);
-   private static final ewl[] b = new ewl[]{
-      dfa.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dfa.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      dfa.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dfa.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dfa.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dfa.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      dfa.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dfa.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+   protected static final ewm b = dfb.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    @Override
-   public MapCodec<dfs> a() {
+   public MapCodec<? extends dfs> a() {
       return a;
    }
 
-   public dfs(dsc.d $$0) {
+   public dfs(dsd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dby d() {
-      return cut.uf;
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      return b;
    }
 
    @Override
-   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      return b[this.g($$0)];
+   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
+      return !$$0.a($$3, $$4) ? dfd.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dse $$0, dcd $$1, iz $$2) {
+      return !$$1.u($$2.d());
    }
 }

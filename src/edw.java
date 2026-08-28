@@ -1,16 +1,10 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edw implements edd {
-   public static final Codec<edw> a = ayh.b(ehp.c).fieldOf("features").xmap(edw::new, $$0 -> $$0.b).codec();
-   public final jm<ehp> b;
+public record edw(eff b) implements ede {
+   public static final Codec<edw> a = RecordCodecBuilder.create($$0 -> $$0.group(eff.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, edw::new));
 
-   public edw(jm<ehp> $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public Stream<eam<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public eff a() {
+      return this.b;
    }
 }

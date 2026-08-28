@@ -1,39 +1,42 @@
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 import java.util.Optional;
 
-public class ejg extends eji {
-   public static final MapCodec<ejg> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(ejg::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(ejg::b),
-                     ejh.c.optionalFieldOf("spread_type", ejh.a).forGetter(ejg::c)
-                  )
-               )
-               .apply($$0, ejg::new)
-      )
-      .validate(ejg::a);
+public class ejg extends ejj {
+   public static final MapCodec<ejg> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ejg::new));
    private final int c;
    private final int d;
-   private final ejh e;
+   private final int e;
+   private final jm<dcz> f;
 
-   private static DataResult<ejg> a(ejg $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   private static P9<Mu<ejg>, kd, ejj.c, Float, Integer, Optional<ejj.a>, Integer, Integer, Integer, jm<dcz>> b(Instance<ejg> $$0) {
+      P5<Mu<ejg>, kd, ejj.c, Float, Integer, Optional<ejj.a>> $$1 = a($$0);
+      P4<Mu<ejg>, Integer, Integer, Integer, jm<dcz>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(ejg::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(ejg::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(ejg::c),
+         jx.a(lq.az).fieldOf("preferred_biomes").forGetter(ejg::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
    }
 
-   public ejg(kd $$0, eji.c $$1, float $$2, int $$3, Optional<eji.a> $$4, int $$5, int $$6, ejh $$7) {
+   public ejg(kd $$0, ejj.c $$1, float $$2, int $$3, Optional<ejj.a> $$4, int $$5, int $$6, int $$7, jm<dcz> $$8) {
       super($$0, $$1, $$2, $$3, $$4);
       this.c = $$5;
       this.d = $$6;
       this.e = $$7;
+      this.f = $$8;
    }
 
-   public ejg(int $$0, int $$1, ejh $$2, int $$3) {
-      this(kd.g, eji.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   public ejg(int $$0, int $$1, int $$2, jm<dcz> $$3) {
+      this(kd.g, ejj.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
    }
 
    public int a() {
@@ -44,29 +47,22 @@ public class ejg extends eji {
       return this.d;
    }
 
-   public ejh c() {
+   public int c() {
       return this.e;
    }
 
-   public dbg a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      dyu $$5 = new dyu(new dxw(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dbg($$3 * this.c + $$7, $$4 * this.c + $$8);
+   public jm<dcz> d() {
+      return this.f;
    }
 
    @Override
-   protected boolean a(dub $$0, int $$1, int $$2) {
-      dbg $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
+   protected boolean a(duc $$0, int $$1, int $$2) {
+      List<dbh> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new dbh($$1, $$2));
    }
 
    @Override
-   public ejj<?> e() {
-      return ejj.a;
+   public ejk<?> e() {
+      return ejk.b;
    }
 }

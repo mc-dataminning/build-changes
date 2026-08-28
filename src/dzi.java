@@ -1,24 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dzi extends dzn {
-   private final jm<dfa> e;
-   public static final MapCodec<dzi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(jx.a(lq.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dzi::new)
+public class dzi extends dzo {
+   final axf<dfb> a;
+   public static final MapCodec<dzi> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axf.a(lq.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dzi::new)
    );
 
-   public dzi(kd $$0, jm<dfa> $$1) {
+   protected dzi(kd $$0, axf<dfb> $$1) {
       super($$0);
-      this.e = $$1;
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dsd $$0) {
-      return $$0.a(this.e);
+   protected boolean a(dse $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public dzd<?> a() {
-      return dzd.a;
+   public dze<?> a() {
+      return dze.b;
    }
 }

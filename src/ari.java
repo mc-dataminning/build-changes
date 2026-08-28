@@ -10,17 +10,17 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ari extends enl implements AutoCloseable {
+public class ari extends enm implements AutoCloseable {
    public static final int a = 1000;
    private static final Logger d = LogUtils.getLogger();
-   private final bpo<Runnable> e;
+   private final bpp<Runnable> e;
    private final ObjectList<Pair<ari.a, Runnable>> f = new ObjectArrayList();
    private final aqo g;
-   private final bpn<aqr.a<Runnable>> h;
+   private final bpo<aqr.a<Runnable>> h;
    private final int i = 1000;
    private final AtomicBoolean j = new AtomicBoolean();
 
-   public ari(dum $$0, aqo $$1, boolean $$2, bpo<Runnable> $$3, bpn<aqr.a<Runnable>> $$4) {
+   public ari(dun $$0, aqo $$1, boolean $$2, bpp<Runnable> $$3, bpo<aqr.a<Runnable>> $$4) {
       super($$0, true, $$2);
       this.g = $$1;
       this.h = $$4;
@@ -42,14 +42,14 @@ public class ari extends enl implements AutoCloseable {
       this.a(kb.a($$0.u()), kb.a($$0.w()), ari.a.a, ac.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   protected void a(dbg $$0) {
+   protected void a(dbh $$0) {
       this.a($$0.e, $$0.f, () -> 0, ari.a.a, ac.a((Runnable)(() -> {
          super.b($$0, false);
          super.a($$0, false);
 
          for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(dci.b, kb.a($$0, $$1), null);
-            super.a(dci.a, kb.a($$0, $$1), null);
+            super.a(dcj.b, kb.a($$0, $$1), null);
+            super.a(dcj.a, kb.a($$0, $$1), null);
          }
 
          for (int $$2 = this.c.ao(); $$2 < this.c.ap(); $$2++) {
@@ -64,22 +64,22 @@ public class ari extends enl implements AutoCloseable {
    }
 
    @Override
-   public void b(dbg $$0) {
+   public void b(dbh $$0) {
       this.a($$0.e, $$0.f, ari.a.a, ac.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
    }
 
    @Override
-   public void a(dbg $$0, boolean $$1) {
+   public void a(dbh $$0, boolean $$1) {
       this.a($$0.e, $$0.f, ari.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
    }
 
    @Override
-   public void a(dci $$0, kb $$1, @Nullable due $$2) {
+   public void a(dcj $$0, kb $$1, @Nullable duf $$2) {
       this.a($$1.a(), $$1.c(), () -> 0, ari.a.a, ac.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
    }
 
    private void a(int $$0, int $$1, ari.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(dbg.c($$0, $$1)), $$2, $$3);
+      this.a($$0, $$1, this.g.c(dbh.c($$0, $$1)), $$2, $$3);
    }
 
    private void a(int $$0, int $$1, IntSupplier $$2, ari.a $$3, Runnable $$4) {
@@ -88,21 +88,21 @@ public class ari extends enl implements AutoCloseable {
          if (this.f.size() >= 1000) {
             this.f();
          }
-      }, dbg.c($$0, $$1), $$2));
+      }, dbh.c($$0, $$1), $$2));
    }
 
    @Override
-   public void b(dbg $$0, boolean $$1) {
+   public void b(dbh $$0, boolean $$1) {
       this.a($$0.e, $$0.f, () -> 0, ari.a.a, ac.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
    }
 
-   public CompletableFuture<dtz> a(dtz $$0, boolean $$1) {
-      dbg $$2 = $$0.f();
+   public CompletableFuture<dua> a(dua $$0, boolean $$1) {
+      dbh $$2 = $$0.f();
       this.a($$2.e, $$2.f, ari.a.a, ac.a((Runnable)(() -> {
-         duk[] $$2x = $$0.d();
+         dul[] $$2x = $$0.d();
 
          for (int $$3 = 0; $$3 < $$0.an(); $$3++) {
-            duk $$4 = $$2x[$$3];
+            dul $$4 = $$2x[$$3];
             if (!$$4.c()) {
                int $$5 = this.c.g($$3);
                super.a(kb.a($$2, $$5), false);
@@ -116,8 +116,8 @@ public class ari extends enl implements AutoCloseable {
       }, $$1x -> this.a($$2.e, $$2.f, ari.a.b, $$1x));
    }
 
-   public CompletableFuture<dtz> b(dtz $$0, boolean $$1) {
-      dbg $$2 = $$0.f();
+   public CompletableFuture<dua> b(dua $$0, boolean $$1) {
+      dbh $$2 = $$0.f();
       $$0.b(false);
       this.a($$2.e, $$2.f, ari.a.a, ac.a((Runnable)(() -> {
          if (!$$1) {

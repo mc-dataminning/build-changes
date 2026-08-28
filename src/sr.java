@@ -1,34 +1,34 @@
 import java.util.List;
 
 public class sr {
-   public static final ale<ehp> a = sx.a("seagrass_warm");
-   public static final ale<ehp> b = sx.a("seagrass_normal");
-   public static final ale<ehp> c = sx.a("seagrass_cold");
-   public static final ale<ehp> d = sx.a("seagrass_river");
-   public static final ale<ehp> e = sx.a("seagrass_swamp");
-   public static final ale<ehp> f = sx.a("seagrass_deep_warm");
-   public static final ale<ehp> g = sx.a("seagrass_deep");
-   public static final ale<ehp> h = sx.a("seagrass_deep_cold");
-   public static final ale<ehp> i = sx.a("seagrass_simple");
-   public static final ale<ehp> j = sx.a("sea_pickle");
-   public static final ale<ehp> k = sx.a("kelp_cold");
-   public static final ale<ehp> l = sx.a("kelp_warm");
-   public static final ale<ehp> m = sx.a("warm_ocean_vegetation");
+   public static final ale<ehq> a = sx.a("seagrass_warm");
+   public static final ale<ehq> b = sx.a("seagrass_normal");
+   public static final ale<ehq> c = sx.a("seagrass_cold");
+   public static final ale<ehq> d = sx.a("seagrass_river");
+   public static final ale<ehq> e = sx.a("seagrass_swamp");
+   public static final ale<ehq> f = sx.a("seagrass_deep_warm");
+   public static final ale<ehq> g = sx.a("seagrass_deep");
+   public static final ale<ehq> h = sx.a("seagrass_deep_cold");
+   public static final ale<ehq> i = sx.a("seagrass_simple");
+   public static final ale<ehq> j = sx.a("sea_pickle");
+   public static final ale<ehq> k = sx.a("kelp_cold");
+   public static final ale<ehq> l = sx.a("kelp_warm");
+   public static final ale<ehq> m = sx.a("warm_ocean_vegetation");
 
-   private static List<ehs> a(int $$0) {
-      return List.of(ehm.a(), sx.b, ehi.a($$0), ehd.a());
+   private static List<eht> a(int $$0) {
+      return List.of(ehn.a(), sx.b, ehj.a($$0), ehe.a());
    }
 
-   public static void a(rc<ehp> $$0) {
-      jj<eam<?, ?>> $$1 = $$0.a(lq.aC);
-      ji.c<eam<?, ?>> $$2 = $$1.b(sf.a);
-      ji.c<eam<?, ?>> $$3 = $$1.b(sf.b);
-      ji.c<eam<?, ?>> $$4 = $$1.b(sf.c);
-      ji.c<eam<?, ?>> $$5 = $$1.b(sf.d);
-      ji.c<eam<?, ?>> $$6 = $$1.b(sf.f);
-      ji.c<eam<?, ?>> $$7 = $$1.b(sf.e);
-      ji.c<eam<?, ?>> $$8 = $$1.b(sf.g);
-      ji.c<eam<?, ?>> $$9 = $$1.b(sf.h);
+   public static void a(rc<ehq> $$0) {
+      jj<ean<?, ?>> $$1 = $$0.a(lq.aC);
+      ji.c<ean<?, ?>> $$2 = $$1.b(sf.a);
+      ji.c<ean<?, ?>> $$3 = $$1.b(sf.b);
+      ji.c<ean<?, ?>> $$4 = $$1.b(sf.c);
+      ji.c<ean<?, ?>> $$5 = $$1.b(sf.d);
+      ji.c<ean<?, ?>> $$6 = $$1.b(sf.f);
+      ji.c<ean<?, ?>> $$7 = $$1.b(sf.e);
+      ji.c<ean<?, ?>> $$8 = $$1.b(sf.g);
+      ji.c<ean<?, ?>> $$9 = $$1.b(sf.h);
       sx.a($$0, a, $$2, a(80));
       sx.a($$0, b, $$2, a(48));
       sx.a($$0, c, $$2, a(32));
@@ -37,10 +37,10 @@ public class sr {
       sx.a($$0, f, $$5, a(80));
       sx.a($$0, g, $$5, a(48));
       sx.a($$0, h, $$5, a(40));
-      sx.a($$0, i, $$6, ehf.a(dxr.a.b), ehv.a(10), ehe.a(dzc.a(dzc.a(je.a.q(), dfc.b), dzc.a(iz.c, dfc.G), dzc.a(je.b.q(), dfc.G))), ehd.a());
-      sx.a($$0, j, $$7, ehv.a(16), ehm.a(), sx.b, ehd.a());
-      sx.a($$0, k, $$8, ehn.a(120, 80.0, 0.0), ehm.a(), sx.b, ehd.a());
-      sx.a($$0, l, $$8, ehn.a(80, 80.0, 0.0), ehm.a(), sx.b, ehd.a());
-      sx.a($$0, m, $$9, ehn.a(20, 400.0, 0.0), ehm.a(), sx.b, ehd.a());
+      sx.a($$0, i, $$6, ehg.a(dxs.a.b), ehw.a(10), ehf.a(dzd.a(dzd.a(je.a.q(), dfd.b), dzd.a(iz.c, dfd.G), dzd.a(je.b.q(), dfd.G))), ehe.a());
+      sx.a($$0, j, $$7, ehw.a(16), ehn.a(), sx.b, ehe.a());
+      sx.a($$0, k, $$8, eho.a(120, 80.0, 0.0), ehn.a(), sx.b, ehe.a());
+      sx.a($$0, l, $$8, eho.a(80, 80.0, 0.0), ehn.a(), sx.b, ehe.a());
+      sx.a($$0, m, $$9, eho.a(20, 400.0, 0.0), ehn.a(), sx.b, ehe.a());
    }
 }

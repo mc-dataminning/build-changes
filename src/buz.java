@@ -1,106 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import org.slf4j.Logger;
-
 public class buz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<btb<? extends btq>, bux> b = ImmutableMap.builder()
-      .put(btb.a, cgm.s().a())
-      .put(btb.c, cgp.s().a())
-      .put(btb.d, ciy.s().a())
-      .put(btb.f, cgs.gx().a())
-      .put(btb.g, cfb.s().a())
-      .put(btb.h, cfh.gC().a())
-      .put(btb.i, cjn.s().a())
-      .put(btb.l, cjo.gt().a())
-      .put(btb.p, cfj.gB().a())
-      .put(btb.o, cgx.s().a())
-      .put(btb.q, cjp.s().a())
-      .put(btb.t, cfl.s().a())
-      .put(btb.u, cfd.s().a())
-      .put(btb.w, cfn.s().a())
-      .put(btb.x, cjq.s().a())
-      .put(btb.y, cfo.gq().a())
-      .put(btb.z, chj.s().a())
-      .put(btb.B, cjs.s().a())
-      .put(btb.D, cjt.s().a())
-      .put(btb.H, cju.s().a())
-      .put(btb.I, cjv.s().a())
-      .put(btb.F, cic.u().a())
-      .put(btb.J, cjx.u().a())
-      .put(btb.m, cla.s().a())
-      .put(btb.Q, cfq.s().a())
-      .put(btb.R, cha.gq().a())
-      .put(btb.T, cjy.y().a())
-      .put(btb.U, cjz.s().a())
-      .put(btb.W, bti.gq().a())
-      .put(btb.X, chg.u().a())
-      .put(btb.Y, cka.gq().a())
-      .put(btb.Z, cli.s().a())
-      .put(btb.ab, chk.gP().a())
-      .put(btb.ac, ckx.gu().a())
-      .put(btb.ad, ckc.u().a())
-      .put(btb.af, cfs.s().a())
-      .put(btb.an, chn.gB().a())
-      .put(btb.ap, ckd.s().a())
-      .put(btb.as, cfn.s().a())
-      .put(btb.at, chj.s().a())
-      .put(btb.au, cfu.s().a())
-      .put(btb.aw, cfv.gB().a())
-      .put(btb.ax, cfw.gw().a())
-      .put(btb.ay, cke.gw().a())
-      .put(btb.az, cfx.s().a())
-      .put(btb.aA, clo.gx().a())
-      .put(btb.aB, clr.y().a())
-      .put(btb.aC, ckh.u().a())
-      .put(btb.by, cmy.fQ().a())
-      .put(btb.aD, cfy.s().a())
-      .put(btb.aF, cfd.s().a())
-      .put(btb.aG, cga.u().a())
-      .put(btb.aH, ckj.s().a())
-      .put(btb.aI, cfd.s().a())
-      .put(btb.aJ, cgc.s().a())
-      .put(btb.aK, ckk.s().a())
-      .put(btb.aM, ckl.s().a())
-      .put(btb.aN, cjm.s().a())
-      .put(btb.aO, chq.s().a())
-      .put(btb.aP, cke.gw().a())
-      .put(btb.aR, chx.s().a())
-      .put(btb.aS, cge.s().a())
-      .put(btb.aW, ckp.u().a())
-      .put(btb.aX, cgf.gq().a())
-      .put(btb.aY, cjm.s().a())
-      .put(btb.aZ, ckr.u().a())
-      .put(btb.ba, chd.gs().a())
-      .put(btb.be, chn.gB().a())
-      .put(btb.bg, cfd.s().a())
-      .put(btb.bh, cgh.y().a())
-      .put(btb.bi, cks.u().a())
-      .put(btb.bj, cml.gz().a())
-      .put(btb.bk, ckt.u().a())
-      .put(btb.bm, cmc.s().a())
-      .put(btb.bl, bts.A().a())
-      .put(btb.bo, cku.u().a())
-      .put(btb.bp, ciw.u().a())
-      .put(btb.bq, cjm.s().a())
-      .put(btb.bs, cgj.gy().a())
-      .put(btb.bt, ckw.s().a())
-      .put(btb.bu, ckx.gu().a())
-      .put(btb.bv, chu.s().a())
-      .put(btb.bw, ckx.gu().a())
-      .put(btb.bx, ckz.gA().a())
-      .build();
+   public static final ji<buu> a = a("generic.armor", new bvb("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final ji<buu> b = a("generic.armor_toughness", new bvb("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final ji<buu> c = a("generic.attack_damage", new bvb("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final ji<buu> d = a("generic.attack_knockback", new bvb("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final ji<buu> e = a("generic.attack_speed", new bvb("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final ji<buu> f = a("player.block_break_speed", new bvb("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final ji<buu> g = a("player.block_interaction_range", new bvb("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final ji<buu> h = a("player.entity_interaction_range", new bvb("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final ji<buu> i = a("generic.fall_damage_multiplier", new bvb("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
+   public static final ji<buu> j = a("generic.flying_speed", new bvb("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final ji<buu> k = a("generic.follow_range", new bvb("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final ji<buu> l = a("generic.gravity", new bvb("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
+   public static final ji<buu> m = a("generic.jump_strength", new bvb("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final ji<buu> n = a("generic.knockback_resistance", new bvb("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final ji<buu> o = a("generic.luck", new bvb("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final ji<buu> p = a("generic.max_absorption", new bvb("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final ji<buu> q = a("generic.max_health", new bvb("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final ji<buu> r = a("generic.movement_speed", new bvb("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final ji<buu> s = a("generic.safe_fall_distance", new bvb("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final ji<buu> t = a("generic.scale", new bvb("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
+   public static final ji<buu> u = a("zombie.spawn_reinforcements", new bvb("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final ji<buu> v = a("generic.step_height", new bvb("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
 
-   public static bux a(btb<? extends btq> $$0) {
-      return b.get($$0);
+   private static ji<buu> a(String $$0, buu $$1) {
+      return jv.b(lp.u, new alf($$0), $$1);
    }
 
-   public static boolean b(btb<?> $$0) {
-      return b.containsKey($$0);
-   }
-
-   public static void a() {
-      lp.g.s().filter($$0 -> $$0.f() != btt.h).filter($$0 -> !b((btb<?>)$$0)).map(lp.g::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
+   public static ji<buu> a(jv<buu> $$0) {
+      return q;
    }
 }

@@ -1,93 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class elm extends emi {
-   public static final MapCodec<elm> a = Codec.FLOAT.fieldOf("mossiness").xmap(elm::new, $$0 -> $$0.f);
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dsd[] e = new dsd[]{dfc.jD.o(), dfc.jK.o()};
-   private final float f;
+public class elm extends emj {
+   public static final MapCodec<elm> a = MapCodec.unit(() -> elm.b);
+   public static final elm b = new elm();
+   private final Map<dfb, dfb> c = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dfd.m, dfd.pr);
+      $$0.put(dfd.cn, dfd.pr);
+      $$0.put(dfd.b, dfd.pv);
+      $$0.put(dfd.eH, dfd.pw);
+      $$0.put(dfd.eI, dfd.pw);
+      $$0.put(dfd.cQ, dfd.ps);
+      $$0.put(dfd.ni, dfd.ps);
+      $$0.put(dfd.nk, dfd.pD);
+      $$0.put(dfd.fj, dfd.pA);
+      $$0.put(dfd.ng, dfd.pA);
+      $$0.put(dfd.jI, dfd.pu);
+      $$0.put(dfd.nw, dfd.pu);
+      $$0.put(dfd.jE, dfd.pE);
+      $$0.put(dfd.jD, dfd.pE);
+      $$0.put(dfd.jK, dfd.pz);
+      $$0.put(dfd.nu, dfd.pz);
+      $$0.put(dfd.nK, dfd.pB);
+      $$0.put(dfd.nI, dfd.pB);
+      $$0.put(dfd.fP, dfd.pt);
+      $$0.put(dfd.fQ, dfd.pt);
+      $$0.put(dfd.eK, dfd.py);
+      $$0.put(dfd.eJ, dfd.px);
+      $$0.put(dfd.eW, dfd.eX);
+   });
 
-   public elm(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eml.c a(dcc $$0, iz $$1, iz $$2, eml.c $$3, eml.c $$4, emh $$5) {
-      azh $$6 = $$5.b($$4.a());
-      dsd $$7 = $$4.b();
-      iz $$8 = $$4.a();
-      dsd $$9 = null;
-      if ($$7.a(dfc.eH) || $$7.a(dfc.b) || $$7.a(dfc.eK)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(awp.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(awp.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(awp.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(dfc.co)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new eml.c($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dsd a(azh $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dsd[] $$1 = new dsd[]{dfc.eJ.o(), a($$0, dfc.fj)};
-         dsd[] $$2 = new dsd[]{dfc.eI.o(), a($$0, dfc.ng)};
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private dsd a(azh $$0, dsd $$1) {
-      je $$2 = $$1.c(dmu.b);
-      dtc $$3 = $$1.c(dmu.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dsd[] $$4 = new dsd[]{dfc.ng.o().a(dmu.b, $$2).a(dmu.c, $$3), dfc.nu.o()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private dsd b(azh $$0) {
-      return $$0.i() < this.f ? dfc.nu.o() : null;
-   }
-
-   @Nullable
-   private dsd c(azh $$0) {
-      return $$0.i() < this.f ? dfc.nI.o() : null;
-   }
-
-   @Nullable
-   private dsd d(azh $$0) {
-      return $$0.i() < 0.15F ? dfc.pk.o() : null;
-   }
-
-   private static dsd a(azh $$0, dfa $$1) {
-      return $$1.o().a(dmu.b, je.c.a.a($$0)).a(dmu.c, ac.a(dtc.values(), $$0));
-   }
-
-   private dsd a(azh $$0, dsd[] $$1, dsd[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static dsd a(azh $$0, dsd[] $$1) {
-      return $$1[$$0.a($$1.length)];
+   private elm() {
    }
 
    @Override
-   protected emk<?> a() {
-      return emk.k;
+   public emm.c a(dcd $$0, iz $$1, iz $$2, emm.c $$3, emm.c $$4, emi $$5) {
+      dfb $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
+      } else {
+         dse $$7 = $$4.b();
+         dse $$8 = $$6.o();
+         if ($$7.b(dmv.b)) {
+            $$8 = $$8.a(dmv.b, $$7.c(dmv.b));
+         }
+
+         if ($$7.b(dmv.c)) {
+            $$8 = $$8.a(dmv.c, $$7.c(dmv.c));
+         }
+
+         if ($$7.b(dme.b)) {
+            $$8 = $$8.a(dme.b, $$7.c(dme.b));
+         }
+
+         return new emm.c($$4.a(), $$8, $$4.c());
+      }
+   }
+
+   @Override
+   protected eml<?> a() {
+      return eml.l;
    }
 }

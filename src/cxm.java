@@ -1,150 +1,111 @@
-import com.google.common.collect.Iterables;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
-public final class cxm {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final cxm a = new cxm(jr.a());
-   public static final Codec<cxm> b = cxm.a.a.sizeLimitedListOf(256).xmap(cxm::b, cxm::f);
-   public static final zn<xa, cxm> c = cuq.h.a(zl.c(256)).a(cxm::new, $$0 -> $$0.f);
-   private final jr<cuq> f;
-   private final int g;
+public record cxm(List<cxm.b> e, boolean f) {
+   public static final cxm a = new cxm(List.of(), true);
+   private static final Codec<cxm> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cxm.b.a.listOf().fieldOf("modifiers").forGetter(cxm::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxm::c))
+            .apply($$0, cxm::new)
+   );
+   public static final Codec<cxm> b = Codec.withAlternative(g, cxm.b.a.listOf(), $$0 -> new cxm($$0, true));
+   public static final zn<xa, cxm> c = zn.a(cxm.b.b.a(zl.a()), cxm::b, zl.b, cxm::c, cxm::new);
+   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
-   private cxm(jr<cuq> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
-      } else {
-         this.f = $$0;
-         this.g = cuq.a($$0);
-      }
+   public cxm a(boolean $$0) {
+      return new cxm(this.e, $$0);
    }
 
-   private cxm(int $$0) {
-      this(jr.a($$0, cuq.l));
+   public static cxm.a a() {
+      return new cxm.a();
    }
 
-   private cxm(List<cuq> $$0) {
-      this($$0.size());
+   public cxm a(ji<buu> $$0, bux $$1, bte $$2) {
+      Builder<cxm.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
 
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cxm b(List<cxm.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(cxm.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cxm $$2 = new cxm($$1.getAsInt() + 1);
-
-         for (cxm.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
-         }
-
-         return $$2;
-      }
-   }
-
-   public static cxm a(List<cuq> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         cxm $$2 = new cxm($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).s());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cuq> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).e()) {
-            return $$1;
+      for (cxm.b $$4 : this.e) {
+         if (!$$4.d.b().equals($$1.b())) {
+            $$3.add($$4);
          }
       }
 
-      return -1;
+      $$3.add(new cxm.b($$0, $$1, $$2));
+      return new cxm($$3.build(), this.f);
    }
 
-   private List<cxm.a> f() {
-      List<cxm.a> $$0 = new ArrayList<>();
+   public void a(btd $$0, BiConsumer<ji<buu>, bux> $$1) {
+      for (cxm.b $$2 : this.e) {
+         if ($$2.e.b($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
+      }
+   }
 
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cuq $$2 = this.f.get($$1);
-         if (!$$2.e()) {
-            $$0.add(new cxm.a($$1, $$2));
+   public double a(double $$0, btd $$1) {
+      double $$2 = $$0;
+
+      for (cxm.b $$3 : this.e) {
+         if ($$3.e.b($$1)) {
+            double $$4 = $$3.d.d();
+
+            $$2 += switch ($$3.d.e()) {
+               case a -> $$4;
+               case b -> $$4 * $$0;
+               case c -> $$4 * $$2;
+            };
          }
       }
 
-      return $$0;
+      return $$2;
    }
 
-   public void a(jr<cuq> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cuq $$2 = $$1 < this.f.size() ? this.f.get($$1) : cuq.l;
-         $$0.set($$1, $$2.s());
+   public List<cxm.b> b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Builder<cxm.b> a = ImmutableList.builder();
+
+      a() {
+      }
+
+      public cxm.a a(ji<buu> $$0, bux $$1, bte $$2) {
+         this.a.add(new cxm.b($$0, $$1, $$2));
+         return this;
+      }
+
+      public cxm a() {
+         return new cxm(this.a.build(), true);
       }
    }
 
-   public cuq a() {
-      return this.f.isEmpty() ? cuq.l : this.f.get(0).s();
-   }
-
-   public Stream<cuq> b() {
-      return this.f.stream().map(cuq::s);
-   }
-
-   public Stream<cuq> c() {
-      return this.f.stream().filter($$0 -> !$$0.e()).map(cuq::s);
-   }
-
-   public Iterable<cuq> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.e());
-   }
-
-   public Iterable<cuq> e() {
-      return Iterables.transform(this.d(), cuq::s);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cxm $$1 && cuq.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.g;
-   }
-
-   static record a(int b, cuq c) {
-      public static final Codec<cxm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cxm.a::a), cuq.b.fieldOf("item").forGetter(cxm.a::b)).apply($$0, cxm.a::new)
+   public static record b(ji<buu> c, bux d, bte e) {
+      public static final Codec<cxm.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(lp.u.r().fieldOf("type").forGetter(cxm.b::a), bux.a.forGetter(cxm.b::b), bte.l.optionalFieldOf("slot", bte.a).forGetter(cxm.b::c))
+               .apply($$0, cxm.b::new)
       );
+      public static final zn<xa, cxm.b> b = zn.a(zl.b(lq.c), cxm.b::a, bux.c, cxm.b::b, bte.m, cxm.b::c, cxm.b::new);
 
-      public int a() {
-         return this.b;
+      public ji<buu> a() {
+         return this.c;
       }
 
-      public cuq b() {
-         return this.c;
+      public bux b() {
+         return this.d;
+      }
+
+      public bte c() {
+         return this.e;
       }
    }
 }

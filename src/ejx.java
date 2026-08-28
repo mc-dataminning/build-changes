@@ -1,15 +1,38 @@
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ejx {
-   public static MapCodec<? extends ejw> a(jv<MapCodec<? extends ejw>> $$0) {
-      jv.a($$0, "random", ejz.a);
-      jv.a($$0, "random_group", eka.a);
-      return jv.a($$0, "direct", ejv.a);
+public interface ejx {
+   Codec<ejx> b = lp.aj.q().dispatch(ejx::b, Function.identity());
+
+   void a(azh var1, BiConsumer<ale<ejv>, ale<ejv>> var2);
+
+   Stream<ale<ejv>> a();
+
+   static ejw a(String $$0, String $$1) {
+      return a(rj.a($$0), rj.a($$1));
    }
 
-   public static void a(rc<eju> $$0, ji<eju> $$1, List<ejw> $$2) {
-      $$2.stream().flatMap(ejw::a).map($$0x -> $$0x.a().a()).forEach($$2x -> rj.a($$0, $$2x, new eju($$1, List.of(Pair.of(ejs.b($$2x), 1)), eju.a.b)));
+   static ejw a(ale<ejv> $$0, ale<ejv> $$1) {
+      return new ejw($$0, $$1);
    }
+
+   static eka a(String $$0, bpg<String> $$1) {
+      bpg.a<ale<ejv>> $$2 = bpg.a();
+      $$1.e().forEach($$1x -> $$2.a(rj.a((String)$$1x.b()), $$1x.a().a()));
+      return a(rj.a($$0), $$2.a());
+   }
+
+   static eka a(ale<ejv> $$0, bpg<ale<ejv>> $$1) {
+      return new eka($$0, $$1);
+   }
+
+   static ekb a(bpg<List<ejx>> $$0) {
+      return new ekb($$0);
+   }
+
+   MapCodec<? extends ejx> b();
 }

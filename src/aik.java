@@ -8,9 +8,9 @@ public class aik implements zw<agw> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final dps.a j;
+   private final dpt.a j;
 
-   public aik(iz $$0, String $$1, dps.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public aik(iz $$0, String $$1, dpt.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class aik implements zw<agw> {
    private aik(wm $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(dps.a.class);
+      this.j = $$0.b(dpt.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class aik implements zw<agw> {
       return this.i;
    }
 
-   public dps.a i() {
+   public dpt.a i() {
       return this.j;
    }
 }

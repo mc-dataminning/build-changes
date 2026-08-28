@@ -1,19 +1,12 @@
+import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
 
-public enum cxr {
-   a(0),
-   b(1);
-
-   public static final IntFunction<cxr> c = axp.a(cxr::a, values(), axp.a.a);
-   public static final zn<ByteBuf, cxr> d = zl.a(c, cxr::a);
-   private final int e;
-
-   private cxr(final int $$0) {
-      this.e = $$0;
-   }
+public record cxr(int d) {
+   public static final Codec<cxr> a = Codec.INT.xmap(cxr::new, cxr::a);
+   public static final zn<ByteBuf, cxr> b = zl.f.a(cxr::new, cxr::a);
+   public static final cxr c = new cxr(4603950);
 
    public int a() {
-      return this.e;
+      return this.d;
    }
 }

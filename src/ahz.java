@@ -3,7 +3,7 @@ public class ahz implements zw<agw> {
    private static final int b = 2;
    private final boolean c;
 
-   public ahz(cmv $$0) {
+   public ahz(cmw $$0) {
       this.c = $$0.b;
    }
 

@@ -27,7 +27,7 @@ public class ano {
    }
 
    private static int a(ep $$0, gz $$1, Collection<arg> $$2, int $$3) throws CommandSyntaxException {
-      cuq $$4 = $$1.a(1, false);
+      cur $$4 = $$1.a(1, false);
       int $$5 = $$4.j();
       int $$6 = $$5 * 100;
       if ($$3 > $$6) {
@@ -40,10 +40,10 @@ public class ano {
             while ($$8 > 0) {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
-               cuq $$10 = $$1.a($$9, false);
+               cur $$10 = $$1.a($$9, false);
                boolean $$11 = $$7.gc().f($$10);
                if ($$11 && $$10.e()) {
-                  cji $$13 = $$7.a($$4, false);
+                  cjj $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.B();
                   }
@@ -51,7 +51,7 @@ public class ano {
                   $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), awa.nC, awb.h, 0.2F, (($$7.el().i() - $$7.el().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.cb.d();
                } else {
-                  cji $$12 = $$7.a($$10, false);
+                  cjj $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.w();
                      $$12.b($$7.cz());

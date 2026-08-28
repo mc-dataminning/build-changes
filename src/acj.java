@@ -6,7 +6,7 @@ public class acj implements zw<aci> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final btb<?> f;
+   private final btc<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,19 +18,19 @@ public class acj implements zw<aci> {
    private final byte o;
    private final int p;
 
-   public acj(bsv $$0) {
+   public acj(bsw $$0) {
       this($$0, 0);
    }
 
-   public acj(bsv $$0, int $$1) {
+   public acj(bsw $$0, int $$1) {
       this($$0.al(), $$0.cz(), $$0.du(), $$0.dw(), $$0.dA(), $$0.dH(), $$0.dF(), $$0.ak(), $$1, $$0.ds(), (double)$$0.cs());
    }
 
-   public acj(bsv $$0, int $$1, iz $$2) {
+   public acj(bsw $$0, int $$1, iz $$2) {
       this($$0.al(), $$0.cz(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dH(), $$0.dF(), $$0.ak(), $$1, $$0.ds(), (double)$$0.cs());
    }
 
-   public acj(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, btb<?> $$7, int $$8, evs $$9, double $$10) {
+   public acj(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, btc<?> $$7, int $$8, evt $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
@@ -95,7 +95,7 @@ public class acj implements zw<aci> {
       return this.e;
    }
 
-   public btb<?> f() {
+   public btc<?> f() {
       return this.f;
    }
 

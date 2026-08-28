@@ -1,2 +1,8 @@
-public record crz(cxd a) implements csa {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface crz {
 }

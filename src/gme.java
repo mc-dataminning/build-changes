@@ -1,9 +1,11 @@
-public class gme extends ght<ckx, fwt<ckx>> {
-   public gme(giy.a $$0) {
-      this($$0, fxa.cf, fxa.ci, fxa.cj);
+public class gme extends gkf<ckx, fum<ckx>> {
+   private static final alf a = new alf("textures/entity/hoglin/zoglin.png");
+
+   public gme(giz.a $$0) {
+      super($$0, new fum<>($$0.a(fxb.ce)), 0.7F);
    }
 
-   public gme(giy.a $$0, fwz $$1, fwz $$2, fwz $$3) {
-      super($$0, new fwt<>($$0.a($$1)), new fwt<>($$0.a($$2)), new fwt<>($$0.a($$3)));
+   public alf a(ckx $$0) {
+      return a;
    }
 }

@@ -1,151 +1,86 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class flx extends fne {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger d = LogUtils.getLogger();
-   private static final long r = 2000L;
-   public static final xp a = xp.c("connect.aborted");
-   public static final xp b = xp.a("disconnect.genericReason", xp.c("disconnect.unknownHost"));
-   @Nullable
-   volatile wk s;
-   @Nullable
-   ChannelFuture u;
-   volatile boolean v;
-   final fne w;
-   private xp x = xp.c("connect.connecting");
-   private long y = -1L;
-   final xp z;
+public class flx extends fnf {
+   private static final int d = 20;
+   private final xp r;
+   private fhz s = fhz.a;
+   protected xp a;
+   protected xp b;
+   private int u;
+   protected final BooleanConsumer c;
+   private final List<fhg> v = Lists.newArrayList();
 
-   private flx(fne $$0, xp $$1) {
-      super(fey.a);
-      this.w = $$0;
-      this.z = $$1;
+   public flx(BooleanConsumer $$0, xp $$1, xp $$2) {
+      this($$0, $$1, $$2, xo.f, xo.g);
    }
 
-   public static void a(fne $$0, ffg $$1, fzn $$2, fyk $$3, boolean $$4, @Nullable fyo $$5) {
-      if ($$1.y instanceof flx) {
-         d.error("Attempt to connect while already connecting");
-      } else {
-         xp $$6;
-         if ($$5 != null) {
-            $$6 = xo.q;
-         } else if ($$4) {
-            $$6 = gcy.a;
-         } else {
-            $$6 = xo.r;
-         }
+   public flx(BooleanConsumer $$0, xp $$1, xp $$2, xp $$3, xp $$4) {
+      super($$1);
+      this.c = $$0;
+      this.r = $$2;
+      this.a = $$3;
+      this.b = $$4;
+   }
 
-         flx $$9 = new flx($$0, $$6);
-         if ($$5 != null) {
-            $$9.a(xp.c("connect.transferring"));
-         }
+   @Override
+   public xp i() {
+      return xo.a(super.i(), this.r);
+   }
 
-         $$1.y();
-         $$1.aT();
-         $$1.a(fzb.a($$3.b));
-         $$1.bb().a(gcz.c.b, $$3.b, $$3.a);
-         $$1.a($$9);
-         $$9.a($$1, $$2, $$3, $$5);
+   @Override
+   protected void aM_() {
+      super.aM_();
+      this.s = fhz.a(this.p, this.r, this.n - 50);
+      int $$0 = ayz.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
+      this.v.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(fhg.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(fhg.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(fhg $$0) {
+      this.v.add(this.c($$0));
+   }
+
+   @Override
+   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.s.a($$0, this.n / 2, this.E());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.F()) / 2;
+      return ayz.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int E() {
+      return this.m() + 20;
+   }
+
+   private int F() {
+      return this.s.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.u = $$0;
+
+      for (fhg $$1 : this.v) {
+         $$1.j = false;
       }
-   }
-
-   private void a(final ffg $$0, final fzn $$1, final fyk $$2, @Nullable final fyo $$3) {
-      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (flx.this.v) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = fzp.a.a($$1).map(fzm::d);
-               if (flx.this.v) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new fmf(flx.this.w, flx.this.z, flx.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               wk $$2;
-               synchronized (flx.this) {
-                  if (flx.this.v) {
-                     return;
-                  }
-
-                  $$2 = new wk(zx.b);
-                  $$2.a($$0.aP().n());
-                  flx.this.u = wk.a($$0, $$0.m.az(), $$2);
-               }
-
-               flx.this.u.syncUninterruptibly();
-               synchronized (flx.this) {
-                  if (flx.this.v) {
-                     $$2.a(flx.a);
-                     return;
-                  }
-
-                  flx.this.s = $$2;
-                  $$0.ae().a($$2, a($$2.b()));
-               }
-
-               flx.this.s
-                  .a($$0.getHostName(), $$0.getPort(), ajj.a, ajj.b, new fxv(flx.this.s, $$0, $$2, flx.this.w, false, null, flx.this::a, $$3), $$3 != null);
-               flx.this.s.a(new ajm($$0.X().c(), $$0.X().b()));
-            } catch (Exception var9) {
-               if (flx.this.v) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               flx.d.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new fmf(flx.this.w, flx.this.z, xp.a("disconnect.genericReason", $$8))));
-            }
-         }
-
-         private static gru.c a(fyk.a $$0x) {
-            return switch ($$0) {
-               case a -> gru.c.b;
-               case b -> gru.c.c;
-               case c -> gru.c.a;
-            };
-         }
-      };
-      $$4.setUncaughtExceptionHandler(new r(d));
-      $$4.start();
-   }
-
-   private void a(xp $$0) {
-      this.x = $$0;
    }
 
    @Override
    public void e() {
-      if (this.s != null) {
-         if (this.s.i()) {
-            this.s.b();
-         } else {
-            this.s.n();
+      super.e();
+      if (--this.u == 0) {
+         for (fhg $$0 : this.v) {
+            $$0.j = true;
          }
       }
    }
@@ -156,33 +91,12 @@ public class flx extends fne {
    }
 
    @Override
-   protected void aM_() {
-      this.c(fhf.a(xo.e, $$0 -> {
-         synchronized (this) {
-            this.v = true;
-            if (this.u != null) {
-               this.u.cancel(true);
-               this.u = null;
-            }
-
-            if (this.s != null) {
-               this.s.a(a);
-            }
-         }
-
-         this.m.a(this.w);
-      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-   }
-
-   @Override
-   public void a(fgs $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.c();
-      if ($$4 - this.y > 2000L) {
-         this.y = $$4;
-         this.m.aX().c(xp.c("narrator.joining"));
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
-
-      $$0.a(this.p, this.x, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }

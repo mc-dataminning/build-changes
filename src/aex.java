@@ -3,7 +3,7 @@ public class aex implements zw<aci> {
    private final int b;
    private final byte c;
 
-   public aex(bsv $$0, byte $$1) {
+   public aex(bsw $$0, byte $$1) {
       this.b = $$0.al();
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class aex implements zw<aci> {
       $$0.a(this);
    }
 
-   public bsv a(dbz $$0) {
+   public bsw a(dca $$0) {
       return $$0.a(this.b);
    }
 

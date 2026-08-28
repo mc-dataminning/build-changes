@@ -111,8 +111,8 @@ public class iz extends kd {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new iz(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public evs b() {
-      return evs.b(this);
+   public evt b() {
+      return evt.b(this);
    }
 
    public iz a(kd $$0) {
@@ -198,7 +198,7 @@ public class iz extends kd {
       }
    }
 
-   public iz a(dln $$0) {
+   public iz a(dlo $$0) {
       switch ($$0) {
          case a:
          default:
@@ -339,7 +339,7 @@ public class iz extends kd {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<iz> a(eid $$0) {
+   public static Stream<iz> a(eie $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -350,7 +350,7 @@ public class iz extends kd {
       );
    }
 
-   public static Stream<iz> a(evn $$0) {
+   public static Stream<iz> a(evo $$0) {
       return a(ayz.a($$0.a), ayz.a($$0.b), ayz.a($$0.c), ayz.a($$0.d), ayz.a($$0.e), ayz.a($$0.f));
    }
 
@@ -475,7 +475,7 @@ public class iz extends kd {
       }
 
       @Override
-      public iz a(dln $$0) {
+      public iz a(dlo $$0) {
          return super.a($$0).i();
       }
 

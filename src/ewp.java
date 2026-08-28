@@ -1,34 +1,87 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record ewp(String a, int b, @Nullable xp c, @Nullable zf d) {
-   public boolean a() {
-      return this.a.startsWith("#");
+public class ewp {
+   private final ewx a;
+   private final String b;
+   private final exa c;
+   private xp d;
+   private xp e;
+   private exa.a f;
+   private boolean g;
+   @Nullable
+   private zf h;
+
+   public ewp(ewx $$0, String $$1, exa $$2, xp $$3, exa.a $$4, boolean $$5, @Nullable zf $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public xp b() {
-      return (xp)(this.c != null ? this.c : xp.b(this.c()));
-   }
-
-   public yd a(zf $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
-
-   public String c() {
+   public ewx a() {
       return this.a;
    }
 
-   public int d() {
+   public String b() {
       return this.b;
    }
 
-   @Nullable
-   public xp e() {
+   public exa c() {
       return this.c;
+   }
+
+   public xp d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.g;
    }
 
    @Nullable
    public zf f() {
-      return this.d;
+      return this.h;
+   }
+
+   public zf a(zf $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
+   }
+
+   private xp i() {
+      return xs.a((xp)this.d.f().a($$0 -> $$0.a(new xv(xv.a.a, xp.b(this.b)))));
+   }
+
+   public xp g() {
+      return this.e;
+   }
+
+   public void a(xp $$0) {
+      this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
+   }
+
+   public exa.a h() {
+      return this.f;
+   }
+
+   public void a(exa.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
+   }
+
+   public void b(@Nullable zf $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

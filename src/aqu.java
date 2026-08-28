@@ -1,8 +1,8 @@
-public record aqu(String b, int c, cmw d, boolean e, int f, btk g, boolean h, boolean i) {
+public record aqu(String b, int c, cmx d, boolean e, int f, btl g, boolean h, boolean i) {
    public static final int a = 16;
 
    public aqu(wm $$0) {
-      this($$0.d(16), $$0.readByte(), $$0.b(cmw.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(btk.class), $$0.readBoolean(), $$0.readBoolean());
+      this($$0.d(16), $$0.readByte(), $$0.b(cmx.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(btl.class), $$0.readBoolean(), $$0.readBoolean());
    }
 
    public void a(wm $$0) {
@@ -17,6 +17,6 @@ public record aqu(String b, int c, cmw d, boolean e, int f, btk g, boolean h, bo
    }
 
    public static aqu a() {
-      return new aqu("en_us", 2, cmw.a, true, 0, cmy.bF, false, false);
+      return new aqu("en_us", 2, cmx.a, true, 0, cmz.bF, false, false);
    }
 }

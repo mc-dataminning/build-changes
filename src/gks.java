@@ -1,31 +1,39 @@
-public class gks extends gke<cga, fvm<cga>> {
-   private static final alf a = new alf("textures/entity/rabbit/brown.png");
-   private static final alf i = new alf("textures/entity/rabbit/white.png");
-   private static final alf j = new alf("textures/entity/rabbit/black.png");
-   private static final alf k = new alf("textures/entity/rabbit/gold.png");
-   private static final alf l = new alf("textures/entity/rabbit/salt.png");
-   private static final alf m = new alf("textures/entity/rabbit/white_splotched.png");
-   private static final alf n = new alf("textures/entity/rabbit/toast.png");
-   private static final alf o = new alf("textures/entity/rabbit/caerbannog.png");
+public class gks extends gkf<cga, fuc<cga>> {
+   private static final alf a = new alf("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final fuc<cga> j;
+   private final fuc<cga> k;
+   private final fuc<cga> l = this.a();
 
-   public gks(giy.a $$0) {
-      super($$0, new fvm<>($$0.a(fxa.be)), 0.3F);
+   public gks(giz.a $$0) {
+      super($$0, new fvj<>($$0.a(fxb.bb)), 0.2F);
+      this.k = new fvk<>($$0.a(fxb.bc));
+      this.j = new fvl<>($$0.a(fxb.bd));
    }
 
    public alf a(cga $$0) {
-      String $$1 = n.a($$0.af().getString());
-      if ("Toast".equals($$1)) {
-         return n;
-      } else {
-         return switch ($$0.gq()) {
-            case a -> a;
-            case b -> i;
-            case c -> j;
-            case e -> k;
-            case f -> l;
-            case d -> m;
-            case g -> o;
-         };
+      return a;
+   }
+
+   public void a(cga $$0, float $$1, float $$2, faa $$3, gdq $$4, int $$5) {
+      int $$6 = $$0.gs();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
       }
+
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(cga $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(0.0F, ayz.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

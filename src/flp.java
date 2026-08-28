@@ -1,53 +1,104 @@
-public class flp extends fng {
-   public static final xp a = xp.c("options.accessibility.title");
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   private static ffj<?>[] a(ffk $$0) {
-      return new ffj[]{
-         $$0.as(),
-         $$0.W(),
-         $$0.t(),
-         $$0.H(),
-         $$0.p(),
-         $$0.r(),
-         $$0.Y(),
-         $$0.n(),
-         $$0.o(),
-         $$0.A(),
-         $$0.B(),
-         $$0.ac(),
-         $$0.ad(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.al(),
-         $$0.ao(),
-         $$0.am(),
-         $$0.an(),
-         $$0.b(),
-         $$0.a(),
-         $$0.s(),
-         $$0.c(),
-         $$0.u()
-      };
-   }
+public class flp extends fnf {
+   private static final xp a = xp.c("accessibility.onboarding.screen.title");
+   private static final xp b = xp.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fhx r;
+   private final ffl s;
+   private final boolean u;
+   private boolean v;
+   private float w;
+   private final Runnable x;
+   @Nullable
+   private fhr y;
+   @Nullable
+   private fhe z;
+   private final fkt A = new fkt(this, this.m(), 33);
 
-   public flp(fne $$0, ffk $$1) {
-      super($$0, $$1, a, a($$1));
+   public flp(ffl $$0, Runnable $$1) {
+      super(a);
+      this.s = $$0;
+      this.x = $$1;
+      this.r = new fhx(true);
+      this.u = ffh.Q().aX().a();
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      fhd $$0 = this.s.b(this.c.t());
-      if ($$0 != null && !this.m.ac().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fiq.a(xp.c("options.accessibility.high_contrast.error.tooltip")));
+   public void aM_() {
+      fkx $$0 = this.A.c(fkx.d());
+      $$0.c().b().a(4);
+      this.y = $$0.a(new fhr(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      this.z = this.s.as().a(this.s);
+      this.z.j = this.u;
+      $$0.a(this.z);
+      $$0.a(fhk.b(150, $$0x -> this.a(new flq(this, this.m.m)), false));
+      $$0.a(fhk.a(150, $$0x -> this.a(new fmo(this, this.m.m, this.m.ag())), false));
+      this.A.b(fhg.a(xo.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.y != null) {
+         this.y.b(this.n);
+      }
+
+      this.A.a();
+   }
+
+   @Override
+   protected void aB_() {
+      if (this.u && this.z != null) {
+         this.b(this.z);
+      } else {
+         super.aB_();
       }
    }
 
+   private int m() {
+      return 90;
+   }
+
    @Override
-   protected void h() {
-      fkw $$0 = this.d.b(fkw.e().a(8));
-      $$0.a(fhf.a(xp.c("options.accessibility.link"), flv.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a());
-      $$0.a(fhf.a(xo.d, $$0x -> this.m.a(this.b)).a());
+   public void d() {
+      this.a(this.x);
+   }
+
+   private void a(fnf $$0) {
+      this.a(() -> this.m.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.s.ad = false;
+      this.s.av();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
+
+   @Override
+   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E();
+      this.r.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(fgt $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void E() {
+      if (!this.v && this.u) {
+         if (this.w < 40.0F) {
+            this.w++;
+         } else if (this.m.aB()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.v = true;
+         }
+      }
    }
 }

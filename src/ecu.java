@@ -1,53 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ecu(List<ecu.a> b, je c, dzc d, boolean e) implements edd {
+public class ecu {
    public static final Codec<ecu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecu.a.a.listOf().fieldOf("layers").forGetter(ecu::a),
-               je.g.fieldOf("direction").forGetter(ecu::b),
-               dzc.b.fieldOf("allowed_placement").forGetter(ecu::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ecu::d)
-            )
+      $$0 -> $$0.group(ehq.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, ecu::new)
    );
+   public final ji<ehq> b;
+   public final float c;
 
-   public static ecu.a a(bqa $$0, efe $$1) {
-      return new ecu.a($$0, $$1);
+   public ecu(ji<ehq> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static ecu b(bqa $$0, efe $$1) {
-      return new ecu(List.of(a($$0, $$1)), je.b, dzc.c, false);
-   }
-
-   public List<ecu.a> a() {
-      return this.b;
-   }
-
-   public je b() {
-      return this.c;
-   }
-
-   public dzc c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bqa b, efe c) {
-      public static final Codec<ecu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bqa.d.fieldOf("height").forGetter(ecu.a::a), efe.a.fieldOf("provider").forGetter(ecu.a::b)).apply($$0, ecu.a::new)
-      );
-
-      public bqa a() {
-         return this.b;
-      }
-
-      public efe b() {
-         return this.c;
-      }
+   public boolean a(dcv $$0, dub $$1, azh $$2, iz $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,122 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bwe extends bvj<cml> {
-   private static final int d = 200;
-   public static final float c = 0.5F;
-   @Nullable
-   private iz e;
-   private long f;
-   private int g;
-   private final List<iz> h = Lists.newArrayList();
-
-   public bwe() {
-      super(ImmutableMap.of(ccu.n, ccv.b, ccu.m, ccv.b, ccu.f, ccv.a));
+public class bwe {
+   public static bvl<btr> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   protected boolean a(arf $$0, cml $$1) {
-      if (!$$0.ab().b(dbv.c)) {
-         return false;
-      } else if ($$1.gB().b() != cmo.g) {
-         return false;
-      } else {
-         iz.a $$2 = $$1.dp().j();
-         this.h.clear();
-
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  $$2.b($$1.du() + (double)$$3, $$1.dw() + (double)$$4, $$1.dA() + (double)$$5);
-                  if (this.a($$2, $$0)) {
-                     this.h.add(new iz($$2));
-                  }
+   public static <E extends btr> bvl<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return byx.a((Function<byx.b<E>, ? extends App<byx.c<E>, bza<E>>>)($$4 -> {
+         byx<E, ? extends byy<? extends K1, ccy>> $$5 = $$2 ? $$4.a(ccv.m) : $$4.c(ccv.m);
+         return $$4.group($$4.a(ccv.n), $$5, $$4.b(ccv.L), $$4.a(ccv.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cjj $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dP().C_().a($$11.dp())) {
+                  ccy $$12 = new ccy(new bvv($$11, false), $$1, 0);
+                  $$4x.a(new bvv($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
                }
-            }
-         }
-
-         this.e = this.a($$0);
-         return this.e != null;
-      }
-   }
-
-   @Nullable
-   private iz a(arf $$0) {
-      return this.h.isEmpty() ? null : this.h.get($$0.E_().a(this.h.size()));
-   }
-
-   private boolean a(iz $$0, arf $$1) {
-      dsd $$2 = $$1.a_($$0);
-      dfa $$3 = $$2.b();
-      dfa $$4 = $$1.a_($$0.d()).b();
-      return $$3 instanceof dgv && ((dgv)$$3).h($$2) || $$2.i() && $$4 instanceof dhx;
-   }
-
-   protected void a(arf $$0, cml $$1, long $$2) {
-      if ($$2 > this.f && this.e != null) {
-         $$1.dS().a(ccu.n, new bvm(this.e));
-         $$1.dS().a(ccu.m, new ccx(new bvm(this.e), 0.5F, 1));
-      }
-   }
-
-   protected void b(arf $$0, cml $$1, long $$2) {
-      $$1.dS().b(ccu.n);
-      $$1.dS().b(ccu.m);
-      this.g = 0;
-      this.f = $$2 + 40L;
-   }
-
-   protected void c(arf $$0, cml $$1, long $$2) {
-      if (this.e == null || this.e.a($$1.dn(), 1.0)) {
-         if (this.e != null && $$2 > this.f) {
-            dsd $$3 = $$0.a_(this.e);
-            dfa $$4 = $$3.b();
-            dfa $$5 = $$0.a_(this.e.d()).b();
-            if ($$4 instanceof dgv && ((dgv)$$4).h($$3)) {
-               $$0.a(this.e, true, $$1);
-            }
-
-            if ($$3.i() && $$5 instanceof dhx && $$1.gK()) {
-               bre $$6 = $$1.y();
-
-               for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
-                  cuq $$8 = $$6.a($$7);
-                  boolean $$9 = false;
-                  if (!$$8.e() && $$8.a(awy.bx) && $$8.g() instanceof cso $$10) {
-                     dsd $$11 = $$10.d().o();
-                     $$0.b(this.e, $$11);
-                     $$0.a(dww.i, this.e, dww.a.a($$1, $$11));
-                     $$9 = true;
-                  }
-
-                  if ($$9) {
-                     $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), awa.gm, awb.e, 1.0F, 1.0F);
-                     $$8.h(1);
-                     if ($$8.e()) {
-                        $$6.a($$7, cuq.l);
-                     }
-                     break;
-                  }
-               }
-            }
-
-            if ($$4 instanceof dgv && !((dgv)$$4).h($$3)) {
-               this.h.remove(this.e);
-               this.e = this.a($$0);
-               if (this.e != null) {
-                  this.f = $$2 + 20L;
-                  $$1.dS().a(ccu.m, new ccx(new bvm(this.e), 0.5F, 1));
-                  $$1.dS().a(ccu.n, new bvm(this.e));
-               }
-            }
-         }
-
-         this.g++;
-      }
-   }
-
-   protected boolean d(arf $$0, cml $$1, long $$2) {
-      return this.g < 200;
+            });
+      }));
    }
 }

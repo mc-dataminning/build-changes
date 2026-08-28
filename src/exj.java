@@ -1,22 +1,17 @@
 import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public record exj<T>(T d, iz e, long f, exn g, long h) {
-   public static final Comparator<exj<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-      }
-   };
-   public static final Comparator<exj<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<exj<?>> c = new Strategy<exj<?>>() {
+public record exj<T>(T b, iz c, int d, exo e) {
+   private static final String f = "i";
+   private static final String g = "x";
+   private static final String h = "y";
+   private static final String i = "z";
+   private static final String j = "t";
+   private static final String k = "p";
+   public static final Strategy<exj<?>> a = new Strategy<exj<?>>() {
       public int a(exj<?> $$0) {
          return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
@@ -30,40 +25,66 @@ public record exj<T>(T d, iz e, long f, exn g, long h) {
       }
    };
 
-   public exj(T $$0, iz $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, exn.d, $$3);
+   public static <T> void a(uy $$0, Function<String, Optional<T>> $$1, dbh $$2, Consumer<exj<T>> $$3) {
+      long $$4 = $$2.a();
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         us $$6 = $$0.a($$5);
+         a($$6, $$1).ifPresent($$2x -> {
+            if (dbh.a($$2x.b()) == $$4) {
+               $$3.accept($$2x);
+            }
+         });
+      }
    }
 
-   public exj(T d, iz e, long f, exn g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   public static <T> Optional<exj<T>> a(us $$0, Function<String, Optional<T>> $$1) {
+      return $$1.apply($$0.l("i")).map($$1x -> {
+         iz $$2 = new iz($$0.h("x"), $$0.h("y"), $$0.h("z"));
+         return new exj<>((T)$$1x, $$2, $$0.h("t"), exo.a($$0.h("p")));
+      });
+   }
+
+   private static us a(String $$0, iz $$1, int $$2, exo $$3) {
+      us $$4 = new us();
+      $$4.a("i", $$0);
+      $$4.a("x", $$1.u());
+      $$4.a("y", $$1.v());
+      $$4.a("z", $$1.w());
+      $$4.a("t", $$2);
+      $$4.a("p", $$3.a());
+      return $$4;
+   }
+
+   public static <T> us a(exk<T> $$0, Function<T, String> $$1, long $$2) {
+      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   }
+
+   public us a(Function<T, String> $$0) {
+      return a($$0.apply(this.b), this.c, this.d, this.e);
+   }
+
+   public exk<T> a(long $$0, long $$1) {
+      return new exk<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
    }
 
    public static <T> exj<T> a(T $$0, iz $$1) {
-      return new exj<>($$0, $$1, 0L, exn.d, 0L);
+      return new exj<>($$0, $$1, 0, exo.d);
    }
 
    public T a() {
-      return this.d;
+      return this.b;
    }
 
    public iz b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public exo d() {
       return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public exn d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
    }
 }

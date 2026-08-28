@@ -1,91 +1,143 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public abstract class eoj {
-   protected eop a;
-   protected bts b;
-   protected final Int2ObjectMap<eoi> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+public class eoj {
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
+   @Nullable
+   public eoj h;
+   public boolean i;
+   public float j;
+   public float k;
+   public eoo l = eoo.a;
 
-   public void a(dcm $$0, bts $$1) {
-      this.a = new eop($$0, $$1);
+   public eoj(int $$0, int $$1, int $$2) {
+      this.a = $$0;
       this.b = $$1;
-      this.c.clear();
-      this.d = ayz.d($$1.dj() + 1.0F);
-      this.e = ayz.d($$1.dk() + 1.0F);
-      this.f = ayz.d($$1.dj() + 1.0F);
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
    }
 
-   public void b() {
-      this.a = null;
-      this.b = null;
+   public eoj a(int $$0, int $$1, int $$2) {
+      eoj $$3 = new eoj($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
    }
 
-   protected eoi b(iz $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
    }
 
-   protected eoi c(int $$0, int $$1, int $$2) {
-      return (eoi)this.c.computeIfAbsent(eoi.b($$0, $$1, $$2), $$3 -> new eoi($$0, $$1, $$2));
+   public float a(eoj $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public abstract eoi a();
-
-   public abstract eor a(double var1, double var3, double var5);
-
-   protected eor b(double $$0, double $$1, double $$2) {
-      return new eor(this.c(ayz.a($$0), ayz.a($$1), ayz.a($$2)));
+   public float b(eoj $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2);
    }
 
-   public abstract int a(eoi[] var1, eoi var2);
-
-   public abstract eon a(eop var1, int var2, int var3, int var4, bts var5);
-
-   public abstract eon a(eop var1, int var2, int var3, int var4);
-
-   public eon a(bts $$0, iz $$1) {
-      return this.a(new eop($$0.dP(), $$0), $$1.u(), $$1.v(), $$1.w());
+   public float a(iz $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return ayz.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public float c(eoj $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
+   public float b(iz $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
+   public float d(eoj $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public void d(boolean $$0) {
-      this.j = $$0;
+   public float c(iz $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
    }
 
-   public boolean d() {
-      return this.g;
+   public iz a() {
+      return new iz(this.a, this.b, this.c);
    }
 
-   public boolean e() {
-      return this.h;
+   public evt b() {
+      return new evt((double)this.a, (double)this.b, (double)this.c);
    }
 
-   public boolean f() {
-      return this.i;
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof eoj $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   public boolean g() {
-      return this.j;
+   @Override
+   public int hashCode() {
+      return this.m;
    }
 
-   public static boolean a(dsd $$0) {
-      return $$0.a(awp.aK) || $$0.a(dfc.H) || $$0.a(dfc.kJ) || dfo.g($$0) || $$0.a(dfc.fv);
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   }
+
+   public void a(wm $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
+   }
+
+   public static eoj b(wm $$0) {
+      eoj $$1 = new eoj($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
+   }
+
+   protected static void a(wm $$0, eoj $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(eoo.class);
+      $$1.g = $$0.readFloat();
    }
 }

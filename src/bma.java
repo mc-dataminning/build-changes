@@ -1,6 +1,11 @@
-public enum bma {
-   a,
-   b,
-   c,
-   d;
+public interface bma {
+   int c();
+
+   int d();
+
+   long a(int var1);
+
+   long a(int var1, int var2);
+
+   void e();
 }

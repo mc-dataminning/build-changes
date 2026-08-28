@@ -1,40 +1,21 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class ccl extends cco {
-   private final bun a;
-   private btq b;
-   private int c;
+public class ccl<T extends btr> extends cci<T> {
+   private final buo i;
 
-   public ccl(bun $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cao.a.d));
+   public ccl(buo $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btr> $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.a.s() && !this.a.gq()) {
-         btq $$0 = this.a.P_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.em();
-            int $$1 = $$0.en();
-            return $$1 != this.c && this.a(this.b, ceh.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+      return !this.i.s() && super.a();
    }
 
    @Override
-   public void c() {
-      this.e.h(this.b);
-      btq $$0 = this.a.P_();
-      if ($$0 != null) {
-         this.c = $$0.en();
-      }
-
-      super.c();
+   public boolean b() {
+      return this.d != null ? this.d.a(this.e, this.c) : super.b();
    }
 }

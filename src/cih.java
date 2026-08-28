@@ -1,44 +1,41 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cih extends cie {
+public class cih extends cif {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private evs b;
-   private int c;
+   private evt d;
+   private int e;
 
-   public cih(cic $$0) {
+   public cih(cid $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.el().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.el().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.el().i() - 0.5F) * 8.0F;
-         this.a.dP().a(li.v, this.a.du() + (double)$$0, this.a.dw() + 2.0 + (double)$$1, this.a.dA() + (double)$$2, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
    public void c() {
-      this.c++;
-      if (this.b == null) {
-         iz $$0 = this.a.dP().a(dxv.a.e, eay.a(this.a.s()));
-         this.b = evs.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.du(), this.a.dw(), this.a.dA());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
-         this.a.t(1.0F);
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gn().a(cit.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gn().a(cit.a);
       } else {
-         this.a.t(0.0F);
+         double $$0 = this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.c = 0;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(evt $$0) {
+      this.d = $$0;
    }
 
    @Override
@@ -48,12 +45,12 @@ public class cih extends cie {
 
    @Nullable
    @Override
-   public evs g() {
-      return this.b;
+   public evt g() {
+      return this.d;
    }
 
    @Override
-   public cis<cih> i() {
-      return cis.j;
+   public cit<cih> i() {
+      return cit.i;
    }
 }

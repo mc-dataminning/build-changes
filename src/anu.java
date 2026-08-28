@@ -12,7 +12,7 @@ public class anu {
    }
 
    private static int a(ep $$0) {
-      return a($$0, cmy::O_);
+      return a($$0, cmz::O_);
    }
 
    private static int b(ep $$0) {

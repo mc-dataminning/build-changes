@@ -1,51 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
-public enum ffo {
-   a(new cuq(cut.qS)),
-   b(new cuq(dfc.cj)),
-   c(new cuq(cut.lH)),
-   d(new cuq(cut.pd), new cuq(cut.oV)),
-   e(new cuq(cut.qA), new cuq(cut.ot)),
-   f(new cuq(cut.qS)),
-   g(new cuq(cut.pX)),
-   h(new cuq(dfc.b)),
-   i(new cuq(cut.qA), new cuq(cut.oz)),
-   j(new cuq(cut.qS)),
-   k(new cuq(dfc.dI)),
-   l(new cuq(cut.pb), new cuq(cut.pQ)),
-   m(new cuq(cut.qS)),
-   n(new cuq(cut.pX)),
-   o(new cuq(cut.fF)),
-   p(new cuq(cut.pT)),
-   q(new cuq(cut.pX)),
-   r(new cuq(cut.hB));
+public enum ffo implements azc {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   public static final List<ffo> s = ImmutableList.of(m, n);
-   public static final List<ffo> t = ImmutableList.of(j, k, l);
-   public static final List<ffo> u = ImmutableList.of(f, g, h, i);
-   public static final List<ffo> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<ffo, List<ffo>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cuq> x;
+   private static final IntFunction<ffo> d = axp.a(ffo::a, values(), axp.a.b);
+   private final int e;
+   private final String f;
 
-   private ffo(final cuq... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   private ffo(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static List<ffo> a(crj $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public List<cuq> a() {
-      return this.x;
+   @Override
+   public String b() {
+      return this.f;
+   }
+
+   public static ffo a(int $$0) {
+      return d.apply($$0);
    }
 }

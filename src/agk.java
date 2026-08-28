@@ -8,9 +8,9 @@ public class agk implements zw<aci> {
    private final byte g;
    private final boolean h;
 
-   public agk(bsv $$0) {
+   public agk(bsw $$0) {
       this.b = $$0.al();
-      evs $$1 = $$0.do();
+      evt $$1 = $$0.do();
       this.c = $$1.c;
       this.d = $$1.d;
       this.e = $$1.e;

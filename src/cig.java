@@ -1,56 +1,20 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class cig extends cie {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private evs d;
-   private int e;
-
-   public cig(cic $$0) {
+public abstract class cig extends cif {
+   public cig(cid $$0) {
       super($$0);
    }
 
    @Override
-   public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gn().a(cis.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gn().a(cis.a);
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public float a(brp $$0, float $$1) {
+      if (!($$0.c() instanceof cnf) && !($$0.c() instanceof coj)) {
+         return super.a($$0, $$1);
       } else {
-         double $$0 = this.d.c(this.a.du(), this.a.dw(), this.a.dA());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-            this.e++;
-         }
+         $$0.c().g(1);
+         return 0.0F;
       }
-   }
-
-   @Override
-   public void d() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(evs $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public float f() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public evs g() {
-      return this.d;
-   }
-
-   @Override
-   public cis<cig> i() {
-      return cis.i;
    }
 }

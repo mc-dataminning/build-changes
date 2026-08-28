@@ -1,7 +1,7 @@
 public interface aws {
-   axf<dab> a = a("tooltip_order");
+   axf<dac> a = a("tooltip_order");
 
-   private static axf<dab> a(String $$0) {
+   private static axf<dac> a(String $$0) {
       return axf.a(lq.u, new alf("minecraft", $$0));
    }
 }

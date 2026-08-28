@@ -9,15 +9,15 @@ public interface aqt {
       }
 
       @Override
-      public void a(Consumer<dbg> $$0) {
+      public void a(Consumer<dbh> $$0) {
       }
    };
 
-   static aqt a(dbg $$0, int $$1) {
+   static aqt a(dbh $$0, int $$1) {
       return new aqt.a($$0, $$1);
    }
 
-   static void a(aqt $$0, aqt $$1, Consumer<dbg> $$2, Consumer<dbg> $$3) {
+   static void a(aqt $$0, aqt $$1, Consumer<dbh> $$2, Consumer<dbh> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof aqt.a $$4 && $$1 instanceof aqt.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface aqt {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new dbg($$10, $$11));
+                        $$2.accept(new dbh($$10, $$11));
                      } else {
-                        $$3.accept(new dbg($$10, $$11));
+                        $$3.accept(new dbh($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface aqt {
       }
    }
 
-   default boolean a(dbg $$0) {
+   default boolean a(dbh $$0) {
       return this.a($$0.e, $$0.f);
    }
 
@@ -57,7 +57,7 @@ public interface aqt {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<dbg> var1);
+   void a(Consumer<dbh> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -77,7 +77,7 @@ public interface aqt {
       return $$10 < (long)$$11;
    }
 
-   public static record a(dbg b, int c) implements aqt {
+   public static record a(dbh b, int c) implements aqt {
       int c() {
          return this.b.e - this.c - 1;
       }
@@ -105,17 +105,17 @@ public interface aqt {
       }
 
       @Override
-      public void a(Consumer<dbg> $$0) {
+      public void a(Consumer<dbh> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new dbg($$1, $$2));
+                  $$0.accept(new dbh($$1, $$2));
                }
             }
          }
       }
 
-      public dbg a() {
+      public dbh a() {
          return this.b;
       }
 

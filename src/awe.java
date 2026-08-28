@@ -4,50 +4,50 @@ import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 
 public final class awe {
-   private static final Map<crj, Pair<String, String>> a = ImmutableMap.of(
-      crj.a,
+   private static final Map<crk, Pair<String, String>> a = ImmutableMap.of(
+      crk.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      crj.b,
+      crk.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      crj.c,
+      crk.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      crj.d,
+      crk.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<crj, awe.a> b;
+   private final Map<crk, awe.a> b;
 
-   private awe(Map<crj, awe.a> $$0) {
+   private awe(Map<crk, awe.a> $$0) {
       this.b = $$0;
    }
 
    public awe() {
-      this(ac.a(Maps.newEnumMap(crj.class), $$0 -> {
-         for (crj $$1 : crj.values()) {
+      this(ac.a(Maps.newEnumMap(crk.class), $$0 -> {
+         for (crk $$1 : crk.values()) {
             $$0.put($$1, new awe.a(false, false));
          }
       }));
    }
 
-   public boolean a(crj $$0) {
+   public boolean a(crk $$0) {
       return this.b.get($$0).a;
    }
 
-   public void a(crj $$0, boolean $$1) {
+   public void a(crk $$0, boolean $$1) {
       this.b.get($$0).a = $$1;
    }
 
-   public boolean b(crj $$0) {
+   public boolean b(crk $$0) {
       return this.b.get($$0).b;
    }
 
-   public void b(crj $$0, boolean $$1) {
+   public void b(crk $$0, boolean $$1) {
       this.b.get($$0).b = $$1;
    }
 
    public static awe a(wm $$0) {
-      Map<crj, awe.a> $$1 = Maps.newEnumMap(crj.class);
+      Map<crk, awe.a> $$1 = Maps.newEnumMap(crk.class);
 
-      for (crj $$2 : crj.values()) {
+      for (crk $$2 : crk.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          $$1.put($$2, new awe.a($$3, $$4));
@@ -57,7 +57,7 @@ public final class awe {
    }
 
    public void b(wm $$0) {
-      for (crj $$1 : crj.values()) {
+      for (crk $$1 : crk.values()) {
          awe.a $$2 = this.b.get($$1);
          if ($$2 == null) {
             $$0.a(false);
@@ -70,7 +70,7 @@ public final class awe {
    }
 
    public static awe a(us $$0) {
-      Map<crj, awe.a> $$1 = Maps.newEnumMap(crj.class);
+      Map<crk, awe.a> $$1 = Maps.newEnumMap(crk.class);
       a.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
          boolean $$5 = $$0.q((String)$$3.getSecond());
@@ -88,9 +88,9 @@ public final class awe {
    }
 
    public awe a() {
-      Map<crj, awe.a> $$0 = Maps.newEnumMap(crj.class);
+      Map<crk, awe.a> $$0 = Maps.newEnumMap(crk.class);
 
-      for (crj $$1 : crj.values()) {
+      for (crk $$1 : crk.values()) {
          awe.a $$2 = this.b.get($$1);
          $$0.put($$1, $$2.a());
       }
@@ -101,7 +101,7 @@ public final class awe {
    public void a(awe $$0) {
       this.b.clear();
 
-      for (crj $$1 : crj.values()) {
+      for (crk $$1 : crk.values()) {
          awe.a $$2 = $$0.b.get($$1);
          this.b.put($$1, $$2.a());
       }

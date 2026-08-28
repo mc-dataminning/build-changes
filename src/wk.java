@@ -401,7 +401,7 @@ public class wk extends SimpleChannelInboundHandler<zw<?>> {
       return this.k.a();
    }
 
-   public static wk a(InetSocketAddress $$0, boolean $$1, @Nullable blv $$2) {
+   public static wk a(InetSocketAddress $$0, boolean $$1, @Nullable blw $$2) {
       wk $$3 = new wk(zx.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -574,7 +574,7 @@ public class wk extends SimpleChannelInboundHandler<zw<?>> {
       return this.x;
    }
 
-   public void a(blv $$0) {
+   public void a(blw $$0) {
       this.B = new wd($$0);
    }
 }

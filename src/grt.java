@@ -1,18 +1,20 @@
-import java.nio.file.Path;
-import java.util.List;
 import java.util.UUID;
 
 public interface grt {
-   void scheduleReload(grt.a var1);
+   void a(UUID var1, grt.b var2);
 
-   public interface a {
-      void a();
+   void a(UUID var1, grt.a var2);
 
-      void a(boolean var1);
-
-      List<grt.b> b();
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   public static record b(UUID a, Path b) {
+   public static enum b {
+      a,
+      b;
    }
 }

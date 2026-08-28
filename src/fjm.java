@@ -1,54 +1,53 @@
-import com.google.common.collect.Lists;
 import java.util.List;
 
-public class fjm implements fjo {
-   private static final alf a = new alf("toast/recipe");
-   private static final long d = 5000L;
-   private static final xp e = xp.c("recipe.toast.title");
-   private static final xp f = xp.c("recipe.toast.description");
-   private final List<cyy<?>> g = Lists.newArrayList();
-   private long h;
-   private boolean i;
+public class fjm implements fjp {
+   private static final alf d = new alf("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public fjm(cyy<?> $$0) {
-      this.g.add($$0);
+   public fjm(af $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public fjo.a a(fgs $$0, fjp $$1, long $$2) {
-      if (this.i) {
-         this.h = $$2;
-         this.i = false;
-      }
+   public fjp.a a(fgt $$0, fjq $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<ayl> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = ayz.d(ayz.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = ayz.d(ayz.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
 
-      if (this.g.isEmpty()) {
-         return fjo.a.b;
+               for (ayl $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
+
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().aj().a(gsk.a(awa.Au, 1.0F, 1.0F));
+            }
+         }
+
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? fjp.a.b : fjp.a.a;
       } else {
-         $$0.a(a, 0, 0, this.a(), this.b());
-         $$0.a($$1.b().h, e, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, f, 30, 18, -16777216, false);
-         cyy<?> $$3 = this.g.get((int)((double)$$2 / Math.max(1.0, 5000.0 * $$1.c() / (double)this.g.size()) % (double)this.g.size()));
-         cuq $$4 = $$3.b().g();
-         $$0.c().a();
-         $$0.c().b(0.6F, 0.6F, 1.0F);
-         $$0.b($$4, 3, 3);
-         $$0.c().b();
-         $$0.b($$3.b().a($$1.b().r.H_()), 8, 8);
-         return (double)($$2 - this.h) >= 5000.0 * $$1.c() ? fjo.a.b : fjo.a.a;
-      }
-   }
-
-   private void a(cyy<?> $$0) {
-      this.g.add($$0);
-      this.i = true;
-   }
-
-   public static void a(fjp $$0, cyy<?> $$1) {
-      fjm $$2 = $$0.a(fjm.class, b);
-      if ($$2 == null) {
-         $$0.a(new fjm($$1));
-      } else {
-         $$2.a($$1);
+         return fjp.a.b;
       }
    }
 }

@@ -1,15 +1,24 @@
+import java.util.UUID;
+import java.util.stream.Stream;
+
 public interface dwe {
-   dwe a = new dwe() {
-      @Override
-      public void a() {
-      }
+   int al();
 
-      @Override
-      public void a(bsv.c $$0) {
-      }
-   };
+   UUID cz();
 
-   void a();
+   iz dp();
 
-   void a(bsv.c var1);
+   evo cK();
+
+   void a(dwf var1);
+
+   Stream<? extends dwe> cU();
+
+   Stream<? extends dwe> cV();
+
+   void b(bsw.c var1);
+
+   boolean dN();
+
+   boolean dO();
 }

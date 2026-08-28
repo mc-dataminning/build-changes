@@ -1,51 +1,67 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dgb<T extends Enum<T>> {
-   int v_ = 4;
+public class dgb extends dln implements dmc {
+   public static final MapCodec<dgb> a = b(dgb::new);
+   public static final dsv b = dsu.C;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final ewm e = dfb.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final ewm f = dfb.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final ewm g = dfb.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
-   Optional<dsd> i_(dsd var1);
+   @Override
+   public MapCodec<dgb> a() {
+      return a;
+   }
 
-   float at_();
+   public dgb(dsd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, je.a.b));
+   }
 
-   default void a_(dsd $$0, arf $$1, iz $$2, azh $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+   @Override
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      switch ((je.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
       }
    }
 
-   T c();
+   @Nullable
+   @Override
+   public dse a(cyc $$0) {
+      enx $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eny.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
+   }
 
-   default Optional<dsd> c(dsd $$0, arf $$1, iz $$2, azh $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (iz $$7 : iz.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dgb<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
+   @Override
+   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eny.c, eny.c.a($$3));
       }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.at_();
-      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dsf.a<dfb, dse> $$0) {
+      $$0.a(b).a(i);
+   }
+
+   @Override
+   protected enx b_(dse $$0) {
+      return $$0.c(b) ? eny.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dse $$0, eom $$1) {
+      return false;
    }
 }

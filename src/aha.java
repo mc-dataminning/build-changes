@@ -1,13 +1,13 @@
 public class aha implements zw<agw> {
    public static final zn<wm, aha> a = zw.a(aha::a, aha::new);
-   private final bqs b;
+   private final bqt b;
 
-   public aha(bqs $$0) {
+   public aha(bqt $$0) {
       this.b = $$0;
    }
 
    private aha(wm $$0) {
-      this.b = bqs.a($$0.readUnsignedByte());
+      this.b = bqt.a($$0.readUnsignedByte());
    }
 
    private void a(wm $$0) {
@@ -23,7 +23,7 @@ public class aha implements zw<agw> {
       $$0.a(this);
    }
 
-   public bqs b() {
+   public bqt b() {
       return this.b;
    }
 }

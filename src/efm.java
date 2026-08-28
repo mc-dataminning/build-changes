@@ -1,49 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public record efm(efe b, List<efm.a> c) {
-   public static final Codec<efm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(efe.a.fieldOf("fallback").forGetter(efm::a), efm.a.a.listOf().fieldOf("rules").forGetter(efm::b)).apply($$0, efm::new)
-   );
+public class efm extends eff {
+   public static final MapCodec<efm> b = dse.b.fieldOf("state").xmap(dsd.a::b, dfb::o).xmap(efm::new, $$0 -> $$0.c);
+   private final dfb c;
 
-   public static efm a(efe $$0) {
-      return new efm($$0, List.of());
+   public efm(dfb $$0) {
+      this.c = $$0;
    }
 
-   public static efm a(dfa $$0) {
-      return a(efe.a($$0));
+   @Override
+   protected efg<?> a() {
+      return efg.f;
    }
 
-   public dsd a(dcu $$0, azh $$1, iz $$2) {
-      for (efm.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public efe a() {
-      return this.b;
-   }
-
-   public List<efm.a> b() {
-      return this.c;
-   }
-
-   public static record a(dzc b, efe c) {
-      public static final Codec<efm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dzc.b.fieldOf("if_true").forGetter(efm.a::a), efe.a.fieldOf("then").forGetter(efm.a::b)).apply($$0, efm.a::new)
-      );
-
-      public dzc a() {
-         return this.b;
-      }
-
-      public efe b() {
-         return this.c;
-      }
+   @Override
+   public dse a(azh $$0, iz $$1) {
+      je.a $$2 = je.a.a($$0);
+      return this.c.o().a(dln.i, $$2);
    }
 }

@@ -1,56 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dho extends dem {
+public class dho extends den {
    public static final MapCodec<dho> a = b(dho::new);
-   protected static final ewl b = dfa.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<dho> a() {
       return a;
    }
 
-   protected dho(dsc.d $$0) {
+   protected dho(dsd.d $$0) {
       super($$0);
    }
 
    @Override
-   public dpi a(iz $$0, dsd $$1) {
+   public dpj a(iz $$0, dse $$1) {
       return new dqz($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      return b;
+   public <T extends dpj> dpk<T> a(dca $$0, dse $$1, dpl<T> $$2) {
+      return a($$2, dpl.v, $$0.B ? dqz::a : dqz::b);
    }
 
    @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, bsv $$3) {
-      if ($$1 instanceof arf && $$3.cw() && ewi.c(ewi.a($$3.cK().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), evw.i)) {
-         ale<dbz> $$4 = $$1.af() == dbz.j ? dbz.h : dbz.j;
-         arf $$5 = ((arf)$$1).o().a($$4);
-         if ($$5 == null) {
-            return;
-         }
+   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
+      dpj $$4 = $$1.c_($$2);
+      if ($$4 instanceof dqz) {
+         int $$5 = ((dqz)$$4).f();
 
-         $$3.b($$5);
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(li.ac, $$7, $$8, $$9, $$10, $$11, $$12);
+         }
       }
    }
 
    @Override
-   public void a(dsd $$0, dbz $$1, iz $$2, azh $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(li.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public cur a(dcd $$0, iz $$1, dse $$2) {
+      return cur.l;
    }
 
    @Override
-   public cuq a(dcc $$0, iz $$1, dsd $$2) {
-      return cuq.l;
-   }
-
-   @Override
-   protected boolean a(dsd $$0, env $$1) {
+   protected boolean a(dse $$0, enw $$1) {
       return false;
    }
 }

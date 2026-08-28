@@ -1,17 +1,17 @@
-public class gls extends gke<cks, fwk> {
-   private static final alf a = new alf("textures/entity/illager/vex.png");
-   private static final alf i = new alf("textures/entity/illager/vex_charging.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gls(giy.a $$0) {
-      super($$0, new fwk($$0.a(fxa.bO)), 0.3F);
-      this.a(new gnd<>(this, $$0.d()));
+public class gls extends ght<chl, fun<chl>> {
+   private static final Map<btc<?>, alf> a = Maps.newHashMap(
+      ImmutableMap.of(btc.bv, new alf("textures/entity/horse/horse_zombie.png"), btc.aO, new alf("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gls(giz.a $$0, fxa $$1) {
+      super($$0, new fun<>($$0.a($$1)), 1.0F);
    }
 
-   protected int a(cks $$0, iz $$1) {
-      return 15;
-   }
-
-   public alf a(cks $$0) {
-      return $$0.gr() ? i : a;
+   public alf a(chl $$0) {
+      return a.get($$0.ak());
    }
 }

@@ -19,15 +19,15 @@ public class apw implements apu {
             return $$0.then(eq.a("entity").then($$1.apply(eq.a($$0, fc.a()))));
          }
       };
-   private final bsv c;
+   private final bsw c;
 
-   public apw(bsv $$0) {
+   public apw(bsw $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(us $$0) throws CommandSyntaxException {
-      if (this.c instanceof cmy) {
+      if (this.c instanceof cmz) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cz();

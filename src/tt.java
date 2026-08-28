@@ -19,27 +19,27 @@ public class tt extends MinecraftServer {
    private static final int l = 20;
    private static final int m = 14999992;
    private static final alz n = new alz(null, ServicesKeySet.EMPTY, null, null);
-   private final blv o = new blv(4);
+   private final blw o = new blw(4);
    private List<ti> p = new ArrayList<>();
    private final List<ui> q;
    private final iz r;
    private final Stopwatch s = Stopwatch.createUnstarted();
-   private static final dbv t = ac.a(new dbv(), $$0 -> {
-      $$0.a(dbv.e).a(false, null);
-      $$0.a(dbv.v).a(false, null);
-      $$0.a(dbv.o).a(0, null);
+   private static final dbw t = ac.a(new dbw(), $$0 -> {
+      $$0.a(dbw.e).a(false, null);
+      $$0.a(dbw.v).a(false, null);
+      $$0.a(dbw.o).a(0, null);
    });
-   private static final dyt u = new dyt(0L, false, false);
+   private static final dyu u = new dyu(0L, false, false);
    @Nullable
    private tz v;
 
-   public static tt a(Thread $$0, epx.c $$1, aua $$2, Collection<ui> $$3, iz $$4) {
+   public static tt a(Thread $$0, epy.c $$1, aua $$2, Collection<ui> $$3, iz $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test functions were given!");
       } else {
          $$2.a();
-         dct $$5 = new dct(new dbn(new ArrayList<>($$2.b()), List.of()), cpo.e.a());
-         dcd $$6 = new dcd("Test Level", dbw.b, false, bqs.c, true, t, $$5);
+         dcu $$5 = new dcu(new dbo(new ArrayList<>($$2.b()), List.of()), cpp.e.a());
+         dce $$6 = new dce("Test Level", dbx.b, false, bqt.c, true, t, $$5);
          amb.d $$7 = new amb.d($$2, $$5, false, true);
          amb.c $$8 = new amb.c($$7, eq.a.b, 4);
 
@@ -47,9 +47,9 @@ public class tt extends MinecraftServer {
             k.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
             amc $$10 = ac.<amc>c($$2x -> amb.a($$8, $$1xx -> {
-                  jv<dvw> $$2xx = new jq<>(lq.aT, Lifecycle.stable()).l();
-                  dyq.b $$3x = $$1xx.c().d(lq.aQ).g(eib.b).a().a().a($$2xx);
-                  return new amb.b<>(new eqb($$6, u, $$3x.d(), $$3x.a()), $$3x.b());
+                  jv<dvx> $$2xx = new jq<>(lq.aT, Lifecycle.stable()).l();
+                  dyr.b $$3x = $$1xx.c().d(lq.aQ).g(eic.b).a().a().a($$2xx);
+                  return new amb.b<>(new eqc($$6, u, $$3x.d(), $$3x.a()), $$3x.b());
                }, amc::new, ac.g(), $$2x)).get();
             $$9.stop();
             k.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
@@ -62,7 +62,7 @@ public class tt extends MinecraftServer {
       }
    }
 
-   private tt(Thread $$0, epx.c $$1, aua $$2, amc $$3, Collection<ui> $$4, iz $$5) {
+   private tt(Thread $$0, epy.c $$1, aua $$2, amc $$3, Collection<ui> $$4, iz $$5) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bah.a(), n, arq::b);
       this.q = Lists.newArrayList($$4);
       this.r = $$5;
@@ -116,7 +116,7 @@ public class tt extends MinecraftServer {
    }
 
    @Override
-   public bly f() {
+   public blz f() {
       return this.o;
    }
 

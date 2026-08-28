@@ -1,29 +1,32 @@
-public enum fli {
-   a,
-   b;
+public interface fli {
+   flk a();
 
-   public fli a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+   public static record a(flk a) implements fli {
+      @Override
+      public flk a() {
+         return this.a.a() == flj.b ? this.a : flk.b;
+      }
+
+      public flk b() {
+         return this.a;
+      }
    }
 
-   public flj b() {
-      return switch (this) {
-         case a -> flj.d;
-         case b -> flj.b;
-      };
+   public static class b implements fli {
+      @Override
+      public flk a() {
+         return flk.b;
+      }
    }
 
-   public flj c() {
-      return switch (this) {
-         case a -> flj.c;
-         case b -> flj.a;
-      };
-   }
+   public static record c(boolean a) implements fli {
+      @Override
+      public flk a() {
+         return this.a ? flk.b : flk.a;
+      }
 
-   public flj a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+      public boolean b() {
+         return this.a;
+      }
    }
 }

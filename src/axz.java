@@ -6,7 +6,7 @@ public class axz {
    private axz() {
    }
 
-   public static evs a(evs $$0, axz.a $$1) {
+   public static evt a(evt $$0, axz.a $$1) {
       int $$2 = ayz.a($$0.a());
       int $$3 = ayz.a($$0.b());
       int $$4 = ayz.a($$0.c());
@@ -14,7 +14,7 @@ public class axz {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      evs $$9 = evs.b;
+      evt $$9 = evt.b;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = ayz.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class axz {
 
    @FunctionalInterface
    public interface a {
-      evs fetch(int var1, int var2, int var3);
+      evt fetch(int var1, int var2, int var3);
    }
 }

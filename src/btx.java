@@ -1,139 +1,120 @@
-public class btx extends bsv {
-   private static final int c = 60;
-   private static final int d = 120;
-   private static final String e = "spawn_item_after_ticks";
-   private static final String f = "item";
-   private static final akk<cuq> g = ako.a(btx.class, akm.h);
-   public static final int b = 36;
-   private long h;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public btx(btb<? extends btx> $$0, dbz $$1) {
-      super($$0, $$1);
-      this.ag = true;
-   }
+public interface btx {
+   String b_ = "AngerTime";
+   String c_ = "AngryAt";
 
-   public static btx a(dbz $$0, cuq $$1) {
-      btx $$2 = new btx(btb.aj, $$0);
-      $$2.h = (long)$$0.z.a(60, 120);
-      $$2.a($$1);
-      return $$2;
-   }
+   int a();
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.dP().B) {
-         this.v();
-      } else {
-         this.u();
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void c(us $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
       }
    }
 
-   private void u() {
-      if ((long)this.ai == this.h - 36L) {
-         this.dP().a(null, this.dp(), awa.md, awb.g);
-      }
-
-      if ((long)this.ai >= this.h) {
-         this.w();
-         this.an();
-      }
-   }
-
-   private void v() {
-      if (this.dP().Z() % 5L == 0L) {
-         this.p();
-      }
-   }
-
-   private void w() {
-      dbz $$0 = this.dP();
-      cuq $$1 = this.s();
-      if (!$$1.e()) {
-         bsv $$6;
-         if ($$1.g() instanceof cvi $$2) {
-            je $$3 = je.a;
-            cnq $$4 = $$2.a($$0, this.dn(), $$1, $$3);
-            cvi.a $$5 = $$2.c();
-            $$2.a($$4, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), $$5.d(), $$5.c());
-            $$5.e().ifPresent($$1x -> $$0.c($$1x, this.dp(), 0));
-            $$6 = $$4;
+   default void a(dca $$0, us $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof arf) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
          } else {
-            $$6 = new cji($$0, this.du(), this.dw(), this.dA(), $$1);
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            bsw $$3 = ((arf)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof btt $$4) {
+                  this.h($$4);
+                  this.a($$4);
+               }
+
+               if ($$3 instanceof cmz $$5) {
+                  this.h($$5);
+                  this.c($$5);
+               }
+            }
+         }
+      }
+   }
+
+   default void a(arf $$0, boolean $$1) {
+      btr $$2 = this.p();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eB()) && $$3 != null && $$0.a($$3) instanceof btt) {
+         this.V_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cz())) {
+            this.a($$2.cz());
+            this.c();
          }
 
-         $$0.b($$6);
-         $$0.c(3021, this.dp(), 1);
-         $$0.a($$6, dww.t, this.dn());
-         this.a(cuq.l);
+         if (this.a() > 0 && ($$2 == null || $$2.ak() != btc.by || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.V_();
+            }
+         }
       }
    }
 
-   @Override
-   protected void a(ako.a $$0) {
-      $$0.a(g, cuq.l);
-   }
-
-   @Override
-   protected void a(us $$0) {
-      cuq $$1 = $$0.b("item", 10) ? cuq.a(this.dR(), (vp)$$0.p("item")).orElse(cuq.l) : cuq.l;
-      this.a($$1);
-      $$0.i("spawn_item_after_ticks");
-   }
-
-   @Override
-   protected void b(us $$0) {
-      if (!this.s().e()) {
-         $$0.a("item", this.s().a(this.dR()).d());
-      }
-
-      $$0.a("spawn_item_after_ticks", this.h);
-   }
-
-   @Override
-   protected boolean r(bsv $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bJ() {
-      return false;
-   }
-
-   @Override
-   protected void p(bsv $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public eob k_() {
-      return eob.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
-   }
-
-   public void p() {
-      evs $$0 = this.dn();
-      int $$1 = this.ah.a(1, 3);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         double $$3 = 0.4;
-         evs $$4 = new evs(
-            this.du() + 0.4 * (this.ah.k() - this.ah.k()), this.dw() + 0.4 * (this.ah.k() - this.ah.k()), this.dA() + 0.4 * (this.ah.k() - this.ah.k())
-         );
-         evs $$5 = $$0.a($$4);
-         this.dP().a(li.bc, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
+   default boolean a_(btr $$0) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.ak() == btc.by && this.a_($$0.dP()) ? true : $$0.cz().equals(this.b());
       }
    }
 
-   public cuq s() {
-      return this.ap().a(g);
+   default boolean a_(dca $$0) {
+      return $$0.ab().b(dbw.O) && this.Z_() && this.b() == null;
    }
 
-   private void a(cuq $$0) {
-      this.ap().a(g, $$0);
+   default boolean Z_() {
+      return this.a() > 0;
    }
+
+   default void a_(cmz $$0) {
+      if ($$0.dP().ab().b(dbw.N)) {
+         if ($$0.cz().equals(this.b())) {
+            this.V_();
+         }
+      }
+   }
+
+   default void aa_() {
+      this.V_();
+      this.c();
+   }
+
+   default void V_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
+   }
+
+   @Nullable
+   btr em();
+
+   void a(@Nullable btr var1);
+
+   void c(@Nullable cmz var1);
+
+   void h(@Nullable btr var1);
+
+   boolean c(btr var1);
+
+   @Nullable
+   btr p();
 }

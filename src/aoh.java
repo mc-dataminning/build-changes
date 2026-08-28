@@ -149,7 +149,7 @@ public class aoh {
    }
 
    private static int a(ep $$0, int $$1, boolean $$2, boolean $$3) {
-      brc $$4 = $$0.e().L();
+      brd $$4 = $$0.e().L();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> xp.a("commands.random.reset.all.success", $$5), false);

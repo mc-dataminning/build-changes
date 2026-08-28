@@ -1,49 +1,41 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class efj extends efh {
-   public static final MapCodec<efj> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dsd.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dsd.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dsd.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, efj::new)
-   );
-   private final float g;
-   private final float h;
-   private final dsd i;
-   private final List<dsd> j;
-   private final List<dsd> k;
+public class efj extends efi {
+   public static final MapCodec<efj> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, efj::new));
+   protected final List<dse> h;
 
-   public efj(long $$0, emz.a $$1, float $$2, float $$3, float $$4, dsd $$5, List<dsd> $$6, List<dsd> $$7) {
+   protected static <P extends efj> P4<Mu<P>, Long, ena.a, Float, List<dse>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dse.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public efj(long $$0, ena.a $$1, float $$2, List<dse> $$3) {
       super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+      this.h = $$3;
    }
 
    @Override
-   protected eff<?> a() {
-      return eff.c;
+   protected efg<?> a() {
+      return efg.d;
    }
 
    @Override
-   public dsd a(azh $$0, iz $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
-      }
+   public dse a(azh $$0, iz $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected dse a(List<dse> $$0, iz $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dse a(List<dse> $$0, double $$1) {
+      double $$2 = ayz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

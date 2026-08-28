@@ -1,25 +1,20 @@
-public class gkb extends gix<cnp> {
-   private static final alf a = new alf("textures/entity/llama/spit.png");
-   private final fuv<cnp> f;
+public class gkb extends gkf<cho, fuv<cho>> {
+   private static final alf a = new alf("textures/entity/llama/creamy.png");
+   private static final alf i = new alf("textures/entity/llama/white.png");
+   private static final alf j = new alf("textures/entity/llama/brown.png");
+   private static final alf k = new alf("textures/entity/llama/gray.png");
 
-   public gkb(giy.a $$0) {
-      super($$0);
-      this.f = new fuv<>($$0.a(fxa.az));
+   public gkb(giz.a $$0, fxa $$1) {
+      super($$0, new fuv<>($$0.a($$1)), 0.7F);
+      this.a(new gnf(this, $$0.f()));
    }
 
-   public void a(cnp $$0, float $$1, float $$2, ezz $$3, gdp $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(ayz.i($$2, $$0.O, $$0.dF()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayz.i($$2, $$0.P, $$0.dH())));
-      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      fad $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, gor.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public alf a(cnp $$0) {
-      return a;
+   public alf a(cho $$0) {
+      return switch ($$0.gC()) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+      };
    }
 }

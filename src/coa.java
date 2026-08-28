@@ -1,82 +1,69 @@
-import javax.annotation.Nullable;
-
-public class coa extends cnx {
-   public coa(btb<? extends coa> $$0, dbz $$1) {
+public class coa extends cny {
+   public coa(btc<? extends coa> $$0, dca $$1) {
       super($$0, $$1);
    }
 
-   public coa(dbz $$0, btq $$1) {
-      super(btb.G, $$1, $$0);
+   public coa(dca $$0, btr $$1) {
+      super(btc.C, $$1, $$0);
+   }
+
+   public coa(dca $$0, double $$1, double $$2, double $$3) {
+      super(btc.C, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected cul u() {
-      return cut.sf;
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
 
-   @Override
-   protected void a(evp $$0) {
-      super.a($$0);
-      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dP()
+               .a(
+                  new le(li.S, this.p()),
+                  this.du(),
+                  this.dw(),
+                  this.dA(),
+                  ((double)this.ah.i() - 0.5) * 0.08,
+                  ((double)this.ah.i() - 0.5) * 0.08,
+                  ((double)this.ah.i() - 0.5) * 0.08
+               );
+         }
+      }
    }
 
    @Override
    protected void a(evq $$0) {
       super.a($$0);
+      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+   }
 
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dP().a(li.ac, this.du(), this.dw() + this.ah.j() * 2.0, this.dA(), this.ah.k(), 0.0, this.ah.k());
-      }
-
-      if (!this.dP().B && !this.dK()) {
-         bsv $$2 = this.s();
-         if ($$2 instanceof arg $$3) {
-            if ($$3.c.c() && $$3.dP() == this.dP() && !$$3.fL()) {
-               if (this.ah.i() < 0.05F && this.dP().ab().b(dbv.e)) {
-                  cjv $$4 = btb.I.a(this.dP());
-                  if ($$4 != null) {
-                     $$4.b($$2.du(), $$2.dw(), $$2.dA(), $$2.dF(), $$2.dH());
-                     this.dP().b($$4);
-                  }
-               }
-
-               if ($$2.bR()) {
-                  $$3.a(this.du(), this.dw(), this.dA());
-               } else {
-                  $$2.c(this.du(), this.dw(), this.dA());
-               }
-
-               $$2.n();
-               $$2.a(this.dQ().k(), 5.0F);
-               this.dP().a(null, this.du(), this.dw(), this.dA(), awa.us, awb.h);
+   @Override
+   protected void a(evr $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
+         if (this.ah.a(8) == 0) {
+            int $$1 = 1;
+            if (this.ah.a(32) == 0) {
+               $$1 = 4;
             }
-         } else if ($$2 != null) {
-            $$2.c(this.du(), this.dw(), this.dA());
-            $$2.n();
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               cfm $$3 = btc.t.a(this.dP());
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
+                  this.dP().b($$3);
+               }
+            }
          }
 
+         this.dP().a(this, (byte)3);
          this.ao();
       }
    }
 
    @Override
-   public void l() {
-      bsv $$0 = this.s();
-      if ($$0 instanceof arg && !$$0.bD() && this.dP().ab().b(dbv.Y)) {
-         this.ao();
-      } else {
-         super.l();
-      }
-   }
-
-   @Nullable
-   @Override
-   public bsv b(arf $$0) {
-      bsv $$1 = this.s();
-      if ($$1 != null && $$1.dP().af() != $$0.af()) {
-         this.c(null);
-      }
-
-      return super.b($$0);
+   protected cum u() {
+      return cuu.qR;
    }
 }

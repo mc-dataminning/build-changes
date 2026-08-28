@@ -1,60 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class esz extends erv {
-   private static final Map<kl<?>, esz.a<?>> b = Stream.of(
-         new esz.a<>(km.K, cwu::a),
-         new esz.a<>(km.z, cxi::a),
-         new esz.a<>(km.k, dag::a),
-         new esz.a<>(km.y, dag::a),
-         new esz.a<>(km.f, cxx::a),
-         new esz.a<>(km.m, csc::a),
-         new esz.a<>(km.l, csc::a),
-         new esz.a<>(km.n, cxl::a)
-      )
-      .collect(Collectors.toMap(esz.a::a, $$0 -> (esz.a<?>)$$0));
-   private static final Codec<esz.a<?>> c = lp.as.q().comapFlatMap($$0 -> {
-      esz.a<?> $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lp.as.b($$0));
-   }, esz.a::a);
-   public static final MapCodec<esz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, esz::new)
-   );
-   private final Map<esz.a<?>, Boolean> d;
+public class esz extends erw {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<esz> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, esz::new));
 
-   private esz(List<ett> $$0, Map<esz.a<?>, Boolean> $$1) {
+   private esz(List<etu> $$0) {
       super($$0);
-      this.d = $$1;
    }
 
    @Override
-   protected cuq a(cuq $$0, eqj $$1) {
-      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
-      return $$0;
+   public ery<esz> b() {
+      return erz.l;
    }
 
    @Override
-   public erx<esz> b() {
-      return ery.P;
-   }
-
-   static record a<T>(kl<T> a, esz.b<T> b) {
-      public void a(cuq $$0, boolean $$1) {
-         T $$2 = $$0.a(this.a);
-         if ($$2 != null) {
-            $$0.b(this.a, this.b.withTooltip($$2, $$1));
+   public cur a(cur $$0, eqk $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         Optional<cyz<czm>> $$2 = $$1.d().r().a(czc.b, new brf($$0), $$1.d());
+         if ($$2.isPresent()) {
+            cur $$3 = $$2.get().b().a($$1.d().H_());
+            if (!$$3.e()) {
+               return $$3.c($$0.I());
+            }
          }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
       }
    }
 
-   @FunctionalInterface
-   interface b<T> {
-      T withTooltip(T var1, boolean var2);
+   public static erw.a<?> c() {
+      return a(esz::new);
    }
 }

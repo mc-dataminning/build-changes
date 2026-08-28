@@ -342,11 +342,11 @@ public class wm extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dbg f() {
-      return new dbg(this.readLong());
+   public dbh f() {
+      return new dbh(this.readLong());
    }
 
-   public wm a(dbg $$0) {
+   public wm a(dbh $$0) {
       this.b($$0.a());
       return this;
    }
@@ -361,7 +361,7 @@ public class wm extends ByteBuf {
    }
 
    public jh h() {
-      ale<dbz> $$0 = this.a(lq.aS);
+      ale<dca> $$0 = this.a(lq.aS);
       iz $$1 = this.e();
       return jh.a($$0, $$1);
    }
@@ -408,11 +408,11 @@ public class wm extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public evs k() {
-      return new evs(this.readDouble(), this.readDouble(), this.readDouble());
+   public evt k() {
+      return new evt(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(evs $$0) {
+   public void a(evt $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -589,21 +589,21 @@ public class wm extends ByteBuf {
       return this;
    }
 
-   public evo v() {
+   public evp v() {
       iz $$0 = this.e();
       je $$1 = this.b(je.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new evo(new evs((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new evp(new evt((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(evo $$0) {
+   public void a(evp $$0) {
       iz $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      evs $$2 = $$0.e();
+      evt $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));

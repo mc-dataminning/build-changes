@@ -1,10 +1,10 @@
-public class daj extends dab {
-   public daj(dab.b $$0) {
+public class daj extends dac {
+   public daj(dac.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dab $$0) {
-      return super.a($$0) && $$0 != dae.K;
+   public boolean a() {
+      return true;
    }
 }

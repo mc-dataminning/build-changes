@@ -1,44 +1,23 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+public class epa implements epb {
+   private final dca b;
 
-public interface epa {
-   je[] a = new je[]{je.e, je.f, je.a, je.b, je.c, je.d};
-
-   void a(je var1, dsd var2, iz var3, iz var4, int var5, int var6);
-
-   void a(iz var1, dfa var2, iz var3);
-
-   void a(dsd var1, iz var2, dfa var3, iz var4, boolean var5);
-
-   default void a(iz $$0, dfa $$1, @Nullable je $$2) {
-      for (je $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
-         }
-      }
+   public epa(dca $$0) {
+      this.b = $$0;
    }
 
-   static void a(dca $$0, je $$1, dsd $$2, iz $$3, iz $$4, int $$5, int $$6) {
-      dsd $$7 = $$0.a_($$3);
-      dsd $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      dfa.a($$7, $$8, $$0, $$3, $$5, $$6);
+   @Override
+   public void a(je $$0, dse $$1, iz $$2, iz $$3, int $$4, int $$5) {
+      epb.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   static void a(dbz $$0, dsd $$1, iz $$2, dfa $$3, iz $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", lp.e.b($$3), $$3.g(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + lp.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
-      }
+   @Override
+   public void a(iz $$0, dfb $$1, iz $$2) {
+      dse $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
+
+   @Override
+   public void a(dse $$0, iz $$1, dfb $$2, iz $$3, boolean $$4) {
+      epb.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

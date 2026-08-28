@@ -1,42 +1,56 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public abstract class gqd implements auj, AutoCloseable {
-   private final goz a;
-   private final alf b;
-   private final Set<ato<?>> c;
+public class gqd extends auu<List<String>> {
+   private static final alf a = new alf("texts/splashes.txt");
+   private static final azh b = azh.a();
+   private final List<String> c = Lists.newArrayList();
+   private final ffv d;
 
-   public gqd(gpb $$0, alf $$1, alf $$2) {
-      this($$0, $$1, $$2, gov.a);
+   public gqd(ffv $$0) {
+      this.d = $$0;
    }
 
-   public gqd(gpb $$0, alf $$1, alf $$2, Set<ato<?>> $$3) {
-      this.b = $$2;
-      this.a = new goz($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
+   protected List<String> a(aup $$0, bnk $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = ffh.Q().ab().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
+
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
+      }
    }
 
-   protected gpa a(alf $$0) {
-      return this.a.a($$0);
+   protected void a(List<String> $$0, aup $$1, bnk $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
    }
 
-   @Override
-   public final CompletableFuture<Void> a(auj.a $$0, aup $$1, bnj $$2, bnj $$3, Executor $$4, Executor $$5) {
-      return gov.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gov.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(gov.a $$0, bnj $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
+   @Nullable
+   public fik a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return fik.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return fik.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return fik.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new fik(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fik(this.c.get(b.a(this.c.size())));
+      }
    }
 }

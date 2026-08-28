@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record dc(
-   Optional<dc.b> b, Optional<jm<dcy>> c, Optional<jm<eil>> d, Optional<ale<dbz>> e, Optional<Boolean> f, Optional<cz> g, Optional<av> h, Optional<cc> i
+   Optional<dc.b> b, Optional<jm<dcz>> c, Optional<jm<eim>> d, Optional<ale<dca>> e, Optional<Boolean> f, Optional<cz> g, Optional<av> h, Optional<cc> i
 ) {
    public static final Codec<dc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
@@ -29,7 +29,7 @@ public record dc(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dfo.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dfp.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -51,15 +51,15 @@ public record dc(
       return this.b;
    }
 
-   public Optional<jm<dcy>> b() {
+   public Optional<jm<dcz>> b() {
       return this.c;
    }
 
-   public Optional<jm<eil>> c() {
+   public Optional<jm<eim>> c() {
       return this.d;
    }
 
-   public Optional<ale<dbz>> d() {
+   public Optional<ale<dca>> d() {
       return this.e;
    }
 
@@ -83,9 +83,9 @@ public record dc(
       private de.c a;
       private de.c b;
       private de.c c;
-      private Optional<jm<dcy>> d;
-      private Optional<jm<eil>> e;
-      private Optional<ale<dbz>> f;
+      private Optional<jm<dcz>> d;
+      private Optional<jm<eim>> e;
+      private Optional<ale<dca>> f;
       private Optional<Boolean> g;
       private Optional<cz> h;
       private Optional<av> i;
@@ -108,15 +108,15 @@ public record dc(
          return new dc.a();
       }
 
-      public static dc.a a(ji<dcy> $$0) {
+      public static dc.a a(ji<dcz> $$0) {
          return a().a(jm.a($$0));
       }
 
-      public static dc.a a(ale<dbz> $$0) {
+      public static dc.a a(ale<dca> $$0) {
          return a().b($$0);
       }
 
-      public static dc.a b(ji<eil> $$0) {
+      public static dc.a b(ji<eim> $$0) {
          return a().b(jm.a($$0));
       }
 
@@ -139,17 +139,17 @@ public record dc(
          return this;
       }
 
-      public dc.a a(jm<dcy> $$0) {
+      public dc.a a(jm<dcz> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(jm<eil> $$0) {
+      public dc.a b(jm<eim> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(ale<dbz> $$0) {
+      public dc.a b(ale<dca> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

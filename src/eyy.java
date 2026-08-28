@@ -1,93 +1,29 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 
-public final class eyy {
-   private final long a;
-   private final List<ezc> b;
-   private ezc c;
-   private int d;
-   private int e;
+public class eyy {
+   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
 
-   public eyy(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
-   }
-
-   public void a() {
-      RenderSystem.assertInInitPhase();
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
-
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         ezc $$2 = new ezc($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
-         }
+   public static ByteBuffer a(int $$0) {
+      long $$1 = a.malloc((long)$$0);
+      if ($$1 == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
+      } else {
+         return MemoryUtil.memByteBuffer($$1, $$0);
       }
-
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new ezc($$5);
    }
 
-   public ezc a(Optional<ezc> $$0) {
-      RenderSystem.assertInInitPhase();
-      if ($$0.isPresent()) {
-         ezc $$1 = $$0.get();
-
-         for (ezc $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
-            }
-         }
+   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
+      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
+      if ($$2 == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
+      } else {
+         return MemoryUtil.memByteBuffer($$2, $$1);
       }
-
-      return this.b();
    }
 
-   public int a(ezc $$0) {
-      RenderSystem.assertInInitPhase();
-      return this.b.indexOf($$0);
-   }
-
-   public ezc b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public ezc a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
+   public static void a(ByteBuffer $$0) {
+      a.free(MemoryUtil.memAddress0($$0));
    }
 }

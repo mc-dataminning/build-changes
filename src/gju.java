@@ -1,95 +1,23 @@
-import com.google.common.annotations.VisibleForTesting;
+public class gju extends gkf<cft, fur<cft>> {
+   private static final alf a = new alf("textures/entity/iron_golem/iron_golem.png");
 
-public class gju extends gix<cji> {
-   private static final float a = 0.15F;
-   private static final float f = 0.0F;
-   private static final float g = 0.0F;
-   private static final float h = 0.09375F;
-   private final gjw i;
-   private final azh j = azh.a();
-
-   public gju(giy.a $$0) {
-      super($$0);
-      this.i = $$0.b();
-      this.d = 0.15F;
-      this.e = 0.75F;
+   public gju(giz.a $$0) {
+      super($$0, new fur<>($$0.a(fxb.av)), 0.7F);
+      this.a(new gnc(this));
+      this.a(new gnd(this, $$0.c()));
    }
 
-   public alf a(cji $$0) {
-      return goz.e;
+   public alf a(cft $$0) {
+      return a;
    }
 
-   public void a(cji $$0, float $$1, float $$2, ezz $$3, gdp $$4, int $$5) {
-      $$3.a();
-      cuq $$6 = $$0.p();
-      this.j.b((long)a($$6));
-      grb $$7 = this.i.a($$6, $$0.dP(), null, $$0.al());
-      boolean $$8 = $$7.b();
-      float $$9 = 0.25F;
-      float $$10 = ayz.a(((float)$$0.u() + $$2) / 10.0F + $$0.c) * 0.1F + 0.1F;
-      float $$11 = $$7.f().a(cun.h).d.y();
-      $$3.a(0.0F, $$10 + 0.25F * $$11, 0.0F);
-      float $$12 = $$0.a($$2);
-      $$3.a(a.d.rotation($$12));
-      a(this.i, $$3, $$4, $$5, $$6, $$7, $$8, this.j);
-      $$3.b();
+   protected void a(cft $$0, faa $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static int a(cuq $$0) {
-      return $$0.e() ? 187 : cul.a($$0.g()) + $$0.n();
-   }
-
-   @VisibleForTesting
-   static int a(int $$0) {
-      if ($$0 <= 1) {
-         return 1;
-      } else if ($$0 <= 16) {
-         return 2;
-      } else if ($$0 <= 32) {
-         return 3;
-      } else {
-         return $$0 <= 48 ? 4 : 5;
-      }
-   }
-
-   public static void a(gjw $$0, ezz $$1, gdp $$2, int $$3, cuq $$4, azh $$5, dbz $$6) {
-      grb $$7 = $$0.a($$4, $$6, null, 0);
-      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
-   }
-
-   public static void a(gjw $$0, ezz $$1, gdp $$2, int $$3, cuq $$4, grb $$5, boolean $$6, azh $$7) {
-      int $$8 = a($$4.I());
-      float $$9 = $$5.f().h.d.x();
-      float $$10 = $$5.f().h.d.y();
-      float $$11 = $$5.f().h.d.z();
-      if (!$$6) {
-         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
-         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
-         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
-         $$1.a($$12, $$13, $$14);
-      }
-
-      for (int $$15 = 0; $$15 < $$8; $$15++) {
-         $$1.a();
-         if ($$15 > 0) {
-            if ($$6) {
-               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               $$1.a($$16, $$17, $$18);
-            } else {
-               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$1.a($$19, $$20, 0.0F);
-            }
-         }
-
-         $$0.a($$4, cun.h, false, $$1, $$2, $$3, gor.d, $$5);
-         $$1.b();
-         if (!$$6) {
-            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
-         }
+      if (!((double)$$0.aU.a() < 0.01)) {
+         float $$6 = 13.0F;
+         float $$7 = $$0.aU.c($$4) + 6.0F;
+         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$8));
       }
    }
 }

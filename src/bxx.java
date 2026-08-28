@@ -1,26 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxx {
-   public static bvk<btq> a(Function<btq, Optional<bwx>> $$0, Predicate<btq> $$1, int $$2, int $$3, float $$4) {
-      return byw.a(
-         (Function<byw.b<btq>, ? extends App<byw.c<btq>, byz<btq>>>)($$5 -> $$5.group($$5.a(ccu.n), $$5.a(ccu.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bwx> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bwx $$11 = $$10.get();
-                        if ($$8.dn().a((js)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           bwx $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new ccx($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
+   public static bvl<btr> a(int $$0, BiPredicate<btr, btr> $$1) {
+      return byx.a(
+         (Function<byx.b<btr>, ? extends App<byx.c<btr>, bza<btr>>>)($$2 -> $$2.group($$2.b(ccv.o), $$2.a(ccv.ab), $$2.c(ccv.ai), $$2.a(ccv.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     btr $$10 = $$2.b($$3);
+                     if (!$$10.eB()) {
                         return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
+
+                        $$5.a($$10.dp(), (long)$$0);
+                        if ($$10.ak() != btc.by || $$7.ab().b(dbw.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
+                        return true;
                      }
                   }))
       );

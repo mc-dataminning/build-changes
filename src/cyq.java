@@ -1,76 +1,49 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class cyq extends cyo {
-   private static final cyt a = cyt.a(cut.qO);
-   private static final cyt b = cyt.a(cut.pu);
-   private static final cyt c = cyt.a(cut.uv);
-
-   public cyq(cym $$0) {
+public class cyq extends cyp {
+   public cyq(cyn $$0) {
       super($$0);
    }
 
-   public boolean a(cql $$0, dbz $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
+   public boolean a(cqm $$0, dca $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            cur $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(awy.bq)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cuu.a)) {
+                     return false;
+                  }
             }
          }
-      }
 
-      return $$2 && $$3 >= 1;
+         return true;
+      }
    }
 
-   public cuq a(cql $$0, jk.a $$1) {
-      List<cxj> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cxj $$6 = $$5.a(km.T);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cuq $$7 = new cuq(cut.uu, 3);
-      $$7.b(km.U, new cxk($$3, $$2));
-      return $$7;
+   public cur a(cqm $$0, jk.a $$1) {
+      dqn $$2 = new dqn($$0.a(1).g(), $$0.a(3).g(), $$0.a(5).g(), $$0.a(7).g());
+      return dpz.a($$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public cuq a(jk.a $$0) {
-      return new cuq(cut.uu);
-   }
-
-   @Override
-   public cza<?> ao_() {
-      return cza.g;
+   public czb<?> ao_() {
+      return czb.w;
    }
 }

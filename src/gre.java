@@ -1,67 +1,57 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gre {
-   public static final Comparator<gre> a = Comparator.<gre, alf>comparing(gre::a).thenComparing(gre::b);
-   private final alf b;
-   private final alf c;
-   @Nullable
-   private gdx d;
+public class gre implements grc {
+   private final gez a;
+   private final gex b;
+   private final gpb c;
+   private final boolean d;
 
-   public gre(alf $$0, alf $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gre(gez $$0, gex $$1, gpb $$2, boolean $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public alf a() {
-      return this.b;
+   @Override
+   public List<gen> a(@Nullable dse $$0, @Nullable je $$1, azh $$2) {
+      return Collections.emptyList();
    }
 
-   public alf b() {
-      return this.c;
+   @Override
+   public boolean a() {
+      return false;
    }
 
-   public gpa c() {
-      return ffg.Q().a(this.a()).apply(this.b());
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public gdx a(Function<alf, gdx> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
-      }
-
+   @Override
+   public boolean c() {
       return this.d;
    }
 
-   public fad a(gdp $$0, Function<alf, gdx> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public fad a(gdp $$0, Function<alf, gdx> $$1, boolean $$2) {
-      return this.c().a(gjw.c($$0, this.a($$1), true, $$2));
+   @Override
+   public boolean d() {
+      return true;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         gre $$1 = (gre)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public gpb e() {
+      return this.c;
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
+   public gez f() {
+      return this.a;
    }
 
    @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public gex g() {
+      return this.b;
    }
 }

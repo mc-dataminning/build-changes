@@ -1,210 +1,323 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
 
-public class clj {
-   public static final int a = 8;
-   public static final int b = 4;
-   private static final bqg c = azz.a(5, 20);
-   private static final int d = 200;
-   private static final int e = 8;
-   private static final int f = 15;
-   private static final int g = 40;
-   private static final int h = 15;
-   private static final int i = 200;
-   private static final bqg j = bqg.a(5, 16);
-   private static final float k = 1.0F;
-   private static final float l = 1.3F;
-   private static final float m = 0.6F;
-   private static final float n = 0.4F;
-   private static final float o = 0.6F;
+public class clj extends cfh implements cjx, cll {
+   private static final akk<Boolean> cb = ako.a(clj.class, akm.k);
+   private static final float cc = 0.2F;
+   private static final int cd = 40;
+   private static final float ce = 0.3F;
+   private static final int cf = 1;
+   private static final float cg = 0.6F;
+   private static final int ch = 6;
+   private static final float ci = 0.5F;
+   private static final int cj = 300;
+   private int ck;
+   private int cl;
+   private boolean cm;
+   protected static final ImmutableList<? extends cec<? extends ceb<? super clj>>> bY = ImmutableList.of(cec.c, cec.d, cec.o, cec.n);
+   protected static final ImmutableList<? extends ccv<?>> bZ = ImmutableList.of(
+      ccv.r,
+      ccv.g,
+      ccv.h,
+      ccv.k,
+      ccv.l,
+      ccv.n,
+      ccv.m,
+      ccv.E,
+      ccv.t,
+      ccv.o,
+      ccv.p,
+      ccv.aq,
+      new ccv[]{ccv.z, ccv.as, ccv.at, ccv.ap, ccv.K, ccv.aw, ccv.ax, ccv.Z}
+   );
 
-   protected static bus<?> a(bus<cli> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(coo.a));
-      $$0.b(coo.b);
-      $$0.f();
-      return $$0;
+   public clj(btc<? extends clj> $$0, dca $$1) {
+      super($$0, $$1);
+      this.bN = 5;
    }
 
-   private static void b(bus<cli> $$0) {
-      $$0.a(coo.a, 0, ImmutableList.of(new bwp(45, 90), new bwt()));
+   @Override
+   public boolean a(cmz $$0) {
+      return !this.gd();
    }
 
-   private static void c(bus<cli> $$0) {
-      $$0.a(
-         coo.b,
-         10,
-         ImmutableList.of(
-            bvi.a(ccu.aw, 200),
-            new bvd(btb.Z, 0.6F, 2),
-            bxn.a(ccu.aw, 1.0F, 8, true),
-            bxv.a(clj::d),
-            byw.a(cli::u, bxn.b(ccu.aq, 0.4F, 8, false)),
-            bxj.a(8.0F, bqg.a(30, 60)),
-            bvg.a(j, 0.6F),
-            a()
-         )
-      );
+   public static buy.a s() {
+      return ckf.gw().a(buz.q, 40.0).a(buz.r, 0.3F).a(buz.n, 0.6F).a(buz.d, 1.0).a(buz.c, 6.0);
    }
 
-   private static void d(bus<cli> $$0) {
-      $$0.a(
-         coo.k,
-         10,
-         ImmutableList.of(
-            bvi.a(ccu.aw, 200), new bvd(btb.Z, 0.6F, 2), bxo.a(1.0F), byw.a(cli::u, bwq.a(40)), byw.a(bsp::p_, bwq.a(15)), bxy.a(), bvv.a(clj::i, ccu.o)
-         ),
-         ccu.o
-      );
-   }
-
-   private static void e(bus<cli> $$0) {
-      $$0.a(coo.n, 10, ImmutableList.of(bxn.b(ccu.z, 1.3F, 15, false), a(), bxj.a(8.0F, bqg.a(30, 60)), bvv.a(clj::e, ccu.z)), ccu.z);
-   }
-
-   private static bxg<cli> a() {
-      return new bxg<>(ImmutableList.of(Pair.of(bxb.a(0.4F), 2), Pair.of(bxq.a(0.4F, 3), 2), Pair.of(new bvt(30, 60), 1)));
-   }
-
-   protected static void a(cli $$0) {
-      bus<cli> $$1 = $$0.dS();
-      coo $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(coo.k, coo.n, coo.b));
-      coo $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         b($$0).ifPresent($$0::b);
-      }
-
-      $$0.v($$1.a(ccu.o));
-   }
-
-   protected static void a(cli $$0, btq $$1) {
-      if (!$$0.p_()) {
-         if ($$1.ak() == btb.aA && f($$0)) {
-            e($$0, $$1);
-            c($$0, $$1);
-         } else {
-            h($$0, $$1);
-         }
-      }
-   }
-
-   private static void c(cli $$0, btq $$1) {
-      g($$0).forEach($$1x -> d($$1x, $$1));
-   }
-
-   private static void d(cli $$0, btq $$1) {
-      bus<cli> $$3 = $$0.dS();
-      btq $$2 = bvl.a($$0, $$3.c(ccu.z), $$1);
-      $$2 = bvl.a($$0, $$3.c(ccu.o), $$2);
-      e($$0, $$2);
-   }
-
-   private static void e(cli $$0, btq $$1) {
-      $$0.dS().b(ccu.o);
-      $$0.dS().b(ccu.m);
-      $$0.dS().a(ccu.z, $$1, (long)c.a($$0.dP().z));
-   }
-
-   private static Optional<? extends btq> d(cli $$0) {
-      return !c($$0) && !i($$0) ? $$0.dS().c(ccu.l) : Optional.empty();
-   }
-
-   static boolean a(cli $$0, iz $$1) {
-      Optional<iz> $$2 = $$0.dS().c(ccu.aw);
-      return $$2.isPresent() && $$2.get().a($$1, 8.0);
-   }
-
-   private static boolean e(cli $$0) {
-      return $$0.u() && !f($$0);
-   }
-
-   private static boolean f(cli $$0) {
-      if ($$0.p_()) {
+   @Override
+   public boolean C(bsw $$0) {
+      if (!($$0 instanceof btr)) {
          return false;
       } else {
-         int $$1 = $$0.dS().c(ccu.as).orElse(0);
-         int $$2 = $$0.dS().c(ccu.at).orElse(0) + 1;
-         return $$1 > $$2;
+         this.ck = 10;
+         this.dP().a(this, (byte)4);
+         this.b(awa.mq);
+         clk.a(this, (btr)$$0);
+         return cll.a(this, (btr)$$0);
       }
    }
 
-   protected static void b(cli $$0, btq $$1) {
-      bus<cli> $$2 = $$0.dS();
-      $$2.b(ccu.ax);
-      $$2.b(ccu.r);
-      if ($$0.p_()) {
-         d($$0, $$1);
+   @Override
+   protected void e(btr $$0) {
+      if (this.u()) {
+         cll.b(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(brp $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if (this.dP().B) {
+         return false;
       } else {
-         f($$0, $$1);
-      }
-   }
-
-   private static void f(cli $$0, btq $$1) {
-      if (!$$0.dS().c(coo.n) || $$1.ak() != btb.aA) {
-         if ($$1.ak() != btb.Z) {
-            if (!bvl.a($$0, $$1, 4.0)) {
-               if (cea.c($$0, $$1)) {
-                  g($$0, $$1);
-                  h($$0, $$1);
-               }
-            }
+         if ($$2 && $$0.d() instanceof btr) {
+            clk.b(this, (btr)$$0.d());
          }
+
+         return $$2;
       }
    }
 
-   private static void g(cli $$0, btq $$1) {
-      bus<cli> $$2 = $$0.dS();
-      $$2.b(ccu.E);
-      $$2.b(ccu.r);
-      $$2.a(ccu.o, $$1, 200L);
+   @Override
+   protected but.b<clj> dT() {
+      return but.a(bZ, bY);
    }
 
-   private static void h(cli $$0, btq $$1) {
-      g($$0).forEach($$1x -> i($$1x, $$1));
+   @Override
+   protected but<?> a(Dynamic<?> $$0) {
+      return clk.a(this.dT().a($$0));
    }
 
-   private static void i(cli $$0, btq $$1) {
-      if (!c($$0)) {
-         Optional<btq> $$2 = $$0.dS().c(ccu.o);
-         btq $$3 = bvl.a($$0, $$2, $$1);
-         g($$0, $$3);
-      }
+   @Override
+   public but<clj> dS() {
+      return (but<clj>)super.dS();
    }
 
-   public static Optional<avz> b(cli $$0) {
-      return $$0.dS().g().map($$1 -> a($$0, $$1));
-   }
-
-   private static avz a(cli $$0, coo $$1) {
-      if ($$1 == coo.n || $$0.y()) {
-         return awa.mu;
-      } else if ($$1 == coo.k) {
-         return awa.mp;
+   @Override
+   protected void Z() {
+      this.dP().ag().a("hoglinBrain");
+      this.dS().a((arf)this.dP(), this);
+      this.dP().ag().c();
+      clk.a(this);
+      if (this.y()) {
+         this.cl++;
+         if (this.cl > 300) {
+            this.b(awa.mr);
+            this.c((arf)this.dP());
+         }
       } else {
-         return h($$0) ? awa.mu : awa.mo;
+         this.cl = 0;
       }
    }
 
-   private static List<cli> g(cli $$0) {
-      return $$0.dS().c(ccu.ap).orElse(ImmutableList.of());
+   @Override
+   public void n_() {
+      if (this.ck > 0) {
+         this.ck--;
+      }
+
+      super.n_();
    }
 
-   private static boolean h(cli $$0) {
-      return $$0.dS().a(ccu.aw);
+   @Override
+   protected void k() {
+      if (this.p_()) {
+         this.bN = 3;
+         this.f(buz.c).a(0.5);
+      } else {
+         this.bN = 5;
+         this.f(buz.c).a(6.0);
+      }
    }
 
-   private static boolean i(cli $$0) {
-      return $$0.dS().a(ccu.r);
+   public static boolean c(btc<clj> $$0, dcb $$1, btv $$2, iz $$3, azh $$4) {
+      return !$$1.a_($$3.d()).a(dfd.kK);
    }
 
-   protected static boolean c(cli $$0) {
-      return $$0.dS().a(ccu.ax);
+   @Nullable
+   @Override
+   public buk a(dcp $$0, bqu $$1, btv $$2, @Nullable buk $$3) {
+      if ($$0.E_().i() < 0.2F) {
+         this.a(true);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return !this.fW();
+   }
+
+   @Override
+   public float a(iz $$0, dcd $$1) {
+      if (clk.a(this, $$0)) {
+         return -1.0F;
+      } else {
+         return $$1.a_($$0.d()).a(dfd.ow) ? 10.0F : 0.0F;
+      }
+   }
+
+   @Override
+   public bqw b(cmz $$0, bqv $$1) {
+      bqw $$2 = super.b($$0, $$1);
+      if ($$2.a()) {
+         this.fU();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 4) {
+         this.ck = 10;
+         this.b(awa.mq);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   @Override
+   public int gq() {
+      return this.ck;
+   }
+
+   @Override
+   public boolean eh() {
+      return true;
+   }
+
+   @Override
+   public int ej() {
+      return this.bN;
+   }
+
+   private void c(arf $$0) {
+      ckx $$1 = this.a(btc.bt, true);
+      if ($$1 != null) {
+         $$1.b(new bse(bsg.i, 200, 0));
+      }
+   }
+
+   @Override
+   public boolean o(cur $$0) {
+      return $$0.a(awy.am);
+   }
+
+   public boolean u() {
+      return !this.p_();
+   }
+
+   @Override
+   protected void a(ako.a $$0) {
+      super.a($$0);
+      $$0.a(cb, false);
+   }
+
+   @Override
+   public void b(us $$0) {
+      super.b($$0);
+      if (this.gx()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.cl);
+      if (this.cm) {
+         $$0.a("CannotBeHunted", true);
+      }
+   }
+
+   @Override
+   public void a(us $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.cl = $$0.h("TimeInOverworld");
+      this.x($$0.q("CannotBeHunted"));
+   }
+
+   public void w(boolean $$0) {
+      this.ap().a(cb, $$0);
+   }
+
+   private boolean gx() {
+      return this.ap().a(cb);
+   }
+
+   public boolean y() {
+      return !this.dP().D_().b() && !this.gx() && !this.gg();
+   }
+
+   private void x(boolean $$0) {
+      this.cm = $$0;
+   }
+
+   public boolean gw() {
+      return this.u() && !this.cm;
+   }
+
+   @Nullable
+   @Override
+   public bsq a(arf $$0, bsq $$1) {
+      clj $$2 = btc.Z.a((dca)$$0);
+      if ($$2 != null) {
+         $$2.fU();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean gr() {
+      return !clk.c(this) && super.gr();
+   }
+
+   @Override
+   public awb de() {
+      return awb.f;
+   }
+
+   @Override
+   protected avz v() {
+      return this.dP().B ? null : clk.b(this).orElse(null);
+   }
+
+   @Override
+   protected avz d(brp $$0) {
+      return awa.mt;
+   }
+
+   @Override
+   protected avz o_() {
+      return awa.ms;
+   }
+
+   @Override
+   protected avz aP() {
+      return awa.mY;
+   }
+
+   @Override
+   protected avz aQ() {
+      return awa.mX;
+   }
+
+   @Override
+   protected void b(iz $$0, dse $$1) {
+      this.a(awa.mv, 0.15F, 1.0F);
+   }
+
+   @Override
+   protected void Y() {
+      super.Y();
+      agt.a(this);
+   }
+
+   @Nullable
+   @Override
+   public btr p() {
+      return this.N();
    }
 }

@@ -1,166 +1,306 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.UUID;
+import java.time.Duration;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fhe {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final alf[] c = new alf[]{
-      new alf("boss_bar/pink_background"),
-      new alf("boss_bar/blue_background"),
-      new alf("boss_bar/red_background"),
-      new alf("boss_bar/green_background"),
-      new alf("boss_bar/yellow_background"),
-      new alf("boss_bar/purple_background"),
-      new alf("boss_bar/white_background")
-   };
-   private static final alf[] d = new alf[]{
-      new alf("boss_bar/pink_progress"),
-      new alf("boss_bar/blue_progress"),
-      new alf("boss_bar/red_progress"),
-      new alf("boss_bar/green_progress"),
-      new alf("boss_bar/yellow_progress"),
-      new alf("boss_bar/purple_progress"),
-      new alf("boss_bar/white_progress")
-   };
-   private static final alf[] e = new alf[]{
-      new alf("boss_bar/notched_6_background"),
-      new alf("boss_bar/notched_10_background"),
-      new alf("boss_bar/notched_12_background"),
-      new alf("boss_bar/notched_20_background")
-   };
-   private static final alf[] f = new alf[]{
-      new alf("boss_bar/notched_6_progress"),
-      new alf("boss_bar/notched_10_progress"),
-      new alf("boss_bar/notched_12_progress"),
-      new alf("boss_bar/notched_20_progress")
-   };
-   private final ffg g;
-   final Map<UUID, fht> h = Maps.newLinkedHashMap();
+public abstract class fhe implements fij, fjc, fkv, fla {
+   private static final double a = 0.5;
+   private static final double b = 3.0;
+   protected int g;
+   protected int h;
+   private int c;
+   private int d;
+   private xp e;
+   protected boolean i;
+   public boolean j = true;
+   public boolean k = true;
+   protected float l = 1.0F;
+   private int f;
+   private boolean m;
+   private final fiu n = new fiu();
 
-   public fhe(ffg $$0) {
+   public fhe(int $$0, int $$1, int $$2, int $$3, xp $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.e = $$4;
+   }
+
+   @Override
+   public int v() {
+      return this.h;
+   }
+
+   @Override
+   public final void a(fgt $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.i = $$0.a($$1, $$2) && $$1 >= this.C() && $$2 >= this.D() && $$1 < this.C() + this.g && $$2 < this.D() + this.h;
+         this.b($$0, $$1, $$2, $$3);
+         this.n.a(this.z(), this.aH_(), this.G());
+      }
+   }
+
+   public void a(@Nullable fir $$0) {
+      this.n.a($$0);
+   }
+
+   @Nullable
+   public fir w() {
+      return this.n.a();
+   }
+
+   public void a(Duration $$0) {
+      this.n.a($$0);
+   }
+
+   protected yd aJ_() {
+      return a_(this.y());
+   }
+
+   public static yd a_(xp $$0) {
+      return xp.a("gui.narrate.button", $$0);
+   }
+
+   protected abstract void b(fgt var1, int var2, int var3, float var4);
+
+   protected static void a(fgt $$0, fgr $$1, xp $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static void a(fgt $$0, fgr $$1, xp $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$1.a($$2);
+      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
+      int $$11 = $$6 - $$4;
+      if ($$9 > $$11) {
+         int $$12 = $$9 - $$11;
+         double $$13 = (double)ac.c() / 1000.0;
+         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
+         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
+         double $$16 = ayz.d($$15, 0.0, (double)$$12);
+         $$0.c($$4, $$5, $$6, $$7);
+         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
+         $$0.f();
+      } else {
+         int $$17 = ayz.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
+         $$0.a($$1, $$2, $$17, $$10, $$8);
+      }
+   }
+
+   protected void a(fgt $$0, fgr $$1, int $$2, int $$3) {
+      int $$4 = this.C() + $$2;
+      int $$5 = this.C() + this.x() - $$2;
+      a($$0, $$1, this.y(), $$4, this.D(), $$5, this.D() + this.v(), $$3);
+   }
+
+   public void a(double $$0, double $$1) {
+   }
+
+   public void a_(double $$0, double $$1) {
+   }
+
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.j && this.k) {
+         if (this.j($$2)) {
+            boolean $$3 = this.d($$0, $$1);
+            if ($$3) {
+               this.a(ffh.Q().aj());
+               this.a($$0, $$1);
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.j($$2)) {
+         this.a_($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean j(int $$0) {
+      return $$0 == 0;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.j($$2)) {
+         this.b($$0, $$1, $$3, $$4);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean d(double $$0, double $$1) {
+      return this.j
+         && this.k
+         && $$0 >= (double)this.C()
+         && $$1 >= (double)this.D()
+         && $$0 < (double)(this.C() + this.x())
+         && $$1 < (double)(this.D() + this.v());
+   }
+
+   @Nullable
+   @Override
+   public fgq a(fli $$0) {
+      if (!this.j || !this.k) {
+         return null;
+      } else {
+         return !this.aH_() ? fgq.a(this) : null;
+      }
+   }
+
+   @Override
+   public boolean c(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.C() && $$1 >= (double)this.D() && $$0 < (double)(this.C() + this.g) && $$1 < (double)(this.D() + this.h);
+   }
+
+   public void a(gtx $$0) {
+      $$0.a(gsk.a(awa.Ao, 1.0F));
+   }
+
+   @Override
+   public int x() {
+      return this.g;
+   }
+
+   public void k(int $$0) {
       this.g = $$0;
    }
 
-   public void a(fgs $$0) {
-      if (!this.h.isEmpty()) {
-         this.g.aI().a("bossHealth");
-         int $$1 = $$0.a();
-         int $$2 = 12;
+   public void l(int $$0) {
+      this.h = $$0;
+   }
 
-         for (fht $$3 : this.h.values()) {
-            int $$4 = $$1 / 2 - 91;
-            this.a($$0, $$4, $$2, $$3);
-            xp $$6 = $$3.i();
-            int $$7 = this.g.h.a($$6);
-            int $$8 = $$1 / 2 - $$7 / 2;
-            int $$9 = $$2 - 9;
-            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
-            $$2 += 10 + 9;
-            if ($$2 >= $$0.b() / 3) {
-               break;
-            }
-         }
+   public void a(float $$0) {
+      this.l = $$0;
+   }
 
-         this.g.aI().c();
+   public void b(xp $$0) {
+      this.e = $$0;
+   }
+
+   public xp y() {
+      return this.e;
+   }
+
+   @Override
+   public boolean aH_() {
+      return this.m;
+   }
+
+   public boolean z() {
+      return this.i;
+   }
+
+   public boolean A() {
+      return this.z() || this.aH_();
+   }
+
+   @Override
+   public boolean B() {
+      return this.k && this.j;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public fla.a t() {
+      if (this.aH_()) {
+         return fla.a.c;
+      } else {
+         return this.i ? fla.a.b : fla.a.a;
       }
    }
 
-   private void a(fgs $$0, int $$1, int $$2, bql $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = ayz.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+   @Override
+   public final void b(flc $$0) {
+      this.a($$0);
+      this.n.a($$0);
+   }
+
+   protected abstract void a(flc var1);
+
+   protected void c(flc $$0) {
+      $$0.a(flb.a, this.aJ_());
+      if (this.j) {
+         if (this.aH_()) {
+            $$0.a(flb.d, xp.c("narration.button.usage.focused"));
+         } else {
+            $$0.a(flb.d, xp.c("narration.button.usage.hovered"));
+         }
       }
    }
 
-   private void a(fgs $$0, int $$1, int $$2, bql $$3, int $$4, alf[] $$5, alf[] $$6) {
-      RenderSystem.enableBlend();
-      $$0.a($$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != bql.b.a) {
-         $$0.a($$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      }
-
-      RenderSystem.disableBlend();
+   @Override
+   public int C() {
+      return this.c;
    }
 
-   public void a(acs $$0) {
-      $$0.a(new acs.b() {
-         @Override
-         public void a(UUID $$0, xp $$1, float $$2, bql.a $$3, bql.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fhe.this.h.put($$0, new fht($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fhe.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fhe.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, xp $$1) {
-            fhe.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bql.a $$1, bql.b $$2) {
-            fht $$3 = fhe.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fht $$4 = fhe.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
+   @Override
+   public void m(int $$0) {
+      this.c = $$0;
    }
 
-   public void a() {
-      this.h.clear();
+   @Override
+   public int D() {
+      return this.d;
    }
 
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bql $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public void n(int $$0) {
+      this.d = $$0;
    }
 
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bql $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public int E() {
+      return this.C() + this.x();
    }
 
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bql $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
+   public int F() {
+      return this.D() + this.v();
+   }
 
-      return false;
+   @Override
+   public void a(Consumer<fhe> $$0) {
+      $$0.accept(this);
+   }
+
+   public void b(int $$0, int $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   @Override
+   public flm G() {
+      return fkv.super.G();
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1);
+      this.c($$2, $$3);
+   }
+
+   @Override
+   public int H() {
+      return this.f;
+   }
+
+   public void o(int $$0) {
+      this.f = $$0;
    }
 }

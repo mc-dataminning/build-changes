@@ -28,15 +28,15 @@ public class ahr implements zw<agw> {
       this.d = $$1;
    }
 
-   public static ahr a(bsv $$0, boolean $$1) {
+   public static ahr a(bsw $$0, boolean $$1) {
       return new ahr($$0.al(), $$1, e);
    }
 
-   public static ahr a(bsv $$0, boolean $$1, bqu $$2) {
+   public static ahr a(bsw $$0, boolean $$1, bqv $$2) {
       return new ahr($$0.al(), $$1, new ahr.d($$2));
    }
 
-   public static ahr a(bsv $$0, boolean $$1, bqu $$2, evs $$3) {
+   public static ahr a(bsw $$0, boolean $$1, bqv $$2, evt $$3) {
       return new ahr($$0.al(), $$1, new ahr.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class ahr implements zw<agw> {
    }
 
    @Nullable
-   public bsv a(arf $$0) {
+   public bsw a(arf $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class ahr implements zw<agw> {
    }
 
    public interface c {
-      void a(bqu var1);
+      void a(bqv var1);
 
-      void a(bqu var1, evs var2);
+      void a(bqv var1, evt var2);
 
       void a();
    }
 
    static class d implements ahr.a {
-      private final bqu a;
+      private final bqv a;
 
-      d(bqu $$0) {
+      d(bqv $$0) {
          this.a = $$0;
       }
 
       private d(wm $$0) {
-         this.a = $$0.b(bqu.class);
+         this.a = $$0.b(bqv.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class ahr implements zw<agw> {
    }
 
    static class e implements ahr.a {
-      private final bqu a;
-      private final evs b;
+      private final bqv a;
+      private final evt b;
 
-      e(bqu $$0, evs $$1) {
+      e(bqv $$0, evt $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(wm $$0) {
-         this.b = new evs((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bqu.class);
+         this.b = new evt((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bqv.class);
       }
 
       @Override

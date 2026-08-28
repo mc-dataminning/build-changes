@@ -1,41 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bwb extends bvj<cml> {
-   private static final int d = 1200;
-   final float c;
+public class bwb {
+   public static bvl<cmm> a(float $$0, int $$1) {
+      return byx.a((Function<byx.b<cmm>, ? extends App<byx.c<cmm>, bza<cmm>>>)($$2 -> $$2.group($$2.c(ccv.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dp())) {
+                  return false;
+               } else {
+                  cev $$6 = $$3.y();
+                  int $$7 = $$6.a(kb.a($$4.dp()));
+                  evt $$8 = null;
 
-   public bwb(float $$0) {
-      super(ImmutableMap.of(ccu.d, ccv.a), 1200);
-      this.c = $$0;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     evt $$10 = cep.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kb.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kb.a(iz.a($$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   protected boolean a(arf $$0, cml $$1) {
-      return $$1.dS().g().map($$0x -> $$0x == coo.b || $$0x == coo.c || $$0x == coo.d).orElse(true);
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   protected boolean a(arf $$0, cml $$1, long $$2) {
-      return $$1.dS().a(ccu.d);
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new ccy($$8, $$0, $$1));
+                  }
 
-   protected void b(arf $$0, cml $$1, long $$2) {
-      bvl.a($$1, $$1.dS().c(ccu.d).get().b(), this.c, 1);
-   }
-
-   protected void c(arf $$0, cml $$1, long $$2) {
-      Optional<jh> $$3 = $$1.dS().c(ccu.d);
-      $$3.ifPresent($$1x -> {
-         iz $$2x = $$1x.b();
-         arf $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            ceu $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            agt.c($$0, $$2x);
-         }
-      });
-      $$1.dS().b(ccu.d);
+                  return true;
+               }
+            })));
    }
 }

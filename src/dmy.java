@@ -1,84 +1,76 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmy extends dem implements dii {
+public class dmy extends dfb {
    public static final MapCodec<dmy> a = b(dmy::new);
-   public static final dtb<dtn> b = dst.bj;
+   private static final xp d = xp.c("container.stonecutter");
+   public static final dsy b = dix.aE;
+   protected static final ewm c = dfb.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dmy> a() {
       return a;
    }
 
-   protected dmy(dsc.d $$0) {
+   public dmy(dsd.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dtn.b));
+      this.k(this.E.b().a(b, je.c));
    }
 
    @Override
-   public dpi a(iz $$0, dsd $$1) {
-      return new dqx($$0, $$1);
+   public dse a(cyc $$0) {
+      return this.o().a(b, $$0.g().g());
    }
 
    @Override
-   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
-      dpi $$5 = $$1.c_($$2);
-      if ($$5 instanceof dqx) {
-         return ((dqx)$$5).a($$3) ? bqv.a($$1.B) : bqv.e;
+   protected bqw a(dse $$0, dca $$1, iz $$2, cmz $$3, evp $$4) {
+      if ($$1.B) {
+         return bqw.a;
       } else {
-         return bqv.e;
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awk.ay);
+         return bqw.c;
       }
    }
 
+   @Nullable
    @Override
-   public void a(dbz $$0, iz $$1, dsd $$2, @Nullable btq $$3, cuq $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dpi $$5 = $$0.c_($$1);
-            if ($$5 instanceof dqx) {
-               ((dqx)$$5).a($$3);
-            }
-         }
-      }
+   protected bra b(dse $$0, dca $$1, iz $$2) {
+      return new brg(($$2x, $$3, $$4) -> new crx($$2x, $$3, cqh.a($$1, $$2)), d);
    }
 
    @Override
-   protected dlg a_(dsd $$0) {
-      return dlg.c;
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
+   protected boolean f_(dse $$0) {
+      return true;
+   }
+
+   @Override
+   protected dlh a_(dse $$0) {
+      return dlh.c;
+   }
+
+   @Override
+   protected dse a(dse $$0, dlo $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dse a(dse $$0, djy $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsf.a<dfb, dse> $$0) {
       $$0.a(b);
    }
 
    @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, dfa $$3, iz $$4, boolean $$5) {
-      if ($$1 instanceof arf) {
-         if ($$1.c_($$2) instanceof dqx $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((arf)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(arf $$0, dqx $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.B();
-         case d:
-      }
+   protected boolean a(dse $$0, eom $$1) {
+      return false;
    }
 }

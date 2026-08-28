@@ -2,21 +2,21 @@ import com.mojang.datafixers.DataFixer;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
 import org.apache.commons.io.FileUtils;
 
-public class dvk extends dvr {
-   private final dvi a;
+public class dvk extends dvh {
+   private final dvj a;
    private final Path b;
 
-   public dvk(dvp $$0, Path $$1, dvp $$2, Path $$3, DataFixer $$4, boolean $$5, bag $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
+   public dvk(dvq $$0, Path $$1, dvq $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
       this.b = $$3;
-      this.a = new dvi($$2, $$3, $$5);
+      this.a = new dvj($$2, $$3, $$5);
    }
 
    @Override
-   public CompletableFuture<Void> a(dbg $$0, @Nullable us $$1) {
+   public CompletableFuture<Void> a(dbh $$0, us $$1) {
+      this.f($$0);
       return this.a.a($$0, $$1);
    }
 

@@ -1,35 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dfj extends dfa {
-   protected dfj(dsc.d $$0) {
+public class dfj extends ddz {
+   public static final MapCodec<dfj> b = b(dfj::new);
+   public static final int c = 5;
+   private static final je[] d = je.values();
+
+   @Override
+   public MapCodec<dfj> a() {
+      return b;
+   }
+
+   public dfj(dsd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dfj> a();
+   protected void b(dse $$0, arf $$1, iz $$2, azh $$3) {
+      if ($$3.a(5) == 0) {
+         je $$4 = d[$$3.a(d.length)];
+         iz $$5 = $$2.a($$4);
+         dse $$6 = $$1.a_($$5);
+         dfb $$7 = null;
+         if (g($$6)) {
+            $$7 = dfd.qy;
+         } else if ($$6.a(dfd.qy) && $$6.c(dea.d) == $$4) {
+            $$7 = dfd.qx;
+         } else if ($$6.a(dfd.qx) && $$6.c(dea.d) == $$4) {
+            $$7 = dfd.qw;
+         } else if ($$6.a(dfd.qw) && $$6.c(dea.d) == $$4) {
+            $$7 = dfd.qv;
+         }
 
-   protected boolean b(dsd $$0, dbf $$1, iz $$2) {
-      return $$0.a(awp.af) || $$0.a(dfc.cC);
+         if ($$7 != null) {
+            dse $$8 = $$7.o().a(dea.d, $$4).a(dea.c, Boolean.valueOf($$6.u().a() == eny.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
-      return !$$0.a($$3, $$4) ? dfc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dsd $$0, dcc $$1, iz $$2) {
-      iz $$3 = $$2.d();
-      return this.b($$1.a_($$3), $$1, $$3);
-   }
-
-   @Override
-   protected boolean a_(dsd $$0, dbf $$1, iz $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   protected boolean a(dsd $$0, eol $$1) {
-      return $$1 == eol.c && !this.aG ? true : super.a($$0, $$1);
+   public static boolean g(dse $$0) {
+      return $$0.i() || $$0.a(dfd.G) && $$0.u().e() == 8;
    }
 }

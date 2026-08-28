@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkr extends dob {
+public class dkr extends dmd {
    public static final MapCodec<dkr> b = b(dkr::new);
 
    @Override
@@ -8,7 +8,7 @@ public class dkr extends dob {
       return b;
    }
 
-   protected dkr(dsc.d $$0) {
-      super(dmc.b.e, $$0);
+   protected dkr(dsd.d $$0) {
+      super(dmd.b.e, $$0);
    }
 }

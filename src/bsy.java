@@ -1,43 +1,98 @@
-public record bsy(float a, float b, float c, bsx d, boolean e) {
-   private bsy(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), bsx.a($$0, $$1), $$2);
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+
+public class bsy {
+   private final Map<bsx, List<evt>> a;
+
+   bsy(Map<bsx, List<evt>> $$0) {
+      this.a = $$0;
    }
 
-   private static float c(float $$0) {
-      return $$0 * 0.85F;
+   public static bsy a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public evn a(evs $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
+   public static bsy.a a() {
+      return new bsy.a();
    }
 
-   public evn a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new evn($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+   public bsy a(float $$0, float $$1, float $$2) {
+      Map<bsx, List<evt>> $$3 = new EnumMap<>(bsx.class);
+
+      for (Entry<bsx, List<evt>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new bsy($$3);
    }
 
-   public bsy a(float $$0) {
-      return this.a($$0, $$0);
+   private static List<evt> a(List<evt> $$0, float $$1, float $$2, float $$3) {
+      List<evt> $$4 = new ArrayList<>($$0.size());
+
+      for (evt $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
-   public bsy a(float $$0, float $$1) {
-      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bsy(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
+   @Nullable
+   public evt a(bsx $$0, int $$1, float $$2) {
+      List<evt> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   public static bsy b(float $$0, float $$1) {
-      return new bsy($$0, $$1, false);
+   public evt b(bsx $$0, int $$1, float $$2) {
+      evt $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
    }
 
-   public static bsy c(float $$0, float $$1) {
-      return new bsy($$0, $$1, true);
+   public evt c(bsx $$0, int $$1, float $$2) {
+      List<evt> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         evt $$4 = $$3.get(ayz.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
    }
 
-   public bsy b(float $$0) {
-      return new bsy(this.a, this.b, $$0, this.d, this.e);
+   private static evt a(evt $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
    }
 
-   public bsy a(bsx.a $$0) {
-      return new bsy(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
+   public static class a {
+      private final Map<bsx, List<evt>> a = new EnumMap<>(bsx.class);
+
+      a() {
+      }
+
+      public bsy.a a(bsx $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new evt((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bsy.a a(bsx $$0, evt $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bsy a(float $$0, float $$1) {
+         Map<bsx, List<evt>> $$2 = new EnumMap<>(bsx.class);
+
+         for (bsx $$3 : bsx.values()) {
+            List<evt> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new bsy($$2);
+      }
    }
 }

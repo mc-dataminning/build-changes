@@ -3,15 +3,16 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bzh {
-   public static bvk<btq> a() {
-      return byw.a(
-         (Function<byw.b<btq>, ? extends App<byw.c<btq>, byz<btq>>>)($$0 -> $$0.group($$0.a(ccu.n), $$0.a(ccu.az), $$0.a(ccu.ay), $$0.c(ccu.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<iz> $$7 = $$0.<btq>a($$3).map(bsv::dp).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
+   public static <E extends cmd> bvl<E> a(Function<E, Optional<? extends btr>> $$0) {
+      return byx.a(
+         (Function<byx.b<E>, ? extends App<byx.c<E>, bza<E>>>)($$1 -> $$1.group($$1.c(ccv.ay), $$1.c(ccv.o), $$1.a(ccv.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends btr> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
                         return false;
                      } else {
-                        $$1.a(new bvm($$7.get()));
+                        $$1x.a($$6.get());
+                        $$3.b();
                         return true;
                      }
                   }))

@@ -1,12 +1,11 @@
-public class gld extends gke<cge, fwb<cge>> {
-   private static final alf a = new alf("textures/entity/snow_golem.png");
+public class gld extends gkf<chy, fwb<chy>> {
+   private static final alf a = new alf("textures/entity/sniffer/sniffer.png");
 
-   public gld(giy.a $$0) {
-      super($$0, new fwb<>($$0.a(fxa.bv)), 0.5F);
-      this.a(new gnq(this, $$0.c(), $$0.b()));
+   public gld(giz.a $$0) {
+      super($$0, new fwb<>($$0.a(fxb.bu)), 1.1F);
    }
 
-   public alf a(cge $$0) {
+   public alf a(chy $$0) {
       return a;
    }
 }

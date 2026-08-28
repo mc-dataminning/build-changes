@@ -1,29 +1,24 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cdt<T extends btq> extends cea<T> {
+public class cdt extends ceb<btt> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
    @Override
-   protected void a(arf $$0, T $$1) {
-      evn $$2 = $$1.cK().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<btq> $$3 = $$0.a(btq.class, $$2, $$1x -> $$1x != $$1 && $$1x.bD());
+   public Set<ccv<?>> a() {
+      return ImmutableSet.of(ccv.L);
+   }
+
+   protected void a(arf $$0, btt $$1) {
+      but<?> $$2 = $$1.dS();
+      List<cjj> $$3 = $$0.a(cjj.class, $$1.cK().c(32.0, 16.0, 32.0), $$0x -> true);
       $$3.sort(Comparator.comparingDouble($$1::g));
-      bus<?> $$4 = $$1.dS();
-      $$4.a(ccu.g, $$3);
-      $$4.a(ccu.h, new ccw($$1, $$3));
-   }
-
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
-   }
-
-   @Override
-   public Set<ccu<?>> a() {
-      return ImmutableSet.of(ccu.g, ccu.h);
+      Optional<cjj> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(ccv.L, $$4);
    }
 }

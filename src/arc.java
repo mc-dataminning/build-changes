@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class arc extends bql {
+public class arc extends bqm {
    private final Set<arg> h = Sets.newHashSet();
    private final Set<arg> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public arc(xp $$0, bql.a $$1, bql.b $$2) {
+   public arc(xp $$0, bqm.a $$1, bqm.b $$2) {
       super(ayz.a(), $$0, $$1, $$2);
    }
 
@@ -24,7 +24,7 @@ public class arc extends bql {
    }
 
    @Override
-   public void a(bql.a $$0) {
+   public void a(bqm.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(acs::d);
@@ -32,7 +32,7 @@ public class arc extends bql {
    }
 
    @Override
-   public void a(bql.b $$0) {
+   public void a(bqm.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(acs::d);
@@ -40,7 +40,7 @@ public class arc extends bql {
    }
 
    @Override
-   public bql a(boolean $$0) {
+   public bqm a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(acs::e);
@@ -50,7 +50,7 @@ public class arc extends bql {
    }
 
    @Override
-   public bql b(boolean $$0) {
+   public bqm b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(acs::e);
@@ -60,7 +60,7 @@ public class arc extends bql {
    }
 
    @Override
-   public bql c(boolean $$0) {
+   public bqm c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(acs::e);
@@ -77,7 +77,7 @@ public class arc extends bql {
       }
    }
 
-   private void a(Function<bql, acs> $$0) {
+   private void a(Function<bqm, acs> $$0) {
       if (this.j) {
          acs $$1 = $$0.apply(this);
 

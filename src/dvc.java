@@ -1,2 +1,6 @@
-public record dvc(arf a, dua b, emm c, ari d) {
+import java.util.concurrent.CompletableFuture;
+
+@FunctionalInterface
+public interface dvc {
+   CompletableFuture<dua> apply(dua var1);
 }

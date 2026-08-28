@@ -1,5 +1,5 @@
 public class ry {
-   public static void a(rc<eju> $$0) {
+   public static void a(rc<ejv> $$0) {
       ri.a($$0);
       rm.a($$0);
       rl.a($$0);

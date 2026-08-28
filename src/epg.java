@@ -1,31 +1,42 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public record epg(alf d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<ji<epg>> b = lp.av.r();
-   public static final zn<xa, ji<epg>> c = zl.b(lq.ay);
+public record epg(ji<eph> b, byte c, byte d, byte e, Optional<xp> f) {
+   public static final zn<xa, epg> a = zn.a(eph.c, epg::c, zl.c, epg::d, zl.c, epg::e, zl.c, epg::f, xr.c, epg::g, epg::new);
 
-   public boolean a() {
-      return this.f != -1;
+   public epg(ji<eph> b, byte c, byte d, byte e, Optional<xp> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   public alf b() {
+   public alf a() {
+      return this.b.a().b();
+   }
+
+   public boolean b() {
+      return this.b.a().c();
+   }
+
+   public ji<eph> c() {
+      return this.b;
+   }
+
+   public byte d() {
+      return this.c;
+   }
+
+   public byte e() {
       return this.d;
    }
 
-   public boolean c() {
+   public byte f() {
       return this.e;
    }
 
-   public int d() {
+   public Optional<xp> g() {
       return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
    }
 }

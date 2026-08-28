@@ -1,30 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eda(efm b, dzc c, bqa d, int e) implements edd {
+public class eda implements ede {
    public static final Codec<eda> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               efm.a.fieldOf("state_provider").forGetter(eda::a),
-               dzc.b.fieldOf("target").forGetter(eda::b),
-               bqa.b(0, 8).fieldOf("radius").forGetter(eda::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eda::d)
+               dse.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dse.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bqb.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bqb.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, eda::new)
    );
+   private final dse b;
+   private final dse c;
+   private final bqb d;
+   private final bqb e;
 
-   public efm a() {
+   public eda(dse $$0, dse $$1, bqb $$2, bqb $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public dse a() {
       return this.b;
    }
 
-   public dzc b() {
+   public dse b() {
       return this.c;
    }
 
-   public bqa c() {
+   public bqb c() {
       return this.d;
    }
 
-   public int d() {
+   public bqb d() {
       return this.e;
    }
 }

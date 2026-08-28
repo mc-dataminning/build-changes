@@ -1,36 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
-public class cdj extends cdt<cla> {
-   public static final int a = 24;
+public class cdj extends cdv {
+   public static final float a = 8.0F;
 
    @Override
-   public Set<ccu<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(ccu.B)));
+   protected boolean a(btr $$0, btr $$1) {
+      return this.f($$0, $$1) && $$1.bh() && (this.b($$1) || this.e($$0, $$1)) && ceb.c($$0, $$1);
    }
 
-   protected void a(arf $$0, cla $$1) {
-      super.a($$0, $$1);
-      $$1.dS()
-         .c(ccu.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bta.e)
-         .filter($$1x -> cea.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dS().a(ccu.B, $$1x), () -> $$1.dS().b(ccu.B));
+   private boolean e(btr $$0, btr $$1) {
+      return !$$0.dS().a(ccv.U) && $$1.ak().a(awt.j);
+   }
+
+   private boolean b(btr $$0) {
+      return $$0.ak().a(awt.i);
+   }
+
+   private boolean f(btr $$0, btr $$1) {
+      return $$1.g((bsw)$$0) <= 64.0;
    }
 
    @Override
-   protected int b() {
-      return 24;
-   }
-
-   @Override
-   protected int c() {
-      return 24;
+   protected ccv<btr> b() {
+      return ccv.B;
    }
 }

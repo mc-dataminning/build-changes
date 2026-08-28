@@ -1,166 +1,123 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class djq extends dfa implements dfh {
-   private static final Codec<enu> f = lp.c
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof enu $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
-   public static final MapCodec<djq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), u()).apply($$0, djq::new));
-   public static final dtd b = dst.aP;
-   protected final enu c;
-   private final List<enw> g;
-   public static final ewl d = dfa.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final ImmutableList<je> e = ImmutableList.of(je.a, je.d, je.c, je.f, je.e);
+public class djq extends dlk implements dmc {
+   public static final MapCodec<djq> b = b(djq::new);
+   public static final dsv c = dsu.C;
+   public static final dsv d = dsu.w;
+   private static final int k = 8;
+   public static final int e = 128;
+   private static final int l = 200;
 
    @Override
    public MapCodec<djq> a() {
-      return a;
+      return b;
    }
 
-   protected djq(enu $$0, dsc.d $$1) {
-      super($$1);
-      this.c = $$0;
-      this.g = Lists.newArrayList();
-      this.g.add($$0.a(false));
-
-      for (int $$2 = 1; $$2 < 8; $$2++) {
-         this.g.add($$0.a(8 - $$2, false));
-      }
-
-      this.g.add($$0.a(8, true));
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+   public djq(dsd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, je.b).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ewl b(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.c()), $$0.u()) ? d : ewi.a();
+   public dse a(cyc $$0) {
+      enx $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eny.c;
+      return this.o().a(a, $$0.k()).a(c, Boolean.valueOf($$2));
    }
 
    @Override
-   protected boolean d_(dsd $$0) {
-      return $$0.u().f();
-   }
-
-   @Override
-   protected void b(dsd $$0, arf $$1, iz $$2, azh $$3) {
-      $$0.u().b($$1, $$2, $$3);
-   }
-
-   @Override
-   protected boolean a_(dsd $$0, dbf $$1, iz $$2) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(dsd $$0, eol $$1) {
-      return !this.c.a(awv.b);
-   }
-
-   @Override
-   protected enw b_(dsd $$0) {
-      int $$1 = $$0.c(b);
-      return this.g.get(Math.min($$1, 8));
-   }
-
-   @Override
-   protected boolean a(dsd $$0, dsd $$1, je $$2) {
-      return $$1.u().a().a(this.c);
-   }
-
-   @Override
-   protected dlg a_(dsd $$0) {
-      return dlg.a;
-   }
-
-   @Override
-   protected List<cuq> a(dsd $$0, eqm.a $$1) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      return ewi.a();
-   }
-
-   @Override
-   protected void b(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((dcc)$$1));
-      }
-   }
-
-   @Override
-   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
-      if ($$0.u().b() || $$2.u().b()) {
-         $$3.a($$4, $$0.u().a(), this.c.a($$3));
+   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eny.c, eny.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, dfa $$3, iz $$4, boolean $$5) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((dcc)$$1));
+   protected enx b_(dse $$0) {
+      return $$0.c(c) ? eny.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected int a(dse $$0, dbg $$1, iz $$2, je $$3) {
+      return $$0.c(d) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(dse $$0, dbg $$1, iz $$2, je $$3) {
+      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   public void d(dse $$0, dca $$1, iz $$2) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, 8);
+      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
+   }
+
+   private void e(dse $$0, dca $$1, iz $$2) {
+      $$1.a($$2.a($$0.c(a).g()), this);
+   }
+
+   @Override
+   protected void a(dse $$0, arf $$1, iz $$2, azh $$3) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(dse $$0, dca $$1, iz $$2, azh $$3) {
+      if ($$1.ac() && (long)$$1.z.a(200) <= $$1.Z() % 200L && $$2.v() == $$1.a(dxw.a.b, $$2.u(), $$2.w()) - 1) {
+         azd.a($$0.c(a).o(), $$1, $$2, 0.125, li.aT, bqh.a(1, 2));
       }
    }
 
-   private boolean a(dbz $$0, iz $$1, dsd $$2) {
-      if (this.c.a(awv.b)) {
-         boolean $$3 = $$0.a_($$1.d()).a(dfc.dX);
-         UnmodifiableIterator var5 = e.iterator();
+   @Override
+   protected void a(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d)) {
+            this.e($$0, $$1, $$2);
+         }
 
-         while (var5.hasNext()) {
-            je $$4 = (je)var5.next();
-            iz $$5 = $$1.a($$4.g());
-            if ($$0.b_($$5).a(awv.a)) {
-               dfa $$6 = $$0.b_($$1).b() ? dfc.co : dfc.m;
-               $$0.b($$1, $$6.o());
-               this.a($$0, $$1);
-               return false;
-            }
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
 
-            if ($$3 && $$0.a_($$5).a(dfc.mW)) {
-               $$0.b($$1, dfc.dY.o());
-               this.a($$0, $$1);
-               return false;
-            }
+   @Override
+   protected void b(dse $$0, dca $$1, iz $$2, dse $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d) && !$$1.P().a($$2, this)) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 18);
          }
       }
-
-      return true;
-   }
-
-   private void a(dca $$0, iz $$1) {
-      $$0.c(1501, $$1, 0);
    }
 
    @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(b);
-   }
+   protected void a(dca $$0, dse $$1, evp $$2, cnr $$3) {
+      if ($$0.ac() && $$3 instanceof coe && ((coe)$$3).K()) {
+         iz $$4 = $$2.a();
+         if ($$0.h($$4)) {
+            btq $$5 = btc.am.a($$0);
+            if ($$5 != null) {
+               $$5.e(evt.c($$4.c()));
+               bsw $$6 = $$3.s();
+               $$5.b($$6 instanceof arg ? (arg)$$6 : null);
+               $$0.b($$5);
+            }
 
-   @Override
-   public cuq a(@Nullable cmy $$0, dca $$1, iz $$2, dsd $$3) {
-      if ($$3.c(b) == 0) {
-         $$1.a($$2, dfc.a.o(), 11);
-         return new cuq(this.c.a());
-      } else {
-         return cuq.l;
+            $$0.a(null, $$4, awa.zE, awb.d, 5.0F, 1.0F);
+         }
       }
    }
 
    @Override
-   public Optional<avz> ar_() {
-      return this.c.j();
+   protected void a(dsf.a<dfb, dse> $$0) {
+      $$0.a(a, d, c);
+   }
+
+   @Override
+   protected boolean e_(dse $$0) {
+      return true;
    }
 }

@@ -1,33 +1,48 @@
-public class ctt extends cul implements cvi {
-   public ctt(cul.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface ctt {
+   btd m();
+
+   default ji<avz> n() {
+      return awa.as;
    }
 
-   @Override
-   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
-      cuq $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.iG, awb.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cob $$4 = new cob($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
+   default bqx<cur> a(cum $$0, dca $$1, cmz $$2, bqv $$3) {
+      cur $$4 = $$2.b($$3);
+      btd $$5 = btt.h($$4);
+      if (!$$2.d($$5)) {
+         return bqx.c($$4);
+      } else {
+         cur $$6 = $$2.a($$5);
+         if ((!dad.f($$6) || $$2.f()) && !cur.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(awk.c.b($$0));
+            }
+
+            cur $$7 = $$6.e() ? $$4 : $$6.f();
+            cur $$8 = $$2.f() ? $$4.s() : $$4.f();
+            $$2.a($$5, $$8);
+            return bqx.a($$7, $$1.x_());
+         } else {
+            return bqx.d($$4);
+         }
       }
-
-      $$1.b(awk.c.b(this));
-      $$3.a(1, $$1);
-      return bqw.a($$3, $$0.x_());
    }
 
-   @Override
-   public cnq a(dbz $$0, js $$1, cuq $$2, je $$3) {
-      cob $$4 = new cob($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
+   @Nullable
+   static ctt c_(cur $$0) {
+      cum $$3 = $$0.g();
+      if ($$3 instanceof ctt) {
+         return (ctt)$$3;
+      } else {
+         if ($$0.g() instanceof csp $$2) {
+            dfb var6 = $$2.d();
+            if (var6 instanceof ctt) {
+               return (ctt)var6;
+            }
+         }
 
-   @Override
-   public cvi.a c() {
-      return cvi.a.a().a(cvi.a.a.c() * 0.5F).b(cvi.a.a.d() * 1.25F).a();
+         return null;
+      }
    }
 }

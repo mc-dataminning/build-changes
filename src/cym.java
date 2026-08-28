@@ -1,30 +1,17 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
 public enum cym implements azu {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-   public static final Codec<cym> e = azu.a(cym::values);
-   public static final IntFunction<cym> f = axp.a(cym::a, values(), axp.a.a);
-   public static final zn<ByteBuf, cym> g = zl.a(f, cym::a);
-   private final String h;
-   private final int i;
+   public static final azu.a<cym> d = azu.a(cym::values);
+   private final String e;
 
-   private cym(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   private cym(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.h;
-   }
-
-   private int a() {
-      return this.i;
+      return this.e;
    }
 }

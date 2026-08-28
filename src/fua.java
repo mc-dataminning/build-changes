@@ -1,52 +1,99 @@
-public class fua<T extends bsv> extends fuk<T> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final fxb g;
-   private final fxb[] h;
+public class fua<T extends btr> extends fup<T> {
+   public boolean a;
+   public boolean b;
 
-   public fua(fxb $$0) {
-      this.g = $$0;
-      this.h = new fxb[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.h[$$1] = $$0.b(a($$1));
-      }
+   public fua(fxc $$0) {
+      super($$0);
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fxh b() {
-      fxj $$0 = new fxj();
-      fxk $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            fxg.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            fxd.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return fxh.a($$0, 64, 32);
-   }
-
-   @Override
-   public fxb a() {
-      return this.g;
+   public static fxi c() {
+      float $$0 = -14.0F;
+      fxk $$1 = fup.a(fxg.a, -14.0F);
+      fxl $$2 = $$1.a();
+      fxe $$3 = fxe.a(0.0F, -13.0F, 0.0F);
+      $$2.a("hat", fxh.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fxg(-0.5F)), $$3);
+      $$2.a("head", fxh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), $$3);
+      $$2.a("body", fxh.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), fxe.a(0.0F, -14.0F, 0.0F));
+      $$2.a("right_arm", fxh.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxe.a(-5.0F, -12.0F, 0.0F));
+      $$2.a("left_arm", fxh.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxe.a(5.0F, -12.0F, 0.0F));
+      $$2.a("right_leg", fxh.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxe.a(-2.0F, -5.0F, 0.0F));
+      $$2.a("left_leg", fxh.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxe.a(2.0F, -5.0F, 0.0F));
+      return fxi.a($$1, 64, 32);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
-         this.h[$$6].f = ayz.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
-         this.h[$$6].b = ayz.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.k.k = true;
+      int $$6 = -14;
+      this.m.e = 0.0F;
+      this.m.c = -14.0F;
+      this.m.d = -0.0F;
+      this.p.e -= 0.0F;
+      this.q.e -= 0.0F;
+      this.n.e *= 0.5F;
+      this.o.e *= 0.5F;
+      this.p.e *= 0.5F;
+      this.q.e *= 0.5F;
+      float $$7 = 0.4F;
+      if (this.n.e > 0.4F) {
+         this.n.e = 0.4F;
       }
+
+      if (this.o.e > 0.4F) {
+         this.o.e = 0.4F;
+      }
+
+      if (this.n.e < -0.4F) {
+         this.n.e = -0.4F;
+      }
+
+      if (this.o.e < -0.4F) {
+         this.o.e = -0.4F;
+      }
+
+      if (this.p.e > 0.4F) {
+         this.p.e = 0.4F;
+      }
+
+      if (this.q.e > 0.4F) {
+         this.q.e = 0.4F;
+      }
+
+      if (this.p.e < -0.4F) {
+         this.p.e = -0.4F;
+      }
+
+      if (this.q.e < -0.4F) {
+         this.q.e = -0.4F;
+      }
+
+      if (this.a) {
+         this.n.e = -0.5F;
+         this.o.e = -0.5F;
+         this.n.g = 0.05F;
+         this.o.g = -0.05F;
+      }
+
+      this.p.d = 0.0F;
+      this.q.d = 0.0F;
+      this.p.c = -5.0F;
+      this.q.c = -5.0F;
+      this.k.d = -0.0F;
+      this.k.c = -13.0F;
+      this.l.b = this.k.b;
+      this.l.c = this.k.c;
+      this.l.d = this.k.d;
+      this.l.e = this.k.e;
+      this.l.f = this.k.f;
+      this.l.g = this.k.g;
+      if (this.b) {
+         float $$8 = 1.0F;
+         this.k.c -= 5.0F;
+      }
+
+      int $$9 = -14;
+      this.n.a(-5.0F, -12.0F, 0.0F);
+      this.o.a(5.0F, -12.0F, 0.0F);
    }
 }

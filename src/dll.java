@@ -1,26 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dll extends dfj {
+public class dll extends dfb implements dfe {
    public static final MapCodec<dll> a = b(dll::new);
-   protected static final float b = 6.0F;
-   protected static final ewl c = dfa.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dll> a() {
       return a;
    }
 
-   protected dll(dsc.d $$0) {
+   public dll(dsd.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      return c;
+   public boolean b(dcd $$0, iz $$1, dse $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   protected boolean b(dsd $$0, dbf $$1, iz $$2) {
-      return $$0.a(awp.aL) || $$0.a(dfc.dX) || super.b($$0, $$1, $$2);
+   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
+      $$0.b($$2.d(), dfd.sG.o());
+   }
+
+   @Override
+   public iz a(iz $$0) {
+      return $$0.d();
    }
 }

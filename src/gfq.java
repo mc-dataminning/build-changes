@@ -1,50 +1,15 @@
-@FunctionalInterface
-public interface gfq<T extends dpi> {
-   gfp<T> create(gfq.a var1);
+public interface gfq<T extends dpj> {
+   void a(T var1, float var2, faa var3, gdq var4, int var5, int var6);
 
-   public static class a {
-      private final gfo a;
-      private final gej b;
-      private final gjw c;
-      private final giw d;
-      private final fwx e;
-      private final fgq f;
+   default boolean a(T $$0) {
+      return false;
+   }
 
-      public a(gfo $$0, gej $$1, gjw $$2, giw $$3, fwx $$4, fgq $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   default int aP_() {
+      return 64;
+   }
 
-      public gfo a() {
-         return this.a;
-      }
-
-      public gej b() {
-         return this.b;
-      }
-
-      public giw c() {
-         return this.d;
-      }
-
-      public gjw d() {
-         return this.c;
-      }
-
-      public fwx e() {
-         return this.e;
-      }
-
-      public fxb a(fwz $$0) {
-         return this.e.a($$0);
-      }
-
-      public fgq f() {
-         return this.f;
-      }
+   default boolean a(T $$0, evt $$1) {
+      return evt.b($$0.ay_()).a((js)$$1, (double)this.aP_());
    }
 }

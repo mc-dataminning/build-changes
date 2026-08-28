@@ -3,7 +3,7 @@ import java.util.concurrent.Executor;
 
 public interface auq extends auj {
    @Override
-   default CompletableFuture<Void> a(auj.a $$0, aup $$1, bnj $$2, bnj $$3, Executor $$4, Executor $$5) {
+   default CompletableFuture<Void> a(auj.a $$0, aup $$1, bnk $$2, bnk $$3, Executor $$4, Executor $$5) {
       return $$0.a(bac.a).thenRunAsync(() -> {
          $$3.a();
          $$3.a("listener");

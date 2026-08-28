@@ -275,10 +275,10 @@ public class anq {
       );
    }
 
-   private static int a(ep $$0, iz $$1, int $$2, ji<erw> $$3) throws CommandSyntaxException {
-      bqo $$4 = a($$0, $$1, a);
+   private static int a(ep $$0, iz $$1, int $$2, ji<erx> $$3) throws CommandSyntaxException {
+      bqp $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
-         cuq $$5 = a($$0, $$3, $$4.a($$2));
+         cur $$5 = a($$0, $$3, $$4.a($$2));
          $$4.a($$2, $$5);
          $$0.a(() -> xp.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.G()), true);
          return 1;
@@ -287,13 +287,13 @@ public class anq {
       }
    }
 
-   private static int a(ep $$0, Collection<? extends bsv> $$1, int $$2, ji<erw> $$3) throws CommandSyntaxException {
-      Map<bsv, cuq> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
+   private static int a(ep $$0, Collection<? extends bsw> $$1, int $$2, ji<erx> $$3) throws CommandSyntaxException {
+      Map<bsw, cur> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
 
-      for (bsv $$5 : $$1) {
-         bui $$6 = $$5.a_($$2);
-         if ($$6 != bui.a) {
-            cuq $$7 = a($$0, $$3, $$6.a().s());
+      for (bsw $$5 : $$1) {
+         buj $$6 = $$5.a_($$2);
+         if ($$6 != buj.a) {
+            cur $$7 = a($$0, $$3, $$6.a().s());
             if ($$6.a($$7)) {
                $$4.put($$5, $$7);
                if ($$5 instanceof arg) {
@@ -307,7 +307,7 @@ public class anq {
          throw e.create($$2);
       } else {
          if ($$4.size() == 1) {
-            Entry<bsv, cuq> $$8 = $$4.entrySet().iterator().next();
+            Entry<bsw, cur> $$8 = $$4.entrySet().iterator().next();
             $$0.a(() -> xp.a("commands.item.entity.set.success.single", $$8.getKey().O_(), $$8.getValue().G()), true);
          } else {
             $$0.a(() -> xp.a("commands.item.entity.set.success.multiple", $$4.size()), true);
@@ -317,8 +317,8 @@ public class anq {
       }
    }
 
-   private static int a(ep $$0, iz $$1, int $$2, cuq $$3) throws CommandSyntaxException {
-      bqo $$4 = a($$0, $$1, a);
+   private static int a(ep $$0, iz $$1, int $$2, cur $$3) throws CommandSyntaxException {
+      bqp $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
          $$4.a($$2, $$3);
          $$0.a(() -> xp.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$3.G()), true);
@@ -328,21 +328,21 @@ public class anq {
       }
    }
 
-   static bqo a(ep $$0, iz $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
-      dpi $$3 = $$0.e().c_($$1);
-      if (!($$3 instanceof bqo)) {
+   static bqp a(ep $$0, iz $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
+      dpj $$3 = $$0.e().c_($$1);
+      if (!($$3 instanceof bqp)) {
          throw $$2.create($$1.u(), $$1.v(), $$1.w());
       } else {
-         return (bqo)$$3;
+         return (bqp)$$3;
       }
    }
 
-   private static int a(ep $$0, Collection<? extends bsv> $$1, int $$2, cuq $$3) throws CommandSyntaxException {
-      List<bsv> $$4 = Lists.newArrayListWithCapacity($$1.size());
+   private static int a(ep $$0, Collection<? extends bsw> $$1, int $$2, cur $$3) throws CommandSyntaxException {
+      List<bsw> $$4 = Lists.newArrayListWithCapacity($$1.size());
 
-      for (bsv $$5 : $$1) {
-         bui $$6 = $$5.a_($$2);
-         if ($$6 != bui.a && $$6.a($$3.s())) {
+      for (bsw $$5 : $$1) {
+         buj $$6 = $$5.a_($$2);
+         if ($$6 != buj.a && $$6.a($$3.s())) {
             $$4.add($$5);
             if ($$5 instanceof arg) {
                ((arg)$$5).cb.d();
@@ -363,11 +363,11 @@ public class anq {
       }
    }
 
-   private static int a(ep $$0, iz $$1, int $$2, Collection<? extends bsv> $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ep $$0, iz $$1, int $$2, Collection<? extends bsw> $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(ep $$0, iz $$1, int $$2, Collection<? extends bsv> $$3, int $$4, ji<erw> $$5) throws CommandSyntaxException {
+   private static int a(ep $$0, iz $$1, int $$2, Collection<? extends bsw> $$3, int $$4, ji<erx> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -375,47 +375,47 @@ public class anq {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(ep $$0, iz $$1, int $$2, iz $$3, int $$4, ji<erw> $$5) throws CommandSyntaxException {
+   private static int a(ep $$0, iz $$1, int $$2, iz $$3, int $$4, ji<erx> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
-   private static int a(ep $$0, bsv $$1, int $$2, iz $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ep $$0, bsw $$1, int $$2, iz $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(ep $$0, bsv $$1, int $$2, iz $$3, int $$4, ji<erw> $$5) throws CommandSyntaxException {
+   private static int a(ep $$0, bsw $$1, int $$2, iz $$3, int $$4, ji<erx> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static int a(ep $$0, bsv $$1, int $$2, Collection<? extends bsv> $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ep $$0, bsw $$1, int $$2, Collection<? extends bsw> $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(ep $$0, bsv $$1, int $$2, Collection<? extends bsv> $$3, int $$4, ji<erw> $$5) throws CommandSyntaxException {
+   private static int a(ep $$0, bsw $$1, int $$2, Collection<? extends bsw> $$3, int $$4, ji<erx> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static cuq a(ep $$0, ji<erw> $$1, cuq $$2) {
+   private static cur a(ep $$0, ji<erx> $$1, cur $$2) {
       arf $$3 = $$0.e();
-      eqm $$4 = new eqm.a($$3).a(etf.f, $$0.d()).b(etf.a, $$0.f()).a(ete.d);
-      eqj $$5 = new eqj.a($$4).a(Optional.empty());
-      $$5.b(eqj.a($$1.a()));
-      cuq $$6 = $$1.a().apply($$2, $$5);
+      eqn $$4 = new eqn.a($$3).a(etg.f, $$0.d()).b(etg.a, $$0.f()).a(etf.d);
+      eqk $$5 = new eqk.a($$4).a(Optional.empty());
+      $$5.b(eqk.a($$1.a()));
+      cur $$6 = $$1.a().apply($$2, $$5);
       $$6.f($$6.j());
       return $$6;
    }
 
-   private static cuq a(bsv $$0, int $$1) throws CommandSyntaxException {
-      bui $$2 = $$0.a_($$1);
-      if ($$2 == bui.a) {
+   private static cur a(bsw $$0, int $$1) throws CommandSyntaxException {
+      buj $$2 = $$0.a_($$1);
+      if ($$2 == buj.a) {
          throw d.create($$1);
       } else {
          return $$2.a().s();
       }
    }
 
-   private static cuq a(ep $$0, iz $$1, int $$2) throws CommandSyntaxException {
-      bqo $$3 = a($$0, $$1, b);
+   private static cur a(ep $$0, iz $$1, int $$2) throws CommandSyntaxException {
+      bqp $$3 = a($$0, $$1, b);
       if ($$2 >= 0 && $$2 < $$3.b()) {
          return $$3.a($$2).s();
       } else {

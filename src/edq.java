@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record edq(int b, int c, int d, ji<ehp> e) implements edd {
+public class edq implements ede {
    public static final Codec<edq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayh.l.fieldOf("tries").orElse(128).forGetter(edq::a),
-               ayh.k.fieldOf("xz_spread").orElse(7).forGetter(edq::b),
-               ayh.k.fieldOf("y_spread").orElse(3).forGetter(edq::c),
-               ehp.b.fieldOf("feature").forGetter(edq::d)
-            )
-            .apply($$0, edq::new)
+      $$0 -> $$0.apply2(edq::new, ecu.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ehq.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<ecu> b;
+   public final ji<ehq> c;
 
-   public int a() {
-      return this.b;
+   public edq(List<ecu> $$0, ji<ehq> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public ji<ehp> d() {
-      return this.e;
+   @Override
+   public Stream<ean<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

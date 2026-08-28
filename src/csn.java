@@ -1,10 +1,23 @@
-public class csn extends cso {
-   public csn(dfa $$0, cul.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class csn extends cum {
+   private final axf<doz> a;
+
+   public csn(axf<doz> $$0, cum.a $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   public axf<doz> b() {
+      return this.a;
    }
 
    @Override
-   protected boolean a(cyb $$0, dsd $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public void a(cur $$0, cum.b $$1, List<xp> $$2, cwk $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public yd c() {
+      return xp.c(this.a() + ".desc");
    }
 }

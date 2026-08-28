@@ -1,15 +1,18 @@
-public class gib extends gke<cjn, ftg<cjn>> {
-   private static final alf a = new alf("textures/entity/blaze.png");
+public class gib extends gkf<cfi, ftg<cfi>> {
+   private static final alf a = new alf("textures/entity/bee/bee_angry.png");
+   private static final alf i = new alf("textures/entity/bee/bee_angry_nectar.png");
+   private static final alf j = new alf("textures/entity/bee/bee.png");
+   private static final alf k = new alf("textures/entity/bee/bee_nectar.png");
 
-   public gib(giy.a $$0) {
-      super($$0, new ftg<>($$0.a(fxa.m)), 0.5F);
+   public gib(giz.a $$0) {
+      super($$0, new ftg<>($$0.a(fxb.k)), 0.4F);
    }
 
-   protected int a(cjn $$0, iz $$1) {
-      return 15;
-   }
-
-   public alf a(cjn $$0) {
-      return a;
+   public alf a(cfi $$0) {
+      if ($$0.Z_()) {
+         return $$0.gA() ? i : a;
+      } else {
+         return $$0.gA() ? k : j;
+      }
    }
 }

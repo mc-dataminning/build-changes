@@ -15,7 +15,7 @@ public class t implements ad {
    private final String c;
    private final String d;
    private final boolean e;
-   private final epp f;
+   private final epq f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,9 +23,9 @@ public class t implements ad {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "1.20.5";
-      this.e = true;
-      this.f = new epp(3837, "main");
+      this.d = "1.20.6-rc1";
+      this.e = false;
+      this.f = new epq(3838, "main");
       this.g = aa.c();
       this.h = 32;
       this.i = 41;
@@ -36,7 +36,7 @@ public class t implements ad {
       this.c = ayp.i($$0, "id");
       this.d = ayp.i($$0, "name");
       this.e = ayp.k($$0, "stable");
-      this.f = new epp(ayp.o($$0, "world_version"), ayp.a($$0, "series_id", epp.a));
+      this.f = new epq(ayp.o($$0, "world_version"), ayp.a($$0, "series_id", epq.a));
       this.g = ayp.o($$0, "protocol_version");
       JsonObject $$1 = ayp.u($$0, "pack_version");
       this.h = ayp.o($$1, "resource");
@@ -75,7 +75,7 @@ public class t implements ad {
    }
 
    @Override
-   public epp d() {
+   public epq d() {
       return this.f;
    }
 

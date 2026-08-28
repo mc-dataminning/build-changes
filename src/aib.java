@@ -4,11 +4,11 @@ public class aib implements zw<agw> {
    private final aib.a c;
    private final int d;
 
-   public aib(bsv $$0, aib.a $$1) {
+   public aib(bsw $$0, aib.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public aib(bsv $$0, aib.a $$1, int $$2) {
+   public aib(bsw $$0, aib.a $$1, int $$2) {
       this.b = $$0.al();
       this.c = $$1;
       this.d = $$2;

@@ -1,36 +1,36 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record etq(ett b) implements ett {
-   public static final MapCodec<etq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(etv.a.fieldOf("term").forGetter(etq::c)).apply($$0, etq::new));
+public class etq implements etu {
+   private static final etq b = new etq();
+   public static final MapCodec<etq> a = MapCodec.unit(b);
 
-   @Override
-   public etu b() {
-      return etv.c;
-   }
-
-   public boolean a(eqj $$0) {
-      return !this.b.test($$0);
+   private etq() {
    }
 
    @Override
-   public Set<etc<?>> a() {
-      return this.b.a();
+   public etv b() {
+      return etw.n;
    }
 
    @Override
-   public void a(eqp $$0) {
-      ett.super.a($$0);
-      this.b.a($$0);
+   public Set<etd<?>> a() {
+      return ImmutableSet.of(etg.j);
    }
 
-   public static ett.a a(ett.a $$0) {
-      etq $$1 = new etq($$0.build());
-      return () -> $$1;
+   public boolean a(eqk $$0) {
+      Float $$1 = $$0.c(etg.j);
+      if ($$1 != null) {
+         azh $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public ett c() {
-      return this.b;
+   public static etu.a c() {
+      return () -> b;
    }
 }

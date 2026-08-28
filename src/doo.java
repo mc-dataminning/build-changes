@@ -1,30 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class doo extends dip {
-   public static final MapCodec<doo> c = b(doo::new);
-   protected static final ewl g = dfa.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class doo extends dfb {
+   public static final MapCodec<doo> a = b(doo::new);
 
    @Override
    public MapCodec<doo> a() {
-      return c;
+      return a;
    }
 
-   public doo(dsc.d $$0) {
-      super($$0, je.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azh $$0) {
-      return dkg.a($$0);
+   public doo(dsd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dfa b() {
-      return dfc.oA;
-   }
+   protected void a(dse $$0, dca $$1, iz $$2, bsw $$3) {
+      evt $$4 = new evt(0.25, 0.05F, 0.25);
+      if ($$3 instanceof btr $$5 && $$5.b(bsg.K)) {
+         $$4 = new evt(0.5, 0.25, 0.5);
+      }
 
-   @Override
-   protected boolean g(dsd $$0) {
-      return dkg.a($$0);
+      $$3.a($$0, $$4);
    }
 }

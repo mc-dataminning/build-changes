@@ -15,14 +15,14 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arg extends cmy {
+public class arg extends cmz {
    private static final Logger cz = LogUtils.getLogger();
    private static final int cA = 32;
    private static final int cB = 10;
    private static final int cC = 25;
    public static final double b = 1.0;
-   private static final buw cD = new buw(UUID.fromString("736565d2-e1a7-403d-a3f8-1aeb3e302542"), "Creative block interaction range modifier", 0.5, buw.a.a);
-   private static final buw cE = new buw(UUID.fromString("98491ef6-97b1-4584-ae82-71a8cc85cf73"), "Creative entity interaction range modifier", 2.0, buw.a.a);
+   private static final bux cD = new bux(UUID.fromString("736565d2-e1a7-403d-a3f8-1aeb3e302542"), "Creative block interaction range modifier", 0.5, bux.a.a);
+   private static final bux cE = new bux(UUID.fromString("98491ef6-97b1-4584-ae82-71a8cc85cf73"), "Creative entity interaction range modifier", 2.0, bux.a.a);
    public asf c;
    public final MinecraftServer d;
    public final arh e;
@@ -39,29 +39,29 @@ public class arg extends cmy {
    private boolean cP = true;
    private int cQ = -99999999;
    private int cR = 60;
-   private cmw cS = cmw.a;
+   private cmx cS = cmx.a;
    private boolean cT = true;
    private long cU = ac.c();
    @Nullable
-   private bsv cV;
+   private bsw cV;
    private boolean cW;
    private boolean cX;
    private final awf cY = new awf();
    @Nullable
-   private evs cZ;
+   private evt cZ;
    private int da;
    private boolean db;
    private int dc = 2;
    private String dd = "en_us";
    @Nullable
-   private evs de;
+   private evt de;
    @Nullable
-   private evs df;
+   private evt df;
    @Nullable
-   private evs dg;
+   private evt dg;
    private kb dh = kb.a(0, 0, 0);
    private aqt di = aqt.a;
-   private ale<dbz> dj = dbz.h;
+   private ale<dca> dj = dca.h;
    @Nullable
    private iz dk;
    private boolean dl;
@@ -70,12 +70,12 @@ public class arg extends cmy {
    private boolean do;
    private boolean dp;
    private boolean dq;
-   private cme dr = new cme(0, 0, 0);
+   private cmf dr = new cmf(0, 0, 0);
    @Nullable
    private iz ds;
-   private final cqi dt = new cqi() {
+   private final cqj dt = new cqj() {
       @Override
-      public void a(cpv $$0, jr<cuq> $$1, cuq $$2, int[] $$3) {
+      public void a(cpw $$0, jr<cur> $$1, cur $$2, int[] $$3) {
          arg.this.c.b(new add($$0.j, $$0.k(), $$1, $$2));
 
          for (int $$4 = 0; $$4 < $$3.length; $$4++) {
@@ -84,29 +84,29 @@ public class arg extends cmy {
       }
 
       @Override
-      public void a(cpv $$0, int $$1, cuq $$2) {
+      public void a(cpw $$0, int $$1, cur $$2) {
          arg.this.c.b(new adf($$0.j, $$0.k(), $$1, $$2));
       }
 
       @Override
-      public void a(cpv $$0, cuq $$1) {
+      public void a(cpw $$0, cur $$1) {
          arg.this.c.b(new adf(-1, $$0.k(), -1, $$1));
       }
 
       @Override
-      public void a(cpv $$0, int $$1, int $$2) {
+      public void a(cpw $$0, int $$1, int $$2) {
          this.b($$0, $$1, $$2);
       }
 
-      private void b(cpv $$0, int $$1, int $$2) {
+      private void b(cpw $$0, int $$1, int $$2) {
          arg.this.c.b(new ade($$0.j, $$1, $$2));
       }
    };
-   private final cqh du = new cqh() {
+   private final cqi du = new cqi() {
       @Override
-      public void a(cpv $$0, int $$1, cuq $$2) {
-         crq $$3 = $$0.b($$1);
-         if (!($$3 instanceof crm)) {
+      public void a(cpw $$0, int $$1, cur $$2) {
+         crr $$3 = $$0.b($$1);
+         if (!($$3 instanceof crn)) {
             if ($$3.c == arg.this.gc()) {
                am.f.a(arg.this, arg.this.gc(), $$2);
             }
@@ -114,7 +114,7 @@ public class arg extends cmy {
       }
 
       @Override
-      public void a(cpv $$0, int $$1, int $$2) {
+      public void a(cpw $$0, int $$1, int $$2) {
       }
    };
    @Nullable
@@ -129,7 +129,7 @@ public class arg extends cmy {
       this.dn = $$0.a(this);
       this.e = $$0.b(this);
       this.d = $$0;
-      this.cG = $$0.ah().a((cmy)this);
+      this.cG = $$0.ah().a((cmz)this);
       this.cF = $$0.ah().f(this);
       this.e($$1);
       this.a($$3);
@@ -138,7 +138,7 @@ public class arg extends cmy {
 
    private void e(arf $$0) {
       iz $$1 = $$0.V();
-      if ($$0.D_().g() && $$0.o().bb().k() != dbw.c) {
+      if ($$0.D_().g() && $$0.o().bb().k() != dbx.c) {
          int $$2 = Math.max(0, this.d.a($$0));
          int $$3 = ayz.a($$0.C_().b((double)$$1.u(), (double)$$1.w()));
          if ($$3 < $$2) {
@@ -184,12 +184,12 @@ public class arg extends cmy {
    public void a(us $$0) {
       super.a($$0);
       if ($$0.b("warden_spawn_tracker", 10)) {
-         cme.a.parse(new Dynamic(vg.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(cz::error).ifPresent($$0x -> this.dr = $$0x);
+         cmf.a.parse(new Dynamic(vg.a, $$0.c("warden_spawn_tracker"))).resultOrPartial(cz::error).ifPresent($$0x -> this.dr = $$0x);
       }
 
       if ($$0.b("enteredNetherPosition", 10)) {
          us $$1 = $$0.p("enteredNetherPosition");
-         this.df = new evs($$1.k("x"), $$1.k("y"), $$1.k("z"));
+         this.df = new evt($$1.k("x"), $$1.k("y"), $$1.k("z"));
       }
 
       this.cX = $$0.q("seenCredits");
@@ -206,7 +206,7 @@ public class arg extends cmy {
          this.dl = $$0.q("SpawnForced");
          this.dm = $$0.j("SpawnAngle");
          if ($$0.e("SpawnDimension")) {
-            this.dj = dbz.g.parse(vg.a, $$0.c("SpawnDimension")).resultOrPartial(cz::error).orElse(dbz.h);
+            this.dj = dca.g.parse(vg.a, $$0.c("SpawnDimension")).resultOrPartial(cz::error).orElse(dca.h);
          }
       }
 
@@ -220,7 +220,7 @@ public class arg extends cmy {
    @Override
    public void b(us $$0) {
       super.b($$0);
-      cme.a.encodeStart(vg.a, this.dr).resultOrPartial(cz::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
+      cmf.a.encodeStart(vg.a, this.dr).resultOrPartial(cz::error).ifPresent($$1 -> $$0.a("warden_spawn_tracker", $$1));
       this.k($$0);
       $$0.a("seenCredits", this.cX);
       if (this.df != null) {
@@ -231,8 +231,8 @@ public class arg extends cmy {
          $$0.a("enteredNetherPosition", $$1);
       }
 
-      bsv $$2 = this.cZ();
-      bsv $$3 = this.dc();
+      bsw $$2 = this.cZ();
+      bsw $$3 = this.dc();
       if ($$3 != null && $$2 != this && $$2.cY()) {
          us $$4 = new us();
          us $$5 = new us();
@@ -278,12 +278,12 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(cuq $$0, int $$1) {
+   public void a(cur $$0, int $$1) {
       super.a($$0, $$1);
       this.cQ = -1;
    }
 
-   private void a(cpv $$0) {
+   private void a(cpw $$0) {
       $$0.a(this.du);
       $$0.a(this.dt);
    }
@@ -305,13 +305,13 @@ public class arg extends cmy {
    }
 
    @Override
-   protected void a(dsd $$0) {
+   protected void a(dse $$0) {
       am.e.a(this, $$0);
    }
 
    @Override
-   protected cum k() {
-      return new cvo(this);
+   protected cun k() {
+      return new cvp(this);
    }
 
    @Override
@@ -329,7 +329,7 @@ public class arg extends cmy {
          this.cb = this.ca;
       }
 
-      bsv $$0 = this.K();
+      bsw $$0 = this.K();
       if ($$0 != this) {
          if ($$0.bD()) {
             this.a($$0.du(), $$0.dw(), $$0.dA(), $$0.dF(), $$0.dH());
@@ -354,7 +354,7 @@ public class arg extends cmy {
    }
 
    private void gF() {
-      buu $$0 = this.f(buy.g);
+      buv $$0 = this.f(buz.g);
       if ($$0 != null) {
          if (this.f()) {
             $$0.b(cD);
@@ -363,7 +363,7 @@ public class arg extends cmy {
          }
       }
 
-      buu $$1 = this.f(buy.h);
+      buv $$1 = this.f(buz.h);
       if ($$1 != null) {
          if (this.f()) {
             $$1.b(cE);
@@ -380,9 +380,9 @@ public class arg extends cmy {
          }
 
          for (int $$0 = 0; $$0 < this.gc().b(); $$0++) {
-            cuq $$1 = this.gc().a($$0);
+            cur $$1 = this.gc().a($$0);
             if ($$1.g().aj_()) {
-               zw<?> $$2 = ((cta)$$1.g()).a($$1, this.dP(), this);
+               zw<?> $$2 = ((ctb)$$1.g()).a($$1, this.dP(), this);
                if ($$2 != null) {
                   this.c.b($$2);
                }
@@ -398,32 +398,32 @@ public class arg extends cmy {
 
          if (this.eA() + this.fs() != this.cH) {
             this.cH = this.eA() + this.fs();
-            this.a(ewz.g, ayz.f(this.cH));
+            this.a(exa.g, ayz.f(this.cH));
          }
 
          if (this.cc.a() != this.cI) {
             this.cI = this.cc.a();
-            this.a(ewz.h, ayz.f((float)this.cI));
+            this.a(exa.h, ayz.f((float)this.cI));
          }
 
          if (this.cl() != this.cJ) {
             this.cJ = this.cl();
-            this.a(ewz.i, ayz.f((float)this.cJ));
+            this.a(exa.i, ayz.f((float)this.cJ));
          }
 
          if (this.eO() != this.cK) {
             this.cK = this.eO();
-            this.a(ewz.j, ayz.f((float)this.cK));
+            this.a(exa.j, ayz.f((float)this.cK));
          }
 
          if (this.cp != this.cM) {
             this.cM = this.cp;
-            this.a(ewz.k, ayz.f((float)this.cM));
+            this.a(exa.k, ayz.f((float)this.cM));
          }
 
          if (this.co != this.cL) {
             this.cL = this.co;
-            this.a(ewz.l, ayz.f((float)this.cL));
+            this.a(exa.l, ayz.f((float)this.cL));
          }
 
          if (this.cp != this.cQ) {
@@ -475,14 +475,14 @@ public class arg extends cmy {
       }
    }
 
-   private void a(ewz $$0, int $$1) {
+   private void a(exa $$0, int $$1) {
       this.gr().a($$0, this, $$1x -> $$1x.a($$1));
    }
 
    @Override
-   public void a(bro $$0) {
-      this.a(dww.p);
-      boolean $$1 = this.dP().ab().b(dbv.n);
+   public void a(brp $$0) {
+      this.a(dwx.p);
+      boolean $$1 = this.dP().ab().b(dbw.n);
       if ($$1) {
          xp $$2 = this.eP().a();
          this.c.a(new aem(this.al(), $$2), ww.a(() -> {
@@ -492,12 +492,12 @@ public class arg extends cmy {
             xp $$4x = xp.a("death.attack.even_more_magic", this.O_()).a($$1xx -> $$1xx.a(new xv(xv.a.a, $$3x)));
             return new aem(this.al(), $$4x);
          }));
-         ewy $$3 = this.cj();
-         if ($$3 == null || $$3.k() == ewy.b.a) {
+         ewz $$3 = this.cj();
+         if ($$3 == null || $$3.k() == ewz.b.a) {
             this.d.ah().a($$2, false);
-         } else if ($$3.k() == ewy.b.c) {
+         } else if ($$3.k() == ewz.b.c) {
             this.d.ah().a(this, $$2);
-         } else if ($$3.k() == ewy.b.d) {
+         } else if ($$3.k() == ewz.b.d) {
             this.d.ah().b(this, $$2);
          }
       } else {
@@ -505,7 +505,7 @@ public class arg extends cmy {
       }
 
       this.gq();
-      if (this.dP().ab().b(dbv.N)) {
+      if (this.dP().ab().b(dbw.N)) {
          this.gG();
       }
 
@@ -513,8 +513,8 @@ public class arg extends cmy {
          this.g($$0);
       }
 
-      this.gr().a(ewz.d, this, ewu::b);
-      btq $$4 = this.eQ();
+      this.gr().a(exa.d, this, ewv::b);
+      btr $$4 = this.eQ();
       if ($$4 != null) {
          this.b(awk.h.b($$4.ak()));
          $$4.a(this, this.bl, $$0);
@@ -533,41 +533,41 @@ public class arg extends cmy {
    }
 
    private void gG() {
-      evn $$0 = new evn(this.dp()).c(32.0, 10.0, 32.0);
-      this.dP().a(bts.class, $$0, bta.f).stream().filter($$0x -> $$0x instanceof btw).forEach($$0x -> ((btw)$$0x).a_((cmy)this));
+      evo $$0 = new evo(this.dp()).c(32.0, 10.0, 32.0);
+      this.dP().a(btt.class, $$0, btb.f).stream().filter($$0x -> $$0x instanceof btx).forEach($$0x -> ((btx)$$0x).a_((cmz)this));
    }
 
    @Override
-   public void a(bsv $$0, int $$1, bro $$2) {
+   public void a(bsw $$0, int $$1, brp $$2) {
       if ($$0 != this) {
          super.a($$0, $$1, $$2);
          this.t($$1);
-         this.gr().a(ewz.f, this, ewu::b);
-         if ($$0 instanceof cmy) {
+         this.gr().a(exa.f, this, ewv::b);
+         if ($$0 instanceof cmz) {
             this.a(awk.Q);
-            this.gr().a(ewz.e, this, ewu::b);
+            this.gr().a(exa.e, this, ewv::b);
          } else {
             this.a(awk.O);
          }
 
-         this.a(this, $$0, ewz.m);
-         this.a($$0, this, ewz.n);
+         this.a(this, $$0, exa.m);
+         this.a($$0, this, exa.n);
          am.c.a(this, $$0, $$2);
       }
    }
 
-   private void a(ewv $$0, ewv $$1, ewz[] $$2) {
-      ewr $$3 = this.gr().e($$1.cB());
+   private void a(eww $$0, eww $$1, exa[] $$2) {
+      ews $$3 = this.gr().e($$1.cB());
       if ($$3 != null) {
          int $$4 = $$3.n().b();
          if ($$4 >= 0 && $$4 < $$2.length) {
-            this.gr().a($$2[$$4], $$0, ewu::b);
+            this.gr().a($$2[$$4], $$0, ewv::b);
          }
       }
    }
 
    @Override
-   public boolean a(bro $$0, float $$1) {
+   public boolean a(brp $$0, float $$1) {
       if (this.b($$0)) {
          return false;
       } else {
@@ -575,12 +575,12 @@ public class arg extends cmy {
          if (!$$2 && this.cR > 0 && !$$0.a(awr.e)) {
             return false;
          } else {
-            bsv $$3 = $$0.d();
-            if ($$3 instanceof cmy $$4 && !this.a($$4)) {
+            bsw $$3 = $$0.d();
+            if ($$3 instanceof cmz $$4 && !this.a($$4)) {
                return false;
             }
 
-            if ($$3 instanceof cne $$5 && $$5.s() instanceof cmy $$7 && !this.a($$7)) {
+            if ($$3 instanceof cnf $$5 && $$5.s() instanceof cmz $$7 && !this.a($$7)) {
                return false;
             }
 
@@ -590,7 +590,7 @@ public class arg extends cmy {
    }
 
    @Override
-   public boolean a(cmy $$0) {
+   public boolean a(cmz $$0) {
       return !this.gH() ? false : super.a($$0);
    }
 
@@ -600,11 +600,11 @@ public class arg extends cmy {
 
    @Nullable
    @Override
-   protected eov a(arf $$0) {
-      eov $$1 = super.a($$0);
-      if ($$1 != null && this.dP().af() == dbz.h && $$0.af() == dbz.j) {
-         evs $$2 = $$1.a.b(0.0, -1.0, 0.0);
-         return new eov($$2, evs.b, 90.0F, 0.0F);
+   protected eow a(arf $$0) {
+      eow $$1 = super.a($$0);
+      if ($$1 != null && this.dP().af() == dca.h && $$0.af() == dca.j) {
+         evt $$2 = $$1.a.b(0.0, -1.0, 0.0);
+         return new eow($$2, evt.b, 90.0F, 0.0F);
       } else {
          return $$1;
       }
@@ -612,13 +612,13 @@ public class arg extends cmy {
 
    @Nullable
    @Override
-   public bsv b(arf $$0) {
+   public bsw b(arf $$0) {
       this.cW = true;
       arf $$1 = this.z();
-      ale<dbz> $$2 = $$1.af();
-      if ($$2 == dbz.j && $$0.af() == dbz.h) {
+      ale<dca> $$2 = $$1.af();
+      if ($$2 == dca.j && $$0.af() == dca.h) {
          this.ai();
-         this.z().a(this, bsv.c.e);
+         this.z().a(this, bsw.c.e);
          if (!this.g) {
             this.g = true;
             this.c.b(new adp(adp.f, this.cX ? 0.0F : 1.0F));
@@ -627,19 +627,19 @@ public class arg extends cmy {
 
          return this;
       } else {
-         ept $$3 = $$0.A_();
+         epu $$3 = $$0.A_();
          this.c.b(new aew(this.d($$0), (byte)3));
          this.c.b(new acv($$3.q(), $$3.r()));
          avd $$4 = this.d.ah();
          $$4.d(this);
-         $$1.a(this, bsv.c.e);
+         $$1.a(this, bsw.c.e);
          this.dM();
-         eov $$5 = this.a($$0);
+         eow $$5 = this.a($$0);
          if ($$5 != null) {
             $$1.ag().a("moving");
-            if ($$2 == dbz.h && $$0.af() == dbz.i) {
+            if ($$2 == dca.h && $$0.af() == dca.i) {
                this.df = this.dn();
-            } else if ($$0.af() == dbz.j) {
+            } else if ($$0.af() == dca.j) {
                this.a($$0, iz.a($$5.a));
             }
 
@@ -655,7 +655,7 @@ public class arg extends cmy {
             $$4.a(this, $$0);
             $$4.e(this);
 
-            for (bsd $$6 : this.ex()) {
+            for (bse $$6 : this.ex()) {
                this.c.b(new agp(this.al(), $$6, false));
             }
 
@@ -675,7 +675,7 @@ public class arg extends cmy {
       for (int $$3 = -2; $$3 <= 2; $$3++) {
          for (int $$4 = -2; $$4 <= 2; $$4++) {
             for (int $$5 = -1; $$5 < 3; $$5++) {
-               dsd $$6 = $$5 == -1 ? dfc.co.o() : dfc.a.o();
+               dse $$6 = $$5 == -1 ? dfd.co.o() : dfd.a.o();
                $$0.b($$2.g($$1).e($$4, $$5, $$3), $$6);
             }
          }
@@ -683,12 +683,12 @@ public class arg extends cmy {
    }
 
    @Override
-   protected Optional<l.a> a(arf $$0, iz $$1, boolean $$2, dtu $$3) {
+   protected Optional<l.a> a(arf $$0, iz $$1, boolean $$2, dtv $$3) {
       Optional<l.a> $$4 = super.a($$0, $$1, $$2, $$3);
       if ($$4.isPresent()) {
          return $$4;
       } else {
-         je.a $$5 = this.dP().a_(this.ay).d(dke.b).orElse(je.a.a);
+         je.a $$5 = this.dP().a_(this.ay).d(dkf.b).orElse(je.a.a);
          Optional<l.a> $$6 = $$0.p().a($$1, $$5);
          if ($$6.isEmpty()) {
             cz.error("Unable to create a portal, likely target out of worldborder");
@@ -699,14 +699,14 @@ public class arg extends cmy {
    }
 
    private void f(arf $$0) {
-      ale<dbz> $$1 = $$0.af();
-      ale<dbz> $$2 = this.dP().af();
+      ale<dca> $$1 = $$0.af();
+      ale<dca> $$2 = this.dP().af();
       am.w.a(this, $$1, $$2);
-      if ($$1 == dbz.i && $$2 == dbz.h && this.df != null) {
+      if ($$1 == dca.i && $$2 == dca.h && this.df != null) {
          am.D.a(this, this.df);
       }
 
-      if ($$2 != dbz.i) {
+      if ($$2 != dca.i) {
          this.df = null;
       }
    }
@@ -721,39 +721,39 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(bsv $$0, int $$1) {
+   public void a(bsw $$0, int $$1) {
       super.a($$0, $$1);
       this.cb.d();
    }
 
    @Override
-   public Either<cmy.a, bac> a(iz $$0) {
-      je $$1 = this.dP().a_($$0).c(diw.aE);
+   public Either<cmz.a, bac> a(iz $$0) {
+      je $$1 = this.dP().a_($$0).c(dix.aE);
       if (this.fL() || !this.bD()) {
-         return Either.left(cmy.a.e);
+         return Either.left(cmz.a.e);
       } else if (!this.dP().D_().j()) {
-         return Either.left(cmy.a.a);
+         return Either.left(cmz.a.a);
       } else if (!this.a($$0, $$1)) {
-         return Either.left(cmy.a.c);
+         return Either.left(cmz.a.c);
       } else if (this.b($$0, $$1)) {
-         return Either.left(cmy.a.d);
+         return Either.left(cmz.a.d);
       } else {
          this.a(this.dP().af(), $$0, this.dF(), false, true);
          if (this.dP().R()) {
-            return Either.left(cmy.a.b);
+            return Either.left(cmz.a.b);
          } else {
             if (!this.f()) {
                double $$2 = 8.0;
                double $$3 = 5.0;
-               evs $$4 = evs.c($$0);
-               List<cke> $$5 = this.dP()
-                  .a(cke.class, new evn($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.f(this));
+               evt $$4 = evt.c($$0);
+               List<ckf> $$5 = this.dP()
+                  .a(ckf.class, new evo($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.f(this));
                if (!$$5.isEmpty()) {
-                  return Either.left(cmy.a.f);
+                  return Either.left(cmz.a.f);
                }
             }
 
-            Either<cmy.a, bac> $$6 = super.a($$0).ifRight($$0x -> {
+            Either<cmz.a, bac> $$6 = super.a($$0).ifRight($$0x -> {
                this.a(awk.ap);
                am.r.a(this);
             });
@@ -778,7 +778,7 @@ public class arg extends cmy {
    }
 
    private boolean j(iz $$0) {
-      evs $$1 = evs.c($$0);
+      evt $$1 = evt.c($$0);
       return Math.abs(this.du() - $$1.a()) <= 3.0 && Math.abs(this.dw() - $$1.b()) <= 2.0 && Math.abs(this.dA() - $$1.c()) <= 3.0;
    }
 
@@ -806,12 +806,12 @@ public class arg extends cmy {
    }
 
    @Override
-   public boolean b(bro $$0) {
+   public boolean b(brp $$0) {
       return super.b($$0) || this.O();
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dsd $$2, iz $$3) {
+   protected void a(double $$0, boolean $$1, dse $$2, iz $$3) {
    }
 
    @Override
@@ -823,11 +823,11 @@ public class arg extends cmy {
 
    public void a(double $$0, double $$1, double $$2, boolean $$3) {
       if (!this.dh()) {
-         this.b($$3, new evs($$0, $$1, $$2));
+         this.b($$3, new evt($$0, $$1, $$2));
          iz $$4 = this.aJ();
-         dsd $$5 = this.dP().a_($$4);
+         dse $$5 = this.dP().a_($$4);
          if (this.dq && $$3 && this.ac > 0.0F) {
-            evs $$6 = $$4.b().b(0.0, 0.5, 0.0);
+            evt $$6 = $$4.b().b(0.0, 0.5, 0.0);
             int $$7 = (int)(50.0F * this.ac);
             this.z().a(new la(li.b, $$5), $$6.c, $$6.d, $$6.e, $$7, 0.3F, 0.3F, 0.3F, 0.15F);
             this.dq = false;
@@ -838,11 +838,11 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(@Nullable bsv $$0) {
+   public void a(@Nullable bsw $$0) {
       super.a($$0);
       this.cv = this.dn();
       this.cw = $$0;
-      this.cx = $$0 != null && $$0.ak() == btb.bn;
+      this.cx = $$0 != null && $$0.ak() == btc.bn;
    }
 
    @Override
@@ -853,7 +853,7 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(dqs $$0, boolean $$1) {
+   public void a(dqt $$0, boolean $$1) {
       this.c.b(new acr(this.dP(), $$0.ay_()));
       this.c.b(new aeg($$0.ay_(), $$1));
    }
@@ -863,7 +863,7 @@ public class arg extends cmy {
    }
 
    @Override
-   public OptionalInt a(@Nullable bqz $$0) {
+   public OptionalInt a(@Nullable bra $$0) {
       if ($$0 == null) {
          return OptionalInt.empty();
       } else {
@@ -872,7 +872,7 @@ public class arg extends cmy {
          }
 
          this.gI();
-         cpv $$1 = $$0.createMenu(this.dw, this.gc(), this);
+         cpw $$1 = $$0.createMenu(this.dw, this.gc(), this);
          if ($$1 == null) {
             if (this.N_()) {
                this.a(xp.c("container.spectatorCantOpen").a(n.m), true);
@@ -889,26 +889,26 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(int $$0, day $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public void a(int $$0, daz $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.c.b(new aeb($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public void a(chk $$0, bqo $$1) {
+   public void a(chl $$0, bqp $$1) {
       if (this.cb != this.ca) {
          this.r();
       }
 
       this.gI();
       this.c.b(new adq(this.dw, $$1.b(), $$0.al()));
-      this.cb = new cqv(this.dw, this.gc(), $$1, $$0);
+      this.cb = new cqw(this.dw, this.gc(), $$1, $$0);
       this.a(this.cb);
    }
 
    @Override
-   public void a(cuq $$0, bqu $$1) {
-      if ($$0.a(cut.ua)) {
-         if (cwo.a($$0, this.dg(), this)) {
+   public void a(cur $$0, bqv $$1) {
+      if ($$0.a(cuu.ua)) {
+         if (cwp.a($$0, this.dg(), this)) {
             this.cb.d();
          }
 
@@ -917,8 +917,8 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(dps $$0) {
-      this.c.b(acp.a($$0, dpi::e));
+   public void a(dpt $$0) {
+      this.c.b(acp.a($$0, dpj::e));
    }
 
    @Override
@@ -950,7 +950,7 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(evs $$0) {
+   public void a(evt $$0) {
       double $$1 = this.du();
       double $$2 = this.dw();
       double $$3 = this.dA();
@@ -1020,16 +1020,16 @@ public class arg extends cmy {
    private void r(double $$0, double $$1, double $$2) {
       if (this.bR() && !s($$0, $$1, $$2)) {
          int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
-         bsv $$4 = this.dc();
-         if ($$4 instanceof cou) {
+         bsw $$4 = this.dc();
+         if ($$4 instanceof cov) {
             this.a(awk.x, $$3);
-         } else if ($$4 instanceof cow) {
+         } else if ($$4 instanceof cox) {
             this.a(awk.y, $$3);
-         } else if ($$4 instanceof cfx) {
+         } else if ($$4 instanceof cfy) {
             this.a(awk.z, $$3);
-         } else if ($$4 instanceof chk) {
+         } else if ($$4 instanceof chl) {
             this.a(awk.A, $$3);
-         } else if ($$4 instanceof ckr) {
+         } else if ($$4 instanceof cks) {
             this.a(awk.D, $$3);
          }
       }
@@ -1048,27 +1048,27 @@ public class arg extends cmy {
    @Override
    public void a(awh<?> $$0) {
       this.cG.a(this, $$0, 0);
-      this.gr().a($$0, this, ewu::c);
+      this.gr().a($$0, this, ewv::c);
    }
 
    @Override
-   public int a(Collection<cyy<?>> $$0) {
+   public int a(Collection<cyz<?>> $$0) {
       return this.cY.a($$0, this);
    }
 
    @Override
-   public void a(cyy<?> $$0, List<cuq> $$1) {
+   public void a(cyz<?> $$0, List<cur> $$1) {
       am.ac.a(this, $$0.a(), $$1);
    }
 
    @Override
    public void b(List<alf> $$0) {
-      List<cyy<?>> $$1 = $$0.stream().flatMap($$0x -> this.d.aJ().a($$0x).stream()).collect(Collectors.toList());
+      List<cyz<?>> $$1 = $$0.stream().flatMap($$0x -> this.d.aJ().a($$0x).stream()).collect(Collectors.toList());
       this.a($$1);
    }
 
    @Override
-   public int b(Collection<cyy<?>> $$0) {
+   public int b(Collection<cyz<?>> $$0) {
       return this.cY.b($$0, this);
    }
 
@@ -1109,13 +1109,13 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(fb.a $$0, evs $$1) {
+   public void a(fb.a $$0, evt $$1) {
       super.a($$0, $$1);
       this.c.b(new aep($$0, $$1.c, $$1.d, $$1.e));
    }
 
-   public void a(fb.a $$0, bsv $$1, fb.a $$2) {
-      evs $$3 = $$2.a($$1);
+   public void a(fb.a $$0, bsw $$1, fb.a $$2) {
+      evt $$3 = $$2.a($$1);
       super.a($$0, $$3);
       this.c.b(new aep($$0, $$1, $$2));
    }
@@ -1134,7 +1134,7 @@ public class arg extends cmy {
          this.cq = $$0.cq;
          this.s($$0.fW());
          this.ay = $$0.ay;
-      } else if (this.dP().ab().b(dbv.d) || $$0.N_()) {
+      } else if (this.dP().ab().b(dbw.d) || $$0.N_()) {
          this.gc().a($$0.gc());
          this.co = $$0.co;
          this.cp = $$0.cp;
@@ -1158,10 +1158,10 @@ public class arg extends cmy {
    }
 
    @Override
-   protected void a(bsd $$0, @Nullable bsv $$1) {
+   protected void a(bse $$0, @Nullable bsw $$1) {
       super.a($$0, $$1);
       this.c.b(new agp(this.al(), $$0, true));
-      if ($$0.a(bsf.y)) {
+      if ($$0.a(bsg.y)) {
          this.da = this.ai;
          this.cZ = this.dn();
       }
@@ -1170,17 +1170,17 @@ public class arg extends cmy {
    }
 
    @Override
-   protected void a(bsd $$0, boolean $$1, @Nullable bsv $$2) {
+   protected void a(bse $$0, boolean $$1, @Nullable bsw $$2) {
       super.a($$0, $$1, $$2);
       this.c.b(new agp(this.al(), $$0, false));
       am.B.a(this, $$2);
    }
 
    @Override
-   protected void a(bsd $$0) {
+   protected void a(bse $$0) {
       super.a($$0);
       this.c.b(new aeu(this.al(), $$0.c()));
-      if ($$0.a(bsf.y)) {
+      if ($$0.a(bsg.y)) {
          this.cZ = null;
       }
 
@@ -1189,17 +1189,17 @@ public class arg extends cmy {
 
    @Override
    public void c(double $$0, double $$1, double $$2) {
-      this.c.a($$0, $$1, $$2, this.dF(), this.dH(), bue.g);
+      this.c.a($$0, $$1, $$2, this.dF(), this.dH(), buf.g);
    }
 
    @Override
    public void d(double $$0, double $$1, double $$2) {
-      this.c.a(this.du() + $$0, this.dw() + $$1, this.dA() + $$2, this.dF(), this.dH(), bue.f);
+      this.c.a(this.du() + $$0, this.dw() + $$1, this.dA() + $$2, this.dF(), this.dH(), buf.f);
    }
 
    @Override
-   public boolean a(arf $$0, double $$1, double $$2, double $$3, Set<bue> $$4, float $$5, float $$6) {
-      dbg $$7 = new dbg(iz.a($$1, $$2, $$3));
+   public boolean a(arf $$0, double $$1, double $$2, double $$3, Set<buf> $$4, float $$5, float $$6) {
+      dbh $$7 = new dbh(iz.a($$1, $$2, $$3));
       $$0.l().a(ark.g, $$7, 1, this.al());
       this.ac();
       if (this.fL()) {
@@ -1223,12 +1223,12 @@ public class arg extends cmy {
    }
 
    @Override
-   public void b(bsv $$0) {
+   public void b(bsw $$0) {
       this.z().l().a(this, new acl($$0, 4));
    }
 
    @Override
-   public void c(bsv $$0) {
+   public void c(bsw $$0) {
       this.z().l().a(this, new acl($$0, 5));
    }
 
@@ -1244,12 +1244,12 @@ public class arg extends cmy {
       return (arf)this.dP();
    }
 
-   public boolean a(dbw $$0) {
+   public boolean a(dbx $$0) {
       if (!this.e.a($$0)) {
          return false;
       } else {
          this.c.b(new adp(adp.e, (float)$$0.a()));
-         if ($$0 == dbw.d) {
+         if ($$0 == dbx.d) {
             this.gq();
             this.ac();
          } else {
@@ -1264,12 +1264,12 @@ public class arg extends cmy {
 
    @Override
    public boolean N_() {
-      return this.e.b() == dbw.d;
+      return this.e.b() == dbx.d;
    }
 
    @Override
    public boolean f() {
-      return this.e.b() == dbw.b;
+      return this.e.b() == dbx.b;
    }
 
    @Override
@@ -1315,7 +1315,7 @@ public class arg extends cmy {
 
    public aqu B() {
       int $$0 = this.ap().a(bV);
-      btk $$1 = btk.d.apply(this.ap().a(bW));
+      btl $$1 = btl.d.apply(this.ap().a(bW));
       return new aqu(this.dd, this.dc, this.cS, this.cT, $$0, $$1, this.do, this.dp);
    }
 
@@ -1323,16 +1323,16 @@ public class arg extends cmy {
       return this.cT;
    }
 
-   public cmw D() {
+   public cmx D() {
       return this.cS;
    }
 
    private boolean v(boolean $$0) {
-      return this.cS == cmw.c ? $$0 : true;
+      return this.cS == cmx.c ? $$0 : true;
    }
 
    private boolean gJ() {
-      return this.cS == cmw.a;
+      return this.cS == cmx.a;
    }
 
    public int E() {
@@ -1371,14 +1371,14 @@ public class arg extends cmy {
       }
    }
 
-   public bsv K() {
-      return (bsv)(this.cV == null ? this : this.cV);
+   public bsw K() {
+      return (bsw)(this.cV == null ? this : this.cV);
    }
 
    @Override
-   public void d(@Nullable bsv $$0) {
-      bsv $$1 = this.K();
-      this.cV = (bsv)($$0 == null ? this : $$0);
+   public void d(@Nullable bsw $$0) {
+      bsw $$1 = this.K();
+      this.cV = (bsw)($$0 == null ? this : $$0);
       if ($$1 != this.cV) {
          if (this.cV.dP() instanceof arf $$2) {
             this.a($$2, this.cV.du(), this.cV.dw(), this.cV.dA(), Set.of(), this.dF(), this.dH());
@@ -1401,8 +1401,8 @@ public class arg extends cmy {
    }
 
    @Override
-   public void e(bsv $$0) {
-      if (this.e.b() == dbw.d) {
+   public void e(bsw $$0) {
+      if (this.e.b() == dbx.d) {
          this.d($$0);
       } else {
          super.e($$0);
@@ -1419,7 +1419,7 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(bqu $$0) {
+   public void a(bqv $$0) {
       super.a($$0);
       this.gw();
    }
@@ -1443,11 +1443,11 @@ public class arg extends cmy {
          this.c.a($$1, $$2, $$3, $$4, $$5);
       } else {
          arf $$6 = this.z();
-         ept $$7 = $$0.A_();
+         epu $$7 = $$0.A_();
          this.c.b(new aew(this.d($$0), (byte)3));
          this.c.b(new acv($$7.q(), $$7.r()));
          this.d.ah().d(this);
-         $$6.a(this, bsv.c.e);
+         $$6.a(this, bsw.c.e);
          this.dM();
          this.b($$1, $$2, $$3, $$4, $$5);
          this.c($$0);
@@ -1468,7 +1468,7 @@ public class arg extends cmy {
       return this.dm;
    }
 
-   public ale<dbz> T() {
+   public ale<dca> T() {
       return this.dj;
    }
 
@@ -1476,7 +1476,7 @@ public class arg extends cmy {
       return this.dl;
    }
 
-   public void a(ale<dbz> $$0, @Nullable iz $$1, float $$2, boolean $$3, boolean $$4) {
+   public void a(ale<dca> $$0, @Nullable iz $$1, float $$2, boolean $$3, boolean $$4) {
       if ($$1 != null) {
          boolean $$5 = $$1.equals(this.dk) && $$0.equals(this.dj);
          if ($$4 && !$$5) {
@@ -1489,7 +1489,7 @@ public class arg extends cmy {
          this.dl = $$3;
       } else {
          this.dk = null;
-         this.dj = dbz.h;
+         this.dj = dca.h;
          this.dm = 0.0F;
          this.dl = false;
       }
@@ -1517,13 +1517,13 @@ public class arg extends cmy {
    }
 
    @Override
-   public cji a(cuq $$0, boolean $$1, boolean $$2) {
-      cji $$3 = super.a($$0, $$1, $$2);
+   public cjj a(cur $$0, boolean $$1, boolean $$2) {
+      cjj $$3 = super.a($$0, $$1, $$2);
       if ($$3 == null) {
          return null;
       } else {
          this.dP().b($$3);
-         cuq $$4 = $$3.p();
+         cur $$4 = $$3.p();
          if ($$2) {
             if (!$$4.e()) {
                this.a(awk.f.b($$4.g()), $$0.I());
@@ -1541,17 +1541,17 @@ public class arg extends cmy {
    }
 
    public void c(arf $$0) {
-      this.a((dbz)$$0);
+      this.a((dca)$$0);
       this.e.a($$0);
    }
 
    @Nullable
-   private static dbw a(@Nullable us $$0, String $$1) {
-      return $$0 != null && $$0.b($$1, 99) ? dbw.a($$0.h($$1)) : null;
+   private static dbx a(@Nullable us $$0, String $$1) {
+      return $$0 != null && $$0.b($$1, 99) ? dbx.a($$0.h($$1)) : null;
    }
 
-   private dbw b(@Nullable dbw $$0) {
-      dbw $$1 = this.d.bf();
+   private dbx b(@Nullable dbx $$0) {
+      dbx $$1 = this.d.bf();
       if ($$1 != null) {
          return $$1;
       } else {
@@ -1566,7 +1566,7 @@ public class arg extends cmy {
 
    private void k(us $$0) {
       $$0.a("playerGameType", this.e.b().a());
-      dbw $$1 = this.e.c();
+      dbx $$1 = this.e.c();
       if ($$1 != null) {
          $$0.a("previousPlayerGameType", $$1.a());
       }
@@ -1582,19 +1582,19 @@ public class arg extends cmy {
    }
 
    @Override
-   public boolean a(dbz $$0, iz $$1) {
+   public boolean a(dca $$0, iz $$1) {
       return super.a($$0, $$1) && $$0.a(this, $$1);
    }
 
    @Override
-   protected void a(cuq $$0) {
+   protected void a(cur $$0) {
       am.W.a(this, $$0);
       super.a($$0);
    }
 
    public boolean a(boolean $$0) {
-      cmx $$1 = this.gc();
-      cuq $$2 = $$1.a($$0);
+      cmy $$1 = this.gc();
+      cur $$2 = $$1.a($$0);
       this.cb.b($$1, $$1.k).ifPresent($$1x -> this.cb.a($$1x, $$1.f()));
       return this.a($$2, false, true) != null;
    }
@@ -1604,7 +1604,7 @@ public class arg extends cmy {
    }
 
    @Override
-   public Optional<cme> aa() {
+   public Optional<cmf> aa() {
       return Optional.of(this.dr);
    }
 
@@ -1613,9 +1613,9 @@ public class arg extends cmy {
    }
 
    @Override
-   public void a(cji $$0) {
+   public void a(cjj $$0) {
       super.a($$0);
-      bsv $$1 = $$0.s();
+      bsw $$1 = $$0.s();
       if ($$1 != null) {
          am.S.a(this, $$0.p(), $$1);
       }
@@ -1637,14 +1637,14 @@ public class arg extends cmy {
    }
 
    @Override
-   public boolean a(bsv $$0, boolean $$1) {
+   public boolean a(bsw $$0, boolean $$1) {
       if (!super.a($$0, $$1)) {
          return false;
       } else {
          $$0.j(this);
          this.c.a(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
-         if ($$0 instanceof btq $$2) {
-            for (bsd $$3 : $$2.ex()) {
+         if ($$0 instanceof btr $$2) {
+            for (bse $$3 : $$2.ex()) {
                this.c.b(new agp($$0.al(), $$3, false));
             }
          }
@@ -1655,17 +1655,17 @@ public class arg extends cmy {
 
    @Override
    public void ac() {
-      bsv $$0 = this.dc();
+      bsw $$0 = this.dc();
       super.ac();
-      if ($$0 instanceof btq $$1) {
-         for (bsd $$2 : $$1.ex()) {
+      if ($$0 instanceof btr $$1) {
+         for (bse $$2 : $$1.ex()) {
             this.c.b(new aeu($$0.al(), $$2.c()));
          }
       }
    }
 
    public agr d(arf $$0) {
-      return new agr($$0.ae(), $$0.af(), dda.a($$0.C()), this.e.b(), this.e.c(), $$0.ai(), $$0.B(), this.gB(), this.ax());
+      return new agr($$0.ae(), $$0.af(), ddb.a($$0.C()), this.e.b(), this.e.c(), $$0.ai(), $$0.B(), this.gB(), this.ax());
    }
 
    @Override

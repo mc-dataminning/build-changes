@@ -1,56 +1,54 @@
-import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public interface cyw<C extends bqo> {
-   Codec<cyw<?>> h = lp.t.q().dispatch(cyw::ao_, cza::a);
-   zn<xa, cyw<?>> i = zl.a(lq.Z).b(cyw::ao_, cza::b);
+public class cyw extends cze {
+   public cyw(cyn $$0) {
+      super("", $$0, czf.a(Map.of('#', cyu.a(cuu.qO), 'x', cyu.a(cuu.rU)), "###", "#x#", "###"), new cur(cuu.uj));
+   }
 
-   boolean a(C var1, dbz var2);
+   @Override
+   public boolean a(cqm $$0, dca $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cur $$2 = a($$0);
+         if ($$2.e()) {
+            return false;
+         } else {
+            epm $$3 = cuz.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
+   }
 
-   cuq a(C var1, jk.a var2);
+   @Override
+   public cur a(cqm $$0, jk.a $$1) {
+      cur $$2 = a($$0).c(1);
+      $$2.b(km.D, cxs.b);
+      return $$2;
+   }
 
-   boolean a(int var1, int var2);
-
-   cuq a(jk.a var1);
-
-   default jr<cuq> a(C $$0) {
-      jr<cuq> $$1 = jr.a($$0.b(), cuq.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cul $$3 = $$0.a($$2).g();
-         if ($$3.v()) {
-            $$1.set($$2, new cuq($$3.u()));
+   private static cur a(cqm $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         cur $$2 = $$0.a($$1);
+         if ($$2.a(cuu.rU)) {
+            return $$2;
          }
       }
 
-      return $$1;
+      return cur.l;
    }
 
-   default jr<cyt> a() {
-      return jr.a();
-   }
-
-   default boolean an_() {
-      return false;
-   }
-
-   default boolean h() {
+   @Override
+   public boolean an_() {
       return true;
    }
 
-   default String c() {
-      return "";
-   }
-
-   default cuq g() {
-      return new cuq(dfc.cA);
-   }
-
-   cza<?> ao_();
-
-   czb<?> e();
-
-   default boolean i() {
-      jr<cyt> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public czb<?> ao_() {
+      return czb.f;
    }
 }

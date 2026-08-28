@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class fd implements ArgumentType<dbw> {
-   private static final Collection<String> a = Stream.of(dbw.a, dbw.b).map(dbw::b).collect(Collectors.toList());
-   private static final dbw[] b = dbw.values();
+public class fd implements ArgumentType<dbx> {
+   private static final Collection<String> a = Stream.of(dbx.a, dbx.b).map(dbx::b).collect(Collectors.toList());
+   private static final dbx[] b = dbx.values();
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xp.b("argument.gamemode.invalid", $$0));
 
-   public dbw a(StringReader $$0) throws CommandSyntaxException {
+   public dbx a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      dbw $$2 = dbw.a($$1, null);
+      dbx $$2 = dbx.a($$1, null);
       if ($$2 == null) {
          throw c.createWithContext($$0, $$1);
       } else {
@@ -27,7 +27,7 @@ public class fd implements ArgumentType<dbw> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eu ? eu.b(Arrays.stream(b).map(dbw::b), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof eu ? eu.b(Arrays.stream(b).map(dbx::b), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -38,7 +38,7 @@ public class fd implements ArgumentType<dbw> {
       return new fd();
    }
 
-   public static dbw a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      return (dbw)$$0.getArgument($$1, dbw.class);
+   public static dbx a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      return (dbx)$$0.getArgument($$1, dbx.class);
    }
 }

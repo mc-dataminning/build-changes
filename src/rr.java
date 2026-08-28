@@ -57,8 +57,8 @@ public class rr {
    }
 
    private static <C, I extends baa<C>> aya<C, I> a(I $$0, I $$1, float $$2, float $$3, baa<Float> $$4) {
-      float $$5 = dyc.a(0.4F);
-      float $$6 = dyc.a(0.56666666F);
+      float $$5 = dyd.a(0.4F);
+      float $$6 = dyd.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
       aya.b<C, I> $$8 = aya.a($$1, $$4);
       $$8.a($$5, 0.0F);

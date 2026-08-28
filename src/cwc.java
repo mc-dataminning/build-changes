@@ -1,37 +1,44 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cwc extends cul {
-   public static final int a = 160;
+public class cwc extends csp {
+   protected final dfb a;
+   private final je b;
 
-   public cwc(cul.a $$0) {
-      super($$0);
+   public cwc(dfb $$0, dfb $$1, cum.a $$2, je $$3) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
    }
 
-   @Override
-   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bsd> $$4 = new ArrayList<>();
-         cxu $$5 = $$0.a(km.H, cxu.a);
+   protected boolean a(dcd $$0, dse $$1, iz $$2) {
+      return $$1.a($$0, $$2);
+   }
 
-         for (cxu.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
+   @Nullable
+   @Override
+   protected dse c(cyc $$0) {
+      dse $$1 = this.a.a($$0);
+      dse $$2 = null;
+      dcd $$3 = $$0.q();
+      iz $$4 = $$0.a();
+
+      for (je $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            dse $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
          }
-
-         cwr.a($$4, $$2::add, 1.0F, $$1.b());
       }
+
+      return $$2 != null && $$3.a($$2, $$4, evy.a()) ? $$2 : null;
    }
 
    @Override
-   public cuq a(cuq $$0, dbz $$1, btq $$2) {
-      cxu $$3 = $$0.a(km.H, cxu.a);
-
-      for (cxu.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
-      }
-
-      super.a($$0, $$1, $$2);
-      return $$2.fP() ? $$0 : new cuq(cut.pq);
+   public void a(Map<dfb, cum> $$0, cum $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

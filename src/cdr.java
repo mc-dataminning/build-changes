@@ -1,56 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cdr extends cea<bts> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
+public class cdr<T extends btr> extends ceb<T> {
+   private final BiPredicate<T, btr> a;
+   private final Predicate<T> c;
+   private final ccv<Boolean> d;
+   private final int e;
 
-   public cdr() {
-      super(20);
+   public cdr(int $$0, BiPredicate<T, btr> $$1, Predicate<T> $$2, ccv<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
-   public Set<ccu<?>> a() {
-      return ImmutableSet.of(ccu.w);
+   protected void a(arf $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   protected void a(arf $$0, bts $$1) {
-      if ($$1.p_()) {
-         this.f = 0;
-         this.g = $$0.Z() + (long)$$0.E_().a(20);
-         ceu $$2 = $$0.y();
-         Predicate<iz> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
-            }
-         };
-         Set<Pair<ji<cex>, iz>> $$4 = $$2.b($$0x -> $$0x.a(cey.n), $$3, $$1.dp(), 48, ceu.b.c).collect(Collectors.toSet());
-         eok $$5 = bvc.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            iz $$6 = $$5.l();
-            Optional<ji<cex>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dS().a(ccu.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+   @Override
+   public Set<ccv<?>> a() {
+      return Set.of(ccv.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<btr>> $$1 = $$0.dS().c(ccv.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
          }
       }
+   }
+
+   public void b(T $$0) {
+      $$0.dS().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dS().b(this.d);
    }
 }

@@ -1,15 +1,38 @@
-public interface dwl<T> {
-   void g(T var1);
+import javax.annotation.Nullable;
 
-   void f(T var1);
+public interface dwl<B, T extends B> {
+   static <B, T extends B> dwl<B, T> a(final Class<T> $$0) {
+      return new dwl<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-   void e(T var1);
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
 
-   void d(T var1);
+   static <B, T extends B> dwl<B, T> b(final Class<T> $$0) {
+      return new dwl<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
 
-   void c(T var1);
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
 
-   void b(T var1);
+   @Nullable
+   T a(B var1);
 
-   void a(T var1);
+   Class<? extends B> a();
 }

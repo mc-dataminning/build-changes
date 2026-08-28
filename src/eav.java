@@ -1,33 +1,32 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class eav {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class eav extends eba<edc> {
+   public eav(Codec<edc> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(dcu $$0, iz $$1, int $$2) {
-      if (b($$0, $$1)) {
+   @Override
+   public boolean a(ebc<edc> $$0) {
+      dcv $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      edc $$3 = $$0.f();
+      azh $$4 = $$0.d();
+      if (!eaw.a($$1, $$2)) {
          return false;
       } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+         int $$5 = $$3.c.a($$4);
+         float $$6 = $$3.i.a($$4);
+         float $$7 = $$3.h.a($$4);
+         int $$8 = $$3.d.a($$4);
+         int $$9 = $$3.d.a($$4);
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ayz.b($$5) * (float)$$2);
-            int $$7 = (int)(ayz.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
+               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
+               iz $$13 = $$2.b($$10, 0, $$11);
+               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
             }
          }
 
@@ -35,77 +34,140 @@ public class eav {
       }
    }
 
-   protected static boolean a(dca $$0, iz $$1) {
-      return $$0.a($$1, eav::c);
-   }
-
-   protected static boolean b(dca $$0, iz $$1) {
-      return $$0.a($$1, eav::e);
-   }
-
-   protected static void a(je $$0, int $$1, boolean $$2, Consumer<dsd> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dta.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dta.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dta.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dta.a : dta.b));
-      }
-   }
-
-   protected static void a(dca $$0, iz $$1, je $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         iz.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dfc.st)) {
-               $$3x = $$3x.a(dks.d, Boolean.valueOf($$0.z($$5)));
+   private void a(dcv $$0, azh $$1, iz $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, edc $$9) {
+      Optional<dxm> $$10 = dxm.a($$0, $$2, $$9.b, eaw::c, eaw::d);
+      if (!$$10.isEmpty()) {
+         OptionalInt $$11 = $$10.get().b();
+         OptionalInt $$12 = $$10.get().c();
+         if (!$$11.isEmpty() || !$$12.isEmpty()) {
+            boolean $$13 = $$1.i() < $$5;
+            dxm $$15;
+            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
+               int $$14 = $$12.getAsInt();
+               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
+               $$0.a($$2.h($$14), dfd.G.o(), 2);
+            } else {
+               $$15 = $$10.get();
             }
 
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
+            OptionalInt $$17 = $$15.c();
+            boolean $$18 = $$1.j() < $$6;
+            int $$22;
+            if ($$11.isPresent() && $$18 && !this.a((dcd)$$0, $$2.h($$11.getAsInt()))) {
+               int $$19 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$11.getAsInt()), $$19, je.b);
+               int $$20;
+               if ($$17.isPresent()) {
+                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
+               } else {
+                  $$20 = $$7;
+               }
+
+               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
+            } else {
+               $$22 = 0;
+            }
+
+            boolean $$24 = $$1.j() < $$6;
+            int $$26;
+            if ($$17.isPresent() && $$24 && !this.a((dcd)$$0, $$2.h($$17.getAsInt()))) {
+               int $$25 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$17.getAsInt()), $$25, je.a);
+               if ($$11.isPresent()) {
+                  $$26 = Math.max(0, $$22 + ayz.b($$1, -$$9.e, $$9.e));
+               } else {
+                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
+               }
+            } else {
+               $$26 = 0;
+            }
+
+            int $$36;
+            int $$35;
+            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
+               int $$29 = $$17.getAsInt();
+               int $$30 = $$11.getAsInt();
+               int $$31 = Math.max($$30 - $$22, $$29 + 1);
+               int $$32 = Math.min($$29 + $$26, $$30 - 1);
+               int $$33 = ayz.b($$1, $$31, $$32 + 1);
+               int $$34 = $$33 - 1;
+               $$35 = $$30 - $$33;
+               $$36 = $$34 - $$29;
+            } else {
+               $$35 = $$22;
+               $$36 = $$26;
+            }
+
+            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
+            if ($$11.isPresent()) {
+               eaw.a($$0, $$2.h($$11.getAsInt() - 1), je.a, $$35, $$39);
+            }
+
+            if ($$17.isPresent()) {
+               eaw.a($$0, $$2.h($$17.getAsInt() + 1), je.b, $$36, $$39);
+            }
+         }
       }
    }
 
-   protected static boolean c(dca $$0, iz $$1) {
-      dsd $$2 = $$0.a_($$1);
-      if ($$2.a(awp.bs)) {
-         $$0.a($$1, dfc.su.o(), 2);
-         return true;
+   private boolean a(dcd $$0, iz $$1) {
+      return $$0.a_($$1).a(dfd.H);
+   }
+
+   private int a(azh $$0, int $$1, int $$2, float $$3, int $$4, edc $$5) {
+      if ($$0.i() > $$3) {
+         return 0;
+      } else {
+         int $$6 = Math.abs($$1) + Math.abs($$2);
+         float $$7 = (float)ayz.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
+         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
+      }
+   }
+
+   private boolean b(dcv $$0, iz $$1) {
+      dse $$2 = $$0.a_($$1);
+      if (!$$2.a(dfd.G) && !$$2.a(dfd.su) && !$$2.a(dfd.st)) {
+         if ($$0.a_($$1.c()).u().a(awv.a)) {
+            return false;
+         } else {
+            for (je $$3 : je.c.a) {
+               if (!this.a((dcb)$$0, $$1.a($$3))) {
+                  return false;
+               }
+            }
+
+            return this.a((dcb)$$0, $$1.d());
+         }
       } else {
          return false;
       }
    }
 
-   private static dsd a(je $$0, dta $$1) {
-      return dfc.st.o().a(dks.b, $$0).a(dks.c, $$1);
+   private boolean a(dcb $$0, iz $$1) {
+      dse $$2 = $$0.a_($$1);
+      return $$2.a(awp.be) || $$2.u().a(awv.a);
    }
 
-   public static boolean a(dsd $$0) {
-      return b($$0) || $$0.a(dfc.H);
+   private void a(dcv $$0, iz $$1, int $$2, je $$3) {
+      iz.a $$4 = $$1.j();
+
+      for (int $$5 = 0; $$5 < $$2; $$5++) {
+         if (!eaw.c($$0, $$4)) {
+            return;
+         }
+
+         $$4.c($$3);
+      }
    }
 
-   public static boolean b(dsd $$0) {
-      return $$0.a(dfc.su) || $$0.a(awp.bs);
+   private double a(int $$0, int $$1, int $$2, int $$3, edc $$4) {
+      int $$5 = $$0 - Math.abs($$2);
+      int $$6 = $$1 - Math.abs($$3);
+      int $$7 = Math.min($$5, $$6);
+      return (double)ayz.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
    }
 
-   public static boolean c(dsd $$0) {
-      return $$0.i() || $$0.a(dfc.G);
-   }
-
-   public static boolean d(dsd $$0) {
-      return !$$0.i() && !$$0.a(dfc.G);
-   }
-
-   public static boolean e(dsd $$0) {
-      return $$0.i() || $$0.a(dfc.G) || $$0.a(dfc.H);
+   private static float a(azh $$0, float $$1, float $$2, float $$3, float $$4) {
+      return bpv.a($$0, $$3, $$4, $$1, $$2);
    }
 }

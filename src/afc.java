@@ -3,7 +3,7 @@ public class afc implements zw<aci> {
    private final double b;
    private final double c;
 
-   public afc(dtu $$0) {
+   public afc(dtv $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

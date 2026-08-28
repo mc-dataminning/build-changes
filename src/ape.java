@@ -25,23 +25,23 @@ public class ape {
       );
    }
 
-   public static bsv a(ep $$0, ji.c<btb<?>> $$1, evs $$2, us $$3, boolean $$4) throws CommandSyntaxException {
+   public static bsw a(ep $$0, ji.c<btc<?>> $$1, evt $$2, us $$3, boolean $$4) throws CommandSyntaxException {
       iz $$5 = iz.a($$2);
-      if (!dbz.l($$5)) {
+      if (!dca.l($$5)) {
          throw c.create();
       } else {
          us $$6 = $$3.i();
          $$6.a("id", $$1.h().a().toString());
          arf $$7 = $$0.e();
-         bsv $$8 = btb.a($$6, $$7, $$1x -> {
+         bsw $$8 = btc.a($$6, $$7, $$1x -> {
             $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dF(), $$1x.dH());
             return $$1x;
          });
          if ($$8 == null) {
             throw a.create();
          } else {
-            if ($$4 && $$8 instanceof bts) {
-               ((bts)$$8).a($$0.e(), $$0.e().d_($$8.dp()), btu.n, null);
+            if ($$4 && $$8 instanceof btt) {
+               ((btt)$$8).a($$0.e(), $$0.e().d_($$8.dp()), btv.n, null);
             }
 
             if (!$$7.e($$8)) {
@@ -53,8 +53,8 @@ public class ape {
       }
    }
 
-   private static int b(ep $$0, ji.c<btb<?>> $$1, evs $$2, us $$3, boolean $$4) throws CommandSyntaxException {
-      bsv $$5 = a($$0, $$1, $$2, $$3, $$4);
+   private static int b(ep $$0, ji.c<btc<?>> $$1, evt $$2, us $$3, boolean $$4) throws CommandSyntaxException {
+      bsw $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> xp.a("commands.summon.success", $$5.O_()), true);
       return 1;
    }

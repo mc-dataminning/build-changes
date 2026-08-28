@@ -19,12 +19,12 @@ public class anm {
       );
    }
 
-   private static void a(ep $$0, arg $$1, dbw $$2) {
+   private static void a(ep $$0, arg $$1, dbx $$2) {
       xp $$3 = xp.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> xp.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().ab().b(dbv.p)) {
+         if ($$0.e().ab().b(dbw.p)) {
             $$1.a(xp.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class anm {
       }
    }
 
-   private static int a(CommandContext<ep> $$0, Collection<arg> $$1, dbw $$2) {
+   private static int a(CommandContext<ep> $$0, Collection<arg> $$1, dbx $$2) {
       int $$3 = 0;
 
       for (arg $$4 : $$1) {

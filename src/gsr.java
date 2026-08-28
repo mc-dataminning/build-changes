@@ -1,51 +1,31 @@
-public class gsr {
-   public static class a extends grx {
-      private final gcr n;
+public class gsr implements grz {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final gcs e;
+   private final gtx f;
+   private int g = 0;
 
-      protected a(gcr $$0, avz $$1) {
-         super($$1, awb.i, gso.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dK() || !this.n.bj()) {
-            this.n();
-         }
-      }
+   public gsr(gcs $$0, gtx $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static class b extends grx {
-      public static final int n = 40;
-      private final gcr o;
-      private int p;
-
-      public b(gcr $$0) {
-         super(awa.z, awb.i, gso.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (!this.o.dK() && this.p >= 0) {
-            if (this.o.bj()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bj()) {
+         float $$0 = this.e.dP().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gsp)(new gss.a(this.e, awa.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gsp)(new gss.a(this.e, awa.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gsp)(new gss.a(this.e, awa.A)));
          }
       }
    }

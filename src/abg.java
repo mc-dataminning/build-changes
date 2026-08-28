@@ -1,9 +1,9 @@
-public record abg(int c, eok d, float e) implements aax {
+public record abg(int c, eol d, float e) implements aax {
    public static final zn<wm, abg> a = aax.a(abg::a, abg::new);
    public static final aax.b<abg> b = aax.a("debug/path");
 
    private abg(wm $$0) {
-      this($$0.readInt(), eok.b($$0), $$0.readFloat());
+      this($$0.readInt(), eol.b($$0), $$0.readFloat());
    }
 
    private void a(wm $$0) {
@@ -21,7 +21,7 @@ public record abg(int c, eok d, float e) implements aax {
       return this.c;
    }
 
-   public eok c() {
+   public eol c() {
       return this.d;
    }
 

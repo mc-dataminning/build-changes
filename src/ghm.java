@@ -1,107 +1,84 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.joml.Matrix4f;
 
-public class ghm implements ghb.a {
-   private final ffg a;
-   private final Map<ale<dbz>, Map<String, eid>> b = Maps.newIdentityHashMap();
-   private final Map<ale<dbz>, Map<String, abl.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class ghm implements ghc.a {
+   private final ffh a;
 
-   public ghm(ffg $$0) {
+   public ghm(ffh $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(ezz $$0, gdp $$1, double $$2, double $$3, double $$4) {
-      fer $$5 = this.a.j.l();
-      ale<dbz> $$6 = this.a.r.af();
-      iz $$7 = iz.a($$5.b().c, 0.0, $$5.b().e);
-      fad $$8 = $$1.getBuffer(gdx.y());
-      if (this.b.containsKey($$6)) {
-         for (eid $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gdn.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
-      }
+   public void a(faa $$0, gdq $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      dbg $$6 = this.a.s.dP();
+      iz $$7 = iz.a($$2, $$3, $$4);
 
-      Map<String, abl.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (abl.a $$11 : $$10.values()) {
-            eid $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gdn.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gdn.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
+      for (iz $$8 : iz.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         dse $$9 = $$6.a_($$8);
+         if (!$$9.a(dfd.a)) {
+            ewm $$10 = $$9.j($$6, $$8);
+
+            for (evo $$11 : $$10.e()) {
+               evo $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               float $$19 = 1.0F;
+               float $$20 = 0.0F;
+               float $$21 = 0.0F;
+               float $$22 = 0.5F;
+               if ($$9.d($$6, $$8, je.e)) {
+                  fae $$23 = $$1.getBuffer(gdy.A());
+                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.d)) {
+                  fae $$24 = $$1.getBuffer(gdy.A());
+                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.f)) {
+                  fae $$25 = $$1.getBuffer(gdy.A());
+                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.c)) {
+                  fae $$26 = $$1.getBuffer(gdy.A());
+                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.a)) {
+                  fae $$27 = $$1.getBuffer(gdy.A());
+                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, je.b)) {
+                  fae $$28 = $$1.getBuffer(gdy.A());
+                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
                }
             }
          }
       }
-   }
-
-   public void a(eid $$0, List<abl.a> $$1, ale<dbz> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, abl.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (abl.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

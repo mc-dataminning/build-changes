@@ -1,30 +1,28 @@
-public class ctm extends cul implements cts {
-   public ctm(cul.a $$0) {
+public class ctm extends cum implements cvj {
+   public ctm(cum.a $$0) {
       super($$0);
-      dhf.a(this, csf.a);
-   }
-
-   public static boolean j(cuq $$0) {
-      return $$0.n() < $$0.o() - 1;
    }
 
    @Override
-   public boolean a(cuq $$0, cuq $$1) {
-      return $$1.a(cut.vQ);
+   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
+      cur $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.hN, awb.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         coa $$4 = new coa($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
+
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bqx.a($$3, $$0.x_());
    }
 
    @Override
-   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
-      return this.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public ji<avz> n() {
-      return awa.ar;
-   }
-
-   @Override
-   public btc m() {
-      return btc.e;
+   public cnr a(dca $$0, js $$1, cur $$2, je $$3) {
+      coa $$4 = new coa($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
    }
 }

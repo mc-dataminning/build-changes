@@ -1,15 +1,16 @@
-public class gpz extends gqd {
-   private static final alf a = new alf("back");
-
-   public gpz(gpb $$0) {
-      super($$0, new alf("textures/atlas/paintings.png"), new alf("paintings"));
+public class gpz extends gqe {
+   public gpz(gpc $$0) {
+      super($$0, new alf("textures/atlas/mob_effects.png"), new alf("mob_effects"));
    }
 
-   public gpa a(cje $$0) {
-      return this.a(lp.l.b($$0));
-   }
+   public gpb a(ji<bsc> $$0) {
+      if ($$0 == bsg.E) {
+         fxx $$1 = ffh.Q().r;
+         if ($$1 != null && $$1.J().b(cpp.c)) {
+            return this.a(new alf("bad_omen_121"));
+         }
+      }
 
-   public gpa a() {
-      return this.a(a);
+      return this.a($$0.e().map(ale::a).orElseGet(gor::b));
    }
 }

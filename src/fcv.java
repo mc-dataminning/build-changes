@@ -1,66 +1,99 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fcv extends gvh {
-   static final xp b = xp.c("mco.warning");
-   static final xp c = xp.c("mco.info");
-   private final fcv.a B;
-   private final xp C;
-   private final xp D;
-   protected final BooleanConsumer a;
-   private final boolean E;
+public class fcv extends gvi {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xp b = xp.c("mco.configure.world.buttons.invite");
+   private static final xp c = xp.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final xp B = xp.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final xp C = xp.c("mco.configure.world.players.error").b(-65536);
+   private final fkt D = new fkt(this);
+   private fhp E;
+   private fhg F;
+   private final fbh G;
+   private final fcq H;
+   private final fnf I;
+   @Nullable
+   private xp J;
 
-   public fcv(BooleanConsumer $$0, fcv.a $$1, xp $$2, xp $$3, boolean $$4) {
-      super(fey.a);
-      this.a = $$0;
-      this.B = $$1;
-      this.C = $$2;
-      this.D = $$3;
-      this.E = $$4;
+   public fcv(fcq $$0, fnf $$1, fbh $$2) {
+      super(b);
+      this.H = $$0;
+      this.I = $$1;
+      this.G = $$2;
    }
 
    @Override
    public void aM_() {
-      if (this.E) {
-         this.c(fhf.a(xo.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(8), 100, 20).a());
-         this.c(fhf.a(xo.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(8), 100, 20).a());
+      this.D.a(b, this.p);
+      fkx $$0 = this.D.c(fkx.d().a(8));
+      this.E = new fhp(this.m.h, 200, 20, xp.c("mco.configure.world.invite.profile.name"));
+      $$0.a(fkp.a(this.p, this.E, c));
+      this.F = $$0.a(fhg.a(b, $$0x -> this.E()).a(200).a());
+      this.D.b(fhg.a(xo.k, $$0x -> this.d()).a(200).a());
+      this.D.a($$1 -> {
+         fhe var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.D.a();
+   }
+
+   @Override
+   protected void aB_() {
+      this.b(this.E);
+   }
+
+   private void E() {
+      if (azv.h(this.E.a())) {
+         this.a(C);
       } else {
-         this.c(fhf.a(xo.h, $$0 -> this.a.accept(true)).a(this.n / 2 - 50, g(8), 100, 20).a());
+         long $$0 = this.G.a;
+         String $$1 = this.E.a().trim();
+         this.F.j = false;
+         this.E.e(false);
+         this.a(B);
+         CompletableFuture.<fbh>supplyAsync(() -> {
+            try {
+               return faq.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ac.h()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.G.h = $$0x.h;
+               this.m.a(new fdc(this.H, this.G));
+            } else {
+               this.a(C);
+            }
+
+            this.E.e(true);
+            this.F.j = true;
+         }, this.q);
       }
    }
 
-   @Override
-   public xp i() {
-      return xo.b(this.B.d, this.C, this.D);
+   private void a(xp $$0) {
+      this.J = $$0;
+      this.m.aX().c($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public void d() {
+      this.m.a(this.I);
    }
 
    @Override
-   public void a(fgs $$0, int $$1, int $$2, float $$3) {
+   public void a(fgt $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.B.d, this.n / 2, g(2), this.B.c);
-      $$0.a(this.p, this.C, this.n / 2, g(4), -1);
-      $$0.a(this.p, this.D, this.n / 2, g(6), -1);
-   }
-
-   public static enum a {
-      a(fcv.b, -65536),
-      b(fcv.c, 8226750);
-
-      public final int c;
-      public final xp d;
-
-      private a(final xp $$0, final int $$1) {
-         this.d = $$0;
-         this.c = $$1;
+      if (this.J != null) {
+         $$0.a(this.p, this.J, this.n / 2, this.F.D() + this.F.v() + 8, -1);
       }
    }
 }

@@ -1,59 +1,62 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
 
-public class cyr extends cyo {
-   private static final cyt a = cyt.a(cut.uv);
+public class cyr extends cyp {
+   private static final cyu a = cyu.a(cuu.qO);
+   private static final cyu b = cyu.a(cuu.pu);
+   private static final cyu c = cyu.a(cuu.uv);
 
-   public cyr(cym $$0) {
+   public cyr(cyn $$0) {
       super($$0);
    }
 
-   public boolean a(cql $$0, dbz $$1) {
+   public boolean a(cqm $$0, dca $$1) {
       boolean $$2 = false;
-      boolean $$3 = false;
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuq $$5 = $$0.a($$4);
+         cur $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if ($$5.g() instanceof ctk) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
                $$2 = true;
-            } else {
-               if (!a.a($$5)) {
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
                   return false;
                }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
+            } else if (!c.a($$5)) {
+               return false;
             }
          }
       }
 
-      return $$3 && $$2;
+      return $$2 && $$3 >= 1;
    }
 
-   public cuq a(cql $$0, jk.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cuq $$3 = null;
+   public cur a(cqm $$0, jk.a $$1) {
+      List<cxk> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         cul $$6 = $$5.g();
-         if ($$6 instanceof ctk) {
-            $$2.add(((ctk)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
+         cur $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if (b.a($$5)) {
+               $$3++;
+            } else if (c.a($$5)) {
+               cxk $$6 = $$5.a(km.T);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
          }
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(km.T, cxj.a, $$2, cxj::a);
-         return $$3;
-      } else {
-         return cuq.l;
-      }
+      cur $$7 = new cur(cuu.uu, 3);
+      $$7.b(km.U, new cxl($$3, $$2));
+      return $$7;
    }
 
    @Override
@@ -62,7 +65,12 @@ public class cyr extends cyo {
    }
 
    @Override
-   public cza<?> ao_() {
-      return cza.i;
+   public cur a(jk.a $$0) {
+      return new cur(cuu.uu);
+   }
+
+   @Override
+   public czb<?> ao_() {
+      return czb.g;
    }
 }

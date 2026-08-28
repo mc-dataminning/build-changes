@@ -1,4 +1,4 @@
-public record aaz(ale<dww> c, evs d) implements aax {
+public record aaz(ale<dwx> c, evt d) implements aax {
    public static final zn<wm, aaz> a = aax.a(aaz::a, aaz::new);
    public static final aax.b<aaz> b = aax.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record aaz(ale<dww> c, evs d) implements aax {
       return b;
    }
 
-   public ale<dww> b() {
+   public ale<dwx> b() {
       return this.c;
    }
 
-   public evs c() {
+   public evt c() {
       return this.d;
    }
 }

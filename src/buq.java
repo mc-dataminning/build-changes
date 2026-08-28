@@ -1,5 +1,6 @@
-public interface buq<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T d();
+public interface buq {
+   @Nullable
+   bsw s();
 }

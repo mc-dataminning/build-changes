@@ -8,7 +8,7 @@ public class zz {
       a($$0, $$1, $$2.o());
    }
 
-   public static <T extends wv> void a(zw<T> $$0, T $$1, bpl<?> $$2) throws alr {
+   public static <T extends wv> void a(zw<T> $$0, T $$1, bpm<?> $$2) throws alr {
       if (!$$2.bw()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {

@@ -8,7 +8,7 @@ public class bz extends dr<bz.a> {
       return bz.a.a;
    }
 
-   public void a(arg $$0, cuq $$1) {
+   public void a(arg $$0, cur $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class bz extends dr<bz.a> {
          return am.k.a(new bz.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cuq $$0) {
+      public boolean a(cur $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

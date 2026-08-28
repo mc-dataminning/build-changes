@@ -2,7 +2,7 @@ public class aek implements zw<aci> {
    public static final zn<wm, aek> a = zw.a(aek::a, aek::new);
    private final int b;
 
-   public aek(brl $$0) {
+   public aek(brm $$0) {
       this($$0.b());
    }
 

@@ -11,6 +11,6 @@ public class blh extends bij {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bgx.t, () -> DSL.optionalFields("id", bgx.D.in($$0), "components", bgx.w.in($$0)));
+      $$0.registerType(true, bgx.y, () -> DSL.optionalFields("item", bgx.t.in($$0), "block_state", bgx.u.in($$0)));
    }
 }

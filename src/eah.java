@@ -1,66 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class eah extends eaz<ecu> {
-   public eah(Codec<ecu> $$0) {
+public class eah extends eba<ecx> {
+   public eah(Codec<ecx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebb<ecu> $$0) {
-      dcu $$1 = $$0.b();
-      ecu $$2 = $$0.f();
+   public boolean a(ebc<ecx> $$0) {
+      iz $$1 = $$0.e();
+      dcv $$2 = $$0.b();
       azh $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
 
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         iz.a $$8 = $$0.e().j();
-         iz.a $$9 = $$8.j().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
+      ecx $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
+         if (!$$2.u($$1.d())) {
+            dse $$5 = $$2.a_($$1.d());
+            if (b($$5) || a($$5)) {
                break;
             }
-
-            $$9.c($$2.b());
          }
+      }
 
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               ecu.a $$13 = $$2.a().get($$11);
+      if ($$1.v() <= $$2.I_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
+            for (iz $$11 : iz.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
                }
             }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
          return true;
-      }
-   }
-
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
-
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
       }
    }
 }

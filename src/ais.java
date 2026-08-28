@@ -1,17 +1,17 @@
 public class ais implements zw<agw> {
    public static final zn<wm, ais> a = zw.a(ais::a, ais::new);
-   private final evo b;
-   private final bqu c;
+   private final evp b;
+   private final bqv c;
    private final int d;
 
-   public ais(bqu $$0, evo $$1, int $$2) {
+   public ais(bqv $$0, evp $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private ais(wm $$0) {
-      this.c = $$0.b(bqu.class);
+      this.c = $$0.b(bqv.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class ais implements zw<agw> {
       $$0.a(this);
    }
 
-   public bqu b() {
+   public bqv b() {
       return this.c;
    }
 
-   public evo e() {
+   public evp e() {
       return this.b;
    }
 

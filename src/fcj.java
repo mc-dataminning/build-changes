@@ -1,59 +1,153 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public abstract class fcj {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class fcj extends fhg {
+   private static final alf u = new alf("widget/slot_frame");
+   private static final alf v = new alf("icon/checkmark");
+   public static final alf a = new alf("textures/gui/realms/empty_frame.png");
+   public static final alf b = new alf("minecraft", "textures/gui/title/background/panorama_0.png");
+   public static final alf c = new alf("minecraft", "textures/gui/title/background/panorama_2.png");
+   public static final alf d = new alf("minecraft", "textures/gui/title/background/panorama_3.png");
+   private static final xp w = xp.c("mco.configure.world.slot.tooltip.active");
+   private static final xp x = xp.c("mco.configure.world.slot.tooltip.minigame");
+   private static final xp y = xp.c("mco.configure.world.slot.tooltip");
+   static final xp z = xp.c("mco.worldSlot.minigame");
+   private final int A;
+   @Nullable
+   private fcj.b B;
 
-   public fcj(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public fcj(int $$0, int $$1, int $$2, int $$3, int $$4, fhg.c $$5) {
+      super($$0, $$1, $$2, $$3, xo.a, $$5, q);
+      this.A = $$4;
    }
 
-   public void a(fgs $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
+   @Nullable
+   public fcj.b a() {
+      return this.B;
    }
 
-   protected abstract void a(fgs var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
+   public void a(fbh $$0) {
+      this.B = new fcj.b($$0, this.A);
+      this.a(this.B, $$0.o);
    }
 
-   public int b() {
-      return this.d + this.b;
+   private void a(fcj.b $$0, @Nullable String $$1) {
+      xp $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(fir.a($$2));
+      }
+
+      yd $$3 = xp.b($$0.e);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(xo.v).f($$1);
+      }
+
+      this.b($$3);
    }
 
-   public abstract void a(int var1);
-
-   public static void a(fgs $$0, List<fcj> $$1, gvg<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (fcj $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
+   static fcj.a a(fbh $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != fbh.c.c) {
+         return fcj.a.c;
+      } else {
+         return $$1 || $$2 && $$0.j ? fcj.a.a : fcj.a.b;
       }
    }
 
-   public static void a(gvg<?> $$0, fib.a<?> $$1, List<fcj> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aD_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.r();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (fcj $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
+   @Override
+   public void b(fgt $$0, int $$1, int $$2, float $$3) {
+      if (this.B != null) {
+         int $$4 = this.C();
+         int $$5 = this.D();
+         boolean $$6 = this.A();
+         alf $$7;
+         if (this.B.b) {
+            $$7 = fdw.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.B.a) {
+            $$7 = a;
+         } else if (this.B.i != null && this.B.h != -1L) {
+            $$7 = fdw.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.A == 1) {
+            $$7 = b;
+         } else if (this.A == 2) {
+            $$7 = c;
+         } else if (this.A == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
          }
+
+         if (this.B.d) {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a($$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+         boolean $$14 = $$6 && this.B.c != fcj.a.a;
+         if ($$14) {
+            $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         } else if (this.B.d) {
+            $$0.a(0.8F, 0.8F, 0.8F, 1.0F);
+         } else {
+            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+         }
+
+         $$0.a(u, $$4, $$5, 80, 80);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         if (this.B.d) {
+            RenderSystem.enableBlend();
+            $$0.a(v, $$4 + 67, $$5 + 4, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         fgr $$15 = ffh.Q().h;
+         $$0.a($$15, this.B.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, fal.a(this.B.f, this.B.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final fbh.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final fcj.a c;
+
+      public b(fbh $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.m == fbh.d.b;
+            this.e = fcj.z.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = fbh.a.a;
+         } else {
+            fbo $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && $$0.m != fbh.d.b;
+            this.e = $$2.a($$1);
+            this.h = $$2.l;
+            this.i = $$2.m;
+            this.a = $$2.n;
+            this.f = $$2.j;
+            this.g = $$2.k;
+         }
+
+         this.c = fcj.a($$0, this.d, this.b);
       }
    }
 }

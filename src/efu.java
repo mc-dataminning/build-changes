@@ -1,60 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class efu extends efv {
+public class efu extends efw {
    public static final MapCodec<efu> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(efu::new, $$0 -> $$0.b);
    private final float b;
-
-   @Override
-   protected efw<?> a() {
-      return efw.b;
-   }
 
    public efu(float $$0) {
       this.b = $$0;
    }
 
    @Override
-   public void a(efv.a $$0) {
-      azh $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            iz $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, dnw.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iz $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, dnw.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iz $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, dnw.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iz $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, dnw.c, $$0);
-            }
-         }
-      });
+   protected efx<?> a() {
+      return efx.c;
    }
 
-   private static void a(iz $$0, dsu $$1, efv.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (iz var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
+   @Override
+   public void a(efw.a $$0) {
+      azh $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<iz> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (je $$3x : je.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  je $$4 = $$3x.g();
+                  iz $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dfd.fC.o().a(dgi.c, Integer.valueOf($$1.a(3))).a(dgi.aE, $$3x));
+                  }
+               }
+            }
+         });
       }
    }
 }

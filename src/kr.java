@@ -1,23 +1,23 @@
 public class kr extends ks {
    private final ks c = new ks();
-   private final cow.b d;
+   private final cox.b d;
    private final boolean e;
 
-   public kr(cow.b $$0) {
+   public kr(cox.b $$0) {
       this($$0, false);
    }
 
-   public kr(cow.b $$0, boolean $$1) {
+   public kr(cox.b $$0, boolean $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
    @Override
-   public cuq a(kq $$0, cuq $$1) {
-      je $$2 = $$0.d().c(dhf.b);
+   public cur a(kq $$0, cur $$1) {
+      je $$2 = $$0.d().c(dhg.b);
       arf $$3 = $$0.b();
-      evs $$4 = $$0.a();
-      double $$5 = 0.5625 + (double)btb.k.l() / 2.0;
+      evt $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)btc.k.l() / 2.0;
       double $$6 = $$4.a() + (double)$$2.j() * $$5;
       double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
       double $$8 = $$4.c() + (double)$$2.l() * $$5;
@@ -33,8 +33,8 @@ public class kr extends ks {
          $$10 = 0.0;
       }
 
-      cow $$13 = (cow)(this.e ? new cox($$3, $$6, $$7 + $$10, $$8) : new cow($$3, $$6, $$7 + $$10, $$8));
-      btb.<cow>a($$3, $$1, null).accept($$13);
+      cox $$13 = (cox)(this.e ? new coy($$3, $$6, $$7 + $$10, $$8) : new cox($$3, $$6, $$7 + $$10, $$8));
+      btc.<cox>a($$3, $$1, null).accept($$13);
       $$13.a(this.d);
       $$13.r($$2.p());
       $$3.b($$13);

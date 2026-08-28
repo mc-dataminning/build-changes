@@ -1,37 +1,57 @@
-public class gba extends gbd {
-   private final fux a;
-   private final gdx b = gdx.i(gir.a);
-
-   gba(fxw $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new fui(ffg.Q().aR().a(fxa.V));
-      this.u = 0.0F;
-      this.t = 30;
+public class gba extends gce {
+   gba(fxx $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public gbh b() {
-      return gbh.e;
+   public gbi b() {
+      return gbi.b;
    }
 
    @Override
-   public void a(fad $$0, fer $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * ayz.a($$3 * (float) Math.PI);
-      ezz $$5 = new ezz();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      gdp.a $$6 = ffg.Q().aQ().c();
-      fad $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gor.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
-   public static class a implements gbg<lm> {
-      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gba($$1, $$2, $$3, $$4);
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(li.ae, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
+
+   public static class a implements gbh<lm> {
+      private final gbz a;
+
+      public a(gbz $$0) {
+         this.a = $$0;
+      }
+
+      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gba $$8 = new gba($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -35,11 +35,11 @@ public class kb extends kd {
       return new kb(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static kb a(dbg $$0, int $$1) {
+   public static kb a(dbh $$0, int $$1) {
       return new kb($$0.e, $$1, $$0.f);
    }
 
-   public static kb a(dwd $$0) {
+   public static kb a(dwe $$0) {
       return a($$0.dp());
    }
 
@@ -51,7 +51,7 @@ public class kb extends kd {
       return new kb(b($$0), c($$0), d($$0));
    }
 
-   public static kb a(dtz $$0) {
+   public static kb a(dua $$0) {
       return a($$0.f(), $$0.ao());
    }
 
@@ -191,8 +191,8 @@ public class kb extends kd {
       return this.j().b(8, 8, 8);
    }
 
-   public dbg r() {
-      return new dbg(this.a(), this.c());
+   public dbh r() {
+      return new dbh(this.a(), this.c());
    }
 
    public static long c(iz $$0) {
@@ -225,7 +225,7 @@ public class kb extends kd {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<kb> a(dbg $$0, int $$1, int $$2, int $$3) {
+   public static Stream<kb> a(dbh $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

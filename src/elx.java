@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class elx extends ely {
+public class elx extends emj {
    public static final MapCodec<elx> a = MapCodec.unit(() -> elx.b);
    public static final elx b = new elx();
 
@@ -8,12 +8,7 @@ public class elx extends ely {
    }
 
    @Override
-   public boolean a(iz $$0, iz $$1, iz $$2, azh $$3) {
-      return true;
-   }
-
-   @Override
-   protected elz<?> a() {
-      return elz.a;
+   protected eml<?> a() {
+      return eml.j;
    }
 }

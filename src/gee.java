@@ -1,173 +1,464 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class gee {
-   public static final alf a = new alf("textures/atlas/shulker_boxes.png");
-   public static final alf b = new alf("textures/atlas/beds.png");
-   public static final alf c = new alf("textures/atlas/banner_patterns.png");
-   public static final alf d = new alf("textures/atlas/shield_patterns.png");
-   public static final alf e = new alf("textures/atlas/signs.png");
-   public static final alf f = new alf("textures/atlas/chest.png");
-   public static final alf g = new alf("textures/atlas/armor_trims.png");
-   public static final alf h = new alf("textures/atlas/decorated_pot.png");
-   private static final gdx A = gdx.e(a);
-   private static final gdx B = gdx.c(b);
-   private static final gdx C = gdx.m(c);
-   private static final gdx D = gdx.m(d);
-   private static final gdx E = gdx.e(e);
-   private static final gdx F = gdx.d(f);
-   private static final gdx G = gdx.a(g);
-   private static final gdx H = gdx.b(g);
-   private static final gdx I = gdx.c(goz.e);
-   private static final gdx J = gdx.d(goz.e);
-   private static final gdx K = gdx.g(goz.e);
-   private static final gdx L = gdx.h(goz.e);
-   public static final gre i = new gre(a, new alf("entity/shulker/shulker"));
-   public static final List<gre> j = Stream.of(
-         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-      )
-      .map($$0 -> new gre(a, new alf("entity/shulker/shulker_" + $$0)))
-      .collect(ImmutableList.toImmutableList());
-   public static final Map<dtq, gre> k = dtq.a().collect(Collectors.toMap(Function.identity(), gee::c));
-   public static final Map<dtq, gre> l = dtq.a().collect(Collectors.toMap(Function.identity(), gee::d));
-   public static final gre m = new gre(c, new alf("entity/banner/base"));
-   public static final gre n = new gre(d, new alf("entity/shield/base"));
-   private static final Map<alf, gre> M = new HashMap<>();
-   private static final Map<alf, gre> N = new HashMap<>();
-   public static final Map<ale<String>, gre> o = lp.an.f().stream().collect(Collectors.toMap(Function.identity(), gee::b));
-   public static final gre[] p = Arrays.stream(ctj.values())
-      .sorted(Comparator.comparingInt(ctj::a))
-      .map($$0 -> new gre(b, new alf("entity/bed/" + $$0.b())))
-      .toArray(gre[]::new);
-   public static final gre q = a("trapped");
-   public static final gre r = a("trapped_left");
-   public static final gre s = a("trapped_right");
-   public static final gre t = a("christmas");
-   public static final gre u = a("christmas_left");
-   public static final gre v = a("christmas_right");
-   public static final gre w = a("normal");
-   public static final gre x = a("normal_left");
-   public static final gre y = a("normal_right");
-   public static final gre z = a("ender");
+public class gee implements ezq, AutoCloseable {
+   public static final String a = "shaders";
+   private static final String q = "shaders/core/";
+   private static final String r = "shaders/include/";
+   static final Logger s = LogUtils.getLogger();
+   private static final ezj t = new ezj();
+   private static final boolean u = true;
+   private static gee v;
+   private static int w = -1;
+   private final Map<String, Object> x = Maps.newHashMap();
+   private final List<String> y = Lists.newArrayList();
+   private final List<Integer> z = Lists.newArrayList();
+   private final List<ezr> A = Lists.newArrayList();
+   private final List<Integer> B = Lists.newArrayList();
+   private final Map<String, ezr> C = Maps.newHashMap();
+   private final int D;
+   private final String E;
+   private boolean F;
+   private final ezk G;
+   private final ezo H;
+   private final ezo I;
+   private final faf J;
+   @Nullable
+   public final ezr b;
+   @Nullable
+   public final ezr c;
+   @Nullable
+   public final ezr d;
+   @Nullable
+   public final ezr e;
+   @Nullable
+   public final ezr f;
+   @Nullable
+   public final ezr g;
+   @Nullable
+   public final ezr h;
+   @Nullable
+   public final ezr i;
+   @Nullable
+   public final ezr j;
+   @Nullable
+   public final ezr k;
+   @Nullable
+   public final ezr l;
+   @Nullable
+   public final ezr m;
+   @Nullable
+   public final ezr n;
+   @Nullable
+   public final ezr o;
+   @Nullable
+   public final ezr p;
 
-   public static gdx a() {
-      return C;
+   public gee(aus $$0, String $$1, faf $$2) throws IOException {
+      this.E = $$1;
+      this.J = $$2;
+      alf $$3 = new alf("shaders/core/" + $$1 + ".json");
+
+      try (Reader $$4 = $$0.openAsReader($$3)) {
+         JsonObject $$5 = ayp.a($$4);
+         String $$6 = ayp.i($$5, "vertex");
+         String $$7 = ayp.i($$5, "fragment");
+         JsonArray $$8 = ayp.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var18) {
+                  ali $$12 = ali.a(var18);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = ayp.a($$5, "uniforms", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.b($$15);
+               } catch (Exception var17) {
+                  ali $$17 = ali.a(var17);
+                  $$17.a("uniforms[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         }
+
+         this.G = a(ayp.a($$5, "blend", null));
+         this.H = a($$0, ezo.a.a, $$6);
+         this.I = a($$0, ezo.a.b, $$7);
+         this.D = ezp.a();
+         int $$18 = 0;
+
+         for (UnmodifiableIterator var26 = $$2.d().iterator(); var26.hasNext(); $$18++) {
+            String $$19 = (String)var26.next();
+            ezr.a(this.D, $$18, $$19);
+         }
+
+         ezp.b(this);
+         this.j();
+      } catch (Exception var20) {
+         ali $$22 = ali.a(var20);
+         $$22.b($$3.a());
+         throw $$22;
+      }
+
+      this.b();
+      this.b = this.a("ModelViewMat");
+      this.c = this.a("ProjMat");
+      this.d = this.a("TextureMat");
+      this.e = this.a("ScreenSize");
+      this.f = this.a("ColorModulator");
+      this.g = this.a("Light0_Direction");
+      this.h = this.a("Light1_Direction");
+      this.i = this.a("GlintAlpha");
+      this.j = this.a("FogStart");
+      this.k = this.a("FogEnd");
+      this.l = this.a("FogColor");
+      this.m = this.a("FogShape");
+      this.n = this.a("LineWidth");
+      this.o = this.a("GameTime");
+      this.p = this.a("ChunkOffset");
    }
 
-   public static gdx b() {
-      return D;
+   private static ezo a(final aus $$0, ezo.a $$1, String $$2) throws IOException {
+      ezo $$3 = $$1.c().get($$2);
+      ezo $$8;
+      if ($$3 == null) {
+         String $$4 = "shaders/core/" + $$2 + $$1.b();
+         aun $$5 = $$0.getResourceOrThrow(new alf($$4));
+
+         try (InputStream $$6 = $$5.d()) {
+            final String $$7 = v.a($$4);
+            $$8 = ezo.a($$1, $$2, $$6, $$5.b(), new ezh() {
+               private final Set<String> c = Sets.newHashSet();
+
+               @Override
+               public String a(boolean $$0x, String $$1) {
+                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
+                  if (!this.c.add($$1)) {
+                     return null;
+                  } else {
+                     alf $$2 = new alf($$1);
+
+                     try {
+                        String var5;
+                        try (Reader $$3 = $$0.openAsReader($$2)) {
+                           var5 = IOUtils.toString($$3);
+                        }
+
+                        return var5;
+                     } catch (IOException var9) {
+                        gee.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
+                        return "#error " + var9.getMessage();
+                     }
+                  }
+               }
+            });
+         }
+      } else {
+         $$8 = $$3;
+      }
+
+      return $$8;
    }
 
-   public static gdx c() {
-      return B;
+   public static ezk a(JsonObject $$0) {
+      if ($$0 == null) {
+         return new ezk();
+      } else {
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (ayp.a($$0, "func")) {
+            $$1 = ezk.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
+
+         if (ayp.a($$0, "srcrgb")) {
+            $$2 = ezk.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (ayp.a($$0, "dstrgb")) {
+            $$3 = ezk.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (ayp.a($$0, "srcalpha")) {
+            $$4 = ezk.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (ayp.a($$0, "dstalpha")) {
+            $$5 = ezk.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new ezk();
+         } else {
+            return $$7 ? new ezk($$2, $$3, $$4, $$5, $$1) : new ezk($$2, $$3, $$1);
+         }
+      }
    }
 
-   public static gdx d() {
-      return A;
+   @Override
+   public void close() {
+      for (ezr $$0 : this.A) {
+         $$0.close();
+      }
+
+      ezp.a(this);
    }
 
-   public static gdx e() {
-      return E;
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      ezp.a(0);
+      w = -1;
+      v = null;
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
+         if (this.x.get(this.y.get($$1)) != null) {
+            GlStateManager._activeTexture(33984 + $$1);
+            GlStateManager._bindTexture(0);
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
    }
 
-   public static gdx f() {
-      return E;
+   public void g() {
+      RenderSystem.assertOnRenderThread();
+      this.F = false;
+      v = this;
+      this.G.a();
+      if (this.D != w) {
+         ezp.a(this.D);
+         w = this.D;
+      }
+
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
+         String $$2 = this.y.get($$1);
+         if (this.x.get($$2) != null) {
+            int $$3 = ezr.a(this.D, $$2);
+            ezr.b($$3, $$1);
+            RenderSystem.activeTexture(33984 + $$1);
+            Object $$4 = this.x.get($$2);
+            int $$5 = -1;
+            if ($$4 instanceof eym) {
+               $$5 = ((eym)$$4).f();
+            } else if ($$4 instanceof gom) {
+               $$5 = ((gom)$$4).a();
+            } else if ($$4 instanceof Integer) {
+               $$5 = (Integer)$$4;
+            }
+
+            if ($$5 != -1) {
+               RenderSystem.bindTexture($$5);
+            }
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+
+      for (ezr $$6 : this.A) {
+         $$6.b();
+      }
    }
 
-   public static gdx g() {
-      return F;
-   }
-
-   public static gdx a(boolean $$0) {
-      return $$0 ? H : G;
-   }
-
-   public static gdx h() {
-      return I;
-   }
-
-   public static gdx i() {
-      return J;
-   }
-
-   public static gdx j() {
-      return K;
-   }
-
-   public static gdx k() {
-      return L;
-   }
-
-   private static gre c(dtq $$0) {
-      return new gre(e, new alf("entity/signs/" + $$0.b()));
-   }
-
-   private static gre d(dtq $$0) {
-      return new gre(e, new alf("entity/signs/hanging/" + $$0.b()));
-   }
-
-   public static gre a(dtq $$0) {
-      return k.get($$0);
-   }
-
-   public static gre b(dtq $$0) {
-      return l.get($$0);
-   }
-
-   public static gre a(ji<doy> $$0) {
-      return M.computeIfAbsent($$0.a().a(), $$0x -> {
-         alf $$1 = $$0x.d("entity/banner/");
-         return new gre(c, $$1);
-      });
-   }
-
-   public static gre b(ji<doy> $$0) {
-      return N.computeIfAbsent($$0.a().a(), $$0x -> {
-         alf $$1 = $$0x.d("entity/shield/");
-         return new gre(d, $$1);
-      });
-   }
-
-   private static gre a(String $$0) {
-      return new gre(f, new alf("entity/chest/" + $$0));
-   }
-
-   private static gre b(ale<String> $$0) {
-      return new gre(h, dpz.a($$0));
+   @Override
+   public void b() {
+      this.F = true;
    }
 
    @Nullable
-   public static gre a(@Nullable ale<String> $$0) {
-      return $$0 == null ? null : o.get($$0);
+   public ezr a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.C.get($$0);
    }
 
-   public static gre a(dpi $$0, dsv $$1, boolean $$2) {
-      if ($$0 instanceof dqd) {
-         return z;
-      } else if ($$2) {
-         return a($$1, t, u, v);
+   public ezj b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      ezr $$1 = this.a($$0);
+      return (ezj)($$1 == null ? t : $$1);
+   }
+
+   private void j() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
+         String $$2 = this.y.get($$1);
+         int $$3 = ezr.a(this.D, $$2);
+         if ($$3 == -1) {
+            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
+            this.x.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.z.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         int $$5 = $$0.getInt($$4);
+         this.y.remove($$5);
+      }
+
+      for (ezr $$6 : this.A) {
+         String $$7 = $$6.a();
+         int $$8 = ezr.a(this.D, $$7);
+         if ($$8 == -1) {
+            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
+         } else {
+            this.B.add($$8);
+            $$6.b($$8);
+            this.C.put($$7, $$6);
+         }
+      }
+   }
+
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = ayp.m($$0, "sampler");
+      String $$2 = ayp.i($$1, "name");
+      if (!ayp.a($$1, "file")) {
+         this.x.put($$2, null);
+         this.y.add($$2);
       } else {
-         return $$0 instanceof drb ? a($$1, q, r, s) : a($$1, w, x, y);
+         this.y.add($$2);
       }
    }
 
-   private static gre a(dsv $$0, gre $$1, gre $$2, gre $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
-         case a:
-         default:
-            return $$1;
+   public void a(String $$0, Object $$1) {
+      this.x.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws ali {
+      JsonObject $$1 = ayp.m($$0, "uniform");
+      String $$2 = ayp.i($$1, "name");
+      int $$3 = ezr.a(ayp.i($$1, "type"));
+      int $$4 = ayp.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = ayp.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new ali("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = ayp.e($$8, "value");
+            } catch (Exception var13) {
+               ali $$10 = ali.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
+         }
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         ezr $$12 = new ezr($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
+         }
+
+         this.A.add($$12);
       }
+   }
+
+   @Override
+   public ezo c() {
+      return this.H;
+   }
+
+   @Override
+   public ezo d() {
+      return this.I;
+   }
+
+   @Override
+   public void e() {
+      this.I.a(this);
+      this.H.a(this);
+   }
+
+   public faf h() {
+      return this.J;
+   }
+
+   public String i() {
+      return this.E;
+   }
+
+   @Override
+   public int a() {
+      return this.D;
    }
 }

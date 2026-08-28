@@ -1,6 +1,17 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface eha {
+public record eha(List<dya.c> a) implements dya.c {
    @Nullable
-   dsd a(dxz var1, int var2, int var3, int var4);
+   @Override
+   public dse calculate(dxp.b $$0) {
+      for (dya.c $$1 : this.a) {
+         dse $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
 }

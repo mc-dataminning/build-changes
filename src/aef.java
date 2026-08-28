@@ -1,10 +1,10 @@
 public class aef implements zw<aci> {
    public static final zn<xa, aef> a = zn.a(zl.g, aef::b, zl.a(lq.Q), aef::e, xr.d, aef::f, aef::new);
    private final int b;
-   private final crc<?> c;
+   private final crd<?> c;
    private final xp d;
 
-   public aef(int $$0, crc<?> $$1, xp $$2) {
+   public aef(int $$0, crd<?> $$1, xp $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -23,7 +23,7 @@ public class aef implements zw<aci> {
       return this.b;
    }
 
-   public crc<?> e() {
+   public crd<?> e() {
       return this.c;
    }
 

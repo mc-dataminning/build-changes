@@ -1,24 +1,15 @@
-public class gla<T extends cjm> extends gjp<T, fvw<T>> {
-   private static final alf a = new alf("textures/entity/skeleton/skeleton.png");
+public class gla extends gkf<ckm, fvw<ckm>> {
+   private static final alf a = new alf("textures/entity/silverfish.png");
 
-   public gla(giy.a $$0) {
-      this($$0, fxa.bn, fxa.bp, fxa.bq);
+   public gla(giz.a $$0) {
+      super($$0, new fvw<>($$0.a(fxb.bm)), 0.3F);
    }
 
-   public gla(giy.a $$0, fwz $$1, fwz $$2, fwz $$3) {
-      this($$0, $$2, $$3, new fvw<>($$0.a($$1)));
+   protected float a(ckm $$0) {
+      return 180.0F;
    }
 
-   public gla(giy.a $$0, fwz $$1, fwz $$2, fvw<T> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new gna<>(this, new fvw($$0.a($$1)), new fvw($$0.a($$2)), $$0.g()));
-   }
-
-   public alf a(T $$0) {
+   public alf b(ckm $$0) {
       return a;
-   }
-
-   protected boolean b(T $$0) {
-      return $$0.gs();
    }
 }

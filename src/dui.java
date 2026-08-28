@@ -1,262 +1,111 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import java.util.function.BiConsumer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class dui extends dut {
-   private final duj n;
-   private final boolean o;
+public class dui<T> implements duq<T> {
+   private final jn<T> a;
+   private final axv<T> b;
+   private final dur<T> c;
+   private final int d;
 
-   public dui(duj $$0, boolean $$1) {
-      super($$0.f(), duw.a, $$0.l, $$0.F().H_().d(lq.az), $$0.t());
-      this.n = $$0;
-      this.o = $$1;
+   public dui(jn<T> $$0, int $$1, dur<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
    }
 
-   @Nullable
-   @Override
-   public dpi c_(iz $$0) {
-      return this.n.c_($$0);
+   public dui(jn<T> $$0, int $$1, dur<T> $$2) {
+      this($$0, $$1, $$2, axv.c(1 << $$1));
    }
 
-   @Override
-   public dsd a_(iz $$0) {
-      return this.n.a_($$0);
+   private dui(jn<T> $$0, int $$1, dur<T> $$2, axv<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
    }
 
-   @Override
-   public enw b_(iz $$0) {
-      return this.n.b_($$0);
-   }
-
-   @Override
-   public int Q() {
-      return this.n.Q();
+   public static <A> duq<A> a(int $$0, jn<A> $$1, dur<A> $$2, List<A> $$3) {
+      return new dui<>($$1, $$0, $$2, $$3);
    }
 
    @Override
-   public duk b(int $$0) {
-      return this.o ? this.n.b($$0) : super.b($$0);
-   }
-
-   @Nullable
-   @Override
-   public dsd a(iz $$0, dsd $$1, boolean $$2) {
-      return this.o ? this.n.a($$0, $$1, $$2) : null;
-   }
-
-   @Override
-   public void a(dpi $$0) {
-      if (this.o) {
-         this.n.a($$0);
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
       }
+
+      return $$1;
    }
 
    @Override
-   public void a(bsv $$0) {
-      if (this.o) {
-         this.n.a($$0);
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
       }
-   }
 
-   @Override
-   public void a(duy $$0) {
-      if (this.o) {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   public duk[] d() {
-      return this.n.d();
-   }
-
-   @Override
-   public void a(dxv.a $$0, long[] $$1) {
-   }
-
-   private dxv.a c(dxv.a $$0) {
-      if ($$0 == dxv.a.a) {
-         return dxv.a.b;
-      } else {
-         return $$0 == dxv.a.c ? dxv.a.d : $$0;
-      }
-   }
-
-   @Override
-   public dxv a(dxv.a $$0) {
-      return this.n.a($$0);
-   }
-
-   @Override
-   public int a(dxv.a $$0, int $$1, int $$2) {
-      return this.n.a(this.c($$0), $$1, $$2);
-   }
-
-   @Override
-   public ji<dcy> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n.getNoiseBiome($$0, $$1, $$2);
-   }
-
-   @Override
-   public dbg f() {
-      return this.n.f();
-   }
-
-   @Nullable
-   @Override
-   public eit a(eil $$0) {
-      return this.n.a($$0);
-   }
-
-   @Override
-   public void a(eil $$0, eit $$1) {
-   }
-
-   @Override
-   public Map<eil, eit> g() {
-      return this.n.g();
-   }
-
-   @Override
-   public void a(Map<eil, eit> $$0) {
-   }
-
-   @Override
-   public LongSet b(eil $$0) {
-      return this.n.b($$0);
-   }
-
-   @Override
-   public void a(eil $$0, long $$1) {
-   }
-
-   @Override
-   public Map<eil, LongSet> h() {
-      return this.n.h();
-   }
-
-   @Override
-   public void b(Map<eil, LongSet> $$0) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.n.a($$0);
-   }
-
-   @Override
-   public boolean i() {
       return false;
    }
 
    @Override
-   public duy j() {
-      return this.n.j();
-   }
-
-   @Override
-   public void d(iz $$0) {
-   }
-
-   @Override
-   public void e(iz $$0) {
-   }
-
-   @Override
-   public void a(us $$0) {
-   }
-
-   @Nullable
-   @Override
-   public us f(iz $$0) {
-      return this.n.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public us a(iz $$0, jk.a $$1) {
-      return this.n.a($$0, $$1);
-   }
-
-   @Override
-   public void a(Predicate<dsd> $$0, BiConsumer<iz, dsd> $$1) {
-      this.n.a($$0, $$1);
-   }
-
-   @Override
-   public exm<dfa> o() {
-      return this.o ? this.n.o() : exc.a();
-   }
-
-   @Override
-   public exm<env> p() {
-      return this.o ? this.n.p() : exc.a();
-   }
-
-   @Override
-   public dtz.a q() {
-      return this.n.q();
-   }
-
-   @Nullable
-   @Override
-   public dyy t() {
-      return this.n.t();
-   }
-
-   @Override
-   public void a(dyy $$0) {
-      this.n.a($$0);
-   }
-
-   @Override
-   public dty a(dxr.a $$0) {
-      if (this.o) {
-         return super.a($$0);
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dup($$0);
       } else {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
+         return $$1;
       }
    }
 
    @Override
-   public dty b(dxr.a $$0) {
-      if (this.o) {
-         return super.b($$0);
-      } else {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
-      }
-   }
+   public void a(wm $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
 
-   public duj C() {
-      return this.n;
-   }
-
-   @Override
-   public boolean v() {
-      return this.n.v();
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.n.b($$0);
-   }
-
-   @Override
-   public void a(ddb $$0, ddh.f $$1) {
-      if (this.o) {
-         this.n.a($$0, $$1);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
       }
    }
 
    @Override
-   public void A() {
-      this.n.A();
+   public void b(wm $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
    }
 
    @Override
-   public eng B() {
-      return this.n.B();
+   public int a() {
+      int $$0 = xg.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += xg.a(this.a.a(this.b.a($$1)));
+      }
+
+      return $$0;
+   }
+
+   public List<T> d() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.b.b();
+   }
+
+   @Override
+   public duq<T> c() {
+      return new dui<>(this.a, this.d, this.c, this.b.c());
    }
 }

@@ -1,28 +1,73 @@
-public abstract class cri<C extends bqo> extends cpv {
-   public cri(crc<?> $$0, int $$1) {
-      super($$0, $$1);
+import javax.annotation.Nullable;
+
+public class cri extends brf {
+   @Nullable
+   private dqe b;
+
+   public cri() {
+      super(27);
    }
 
-   public void a(boolean $$0, cyy<?> $$1, arg $$2) {
-      new akt<>(this).a($$2, (cyy<? extends cyw<C>>)$$1, $$0);
+   public void a(dqe $$0) {
+      this.b = $$0;
    }
 
-   public abstract void a(cnc var1);
+   public boolean b(dqe $$0) {
+      return this.b == $$0;
+   }
 
    @Override
-   public abstract void l();
+   public void a(uy $$0, jk.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, cur.l);
+      }
 
-   public abstract boolean a(cyy<? extends cyw<C>> var1);
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         us $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, cur.a($$1, (vp)$$4).orElse(cur.l));
+         }
+      }
+   }
 
-   public abstract int m();
+   @Override
+   public uy a(jk.a $$0) {
+      uy $$1 = new uy();
 
-   public abstract int n();
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cur $$3 = this.a($$2);
+         if (!$$3.e()) {
+            us $$4 = new us();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
 
-   public abstract int o();
+      return $$1;
+   }
 
-   public abstract int p();
+   @Override
+   public boolean a(cmz $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   }
 
-   public abstract crj t();
+   @Override
+   public void d_(cmz $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
 
-   public abstract boolean e(int var1);
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cmz $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
+   }
 }

@@ -1,12 +1,12 @@
-public class guv implements gva {
-   private static final int a = 6000;
-   private static final xp b = xp.c("tutorial.find_tree.title");
-   private static final xp c = xp.c("tutorial.find_tree.description");
-   private final guz d;
-   private fjq e;
+public class guv implements gvb {
+   private static final int a = 1200;
+   private static final xp b = xp.c("tutorial.craft_planks.title");
+   private static final xp c = xp.c("tutorial.craft_planks.description");
+   private final gva d;
+   private fjr e;
    private int f;
 
-   public guv(guz $$0) {
+   public guv(gva $$0) {
       this.d = $$0;
    }
 
@@ -14,18 +14,25 @@ public class guv implements gva {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(gvb.f);
+         this.d.a(gvc.f);
       } else {
          if (this.f == 1) {
-            gcr $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gvb.e);
-               return;
+            gcs $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.gc().a(awy.b)) {
+                  this.d.a(gvc.f);
+                  return;
+               }
+
+               if (a($$0, awy.b)) {
+                  this.d.a(gvc.f);
+                  return;
+               }
             }
          }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fjq(fjq.a.c, b, c, false);
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fjr(fjr.a.e, b, c, false);
             this.d.e().ax().a(this.e);
          }
       }
@@ -40,30 +47,15 @@ public class guv implements gva {
    }
 
    @Override
-   public void a(fxw $$0, evq $$1) {
-      if ($$1.c() == evq.a.b) {
-         dsd $$2 = $$0.a_(((evo)$$1).a());
-         if ($$2.a(awp.aj)) {
-            this.d.a(gvb.c);
-         }
+   public void a(cur $$0) {
+      if ($$0.a(awy.b)) {
+         this.d.a(gvc.f);
       }
    }
 
-   @Override
-   public void a(cuq $$0) {
-      if ($$0.a(awy.aM)) {
-         this.d.a(gvb.e);
-      }
-   }
-
-   private static boolean b(gcr $$0) {
-      return $$0.gc().a_($$0x -> $$0x.a(awy.aM));
-   }
-
-   public static boolean a(gcr $$0) {
-      for (ji<dfa> $$1 : lp.e.c(awp.aj)) {
-         dfa $$2 = $$1.a();
-         if ($$0.j().a(awk.a.b($$2)) > 0) {
+   public static boolean a(gcs $$0, axf<cum> $$1) {
+      for (ji<cum> $$2 : lp.h.c($$1)) {
+         if ($$0.j().a(awk.b.b($$2.a())) > 0) {
             return true;
          }
       }

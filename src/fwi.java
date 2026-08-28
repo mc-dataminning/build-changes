@@ -1,27 +1,26 @@
-public class fwi<T extends bsv> extends ftt<T> {
-   private final fxb a;
-   private final fxb b;
+public class fwi<T extends bsw> extends ftu<T> {
+   private final fxc a;
+   private final fxc b;
 
-   public fwi(fxb $$0) {
+   public fwi(fxc $$0) {
       this.a = $$0;
       this.b = $$0.b("tail");
    }
 
-   public static fxh a(fxf $$0) {
-      fxj $$1 = new fxj();
-      fxk $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", fxg.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fxd.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", fxg.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fxd.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", fxg.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxd.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fxg.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxd.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fxg.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fxd.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", fxg.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fxd.a(0.0F, 22.0F, -3.0F));
-      return fxh.a($$1, 32, 32);
+   public static fxi a(fxg $$0) {
+      fxk $$1 = new fxk();
+      fxl $$2 = $$1.a();
+      int $$3 = 22;
+      $$2.a("body", fxh.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fxe.a(0.0F, 22.0F, 0.0F));
+      $$2.a("tail", fxh.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxe.a(0.0F, 22.0F, 3.0F));
+      $$2.a("right_fin", fxh.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxe.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fxh.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxe.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fxh.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxe.a(0.0F, 20.5F, -3.0F));
+      return fxi.a($$1, 32, 32);
    }
 
    @Override
-   public fxb a() {
+   public fxc a() {
       return this.a;
    }
 

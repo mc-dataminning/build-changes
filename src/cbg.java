@@ -1,32 +1,49 @@
-public class cbg extends caf {
-   private final boolean a;
-   private int b;
+import java.util.EnumSet;
 
-   public cbg(bts $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class cbg extends cap {
+   private static final cei b = cei.b().a(6.0);
+   public static final int a = 400;
+   private final cft c;
+   private cmm d;
+   private int e;
+
+   public cbg(cft $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(cap.a.a, cap.a.b));
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.c.dP().R()) {
+         return false;
+      } else if (this.c.el().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dP().a(cmm.class, b, this.c, this.c.du(), this.c.dw(), this.c.dA(), this.c.cK().c(6.0, 2.0, 6.0));
+         return this.d != null;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a && this.b > 0 && super.b();
+      return this.e > 0;
    }
 
    @Override
    public void c() {
-      this.b = 20;
-      this.a(true);
+      this.e = this.a(400);
+      this.c.w(true);
    }
 
    @Override
    public void d() {
-      this.a(false);
+      this.c.w(false);
+      this.d = null;
    }
 
    @Override
    public void e() {
-      this.b--;
-      super.e();
+      this.c.G().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

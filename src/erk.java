@@ -1,91 +1,88 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.Predicate;
 
-public class erk extends erv {
+public class erk extends erw {
    public static final MapCodec<erk> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(eui.a.fieldOf("source").forGetter($$0x -> $$0x.b), erk.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  erk.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  kl.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
+                  kl.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, erk::new)
    );
-   private final euh b;
-   private final List<erk.b> c;
+   private final erk.b b;
+   private final Optional<List<kl<?>>> c;
+   private final Optional<List<kl<?>>> d;
+   private final Predicate<kl<?>> e;
 
-   erk(List<ett> $$0, euh $$1, List<erk.b> $$2) {
+   erk(List<etu> $$0, erk.b $$1, Optional<List<kl<?>>> $$2, Optional<List<kl<?>>> $$3) {
       super($$0);
       this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$2.map(List::copyOf);
+      this.d = $$3.map(List::copyOf);
+      List<Predicate<kl<?>>> $$4 = new ArrayList<>(2);
+      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
+      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
+      this.e = ac.a($$4);
    }
 
    @Override
-   public erx<erk> b() {
-      return ery.C;
+   public ery<erk> b() {
+      return erz.J;
    }
 
    @Override
-   public Set<etc<?>> a() {
-      return this.b.b();
+   public Set<etd<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cuq a(cuq $$0, eqj $$1) {
-      vp $$2 = this.b.a($$1);
-      if ($$2 == null) {
-         return $$0;
-      } else {
-         MutableObject<us> $$3 = new MutableObject();
-         Supplier<vp> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(km.b, cxf.a).c());
-            }
-
-            return (vp)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         us $$5 = (us)$$3.getValue();
-         if ($$5 != null) {
-            cxf.a(km.b, $$0, $$5);
-         }
-
-         return $$0;
-      }
+   public cur a(cur $$0, eqk $$1) {
+      ki $$2 = this.b.a($$1);
+      $$0.b($$2.a(this.e));
+      return $$0;
    }
 
-   @Deprecated
-   public static erk.a a(euh $$0) {
+   public static erk.a a(erk.b $$0) {
       return new erk.a($$0);
    }
 
-   public static erk.a a(eqj.b $$0) {
-      return new erk.a(euf.a($$0));
-   }
+   public static class a extends erw.a<erk.a> {
+      private final erk.b a;
+      private Optional<Builder<kl<?>>> b = Optional.empty();
+      private Optional<Builder<kl<?>>> c = Optional.empty();
 
-   public static class a extends erv.a<erk.a> {
-      private final euh a;
-      private final List<erk.b> b = Lists.newArrayList();
-
-      a(euh $$0) {
+      a(erk.b $$0) {
          this.a = $$0;
       }
 
-      public erk.a a(String $$0, String $$1, erk.c $$2) {
-         try {
-            this.b.add(new erk.b(fh.g.a($$0), fh.g.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
+      public erk.a a(kl<?> $$0) {
+         if (this.b.isEmpty()) {
+            this.b = Optional.of(ImmutableList.builder());
          }
+
+         this.b.get().add($$0);
+         return this;
       }
 
-      public erk.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, erk.c.a);
+      public erk.a b(kl<?> $$0) {
+         if (this.c.isEmpty()) {
+            this.c = Optional.of(ImmutableList.builder());
+         }
+
+         this.c.get().add($$0);
+         return this;
       }
 
       protected erk.a a() {
@@ -93,86 +90,43 @@ public class erk extends erv {
       }
 
       @Override
-      public erw b() {
-         return new erk(this.g(), this.a, this.b);
+      public erx b() {
+         return new erk(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
       }
    }
 
-   static record b(fh.g b, fh.g c, erk.c d) {
-      public static final Codec<erk.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fh.g.a.fieldOf("source").forGetter(erk.b::a), fh.g.a.fieldOf("target").forGetter(erk.b::b), erk.c.d.fieldOf("op").forGetter(erk.b::c))
-               .apply($$0, erk.b::new)
-      );
+   public static enum b implements azu {
+      a("block_entity");
 
-      public void a(Supplier<vp> $$0, vp $$1) {
-         try {
-            List<vp> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c, $$2);
-            }
-         } catch (CommandSyntaxException var4) {
+      public static final Codec<erk.b> b = azu.b(erk.b::values);
+      private final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+
+      public ki a(eqk $$0) {
+         switch (this) {
+            case a:
+               dpj $$1 = $$0.c(etg.h);
+               return $$1 != null ? $$1.s() : ki.a;
+            default:
+               throw new MatchException(null, null);
          }
       }
 
-      public fh.g a() {
-         return this.b;
-      }
-
-      public fh.g b() {
-         return this.c;
-      }
-
-      public erk.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements azu {
-      a("replace") {
-         @Override
-         public void a(vp $$0, fh.g $$1, List<vp> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (vp)Iterables.getLast($$2));
+      public Set<etd<?>> a() {
+         switch (this) {
+            case a:
+               return Set.of(etg.h);
+            default:
+               throw new MatchException(null, null);
          }
-      },
-      b("append") {
-         @Override
-         public void a(vp $$0, fh.g $$1, List<vp> $$2) throws CommandSyntaxException {
-            List<vp> $$3 = $$1.a($$0, uy::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof uy) {
-                  $$2.forEach($$1xx -> ((uy)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(vp $$0, fh.g $$1, List<vp> $$2) throws CommandSyntaxException {
-            List<vp> $$3 = $$1.a($$0, us::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof us) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof us) {
-                        ((us)$$1x).a((us)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<erk.c> d = azu.a(erk.c::values);
-      private final String e;
-
-      public abstract void a(vp var1, fh.g var2, List<vp> var3) throws CommandSyntaxException;
-
-      c(final String $$0) {
-         this.e = $$0;
       }
 
       @Override
       public String c() {
-         return this.e;
+         return this.c;
       }
    }
 }

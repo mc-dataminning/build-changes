@@ -1,42 +1,57 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class ehq extends dys {
-   private final dcu a;
-   private final dua b;
-   private final Optional<ehp> c;
+public record ehq(ji<ean<?, ?>> e, List<eht> f) {
+   public static final Codec<ehq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ean.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eht.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, ehq::new)
+   );
+   public static final Codec<ji<ehq>> b = alb.a(lq.aI, a);
+   public static final Codec<jm<ehq>> c = jx.a(lq.aI, a);
+   public static final Codec<List<jm<ehq>>> d = jx.a(lq.aI, a, true).listOf();
 
-   public ehq(dcu $$0, dua $$1, Optional<ehp> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public boolean a(dcv $$0, dub $$1, azh $$2, iz $$3) {
+      return this.a(new ehr($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public int a(dxv.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public boolean b(dcv $$0, dub $$1, azh $$2, iz $$3) {
+      return this.a(new ehr($$0, $$1, Optional.of(this)), $$2, $$3);
    }
 
-   public dty a(dbg $$0, dxr.a $$1) {
-      return ((dut)this.a.a($$0.e, $$0.f)).b($$1);
+   private boolean a(ehr $$0, azh $$1, iz $$2) {
+      Stream<iz> $$3 = Stream.of($$2);
+
+      for (eht $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      ean<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
    }
 
-   public dsd a(iz $$0) {
-      return this.a.a_($$0);
+   public Stream<ean<?, ?>> a() {
+      return this.e.a().a();
    }
 
-   public int c() {
-      return this.a.I_();
+   @Override
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   public dcu d() {
-      return this.a;
+   public ji<ean<?, ?>> b() {
+      return this.e;
    }
 
-   public Optional<ehp> e() {
-      return this.c;
-   }
-
-   public dua f() {
-      return this.b;
+   public List<eht> c() {
+      return this.f;
    }
 }

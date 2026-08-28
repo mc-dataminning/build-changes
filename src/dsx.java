@@ -1,27 +1,20 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public enum dsx implements azu {
+   a("compare"),
+   b("subtract");
 
-public class dsx extends dtb<je> {
-   protected dsx(String $$0, Collection<je> $$1) {
-      super($$0, je.class, $$1);
+   private final String c;
+
+   private dsx(final String $$0) {
+      this.c = $$0;
    }
 
-   public static dsx a(String $$0) {
-      return a($$0, $$0x -> true);
+   @Override
+   public String toString() {
+      return this.c;
    }
 
-   public static dsx a(String $$0, Predicate<je> $$1) {
-      return a($$0, Arrays.stream(je.values()).filter($$1).collect(Collectors.toList()));
-   }
-
-   public static dsx a(String $$0, je... $$1) {
-      return a($$0, Lists.newArrayList($$1));
-   }
-
-   public static dsx a(String $$0, Collection<je> $$1) {
-      return new dsx($$0, $$1);
+   @Override
+   public String c() {
+      return this.c;
    }
 }

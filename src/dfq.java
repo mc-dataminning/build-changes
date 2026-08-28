@@ -1,114 +1,137 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class dfq extends dds {
-   public static final MapCodec<dfq> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lp.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, dfq::new)
-   );
-   public static final dsu d = dds.b;
-   protected static final float e = 1.0F;
-   protected static final ewl f = dfa.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final ewl g = dfa.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final ewl h = ewi.a(f, g);
-   private static final Map<dfp, dfq> i = Maps.newHashMap();
-   private static final Iterable<evs> j = ImmutableList.of(new evs(0.5, 1.0, 0.5));
-   private final dfp k;
+public class dfq extends ddt implements dmc {
+   public static final MapCodec<dfq> c = b(dfq::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final dte f = dsu.az;
+   public static final dsv g = ddt.b;
+   public static final dsv h = dsu.C;
+   public static final ToIntFunction<dse> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<evt>> j = ac.a(() -> {
+      Int2ObjectMap<List<evt>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new evt(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new evt(0.375, 0.44, 0.5), new evt(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new evt(0.5, 0.313, 0.625), new evt(0.375, 0.44, 0.5), new evt(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new evt(0.44, 0.313, 0.56), new evt(0.625, 0.44, 0.56), new evt(0.375, 0.44, 0.375), new evt(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final ewm k = dfb.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final ewm l = dfb.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final ewm m = dfb.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final ewm n = dfb.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
    @Override
    public MapCodec<dfq> a() {
       return c;
    }
 
-   protected dfq(dfa $$0, dsc.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(d, Boolean.valueOf(false)));
-      if ($$0 instanceof dfp $$2) {
-         i.put($$2, this);
-         this.k = $$2;
-      } else {
-         throw new IllegalArgumentException("Expected block to be of " + dfp.class + " was " + $$0.getClass());
-      }
+   public dfq(dsd.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(f, Integer.valueOf(1)).a(g, Boolean.valueOf(false)).a(h, Boolean.valueOf(false)));
    }
 
    @Override
-   protected Iterable<evs> b(dsd $$0) {
-      return j;
-   }
-
-   @Override
-   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
-      return h;
-   }
-
-   @Override
-   protected bqx a(cuq $$0, dsd $$1, dbz $$2, iz $$3, cmy $$4, bqu $$5, evo $$6) {
-      if ($$0.a(cut.os) || $$0.a(cut.tX)) {
-         return bqx.e;
-      } else if (a($$6) && $$0.e() && $$1.c(d)) {
+   protected bqy a(cur $$0, dse $$1, dca $$2, iz $$3, cmz $$4, bqv $$5, evp $$6) {
+      if ($$0.e() && $$4.gd().e && $$1.c(g)) {
          a($$4, $$1, $$2, $$3);
-         return bqx.a($$2.B);
+         return bqy.a($$2.B);
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
    @Override
-   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
-      bqv $$5 = dfm.a($$1, $$2, dfc.eg.o(), $$3);
-      if ($$5.a()) {
-         c($$0, $$1, $$2);
+   protected boolean a(dse $$0, cyc $$1) {
+      return !$$1.h() && $$1.n().g() == this.r() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public dse a(cyc $$0) {
+      dse $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         enx $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == eny.c;
+         return super.a($$0).a(h, Boolean.valueOf($$3));
+      }
+   }
+
+   @Override
+   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, eny.c, eny.c.a($$3));
       }
 
-      return $$5;
-   }
-
-   private static boolean a(evo $$0) {
-      return $$0.e().d - (double)$$0.a().v() > 0.5;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(d);
+   protected enx b_(dse $$0) {
+      return $$0.c(h) ? eny.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public cuq a(dcc $$0, iz $$1, dsd $$2) {
-      return new cuq(dfc.eg);
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      switch ($$0.c(f)) {
+         case 1:
+         default:
+            return k;
+         case 2:
+            return l;
+         case 3:
+            return m;
+         case 4:
+            return n;
+      }
    }
 
    @Override
-   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
-      return $$1 == je.a && !$$0.a($$3, $$4) ? dfc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dsf.a<dfb, dse> $$0) {
+      $$0.a(f, g, h);
    }
 
    @Override
-   protected boolean a(dsd $$0, dcc $$1, iz $$2) {
-      return $$1.a_($$2.d()).e();
+   public boolean a(dcb $$0, iz $$1, dse $$2, enx $$3) {
+      if (!$$2.c(h) && $$3.a() == eny.c) {
+         dse $$4 = $$2.a(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
+         }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static boolean g(dse $$0) {
+      return $$0.a(awp.ae, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
    }
 
    @Override
-   protected int a(dsd $$0, dbz $$1, iz $$2) {
-      return dfm.d;
+   protected Iterable<evt> b(dse $$0) {
+      return (Iterable<evt>)j.get($$0.c(f));
    }
 
    @Override
-   protected boolean c_(dsd $$0) {
-      return true;
+   protected boolean d(dse $$0) {
+      return !$$0.c(h) && super.d($$0);
    }
 
    @Override
-   protected boolean a(dsd $$0, eol $$1) {
-      return false;
-   }
-
-   public static dsd a(dfp $$0) {
-      return i.get($$0).o();
-   }
-
-   public static boolean g(dsd $$0) {
-      return $$0.a(awp.bk, $$1 -> $$1.b(d) && !$$0.c(d));
+   protected boolean a(dse $$0, dcd $$1, iz $$2) {
+      return dfb.a($$1, $$2.d(), je.b);
    }
 }

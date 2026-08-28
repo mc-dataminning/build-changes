@@ -7,10 +7,10 @@ public class aeq implements zw<aci> {
    private final double d;
    private final float e;
    private final float f;
-   private final Set<bue> g;
+   private final Set<buf> g;
    private final int h;
 
-   public aeq(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bue> $$5, int $$6) {
+   public aeq(double $$0, double $$1, double $$2, float $$3, float $$4, Set<buf> $$5, int $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class aeq implements zw<aci> {
       this.d = $$0.readDouble();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
-      this.g = bue.a($$0.readUnsignedByte());
+      this.g = buf.a($$0.readUnsignedByte());
       this.h = $$0.l();
    }
 
@@ -36,7 +36,7 @@ public class aeq implements zw<aci> {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.k(bue.a(this.g));
+      $$0.k(buf.a(this.g));
       $$0.c(this.h);
    }
 
@@ -73,7 +73,7 @@ public class aeq implements zw<aci> {
       return this.h;
    }
 
-   public Set<bue> j() {
+   public Set<buf> j() {
       return this.g;
    }
 }

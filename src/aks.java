@@ -1,10 +1,10 @@
 import java.util.Iterator;
 
 public interface aks<T> {
-   default void a(int $$0, int $$1, int $$2, cyy<?> $$3, Iterator<T> $$4, int $$5) {
+   default void a(int $$0, int $$1, int $$2, cyz<?> $$3, Iterator<T> $$4, int $$5) {
       int $$6 = $$0;
       int $$7 = $$1;
-      if ($$3.b() instanceof czd $$9) {
+      if ($$3.b() instanceof cze $$9) {
          $$6 = $$9.j();
          $$7 = $$9.k();
       }

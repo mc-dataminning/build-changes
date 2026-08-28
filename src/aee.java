@@ -1,13 +1,13 @@
 public class aee implements zw<aci> {
    public static final zn<wm, aee> a = zw.a(aee::a, aee::new);
-   private final bqu b;
+   private final bqv b;
 
-   public aee(bqu $$0) {
+   public aee(bqv $$0) {
       this.b = $$0;
    }
 
    private aee(wm $$0) {
-      this.b = $$0.b(bqu.class);
+      this.b = $$0.b(bqv.class);
    }
 
    private void a(wm $$0) {
@@ -23,7 +23,7 @@ public class aee implements zw<aci> {
       $$0.a(this);
    }
 
-   public bqu b() {
+   public bqv b() {
       return this.b;
    }
 }

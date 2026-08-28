@@ -1,93 +1,47 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import java.util.concurrent.atomic.AtomicLong;
 
-public interface dyp {
-   Codec<dyp> a = Codec.xor(dyp.b.d, Codec.xor(dyp.a.d, dyp.c.d)).xmap(dyp::a, dyp::a);
-   dyp b = b(0);
-   dyp c = c(0);
+@Deprecated
+public class dyp implements dxl {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dxy i = new dxy(this);
 
-   static dyp a(int $$0) {
-      return new dyp.b($$0);
+   public dyp(long $$0) {
+      this.b($$0);
    }
 
-   static dyp b(int $$0) {
-      return new dyp.a($$0);
+   @Override
+   public azh d() {
+      return new dyp(this.g());
    }
 
-   static dyp c(int $$0) {
-      return new dyp.c($$0);
+   @Override
+   public dyj e() {
+      return new dxx.a(this.g());
    }
 
-   static dyp a() {
-      return b;
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
    }
 
-   static dyp b() {
-      return c;
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
    }
 
-   private static dyp a(Either<dyp.b, Either<dyp.a, dyp.c>> $$0) {
-      return (dyp)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<dyp.b, Either<dyp.a, dyp.c>> a(dyp $$0) {
-      return $$0 instanceof dyp.b ? Either.left((dyp.b)$$0) : Either.right($$0 instanceof dyp.a ? Either.left((dyp.a)$$0) : Either.right((dyp.c)$$0));
-   }
-
-   int a(dys var1);
-
-   public static record a(int e) implements dyp {
-      public static final Codec<dyp.a> d = Codec.intRange(dvv.e, dvv.d).fieldOf("above_bottom").xmap(dyp.a::new, dyp.a::c).codec();
-
-      @Override
-      public int a(dys $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements dyp {
-      public static final Codec<dyp.b> d = Codec.intRange(dvv.e, dvv.d).fieldOf("absolute").xmap(dyp.b::new, dyp.b::c).codec();
-
-      @Override
-      public int a(dys $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements dyp {
-      public static final Codec<dyp.c> d = Codec.intRange(dvv.e, dvv.d).fieldOf("below_top").xmap(dyp.c::new, dyp.c::c).codec();
-
-      @Override
-      public int a(dys $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

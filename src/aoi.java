@@ -40,7 +40,7 @@ public class aoi {
       );
    }
 
-   private static int a(ep $$0, Collection<arg> $$1, Collection<cyy<?>> $$2) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<arg> $$1, Collection<cyz<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arg $$4 : $$1) {
@@ -60,7 +60,7 @@ public class aoi {
       }
    }
 
-   private static int b(ep $$0, Collection<arg> $$1, Collection<cyy<?>> $$2) throws CommandSyntaxException {
+   private static int b(ep $$0, Collection<arg> $$1, Collection<cyz<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arg $$4 : $$1) {

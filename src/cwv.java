@@ -1,46 +1,103 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-public record cwv(String e, ji<cul> f, float g, Map<ji<csg>, String> h, xp i) {
+public class cwv implements cxx {
    public static final Codec<cwv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayh.A.fieldOf("asset_name").forGetter(cwv::a),
-               alc.a(lq.G).fieldOf("ingredient").forGetter(cwv::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(cwv::c),
-               Codec.unboundedMap(csg.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cwv::d),
-               xr.a.fieldOf("description").forGetter(cwv::e)
+               cww.c.fieldOf("material").forGetter(cwv::b),
+               cwy.c.fieldOf("pattern").forGetter(cwv::a),
+               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, cwv::new)
    );
-   public static final zn<xa, cwv> b = zn.a(
-      zl.l, cwv::a, zl.b(lq.G), cwv::b, zl.i, cwv::c, zl.a(Object2ObjectOpenHashMap::new, zl.b(lq.au), zl.l), cwv::d, xr.b, cwv::e, cwv::new
-   );
-   public static final Codec<ji<cwv>> c = alb.a(lq.aO, a);
-   public static final zn<xa, ji<cwv>> d = zl.a(lq.aO, b);
+   public static final zn<xa, cwv> b = zn.a(cww.d, cwv::b, cwy.d, cwv::a, zl.b, $$0 -> $$0.f, cwv::new);
+   private static final xp c = xp.c(ac.a("item", new alf("smithing_template.upgrade"))).a(n.h);
+   private final ji<cww> d;
+   private final ji<cwy> e;
+   private final boolean f;
+   private final Function<ji<csh>, alf> g;
+   private final Function<ji<csh>, alf> h;
 
-   public static cwv a(String $$0, cul $$1, float $$2, xp $$3, Map<ji<csg>, String> $$4) {
-      return new cwv($$0, lp.h.e($$1), $$2, $$4, $$3);
+   private cwv(ji<cww> $$0, ji<cwy> $$1, boolean $$2, Function<ji<csh>, alf> $$3, Function<ji<csh>, alf> $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   public String a() {
+   public cwv(ji<cww> $$0, ji<cwy> $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.g = ac.b($$2x -> {
+         alf $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$4));
+      });
+      this.h = ac.b($$2x -> {
+         alf $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$4));
+      });
+      this.f = $$2;
+   }
+
+   public cwv(ji<cww> $$0, ji<cwy> $$1) {
+      this($$0, $$1, true);
+   }
+
+   private static String b(ji<cww> $$0, ji<csh> $$1) {
+      Map<ji<csh>, String> $$2 = $$0.a().d();
+      String $$3 = $$2.get($$1);
+      return $$3 != null ? $$3 : $$0.a().a();
+   }
+
+   public boolean a(ji<cwy> $$0, ji<cww> $$1) {
+      return $$0.equals(this.e) && $$1.equals(this.d);
+   }
+
+   public ji<cwy> a() {
       return this.e;
    }
 
-   public ji<cul> b() {
-      return this.f;
+   public ji<cww> b() {
+      return this.d;
    }
 
-   public float c() {
-      return this.g;
+   public alf a(ji<csh> $$0) {
+      return this.g.apply($$0);
    }
 
-   public Map<ji<csg>, String> d() {
-      return this.h;
+   public alf b(ji<csh> $$0) {
+      return this.h.apply($$0);
    }
 
-   public xp e() {
-      return this.i;
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cwv $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + (this.f ? 1 : 0);
+   }
+
+   @Override
+   public void a(cum.b $$0, Consumer<xp> $$1, cwk $$2) {
+      if (this.f) {
+         $$1.accept(c);
+         $$1.accept(xo.a().b(this.e.a().a(this.d)));
+         $$1.accept(xo.a().b(this.d.a().e()));
+      }
+   }
+
+   public cwv a(boolean $$0) {
+      return new cwv(this.d, this.e, $$0, this.g, this.h);
    }
 }

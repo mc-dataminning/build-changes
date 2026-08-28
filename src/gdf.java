@@ -1,398 +1,136 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InvalidClassException;
-import java.io.Reader;
-import java.util.List;
-import java.util.Map;
-import java.util.function.IntSupplier;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gdf implements ezk, AutoCloseable {
-   private static final String a = "shaders/program/";
-   private static final Logger b = LogUtils.getLogger();
-   private static final ezi c = new ezi();
-   private static final boolean d = true;
-   private static gdf e;
-   private static int f = -1;
-   private final Map<String, IntSupplier> g = Maps.newHashMap();
-   private final List<String> h = Lists.newArrayList();
-   private final List<Integer> i = Lists.newArrayList();
-   private final List<ezq> j = Lists.newArrayList();
-   private final List<Integer> k = Lists.newArrayList();
-   private final Map<String, ezq> l = Maps.newHashMap();
-   private final int m;
-   private final String n;
-   private boolean o;
-   private final ezj p;
-   private final List<Integer> q;
-   private final List<String> r;
-   private final ezl s;
-   private final ezl t;
+public abstract class gdf {
+   private static final Object2ObjectMap<alf, gdf> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
+      gdf.c $$1 = new gdf.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dvu.e, $$1);
+      $$0.put(dvu.f, new gdf.b());
+      $$0.put(dvu.g, new gdf.a());
+   });
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final gdf.d e;
+   private final boolean f;
+   private final boolean g;
 
-   public gdf(aus $$0, String $$1) throws IOException {
-      alf $$2 = new alf("shaders/program/" + $$1 + ".json");
-      this.n = $$1;
-      aun $$3 = $$0.getResourceOrThrow($$2);
-
-      try (Reader $$4 = $$3.e()) {
-         JsonObject $$5 = ayp.a($$4);
-         String $$6 = ayp.i($$5, "vertex");
-         String $$7 = ayp.i($$5, "fragment");
-         JsonArray $$8 = ayp.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var20) {
-                  ali $$12 = ali.a(var20);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = ayp.a($$5, "attributes", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-            this.q = Lists.newArrayListWithCapacity($$13.size());
-            this.r = Lists.newArrayListWithCapacity($$13.size());
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.r.add(ayp.a($$15, "attribute"));
-               } catch (Exception var19) {
-                  ali $$17 = ali.a(var19);
-                  $$17.a("attributes[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         } else {
-            this.q = null;
-            this.r = null;
-         }
-
-         JsonArray $$18 = ayp.a($$5, "uniforms", null);
-         if ($$18 != null) {
-            int $$19 = 0;
-
-            for (JsonElement $$20 : $$18) {
-               try {
-                  this.b($$20);
-               } catch (Exception var18) {
-                  ali $$22 = ali.a(var18);
-                  $$22.a("uniforms[" + $$19 + "]");
-                  throw $$22;
-               }
-
-               $$19++;
-            }
-         }
-
-         this.p = a(ayp.a($$5, "blend", null));
-         this.s = a($$0, ezn.a.a, $$6);
-         this.t = a($$0, ezn.a.b, $$7);
-         this.m = ezo.a();
-         ezo.b(this);
-         this.i();
-         if (this.r != null) {
-            for (String $$23 : this.r) {
-               int $$24 = ezq.b(this.m, $$23);
-               this.q.add($$24);
-            }
-         }
-      } catch (Exception var22) {
-         ali $$26 = ali.a(var22);
-         $$26.b($$2.a() + " (" + $$3.b() + ")");
-         throw $$26;
-      }
-
-      this.b();
+   public gdf(float $$0, boolean $$1, gdf.d $$2, boolean $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public static ezl a(aus $$0, ezn.a $$1, String $$2) throws IOException {
-      ezn $$3 = $$1.c().get($$2);
-      if ($$3 != null && !($$3 instanceof ezl)) {
-         throw new InvalidClassException("Program is not of type EffectProgram");
-      } else {
-         ezl $$7;
-         if ($$3 == null) {
-            alf $$4 = new alf("shaders/program/" + $$2 + $$1.b());
-            aun $$5 = $$0.getResourceOrThrow($$4);
-
-            try (InputStream $$6 = $$5.d()) {
-               $$7 = ezl.a($$1, $$2, $$6, $$5.b());
-            }
-         } else {
-            $$7 = (ezl)$$3;
-         }
-
-         return $$7;
-      }
-   }
-
-   public static ezj a(@Nullable JsonObject $$0) {
-      if ($$0 == null) {
-         return new ezj();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (ayp.a($$0, "func")) {
-            $$1 = ezj.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
-         }
-
-         if (ayp.a($$0, "srcrgb")) {
-            $$2 = ezj.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
-
-         if (ayp.a($$0, "dstrgb")) {
-            $$3 = ezj.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (ayp.a($$0, "srcalpha")) {
-            $$4 = ezj.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (ayp.a($$0, "dstalpha")) {
-            $$5 = ezj.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new ezj();
-         } else {
-            return $$7 ? new ezj($$2, $$3, $$4, $$5, $$1) : new ezj($$2, $$3, $$1);
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      for (ezq $$0 : this.j) {
-         $$0.close();
-      }
-
-      ezo.a(this);
-   }
-
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      ezo.a(0);
-      f = -1;
-      e = null;
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         if (this.g.get(this.h.get($$0)) != null) {
-            GlStateManager._activeTexture(33984 + $$0);
-            GlStateManager._bindTexture(0);
-         }
-      }
-   }
-
-   public void g() {
-      RenderSystem.assertOnGameThread();
-      this.o = false;
-      e = this;
-      this.p.a();
-      if (this.m != f) {
-         ezo.a(this.m);
-         f = this.m;
-      }
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         String $$1 = this.h.get($$0);
-         IntSupplier $$2 = this.g.get($$1);
-         if ($$2 != null) {
-            RenderSystem.activeTexture(33984 + $$0);
-            int $$3 = $$2.getAsInt();
-            if ($$3 != -1) {
-               RenderSystem.bindTexture($$3);
-               ezq.b(this.i.get($$0), $$0);
-            }
-         }
-      }
-
-      for (ezq $$4 : this.j) {
-         $$4.b();
-      }
-   }
-
-   @Override
-   public void b() {
-      this.o = true;
+   public static gdf a(dvw $$0) {
+      return (gdf)a.get($$0.r());
    }
 
    @Nullable
-   public ezq a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.l.get($$0);
-   }
-
-   public ezi b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      ezq $$1 = this.a($$0);
-      return (ezi)($$1 == null ? c : $$1);
-   }
-
-   private void i() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
-
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         String $$2 = this.h.get($$1);
-         int $$3 = ezq.a(this.m, $$2);
-         if ($$3 == -1) {
-            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
-            this.g.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.i.add($$3);
-         }
-      }
-
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         this.h.remove($$0.getInt($$4));
-      }
-
-      for (ezq $$5 : this.j) {
-         String $$6 = $$5.a();
-         int $$7 = ezq.a(this.m, $$6);
-         if ($$7 == -1) {
-            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
-         } else {
-            this.k.add($$7);
-            $$5.b($$7);
-            this.l.put($$6, $$5);
-         }
-      }
-   }
-
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = ayp.m($$0, "sampler");
-      String $$2 = ayp.i($$1, "name");
-      if (!ayp.a($$1, "file")) {
-         this.g.put($$2, null);
-         this.h.add($$2);
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = ayz.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - ayz.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
       } else {
-         this.h.add($$2);
+         return null;
       }
    }
 
-   public void a(String $$0, IntSupplier $$1) {
-      if (this.g.containsKey($$0)) {
-         this.g.remove($$0);
-      }
-
-      this.g.put($$0, $$1);
-      this.b();
+   public float a() {
+      return this.c;
    }
 
-   private void b(JsonElement $$0) throws ali {
-      JsonObject $$1 = ayp.m($$0, "uniform");
-      String $$2 = ayp.i($$1, "name");
-      int $$3 = ezq.a(ayp.i($$1, "type"));
-      int $$4 = ayp.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = ayp.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new ali("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
+   public boolean b() {
+      return this.d;
+   }
 
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = ayp.e($$8, "value");
-            } catch (Exception var13) {
-               ali $$10 = ali.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
+   public abstract evt a(evt var1, float var2);
 
-            $$7++;
-         }
+   public abstract boolean a(int var1, int var2);
 
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
-            }
-         }
+   public gdf.d c() {
+      return this.e;
+   }
 
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         ezq $$12 = new ezq($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a($$5);
-         }
+   public boolean d() {
+      return this.f;
+   }
 
-         this.j.add($$12);
+   public boolean e() {
+      return this.g;
+   }
+
+   public static class a extends gdf {
+      public a() {
+         super(Float.NaN, false, gdf.d.c, true, false);
+      }
+
+      @Override
+      public evt a(evt $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
       }
    }
 
-   @Override
-   public ezn c() {
-      return this.s;
+   public static class b extends gdf {
+      public b() {
+         super(Float.NaN, true, gdf.d.a, false, true);
+      }
+
+      @Override
+      public evt a(evt $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
    }
 
-   @Override
-   public ezn d() {
-      return this.t;
+   public static class c extends gdf {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, gdf.d.b, false, false);
+      }
+
+      @Override
+      public evt a(evt $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
    }
 
-   @Override
-   public void e() {
-      this.t.a(this);
-      this.s.a(this);
-   }
-
-   public String h() {
-      return this.n;
-   }
-
-   @Override
-   public int a() {
-      return this.m;
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

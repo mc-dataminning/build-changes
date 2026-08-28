@@ -30,7 +30,7 @@ public class anw {
                               .suggests(a)
                               .then(
                                  ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("pos", gl.a())
-                                             .executes($$1xx -> a($$1xx, fr.a($$1xx, "loot_table"), gl.a($$1xx, "pos"), cuq.l, $$2)))
+                                             .executes($$1xx -> a($$1xx, fr.a($$1xx, "loot_table"), gl.a($$1xx, "pos"), cur.l, $$2)))
                                           .then(
                                              eq.a("tool", gy.a($$1))
                                                 .executes(
@@ -39,11 +39,11 @@ public class anw {
                                           ))
                                        .then(
                                           eq.a("mainhand")
-                                             .executes($$1xx -> a($$1xx, fr.a($$1xx, "loot_table"), gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btc.a), $$2))
+                                             .executes($$1xx -> a($$1xx, fr.a($$1xx, "loot_table"), gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btd.a), $$2))
                                        ))
                                     .then(
                                        eq.a("offhand")
-                                          .executes($$1xx -> a($$1xx, fr.a($$1xx, "loot_table"), gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btc.b), $$2))
+                                          .executes($$1xx -> a($$1xx, fr.a($$1xx, "loot_table"), gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btd.b), $$2))
                                     )
                               )
                         )
@@ -54,10 +54,10 @@ public class anw {
                      eq.a("mine")
                         .then(
                            ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("pos", gl.a())
-                                       .executes($$1xx -> a($$1xx, gl.a($$1xx, "pos"), cuq.l, $$2)))
+                                       .executes($$1xx -> a($$1xx, gl.a($$1xx, "pos"), cur.l, $$2)))
                                     .then(eq.a("tool", gy.a($$1)).executes($$1xx -> a($$1xx, gl.a($$1xx, "pos"), gy.a($$1xx, "tool").a(1, false), $$2))))
-                                 .then(eq.a("mainhand").executes($$1xx -> a($$1xx, gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btc.a), $$2))))
-                              .then(eq.a("offhand").executes($$1xx -> a($$1xx, gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btc.b), $$2)))
+                                 .then(eq.a("mainhand").executes($$1xx -> a($$1xx, gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btd.a), $$2))))
+                              .then(eq.a("offhand").executes($$1xx -> a($$1xx, gl.a($$1xx, "pos"), a((ep)$$1xx.getSource(), btd.b), $$2)))
                         )
                   )
          )
@@ -115,20 +115,20 @@ public class anw {
          .then(eq.a("spawn").then($$1.construct(eq.a("targetPos", gs.a()), ($$0x, $$1x, $$2) -> a((ep)$$0x.getSource(), gs.a($$0x, "targetPos"), $$1x, $$2))));
    }
 
-   private static bqo a(ep $$0, iz $$1) throws CommandSyntaxException {
-      dpi $$2 = $$0.e().c_($$1);
-      if (!($$2 instanceof bqo)) {
+   private static bqp a(ep $$0, iz $$1) throws CommandSyntaxException {
+      dpj $$2 = $$0.e().c_($$1);
+      if (!($$2 instanceof bqp)) {
          throw anq.a.create($$1.u(), $$1.v(), $$1.w());
       } else {
-         return (bqo)$$2;
+         return (bqp)$$2;
       }
    }
 
-   private static int a(ep $$0, iz $$1, List<cuq> $$2, anw.a $$3) throws CommandSyntaxException {
-      bqo $$4 = a($$0, $$1);
-      List<cuq> $$5 = Lists.newArrayListWithCapacity($$2.size());
+   private static int a(ep $$0, iz $$1, List<cur> $$2, anw.a $$3) throws CommandSyntaxException {
+      bqp $$4 = a($$0, $$1);
+      List<cur> $$5 = Lists.newArrayListWithCapacity($$2.size());
 
-      for (cuq $$6 : $$2) {
+      for (cur $$6 : $$2) {
          if (a($$4, $$6.s())) {
             $$4.e();
             $$5.add($$6);
@@ -139,11 +139,11 @@ public class anw {
       return $$5.size();
    }
 
-   private static boolean a(bqo $$0, cuq $$1) {
+   private static boolean a(bqp $$0, cur $$1) {
       boolean $$2 = false;
 
       for (int $$3 = 0; $$3 < $$0.b() && !$$1.e(); $$3++) {
-         cuq $$4 = $$0.a($$3);
+         cur $$4 = $$0.a($$3);
          if ($$0.b($$3, $$1)) {
             if ($$4.e()) {
                $$0.a($$3, $$1);
@@ -164,15 +164,15 @@ public class anw {
       return $$2;
    }
 
-   private static int a(ep $$0, iz $$1, int $$2, int $$3, List<cuq> $$4, anw.a $$5) throws CommandSyntaxException {
-      bqo $$6 = a($$0, $$1);
+   private static int a(ep $$0, iz $$1, int $$2, int $$3, List<cur> $$4, anw.a $$5) throws CommandSyntaxException {
+      bqp $$6 = a($$0, $$1);
       int $$7 = $$6.b();
       if ($$2 >= 0 && $$2 < $$7) {
-         List<cuq> $$8 = Lists.newArrayListWithCapacity($$4.size());
+         List<cur> $$8 = Lists.newArrayListWithCapacity($$4.size());
 
          for (int $$9 = 0; $$9 < $$3; $$9++) {
             int $$10 = $$2 + $$9;
-            cuq $$11 = $$9 < $$4.size() ? $$4.get($$9) : cuq.l;
+            cur $$11 = $$9 < $$4.size() ? $$4.get($$9) : cur.l;
             if ($$6.b($$10, $$11)) {
                $$6.a($$10, $$11);
                $$8.add($$11);
@@ -186,14 +186,14 @@ public class anw {
       }
    }
 
-   private static boolean a(cuq $$0, cuq $$1) {
-      return $$0.I() <= $$0.j() && cuq.c($$0, $$1);
+   private static boolean a(cur $$0, cur $$1) {
+      return $$0.I() <= $$0.j() && cur.c($$0, $$1);
    }
 
-   private static int a(Collection<arg> $$0, List<cuq> $$1, anw.a $$2) throws CommandSyntaxException {
-      List<cuq> $$3 = Lists.newArrayListWithCapacity($$1.size());
+   private static int a(Collection<arg> $$0, List<cur> $$1, anw.a $$2) throws CommandSyntaxException {
+      List<cur> $$3 = Lists.newArrayListWithCapacity($$1.size());
 
-      for (cuq $$4 : $$1) {
+      for (cur $$4 : $$1) {
          for (arg $$5 : $$0) {
             if ($$5.gc().f($$4.s())) {
                $$3.add($$4);
@@ -205,20 +205,20 @@ public class anw {
       return $$3.size();
    }
 
-   private static void a(bsv $$0, List<cuq> $$1, int $$2, int $$3, List<cuq> $$4) {
+   private static void a(bsw $$0, List<cur> $$1, int $$2, int $$3, List<cur> $$4) {
       for (int $$5 = 0; $$5 < $$3; $$5++) {
-         cuq $$6 = $$5 < $$1.size() ? $$1.get($$5) : cuq.l;
-         bui $$7 = $$0.a_($$2 + $$5);
-         if ($$7 != bui.a && $$7.a($$6.s())) {
+         cur $$6 = $$5 < $$1.size() ? $$1.get($$5) : cur.l;
+         buj $$7 = $$0.a_($$2 + $$5);
+         if ($$7 != buj.a && $$7.a($$6.s())) {
             $$4.add($$6);
          }
       }
    }
 
-   private static int a(Collection<? extends bsv> $$0, int $$1, int $$2, List<cuq> $$3, anw.a $$4) throws CommandSyntaxException {
-      List<cuq> $$5 = Lists.newArrayListWithCapacity($$3.size());
+   private static int a(Collection<? extends bsw> $$0, int $$1, int $$2, List<cur> $$3, anw.a $$4) throws CommandSyntaxException {
+      List<cur> $$5 = Lists.newArrayListWithCapacity($$3.size());
 
-      for (bsv $$6 : $$0) {
+      for (bsw $$6 : $$0) {
          if ($$6 instanceof arg $$7) {
             a($$6, $$3, $$1, $$2, $$5);
             $$7.cb.d();
@@ -231,10 +231,10 @@ public class anw {
       return $$5.size();
    }
 
-   private static int a(ep $$0, evs $$1, List<cuq> $$2, anw.a $$3) throws CommandSyntaxException {
+   private static int a(ep $$0, evt $$1, List<cur> $$2, anw.a $$3) throws CommandSyntaxException {
       arf $$4 = $$0.e();
       $$2.forEach($$2x -> {
-         cji $$3x = new cji($$4, $$1.c, $$1.d, $$1.e, $$2x.s());
+         cjj $$3x = new cjj($$4, $$1.c, $$1.d, $$1.e, $$2x.s());
          $$3x.v();
          $$4.b($$3x);
       });
@@ -242,93 +242,93 @@ public class anw {
       return $$2.size();
    }
 
-   private static void a(ep $$0, List<cuq> $$1) {
+   private static void a(ep $$0, List<cur> $$1) {
       if ($$1.size() == 1) {
-         cuq $$2 = $$1.get(0);
+         cur $$2 = $$1.get(0);
          $$0.a(() -> xp.a("commands.drop.success.single", $$2.I(), $$2.G()), false);
       } else {
          $$0.a(() -> xp.a("commands.drop.success.multiple", $$1.size()), false);
       }
    }
 
-   private static void a(ep $$0, List<cuq> $$1, ale<eqo> $$2) {
+   private static void a(ep $$0, List<cur> $$1, ale<eqp> $$2) {
       if ($$1.size() == 1) {
-         cuq $$3 = $$1.get(0);
+         cur $$3 = $$1.get(0);
          $$0.a(() -> xp.a("commands.drop.success.single_with_table", $$3.I(), $$3.G(), xp.a($$2.a())), false);
       } else {
          $$0.a(() -> xp.a("commands.drop.success.multiple_with_table", $$1.size(), xp.a($$2.a())), false);
       }
    }
 
-   private static cuq a(ep $$0, btc $$1) throws CommandSyntaxException {
-      bsv $$2 = $$0.g();
-      if ($$2 instanceof btq) {
-         return ((btq)$$2).a($$1);
+   private static cur a(ep $$0, btd $$1) throws CommandSyntaxException {
+      bsw $$2 = $$0.g();
+      if ($$2 instanceof btr) {
+         return ((btr)$$2).a($$1);
       } else {
          throw b.create($$2.O_());
       }
    }
 
-   private static int a(CommandContext<ep> $$0, iz $$1, cuq $$2, anw.b $$3) throws CommandSyntaxException {
+   private static int a(CommandContext<ep> $$0, iz $$1, cur $$2, anw.b $$3) throws CommandSyntaxException {
       ep $$4 = (ep)$$0.getSource();
       arf $$5 = $$4.e();
-      dsd $$6 = $$5.a_($$1);
-      dpi $$7 = $$5.c_($$1);
-      eqm.a $$8 = new eqm.a($$5).a(etf.f, evs.b($$1)).a(etf.g, $$6).b(etf.h, $$7).b(etf.a, $$4.f()).a(etf.i, $$2);
-      List<cuq> $$9 = $$6.a($$8);
+      dse $$6 = $$5.a_($$1);
+      dpj $$7 = $$5.c_($$1);
+      eqn.a $$8 = new eqn.a($$5).a(etg.f, evt.b($$1)).a(etg.g, $$6).b(etg.h, $$7).b(etg.a, $$4.f()).a(etg.i, $$2);
+      List<cur> $$9 = $$6.a($$8);
       return $$3.accept($$0, $$9, $$2x -> a($$4, $$2x, $$6.b().v()));
    }
 
-   private static int a(CommandContext<ep> $$0, bsv $$1, anw.b $$2) throws CommandSyntaxException {
-      if (!($$1 instanceof btq)) {
+   private static int a(CommandContext<ep> $$0, bsw $$1, anw.b $$2) throws CommandSyntaxException {
+      if (!($$1 instanceof btr)) {
          throw c.create($$1.O_());
       } else {
-         ale<eqo> $$3 = ((btq)$$1).eF();
+         ale<eqp> $$3 = ((btr)$$1).eF();
          ep $$4 = (ep)$$0.getSource();
-         eqm.a $$5 = new eqm.a($$4.e());
-         bsv $$6 = $$4.f();
-         if ($$6 instanceof cmy $$7) {
-            $$5.a(etf.b, $$7);
+         eqn.a $$5 = new eqn.a($$4.e());
+         bsw $$6 = $$4.f();
+         if ($$6 instanceof cmz $$7) {
+            $$5.a(etg.b, $$7);
          }
 
-         $$5.a(etf.c, $$1.dQ().o());
-         $$5.b(etf.e, $$6);
-         $$5.b(etf.d, $$6);
-         $$5.a(etf.a, $$1);
-         $$5.a(etf.f, $$4.d());
-         eqm $$8 = $$5.a(ete.g);
-         eqo $$9 = $$4.l().be().b($$3);
-         List<cuq> $$10 = $$9.a($$8);
+         $$5.a(etg.c, $$1.dQ().o());
+         $$5.b(etg.e, $$6);
+         $$5.b(etg.d, $$6);
+         $$5.a(etg.a, $$1);
+         $$5.a(etg.f, $$4.d());
+         eqn $$8 = $$5.a(etf.g);
+         eqp $$9 = $$4.l().be().b($$3);
+         List<cur> $$10 = $$9.a($$8);
          return $$2.accept($$0, $$10, $$2x -> a($$4, $$2x, $$3));
       }
    }
 
-   private static int a(CommandContext<ep> $$0, ji<eqo> $$1, anw.b $$2) throws CommandSyntaxException {
+   private static int a(CommandContext<ep> $$0, ji<eqp> $$1, anw.b $$2) throws CommandSyntaxException {
       ep $$3 = (ep)$$0.getSource();
-      eqm $$4 = new eqm.a($$3.e()).b(etf.a, $$3.f()).a(etf.f, $$3.d()).a(ete.c);
+      eqn $$4 = new eqn.a($$3.e()).b(etg.a, $$3.f()).a(etg.f, $$3.d()).a(etf.c);
       return a($$0, $$1, $$4, $$2);
    }
 
-   private static int a(CommandContext<ep> $$0, ji<eqo> $$1, iz $$2, cuq $$3, anw.b $$4) throws CommandSyntaxException {
+   private static int a(CommandContext<ep> $$0, ji<eqp> $$1, iz $$2, cur $$3, anw.b $$4) throws CommandSyntaxException {
       ep $$5 = (ep)$$0.getSource();
-      eqm $$6 = new eqm.a($$5.e()).a(etf.f, evs.b($$2)).a(etf.i, $$3).b(etf.a, $$5.f()).a(ete.f);
+      eqn $$6 = new eqn.a($$5.e()).a(etg.f, evt.b($$2)).a(etg.i, $$3).b(etg.a, $$5.f()).a(etf.f);
       return a($$0, $$1, $$6, $$4);
    }
 
-   private static int a(CommandContext<ep> $$0, ji<eqo> $$1, eqm $$2, anw.b $$3) throws CommandSyntaxException {
+   private static int a(CommandContext<ep> $$0, ji<eqp> $$1, eqn $$2, anw.b $$3) throws CommandSyntaxException {
       ep $$4 = (ep)$$0.getSource();
-      List<cuq> $$5 = $$1.a().a($$2);
+      List<cur> $$5 = $$1.a().a($$2);
       return $$3.accept($$0, $$5, $$1x -> a($$4, $$1x));
    }
 
    @FunctionalInterface
    interface a {
-      void accept(List<cuq> var1) throws CommandSyntaxException;
+      void accept(List<cur> var1) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
    interface b {
-      int accept(CommandContext<ep> var1, List<cuq> var2, anw.a var3) throws CommandSyntaxException;
+      int accept(CommandContext<ep> var1, List<cur> var2, anw.a var3) throws CommandSyntaxException;
    }
 
    @FunctionalInterface

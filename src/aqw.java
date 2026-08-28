@@ -64,20 +64,20 @@ public class aqw extends arh {
    }
 
    @Override
-   public bqv a(arg $$0, dbz $$1, cuq $$2, bqu $$3) {
+   public bqw a(arg $$0, dca $$1, cur $$2, bqv $$3) {
       if (this.f) {
          this.f();
-         return bqv.e;
+         return bqw.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bqv a(arg $$0, dbz $$1, cuq $$2, bqu $$3, evo $$4) {
+   public bqw a(arg $$0, dca $$1, cur $$2, bqv $$3, evp $$4) {
       if (this.f) {
          this.f();
-         return bqv.e;
+         return bqw.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

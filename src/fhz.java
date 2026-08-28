@@ -1,69 +1,146 @@
-import java.util.OptionalInt;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 
-public class fhz extends fhc {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final azp<fhz.a, fhy> c;
-   private boolean d = false;
-
-   public fhz(xp $$0, fgq $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fhz(int $$0, int $$1, xp $$2, fgq $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fhy.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fhy.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public fhz c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fhz d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fhz e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fhz b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int x() {
-      return this.c.a(this.c()).b();
-   }
-
-   @Override
-   public int v() {
-      return this.c.a(this.c()).a() * 9;
-   }
-
-   @Override
-   public void b(fgs $$0, int $$1, int $$2, float $$3) {
-      fhy $$4 = this.c.a(this.c());
-      int $$5 = this.C();
-      int $$6 = this.D();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+public interface fhz {
+   fhz a = new fhz() {
+      @Override
+      public int a(fgt $$0, int $$1, int $$2) {
+         return $$2;
       }
+
+      @Override
+      public int a(fgt $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int b(fgt $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(fgt $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(fgt $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fhz a(fgr $$0, xu $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fhz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   private fhz.a c() {
-      return new fhz.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   static fhz a(fgr $$0, xu $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fhz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   static record a(xp a, int b, OptionalInt c) {
+   static fhz a(fgr $$0, xp... $$1) {
+      return b($$0, Arrays.stream($$1).map(xp::g).map($$1x -> new fhz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fhz a(fgr $$0, List<xp> $$1) {
+      return b($$0, $$1.stream().map(xp::g).map($$1x -> new fhz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fhz b(final fgr $$0, final List<fhz.a> $$1) {
+      return $$1.isEmpty() ? a : new fhz() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(fgt $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(fgt $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fhz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int b(fgt $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fhz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(fgt $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fhz.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(fgt $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
+            }
+         }
+
+         @Override
+         public int a() {
+            return $$1.size();
+         }
+
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
+   }
+
+   int a(fgt var1, int var2, int var3);
+
+   int a(fgt var1, int var2, int var3, int var4, int var5);
+
+   int b(fgt var1, int var2, int var3, int var4, int var5);
+
+   int c(fgt var1, int var2, int var3, int var4, int var5);
+
+   void a(fgt var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
+
+   public static class a {
+      final ayl a;
+      final int b;
+
+      a(ayl $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

@@ -1,16 +1,19 @@
-public class gjk extends glg<bti> {
-   private static final alf a = new alf("textures/entity/squid/glow_squid.png");
+public class gjk extends gkf<cka, fup<cka>> {
+   private static final alf a = new alf("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public gjk(giy.a $$0, fwd<bti> $$1) {
-      super($$0, $$1);
+   public gjk(giz.a $$0, float $$1) {
+      super($$0, new fuh($$0.a(fxb.ah)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gne<>(this, $$0.d()));
+      this.a(new gnb<>(this, new fuh($$0.a(fxb.ai)), new fuh($$0.a(fxb.aj)), $$0.g()));
    }
 
-   public alf a(bti $$0) {
+   protected void a(cka $$0, faa $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public alf a(cka $$0) {
       return a;
-   }
-
-   protected int a(bti $$0, iz $$1) {
-      int $$2 = (int)ayz.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

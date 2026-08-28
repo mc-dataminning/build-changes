@@ -1,10 +1,10 @@
 import com.mojang.serialization.Codec;
 
-public class ecw implements edd {
-   public static final Codec<ecw> a = dsd.b.fieldOf("state").xmap(ecw::new, $$0 -> $$0.b).codec();
-   public final dsd b;
+public class ecw implements ede {
+   public static final Codec<ecw> a = eff.a.fieldOf("state_provider").xmap(ecw::new, $$0 -> $$0.b).codec();
+   public final eff b;
 
-   public ecw(dsd $$0) {
+   public ecw(eff $$0) {
       this.b = $$0;
    }
 }

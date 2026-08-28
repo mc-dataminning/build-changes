@@ -1,28 +1,34 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public enum fki implements azu {
-   a("bitmap", fkf.a.a),
-   b("ttf", fkk.a),
-   c("space", eye.a.a),
-   d("unihex", fkl.b.a),
-   e("reference", fkj.a);
+public interface fki {
+   MapCodec<fki> b = fkj.f.dispatchMap(fki::a, fkj::a);
 
-   public static final Codec<fki> f = azu.a(fki::values);
-   private final String g;
-   private final MapCodec<? extends fkh> h;
+   fkj a();
 
-   private fki(final String $$0, final MapCodec<? extends fkh> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   Either<fki.b, fki.c> b();
+
+   public static record a(fki b, fjw.a c) {
+      public static final Codec<fki.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fki.b.forGetter(fki.a::a), fjw.a.a.optionalFieldOf("filter", fjw.a.b).forGetter(fki.a::b)).apply($$0, fki.a::new)
+      );
+
+      public fki a() {
+         return this.b;
+      }
+
+      public fjw.a b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.g;
+   public interface b {
+      eyd load(aup var1) throws IOException;
    }
 
-   public MapCodec<? extends fkh> a() {
-      return this.h;
+   public static record c(alf a) {
    }
 }

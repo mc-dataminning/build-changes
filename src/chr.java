@@ -1,86 +1,141 @@
 import javax.annotation.Nullable;
 
-public class chr extends cao {
-   private final chq a;
+public class chr extends chl {
+   private final chs bY = new chs(this);
+   private static final int bZ = 18000;
+   private static final bsz cb = btc.aO.n().a(bsy.a().a(bsx.a, 0.0F, btc.aO.m() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean cc;
+   private int cd;
 
-   public chr(chq $$0) {
-      this.a = $$0;
+   public chr(btc<? extends chr> $$0, dca $$1) {
+      super($$0, $$1);
+   }
+
+   public static buy.a s() {
+      return gP().a(buz.q, 15.0).a(buz.r, 0.2F);
+   }
+
+   public static boolean c(btc<? extends cfh> $$0, dcb $$1, btv $$2, iz $$3, azh $$4) {
+      return !btv.a($$2) ? cfh.b($$0, $$1, $$2, $$3, $$4) : btv.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public boolean a() {
-      return this.a.dP().a(this.a.du(), this.a.dw(), this.a.dA(), 10.0);
+   protected void a(azh $$0) {
+      this.f(buz.m).a(a($$0::j));
    }
 
    @Override
-   public void e() {
-      arf $$0 = (arf)this.a.dP();
-      bqt $$1 = $$0.d_(this.a.dp());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      btp $$2 = btb.am.a((dbz)$$0);
-      if ($$2 != null) {
-         $$2.e(this.a.du(), this.a.dw(), this.a.dA());
-         $$2.a(true);
-         $$0.b($$2);
-         ckm $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected void gG() {
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               chk $$5 = this.a($$1);
-               if ($$5 != null) {
-                  ckm $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.el().a(0.0, 1.1485), 0.0, this.a.el().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
+   @Override
+   protected avz v() {
+      return this.a(awv.a) ? awa.xf : awa.xb;
+   }
+
+   @Override
+   protected avz o_() {
+      return awa.xc;
+   }
+
+   @Override
+   protected avz d(brp $$0) {
+      return awa.xd;
+   }
+
+   @Override
+   protected avz aP() {
+      if (this.aE()) {
+         if (!this.bS()) {
+            return awa.xi;
+         }
+
+         this.cx++;
+         if (this.cx > 5 && this.cx % 3 == 0) {
+            return awa.xg;
+         }
+
+         if (this.cx <= 5) {
+            return awa.xi;
+         }
+      }
+
+      return awa.xe;
+   }
+
+   @Override
+   protected void e(float $$0) {
+      if (this.aE()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
+      }
+   }
+
+   @Override
+   protected void gW() {
+      if (this.be()) {
+         this.a(awa.xh, 0.4F, 1.0F);
+      } else {
+         super.gW();
+      }
+   }
+
+   @Override
+   public bsz e(bud $$0) {
+      return this.p_() ? cb : super.e($$0);
+   }
+
+   @Override
+   public void n_() {
+      super.n_();
+      if (this.u() && this.cd++ >= 18000) {
+         this.ao();
+      }
+   }
+
+   @Override
+   public void b(us $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.u());
+      $$0.a("SkeletonTrapTime", this.cd);
+   }
+
+   @Override
+   public void a(us $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.cd = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fl() {
+      return 0.96F;
+   }
+
+   public boolean u() {
+      return this.cc;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.cc) {
+         this.cc = $$0;
+         if ($$0) {
+            this.bS.a(1, this.bY);
+         } else {
+            this.bS.a(this.bY);
          }
       }
    }
 
    @Nullable
-   private chk a(bqt $$0) {
-      chq $$1 = btb.aO.a(this.a.dP());
-      if ($$1 != null) {
-         $$1.a((arf)this.a.dP(), $$0, btu.k, null);
-         $$1.a_(this.a.du(), this.a.dw(), this.a.dA());
-         $$1.am = 60;
-         $$1.fU();
-         $$1.x(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
+   @Override
+   public bsq a(arf $$0, bsq $$1) {
+      return btc.aO.a((dca)$$0);
    }
 
-   @Nullable
-   private ckm a(bqt $$0, chk $$1) {
-      ckm $$2 = btb.aN.a($$1.dP());
-      if ($$2 != null) {
-         $$2.a((arf)$$1.dP(), $$0, btu.k, null);
-         $$2.a_($$1.du(), $$1.dw(), $$1.dA());
-         $$2.am = 60;
-         $$2.fU();
-         if ($$2.a(btc.f).e()) {
-            $$2.a(btc.f, new cuq(cut.pG));
-         }
-
-         cpm $$3 = $$1.dP().J();
-         $$2.a(btc.a, dac.a($$3, $$2.el(), this.a($$2.eX()), (int)(5.0F + $$0.d() * (float)$$2.el().a(18)), false));
-         $$2.a(btc.f, dac.a($$3, $$2.el(), this.a($$2.a(btc.f)), (int)(5.0F + $$0.d() * (float)$$2.el().a(18)), false));
-      }
-
-      return $$2;
-   }
-
-   private cuq a(cuq $$0) {
-      $$0.b(km.k, dag.a);
-      return $$0;
+   @Override
+   public bqw b(cmz $$0, bqv $$1) {
+      return !this.gF() ? bqw.e : super.b($$0, $$1);
    }
 }

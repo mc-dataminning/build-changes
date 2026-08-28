@@ -8,7 +8,7 @@ public class acl implements zw<aci> {
    private final int g;
    private final int h;
 
-   public acl(bsv $$0, int $$1) {
+   public acl(bsw $$0, int $$1) {
       this.g = $$0.al();
       this.h = $$1;
    }

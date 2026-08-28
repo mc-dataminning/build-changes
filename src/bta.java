@@ -1,71 +1,60 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public final class bta {
-   public static final Predicate<bsv> a = bsv::bD;
-   public static final Predicate<bsv> b = $$0 -> $$0.bD() && $$0 instanceof btq;
-   public static final Predicate<bsv> c = $$0 -> $$0.bD() && !$$0.bS() && !$$0.bR();
-   public static final Predicate<bsv> d = $$0 -> $$0 instanceof bqo && $$0.bD();
-   public static final Predicate<bsv> e = $$0 -> !($$0 instanceof cmy) || !$$0.N_() && !((cmy)$$0).f();
-   public static final Predicate<bsv> f = $$0 -> !$$0.N_();
-   public static final Predicate<bsv> g = f.and(bsv::bF);
-
-   private bta() {
-   }
-
-   public static Predicate<bsv> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
-   }
-
-   public static Predicate<bsv> a(bsv $$0) {
-      ewy $$1 = $$0.cj();
-      ewy.a $$2 = $$1 == null ? ewy.a.a : $$1.l();
-      return (Predicate<bsv>)($$2 == ewy.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bA()) {
-            return false;
-         } else if (!$$0.dP().B || $$3 instanceof cmy && ((cmy)$$3).g()) {
-            ewy $$4 = $$3.cj();
-            ewy.a $$5 = $$4 == null ? ewy.a.a : $$4.l();
-            if ($$5 == ewy.a.b) {
-               return false;
-            } else {
-               boolean $$6 = $$1 != null && $$1.a($$4);
-               return ($$2 == ewy.a.d || $$5 == ewy.a.d) && $$6 ? false : $$2 != ewy.a.c && $$5 != ewy.a.c || $$6;
-            }
-         } else {
-            return false;
-         }
-      }));
-   }
-
-   public static Predicate<bsv> b(bsv $$0) {
-      return $$1 -> {
-         while ($$1.bR()) {
-            $$1 = $$1.dc();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-   }
-
-   public static class a implements Predicate<bsv> {
-      private final cuq a;
-
-      public a(cuq $$0) {
-         this.a = $$0;
-      }
-
-      public boolean a(@Nullable bsv $$0) {
-         if (!$$0.bD()) {
-            return false;
-         } else {
-            return !($$0 instanceof btq $$1) ? false : $$1.f(this.a);
-         }
-      }
-   }
+public class bta {
+   public static final byte a = 1;
+   public static final byte b = 3;
+   public static final byte c = 4;
+   public static final byte d = 5;
+   public static final byte e = 6;
+   public static final byte f = 7;
+   public static final byte g = 8;
+   public static final byte h = 9;
+   public static final byte i = 10;
+   public static final byte j = 11;
+   public static final byte k = 12;
+   public static final byte l = 13;
+   public static final byte m = 14;
+   public static final byte n = 15;
+   public static final byte o = 16;
+   public static final byte p = 17;
+   public static final byte q = 18;
+   public static final byte r = 19;
+   public static final byte s = 20;
+   public static final byte t = 21;
+   public static final byte u = 22;
+   public static final byte v = 23;
+   public static final byte w = 24;
+   public static final byte x = 25;
+   public static final byte y = 26;
+   public static final byte z = 27;
+   public static final byte A = 28;
+   public static final byte B = 29;
+   public static final byte C = 30;
+   public static final byte D = 31;
+   public static final byte E = 32;
+   public static final byte F = 34;
+   public static final byte G = 35;
+   public static final byte H = 38;
+   public static final byte I = 39;
+   public static final byte J = 40;
+   public static final byte K = 41;
+   public static final byte L = 42;
+   public static final byte M = 45;
+   public static final byte N = 46;
+   public static final byte O = 47;
+   public static final byte P = 48;
+   public static final byte Q = 49;
+   public static final byte R = 50;
+   public static final byte S = 51;
+   public static final byte T = 52;
+   public static final byte U = 53;
+   public static final byte V = 54;
+   public static final byte W = 55;
+   public static final byte X = 56;
+   public static final byte Y = 58;
+   public static final byte Z = 59;
+   public static final byte aa = 60;
+   public static final byte ab = 61;
+   public static final byte ac = 62;
+   public static final byte ad = 63;
+   public static final byte ae = 64;
+   public static final byte af = 65;
 }

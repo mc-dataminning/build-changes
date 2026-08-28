@@ -1,75 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.ToIntFunction;
 
-public class dil extends dmr implements dfd {
+public class dil extends dkb implements dfe, dmc {
    public static final MapCodec<dil> a = b(dil::new);
+   private static final dsv c = dsu.C;
+   private final dkc d = new dkc(this);
 
    @Override
    public MapCodec<dil> a() {
       return a;
    }
 
-   public dil(dsc.d $$0) {
+   public dil(dsd.d $$0) {
       super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<dse> b(int $$0) {
+      return $$1 -> dkb.n($$1) ? $$0 : 0;
    }
 
    @Override
-   public boolean b(dcc $$0, iz $$1, dsd $$2) {
-      return $$0.a_($$1.c()).i();
+   protected void a(dsf.a<dfb, dse> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   public boolean a(dbz $$0, azh $$1, iz $$2, dsd $$3) {
+   protected dse a(dse $$0, je $$1, dse $$2, dcb $$3, iz $$4, iz $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eny.c, eny.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dse $$0, cyc $$1) {
+      return !$$1.n().a(cuu.fW) || super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(dcd $$0, iz $$1, dse $$2) {
+      return je.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(dca $$0, azh $$1, iz $$2, dse $$3) {
       return true;
    }
 
    @Override
-   public void a(arf $$0, azh $$1, iz $$2, dsd $$3) {
-      iz $$4 = $$2.c();
-      dsd $$5 = dfc.bt.o();
-      Optional<ji.c<ehp>> $$6 = $$0.H_().d(lq.aI).b(sz.n);
-
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         iz $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
-         }
-
-         dsd $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((dfd)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            ji<ehp> $$12;
-            if ($$1.a(8) == 0) {
-               List<eam<?, ?>> $$11 = $$0.t($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((edq)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
-         }
-      }
+   public void a(arf $$0, azh $$1, iz $$2, dse $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
    }
 
    @Override
-   public dfd.a ap_() {
-      return dfd.a.a;
+   protected enx b_(dse $$0) {
+      return $$0.c(c) ? eny.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a_(dse $$0, dbg $$1, iz $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public dkc c() {
+      return this.d;
    }
 }

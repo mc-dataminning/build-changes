@@ -1,42 +1,29 @@
-public class gcf extends gbb {
-   private final bsv a;
-   private int b;
-   private final int D;
-   private final lg E;
-
-   public gcf(fxw $$0, bsv $$1, lg $$2) {
-      this($$0, $$1, $$2, 3);
+public class gcf extends gbq {
+   gcf(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbz $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   public gcf(fxw $$0, bsv $$1, lg $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.ds());
-   }
+   public static class a implements gbh<lm> {
+      private final gbz a;
 
-   private gcf(fxw $$0, bsv $$1, lg $$2, int $$3, evs $$4) {
-      super($$0, $$1.du(), $$1.e(0.5), $$1.dA(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
-   }
-
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      public a(gbz $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gcf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

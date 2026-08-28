@@ -1,22 +1,15 @@
-public interface czm extends cyw<bqo> {
-   @Override
-   default czb<?> e() {
-      return czb.g;
+public class czm extends cyg {
+   public czm(String $$0, cym $$1, cyu $$2, cur $$3, float $$4, int $$5) {
+      super(czc.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public cur g() {
+      return new cur(dfd.cD);
    }
 
    @Override
-   default cuq g() {
-      return new cuq(dfc.ob);
+   public czb<?> ao_() {
+      return czb.p;
    }
-
-   boolean a(cuq var1);
-
-   boolean b(cuq var1);
-
-   boolean c(cuq var1);
 }

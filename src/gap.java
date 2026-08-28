@@ -1,75 +1,65 @@
-public class gap extends gcd {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
-
-   gap(fxw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
+public class gap extends gbm {
+   gap(fxx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public gbh b() {
-      return gbh.b;
+   public gbi b() {
+      return gbi.b;
    }
 
    @Override
    public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = ayj.b.a($$0, this.G, this.H);
-         this.a((float)ayj.b.b($$2) / 255.0F, (float)ayj.b.c($$2) / 255.0F, (float)ayj.b.d($$2) / 255.0F);
-         this.e((float)ayj.b.a($$2) / 255.0F);
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = ayz.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
       }
+
+      return $$3 | $$4 << 16;
    }
 
-   public static class a implements gbg<lm> {
-      private final gby a;
+   public static class a implements gbh<lm> {
+      private final gbz a;
 
-      public a(gby $$0) {
+      public a(gbz $$0) {
          this.a = $$0;
       }
 
-      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gap $$8 = new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(ayz.b($$1.E_(), 3.0F, 5.0F));
+      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gap $$8 = new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gbh<lm> {
+      private final gbz a;
+
+      public b(gbz $$0) {
+         this.a = $$0;
+      }
+
+      public gbe a(lm $$0, fxx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gap $$8 = new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
          return $$8;
       }
    }

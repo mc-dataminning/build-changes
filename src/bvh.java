@@ -2,18 +2,26 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bvh {
-   public static bwu<bts> a(int $$0, float $$1) {
-      return byw.a(
-         (Function<byw.b<bts>, ? extends App<byw.c<bts>, byz<bts>>>)($$2 -> $$2.group($$2.c(ccu.m), $$2.a(ccu.n), $$2.b(ccu.o), $$2.b(ccu.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     btq $$9 = $$2.b($$5);
-                     if ($$9.a($$7, (double)$$0) && $$2.<ccw>b($$6).a($$9)) {
-                        $$4.a(new bvu($$9, true));
-                        $$7.H().a(-$$1, 0.0F);
-                        $$7.r(ayz.c($$7.dF(), $$7.ba, 0.0F));
-                        return true;
-                     } else {
+   public static bwv<bsq> a(bqh $$0, float $$1) {
+      return a($$0, $$1x -> $$1);
+   }
+
+   public static bwv<bsq> a(bqh $$0, Function<btr, Float> $$1) {
+      return byx.a(
+         (Function<byx.b<bsq>, ? extends App<byx.c<bsq>, bza<bsq>>>)($$2 -> $$2.group($$2.b(ccv.K), $$2.a(ccv.n), $$2.c(ccv.m))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     if (!$$7.p_()) {
                         return false;
+                     } else {
+                        bsq $$9 = $$2.b($$3);
+                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
+                           ccy $$10 = new ccy(new bvv($$9, false), $$1.apply($$7), $$0.a() - 1);
+                           $$4.a(new bvv($$9, true));
+                           $$5.a($$10);
+                           return true;
+                        } else {
+                           return false;
+                        }
                      }
                   }))
       );

@@ -1,3 +1,8 @@
-public interface fgm {
-   int getColor(cuq var1, int var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fgm {
 }

@@ -1,47 +1,53 @@
-public class flq extends fne {
-   private static final int a = 90;
-   private final xp b;
-   private fhy c = fhy.a;
-   private final Runnable d;
-   private final xp r;
-   private final boolean s;
+public class flq extends fnh {
+   public static final xp a = xp.c("options.accessibility.title");
 
-   public flq(Runnable $$0, xp $$1, xp $$2) {
-      this($$0, $$1, $$2, xo.k, true);
+   private static ffk<?>[] a(ffl $$0) {
+      return new ffk[]{
+         $$0.as(),
+         $$0.W(),
+         $$0.t(),
+         $$0.H(),
+         $$0.p(),
+         $$0.r(),
+         $$0.Y(),
+         $$0.n(),
+         $$0.o(),
+         $$0.A(),
+         $$0.B(),
+         $$0.ac(),
+         $$0.ad(),
+         $$0.aj(),
+         $$0.ak(),
+         $$0.al(),
+         $$0.ao(),
+         $$0.am(),
+         $$0.an(),
+         $$0.b(),
+         $$0.a(),
+         $$0.s(),
+         $$0.c(),
+         $$0.u()
+      };
    }
 
-   public flq(Runnable $$0, xp $$1, xp $$2, xp $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.r = $$3;
-      this.s = $$4;
-   }
-
-   @Override
-   public xp i() {
-      return xo.a(super.i(), this.b);
+   public flq(fnf $$0, ffl $$1) {
+      super($$0, $$1, a, a($$1));
    }
 
    @Override
    protected void aM_() {
       super.aM_();
-      this.c = fhy.a(this.p, this.b, this.n - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = ayz.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
-      int $$2 = 150;
-      this.c(fhf.a(this.r, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
+      fhe $$0 = this.s.b(this.c.t());
+      if ($$0 != null && !this.m.ac().b().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(fir.a(xp.c("options.accessibility.high_contrast.error.tooltip")));
+      }
    }
 
    @Override
-   public void a(fgs $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
-      this.c.a($$0, this.n / 2, 90);
-   }
-
-   @Override
-   public boolean aC_() {
-      return this.s;
+   protected void h() {
+      fkx $$0 = this.d.b(fkx.e().a(8));
+      $$0.a(fhg.a(xp.c("options.accessibility.link"), flw.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a());
+      $$0.a(fhg.a(xo.d, $$0x -> this.m.a(this.b)).a());
    }
 }

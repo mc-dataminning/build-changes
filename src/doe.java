@@ -1,43 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class doe extends dnm implements dmb {
+public class doe extends dfk {
    public static final MapCodec<doe> a = b(doe::new);
-   public static final dsu c = dst.C;
+   protected static final ewm b = dfb.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<? extends doe> a() {
+   public MapCodec<doe> a() {
       return a;
    }
 
-   protected doe(dsc.d $$0) {
+   protected doe(dsd.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dsd a(cyb $$0) {
-      enw $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(enx.c)));
    }
 
    @Override
-   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, enx.c, enx.c.a($$3));
+   protected void a(dse $$0, dca $$1, iz $$2, bsw $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof arf && $$3 instanceof cox) {
+         $$1.a(new iz($$2), true, $$3);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected enw b_(dsd $$0) {
-      return $$0.c(c) ? enx.c.a(true) : super.b_($$0);
+   protected ewm a(dse $$0, dbg $$1, iz $$2, evy $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(c);
+   protected boolean b(dse $$0, dbg $$1, iz $$2) {
+      enx $$3 = $$1.b_($$2);
+      enx $$4 = $$1.b_($$2.c());
+      return ($$3.a() == eny.c || $$0.b() instanceof diz) && $$4.a() == eny.a;
    }
 }

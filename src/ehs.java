@@ -1,10 +1,10 @@
-import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class ehs {
-   public static final Codec<ehs> b = lp.U.q().dispatch(ehs::b, eht::codec);
+public abstract class ehs extends eht {
+   @Override
+   public final Stream<iz> a_(ehr $$0, azh $$1, iz $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+   }
 
-   public abstract Stream<iz> a_(ehq var1, azh var2, iz var3);
-
-   public abstract eht<?> b();
+   protected abstract boolean a(ehr var1, azh var2, iz var3);
 }

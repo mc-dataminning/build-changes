@@ -1,27 +1,30 @@
-public class ctn extends cta {
-   public ctn(cul.a $$0) {
+public class ctn extends cum implements ctt {
+   public ctn(cum.a $$0) {
       super($$0);
+      dhg.a(this, csg.a);
+   }
+
+   public static boolean j(cur $$0) {
+      return $$0.n() < $$0.o() - 1;
    }
 
    @Override
-   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
-      cuq $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bqw.a($$3);
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(awk.c.b(this));
-         $$1.dP().a(null, $$1, awa.Ar, $$1.de(), 1.0F, 1.0F);
-         cuq $$4 = cuy.a($$0, $$1.dt(), $$1.dz(), (byte)0, true, false);
-         if ($$3.e()) {
-            return bqw.b($$4);
-         } else {
-            if (!$$1.gc().f($$4.s())) {
-               $$1.a($$4, false);
-            }
+   public boolean a(cur $$0, cur $$1) {
+      return $$1.a(cuu.vQ);
+   }
 
-            return bqw.b($$3);
-         }
-      }
+   @Override
+   public bqx<cur> a(dca $$0, cmz $$1, bqv $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public ji<avz> n() {
+      return awa.ar;
+   }
+
+   @Override
+   public btd m() {
+      return btd.e;
    }
 }

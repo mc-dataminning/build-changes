@@ -7,7 +7,7 @@ public class azz {
    public static final long d = TimeUnit.HOURS.toSeconds(1L);
    public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   public static bqg a(int $$0, int $$1) {
-      return bqg.a($$0 * 20, $$1 * 20);
+   public static bqh a(int $$0, int $$1) {
+      return bqh.a($$0 * 20, $$1 * 20);
    }
 }

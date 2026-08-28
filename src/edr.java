@@ -1,19 +1,30 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class edr implements edd {
+public record edr(int b, int c, int d, ji<ehq> e) implements ede {
    public static final Codec<edr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(edl.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, edr::new)
+      $$0 -> $$0.group(
+               ayh.l.fieldOf("tries").orElse(128).forGetter(edr::a),
+               ayh.k.fieldOf("xz_spread").orElse(7).forGetter(edr::b),
+               ayh.k.fieldOf("y_spread").orElse(3).forGetter(edr::c),
+               ehq.b.fieldOf("feature").forGetter(edr::d)
+            )
+            .apply($$0, edr::new)
    );
-   public final List<edl.a> b;
 
-   public edr(dsd $$0, dsd $$1) {
-      this(ImmutableList.of(edl.a(new elq($$0), $$1)));
+   public int a() {
+      return this.b;
    }
 
-   public edr(List<edl.a> $$0) {
-      this.b = $$0;
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public ji<ehq> d() {
+      return this.e;
    }
 }

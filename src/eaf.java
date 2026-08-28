@@ -1,83 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class eaf extends eaz<edk> {
-   public eaf(Codec<edk> $$0) {
+public class eaf extends eba<ecy> {
+   private static final ImmutableList<dfb> a = ImmutableList.of(dfd.H, dfd.F, dfd.kJ, dfd.dW, dfd.fn, dfd.fo, dfd.fp, dfd.fq, dfd.cv, dfd.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
+
+   public eaf(Codec<ecy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebb<edk> $$0) {
-      iz $$1 = $$0.e();
-      dcu $$2 = $$0.b();
-      azh $$3 = $$0.d();
-      if ($$2.u($$1) && !$$2.u($$1.c())) {
-         iz.a $$4 = $$1.j();
-         iz.a $$5 = $$1.j();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
+   public boolean a(ebc<ecy> $$0) {
+      int $$1 = $$0.c().f();
+      iz $$2 = $$0.e();
+      dcv $$3 = $$0.b();
+      azh $$4 = $$0.d();
+      ecy $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
+         return false;
+      } else {
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-         while ($$2.u($$4)) {
-            if ($$2.s($$4)) {
-               return true;
+         for (iz $$11 : iz.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
             }
-
-            $$2.a($$4, dfc.dY.o(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, je.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, je.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, je.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, je.f));
-            $$4.c(je.a);
          }
 
-         $$4.c(je.b);
-         this.a($$2, $$3, $$5.a($$4, je.c));
-         this.a($$2, $$3, $$5.a($$4, je.d));
-         this.a($$2, $$3, $$5.a($$4, je.e));
-         this.a($$2, $$3, $$5.a($$4, je.f));
-         $$4.c(je.a);
-         iz.a $$10 = new iz.a();
+         return $$10;
+      }
+   }
 
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = ayz.a($$11) * ayz.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
+   private boolean a(dcb $$0, int $$1, iz $$2, int $$3, int $$4) {
+      boolean $$5 = false;
 
-                  while ($$2.u($$5.a($$10, je.a))) {
-                     $$10.c(je.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
+      for (iz $$6 : iz.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         iz $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (iz.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (iz)$$10)) {
+                  this.a($$0, $$10, dfd.dY.o());
+                  $$10.c(je.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(dfd.dY)) {
+                     break;
                   }
 
-                  if (!$$2.u($$5.a($$10, je.a))) {
-                     $$2.a($$10, dfc.dY.o(), 2);
-                  }
+                  $$10.c(je.b);
                }
             }
          }
+      }
 
-         return true;
-      } else {
+      return $$5;
+   }
+
+   @Nullable
+   private static iz a(dcb $$0, int $$1, iz.a $$2, int $$3) {
+      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(je.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dcb $$0, int $$1, iz.a $$2) {
+      if (!a($$0, $$1, (iz)$$2)) {
          return false;
+      } else {
+         dse $$3 = $$0.a_($$2.c(je.a));
+         $$2.c(je.b);
+         return !$$3.i() && !a.contains($$3.b());
       }
    }
 
-   private void a(dca $$0, azh $$1, iz $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, dfc.dY.o(), 2);
+   @Nullable
+   private static iz a(dcb $$0, iz.a $$1, int $$2) {
+      while ($$1.v() < $$0.am() && $$2 > 0) {
+         $$2--;
+         dse $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(je.b);
       }
+
+      return null;
    }
 
-   private boolean b(dca $$0, azh $$1, iz $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, dfc.dY.o(), 2);
-         return true;
-      } else {
-         return false;
-      }
+   private static boolean a(dcb $$0, int $$1, iz $$2) {
+      dse $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(dfd.H) && $$2.v() <= $$1;
    }
 }

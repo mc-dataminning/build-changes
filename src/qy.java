@@ -2,24 +2,24 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qy {
-   public static final ale<eju> a = rj.a("bastion/starts");
+   public static final ale<ejv> a = rj.a("bastion/starts");
 
-   public static void a(rc<eju> $$0) {
-      jj<emj> $$1 = $$0.a(lq.aK);
-      ji<emj> $$2 = $$1.b(rk.w);
-      jj<eju> $$3 = $$0.a(lq.aM);
-      ji<eju> $$4 = $$3.b(rj.a);
+   public static void a(rc<ejv> $$0) {
+      jj<emk> $$1 = $$0.a(lq.aK);
+      ji<emk> $$2 = $$1.b(rk.w);
+      jj<ejv> $$3 = $$0.a(lq.aM);
+      ji<ejv> $$4 = $$3.b(rj.a);
       $$0.a(
          a,
-         new eju(
+         new ejv(
             $$4,
             ImmutableList.of(
-               Pair.of(ejs.b("bastion/units/air_base", $$2), 1),
-               Pair.of(ejs.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(ejs.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(ejs.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(ejt.b("bastion/units/air_base", $$2), 1),
+               Pair.of(ejt.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(ejt.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(ejt.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
             ),
-            eju.a.b
+            ejv.a.b
          )
       );
       qx.a($$0);

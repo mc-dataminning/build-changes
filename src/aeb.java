@@ -1,13 +1,13 @@
 public class aeb implements zw<aci> {
    public static final zn<xa, aeb> a = zw.a(aeb::a, aeb::new);
    private final int b;
-   private final day c;
+   private final daz c;
    private final int d;
    private final int e;
    private final boolean f;
    private final boolean g;
 
-   public aeb(int $$0, day $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public aeb(int $$0, daz $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;
@@ -18,7 +18,7 @@ public class aeb implements zw<aci> {
 
    private aeb(xa $$0) {
       this.b = $$0.l();
-      this.c = day.b.decode($$0);
+      this.c = daz.b.decode($$0);
       this.d = $$0.l();
       this.e = $$0.l();
       this.f = $$0.readBoolean();
@@ -27,7 +27,7 @@ public class aeb implements zw<aci> {
 
    private void a(xa $$0) {
       $$0.c(this.b);
-      day.b.encode($$0, this.c);
+      daz.b.encode($$0, this.c);
       $$0.c(this.d);
       $$0.c(this.e);
       $$0.a(this.f);
@@ -47,7 +47,7 @@ public class aeb implements zw<aci> {
       return this.b;
    }
 
-   public day e() {
+   public daz e() {
       return this.c;
    }
 

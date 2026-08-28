@@ -1,30 +1,24 @@
-import org.joml.Vector3f;
+public class fpa extends fod<cqu> {
+   private static final alf D = new alf("container/grindstone/error");
+   private static final alf E = new alf("textures/gui/container/grindstone.png");
 
-public class fpa extends foe {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int d = 16;
-   private static final int r = 16;
-   private final alf s = new alf("textures/gui/hanging_signs/" + this.a.b() + ".png");
-
-   public fpa(dqs $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, xp.c("hanging_sign.edit"));
+   public fpa(cqu $$0, cmy $$1, xp $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void b(fgs $$0, dsd $$1) {
-      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
+   public void a(fgt $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fgs $$0, dsd $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
-   }
-
-   @Override
-   protected Vector3f m() {
-      return c;
+   protected void a(fgt $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(E, $$4, $$5, 0, 0, this.c, this.d);
+      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(2).h()) {
+         $$0.a(D, $$4 + 92, $$5 + 31, 28, 21);
+      }
    }
 }

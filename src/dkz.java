@@ -1,165 +1,37 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkz extends dep {
-   public static final MapCodec<dkz> d = b(dkz::new);
-   public static final dtb<dth> e = dst.ag;
+public class dkz extends dfb {
+   public static final MapCodec<dkz> a = b(dkz::new);
 
    @Override
    public MapCodec<dkz> a() {
-      return d;
+      return a;
    }
 
-   protected dkz(dsc.d $$0) {
-      super(false, $$0);
-      this.k(this.E.b().a(e, dth.a).a(c, Boolean.valueOf(false)));
+   protected dkz(dsd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dsd $$0, dbz $$1, iz $$2, dfa $$3) {
-      if ($$3.o().m() && new dla($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
+   protected bqy a(cur $$0, dse $$1, dca $$2, iz $$3, cmz $$4, bqv $$5, evp $$6) {
+      if (!$$0.a(cuu.rV)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.B) {
+         return bqy.a($$2.B);
+      } else {
+         je $$7 = $$6.b();
+         je $$8 = $$7.o() == je.a.b ? $$4.cH().g() : $$7;
+         $$2.a(null, $$3, awa.uT, awb.e, 1.0F, 1.0F);
+         $$2.a($$3, dfd.ee.o().a(dfv.b, $$8), 11);
+         cjj $$9 = new cjj(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cur(cuu.rY, 4)
+         );
+         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, btr.d($$5));
+         $$2.a($$4, dwx.M, $$3);
+         $$4.b(awk.c.b(cuu.rV));
+         return bqy.a($$2.B);
       }
-   }
-
-   @Override
-   public dtg<dth> c() {
-      return e;
-   }
-
-   @Override
-   protected dsd a(dsd $$0, dln $$1) {
-      dth $$2 = $$0.c(e);
-
-      return $$0.a(e, switch ($$1) {
-         case c -> {
-            switch ($$2) {
-               case a:
-                  yield dth.a;
-               case b:
-                  yield dth.b;
-               case c:
-                  yield dth.d;
-               case d:
-                  yield dth.c;
-               case e:
-                  yield dth.f;
-               case f:
-                  yield dth.e;
-               case g:
-                  yield dth.i;
-               case h:
-                  yield dth.j;
-               case i:
-                  yield dth.g;
-               case j:
-                  yield dth.h;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case d -> {
-            switch ($$2) {
-               case a:
-                  yield dth.b;
-               case b:
-                  yield dth.a;
-               case c:
-                  yield dth.e;
-               case d:
-                  yield dth.f;
-               case e:
-                  yield dth.d;
-               case f:
-                  yield dth.c;
-               case g:
-                  yield dth.j;
-               case h:
-                  yield dth.g;
-               case i:
-                  yield dth.h;
-               case j:
-                  yield dth.i;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case b -> {
-            switch ($$2) {
-               case a:
-                  yield dth.b;
-               case b:
-                  yield dth.a;
-               case c:
-                  yield dth.f;
-               case d:
-                  yield dth.e;
-               case e:
-                  yield dth.c;
-               case f:
-                  yield dth.d;
-               case g:
-                  yield dth.h;
-               case h:
-                  yield dth.i;
-               case i:
-                  yield dth.j;
-               case j:
-                  yield dth.g;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> $$2;
-      });
-   }
-
-   @Override
-   protected dsd a(dsd $$0, djx $$1) {
-      dth $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dth.f);
-               case f:
-                  return $$0.a(e, dth.e);
-               case g:
-                  return $$0.a(e, dth.j);
-               case h:
-                  return $$0.a(e, dth.i);
-               case i:
-                  return $$0.a(e, dth.h);
-               case j:
-                  return $$0.a(e, dth.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dth.d);
-               case d:
-                  return $$0.a(e, dth.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dth.h);
-               case h:
-                  return $$0.a(e, dth.g);
-               case i:
-                  return $$0.a(e, dth.j);
-               case j:
-                  return $$0.a(e, dth.i);
-            }
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dse.a<dfa, dsd> $$0) {
-      $$0.a(e, c);
    }
 }

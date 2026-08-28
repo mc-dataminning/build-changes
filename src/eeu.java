@@ -1,50 +1,48 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eeu extends eep {
+public class eeu extends eeq {
    public static final MapCodec<eeu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bqa.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, eeu::new)
+      $$0 -> b($$0).and(bqb.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eeu::new)
    );
-   private final bqa b;
-   private final int c;
+   private final bqb b;
 
-   public eeu(bqa $$0, bqa $$1, bqa $$2, int $$3) {
+   public eeu(bqb $$0, bqb $$1, bqb $$2) {
       super($$0, $$1);
       this.b = $$2;
-      this.c = $$3;
    }
 
    @Override
-   protected eeq<?> a() {
-      return eeq.j;
+   protected eer<?> a() {
+      return eer.c;
    }
 
    @Override
-   protected void a(dcf $$0, eep.b $$1, azh $$2, edz $$3, int $$4, eep.a $$5, int $$6, int $$7, int $$8) {
-      iz $$9 = $$5.a();
-      iz.a $$10 = $$9.j();
+   protected void a(dcg $$0, eeq.b $$1, azh $$2, eea $$3, int $$4, eeq.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
       }
    }
 
    @Override
-   public int a(azh $$0, int $$1, edz $$2) {
+   public int a(azh $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(azh $$0, int $$1, eea $$2) {
       return this.b.a($$0);
    }
 
    @Override
    protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }
