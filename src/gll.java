@@ -51,7 +51,6 @@ public abstract class gll implements zw {
    @Override
    public void a(zo $$0, Exception $$1) {
       l.error("Failed to handle packet {}, disconnecting", $$0, $$1);
-      zw.super.a($$0, $$1);
       Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
       Optional<URI> $$3 = this.j.a(amj.b.a).map(amj.a::c);
       this.b.a(new vx(xg.c("disconnect.packetError"), $$2, $$3));

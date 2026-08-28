@@ -1162,21 +1162,22 @@ public class gri implements avp, AutoCloseable {
    }
 
    public static int a(djk $$0, iw $$1) {
-      return a($$0, $$0.a_($$1), $$1);
+      return a(gri.a.a, $$0, $$0.a_($$1), $$1);
    }
 
-   public static int a(djk $$0, ebq $$1, iw $$2) {
-      if ($$1.b($$0, $$2)) {
+   public static int a(gri.a $$0, djk $$1, ebq $$2, iw $$3) {
+      if ($$2.b($$1, $$3)) {
          return 15728880;
       } else {
-         int $$3 = $$0.a(dks.a, $$2);
-         int $$4 = $$0.a(dks.b, $$2);
-         int $$5 = $$1.k();
-         if ($$4 < $$5) {
-            $$4 = $$5;
+         int $$4 = $$0.packedBrightness($$1, $$3);
+         int $$5 = grk.a($$4);
+         int $$6 = $$2.k();
+         if ($$5 < $$6) {
+            int $$7 = grk.b($$4);
+            return grk.a($$6, $$7);
+         } else {
+            return $$4;
          }
-
-         return $$3 << 20 | $$4 << 4;
       }
    }
 
@@ -1232,5 +1233,16 @@ public class gri implements avp, AutoCloseable {
 
    public gqx y() {
       return this.m;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      gri.a a = ($$0, $$1) -> {
+         int $$2 = $$0.a(dks.a, $$1);
+         int $$3 = $$0.a(dks.b, $$1);
+         return ayn.a($$3, $$2);
+      };
+
+      int packedBrightness(djk var1, iw var2);
    }
 }

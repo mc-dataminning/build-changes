@@ -567,6 +567,21 @@ public class gss {
          $$0.defaultReturnValue(Float.NaN);
          return $$0;
       });
+      private final gri.a d = ($$0, $$1) -> {
+         long $$2 = $$1.a();
+         int $$3 = this.b.get($$2);
+         if ($$3 != Integer.MAX_VALUE) {
+            return $$3;
+         } else {
+            int $$4 = gri.a.a.packedBrightness($$0, $$1);
+            if (this.b.size() == 100) {
+               this.b.removeFirstInt();
+            }
+
+            this.b.put($$2, $$4);
+            return $$4;
+         }
+      };
 
       private d() {
       }
@@ -582,24 +597,7 @@ public class gss {
       }
 
       public int a(ebq $$0, djk $$1, iw $$2) {
-         long $$3 = $$2.a();
-         if (this.a) {
-            int $$4 = this.b.get($$3);
-            if ($$4 != Integer.MAX_VALUE) {
-               return $$4;
-            }
-         }
-
-         int $$5 = gri.a($$1, $$0, $$2);
-         if (this.a) {
-            if (this.b.size() == 100) {
-               this.b.removeFirstInt();
-            }
-
-            this.b.put($$3, $$5);
-         }
-
-         return $$5;
+         return gri.a(this.a ? this.d : gri.a.a, $$1, $$0, $$2);
       }
 
       public float b(ebq $$0, djk $$1, iw $$2) {

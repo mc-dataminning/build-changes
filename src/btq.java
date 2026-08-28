@@ -157,7 +157,9 @@ public abstract class btq<R extends Runnable> implements bsz, btx<R>, Executor {
          }
       } catch (Exception var7) {
          c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.z_(), var7);
-         throw var7;
+         if (a(var7)) {
+            throw var7;
+         }
       }
    }
 

@@ -21,7 +21,7 @@ public class guf implements gua<dyt> {
                   boolean $$11 = $$8 == jc.f || $$8 == jc.e;
                   $$2.a(a.d.rotationDegrees((float)(($$11 ? 90 : 0) + 11)));
                   $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$12 = gri.a($$0.i(), $$0.m(), $$0.ax_().a($$8));
+                  int $$12 = gri.a(gri.a.a, $$0.i(), $$0.m(), $$0.ax_().a($$8));
                   this.a.a($$9, dai.i, $$12, hkg.d, $$2, $$3, $$0.i(), 0);
                   $$2.b();
                }
